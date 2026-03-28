@@ -1,0 +1,201 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar' },
+];
+
+const products = [
+  {
+    name: 'Tripp Trapp',
+    badge: 'Bäst i test',
+    price: '2 990 kr',
+    rating: 4.9,
+    ctaHref: 'https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/stokke-tripp-trapp-highchair-white',
+    features: {
+      'Ålder': 'Från 6 mån (med tillbehör)',
+      'Maxvikt': '136 kg (vuxen)',
+      'Tillverkning': 'Norge – bok/ek',
+      'Anpassningsbar': 'Ja – följer barnet',
+      'Bältessystem': '5-punkts (köps separat)',
+    },
+  },
+  {
+    name: 'IKEA Antilop',
+    badge: 'Bäst budget',
+    price: '249 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.ikea.com/se/sv/p/antilop-hoegstoeel-m-saekerhetsbaelte-vit-silver-29064175/',
+    features: {
+      'Ålder': '6 mån – 3 år',
+      'Maxvikt': '15 kg',
+      'Tillverkning': 'Plast',
+      'Anpassningsbar': 'Nej',
+      'Bältessystem': '3-punkts (ingår)',
+    },
+  },
+  {
+    name: 'BabyBjörn High Chair',
+    badge: 'Bäst komfort',
+    price: '3 790 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/babybjorn-high-chair-white-grey',
+    features: {
+      'Ålder': '6 mån – 3 år',
+      'Maxvikt': '15 kg',
+      'Tillverkning': 'Sverige',
+      'Anpassningsbar': 'Ja – bord och fotbräda',
+      'Bältessystem': '5-punkts (ingår)',
+    },
+  },
+  {
+    name: 'Chicco Polly Magic Relax',
+    badge: 'Bäst mångsidig',
+    price: '1 990 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/chicco-polly-magic-relax-highchair',
+    features: {
+      'Ålder': '0 mån – 3 år',
+      'Maxvikt': '15 kg',
+      'Tillverkning': 'Italien',
+      'Anpassningsbar': 'Ja – 7 höjdlägen, 4 rygglägen',
+      'Bältessystem': '5-punkts (ingår)',
+    },
+  },
+];
+
+const featureLabels = ['Ålder', 'Maxvikt', 'Tillverkning', 'Anpassningsbar', 'Bältessystem'];
+
+const faqItems = [
+  {
+    question: 'Från vilken ålder kan man använda matstol?',
+    answer: 'De flesta matstolar är lämpliga från 6 månaders ålder, när barnet kan sitta stabilt utan stöd. Modeller som Chicco Polly kan användas från födseln i liggläge. Stokke Tripp Trapp kräver Baby Set-tillbehöret för de minsta. Kontrollera alltid tillverkarens ålders- och viktsrekommendationer.',
+  },
+  {
+    question: 'Är Tripp Trapp värd pengarna?',
+    answer: 'Ja, för många familjer är Tripp Trapp en av de bästa investeringarna. Den följer barnet från spädbarn till vuxen (upp till 136 kg), håller i decennier, och behåller ett högt andrahandsvärde. Räknat på livslängden kostar den ofta less per år än billigare alternativ som byts ut snabbare.',
+  },
+  {
+    question: 'Är IKEA Antilop bra?',
+    answer: 'Antilop är fantastisk för priset (249 kr) och är ett av de mest använda barnkategori-produkterna i världen. Den är lätt att rengöra, stabil och enkel att ta med. Nackdelarna är att den inte är höjdjusterbar och att sittkomforten är begränsad för äldre barn. Perfekt för många familjer som komplement eller till sommarstugan.',
+  },
+  {
+    question: 'Vad är skillnaden mellan matstol och sittplatta?',
+    answer: 'En matstol (highchair) är en fristående stol på benstöd med bricka, avsedd för barn 0–3 år. En sittplatta (booster seat) fästs på en vanlig stol och passar äldre barn. För de yngsta behöver du en matstol med bältessystem. Tripp Trapp är en hybridlösning som fungerar som vanlig stol utan bricka.',
+  },
+  {
+    question: 'Hur rengör man en matstol?',
+    answer: 'Välj en matstol med avtagbar bricka och tvättbart sittskydd – det gör rengöringen radikalt enklare. Antilop är bland de lättaste att rengöra (ingen stoppning). Tripp Trapp utan sittdyna är också enkel. Chicco Polly har fler veck och fogar som kan samla matrester. Diskbarhethet: Antilop-brickan är diskmaskinssäker.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa Matstol 2026 – Tripp Trapp, IKEA Antilop och BabyBjörn Testade"
+  description="Vilken matstol är bäst 2026? Vi jämför Stokke Tripp Trapp, IKEA Antilop, BabyBjörn och Chicco Polly. Från 249 kr. Säkerhet, komfort och hållbarhet testat."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/matstolar/"
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En bra matstol är en av de mest använda barnprodukterna de första åren. Vi har jämfört fyra av de mest populära stolarna på svenska marknaden – från budgetvänliga IKEA Antilop till premiumalternativet Stokke Tripp Trapp.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Stokke Tripp Trapp</strong> vinner för långsiktig investering och kvalitet. <strong>IKEA Antilop</strong> är bäst för priset. <strong>BabyBjörn</strong> är bäst för komfort och enkelhet.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – matstolar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Stokke Tripp Trapp"
+      badge="Bäst i test"
+      price="2 990 kr"
+      rating={4.9}
+      ageRange="6 mån – vuxen (upp till 136 kg)"
+      pros={['Följer barnet livet ut', 'Extremt hållbar och tidlös design', 'Högt andrahandsvärde', 'Anpassas i höjd och djup']}
+      cons={['Högt pris', 'Baby Set-tillbehör kostar extra (499 kr)']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/stokke-tripp-trapp-highchair-white"
+    />
+
+    <ProductCard
+      name="IKEA Antilop"
+      badge="Bäst budget"
+      price="249 kr"
+      rating={4.6}
+      ageRange="6 mån – 3 år (max 15 kg)"
+      pros={['Extremt lättrengjord', 'Prisvärd (249 kr)', 'Stabil och lätt', '3-punkts bälte ingår']}
+      cons={['Ej höjdjusterbar', 'Sämre ergonomi än premiumalternativ', 'Kortare livslängd']}
+      ctaText="Se pris hos IKEA"
+      ctaHref="https://www.ikea.com/se/sv/p/antilop-hoegstoeel-m-saekerhetsbaelte-vit-silver-29064175/"
+    />
+
+    <ProductCard
+      name="BabyBjörn High Chair"
+      badge="Bäst komfort"
+      price="3 790 kr"
+      rating={4.7}
+      ageRange="6 mån – 3 år (max 15 kg)"
+      pros={['5-punkts bälte ingår', 'Höjdjusterbart bord och fotbräda', 'Enkelt att tvätta', 'Skandinavisk design']}
+      cons={['Dyrare än konkurrenterna', 'Kortare livslängd än Tripp Trapp']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/babybjorn-high-chair-white-grey"
+    />
+
+    <ProductCard
+      name="Chicco Polly Magic Relax"
+      badge="Bäst mångsidig"
+      price="1 990 kr"
+      rating={4.5}
+      ageRange="0 mån – 3 år (max 15 kg)"
+      pros={['Kan användas från födseln', '7 höjdlägen och 4 rygglägen', 'Komplett med bricka och 5-punkts bälte', 'Bra pris för funktionerna']}
+      cons={['Svårare att rengöra (många fogar)', 'Större och tyngre att flytta']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/chicco-polly-magic-relax-highchair"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt matstol?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Hur länge ska stolen användas?</h3>
+    <p>Tänk på livscykelkostnaden. En Tripp Trapp på 2 990 kr används i 15+ år och ger högt andrahandsvärde. En Antilop på 249 kr byts ut efter 2–3 år. Om du planerar flera barn kan investeringen i en dyr stol snabbt löna sig.</p>
+
+    <h3>2. Enkel rengöring är viktigare än du tror</h3>
+    <p>Matstolen rengörs flera gånger om dagen. Välj en modell med avtagbar och diskmaskinssäker bricka, tvättbart sittskydd och helst utan djupa fogar där mat kan fastna. Antilop är etta på rengöringsbarhet, Tripp Trapp med nackdel att sittdynor köps separat.</p>
+
+    <h3>3. Säkerhetsgodkännande – kräv EN 14988</h3>
+    <p>Alla matstolar på EU-marknaden ska uppfylla säkerhetsstandarden EN 14988. Det innebär krav på stabilitet, hållfasthet och bältessystem. Alla stolarna vi testat uppfyller standarden. Välj alltid en stol med bälte och använd det varje gång – barn kan falla ut ur stolen utan bälte.</p>
+
+    <h3>4. Bältessystem – 3-punkt eller 5-punkt?</h3>
+    <p>För de minsta barnen (6–12 månader) rekommenderas 5-punkts bälte (axlar + midja + skrev) för bästa fixering. Äldre och mer rörliga barn klarar sig med 3-punkts bälte. IKEA Antilop levereras med 3-punkts bälte, BabyBjörn och Chicco Polly med 5-punkts.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 – krocktestade och rankade</a></li>
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 – ergonomi och komfort testat</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/stokke-tripp-trapp-highchair-white"
+  text="Se bästa pris – Tripp Trapp"
+  productName="Bäst i test 2026"
+/>
