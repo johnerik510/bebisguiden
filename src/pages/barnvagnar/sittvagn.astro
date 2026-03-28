@@ -1,0 +1,220 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Sittvagn' },
+];
+
+const products = [
+  {
+    name: 'Bugaboo Butterfly',
+    badge: 'Bast i test',
+    price: '5 990 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Vikt': '7,3 kg',
+      'Fallmatt': '54 x 45 x 23 cm',
+      'Maxvikt barn': '22 kg',
+      'Ryggstod': 'Nastan plant ligglaage',
+      'Kapell': 'UPF 50+ solskydd',
+    },
+  },
+  {
+    name: 'Cybex Libelle',
+    badge: 'Mest kompakt',
+    price: '3 999 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Vikt': '6,2 kg',
+      'Fallmatt': '48 x 32 x 20 cm',
+      'Maxvikt barn': '22 kg',
+      'Ryggstod': 'Lutning i tva lagen',
+      'Kapell': 'UPF 50+ solskydd',
+    },
+  },
+  {
+    name: 'Babyzen Yoyo2',
+    badge: 'Premium resevagn',
+    price: '5 290 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Vikt': '6,6 kg',
+      'Fallmatt': '52 x 44 x 18 cm',
+      'Maxvikt barn': '22 kg',
+      'Ryggstod': 'Nastan plant ligglaage',
+      'Kapell': 'UPF 50+ solskydd',
+    },
+  },
+  {
+    name: 'Joie Pact Pro',
+    badge: 'Budgetval',
+    price: '2 999 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Vikt': '6,6 kg',
+      'Fallmatt': '54 x 49 x 26 cm',
+      'Maxvikt barn': '22 kg',
+      'Ryggstod': 'Lutning i tva lagen',
+      'Kapell': 'UPF 50+ solskydd',
+    },
+  },
+  {
+    name: 'Ergobaby Metro+',
+    badge: 'Bast fjadring',
+    price: '4 990 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Vikt': '7,8 kg',
+      'Fallmatt': '55 x 46 x 23 cm',
+      'Maxvikt barn': '22 kg',
+      'Ryggstod': 'Plant ligglaage',
+      'Kapell': 'UPF 50+ solskydd',
+    },
+  },
+];
+
+const featureLabels = ['Vikt', 'Fallmatt', 'Maxvikt barn', 'Ryggstod', 'Kapell'];
+
+const faqItems = [
+  {
+    question: 'Fran vilken alder kan barnet sitta i en sittvagn?',
+    answer: 'De flesta sittvagnar ar godkanda fran 6 manader, nar barnet kan sitta stadigt sjalv. Vissa modeller med plant ligglaage, som Bugaboo Butterfly och Ergobaby Metro+, kan anvandas fran fodsel. Kontrollera alltid tillverkarens aldersrekommendation for den specifika modellen.',
+  },
+  {
+    question: 'Kan man ta med sittvagnen pa flygplanet?',
+    answer: 'Ja, manga kompakta sittvagnar far plats i flygplanets kabinbagage. Cybex Libelle (48 x 32 x 20 cm) och Babyzen Yoyo2 (52 x 44 x 18 cm) ar bada godkanda som handbagage pa de flesta flygbolag. Kontrollera alltid ditt flygbolags specifika mattbegramsningar innan resan.',
+  },
+  {
+    question: 'Hur latt bor en sittvagn vara?',
+    answer: 'En bra sittvagn vager mellan 5 och 8 kg. Cybex Libelle ar lattast i vart test pa 6,2 kg. Om du ofta bar vagnen i trappor eller pa kollektivtrafik ar lagre vikt en stor fordel. Tank dock pa att lattare vagnar ibland har samre stabilitet pa ojamnt underlag.',
+  },
+  {
+    question: 'Fungerar en sittvagn pa grus och ojamnt underlag?',
+    answer: 'De flesta sittvagnar ar optimerade for stadsmiljo med jamna ytor. For grusvaagar och ojamnt underlag ar Ergobaby Metro+ bast i testet tack vare sin allhjulsfjadring. Bugaboo Butterfly hanterar ocksa ojamnare underlag vaal. Undvik de allra lattaste modellerna om du promenerar mycket pa grus.',
+  },
+  {
+    question: 'Behover sittvagnen ha ligglaage?',
+    answer: 'Ligglaage ar vaaldigt praktiskt om barnet somnar under promenaden, vilket ar vanligt for yngre barn. Det ar ocksa ett krav om du vill anvanda vagnen fran fodsel. Bugaboo Butterfly, Babyzen Yoyo2 och Ergobaby Metro+ har alla nastan plant eller plant ligglaage. Om barnet ar over 1 ar och sallan somnar i vagnen ar ligglaage mindre viktigt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Basta sittvagnen 2026 - Test och jamforelse (sulky)"
+  description="Vi jamfor de basta sittvagnarna och sulkyarna 2026. Bugaboo, Cybex, Babyzen, Joie och Ergobaby i test. Hitta den lattaste och smidigaste sulkyn."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En sittvagn (sulky) ar den latta, kompakta vagnen som gor vardagen smidigare -- perfekt for stan, resor och kollektivtrafik. Vi har jamfort de basta sittvagnarna pa svenska marknaden utifran vikt, fallmatt, komfort och pris.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Bugaboo Butterfly"
+      badge="Bast i test"
+      price="5 990 kr"
+      rating={4.8}
+      ageRange="0-4 ar (med ligglaage)"
+      pros={['Nastan plant ligglaage -- anvandbar fran fodsel', 'Enhandsfall med kompakt fallmatt', 'Smidig korning aven pa ojamnare underlag']}
+      cons={['Hogre pris for en sittvagn', 'Nagot tyngre an de lattaste (7,3 kg)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cybex Libelle"
+      badge="Mest kompakt"
+      price="3 999 kr"
+      rating={4.6}
+      ageRange="6 manader - 4 ar"
+      pros={['Lattast i testet (6,2 kg)', 'Minsta fallmattet -- godkand som flygkabinbagage', 'Bra pris for en kvalitetsvagn']}
+      cons={['Inget plant ligglaage', 'Enklare fjadring an premiummodeller']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Babyzen Yoyo2"
+      badge="Premium resevagn"
+      price="5 290 kr"
+      rating={4.7}
+      ageRange="0-4 ar (med ligglaage)"
+      pros={['Ikonisk resevagn -- godkand som handbagage', 'Nastan plant ligglaage tillgangligt', 'Premiumkansla i material och korning']}
+      cons={['Hog prisklass', 'Sma hjul begransar terrangformaga']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Joie Pact Pro"
+      badge="Budgetval"
+      price="2 999 kr"
+      rating={4.3}
+      ageRange="6 manader - 4 ar"
+      pros={['Lagst pris i testet', 'Latt (6,6 kg) och enkel att falla ihop', 'Inkluderar regnskydd och resepaase']}
+      cons={['Enklare material och finish', 'Storre fallmatt an Cybex Libelle']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Ergobaby Metro+"
+      badge="Bast fjadring"
+      price="4 990 kr"
+      rating={4.5}
+      ageRange="0-4 ar (med ligglaage)"
+      pros={['Bast allhjulsfjadring i klassen', 'Plant ligglaage for nyfodd', 'Hanterar grus och ojamnt underlag val']}
+      cons={['Tyngst i testet (7,8 kg)', 'Storre fallmatt an de mest kompakta']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Sa valjer du ratt sittvagn</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Nar behovs en sittvagn?</h3>
+    <p>De flesta familjer skaffar en sittvagn nar barnet ar runt 6-12 manader, som komplement till eller ersattning for duovagnen. En sittvagn ar lattare, smidigare och tar mindre plats -- perfekt for kollektivtrafik, resor och dagligt bruk i stadsmiljo. Om du bara ska ha en vagn och barnet ar over 6 manader kan en sittvagn med bra ligglaage rracka hela vagen.</p>
+
+    <h3>Vikt och fallmatt</h3>
+    <p>De tva viktigaste faktorerna for en sittvagn ar vikt och ihopfallt matt. En latt vagn (under 7 kg) ar enklare att bara i trappor, lyfta pa bussen och packa i bilen. Fallmattet avgor om vagnen far plats i flygkabinen, bagageutrymmet eller hallen. Cybex Libelle och Babyzen Yoyo2 ar branschledande pa bada punkter.</p>
+
+    <h3>Ligglaage -- behovs det?</h3>
+    <p>Om barnet ar under 1 ar eller fortfarande sover mycket under promenader ar ligglaage nastan ett krav. Bugaboo Butterfly, Babyzen Yoyo2 och Ergobaby Metro+ erbjuder alla nastan plant eller plant ligglaage. For barn over 1 ar som sallan sover i vagnen ar ligglaage en bonus snarare an ett krav.</p>
+
+    <h3>Stadsvagn eller terrrangsulky?</h3>
+    <p>De flesta sittvagnar ar byggda for stad -- jamna trottoarer, gallerior och kollektivtrafik. Om du promenerar mycket pa grus, i park eller i skogen behoover du en modell med bra fjadring och storre hjul. Ergobaby Metro+ ar bast i testet for ojamnt underlag. For renodlat stadsbruk ar Cybex Libelle svarslagen.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Basta barnvagnen 2026 -- komplett test och jamforelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Basta duovagnen 2026 -- test och jamforelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se basta pris" />
+</ArticleLayout>

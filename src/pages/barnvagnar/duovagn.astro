@@ -1,0 +1,220 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Duovagn' },
+];
+
+const products = [
+  {
+    name: 'Bugaboo Fox 5',
+    badge: 'Bast i test',
+    price: '14 990 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Vikt': '12,4 kg',
+      'Fallmatt': '90 x 46 x 36 cm',
+      'Maxvikt barn': '22 kg',
+      'Hjulstorlek': '30 cm (bak)',
+      'Fjadring': 'Fyrhjulsfjadring',
+    },
+  },
+  {
+    name: 'Cybex Priam 4',
+    badge: 'Premium',
+    price: '13 990 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Vikt': '11,9 kg',
+      'Fallmatt': '85 x 50 x 38 cm',
+      'Maxvikt barn': '22 kg',
+      'Hjulstorlek': '28 cm (bak)',
+      'Fjadring': 'Fyrhjulsfjadring',
+    },
+  },
+  {
+    name: 'Emmaljunga NXT90',
+    badge: 'Svensk kvalitet',
+    price: '12 990 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Vikt': '13,5 kg',
+      'Fallmatt': '94 x 60 x 40 cm',
+      'Maxvikt barn': '22 kg',
+      'Hjulstorlek': '30 cm (bak)',
+      'Fjadring': 'Suprem-fjadring',
+    },
+  },
+  {
+    name: 'Joolz Hub+',
+    badge: 'Prisvart',
+    price: '11 990 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Vikt': '10,4 kg',
+      'Fallmatt': '86 x 44 x 34 cm',
+      'Maxvikt barn': '22 kg',
+      'Hjulstorlek': '27 cm (bak)',
+      'Fjadring': 'Bakhjulsfjadring',
+    },
+  },
+  {
+    name: 'Britax Smile 5',
+    badge: 'Budget',
+    price: '8 990 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Vikt': '11,2 kg',
+      'Fallmatt': '88 x 48 x 35 cm',
+      'Maxvikt barn': '22 kg',
+      'Hjulstorlek': '28 cm (bak)',
+      'Fjadring': 'Bakhjulsfjadring',
+    },
+  },
+];
+
+const featureLabels = ['Vikt', 'Fallmatt', 'Maxvikt barn', 'Hjulstorlek', 'Fjadring'];
+
+const faqItems = [
+  {
+    question: 'Vad ar skillnaden mellan en duovagn och en kombivagn?',
+    answer: 'En duovagn har tva separata delar: en liggdel for nyfodd och en sittdel for aldre barn. En kombivagn har en enhet som kan justeras fran liggande till sittande position. Duovagnen ger oftast battre liggkomfort for den nyfoddda och battre sittkomfort for det aldre barnet, medan kombivagnen ar smidigare att hantera da du inte behover byta del.',
+  },
+  {
+    question: 'Hur mycket bor en duovagn vaga?',
+    answer: 'En duovagn vager vanligtvis mellan 10 och 14 kg (enbart chassit utan sittdel eller liggdel). Om du bor i lagenhet utan hiss eller ofta anvander kollektivtrafik bor du prioritera lagre vikt. Bugaboo Fox 5 och Joolz Hub+ ar bland de lattare alternativen. Tank pa att totalvikten med liggdel eller sittdel monterad blir 2-4 kg hogre.',
+  },
+  {
+    question: 'Fran vilken alder kan barnet sitta i sittdelen?',
+    answer: 'De flesta tillverkare rekommenderar att barnet ska kunna sitta stadigt sjalv innan sittdelen anvands, vilket vanligtvis ar runt 6 manader. Fram till dess anvander du liggdelen. Vissa sittdelar har extra liggande lage och kan anvandas nagot tidigare, men folj alltid tillverkarens rekommendation for just din modell.',
+  },
+  {
+    question: 'Vilken duovagn ar bast for ojamnt underlag och grusvaagar?',
+    answer: 'For ojamnt underlag ar stora hjul och bra fjadring avgorande. Bugaboo Fox 5 med sin fyrhjulsfjadring och 30 cm bakhjul hanterar grus och skogsvaagar utmarkt. Emmaljunga NXT90 med Suprem-fjadring ar ocksa ett starkt val for nordiskt klimat och varierande underlag. Undvik vagnar med sma, harda hjul om du planerar mycket terrangangpromenader.',
+  },
+  {
+    question: 'Hur kompakt blir en duovagn nar den falls ihop?',
+    answer: 'Fallmattet varierar kraftigt mellan modeller. Joolz Hub+ ar en av de mest kompakta (86 x 44 x 34 cm) medan Emmaljunga NXT90 ar storre ihopfalld (94 x 60 x 40 cm). Mata alltid ditt bagageutrymme innan kop -- en vagn som inte far plats i bilen ar vardeloos oavsett hur bra den ar. Kontrollera ocksa om vagnen kan staa ihopfalld eller om den behoover ligga ner.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Basta duovagnen 2026 - Test och jamforelse"
+  description="Vi jamfor de basta duovagnarna 2026. Bugaboo, Cybex, Emmaljunga, Joolz och Britax i test. Se vilken duovagn som passar din familj."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En duovagn ar det mest flexibla valet for nybliva foraldrar -- bade liggdel for nyfodd och sittdel for aldre barn ingar. Vi har jamfort de basta duovagnarna pa svenska marknaden utifran komfort, hantering, fjadring och pris.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Bugaboo Fox 5"
+      badge="Bast i test"
+      price="14 990 kr"
+      rating={4.8}
+      ageRange="0-4 ar"
+      pros={['Utmarkt fyrhjulsfjadring for alla underlag', 'Enhandsfall -- snabb och smidig ihopfallning', 'Hallbar konstruktion som taal daglig anvandning']}
+      cons={['Hog prisklass', 'Tung chassi (12,4 kg)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cybex Priam 4"
+      badge="Premium"
+      price="13 990 kr"
+      rating={4.7}
+      ageRange="0-4 ar"
+      pros={['Stilren, modern design', 'Fantastisk korkomfort', 'Kompatibel med Cybex bilbarnstolar']}
+      cons={['Mycket hog prisklass', 'Begransad fargval i basmodellen']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Emmaljunga NXT90"
+      badge="Svensk kvalitet"
+      price="12 990 kr"
+      rating={4.6}
+      ageRange="0-4 ar"
+      pros={['Tillverkad i Sverige', 'Suprem-fjadring som hanterar nordiskt klimat', 'Rymlig varukorg (35 liter)']}
+      cons={['Tyngre an manga konkurrenter (13,5 kg)', 'Storre fallmatt']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Joolz Hub+"
+      badge="Prisvart"
+      price="11 990 kr"
+      rating={4.5}
+      ageRange="0-4 ar"
+      pros={['Lattaste chassit i testet (10,4 kg)', 'Kompakt ihopfalld -- perfekt for stan', 'Enkel att manoverera med en hand']}
+      cons={['Mindre hjul begransar terrangangformaga', 'Enklare fjadring an premiummodeller']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Britax Smile 5"
+      badge="Budget"
+      price="8 990 kr"
+      rating={4.3}
+      ageRange="0-4 ar"
+      pros={['Bast pris i testet', 'Bra sakerhetsfunktioner fran Britax', 'Kompakt och smidig i stadsmiljo']}
+      cons={['Enklare material an dyrare modeller', 'Fjadringen hanterar ojamnt underlag samre']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Sa valjer du ratt duovagn</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Vad ar en duovagn?</h3>
+    <p>En duovagn bestar av ett chassi och tva separata delar: en liggdel for nyfodd och en sittdel for aldre barn. Liggdelen anvands fran fodsel till cirka 6 manader, da barnet behoover ligga plant. Sedan byter du till sittdelen som anvands tills barnet ar runt 3-4 ar. Duovagnen ar det mest populara valet for forstagangforaldrar i Sverige.</p>
+
+    <h3>Fjadring och hjul</h3>
+    <p>Fjadringen ar avgorande for barnets komfort, sarskilt pa ojamna underlag som grus, kullersten och skogsvaagar. Fyrhjulsfjadring (som Bugaboo Fox 5 och Cybex Priam 4 erbjuder) ger bast komfort i alla situationer. Stora bakhjul (28-30 cm) rullar battre over hinder. Bor du mest i stan med jamna trottoarer racker enklare fjadring.</p>
+
+    <h3>Vikt och fallmatt</h3>
+    <p>Vagnar med lagre vikt ar enklare att lyfta uppfor trappor och i och ur bilen. Joolz Hub+ ar lattast i testet pa 10,4 kg. Men lagre vikt kan innebara samre stabilitet pa ojamnt underlag. Kontrollera att den ihopfallda vagnen far plats i ditt bagageutrymme -- mata innan du koper.</p>
+
+    <h3>Kompatibilitet med bilbarnstol</h3>
+    <p>De flesta duovagnar kan anvandas med en bilbarnstol via adapter, sa att du far ett komplett travel system. Kontrollera vilka bilbarnstolar som ar kompatibla med just den vagn du overvaager. Cybex Priam fungerar smalfritt med Cybex Cloud-serien, och Bugaboo Fox 5 har adaptrar for flera marken.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Basta barnvagnen 2026 -- komplett test och jamforelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/sittvagn/" class="text-accent hover:underline">Basta sittvagnen 2026 -- test och jamforelse (sulky)</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se basta pris" />
+</ArticleLayout>

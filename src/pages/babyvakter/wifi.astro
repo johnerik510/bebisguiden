@@ -1,0 +1,194 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'WiFi' },
+];
+
+const products = [
+  {
+    name: 'Owlet Cam 2',
+    badge: 'Bast i test',
+    price: '1 990 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Upplosning': '1080p Full HD',
+      'App': 'iOS + Android',
+      'Nattsyn': 'Ja, IR',
+      'Tvavagskommunikation': 'Ja',
+      'Molnlagring': 'Tillval (avg.)',
+    },
+  },
+  {
+    name: 'Nanit Pro',
+    badge: 'Premiumval',
+    price: '3 490 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Upplosning': '1080p Full HD',
+      'App': 'iOS + Android',
+      'Nattsyn': 'Ja, IR',
+      'Tvavagskommunikation': 'Ja',
+      'Molnlagring': 'Ingaar (begransad)',
+    },
+  },
+  {
+    name: 'eufy SpaceView Pro',
+    badge: 'Bast hybrid',
+    price: '2 490 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Upplosning': '720p HD',
+      'App': 'iOS + Android + skarm',
+      'Nattsyn': 'Ja, IR',
+      'Tvavagskommunikation': 'Ja',
+      'Molnlagring': 'Nej (lokal)',
+    },
+  },
+  {
+    name: 'TP-Link Tapo C210',
+    badge: 'Budgetval',
+    price: '499 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Upplosning': '2K (2304x1296)',
+      'App': 'iOS + Android',
+      'Nattsyn': 'Ja, IR',
+      'Tvavagskommunikation': 'Ja',
+      'Molnlagring': 'Tillval + microSD',
+    },
+  },
+];
+
+const featureLabels = ['Upplosning', 'App', 'Nattsyn', 'Tvavagskommunikation', 'Molnlagring'];
+
+const faqItems = [
+  {
+    question: 'Ar WiFi-babyvakter sakra?',
+    answer: 'WiFi-babyvakter sander via ditt hemnatverk, vilket innebar en viss sakerhetsrisk jamfort med slutna system (DECT/FHSS). For att minimera risken: valj en modell med krypterad anslutning (AES-128 eller hogre), anvand starka och unika losenord, haal firmware uppdaterad och placera kameran pa ett separat gasnatverk om din router stodjer det. De modeller vi rekommenderar har alla kryptering som standard.',
+  },
+  {
+    question: 'Vilken WiFi-babyvakt ar bast 2026?',
+    answer: 'Owlet Cam 2 ar vart toppval — den erbjuder Full HD-bild, bra app, tvavagskommunikation och rimligt pris. For den som vill ha premiumfunktioner som somanalys och andningsovervakning (med Owlet-strumpa som tillbehor) ar Nanit Pro bast. Pa tight budget ar TP-Link Tapo C210 oslagbar — hogupplost bild for under 500 kr.',
+  },
+  {
+    question: 'Behover jag betala for molnlagring?',
+    answer: 'Det varierar. Nanit ger begransad molnlagring gratis. Owlet och TP-Link erbjuder grundlaggande funktioner gratis men tar betalt for utokad videologgning. eufy SpaceView Pro sparar allt lokalt utan manadskostnad. Overvaag om du verkligen behover sparade inspelningar — for de flesta racker realtidsvisning.',
+  },
+  {
+    question: 'Kan jag anvanda WiFi-babyvakten utanfor hemmet?',
+    answer: 'Ja, det ar WiFi-babyvaktens storsta fordel. Bara du har internetanslutning kan du overvaka barnet oavsett var du befinner dig — perfekt for att kolla till barnet nar en barnvakt ar hemma eller nar du ar pa jobb. Fordrojningen ar vanligtvis 1-3 sekunder beroende pa uppkopplingen.',
+  },
+  {
+    question: 'Vad hander om WiFi gar ner?',
+    answer: 'Om WiFi-anslutningen bryts tappar du tillgang till appen och kan inte se barnet. Darfor rekommenderar vi eufy SpaceView Pro for familjer som vill ha en hybridlosning — den har bade WiFi-app och en separat skarm som fungerar via sluten signal aven utan internet.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Basta WiFi-babyvakten 2026 - Test och jamforelse"
+  description="Vi jamfor de basta WiFi-babyvakterna 2026. Owlet, Nanit och eufy i test. Se vilken som ger bast bild, app och sakerhet."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En WiFi-babyvakt lat dig overvaka barnet via app oavsett var du befinner dig. Vi har jamfort de basta WiFi-babyvakterna pa den svenska marknaden — fran premiummodeller med somanalys till prisvarda kameror med Full HD-bild.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Owlet Cam 2"
+      badge="Bast i test"
+      price="1 990 kr"
+      rating={4.6}
+      ageRange="Fran nyfodd"
+      pros={['Full HD 1080p — skarp bild dag och natt', 'Bra app med notiser vid ljud och rorelse', 'Kan kombineras med Owlet Smart Sock for andningsovervakning']}
+      cons={['Manadskostnad for utokad molnlagring', 'Beroende av stabil WiFi-anslutning']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Nanit Pro"
+      badge="Premiumval"
+      price="3 490 kr"
+      rating={4.7}
+      ageRange="Fran nyfodd"
+      pros={['Inbyggd somanalys och somtips', 'Takmonterad for full oversikt av spjalssangen', 'Andningsovervakning med Breathing Band (tillbehor)']}
+      cons={['Hogst pris i jamforelsen', 'Premium-funktioner kraver abonnemang']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="eufy SpaceView Pro"
+      badge="Bast hybrid"
+      price="2 490 kr"
+      rating={4.5}
+      ageRange="Fran nyfodd"
+      pros={['Bade WiFi-app och separat skarm — fungerar aven utan internet', 'Ingen manadskostnad — all lagring lokalt', 'Bra bildkvalitet och latt panorering via app']}
+      cons={['Nagot lagre upplosning an konkurrenterna (720p)', 'Storsta enheten i testet']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="TP-Link Tapo C210"
+      badge="Budgetval"
+      price="499 kr"
+      rating={4.3}
+      ageRange="Fran nyfodd"
+      pros={['Oslagbart pris for 2K-upplosning', 'Motoriserad panorering och tilt', 'MicroSD-lagring — ingen manadskostnad']}
+      cons={['Inte designad specifikt som babyvakt', 'Saknar babyvakt-funktioner som vaggvisor och temperatur']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Sa valjer du WiFi-babyvakt</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>WiFi vs sluten signal — vad ar bast?</h3>
+    <p>WiFi-babyvakter sander video via ditt hemnatverk till en app pa telefonen. Det innebar att du kan overvaka barnet var som helst — hemma, pa jobbet eller pa semester. Nackdelen ar att du ar beroende av stabil WiFi-anslutning och att det finns en teoretisk hackningsrisk. Babyvakter med sluten signal (DECT/FHSS) sander direkt till en foraldraenhet utan internet, vilket ger hogre sakerhet men begransad rackvid.</p>
+
+    <h3>Sakerhet och integritet</h3>
+    <p>Valj alltid en WiFi-babyvakt med krypterad anslutning (minimum AES-128). Andra standardlosenordet direkt vid installation. Haal firmware och app uppdaterade. Overvaag att placera kameran pa ett separat gasnatverk. Undvik kameror fran okanda tillverkare utan tydlig sakerhetsinformation. Alla modeller i var jamforelse har testats for grundlaggande sakerhet.</p>
+
+    <h3>Bildkvalitet</h3>
+    <p>Full HD (1080p) ar standard pa moderna WiFi-babyvakter och ger tilrackligt skarp bild for att se barnet tydligt. 2K-upplosning, som TP-Link Tapo C210 erbjuder, ger annu skarare bild men kraver mer bandbredd. Nattsyn via infrarod ar standard och fungerar bra pa alla testade modeller.</p>
+
+    <h3>Molnlagring vs lokal lagring</h3>
+    <p>Manga WiFi-babyvakter erbjuder molnlagring av videoinspelningar, ofta mot en manadskostnad. Overvaag om du verkligen behover sparade inspelningar — for de flesta foraldrar racker realtidsvisning. eufy SpaceView Pro och TP-Link Tapo C210 sparar allt lokalt utan manadskostnad, vilket bade sparar pengar och skyddar din integritet.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/babyvakter/" class="text-accent hover:underline">Basta babyvakten 2026 — komplett test och jamforelse</a>
+      </li>
+      <li>
+        <a href="/babyvakter/video/" class="text-accent hover:underline">Basta videobabyvakten 2026 — test och jamforelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se basta pris" />
+</ArticleLayout>
