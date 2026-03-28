@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider' },
+];
+
+const guides = [
+  { title: 'Bilbarnstolar - komplett kopguide', href: '/bilbarnstolar/', description: 'Allt du behover veta om bilbarnstolar: sakerhet, ISOFIX, i-Size och hur du valjer ratt.' },
+  { title: 'Barnvagnar - komplett kopguide', href: '/barnvagnar/', description: 'Duovagn, sittvagn eller syskonvagn? Vi hjalper dig valja ratt barnvagn for din familj.' },
+  { title: 'Babyvakter - komplett kopguide', href: '/babyvakter/', description: 'Ljud, video eller WiFi? Jamfor funktioner och hitta babyvakten som passar dig.' },
+  { title: 'Barselen - komplett kopguide', href: '/barselen/', description: 'Fran nyfodd till storre barn. Hitta barselen med ratt ergonomi och komfort.' },
+];
+---
+
+<BaseLayout
+  title="Guider - Bebisguiden.se"
+  description="Kompletta kopguider for barnprodukter. Bilbarnstolar, barnvagnar, babyvakter och mer."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-6">Guider</h1>
+    <div class="space-y-4">
+      {guides.map(guide => (
+        <a href={guide.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
+          <h2 class="font-heading text-lg font-bold text-text group-hover:text-accent transition-colors">{guide.title}</h2>
+          <p class="text-sm text-text-light mt-1">{guide.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

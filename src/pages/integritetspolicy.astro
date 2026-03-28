@@ -1,0 +1,46 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Integritetspolicy' },
+];
+---
+
+<ArticleLayout
+  title="Integritetspolicy - Bebisguiden.se"
+  description="Las om hur Bebisguiden.se hanterar dina personuppgifter, cookies och analysverktyg."
+  breadcrumbs={breadcrumbs}
+  showDisclaimer={false}
+>
+  <div class="prose prose-sm text-text-light max-w-none">
+    <p>Senast uppdaterad: 2026-03-28</p>
+
+    <h2>Personuppgiftsansvarig</h2>
+    <p>John Erik Johansson<br />
+    E-post: <a href="mailto:vpniskguiden@proton.me">vpniskguiden@proton.me</a></p>
+
+    <h2>Vilka uppgifter samlar vi in?</h2>
+    <p>Bebisguiden.se samlar inte in personuppgifter direkt. Vi anvander foljande tredjepartstjanster som kan samla anonym data:</p>
+    <ul>
+      <li><strong>Google Analytics 4 (GA4):</strong> Anonym besoksstatistik (sidvisningar, sessioner, enhet). Ingen personlig identifiering.</li>
+      <li><strong>Microsoft Clarity:</strong> Anonymiserade heatmaps och sessionsinspelningar for att forbattra anvrandarupplevelsen.</li>
+    </ul>
+
+    <h2>Cookies</h2>
+    <p>Vi anvander cookies for analytik och for att komma ihag dina preferenser (t.ex. cookiemedgivande). Du kan neka cookies via bannern langst ner pa sidan eller via din webblasares installningar.</p>
+
+    <h2>Affiliatelankar</h2>
+    <p>Bebisguiden.se innehaller affiliatelankar till butiker som Jollyroom, Babyshop och Babyland. Nar du klickar pa en affiliatelanke kan butiken placera cookies pa din enhet for att spara konverteringen. Vi delar aldrig dina personuppgifter med affiliatenatverk.</p>
+
+    <h2>Dina rattigheter</h2>
+    <p>Enligt GDPR har du ratt att:</p>
+    <ul>
+      <li>Begara tillgang till dina personuppgifter</li>
+      <li>Begara rättelse eller radering</li>
+      <li>Invaanda mot behandling</li>
+      <li>Begara begransning av behandling</li>
+    </ul>
+    <p>Kontakta oss pa <a href="mailto:vpniskguiden@proton.me">vpniskguiden@proton.me</a> for att utova dina rattigheter.</p>
+  </div>
+</ArticleLayout>

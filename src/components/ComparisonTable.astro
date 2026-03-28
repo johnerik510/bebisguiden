@@ -1,0 +1,61 @@
+---
+interface Product {
+  name: string;
+  price?: string;
+  rating?: number;
+  badge?: string;
+  ctaHref?: string;
+  features: Record<string, string>;
+}
+
+interface Props {
+  products: Product[];
+  featureLabels: string[];
+}
+
+const { products, featureLabels } = Astro.props;
+---
+
+<div class="overflow-x-auto -mx-4 sm:mx-0 mb-6">
+  <table class="w-full border-collapse bg-white rounded-xl border border-border text-sm">
+    <thead>
+      <tr class="bg-bg-alt">
+        <th class="text-left p-3 font-semibold text-text sticky left-0 bg-bg-alt z-10 min-w-[120px]">Produkt</th>
+        {products.map(p => (
+          <th class="text-center p-3 font-semibold text-text min-w-[130px]">
+            {p.badge && <span class="block text-xs text-accent-dark font-bold mb-1">{p.badge}</span>}
+            {p.name}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-t border-border">
+        <td class="p-3 font-medium text-text-light sticky left-0 bg-white z-10">Pris</td>
+        {products.map(p => <td class="p-3 text-center font-bold">{p.price || '-'}</td>)}
+      </tr>
+      <tr class="border-t border-border bg-bg-alt/50">
+        <td class="p-3 font-medium text-text-light sticky left-0 bg-bg-alt/50 z-10">Betyg</td>
+        {products.map(p => <td class="p-3 text-center font-bold text-star">{p.rating ? `${p.rating}/5` : '-'}</td>)}
+      </tr>
+      {featureLabels.map((label, i) => (
+        <tr class={`border-t border-border ${i % 2 === 0 ? '' : 'bg-bg-alt/50'}`}>
+          <td class={`p-3 font-medium text-text-light sticky left-0 z-10 ${i % 2 === 0 ? 'bg-white' : 'bg-bg-alt/50'}`}>{label}</td>
+          {products.map(p => <td class="p-3 text-center">{p.features[label] || '-'}</td>)}
+        </tr>
+      ))}
+      <tr class="border-t border-border">
+        <td class="p-3 sticky left-0 bg-white z-10"></td>
+        {products.map(p => (
+          <td class="p-3 text-center">
+            {p.ctaHref && (
+              <a href={p.ctaHref} target="_blank" rel="sponsored noopener" class="inline-flex items-center justify-center bg-cta text-white font-semibold text-xs px-4 py-2.5 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+                Se pris
+              </a>
+            )}
+          </td>
+        ))}
+      </tr>
+    </tbody>
+  </table>
+</div>

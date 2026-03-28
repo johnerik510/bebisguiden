@@ -1,0 +1,38 @@
+---
+interface Props {
+  items: { question: string; answer: string }[];
+}
+
+const { items } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  })),
+};
+---
+
+<section class="mt-10 mb-6">
+  <h2 class="font-heading text-xl font-bold mb-4">Vanliga fragor</h2>
+  <div class="space-y-3">
+    {items.map((item) => (
+      <details class="group bg-white border border-border rounded-lg">
+        <summary class="flex items-center justify-between p-4 cursor-pointer font-medium text-text hover:text-accent transition-colors min-h-[44px]">
+          {item.question}
+          <svg class="w-5 h-5 flex-shrink-0 text-text-lighter group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-sm text-text-light leading-relaxed" set:html={item.answer} />
+      </details>
+    ))}
+  </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

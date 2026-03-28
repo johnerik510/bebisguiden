@@ -1,0 +1,76 @@
+---
+const bastITest = [
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Barselen', href: '/barselen/' },
+  { label: 'Hogstolar', href: '/hogstolar/' },
+  { label: 'Spjalsangar', href: '/spjalsangar/' },
+];
+
+const categories = [
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Sakerhet', href: '/guider/sakerhet/' },
+  { label: 'Kopguider', href: '/guider/kopguider/' },
+];
+
+const legal = [
+  { label: 'Om oss', href: '/om-oss/' },
+  { label: 'Kontakt', href: '/kontakt/' },
+  { label: 'Integritetspolicy', href: '/integritetspolicy/' },
+  { label: 'Affiliate-disclaimer', href: '/affiliate-disclaimer/' },
+];
+---
+
+<footer class="bg-primary text-gray-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <h3 class="font-heading text-white text-lg font-bold mb-4">Bebisguiden</h3>
+        <p class="text-sm leading-relaxed">
+          Oberoende tester och jamforelser av barnprodukter. Vi granskar bilbarnstolar, barnvagnar, babyvakter och mer -- sa du valjer sakert och smart for ditt barn.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Bast i test</h4>
+        <ul class="space-y-2">
+          {bastITest.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm hover:text-white transition-colors">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Kategorier</h4>
+        <ul class="space-y-2">
+          {categories.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm hover:text-white transition-colors">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Information</h4>
+        <ul class="space-y-2">
+          {legal.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm hover:text-white transition-colors">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-primary-light">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <p class="text-sm">
+          &copy; 2026 Bebisguiden.se. Alla rattigheter forbehallna.
+        </p>
+        <p class="text-xs text-text-lighter">
+          Bebisguiden.se innehaller affiliatelankar. Vi kan fa provision nar du handlar via vara lankar, utan extra kostnad for dig.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

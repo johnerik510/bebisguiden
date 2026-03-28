@@ -1,0 +1,78 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barselen' },
+];
+
+const faqItems = [
+  {
+    question: 'Fran vilken alder kan man anvanda barsele?',
+    answer: 'De flesta barselen kan anvandas fran fodseln om de har korrekt stod for nyfodda (inlagg eller justerbar sittbredd). Kontrollera alltid att barnets huvud och nacke far tillrackligt stod. Mjuka wraps ar ofta bast for de allra minsta.',
+  },
+  {
+    question: 'Vad ar skillnaden mellan barsele och sjal?',
+    answer: 'En barsele har fasta spannen och struktur -- snabbt att satta pa. En barsjal (wrap) ar ett langt tygstycke som knyts runt kroppen -- mjukare och narmare men tar langre att lagga. Manga borjar med sjal och gar over till barsele nar barnet vaxer.',
+  },
+  {
+    question: 'Hur lange kan man bara barn i barsele?',
+    answer: 'De flesta barselen ar gjorda for barn upp till 15-20 kg (ca 3 ar). I praktiken slutar manga anvanda barsele runt 12-18 manaders alder nar barnet vill ga sjalv. For langre vandringar kan en barsel anvandas langre.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Basta barselen 2026 - Test och jamforelse"
+  description="Vi har testat de basta barselarna 2026. Fran nyfodd till storre barn -- jamfor ergonomi, komfort och pris."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En bra barsele ger narhet till barnet och frigor handerna. Vi har jamfort de populeraste barselarna for att hjalpa dig valja ratt.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Ergobaby Omni Breeze"
+      badge="Bast i test"
+      price="2 290 kr"
+      rating={4.8}
+      ageRange="0-4 ar (3,2-20 kg)"
+      pros={['Andningsbart mesh-tyg', 'Ergonomisk M-position', 'Fyra barpositioner']}
+      cons={['Hogre prisklass', 'Varmt pa sommaren trots mesh']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="BabyBjorn Harmony"
+      badge="Premiumval"
+      price="2 490 kr"
+      rating={4.7}
+      ageRange="0-3 ar (3,2-15 kg)"
+      pros={['Mycket mjuk och skon', 'Enkel att ta pa', 'Svensktillverkad']}
+      cons={['Lagre maxvikt (15 kg)', 'Dyrast i testet']}
+      ctaText="Se pris hos Babyshop"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Najell Easy"
+      badge="Prisvaart"
+      price="1 290 kr"
+      rating={4.5}
+      ageRange="0-3 ar (3,5-15 kg)"
+      pros={['Bra pris', 'Latt att anvanda', 'Svenskt marke']}
+      cons={['Farre barpositioner', 'Mindre vaddering']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="#"
+    />
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>

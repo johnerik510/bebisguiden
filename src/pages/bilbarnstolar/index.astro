@@ -1,0 +1,139 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar' },
+];
+
+const products = [
+  {
+    name: 'Britax Romer Dualfix 5Z i-Size',
+    badge: 'Bast i test',
+    features: {
+      'Montering': 'ISOFIX + stodben',
+      'Riktning': 'Bakatatvand/framatatvand',
+      'Vikt': '14,8 kg',
+      'Alder': '0-4 ar (40-105 cm)',
+      'Krocktestbetyg': 'Bra (ADAC 2024)',
+    },
+  },
+  {
+    name: 'Cybex Sirona T i-Size',
+    badge: 'Premiumval',
+    features: {
+      'Montering': 'ISOFIX + stodben',
+      'Riktning': 'Bakatatvand/framatatvand',
+      'Vikt': '15,2 kg',
+      'Alder': '0-4 ar (45-105 cm)',
+      'Krocktestbetyg': 'Bra (ADAC 2024)',
+    },
+  },
+  {
+    name: 'Joie i-Spin XL',
+    badge: 'Prisvaart',
+    features: {
+      'Montering': 'ISOFIX + stodben',
+      'Riktning': 'Bakatatvand/framatatvand',
+      'Vikt': '13,1 kg',
+      'Alder': '0-12 ar (40-150 cm)',
+      'Krocktestbetyg': 'Bra (ADAC 2024)',
+    },
+  },
+];
+
+const featureLabels = ['Montering', 'Riktning', 'Vikt', 'Alder', 'Krocktestbetyg'];
+
+const faqItems = [
+  {
+    question: 'Hur lange ska barn aka bakatatvant?',
+    answer: 'Barn ska aka bakatatvant sa lange som mojligt, helst till 4 ars alder eller langre. Bakatatvant ar upp till fem ganger sakrare an framatatvant vid en frontalolycka. Transportstyrelsen rekommenderar bakatatvant till minst 4 ar.',
+  },
+  {
+    question: 'Vad ar ISOFIX och behovs det?',
+    answer: 'ISOFIX ar ett standardiserat fastsystem dar bilbarnstolen klickas fast i bilens chassi via tva metallpunkter. Det ger en sakrare och enklare montering jamfort med bilbalte. De flesta moderna bilar fran 2012 och framat har ISOFIX som standard.',
+  },
+  {
+    question: 'Vad betyder i-Size (R129)?',
+    answer: 'i-Size (R129) ar den senaste europeiska sakerhetsstandarden for bilbarnstolar. Den kraver sidokrocktestning, langre bakatatvant akande (minst 15 manader), och anvander barnets langd istallet for vikt for att avgora vilken stol som passar.',
+  },
+  {
+    question: 'Hur mycket kostar en bra bilbarnstol?',
+    answer: 'En bra bilbarnstol kostar vanligtvis mellan 3 000 och 7 000 SEK. Det finns prisvarda alternativ som klarar krocktester bra, men dyrare stolar har ofta battre komfort, langre anvandningstid och smidigare funktioner som 360-graders rotation.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Basta bilbarnstolen 2026 - Test och jamforelse"
+  description="Vi har testat och jamfort de basta bilbarnstolarna 2026. Se vilka som klarar krocktester bast och vilken som passar ditt barn."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Vi har granskat krocktester fran Folksam och ADAC, jamfort funktioner och priser -- och rankat de basta bilbarnstolarna for varje aldersgrupp.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Britax Romer Dualfix 5Z i-Size"
+      badge="Bast i test"
+      price="4 990 kr"
+      rating={4.8}
+      ageRange="0-4 ar (40-105 cm)"
+      pros={['Toppbetyg i ADAC-krocktest', '360-graders rotation', 'Enkel ISOFIX-montering']}
+      cons={['Hogre vikt (14,8 kg)', 'Tar stor plats i bilen']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cybex Sirona T i-Size"
+      badge="Premiumval"
+      price="6 290 kr"
+      rating={4.7}
+      ageRange="0-4 ar (45-105 cm)"
+      pros={['Utmarkt sidoskydd', 'Mjuk textil och komfort', 'Magnetiskt bälteslås']}
+      cons={['Hog prisklass', 'Kortare anvandningstid an vissa konkurrenter']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Joie i-Spin XL"
+      badge="Prisvaart"
+      price="3 990 kr"
+      rating={4.5}
+      ageRange="0-12 ar (40-150 cm)"
+      pros={['Anvands fran nyfodd till 12 ar', 'Bra pris for langvarig stol', '360-graders rotation']}
+      cons={['Inte lika premium kansla', 'Stort fotavtryck i bilen']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Kopguide: Hur valjer du ratt bilbarnstol?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Valj efter barnets storlek, inte bara alder</h3>
+    <p>Bilbarnstolar ar certifierade efter vikt eller langd (i-Size). Kontrollera alltid att ditt barns mått ryms inom stolens specifikationer. En stol som barnet vaxt ur ger inget skydd.</p>
+
+    <h3>2. Bakatatvant sa lange som mojligt</h3>
+    <p>Forskning visar att bakatatvant akande ar upp till fem ganger sakrare vid frontalolyckor. Vi rekommenderar bakatatvant till minst 4 ar -- garna langre om stolen tillater det.</p>
+
+    <h3>3. Kontrollera ISOFIX-kompatibilitet</h3>
+    <p>Kontrollera att din bil har ISOFIX-fasten innan du koper. De flesta bilar fran 2012 och framat har det som standard, men platsen for ISOFIX kan variera mellan fram- och baksate.</p>
+
+    <h3>4. Prioritera krocktestresultat</h3>
+    <p>Folksam och ADAC genomfor oberoende krocktester varje ar. Vi anvander deras resultat som grund for vara betyg. En stol med bra krocktest-betyg ar alltid att foredra framfor en med fler komfortfunktioner men samre sakerhet.</p>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>

@@ -1,0 +1,95 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar' },
+];
+
+const faqItems = [
+  {
+    question: 'Vad ar skillnaden mellan duovagn och sittvagn?',
+    answer: 'En duovagn har bade liggdel (for nyfodd) och sittdel som anvands nar barnet ar storre. En sittvagn (sulky) har bara sittdel och passar fran ca 6 manader. Duovagnen ar dyrare men anvands langre.',
+  },
+  {
+    question: 'Nar kan barnet sitta i sittvagn?',
+    answer: 'De flesta barn kan borja sitta i sittvagn nar de sitter stadigt sjalva, vanligtvis runt 6-9 manader. Innan dess behovs en liggdel eller barnvagnsinsats som ger fullt stod for ryggrad och nacke.',
+  },
+  {
+    question: 'Vilka barnvagnsmarken ar bast?',
+    answer: 'Populara och valtestade marken i Sverige ar Emmaljunga, Bugaboo, Cybex, Joolz och Britax. Emmaljunga tillverkar i Sverige och ar kand for sin hallbarhet. Bugaboo ar premiumsegmentet. Cybex och Britax erbjuder bra sakerhetsstandard.',
+  },
+  {
+    question: 'Hur mycket vaager en barnvagn?',
+    answer: 'En duovagn vaager vanligtvis 10-15 kg (utan liggdel). Latta sittvagnar kan vaga sa lite som 5-7 kg. Overvaag vikten mot stabilitet -- lattare vagnar ar smidigare att bara men kan kanna mindre stadiga pa ojamnt underlag.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Basta barnvagnen 2026 - Test och jamforelse"
+  description="Vi har testat och jamfort de basta barnvagnarna 2026. Duovagnar, sittvagnar och syskonvagnar -- sa hittar du ratt vagn."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Att valja barnvagn ar ett av forsta stora kopen som foraldrar. Vi har jamfort duovagnar, sittvagnar och syskonvagnar for att hjalpa dig valja ratt.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Bugaboo Fox 5"
+      badge="Bast i test"
+      price="14 990 kr"
+      rating={4.8}
+      ageRange="0-4 ar"
+      pros={['Utmarkt fjadring', 'Latt att falla ihop', 'Hallbar och slitstark']}
+      cons={['Hog prisklass', 'Tung (12,4 kg chassi)']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cybex Priam 4"
+      badge="Premiumval"
+      price="13 990 kr"
+      rating={4.7}
+      ageRange="0-4 ar"
+      pros={['Stilren design', 'Bra korkomfort', 'Kompatibel med bilbarnstol']}
+      cons={['Mycket hog prisklass', 'Begransad fargval']}
+      ctaText="Se pris hos Babyshop"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Emmaljunga NXT90"
+      badge="Svenskt val"
+      price="8 990 kr"
+      rating={4.6}
+      ageRange="0-4 ar"
+      pros={['Tillverkad i Sverige', 'Talar nordiskt klimat', 'Stor varukorg']}
+      cons={['Tyngre an vissa konkurrenter', 'Mindre kompakt ihopfalld']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Kopguide: Att tanka pa innan du koper barnvagn</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Duovagn eller sittvagn?</h3>
+    <p>Om du koper till en nyfodd behover du en duovagn med liggdel. En sittvagn kan anvandas fran ca 6 manader. Manga familjer koper bade och -- duovagnen forst, sedan en latt sulky nar barnet ar storre.</p>
+
+    <h3>Tank pa var du bor</h3>
+    <p>Bor du i stad med mycket trottoarer och kollektivtrafik? Da ar en latt, kompakt vagn viktig. Bor du pa landet eller promenerar mycket i skog? Da prioritera stora hjul och bra fjadring.</p>
+
+    <h3>Kontrollera bilen</h3>
+    <p>Mata bagageutrymmet innan du koper. En barnvagn som inte far plats i bilen ar vardeloos oavsett hur bra den ar. Kontrollera ocksa ihopfalld storlek -- skillnaderna ar stora mellan marken.</p>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>

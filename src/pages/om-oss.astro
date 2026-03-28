@@ -1,0 +1,35 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Om oss' },
+];
+---
+
+<ArticleLayout
+  title="Om Bebisguiden.se"
+  description="Bebisguiden.se ar en oberoende testsajt for barnprodukter. Las mer om vilka vi ar och hur vi arbetar."
+  breadcrumbs={breadcrumbs}
+  showDisclaimer={false}
+>
+  <div class="prose prose-sm text-text-light max-w-none">
+    <p>Bebisguiden.se grundades 2026 av John Erik Johansson med ett enda mal: att hjalpa foraldrar valja ratt barnprodukter genom oberoende, grundlig granskning.</p>
+
+    <h2>Var metod</h2>
+    <p>Vi baserar vara rekommendationer pa:</p>
+    <ul>
+      <li>Oberoende krocktester fran Folksam, ADAC och Euro NCAP</li>
+      <li>Sakerhetsstandarden i-Size (R129) och ECE R44</li>
+      <li>Verklig anvandarfeedback fran svenska foraldrar</li>
+      <li>Prisjamorelser fran ledande svenska aterforsjaljare</li>
+    </ul>
+
+    <h2>Oberoende</h2>
+    <p>Bebisguiden.se finansieras genom affiliatelankar -- vi tjanar en liten provision nar du handlar via vara lankar. Detta paverkar aldrig vara betyg, rankingar eller rekommendationer. Vi rekommenderar bara produkter vi sjalva skulle valja.</p>
+
+    <h2>Kontakt</h2>
+    <p>Grundare: John Erik Johansson<br />
+    E-post: <a href="mailto:vpniskguiden@proton.me">vpniskguiden@proton.me</a></p>
+  </div>
+</ArticleLayout>

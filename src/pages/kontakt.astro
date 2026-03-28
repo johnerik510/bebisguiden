@@ -1,0 +1,25 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Kontakt' },
+];
+---
+
+<ArticleLayout
+  title="Kontakta Bebisguiden.se"
+  description="Kontakta oss pa Bebisguiden.se. Fragor, samarbeten eller feedback -- vi svarar sa snart vi kan."
+  breadcrumbs={breadcrumbs}
+  showDisclaimer={false}
+>
+  <div class="prose prose-sm text-text-light max-w-none">
+    <p>Har du fragor om vara tester, vill rapportera felaktig information eller ar intresserad av samarbete? Kontakta oss via e-post.</p>
+
+    <h2>Kontaktuppgifter</h2>
+    <p>Grundare: John Erik Johansson<br />
+    E-post: <a href="mailto:vpniskguiden@proton.me">vpniskguiden@proton.me</a></p>
+
+    <p>Vi svarar normalt inom 1-3 arbetsdagar.</p>
+  </div>
+</ArticleLayout>
