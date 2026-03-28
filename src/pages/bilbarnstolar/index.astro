@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -13,70 +14,90 @@ const products = [
   {
     name: 'Britax Romer Dualfix 5Z i-Size',
     badge: 'Bäst i test',
+    price: '4 990 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue',
     features: {
       'Montering': 'ISOFIX + stödben',
-      'Riktning': 'Bakatatvand/framåtatvand',
+      'Riktning': 'Bakåtvänd/framåtvänd',
       'Vikt': '14,8 kg',
-      'Alder': '0-4 år (40-105 cm)',
-      'Krocktestbetyg': 'Bra (ADAC 2024)',
+      'Ålder': '0–4 år (40–105 cm)',
+      'Krocktest': 'Bra (ADAC 2024)',
     },
   },
   {
     name: 'Cybex Sirona T i-Size',
     badge: 'Premiumval',
+    price: '6 290 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
     features: {
       'Montering': 'ISOFIX + stödben',
-      'Riktning': 'Bakatatvand/framåtatvand',
+      'Riktning': 'Bakåtvänd/framåtvänd',
       'Vikt': '15,2 kg',
-      'Alder': '0-4 år (45-105 cm)',
-      'Krocktestbetyg': 'Bra (ADAC 2024)',
+      'Ålder': '0–4 år (45–105 cm)',
+      'Krocktest': 'Bra (ADAC 2024)',
     },
   },
   {
     name: 'Joie i-Spin XL',
     badge: 'Prisvärt',
+    price: '3 990 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-xl-i-size-bilbarnstol',
     features: {
       'Montering': 'ISOFIX + stödben',
-      'Riktning': 'Bakatatvand/framåtatvand',
+      'Riktning': 'Bakåtvänd/framåtvänd',
       'Vikt': '13,1 kg',
-      'Alder': '0-12 år (40-150 cm)',
-      'Krocktestbetyg': 'Bra (ADAC 2024)',
+      'Ålder': '0–12 år (40–150 cm)',
+      'Krocktest': 'Bra (ADAC 2024)',
     },
   },
 ];
 
-const featureLabels = ['Montering', 'Riktning', 'Vikt', 'Alder', 'Krocktestbetyg'];
+const featureLabels = ['Montering', 'Riktning', 'Vikt', 'Ålder', 'Krocktest'];
 
 const faqItems = [
   {
-    question: 'Hur längre ska barn aka bakåtvänt?',
-    answer: 'Barn ska aka bakåtvänt sa längre som möjligt, helst till 4 års ålder eller längre. Bakåtvänt är upp till fem gånger säkrare än framåtatvant vid en frontalkrocka. Transportstyrelsen rekommenderar bakåtvänt till minst 4 år.',
+    question: 'Hur länge ska barn åka bakåtvänt?',
+    answer: 'Barn ska åka bakåtvänt så länge som möjligt, helst till 4 års ålder eller längre. Bakåtvänt är upp till fem gånger säkrare än framåtvänt vid en frontalkrocka. Transportstyrelsen rekommenderar bakåtvänt till minst 4 år.',
   },
   {
     question: 'Vad är ISOFIX och behövs det?',
-    answer: 'ISOFIX är ett standardiserat fastsystem dar bilbarnstolen klickas fast i bilens chassi via tva metallpunkter. Det ger en säkrare och enklare montering jämfört med bilbälte. De flesta moderna bilar från 2012 och framåt har ISOFIX som standard.',
+    answer: 'ISOFIX är ett standardiserat fastsystem där bilbarnstolen klickas fast i bilens chassi via två metallpunkter. Det ger en säkrare och enklare montering jämfört med bilbälte. De flesta moderna bilar från 2012 och framåt har ISOFIX som standard.',
   },
   {
     question: 'Vad betyder i-Size (R129)?',
-    answer: 'i-Size (R129) är den senaste europeiska säkerhetsstandarden for bilbarnstolar. Den kräver sidokrocktestning, längre bakåtvänt åkande (minst 15 månader), och använder barnets längd istället for vikt för att avgora vilken stol som passar.',
+    answer: 'i-Size (R129) är den senaste europeiska säkerhetsstandarden för bilbarnstolar. Den kräver sidokrocktestning, längre bakåtvänt åkande (minst 15 månader), och använder barnets längd istället för vikt för att avgöra vilken stol som passar.',
   },
   {
-    question: 'Hur mycket kostär en bra bilbarnstol?',
-    answer: 'En bra bilbarnstol kostar vanligtvis mellan 3 000 och 7 000 SEK. Det finns prisvärda alternativ som klarår krocktester bra, men dyrår stolar har ofta bättre komfort, längre användningstid och smidigår funktioner som 360-graders rotation.',
+    question: 'Vad kostar en bra bilbarnstol?',
+    answer: 'En bra bilbarnstol kostar vanligtvis mellan 3 000 och 7 000 SEK. Det finns prisvärda alternativ som klarar krocktester bra, men dyrare stolar har ofta bättre komfort, längre användningstid och smidigare funktioner som 360-graders rotation.',
+  },
+  {
+    question: 'Kan jag köpa en begagnad bilbarnstol?',
+    answer: 'Nej — undvik alltid begagnade bilbarnstolar. Du vet inte om stolen varit med i en krock (osynliga skador), om den har rätt delar, och certifieringen kan ha löpt ut. Säkerhet är inte ett område att spara pengar på.',
   },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa bilbarnstolen 2026 - Test och jämförelse"
-  description="Vi har testat och jämfört de bästa bilbarnstolarna 2026. Se vilka som klarår krocktester bast och vilken som passar ditt barn."
+  title="Bästa bilbarnstolen 2026 – Krocktestade och rankade"
+  description="Bästa bilbarnstolen 2026: Vi jämför Britax Römer Dualfix 5Z, Cybex Sirona T och Joie i-Spin XL. ADAC-krocktester, ISOFIX och bakåtvänt."
   breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/bilbarnstolar/"
   updatedDate="2026-03-28"
 >
   <p class="text-base text-text-light mb-4 max-w-2xl">
-    Vi har granskat krocktester från Folksam och ADAC, jämfört funktioner och priser -- och rankat de bästa bilbarnstolarna for varje åldersgrupp.
+    Vi har granskat krocktester från Folksam och ADAC, jämfört funktioner och priser — och rankat de bästa bilbarnstolarna för varje åldersgrupp.
   </p>
 
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Britax Römer Dualfix 5Z</strong> är bäst för säkerhet och funktion. <strong>Cybex Sirona T</strong> är bäst för premiumkomfort. <strong>Joie i-Spin XL</strong> är bäst för lång användningstid och pris.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – bilbarnstolar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -87,9 +108,9 @@ const faqItems = [
       badge="Bäst i test"
       price="4 990 kr"
       rating={4.8}
-      ageRange="0-4 år (40-105 cm)"
-      pros={['Toppbetyg i ADAC-krocktest', '360-graders rotation', 'Enkel ISOFIX-montering']}
-      cons={['Högre vikt (14,8 kg)', 'Tar stor plåts i bilen']}
+      ageRange="0–4 år (40–105 cm)"
+      pros={['Toppbetyg i ADAC-krocktest', '360-graders rotation för enkel in/urklättring', 'Enkel ISOFIX-montering', 'Bakåtvänt till 105 cm']}
+      cons={['Tung (14,8 kg)', 'Tar stor plats i bilen', 'Högre prisklass']}
       ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
     />
@@ -99,9 +120,9 @@ const faqItems = [
       badge="Premiumval"
       price="6 290 kr"
       rating={4.7}
-      ageRange="0-4 år (45-105 cm)"
-      pros={['Utmärkt sidoskydd', 'Mjuk textil och komfort', 'Magnetiskt bälteslås']}
-      cons={['Hög prisklass', 'Kortare användningstid än vissa konkurrenter']}
+      ageRange="0–4 år (45–105 cm)"
+      pros={['Utmärkt sidoskydd (Linear Side-impact Protection)', 'Mjuk textil och premiumkomfort', 'Magnetiskt bälteslås', 'Stilren design']}
+      cons={['Hög prisklass', 'Kortare användningstid (45–105 cm)', 'Tung (15,2 kg)']}
       ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
     />
@@ -111,41 +132,44 @@ const faqItems = [
       badge="Prisvärt"
       price="3 990 kr"
       rating={4.5}
-      ageRange="0-12 år (40-150 cm)"
-      pros={['Används från nyfödd till 12 ar', 'Bra pris for långvarig stol', '360-graders rotation']}
-      cons={['Inte lika premium känsla', 'Stort fotavtryck i bilen']}
+      ageRange="0–12 år (40–150 cm)"
+      pros={['Används från nyfödd till 12 år', 'Bäst pris per användningsår', '360-graders rotation', 'Lättare chassi (13,1 kg)']}
+      cons={['Inte lika premiumkänsla', 'Stort fotavtryck i bilen', 'Färre färgval']}
       ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-xl-i-size-bilbarnstol"
     />
   </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du ratt bilbarnstol?</h2>
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt bilbarnstol?</h2>
 
   <div class="prose prose-sm text-text-light max-w-none">
     <h3>1. Välj efter barnets storlek, inte bara ålder</h3>
-    <p>Bilbarnstolar är certifierade efter vikt eller längd (i-Size). Kontrollera alltid att ditt barns mått ryms inom stolens specifikationer. En stol som barnet växt ur ger inget skydd.</p>
+    <p>Bilbarnstolar är certifierade efter vikt eller längd (i-Size). Kontrollera alltid att ditt barns mått ryms inom stolens specifikationer. En stol som barnet växt ur ger inget skydd — byt i god tid, inte när barnet redan är för stort.</p>
 
-    <h3>2. Bakåtvänt sa längre som möjligt</h3>
-    <p>Forskning visar att bakåtvänt åkande är upp till fem gånger säkrare vid frontalkrockar. Vi rekommenderar bakåtvänt till minst 4 är -- garna längre om stolen tillåter det.</p>
+    <h3>2. Bakåtvänt så länge som möjligt</h3>
+    <p>Forskning visar att bakåtvänt åkande är upp till fem gånger säkrare vid frontalkrockar. Vi rekommenderar bakåtvänt till minst 4 år — gärna längre om stolen tillåter det. Välj en stol med bakåtvänd kapacitet upp till minst 105 cm för att möjliggöra detta.</p>
 
     <h3>3. Kontrollera ISOFIX-kompatibilitet</h3>
-    <p>Kontrollera att din bil har ISOFIX-fasten innan du köper. De flesta bilar från 2012 och framåt har det som standard, men plåtsen for ISOFIX kan variera mellan fram- och baksäte.</p>
+    <p>Kontrollera att din bil har ISOFIX-fästen innan du köper. De flesta bilar från 2012 och framåt har det som standard, men platsen för ISOFIX kan variera mellan fram- och baksäte. Kontrollera bilens handbok eller fråga återförsäljaren.</p>
 
     <h3>4. Prioritera krocktestresultat</h3>
-    <p>Folksam och ADAC genomfor oberoende krocktester varje år. Vi använder deras resultat som grund for våra betyg. En stol med bra krocktest-betyg är alltid att föredra framfor en med fler komfortfunktioner men sämre säkerhet.</p>
+    <p>Folksam och ADAC genomför oberoende krocktester varje år. Vi använder deras resultat som grund för våra betyg. En stol med bra krocktest-betyg är alltid att föredra framför en med fler komfortfunktioner men sämre säkerhet. Se alltid årets test — modeller uppdateras löpande.</p>
   </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relåterade guider</h2>
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
     <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026 — test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/bilbarnstolar/isofix/" class="text-accent hover:underline">ISOFIX bilbarnstol — allt du behöver veta 2026</a>
-      </li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – test och jämförelse</a></li>
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 – ergonomi och komfort testat</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 – ljud, video och WiFi testat</a></li>
     </ul>
   </div>
 
   <FAQ items={faqItems} />
 </ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+  text="Se bästa pris – Britax Römer Dualfix 5Z"
+  productName="Bäst i test 2026"
+/>

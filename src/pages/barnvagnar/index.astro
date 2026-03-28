@@ -1,44 +1,106 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
   { label: 'Barnvagnar' },
 ];
 
+const products = [
+  {
+    name: 'Bugaboo Fox 5',
+    badge: 'Bäst i test',
+    price: '14 990 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn',
+    features: {
+      'Typ': 'Duovagn',
+      'Vikt chassi': '12,4 kg',
+      'Tillverkning': 'Nederländerna',
+      'Fjädring': 'Fullfjädrad',
+      'Pris': '14 990 kr',
+    },
+  },
+  {
+    name: 'Cybex Priam 4',
+    badge: 'Premiumval',
+    price: '13 990 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/cybex-priam-4-barnvagn',
+    features: {
+      'Typ': 'Duovagn',
+      'Vikt chassi': '13,2 kg',
+      'Tillverkning': 'Tyskland',
+      'Fjädring': 'Fullfjädrad',
+      'Pris': '13 990 kr',
+    },
+  },
+  {
+    name: 'Emmaljunga NXT90',
+    badge: 'Bäst svenska',
+    price: '8 990 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt90-ergo-duovagn-logrey-bla',
+    features: {
+      'Typ': 'Duovagn',
+      'Vikt chassi': '14,5 kg',
+      'Tillverkning': 'Sverige',
+      'Fjädring': 'Fjäderfjädring',
+      'Pris': '8 990 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Vikt chassi', 'Tillverkning', 'Fjädring', 'Pris'];
+
 const faqItems = [
   {
     question: 'Vad är skillnaden mellan duovagn och sittvagn?',
-    answer: 'En duovagn har bade liggdel (for nyfödd) och sittdel som används när barnet är större. En sittvagn (sulky) har bara sittdel och passar från ca 6 månader. Duovagnen är dyrår men används längre.',
+    answer: 'En duovagn har både liggdel (för nyfödd) och sittdel som används när barnet är större. En sittvagn (sulky) har bara sittdel och passar från ca 6 månader. Duovagnen är dyrare men används längre — från födseln upp till 3–4 år.',
   },
   {
-    question: 'Nar kan barnet sitta i sittvagn?',
-    answer: 'De flesta barn kan borja sitta i sittvagn när de sitter stadigt själva, vanligtvis runt 6-9 månader. Innan dess behövs en liggdel eller barnvagnsinsats som ger fullt stöd for ryggrad och nacke.',
+    question: 'När kan barnet sitta i sittvagn?',
+    answer: 'De flesta barn kan börja sitta i sittvagn när de sitter stadigt själva, vanligtvis runt 6–9 månader. Innan dess behövs en liggdel eller barnvagnsinsats som ger fullt stöd för ryggrad och nacke.',
   },
   {
-    question: 'Vilka barnvagnsmärken är bast?',
-    answer: 'Populara och välttestade märken i Sverige är Emmaljunga, Bugaboo, Cybex, Joolz och Britax. Emmaljunga tillverkar i Sverige och är känd for sin hållbarhet. Bugaboo är premiumsegmentet. Cybex och Britax erbjuder bra säkerhetsstandard.',
+    question: 'Vilka barnvagnsmärken är bäst?',
+    answer: 'Populära och välttestade märken i Sverige är Emmaljunga, Bugaboo, Cybex, Joolz och Britax. Emmaljunga tillverkar i Sverige och är känd för sin hållbarhet. Bugaboo är premiumsegmentet. Cybex och Britax erbjuder bra säkerhetsstandard.',
   },
   {
     question: 'Hur mycket väger en barnvagn?',
-    answer: 'En duovagn väger vanligtvis 10-15 kg (utan liggdel). Lätta sittvagnar kan väga så lite som 5-7 kg. Överväg vikten mot stabilitet -- lättår vagnär är smidigår att bara men kan känna mindre stadiga på ojämnt underlag.',
+    answer: 'En duovagn väger vanligtvis 12–15 kg chassi (utan liggdel). Lätta sittvagnar kan väga 5–7 kg. Överväg vikten mot stabilitet — lättare vagnar är smidigare att bära men kan kännas mindre stadiga på ojämnt underlag.',
+  },
+  {
+    question: 'Vad ska bagageutrymmet rymma?',
+    answer: 'Kontrollera alltid att vagnen ryms i ditt bagageutrymme ihopfälld innan köp. Skillnaderna är stora — Bugaboo Fox 5 ihopfälld är 89×61×34 cm, Emmaljunga NXT90 är större. Mät bilen och jämför innan du bestämmer dig.',
   },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa barnvagnen 2026 - Test och jämförelse"
-  description="Vi har testat och jämfört de bästa barnvagnarna 2026. Duovagnar, sittvagnar och syskonvagnär -- så hittar du rätt vagn."
+  title="Bästa barnvagnen 2026 – Test och jämförelse"
+  description="Bästa barnvagnen 2026: Vi jämför Bugaboo Fox 5, Cybex Priam 4 och Emmaljunga NXT90. Duovagn vs sittvagn, fjädring, vikt och pris."
   breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/barnvagnar/"
   updatedDate="2026-03-28"
 >
   <p class="text-base text-text-light mb-4 max-w-2xl">
-    Att välja barnvagn är ett av föruta stora köpen som föräldrår. Vi har jämfört duovagnar, sittvagnar och syskonvagnär för att hjälpa dig välja ratt.
+    Att välja barnvagn är ett av de största köpen som föräldrar gör. Vi har jämfört duovagnar, sittvagnar och syskonvagnar för att hjälpa dig välja rätt.
   </p>
 
-  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Våra toppval 2026</h2>
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Bugaboo Fox 5</strong> är bäst för allround-användning. <strong>Cybex Priam 4</strong> är bäst för stadsliv och design. <strong>Emmaljunga NXT90</strong> är bäst för nordiskt klimat och hållbarhet.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – barnvagnar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
   <div class="space-y-4">
     <ProductCard
@@ -46,9 +108,9 @@ const faqItems = [
       badge="Bäst i test"
       price="14 990 kr"
       rating={4.8}
-      ageRange="0-4 ar"
-      pros={['Utmärkt fjädring', 'Lätt att falla ihop', 'Hallbar och slitstark']}
-      cons={['Hög prisklass', 'Tung (12,4 kg chassi)']}
+      ageRange="0–4 år"
+      pros={['Utmärkt fullfjädring på alla underlag', 'Lätt att fälla ihop med en hand', 'Hållbar och slitstark', 'Kan vändas mot eller från föräldrar']}
+      cons={['Hög prisklass', 'Tung chassi (12,4 kg)', 'Tillbehör säljs separat']}
       ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn"
     />
@@ -58,50 +120,56 @@ const faqItems = [
       badge="Premiumval"
       price="13 990 kr"
       rating={4.7}
-      ageRange="0-4 ar"
-      pros={['Stilren design', 'Bra körkomfort', 'Kompatibel med bilbarnstol']}
-      cons={['Mycket hög prisklass', 'Begransad fargval']}
-      ctaText="Se pris hos Babyshop"
+      ageRange="0–4 år"
+      pros={['Stilren design och lyxig känsla', 'Bra körkomfort med fullfjädring', 'Kompatibel med Cloud T bilbarnstol', 'Enkel att justera sittdel']}
+      cons={['Mycket hög prisklass', 'Begränsat färgval i baskollektionen', 'Tung chassi (13,2 kg)']}
+      ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/cybex-priam-4-barnvagn"
     />
 
     <ProductCard
       name="Emmaljunga NXT90"
-      badge="Svenskt val"
+      badge="Bäst svenska"
       price="8 990 kr"
       rating={4.6}
-      ageRange="0-4 ar"
-      pros={['Tillverkad i Sverige', 'Talar nordiskt klimat', 'Stor varukörg']}
-      cons={['Tyngre än vissa konkurrenter', 'Mindre kompakt ihopfalld']}
+      ageRange="0–4 år"
+      pros={['Tillverkad i Sverige', 'Klarar nordiskt klimat och snö', 'Stor varukorg', 'Lägre pris för premiumkvalitet']}
+      cons={['Tyngre chassi (14,5 kg)', 'Mindre kompakt ihopfälld', 'Äldre design jämfört med Bugaboo']}
       ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt90-ergo-duovagn-logrey-bla"
     />
   </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Att tänka på innan du köper barnvagn</h2>
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt barnvagn?</h2>
 
   <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Duovagn eller sittvagn?</h3>
-    <p>Om du köper till en nyfödd behöver du en duovagn med liggdel. En sittvagn kan användas från ca 6 månader. Många familjer köper bade och -- duovagnen förut, sedan en lätt sulky när barnet är större.</p>
+    <h3>1. Duovagn eller sittvagn?</h3>
+    <p>Om du köper till en nyfödd behöver du en duovagn med liggdel. Liggdelen ger nyfödda det platta läget som ryggrad och nacke kräver under de första månaderna. En sittvagn kan användas från ca 6 månader. Många familjer köper duovagn till en nyfödd och sedan en lätt sulky när barnet är 1–2 år.</p>
 
-    <h3>Tank på var du bor</h3>
-    <p>Bor du i stad med mycket trottoårr och kollektivtrafik? Da är en lått, kompakt vagn viktig. Bor du på landet eller promenerår mycket i skog? Da prioritera stora hjul och bra fjädring.</p>
+    <h3>2. Stad eller landsbygd?</h3>
+    <p>Bor du i stad med mycket trottoarer, smala dörrar och kollektivtrafik? Då är en lätt, kompakt vagn viktig — prioritera låg vikt och liten ihopfälld storlek. Bor du på landet eller promenerar mycket i skog och ojämn mark? Prioritera stora hjul och bra fjädring. Bugaboo Fox 5 och Cybex Priam 4 är byggda för stad; Emmaljunga NXT90 klarar svenska vintrar bättre.</p>
 
-    <h3>Kontrollera bilen</h3>
-    <p>Mata bagageutrymmet innan du köper. En barnvagn som inte far plåts i bilen är värdeloos oavsett hur bra den ar. Kontrollera också ihopfalld storlek -- skillnaderna är stora mellan märken.</p>
+    <h3>3. Kontrollera bagageutrymmet</h3>
+    <p>Mät bagageutrymmet i bilen innan du köper. En barnvagn som inte får plats i bilen är värdelös oavsett hur bra den är. Kontrollera ihopfälld storlek — skillnaderna är stora. Bugaboo Fox 5 ihopfälld: 89×61×34 cm. Emmaljunga NXT90 ihopfälld: 100×62×75 cm. Jämför alltid mot ditt specifika bilmärke.</p>
+
+    <h3>4. Travel system — barnvagn + bilbarnstol</h3>
+    <p>Många duovagnar kan kombineras med en kompatibel bilbarnstol som klickar direkt på chassit utan att barnet behöver vakna. Cybex Priam 4 passar med Cybex Cloud T. Bugaboo Fox 5 passar med flera adaptrar. Kontrollera alltid kompatibilitet innan köp — inte alla kombinationer fungerar.</p>
   </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relåterade guider</h2>
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
     <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Bästa duovagnen 2026 -- test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/barnvagnar/sittvagn/" class="text-accent hover:underline">Bästa sittvagnen 2026 -- test och jämförelse (sulky)</a>
-      </li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 – krocktestade och rankade</a></li>
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 – ergonomi och komfort testat</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 – ljud, video och WiFi testat</a></li>
     </ul>
   </div>
 
   <FAQ items={faqItems} />
 </ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn"
+  text="Se bästa pris – Bugaboo Fox 5"
+  productName="Bäst i test 2026"
+/>
