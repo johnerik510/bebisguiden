@@ -27,5 +27,9 @@
   reject?.addEventListener('click', () => {
     localStorage.setItem('cookie-consent', 'rejected');
     banner?.classList.add('hidden');
+    window['ga-disable-G-2KNTLGJFMG'] = true;
+    if (typeof window.clarity === 'function') {
+      window.clarity('stop');
+    }
   });
 </script>
