@@ -1,40 +1,106 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
   { label: 'Babyvakter' },
 ];
 
+const products = [
+  {
+    name: 'Philips Avent SCD923',
+    badge: 'Bäst i test',
+    price: '2 490 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.elgiganten.se/product/personvard-halsa-skonhet/babyprodukter/babyvakt/philips-avent-babymonitor-scd92326/456938',
+    features: {
+      'Typ': 'Ljud (DECT)',
+      'Räckvidd': '300 m',
+      'Batteritid': '24 h (sparläge)',
+      'Säkerhet': 'DECT – ingen WiFi-risk',
+      'Pris': '2 490 kr',
+    },
+  },
+  {
+    name: 'Luvion Grand Elite 3',
+    badge: 'Bästa video',
+    price: '3 290 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.luvion.com/grand-elite-3-connect/',
+    features: {
+      'Typ': 'Video (sluten signal)',
+      'Räckvidd': '300 m',
+      'Batteritid': '8 h (videoläge)',
+      'Säkerhet': 'Sluten signal – ingen internet',
+      'Pris': '3 290 kr',
+    },
+  },
+  {
+    name: 'Owlet Cam 2',
+    badge: 'Bästa WiFi',
+    price: '1 990 kr',
+    rating: 4.4,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white',
+    features: {
+      'Typ': 'WiFi-video',
+      'Räckvidd': 'Obegränsad (via app)',
+      'Batteritid': 'Kräver strömkabel',
+      'Säkerhet': 'Krypterad WiFi',
+      'Pris': '1 990 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Räckvidd', 'Batteritid', 'Säkerhet', 'Pris'];
+
 const faqItems = [
   {
     question: 'Behövs en babyvakt med video?',
-    answer: 'Det beror på dina behov. En videobabyvakt låter dig se barnet utan att gå in i rummet, vilket är speciellt vaardefullt för nyfödda. Enbart ljud räcker för många familjer med äldre barn som bara behöver horas om de vaknar.',
+    answer: 'Det beror på dina behov. En videobabyvakt låter dig se barnet utan att gå in i rummet, vilket är värdefullt för nyfödda. Enbart ljud räcker för många familjer med äldre barn som bara behöver höras om de vaknar.',
   },
   {
-    question: 'Är WiFi-babyvakter sakra?',
-    answer: 'WiFi-babyvakter är bekvama men har högre risk for hackning än slutna system (DECT/FHSS). Välj en modell med krypterad anslutning och starka lösenord. För högsta säkerhet, välj en babyvakt med sluten signal som inte gar via internet.',
+    question: 'Är WiFi-babyvakter säkra?',
+    answer: 'WiFi-babyvakter är bekväma men har högre risk för hackning än slutna system (DECT/FHSS). Välj en modell med krypterad anslutning och starka lösenord. För högsta säkerhet, välj en babyvakt med sluten signal som inte går via internet.',
   },
   {
     question: 'Hur lång räckvidd behöver en babyvakt?',
-    answer: 'I en vanlig lägenhet räcker 50-100 meter. I ett större hus behövs minst 200-300 meter. Ange alltid räckvidd inomhus -- utomhusräckviddden är mycket högre och missvisande. Vaggar och golv minskar räckviddden avsevärt.',
+    answer: 'I en vanlig lägenhet räcker 50–100 meter. I ett större hus behövs minst 200–300 meter. Ange alltid räckvidd inomhus — utomhusräckvidden är mycket högre och missvisande. Väggar och bjälklag minskar räckvidden avsevärt.',
+  },
+  {
+    question: 'Vad är skillnaden mellan DECT och WiFi-babyvakt?',
+    answer: 'DECT (Digital Enhanced Cordless Telecommunications) är ett slutet radiosystem som fungerar utan internet och utan risk för hackning. WiFi-babyvakter går via hemmanätverket och kan nås från mobilen var som helst — men kräver en säker anslutning. För babyrummet hemma är DECT generellt säkrare; för flexibilitet (t.ex. se barnet hemifrån) välj WiFi.',
+  },
+  {
+    question: 'Vad ska man tänka på vid val av videobabyvakt?',
+    answer: 'Viktiga faktorer: räckvidd (minst 300 m i ett hus), batteritid på föräldraenheten (minst 6–8 timmar), nattseende (infraröd kamera), tvåvägskommunikation (lugnande röst), och temperaturindikator. Luvion och Babymoov är välkända märken för videobabyvakter med sluten signal.',
   },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa babyvakten 2026 - Test och jämförelse"
-  description="Vi har testat de bästa babyvakterna 2026. Ljud, video och WiFi -- jämför funktioner, räckvidd och pris."
+  title="Bästa babyvakten 2026 – Ljud, video och WiFi testat"
+  description="Bästa babyvakten 2026: Vi jämför Philips Avent, Luvion och Owlet. DECT vs WiFi, räckvidd och pris. Hitta rätt babyvakt för ditt hem."
   breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/babyvakter/"
   updatedDate="2026-03-28"
 >
   <p class="text-base text-text-light mb-4 max-w-2xl">
-    En babyvakt ger trygghet när barnet sover i ett annat rum. Vi har jämfört ljud-, video- och WiFi-babyvakter för att hjälpa dig välja ratt.
+    En babyvakt ger trygghet när barnet sover i ett annat rum. Vi har jämfört ljud-, video- och WiFi-babyvakter och bedömt räckvidd, bildkvalitet, batteritid och säkerhet.
   </p>
 
-  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Våra toppval 2026</h2>
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Philips Avent SCD923</strong> är bäst för säkert ljud (DECT). <strong>Luvion Grand Elite 3</strong> är bäst för video. <strong>Owlet Cam 2</strong> är bäst för WiFi-flexibilitet.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – babyvakter 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
   <div class="space-y-4">
     <ProductCard
@@ -42,20 +108,20 @@ const faqItems = [
       badge="Bäst i test"
       price="2 490 kr"
       rating={4.7}
-      pros={['Kristallklart ljud', 'DECT-teknik (ingen WiFi-risk)', 'Lång batteritid']}
-      cons={['Enbart ljud (ingen video)', 'Högre prisklass for ljudvakt']}
-      ctaText="Se pris hos Jollyroom"
+      pros={['Kristallklart ljud', 'DECT-teknik — ingen WiFi-risk', 'Lång batteritid (24 h sparläge)', '300 m räckvidd']}
+      cons={['Enbart ljud — ingen video', 'Högre pris för en ljudvakt']}
+      ctaText="Se pris hos Elgiganten"
       ctaHref="https://www.elgiganten.se/product/personvard-halsa-skonhet/babyprodukter/babyvakt/philips-avent-babymonitor-scd92326/456938"
     />
 
     <ProductCard
-      name="Luvion Grand Elite 3 Connect Pro"
+      name="Luvion Grand Elite 3 Connect"
       badge="Bästa video"
       price="3 290 kr"
       rating={4.6}
-      pros={['Stor 4,3-tumsskärm', 'Nättkamera med bra bild', 'Temperaturvisning']}
+      pros={['Stor 4,3-tumsskärm', 'Nattkamera med skarp bild', 'Temperaturvisning', 'Sluten signal — ingen internet']}
       cons={['Tyngre föräldraenhet', 'Kort batteritid vid videovisning']}
-      ctaText="Se pris hos Babyshop"
+      ctaText="Se pris hos Luvion"
       ctaHref="https://www.luvion.com/grand-elite-3-connect/"
     />
 
@@ -64,24 +130,43 @@ const faqItems = [
       badge="Bästa WiFi"
       price="1 990 kr"
       rating={4.4}
-      pros={['HD-video via app', 'Tvåvägskommunikation', 'Fungerår överallt med internet']}
-      cons={['Beroende av WiFi-anslutning', 'Månadskostnad for molnlagring']}
-      ctaText="Se pris"
+      pros={['HD-video via app', 'Tvåvägskommunikation', 'Se barnet varifrån som helst med internet', 'Prisvärd WiFi-lösning']}
+      cons={['Beroende av WiFi-anslutning', 'Möjlig månadskostnad för molnlagring']}
+      ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white"
     />
   </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relåterade guider</h2>
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt babyvakt?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. DECT vs WiFi — vilken teknik passar dig?</h3>
+    <p>DECT är ett slutet radiosystem utan koppling till internet — ingen risk för hackning. Perfekt för hemmabruk. WiFi-babyvakter fungerar via mobilnätet och låter dig se barnet var som helst — bra för föräldrar som är borta från hemmet. Nackdelen är att säkerheten beror på din WiFi-setup och barnets bilder rör sig via molntjänster.</p>
+
+    <h3>2. Räckvidd — tänk på din bostad</h3>
+    <p>I en lägenhet räcker 100–150 meter. I ett villahus med flera våningsplan och tjocka väggar behöver du minst 200–300 meter. Kom ihåg att angiven räckvidd är utomhus — räkna med att halvera siffran inomhus vid tjocka betongväggar.</p>
+
+    <h3>3. Video eller enbart ljud?</h3>
+    <p>Video ger extra trygghet — du ser direkt om barnet har sparkats ur filten eller sitter upp i sängen. Enbart ljud räcker för många, men tenderar att bli mer störande eftersom du hör varje litet läte. Med video kan du se om det är ett allvarligt problem utan att springa in.</p>
+
+    <h3>4. Batteritid på föräldraenheten</h3>
+    <p>Föräldraenhetens batteritid är avgörande — du vill inte behöva ladda mitt i natten. Välj minst 10 timmars batteritid i normal användning. Philips Avent SCD923 leder på batteritid (upp till 24 h i sparläge).</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
     <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/babyvakter/video/" class="text-accent hover:underline">Bästa videobabyvakten 2026 — test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/babyvakter/wifi/" class="text-accent hover:underline">Bästa WiFi-babyvakten 2026 — test och jämförelse</a>
-      </li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 – krocktestade och rankade</a></li>
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 – ergonomi och komfort testat</a></li>
     </ul>
   </div>
 
   <FAQ items={faqItems} />
 </ArticleLayout>
+
+<StickyCTA
+  href="https://www.elgiganten.se/product/personvard-halsa-skonhet/babyprodukter/babyvakt/philips-avent-babymonitor-scd92326/456938"
+  text="Se bästa pris – Philips Avent SCD923"
+  productName="Bäst i test 2026"
+/>

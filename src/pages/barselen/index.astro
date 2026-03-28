@@ -1,40 +1,106 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
   { label: 'Bärselen' },
 ];
 
+const products = [
+  {
+    name: 'Ergobaby Omni Breeze',
+    badge: 'Bäst i test',
+    price: '2 290 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-breeze-barsele-natural-beige',
+    features: {
+      'Vikt': '3,2–20 kg (0–4 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': 'Luftigt mesh-tyg',
+      'Ergonomi': 'HIPS-certifierad',
+      'Pris': '2 290 kr',
+    },
+  },
+  {
+    name: 'BabyBjörn Harmony',
+    badge: 'Premiumval',
+    price: '2 490 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-harmony-barsele-3d-mesh-silver',
+    features: {
+      'Vikt': '3,2–15 kg (0–3 år)',
+      'Positioner': '3 (fram, rygg, höft)',
+      'Material': '3D-mesh',
+      'Ergonomi': 'Hip-Healthy Institute',
+      'Pris': '2 490 kr',
+    },
+  },
+  {
+    name: 'Najell Easy',
+    badge: 'Bäst pris',
+    price: '1 290 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/najell-easy-barsele-stockholm-black',
+    features: {
+      'Vikt': '3,5–15 kg (0–3 år)',
+      'Positioner': '3 (fram, rygg, höft)',
+      'Material': 'Andningsbart bomull',
+      'Ergonomi': 'HIPS-certifierad',
+      'Pris': '1 290 kr',
+    },
+  },
+];
+
+const featureLabels = ['Vikt', 'Positioner', 'Material', 'Ergonomi', 'Pris'];
+
 const faqItems = [
   {
-    question: 'Fran vilken ålder kan man använda bärsele?',
-    answer: 'De flesta bärselen kan användas från födseln om de har korrekt stöd för nyfödda (inlagg eller justerbar sittbredd). Kontrollera alltid att barnets huvud och nacke far tillräckligt stöd. Mjuka wraps är ofta bast för de allra minsta.',
+    question: 'Från vilken ålder kan man använda bärsele?',
+    answer: 'De flesta bärselen kan användas från födseln (från ca 3,2–3,5 kg) om de har korrekt stöd för nyfödda. Kontrollera alltid att barnets huvud och nacke får tillräckligt stöd. Ergobaby Omni Breeze och BabyBjörn Harmony fungerar från nyfödda utan inlägg.',
   },
   {
     question: 'Vad är skillnaden mellan bärsele och sjal?',
-    answer: 'En bärsele har fasta spannen och struktur -- snabbt att sätta pa. En barsjal (wrap) är ett långt tygstycke som knyts runt kroppen -- mjukår och närmår men tar längre att lägga. Många börjar med sjal och går över till bärsele när barnet växer.',
+    answer: 'En bärsele har fasta spännen och struktur — snabb att ta på (2–3 minuter). En bärsjal (wrap) är ett långt tygstycke som knyts runt kroppen — mjukare och närmre men tar längre att lägga. Många börjar med sjal och går över till bärsele när barnet växer.',
   },
   {
-    question: 'Hur längre kan man bara barn i bärsele?',
-    answer: 'De flesta bärselen är gjorda för barn upp till 15-20 kg (ca 3 år). I praktiken slutar många använda bärsele runt 12-18 månaders ålder när barnet vill ga själv. För längre vandringar kan en bärsel användas längre.',
+    question: 'Hur länge kan man bära barn i bärsele?',
+    answer: 'De flesta bärselen är gjorda för barn upp till 15–20 kg (ca 3–4 år). I praktiken slutar många använda bärsele runt 12–18 månaders ålder när barnet vill gå själv. För vandringar och resor kan bärselen användas längre.',
+  },
+  {
+    question: 'Vad är M-position och varför är det viktigt?',
+    answer: 'M-positionen innebär att barnets knän är i nivå med eller högre än rumpan, med benen böjda i en M-form. Det är den ergonomiskt korrekta ställningen för höftledens utveckling. HIPS (International Hip Dysplasia Institute) rekommenderar denna position. Välj alltid en HIPS-certifierad bärsele.',
+  },
+  {
+    question: 'Är bärsele bra för bärarens rygg?',
+    answer: 'En väldesignad bärsele med bra ryggstöd, bröst- och midjebälte fördelar barnets vikt jämnt. Det minskar belastningen jämfört med att hålla barnet på armen. Bärselen ska sitta tätt mot kroppen — ett barn som gungande sitter löst belastar ryggen mer.',
   },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa bärselen 2026 - Test och jämförelse"
-  description="Vi har testat de bästa bärselarna 2026. Fran nyfödd till större barn -- jämför ergonomi, komfort och pris."
+  title="Bästa bärselen 2026 – Ergobaby, BabyBjörn och Najell testat"
+  description="Bästa bärselen 2026: Vi jämför Ergobaby Omni Breeze, BabyBjörn Harmony och Najell Easy. Ergonomi, M-position och pris från 1 290 kr."
   breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/barselen/"
   updatedDate="2026-03-28"
 >
   <p class="text-base text-text-light mb-4 max-w-2xl">
-    En bra bärsele ger närhet till barnet och frigör handerna. Vi har jämfört de populäraste bärselarna för att hjälpa dig välja ratt.
+    En bra bärsele ger nearhet till barnet och frigör händerna. Vi har jämfört tre populära bärselen och bedömt ergonomi, komfort och hållbarhet — från prisvärd Najell Easy till premium Ergobaby Omni Breeze.
   </p>
 
-  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Våra toppval 2026</h2>
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Ergobaby Omni Breeze</strong> vinner för ergonomi och mångsidighet. <strong>Najell Easy</strong> är bäst för priset. <strong>BabyBjörn Harmony</strong> är mjukast och enklast att ta på.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – bärselen 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
   <div class="space-y-4">
     <ProductCard
@@ -42,37 +108,68 @@ const faqItems = [
       badge="Bäst i test"
       price="2 290 kr"
       rating={4.8}
-      ageRange="0-4 år (3,2–20 kg)"
-      pros={['Andningsbart mesh-tyg', 'Ergonomisk M-position', 'Fyra barpositioner']}
-      cons={['Högre prisklass', 'Varmt på sommårn trots mesh']}
+      ageRange="0–4 år (3,2–20 kg)"
+      pros={['HIPS-certifierad M-position', 'Andningsbart mesh-tyg', '4 barpositioner', 'Justeras för alla kroppsstorlekar']}
+      cons={['Högre prisklass', 'Kan vara varmt under sommaren']}
       ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-breeze-barsele-natural-beige"
     />
 
     <ProductCard
-      name="BabyBjorn Harmony"
+      name="BabyBjörn Harmony"
       badge="Premiumval"
       price="2 490 kr"
       rating={4.7}
-      ageRange="0-3 år (3,2-15 kg)"
-      pros={['Mycket mjuk och skon', 'Enkel att ta pa', 'Svensktillverkad']}
+      ageRange="0–3 år (3,2–15 kg)"
+      pros={['Extremt mjuk och skön', 'Enkel att ta på', 'Tillverkad i Sverige', 'Hip-Healthy Institute-certifierad']}
       cons={['Lägre maxvikt (15 kg)', 'Dyrast i testet']}
-      ctaText="Se pris hos Babyshop"
+      ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-harmony-barsele-3d-mesh-silver"
     />
 
     <ProductCard
       name="Najell Easy"
-      badge="Prisvärt"
+      badge="Bäst pris"
       price="1 290 kr"
       rating={4.5}
-      ageRange="0-3 år (3,5-15 kg)"
-      pros={['Bra pris', 'Lätt att använda', 'Svenskt marke']}
-      cons={['Färre barpositioner', 'Mindre vaddering']}
+      ageRange="0–3 år (3,5–15 kg)"
+      pros={['Bra pris för kvaliteten', 'Lätt att använda', 'Svenskt märke', 'HIPS-certifierad']}
+      cons={['Färre barpositioner än Ergobaby', 'Mindre vaddering i axelbanden']}
       ctaText="Se pris hos Jollyroom"
-      ctaHref="https://www.najell.se/products/easy-barsele"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/najell-easy-barsele-stockholm-black"
     />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt bärsele?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Kontrollera alltid ergonomicertifieringen</h3>
+    <p>Välj en bärsele som är certifierad av HIPS (International Hip Dysplasia Institute) och som säkerställer M-position. Det är den viktigaste parametern — ett barn som sitter i fel position riskerar onödig belastning på höfterna. Ergobaby, BabyBjörn och Najell är alla HIPS-certifierade.</p>
+
+    <h3>2. Mjuk wrap vs strukturerad bärsele</h3>
+    <p>För nyfödda (0–4 månader) är en mjuk wrap (bärsjal) ofta skönare — den formar sig efter barnet. Från 4–6 månader är en strukturerad bärsele mer praktisk och enklare att ta på och av. Många föräldrar investerar i båda.</p>
+
+    <h3>3. Tänk på bärarens rygg</h3>
+    <p>En bra bärsele har ett brett midjebälte som tar ca 70% av barnets vikt. Axelband ska vara vadderade för att fördela trycket. Bärselen ska sitta tätt — ett barn som sitter löst och gungande belastar ryggen mer. Testa alltid bärselen med barnet i butik om möjligt.</p>
+
+    <h3>4. Sommar — välj luftiga material</h3>
+    <p>Under varma månader är mesh-bärselen (Ergobaby Omni Breeze, BabyBjörn Harmony mesh) att föredra för luftcirkulation. Klä barnet tunnare under varma dagar — kroppen är täckt av bärselen och värmen samlas lätt.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 – krocktestade och rankade</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 – Tripp Trapp, Antilop och fler</a></li>
+    </ul>
   </div>
 
   <FAQ items={faqItems} />
 </ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-breeze-barsele-natural-beige"
+  text="Se bästa pris – Ergobaby Omni Breeze"
+  productName="Bäst i test 2026"
+/>
