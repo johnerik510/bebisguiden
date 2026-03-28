@@ -1,0 +1,181 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'ISOFIX' },
+];
+
+const products = [
+  {
+    name: 'Cybex Sirona T i-Size',
+    badge: 'Premiumval',
+    price: '6 999 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Montering': 'ISOFIX + stodben',
+      'Riktning': 'Bakatatvand/framatatvand',
+      'Vikt': '15,2 kg',
+      'Rotation': '360 grader',
+      'Sakerhet': 'i-Size (R129)',
+    },
+  },
+  {
+    name: 'Britax Romer Dualfix 5Z i-Size',
+    badge: 'Bast varde',
+    price: '5 999 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Montering': 'ISOFIX + stodben',
+      'Riktning': 'Bakatatvand/framatatvand',
+      'Vikt': '14,8 kg',
+      'Rotation': '360 grader',
+      'Sakerhet': 'i-Size (R129)',
+    },
+  },
+  {
+    name: 'Maxi-Cosi Pearl 360',
+    badge: 'Enklast montering',
+    price: '4 999 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Montering': 'ISOFIX + bas (FamilyFix 360)',
+      'Riktning': 'Bakatatvand/framatatvand',
+      'Vikt': '11,5 kg (exkl. bas)',
+      'Rotation': '360 grader',
+      'Sakerhet': 'i-Size (R129)',
+    },
+  },
+];
+
+const featureLabels = ['Montering', 'Riktning', 'Vikt', 'Rotation', 'Sakerhet'];
+
+const faqItems = [
+  {
+    question: 'Vad ar ISOFIX?',
+    answer: 'ISOFIX ar ett internationellt standardiserat fastsystem for bilbarnstolar. Systemet bestar av tva metallpunkter som ar fastsvetsade i bilens kaross, vanligtvis mellan sittdynan och ryggstoden. Bilbarnstolen klickas fast direkt i dessa punkter, vilket ger en stabil och saker montering utan att anvanda bilens sakerhetssele.',
+  },
+  {
+    question: 'Har alla bilar ISOFIX?',
+    answer: 'Sedan 2012 kraver EU att alla nya bilar har ISOFIX-fasten pa de yttre platserna i baksatet. Manga bilar tillverkade fore 2012 har ocksa ISOFIX, men det varierar beroende pa bilmarke och modell. Kontrollera din bils instruktionsbok eller sok efter metallklamrorna mellan sittdynan och ryggstoden for att se om din bil har ISOFIX.',
+  },
+  {
+    question: 'Ar ISOFIX sakrare an balte?',
+    answer: 'Ja, ISOFIX anses generellt vara sakrare an baltesmonterade stolar. Den storsta fordelen ar att ISOFIX drastiskt minskar risken for felmontering, vilket ar den vanligaste orsaken till att bilbarnstolar inte ger optimalt skydd. ADAC:s krocktester visar att ISOFIX-monterade stolar konsekvent presterar bra tack vare den stabila kopplingen till bilens kaross.',
+  },
+  {
+    question: 'Kan man anvanda ISOFIX-stol utan ISOFIX-fasten?',
+    answer: 'Nej, en ISOFIX-stol kraver ISOFIX-fasten i bilen for att kunna monteras korrekt. Om din bil saknar ISOFIX kan du istallet valja en baltesmonterad bilbarnstol, exempelvis Axkid Minikid 3, som fixeras med bilens trepunktssele. Forsok aldrig att montrera en ISOFIX-stol med enbart bilbalte om den inte ar specifikt godkand for det.',
+  },
+  {
+    question: 'Vad kostar en ISOFIX bilbarnstol?',
+    answer: 'En bra ISOFIX bilbarnstol kostar vanligtvis mellan 3 500 och 7 000 SEK. Priset beror pa marke, funktioner (som 360-graders rotation), anvandningstid och material. Stolar i det hogre prissegmentet har ofta battre komfort och langre anvandningstid, men aven stolar runt 4 000-5 000 kr klarar krocktester utmarkt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="ISOFIX bilbarnstol - Allt du behover veta 2026"
+  description="Komplett guide om ISOFIX bilbarnstolar. Hur det fungerar, vilka bilar som har det och de basta ISOFIX-stolarna 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-28"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    ISOFIX ar det sakraste och enklaste sattet att montera en bilbarnstol. Vi forklarar hur systemet fungerar, hur du vet om din bil har det och vilka ISOFIX-stolar som ar bast i test 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Cybex Sirona T i-Size"
+      badge="Premiumval"
+      price="6 999 kr"
+      rating={4.8}
+      ageRange="0-4 ar (45-105 cm)"
+      pros={['Utmarkt sidoskydd och krockskydd', 'Magnetiskt balteslas — smidig montering', 'Premium material och lang livslangd']}
+      cons={['Hogsta prisklassen', 'Nagot tyngre an konkurrenterna (15,2 kg)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Britax Romer Dualfix 5Z i-Size"
+      badge="Bast varde"
+      price="5 999 kr"
+      rating={4.7}
+      ageRange="0-4 ar (40-105 cm)"
+      pros={['Toppbetyg i ADAC- och Folksam-krocktester', '360-graders rotation', 'Bra balans mellan pris och prestanda']}
+      cons={['Hogre vikt (14,8 kg)', 'Tar stor plats i mindre bilar']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Maxi-Cosi Pearl 360"
+      badge="Enklast montering"
+      price="4 999 kr"
+      rating={4.5}
+      ageRange="0-4 ar (40-105 cm)"
+      pros={['ISOFIX-bas som delas mellan flera stolar', 'Enklaste monteringen i testet', 'Kompakt storlek — passar i mindre bilar']}
+      cons={['Kraver separat FamilyFix 360-bas (medfoljande)', 'Kortare anvandningstid an vissa konkurrenter']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Komplett guide om ISOFIX</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Vad ar ISOFIX?</h3>
+    <p>ISOFIX (International Standards Organisation FIX) ar ett standardiserat fastsystem for bilbarnstolar som utvecklades for att gora monteringen enklare och sakrare. Istallet for att anvanda bilens sakerhetssele klickas stolen fast direkt i tva metallpunkter som ar fastsvetsade i bilens kaross. Detta ger en solid, stabil koppling mellan stolen och bilen.</p>
+
+    <h3>Hur fungerar ISOFIX?</h3>
+    <p>ISOFIX-systemet bestar av tre fastpunkter:</p>
+    <ul>
+      <li><strong>Tva ISOFIX-fasten:</strong> Metallpunkter i bilen, placerade mellan sittdynan och ryggstoden pa de yttre platserna i baksatet. Stolen har tva metallkrokar som klickar fast i dessa.</li>
+      <li><strong>Tredje fastpunkten:</strong> Antingen ett stodben som star mot bilens golv, eller en top tether — ett band som fasts i en krok bakom ryggstoden. Detta forhindrar att stolen roterar framat vid en kollision.</li>
+    </ul>
+    <p>Monteringen tar vanligtvis under en minut: skjut in ISOFIX-krokarna tills de klickar, fall ut stodvenet och kontrollera att indikatorerna visar gront.</p>
+
+    <h3>Har min bil ISOFIX?</h3>
+    <p>Sedan 2012 kraver EU att alla nya bilar har ISOFIX-fasten pa de yttre baksakesplatserna. For aldre bilar varierar det. Sa har kontrollerar du:</p>
+    <ul>
+      <li>Kor handen mellan sittdynan och ryggstoden pa baksatet — kanner du tva metallbyglar har du ISOFIX</li>
+      <li>Sok efter ISOFIX-markning eller symboler pa satstoppningen</li>
+      <li>Kontrollera bilens instruktionsbok under avsnittet om barnsakerhet</li>
+    </ul>
+
+    <h3>ISOFIX eller balte — vad ar skillnaden?</h3>
+    <p>Den storsta skillnaden ar monteringssaker-heten. Studier visar att upp till 60 procent av baltesmonterade stolar ar felaktigt installerade, jamfort med under 5 procent for ISOFIX. ISOFIX ger ocksa en fastare koppling till bilen, vilket minskar stolens rorelse vid en kollision. Baltesmonterade stolar har fordelen att de fungerar i alla bilar, aven de utan ISOFIX-fasten.</p>
+
+    <h3>i-Size och ISOFIX — hur hanger det ihop?</h3>
+    <p>i-Size (R129) ar den senaste europeiska sakerhetsstandarden for bilbarnstolar. Alla i-Size-godkanda stolar kraver ISOFIX-montering — det ar ett krav i standarden. i-Size infordes for att oka sakerheten ytterligare genom att bland annat krava sidokrocktester och langre bakatatvant akande (minst 15 manader). Nar du koper en stol med i-Size-markning vet du att den har ISOFIX.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/bilbarnstolar/" class="text-accent hover:underline">Basta bilbarnstolen 2026 — komplett test och jamforelse</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Basta bakatatvanda bilbarnstolen 2026 — test och jamforelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se basta pris" />
+</ArticleLayout>
