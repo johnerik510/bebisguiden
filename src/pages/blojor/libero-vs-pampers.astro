@@ -1,0 +1,191 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Libero vs Pampers' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Libero eller Pampers?',
+    answer: 'Pampers Premium Protection är bäst i test för absorption och passform — men Libero Touch är det prisvärda alternativet som fungerar utmärkt för de flesta barn. Pampers kostar ca 0,65 kr/st mot Liberos 0,55 kr/st. Är ditt barn känslig mot blöjor: testa Libero Touch som ofta tolereras bättre tack vare sin mjukare ytmaterial. Prioriterar du maximal absorption: Pampers Premium Protection.',
+  },
+  {
+    question: 'Är Libero bättre för känslig hud?',
+    answer: 'Libero Touch är känd för sin extra mjuka innervävnad och är ofta det första valet vid blöjutslag. Libero har även en lövgrön certifiering och är OEKO-TEX-certifierad. Pampers Pure Protection är Pampers alternativ för känslig hud med naturliga material. Båda fungerar bra — barn reagerar individuellt och det kan krävas test av båda.',
+  },
+  {
+    question: 'Vilket blöjmärke är bäst för natten?',
+    answer: 'Pampers Premium Protection har bäst natttestresultat i konsumentundersökningar — deras absorptionskern håller torrt upp till 12 timmar. Libero Comfort (nattblöjmodellen) är ett prisvärt alternativ med bra natttorka. Pampers Baby-Dry är specifikt avsedd för natten och är ännu mer absorberande än Premium Protection, men tjockare.',
+  },
+  {
+    question: 'Vilket märke är mer miljövänligt?',
+    answer: 'Libero Touch är OEKO-TEX-certifierad och Libero satsar på mer hållbara material i sin produktion. Pampers har lanserat Pampers Pure med mer naturliga ingredienser. Vill du ha ett mer hållbart alternativ: HIPP Bambo Nature är FSC-certifierad. Konventionella engångsblöjor (Libero och Pampers) är inte miljövänliga i sig — tygblöjor är det enda genuint hållbara alternativet.',
+  },
+  {
+    question: 'Var köper man Libero och Pampers billigast i Sverige?',
+    answer: 'Jollyroom och Babyland erbjuder bäst priser på storköp av blöjor. Lidl och Coop har ofta Pampers-kampanjer. Prenumerationstjänster via Jollyroom ger regelbunden rabatt. Jämför alltid pris per blöja (inte per förpackning) — storlekarna varierar stort i antal per förpackning.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Libero vs Pampers 2026 — vilken blöja är bäst för ditt barn?"
+  description="Vi jämför Libero Touch och Pampers Premium Protection. Absorption, passform, känslig hud, pris och vem som vinner det svenska blöjvalet 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Libero och Pampers dominerar den svenska blöjmarknaden. Libero är det svenska märket med ett starkt förtroende bland svenska föräldrar sedan 1972. Pampers är det globala premiumvalet som rekommenderas av barnmorskor och barnavårdscentraler världen över. Vilket passar ditt barn?
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vi har jämfört flaggskeppsmodellerna: Libero Touch och Pampers Premium Protection.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Libero Touch</th>
+          <th class="p-3 text-left font-semibold">Pampers Premium Protection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris per blöja</td>
+          <td class="p-3 font-semibold text-green-700">ca 0,55 kr</td>
+          <td class="p-3 text-text-light">ca 0,65 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Absorption</td>
+          <td class="p-3 text-text-light">Bra</td>
+          <td class="p-3 font-semibold text-green-700">Utmärkt — bäst i test</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Mjukhet / ytmaterial</td>
+          <td class="p-3 font-semibold text-green-700">Extra mjuk innervävnad</td>
+          <td class="p-3 text-text-light">Bomullskänsla</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Passform</td>
+          <td class="p-3 text-text-light">Bra</td>
+          <td class="p-3 font-semibold text-green-700">Bättre för olika kroppsformer</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Certifiering</td>
+          <td class="p-3 font-semibold text-green-700">OEKO-TEX Standard 100</td>
+          <td class="p-3 text-text-light">Dermatologiskt testad</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Navelurringning</td>
+          <td class="p-3 text-text-light">Ja (stl 1–2)</td>
+          <td class="p-3 text-text-light">Ja (stl 1–2)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Fuktindikator</td>
+          <td class="p-3 text-text-light">Ja (stl 1–4)</td>
+          <td class="p-3 font-semibold text-green-700">Ja (stl 1–4)</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bäst för</td>
+          <td class="p-3 font-semibold text-green-700">Budget, känslig hud</td>
+          <td class="p-3 text-text-light">Maxabsorption, natt, passfom</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Absorption: Pampers Premium Protection vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Pampers Premium Protection har konsekvent de högsta absorptionsresultaten i konsumentundersökningar. Den avancerade absorptionskärnan drar in fukt snabbt och håller den borta från barnets hud. Pampers Premium Protection Tape håller ditt barn torrt upp till 12 timmar — en tydlig fördel för nätter och längre utflykter.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Libero Touch har god absorption men presterar inte lika konsekvent vid stora mängder urin. Den är bra för dagsbruk men kan behöva bytas oftare under natten om barnet kissar mycket.
+  </p>
+
+  <ProductCard
+    name="Pampers Premium Protection"
+    badge="Bäst absorption"
+    price="ca 0,65 kr/st"
+    rating={4.9}
+    ageRange="Nyfödd – 4 år"
+    pros={[
+      'Bäst absorption i test — 12h torrtid',
+      'Utmärkt passform för de flesta barnformer',
+      'Fuktindikator på framsidan',
+      'Mjukt ytmaterial av bomullskänsla',
+    ]}
+    cons={[
+      'Dyraste mainstreammärket',
+      'Inte miljöcertifierad',
+    ]}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/blojor/blojor/pampers-premium-protection"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Mjukhet och känslig hud: Libero vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Libero Touch är känd för sin extra mjuka innervävnad och är den blöja som oftast rekommenderas av barnmorskor vid blöjutslag och känslig hud. OEKO-TEX Standard 100-certifieringen garanterar att blöjorna testats för skadliga ämnen — ett trygghetsmärke för allergikänsliga familjer.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Liberos Touch-serie har ett mjukare, mer stretchigt ytmaterial mot huden jämfört med Pampers Premium Protection. Barnet upplever troligen ingen skillnad, men för föräldrar med barn som haft reaktioner på Pampers är Libero Touch ofta ett framgångsrikt byte.
+  </p>
+
+  <ProductCard
+    name="Libero Touch"
+    badge="Svensk favorit, känslig hud"
+    price="ca 0,55 kr/st"
+    rating={4.7}
+    ageRange="Nyfödd – 4 år"
+    pros={[
+      'OEKO-TEX Standard 100 — testad för skadliga ämnen',
+      'Extra mjuk innervävnad — bra för känslig hud',
+      '10 öre billigare per blöja än Pampers',
+      'Spritad i Sverige sedan 1972',
+    ]}
+    cons={[
+      'Lägre absorption än Pampers Premium Protection',
+      'Kan behöva bytas oftare på natten',
+    ]}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/blojor/blojor/libero-touch"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vem ska välja vad?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Libero Touch om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill spara ca 10 öre per blöja (ca 300 kr/mån)</li>
+        <li>+ Har ett barn med känslig hud eller blöjutslag</li>
+        <li>+ Föredrar OEKO-TEX-certifierade produkter</li>
+        <li>+ Är ute efter en pålitlig vardagsblöja</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Pampers Premium Protection om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Prioriterar maximal absorption (natt, långa utflykter)</li>
+        <li>+ Vill ha bäst passform för varierande barnformar</li>
+        <li>+ Vill ha bäst i test utan kompromisser</li>
+        <li>+ Haft läckage med andra märken</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    href="https://www.jollyroom.se/blojor/blojor/pampers-premium-protection"
+    productName="Pampers Premium Protection — Jollyroom"
+    text="Se pris"
+  />
+</ArticleLayout>
