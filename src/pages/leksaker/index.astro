@@ -1,0 +1,272 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker' },
+];
+
+const products = [
+  {
+    name: 'Fisher-Price Deluxe Kick & Play',
+    badge: 'Bäst i test',
+    price: '599 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Lämplig ålder (mån)': '0–9 mån',
+      'Material': 'Plast',
+      'Stimulerar': 'Motorik + hörsel',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+  {
+    name: 'HABA Krageltur',
+    badge: 'Bäst ekologisk',
+    price: '199 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Lämplig ålder (mån)': '0–12 mån',
+      'Material': 'Ekologiskt trä',
+      'Stimulerar': 'Motorik + syn',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+  {
+    name: 'Sophie la Girafe',
+    badge: 'Klassiker',
+    price: '249 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Lämplig ålder (mån)': '0–12 mån',
+      'Material': 'Naturgummi',
+      'Stimulerar': 'Motorik + syn',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+  {
+    name: 'Lovevery The Play Gym',
+    badge: 'Bäst premium',
+    price: '1 499 kr',
+    rating: 4.9,
+    ctaHref: '#',
+    features: {
+      'Lämplig ålder (mån)': '0–12 mån',
+      'Material': 'Trä + ekologisk bomull',
+      'Stimulerar': 'Motorik + syn + hörsel',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+  {
+    name: 'VTech Baby Musical Rhymes',
+    badge: 'Bäst budget',
+    price: '299 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Lämplig ålder (mån)': '3–36 mån',
+      'Material': 'Plast',
+      'Stimulerar': 'Hörsel + syn',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+];
+
+const featureLabels = ['Lämplig ålder (mån)', 'Material', 'Stimulerar', 'Säkerhetsgodkänd'];
+
+const faqItems = [
+  {
+    question: 'Vilken leksak är bäst för en nyfödd bebis?',
+    answer: 'För nyfödda (0–3 månader) passar leksaker med högt färgkontrast bäst — bebisens syn är ännu outvecklad och de uppfattar svart, vitt och rött tydligast. Sophie la Girafe och HABA Krageltur är utmärkta val tidigt. Ett babygym som Lovevery The Play Gym stimulerar syn, hörsel och motorik från dag ett och växer med barnet under hela det första året.',
+  },
+  {
+    question: 'Hur vet jag om en leksak är säker för bebis?',
+    answer: 'Alla leksaker som säljs i EU ska uppfylla säkerhetsstandarden EN 71 och bära CE-märkning. Kontrollera att leksaken saknar lösa delar som kan lossna (kvävningsrisk), att malfärger och material är fria från skadliga ämnen, och att leksaken är åldersanpassad. Välj alltid produkter från etablerade märken med tydlig åldersmärkning. Sophie la Girafe är tillverkad av naturgummi och är fri från BPA och PVC.',
+  },
+  {
+    question: 'Vad är skillnaden mellan ett babygym och en vanlig leksak?',
+    answer: 'Ett babygym är en aktivitetsmatta med en bågkonstruktion varifrån hängande leksaker kan nås. Det ger bebisen ett dedikerat utrymme att ligga och utforska, och stimulerar ögon-handkoordination och motorik. Lovevery The Play Gym är ett exempel på ett montessori-inspirerat babygym med åldersanpassade aktiviteter för varje kvartal under det första året. En vanlig leksak som en skallra eller bettleksak används på ett mer direkt sätt.',
+  },
+  {
+    question: 'Från vilken ålder kan bebisen ta tag i en skallra?',
+    answer: 'De flesta bebisar börjar ta tag i föremål runt 3–4 månaders ålder. Välj en skallra med ett tunt handtag som är lätt för de lilla händerna att greppa. HABA Krageltur och Sophie la Girafe har båda handtag och former anpassade för spädbarnets grepp. Lägg skallran i bebisens hand eller nära handen redan från 2 månader — det stimulerar intresset.',
+  },
+  {
+    question: 'Är Lovevery The Play Gym värt priset?',
+    answer: 'Lovevery The Play Gym kostar 1 499 kr och är det dyraste alternativet i vår test. Det är ändå värt att överväga för familjer som söker ett genomtänkt montessori-inspirerat system — gymnaset levereras med aktiviteter anpassade för 0–3 mån, 3–6 mån, 6–9 mån och 9–12 mån, och mattan och bågarna håller hög kvalitet. Räknat per månad under hela det första året är kostnaden rimlig jämfört med att köpa flera separata leksaker.',
+  },
+  {
+    question: 'Hur rengör man babyleksaker?',
+    answer: 'Rengöringsmetoden beror på materialet. Plastleksaker som Fisher-Price Kick & Play kan torkas av med fuktig trasa och milt rengöringsmedel. Naturgummileksaker som Sophie la Girafe ska inte blötläggas — torka av med fuktig trasa. Träprodukter som HABA Krageltur torkas med lätt fuktig trasa och får inte doppas i vatten. Babygymmet Lovevery har tvättbar matta i ekologisk bomull. Rengör leksaker regelbundet eftersom bebisar tar dem i munnen.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa leksaker bebis 2026 – test 0–12 månader | Bebisguiden"
+  description="Vi testar de bästa leksakerna för bebis 2026. Från babygym till skallror — leksaker som stimulerar ditt barns utveckling från dag ett."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/leksaker/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    De rätta leksakerna stimulerar bebisens syn, hörsel och motorik redan från födseln. Vi har testat och jämfört fem av de mest populära leksakerna för bebis 0–12 månader på den svenska marknaden.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Lovevery The Play Gym</strong> vinner för heltäckande stimulans och montessori-kvalitet. <strong>Fisher-Price Kick &amp; Play</strong> är bästa alternativet i mellanklass. <strong>Sophie la Girafe</strong> är den klassiska skallran som håller.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — leksaker bebis 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Fisher-Price Deluxe Kick & Play"
+      badge="Bäst i test"
+      price="599 kr"
+      rating={4.8}
+      ageRange="0–9 månader"
+      pros={['Interaktivt piano som aktiveras med sparkarna', 'Hängande leksaker stimulerar ögon-handkoordination', 'Kan användas liggandes och sittandes', 'Mellanpris för mycket stimulans']}
+      cons={['Kräver batterier', 'Relativt stor — tar plats']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="HABA Krageltur"
+      badge="Bäst ekologisk"
+      price="199 kr"
+      rating={4.6}
+      ageRange="0–12 månader"
+      pros={['Ekologiskt trä fritt från skadliga ämnen', 'Fungerar som skallra och bettleksak', 'Lågt pris', 'Hållbar och tidlös design']}
+      cons={['Enklare stimulans än babygym', 'Ingen musik eller ljus']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Sophie la Girafe"
+      badge="Klassiker"
+      price="249 kr"
+      rating={4.7}
+      ageRange="0–12 månader"
+      pros={['Ikonisk naturgummileksak sedan 1961', 'Mjuk och lättgrippad form', 'Fri från BPA, PVC och ftalater', 'Perfekt bettleksak vid tandsprickning']}
+      cons={['Relativt dyrt för en skallra', 'Ska inte blötläggas — känslig för fukt inuti']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Lovevery The Play Gym"
+      badge="Bäst premium"
+      price="1 499 kr"
+      rating={4.9}
+      ageRange="0–12 månader"
+      pros={['Åldersanpassade aktiviteter för varje kvartal 0–12 mån', 'Montessori-inspirerat — stimulerar på rätt nivå', 'Tvättbar matta i ekologisk bomull', 'Hög återförsäljningspotential']}
+      cons={['Högt pris', 'Stor och kräver utrymme på golvet']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="VTech Baby Musical Rhymes"
+      badge="Bäst budget"
+      price="299 kr"
+      rating={4.5}
+      ageRange="3–36 månader"
+      pros={['Lågt pris', 'Musik och ljus stimulerar hörsel och syn', 'Enkelt att hålla i för de lilla händerna', 'Lång åldersspan — 3 månader till 3 år']}
+      cons={['Kräver batterier', 'Plastmaterial — inte ekologiskt']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt leksak för bebis?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Anpassa leksaken efter bebisens ålder</h3>
+    <p>Bebisens syn, motorik och kognitiva förmåga utvecklas i snabb takt under det första året. En leksak som är perfekt vid 1 månads ålder (hög kontrast, enkla former) kan vara för simpel vid 6 månader. Välj leksaker med tydlig åldersmärkning och överväg alternativ som Lovevery Play Gym som är designade att växa med barnet.</p>
+
+    <h3>2. Vad stimulerar leksaken?</h3>
+    <p>Titta på vilken typ av stimulans leksaken erbjuder. Syn stimuleras av kontrasterande färger och rörliga delar. Hörsel stimuleras av musik, skallrande ljud och röstinspelningar. Motorik stimuleras av leksaker bebisen kan ta tag i, sparka, trycka och greppa. De bästa leksakerna stimulerar flera sinnen simultaneously — som ett babygym med hängande leksaker och ett sparkapiano.</p>
+
+    <h3>3. Säkerhet framför allt</h3>
+    <p>Kontrollera alltid CE-märkning och att leksaken saknar lösa delar som kan lossna. Bebisar tar allt i munnen — välj material som är fria från BPA, ftalater och PVC. Naturgummi (Sophie la Girafe) och ekologiskt trä (HABA) är bra val för de leksaker som hamnar i munnen mest.</p>
+
+    <h3>4. Enkel rengöring</h3>
+    <p>Leksaker rengörs ofta och ska klara det utan att försämras. Kontrollera om mattan på ett babygym är maskintvättbar. Plastalternativ torkas av enkelt. Naturgummileksaker ska inte blötläggas — viktigt att veta innan köp.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om leksaker</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/leksaker/babygym/" class="text-accent hover:underline">Bästa babygym 2026 — stimulerar syn, motorik och hörsel</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — krocktestade och rankade</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — Tripp Trapp, Antilop och fler testade</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Fisher-Price Deluxe Kick & Play',
+      description: 'Babygym med interaktivt piano som aktiveras av bebisens sparkar. Hängande leksaker stimulerar ögon-handkoordination. Lämplig 0–9 månader.',
+      brand: 'Fisher-Price',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 599, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'HABA Krageltur',
+      description: 'Ekologisk skallra och bettleksak i trä. Fri från skadliga ämnen. Lämplig för bebis 0–12 månader.',
+      brand: 'HABA',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 199, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'Sophie la Girafe',
+      description: 'Klassisk skallra i naturgummi. Fri från BPA, PVC och ftalater. Perfekt bettleksak vid tandsprickning. Lämplig 0–12 månader.',
+      brand: 'Vulli',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 249, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'Lovevery The Play Gym',
+      description: 'Montessori-inspirerat babygym med åldersanpassade aktiviteter för 0–12 månader. Tvättbar matta i ekologisk bomull.',
+      brand: 'Lovevery',
+      ratingValue: 4.9,
+      reviewCount: 1,
+      offers: [{ price: 1499, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'VTech Baby Musical Rhymes',
+      description: 'Musikbok med ljud och ljus för bebis. Stimulerar hörsel och syn. Lämplig 3–36 månader.',
+      brand: 'VTech',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 299, url: '#', seller: 'Se butik' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris — Lovevery Play Gym"
+  productName="Bäst i test 2026"
+/>

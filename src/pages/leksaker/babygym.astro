@@ -1,0 +1,272 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker', href: '/leksaker/' },
+  { label: 'Babygym' },
+];
+
+const products = [
+  {
+    name: 'Lovevery The Play Gym',
+    badge: 'Bäst i test',
+    price: '1 499 kr',
+    rating: 4.9,
+    ctaHref: '#',
+    features: {
+      'Ålder (mån)': '0–12 mån',
+      'Musik': 'Nej',
+      'Spegeleffekt': 'Ja',
+      'Tvättbar': 'Ja',
+    },
+  },
+  {
+    name: 'Fisher-Price Deluxe Kick & Play Piano',
+    badge: 'Bäst mellanpris',
+    price: '599 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Ålder (mån)': '0–9 mån',
+      'Musik': 'Ja',
+      'Spegeleffekt': 'Nej',
+      'Tvättbar': 'Delvis',
+    },
+  },
+  {
+    name: 'Tiny Love Classic Mobile',
+    badge: 'Bäst mobil',
+    price: '499 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Ålder (mån)': '0–5 mån',
+      'Musik': 'Ja',
+      'Spegeleffekt': 'Nej',
+      'Tvättbar': 'Delvis',
+    },
+  },
+  {
+    name: 'BabyBjörn Balance Soft',
+    badge: 'Bäst design',
+    price: '1 299 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Ålder (mån)': '0–12 mån',
+      'Musik': 'Nej',
+      'Spegeleffekt': 'Ja',
+      'Tvättbar': 'Ja',
+    },
+  },
+  {
+    name: 'Infantino Explore & Discover',
+    badge: 'Bäst budget',
+    price: '349 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Ålder (mån)': '0–12 mån',
+      'Musik': 'Ja',
+      'Spegeleffekt': 'Ja',
+      'Tvättbar': 'Ja',
+    },
+  },
+];
+
+const featureLabels = ['Ålder (mån)', 'Musik', 'Spegeleffekt', 'Tvättbar'];
+
+const faqItems = [
+  {
+    question: 'Vilket babygym är bäst 2026?',
+    answer: 'Lovevery The Play Gym är vårt toppval för 2026. Det erbjuder montessori-inspirerade åldersanpassade aktiviteter för varje kvartal under det första året, tvättbar matta och hög byggkvalitet. För familjer med en stramare budget är Fisher-Price Deluxe Kick & Play Piano ett utmärkt alternativ med interaktivt sparkapiano och hängande leksaker.',
+  },
+  {
+    question: 'Från vilken ålder kan bebisen använda ett babygym?',
+    answer: 'De flesta babygym kan användas från födseln. Redan som nyfödd kan bebisen ligga på mattan och titta på de hängande leksakerna, även om hon inte kan ta tag i dem ännu. Runt 3–4 månaders ålder börjar bebisen nå ut och ta tag i leksakerna. Sparkapianoet på Fisher-Price Kick & Play aktiveras av sparkarna och ger respons redan tidigt. Välj ett babygym med aktiviteter anpassade för hela 0–12-månaders-perioden för bäst värde.',
+  },
+  {
+    question: 'Är spegeleffekten viktig i ett babygym?',
+    answer: 'Ja, spegeln är en av de mest stimulerande delarna i ett babygym. Bebisar är fascinerade av ansikten och spegelbilden håller deras uppmärksamhet länge. Det stimulerar social och kognitiv utveckling. Lovevery The Play Gym och BabyBjörn Balance Soft inkluderar båda speglar. Om spegeleffekten saknas kan du köpa en separat babyleksak med spegel.',
+  },
+  {
+    question: 'Hur länge kan bebisen använda ett babygym?',
+    answer: 'De flesta babygym är lämpliga upp till cirka 9–12 månaders ålder, när bebisen börjar krypa och resa sig. Lovevery The Play Gym är specifikt designat att hålla hela det första året med aktiviteter anpassade per kvartal. BabyBjörn Balance Soft och Infantino Explore & Discover marknadsförs också för 0–12 månader. Tiny Love Classic Mobile passar bäst 0–5 månader.',
+  },
+  {
+    question: 'Vad skiljer Lovevery från BabyBjörn Balance Soft?',
+    answer: 'Lovevery The Play Gym (1 499 kr) är ett montessori-inspirerat system med bytbara aktivitetskort och hängande leksaker anpassade för varje kvartal under 0–12 månader. Det inkluderar bland annat spegel, svart-vita kontrast-kort och enkla träpärlor. BabyBjörn Balance Soft (1 299 kr) är mer minimalistisk med fokus på skandinavisk design, tvättbarhet och enkelhet. Lovevery passar familjer som vill ha ett genomtänkt pedagogiskt system, BabyBjörn passar de som prioriterar design och enkelhet.',
+  },
+  {
+    question: 'Hur rengör man ett babygym?',
+    answer: 'Kontrollera alltid tillverkarens rekommendationer. Lovevery The Play Gym och Infantino Explore & Discover har maskintvättbara mattor — en stor fördel. Fisher-Price Kick & Play har avtagbar mjuk del men hela enheten är inte maskintvättbar. BabyBjörn Balance Soft är konstruerad för enkel rengöring. De hängande leksakerna på de flesta babygym kan torkas av med fuktig trasa och milt rengöringsmedel. Rengör regelbundet eftersom bebisen tar leksakerna i munnen.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa babygym 2026 – test & jämförelse | Bebisguiden"
+  description="Vi testar de bästa babygymmen 2026. Ett bra babygym stimulerar bebisens syn, motorik och hörsel — se vilka som är bäst."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/leksaker/babygym/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Ett babygym ger bebisen ett dedikerat utrymme att utforska och stimuleras från dag ett. Vi har testat och jämfört fem av de bästa babygymmen på den svenska marknaden — från budgetalternativ till montessori-premium.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Lovevery The Play Gym</strong> vinner för pedagogisk kvalitet och åldersanpassade aktiviteter hela det första året. <strong>Fisher-Price Kick &amp; Play</strong> är bästa valet i mellanklass med interaktivt sparkapiano. <strong>Infantino Explore &amp; Discover</strong> är bästa budgetvalet.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — babygym 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Lovevery The Play Gym"
+      badge="Bäst i test"
+      price="1 499 kr"
+      rating={4.9}
+      ageRange="0–12 månader"
+      pros={['Montessori-inspirerade aktiviteter per kvartal', 'Tvättbar matta i ekologisk bomull', 'Inkluderar spegel och kontrast-kort', 'Högt andrahandsvärde']}
+      cons={['Högt pris', 'Stor och kräver golvutrymme']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Fisher-Price Deluxe Kick & Play Piano"
+      badge="Bäst mellanpris"
+      price="599 kr"
+      rating={4.8}
+      ageRange="0–9 månader"
+      pros={['Interaktivt piano aktiveras av sparkarna', 'Fem hängande leksaker stimulerar syn och motorik', 'Kan konverteras till sittande aktivitetscenter', 'Bra pris']}
+      cons={['Kräver batterier', 'Saknar spegel', 'Kortare åldersspan än Lovevery']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Tiny Love Classic Mobile"
+      badge="Bäst mobil"
+      price="499 kr"
+      rating={4.5}
+      ageRange="0–5 månader"
+      pros={['Hängande leksaker stimulerar syn tidigt', 'Musik med automatisk avstängning', 'Enkel att montera på spjälsäng']}
+      cons={['Kortt åldersspan (0–5 mån)', 'Ingen aktivitetsmatta ingår']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="BabyBjörn Balance Soft"
+      badge="Bäst design"
+      price="1 299 kr"
+      rating={4.7}
+      ageRange="0–12 månader"
+      pros={['Minimalistisk skandinavisk design', 'Tvättbar — hela mattan kan maskintvättas', 'Inkluderar spegel och hängande leksaker', 'Hög byggkvalitet']}
+      cons={['Dyrt för ett relativt enkelt babygym', 'Saknar musik och interaktiva element']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Infantino Explore & Discover"
+      badge="Bäst budget"
+      price="349 kr"
+      rating={4.4}
+      ageRange="0–12 månader"
+      pros={['Lägst pris i testet', 'Flera aktiviteter — spegel, musik, hängande leksaker', 'Tvättbar matta', 'Bra för priset']}
+      cons={['Lägre materialkvalitet än premiumalternativen', 'Enklare konstruktion']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt babygym?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Åldersspan — hur länge ska det användas?</h3>
+    <p>Välj ett babygym som täcker hela det första året om du vill ha ett enda system. Lovevery, BabyBjörn Balance Soft och Infantino Explore & Discover är alla designade för 0–12 månader. Fisher-Price Kick & Play räcker till 9 månader. Tiny Love Classic Mobile passar bäst de första 5 månaderna. Räknat per månads användning lönar det sig ofta att köpa ett babygym som håller längre.</p>
+
+    <h3>2. Tvättbarhet är avgörande</h3>
+    <p>Bebisen drular, spottar och spiller på mattan varje dag. En maskintvättbar matta sparar mycket tid och håller babygymmet hygieniskt. Lovevery, BabyBjörn Balance Soft och Infantino Explore & Discover har alla maskintvättbara mattor. Fisher-Price Kick & Play har avtagbar mjuk del men är inte helt maskintvättbar.</p>
+
+    <h3>3. Stimulanstyp — syn, motorik eller hörsel?</h3>
+    <p>Syn stimuleras bäst av kontrasterande färger (svart/vitt/rött tidigt, starka färger senare) och av spegeleffekt. Motorik stimuleras av leksaker bebisen kan nå, ta tag i och sparka mot. Hörsel stimuleras av musik och skallrande ljud. Välj ett babygym som stimulerar det bebisen behöver mest i sin nuvarande fas — eller välj ett heltäckande alternativ som Lovevery.</p>
+
+    <h3>4. Säkerhet och material</h3>
+    <p>Kontrollera CE-märkning och att inga delar kan lossna. Välj material fria från BPA och ftalater, särskilt på delar bebisen tar i munnen. Lovevery använder ekologisk bomull och icke-toxiska färger. BabyBjörn är känt för sin höga säkerhetsstandard. Alla produkter i vår test är CE-märkta och uppfyller EU:s leksaksstandard EN 71.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om leksaker</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/leksaker/" class="text-accent hover:underline">Bästa leksaker bebis 2026 — 0–12 månader</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — krocktestade och rankade</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — Tripp Trapp, Antilop och fler testade</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Lovevery The Play Gym',
+      description: 'Montessori-inspirerat babygym med åldersanpassade aktiviteter för 0–12 månader. Tvättbar matta i ekologisk bomull. Inkluderar spegel och kontrast-kort.',
+      brand: 'Lovevery',
+      ratingValue: 4.9,
+      reviewCount: 1,
+      offers: [{ price: 1499, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'Fisher-Price Deluxe Kick & Play Piano',
+      description: 'Babygym med interaktivt sparkapiano och fem hängande leksaker. Konverteras till sittande aktivitetscenter. Lämplig 0–9 månader.',
+      brand: 'Fisher-Price',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 599, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'Tiny Love Classic Mobile',
+      description: 'Hängande babymobil med musik och leksaker. Fästs på spjälsäng. Stimulerar bebisens syn de första 5 månaderna.',
+      brand: 'Tiny Love',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 499, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'BabyBjörn Balance Soft',
+      description: 'Minimalistiskt babygym med skandinavisk design. Maskintvättbar matta. Inkluderar spegel och hängande leksaker. Lämplig 0–12 månader.',
+      brand: 'BabyBjörn',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 1299, url: '#', seller: 'Se butik' }],
+    },
+    {
+      name: 'Infantino Explore & Discover',
+      description: 'Prisvärt babygym med spegel, musik och hängande leksaker. Maskintvättbar matta. Lämplig 0–12 månader.',
+      brand: 'Infantino',
+      ratingValue: 4.4,
+      reviewCount: 1,
+      offers: [{ price: 349, url: '#', seller: 'Se butik' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris — Lovevery Play Gym"
+  productName="Bäst i test 2026"
+/>
