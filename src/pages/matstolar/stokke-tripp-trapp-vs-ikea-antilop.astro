@@ -1,0 +1,185 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'Stokke Tripp Trapp vs IKEA Antilop' },
+];
+
+const faqItems = [
+  {
+    question: 'Är Stokke Tripp Trapp värd 12x priset jämfört med IKEA Antilop?',
+    answer: 'För de flesta familjer ja — men det beror på hur länge du planerar att använda den. Antilop fungerar utmärkt 6 månader–3 år. Tripp Trapp kan du använda från 6 månader till vuxen ålder (max 136 kg), vilket gör den billigare per användningsår på lång sikt. Om du bara behöver en babymatstol och planerar att byta vid 3 år: Antilop är ett klokt val.',
+  },
+  {
+    question: 'Kan IKEA Antilop användas från 6 månader?',
+    answer: 'Ja, Antilop rekommenderas från ca 6 månader och upp till 15 kg (ca 3 år). Stolen inkluderar ett 3-punkts säkerhetsbälte. Baby-tillbehör som bricka ingår. Den är inte justerbar i höjd — barnet sitter på samma höjd hela tiden, vilket kan vara en nackdel när barnet växer.',
+  },
+  {
+    question: 'Hur länge kan barn använda Stokke Tripp Trapp?',
+    answer: 'Tripp Trapp kan användas från födseln med Newborn Set (köps separat) och från 6 månader med Baby Set (separat, ca 499 kr). Utan tillbehör passar stolen barn från ca 3 år och kan sedan användas livet ut — den är godkänd upp till 136 kg. Det är en stol som bokstavligen följer barnet upp i vuxen ålder.',
+  },
+  {
+    question: 'Är Tripp Trapp svår att montera och justera?',
+    answer: 'Tripp Trapp monteras på ca 10–15 minuter med medföljande skruvnyckel. Justering av sits och fotbräda tar 2–3 minuter och rekommenderas var 3–6 månader för yngre barn. Systemet kan verka komplext till en början men är logiskt när du lärt dig det. Antilop har noll justering — det är antingen en fördel eller nackdel beroende på hur du ser det.',
+  },
+  {
+    question: 'Vilket andrahandsvärde har Tripp Trapp?',
+    answer: 'Stokke Tripp Trapp håller sitt värde exceptionellt bra. En välhållen stol från 2010-talet säljs fortfarande för 800–1 500 kr på Blocket. Det innebär att din faktiska kostnad efter försäljning kan vara lägre än en ny Antilop om du räknar rätt. IKEA Antilop har minimalt andrahandsvärde.',
+  },
+  {
+    question: 'Vilken är enklast att rengöra?',
+    answer: 'IKEA Antilop är överlägsen i rengöring — plast och stål, ingen stoppad sits, kan spolas av direkt. Tripp Trapp i trä kräver mer omsorg: tork av spill snabbt, undvik blötläggning. Väljer du sitskudde till Tripp Trapp (köps separat) tillkommer tvätt av kudden. För kaotiska matluncher med ett litet barn kan Antilops rengöringsbarhet vara avgörande.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Stokke Tripp Trapp vs IKEA Antilop 2026 — vilken matstol ska du välja?"
+  description="Vi jämför Stokke Tripp Trapp och IKEA Antilop sida vid sida. Pris, hållbarhet, justerbarhet och vem som faktiskt vinner 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Stokke Tripp Trapp kostar 2 990 kr. IKEA Antilop kostar 249 kr. Prisskillnaden är 2 741 kr — tolv gånger dyrare. Är Tripp Trapp tolv gånger bättre?
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Svaret är nyanserat. Antilop är en av de bästa budgetprodukterna som finns för småbarnsfamiljer. Tripp Trapp är en livstidsinvestering med helt annan filosofi. Vilken som passar din familj beror på hur länge du planerar att använda stolen och vad du värdesätter.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Stokke Tripp Trapp</th>
+          <th class="p-3 text-left font-semibold">IKEA Antilop</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">2 990 kr</td>
+          <td class="p-3 text-green-700 font-semibold">249 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Åldersspan</td>
+          <td class="p-3 text-green-700 font-semibold">6 mån – vuxen (136 kg)</td>
+          <td class="p-3 text-text-light">6 mån – 3 år (15 kg)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Justerbar</td>
+          <td class="p-3 text-green-700 font-semibold">Ja — sits + fotbräda</td>
+          <td class="p-3 text-red-600 font-semibold">Nej</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Material</td>
+          <td class="p-3 text-green-700 font-semibold">Bok/ek (Norge)</td>
+          <td class="p-3 text-text-light">Plast + stål</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Säkerhetsbälte</td>
+          <td class="p-3 text-text-light">5-punkts (köps separat 199 kr)</td>
+          <td class="p-3 text-green-700 font-semibold">3-punkts (ingår)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Baby Set</td>
+          <td class="p-3 text-text-light">Köps separat (499 kr)</td>
+          <td class="p-3 text-green-700 font-semibold">Bricka ingår</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Rengöring</td>
+          <td class="p-3 text-text-light">Trä — torka av snabbt</td>
+          <td class="p-3 text-green-700 font-semibold">Plast — spola av</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Andrahandsvärde</td>
+          <td class="p-3 text-green-700 font-semibold">800–1 500 kr (Blocket)</td>
+          <td class="p-3 text-text-light">Minimalt</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Vikt</td>
+          <td class="p-3 text-text-light">6,4 kg</td>
+          <td class="p-3 text-green-700 font-semibold">2,6 kg</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Vinner för</td>
+          <td class="p-3 text-green-700 font-semibold">Lång användning, kvalitet, design</td>
+          <td class="p-3 text-text-light">Pris, rengöring, enkelhet</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vår bedömning: Tripp Trapp vinner på total livslängd</h2>
+  <p class="text-text-light mb-4">
+    Om du räknar kostnad per användningsår är Tripp Trapp faktiskt <strong class="text-text">billigare</strong> än Antilop för en familj som använder stolen i 10+ år. En Tripp Trapp köpt för 2 990 kr, såld för 1 200 kr på Blocket efter 8 år = 1 790 kr total kostnad. Det är 7 IKEA Antilop.
+  </p>
+  <p class="text-text-light mb-6">
+    Men det förutsätter att du faktiskt vill använda stolen så länge. Antilop är ett rationellt val om du vet att barnet byter stol vid 3 år, om du bor trångt, eller om budget är kritisk. Det är inte en sämre stol — det är en annan stol med en annan filosofi.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Pris: Antilop vinner utan tvekan</h2>
+  <p class="text-text-light mb-4">
+    249 kr för en komplett matstol med bälte och bricka är exceptionellt. IKEA har hittat den perfekta formeln: enkel plast, ingen onödig design, fungerande bälte. Antilop fungerar från dag ett — ingen montering, ingen justering, inga tillbehör att köpa.
+  </p>
+  <p class="text-text-light mb-6">
+    Tripp Trapp kostar 2 990 kr för stolen. Men till barn under 3 år behöver du Baby Set (499 kr) och gärna Harness/bälte (199 kr) = totalt ca <strong class="text-text">3 688 kr</strong> för full funktion som spädbarnsmatstol. Det är 15x priset för Antilop.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Justerbarhet: Tripp Trapp vinner klart</h2>
+  <p class="text-text-light mb-6">
+    Tripp Trapp följer barnets längd hela uppväxten — sits och fotbräda justeras i millimetersteg. Det innebär korrekt sittställning i varje ålder, vilket är viktigt för rygg och motorisk utveckling. Antilop har ingen justerbarhet alls: barnet sitter på samma höjd oavsett om det är 6 månader eller 3 år.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Rengöring: Antilop vinner</h2>
+  <p class="text-text-light mb-6">
+    Barn är röriga. Antilop är gjord av plast som kan spolas direkt under kranen — bricka, sits, allt. Tripp Trapp i trä kräver snabb avtorkning för att undvika fläckar. Väljer du till sitskudde tillkommer tvätt. För den kaotiska vardagen med ett litet barn kan Antilops rengöringsbarhet väga tungt.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Stokke Tripp Trapp — vår rekommendation för lång användning</h2>
+  <ProductCard
+    name="Stokke Tripp Trapp"
+    badge="Bäst i test matstol 2026"
+    price="2 990 kr"
+    rating={4.9}
+    ageRange="6 mån – vuxen (max 136 kg)"
+    pros={['Används livet ut — 136 kg maxvikt', 'Justerbar sits + fotbräda', 'Norsk kvalitet i bok/ek', 'Högt andrahandsvärde']}
+    cons={['Baby Set kostar 499 kr extra', '5-punktsbälte kostar 199 kr extra', 'Dyrare initialt']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/stokke-tripp-trapp-highchair-white"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">IKEA Antilop — bäst för prisjägaren</h2>
+  <ProductCard
+    name="IKEA Antilop"
+    badge="Bäst budget matstol 2026"
+    price="249 kr"
+    rating={4.6}
+    ageRange="6 mån – 3 år (max 15 kg)"
+    pros={['249 kr inkl. bälte och bricka', 'Enklast att rengöra', 'Lätt och lätt att flytta', 'Montering på 2 minuter']}
+    cons={['Ingen justerbarhet', 'Används bara till 3 år', 'Minimalt andrahandsvärde']}
+    ctaText="Se pris hos IKEA"
+    ctaHref="https://www.ikea.com/se/sv/p/antilop-hoegstoeel-m-saekerhetsbaelte-vit-silver-29064175/"
+  />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — komplett topplista</a></li>
+      <li><a href="/matstolar/tripp-trapp/" class="text-accent hover:underline">Stokke Tripp Trapp recension 2026 — är den värd priset?</a></li>
+      <li><a href="/guider/valja-matstol/" class="text-accent hover:underline">Hur väljer man matstol? Komplett köpguide</a></li>
+      <li><a href="/marken/stokke/" class="text-accent hover:underline">Stokke recension 2026 — märkesöversikt</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/stokke-tripp-trapp-highchair-white" productName="Stokke Tripp Trapp" text="Se bästa pris — Stokke Tripp Trapp" />
+</ArticleLayout>
