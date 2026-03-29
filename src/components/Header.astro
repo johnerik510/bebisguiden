@@ -10,40 +10,65 @@ const navItems = [
   { label: 'Leksaker', href: '/leksaker/' },
   { label: 'Guider', href: '/guider/' },
 ];
+
+const uspItems = [
+  '100+ produkter testade',
+  'Oberoende recensioner',
+  'Uppdaterat 2026',
+  'Alltid gratis',
+];
 ---
 
-<header class="bg-primary text-white sticky top-0 z-50 shadow-lg">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <a href="/" class="flex items-center gap-2.5 font-heading text-xl font-bold tracking-tight hover:text-accent-light transition-colors group">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-7 h-7 flex-shrink-0 group-hover:scale-105 transition-transform" aria-hidden="true">
-          <circle cx="16" cy="12" r="8" fill="white" opacity="0.15"/>
-          <circle cx="16" cy="12" r="5" fill="#e8788a"/>
-          <path d="M10 20 Q16 28 22 20" fill="white" opacity="0.2"/>
-          <circle cx="14" cy="11" r="1" fill="white" opacity="0.8"/>
-          <circle cx="18" cy="11" r="1" fill="white" opacity="0.8"/>
-          <path d="M14 14 Q16 16 18 14" fill="none" stroke="white" stroke-width="0.8" opacity="0.8"/>
-        </svg>
-        Bebisguiden
-      </a>
-      <nav class="hidden md:flex items-center space-x-6" aria-label="Huvudnavigering">
-        {navItems.map((item) => (
-          <a href={item.href} class="text-sm font-medium text-gray-200 hover:text-white transition-colors">
-            {item.label}
-          </a>
-        ))}
-      </nav>
-      <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-md hover:bg-primary-light transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+<header class="sticky top-0 z-50 shadow-sm">
+  <!-- USP bar -->
+  <div class="bg-accent text-white text-xs font-semibold py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-4 sm:gap-8 flex-wrap">
+      {uspItems.map((item, i) => (
+        <span class={`flex items-center gap-1.5 ${i > 1 ? 'hidden md:flex' : ''}`}>
+          <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          {item}
+        </span>
+      ))}
     </div>
   </div>
-  <nav id="mobile-menu" class="hidden md:hidden bg-primary-dark border-t border-primary-light" aria-label="Mobilnavigering">
-    <div class="px-4 py-3 space-y-2">
+  <!-- White nav -->
+  <div class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2.5 font-heading text-xl font-bold tracking-tight text-primary hover:text-accent transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-7 h-7 flex-shrink-0" aria-hidden="true">
+            <circle cx="16" cy="12" r="8" fill="currentColor" opacity="0.12"/>
+            <circle cx="16" cy="12" r="5" fill="#e8788a"/>
+            <circle cx="14" cy="11" r="1" fill="white"/>
+            <circle cx="18" cy="11" r="1" fill="white"/>
+            <path d="M14 14 Q16 16 18 14" fill="none" stroke="white" stroke-width="0.8"/>
+          </svg>
+          Bebisguiden
+        </a>
+        <nav class="hidden md:flex items-center gap-1" aria-label="Huvudnavigering">
+          {navItems.map((item) => (
+            <a href={item.href} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors">
+              {item.label}
+            </a>
+          ))}
+          <a href="/bilbarnstolar/" class="ml-2 px-4 py-2 text-sm font-semibold bg-accent text-white rounded-lg hover:opacity-90 transition-opacity">
+            Se tester
+          </a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100" aria-label="Mobilnavigering">
+    <div class="px-4 py-3 space-y-1">
       {navItems.map((item) => (
-        <a href={item.href} class="block py-2 text-sm text-gray-200 hover:text-white transition-colors">
+        <a href={item.href} class="block py-2.5 text-sm text-gray-700 hover:text-primary transition-colors">
           {item.label}
         </a>
       ))}
