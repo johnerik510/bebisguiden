@@ -1,0 +1,255 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Bröstpump' },
+];
+
+const products = [
+  {
+    name: 'Elvie Pump',
+    badge: 'Bäst i test',
+    price: '4 499 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Elektrisk, trådlös',
+      'Antal bröst': '1 (köps parvis)',
+      'Decibelnivå': 'Under 45 dB',
+      'App-styrd': 'Ja',
+      'Pris': '4 499 kr/pump',
+    },
+  },
+  {
+    name: 'Medela Swing Maxi',
+    badge: 'Bäst dubbelekull',
+    price: '2 299 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Elektrisk, kabelansluten',
+      'Antal bröst': '2 (dubbelpump)',
+      'Decibelnivå': 'Ca 55 dB',
+      'App-styrd': 'Nej',
+      'Pris': '2 299 kr',
+    },
+  },
+  {
+    name: 'Spectra S1 Plus',
+    badge: 'Bäst klinisk standard',
+    price: '2 499 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Elektrisk, laddningsbar',
+      'Antal bröst': '2 (dubbelpump)',
+      'Decibelnivå': 'Ca 45 dB',
+      'App-styrd': 'Nej',
+      'Pris': '2 499 kr',
+    },
+  },
+  {
+    name: 'Philips Avent Manual',
+    badge: 'Bästa manuella',
+    price: '349 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Manuell',
+      'Antal bröst': '1',
+      'Decibelnivå': 'Tyst',
+      'App-styrd': 'Nej',
+      'Pris': '349 kr',
+    },
+  },
+  {
+    name: 'Haakaa Silikonpump',
+    badge: 'Prisvärdast',
+    price: '199 kr',
+    rating: 4.2,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Passiv silikonpump',
+      'Antal bröst': '1',
+      'Decibelnivå': 'Ljudlös',
+      'App-styrd': 'Nej',
+      'Pris': '199 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Antal bröst', 'Decibelnivå', 'App-styrd', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken är bästa bröstpumpen 2026?',
+    answer: 'Elvie Pump är var toppval 2026 for den som vill ha en diskret, trådlös pump. For den som pumpar dubbelt och vill ha effektivisering rekommenderar vi Medela Swing Maxi eller Spectra S1 Plus. Philips Avent Manual är bäst som manuell backup-pump.',
+  },
+  {
+    question: 'Vad är skillnaden på elektrisk och manuell bröstpump?',
+    answer: 'En elektrisk pump pumpar automatiskt och är effektivare — bra for frekvent bruk eller om du har låg mjölkproduktion. En manuell pump kräver att du använder handen for att skapa sug, men är tystare, billigare och bra som backup. En passiv pump som Haakaa samlar mjölk som rinner ut från det andra bröstet under amning.',
+  },
+  {
+    question: 'Hur snabb är Elvie Pump jämfört med Medela?',
+    answer: 'Medela Swing Maxi som dubbelpump är generellt snabbare vid pumpning av båda brösten samtidigt — ca 15-20 minuter per session. Elvie pumpas ett bröst åt gången (om du inte köper två) men ger frihet att röra sig. For total effektivitet per tidsenhet är Medela Swing Maxi snabbare.',
+  },
+  {
+    question: 'Är Spectra S1 Plus bättre än Medela?',
+    answer: 'Spectra S1 Plus är laddningsbar och tystare än Medela Swing Maxi, och används av många laktationskonsulenter i vårdsektorn. Medela Swing Maxi är mer välbeprövad och har bredare tillgänglighet av tillbehör. Båda är utmärkta val — välj Spectra for tystare och portabelt bruk, Medela for välbekant prestanda.',
+  },
+  {
+    question: 'Nar ska man börja använda bröstpump?',
+    answer: 'Om amningen är välestablerad (vanligtvis efter 4-6 veckor) kan du introducera pumpning. Pumpar for att bygga upp ett lager i frysen, for att upprätthålla produktion när du är borta, eller om bebisen har svårt att ta bröstet. Tala alltid med barnmorska eller laktationskonsulent om du är osäker.',
+  },
+  {
+    question: 'Hur lång tid tar det att pumpa?',
+    answer: 'En genomsnittlig pumpsession tar 15-20 minuter per bröst med en elektrisk enkelpump, eller 15-20 minuter totalt med en dubbelpump. En manuell pump tar längre tid och kräver mer ansträngning. Pumptiden varierar individuellt beroende på mjölkproduktion och pump-teknik.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa bröstpump 2026 — elektrisk och manuell"
+  description="Vi testar de bästa bröstpumparna 2026. Jämför elektriska och manuella bröstpumpar — hitta rätt pump för ditt behov."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/amning/brostpump/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Vi har testet och jämfort de bästa bröstpumparna på den svenska marknaden — från diskreta trådlösa pumpar till effektiva kliniska modeller och prisvärda manuella alternativ.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Elvie Pump</strong> är bäst for diskret trådlös pumpning. <strong>Medela Swing Maxi</strong> är bäst for dubbelpumpning och effektivitet. <strong>Spectra S1 Plus</strong> är bäst for klinisk kvalitet.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — bröstpumpar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Elvie Pump"
+      badge="Bäst i test"
+      price="4 499 kr"
+      rating={4.7}
+      pros={['Trådlös — sitter inuti behån', 'Tyst under 45 dB', 'App-styrd med volym- och sessionslogg', 'Perfekt for diskret pumpning på jobbet']}
+      cons={['Högt pris per pump (köps parvis for dubbelpumpning)', 'Laddningsbar — ladda infor varje session', 'Färre inställningsmöjligheter än kliniska pumpar']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Medela Swing Maxi"
+      badge="Bäst dubbelekull"
+      price="2 299 kr"
+      rating={4.6}
+      pros={['Dubbelpump — pumpar båda brösten samtidigt', 'Välbeprövad teknik med 2-fas-expression', 'Brett tillbehörssortiment tillgängligt', 'Effektivare per tidsenhet än enkelpumpar']}
+      cons={['Kräver strömkabel — begränsad rörlighet', 'Aningen högre decibelnivå', 'Inget laddningsbart batteri']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Spectra S1 Plus"
+      badge="Bäst klinisk standard"
+      price="2 499 kr"
+      rating={4.6}
+      pros={['Laddningsbart batteri — portabelt', 'Tystare än Medela (ca 45 dB)', 'Hälsovårdsstandard — används av laktationskonsulenter', 'Anpassningsbara sugnivåer']}
+      cons={['Färre tillbehör tillgängliga i Sverige', 'Aningen tyngre', 'Ingen app-koppling']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Philips Avent Manual"
+      badge="Bästa manuella"
+      price="349 kr"
+      rating={4.3}
+      pros={['Prisvärd och enkel att använda', 'Tyst — kräver ingen el', 'Mjuk kudde mot bröstet', 'Bra som backup-pump']}
+      cons={['Kräver manuell ansträngning', 'Langsammare än elektriska pumpar', 'Tröttar ut handen vid lång användning']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Haakaa Silikonpump"
+      badge="Prisvärdast"
+      price="199 kr"
+      rating={4.2}
+      pros={['Mycket prisvärd', 'Passiv — samlar mjölk automatiskt', 'Enkel att rengöra', 'Bra komplement under amning']}
+      cons={['Samlar bara mjölk passivt — stimulerar inte produktion', 'Kan ramla av utan fästanordning', 'Inte lämplig som primär pump']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Så väljer du rätt bröstpump</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Hur ofta ska du pumpa?</h3>
+    <p>Planerar du att pumpa dagligen eller flera gånger per dag — till exempel for att upprätthålla produktion nar du arbetar — välj en elektrisk dubbelpump som Medela Swing Maxi eller Spectra S1 Plus. Pumpar du sällan eller vill ha en billig backup räcker en manuell pump.</p>
+
+    <h3>2. Frihet och diskret bruk</h3>
+    <p>Trådlösa pumpar som Elvie passar utmärkt om du behöver vara aktiv under pumpning eller vill kunna pumpa diskret på jobbet eller i offentliga miljöer. De sitter inuti behån och syns knappt utanpå kläderna.</p>
+
+    <h3>3. Enkelpump eller dubbelpump?</h3>
+    <p>En dubbelpump halverar pumptiden och stimulerar produktionen mer effektivt. Om du pumpar regelbundet är en dubbelpump ett smart val. Enkelpumpar är billigare och mer portabla, men tar dubbelt så lång tid.</p>
+
+    <h3>4. Decibelnivå — tänk på omgivningen</h3>
+    <p>Elektriska pumpar har olika ljudnivåer. Elvie Pump och Spectra S1 Plus är tystast (under 45 dB). Medela Swing Maxi är något högre men fortfarande acceptabel. Om du pumpar nar bebisen sover bredvid dig är en tyst pump viktig.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/amning/" class="text-accent hover:underline">Amning & matning 2026 — komplett guide</a></li>
+      <li><a href="/amning/nappflaska/" class="text-accent hover:underline">Bästa nappflaskan 2026 — for amning och kombinationsmatning</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Elvie Pump',
+      description: 'Trådlös elektrisk bröstpump som sitter inuti behån. App-styrd med logg over volym och session. Under 45 dB. Ca 4 499 kr per pump.',
+      brand: 'Elvie',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 4499, url: '#', seller: 'Butik' }],
+    },
+    {
+      name: 'Medela Swing Maxi',
+      description: 'Elektrisk dubbelpump med beprövad 2-fas-expressionsteknik. Pumpar båda brösten samtidigt. Ca 2 299 kr.',
+      brand: 'Medela',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 2299, url: '#', seller: 'Butik' }],
+    },
+    {
+      name: 'Spectra S1 Plus',
+      description: 'Laddningsbar elektrisk dubbelpump med klinisk standard. Tyst, portabel och med anpassningsbara sugnivåer. Ca 2 499 kr.',
+      brand: 'Spectra',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 2499, url: '#', seller: 'Butik' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris — Elvie Pump"
+  productName="Bäst i test 2026"
+/>

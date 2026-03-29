@@ -1,0 +1,255 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Nappflaska' },
+];
+
+const products = [
+  {
+    name: 'Philips Avent Natural 3.0',
+    badge: 'Bäst i test',
+    price: '199 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Bröstvårta': 'Bred, naturlik',
+      'Anti-kolik': 'Ja',
+      'Material': 'PP-plast / glas',
+      'Volym': '260 ml',
+      'Pris': '199 kr',
+    },
+  },
+  {
+    name: 'MAM Easy Start Anti-Colic',
+    badge: 'Bäst mot kolik',
+    price: '179 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Bröstvårta': 'Ortodontisk silikon',
+      'Anti-kolik': 'Ja, ventilsystem',
+      'Material': 'PP-plast',
+      'Volym': '260 ml',
+      'Pris': '179 kr',
+    },
+  },
+  {
+    name: 'Tommee Tippee Closer to Nature',
+    badge: 'Mjukaste spens',
+    price: '169 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Bröstvårta': 'Bred, mjuk silikon',
+      'Anti-kolik': 'Ja',
+      'Material': 'PP-plast',
+      'Volym': '260 ml',
+      'Pris': '169 kr',
+    },
+  },
+  {
+    name: 'Nanobébé Breastmilk',
+    badge: 'Snabbast värmning',
+    price: '249 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Bröstvårta': 'Bred, naturlik',
+      'Anti-kolik': 'Ja',
+      'Material': 'PP-plast',
+      'Volym': '150 ml',
+      'Pris': '249 kr',
+    },
+  },
+  {
+    name: 'Dr. Brown\'s Options+',
+    badge: 'Bäst mot luftsväljning',
+    price: '159 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Bröstvårta': 'Standard, smal',
+      'Anti-kolik': 'Ja, intern ventil',
+      'Material': 'PP-plast / glas',
+      'Volym': '270 ml',
+      'Pris': '159 kr',
+    },
+  },
+];
+
+const featureLabels = ['Bröstvårta', 'Anti-kolik', 'Material', 'Volym', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken nappflaska är bäst för kombinationsmatning?',
+    answer: 'For kombinationsmatning (amning och flaska) rekommenderar vi Philips Avent Natural 3.0 eller MAM Easy Start Anti-Colic. Båda har bred bröstvårta som efterliknar bröstets form, vilket minskar risken for nipple confusion. Välj alltid ett flöde som är långsamt (steg 1) for att bebisen ska behöva arbeta for mjölken precis som vid bröstet.',
+  },
+  {
+    question: 'Vad är nipple confusion och hur undviker man det?',
+    answer: 'Nipple confusion innebär att bebisen börjar föredra flaskan framfor bröstet, eftersom flödet från flaska ofta är lättare att få ut. For att minimera risken: introducera flaskan efter 3-6 veckor nar amningen är välestablerad, välj en flaska med bred bröstvårta och långsamt flöde, och ge flaskan relativt sällan till att börja med.',
+  },
+  {
+    question: 'Vilken nappflaska är bäst mot kolik?',
+    answer: 'MAM Easy Start Anti-Colic och Dr. Brown\'s Options+ är speciellt utformade för att minska luftsväljning, vilket är en vanlig orsak till kolik. Dr. Brown\'s har ett internt ventilsystem som leder bort luften från mjölken. MAM\'s ventilsystem sitter i botten av flaskan. Båda är effektiva, men Dr. Brown\'s kräver mer rengöring tack vare fler delar.',
+  },
+  {
+    question: 'Glas- eller plastflaska — vad ska man välja?',
+    answer: 'Glasflaskor håller längre, är lättare att rengöra och innehåller inga plaster som kan laka ur. Nackdelen är att de är tyngre och kan gå sönder om de tappas. Plastflaskor i PP-plast (polypropylene) är BPA-fria och lättare att hantera. For nyfödda och early infants rekommenderas glas om du är noggrann — annars är PP-plast ett tryggt val.',
+  },
+  {
+    question: 'Hur rengör man nappflaskor?',
+    answer: 'Nappflaskor bör rengöras efter varje användning. Skölj med varmt vatten direkt, diskas sedan med diskmedel eller i diskmaskin (kontrollera märkning). Sterilisera regelbundet under de forsta månaderna — antingen i microvågssterilisator, ångsterilisator eller genom att koka. Kontrollera spensens skick regelbundet — byt ut vid sprickor eller missfärgning.',
+  },
+  {
+    question: 'Varför värms Nanobébé snabbare?',
+    answer: 'Nanobébé Breastmilk-flaskan har en svansformad design med en central fördjupning, vilket ökar ytan som exponeras for varmt vatten. Det gör att bröstmjölken värms upp upp till 2,5 gånger snabbare jämfort med en standardflaska. Det är särskilt värdefullt om du förvarar fryst bröstmjölk och behöver tina snabbt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa nappflaska 2026 — för amning och kombinationsmatning"
+  description="Vi testar de bästa nappflaskorna 2026. Viktigt med rätt flaska för kombammare — vi hjälper dig välja."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/amning/nappflaska/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Att välja rätt nappflaska är extra viktigt for foräldrar som kombinerar amning och flaskmatning. Vi har jämfort de bästa nappflaskorna 2026 med fokus på bröstvårtedesign, anti-koliklösning och materialval.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Philips Avent Natural 3.0</strong> är bäst for kombinationsmatning. <strong>MAM Easy Start Anti-Colic</strong> är bäst mot kolik. <strong>Dr. Brown's Options+</strong> är bäst for minskad luftsväljning.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — nappflaskor 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Philips Avent Natural 3.0"
+      badge="Bäst i test"
+      price="199 kr"
+      rating={4.7}
+      pros={['Bred bröstvårta som liknar bröstets form', 'Flexibel spens med naturlig känsla', 'Anti-kolik med ventilsystem', 'Finns i glas och plast']}
+      cons={['Något högre pris än basalternativ', 'Spens kan vara mjukare än vissa bebisar föredrar']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="MAM Easy Start Anti-Colic"
+      badge="Bäst mot kolik"
+      price="179 kr"
+      rating={4.6}
+      pros={['Ventilsystem i botten minskar luftsväljning', 'Ortodontisk silikonspens', 'Kan steriliseras i mikrovågsugn i flaskan', 'Brett erkänd av laktationskonsulenter']}
+      cons={['Fler delar kan göra rengöringen mer tidskrävande', 'Designen passar inte alla munformer']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Tommee Tippee Closer to Nature"
+      badge="Mjukaste spens"
+      price="169 kr"
+      rating={4.5}
+      pros={['Mjuk bred silikonspens uppskattad av bebisar', 'Anti-kolik med ventilsystem', 'Enkel att rengöra', 'Prisvärd']}
+      cons={['Ventilsystemet är inte lika avancerat som Dr. Brown\'s', 'Spensen kan bli slapp snabbare']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Nanobébé Breastmilk"
+      badge="Snabbast värmning"
+      price="249 kr"
+      rating={4.4}
+      pros={['Svansformad design — värms 2,5x snabbare', 'Bevarar bröstmjölkens näring bättre', 'Bred naturlik bröstvårta', 'Bra for foräldrar som fryser bröstmjölk']}
+      cons={['Högre pris', 'Ovanlig form kan verka klumpig', 'Lägre volym (150 ml standard)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Dr. Brown's Options+"
+      badge="Bäst mot luftsväljning"
+      price="159 kr"
+      rating={4.4}
+      pros={['Internt ventilsystem leder bort luft effektivt', 'Prisvärt grundpris', 'Kan användas med eller utan internventil', 'Finns i glas']}
+      cons={['Fler delar — mer tidskrävande rengöring', 'Smalare spens passar inte alla kombammare', 'Ej lika bred bröstvårta som Philips Avent']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Så väljer du rätt nappflaska</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Bred eller smal spens — vad passar ditt barn?</h3>
+    <p>En bred, naturlik spens (som Philips Avent Natural eller Tommee Tippee) efterliknar bröstet bättre och rekommenderas for kombinationsmatning. En smalare spens (som Dr. Brown's) kan passa barn som inte ammas alls. Om du är osäker — börja med en bred spens.</p>
+
+    <h3>2. Flödeshastighet — börja alltid med steg 1</h3>
+    <p>Alla nappflaskor finns i olika flödesnivåer. For nyfödda och kombammare: välj alltid steg 1 (långsamt flöde). Bebisen ska behöva arbeta for mjölken, precis som vid amning. For snabbt flöde kan orsaka överhetsning och att bebisen börjar föredra flaskan.</p>
+
+    <h3>3. Anti-kolik — vem behöver det?</h3>
+    <p>Om ditt barn är kolikartat eller verkar svälja mycket luft vid matning kan en anti-kolikflaska (MAM, Dr. Brown's) hjälpa. Annars räcker standard anti-kolik som finns i de flesta moderna flaskor (Philips Avent, Tommee Tippee).</p>
+
+    <h3>4. Material — glas vs. plast</h3>
+    <p>Glasflaskor är mer hållbara och lättare att rengöra, men tyngre och kan gå sönder. PP-plastflaskor är lättare och BPA-fria. Välj glas om du värdesätter hållbarhet och minimerar plastkontakt; välj plast om du värdesätter lättvikt och praktisk hantering.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/amning/" class="text-accent hover:underline">Amning & matning 2026 — komplett guide</a></li>
+      <li><a href="/amning/brostpump/" class="text-accent hover:underline">Bästa bröstpumpen 2026 — elektrisk och manuell</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Philips Avent Natural 3.0',
+      description: 'Nappflaska med bred naturlik bröstvårta for kombinationsmatning. Anti-kolik ventilsystem. Finns i PP-plast och glas. Ca 199 kr.',
+      brand: 'Philips Avent',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 199, url: '#', seller: 'Butik' }],
+    },
+    {
+      name: 'MAM Easy Start Anti-Colic',
+      description: 'Nappflaska med ventilsystem i botten mot kolik. Ortodontisk silikonspens. Kan steriliseras i mikrovågsugn. Ca 179 kr.',
+      brand: 'MAM',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 179, url: '#', seller: 'Butik' }],
+    },
+    {
+      name: 'Tommee Tippee Closer to Nature',
+      description: 'Nappflaska med mjuk bred silikonspens och anti-kolik ventilsystem. Enkel att rengöra. Ca 169 kr.',
+      brand: 'Tommee Tippee',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 169, url: '#', seller: 'Butik' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris — Philips Avent Natural 3.0"
+  productName="Bäst i test 2026"
+/>
