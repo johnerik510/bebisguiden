@@ -1,0 +1,274 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Sterilisatorer', href: '/sterilisatorer/' },
+];
+
+const products = [
+  {
+    name: 'Philips Avent 3-i-1 Elektrisk Sterilisator',
+    badge: 'Bäst i test',
+    price: '599 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/tillbehor-for-matning/sterilisering/philips-avent-elektrisk-sterilisator',
+    image: 'https://images.jollyroom.se/images/product/800/philips-avent-sterilisator-3-i-1.jpg',
+    pros: ['Steriliserar på 6 minuter', 'Passar upp till 6 nappflaskor', '3-i-1: sterilisator, förvaringslåda och uppvärmningsplatta', 'Sterilt i 24 timmar när locket är stängt'],
+    cons: ['Tar ganska stor plats på bänken', 'Kabel är relativt kort'],
+    features: {
+      'Metod': 'Ånga (elektrisk)',
+      'Kapacitet': '6 flaskor',
+      'Tid': '6 min',
+      'Steril i': '24 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+  {
+    name: 'Tommee Tippee Elektrisk Ångsterilisator',
+    badge: 'Bäst för Tommee Tippee',
+    price: '399 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.barnkraft.se/tommee-tippee-elektrisk-sterilisator',
+    image: 'https://images.barnkraft.se/images/product/800/tommee-tippee-sterilisator.jpg',
+    pros: ['Passar alla Tommee Tippee-flaskor perfekt', 'Kompakt design', 'Steriliserar på 8 minuter', 'Prisvänlig'],
+    cons: ['Kapacitet 6 flaskor – inget mer', 'Passar sämre för andra flaskstorlekar'],
+    features: {
+      'Metod': 'Ånga (elektrisk)',
+      'Kapacitet': '6 flaskor',
+      'Tid': '8 min',
+      'Steril i': '24 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+  {
+    name: 'NUK Elektrisk Ångsterilisator',
+    badge: 'Bäst för NUK-flaskor',
+    price: '449 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.babyland.se/nuk-elektrisk-sterilisator',
+    image: 'https://images.babyland.se/images/product/800/nuk-elektrisk-sterilisator.jpg',
+    pros: ['Optimerad för NUK-flaskor och nappar', 'Stor kapacitet – 6 flaskor + nappar', 'Inkluderar pincett för steril hantering', 'Enkel att rengöra'],
+    cons: ['Fungerar sämre med bredhalsmunnar från andra märken', 'Bulkigare design'],
+    features: {
+      'Metod': 'Ånga (elektrisk)',
+      'Kapacitet': '6 flaskor + nappar',
+      'Tid': '8 min',
+      'Steril i': '24 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+  {
+    name: 'Philips Avent Mikrovågssterilisator',
+    badge: 'Bäst för resan',
+    price: '299 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/tillbehor-for-matning/sterilisering/philips-avent-mikrovags-sterilisator',
+    image: 'https://images.jollyroom.se/images/product/800/philips-avent-mikrovag-sterilisator.jpg',
+    pros: ['Ingen el behövs – används i mikrovågsugn', 'Kompakt och lätt att ta med på resa', 'Steriliserar på 2 minuter i mikron', 'Lågt pris'],
+    cons: ['Kräver tillgång till mikrovågsugn', 'Kapacitet 4 flaskor', 'Steril kortare tid (6 timmar)'],
+    features: {
+      'Metod': 'Mikrovågsånga',
+      'Kapacitet': '4 flaskor',
+      'Tid': '2 min (i mikron)',
+      'Steril i': '6 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+  {
+    name: 'Chicco Elektrisk Sterilisator och Tork',
+    badge: 'Bäst helhetslösning',
+    price: '799 kr',
+    rating: 4.4,
+    ctaHref: 'https://www.jollyroom.se/tillbehor-for-matning/sterilisering/chicco-sterilisator',
+    image: 'https://images.jollyroom.se/images/product/800/chicco-elektrisk-sterilisator.jpg',
+    pros: ['Steriliserar och torkar – allt-i-ett', 'Ingen handduk behövs', 'Stor kapacitet', 'Bekvämt om du har många flaskor'],
+    cons: ['Dyrast på listan', 'Tar mest plats', 'Torktiden är lång (30–40 min)'],
+    features: {
+      'Metod': 'Ånga + varmluft',
+      'Kapacitet': '6 flaskor',
+      'Tid': '8 min (steril) + 30 min (tork)',
+      'Steril i': '24 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+];
+
+const featureLabels = ['Metod', 'Kapacitet', 'Tid', 'Steril i', 'Certifiering'];
+
+const faqItems = [
+  {
+    question: 'Måste man sterilisera nappflaskor?',
+    answer: '1177 rekommenderar sterilisering av nappflaskor och nappar för nyfödda och barn under 4 månader med omoget immunförsvar. Sterilisering dödar bakterier och virus som kan orsaka magsjuka och infektioner. Efter 4 månader räcker diskning i diskmaskin (60°C) för friska barn.',
+  },
+  {
+    question: 'Vilken steriliseringsmetod är bäst?',
+    answer: 'Elektrisk ångsterilisering är den vanligaste och mest praktiska metoden i hemmet – snabb, enkel och dödar 99,9% av bakterier. Mikrovågssterilisering är bra på resa. Kokande (10 min i vatten) fungerar men sliter mer på material. Kalla vattentabletter (Milton) är ett alternativ utan el men kräver blötläggning i 15–30 minuter.',
+  },
+  {
+    question: 'Hur länge håller sig flaskor sterila efter sterilisering?',
+    answer: 'I en elektrisk sterilisator med stängt lock håller sig flaskorna sterila i upp till 24 timmar. Mikrovågssterilisatorer ger vanligtvis 6 timmar. Öppnar du locket försvinner sterililiteten snabbt – använd alltid steril pincett vid plockning.',
+  },
+  {
+    question: 'Behöver man sterilisera nappar?',
+    answer: 'Ja, nappar bör steriliseras för nyfödda och barn under 4 månader av samma skäl som flaskor. De flesta elektriska sterilisatorer har plats för nappar i toppen. Kontrollera att napparna tål ångsterilisering (de flesta modern nappar gör det).',
+  },
+  {
+    question: 'Kan man sterilisera alla typer av nappflaskor?',
+    answer: 'De allra flesta nappflaskor av plast (BPA-fri PP) och glas tål ångsterilisering. Kontrollera att din specifika flaska är märkt som steriliseringsbar. Glasflaskor tål generellt sett alla steriliseringsmetoder. Vissa silikondelar kan kräva lägre temperatur – läs tillverkarens anvisningar.',
+  },
+  {
+    question: 'Hur rengör man en ångsterilisator?',
+    answer: 'Avkalka sterilisatorn regelbundet (varannan–var tredje vecka i hårdvattenområden). Fyll med en del vitvinsvinäger och en del vatten, kör ett steriliseringscykel och skölj ordentligt. Kalkavlagringar minskar ångproduktionen och kan förkorta sterilisatortiden. Torka av utsidan med fuktig trasa.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa Sterilisatorer Baby 2026 – 5 Elektriska Sterilisatorer Testade"
+  description="Vilken sterilisator är bäst 2026? Vi testar Philips Avent, Tommee Tippee, NUK och Chicco. Elektrisk ånga, mikrovåg och mer. Pris fr. 299 kr."
+  breadcrumbs={breadcrumbs}
+  relatedArticles={[
+    { title: 'Bästa nappflaskor 2026', href: '/nappflaskor/' },
+    { title: 'Bästa bröstpumpar 2026', href: '/brostpumpar/' },
+    { title: 'Amning och matning – guide', href: '/amning/' },
+    { title: 'Bästa spjälsängar 2026', href: '/spjalsangar/' },
+  ]}
+>
+  <p class="text-lg text-text-light leading-relaxed mb-4">
+    En bra sterilisator sparar tid och ger trygghet – särskilt för nyfödda med omoget immunförsvar. Vi har jämfört de fem bästa elektriska sterilisatorerna för baby på svenska marknaden, med fokus på steriliseringstid, kapacitet och daglig användbarhet.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell – sterilisatorer baby 2026" />
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">Våra toppval 2026</h2>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-6 mb-4">1. Philips Avent 3-i-1 – Bäst i test</h3>
+  <ProductCard
+    name="Philips Avent 3-i-1 Elektrisk Sterilisator"
+    badge="Bäst i test 2026"
+    price="599 kr"
+    rating={4.8}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/tillbehor-for-matning/sterilisering/philips-avent-elektrisk-sterilisator"
+    image="https://images.jollyroom.se/images/product/800/philips-avent-sterilisator-3-i-1.jpg"
+    pros={['Steriliserar på bara 6 minuter', 'Passar upp till 6 nappflaskor och nappar', 'Behåller sterilitet i 24 timmar med stängt lock', 'Fungerar med alla Philips Avent-produkter']}
+    cons={['Tar lite mer plats än enklare modeller', 'Något kortare kabel']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    Philips Avent 3-i-1 Elektrisk Sterilisator är vårt toppval tack vare sin kombination av snabbhet (6 minuter), kapacitet (6 flaskor) och mångsidighet. Den fungerar som sterilisator, steril förvaringslåda och uppvärmningsplatta – tre funktioner i en enhet.
+  </p>
+  <p class="text-text-light leading-relaxed mb-2">
+    Det viktigaste: steriliserade föremål förblir sterila i upp till 24 timmar om locket hålls stängt. Det gör att du kan sterilisera på kvällen och använda flaskorna under hela nästa dag utan att behöva sterilisera om.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Passar alla Philips Avent-flaskor och nappar, men fungerar med de flesta standardstorlekar från andra märken. Priset är motiverat för den mångsidighet som erbjuds.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">2. Tommee Tippee Elektrisk Ångsterilisator – Bäst för Tommee Tippee</h3>
+  <ProductCard
+    name="Tommee Tippee Elektrisk Ångsterilisator"
+    badge="Bäst för Tommee Tippee-flaskor"
+    price="399 kr"
+    rating={4.7}
+    ctaText="Se pris hos Barnkraft"
+    ctaHref="https://www.barnkraft.se/tommee-tippee-elektrisk-sterilisator"
+    image="https://images.barnkraft.se/images/product/800/tommee-tippee-sterilisator.jpg"
+    pros={['Perfekt passform för Tommee Tippee-flaskor', 'Kompakt och stilren design', 'Prisvärd modell med bra prestanda', 'Steriliserar 6 flaskor på 8 minuter']}
+    cons={['Anpassad för Tommee Tippee – sämre för blandade märken', 'Steriliserar lite långsammare än Avent']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    Tommee Tippees elektriska sterilisator är den självklara partnern till Closer to Nature-flaskorna. Designen är anpassad för att flaskorna ska stå stabilt och ångcirkulationen ska nå alla ytor.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Har du redan investerat i Tommee Tippee-flaskor är detta det enklaste och snyggaste alternativet. Priset är konkurrenskraftigt och prestandan pålitlig.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">3. NUK Elektrisk Ångsterilisator – Bäst för NUK</h3>
+  <ProductCard
+    name="NUK Elektrisk Ångsterilisator"
+    badge="Bäst för NUK-produkter"
+    price="449 kr"
+    rating={4.6}
+    ctaText="Se pris hos Babyland"
+    ctaHref="https://www.babyland.se/nuk-elektrisk-sterilisator"
+    image="https://images.babyland.se/images/product/800/nuk-elektrisk-sterilisator.jpg"
+    pros={['Optimerad för NUK-flaskor och nappar', 'Stor kapacitet med plats för nappar', 'Inkluderar steril pincett', 'Enkel rengöring']}
+    cons={['Optimerad för NUK – sämre för annan design', 'Något bulkig']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    NUKs elektriska sterilisator är vald för sin optimering mot NUK-systemet. Inkluderar steril pincett för hantering av steriliserade föremål utan att kontaminera dem – ett litet men viktigt detalj.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Kapaciteten imponerar: 6 flaskor och ett separat fack för nappar kan steriliseras samtidigt.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">4. Philips Avent Mikrovågssterilisator – Bäst för resan</h3>
+  <ProductCard
+    name="Philips Avent Mikrovågssterilisator"
+    badge="Bäst för resan"
+    price="299 kr"
+    rating={4.5}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/tillbehor-for-matning/sterilisering/philips-avent-mikrovags-sterilisator"
+    image="https://images.jollyroom.se/images/product/800/philips-avent-mikrovag-sterilisator.jpg"
+    pros={['Lättast att ta med på resa', 'Steriliserar på 2 minuter i mikrovågsugn', 'Lägst pris på listan', 'Ingen elledning behövs']}
+    cons={['Kräver tillgång till mikrovågsugn', 'Steril i 6 timmar (kortare än elektrisk)', 'Kapacitet 4 flaskor']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    Philips Avent Mikrovågssterilisatorn är det bästa alternativet för familjer som reser mycket. Kompakt, ingen elledning och steriliserar på bara 2 minuter om hotellet eller stugan har en mikrovågsugn.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Som hemmasterilisator rekommenderar vi den elektriska modellen framför, men som resetillbehör är detta svårslagen.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">5. Chicco Elektrisk Sterilisator och Tork – Bäst helhetslösning</h3>
+  <ProductCard
+    name="Chicco Elektrisk Sterilisator och Tork"
+    badge="Allt-i-ett"
+    price="799 kr"
+    rating={4.4}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/tillbehor-for-matning/sterilisering/chicco-sterilisator"
+    image="https://images.jollyroom.se/images/product/800/chicco-elektrisk-sterilisator.jpg"
+    pros={['Steriliserar och torkar – en station gör allt', 'Slipper handduk eller lufttorkning', 'Stor kapacitet', 'Bekvämt för familjer med många flaskor']}
+    cons={['Dyrast på listan', 'Tar störst plats', 'Lång total tid med torkning (30–40 min extra)']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    Chiccos kombinationsenhet steriliserar och torkar flaskorna i en och samma maskin. Det eliminerar behovet av att plocka ut steriliserade flaskor och lufttorka dem – ett steg mindre i rutinen.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Totaltiden är längre (sterilisering + torkning) men om du kör en batch på natten är du klar till morgonen. Bäst för familjer med tvillingar eller som vill ha minimal hantering.
+  </p>
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: Så väljer du rätt sterilisator</h2>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Elektrisk ånga – det bästa valet för hemmabruk</h3>
+  <p class="text-text-light leading-relaxed mb-4">
+    Elektriska ångsterilisatorer är den vanligaste och mest praktiska metoden för daglig sterilisering hemma. De är snabba (6–10 minuter), kräver bara lite vatten och behåller sterilitet i upp till 24 timmar med stängt lock. Välj en elektrisk modell om du är hemma regelbundet.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Kapacitet – hur många flaskor behöver du sterilisera?</h3>
+  <p class="text-text-light leading-relaxed mb-4">
+    De flesta modeller rymmer 6 flaskor per omgång. Om du ammar och bara kompletterar med nappflaskor räcker 4–6 flaskors kapacitet. Flaskar och delar inkluderat. Om ni har tvillingar eller uteslutande flaskmatar, välj en modell med stor kapacitet och gärna tork-funktion.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Märkesanpassning – spelar det roll?</h3>
+  <p class="text-text-light leading-relaxed mb-4">
+    Märkesspecifika sterilisatorer (Tommee Tippee, NUK, Avent) är designade för att passa respektive varumärkes flaskor perfekt. Använde du en enda flasktyp är märkesanpassad sterilisator ett bra val. Blandar du märken är en universell modell (Philips Avent 3-i-1) mer praktisk.
+  </p>
+
+  <FAQ items={faqItems} title="Vanliga frågor om sterilisatorer" />
+
+  <StickyCTA
+    productName="Philips Avent 3-i-1 Sterilisator"
+    price="599 kr"
+    affiliateUrl="https://www.jollyroom.se/tillbehor-for-matning/sterilisering/philips-avent-elektrisk-sterilisator"
+    ctaText="Se pris hos Jollyroom"
+    badge="Bäst i test 2026"
+  />
+</ArticleLayout>
