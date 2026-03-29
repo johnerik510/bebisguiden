@@ -1,0 +1,256 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Amningskudde' },
+];
+
+const products = [
+  {
+    name: 'Boppy Original',
+    badge: 'Bäst i test',
+    price: '499 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Form': 'C-form',
+      'Tvättbart överdrag': 'Ja',
+      'Fästs runt midjan': 'Nej',
+      'Material': 'Bomull',
+      'Pris': '499 kr',
+    },
+  },
+  {
+    name: 'My Brest Friend Original',
+    badge: 'Bäst stöd',
+    price: '649 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Form': 'Flat med ryggstöd',
+      'Tvättbart överdrag': 'Ja',
+      'Fästs runt midjan': 'Ja',
+      'Material': 'Bomull/polyester',
+      'Pris': '649 kr',
+    },
+  },
+  {
+    name: 'Leachco Cuddle-U',
+    badge: 'Mest mångsidigt',
+    price: '549 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Form': 'U-form',
+      'Tvättbart överdrag': 'Ja',
+      'Fästs runt midjan': 'Nej',
+      'Material': 'Bomull',
+      'Pris': '549 kr',
+    },
+  },
+  {
+    name: 'bbhugme Nursing Pillow',
+    badge: 'Bäst design',
+    price: '799 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Form': 'Ergonomisk båge',
+      'Tvättbart överdrag': 'Ja',
+      'Fästs runt midjan': 'Ja',
+      'Material': 'Ekologisk bomull',
+      'Pris': '799 kr',
+    },
+  },
+  {
+    name: 'Cebababy Flexi',
+    badge: 'Bäst pris',
+    price: '449 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Form': 'C-form justerbar',
+      'Tvättbart överdrag': 'Ja',
+      'Fästs runt midjan': 'Ja',
+      'Material': 'Polyester',
+      'Pris': '449 kr',
+    },
+  },
+];
+
+const featureLabels = ['Form', 'Tvättbart överdrag', 'Fästs runt midjan', 'Material', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken amningskudde är bäst för nybörjare?',
+    answer: 'Boppy Original är ett utmärkt förstaval — den är välbeprövad, finns i många butiker och är lätt att använda direkt. My Brest Friend Original rekommenderas ofta av laktationskonsulenter för sin stabila platta yta och remmen som låser kudden på plats. Prova gärna båda i butik om möjligt, då känslan av passform varierar från person till person.',
+  },
+  {
+    question: 'Behöver jag en amningskudde om jag flaskmatar?',
+    answer: 'Ja, en amningskudde är minst lika användbar vid flaskmating. Den avlastar armar och axlar och haller bebisen i en bekväm vinkel oavsett om mjölken kommer från bröstet eller en flaska. Leachco Cuddle-U är extra praktisk eftersom den även fungerar som sittestöd när bebisen börjar sitta upp.',
+  },
+  {
+    question: 'Hur länge används en amningskudde?',
+    answer: 'Intensivast under de första 3–6 månaderna då bebisen äter ofta. Många ammar med kudde upp till 12 månader. Modeller som Leachco Cuddle-U och bbhugme kan återanvändas som babystöd och sittringskudde efter att amningsperioden är slut, vilket förlänger livslängden avsevärt.',
+  },
+  {
+    question: 'Är bbhugme värd det högre priset?',
+    answer: 'bbhugme Nursing Pillow kostar mer men är tillverkad av ekologisk bomull och har ett ergonomiskt utformat stöd som många mammor uppskattar, särskilt vid längre amningssessioner. Den nordiska designen är även estetiskt tilltalande. Om budget inte är avgörande och du värdesätter materialval och ergonomi är den väl värd priset.',
+  },
+  {
+    question: 'Vad är skillnaden mellan C-form och U-form?',
+    answer: 'En C-formad kudde (Boppy) placeras runt midjan och stödjer bebisen framtill. En U-formad kudde (Leachco Cuddle-U) omsluter kroppen mer och ger stöd åt både vänster och höger sida — bra om du byter sida ofta under amningen. My Brest Friend har en flat yta med en rem som fästs runt midjan, vilket ger ett stabilt och oförskjutbart stöd.',
+  },
+  {
+    question: 'Kan man tvätta amningskudden?',
+    answer: 'Alla amningskuddar i vår lista har avtagbart och tvättbart överdrag — välj alltid en modell med det. Överdragen tvättas vanligen i 40–60 grader. Inre kudden bör luftas regelbundet och tvättas enligt tillverkarens anvisningar (ofta 30 grader). bbhugme och Boppy Original har övertygande bra material som tål upprepad tvätt utan att tappa form.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa amningskudde 2026 — test & jämförelse"
+  description="Vi testar de bästa amningskuddarna 2026. En bra amningskudde avlastar armar och rygg — se vilken som passar dig bäst."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/amning/amningskudde/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En bra amningskudde avlastar axlar, nacke och armar under långa amningsstunder och håller bebisen i rätt höjd. Vi har testat och jämfört de fem bästa amningskuddarna 2026 — från klassiska Boppy till ergonomiska bbhugme.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Boppy Original</strong> är bäst totalt. <strong>My Brest Friend Original</strong> är bäst för stabilt stöd. <strong>bbhugme Nursing Pillow</strong> är bäst i design och ergonomi.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — amningskuddar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Boppy Original"
+      badge="Bäst i test"
+      price="499 kr"
+      rating={4.7}
+      pros={['Klassisk C-form som passar de flesta', 'Avtagbart tvättbart överdrag ingår', 'Lätt att byta amningsposition', 'Bred tillgänglighet i svenska butiker']}
+      cons={['Rör sig lättare jämfört med My Brest Friend', 'Fästs inte runt midjan — kan glida']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="My Brest Friend Original"
+      badge="Bäst stöd"
+      price="649 kr"
+      rating={4.6}
+      pros={['Rem som fästs runt midjan — kudden rör sig inte', 'Flat yta ger stabilt stöd för bebisen', 'Rekommenderas av laktationskonsulenter', 'Ficka för telefon och tillbehör']}
+      cons={['Tar mer plats att förvara', 'Något svårare att ta på och av snabbt', 'Pris i överkant']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Leachco Cuddle-U"
+      badge="Mest mångsidigt"
+      price="549 kr"
+      rating={4.4}
+      pros={['U-form stödjer båda sidor vid byte av bröst', 'Fungerar även som babystöd och sittring', 'Tvättbart överdrag', 'Bra för föräldrar som byter sida ofta']}
+      cons={['Större och tar mer plats', 'Fästs inte runt midjan', 'Något sämre kant-stöd än Boppy']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="bbhugme Nursing Pillow"
+      badge="Bäst design"
+      price="799 kr"
+      rating={4.5}
+      pros={['Nordisk ergonomisk design', 'Ekologisk bomull', 'Rem som fästs runt midjan', 'Kan användas under graviditet som kroppskudde']}
+      cons={['Dyraste alternativet', 'Svårare att hitta i butik utanför Skandinavien', 'Överdrivet stor för korta amningsstunder']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cebababy Flexi"
+      badge="Bäst pris"
+      price="449 kr"
+      rating={4.3}
+      pros={['Lägsta priset i testet', 'Justerbar fastspänning runt midjan', 'Avtagbart tvättbart överdrag', 'Bra prisvärt förstaval']}
+      cons={['Polyesterfyllning — inte lika lyxig känsla', 'Formstabiliteten sämre över tid', 'Färre varianter och modeller']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Så väljer du rätt amningskudde</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Fästs runt midjan eller inte?</h3>
+    <p>Kuddar som fästs runt midjan med rem (My Brest Friend, bbhugme, Cebababy Flexi) sitter stadigt på plats oavsett hur du rör dig. C-formade kuddar (Boppy) är lättare att ta av och på snabbt men kan glida om du ändrar position. Om du ammar länge och byter position ofta är en rem ett stort plus.</p>
+
+    <h3>2. Flat yta eller C-form?</h3>
+    <p>En flat yta (My Brest Friend) ger bebisen ett jämnt stöd och minskar risken att bebisen rullar. En C-form (Boppy) är mer flexibel och lättare att använda i olika positioner. U-form (Leachco) stödjer båda sidorna och är bäst om du regelbundet byter bröst under samma amningsstund.</p>
+
+    <h3>3. Material — bomull eller polyester?</h3>
+    <p>Bomullskuddar andas bättre och känns mjukare mot huden. Ekologisk bomull (bbhugme) är det mest hållbara alternativet. Polyester (Cebababy Flexi) är billigare men håller inte formen lika bra över tid och andas sämre. Välj bomull om du ammar länge och intensivt.</p>
+
+    <h3>4. Mångsidighet efter amningsperioden</h3>
+    <p>Leachco Cuddle-U och bbhugme kan användas som babystöd när bebisen börjar sitta upp, vilket förlänger produktens livslängd. Om du planerar att ha fler barn är en hållbar kudde med lång livslängd ett bra val.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/amning/" class="text-accent hover:underline">Amning & matning 2026 — komplett guide</a></li>
+      <li><a href="/amning/brostpump/" class="text-accent hover:underline">Bästa bröstpumpen 2026 — elektrisk och manuell</a></li>
+      <li><a href="/amning/nappflaska/" class="text-accent hover:underline">Bästa nappflaskan 2026 — for kombinationsmatning</a></li>
+      <li><a href="/sakerhet/" class="text-accent hover:underline">Babysäkerhet hemma — komplett guide 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Boppy Original',
+      description: 'Klassisk C-formad amningskudde med avtagbart tvättbart överdrag. Ger stöd till armar och bebis under amning. Ca 499 kr.',
+      brand: 'Boppy',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 499, url: '#', seller: 'Butik' }],
+    },
+    {
+      name: 'My Brest Friend Original',
+      description: 'Amningskudde med rem som fästs runt midjan för stabilt stöd. Flat yta och ficka för tillbehör. Rekommenderas av laktationskonsulenter. Ca 649 kr.',
+      brand: 'My Brest Friend',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 649, url: '#', seller: 'Butik' }],
+    },
+    {
+      name: 'bbhugme Nursing Pillow',
+      description: 'Ergonomisk amningskudde i nordisk design tillverkad av ekologisk bomull. Fästs runt midjan. Kan användas som graviditetskudde. Ca 799 kr.',
+      brand: 'bbhugme',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 799, url: '#', seller: 'Butik' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris — Boppy Original"
+  productName="Bäst i test 2026"
+/>

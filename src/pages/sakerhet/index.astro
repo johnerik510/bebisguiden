@@ -1,0 +1,247 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babysäkerhet' },
+];
+
+const faqItems = [
+  {
+    question: 'När ska man börja babyproofing?',
+    answer: 'Börja babyproofing senast när bebisen börjar krypa, vanligtvis vid 6–9 månaders ålder. Många föräldrar startar redan vid 3–4 månader för att ha allt på plats i god tid. Fokusera först på de mest kritiska riskerna: eluttag, trappor och farliga kemikalier.',
+  },
+  {
+    question: 'Vilken säkerhetsutrustning är viktigast att köpa?',
+    answer: 'De viktigaste säkerhetsprodukterna är: (1) säkerhetsgrind för trappor och farliga rum, (2) elskydd för alla eluttag, (3) skåplås för skåp med kemikalier och läkemedel, (4) hörnskydd på vassa möbelkanter och (5) rökdetektor i varje rum. Säkerhetsgrinden är absolut viktigast om du har trappor i hemmet.',
+  },
+  {
+    question: 'Hur länge ska ett barn sitta bakåtvänt i bilbarnstol?',
+    answer: 'Barn bör sitta bakåtvända så länge som möjligt — minst tills de väger 9 kg och helst tills de når vikts- eller höjdgränsen för bakåtvänd stolposition. Bakåtvänd placering är betydligt säkrare vid frontalkrock. Läs mer i vår guide om bakåtvänd bilbarnstol.',
+  },
+  {
+    question: 'Vilken temperatur ska badvattnet ha för bebis?',
+    answer: 'Badvattnet ska vara 37–38 grader Celsius — kroppsvarm temperatur. Testa alltid med armbågen eller handleden, inte handen. Använd gärna ett badtermometer för exakt mätning. Bebisens hud är känsligare och brännskador kan uppstå snabbt vid för varmt vatten.',
+  },
+  {
+    question: 'Vad är CE-märkning och varför är det viktigt för leksaker?',
+    answer: 'CE-märkning innebär att leksaken uppfyller EU:s säkerhetskrav. Alla leksaker som säljs i EU ska vara CE-märkta. Kontrollera alltid CE-märket, åldersrekommendationen (ofta 0+ eller 3+) och varningar om kvävningsrisk för små delar. Köp leksaker från seriösa butiker — kopior saknar ofta korrekt CE-märkning.',
+  },
+  {
+    question: 'Hur förvarar man kemikalier och läkemedel säkert med barn i hemmet?',
+    answer: 'Förvara alltid kemikalier och läkemedel i originalbehållare med barnlås. Placera dem i låsta skåp högt upp — utom synhåll och räckhåll. Töm aldrig om kemikalier i andra behållare, till exempel läskflaskor. Ha giftinformationscentralens nummer (010-456 67 00) sparat i mobilen.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Babysäkerhet hemma — komplett guide 2026"
+  description="Komplett guide om babysäkerhet hemma 2026. Checklista för babyproofing, säkra leksaker, bilbarnstolar och sovmiljö."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/sakerhet/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Att säkra hemmet för en bebis eller ett litet barn är ett av de viktigaste stegen som ny förälder. Den här guiden täcker allt från sovmiljö och bilsäkerhet till kemikalier, leksaker och brandskydd — med konkreta råd och checklistor.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Kom igång direkt</p>
+    <p class="text-sm text-text-light">Börja med de tre viktigaste åtgärderna: sätt upp <strong>säkerhetsgrind vid trappor</strong>, täck <strong>alla eluttag</strong> och lås <strong>skåp med kemikalier</strong>. Resten av guiden hjälper dig att täcka resten systematiskt.</p>
+  </div>
+
+  <!-- Sovmiljö -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">1. Sovmiljö — säker sömn för bebis</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-6">
+    <p>Sovmiljön är den viktigaste säkerhetsfrågan for nyfödda och bebisar under 12 månader. Plötslig spädbarnsdöd (SIDS) är sällsynt men kan förebyggas med rätt sovmiljö.</p>
+    <ul>
+      <li><strong>Lägg alltid bebisen på rygg</strong> — aldrig på magen eller sidan under de första 12 månaderna.</li>
+      <li><strong>Hårt och plant underlag</strong> — undvik mjuka madrasser, kuddar, sängkläder och bonkbyxor i sängen.</li>
+      <li><strong>Sovsäck istället för täcke</strong> — sovsäcken kan inte hamna över bebisens ansikte.</li>
+      <li><strong>Sov i samma rum, inte i samma säng</strong> — eget underlag bredvid föräldrars säng är idealt de första 6 månaderna.</li>
+      <li><strong>Temperatur 16–20 grader</strong> — bebisen ska inte svettas under natten.</li>
+      <li><strong>Inga lösa föremål i sängen</strong> — inga mjukdjur, bolster eller tillbehör.</li>
+    </ul>
+    <p>Läs vår fördjupade guide: <a href="/guider/saker-sovmiljo/" class="text-accent hover:underline">Säker sovmiljö för bebis — komplett guide</a>.</p>
+  </div>
+
+  <!-- Bilsäkerhet -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">2. Bilsäkerhet — rätt bilbarnstol från dag ett</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-6">
+    <p>Bilbarnstolen är en av de viktigaste säkerhetsprodukterna du köper. En korrekt installerad och anpassad bilbarnstol räddar liv vid olyckor.</p>
+    <ul>
+      <li><strong>Bakåtvänd så länge som möjligt</strong> — minst tills barnet väger 9 kg, helst tills vikts- eller höjdgräns nås.</li>
+      <li><strong>Rätt grupp för vikt och ålder</strong> — läs specifikationerna noga och följ tillverkarens gränsvärden.</li>
+      <li><strong>Korrekt installation</strong> — Isofix eller säkerhetsbälte, alltid enligt manual. Be butiken demonstrera om du är osäker.</li>
+      <li><strong>Aldrig begagnad utan komplett historik</strong> — en krockskadd stol ser hel ut men skyddar inte.</li>
+      <li><strong>Bältets passform</strong> — bältet ska ligga plant mot kroppen, inga tjocka ytterkläder under bältet.</li>
+    </ul>
+    <p>Se vår jämförelse: <a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — test och jämförelse</a>. Läs även: <a href="/guider/bakatvand-hur-lange/" class="text-accent hover:underline">Hur länge ska barnet sitta bakåtvänt?</a></p>
+  </div>
+
+  <!-- Hemmet -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">3. Hemmet — babyproofing rum för rum</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-6">
+    <p>När bebisen börjar krypa och resa sig ökar risken for olyckor i hemmet drastiskt. Gå igenom varje rum systematiskt.</p>
+
+    <h3>Trappor och dörrar</h3>
+    <ul>
+      <li><strong>Säkerhetsgrind</strong> vid toppen och botten av alla trappor — grind överst ska monteras i väggen, aldrig tryckmonteras.</li>
+      <li>Dörrspärrar på dörrar till farliga utrymmen (tvättstuga, badrum, garage).</li>
+    </ul>
+
+    <h3>Eluttag och kablar</h3>
+    <ul>
+      <li><strong>Elskydd</strong> i alla eluttag som inte används — välj barnlåsade uttag med vridmekanism.</li>
+      <li>Kablar från golvlampor och laddare ska döljas eller fästas — kvävnings- och strypningsrisk.</li>
+    </ul>
+
+    <h3>Möbler och hörn</h3>
+    <ul>
+      <li><strong>Hörnskydd</strong> på alla skarpa kanter på soffbord, TV-bänkar och bord.</li>
+      <li><strong>Förankra tunga möbler</strong> i väggen — hyllor, bokhyllor och TV-skåp kan välta om barnet klättrar på dem.</li>
+      <li>Sätt en halkfri matta under mattor som kan glida.</li>
+    </ul>
+
+    <h3>Skåp och lådor</h3>
+    <ul>
+      <li><strong>Skåplås</strong> på alla undre skåp med farligt innehåll (diskmedel, knivlåda, läkemedel).</li>
+      <li>Lådbroms på lådor med skarpa föremål.</li>
+    </ul>
+  </div>
+
+  <!-- Badrum -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">4. Badrum — drunkningsrisk och brännskador</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-6">
+    <p>Badrummet är ett av de farligaste rummen i hemmet for bebisar och småbarn. Drunknings- och brännskaderisk är de två största farorna.</p>
+    <ul>
+      <li><strong>Lämna aldrig bebisen ensam vid vatten</strong> — ett barn kan drunkna i några centimeter vatten på under 30 sekunder.</li>
+      <li><strong>Töm badkaret direkt</strong> efter bad — täm aldrig vattnet med bebisen i rummet.</li>
+      <li><strong>Badvattnet 37–38 grader</strong> — testa med armbågen, använd gärna termometer.</li>
+      <li>Sänk varmvattenberedarens temperatur till max 48–50 grader for att minska brännskaderisk.</li>
+      <li><strong>Halkskydd i badkaret</strong> — använd halkfri badbotten eller halkskyddsmatta.</li>
+      <li>Förvara alla läkemedel och kemikalier i låst skåp.</li>
+    </ul>
+  </div>
+
+  <!-- Leksaker -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">5. Leksaker — säkra val for varje ålder</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-6">
+    <p>Leksaker orsakar tusentals barnolyckor varje år, de flesta på grund av kvävningsrisk från lösa delar.</p>
+    <ul>
+      <li><strong>Åldersrekommendation</strong> — följ alltid märkningen. "0+" och "3+" är inte bara försiktighetsåtgärder — de är baserade på verkliga riskanalyser.</li>
+      <li><strong>CE-märkning</strong> — kontrollera alltid att leksaken är CE-märkt. Billiga kopior online saknar ofta korrekt märkning.</li>
+      <li><strong>Kvävningsrisk</strong> — leksaker och delar mindre än 3,5 cm i diameter är kvävningsrisk for barn under 3 år. Tumregel: om föremålet ryms i ett toarullerör är det farligt.</li>
+      <li><strong>Mjuka leksaker for nyfödda</strong> — välj mjukdjur utan lösa delar som ögon, knappar eller band.</li>
+      <li><strong>Kontrollera regelbundet</strong> — undersök leksaker for sprickor, lösa delar och slitage. Kassera skadade leksaker direkt.</li>
+    </ul>
+  </div>
+
+  <!-- Förgiftning -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">6. Förgiftning — kemikalier och läkemedel</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-6">
+    <p>Förgiftning är en av de vanligaste olycksfallsorsakerna hos barn 1–4 år. De flesta förgiftningar sker hemma och är förebyggbara.</p>
+    <ul>
+      <li><strong>Förvara ALLTID i originalbehållare</strong> — töm aldrig om kemikalier i läskflaskor eller andra behållare.</li>
+      <li><strong>Låst skåp högt upp</strong> — kemikalier och läkemedel ska förvaras utom synhåll och räckhåll, gärna i låst skåp.</li>
+      <li><strong>Barnlåsade förpackningar</strong> — köp alltid läkemedel med barnlåsad kork.</li>
+      <li><strong>Växter</strong> — många krukväxter är giftiga. Kontrollera alla växter i hemmet mot Giftinformationscentralens lista.</li>
+      <li><strong>Spara numret:</strong> Giftinformationscentralen: <strong>010-456 67 00</strong> (dygnet runt).</li>
+    </ul>
+  </div>
+
+  <!-- Brand -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">7. Brand och brandsäkerhet</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-6">
+    <p>En fungerande brandvarnare är livsavgörande. Barn sover djupare och vaknar inte alltid vid brandlarmsljud.</p>
+    <ul>
+      <li><strong>Rökdetektor i varje rum</strong> — minst en per våningsplan, alltid i sovrummen och hallen.</li>
+      <li><strong>Testa månatligen</strong> — tryck testknappen varje månad. Byt batteri varje år, oavsett om varningslampan fortfarande lyser.</li>
+      <li><strong>Utrymningsplan</strong> — gå igenom med familjen var utgångarna är och var ni ska samlas utanför huset.</li>
+      <li>Förvara tändstickor och tändare utom räckhåll — låst skåp rekommenderas.</li>
+      <li><strong>Brandsläckare</strong> — ha en hemma, lär dig hur den används. Placera den tillgängligt i köket.</li>
+    </ul>
+  </div>
+
+  <!-- Säkerhetsprodukter -->
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Rekommenderade säkerhetsprodukter</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Lindam Easy Fit Plus Säkerhetsgrind"
+      badge="Bäst för trappor"
+      price="649 kr"
+      rating={4.7}
+      pros={['Monteras i väggen — trygg för trapptopp', 'Öppnas med en hand', 'Justerbar bredd 76–82 cm', 'Stark metallkonstruktion']}
+      cons={['Kräver skruvning i vägg', 'Något dyrare än tryckmonterade modeller']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Reer Barnstängsel / Lekstängsel"
+      badge="Bäst lekstängsel"
+      price="899 kr"
+      rating={4.5}
+      pros={['Skapar säker lekyta', 'Justerbar och utbyggbar', 'Enkel att montera och flytta', 'Kan användas inomhus och utomhus']}
+      cons={['Tar stor golvyta', 'Barn kan klättra över vid äldre ålder']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Reer ElektroPure Elskydd (10-pack)"
+      badge="Bäst elskydd"
+      price="129 kr"
+      rating={4.6}
+      pros={['Barnlåst vridmekanism', 'Passar svenska och europeiska uttag', 'Osynliga när de sitter i', 'Paket om 10 stycken']}
+      cons={['Kan vara svåra att ta ut for vuxna med långa naglar', 'Passar inte alla äldre uttag']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="BabyDan Hörnskydd (8-pack)"
+      badge="Bäst hörnskydd"
+      price="99 kr"
+      rating={4.4}
+      pros={['Mjukt och stötdämpande material', 'Självhäftande — sitter stabilt', 'Diskret design', 'Paket om 8 stycken']}
+      cons={['Kan lossna på lackat trä', 'Barn kan peta bort dem vid äldre ålder']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Safety 1st Skåplås (6-pack)"
+      badge="Bäst skåplås"
+      price="149 kr"
+      rating={4.5}
+      pros={['Monteras inuti skåpluckan — osynlig utifrån', 'Enkel tryckmekanism for vuxna', 'Passar de flesta skåpluckor', 'Paket om 6 stycken']}
+      cons={['Kräver skruvning', 'Passar inte alla luckor med tunn kant']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/guider/saker-sovmiljo/" class="text-accent hover:underline">Säker sovmiljö for bebis — komplett guide</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — test och jämförelse</a></li>
+      <li><a href="/guider/bakatvand-hur-lange/" class="text-accent hover:underline">Hur länge ska barnet sitta bakåtvänt?</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 — ljud, video och WiFi testat</a></li>
+      <li><a href="/amning/amningskudde/" class="text-accent hover:underline">Bästa amningskudden 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>
