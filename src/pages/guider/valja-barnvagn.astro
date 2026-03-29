@@ -1,0 +1,148 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Välja barnvagn' },
+];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan duovagn och sittvagn?',
+    answer: 'En duovagn har både liggdel för nyfödda och sittdel för när barnet är äldre. Duovagnen är dyrare men täcker barn från födseln upp till 3–4 år. En sittvagn (sulky) har bara sittdel och passar från ca 6 månader. Många familjer köper en duovagn till nyfödda och kompletterar med en lätt sittvagn när barnet är 1–2 år.',
+  },
+  {
+    question: 'Vilka hjul är bäst — luft eller gummi?',
+    answer: 'Luftfyllda hjul ger bättre stötdämpning och komfort på ojämnt underlag, men kräver underhåll och kan punktera. Skumgummifyllda hjul (EVA) är underhållsfria och punkteringssäkra men ger något sämre komfort. För stadsbruk räcker gummifyllda hjul. Promenerar du mycket i skog, på grus eller i snö är lufthjul ett bättre val.',
+  },
+  {
+    question: 'Hur tung bör barnvagnen vara?',
+    answer: 'Vikten beror på hur du ska använda vagnen. Bor du i lägenhet utan hiss och ska bära den ofta, välj en lätt vagn (under 10 kg chassi). Ska du mest gå promenader i kvarteret är stabilitet viktigare än låg vikt. Duovagnar väger typiskt 12–15 kg chassi. Sittvagnar kan väga 5–8 kg. Kompakta resevagnar kan väga under 6 kg.',
+  },
+  {
+    question: 'Kan jag använda barnvagnen till nyfödd direkt?',
+    answer: 'Ja, om vagnen har en liggdel som ger ett fullt plant läge (0–15 graders lutning). Nyfödda saknar muskelkraft i nacken och ryggraden och ska ligga plant. Många duovagnar säljs med liggdel som tillval — kontrollera att den är inkluderad. En sittvagn utan liggdel är inte lämplig för nyfödda. Läs mer om <a href="/barnvagnar/nyfodda/" class="text-accent hover:underline">barnvagnar till nyfödda</a>.',
+  },
+  {
+    question: 'Vad är en syskonvagn?',
+    answer: 'En syskonvagn är en dubbelvagn med plats för två barn, antingen sida vid sida eller i rad. Sida-vid-sida-vagnar är bredare (ofta 80+ cm) vilket kan vara svårt i trånga butiksdörrar. Vagnar i rad är smalare men längre. En syskonvagn är det rätta valet om du har barn med litet åldersspann, exempelvis tvillingar eller syskon med 1,5–3 års mellanrum.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Så väljer du rätt barnvagn — komplett köpguide 2026"
+  description="Komplett guide för att välja barnvagn 2026. Vi jämför sittvagnar, liggvagnar, duovagnar och syskonvagnar — och hjälper dig hitta rätt."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/guider/valja-barnvagn/"
+  updatedDate="2026-03-29"
+  showDisclaimer={false}
+>
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    Barnvagnen är ett av de största och mest användbara köpen du gör som förälder. Men utbudet är överväldigande — duovagnar, sittvagnar, terrängvagnar, resevagnar, syskonvagnar. Den här guiden hjälper dig sortera igenom alternativen och hitta en vagn som faktiskt passar din vardag.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Snabbsvar</p>
+    <p class="text-sm text-text-light">Till nyfödd behöver du en <strong>duovagn med liggdel</strong>. Bor du i stad: prioritera låg vikt och kompakt ihopfälld storlek. Bor du på landet: prioritera stora hjul och bra fjädring. Se vår <a href="/barnvagnar/" class="text-accent hover:underline">topplista över bästa barnvagnarna 2026</a>.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Typer av barnvagnar — vilken passar dig?</h2>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">Duovagn (kombivagn)</h3>
+  <p class="text-text-light mb-3">
+    En duovagn har ett chassi som passar både liggdel och sittdel. Liggdelen används från födseln till ca 6–9 månader, sittdelen därefter upp till 3–4 år. Det är det vanligaste valet för förstagångsföräldrar eftersom vagnen täcker hela den period barn brukar åka barnvagn.
+  </p>
+  <p class="text-text-light mb-4">
+    Nackdelarna är pris och vikt — duovagnar är dyrare och tyngre. Se <a href="/barnvagnar/duovagn/" class="text-accent hover:underline">bästa duovagnar 2026</a> för konkreta rekommendationer.
+  </p>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">Sittvagn (sulky)</h3>
+  <p class="text-text-light mb-3">
+    En sittvagn har bara sittdel och passar barn från ca 6 månader (när de sitter stadigt). Sittvagnar är generellt lättare, mer kompakta och billigare än duovagnar. De är perfekta som "andravagn" för resor eller när nyfödda perioden är över.
+  </p>
+  <p class="text-text-light mb-4">
+    Många föräldrar köper en duovagn till nyfödda och en lätt sittvagn när barnet är 12–18 månader. Kolla vår <a href="/barnvagnar/sittvagn/" class="text-accent hover:underline">guide för sittvagnar och sulkys 2026</a>.
+  </p>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">Syskonvagn</h3>
+  <p class="text-text-light mb-3">
+    Om du har eller väntar syskon med litet åldersspann (under 3–4 år) är en syskonvagn att överväga. Det finns modeller sida vid sida och i tandem (i rad). Sida-vid-sida-vagnar är ofta bredare än 80 cm och passar inte alltid i butiksdörrar. Tandemvagnar är smalare men längre. Se <a href="/barnvagnar/syskonvagn/" class="text-accent hover:underline">bästa syskonvagnar 2026</a> för jämförelser.
+  </p>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">Terrängvagn</h3>
+  <p class="text-text-light mb-4">
+    Terrängvagnar är byggda för ojämnt underlag: stora luftfyllda hjul, robust ram och bra fjädring. De är tyngre och skrymmande men klarar skog, grus och snö utan problem. Om du bor på landsbygden eller är aktiv utomhus är en terrängvagn värd prisskillnaden.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Hjulval: luft, skumgummi eller fast gummi</h2>
+  <p class="text-text-light mb-3">
+    Hjultypen påverkar körkomfort, vikt och underhållsbehov:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-6">
+    <li><strong>Luftfyllda hjul:</strong> Bäst stötdämpning och komfort. Kräver pumping och kan punktera. Bra val för aktiva familjer och ojämnt underlag.</li>
+    <li><strong>Skumgummifyllda hjul (EVA):</strong> Underhållsfria, punkteringssäkra, något tyngre. Vanliga på stadsvagnar i premiumsegmentet.</li>
+    <li><strong>Fasta gummihjul:</strong> Lätta och underhållsfria, sämre stötdämpning. Vanliga på lätta sittvagnar.</li>
+  </ul>
+  <p class="text-text-light mb-6">
+    För stadsbruk på asfalt räcker skumgummifyllda hjul gott. Ska vagnen användas på grusvägar, i snö eller i terräng är lufthjul att föredra.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Stadsvagn vs terrängvagn — vad passar din vardag?</h2>
+  <p class="text-text-light mb-3">
+    Fråga dig hur du faktiskt kommer att använda vagnen. De flesta föräldrar i stad behöver en vagn som:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-3">
+    <li>Ryms i bilens bagageutrymme (mät bilen innan köp)</li>
+    <li>Går att ta med i kollektivtrafik</li>
+    <li>Fälls ihop snabbt, gärna med en hand</li>
+    <li>Väger lagom för att bäras i trappor</li>
+  </ul>
+  <p class="text-text-light mb-6">
+    Bor du på landet eller är aktiv friluftsmänniska behöver du istället en vagn med stora hjul, bra fjädring och hög chassiklarans. Undvika kompromisslösningar — en vagn som är "bra på allt" är ofta inte riktigt bra på något.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vikt och ihopfällning</h2>
+  <p class="text-text-light mb-3">
+    Vikten är en av de mest underskattade faktorerna. En duovagn som väger 14 kg chassi är helt OK om du aldrig behöver lyfta den — men om du bor i lägenhet utan hiss och ska in på tunnelbanan tre gånger i veckan är varje kilo relevant.
+  </p>
+  <p class="text-text-light mb-3">
+    Kontrollera alltid den ihopfällda dimensionen mot ditt bilbagageutrymme. Det är ett vanligt misstag att köpa en vagn som inte får plats i bilen. Exempelstorlekar ihopfälld:
+  </p>
+  <ul class="list-disc pl-6 space-y-1 text-text-light mb-6">
+    <li>Bugaboo Fox 5: 89 × 61 × 34 cm</li>
+    <li>Emmaljunga NXT90: 100 × 62 × 75 cm</li>
+    <li>Babyzen YOYO 2: 52 × 45 × 18 cm (kabinbagage)</li>
+  </ul>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Barnvagn till nyfödd — vad ska du tänka på?</h2>
+  <p class="text-text-light mb-3">
+    Till en nyfödd krävs en liggdel som ger ett plant eller mycket flackt läge. Nyfödda behöver ligga plant för att ryggraden och luftvägarna ska utvecklas rätt. Kontrollera att liggdelens botten är fast — inte hängande och sagande — och att liggdelen är ventilerad för sommarbruk.
+  </p>
+  <p class="text-text-light mb-6">
+    Läs vår detaljerade guide om <a href="/barnvagnar/nyfodda/" class="text-accent hover:underline">barnvagnar till nyfödda 2026</a> för specifika rekommendationer på liggdelar och nyfödda-anpassade duovagnar.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Travel system — barnvagn och bilbarnstol ihop</h2>
+  <p class="text-text-light mb-3">
+    Många duovagnar kan kombineras med en kompatibel babyskydd (grupp 0+ bilbarnstol) som klickar direkt på vagnchassit. Det gör att du kan flytta ett sovande nyfött barn från bil till vagn utan att väcka det. Det kallas travel system och är praktiskt under barnets första månader.
+  </p>
+  <p class="text-text-light mb-6">
+    Kontrollera alltid kompatibiliteten specificerat av tillverkaren — inte alla kombinationer fungerar, även om adaptrarna ser likadana ut. Cybex Priam 4 kombineras exempelvis med Cybex Cloud T, medan Bugaboo Fox 5 har egna adaptrar för flera märken.
+  </p>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Se även</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – topplista och test</a></li>
+      <li><a href="/barnvagnar/nyfodda/" class="text-accent hover:underline">Barnvagn till nyfödd 2026</a></li>
+      <li><a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Bästa duovagnen 2026</a></li>
+      <li><a href="/barnvagnar/sittvagn/" class="text-accent hover:underline">Bästa sittvagnen 2026</a></li>
+      <li><a href="/barnvagnar/syskonvagn/" class="text-accent hover:underline">Bästa syskonvagnen 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>

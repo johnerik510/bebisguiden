@@ -1,0 +1,131 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Välja babyvakt' },
+];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan DECT och WiFi-babyvakt?',
+    answer: 'En DECT-babyvakt använder ett dedikerat digitalt radioprotokoll och kommunicerar direkt mellan sändarenheten och förälderenheten — utan internet. Den är krypterad, har låg latens och fungerar även vid strömavbrott om förälderenheten är batteriladdad. En WiFi-babyvakt skickar ljud och bild via ditt hemnätverk till en app i mobilen. Fördelen är att du kan övervaka barnet var du än är. Nackdelen är att den kräver fungerande WiFi och ett moln-/serverkonto.',
+  },
+  {
+    question: 'Är WiFi-babyvakter säkra?',
+    answer: 'Välrenommerade WiFi-babyvakter från tillverkare som Nanit och Owlet krypterar datatrafiken och lagrar inspelningar med lösenordsskyddade konton. Risken finns att obehöriga kan komma åt en dåligt säkrad enhet via internet — välj alltid märken med stark kryptering, aktivera tvåfaktorsautentisering och håll firmware uppdaterat. DECT-babyvakter är isolerade från internet och har en annan typ av säkerhet.',
+  },
+  {
+    question: 'Hur stor räckvidd behöver min babyvakt ha?',
+    answer: 'För ett normalt hem (villa eller lägenhet) räcker 200–300 meters räckvidd (DECT) med råge. Problemet är sällan räckvidden i sig utan väggar, betong och störningar som reducerar den verkliga räckvidden. DECT-babyvakter uppger ofta räckvidd "utomhus fri sikt" — inomhus kan den effektiva räckvidden vara 50–70 % av det uppgivna värdet.',
+  },
+  {
+    question: 'Behöver jag en videobabyvakt?',
+    answer: 'Det beror på dina behov. En ljudbabyvakt räcker för att höra när barnet vaknar. En videobabyvakt låter dig se om barnet verkligen är vaken eller bara mumlar i sömnen — vilket minskar onödiga besök. Många föräldrar upplever videofunktionen som en stor trygghet. Moderna videobabyvakter med nattläge, rörelsedetektor och temperaturmätning ger ett komplett överblick.',
+  },
+  {
+    question: 'Kan jag använda mobilen som babyvakt?',
+    answer: 'Ja, det finns appar som gör just det. Men dedikerade babyvakter (DECT, video eller WiFi) är generellt mer pålitliga, har bättre batteritid, är enklare att använda och har funktioner specifikt utformade för babyövervakning. En telefon som babyvakt drar batteri, kan störas av samtal och notiser, och kräver att du har en extra telefon att lägga i barnets rum.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Så väljer du rätt babyvakt — komplett köpguide 2026"
+  description="Ska du välja DECT-, video- eller WiFi-babyvakt? Vi jämför typerna och hjälper dig hitta rätt babyvakt för ditt hem."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/guider/valja-babyvakt/"
+  updatedDate="2026-03-29"
+  showDisclaimer={false}
+>
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    En babyvakt ger trygghet när du inte är i samma rum som ditt sovande barn. Men valet är inte självklart — DECT, analog, video, WiFi, app-kopplad — teknikerna skiljer sig i räckvidd, säkerhet och funktioner. Den här guiden reder ut vad som faktiskt spelar roll.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Snabbsvar</p>
+    <p class="text-sm text-text-light">Vill du ha enkel och pålitlig övervakning utan internet: välj <strong>DECT</strong>. Vill du se och höra barnet via mobilen hemifrån: välj <strong>WiFi-video</strong>. Se vår <a href="/babyvakter/" class="text-accent hover:underline">topplista över bästa babyvakter 2026</a>.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">De fyra typerna av babyvakter</h2>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">1. Analog babyvakt</h3>
+  <p class="text-text-light mb-4">
+    Den enklaste formen — en mikrofon i barnets rum och en mottagare hos föräldern. Analoger babyvakter är billiga och enkla att använda, men de är inte krypterade och kan störas av grannar med liknande frekvens eller av mikrovågsugnar och WiFi-routrar. I moderna hem med mycket trådlös teknik kan de ge störningsproblem. De passar enklast när du bara vill lyssna och bor ensam i huset.
+  </p>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">2. DECT-babyvakt</h3>
+  <p class="text-text-light mb-3">
+    DECT (Digital Enhanced Cordless Telecommunications) är standarden för de flesta moderna trådlösa telefoner och babyvakter. Signalen är digital, krypterad och störningsfri. En DECT-babyvakt kommunicerar direkt mellan sändar- och mottagarenheten utan att gå via internet — vilket ger låg latens och hög pålitlighet.
+  </p>
+  <p class="text-text-light mb-4">
+    Räckvidden uppges ofta till 300–600 meter utomhus, men inomhus med väggar är den reella räckvidden 50–150 meter — mer än tillräckligt för ett normalt hem. DECT-babyvakter finns med enbart ljud eller med video och temperaturmätare. De kräver ingen app, inget konto och inget fungerande internet.
+  </p>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">3. Videobabyvakt</h3>
+  <p class="text-text-light mb-3">
+    En videobabyvakt lägger till en kamera i barnets rum och en skärm hos föräldern. Du kan se om barnet rör sig, hur det sover och — i modeller med nattläge — se tydliga bilder även i mörker. Många videobabyvakter mäter också temperaturen i rummet.
+  </p>
+  <p class="text-text-light mb-4">
+    Videofunktionen minskar onödiga besök (du ser att barnet bara rör sig i sömnen utan att faktiskt ha vaknat) och ger extra trygghet. Välj en modell med infraröd nattfunktion och minst 720p-upplösning för ett tydligt bild. Se vår <a href="/babyvakter/video/" class="text-accent hover:underline">topplista över videobabyvakter 2026</a>.
+  </p>
+
+  <h3 class="font-heading text-lg font-semibold mt-5 mb-2">4. WiFi-babyvakt</h3>
+  <p class="text-text-light mb-3">
+    En WiFi-babyvakt skickar ljud och bild via ditt hemnätverk till en app i mobilen. Det innebär att du kan se och höra barnet var du än befinner dig — i trädgården, hos grannen, på jobbet (om du är hemma sent). Det är den mest flexibla lösningen.
+  </p>
+  <p class="text-text-light mb-4">
+    Nackdelen är beroendet av fungerande WiFi och moln. Om routern krånglar eller tjänstens servrar är nere fungerar inte babyvakten. Välj märken med stark kryptering, lokal lagring (SD-kort) och EU-baserad datahantering om integritet är viktig. Kolla vår <a href="/babyvakter/wifi/" class="text-accent hover:underline">jämförelse av WiFi-babyvakter 2026</a> för de bästa modellerna.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Räckvidd — vad spelar faktiskt roll?</h2>
+  <p class="text-text-light mb-3">
+    Tillverkarnas uppgivna räckvidd mäts utomhus utan hinder. I ett normalt hem reduceras räckvidden av väggar, betong och armeringsjärn. En babyvakt med 300 meter angiven räckvidd klarar ett normalstort flerbostadshus eller villa utan problem.
+  </p>
+  <p class="text-text-light mb-6">
+    Har du ett större hus i flera plan, eller tjocka betongväggar, kan räckvidden vara en begränsande faktor. WiFi-babyvakter påverkas istället av WiFi-signalens styrka i barnets rum — om signalen är svag där kan det ge fördröjningar och avbrott.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Batteritid och laddning</h2>
+  <p class="text-text-light mb-3">
+    De flesta förälderenheter i DECT-babyvakter har batteritid på 6–12 timmar i aktivt läge. Välj en modell där förälderenheten kan stå ansluten till laddning och fortfarande fungera — du vill inte riskera att vakten tar slut mitt i natten.
+  </p>
+  <p class="text-text-light mb-6">
+    WiFi-babyvakter drivs oftast av eluttag i barnets rum och levererar en kontinuerlig ström. Föräldradelens funktion i telefonen drar batteri på din mobil — håll telefonen laddad om du använder appen intensivt nattetid.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Funktioner att prioritera</h2>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-6">
+    <li><strong>Nattläge (IR):</strong> Infraröd kamera som ger tydlig bild i mörker — praktiskt taget ett krav på videobabyvakter.</li>
+    <li><strong>Temperaturmätare:</strong> Visar rumstemperaturen på förälderenheten. Enkelt och värdefullt — barnets sovrum ska hålla 16–20 grader.</li>
+    <li><strong>VOX (röstaktivering):</strong> Babyvakten aktiveras automatiskt av ljud. Sparar batteri och minskar bakgrundsbrus.</li>
+    <li><strong>Tvåvägskommunikation:</strong> Möjlighet att prata med barnet via babyvakten. Hjälper att lugna barnet utan att gå in i rummet.</li>
+    <li><strong>Rörelsedetektor:</strong> Varnar om kameran inte detekterar rörelse under en viss tid — relevant för andningsövervakning.</li>
+    <li><strong>Nattljus/sovljus:</strong> Inbyggt nattljus i sändarenheten som kan tändas via förälderenheten.</li>
+  </ul>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Säkerhet och integritet</h2>
+  <p class="text-text-light mb-3">
+    DECT-babyvakter är isolerade från internet och kan inte hackas på distans. Det ger ett enkelt säkerhetsprofil. WiFi-babyvakter kräver mer omsorg:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-6">
+    <li>Välj märken som är transparenta med sin kryptering (TLS/AES).</li>
+    <li>Aktivera tvåfaktorsautentisering för appkontot.</li>
+    <li>Håll firmware och app uppdaterade — säkerhetshål täpps till via uppdateringar.</li>
+    <li>Välj modeller med lokal lagring (SD-kort) så att inspelningar inte automatiskt lagras på okänd server.</li>
+  </ul>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Se även</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 – topplista och test</a></li>
+      <li><a href="/babyvakter/video/" class="text-accent hover:underline">Bästa videobabyvakten 2026</a></li>
+      <li><a href="/babyvakter/wifi/" class="text-accent hover:underline">Bästa WiFi-babyvakten 2026</a></li>
+      <li><a href="/guider/valja-bilbarnstol/" class="text-accent hover:underline">Så väljer du rätt bilbarnstol – köpguide 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>

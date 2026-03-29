@@ -1,0 +1,165 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Välja bilbarnstol' },
+];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan ISOFIX och bältad bilbarnstol?',
+    answer: 'En ISOFIX-stol kopplas direkt till bilens ISOFIX-fästen i karossen och ger en stabil, skakvarm anslutning som inte beror på hur bältet sitter. En bältad stol fästs med bilens säkerhetsbälte. Båda metoderna är säkra om stolen monteras korrekt — men ISOFIX minskar risken för monteringsfel, vilket är den vanligaste orsaken till dåligt skydd i en krock.',
+  },
+  {
+    question: 'Hur länge ska barnet sitta bakåtvänt?',
+    answer: 'Enligt svenska säkerhetsrekommendationer bör barn sitta bakåtvänt så länge som möjligt — helst tills de passerar viktgränsen eller höjdgränsen för stolen, ofta runt 3–4 år. Vid en frontalkrock, som är vanligast och farligast, skyddar bakåtvänd position barnets nacke och rygg avsevärt bättre än framåtvänd. Läs mer i vår guide om <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">bakåtvända bilbarnstolar</a>.',
+  },
+  {
+    question: 'Vad betyder i-Size (ECE R129)?',
+    answer: 'i-Size är en nyare EU-säkerhetsstandard (ECE R129) som ersätter den äldre ECE R44. i-Size-stolarna kräver ISOFIX-montering, testar sidokrockskydd och ger längre bakåtvänd körning som standard. Stolen anges i cm (längd/höjd) snarare än vikt, vilket ger bättre passform för det enskilda barnet. Välj en i-Size-stol om du köper ny idag.',
+  },
+  {
+    question: 'Vilken åldersgrupp passar till vilket barn?',
+    answer: 'Bilbarnstolar delas in i grupper: Grupp 0+ passar nyfödda upp till ca 13 kg (0–12 månader). Grupp 1 passar 9–18 kg (ca 9 månader–4 år). Grupp 2/3 passar 15–36 kg (ca 3,5–12 år). Kombinerade stolar som täcker grupp 1–3 är populära eftersom de används längre. Med i-Size-standard anges istället barnets höjd i cm.',
+  },
+  {
+    question: 'Vad visar Folksam- och Plus Test-krocktesterna?',
+    answer: 'Folksam testar bilbarnstolar i verkliga bilar med dummies och mäter krafter mot barnets huvud och bröst. Plus Test är ett oberoende tyskt test med tuffare krav än lagstadgade minimum. En stol som godkänns i Plus Test ger ett väsentligt bättre skydd än lagkravet. Kontrollera alltid resultaten från dessa tester innan köp — ett godkänt CE-märke räcker inte som enda beslutsgrund.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Så väljer du rätt bilbarnstol — komplett köpguide 2026"
+  description="Allt du behöver veta för att välja rätt bilbarnstol. Vi går igenom ISOFIX, i-Size, bakåtvänd körning och vad krocktesterna säger."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/guider/valja-bilbarnstol/"
+  updatedDate="2026-03-29"
+  showDisclaimer={false}
+>
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    Bilbarnstolen är den viktigaste säkerhetsutrustningen du köper till ditt barn. Rätt stol kan avgöra liv och hälsa vid en krock — men utbudet är stort och begreppen många. Den här guiden reder ut allt du behöver veta innan du väljer.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Snabbsvar</p>
+    <p class="text-sm text-text-light">Välj en <strong>i-Size-stol med ISOFIX</strong>, håll barnet <strong>bakåtvänt så länge möjligt</strong> och kontrollera alltid resultaten från <strong>Folksam</strong> och <strong>Plus Test</strong>. Se vår <a href="/bilbarnstolar/" class="text-accent hover:underline">kompletta topplista över bilbarnstolar 2026</a>.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">ISOFIX eller bältad — vad ska du välja?</h2>
+  <p class="text-text-light mb-3">
+    ISOFIX är ett standardiserat fästsystem där bilbarnstolen kopplas direkt till metallbyglar inbyggda i bilens kaross. Det ger en stabil och skakvarm anslutning som inte är beroende av hur bilbältet sitter. Fördelen är att risken för monteringsfel minskar dramatiskt — och det är just felaktig montering som är den vanligaste orsaken till att bilbarnstolar inte skyddar som de ska.
+  </p>
+  <p class="text-text-light mb-3">
+    En bältad stol fästs med bilens trepunktsbälte. Det fungerar utmärkt om stolen monteras rätt, men bältet måste dras korrekt och stolens instruktioner följas exakt. Väljer du bältad stol — öva monteringen hemma och kontrollera att stöttbenet (om det finns) är korrekt placerat.
+  </p>
+  <p class="text-text-light mb-6">
+    Om din bil har ISOFIX-fästen (de flesta bilar tillverkade efter 2004 har det) rekommenderar vi att du väljer en ISOFIX-stol. Se vår lista över <a href="/bilbarnstolar/isofix/" class="text-accent hover:underline">bästa ISOFIX-bilbarnstolar 2026</a> för konkreta produktrekommendationer.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">i-Size — den nya säkerhetsstandarden</h2>
+  <p class="text-text-light mb-3">
+    i-Size (ECE R129) är den modernare EU-standarden som gradvis ersätter den äldre ECE R44. Det finns flera viktiga skillnader:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-3">
+    <li><strong>Längre bakåtvänd körning:</strong> i-Size kräver att stolen kan användas bakåtvänt upp till minst 15 månaders ålder (och oftast längre).</li>
+    <li><strong>Bättre sidokrocksskydd:</strong> Standarden testar sidokrockskraft, vilket ECE R44 inte gör.</li>
+    <li><strong>Mått i cm:</strong> Stolens angivna storlek baseras på barnets längd i stället för vikt, vilket ger bättre passform.</li>
+    <li><strong>Kräver ISOFIX:</strong> Alla i-Size-stolar använder ISOFIX-montering som grundkrav.</li>
+  </ul>
+  <p class="text-text-light mb-6">
+    Om du köper en ny stol idag: välj alltid i-Size. Äldre ECE R44-stolar är fortfarande lagliga att använda, men en ny i-Size-stol ger ett modernare och mer heltäckande skydd.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Bakåtvänd körning — varför och hur länge?</h2>
+  <p class="text-text-light mb-3">
+    Svenska säkerhetsexperter och NTF (Nationalföreningen för Trafiksäkerhetens Främjande) rekommenderar bakåtvänd körning så länge som möjligt. Anledningen är att vid en frontalkrock — den vanligaste och farligaste typen — sprids krafterna vid bakåtvänd position jämnt över barnets rygg, axlar och höfter via stolens ryggstöd. Vid framåtvänd position bärs i stället krafterna av säkerhetsselets smala band mot ett barns ännu mjuka skelett.
+  </p>
+  <p class="text-text-light mb-3">
+    Bakåtvänd körning är alltså inte bara för nyfödda — många stolar är konstruerade för bakåtvänd körning ända upp till 18–25 kg. Barnet kan gärna sitta med knäna böjda eller benen mot ryggstödet; det är bekvämt för barn och utgör ingen säkerhetsrisk.
+  </p>
+  <p class="text-text-light mb-6">
+    Se vår topplista med <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">bästa bakåtvända bilbarnstolar 2026</a> för detaljerade recensioner och jämförelser.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Åldersgrupper och vad de betyder</h2>
+  <p class="text-text-light mb-3">
+    Den äldre ECE R44-standarden delar in stolar i viktbaserade grupper. Här är en översikt:
+  </p>
+  <div class="overflow-x-auto mb-6">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-bg-alt">
+          <th class="text-left p-3 border border-border font-semibold">Grupp</th>
+          <th class="text-left p-3 border border-border font-semibold">Vikt</th>
+          <th class="text-left p-3 border border-border font-semibold">Ungefärlig ålder</th>
+          <th class="text-left p-3 border border-border font-semibold">Riktning</th>
+        </tr>
+      </thead>
+      <tbody class="text-text-light">
+        <tr>
+          <td class="p-3 border border-border">0+</td>
+          <td class="p-3 border border-border">0–13 kg</td>
+          <td class="p-3 border border-border">Nyfödd–ca 12 mån</td>
+          <td class="p-3 border border-border">Bakåtvänd</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 border border-border">1</td>
+          <td class="p-3 border border-border">9–18 kg</td>
+          <td class="p-3 border border-border">Ca 9 mån–4 år</td>
+          <td class="p-3 border border-border">Bakåt- eller framåtvänd</td>
+        </tr>
+        <tr>
+          <td class="p-3 border border-border">2</td>
+          <td class="p-3 border border-border">15–25 kg</td>
+          <td class="p-3 border border-border">Ca 3,5–7 år</td>
+          <td class="p-3 border border-border">Framåtvänd</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 border border-border">3</td>
+          <td class="p-3 border border-border">22–36 kg</td>
+          <td class="p-3 border border-border">Ca 6–12 år</td>
+          <td class="p-3 border border-border">Framåtvänd</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-text-light mb-6">
+    Kombinerade stolar som täcker grupp 1–3 är ekonomiskt och praktiskt — de följer barnet från ca 9 månader upp till 12 år. Se alltid till att barnet faktiskt ryms i stolen: axelbanden ska sitta i höjd med eller strax ovanför axlarna, och huvudet ska ha minst 2,5 cm kvar till stolens övre kant.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Krocktester: Folksam och Plus Test</h2>
+  <p class="text-text-light mb-3">
+    CE-märkning på en bilbarnstol är ett lagkrav — men det är ett minimikrav, inte en kvalitetsstämpel. För att verkligen förstå hur väl en stol skyddar ditt barn behöver du titta på oberoende tester.
+  </p>
+  <p class="text-text-light mb-3">
+    <strong>Folksam</strong> genomför varje år krocktester av bilbarnstolar i verkliga personbilar. De mäter belastningen på dummyns huvud och bröst och klassificerar stolarna som rekommenderas, godkänns eller underkänns. Folksams lista är ett av de viktigaste verktygen för svenska föräldrar.
+  </p>
+  <p class="text-text-light mb-6">
+    <strong>Plus Test</strong> är ett tyskt frivilligt test med tuffare krav än lagstadgat minimum. En stol märkt med "Plus Test" har klarat krav på lägre krafter mot barnets kropp än vad lagen kräver — vilket i praktiken innebär bättre skydd. Om du är osäker på vilket alternativ du ska välja: prioritera stolar som klarat Plus Test och rekommenderas av Folksam. Vår <a href="/bilbarnstolar/" class="text-accent hover:underline">jämförelse av bilbarnstolar</a> inkluderar testresultat för varje modell.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Viktiga funktioner att kontrollera</h2>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-6">
+    <li><strong>Sidokrocksskydd:</strong> Djupa skålformade sidor och energiabsorberande material skyddar vid sidokrockar — vanligast i korsningar.</li>
+    <li><strong>Justerbar nackstöd och sele:</strong> Ska kunna justeras utan att ta ut barnet ur stolen. Nackstödet ska alltid hänga ihop med selets höjdjustering.</li>
+    <li><strong>Reclining (lutningsanpassning):</strong> Viktigt för nyfödda och sovande barn. Kontrollera att stolen kan lutas tillräckligt i din bil.</li>
+    <li><strong>Enkel och tydlig montering:</strong> Indikator som visar rätt montering (grön/röd) minskar risken för fel. Läs manualen och öva.</li>
+    <li><strong>Vadderings- och klädselkvalitet:</strong> Avtagbar och tvättbar klädsel sparar mycket tid under de första åren.</li>
+  </ul>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Se även</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 – topplista och test</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+      <li><a href="/bilbarnstolar/isofix/" class="text-accent hover:underline">Bästa ISOFIX-bilbarnstolen 2026</a></li>
+      <li><a href="/guider/valja-barnvagn/" class="text-accent hover:underline">Så väljer du rätt barnvagn – köpguide 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>
