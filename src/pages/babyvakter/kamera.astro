@@ -1,0 +1,231 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Kamera' },
+];
+
+const products = [
+  {
+    name: 'Nanit Pro',
+    badge: 'Bäst i test',
+    price: '3 299 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/nanit-pro-babyvakt-med-wifi',
+    features: {
+      'Upplösning': '1080p Full HD',
+      'Nattseende': 'Ja, IR',
+      'WiFi': 'Ja',
+      'Skärm på enhet': 'Nej (app)',
+      'Vidvinkel': '130°',
+      'Pris': '3 299 kr',
+    },
+  },
+  {
+    name: 'Luvion Grand Elite 3',
+    badge: 'Bäst utan WiFi',
+    price: '1 999 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.luvion.com/grand-elite-3-connect/',
+    features: {
+      'Upplösning': '640x480',
+      'Nattseende': 'Ja, IR',
+      'WiFi': 'Nej (sluten signal)',
+      'Skärm på enhet': '5 tum',
+      'Vidvinkel': '65°',
+      'Pris': '1 999 kr',
+    },
+  },
+  {
+    name: 'Owlet Cam 2',
+    badge: 'Prisvärt HD',
+    price: '1 299 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white',
+    features: {
+      'Upplösning': '1080p Full HD',
+      'Nattseende': 'Ja, IR',
+      'WiFi': 'Ja',
+      'Skärm på enhet': 'Nej (app)',
+      'Vidvinkel': '130°',
+      'Pris': '1 299 kr',
+    },
+  },
+  {
+    name: 'Motorola VM75',
+    badge: 'Bäst för 2 rum',
+    price: '1 099 kr',
+    rating: 4.3,
+    ctaHref: 'https://www.elgiganten.se/catalogsearch/result/?q=Motorola+VM75',
+    features: {
+      'Upplösning': '480p',
+      'Nattseende': 'Ja, IR',
+      'WiFi': 'Ja (tillval)',
+      'Skärm på enhet': '4,3 tum',
+      'Vidvinkel': '75°',
+      'Pris': '1 099 kr',
+    },
+  },
+  {
+    name: 'BabyPhone BC-5900',
+    badge: 'Budgetval',
+    price: '699 kr',
+    rating: 4.1,
+    ctaHref: 'https://www.elgiganten.se/catalogsearch/result/?q=BabyPhone+BC-5900',
+    features: {
+      'Upplösning': '480p',
+      'Nattseende': 'Ja, IR',
+      'WiFi': 'Nej',
+      'Skärm på enhet': '3,5 tum',
+      'Vidvinkel': '65°',
+      'Pris': '699 kr',
+    },
+  },
+];
+
+const featureLabels = ['Upplösning', 'Nattseende', 'WiFi', 'Skärm på enhet', 'Vidvinkel', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken babyvakt med kamera är bäst 2026?',
+    answer: 'Nanit Pro är vårt toppval 2026. Den kombinerar 1080p Full HD-bild, inbyggd AI-sömnanalys och ett brett vidvinkelobjektiv på 130 grader. Bildkvaliteten är överlägsen i testet — både dag och natt. För den som inte vill ha WiFi är Luvion Grand Elite 3 bäst med sin stora 5-tumsskärm och slutna signal.',
+  },
+  {
+    question: 'Vad är vidvinkel och varför är det viktigt?',
+    answer: 'Vidvinkel avgör hur stor del av barnets säng kameran ser. En smalare vinkel (60–70°) kan missa barnets ben om kameran sitter lite åt sidan. Välj en babyvakt med minst 110–130° vidvinkel för att se hela sängen utan att behöva justera kamerans position. Nanit Pro och Owlet Cam 2 har 130° — bäst i testet.',
+  },
+  {
+    question: 'Behöver en babyvakt med kamera WiFi?',
+    answer: 'Nej. Luvion Grand Elite 3 och BabyPhone BC-5900 sänder direkt till en separat föräldraenhet med skärm utan att gå via WiFi eller internet. Det ger högre säkerhet och fungerar även vid strömavbrott på routern. WiFi-modeller som Nanit Pro och Owlet Cam 2 ger flexibilitet att se barnet via mobilen var du än är.',
+  },
+  {
+    question: 'Hur bra är nattseende på babyvakter?',
+    answer: 'Alla babyvakter i vår jämförelse har infraröd (IR) nattseende som aktiveras automatiskt i mörker. Bilderna är svartvita men tillräckligt skarpa för att se om barnet sover normalt. Nanit Pro och Owlet Cam 2 levererar skarpast bild i mörker tack vare 1080p-sensorerna.',
+  },
+  {
+    question: 'Kan jag använda Motorola VM75 för två barnrum?',
+    answer: 'Ja, Motorola VM75 stödjer splitscreen-visning av två kameror samtidigt på 4,3-tumsskärmen. Det gör den idealisk för familjer med tvillingar eller syskon i separata rum. En extra kamera köps separat och kopplas enkelt till föräldraenheten.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa babyvakt med kamera 2026 – test | Bebisguiden"
+  description="Vi testar de bästa babyvakterna med kamera 2026. Nattseende, vidvinkel och hög bildkvalitet — se vad som är viktigast."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En babyvakt med kamera låter dig se barnet utan att gå in i rummet. Vi har testat de bästa kamerababyvakterna på den svenska marknaden — från AI-modeller med sömnanalys till prisvärda alternativ med skarp nattbild.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Nanit Pro"
+      badge="Bäst i test"
+      price="3 299 kr"
+      rating={4.8}
+      ageRange="Från nyfödd"
+      pros={['1080p Full HD — skarpast bild i testet', '130° vidvinkel täcker hela sängen', 'AI-sömnanalys och sömnstatistik i appen', 'Takmonterad för optimal översikt']}
+      cons={['Högst pris i jämförelsen', 'Premium-funktioner kräver abonnemang']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/nanit-pro-babyvakt-med-wifi"
+    />
+
+    <ProductCard
+      name="Luvion Grand Elite 3"
+      badge="Bäst utan WiFi"
+      price="1 999 kr"
+      rating={4.6}
+      ageRange="Från nyfödd"
+      pros={['Stor 5-tumsskärm — störst i testet', 'Sluten signal — ingen WiFi krävs', 'Temperaturvisning och vaggvisor', 'Lång räckvidd inomhus']}
+      cons={['Lägre upplösning än WiFi-modellerna', 'Tyngre föräldraenhet']}
+      ctaText="Se pris"
+      ctaHref="https://www.luvion.com/grand-elite-3-connect/"
+    />
+
+    <ProductCard
+      name="Owlet Cam 2"
+      badge="Prisvärt HD"
+      price="1 299 kr"
+      rating={4.5}
+      ageRange="Från nyfödd"
+      pros={['1080p Full HD till bra pris', '130° vidvinkel — lika bra som Nanit Pro', 'Rörelsevakt med notiser', 'Kan kombineras med Owlet Smart Sock']}
+      cons={['Kräver stabil WiFi-anslutning', 'Utökad molnlagring kostar extra']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white"
+    />
+
+    <ProductCard
+      name="Motorola VM75"
+      badge="Bäst för 2 rum"
+      price="1 099 kr"
+      rating={4.3}
+      ageRange="Från nyfödd"
+      pros={['Splitscreen för 2 kameror på en skärm', '4,3-tumsskärm ingår', 'Tvåvägskommunikation', 'Rimligt pris för dubbla rum']}
+      cons={['Lägre upplösning (480p)', 'Smalare vidvinkel än toppalternativen']}
+      ctaText="Se pris"
+      ctaHref="https://www.elgiganten.se/catalogsearch/result/?q=Motorola+VM75"
+    />
+
+    <ProductCard
+      name="BabyPhone BC-5900"
+      badge="Budgetval"
+      price="699 kr"
+      rating={4.1}
+      ageRange="Från nyfödd"
+      pros={['Lägst pris i testet', 'Bra nattseende för priset', '3,5-tumsskärm ingår', 'Enkel installation']}
+      cons={['Lägst upplösning i testet', 'Smalast vidvinkel — kan missa delar av sängen']}
+      ctaText="Se pris"
+      ctaHref="https://www.elgiganten.se/catalogsearch/result/?q=BabyPhone+BC-5900"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du babyvakt med kamera</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Upplösning — hur skarp bild behöver du?</h3>
+    <p>1080p Full HD är standard på moderna kamerababyvakter och ger tillräckligt skarp bild för att se barnets ansiktsuttryck och andningsrörelser tydligt. 480p-modeller som Motorola VM75 och BabyPhone BC-5900 fungerar, men detaljerna är märkbart suddigare, särskilt i mörker. Har du råd, välj 1080p.</p>
+
+    <h3>Vidvinkel — täck hela barnets säng</h3>
+    <p>Vidvinkeln avgör hur mycket av rummet kameran ser utan att du behöver panorera. En vinkel på 65–75° kan missa barnets ben eller sida av sängen om kameran inte är perfekt centrerad. Välj minst 110–130° för att alltid ha full översikt, oavsett hur barnet vrider sig.</p>
+
+    <h3>Nattseende — det viktigaste i praktiken</h3>
+    <p>Du kommer använda babyvakten mest på natten. Infraröd nattseende aktiveras automatiskt när belysningen sjunker och ger svartvit bild. Kvaliteten varierar — Nanit Pro och Owlet Cam 2 levererar klarast bild i helt mörka rum. Billigare modeller kan ge lite grynigare nattbild men är ändå fullt funktionella.</p>
+
+    <h3>WiFi eller sluten signal?</h3>
+    <p>WiFi-kameror (Nanit Pro, Owlet Cam 2) låter dig se barnet via app var du än är och kräver ingen separat föräldraenhet. Sluten signal (Luvion, BabyPhone) sänder direkt till en separat skärm utan internet — säkrare och oberoende av WiFi-stabilitet. Välj WiFi för flexibilitet, sluten signal för säkerhet och enkelhet.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/babyvakter/wifi/" class="text-accent hover:underline">Bästa WiFi-babyvakten 2026 — test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/babyvakter/app/" class="text-accent hover:underline">Bästa babyvakt med app 2026 — övervaka via mobilen</a>
+      </li>
+      <li>
+        <a href="/babyvakter/video/" class="text-accent hover:underline">Bästa videobabyvakten 2026 — test och jämförelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/nanit-pro-babyvakt-med-wifi" text="Se bästa pris – Nanit Pro" />
+</ArticleLayout>
