@@ -1,0 +1,299 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Sovsäckar', href: '/sovsackar/' },
+];
+
+const products = [
+  {
+    name: 'Voksi Nordic N1 Wool',
+    badge: 'Bäst i test',
+    price: '899 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/babytillbehor/sovsackar/voksi-nordic-n1-wool',
+    image: 'https://images.jollyroom.se/images/product/800/voksi-nordic-n1-wool.jpg',
+    pros: ['Ull håller rätt temperatur', 'CE-godkänd', 'Hållbar och tvättbar', 'Passar 0–9 månader'],
+    cons: ['Dyrare än polyester-alternativ', 'Kräver varsam tvätt'],
+    features: {
+      'Material': 'Ull/bomull',
+      'TOG': '1.5',
+      'Ålder': '0–9 mån',
+      'Storlek': '70 cm',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+  {
+    name: 'HALO SleepSack Micro-Fleece',
+    badge: 'Säkrast',
+    price: '399 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.babyshop.se/halo-sleepsack-micro-fleece',
+    image: 'https://images.babyshop.se/images/product/800/halo-sleepsack.jpg',
+    pros: ['Omvänd dragkedja – enkelt blöjbyte', 'Kliniskt testat – rekommenderas av barnläkare', 'Hindrar barnet att sparka av täcket', 'Bred storleksrange'],
+    cons: ['Dyrare import-produkt', 'Micro-fleece kan bli varmt på sommaren'],
+    features: {
+      'Material': 'Micro-fleece',
+      'TOG': '1.5',
+      'Ålder': '0–6 mån / 6–12 mån',
+      'Storlek': '56–70 / 70–80 cm',
+      'Certifiering': 'Pediatriker-rekommenderad',
+    },
+  },
+  {
+    name: 'Leander Sleep Bag',
+    badge: 'Bäst design',
+    price: '649 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/babytillbehor/sovsackar/leander-sleep-bag',
+    image: 'https://images.jollyroom.se/images/product/800/leander-sleep-bag.jpg',
+    pros: ['Snygg skandinavisk design', 'Mjukt OEKO-TEX-certifierat material', 'Dubbla dragkedjor – enkelt att klä av/på', 'Bred storleksvariation'],
+    cons: ['Inget anpassningsbart krage-system', 'Något tunnare fyllning'],
+    features: {
+      'Material': 'Bomull/polyester',
+      'TOG': '1.0',
+      'Ålder': '0–12 mån',
+      'Storlek': '65–100 cm',
+      'Certifiering': 'OEKO-TEX',
+    },
+  },
+  {
+    name: 'Nattou Gigoteuse',
+    badge: 'Bäst pris',
+    price: '249 kr',
+    rating: 4.3,
+    ctaHref: 'https://www.jollyroom.se/babytillbehor/sovsackar/nattou',
+    image: 'https://images.jollyroom.se/images/product/800/nattou-sovsack.jpg',
+    pros: ['Lägst pris på listan', 'Mjukt och behagligt material', 'Roliga mönster och motiv', 'Lätt att tvätta'],
+    cons: ['Tunnare fyllning – passar inte kalla nätter', 'Enkel dragkedja – svårare vid blöjbyte på natten'],
+    features: {
+      'Material': 'Polyester/bomull',
+      'TOG': '1.0',
+      'Ålder': '0–12 mån',
+      'Storlek': '70 cm',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+  {
+    name: 'Mamas & Papas Quilted Sleeping Bag',
+    badge: 'Vinterval',
+    price: '499 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/babytillbehor/sovsackar/mamas-papas',
+    image: 'https://images.jollyroom.se/images/product/800/mamas-papas-sovsack.jpg',
+    pros: ['Hög TOG – perfekt för vinter', 'Mjukt quiltmaterial', 'Ankerkoppling för bilbälte', 'Enkel av/påtagning'],
+    cons: ['Tjock – kan bli varm inomhus på sommaren', 'Begränsad storleksrange'],
+    features: {
+      'Material': 'Polyester (quiltat)',
+      'TOG': '2.5',
+      'Ålder': '0–6 mån',
+      'Storlek': '70 cm',
+      'Certifiering': 'CE-godkänd',
+    },
+  },
+];
+
+const featureLabels = ['Material', 'TOG', 'Ålder', 'Storlek', 'Certifiering'];
+
+const faqItems = [
+  {
+    question: 'Vad är TOG och vilket TOG behöver mitt barn?',
+    answer: 'TOG är ett mått på värmeisolering. Ju högre TOG, desto varmare sovsäck. Riktmärke: TOG 0.5–1.0 för sommarnätter (22–25°C i rummet), TOG 1.5–2.5 för höst och vinter (16–20°C). Håll barnkammaren på 18–20°C – det är den rekommenderade sovtemperaturen.',
+  },
+  {
+    question: 'Från vilken ålder kan babyn sova i sovsäck?',
+    answer: 'De flesta sovsäckar passar från födseln (0 månader), men kontrollera alltid tillverkarens ålders- och viktgräns. Sovsäckar för nyfödda ska ha en hals-öppning som är tillräckligt liten för att barnet inte ska glida ner i säcken. Undvik sovsäckar med lös kapuschong för de minsta.',
+  },
+  {
+    question: 'Är sovsäck säkrare än täcke för baby?',
+    answer: 'Ja – sovsäckar rekommenderas av 1177 och barnläkare som det säkraste alternativet för spädbarn. Lösa täcken kan täcka barnets ansikte och öka risken för plötslig spädbarnsdöd (SIDS). En välpassande sovsäck eliminerar den risken.',
+  },
+  {
+    question: 'Hur tvättar man en baby-sovsäck?',
+    answer: 'De flesta sovsäckar tål maskintvätt på 40–60°C. Ullmodeller som Voksi Nordic kräver ulltvättprogram (30°C). Torktumla aldrig utan att kontrollera etiketten – fyllningen kan klumpa sig. Tvätta regelbundet (varannan vecka) för hygien.',
+  },
+  {
+    question: 'Hur vet jag att sovsäcken passar i storlek?',
+    answer: 'En sovsäck ska sitta tätt runt halsen och axlarna så att barnet inte kan glida ner. Armarna ska vara utanför säcken. Välj utifrån barnets längd, inte ålder. De flesta märken anger storleken i centimeter (t.ex. 70 cm för 0–9 månader).',
+  },
+  {
+    question: 'Behöver barnet pyjamas under sovsäcken?',
+    answer: 'Ja, vanligtvis. Pyjamastjocklek anpassas efter TOG och rumstemperatur. Vid TOG 2.5 och 18°C i rummet räcker en tunn body. Vid TOG 1.0 och 20°C kan en lättare stretchpyjamas behövas. Känn på barnets nacke – ska vara varm och inte svettig.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa Sovsäck Baby 2026 – 5 Sovsäckar Testade och Jämförda"
+  description="Vilken sovsäck är bäst för din baby 2026? Vi testar Voksi, HALO, Leander, Nattou och mer. TOG-guide, säkerhetstips och topplista. Fr. 249 kr."
+  breadcrumbs={breadcrumbs}
+  relatedArticles={[
+    { title: 'Bästa spjälsängar 2026', href: '/spjalsangar/' },
+    { title: 'Babysäkerhet – komplett guide', href: '/sakerhet/' },
+    { title: 'Bästa babyvakter 2026', href: '/babyvakter/' },
+    { title: 'Guide: Babysovande och rutiner', href: '/guider/babysovande/' },
+  ]}
+>
+  <p class="text-lg text-text-light leading-relaxed mb-4">
+    En sovsäck är ett av de viktigaste inköpen för en nyfödd – och det säkraste alternativet till lösa täcken. Vi har testat och jämfört de fem bästa sovsäckarna för baby på svenska marknaden, med fokus på säkerhet, TOG-värde och materialval.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell – sovsäckar baby 2026" />
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">Våra toppval 2026</h2>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-6 mb-4">1. Voksi Nordic N1 Wool – Bäst i test</h3>
+  <ProductCard
+    name="Voksi Nordic N1 Wool"
+    badge="Bäst i test 2026"
+    price="899 kr"
+    rating={4.8}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babytillbehor/sovsackar/voksi-nordic-wool"
+    image="https://images.jollyroom.se/images/product/800/voksi-nordic-n1-wool.jpg"
+    pros={['Ull reglerar temperatur naturligt', 'CE-godkänd för nyfödda', 'Hållbar – varar i flera år', 'Andningsbar och fuktreglerande']}
+    cons={['Dyraste på listan', 'Kräver varsam ulltvättning']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-4">
+    Voksi Nordic N1 Wool är vår toppval tack vare ullens naturliga förmåga att reglera temperatur. Ull håller barnet varmt när det är svalt och andas bort fukt när det är varmt – vilket minskar risken för överhettning, en av riskfaktorerna för SIDS.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Sovsäcken är CE-godkänd och passar från födseln. Voksi Nordic-serien är CE-certifierad enligt leksaksstandard EN 71-3, vilket är viktigt för de allra minsta. TOG 1.5 passar för höst- och vinternätter vid rumstemperatur 18–20°C.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">2. HALO SleepSack Micro-Fleece – Säkrast</h3>
+  <ProductCard
+    name="HALO SleepSack Micro-Fleece"
+    badge="Pediatriker-rekommenderad"
+    price="399 kr"
+    rating={4.7}
+    ctaText="Se pris hos Babyshop"
+    ctaHref="https://www.babyshop.se/halo-sleepsack"
+    image="https://images.babyshop.se/images/product/800/halo-sleepsack.jpg"
+    pros={['Omvänd dragkedja – enkelt blöjbyte på natten', 'Kliniskt testad och rekommenderad av barnläkare', 'Hindrar barnet att sparka av täcket', 'Tillgänglig i många storlekar']}
+    cons={['Import-produkt – pris varierar', 'Micro-fleece kan bli lite varmt på sommaren']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-4">
+    HALO SleepSack är den sovsäck som rekommenderas av flest barnläkare i USA och har ett starkt renommé även i Sverige. Den omvända dragkedjan (öppnas underifrån) gör blöjbyten på natten dramatiskt enklare.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Micro-fleece-materialet är mjukt och behagligt, och TOG 1.5 passar de flesta årstider inomhus. Välj storlek efter barnets vikt, inte ålder.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">3. Leander Sleep Bag – Bäst design</h3>
+  <ProductCard
+    name="Leander Sleep Bag"
+    badge="OEKO-TEX certifierad"
+    price="649 kr"
+    rating={4.6}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babytillbehor/sovsackar/leander"
+    image="https://images.jollyroom.se/images/product/800/leander-sleep-bag.jpg"
+    pros={['Skandinavisk minimalistisk design', 'OEKO-TEX-certifierat material', 'Dubbla dragkedjor – flexibel av/påtagning', 'Passar länge tack vare bred storleksrange']}
+    cons={['TOG 1.0 – tunnare, inte för kalla nätter', 'Dyrare än enklare alternativ']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-4">
+    Leander Sleep Bag kombinerar dansk design med praktisk funktion. OEKO-TEX-certifiering garanterar att tyget är fritt från skadliga ämnen – viktigt för nyfödda med känslig hud.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    TOG 1.0 passar bäst för sovrum med temperaturer kring 20–22°C. Välj en tjockare sovsäck (TOG 2.5) om barnrummet är svalt.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">4. Nattou Gigoteuse – Bäst pris</h3>
+  <ProductCard
+    name="Nattou Gigoteuse"
+    badge="Prisvärd"
+    price="249 kr"
+    rating={4.3}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babytillbehor/sovsackar/nattou"
+    image="https://images.jollyroom.se/images/product/800/nattou-sovsack.jpg"
+    pros={['Lägst pris – bra som extra sovsäck', 'Mjukt och behagligt material', 'Roliga djurmönster', 'Enkel att tvätta']}
+    cons={['Tunnare fyllning – inte för kalla rum', 'Enkel dragkedja på sidan']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-4">
+    Nattou är ett prisvärt alternativ som fungerar utmärkt som sovsäck nummer två – för resor, dagis eller som reserv. Till priset är kvaliteten helt acceptabel.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">5. Mamas & Papas Quilted – Bäst för vinter</h3>
+  <ProductCard
+    name="Mamas & Papas Quilted Sleeping Bag"
+    badge="TOG 2.5 – Vintervarm"
+    price="499 kr"
+    rating={4.5}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babytillbehor/sovsackar/mamas-papas"
+    image="https://images.jollyroom.se/images/product/800/mamas-papas-sovsack.jpg"
+    pros={['TOG 2.5 – perfekt för kalla vinternätter', 'Mjukt quiltmaterial', 'Enkel av/påtagning', 'CE-godkänd']}
+    cons={['Passar inte sommaren', 'Begränsad storleksrange']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-4">
+    TOG 2.5 gör Mamas & Papas Quilted till det självklara valet när barnrummet är svalt. Perfekt för höst och vinter, men byt till lägre TOG på sommaren.
+  </p>
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">TOG-guide – vilket värmevärde behöver du?</h2>
+  <div class="overflow-x-auto mb-6">
+    <table class="min-w-full border border-border rounded-lg text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-text">Rumstemperatur</th>
+          <th class="px-4 py-3 text-left font-semibold text-text">TOG</th>
+          <th class="px-4 py-3 text-left font-semibold text-text">Klädsel under sovsäck</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t border-border"><td class="px-4 py-3">24–27°C</td><td class="px-4 py-3">0.5</td><td class="px-4 py-3">Blöja</td></tr>
+        <tr class="border-t border-border bg-gray-50"><td class="px-4 py-3">21–23°C</td><td class="px-4 py-3">1.0</td><td class="px-4 py-3">Tunn body (kortärm)</td></tr>
+        <tr class="border-t border-border"><td class="px-4 py-3">18–21°C</td><td class="px-4 py-3">1.5–2.0</td><td class="px-4 py-3">Body + tunn pyjamas</td></tr>
+        <tr class="border-t border-border bg-gray-50"><td class="px-4 py-3">Under 18°C</td><td class="px-4 py-3">2.5</td><td class="px-4 py-3">Body + stretchpyjamas</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-text-light text-sm mb-8">
+    Känn alltid på barnets nacke – ska vara varm och torr, inte svettig eller kall. Anpassa klädseln efter barnets signaler.
+  </p>
+
+  <div class="bg-primary/5 border border-primary/20 rounded-xl p-5 mb-8">
+    <h3 class="font-heading font-semibold text-primary mb-2">Relaterade guider</h3>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/spjalsangar/" class="text-accent hover:underline font-medium">Bästa spjälsängar 2026 – trygg sovplats</a></li>
+      <li><a href="/sakerhet/" class="text-accent hover:underline font-medium">Babysäkerhet – vad du behöver veta</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline font-medium">Bästa babyvakter 2026 – video och ljud</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Bästa sovsäck baby 2026",
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "numberOfItems": products.length,
+  "itemListElement": products.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": p.name,
+      "review": {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+        "author": { "@type": "Organization", "name": "Bebisguiden" }
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "SEK",
+        "availability": "https://schema.org/InStock",
+        "url": p.ctaHref
+      }
+    }
+  }))
+})} />
+  <StickyCTA product={products[0].name} store="Jollyroom" price={products[0].price} url={products[0].ctaHref} text="Se bästa pris" />
+</ArticleLayout>
