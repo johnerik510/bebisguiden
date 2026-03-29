@@ -1,0 +1,278 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar' },
+];
+
+const products = [
+  {
+    name: 'IKEA Sniglar',
+    badge: 'Bäst budget',
+    price: '499 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Standard spjälsäng',
+      'Mått': '70x140 cm',
+      'Material': 'Massiv bok',
+      'Åldersgrupp': '0–3 år',
+      'Pris': '499 kr',
+    },
+  },
+  {
+    name: 'Stokke Sleepi V3',
+    badge: 'Bäst i test',
+    price: '5 999 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Oval spjälsäng',
+      'Mått': 'Oval, utbyggbar',
+      'Material': 'Bok',
+      'Åldersgrupp': '0–10 år',
+      'Pris': '5 999 kr',
+    },
+  },
+  {
+    name: 'JOOLZ Roomie Crib',
+    badge: 'Bästa bedside',
+    price: '3 299 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Bedside crib + stående',
+      'Mått': 'Standard',
+      'Material': 'MDF + tyg',
+      'Åldersgrupp': '0–6 månader',
+      'Pris': '3 299 kr',
+    },
+  },
+  {
+    name: 'Troll Crossover',
+    badge: 'Prisvärt',
+    price: '1 299 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Standard spjälsäng',
+      'Mått': '70x140 cm',
+      'Material': 'Trä',
+      'Åldersgrupp': '0–3 år',
+      'Pris': '1 299 kr',
+    },
+  },
+  {
+    name: 'Leander Luna',
+    badge: 'Bäst design',
+    price: '4 499 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Standard spjälsäng',
+      'Mått': '70x140 cm',
+      'Material': 'Bok',
+      'Åldersgrupp': '0–3 år',
+      'Pris': '4 499 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Mått', 'Material', 'Åldersgrupp', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken storlek spjälsäng ska jag välja?',
+    answer: 'Standardmåttet 70x140 cm är det vanligaste och passar madrasser från de flesta märken. Mindre format (60x120 cm) passar bättre i trånga sovrum men kräver specialmadrass. Väljer du en oval säng som Stokke Sleepi behöver du märkets egna madrass och tillägg.',
+  },
+  {
+    question: 'Vad är skillnaden mellan en spjälsäng och en bedside crib?',
+    answer: 'En spjälsäng är en fristående säng för bebisen med fyra sidor. En bedside crib fästs mot föräldrasängen med en sida öppen så att bebisen sover nära men i sin egen säkra yta. Bedside cribs rekommenderas av Socialstyrelsen som ett säkrare alternativ till samsovning i vuxensängen.',
+  },
+  {
+    question: 'Hur länge kan bebisen sova i spjälsäng?',
+    answer: 'De flesta spjälsängar i standardstorlek (70x140 cm) passar barn upp till ungefär 3–4 år, beroende på barnets storlek. Stokke Sleepi är ett undantag och kan byggas ut till att passa barn upp till 10 år. När barnet kan klättra ur sängen på egen hand är det dags att byta till en juniorsäng.',
+  },
+  {
+    question: 'Vad ska jag tänka på när det gäller säkerhet i spjälsängen?',
+    answer: 'Se till att avstånd mellan spjälorna inte överstiger 4,5–6,5 cm (EU-standard EN 716) så att barnets huvud inte kan fastna. Madrassen ska passa tätt mot sängens kanter utan glapp. Använd aldrig kudde, täcke eller mjuka utfyllnadsdetaljer för bebis under 12 månader -- det ökar risken för SIDS. Välj alltid CE-märkta produkter.',
+  },
+  {
+    question: 'Är det värt att investera i en dyrare spjälsäng?',
+    answer: 'Det beror på dina behov. IKEA Sniglar till 499 kr uppfyller alla säkerhetskrav och fungerar utmärkt. En dyrare säng som Stokke Sleepi (5 999 kr) motiveras om du vill ha en säng som växer med barnet i flera år, har estetiska krav eller planerar fler barn. Leander Luna och Troll Crossover är bra mellanalternativ med bra material till rimligt pris.',
+  },
+  {
+    question: 'Kan jag köpa begagnad spjälsäng?',
+    answer: 'Det går, men var försiktig. Kontrollera att säkerhetsstandarden (EN 716) är uppfylld, att inga spilor är skadade eller saknas, och att madrassen inte är gammal eller fuktig. Köp alltid ny madrass till en begagnad säng. Undvik sängar som är äldre än 10 år eftersom standarderna har skärpts.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa spjälsäng 2026 — test & jämförelse"
+  description="Vi testar de bästa spjälsängarna 2026. Jämför standardspjälsängar, bedside cribs och resesängar för din bebis."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/spjalsangar/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Vi har testat och jämfört de bästa spjälsängarna på den svenska marknaden -- från budgetalternativet IKEA Sniglar till premiumsängar som Stokke Sleepi V3 och Leander Luna. Oavsett budget finns en säker och bra spjälsäng for din bebis.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Stokke Sleepi V3</strong> är bäst totalt -- oval design och växer med barnet 0-10 år. <strong>IKEA Sniglar</strong> är bäst för den som vill ha en prisvärd och pålitlig standardsäng.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell -- spjälsängar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="IKEA Sniglar"
+      badge="Bäst budget"
+      price="499 kr"
+      rating={4.3}
+      pros={['Extremt prisvärd -- 499 kr', 'Massiv bok, hållbart material', 'Standardmått 70x140 cm', 'Enkel montering']}
+      cons={['Ingen höjdjustering av botten', 'Enkel design utan extras']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Stokke Sleepi V3"
+      badge="Bäst i test"
+      price="5 999 kr"
+      rating={4.8}
+      pros={['Oval design -- säkrare hörn', 'Växer med barnet från 0 till 10 år', 'Utbyggbar med tillbehör', 'Tidlös skandinavisk design']}
+      cons={['Högt pris', 'Kräver märkets egna madrasser och tillbehör']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="JOOLZ Roomie Crib"
+      badge="Bästa bedside"
+      price="3 299 kr"
+      rating={4.6}
+      pros={['Fungerar som bedside crib och fristående', 'Justerbar höjd för att matcha föräldrasängen', 'Smidig övergång från natt till dag', 'Snygg design']}
+      cons={['Passar bara de minsta bebisar som bedside crib', 'Kräver måttanpassning mot föräldrasängen']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Troll Crossover"
+      badge="Prisvärt"
+      price="1 299 kr"
+      rating={4.4}
+      pros={['Regulerbar sängbotten -- 3 höjdlägen', 'Standardmått 70x140 cm', 'Enkel montering', 'Bra pris-kvalitet']}
+      cons={['Enklare material än premiumalternativ', 'Begränsad designvariation']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Leander Luna"
+      badge="Bäst design"
+      price="4 499 kr"
+      rating={4.7}
+      pros={['Skandinavisk design', 'Massiv bok med rena linjer', 'Regulerbar sängbotten', 'Passar 0-3 år']}
+      cons={['Högt pris for standardstorlek', 'Begränsat tillbehörssortiment']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt spjälsäng?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Standardsäng, bedside crib eller resesäng?</h3>
+    <p>En standardspjälsäng (70x140 cm) är det vanligaste valet och passar de flesta familjer. En bedside crib rekommenderas om du vill sova nära bebisen de första månaderna utan att dela säng -- det anses säkrare än att ha bebisen i vuxensängen. En resesäng är en komplement för resor och besök, inte en primärsäng.</p>
+
+    <h3>2. Säkerhetskrav -- vad ska du kontrollera?</h3>
+    <p>All spjälsäng som säljs i Sverige ska uppfylla EU-standarden EN 716. Se till att spilornas avstånd är 4,5–6,5 cm, att madrassen passar tätt utan glapp, och att inga lösa delar kan lossna. Köp alltid CE-märkta produkter och kontrollera att inga återkallelser gjorts på modellen.</p>
+
+    <h3>3. Madrass -- lika viktigt som sängen</h3>
+    <p>En säker madrass ska vara fast (inte mjuk), passa tätt mot sängens kanter och vara av ett material som andas. Minsta rekommenderade madrass-tjocklek är 8 cm. Byt alltid till ny madrass om du köper begagnad säng.</p>
+
+    <h3>4. Budget vs premium -- vad får du för pengarna?</h3>
+    <p>IKEA Sniglar till 499 kr uppfyller alla säkerhetskrav. Premiumsängar som Stokke Sleepi motiveras av design, längre användningstid och utbyggbarhet. Mellanalternativ som Troll Crossover (1 299 kr) och Leander Luna (4 499 kr) erbjuder bättre material och funktion till rimligare pris än toppmodellerna.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Underkategorier -- spjälsängar</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/spjalsangar/bedside-crib/" class="text-accent hover:underline">Bästa bedside crib 2026 -- sova nära bebis utan att dela säng</a></li>
+      <li><a href="/spjalsangar/resesang/" class="text-accent hover:underline">Bästa resesäng barn 2026 -- vikbar och resevänlig</a></li>
+    </ul>
+  </div>
+
+  <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 -- ljud, video och WiFi testat</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 -- test och jämförelse</a></li>
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 -- ergonomi och komfort testat</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'IKEA Sniglar',
+      description: 'Standard spjälsäng i massiv bok, 70x140 cm. Uppfyller EU-standarden EN 716. Enkel montering och prisvärd.',
+      brand: 'IKEA',
+      ratingValue: 4.3,
+      reviewCount: 1,
+      offers: [{ price: 499, url: '#', seller: 'IKEA' }],
+    },
+    {
+      name: 'Stokke Sleepi V3',
+      description: 'Oval spjälsäng i bok som växer med barnet från 0 till 10 år. Utbyggbar med tillbehör. Skandinavisk design.',
+      brand: 'Stokke',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 5999, url: '#', seller: 'Stokke' }],
+    },
+    {
+      name: 'JOOLZ Roomie Crib',
+      description: 'Bedside crib som också fungerar som fristående spjälsäng. Justerbar höjd för att matcha föräldrasängen.',
+      brand: 'JOOLZ',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 3299, url: '#', seller: 'JOOLZ' }],
+    },
+    {
+      name: 'Troll Crossover',
+      description: 'Standard spjälsäng 70x140 cm med regulerbar sängbotten i tre höjdlägen. Bra pris-kvalitet.',
+      brand: 'Troll',
+      ratingValue: 4.4,
+      reviewCount: 1,
+      offers: [{ price: 1299, url: '#', seller: 'Troll' }],
+    },
+    {
+      name: 'Leander Luna',
+      description: 'Spjälsäng i massiv bok med skandinavisk design. Regulerbar sängbotten. Passar 0-3 år.',
+      brand: 'Leander',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 4499, url: '#', seller: 'Leander' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris -- Stokke Sleepi V3"
+  productName="Bäst i test 2026"
+/>

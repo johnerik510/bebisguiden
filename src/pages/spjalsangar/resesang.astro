@@ -1,0 +1,278 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
+  { label: 'Resesäng' },
+];
+
+const products = [
+  {
+    name: 'BabyBjörn Travel Crib Light',
+    badge: 'Bäst i test',
+    price: '3 499 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Vikt': '5 kg',
+      'Monteringstid': 'Under 2 min',
+      'Madrass': 'Ingår',
+      'Godkänd som': 'Primärsäng',
+      'Pris': '3 499 kr',
+    },
+  },
+  {
+    name: 'Phil & Teds Traveller',
+    badge: 'Kompakt',
+    price: '1 999 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Vikt': '6,3 kg',
+      'Monteringstid': 'Ca 3 min',
+      'Madrass': 'Ingår',
+      'Godkänd som': 'Primärsäng',
+      'Pris': '1 999 kr',
+    },
+  },
+  {
+    name: 'Joie Kubbie Sleep',
+    badge: 'Minst',
+    price: '1 499 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Vikt': '4,9 kg',
+      'Monteringstid': 'Ca 2 min',
+      'Madrass': 'Ingår',
+      'Godkänd som': 'Primärsäng',
+      'Pris': '1 499 kr',
+    },
+  },
+  {
+    name: 'Hauck Dream N Play Plus',
+    badge: 'Bäst budget',
+    price: '799 kr',
+    rating: 4.2,
+    ctaHref: '#',
+    features: {
+      'Vikt': '8,4 kg',
+      'Monteringstid': 'Ca 5 min',
+      'Madrass': 'Ingår',
+      'Godkänd som': 'Ej primärsäng',
+      'Pris': '799 kr',
+    },
+  },
+  {
+    name: 'Nuna SENA Aire',
+    badge: 'Premium',
+    price: '4 299 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Vikt': '7,2 kg',
+      'Monteringstid': 'Under 1 min',
+      'Madrass': 'Ingår',
+      'Godkänd som': 'Primärsäng',
+      'Pris': '4 299 kr',
+    },
+  },
+];
+
+const featureLabels = ['Vikt', 'Monteringstid', 'Madrass', 'Godkänd som', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad ska jag tänka på när jag väljer resesäng?',
+    answer: 'De viktigaste faktorerna är vikt, monteringstid och om sängen är godkänd som primärsäng (inte bara som tillfällig leksäng). BabyBjörn Travel Crib Light väger bara 5 kg och är godkänd som primärsäng -- ett av de bästa alternativen för riktigt resande. Tänk också på väskans storlek och om den rymmer i bagagehyllan på flyg.',
+  },
+  {
+    question: 'Kan bebisen sova i resesäng hemma också?',
+    answer: 'Ja, om resesängen är godkänd som primärsäng (EN 716 eller liknande standard) kan den användas som ordinarie sänng hemma också. BabyBjörn Travel Crib Light, Nuna SENA Aire, Phil & Teds Traveller och Joie Kubbie Sleep uppfyller alla kravet. Hauck Dream N Play Plus är godkänd som resekomplement men inte som permanent primärsäng.',
+  },
+  {
+    question: 'Hur lätt ska en resesäng vara?',
+    answer: 'En riktigt resevänlig säng bör väga under 7 kg. BabyBjörn Travel Crib Light (5 kg) och Joie Kubbie Sleep (4,9 kg) är lättest i testet. Om du reser med flyg, kontrollera att väskans dimensioner uppfyller flygbolagets regler för incheckad eller handbagage.',
+  },
+  {
+    question: 'Ingår madrass i resesängen?',
+    answer: 'De flesta resesängar levereras med en tunn madrass. Kontrollera alltid att madrassen är fast och inte mjuk, att den passar tätt mot kanterna utan glapp, och att den är CE-märkt. BabyBjörn Travel Crib Light levereras med en luftig och CE-godkänd madrass specifikt designad för resor.',
+  },
+  {
+    question: 'Hur länge kan barnet använda resesängen?',
+    answer: 'De flesta resesängar har en viktgräns på 9–15 kg, vilket ungefär motsvarar 0–3 år beroende på barnets tillväxt. Kontrollera tillverkarens rekommendationer. Nuna SENA Aire klarar barn upp till 9 kg, medan BabyBjörn Travel Crib Light klarar upp till 13 kg.',
+  },
+  {
+    question: 'Kan man använda resesäng utan madrass?',
+    answer: 'Nej. En bebis ska alltid sova på en fast, ren madrass som passar tätt mot sängens kanter. Sov aldrig med bara det tygskikt som sitter i botten på resesängen utan en dedikerad madrass. De flesta modeller levereras med godkänd madrass -- byt den om den är gammal eller smutsig.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa resesäng barn 2026 — vikbar och resevänlig"
+  description="Vi testar de bästa resesängarna för barn och bebis 2026. Vikbara resesängar som är godkända och enkla att ta med på resa."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/spjalsangar/resesang/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En bra resesäng ska vara lätt, snabb att montera och godkänd som primärsäng. Vi har testat och jämfort de bästa resesängarna for bebis och barn -- från budgetalternativet Hauck Dream N Play Plus till premiummärken som BabyBjörn och Nuna.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>BabyBjörn Travel Crib Light</strong> är bäst totalt -- ultra-lätt 5 kg, monteras på under 2 minuter och är godkänd som primärsäng. <strong>Hauck Dream N Play Plus</strong> är bäst for den som vill ha en billig resesäng for enstaka resor.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell -- resesängar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BabyBjörn Travel Crib Light"
+      badge="Bäst i test"
+      price="3 499 kr"
+      rating={4.8}
+      pros={['Bara 5 kg -- lättast i testet', 'Monteras på under 2 minuter', 'Godkänd som primärsäng', 'Luftig mesh-konstruktion']}
+      cons={['Högt pris', 'Kräver egna BabyBjörn-lakan']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Phil & Teds Traveller"
+      badge="Kompakt"
+      price="1 999 kr"
+      rating={4.4}
+      pros={['Hård bas -- bra sovunderlag', 'Kompakt packat format', 'Godkänd som primärsäng', 'Inkl. resväska']}
+      cons={['Tyngre än BabyBjörn (6,3 kg)', 'Aningen längre montering']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Joie Kubbie Sleep"
+      badge="Minst"
+      price="1 499 kr"
+      rating={4.3}
+      pros={['Resväskestorlek -- passar kabinbagage', 'Lätt (4,9 kg)', 'Prisvärd', 'Inkl. madrass']}
+      cons={['Litet inre mått', 'Enklare material']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Hauck Dream N Play Plus"
+      badge="Bäst budget"
+      price="799 kr"
+      rating={4.2}
+      pros={['Lägst pris i testet -- 799 kr', 'Bra storlek for bebis', 'Enkel att hitta i butik']}
+      cons={['Tyngst i testet (8,4 kg)', 'Ej godkänd som permanent primärsäng', 'Längre montering (ca 5 min)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Nuna SENA Aire"
+      badge="Premium"
+      price="4 299 kr"
+      rating={4.7}
+      pros={['Extremt snabb montering -- under 1 minut', 'Luftig konstruktion med bra ventilation', 'Snygg design', 'Godkänd som primärsäng']}
+      cons={['Högst pris (4 299 kr)', 'Tyngre än BabyBjörn (7,2 kg)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt resesäng?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Kontrollera godkännanden -- primärsäng eller ej?</h3>
+    <p>Det är avgörande om resesängen är godkänd som primärsäng (EN 716) eller enbart som tillfällig resesäng. BabyBjörn Travel Crib Light, Nuna SENA Aire, Phil & Teds Traveller och Joie Kubbie Sleep uppfyller alla kravet. Hauck Dream N Play Plus är godkänd som resekomplement men inte som permanent sänng -- fungerår utmärkt for enstaka resor men ska inte ersätta en riktig säng hemma.</p>
+
+    <h3>2. Vikt och packat format -- kritiskt for flygresor</h3>
+    <p>For flygresor är vikt avgörande. BabyBjörn Travel Crib Light (5 kg) och Joie Kubbie Sleep (4,9 kg) är lättast. Joie Kubbie Sleep är unik i att det komprimeras till resväskestorlek -- möjligen kabinbagage beroende på flygbolag. Kontrollera alltid flygets bagage-regler och mät sängens väska innan packning.</p>
+
+    <h3>3. Monteringstid -- viktigare än du tror</h3>
+    <p>En trött förälder som anländer sen till ett hotellrum vill inte ägna 20 minuter at montera sängen. BabyBjörn Travel Crib Light (under 2 min) och Nuna SENA Aire (under 1 min) är bäst på detta. Undvik modeller som kräver över 5 minuter.</p>
+
+    <h3>4. Ska madrassen ingå?</h3>
+    <p>De flesta resesängar levereras med madrass -- kontrollera detta vid köp. Köp aldrig en resesäng utan madrass och tro att du kan lägga en egen filt i botten. Bebisen ska alltid sova på en godkänd, fast madrass.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler spjälsängs-guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/spjalsangar/" class="text-accent hover:underline">Bästa spjälsäng 2026 -- test och jämförelse av 5 modeller</a></li>
+      <li><a href="/spjalsangar/bedside-crib/" class="text-accent hover:underline">Bästa bedside crib 2026 -- sova nära bebis utan att dela säng</a></li>
+    </ul>
+  </div>
+
+  <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 -- test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 -- krocktestade och rankade</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'BabyBjörn Travel Crib Light',
+      description: 'Ultra-lätt resesäng på 5 kg. Monteras på under 2 minuter. Godkänd som primärsäng. Luftig mesh-konstruktion.',
+      brand: 'BabyBjörn',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 3499, url: '#', seller: 'BabyBjörn' }],
+    },
+    {
+      name: 'Phil & Teds Traveller',
+      description: 'Kompakt resesäng med hård bas och godkänd som primärsäng. Inkluderar resväska.',
+      brand: 'Phil & Teds',
+      ratingValue: 4.4,
+      reviewCount: 1,
+      offers: [{ price: 1999, url: '#', seller: 'Phil & Teds' }],
+    },
+    {
+      name: 'Joie Kubbie Sleep',
+      description: 'Liten och lätt resesäng (4,9 kg) som packas till resväskestorlek. Godkänd som primärsäng.',
+      brand: 'Joie',
+      ratingValue: 4.3,
+      reviewCount: 1,
+      offers: [{ price: 1499, url: '#', seller: 'Joie' }],
+    },
+    {
+      name: 'Hauck Dream N Play Plus',
+      description: 'Prisvärd resesäng till 799 kr. Bra storlek for bebis. Passar enstaka resor.',
+      brand: 'Hauck',
+      ratingValue: 4.2,
+      reviewCount: 1,
+      offers: [{ price: 799, url: '#', seller: 'Hauck' }],
+    },
+    {
+      name: 'Nuna SENA Aire',
+      description: 'Premium resesäng med montering under 1 minut. Luftig konstruktion och godkänd som primärsäng.',
+      brand: 'Nuna',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 4299, url: '#', seller: 'Nuna' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris -- BabyBjörn Travel Crib Light"
+  productName="Bäst i test 2026"
+/>
