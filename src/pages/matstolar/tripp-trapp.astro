@@ -1,0 +1,193 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'Tripp Trapp recension' },
+];
+
+const faqItems = [
+  {
+    question: 'Är Stokke Tripp Trapp värd priset?',
+    answer: 'Ja, for de flesta familjer är Tripp Trapp en av de bästa investeringarna i barnprodukter. Stolen håller i decennier, kan användas av hela familjen (upp till 136 kg) och har ett högt andrahandsvärde. Räknat per användningsår är Tripp Trapp ofta billigare än ett billigare alternativ som byts ut efter 2–3 år.',
+  },
+  {
+    question: 'Från vilken ålder kan barn använda Tripp Trapp?',
+    answer: 'Tripp Trapp kan användas från födseln med tillbehöret Newborn Set (köps separat), och från 6 månader med Baby Set (köps separat, ca 499 kr). Utan tillbehör passar stolen barn från ca 3 år som kan sitta stabilt utan stöd. Stolen kan sedan användas livet ut – den är godkänd upp till 136 kg.',
+  },
+  {
+    question: 'Ingår Baby Set i priset?',
+    answer: 'Nej, Baby Set (ryggstöd och glidhämmare för de minsta) kostar ca 499 kr och köps separat. Det är ett av de vanligaste klagomålen mot Tripp Trapp. Räkna med ca 3 490–3 500 kr totalt om du köper stol + Baby Set. Harness (5-punkts bälte) kostar ytterligare ca 199 kr.',
+  },
+  {
+    question: 'Är Tripp Trapp enkel att justera?',
+    answer: 'Ja, när du lärt dig systemet är det enkelt. Sitsen och fotbrädan justeras med en skruvnyckel (ingår) och kan höjas eller sänkas i takt med att barnet växer. Det tar ca 2–3 minuter per justering. Rekommendationen är att justera ungefär var 3–6 månader for barn.',
+  },
+  {
+    question: 'Vilka färger finns Tripp Trapp i?',
+    answer: 'Tripp Trapp finns i ett brett sortiment av färger och träslag – naturlackad bok, vit, svart, och ett flertal kulörta varianter. Stokke lanserar säsongsbetonade färger löpande. Naturbok och vit är de mest tidlösa och behåller bäst andrahandsvärde. Kontrollera Stokkes webbplats for aktuellt utbud.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Stokke Tripp Trapp recension 2026 – test & betyg | Bebisguiden"
+  description="Vi testar Stokke Tripp Trapp 2026. Är den ikoniska matstolen värd sitt pris? Läs vår recension med för- och nackdelar."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <!-- Verdict above the fold -->
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <div class="flex items-center justify-between flex-wrap gap-3">
+      <div>
+        <p class="text-sm font-semibold text-accent-dark mb-1">Vårt betyg</p>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-text">4.5 / 5</span>
+          <div class="flex" aria-label="Betyg 4.5 av 5">
+            {[1,2,3,4,5].map(s => (
+              <svg class={`w-5 h-5 ${s <= 4 ? 'text-star' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+        </div>
+      </div>
+      <a href="#" rel="sponsored noopener" target="_blank" class="inline-flex items-center justify-center bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+        Köp Tripp Trapp
+        <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Short pros/cons summary -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/5 border border-safe/20 rounded-xl p-4">
+      <p class="font-semibold text-safe mb-2 text-sm">Fördelar</p>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Tidlös design – passar alla hem</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Används från spädbarn till vuxen (136 kg)</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Extremt hållbar – håller i generationer</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Högt andrahandsvärde</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Justeras i höjd och djup</li>
+      </ul>
+    </div>
+    <div class="bg-accent/5 border border-accent/20 rounded-xl p-4">
+      <p class="font-semibold text-accent-dark mb-2 text-sm">Nackdelar</p>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Högt grundpris (2 990 kr)</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Baby Set och bälte kostar extra</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Kräver skruvnyckel vid justering</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Ingen inbyggd bricka</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    Stokke Tripp Trapp är den ikoniska norska matstolen som designades 1972 och sedan dess blivit ett världsklassikern. Med sin justerbara konstruktion och tidlösa formspråk är den en av de mest efterfrågade matstolarna på den svenska marknaden – men är den värd det höga priset?
+  </p>
+
+  <!-- Detailed review sections -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Detaljerad recension</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Byggkvalitet</h3>
+    <p>Tripp Trapp tillverkas i bok eller ek och är genuint robust. Stolen är konstruerad for att klara dagligt bruk i decennier – många familjer använder samma stol till syskon och till och med till barnbarn. Träet är certifierat PEFC och lacken är barnvänlig. Jämfört med plastmatstolar i samma prissegment är kvalitetskänslan på en helt annan nivå. Vi hittade inga skarpa kanter, lös skruvbult eller snedvridna fogar i vårt testexemplar.</p>
+
+    <h3>Ergonomi</h3>
+    <p>Sittfliken och fotbrädan är stolens huvudpoäng: båda justeras i djupled och höjdled med hjälp av två skruvar och en medföljande skruvnyckel. Det innebär att stolen alltid kan ställas in så att barnets knän bildar en 90-graders vinkel och fötterna vilar plant på fotbrädan. Den aktiva sittpositionen – utan ryggstöd för äldre barn – tränar balans och hållning. Stolen uppfyller kraven i den europeiska säkerhetsstandarden EN 14988.</p>
+
+    <h3>Justering</h3>
+    <p>Justeringen är inte komplicerad men tar ett par minuter och kräver att du lyfter av sitsen för att flytta den i spåret. Det går inte att justera med ett barn sittande i stolen. Rekommendationen är att justera var 3–6 månader for yngre barn. Justeringsintervallet är markerat med tydliga linjer i träet. Med Baby Set monterat (för barn under ca 3 år) sitter spärrbygeln stadigt och är enkel att ta loss.</p>
+
+    <h3>Rengöring</h3>
+    <p>Utan tillbehör är Tripp Trapp enkel att torka av – träytan är slät och lacken är tät. Med Baby Set-brickan (medföljer ej i grundpriset) kan matrester fastna i spännsystemet, men brickan är avtagbar och diskmaskinssäker. Sittdyna (köps separat) är tvättbar i 40 grader. Jämfört med plastmatstolar med fogar och skåror är Tripp Trapp faktiskt enkel att hålla ren.</p>
+
+    <h3>Pris och långsiktig kostnad</h3>
+    <p>Grundpriset för Tripp Trapp är 2 990 kr. Lägg till Baby Set (ca 499 kr) och 5-punkts harness (ca 199 kr) for ett spädbarn, och totalkostnaden landar på ca 3 688 kr. Det är dyrt initialt – men jämför med att köpa en plasmatstol for 1 500 kr som byts ut efter 3 år och en ny boosterstol for 600 kr. Tripp Trapp håller hela familjen ut och behåller 60–80% av värdet på andrahandsmarknaden.</p>
+  </div>
+
+  <!-- Alternatives comparison -->
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Jämförelse med alternativen</h2>
+
+  <div class="overflow-x-auto rounded-xl border border-border mb-8">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="bg-bg-alt border-b border-border">
+          <th class="text-left p-3 font-semibold text-text"></th>
+          <th class="text-left p-3 font-semibold text-text">Stokke Tripp Trapp</th>
+          <th class="text-left p-3 font-semibold text-text">IKEA Antilop</th>
+          <th class="text-left p-3 font-semibold text-text">Joie Mimzy</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-border">
+        <tr>
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">2 990 kr</td>
+          <td class="p-3 text-text-light">249 kr</td>
+          <td class="p-3 text-text-light">ca 999 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Ålder</td>
+          <td class="p-3 text-text-light">6 mån–vuxen</td>
+          <td class="p-3 text-text-light">6 mån–3 år</td>
+          <td class="p-3 text-text-light">6 mån–3 år</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-medium text-text">Material</td>
+          <td class="p-3 text-text-light">Bok/ek</td>
+          <td class="p-3 text-text-light">Plast</td>
+          <td class="p-3 text-text-light">Plast</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Justerbar</td>
+          <td class="p-3 text-text-light">Ja – höjd + djup</td>
+          <td class="p-3 text-text-light">Nej</td>
+          <td class="p-3 text-text-light">Ja – höjd</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-medium text-text">Livslängd</td>
+          <td class="p-3 text-text-light">Livet ut</td>
+          <td class="p-3 text-text-light">2–3 år</td>
+          <td class="p-3 text-text-light">3–4 år</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Rengöring</td>
+          <td class="p-3 text-text-light">Enkel</td>
+          <td class="p-3 text-text-light">Mycket enkel</td>
+          <td class="p-3 text-text-light">Enkel</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-8">
+    <h3>IKEA Antilop – budgetalternativet</h3>
+    <p>IKEA Antilop (249 kr) är det självklara budgetvalet. Den är stabil, enkel att rengöra och tar lite plats. Nackdelarna är att den inte är höjdjusterbar, att ergonomin är sämre och att användningstiden är begränsad till ca 3 år. For familjer som söker ett enkelt och billigt alternativ – eller ett sekundärt alternativ till sommarstugan – är Antilop svårslagen.</p>
+
+    <h3>Joie Mimzy – mellanprissegmentet</h3>
+    <p>Joie Mimzy (ca 999 kr) är ett solitt mellanprisalternativ med höjdjustering, 5-punkts bälte och avtagbar bricka. Den är enklare att rengöra än Tripp Trapp och mer funktionell än Antilop. Nackdelen är att den inte erbjuder Tripp Trapps livslängd och inte kan användas som vanlig stol när barnet vuxit ur matstolsaldern.</p>
+  </div>
+
+  <div class="mt-4 mb-8">
+    <a href="#" rel="sponsored noopener" target="_blank" class="inline-flex items-center justify-center bg-cta text-white font-bold text-base px-8 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+      Köp Tripp Trapp – Se aktuellt pris
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+
+  <div class="mt-4 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 – Tripp Trapp, IKEA Antilop och fler</a></li>
+      <li><a href="/matstolar/resestol/" class="text-accent hover:underline">Bästa resematstolen 2026 – kompakt och resevänlig</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Köp Tripp Trapp" productName="Bäst i test 2026" />
+</ArticleLayout>

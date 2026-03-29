@@ -1,0 +1,227 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bärselen', href: '/barselen/' },
+  { label: 'Ergonomisk' },
+];
+
+const products = [
+  {
+    name: 'Ergobaby 360',
+    badge: 'Bäst i test',
+    price: '1 799 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Vikt barn': '3,5–20 kg (0–4 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': 'Bomull',
+      'Ergonomi': 'HKDSI-godkänd',
+      'Pris': '1 799 kr',
+    },
+  },
+  {
+    name: 'Manduca 4everFix',
+    badge: 'Bäst ryggstöd',
+    price: '1 499 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Vikt barn': '3,5–20 kg (0–4 år)',
+      'Positioner': '3 (fram, rygg, höft)',
+      'Material': 'Organisk bomull',
+      'Ergonomi': 'HKDSI-logga',
+      'Pris': '1 499 kr',
+    },
+  },
+  {
+    name: 'Tula Free-to-Grow',
+    badge: 'Mjukaste val',
+    price: '1 299 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Vikt barn': '3,2–20 kg (0–4 år)',
+      'Positioner': '3 (fram, rygg, höft)',
+      'Material': 'Mjukt vävt tyg',
+      'Ergonomi': 'HIPS-certifierad',
+      'Pris': '1 299 kr',
+    },
+  },
+  {
+    name: 'LÍLLÉbaby Complete Original',
+    badge: 'Flest positioner',
+    price: '1 599 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Vikt barn': '3,2–20 kg (0–4 år)',
+      'Positioner': '6 (inkl. fosterläge och höft)',
+      'Material': 'Bomull/spandex',
+      'Ergonomi': 'HIPS-certifierad',
+      'Pris': '1 599 kr',
+    },
+  },
+  {
+    name: 'Beco Gemini',
+    badge: 'Prisvärt',
+    price: '999 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Vikt barn': '3,2–20 kg (0–4 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': 'Bomull',
+      'Ergonomi': 'HIPS-certifierad',
+      'Pris': '999 kr',
+    },
+  },
+];
+
+const featureLabels = ['Vikt barn', 'Positioner', 'Material', 'Ergonomi', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad innebär en ergonomisk bärsele?',
+    answer: 'En ergonomisk bärsele säkerställer att bebisen sitter i M-positionen – knäna i nivå med eller högre än rumpan, ryggen i en naturlig C-kurva och benen brett isär. Det är den naturliga ställningen för ett litet barns höftledsutveckling. En ergonomisk bärsele fördelar dessutom barnets vikt jämnt över bärarens höfter och axlar.',
+  },
+  {
+    question: 'Vad är HKDSI och HIPS – och är det viktigt?',
+    answer: 'HKDSI (International Hip Dysplasia Institute) och HIPS är organisationer som certifierar barnprodukter för korrekt höftutveckling. En produkt med deras godkännande har testats och bekräftats ge rätt M-position. Det är den viktigaste certifieringen att leta efter när du väljer bärsele. Alla bärselen i vår lista är certifierade.',
+  },
+  {
+    question: 'Hur länge kan man använda en ergonomisk bärsele?',
+    answer: 'De flesta ergonomiska bärselen i premiumklassen är gjorda för barn från ca 3,2–3,5 kg upp till 15–20 kg, vilket motsvarar 0–4 år. I praktiken slutar de flesta använda bärsele aktivt runt 12–18 månaders ålder. Ergobaby 360 och Manduca 4everFix är de modeller i testet som klarar hela perioden utan justeringstillbehör.',
+  },
+  {
+    question: 'Kan bärselen orsaka höftproblem om den sitter fel?',
+    answer: 'Felaktig bärning – där bebisens ben hänger rakt ner och rumpan inte stöds – kan ge onödig belastning på höftleden och i värsta fall bidra till höftdysplasi. Välj alltid en HIPS-certifierad bärsele och kontrollera att M-positionen hålls varje gång du tar på bärselen. En fysioterapeut kan visa rätt teknik om du är osäker.',
+  },
+  {
+    question: 'Är mesh-bärsele lika ergonomisk som bomull?',
+    answer: 'Ja, ergonomin avgörs av bärselens konstruktion och panelens bredd – inte materialet. Ergobaby Omni Breeze (mesh) och Ergobaby 360 (bomull) har identisk ergonomisk certifiering. Välj mesh vid varmt väder för bättre luftcirkulation, bomull eller vävt tyg för mjukare känsla under kallare perioder.',
+  },
+  {
+    question: 'Vilken ergonomisk bärsele passar bäst for ryggen?',
+    answer: 'En bra ergonomisk bärsele ska ha ett brett, vadderat midjebälte som bärs över höfterna – inte på midjan. Det breda midjebältet tar ca 70% av barnets vikt. Ergobaby 360 och Manduca 4everFix har de bredaste midjebältena i testet. Bärselens axelband ska sitta över axlarna utan att glida ut mot armhålorna.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Ergonomisk bärsele 2026 – test & jämförelse | Bebisguiden"
+  description="Vi testar de bästa ergonomiska bärselarna 2026. M-positionen och rätt stöd för bebisens höfter — se vilka som får godkänt."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En ergonomisk bärsele skyddar bebisens höfter och rygg – och avlastar bärarens kropp. Vi har testat fem av de bästa ergonomiska bärselarna på marknaden, bedömda utifrån HKDSI-certifiering, M-position och komfort för bäraren.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Ergobaby 360</strong> vinner för ergonomi och mångsidighet. <strong>Manduca 4everFix</strong> är bäst för ryggstöd och hållbarhet. <strong>Beco Gemini</strong> är det prisvärda alternativet med full ergonomicertifiering.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – ergonomiska bärselen 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Ergobaby 360"
+      badge="Bäst i test"
+      price="1 799 kr"
+      rating={4.8}
+      ageRange="0–4 år (3,5–20 kg)"
+      pros={['HKDSI-godkänd M-position', '4 barpositioner inkl. framåtvänd', 'Brett midjebälte avlastar ryggen', 'Passar nyfödda utan extra insert']}
+      cons={['Mellanhög prisnivå', 'Kan vara varm vid längre bärning']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Manduca 4everFix"
+      badge="Bäst ryggstöd"
+      price="1 499 kr"
+      rating={4.7}
+      ageRange="0–4 år (3,5–20 kg)"
+      pros={['Helryggsstöd upp till nacken', 'HKDSI-certifierad', 'Organisk GOTS-certifierad bomull', 'Justerbar ryggpanel för alla åldrar']}
+      cons={['Ingen framåtvänd position', 'Fler spännen att lära sig']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Tula Free-to-Grow"
+      badge="Mjukaste val"
+      price="1 299 kr"
+      rating={4.6}
+      ageRange="0–4 år (3,2–20 kg)"
+      pros={['Mjukt vävt tyg – nära wrapkänsla', 'HIPS-certifierad utan nyföddinsert', 'Passar de allra minsta (3,2 kg)', 'Stor panel med bra höftstöd']}
+      cons={['Framåtvänd position saknas', 'Kan ta tid att justera korrekt']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="LÍLLÉbaby Complete Original"
+      badge="Flest positioner"
+      price="1 599 kr"
+      rating={4.6}
+      ageRange="0–4 år (3,2–20 kg)"
+      pros={['6 barpositioner – flest i testet', 'Fosterläge for nyfödda ingår', 'HIPS-certifierad M-position', 'Lumbar support för bäraren']}
+      cons={['Tjockare konstruktion – kan kännas bulkig', 'Inte lika välkänt märke i Sverige']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Beco Gemini"
+      badge="Prisvärt"
+      price="999 kr"
+      rating={4.5}
+      ageRange="0–4 år (3,2–20 kg)"
+      pros={['Lägst pris med full ergonomicertifiering', '4 barpositioner', 'Kompakt och lätt att packa', 'Maskintvättbar']}
+      cons={['Enklare vaddering än premiummodeller', 'Smalare midjebälte']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Sa väljer du ergonomisk bärsele</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>HKDSI- och HIPS-certifiering – det enda som räknas</h3>
+    <p>Det finns många bärselen som marknadsförs som "ergonomiska" utan att ha en oberoende certifiering. Lita alltid på ett av dessa två godkännanden: HKDSI (International Hip Dysplasia Institute) eller HIPS-certifiering. Alla fem bärselen i vår lista har minst ett av dessa godkännanden. En certifiering garanterar att bärselen faktiskt håller bebisen i M-positionen under normal användning.</p>
+
+    <h3>Panelbredd – avgörande for M-positionen</h3>
+    <p>Panelbredden (sätesbredden) avgör om bebisens ben kan spridas tillräckligt brett för M-positionen. Panelen ska täcka hela sätespartiet från knäveck till knäveck. Tula Free-to-Grow och Manduca 4everFix har de bredaste panelerna i testet – bra för äldre och tyngre barn. En för smal panel tvingas in ben rakt ner, vilket motverkar ergonomin.</p>
+
+    <h3>Bärarens kropp – lika viktig som bebisens</h3>
+    <p>En ergonomisk bärsele ska inte bara skydda bebisen – den ska även avlasta bäraren. Midjebältet ska sitta över höftkammen, inte på midjan. Axelband ska vara breda och korsade på ryggen (eller H-formade) för att fördela trycket. Ergobaby 360 och LÍLLÉbaby Complete Original har de bästa midjebältena för ryggavlastning i testet.</p>
+
+    <h3>Framåtvänd position – med försiktighet</h3>
+    <p>Ergobaby 360 och Beco Gemini erbjuder framåtvänd position, men det rekommenderas att begränsa den till kortare stunder. I framåtvänd position är det svårare att upprätthålla M-positionen och ryggens C-kurva, och bebisen kan bli överstimulerad. Använd framåtvänt när barnet aktivt vill se omgivningen – inte som standardläge.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 – Ergobaby, BabyBjörn och Najell testat</a></li>
+      <li><a href="/barselen/nyfodd/" class="text-accent hover:underline">Bästa bärsele for nyfödda 2026 – säker bärning från dag ett</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris – Ergobaby 360" productName="Bäst i test 2026" />
+</ArticleLayout>

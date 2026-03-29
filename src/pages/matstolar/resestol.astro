@@ -1,0 +1,227 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'Resematstol' },
+];
+
+const products = [
+  {
+    name: 'Stokke Clikk',
+    badge: 'Bäst i test',
+    price: '1 299 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Hopfällbar matstol',
+      'Ålder': '6 mån – 3 år',
+      'Maxvikt': '15 kg',
+      'Bälte': '5-punkts (ingår)',
+      'Pris': '1 299 kr',
+    },
+  },
+  {
+    name: 'Chicco Pocket Snack',
+    badge: 'Bäst budgetval',
+    price: '549 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Klämbord på bordet',
+      'Ålder': '6 mån – 3 år',
+      'Maxvikt': '15 kg',
+      'Bälte': '3-punkts (ingår)',
+      'Pris': '549 kr',
+    },
+  },
+  {
+    name: 'Inglesina Fast Table Chair',
+    badge: 'Bäst design',
+    price: '799 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Bordsklämma',
+      'Ålder': '6 mån – 3 år',
+      'Maxvikt': '15 kg',
+      'Bälte': '3-punkts (ingår)',
+      'Pris': '799 kr',
+    },
+  },
+  {
+    name: 'Joie MimzySnacker',
+    badge: 'Liten fotavtryck',
+    price: '699 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Kompakt matstol',
+      'Ålder': '6 mån – 3 år',
+      'Maxvikt': '15 kg',
+      'Bälte': '5-punkts (ingår)',
+      'Pris': '699 kr',
+    },
+  },
+  {
+    name: 'Summer Infant Pop n Sit',
+    badge: 'Lättast att packa',
+    price: '399 kr',
+    rating: 4.2,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Uppblåsbar stol',
+      'Ålder': '6 mån – 3 år',
+      'Maxvikt': '22 kg',
+      'Bälte': '3-punkts (ingår)',
+      'Pris': '399 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Ålder', 'Maxvikt', 'Bälte', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken typ av resematstol passar bäst?',
+    answer: 'Det beror på hur du reser och vad du behöver. Stokke Clikk är bäst for semesterboenden med egna stolar som inte har matstol – den är enkel att packa och ta med. Bordsklämmare (Chicco Pocket Snack, Inglesina) passar restauranger och familjer med kompakt bagage. Summer Infant Pop n Sit är bäst for extrem minimalism – den tar nästan inget utrymme alls.',
+  },
+  {
+    question: 'Är bordsklämmare säkra?',
+    answer: 'Ja, bordsklämmare som Chicco Pocket Snack och Inglesina Fast Table Chair är CE-godkända och säkra under rätt förutsättningar. Bordet måste vara stabilt och solitt – inga glasskivor, vikbord eller lösa skivbord. Barnet ska sitta med bälte och aldrig lämnas utan tillsyn. Läs alltid tillverkarens instruktioner för vilket bordstjocklek som stöds.',
+  },
+  {
+    question: 'Vad är skillnaden mellan resematstol och boosterkudde?',
+    answer: 'En resematstol är en fristående stol med egna ben eller klämfäste, avsedd för barn som inte kan sitta stabilt i en vanlig stol. En boosterkudde (sittplatta) fästs på en vanlig stol och lyfter upp barnet som kan sitta självständigt. Boosterkuddar passar bättre för äldre barn (12+ månader) som klarar vanlig stol med lite höjd.',
+  },
+  {
+    question: 'Kan man ta med resematstol på flygplanet?',
+    answer: 'Summer Infant Pop n Sit tar minst plats i handbagage. Bordsklämmare som Chicco Pocket Snack och Inglesina väger under 1 kg och ryms lätt i ett handbagage. Stokke Clikk är incheckningsgods – den är hopfällbar men för stor för kabinbagage. Kontrollera alltid flygbolagets viktgränser och dimensioner.',
+  },
+  {
+    question: 'Från vilken ålder fungerar resematstolar?',
+    answer: 'De flesta resematstolar, inkl. Stokke Clikk och Joie MimzySnacker, rekommenderas från 6 månaders ålder när barnet kan sitta stabilt utan stöd. Summer Infant Pop n Sit kan användas från 6 månader med bälte. Bordsklämmare rekommenderas också från 6 månader, men förutsätter att barnet sitter stabilt – bedöm barnets individuella mognad.',
+  },
+  {
+    question: 'Hur rengör man en resematstol?',
+    answer: 'Välj en resematstol med avtagbar bricka och bältessystem som tål torkning med en fuktig trasa. Stokke Clikk är enkel att torka av – smidig lackad plastyta. Joie MimzySnacker har ett avtagbart sittskydd som är maskintvättbart. Bordsklämmare som Chicco Pocket Snack är de enklaste att hålla rena – de har minimalt med fogar.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa resematstol 2026 – test & jämförelse | Bebisguiden"
+  description="Vi testar de bästa resematstolarna 2026. Klaffstolar, boosterkuddar och hopfällbara matstolar för resan."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En bra resematstol gör att barnet kan äta säkert var du än befinner dig – på hotellet, hos farmor eller på restaurangen. Vi har testat fem resevänliga alternativ: från hopfällbara matstolar till bordsklämmare och uppblåsbara stolar.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Stokke Clikk</strong> är bäst for semesterresor med logi. <strong>Chicco Pocket Snack</strong> är det prisvärda valet for restauranger. <strong>Summer Infant Pop n Sit</strong> är bäst for minimal packning.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – resematstolar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Stokke Clikk"
+      badge="Bäst i test"
+      price="1 299 kr"
+      rating={4.7}
+      ageRange="6 mån – 3 år (max 15 kg)"
+      pros={['Kompakt hopfällbar – enkel att ta med', '5-punkts bälte ingår', 'Avtagbar och diskmaskinssäker bricka', 'Stabil konstruktion – tipp-tapp-resistent']}
+      cons={['Dyrast i testet', 'For stor for kabinbagage']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Chicco Pocket Snack"
+      badge="Bäst budgetval"
+      price="549 kr"
+      rating={4.5}
+      ageRange="6 mån – 3 år (max 15 kg)"
+      pros={['Lågt pris (549 kr)', 'Fästs på bordet – tar inget golvutrymme', 'Lätt och liten – ryms i handbagage', 'Avtagbar bricka']}
+      cons={['Kräver stabilt bord', 'Enklare bälte (3-punkts)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Inglesina Fast Table Chair"
+      badge="Bäst design"
+      price="799 kr"
+      rating={4.5}
+      ageRange="6 mån – 3 år (max 15 kg)"
+      pros={['Elegant design – passar alla bordsmiljöer', 'Stark klämkonstruktion', 'Lätt (ca 1,4 kg)', 'Medföljer bärväska']}
+      cons={['Kräver stabilt, tjockt bord', 'Dyrare än Chicco Pocket Snack']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Joie MimzySnacker"
+      badge="Liten fotavtryck"
+      price="699 kr"
+      rating={4.4}
+      ageRange="6 mån – 3 år (max 15 kg)"
+      pros={['Kompakt matstol med litet fotavtryck', '5-punkts bälte ingår', 'Tvättbart sittskydd', 'Ingen bordsklämma krävs']}
+      cons={['Inte hopfällbar', 'Tar mer utrymme än bordsklämmare']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Summer Infant Pop n Sit"
+      badge="Lättast att packa"
+      price="399 kr"
+      rating={4.2}
+      ageRange="6 mån – 3 år (max 22 kg)"
+      pros={['Lägst pris i testet', 'Uppblåsbar – tar minimalt utrymme i väskan', 'Hög maxvikt (22 kg)', '3-punkts bälte ingår']}
+      cons={['Lägre stabilitet än hårda stolar', 'Tar tid att blåsa upp och tömma']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Sa väljer du ratt resematstol</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Hopfällbar stol vs. bordsklämmare</h3>
+    <p>En hopfällbar matstol som Stokke Clikk eller Joie MimzySnacker är bäst om du reser till ställen som saknar matstol – hotellet, sommarstugan, farmors hem. Stolen är fristående och kräver inget bord. En bordsklämmare (Chicco Pocket Snack, Inglesina) är bäst om du äter mycket ute på restauranger – den kläms fast på bordet på sekunder och tar minimal plats i väskan.</p>
+
+    <h3>Bältessystem – alltid 3 eller 5 punkter</h3>
+    <p>Välj alltid en resematstol med bälte – barn kan falla ur stolen utan fixering. 5-punkts bälte (axlar + midja + skrev) är bäst för de minsta barnen och mer aktiva klättrare. Stokke Clikk och Joie MimzySnacker levereras med 5-punkts bälte. Bordsklämmare har ofta 3-punkts bälte, vilket räcker för barn som sitter stabilt.</p>
+
+    <h3>Kontrollera bordets hållfasthet</h3>
+    <p>Innan du monterar en bordsklämmare: kontrollera att bordet är av massivt material (trä, metall, solid plast) och att det är stabilt. Glasskivor, vikbord och lösa skivor är inte lämpliga. De flesta bordsklämmare kräver en bordstjocklek på 1,5–8 cm. Kontrollera produktbladets specifikationer for din specifika klämmare.</p>
+
+    <h3>Packvikt och mått</h3>
+    <p>Summer Infant Pop n Sit är överlägsen for minimal packstorlek – uppblåst tar den plats, men i plånboken ryms den i en handväska. Inglesina Fast Table Chair (ca 1,4 kg) och Chicco Pocket Snack (ca 0,9 kg) är lättast bland de hårda alternativen. Stokke Clikk väger ca 2,8 kg ihopfällt – okej for incheckat bagage, men tungt for handbagage.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 – Tripp Trapp, IKEA Antilop och fler</a></li>
+      <li><a href="/matstolar/tripp-trapp/" class="text-accent hover:underline">Stokke Tripp Trapp recension 2026 – värd pengarna?</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris – Stokke Clikk" productName="Bäst i test 2026" />
+</ArticleLayout>
