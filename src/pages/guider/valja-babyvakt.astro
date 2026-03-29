@@ -1,6 +1,8 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -127,5 +129,20 @@ const faqItems = [
     </ul>
   </div>
 
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Var rekommendation: BabyBjörn Video Baby Monitor</h2>
+  <ProductCard
+    name="BabyBjörn Video Baby Monitor"
+    badge="Bäst i test babyvakter 2026"
+    price="2 195 kr"
+    rating={4.7}
+    ageRange="0–2 år"
+    pros={['Stor skärm 5 tum', 'Utmärkt bildkvalitet nattetid', 'Inget WiFi behövs — DECT', 'Tvåvägskommunikation och vyssning']}
+    cons={['Relativt högt pris', 'Begränsad räckvidd i tjocka väggar']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babyutrustning/babyvakter/babybjorn-video-baby-monitor"
+  />
+
   <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/babyutrustning/babyvakter/babybjorn-video-baby-monitor" productName="BabyBjörn Video Baby Monitor" text="Se bästa pris — BabyBjörn Baby Monitor" />
 </ArticleLayout>

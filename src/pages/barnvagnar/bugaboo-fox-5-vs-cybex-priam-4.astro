@@ -1,0 +1,206 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Bugaboo Fox 5 vs Cybex Priam 4' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Bugaboo Fox 5 eller Cybex Priam 4?',
+    answer: 'Bugaboo Fox 5 vinner på körkomfort, enkelhet och hållbarhet. Cybex Priam 4 är ett bra alternativ om du vill ha mer anpassningsmöjligheter, lättare vikt och en något lägre prislapp. För de flesta svenska familjer rekommenderar vi Fox 5.',
+  },
+  {
+    question: 'Vad kostar Bugaboo Fox 5 vs Cybex Priam 4?',
+    answer: 'Bugaboo Fox 5 kostar cirka 14 990 kr och Cybex Priam 4 kostar cirka 11 990 kr i grundutförande. Båda priserna gäller duovagn med liggdel och sittdel. Cybex har fler tillval som kan höja priset avsevärt.',
+  },
+  {
+    question: 'Är Cybex Priam 4 lättare att vika än Fox 5?',
+    answer: 'Priam 4 väger 13,5 kg mot Fox 5:s 12,4 kg — Fox är alltså lättare. Båda har en-handsvickning men Fox 5 anses generellt ha ett mjukare och mer intuitivt viksystem i tester.',
+  },
+  {
+    question: 'Vilken passar bäst för svenska underlag och vintergångvägar?',
+    answer: 'Bugaboo Fox 5 anses bäst för ojämna underlag tack vare sin fullfjädrade konstruktion och stora hjul. Cybex Priam 4 klarar sig bra men kräver mer kraft på grus och löst underlag.',
+  },
+  {
+    question: 'Kan jag använda Cybex bilbarnstol på Bugaboo Fox 5?',
+    answer: 'Nej — Bugaboo och Cybex använder olika adaptersystem. Bugaboo Fox 5 är kompatibel med Bugaboo Turtle, Maxi-Cosi och Nuna via adapter. Cybex Priam 4 tar Cybex egna Aton-serie samt Maxi-Cosi via adapter.',
+  },
+  {
+    question: 'Vilket märke har bäst service och reservdelar i Sverige?',
+    answer: 'Bugaboo har ett väletablerat servicenätverk i Sverige och reservdelar finns lätt tillgängliga hos auktoriserade återförsäljare som Jollyroom och BabyShop. Cybex erbjuder god service via sin distributör men reservdelstillgången är något mer begränsad.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bugaboo Fox 5 vs Cybex Priam 4 2026 — vilken barnvagn vinner?"
+  description="Vi jämför Bugaboo Fox 5 och Cybex Priam 4 sida vid sida. Körkomfort, vikt, pris, kompatibilitet och vem som vinner 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Bugaboo Fox 5 och Cybex Priam 4 är två av de mest populära premiumvagnarna bland svenska föräldrar 2026. Båda kostar runt 12 000–15 000 kr, ser liknande ut på insidan av barnbutiken — men skiljer sig markant i körkomfort, vikt och ekosystem.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vi har jämfört båda modellerna ingående. Här är domen.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Bugaboo Fox 5</th>
+          <th class="p-3 text-left font-semibold">Cybex Priam 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">14 990 kr</td>
+          <td class="p-3 text-text-light">11 990 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vikt chassi</td>
+          <td class="p-3 text-text-light">12,4 kg</td>
+          <td class="p-3 text-text-light">13,5 kg</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Fjädring</td>
+          <td class="p-3 text-text-light">Fullfjädrad</td>
+          <td class="p-3 text-text-light">Fullfjädrad</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vikbar med en hand</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Vändbar sittdel</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Hjulstorlek</td>
+          <td class="p-3 text-text-light">Stora 12-tummar</td>
+          <td class="p-3 text-text-light">12-tummar fram, 14 bak</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Kompatibel bilbarnstol</td>
+          <td class="p-3 text-text-light">Bugaboo Turtle, Maxi-Cosi</td>
+          <td class="p-3 text-text-light">Cybex Aton, Maxi-Cosi</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Körkomfort i test</td>
+          <td class="p-3 text-green-700 font-semibold">Utmarkt</td>
+          <td class="p-3 text-text-light">Mycket bra</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Ursprungsland</td>
+          <td class="p-3 text-text-light">Nederländerna</td>
+          <td class="p-3 text-text-light">Tyskland</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Vinner på</td>
+          <td class="p-3 text-green-700 font-semibold">Körkomfort, enkelhet</td>
+          <td class="p-3 text-text-light">Pris, anpassning</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vår rekommendation</h2>
+  <p class="text-text-light mb-4">
+    <strong class="text-text">Bugaboo Fox 5 vinner</strong> — men Cybex Priam 4 är ett legitimt alternativ för budgetmedvetna familjer som vill ha premiumkänsla till ett lägre pris.
+  </p>
+  <p class="text-text-light mb-6">
+    Fox 5 har den bästa körkomforten vi testat i den här priskategorin. Den rullar mjukt på Stockholms kullerstensbelagda innerstadsgator, hanterar gropiga parkvägar utan att bränna armarna och vikas intuitivt med en hand. Priam 4 är nära men Fox 5 är ett tydligt steg bättre.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Körkomfort — Fox 5 vinner</h2>
+  <p class="text-text-light mb-4">
+    Bugaboo Fox 5 har en av de mjukaste fjädringarna på marknaden. De stora 12-tums hjulen kombinerat med fullfjädrad konstruktion gör att vagnen absorberar stötar som Priam 4 låter gå vidare till barnet. Det märks tydligast på grus, kullersten och ojämna trottoarplattor — typiska svenska stadsunderlag.
+  </p>
+  <p class="text-text-light mb-6">
+    Cybex Priam 4 är inte dålig — den har stora 14-tums bakhjul och fungerar utmärkt på plant underlag. Men på sämre underlag skaver den mer och kräver mer kraft att styra.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vikt och hopfällning</h2>
+  <p class="text-text-light mb-4">
+    Fox 5 väger 12,4 kg och Priam 4 väger 13,5 kg. Skillnaden är cirka ett kilo — märkbar men inte avgörande. Båda fälls ihop med en hand och passar i normala bilbagageutrymmen.
+  </p>
+  <p class="text-text-light mb-6">
+    Fox 5:s viksystem är mer intuitivt: en rörelse, vagnen fälls, du lyfter in den. Priam 4 kräver att du vet exakt hur systemet fungerar — lätt att lära men inte lika instinktivt vid stressade situationer.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Anpassningsmöjligheter — Priam 4 vinner</h2>
+  <p class="text-text-light mb-4">
+    Cybex Priam 4 erbjuder fler klädsel- och färgalternativ än Fox 5. Cybex har profilerat sig starkt på design med Scandinavian Gold, Sepia Black och färgglada specialserier. Om utseendet är viktigt för dig och du vill ha en vagn som sticker ut, ger Priam 4 mer valmöjligheter.
+  </p>
+  <p class="text-text-light mb-6">
+    Bugaboo Fox 5 har ett begränsat men konsekvent sortiment av klassiska färger — inget fel på dem, men utan samma bredd.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Pris och värde</h2>
+  <p class="text-text-light mb-4">
+    Cybex Priam 4 kostar cirka 11 990 kr mot Fox 5:s 14 990 kr. Tre tusen kronors skillnad är inte oviktigt — men med tanke på att en barnvagn används dagligen i 2–4 år handlar det om 2–4 kronor per dag i extra kostnad för Fox 5.
+  </p>
+  <p class="text-text-light mb-6">
+    Bugaboo har generellt bättre andrahandsvärde. En välbehållen Fox 5 säljs på Blocket för 6 000–9 000 kr efter 2 år. Priam 4 tappar lite mer i värde. Det påverkar den effektiva ägandekostnaden.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vilket väljer du?</h2>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-8">
+    <li><strong class="text-text">Välj Bugaboo Fox 5</strong> om du prioriterar körkomfort, bor i en stad med ojämna underlag och vill ha den absolut bästa dagliga upplevelsen.</li>
+    <li><strong class="text-text">Välj Cybex Priam 4</strong> om budgeten är stram, du vill ha fler färgval och du bor i ett område med mestadels jämnt underlag.</li>
+  </ul>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Bugaboo Fox 5 — vår toppval</h2>
+  <ProductCard
+    name="Bugaboo Fox 5"
+    badge="Bäst i test barnvagnar 2026"
+    price="14 990 kr"
+    rating={4.8}
+    ageRange="0–4 år"
+    pros={['Bästa körkomfort i test', 'Enkel att vika med en hand', 'Hållbar för svenska underlag', 'Kan vändas mot/från föräldrar']}
+    cons={['Hög prisklass', 'Tung chassi 12,4 kg']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Cybex Priam 4 — bra alternativ</h2>
+  <ProductCard
+    name="Cybex Priam 4"
+    badge="Bra alternativ 2026"
+    price="11 990 kr"
+    rating={4.5}
+    ageRange="0–4 år"
+    pros={['Lägre pris än Fox 5', 'Fler färgval', 'Kompatibel med Cybex bilbarnstolar', 'Bra fjädring']}
+    cons={['Tyngre än Fox 5', 'Sämre på ojämna underlag', 'Viksystemet kräver inlärning']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/cybex-priam-4-duovagn"
+  />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett test och topplista</a></li>
+      <li><a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Bästa duovagnen 2026 — Fox, Priam och fler</a></li>
+      <li><a href="/marken/bugaboo/" class="text-accent hover:underline">Bugaboo — märkesrecension 2026</a></li>
+      <li><a href="/marken/cybex/" class="text-accent hover:underline">Cybex — märkesrecension 2026</a></li>
+      <li><a href="/guider/valja-barnvagn/" class="text-accent hover:underline">Hur väljer man rätt barnvagn? Komplett köpguide</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn" productName="Bugaboo Fox 5" text="Se bästa pris — Bugaboo Fox 5" />
+</ArticleLayout>

@@ -1,6 +1,8 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -142,5 +144,20 @@ const faqItems = [
     </ul>
   </div>
 
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Rekommenderad spjälsäng för säker sömn</h2>
+  <ProductCard
+    name="Stokke Sleepi V3"
+    badge="Bäst i test spjälsängar 2026"
+    price="5 990 kr"
+    rating={4.8}
+    ageRange="0–10 år"
+    pros={['Oval form minskar skarpa hörn', 'Växer med barnet — barn- till juniorsäng', 'Certifierad säkerhet EN 716', 'Andningsbar madrass ingår']}
+    cons={['Hög prisklass', 'Kräver specialbäddset']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barn-och-baby/spjalsangar/stokke-sleepi-v3"
+  />
+
   <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/barn-och-baby/spjalsangar/stokke-sleepi-v3" productName="Stokke Sleepi V3" text="Se bästa pris — Stokke Sleepi V3" />
 </ArticleLayout>
