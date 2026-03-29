@@ -1,0 +1,226 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Lätt barnvagn' },
+];
+
+const products = [
+  {
+    name: 'Silver Cross Zest',
+    badge: 'Bäst i test',
+    price: '2 999 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/silver-cross-zest',
+    features: {
+      'Vikt (kg)': '6,0 kg',
+      'Hopfällt mått': '53 x 45 x 25 cm',
+      'Sits-riktning': 'Framåt',
+      'Lämplig ålder': '6 mån–4 år',
+      'Pris': '2 999 kr',
+    },
+  },
+  {
+    name: 'Cybex Eezy S Twist+2',
+    badge: 'Roterande sits',
+    price: '4 999 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/cybex-eezy-s-twist-2',
+    features: {
+      'Vikt (kg)': '7,5 kg',
+      'Hopfällt mått': '55 x 46 x 22 cm',
+      'Sits-riktning': 'Fram- och bakåt',
+      'Lämplig ålder': '6 mån–4 år',
+      'Pris': '4 999 kr',
+    },
+  },
+  {
+    name: 'Babyzen YOYO2',
+    badge: 'Flyg-godkänd',
+    price: '7 499 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/babyzen-yoyo2-sittvagn',
+    features: {
+      'Vikt (kg)': '5,8 kg',
+      'Hopfällt mått': '52 x 44 x 18 cm',
+      'Sits-riktning': 'Framåt',
+      'Lämplig ålder': '0–4 år (med tillbehör)',
+      'Pris': '7 499 kr',
+    },
+  },
+  {
+    name: 'UPPAbaby Minu V2',
+    badge: 'Premium kompakt',
+    price: '5 999 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/uppababy-minu-v2',
+    features: {
+      'Vikt (kg)': '6,4 kg',
+      'Hopfällt mått': '56 x 43 x 24 cm',
+      'Sits-riktning': 'Framåt',
+      'Lämplig ålder': '6 mån–4 år',
+      'Pris': '5 999 kr',
+    },
+  },
+  {
+    name: 'Joie Pact Pro',
+    badge: 'Budgetval',
+    price: '1 999 kr',
+    rating: 4.3,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/joie-pact-pro-sittvagn',
+    features: {
+      'Vikt (kg)': '6,2 kg',
+      'Hopfällt mått': '54 x 49 x 26 cm',
+      'Sits-riktning': 'Framåt',
+      'Lämplig ålder': '6 mån–4 år',
+      'Pris': '1 999 kr',
+    },
+  },
+];
+
+const featureLabels = ['Vikt (kg)', 'Hopfällt mått', 'Sits-riktning', 'Lämplig ålder', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad räknas som en lätt barnvagn?',
+    answer: 'En lätt barnvagn brukar definieras som en vagn under 10 kg. De allra lättaste modellerna, som Babyzen YOYO2 (5,8 kg) och Silver Cross Zest (6 kg), väger under 7 kg och är enkla att bära upp för trappor eller lyfta in på bussen. Allt under 8 kg betraktas generellt som lätt.',
+  },
+  {
+    question: 'Kan man ta med en lätt barnvagn som handbagage på flyget?',
+    answer: 'Babyzen YOYO2 är det mest kända exemplet — den är flyg-godkänd som kabinbagage på de flesta flygbolag och ryms i overhead-facket ihopfälld (52 x 44 x 18 cm). Kontrollera alltid ditt flygbolags specifika mått- och viktgränser innan resan, då reglerna skiljer sig åt.',
+  },
+  {
+    question: 'Från vilken ålder kan barnet sitta i en lätt barnvagn?',
+    answer: 'De flesta lätta barnvagnar är konstruerade för barn från 6 månader, när barnet kan sitta stadigt själv. Babyzen YOYO2 kan med rätt tillbehör användas från födseln. Kontrollera alltid tillverkarens åldersrekommendation för den specifika modellen innan köp.',
+  },
+  {
+    question: 'Är lätta barnvagnar sämre på ojämnt underlag?',
+    answer: 'Generellt ja — de allra lättaste vagnarna har ofta mindre hjul och enklare fjädring, vilket gör dem mindre lämpade för grus, kullersten och skogsmark. De är optimerade för stadsbruk på jämna ytor. Om du promenerar mycket på ojämnt underlag är Cybex Eezy S Twist+2 eller UPPAbaby Minu V2 bättre val tack vare bättre fjädring.',
+  },
+  {
+    question: 'Vilket är det bästa budgetalternativet för en lätt barnvagn?',
+    answer: 'Joie Pact Pro är det bästa prisvärda alternativet i testet. Den väger 6,2 kg, är enkel att fälla ihop och levereras med regnskydd och resebag. För priset (ca 1 999 kr) är det svårt att hitta ett bättre alternativ. Silver Cross Zest är ett steg upp i kvalitet och kostar ca 2 999 kr.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa lätta barnvagn 2026 – under 10 kg | Bebisguiden"
+  description="Vi testar de lättaste barnvagnarna 2026. Lätta barnvagnar under 10 kg som är enkla att bära i trappor och ta med på resa."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En lätt barnvagn under 10 kg gör vardagen enklare — lättare att bära i trappor, lyfta på bussen och ta med på resa. Vi har testat och jämfört de bästa lätta barnvagnarna på marknaden 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Silver Cross Zest"
+      badge="Bäst i test"
+      price="2 999 kr"
+      rating={4.7}
+      ageRange="6 månader–4 år"
+      pros={['Mycket lätt — bara 6 kg', 'Enkelt enhandsfall', 'Bra pris för kvaliteten']}
+      cons={['Ingen roterande sits', 'Enklare fjädring på ojämnt underlag']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/silver-cross-zest"
+    />
+
+    <ProductCard
+      name="Cybex Eezy S Twist+2"
+      badge="Roterande sits"
+      price="4 999 kr"
+      rating={4.6}
+      ageRange="6 månader–4 år"
+      pros={['360-graders roterande sits — enkel omvändning', 'Bra fjädring för en lätt vagn', 'Kompakt ihopfälld']}
+      cons={['Tyngre än de lättaste alternativen (7,5 kg)', 'Mellanhögt pris']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/cybex-eezy-s-twist-2"
+    />
+
+    <ProductCard
+      name="Babyzen YOYO2"
+      badge="Flyg-godkänd"
+      price="7 499 kr"
+      rating={4.8}
+      ageRange="0–4 år (med tillbehör)"
+      pros={['Lättast i testet — bara 5,8 kg', 'Godkänd som kabinbagage på flyg', 'Kan användas från födseln med liggdels-tillbehör']}
+      cons={['Hög prisklass', 'Tillbehör säljs separat']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/babyzen-yoyo2-sittvagn"
+    />
+
+    <ProductCard
+      name="UPPAbaby Minu V2"
+      badge="Premium kompakt"
+      price="5 999 kr"
+      rating={4.6}
+      ageRange="6 månader–4 år"
+      pros={['Kompakt och lätt (6,4 kg)', 'Premiummaterial och bra körkomfort', 'Stor solskärm med UPF 50+']}
+      cons={['Hög prisklass', 'Inte flyg-godkänd som handbagage']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/uppababy-minu-v2"
+    />
+
+    <ProductCard
+      name="Joie Pact Pro"
+      badge="Budgetval"
+      price="1 999 kr"
+      rating={4.3}
+      ageRange="6 månader–4 år"
+      pros={['Lägst pris i testet', 'Lätt (6,2 kg) och enkel att fälla ihop', 'Regnskydd och reseväska ingår']}
+      cons={['Enklare material och finish', 'Mindre kompakt hopfällt än YOYO2']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/joie-pact-pro-sittvagn"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt lätt barnvagn</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Varför välja en lätt barnvagn?</h3>
+    <p>En lätt barnvagn under 10 kg är ett utmärkt val om du bor i lägenhet utan hiss, ofta åker kollektivtrafik eller reser mycket med barn. Skillnaden mellan en 6 kg och en 12 kg vagn märks tydligt varje gång du lyfter vagnen upp för trappor eller in i bagageutrymmet. För stadsliv och resor är en lätt vagn nästan alltid det smartaste valet.</p>
+
+    <h3>Vikt vs körkomfort</h3>
+    <p>Lättare vagnar innebär ofta enklare konstruktion med mindre hjul och grundläggare fjädring. Det märks på ojämnt underlag. Om du promenerar mycket på grus, kullersten eller i naturen bör du välja en modell med bättre fjädring, som Cybex Eezy S Twist+2. För rent stadsbruk på jämna trottoarer räcker Silver Cross Zest eller Joie Pact Pro gott.</p>
+
+    <h3>Flygresa med barnvagn</h3>
+    <p>Babyzen YOYO2 är det självklara valet om du reser med flyg regelbundet. Den är flyg-godkänd som kabinbagage och ryms i overhead-facket ihopfälld — du slipper lämna in vagnen och riskera att den skadas i bagagehanteringen. Det gör den till en investering värd priset för resefamiljer.</p>
+
+    <h3>Budget eller premium?</h3>
+    <p>Joie Pact Pro visar att man inte behöver betala mycket för en lätt, fungerande sittvagn. För ca 1 999 kr får du en 6,2 kg vagn med allt du behöver för dagligt bruk. Babyzen YOYO2 till 7 499 kr motiverar sitt pris om du reser med flyg — annars är Silver Cross Zest det bästa prisvärda alternativet.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/sittvagn/" class="text-accent hover:underline">Bästa sittvagnen 2026 — test och jämförelse (sulky)</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Bästa duovagnen 2026 — test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/liggdel/" class="text-accent hover:underline">Barnvagn med liggdel 2026 — för nyfödda och spädbarn</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/silver-cross-zest" text="Se bästa pris — Silver Cross Zest" productName="Bäst i test 2026" />
+</ArticleLayout>

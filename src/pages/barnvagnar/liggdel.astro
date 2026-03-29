@@ -1,0 +1,226 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Barnvagn med liggdel' },
+];
+
+const products = [
+  {
+    name: 'Emmaljunga NXT90',
+    badge: 'Bäst i test',
+    price: '9 999 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt90-ergo-duovagn-logrey-bla',
+    features: {
+      'Liggdelens mått (cm)': '85 x 35 cm',
+      'Platt liggläge': 'Ja',
+      'Vikt (kg)': '13,5 kg',
+      'Modulär': 'Ja',
+      'Pris': '9 999 kr',
+    },
+  },
+  {
+    name: 'iCandy Peach 7',
+    badge: 'Elegant val',
+    price: '12 999 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/icandy-peach-7',
+    features: {
+      'Liggdelens mått (cm)': '82 x 34 cm',
+      'Platt liggläge': 'Ja',
+      'Vikt (kg)': '12,2 kg',
+      'Modulär': 'Ja',
+      'Pris': '12 999 kr',
+    },
+  },
+  {
+    name: 'Bugaboo Fox 5',
+    badge: 'Premium',
+    price: '15 999 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn',
+    features: {
+      'Liggdelens mått (cm)': '88 x 36 cm',
+      'Platt liggläge': 'Ja',
+      'Vikt (kg)': '12,4 kg',
+      'Modulär': 'Ja',
+      'Pris': '15 999 kr',
+    },
+  },
+  {
+    name: 'Britax Römer Smile 5Z',
+    badge: 'Familjevänlig',
+    price: '8 499 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-smile-5z',
+    features: {
+      'Liggdelens mått (cm)': '80 x 33 cm',
+      'Platt liggläge': 'Ja',
+      'Vikt (kg)': '11,5 kg',
+      'Modulär': 'Ja',
+      'Pris': '8 499 kr',
+    },
+  },
+  {
+    name: 'Hauck Pacific 4 Shop',
+    badge: 'Budgetval',
+    price: '2 499 kr',
+    rating: 4.1,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/hauck-pacific-4-shop',
+    features: {
+      'Liggdelens mått (cm)': '75 x 31 cm',
+      'Platt liggläge': 'Ja',
+      'Vikt (kg)': '12,8 kg',
+      'Modulär': 'Nej',
+      'Pris': '2 499 kr',
+    },
+  },
+];
+
+const featureLabels = ['Liggdelens mått (cm)', 'Platt liggläge', 'Vikt (kg)', 'Modulär', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Varför är platt liggläge viktigt för nyfödda?',
+    answer: 'Nyfödda barn behöver ligga plant för att ryggraden och halsmuskler ska utvecklas korrekt. Ett lutande eller halvliggande läge är inte lämpligt under de första månaderna. Svenska barnläkare och Folkhälsomyndigheten rekommenderar att nyfödda alltid ska ligga plant i barnvagnen, särskilt under de första 4–6 månaderna.',
+  },
+  {
+    question: 'Hur länge använder barnet liggdelen?',
+    answer: 'De flesta barn använder liggdelen under de första 6 månaderna, tills de kan sitta stadigt med stöd. Vissa barn använder liggdelen längre — det beror på barnets utveckling. När barnet klarar att sitta stadigt utan stöd, vanligtvis runt 6–9 månader, byter de flesta till sittdelen.',
+  },
+  {
+    question: 'Vad är skillnaden mellan en liggdel och en barnvagnsinsats?',
+    answer: 'En liggdel är en separat del till duovagnen — ett fast chassie med en madrass. En barnvagnsinsats är ett mjukt tillbehör som läggs i en sittvagn eller bilbarnstol för att ge nyfödda ett flackare läge. Liggdelen ger generellt bättre stöd och ett mer plant läge än en insats.',
+  },
+  {
+    question: 'Vilken barnvagn med liggdel är bäst för kallt väder?',
+    answer: 'Emmaljunga NXT90 är tillverkad i Sverige och speciellt anpassad för nordiskt klimat. Liggdelen har bra isolering och vagnen är byggd för att klara snö, is och kyla. Bugaboo Fox 5 är också ett starkt val med möjlighet att köpa vinterspecifika tillbehör.',
+  },
+  {
+    question: 'Kan man köpa till en liggdel i efterhand?',
+    answer: 'Ja, för de flesta modulära vagnar går det att köpa liggdelen separat. Emmaljunga, iCandy Peach 7, Bugaboo Fox 5 och Britax Römer Smile 5Z säljer alla liggdelar separat. Kontrollera alltid kompatibilitet med ditt vagnchassi innan köp. Hauck Pacific 4 Shop är inte modulär och säljs med liggdel i paketet.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Barnvagn med liggdel 2026 – test & jämförelse | Bebisguiden"
+  description="Vi jämför de bästa barnvagnarna med liggdel 2026. En plan liggdel är viktigt för nyfödda — se vilka vagnar som har bäst liggdel."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En plan liggdel är avgörande för nyfödda — ryggraden behöver fullt stöd under de första månaderna. Vi har jämfört de bästa barnvagnarna med liggdel på svenska marknaden 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Emmaljunga NXT90"
+      badge="Bäst i test"
+      price="9 999 kr"
+      rating={4.7}
+      ageRange="0–4 år"
+      pros={['Bred liggdel med platt läge', 'Tillverkad i Sverige — byggt för nordiskt klimat', 'Suprem-fjädring som hanterar grus och snö']}
+      cons={['Tyngre chassi (13,5 kg)', 'Större ihopfälld storlek']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt90-ergo-duovagn-logrey-bla"
+    />
+
+    <ProductCard
+      name="iCandy Peach 7"
+      badge="Elegant val"
+      price="12 999 kr"
+      rating={4.6}
+      ageRange="0–4 år"
+      pros={['Liggdel ingår i paketet', 'Elegant design med premiumkänsla', 'Lätt att konvertera mellan liggdel och sittdel']}
+      cons={['Hög prisklass', 'Liggdelen något smalare än Emmaljunga']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/icandy-peach-7"
+    />
+
+    <ProductCard
+      name="Bugaboo Fox 5"
+      badge="Premium"
+      price="15 999 kr"
+      rating={4.8}
+      ageRange="0–4 år"
+      pros={['Störst liggdel i testet (88 x 36 cm)', 'Utmärkt fullfjädring på alla underlag', 'Enhandsfall — snabb och smidig ihopfällning']}
+      cons={['Högsta priset i testet', 'Liggdel säljs separat']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn"
+    />
+
+    <ProductCard
+      name="Britax Römer Smile 5Z"
+      badge="Familjevänlig"
+      price="8 499 kr"
+      rating={4.5}
+      ageRange="0–4 år"
+      pros={['Bra pris för en komplett duovagn', 'Liggdel och sittdel ingår', 'Bra säkerhetsfunktioner från Britax']}
+      cons={['Mindre liggdel än Bugaboo och Emmaljunga', 'Enklare fjädring än premiummodeller']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-smile-5z"
+    />
+
+    <ProductCard
+      name="Hauck Pacific 4 Shop"
+      badge="Budgetval"
+      price="2 499 kr"
+      rating={4.1}
+      ageRange="0–4 år"
+      pros={['Lägst pris med liggdel inkluderat', 'Platt liggläge för nyfödd', 'Komplett paket — inget behöver köpas till']}
+      cons={['Inte modulär — kan inte byta till annan liggdel', 'Enklare material och fjädring', 'Minsta liggdelen i testet']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/hauck-pacific-4-shop"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du barnvagn med liggdel</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Varför behöver nyfödda ett plant liggläge?</h3>
+    <p>Nyfödda barn saknar muskelstyrka att hålla upp huvudet och ryggraden på egen hand. Ett plant liggläge ger ryggraden det stöd den behöver för att utvecklas korrekt. Svenska barnläkare rekommenderar att nyfödda alltid ska ligga plant i barnvagnen under de första månaderna. Välj alltid en vagn med bekräftat platt liggläge — inte bara "nästan plant".</p>
+
+    <h3>Liggdelens storlek — vad spelar roll?</h3>
+    <p>En rymligare liggdel ger barnet mer plats att växa och kan användas längre. Bugaboo Fox 5 har störst liggdel i testet (88 x 36 cm), vilket innebär att barnet kan använda den längre innan det är dags att byta till sittdelen. En smalare liggdel kan kännas trång för större barn redan efter 3–4 månader.</p>
+
+    <h3>Modulär vs inbyggd liggdel</h3>
+    <p>De flesta moderna duovagnar är modulära — liggdelen och sittdelen är separata enheter som du byter ut. Det ger flexibilitet: du kan köpa liggdel och sittdel separat, eller byta ut liggdelen mot en annan om du behöver. Hauck Pacific 4 Shop är ett undantag — den är inte modulär men levereras komplett med liggdel till ett mycket lågt pris.</p>
+
+    <h3>Klimat och liggdel</h3>
+    <p>Om du bor i Sverige och planerar att använda barnvagnen under höst och vinter är liggdelens isolering och väderskydd viktiga faktorer. Emmaljunga NXT90 är speciellt utvecklad för nordiska förhållanden och har överlägsen isolering och ett effektivt väderskydd. Bugaboo Fox 5 erbjuder bra vinterspecifika tillbehör som kan köpas till.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Bästa duovagnen 2026 — test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/latt/" class="text-accent hover:underline">Bästa lätta barnvagn 2026 — under 10 kg</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/sittvagn/" class="text-accent hover:underline">Bästa sittvagnen 2026 — test och jämförelse (sulky)</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt90-ergo-duovagn-logrey-bla" text="Se bästa pris — Emmaljunga NXT90" productName="Bäst i test 2026" />
+</ArticleLayout>
