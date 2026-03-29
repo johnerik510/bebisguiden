@@ -1,0 +1,224 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Budget' },
+];
+
+const products = [
+  {
+    name: 'Hauck Shopper SLX',
+    badge: 'Billigast',
+    price: '999 kr',
+    rating: 4.1,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Sittvagn',
+      'Vikt': 'ca 7 kg',
+      'Hopfälld': 'Kompakt',
+      'Hjul': '4 hjul',
+      'Liggläge': 'Ja',
+    },
+  },
+  {
+    name: 'Kinderkraft Cruiser',
+    badge: 'Terrängvänlig',
+    price: '1 599 kr',
+    rating: 4.2,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Sittvagn, 3-hjulig',
+      'Vikt': 'ca 9 kg',
+      'Hopfälld': 'Kompakt',
+      'Hjul': '3 hjul (luftfyllda)',
+      'Liggläge': 'Ja',
+    },
+  },
+  {
+    name: 'Chicco Miinimo 4',
+    badge: 'Kompaktest',
+    price: '1 999 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Sittvagn',
+      'Vikt': 'ca 7,5 kg',
+      'Hopfälld': 'Mycket kompakt',
+      'Hjul': '4 hjul',
+      'Liggläge': 'Nej (recline)',
+    },
+  },
+  {
+    name: 'Joie Litetrax 4 Air',
+    badge: 'Bäst i test',
+    price: '2 499 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Sittvagn',
+      'Vikt': 'ca 9,5 kg',
+      'Hopfälld': 'Kompakt',
+      'Hjul': '4 lufthjul',
+      'Liggläge': 'Ja',
+    },
+  },
+  {
+    name: 'Silver Cross Zest',
+    badge: 'Lättast',
+    price: '2 999 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Sittvagn',
+      'Vikt': '6 kg',
+      'Hopfälld': 'Kompakt',
+      'Hjul': '4 hjul',
+      'Liggläge': 'Nej (recline)',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Vikt', 'Hopfälld', 'Hjul', 'Liggläge'];
+
+const faqItems = [
+  {
+    question: 'Vad ska jag tänka på när jag köper en billig barnvagn?',
+    answer: 'Prioritera vikt, säkerhet och hur du ska använda vagnen. En lätt vagn (under 8 kg) är enklare att hantera på kollektivtrafik och i smala butiksgångar. Kontrollera att selen är godkänd och att vagnen uppfyller europeisk säkerhetsstandard (EN 1888). Tänk också på om du behöver liggläge — det kräver barnet under de första 6 månaderna.',
+  },
+  {
+    question: 'Kan ett nyfött barn åka i en budget-sittvagn?',
+    answer: 'De flesta sittvagnar i budget-segmentet passar barn från 6 månader när de kan sitta med stöd. Hauck Shopper SLX och Joie Litetrax 4 Air har liggläge och passar från yngre ålder. Chicco Miinimo 4 och Silver Cross Zest har recline men inget plant liggläge — de rekommenderas från 6 månader. Kontrollera alltid tillverkarens åldersgräns.',
+  },
+  {
+    question: 'Är lufthjul verkligen nödvändigt på en barnvagn?',
+    answer: 'Lufthjul ger bättre komfort på ojämna underlag som grus, kullersten och skogsstigar. Joie Litetrax 4 Air och Kinderkraft Cruiser har lufthjul och rullar mjukare på alla underlag. Bor du i en stad med mestadels jämna trottoarer räcker hårdgummihjul utmärkt och kräver inget underhåll. Lufthjul kan platta sig — ett litet extra besvär.',
+  },
+  {
+    question: 'Vilken budget-barnvagn passar bäst för resor och flyg?',
+    answer: 'Silver Cross Zest på 6 kg är lättast i testet och passar utmärkt för resor och flyg. Chicco Miinimo 4 är också kompakt hopvikad. Kontrollera med flygbolaget vilken maxvikt som tillåts i handbagaget — de flesta kräver under 10 kg och att vagnen ryms i bagageutrymmet.',
+  },
+  {
+    question: 'Hur lång livslängd har en billig barnvagn?',
+    answer: 'En välvårdad budget-barnvagn håller typiskt för ett till två barn. Joie och Silver Cross har ett gott rykte för hållbarhet i sin prisklass. Plastdelar och textil slits snabbare på billigare modeller än på premiumvagnar, men om vagnen används normalt och förvaras torrt är den livslängden fullt tillräcklig för de flesta familjer.',
+  },
+  {
+    question: 'Kan jag koppla en bilbarnstol till en budget-barnvagn?',
+    answer: 'Det beror på modell. Joie Litetrax 4 Air är kompatibel med flera Joie-bilbarnstolar via adapter och bildar ett travel system. Hauck Shopper SLX stödjer också några bilbarnstolar via adapter. Chicco Miinimo 4 kan kombineras med Chicco-bilbarnstolar. Kontrollera kompatibilitetslistan för just den vagn och stol du överväger innan köp.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa barnvagn budget 2026 — under 3 000 kr"
+  description="Vi jämför de bästa barnvagnarna i budget-segmentet 2026. Prisvärda barnvagnar under 3 000 kr utan att kompromissa med kvaliteten."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En bra barnvagn behöver inte kosta tusentals kronor. Vi har jämfört de bästa barnvagnarna under 3 000 kr på den svenska marknaden — vagnar som kombinerar lågt pris med tillräcklig kvalitet, säkerhet och praktisk hantering för vardagsbruk.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Hauck Shopper SLX"
+      badge="Billigast"
+      price="999 kr"
+      rating={4.1}
+      ageRange="6 mån–3,5 år"
+      pros={['Lägst pris i testet', 'Vikbar med en hand', 'Liggläge inkluderat']}
+      cons={['Enklare material', 'Smalare hjul — sämre på ojämna underlag']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Kinderkraft Cruiser"
+      badge="Terrängvänlig"
+      price="1 599 kr"
+      rating={4.2}
+      ageRange="6 mån–3,5 år"
+      pros={['3-hjulig design med luftfyllda däck', 'Bra på grus och ojämna underlag', 'Rymlig korg undertill']}
+      cons={['Bredare — tar mer plats i hissen', '3-hjulslayout kräver lite invänjning']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Chicco Miinimo 4"
+      badge="Kompaktest"
+      price="1 999 kr"
+      rating={4.3}
+      ageRange="6 mån–3,5 år"
+      pros={['Mycket kompakt hopvikad — passar i de flesta bilar', 'Lätt (ca 7,5 kg)', 'Pålitligt italienskt märke']}
+      cons={['Inget plant liggläge', 'Mindre varukorg']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Joie Litetrax 4 Air"
+      badge="Bäst i test"
+      price="2 499 kr"
+      rating={4.5}
+      ageRange="6 mån–3,5 år"
+      pros={['Lufthjul ger mjuk körning på alla underlag', 'Liggläge — passar yngre barn', 'Kompatibel med Joie-bilbarnstolar']}
+      cons={['Tyngre än övriga (ca 9,5 kg)', 'Lufthjul kräver punkteringsreparation vid behov']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Silver Cross Zest"
+      badge="Lättast"
+      price="2 999 kr"
+      rating={4.4}
+      ageRange="6 mån–3,5 år"
+      pros={['Lättast i testet på bara 6 kg', 'Perfekt för resor och kollektivtrafik', 'Stilren design från brittiskt märke']}
+      cons={['Inget plant liggläge', 'Dyrast i testet']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt budgetvagn</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Vikt är avgörande</h3>
+    <p>En tung vagn är ett dagligt besvär i trappor, kollektivtrafik och vid bilens bagageutrymme. Silver Cross Zest på 6 kg är lättast i testet och utmärkt för den som rör sig mycket. Hauck Shopper SLX och Chicco Miinimo 4 är också lätta alternativ. Joie Litetrax 4 Air och Kinderkraft Cruiser är tyngre men kompenserar med bättre körkomfort tack vare lufthjulen.</p>
+
+    <h3>Liggläge — nödvändigt under 6 månader</h3>
+    <p>Barn under 6 månader behöver ligga plant i vagnen. Hauck Shopper SLX och Joie Litetrax 4 Air har riktigt liggläge. Chicco Miinimo 4 och Silver Cross Zest har recline men inte ett plant liggläge — de passar från 6 månader när barnet kan sitta med stöd. Kinderkraft Cruiser har liggläge och passar för lite yngre barn.</p>
+
+    <h3>Hjultyp och underlag</h3>
+    <p>Lufthjul (Joie Litetrax 4 Air, Kinderkraft Cruiser) rullar mjukt och dämpar stötar från ojämna underlag. Hårdgummihjul är underhållsfria men sämre på grus och kullersten. Välj efter var du oftast promenerar — bor du i stan med jämna trottoarer räcker hårdgummihjul väl.</p>
+
+    <h3>Travel system — kombination med bilbarnstol</h3>
+    <p>Joie Litetrax 4 Air kan kombineras med Joie-bilbarnstolar för ett komplett travel system där du lyfter bilstolen rakt in i vagnen. Det är praktiskt med ett sovande spädbarn. Kontrollera vilka adapter och bilbarnstolar som är kompatibla med den modell du väljer.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Bästa duovagnen 2026 — test och jämförelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris" />
+</ArticleLayout>

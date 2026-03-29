@@ -1,0 +1,224 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Budget' },
+];
+
+const products = [
+  {
+    name: 'Joie i-Trillo FX',
+    badge: 'Bäst i test',
+    price: '1 399 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Grupp': '1/2/3',
+      'Montering': 'ISOFIX',
+      'Bakåtvänd till': '18 kg',
+      'Vikt stol': 'ca 7 kg',
+      'Standard': 'i-Size (R129)',
+    },
+  },
+  {
+    name: 'Chicco Bi-Seat Air',
+    badge: 'Mest flexibel',
+    price: '1 199 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Grupp': '0+/1/2/3',
+      'Montering': 'Bilbälte',
+      'Bakåtvänd till': '13 kg',
+      'Vikt stol': 'ca 6,5 kg',
+      'Standard': 'R44/04',
+    },
+  },
+  {
+    name: 'Britax Römer Kidfix M i-Size',
+    badge: 'Bra krocktester',
+    price: '1 499 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Grupp': '2/3',
+      'Montering': 'Bilbälte',
+      'Bakåtvänd till': 'Ej tillämpligt',
+      'Vikt stol': 'ca 5,5 kg',
+      'Standard': 'i-Size (R129)',
+    },
+  },
+  {
+    name: 'Cybex Pallas B2 i-Size',
+    badge: 'Folksam-godkänd',
+    price: '1 899 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Grupp': '1/2/3',
+      'Montering': 'ISOFIX',
+      'Bakåtvänd till': '18 kg',
+      'Vikt stol': 'ca 8,5 kg',
+      'Standard': 'i-Size (R129)',
+    },
+  },
+  {
+    name: 'BeSafe iZi Turn B i-Size',
+    badge: 'Längst bakåtvänt',
+    price: '1 799 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Grupp': '0+/1',
+      'Montering': 'ISOFIX',
+      'Bakåtvänd till': '18 kg',
+      'Vikt stol': 'ca 9 kg',
+      'Standard': 'i-Size (R129)',
+    },
+  },
+];
+
+const featureLabels = ['Grupp', 'Montering', 'Bakåtvänd till', 'Vikt stol', 'Standard'];
+
+const faqItems = [
+  {
+    question: 'Går det att hitta en säker bilbarnstol under 2 000 kr?',
+    answer: 'Ja, det finns flera säkra bilbarnstolar under 2 000 kr som klarar europeiska krocktester. Cybex Pallas B2 i-Size och BeSafe iZi Turn B i-Size är båda i-Size-godkända och klarar strikta säkerhetskrav. Det är viktigt att skilja på pris och säkerhet — priset avgör ofta komfort och bekvämlighet snarare än grundskyddet.',
+  },
+  {
+    question: 'Vad skiljer en billig bilbarnstol från en dyr?',
+    answer: 'Dyra bilbarnstolar erbjuder vanligtvis bättre komfort (mer vaddering, justerbara nackskydd), fler monteringsalternativ (360-graders rotation, ISOFIX med stödben), längre användningstid och mer noggrant utformade material. De grundläggande säkerhetskraven är däremot desamma för alla godkända stolar oavsett pris — alla måste klara den europeiska säkerhetsstandarden.',
+  },
+  {
+    question: 'Vilken är den billigaste bakåtvända bilbarnstolen?',
+    answer: 'Joie i-Trillo FX och Chicco Bi-Seat Air är bland de billigaste alternativen med bakåtvändsmöjlighet. BeSafe iZi Turn B i-Size är något dyrare men erbjuder bakåtvänt åkande till 18 kg med ISOFIX-montering, vilket är ett starkt val för den som prioriterar säkerhet till ett rimligt pris.',
+  },
+  {
+    question: 'Behöver bilbarnstolen ha ISOFIX för att vara säker?',
+    answer: 'Nej, ISOFIX är inte ett krav för att en stol ska vara säker. Bilbältesmonterade stolar som Britax Römer Kidfix M i-Size kan vara lika säkra om de monteras korrekt. ISOFIX minskar risken för felmontering och är generellt enklare att använda rätt, men en korrekt monterad bältad stol ger lika gott skydd.',
+  },
+  {
+    question: 'Hur länge kan jag använda en grupp 1/2/3-stol?',
+    answer: 'En bilbarnstol för grupp 1/2/3 kan i teorin täcka hela perioden från cirka 9 månader till 12 år (9–36 kg). I praktiken varierar det beroende på modell och barnets tillväxt. Joie i-Trillo FX och Cybex Pallas B2 i-Size är bra exempel på stolar som ger lång användningstid till ett budgetpris.',
+  },
+  {
+    question: 'Är Folksam-godkänd detsamma som bäst i krocktester?',
+    answer: 'Folksams krocktester är ett välrenommerat, oberoende test som genomförs varje år i Sverige. En stol som godkänts av Folksam har klarat deras krav, men det finns flera graderingar. Titta specifikt på om stolen fick "bra val" eller "rekommenderas" i senaste testet för att bedöma prestandan mer exakt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa bilbarnstol budget 2026 — under 2 000 kr"
+  description="Vi testar de bästa bilbarnstolarna i budget-segmentet 2026. Säkra alternativ under 2 000 kr som klarar krocktester."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En säker bilbarnstol behöver inte kosta skjortan. Vi har jämfört de bästa bilbarnstolarna under 2 000 kr på den svenska marknaden — modeller som klarar europeiska krocktester och ger barnet ett pålitligt skydd utan att tömma plånboken.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Joie i-Trillo FX"
+      badge="Bäst i test"
+      price="1 399 kr"
+      rating={4.6}
+      ageRange="9 mån–12 år (grupp 1/2/3)"
+      pros={['Lägst pris med ISOFIX i testet', 'Bakåtvänt upp till 18 kg', 'Lång användningstid grupp 1/2/3']}
+      cons={['Enklare material än dyrare modeller', 'Begränsat justerbart nackskydd']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Chicco Bi-Seat Air"
+      badge="Mest flexibel"
+      price="1 199 kr"
+      rating={4.4}
+      ageRange="0–12 år (grupp 0+/1/2/3)"
+      pros={['Billigast i testet', 'Täcker alla åldrar från nyfödd', 'Kan vändas framåt']}
+      cons={['Bilbältesmonterad — kräver noggrann montering', 'Äldre R44-standard']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Britax Römer Kidfix M i-Size"
+      badge="Bra krocktester"
+      price="1 499 kr"
+      rating={4.5}
+      ageRange="3–12 år (grupp 2/3, 15–36 kg)"
+      pros={['Bra resultat i oberoende krocktester', 'i-Size-godkänd (R129)', 'Lätt att justera höjden']}
+      cons={['Passar bara grupp 2/3 — inte för spädbarn', 'Bältesmonterad utan ISOFIX']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cybex Pallas B2 i-Size"
+      badge="Folksam-godkänd"
+      price="1 899 kr"
+      rating={4.7}
+      ageRange="9 mån–12 år (grupp 1/2/3)"
+      pros={['Folksam-godkänd i-Size-stol', 'ISOFIX med stödben', 'Bäst säkerhetsprofil i testet']}
+      cons={['Nästan 2 000 kr — dyrast i testet', 'Tyngre än övriga (ca 8,5 kg)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="BeSafe iZi Turn B i-Size"
+      badge="Längst bakåtvänt"
+      price="1 799 kr"
+      rating={4.5}
+      ageRange="0–4 år (grupp 0+/1, upp till 18 kg)"
+      pros={['Bakåtvänt med ISOFIX till 18 kg', 'Norsk säkerhetsspecialist', 'i-Size-godkänd']}
+      cons={['Täcker inte grupp 2/3 — bytbehov vid 18 kg', 'Ingen rotation']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt budgetstol</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Säkerhet vs. pris — vad styr egentligen?</h3>
+    <p>Alla bilbarnstolar som säljs lagligt i Sverige måste klara antingen R44/04 eller den nyare i-Size-standarden (R129). Det innebär att en stol för 999 kr och en för 9 999 kr delar samma grundläggande godkännande. Priset speglar istället bekvämlighet, material, monteringskomfort och extras som rotation. Det lönar sig att välja en i-Size-godkänd stol även i budget-segmentet — Cybex Pallas B2 i-Size och BeSafe iZi Turn B i-Size är bra exempel.</p>
+
+    <h3>ISOFIX eller bilbälte?</h3>
+    <p>ISOFIX ger en direkt koppling mellan stolen och bilens chassi och minskar risken för felmontering kraftigt. Joie i-Trillo FX och Cybex Pallas B2 i-Size erbjuder ISOFIX även i budgetklassen. Bältesmonterade stolar som Chicco Bi-Seat Air och Britax Römer Kidfix M i-Size är lika säkra om de monteras rätt, men kräver mer noggrannhet vid installation.</p>
+
+    <h3>Grupp — vad passar ditt barn?</h3>
+    <p>Grupp 0+/1/2/3 täcker barnet från nyfödd till 12 år. Grupp 1/2/3 börjar från 9 månader. Grupp 2/3 passar inte spädbarn — exempelvis Britax Römer Kidfix M i-Size passar bara från 3 år. Välj grupp utifrån barnets nuvarande ålder och hur länge du vill använda stolen.</p>
+
+    <h3>Bakåtvänt åkande på budget</h3>
+    <p>Bakåtvänt åkande är det säkraste för barn under 4 år. Även bland budgetstolarna finns bakåtvända alternativ: Joie i-Trillo FX och BeSafe iZi Turn B i-Size klarar bakåtvänt till 18 kg. Prioritera bakåtvänt om barnet är under 4 år oavsett vilken stolsgrupp du väljer.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026 — test och jämförelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris" />
+</ArticleLayout>

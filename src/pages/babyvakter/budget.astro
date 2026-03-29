@@ -1,0 +1,224 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Budget' },
+];
+
+const products = [
+  {
+    name: 'Philips Avent DECT SCD711',
+    badge: 'Bäst i test',
+    price: '399 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Ljudvakt',
+      'Standard': 'DECT',
+      'Räckvidd': '330 m',
+      'Video': 'Nej',
+      'Batteritid': 'Ca 18 h',
+    },
+  },
+  {
+    name: 'Chicco Talky Energy',
+    badge: 'Billigast',
+    price: '299 kr',
+    rating: 4.2,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Ljudvakt',
+      'Standard': 'DECT',
+      'Räckvidd': '300 m',
+      'Video': 'Nej',
+      'Batteritid': 'Ca 15 h',
+    },
+  },
+  {
+    name: 'Summer Infant Baby Pixel Cadet',
+    badge: 'Bäst video/pris',
+    price: '499 kr',
+    rating: 4.3,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Videovakt',
+      'Standard': 'WiFi',
+      'Räckvidd': 'WiFi-nätverk',
+      'Video': 'Ja',
+      'Batteritid': 'Via app',
+    },
+  },
+  {
+    name: 'Motorola Halo+',
+    badge: '360° kamera',
+    price: '449 kr',
+    rating: 4.2,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Videovakt',
+      'Standard': 'WiFi',
+      'Räckvidd': 'WiFi-nätverk',
+      'Video': 'Ja, 360°',
+      'Batteritid': 'Via app',
+    },
+  },
+  {
+    name: 'VTech VM819',
+    badge: 'Stor skärm',
+    price: '389 kr',
+    rating: 4.1,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Videovakt',
+      'Standard': 'DECT (2,4 GHz)',
+      'Räckvidd': '300 m',
+      'Video': 'Ja, 4,3"',
+      'Batteritid': 'Ca 8 h',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Standard', 'Räckvidd', 'Video', 'Batteritid'];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan en DECT-babyvakt och en WiFi-babyvakt?',
+    answer: 'En DECT-babyvakt (som Philips Avent SCD711 och Chicco Talky Energy) kommunicerar direkt mellan sändar- och mottagarenheten på en krypterad frekvens. Den kräver inget internet och fungerar alltid så länge du är inom räckvidden (vanligtvis 200–330 m). En WiFi-babyvakt (som Summer Infant Baby Pixel Cadet och Motorola Halo+) kopplar upp via ditt hemnätverk och du kan se och höra barnet via mobilapp, även utanför hemmet. WiFi-modeller kräver fungerande internetuppkoppling.',
+  },
+  {
+    question: 'Behöver jag en videovakt eller räcker en ljudvakt?',
+    answer: 'En ljudvakt räcker för många familjer och är ofta billigare och enklare att använda. Du hör om barnet vaknar och behöver hjälp. En videovakt (som VTech VM819 eller Summer Infant Baby Pixel Cadet) ger extra trygghet — du kan se om barnet sover lugnt eller har vridit sig. För nyfödda och spädbarn föredrar många videovakt just för att kunna kontrollera andning och sovposition. Det är en smaksak och behovsfråga.',
+  },
+  {
+    question: 'Är billiga babyvakter säkra att använda?',
+    answer: 'Ja, alla babyvakter som säljs i Sverige ska uppfylla europeisk CE-märkning och radioregelverk. Philips Avent och Chicco är välkända varumärken med lång erfarenhet av babyprodukter. Det viktigaste är att babyvakten är pålitlig — att den faktiskt larmar när barnet låter. DECT-modeller är generellt mer störningsfria än äldre analoga modeller.',
+  },
+  {
+    question: 'Hur lång räckvidd behöver jag?',
+    answer: 'I ett normalt hus eller lägenhet räcker 100–200 m räckvidd väl. Philips Avent SCD711 med 330 m och Chicco Talky Energy med 300 m är mer än tillräckligt för de flesta hem. Tänk på att väggar, golv och el-apparater kan störa signalen och minska den effektiva räckvidden jämfört med vad tillverkaren anger.',
+  },
+  {
+    question: 'Kan jag ta med babyvakten när vi reser?',
+    answer: 'DECT-babyvakter som Philips Avent SCD711 och Chicco Talky Energy är enkla att ta med — de behöver bara ett eluttag och är kompakta. WiFi-babyvakter kräver att du har tillgång till ett nätverk och ibland app-inloggning, vilket kan krångla på hotell. För resor rekommenderas ofta en enkel DECT-modell.',
+  },
+  {
+    question: 'Vilken babyvakt är bäst för ett litet hem eller lägenhet?',
+    answer: 'I en liten lägenhet räcker en grundläggande DECT-ljudvakt som Chicco Talky Energy eller Philips Avent SCD711 fullt ut. Räckvidden är mer än tillräcklig och de är enkla att använda. Behöver du se barnet väljer du VTech VM819 med sin 4,3-tumsskärm som ger en tydlig bild utan WiFi-beroende.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa billiga babyvakt 2026 — test och jämförelse"
+  description="Vi testar de bästa babyvakterna i budget-segmentet 2026. Billiga babyvakter som faktiskt fungerar — utan att du behöver betala för funktioner du inte behöver."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    En bra babyvakt behöver inte ha ett högt pris. Vi har jämfört de bästa babyvakterna under 500 kr — både DECT-ljudvakter och WiFi-videovakter som levererar det viktigaste: pålitlig övervakning när barnet sover.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Philips Avent DECT SCD711"
+      badge="Bäst i test"
+      price="399 kr"
+      rating={4.5}
+      ageRange="Från födseln"
+      pros={['DECT — krypterad, störningsfri signal', '330 m räckvidd', 'Lång batteritid (ca 18 h)']}
+      cons={['Ingen video', 'Ingen app-funktion']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Chicco Talky Energy"
+      badge="Billigast"
+      price="299 kr"
+      rating={4.2}
+      ageRange="Från födseln"
+      pros={['Billigast i testet', 'DECT-standard', 'Enkel att använda']}
+      cons={['Ingen video', 'Kortare batteritid än Philips Avent']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Summer Infant Baby Pixel Cadet"
+      badge="Bäst video/pris"
+      price="499 kr"
+      rating={4.3}
+      ageRange="Från födseln"
+      pros={['Video via WiFi och app', 'Kan ses utanför hemmet', 'Dyrare än de flesta WiFi-alternativ i klassen']}
+      cons={['Kräver fungerande WiFi', 'App kan krångla vid uppdateringar']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Motorola Halo+"
+      badge="360° kamera"
+      price="449 kr"
+      rating={4.2}
+      ageRange="Från födseln"
+      pros={['360-graders panoramakamera', 'WiFi med app', 'Kompakt design']}
+      cons={['WiFi-beroende', 'Lägre bildkvalitet i mörker']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="VTech VM819"
+      badge="Stor skärm"
+      price="389 kr"
+      rating={4.1}
+      ageRange="Från födseln"
+      pros={['4,3-tumsskärm — tydlig bild', 'Inget WiFi eller app behövs', 'DECT-frekvens']}
+      cons={['Kortare batteritid (ca 8 h)', 'Bildkvalitet sämre än nyare WiFi-modeller']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt babyvakt</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>DECT eller WiFi?</h3>
+    <p>DECT är den traditionella standarden för babyvakter och kommunicerar direkt mellan sändaren i barnrummet och mottagaren hos dig. Den kräver inget internet och är generellt mer driftsäker. WiFi-modeller använder ditt hemnätverk och låter dig se barnet via mobilapp — också utanför hemmet. WiFi kräver fungerande internet och kan krångla vid nätverksproblem. För de flesta hem räcker DECT. Vill du se barnet utifrån väljer du WiFi.</p>
+
+    <h3>Ljud eller video?</h3>
+    <p>En enkel ljudvakt som Philips Avent SCD711 eller Chicco Talky Energy räcker bra för att höra om barnet vaknar. En videovakt ger extra trygghet — du ser om barnet sover lugnt, har vridit sig eller behöver hjälp. VTech VM819 är ett bra mellanval: video utan WiFi-beroende, med en tydlig 4,3-tumsskärm på mottagarenheten.</p>
+
+    <h3>Räckvidd i praktiken</h3>
+    <p>Alla modeller i testet har räckvidd på 300 m eller mer. I ett normalt hem är det mer än tillräckligt. Väggar och betong dämpar signalen — räkna med att den effektiva räckvidden inomhus kan vara 30–50 procent lägre än vad tillverkaren anger. Väljer du DECT-modell behöver du inte oroa dig för räckvidden i en standard lägenhet eller villa.</p>
+
+    <h3>Batteritid och laddning</h3>
+    <p>Philips Avent SCD711 har längst batteritid i testet på upp till 18 timmar — tillräckligt för en hel natt. VTech VM819 har kortare batteritid på ca 8 timmar och kan behöva laddas mitt i natten. WiFi-modeller som Summer Infant och Motorola Halo+ drivs via el och laddas via app-enheten.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/babyvakter/video/" class="text-accent hover:underline">Bästa videobabyvakten 2026 — test och jämförelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris" />
+</ArticleLayout>
