@@ -52,7 +52,25 @@ const canonicalUrl = canonical || Astro.url.href;
     "name": "Bebisguiden",
     "url": "https://bebisguiden.se",
     "description": "Oberoende tester och jämförelser av barnprodukter. Bilbarnstolar, barnvagnar, babyvakter och mer -- sa du väljer ratt for ditt barn.",
-    "inLanguage": "sv-SE"
+    "inLanguage": "sv-SE",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.google.se/search?q=site%3Abebisguiden.se+{search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Bebisguiden",
+    "url": "https://bebisguiden.se",
+    "description": "Oberoende tester och jämförelser av barnprodukter",
+    "foundingDate": "2026",
+    "sameAs": []
   })} />
 
   <!-- GA4: deferred, respects cookie consent -->

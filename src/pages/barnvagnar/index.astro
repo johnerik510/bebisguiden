@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -168,6 +169,33 @@ const faqItems = [
   </div>
 
   <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Bugaboo Fox 5',
+      description: 'Premium duovagn med fullfjädring. Lätt att fälla ihop med en hand. Chassivikt 12,4 kg. För barn 0-4 år.',
+      brand: 'Bugaboo',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 14990, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Cybex Priam 4',
+      description: 'Lyxig duovagn med fullfjädring och stilren design. Kompatibel med Cybex Cloud T bilbarnstol. Chassivikt 13,2 kg.',
+      brand: 'Cybex',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 13990, url: 'https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/cybex-priam-4-barnvagn', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Emmaljunga NXT90',
+      description: 'Svensktillverkad duovagn med fjäderfjädring. Byggd för nordiskt klimat. Stor varukorg. Chassivikt 14,5 kg.',
+      brand: 'Emmaljunga',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 8990, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt90-ergo-duovagn-logrey-bla', seller: 'Jollyroom' }],
+    },
+  ]} />
 </ArticleLayout>
 
 <StickyCTA

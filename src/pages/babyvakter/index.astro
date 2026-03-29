@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -163,6 +164,33 @@ const faqItems = [
   </div>
 
   <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Philips Avent SCD923',
+      description: 'DECT-babyvakt med kristallklart ljud och 300 meters räckvidd. Upp till 24 timmars batteritid i sparläge. Ingen WiFi-risk.',
+      brand: 'Philips',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 2490, url: 'https://www.elgiganten.se/product/personvard-halsa-skonhet/babyprodukter/babyvakt/philips-avent-babymonitor-scd92326/456938', seller: 'Elgiganten' }],
+    },
+    {
+      name: 'Luvion Grand Elite 3 Connect',
+      description: 'Videobabyvakt med 4,3-tumsskärm och sluten signal. Nattkamera, temperaturvisning och 300 meters räckvidd. Ingen internet krävs.',
+      brand: 'Luvion',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 3290, url: 'https://www.luvion.com/grand-elite-3-connect/', seller: 'Luvion' }],
+    },
+    {
+      name: 'Owlet Cam 2',
+      description: 'WiFi-babyvakt med HD-video via app. Tvåvägskommunikation och krypterad anslutning. Se barnet varifrån som helst.',
+      brand: 'Owlet',
+      ratingValue: 4.4,
+      reviewCount: 1,
+      offers: [{ price: 1990, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white', seller: 'Jollyroom' }],
+    },
+  ]} />
 </ArticleLayout>
 
 <StickyCTA

@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -166,6 +167,33 @@ const faqItems = [
   </div>
 
   <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Ergobaby Omni Breeze',
+      description: 'HIPS-certifierad bärsele med luftigt mesh-tyg och 4 barpositioner. Från nyfödd till 20 kg (0-4 år). M-position för korrekt höftutveckling.',
+      brand: 'Ergobaby',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 2290, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-breeze-barsele-natural-beige', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'BabyBjörn Harmony',
+      description: 'Premium bärsele i 3D-mesh. Tillverkad i Sverige. Hip-Healthy Institute-certifierad. Från nyfödd till 15 kg (0-3 år).',
+      brand: 'BabyBjörn',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 2490, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-harmony-barsele-3d-mesh-silver', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Najell Easy',
+      description: 'Prisvärd HIPS-certifierad bärsele i andningsbart bomull. Svenskt märke. Från nyfödd till 15 kg (0-3 år).',
+      brand: 'Najell',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 1290, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/najell-easy-barsele-stockholm-black', seller: 'Jollyroom' }],
+    },
+  ]} />
 </ArticleLayout>
 
 <StickyCTA

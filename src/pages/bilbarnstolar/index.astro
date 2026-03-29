@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -166,6 +167,33 @@ const faqItems = [
   </div>
 
   <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Britax Romer Dualfix 5Z i-Size',
+      description: 'Bakåtvänd bilbarnstol med 360-graders rotation, ISOFIX och stödben. Godkänd i ADAC-krocktest 2024. För barn 0-4 år (40-105 cm).',
+      brand: 'Britax Römer',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 4990, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Cybex Sirona T i-Size',
+      description: 'Premium bakåtvänd bilbarnstol med Linear Side-impact Protection och magnetiskt bälteslås. ISOFIX-montering. För barn 0-4 år (45-105 cm).',
+      brand: 'Cybex',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 6290, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Joie i-Spin XL',
+      description: 'Prisvärd bakåtvänd bilbarnstol med 360-graders rotation. Används från nyfödd till 12 år (40-150 cm). Godkänd i ADAC-krocktest 2024.',
+      brand: 'Joie',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 3990, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-xl-i-size-bilbarnstol', seller: 'Jollyroom' }],
+    },
+  ]} />
 </ArticleLayout>
 
 <StickyCTA

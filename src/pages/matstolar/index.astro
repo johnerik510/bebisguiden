@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -192,6 +193,41 @@ const faqItems = [
   </div>
 
   <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Stokke Tripp Trapp',
+      description: 'Norsk matstol i bok/ek som följer barnet från 6 månader till vuxen (136 kg). Höjd- och djupjusterbar. Tidlös design med högt andrahandsvärde.',
+      brand: 'Stokke',
+      ratingValue: 4.9,
+      reviewCount: 1,
+      offers: [{ price: 2990, url: 'https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/stokke-tripp-trapp-highchair-white', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'IKEA Antilop',
+      description: 'Budgetvänlig matstol med 3-punkts bälte. Lätt att rengöra, stabil och enkel att transportera. För barn 6 månader till 3 år.',
+      brand: 'IKEA',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 249, url: 'https://www.ikea.com/se/sv/p/antilop-hoegstoeel-m-saekerhetsbaelte-vit-silver-29064175/', seller: 'IKEA' }],
+    },
+    {
+      name: 'BabyBjörn High Chair',
+      description: 'Premium matstol med 5-punkts bälte, höjdjusterbart bord och fotbräda. Tillverkad i Sverige. Skandinavisk design.',
+      brand: 'BabyBjörn',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 3790, url: 'https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/babybjorn-high-chair-white-grey', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Chicco Polly Magic Relax',
+      description: 'Mångsidig matstol med 7 höjdlägen och 4 rygglägen. Kan användas från födseln. 5-punkts bälte och komplett med bricka.',
+      brand: 'Chicco',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 1990, url: 'https://www.jollyroom.se/mobler-inredning/barnmobler/barnstolar-pallar/chicco-polly-magic-relax-highchair', seller: 'Jollyroom' }],
+    },
+  ]} />
 </ArticleLayout>
 
 <StickyCTA

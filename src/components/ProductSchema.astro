@@ -1,0 +1,79 @@
+---
+interface Offer {
+  price: number;
+  currency?: string;
+  url: string;
+  availability?: string;
+  seller?: string;
+}
+
+interface ProductItem {
+  name: string;
+  description?: string;
+  image?: string;
+  brand?: string;
+  ratingValue?: number;
+  reviewCount?: number;
+  offers?: Offer[];
+}
+
+interface Props {
+  products: ProductItem[];
+}
+
+const { products } = Astro.props;
+
+const schemas = products.map((product) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.name,
+  ...(product.description ? { "description": product.description } : {}),
+  ...(product.image ? { "image": product.image } : {}),
+  ...(product.brand ? {
+    "brand": {
+      "@type": "Brand",
+      "name": product.brand,
+    },
+  } : {}),
+  ...(product.ratingValue ? {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": product.ratingValue,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": product.reviewCount || 1,
+    },
+  } : {}),
+  ...(product.offers && product.offers.length > 0 ? {
+    "offers": product.offers.length === 1 ? {
+      "@type": "Offer",
+      "priceCurrency": product.offers[0].currency || "SEK",
+      "price": product.offers[0].price,
+      "url": product.offers[0].url,
+      "availability": product.offers[0].availability || "https://schema.org/InStock",
+      ...(product.offers[0].seller ? {
+        "seller": {
+          "@type": "Organization",
+          "name": product.offers[0].seller,
+        },
+      } : {}),
+    } : product.offers.map((offer) => ({
+      "@type": "Offer",
+      "priceCurrency": offer.currency || "SEK",
+      "price": offer.price,
+      "url": offer.url,
+      "availability": offer.availability || "https://schema.org/InStock",
+      ...(offer.seller ? {
+        "seller": {
+          "@type": "Organization",
+          "name": offer.seller,
+        },
+      } : {}),
+    })),
+  } : {}),
+}));
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}
