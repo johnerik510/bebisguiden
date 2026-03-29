@@ -44,32 +44,51 @@ const topprodukter = [
   title="Bebisguiden.se – Oberoende tester av barnprodukter 2026"
   description="Oberoende tester och jämförelser av bilbarnstolar, barnvagnar, babyvakter och mer. Vi hjälper dig välja ratt och säkert för ditt barn."
 >
-  <!-- Hero: compact, products visible above fold -->
-  <section class="text-white py-10 sm:py-12 relative overflow-hidden min-h-[300px] md:min-h-[340px] flex flex-col justify-center">
+  <!-- Hero -->
+  <section class="text-white relative overflow-hidden" style="min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
     <img
       src="/images/hero-bebis.webp"
       alt="Förälder med nyfödd bebis"
-      class="absolute inset-0 w-full h-full object-cover -z-10"
+      class="absolute inset-0 w-full h-full object-cover"
+      style="z-index: 0;"
       loading="eager"
       fetchpriority="high"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/75 to-primary/55 -z-10" aria-hidden="true"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-semibold text-white/80 uppercase tracking-wide mb-3">
-        <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
-        Oberoende guide 2026
-      </div>
-      <h1 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold">Oberoende tester av barnprodukter</h1>
-      <p class="mt-2 text-white/80 text-base sm:text-lg max-w-2xl">Vi granskar bilbarnstolar, barnvagnar, babyvakter och mer — så du väljer säkert och smart för ditt barn.</p>
-      <div class="flex flex-wrap gap-x-5 gap-y-2 mt-4 text-xs text-white/70 font-medium">
-        {["100+ produkter testade", "Oberoende recensioner", "Uppdaterat 2026"].map((t) => (
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(var(--color-primary-rgb, 30,80,60), 0.82) 0%, rgba(var(--color-primary-rgb, 30,80,60), 0.5) 100%); z-index: 1;"></div>
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 relative" style="z-index: 2;">
+      <div class="max-w-xl">
+        <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-semibold text-white/80 uppercase tracking-wide mb-4">
+          <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
+          Oberoende guide 2026
+        </span>
+        <h1 class="font-heading text-4xl sm:text-5xl font-bold leading-tight mb-4">
+          Oberoende tester<br>av barnprodukter
+        </h1>
+        <p class="text-white/80 text-lg max-w-lg mb-8">
+          Vi granskar bilbarnstolar, barnvagnar, babyvakter och mer — så du väljer säkert och smart för ditt barn.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 mb-8">
+          <a href="/bilbarnstolar/" class="inline-flex items-center justify-center bg-accent hover:opacity-90 text-white font-bold py-4 px-8 rounded-xl transition-opacity text-base shadow-lg">
+            Se alla tester
+          </a>
+          <a href="/barnvagnar/" class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-semibold py-4 px-8 rounded-xl transition-colors text-base border border-white/25">
+            Barnvagnar
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60 font-medium">
           <span class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            {t}
+            <svg class="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            100+ produkter testade
           </span>
-        ))}
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Oberoende recensioner
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Uppdaterat 2026
+          </span>
+        </div>
       </div>
     </div>
   </section>
