@@ -1,5 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+const topprodukter = [
+  {
+    name: 'Britax Romer Dualfix 5Z i-Size',
+    badge: 'Bäst i test — bilbarnstolar',
+    price: '4 990 kr',
+    rating: 4.8,
+    ageRange: '0–4 år (40–105 cm)',
+    pros: ['Toppbetyg i ADAC-krocktest', '360-graders rotation', 'ISOFIX + stödben'],
+    cons: ['Tung (14,8 kg)'],
+    ctaText: 'Se pris hos Jollyroom',
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue',
+    image: 'https://www.jollyroom.se/dw/image/v2/BCBH_PRD/on/demandware.static/-/Sites-master-catalog-jolly-room/default/dwbe9b0d86/images/hi-res/Britax_Romer/britax-romer-dualfix-5z-bilbarnstol-harbor-blue-1.jpg?sw=800&sh=800&sm=fit',
+  },
+  {
+    name: 'Cybex Melio Carbon',
+    badge: 'Bäst i test — barnvagnar',
+    price: '9 990 kr',
+    rating: 4.7,
+    pros: ['Ultralätt (7,5 kg)', 'Carbon-ram', 'Vändbar liggdel'],
+    cons: ['Högt pris'],
+    ctaText: 'Se pris hos Jollyroom',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sittvagnar/cybex-melio-carbon',
+    image: 'https://www.jollyroom.se/dw/image/v2/BCBH_PRD/on/demandware.static/-/Sites-master-catalog-jolly-room/default/dw6b78d6e4/images/hi-res/Cybex/522002289.jpg?sw=800&sh=800&sm=fit',
+  },
+  {
+    name: 'Infant Optics DXR-8 Pro',
+    badge: 'Bäst i test — babyvakter',
+    price: '1 990 kr',
+    rating: 4.6,
+    pros: ['Utbytbara linser', 'Stark räckvidd', 'Ingen månadsavgift'],
+    cons: ['Kräver WiFi-fri inställning'],
+    ctaText: 'Se pris hos Amazon',
+    ctaHref: 'https://www.amazon.se/Infant-Optics-DXR-8-Pro/dp/B07BM1CYY5',
+    image: 'https://m.media-amazon.com/images/I/61BGCN4WNPL._AC_SX569_.jpg',
+  },
+];
 ---
 
 <BaseLayout
@@ -14,8 +52,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Category cards: visible without scrolling -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10 pb-12">
+  <!-- Topprodukter — synliga direkt -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex items-center justify-between mb-5">
+      <div>
+        <h2 class="font-heading text-2xl font-bold text-text">Bäst i test 2026</h2>
+        <p class="text-text-light text-sm mt-1">Tre kategorier — en testvinnare per kategori</p>
+      </div>
+    </div>
+    <div class="space-y-4">
+      {topprodukter.map((p) => (
+        <ProductCard {...p} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Category cards -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <a href="/bilbarnstolar/" class="bg-white rounded-xl border border-border p-5 shadow-sm hover:shadow-md hover:border-accent transition-all group">
         <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-3">
