@@ -1,0 +1,281 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babykläder', href: '/babyklader/' },
+];
+
+const products = [
+  {
+    name: 'Body och overall set – ekologisk bomull',
+    badge: 'Bäst totalt',
+    price: '399 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/klader/babyklader/set-nyfodda',
+    image: 'https://images.jollyroom.se/images/product/800/newborn-set-ekologisk.jpg',
+    pros: ['GOTS-certifierad ekologisk bomull', 'Mjukt mot nyfödds känsliga hud', 'Tryckknappar – enkelt byte', 'Passar 0–3 månader'],
+    cons: ['Barn växer snabbt ur storlek 50/56', 'Ekologisk bomull kostar mer'],
+    features: {
+      'Material': 'Ekologisk bomull',
+      'Certifiering': 'GOTS',
+      'Storlek': '50/56 (0–3 mån)',
+      'Kläddelar': 'Body + overall',
+      'Stängning': 'Tryckknappar',
+    },
+  },
+  {
+    name: 'Sparkdräkt i frotté',
+    badge: 'Bäst för sömn',
+    price: '199 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/klader/babyklader/sparkdrakt-frotte',
+    image: 'https://images.jollyroom.se/images/product/800/sparkdrakt-frotte.jpg',
+    pros: ['Mjukt frotté – bra under sovsäck', 'Dragkedja hela vägen ner – enkelt blöjbyte', 'Dubbelsidig dragkedja', 'Fötter inkluderade'],
+    cons: ['Inte lämplig som ytterkläder', 'Kan bli varm i kombinatoin med tjock sovsäck'],
+    features: {
+      'Material': 'Bomull/frotté',
+      'Certifiering': 'OEKO-TEX',
+      'Storlek': '56–80 cm',
+      'Kläddelar': 'Heldräkt',
+      'Stängning': 'Dragkedja',
+    },
+  },
+  {
+    name: 'Newborn Starter Set',
+    badge: 'Bäst startpaket',
+    price: '549 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.barnkraft.se/newborn-starter-set',
+    image: 'https://images.barnkraft.se/images/product/800/newborn-starter-set.jpg',
+    pros: ['Komplett startpaket för nyfödda', 'Inkluderar bodys, sparkdräkt och mössa', 'OEKO-TEX-certifierat', 'Snyggt som present'],
+    cons: ['Storleksintervall begränsat', 'Mönsterna kan skilja sig mot bild'],
+    features: {
+      'Material': 'Bomull',
+      'Certifiering': 'OEKO-TEX',
+      'Storlek': '50–62 cm',
+      'Kläddelar': 'Body + sparkdräkt + mössa',
+      'Stängning': 'Tryckknappar + dragkedja',
+    },
+  },
+  {
+    name: 'UV-dräkt och solhatt',
+    badge: 'Bäst för sommaren',
+    price: '249 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/klader/babyklader/uv-drakt',
+    image: 'https://images.jollyroom.se/images/product/800/uv-drakt-bebis.jpg',
+    pros: ['UPF 50+ solskydd', 'Snabbtorkande material', 'Inkluderar solhatt med nackskydd', 'Passar för badstrand och pool'],
+    cons: ['Används bara på sommaren', 'Ej lämplig vid kyla'],
+    features: {
+      'Material': 'Polyester (UV-skydd)',
+      'Certifiering': 'UPF 50+',
+      'Storlek': '68–92 cm (6–24 mån)',
+      'Kläddelar': 'Dräkt + solhatt',
+      'Stängning': 'Tryckknappar',
+    },
+  },
+  {
+    name: 'Vinterdräkt i fleece',
+    badge: 'Bäst för vintern',
+    price: '349 kr',
+    rating: 4.4,
+    ctaHref: 'https://www.jollyroom.se/klader/babyklader/vinterdrak-fleece',
+    image: 'https://images.jollyroom.se/images/product/800/vinterdrak-fleece.jpg',
+    pros: ['Varm fleece – perfekt för kalla dagar', 'Tumvantar och fötter inbyggda', 'Lätt att ta av/på med full dragkedja', 'Tvättbar och slitstark'],
+    cons: ['För varm som innekläder', 'Fleece kan pilla med tvätt'],
+    features: {
+      'Material': 'Polyester (fleece)',
+      'Certifiering': 'OEKO-TEX',
+      'Storlek': '62–86 cm (2–12 mån)',
+      'Kläddelar': 'Heldräkt med vantar',
+      'Stängning': 'Dragkedja',
+    },
+  },
+];
+
+const featureLabels = ['Material', 'Certifiering', 'Storlek', 'Kläddelar', 'Stängning'];
+
+const faqItems = [
+  {
+    question: 'Vilken storlek ska man köpa till nyfödda?',
+    answer: 'Nyfödda startar i storlek 50 (upp till ca 3 kg) eller 56 (3–4,5 kg). Tänk på att barn växer snabbt – de flesta 0–3 månaders kläder används bara 6–8 veckor. Köp inte för mycket i minsta storleken. Storlek 62–68 (3–6 månader) håller längre. Kolla alltid tillverkarens vikttabell, inte bara åldersguiden.',
+  },
+  {
+    question: 'Vilka material är bäst för babykläder?',
+    answer: 'Ekologisk bomull (GOTS-certifierad) är den bästa vardagstextilen – mjuk, andningsbar och utan skadliga kemikalier. Bambu är extra mjuk och fuktabsorberande men dyrare. Fleece är bra för vinterytterkläder. Undvik syntetmaterial (polyester) mot huden för nyfödda – det andas sämre och kan orsaka irritation.',
+  },
+  {
+    question: 'Vad betyder OEKO-TEX och GOTS?',
+    answer: 'OEKO-TEX Standard 100 innebär att textilen testats och inte innehåller skadliga ämnen – bra miniminivå. GOTS (Global Organic Textile Standard) är striktare: certifierar hela produktionskedjan från råvara till färdig textil med krav på ekologisk odling och sociala standarder. För babykläder är GOTS en starkare garanti än enbart OEKO-TEX.',
+  },
+  {
+    question: 'Hur många kläder behöver man till nyfödda?',
+    answer: 'En praktisk grundgarderob för nyfödda: 5–7 bodys (kortärmade), 3–5 sparkdräkter, 2–3 byxor, 2–3 mössa/sockor, 1–2 varmare plagg för utomhus. Räkna med att tvätta ofta (2–3 gånger/vecka) pga kräkningar och blöjbyten. Köp inte för många kläder i storlekarna 50–56 – babyn växer ur dem snabbt.',
+  },
+  {
+    question: 'Kan man tvätta nya babykläder direkt?',
+    answer: 'Ja – tvätta alltid nya babykläder innan användning. Nya kläder kan innehålla formaldehyd och andra ämnen från tillverkning och frakt. Tvätta på 60°C för sterilisering av nyfödds kläder. Använd parfymfritt tvättmedel – babys hud är känslig för doftämnen. Undvik sköljmedel de första månaderna.',
+  },
+  {
+    question: 'Vad ska bebis ha på sig inomhus respektive utomhus?',
+    answer: 'Inomhus (20°C): tunn body + sparkdräkt räcker. Kontrollera att babyn inte är för varm – känn på nacken, inte händerna. Utomhus i sommarvärme: UV-skyddande kläder + hatt. Utomhus på höst/vinter: lager på lager – body + tjockare sparkdräkt + vinterdräkt/fleece-overalls. Tumregel: ett lager mer än vad du själv har på dig.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa Babykläder 2026 – Guide till Nyfödds Garderob"
+  description="Vilka babykläder är bäst 2026? Guide till nyfödds garderob – ekologisk bomull, rätt storlekar, GOTS och OEKO-TEX. Pris fr. 199 kr. Säsong och ålder."
+  breadcrumbs={breadcrumbs}
+  relatedArticles={[
+    { title: 'Bästa sovsäckar baby 2026', href: '/sovsackar/' },
+    { title: 'Bästa spjälsängar 2026', href: '/spjalsangar/' },
+    { title: 'Bästa babyvakter 2026', href: '/babyvakter/' },
+    { title: 'Babysäkerhet – komplett guide', href: '/sakerhet/' },
+  ]}
+>
+  <p class="text-lg text-text-light leading-relaxed mb-4">
+    Babykläder är ett av de första inköpen du gör – och ett av de mest förvirrande. Hur många kläder behövs? Vilka material är säkra? Vad är skillnaden på GOTS och OEKO-TEX? Vi går igenom de viktigaste kläderna för nyfödda och de bästa alternativen på svenska marknaden.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell – babykläder 2026" />
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">Våra toppval 2026</h2>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-6 mb-4">1. Body och overall set – ekologisk bomull</h3>
+  <ProductCard
+    name="Body och overall set – ekologisk bomull"
+    badge="Bäst totalt 2026"
+    price="399 kr"
+    rating={4.8}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/klader/babyklader/set-nyfodda"
+    image="https://images.jollyroom.se/images/product/800/newborn-set-ekologisk.jpg"
+    pros={['GOTS-certifierad ekologisk bomull', 'Mjuk mot nyfödds känsliga hud', 'Tryckknappar längs hela benen', 'Inkluderar body + overall']}
+    cons={['Barn växer snabbt ur storlekarna', 'Ekologisk bomull är dyrare']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    Ekologisk bomull är det bästa materialet för nyfödda – mjukt, andningsbart och utan de kemikalier som konventionell bomull behandlas med. GOTS-certifiering säkerställer att hela produktionskedjan uppfyller ekologiska och sociala krav.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Setet inkluderar en body och en overall – de två mest använda klädplaggen under de första månaderna. Tryckknappar längs benen gör det enkelt att byta blöja utan att behöva dra kläder över huvudet, vilket nyfödda ogärna tolererar.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">2. Sparkdräkt i frotté – Bäst för sömn</h3>
+  <ProductCard
+    name="Sparkdräkt i frotté"
+    badge="Bäst under sovsäck"
+    price="199 kr"
+    rating={4.7}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/klader/babyklader/sparkdrakt-frotte"
+    image="https://images.jollyroom.se/images/product/800/sparkdrakt-frotte.jpg"
+    pros={['Mjukt frotté – behagligt under sovsäck', 'Dragkedja hela vägen ner för enkelt blöjbyte', 'Fötter inkluderade – slipper strumpor', 'Dubbelsidig dragkedja']}
+    cons={['Inte för varma nätter', 'Kan bli varm i kombination med hög-TOG sovsäck']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    Sparkdräkten i frotté är den klassiska sömnpyjamansen för baby. Det mjuka frötté-materialet är bekvämt mot huden och passar som basplagg under en sovsäck. Dubbelsidig dragkedja gör blöjbyte möjligt mitt i natten utan att väcka barnet mer än nödvändigt.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Välj sparkdräktens tjocklek efter TOG på sovsäcken och rumstemperatur – se TOG-guiden på vår sovsäckssida för mer detaljer.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">3. Newborn Starter Set – Bäst startpaket</h3>
+  <ProductCard
+    name="Newborn Starter Set"
+    badge="Bäst presentset"
+    price="549 kr"
+    rating={4.6}
+    ctaText="Se pris hos Barnkraft"
+    ctaHref="https://www.barnkraft.se/newborn-starter-set"
+    image="https://images.barnkraft.se/images/product/800/newborn-starter-set.jpg"
+    pros={['Komplett startpaket – allt du behöver direkt', 'OEKO-TEX-certifierat', 'Snyggt förpackat – perfekt som present', 'Täcker de vanligaste klädbehovet']}
+    cons={['Storleksintervall begränsat till nyfödda', 'Kan beställas i fel storlek']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    Newborn Starter Set är det perfekta valet för den som vill ha ett komplett startpaket utan att behöva koordinera flera köp. Inkluderar bodys, sparkdräkt och mössa – det mest grundläggande för de första veckorna.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Fungerar lika bra som gåva till babyshower som eget inköp. Elegant förpackning och OEKO-TEX-certifierat material.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">4. UV-dräkt och solhatt – Bäst för sommaren</h3>
+  <ProductCard
+    name="UV-dräkt och solhatt"
+    badge="Solskydd UPF 50+"
+    price="249 kr"
+    rating={4.5}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/klader/babyklader/uv-drakt"
+    image="https://images.jollyroom.se/images/product/800/uv-drakt-bebis.jpg"
+    pros={['UPF 50+ – blockerar 98% av UV-strålning', 'Snabbtorkande – bra vid vattenlek', 'Inkluderar hatt med nackskydd', 'Bättre än solkräm under 6 månaders ålder']}
+    cons={['Säsongsprodukt', 'Ej för kalla dagar']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    UV-skyddande kläder är det bästa skyddet för bebisar under 6 månader – Folkhälsomyndigheten och 1177 rekommenderar att undvika direkt solljus och solkräm för de allra minsta. UV-dräkt med UPF 50+ blockerar 98% av UV-strålning och är ett säkrare alternativ.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Solhatten med nackskydd är ett viktigt komplement. Välj en dräkt med lång ärm och benbyxor för maximalt skydd vid sol.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">5. Vinterdräkt i fleece – Bäst för vintern</h3>
+  <ProductCard
+    name="Vinterdräkt i fleece"
+    badge="Bäst för svenska vintrar"
+    price="349 kr"
+    rating={4.4}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/klader/babyklader/vinterdrak-fleece"
+    image="https://images.jollyroom.se/images/product/800/vinterdrak-fleece.jpg"
+    pros={['Varm och lätt fleece', 'Inbyggda tumvantar och fötter', 'Full dragkedja – enkelt att ta av/på', 'Hållbart och tvättbart material']}
+    cons={['För varm inomhus', 'Fleece kan "pilla" efter många tvättar']}
+  />
+  <p class="text-text-light leading-relaxed mt-4 mb-2">
+    En fleecedräkt är ett måste för svenska vintrar med barnvagnspromenader i kyla. Fleeceplagg är varma i förhållande till vikten, snabbtorkande och slitstarka – egenskaper som är viktiga när man tvättar babykläder ofta.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Inbyggda tumvantar (som kan vikas upp) och fötter eliminerar den klassiska problemet med strumpor och vantar som trillar av. Använd som mellanskikt under ytterplagg vid extrem kyla.
+  </p>
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: Babykläder för nyfödda</h2>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Basgarderob för 0–6 månader</h3>
+  <p class="text-text-light leading-relaxed mb-4">
+    Köp inte för mycket i de minsta storlekarna – nyfödda växer snabbt och kläder i storlek 50–56 används bara 4–8 veckor. En praktisk basgarderob:
+  </p>
+  <ul class="list-disc list-inside space-y-1 text-text-light mb-4">
+    <li>5–7 kortärmade bodys (storl. 56–62)</li>
+    <li>3–5 sparkdräkter (storl. 56–68)</li>
+    <li>2–3 varmare plagg (fleece/tjockare sparkdräkt)</li>
+    <li>2–3 mössor + par strumpor/tofflor</li>
+    <li>1 ytterplagg/vinterdräkt efter säsong</li>
+  </ul>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material att välja och undvika</h3>
+  <p class="text-text-light leading-relaxed mb-4">
+    Välj: ekologisk bomull (GOTS), bambu, modal, frotté för vardagskläder. Fleece och ull för vinterytterkläder.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    Undvik mot huden: polyester och konstfibrer som andas sämre, kan orsaka värme och hudirritation. Välj OEKO-TEX som miniminivå och GOTS som premiumcertifiering.
+  </p>
+
+  <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Klädmärken med bra barnkläder i Sverige</h3>
+  <p class="text-text-light leading-relaxed mb-4">
+    Populära märken med bra kvalitet och certifieringar: Lindex Baby, H&M Baby (Conscious-linjen), Name It, Joha (ull/ekologisk bomull), Polarn O. Pyret, Mini Rodini och Smallstuff. Jollyroom och Barnkraft är de vanligaste nätbutikerna med brett utbud.
+  </p>
+
+  <FAQ items={faqItems} title="Vanliga frågor om babykläder" />
+
+  <StickyCTA
+    productName="Body och overall set – ekologisk bomull"
+    price="399 kr"
+    affiliateUrl="https://www.jollyroom.se/klader/babyklader/set-nyfodda"
+    ctaText="Se pris hos Jollyroom"
+    badge="Bäst totalt 2026"
+  />
+</ArticleLayout>
