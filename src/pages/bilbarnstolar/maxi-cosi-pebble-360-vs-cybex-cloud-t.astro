@@ -1,0 +1,180 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Maxi-Cosi Pebble 360 vs Cybex Cloud T' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Maxi-Cosi Pebble 360 eller Cybex Cloud T?',
+    answer: 'Det beror på ditt system. Har du Bugaboo eller Maxi-Cosi-vagn: välj Pebble 360 Pro (sömlös integration med Familyfix 360-bas). Vill du ha en stol som även kan användas framåtvänd till 3,5 år: välj Cybex Cloud T. Båda är i ADAC-toppklass och R129-certifierade. Cybex Cloud T ger mer för pengarna räknat per användningsmånad.',
+  },
+  {
+    question: 'Kan Maxi-Cosi Pebble 360 Pro används i vagn?',
+    answer: 'Ja — Maxi-Cosi Pebble 360 Pro kopplas direkt till Bugaboo Fox 5, Donkey 5, Butterfly och de flesta Maxi-Cosi-sitsvagnar med adapter. Cybex Cloud T kopplas till Cybex Priam 4, Mios 4 och Gazelle S. Välj stol som passar din vagn för bästa system-kompatibilitet.',
+  },
+  {
+    question: 'Hur länge kan barnet sitta i respektive stol?',
+    answer: 'Maxi-Cosi Pebble 360 Pro används bakåtvänd 0–87 cm (ca 15 månader). Cybex Cloud T i-Size används bakåtvänd 0–87 cm och framåtvänd 75–105 cm — total användningstid upp till 3,5–4 år. Cybex Cloud T är ett mer kostnadseffektivt alternativ om du räknar per månad.',
+  },
+  {
+    question: 'Klarar båda ADAC-kraschtest?',
+    answer: 'Ja — Maxi-Cosi Pebble 360 Pro fick betyget "Bra" i ADAC 2023. Cybex Cloud T i-Size fick bästa betyg i ADAC 2023. Båda är R129 (i-Size) certifierade och uppfyller höga säkerhetskrav. Från ett rent säkerhetsperspektiv är de likvärdiga.',
+  },
+  {
+    question: 'Vad kostar FamilyFix 360-basen för Maxi-Cosi?',
+    answer: 'Maxi-Cosi FamilyFix 360 kostar ca 1 800–2 200 kr och behövs för att rotera stolen. Totalkostnaden med FamilyFix 360 och Pebble 360 Pro blir ca 6 500–7 500 kr. Cybex Cloud T säljs med Base T-basen för ca 3 990–5 490 kr (stol + bas). Räknat som system är priserna likvärdiga.',
+  },
+  {
+    question: 'Vilken vagn passar bäst till Maxi-Cosi Pebble 360 Pro?',
+    answer: 'Maxi-Cosi Pebble 360 Pro passar utan adapter direkt till Maxi-Cosi-sitsvagnar. Med adapter passar den Bugaboo Fox 5, Donkey 5, Butterfly, Nuna Mixx, Stokke Xplory X och fler. Bugaboo-kompatibiliteten är en av de starkaste säljargumenten för Pebble 360.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Maxi-Cosi Pebble 360 vs Cybex Cloud T 2026 — vilken roterande babysits vinner?"
+  description="Vi jämför Maxi-Cosi Pebble 360 Pro och Cybex Cloud T i-Size sida vid sida. Säkerhet, kompatibilitet, pris och användningstid — vilken väljer du 2026?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Maxi-Cosi Pebble 360 Pro och Cybex Cloud T i-Size är 2026 de populäraste roterande babysitsarna i Sverige. Båda roterar 360 grader, båda är R129-certifierade och båda får toppbetyg i ADAC-kraschtest. Men de är byggda för lite olika familjer.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Maxi-Cosi Pebble 360 Pro är det självklara valet om du har en Bugaboo-vagn. Cybex Cloud T i-Size kan även användas framåtvänd till 3,5 år — vilket ger längre användningstid och lägre kostnad per månad. Vi reder ut skillnaderna.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Maxi-Cosi Pebble 360 Pro</th>
+          <th class="p-3 text-left font-semibold">Cybex Cloud T i-Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris (stol)</td>
+          <td class="p-3 text-text-light">ca 4 990 kr</td>
+          <td class="p-3 text-green-700 font-semibold">ca 3 990 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">360° rotation</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Certifiering</td>
+          <td class="p-3 text-green-700 font-semibold">R129 (i-Size)</td>
+          <td class="p-3 text-green-700 font-semibold">R129 (i-Size)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Bakåtvänd till</td>
+          <td class="p-3 text-text-light">87 cm (ca 15 mån)</td>
+          <td class="p-3 text-text-light">87 cm (ca 15 mån)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Framåtvänd</td>
+          <td class="p-3 text-red-600 font-semibold">Nej — bara babysits</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (75–105 cm, ca 3,5 år)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Liggläge (nyfödda)</td>
+          <td class="p-3 text-text-light">163°</td>
+          <td class="p-3 text-green-700 font-semibold">170° (nästan plant)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Bugaboo-kompatibel</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (med adapter)</td>
+          <td class="p-3 text-red-600 font-semibold">Nej</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">ADAC-betyg 2023</td>
+          <td class="p-3 text-green-700 font-semibold">Bra</td>
+          <td class="p-3 text-green-700 font-semibold">Bäst</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Luftventilation</td>
+          <td class="p-3 text-green-700 font-semibold">AirProtect-kuddar</td>
+          <td class="p-3 text-text-light">Standard</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bas inkluderad</td>
+          <td class="p-3 text-text-light">Nej (FamilyFix 360 extra)</td>
+          <td class="p-3 text-text-light">Nej (Base T extra)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Cybex Cloud T — mest mångsidiga</h2>
+  <p class="text-text-light mb-3 text-base">
+    Cybex Cloud T i-Size är det mest kostnadseffektiva alternativet av de två. Stolen används bakåtvänd 0–87 cm (0–ca 15 månader) <em>och</em> framåtvänd 75–105 cm (ca 9 månader–3,5 år). Det innebär att du inte behöver köpa en ny stol för småbarnsåldern — Cloud T håller hela vägen till ca 3,5 år.
+  </p>
+  <p class="text-text-light mb-3 text-base">
+    Liggläget är 170° — nästan plant — vilket är ett av de bästa på marknaden för nyfödda. ADAC 2023 gav Cloud T bästa möjliga betyg. Cybex-basen (Base T) säljs separat och möjliggör rotation utan att behöva brottas med bältets ISOFIX.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Nackdel: Cloud T är inte kompatibel med Bugaboo-vagnar. Om du har en Bugaboo Fox 5 eller Butterfly är Maxi-Cosi Pebble 360 Pro den naturligare paret.
+  </p>
+
+  <ProductCard
+    name="Cybex Cloud T i-Size"
+    badge="Bäst totalvärde"
+    price="3 990 kr"
+    rating={4.8}
+    ageRange="0–105 cm (0–3,5 år)"
+    pros={['Rotation + framåtvänd till 3,5 år', '170° liggläge för nyfödda', 'ADAC bästa betyg 2023', 'Prisvärdare per användningsmånad']}
+    cons={['Ej Bugaboo-kompatibel', 'Bas (Base T) extra kostnad', 'Stor och tung stol']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilbarnstolar/grupp-0-1/cybex-cloud-t-i-size-bilbarnstol"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Maxi-Cosi Pebble 360 Pro — bäst för Bugaboo-ägare</h2>
+  <p class="text-text-light mb-3 text-base">
+    Maxi-Cosi Pebble 360 Pro är det självklara valet om du redan har eller planerar en Bugaboo-vagn. Kombinationen Pebble 360 + FamilyFix 360-bas + Bugaboo adapter är ett av de smidigaste systemen på marknaden — du lyfter stolen direkt från bilbas till vagn med ett klick utan att väcka barnet.
+  </p>
+  <p class="text-text-light mb-3 text-base">
+    AirProtect-teknologin ger kuddar med luftcirkulering runt barnets huvud, vilket minskar risken för överhettning och ger extra sidokrocksskydd. Stolens design är elegant och Maxi-Cosi:s varumärke är välkänt på barnavdelningar.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Nackdel: Pebble 360 Pro används bara bakåtvänd 0–87 cm och är sedan utväxt. Du behöver köpa en ny bilbarnstol när barnet är ca 15 månader. Totalkostnaden med FamilyFix 360-basen (1 800–2 200 kr extra) är ca 6 500–7 500 kr — jämfört med Cloud T:s stol + bas på 3 990–5 490 kr.
+  </p>
+
+  <ProductCard
+    name="Maxi-Cosi Pebble 360 Pro i-Size"
+    badge="Bäst för Bugaboo"
+    price="4 990 kr"
+    rating={4.7}
+    ageRange="0–87 cm (0–ca 15 månader)"
+    pros={['Bugaboo-kompatibel (Fox 5, Butterfly)', 'AirProtect sidoskyddskuddar', '360° rotation', 'Elegant Maxi-Cosi design']}
+    cons={['Bara babysits 0–87 cm', 'FamilyFix 360-bas extra 1 800 kr', 'Kortare användningstid än Cloud T']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilbarnstolar/grupp-0-1/maxi-cosi-pebble-360-pro-i-size-bilbarnstol"
+  />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett topplista</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+      <li><a href="/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/" class="text-accent hover:underline">Cybex Cloud T vs Britax Baby-Safe iSense 2026</a></li>
+      <li><a href="/bilbarnstolar/i-size/" class="text-accent hover:underline">Bästa i-Size bilbarnstolen 2026</a></li>
+      <li><a href="/barnvagnar/babyzen-yoyo-vs-bugaboo-butterfly/" class="text-accent hover:underline">BABYZEN YOYO vs Bugaboo Butterfly 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/bilbarnstolar/grupp-0-1/cybex-cloud-t-i-size-bilbarnstol" productName="Cybex Cloud T i-Size" text="Se bästa pris — Cybex Cloud T i-Size" />
+</ArticleLayout>
