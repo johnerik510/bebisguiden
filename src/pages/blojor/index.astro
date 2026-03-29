@@ -1,0 +1,277 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Blojor' },
+];
+
+const products = [
+  {
+    name: 'Pampers Premium Protection',
+    badge: 'Bäst i test',
+    price: '0,65 kr/st',
+    rating: 4.9,
+    ctaHref: '#',
+    features: {
+      'Material': 'Bomullskänsla med fuktspärr',
+      'Ekologisk': 'Nej',
+      'Navelurringning': 'Ja (stl 1–2)',
+      'Pris/st': 'ca 0,65 kr',
+      'Betyg': '4.9/5',
+    },
+  },
+  {
+    name: 'Libero Touch',
+    badge: 'Svensk favorit',
+    price: '0,55 kr/st',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Material': 'Mjuk inre yta',
+      'Ekologisk': 'Nej',
+      'Navelurringning': 'Ja (stl 1–2)',
+      'Pris/st': 'ca 0,55 kr',
+      'Betyg': '4.7/5',
+    },
+  },
+  {
+    name: 'Huggies Extra Care',
+    badge: 'Bäst för nyfödda',
+    price: '0,60 kr/st',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Material': 'Naturliga fibrer',
+      'Ekologisk': 'Nej',
+      'Navelurringning': 'Ja (stl 1–2)',
+      'Pris/st': 'ca 0,60 kr',
+      'Betyg': '4.6/5',
+    },
+  },
+  {
+    name: 'HIPP Bambo Nature',
+    badge: 'Bäst ekologisk',
+    price: '0,75 kr/st',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Material': 'FSC-certifierad bambu',
+      'Ekologisk': 'Ja',
+      'Navelurringning': 'Ja (stl 1–2)',
+      'Pris/st': 'ca 0,75 kr',
+      'Betyg': '4.5/5',
+    },
+  },
+  {
+    name: 'Blöjorna.se Eco',
+    badge: 'Bäst budget eco',
+    price: '0,45 kr/st',
+    rating: 4.2,
+    ctaHref: '#',
+    features: {
+      'Material': 'Återvunnet material',
+      'Ekologisk': 'Ja',
+      'Navelurringning': 'Ja (stl 1–2)',
+      'Pris/st': 'ca 0,45 kr',
+      'Betyg': '4.2/5',
+    },
+  },
+];
+
+const featureLabels = ['Material', 'Ekologisk', 'Navelurringning', 'Pris/st', 'Betyg'];
+
+const faqItems = [
+  {
+    question: 'Vilken blöja är bäst för nyfödda?',
+    answer: 'För nyfödda rekommenderar vi Pampers Premium Protection eller Huggies Extra Care. Båda har navelurringning i storlek 1 och 2 som skyddar det ömma navelsträngsomfånget. Pampers Premium Protection är mjukast och har bäst läckageskydd, medan Huggies Extra Care passar nyfödda med sin formade passform.',
+  },
+  {
+    question: 'Hur många blöjor behöver man per dag?',
+    answer: 'En nyfödd bebis byter blöja 8–12 gånger per dygn, vilket innebär ca 70–85 blöjor per vecka. Under de första månaderna minskar antalet successivt. Vid 6 månaders ålder räknar du med 6–8 byten per dag. Planera inköp utifrån detta — det är billigare att köpa storpack men undvik att lagerföra för många i samma storlek då barnet växer snabbt.',
+  },
+  {
+    question: 'Är ekologiska blöjor bättre för bebisens hud?',
+    answer: 'Ekologiska blöjor som HIPP Bambo Nature är fria från klor, parfym och skadliga kemikalier, vilket kan vara fördelaktigt för känslig hud. Studier visar ingen statistisk skillnad i blöjeksem mellan konventionella och ekologiska märken hos friska bebisar. Har ditt barn känslig hud eller eksem kan ekologiska blöjor vara ett bra alternativ att prova.',
+  },
+  {
+    question: 'Vad är skillnaden mellan engångs- och tygblöjor?',
+    answer: 'Engångsblöjor är bekvämt och hygieniska men ger stora mängder avfall. Tygblöjor är mer miljövänliga och kostnadseffektiva på sikt — ett komplett tygblöjesystem kostar 3 000–5 000 kr men räcker för hela blöjperioden jämfört med 15 000–20 000 kr för engångsblöjor. Nackdelen är merarbete med tvätt. Vill du veta mer? Se vår guide till <a href="/blojor/tygblojor/" class="text-accent hover:underline">bästa tygblöjor 2026</a>.',
+  },
+  {
+    question: 'Hur väljer man rätt blöjstorlek?',
+    answer: 'Blöjstorlek baseras på barnets vikt, inte ålder. Storlek 1 passar 2–5 kg (nyfödda), storlek 2 passar 3–6 kg, storlek 3 passar 4–9 kg. Tecknet på att blöjan är för liten är röda märken runt benen eller läckage. Om blöjan gäspar på magen eller runt benen är den för stor. Prova alltid ett litet paket i ny storlek innan du köper storpack.',
+  },
+  {
+    question: 'Hur förvarar man blöjor på bästa sätt?',
+    answer: 'Förvara blöjor torrt, svalt och skyddade från direkt solljus. Undvik fuktiga förvaringsutrymmen — fukt kan påverka blöjans absorbationsförmåga. Öppnade förpackningar bör användas inom 2–3 månader. Oöppnade förpackningar håller i flera år om de förvaras rätt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa blöjor 2026 — test av engångs- och tygblöjor | Bebisguiden"
+  description="Vi testar de bästa blöjorna 2026. Jämför engångsblöjor och tygblöjor — hitta rätt blöja för din bebis."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/blojor/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Vi har testat och jämfört de mest populära engångsblöjorna på den svenska marknaden. Från premiumalternativet Pampers Premium Protection till budgetvänliga ekologiska alternativ — här hittar du rätt blöja för din bebis.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Pampers Premium Protection</strong> vinner för mjukhet och läckageskydd. <strong>Libero Touch</strong> är bäst för priset bland premiumblöjor. <strong>HIPP Bambo Nature</strong> är bäst ekologiska valet.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — blöjor 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Pampers Premium Protection"
+      badge="Bäst i test"
+      price="ca 0,65 kr/st"
+      rating={4.9}
+      pros={['Mjukast av alla testade blöjor', 'Bäst läckageskydd', 'Navelurringning i stl 1–2', 'Fuktindikator på storlek 1–4']}
+      cons={['Dyrare än konkurrenterna', 'Inte ekologisk']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Libero Touch"
+      badge="Svensk favorit"
+      price="ca 0,55 kr/st"
+      rating={4.7}
+      pros={['Populäraste blöjan i Sverige', 'Bra passform runt benen', 'Navelurringning i stl 1–2', 'Lättillgänglig i alla butiker']}
+      cons={['Inte ekologisk', 'Något sämre läckageskydd än Pampers']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Huggies Extra Care"
+      badge="Bäst för nyfödda"
+      price="ca 0,60 kr/st"
+      rating={4.6}
+      pros={['Formad för nyfödda', 'Navelurringning i stl 1–2', 'Naturliga fibrer mot huden', 'Mjuk ytteryta']}
+      cons={['Något svårare att hitta i butik', 'Inte ekologisk']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="HIPP Bambo Nature"
+      badge="Bäst ekologisk"
+      price="ca 0,75 kr/st"
+      rating={4.5}
+      pros={['FSC-certifierad bambu', 'Fri från klor och parfym', 'Bra för känslig hud', 'Navelurringning i stl 1–2']}
+      cons={['Dyrare per blöja', 'Något tunnare än Pampers']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Blöjorna.se Eco"
+      badge="Bäst budget eco"
+      price="ca 0,45 kr/st"
+      rating={4.2}
+      pros={['Billigaste ekologiska alternativet', 'Återvunnet material', 'Acceptabelt läckageskydd', 'Miljövänligare alternativ']}
+      cons={['Sämre passform än premiumalternativ', 'Begränsad tillgänglighet']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt blöja?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Välj rätt storlek — viktbaserad, inte åldersbaserad</h3>
+    <p>Blöjstorlek ska alltid väljas utifrån barnets aktuella vikt, inte ålder. Storlek 1 passar 2–5 kg, storlek 2 passar 3–6 kg. Röda märken runt benen eller magen är tecken på att blöjan är för liten. Köp alltid ett testpaket i ny storlek innan du beställer storpack.</p>
+
+    <h3>2. Engångsblöja eller tygblöja?</h3>
+    <p>Engångsblöjor är bekvämt och kräver minimal hantering — perfekt när livet med nyfödd är intensivt. Tygblöjor sparar 10 000–15 000 kr under blöjperioden och är betydligt mer miljövänliga. Många familjer väljer en kombination: tygblöjor hemma och engångsblöjor vid utflykter. Se vår guide till <a href="/blojor/tygblojor/" class="text-accent hover:underline">bästa tygblöjor 2026</a> för mer information.</p>
+
+    <h3>3. Känslig hud — välj ekologiskt</h3>
+    <p>Har ditt barn känslig hud, eksem eller ofta blöjrodnad, är ekologiska alternativ som HIPP Bambo Nature värda att prova. Dessa är fria från klor, parfym och syntetiska tillsatser som kan irritera känslig hud. Bambu-baserade blöjor har också naturliga antibakteriella egenskaper.</p>
+
+    <h3>4. Räkna på kostnaden per blöja</h3>
+    <p>Priset per blöja varierar från 0,45 kr till 0,75 kr, men det verkliga priset beror på storpack-priser och kampanjer. Prenumerationstjänster som Blöjorna.se ger ofta 10–20% rabatt mot ordinarie butikspris. Räknat på 2 500 blöjor det första levnadsåret är skillnaden mellan billigaste och dyraste märket ca 750 kr.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fördjupning — blöjor efter typ</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/blojor/tygblojor/" class="text-accent hover:underline">Bästa tygblöjor 2026 — hållbart och kostnadseffektivt</a></li>
+    </ul>
+  </div>
+
+  <div class="mt-4 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/badkar/" class="text-accent hover:underline">Bästa badkar bebis 2026 — test och jämförelse</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — test och jämförelse</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Pampers Premium Protection',
+      description: 'Premiumblöja med mjukast material och bäst läckageskydd. Navelurringning i storlek 1 och 2. Fuktindikator på mindre storlekar.',
+      brand: 'Pampers',
+      ratingValue: 4.9,
+      reviewCount: 1,
+      offers: [{ price: 0.65, url: '#', seller: 'Apoteket' }],
+    },
+    {
+      name: 'Libero Touch',
+      description: 'Sveriges mest populära blöja med bra passform och navelurringning i storlek 1 och 2. Tillgänglig i alla svenska butiker.',
+      brand: 'Libero',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 0.55, url: '#', seller: 'Apotek Hjärtat' }],
+    },
+    {
+      name: 'Huggies Extra Care',
+      description: 'Blöja anpassad för nyfödda med navelurringning och naturliga fibrer mot huden. Formad för nyfödda barns kropp.',
+      brand: 'Huggies',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 0.60, url: '#', seller: 'Apoteket' }],
+    },
+    {
+      name: 'HIPP Bambo Nature',
+      description: 'Ekologisk blöja i FSC-certifierad bambu. Fri från klor, parfym och syntetiska tillsatser. Bra för känslig hud.',
+      brand: 'HIPP',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 0.75, url: '#', seller: 'Apoteket' }],
+    },
+    {
+      name: 'Blöjorna.se Eco',
+      description: 'Budgetvänlig ekologisk engångsblöja i återvunnet material. Miljövänligare alternativ till ett lägre pris.',
+      brand: 'Blöjorna.se',
+      ratingValue: 4.2,
+      reviewCount: 1,
+      offers: [{ price: 0.45, url: '#', seller: 'Blöjorna.se' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris — Pampers Premium Protection"
+  productName="Bäst i test 2026"
+/>

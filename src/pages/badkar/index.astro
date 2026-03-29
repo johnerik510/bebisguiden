@@ -1,0 +1,275 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Badkar bebis' },
+];
+
+const products = [
+  {
+    name: 'Stokke Flexi Bath',
+    badge: 'Bäst i test',
+    price: '599 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Hopfällbart': 'Ja',
+      'Termometer': 'Nej (köps separat)',
+      'Badstöd inkl.': 'Nej (köps separat)',
+      'Lämplig ålder': '0–4 år',
+      'Pris': '599 kr',
+    },
+  },
+  {
+    name: 'IKEA LATTSAM',
+    badge: 'Bäst budget',
+    price: '99 kr',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'Hopfällbart': 'Nej',
+      'Termometer': 'Nej',
+      'Badstöd inkl.': 'Nej',
+      'Lämplig ålder': '0–2 år',
+      'Pris': '99 kr',
+    },
+  },
+  {
+    name: 'Fisher-Price 4-in-1 Sling n Seat',
+    badge: 'Bäst för alla åldrar',
+    price: '399 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Hopfällbart': 'Nej',
+      'Termometer': 'Nej',
+      'Badstöd inkl.': 'Ja (sittsel ingår)',
+      'Lämplig ålder': '0–5 år',
+      'Pris': '399 kr',
+    },
+  },
+  {
+    name: 'Angelcare Soft Touch Bath Support',
+    badge: 'Bäst badstöd',
+    price: '349 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Hopfällbart': 'Nej',
+      'Termometer': 'Nej',
+      'Badstöd inkl.': 'Ja (badstöd)',
+      'Lämplig ålder': '0–6 mån',
+      'Pris': '349 kr',
+    },
+  },
+  {
+    name: 'Karibu Top Wash',
+    badge: 'Bäst med termometer',
+    price: '499 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Hopfällbart': 'Nej',
+      'Termometer': 'Ja (inbyggd)',
+      'Badstöd inkl.': 'Ja',
+      'Lämplig ålder': '0–2 år',
+      'Pris': '499 kr',
+    },
+  },
+];
+
+const featureLabels = ['Hopfällbart', 'Termometer', 'Badstöd inkl.', 'Lämplig ålder', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilket babybadkar är bäst för nyfödda?',
+    answer: 'För nyfödda rekommenderar vi Karibu Top Wash eller Angelcare Soft Touch Bath Support. Karibu har inbyggd termometer och badstöd vilket gör det lättare att hålla rätt vattentemperatur och hålla bebisen säker. Angelcare är ett rent badstöd som passar i ditt befintliga badkar och ger händerna fria för tvättning.',
+  },
+  {
+    question: 'Vilken vattentemperatur ska babybadets vatten ha?',
+    answer: 'Rätt vattentemperatur för babybad är 37–38 grader Celsius — kroppsvarm. Testa alltid med armbågen eller handleden, aldrig med handen. En inbyggd termometer som i Karibu Top Wash ger exakt temperaturvisning och tar bort gissningsleken. Fyll alltid på kallt vatten sist för att undvika att bebisen råkar hamna i för varmt vatten.',
+  },
+  {
+    question: 'Hur länge kan man använda ett babybadkar?',
+    answer: 'De flesta babybadkar är avsedda för 0–2 år (max 13–15 kg). Fisher-Price 4-in-1 är ett undantag och passar upp till 5 år tack vare sin justerbara design. Stokke Flexi Bath är ett av de mer långlivade alternativen och kan användas länge. Räkna med att ett standardbabybadkar räcker 12–24 månader.',
+  },
+  {
+    question: 'Är ett hopfällbart babybadkar värt det?',
+    answer: 'Ja, om du reser mycket eller har ett litet badrum. Stokke Flexi Bath viker ihop till en platt form och tar minimal plats i väskan. Den håller vatten lika bra som ett konventionellt badkar. Nackdelen är att det hopfällbara systemet kan vara klumpigt att sätta ihop med en bebis på armen. För hemmabruk är ett fast badkar ofta enklare.',
+  },
+  {
+    question: 'Behöver man ett separat babybadkar?',
+    answer: 'Det är inte ett krav, men starkt rekommenderat de första månaderna. Bebisar behöver mycket stöd i vatten och ett anpassat babybadkar ger rätt djup, storlek och stöd. Alternativet är ett badstöd som Angelcare i det vanliga badkaret. Att bada bebisen i kökshokan är vanligt men inte idealiskt för rygg och armar.',
+  },
+  {
+    question: 'Hur rengör man ett babybadkar?',
+    answer: 'Skölj babybadkaret med varmt vatten efter varje användning. En gång per vecka, torka rent med en mild lösning av diskmedel och vatten. Låt torka ordentligt upp och ned — fukt gynnar mögel. Hopfällbara badkar som Stokke Flexi Bath ska torkas inuti vecken extra noggrant. Undvik starka kemikalier och skurmedel som kan ge rester kvar.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa badkar bebis 2026 – topp 5 | Bebisguiden"
+  description="Vi testar de bästa babybadkaren 2026. Från enkla badstöd till badkar med thermometer — hitta rätt för din bebis."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/badkar/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Ett babybadkar gör de första badbadningarna tryggare och enklare. Vi har testat och jämfört fem av de mest populära babybadkaren på den svenska marknaden — från IKEA:s budgetalternativ till Stokkes hopfällbara resvinnare.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Stokke Flexi Bath</strong> vinner för resvänlighet och hållbarhet. <strong>Karibu Top Wash</strong> är bäst med inbyggd termometer. <strong>IKEA LATTSAM</strong> är bäst för priset.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — babybadkar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Stokke Flexi Bath"
+      badge="Bäst i test"
+      price="599 kr"
+      rating={4.8}
+      ageRange="0–4 år"
+      pros={['Hopfällbart — perfekt för resor', 'Håller länge, passar till 4 år', 'Stabil och lätt att hålla rent', 'Tidlös design']}
+      cons={['Badstöd och termometer kostar extra', 'Dyrare än de flesta alternativ']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="IKEA LATTSAM"
+      badge="Bäst budget"
+      price="99 kr"
+      rating={4.4}
+      ageRange="0–2 år"
+      pros={['Extremt prisvärd (99 kr)', 'Enkel att rengöra', 'Stabil form', 'Tillgänglig i alla IKEA-butiker']}
+      cons={['Ingen termometer eller badstöd', 'Kortare livslängd', 'Inte hopfällbart']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Fisher-Price 4-in-1 Sling n Seat"
+      badge="Bäst för alla åldrar"
+      price="399 kr"
+      rating={4.6}
+      ageRange="0–5 år"
+      pros={['Används från nyfödd till 5 år', 'Sittsel ingår för de minsta', 'Kostnadseffektiv på sikt', 'Justeras i 4 steg']}
+      cons={['Tar mer plats än enklare badkar', 'Ingen inbyggd termometer']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Angelcare Soft Touch Bath Support"
+      badge="Bäst badstöd"
+      price="349 kr"
+      rating={4.5}
+      ageRange="0–6 mån"
+      pros={['Händerna fria — enklare att tvätta bebisen', 'Mjukt och behagligt', 'Passar i befintligt badkar', 'Ergonomisk lutningsvinkel']}
+      cons={['Enbart för de allra minsta (0–6 mån)', 'Inget eget badkar — kräver befintligt']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Karibu Top Wash"
+      badge="Bäst med termometer"
+      price="499 kr"
+      rating={4.7}
+      ageRange="0–2 år"
+      pros={['Inbyggd vattentermometer', 'Badstöd ingår', 'Ta bort gissningsleken kring vattentemperatur', 'Komplett lösning']}
+      cons={['Inte hopfällbart', 'Begränsad livslängd (0–2 år)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt babybadkar?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Hur länge ska det användas?</h3>
+    <p>Om du vill ha ett badkar som räcker länge, välj Fisher-Price 4-in-1 (0–5 år) eller Stokke Flexi Bath (0–4 år). För familjer som vill ha ett enkelt och billigt alternativ för de första månaderna räcker IKEA LATTSAM (0–2 år) utmärkt.</p>
+
+    <h3>2. Inbyggd termometer — viktigare än du tror</h3>
+    <p>Vattentemperaturen är kritisk för bebisens säkerhet — för varmt vatten kan bränna känslig hud. En inbyggd termometer som i Karibu Top Wash tar bort gissningsleken och ger konstant temperaturövervakning. Alternativt, köp en separat badtermometer till ett enklare badkar.</p>
+
+    <h3>3. Badstöd — fria händer att tvätta</h3>
+    <p>Nyfödda bebis behöver konstant stöd i vatten och ett badstöd frigör en hand att tvätta ordentligt. Angelcare Soft Touch Bath Support är perfekt för de allra minsta. Fisher-Price 4-in-1 och Karibu har inbyggda stödlösningar. IKEA LATTSAM och Stokke Flexi Bath kräver att du håller bebisen med en hand hela tiden.</p>
+
+    <h3>4. Hopfällbart eller fast — välj efter din situation</h3>
+    <p>Reser du mycket eller har ett litet badrum? Stokke Flexi Bath viker ihop till en platt form och tar minimal plats i resväskan. Stannar badkaret alltid hemma räcker ett fast alternativ och är ofta enklare att sätta upp och plocka ner.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/blojor/" class="text-accent hover:underline">Bästa blöjor 2026 — engångsblöjor testade och rankade</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — test och jämförelse</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Stokke Flexi Bath',
+      description: 'Hopfällbart babybadkar som passar från nyfödd till 4 år. Tidlös design och lätt att ta med på resor. Stabilt och lätt att hålla rent.',
+      brand: 'Stokke',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 599, url: '#', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'IKEA LATTSAM',
+      description: 'Enkelt och prisvärt babybadkar för 0–2 år. Stabil form, lätt att rengöra och finns i alla IKEA-butiker.',
+      brand: 'IKEA',
+      ratingValue: 4.4,
+      reviewCount: 1,
+      offers: [{ price: 99, url: '#', seller: 'IKEA' }],
+    },
+    {
+      name: 'Fisher-Price 4-in-1 Sling n Seat',
+      description: 'Babybadkar som växer med barnet från nyfödd till 5 år. Justeras i 4 steg med inkluderat sittsel för de allra minsta.',
+      brand: 'Fisher-Price',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 399, url: '#', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Angelcare Soft Touch Bath Support',
+      description: 'Ergonomiskt badstöd för nyfödda 0–6 månader. Frigör båda händerna och passar i befintligt badkar.',
+      brand: 'Angelcare',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 349, url: '#', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Karibu Top Wash',
+      description: 'Babybadkar med inbyggd vattentermometer och badstöd. Komplett lösning för tryggt och enkelt babybad för 0–2 år.',
+      brand: 'Karibu',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 499, url: '#', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="#"
+  text="Se bästa pris — Stokke Flexi Bath"
+  productName="Bäst i test 2026"
+/>

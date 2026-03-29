@@ -1,0 +1,264 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Tygblöjor' },
+];
+
+const products = [
+  {
+    name: 'GroVia Hybrid',
+    badge: 'Bäst i test',
+    price: '159 kr/blöja',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'System': 'Hybrid (engångs + tyg)',
+      'Material': 'Polyester yttertyg',
+      'Tvättbarheter': 'Obegränsad',
+      'Pris/blöja': 'ca 159 kr',
+      'Startpaket': 'Ja',
+    },
+  },
+  {
+    name: 'TotsBots Bamboozle',
+    badge: 'Bäst absorption',
+    price: '179 kr/blöja',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'System': 'Prefold',
+      'Material': 'Bambu',
+      'Tvättbarheter': 'Obegränsad',
+      'Pris/blöja': 'ca 179 kr',
+      'Startpaket': 'Ja',
+    },
+  },
+  {
+    name: 'Thirsties Duo Wrap',
+    badge: 'Bäst överdel',
+    price: '139 kr/blöja',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'System': 'Överdel + insats',
+      'Material': 'Polyester/PUL',
+      'Tvättbarheter': 'Obegränsad',
+      'Pris/blöja': 'ca 139 kr',
+      'Startpaket': 'Nej',
+    },
+  },
+  {
+    name: 'Bambino Mio miosolo',
+    badge: 'Enklast att använda',
+    price: '199 kr/blöja',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'System': 'All-in-one',
+      'Material': 'Mikrofiber/bomull',
+      'Tvättbarheter': 'Obegränsad',
+      'Pris/blöja': 'ca 199 kr',
+      'Startpaket': 'Ja',
+    },
+  },
+  {
+    name: 'Charlie Banana',
+    badge: 'Bäst premium',
+    price: '229 kr/blöja',
+    rating: 4.4,
+    ctaHref: '#',
+    features: {
+      'System': 'Hybrid/All-in-one',
+      'Material': 'Fleece + mikrofiber',
+      'Tvättbarheter': 'Obegränsad',
+      'Pris/blöja': 'ca 229 kr',
+      'Startpaket': 'Ja',
+    },
+  },
+];
+
+const featureLabels = ['System', 'Material', 'Tvättbarheter', 'Pris/blöja', 'Startpaket'];
+
+const faqItems = [
+  {
+    question: 'Hur många tygblöjor behöver man?',
+    answer: 'För ett nyfödd barn som byts 8–12 gånger per dygn behöver du 20–25 tygblöjor om du tvättar varannan dag. Med tvätt varje dag räcker 15–18 blöjor. Köp inte för många i nyföddstorleken — bebisar växer snabbt. Starta med 10–12 stycken och komplettera. De flesta system passar från 3 kg upp till 16 kg (en storlek).',
+  },
+  {
+    question: 'Hur tvättar man tygblöjor?',
+    answer: 'Skaka av fasta rester i toaletten. Blöjor utan fasta rester kan gå direkt i tvätthink. Tvätta i 60 grader för ordentlig hygien — lägre temperatur räcker om barnet är friskt och blöjorna ser rena ut. Använd ofärgat, parfymfritt tvättmedel utan sköljmedel. Torka i torktumlare eller utomhus — solljus har naturliga desinficerande egenskaper. Undvik tygsköljmedel och balsam.',
+  },
+  {
+    question: 'Sparar man verkligen pengar på tygblöjor?',
+    answer: 'Ja, men det kräver att du använder dem konsekvent. En komplett tygblöjeutrusning (20–25 blöjor) kostar 3 000–5 000 kr. Engångsblöjor kostar 15 000–20 000 kr för hela blöjperioden (0–3 år). Tygblöjor ger en besparing på 10 000–15 000 kr per barn — och kan användas till syskon. Räknat på 2 barn mer än fördubblas besparingen.',
+  },
+  {
+    question: 'Vad är skillnaden mellan de olika systemen?',
+    answer: 'All-in-one (som Bambino Mio miosolo) är enklast — allt i ett plagg, precis som engångsblöja. Hybrid (som GroVia) kombinerar tvättbart yttre med valfria engångs- eller tyginsatser. Prefold/överdel-system (Thirsties) är billigare men kräver lite mer hantering. AIO är bäst för nybörjare och dagis; överdel-system passar ekonomiska användare som vill ha lägre inköpspris.',
+  },
+  {
+    question: 'Fungerar tygblöjor på dagis?',
+    answer: 'Många dagis accepterar tygblöjor, men du behöver prata med personalen i förväg. All-in-one-system och hybridblöjor är lättast för dagiset att hantera — de liknar engångsblöjor i användandet. Ha med en blöjhink eller en vattentät väska för använda blöjor. Vissa kommuner ger bidrag för inköp av tygblöjor — kolla med din kommun.',
+  },
+  {
+    question: 'Är tygblöjor bättre för miljön?',
+    answer: 'Ja, men med reservation. Tygblöjors miljöpåverkan beror på hur de tvättas. Tvätt i 40–60 grader och torkning utomhus ger den lägsta miljöpåverkan — upp till 40% lägre koldioxidavtryck jämfört med engångsblöjor. Torktumlaren ökar energiförbrukningen avsevärt. Att återanvända till syskon minskar miljöpåverkan ytterligare.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa tygblöjor 2026 – test & startpaket | Bebisguiden"
+  description="Vi testar de bästa tygblöjorna 2026. Tygblöjor sparar pengar och är bättre för miljön — se vilket system som passar din familj."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/blojor/tygblojor/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Tygblöjor sparar 10 000–15 000 kr per barn jämfört med engångsblöjor och är ett mer miljövänligt alternativ. Vi har testat de populäraste systemen och guidar dig till rätt val för din familj.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>GroVia Hybrid</strong> är bäst för flexibilitet. <strong>TotsBots Bamboozle</strong> är bäst för absorption. <strong>Bambino Mio miosolo</strong> är enklast för nybörjare.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell — tygblöjor 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="GroVia Hybrid"
+      badge="Bäst i test"
+      price="ca 159 kr/blöja"
+      rating={4.8}
+      pros={['Flexibelt hybridssystem — välj engångs- eller tyginsats', 'Bra passform från nyfödd till potträning', 'Tvättbar överdel håller länge', 'Startpaket tillgängligt']}
+      cons={['Kräver separata insatser', 'Högre startkostnad än överdel-system']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="TotsBots Bamboozle"
+      badge="Bäst absorption"
+      price="ca 179 kr/blöja"
+      rating={4.7}
+      pros={['Bambu ger utmärkt absorption', 'Mjuk mot huden', 'Bra för nattsömn med extra insats', 'Startpaket tillgängligt']}
+      cons={['Torkar långsammare än mikrofiber', 'Kräver separat överdel']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Thirsties Duo Wrap"
+      badge="Bäst överdel"
+      price="ca 139 kr/blöja"
+      rating={4.6}
+      pros={['Lågt inköpspris', 'Passar de flesta insatstyper', 'Hållbar PUL-konstruktion', 'Tvättas snabbt och torkar fort']}
+      cons={['Inget startpaket — köp insatser separat', 'Kräver lite mer hantering']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Bambino Mio miosolo"
+      badge="Enklast att använda"
+      price="ca 199 kr/blöja"
+      rating={4.5}
+      pros={['All-in-one — precis som engångsblöja', 'Perfekt för dagis och barnvakt', 'Startpaket tillgängligt', 'Justerbara snäppknappar']}
+      cons={['Torkar långsammare än överdel-system', 'Högre pris per blöja']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Charlie Banana"
+      badge="Bäst premium"
+      price="ca 229 kr/blöja"
+      rating={4.4}
+      pros={['Premium material och konstruktion', 'Fleece-foder håller huden torr', 'Flexibelt hybridssystem', 'Startpaket med allt du behöver']}
+      cons={['Dyraste alternativet', 'Begränsad tillgänglighet i Sverige']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Kom igång med tygblöjor</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Välj rätt system för din livsstil</h3>
+    <p>All-in-one är enklast och passar familjer som vill ha ett system som liknar engångsblöjor. Hybridblöjor ger mer flexibilitet — du kan använda engångsinsatser vid utflykt och tyginsatser hemma. Överdel-system med separata insatser är billigaste alternativet men kräver mest hantering.</p>
+
+    <h3>2. Starta med ett testpaket</h3>
+    <p>Köp aldrig 20 blöjor av samma märke innan du vet att systemet passar ditt barn. Starta med 3–5 blöjor från 2–3 olika märken och testa i en vecka. Alla barn är olika — passform och absorption varierar. De flesta leverantörer erbjuder startpaket med rabatt.</p>
+
+    <h3>3. Rätt tvättutrustning är nyckeln</h3>
+    <p>Du behöver en blöjhink med lock (eller tät väska), parfymfritt tvättmedel utan sköljmedel, och en rutin för tvätt varannan dag. Torka gärna utomhus — solljus bleker och desinficerar naturligt. Undvik tygsköljmedel och balsam som sätter igen absorptionsmaterialet.</p>
+
+    <h3>4. Räkna på besparingen</h3>
+    <p>20 blöjor á 150–200 kr = 3 000–4 000 kr startinvestering. Jämfört med engångsblöjor (15 000–20 000 kr per barn) sparar du 11 000–16 000 kr. Används blöjorna till syskon ökar besparingen ytterligare med minimalt merarbete.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/blojor/" class="text-accent hover:underline">Bästa blöjor 2026 — engångsblöjor testade och rankade</a></li>
+      <li><a href="/badkar/" class="text-accent hover:underline">Bästa badkar bebis 2026 — test och jämförelse</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'GroVia Hybrid',
+      description: 'Hybridblöja som kombinerar tvättbart yttre med valfria engångs- eller tyginsatser. Bra passform från nyfödd till potträning.',
+      brand: 'GroVia',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 159, url: '#', seller: 'Naturkompaniet' }],
+    },
+    {
+      name: 'TotsBots Bamboozle',
+      description: 'Prefold-blöja i bambu med utmärkt absorption. Mjuk mot huden och bra för nattsömn med extra insats.',
+      brand: 'TotsBots',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 179, url: '#', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Thirsties Duo Wrap',
+      description: 'Överdel i hållbar PUL-konstruktion som passar de flesta insatstyper. Lågt inköpspris och snabb torktid.',
+      brand: 'Thirsties',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 139, url: '#', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Bambino Mio miosolo',
+      description: 'All-in-one tygblöja som används precis som en engångsblöja. Perfekt för dagis och barnvakt. Startpaket tillgängligt.',
+      brand: 'Bambino Mio',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 199, url: '#', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Charlie Banana',
+      description: 'Premiumtygblöja med fleece-foder och flexibelt hybridsystem. Startpaket med allt som behövs för att komma igång.',
+      brand: 'Charlie Banana',
+      ratingValue: 4.4,
+      reviewCount: 1,
+      offers: [{ price: 229, url: '#', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
