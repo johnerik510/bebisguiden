@@ -1,0 +1,187 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Britax Römer' },
+];
+
+const products = [
+  {
+    name: 'Britax Römer Baby-Safe iSense',
+    badge: 'Bäst babyskydd',
+    price: '3 499 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Babyskydd',
+      'Vikt barn': '0–13 kg',
+      'Montering': 'ISOFIX (bas köps separat)',
+      'Standard': 'i-Size (R129)',
+      'Rotation': 'Nej',
+    },
+  },
+  {
+    name: 'Britax Römer Dualfix M Plus i-Size',
+    badge: 'Mest flexibel',
+    price: '4 999 kr',
+    rating: 4.8,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Grupp 1',
+      'Vikt barn': '61–105 cm',
+      'Montering': 'ISOFIX + stödben',
+      'Standard': 'i-Size (R129)',
+      'Rotation': '360 grader',
+    },
+  },
+  {
+    name: 'Britax Römer Kidfix M i-Size',
+    badge: 'Prisvärt grupp 2/3',
+    price: '1 699 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Grupp 2/3',
+      'Vikt barn': '15–36 kg',
+      'Montering': 'Bilbälte',
+      'Standard': 'i-Size (R129)',
+      'Rotation': 'Nej',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Vikt barn', 'Montering', 'Standard', 'Rotation'];
+
+const faqItems = [
+  {
+    question: 'Var tillverkas Britax Römers bilbarnstolar?',
+    answer: 'Britax grundades 1938 i Storbritannien och har sedan länge haft produktion i Europa. Designen och säkerhetstestningen sker vid företagets europeiska anläggningar. Britax Römer är ett av de mest välkända märkena i Norden och Skandinavien tack vare sin långa historia av säkerhetsfokuserade produkter.',
+  },
+  {
+    question: 'Är Britax Römers bilbarnstolar godkända enligt i-Size?',
+    answer: 'Ja, majoriteten av Britax Römers aktuella sortiment uppfyller den senaste europeiska säkerhetsstandarden i-Size (R129). Det innebär att stolarna klarar sidokrocktester, kräver ISOFIX-montering och är storleksanpassade efter barnets längd snarare än vikt. Kontrollera alltid produktsidan för det specifika modellen för att bekräfta vilken standard som gäller.',
+  },
+  {
+    question: 'Vilken Britax Römer-stol passar ett nyfött barn?',
+    answer: 'För nyfödda rekommenderas Britax Römer Baby-Safe iSense eller liknande babyskydd från märket. Dessa är konstruerade specifikt för barn från födseln upp till cirka 13 kg och ger optimalt stöd för spädbarnets huvud och nacke. Baby-Safe iSense kan kombineras med en separat bas (FLEX BASE iSense) för enklare montering och borttagning utan att väcka barnet.',
+  },
+  {
+    question: 'Hur länge håller en Britax Römer-stol?',
+    answer: 'Britax Römer anger en livslängd på tio år från tillverkningsdatumet för sina bilbarnstolar, förutsatt att stolen inte varit med i en olycka. Efter en krock ska stolen alltid bytas ut, oavsett om den ser hel ut, eftersom det inre skyddet kan ha tagit skada. Kontrollera tillverkningsdatumet på märklappen på stolens undersida.',
+  },
+  {
+    question: 'Är Britax Römer värt det högre priset?',
+    answer: 'Britax Römer tillhör premiumsegmentet men erbjuder genomgående stark säkerhetsprestation i oberoende krocktester från bland annat ADAC och Folksam. Stolarna är generellt välbyggda med bra material och lång livslängd. För den som prioriterar verifierad säkerhet och är villig att betala mer för det anser vi att Britax Römer är värt priset. Det finns dock prisvärda alternativ som klarar sig lika bra i tester.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Britax Römer bilbarnstolar 2026 — recension & test"
+  description="Vi recenserar Britax Römers bilbarnstolar 2026. Britax är ett av de ledande märkena inom bilbarnstolar — men är de värda priset?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Britax Römer är ett av de mest välkända märkena inom bilbarnstolar i Norden. Med rötter i brittisk säkerhetsteknik och decennier av krocktestning är märket synonymt med hög säkerhet. Här recenserar vi deras tre mest populära modeller för 2026 och väger for- och nackdelar med märket som helhet.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Britax Römers bästa bilbarnstolar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Britax Römer Baby-Safe iSense"
+      badge="Bäst babyskydd"
+      price="3 499 kr"
+      rating={4.7}
+      ageRange="0–13 kg (nyfött till ca 12 månader)"
+      pros={['Toppresultat i oberoende krocktester', 'Kompatibel med de flesta barnvagnssystem', 'Mjukt innerfor med bra stöd for nyföddas huvud']}
+      cons={['Bas krävs for smidigast montering — köps separat', 'Begränsad användningstid (till ca 13 kg)']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Britax Römer Dualfix M Plus i-Size"
+      badge="Mest flexibel"
+      price="4 999 kr"
+      rating={4.8}
+      ageRange="61–105 cm (ca 6 månader till 4 år)"
+      pros={['360-graders rotation for enkel i- och urlastning', 'Stark säkerhetsprestanda i ADAC- och Folksam-tester', 'Justerbar liggposition for sovande barn']}
+      cons={['Relativt hög vikt — tar plats i smala bilar', 'Premiumprissättning']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Britax Römer Kidfix M i-Size"
+      badge="Prisvärt grupp 2/3"
+      price="1 699 kr"
+      rating={4.5}
+      ageRange="15–36 kg (ca 3,5–12 år)"
+      pros={['Bra pris for en i-Size-certifierad stol', 'Lätt och enkel att flytta mellan bilar', 'Bra sidoskydd (V-Guard) inkluderat']}
+      cons={['Inget ISOFIX — bältesfäst', 'Ingen liggposition']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">For- och nackdelar med Britax Römer</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fordelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Genomgaende stark säkerhetsprestation i oberoende tester</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett sortiment — babyskydd, roterande stolar och bältsstolar</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Välkänt och beprövat märke med lång historia</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> God tillganglighet i svenska butiker och online</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> De flesta modeller uppfyller den senaste i-Size-standarden</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Premiumprissättning — dyrare än manga konkurrenter</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tillbehör (basar, extra skydd) säljs ofta separat</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Vissa modeller är tunga och tar stor plats</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Designen kan uppfattas som konservativ jämfort med nyare märken</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Britax Römer</h3>
+    <p>Britax grundades 1938 i Storbritannien och har sedan dess specialiserat sig pa produkter for barnsäkerhet i bil. Britax förvärvade det tyska märket Römer pa 1990-talet och kombinerade bada företagens säkerhetskunnande. Idag är Britax Römer ett av de ledande märkena for bilbarnstolar i Europa, med en stark position pa den skandinaviska marknaden. Märket är känt for att investera tungt i krocktestning och samarbeta med oberoende testorganisationer som ADAC och Folksam.</p>
+
+    <h3>Vilken Britax Römer-stol passar dig?</h3>
+    <p>For nyfödda och spädbarn upp till ca 13 kg är Baby-Safe iSense det naturliga valet — ett babyskydd med starka testresultat som dessutom är kompatibelt med de flesta barnvagnssystem. Nar barnet växt ur babyskyddet är Dualfix M Plus i-Size ett utmärkt alternativ, med 360-graders rotation som gör det enklare att placera och lyfta ur barnet. For barn som växt ur grupp 1-stolen erbjuder Kidfix M i-Size ett prisvärt alternativ med god säkerhetsstandard.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/isofix/" class="text-accent hover:underline">ISOFIX bilbarnstol — allt du behöver veta 2026</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/i-size/" class="text-accent hover:underline">i-Size bilbarnstolar — vad innebär den nya standarden?</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris pa Britax Römer" />
+</ArticleLayout>

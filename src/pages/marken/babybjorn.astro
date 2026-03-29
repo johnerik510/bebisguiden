@@ -1,0 +1,187 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'BabyBjörn' },
+];
+
+const products = [
+  {
+    name: 'BabyBjörn Harmony',
+    badge: 'Bästa bärselen',
+    price: '1 899 kr',
+    rating: 4.7,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Bärsele',
+      'Barnets vikt': '3,5–15 kg',
+      'Bärpositioner': '4',
+      'Material': 'Mesh / vävt tyg',
+      'Tvättbar': 'Ja (40°C)',
+    },
+  },
+  {
+    name: 'BabyBjörn Video Baby Monitor',
+    badge: 'Bästa babyvakten',
+    price: '2 299 kr',
+    rating: 4.6,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Babyvakt',
+      'Video': 'Ja, 720p',
+      'Räckvidd': 'upp till 300 m',
+      'Batteri': '10–12 h',
+      'App-anslutning': 'Nej',
+    },
+  },
+  {
+    name: 'BabyBjörn High Chair',
+    badge: 'Stilren matstol',
+    price: '2 799 kr',
+    rating: 4.5,
+    ctaHref: '#',
+    features: {
+      'Typ': 'Matstol',
+      'Barnets vikt': 'max 15 kg',
+      'Justerbar höjd': 'Ja',
+      'Bricka': 'Ingår, diskmaskinssäker',
+      'Hopfällbar': 'Nej',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Material / Video', 'Justerbar höjd', 'Tvättbar / App', 'Bricka / Batteri'];
+
+const faqItems = [
+  {
+    question: 'Var tillverkas BabyBjörns produkter?',
+    answer: 'BabyBjörn är ett svenskt familjeföretag grundat 1961 i Stockholm. Företaget designar sina produkter i Sverige och lägger stor vikt vid skandinavisk enkelhet och funktionalitet. Tillverkningen sker delvis i Europa. BabyBjörn är ett av de mest kända svenska babymärkena internationellt och säljs i över 50 länder.',
+  },
+  {
+    question: 'Är BabyBjörn Harmony bra för nybörjare?',
+    answer: 'Ja, Harmony är en av de enklare bärselarna att komma igång med. Den har ett väldesignat spännsystem och tydliga instruktioner. Den kan användas i fyra positioner — framåtvänd, inåtvänd, på höften och på ryggen — vilket gör den flexibel under barnets första år. Många föräldrar uppskattar det mjuka mesh-materialet som ger bra luftcirkulation. Nackdelen är det högre priset jämfört med enklare märken.',
+  },
+  {
+    question: 'Hur länge kan man använda BabyBjörn Harmony?',
+    answer: 'BabyBjörn Harmony passar barn från 3,5 kg (nyfött, med tillbehör) upp till 15 kg, vilket motsvarar ungefär 3 års ålder beroende på barnets tillväxt. De flesta föräldrar använder bärselen aktivt under de första 12–18 månaderna, då bärning är vanligast. Stolen kan dock användas längre om barnet trivs med att bäras.',
+  },
+  {
+    question: 'Är BabyBjörns babyvakt utan wifi säker?',
+    answer: 'BabyBjörns Video Baby Monitor använder ett stängt DECT-nätverk (Digital Enhanced Cordless Telecommunications) istället för wifi, vilket innebär att signalen är krypterad och inte kan avlyssnas via internet. Det är ett medvetet designval — många föräldrar föredrar detta framför wifi-anslutna kameror just av integritetsskäl. Nackdelen är att du inte kan titta via en smartphone-app utifrån hemmet.',
+  },
+  {
+    question: 'Är BabyBjörn High Chair värda priset?',
+    answer: 'BabyBjörn High Chair är en av de dyrare matstolarna på marknaden, men den håller premiumkvalitet i material och design. Den är enkel att rengöra, har inga tygsitsar som samlar matrester och har en ergonomisk sits. Om du prioriterar ett stilrent utseende och hög materialkvalitet är den värd priset. För den priskänslige finns bra alternativ, som IKEA Antilop, som klarar de grundläggande kraven till en bråkdel av priset.',
+  },
+];
+---
+
+<ArticleLayout
+  title="BabyBjörn produkter 2026 — bärsele, babyvakt och matstol"
+  description="Vi recenserar BabyBjörns produkter 2026. Från den ikoniska bärselen till babyvakten — är BabyBjörn fortfarande bäst?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    BabyBjörn är ett av Sveriges mest kända babymärken, grundat 1961 i Stockholm. Märket är känt for minimalistisk design, hög materialkvalitet och ett premium-pris. Vi recenserar deras tre mest populära produkter for 2026 och utvärderar om BabyBjörns rykte fortfarande är välfortjänt.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">BabyBjörns bästa produkter 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BabyBjörn Harmony"
+      badge="Bästa bärselen"
+      price="1 899 kr"
+      rating={4.7}
+      ageRange="3,5–15 kg (nyfött till ca 3 år)"
+      pros={['Fyra bärpositioner inklusive ryggbärning', 'Mjukt mesh-material med god luftcirkulation', 'Enkel att ta pa och ta av — bra for nybörjare']}
+      cons={['Dyrare än manga konkurrenter', 'Ryggbärning tillgänglig forst vid 12 månader']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="BabyBjörn Video Baby Monitor"
+      badge="Bästa babyvakten"
+      price="2 299 kr"
+      rating={4.6}
+      ageRange="Från födseln"
+      pros={['Krypterat DECT-nätverk — ingen wifi-risk', 'Tydlig 720p-skärm pa förälderenheten', 'Upp till 12 timmars batteritid']}
+      cons={['Ingen smartphone-app — kan ej använda utanfor hemmet', 'Dyrare än wifi-alternativ']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="BabyBjörn High Chair"
+      badge="Stilren matstol"
+      price="2 799 kr"
+      rating={4.5}
+      ageRange="6 månader–3 år (max 15 kg)"
+      pros={['Enkel att rengora — inga tygdelar att tvätta', 'Ergonomisk sits och fotstöd i justerbar höjd', 'Snygg skandinavisk design']}
+      cons={['Hogre pris än konkurrenter', 'Inte hopfällbar — tar plats i köket']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">For- och nackdelar med BabyBjörn</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fordelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Skandinavisk design — snygga produkter som passar moderna hem</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Hög materialkvalitet och lång livslängd</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Enkla att använda — välgenomtänkt ergonomi</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett produktsortiment for de forsta aren</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Välkänt och beprövat märke med stark service</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Premiumprissättning — ofta dyrast i sin kategori</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Begränsat urval jämfort med bredare babymärken</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Babyvakten saknar app — begränsar användandet utanfor hemmet</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Matstolen är inte hopfällbar och tar relativt stor plats</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om BabyBjörn</h3>
+    <p>BabyBjörn grundades 1961 av Björn Jakobson i Stockholm och ägs fortfarande av familjen Jakobson. Företaget var tidigt ute med ergonomiska bärselar och babysitters anpassade for barns naturliga rörelser. BabyBjörn har medvetet valt att halla ett smalt men genomarbetat produktsortiment — de tillverkar inga bilbarnstolar eller barnvagnar, utan fokuserar pa bärslar, babyvakter, matstolar och fjädergungor. Alla produkter testas enligt europeiska säkerhetsstandarder och är CE-märkta.</p>
+
+    <h3>Är BabyBjörn rätt märke for dig?</h3>
+    <p>BabyBjörn är ett utmärkt val om du värdesätter snygg design, hög kvalitet och enkel användning och är beredd att betala mer for det. For foräldern som vill minimera antalet produkter och välja nagra genomtänkta alternativ av hog kvalitet, passar BabyBjörns filosofi väl. Om du däremot söker de bästa produkterna i varje specifik kategori oberoende av märke, kan andra alternativ ge bättre value for money i vissa produktkategorier.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 — test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 — video, wifi och DECT</a>
+      </li>
+      <li>
+        <a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026 — komplett guide</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris pa BabyBjörn" />
+</ArticleLayout>

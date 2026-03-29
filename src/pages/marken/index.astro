@@ -1,0 +1,76 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken' },
+];
+
+const brands = [
+  {
+    name: 'Britax Römer',
+    href: '/marken/britax/',
+    description: 'Ett av Europas mest välkända märken for bilbarnstolar. Vi recenserar Baby-Safe iSense, Dualfix M Plus och Kidfix M — och svarar pa om Britax är värt premiumpriset.',
+    category: 'Bilbarnstolar',
+  },
+  {
+    name: 'BabyBjörn',
+    href: '/marken/babybjorn/',
+    description: 'Svenskt familjeföretag grundat 1961. Vi recenserar den ikoniska bärselen Harmony, Video Baby Monitor och High Chair — tre av märkets mest populära produkter.',
+    category: 'Bärsele, babyvakt & matstol',
+  },
+  {
+    name: 'Stokke',
+    href: '/marken/stokke/',
+    description: 'Norskt premiumvarumärke känt for produkter som växer med barnet. Vi recenserar Tripp Trapp, Xplory X och Sleepi V3 — och utvärderar om det höga priset är motiverat.',
+    category: 'Barnvagn, matstol & spjälsäng',
+  },
+];
+---
+
+<ArticleLayout
+  title="Barnproduktmärken — recensioner & guider"
+  description="Vi recenserar de mest populära märkena inom babyutrustning. Britax Römer, BabyBjörn, Stokke och fler — hitta rätt märke for ditt barn."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+  showDisclaimer={false}
+>
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    Att välja rätt babyutrustning är enklare när du förstår styrkorna och svagheterna hos de stora märkena. Har samlar vi vara märkesrecensioner — grundliga genomgangar av sortiment, säkerhet, pris och vad som faktiskt är värt pengarna.
+  </p>
+
+  <div class="space-y-4">
+    {brands.map((brand) => (
+      <a
+        href={brand.href}
+        class="block bg-white rounded-xl border border-border p-5 shadow-sm hover:shadow-md hover:border-accent/40 transition-all"
+      >
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <span class="text-xs font-semibold text-accent-dark bg-accent/10 px-2 py-0.5 rounded-full">{brand.category}</span>
+            <h2 class="font-heading text-lg font-bold text-text mt-1.5 mb-1">{brand.name}</h2>
+            <p class="text-sm text-text-light leading-relaxed">{brand.description}</p>
+          </div>
+          <svg class="w-5 h-5 text-text-lighter flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026</a>
+      </li>
+      <li>
+        <a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen 2026</a>
+      </li>
+    </ul>
+  </div>
+</ArticleLayout>
