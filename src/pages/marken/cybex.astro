@@ -1,0 +1,137 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Cybex' },
+];
+
+const faqItems = [
+  {
+    question: 'Var tillverkas Cybex produkter?',
+    answer: 'Cybex grundades 2005 i Bayern, Tyskland, och har kvar sin europeiska bas och produktutveckling i Tyskland. Märket är känt för stark fokus på säkerhet och har vunnit flera oberoende krocktester från bland annat ADAC. Cybex ägs sedan 2014 av Goodbaby International, ett av världens ledande babyutrustningsföretag.',
+  },
+  {
+    question: 'Är Cybex Sirona T i-Size verkligen säker?',
+    answer: 'Ja, Cybex Sirona T i-Size är en av de säkraste bilbarnstolarna i sin klass och har uppnått toppresultat i oberoende krocktester från ADAC och andra testorganisationer. Stolen uppfyller den senaste i-Size-standarden (R129), har 360-graders rotation for enkel i- och urlastning och kan användas bakåtvänd ända upp till 105 cm barns längd — vilket ger bästa skydd vid frontalkrock.',
+  },
+  {
+    question: 'Vad är skillnaden mellan Cybex Gazelle S och Priam 4?',
+    answer: 'Cybex Priam 4 är märkets premiumbarnvagn med fokus på design, komfort och moduläritet — den kan konfigureras med liggdel, sittvagnsdel och bilstolsadapter. Gazelle S är Cybex syskonvagn som kan bära ett eller två barn i olika konfigurationer. Priam 4 är ett bättre val for ett barn; Gazelle S är rätt val om du har eller planerar syskon nära i ålder.',
+  },
+  {
+    question: 'Är Cybex ett premiummärke?',
+    answer: 'Cybex positioneras i premium-till-mellansegmentet. Märket levererar ofta premiumprestanda och -design till priser som är lägre än Bugaboo eller Stokke, men fortfarande högre än mer budgetvänliga alternativ. Cybex erbjuder samarbeten med välkända designers och modevarumärken, vilket höjer märkets profil ytterligare.',
+  },
+  {
+    question: 'Var kan jag köpa Cybex i Sverige?',
+    answer: 'Cybex säljs hos de flesta stora babybutiker i Sverige, inklusive Babyshop, Jollyroom, BabyWorld, Lekmer och Ellos Baby. Jämför alltid pris mellan butiker och kontrollera om tillbehör som bassinettet ingår i priset eller behöver köpas separat.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Cybex produkter 2026 — bilbarnstolar och barnvagnar"
+  description="Vi recenserar Cybex produkter 2026. Sirona, Gazelle och Priam — tyskt premiumvarumärke med stark säkerhetsprofil."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Cybex är det tyska premiummärket som kombinerar stark säkerhetsfokus med modern design. Grundat 2005 i Bayern har Cybex snabbt blivit ett av de mest respekterade varumärkena inom bilbarnstolar och barnvagnar i Europa. Här recenserar vi tre av märkets populäraste produkter och utvärderar vad Cybex erbjuder svenska föräldrar 2026.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Cybex bästa produkter 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Cybex Sirona T i-Size"
+      badge="Bäst bilbarnstol"
+      price="5 499 kr"
+      rating={4.8}
+      ageRange="61–105 cm (ca 6 månader till 4 år)"
+      pros={['Toppresultat i ADAC-krocktester', '360-graders rotation for enkel hantering', 'Kan användas bakåtvänd ända till 105 cm', 'Uppfyller i-Size-standarden (R129)']}
+      cons={['ISOFIX-bas krävs for montering — ingår inte alltid i priset', 'Relativt hög vikt', 'Tar stor plats i smala bilar']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cybex Priam 4"
+      badge="Bäst barnvagn"
+      price="14 999 kr"
+      rating={4.7}
+      ageRange="Från födseln till ca 22 kg"
+      pros={['Modulär design — konfigureras med liggdel, sittvagnsdel och bilstol', 'Elegant och tidlös design', 'Bra körkomfort i stadsmiljö', 'Tillbehör finns i brett urval']}
+      cons={['Högt pris', 'Tillbehör som bassinettet säljs separat', 'Inte lika bra terrängförmåga som Bugaboo Fox 5']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Cybex Gazelle S"
+      badge="Bäst syskonvagn"
+      price="11 999 kr"
+      rating={4.6}
+      ageRange="Från födseln (syskonkonfiguration)"
+      pros={['Flexibel syskonvagn med många konfigurationer', 'Smalare profil än många andra syskonvagnar', 'Kan anvandas som enbarnsvagn', 'Stark säkerhetsprestanda']}
+      cons={['Komplex konfigurering — tar tid att lära sig', 'Tung i fullutrustat läge', 'Inte den lägsta totalvikten for en syskonvagn']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">For- och nackdelar med Cybex</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fordelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Stark säkerhetsprestanda i oberoende tester</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Modern och elegant design</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett produktsortiment — bilbarnstolar och barnvagnar</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Premiumkvalitet till lägre pris än Bugaboo och Stokke</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> God kompatibilitet mellan vagnschassi och bilstolar</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Viktiga tillbehör säljs ofta separat</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Bilbarnstols-basar kan vara kostsamma tillägg</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Konfigurationsalternativen kan vara överväldigande</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tyngre modeller an genomsnittet i klassen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Cybex</h3>
+    <p>Cybex grundades 2005 i Bayern av Martin Pos och har på drygt tjugo år etablerat sig som ett av de ledande premium-till-mellansegmentsmärkena inom babyutrustning. Märket är känt for sina samarbeten med välkända designers — bland annat Jeremy Scott och Yoon Ambush — vilket gett Cybex ett unikt mode- och designperspektiv i branschen. Sedan 2014 är Cybex en del av Goodbaby International, ett av världens största babyutrustningsföretag, vilket ger märket tillgang till global forskning och produktutveckling.</p>
+
+    <h3>Vilken Cybex-produkt passar dig?</h3>
+    <p>For bilbarnstol är Sirona T i-Size svaret for de flesta föräldrar — 360-graders rotation gör vardagen enklare och säkerhetsstandarden är i toppklass. For barnvagn är Priam 4 rätt val om du vill ha en elegant modulär vagn for ett barn, medan Gazelle S är det smarta valet when ett syskon är på väg och du vill undvika att köpa en helt ny vagn.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/i-size/" class="text-accent hover:underline">i-Size bilbarnstolar — vad innebär den nya standarden?</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett test och jämförelse</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris pa Cybex" />
+</ArticleLayout>

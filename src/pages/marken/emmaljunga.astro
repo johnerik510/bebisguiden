@@ -1,0 +1,134 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Emmaljunga' },
+];
+
+const faqItems = [
+  {
+    question: 'Var tillverkas Emmaljungas barnvagnar?',
+    answer: 'Emmaljunga grundades 1925 i byn Emmaljunga i Skåne och är Sveriges äldsta barnvagnsmärke. Idag är Emmaljunga ett av de ledande barnvagnsmärkena i Norden. Design och kvalitetskontroll sker i Skåne, medan tillverkning sker vid partners med strikta kvalitetskrav. Märket är stolt över sin svenska historia och Skånska rötter.',
+  },
+  {
+    question: 'Vad gör Emmaljunga NXT90 speciell?',
+    answer: 'Emmaljunga NXT90 är märkets fullstorleks-flaggskepp och kombivagn. Den kännetecknas av det klassiska Emmaljunga-chassit med robust konstruktion, stor liggdel och generöst utrymme i korgen. NXT90 är populär hos föräldrar som vill ha en traditionell, pålitlig kombivagn med god terrängförmåga. Vagnen kan konfigureras med liggdel for nyfödda och sittvagnsdel for äldre barn.',
+  },
+  {
+    question: 'Är Emmaljunga ett bra val for första barnvagnen?',
+    answer: 'Ja, Emmaljunga är ett utmärkt val for den första barnvagnen. Märket erbjuder kombivagnar som täcker hela perioden från nyfött till att barnet sitter. Emmaljungas vagnar är kända for sin robusthet och håller i många år — ett högt andrahandsvärde gör dem till en smart investering. City Cross är ett populärt val for stadsliv, medan NXT90 passar den som vill ha en mer allroundvagn.',
+  },
+  {
+    question: 'Hur länge kan barn använda en Emmaljunga-vagn?',
+    answer: 'Emmaljungas kombivagnar kan användas från födseln (med liggdel) till att barnet är ca 3-4 år och väger upp till 22 kg i sittvagnsdelen. Det gör dem till en av de mer kostnadseffektiva vagnarna på marknaden, trots att ingångspriset är högre än hos många konkurrenter. Scooter-modellen är en enklare sittvagn avsedd for barn som redan kan sitta.',
+  },
+  {
+    question: 'Var köper jag Emmaljunga barnvagn i Sverige?',
+    answer: 'Emmaljunga säljs hos de flesta stora babybutiker i Sverige, inklusive BabyWorld, Jollyroom, Babyshop och Lekmer. Det finns även fysiska Emmaljunga-återförsäljare i de flesta svenska städer. Emmaljungas hemsida erbjuder en butiksfinnare for att hitta närmaste återförsäljare.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Emmaljunga barnvagnar 2026 — recension & test"
+  description="Vi recenserar Emmaljungas barnvagnar 2026. NXT90, City Cross och Scooter — det klassiska svenska märket testat."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Emmaljunga är Sveriges äldsta barnvagnsmärke, grundat 1925 i byn Emmaljunga i Skåne. Med hundra år av erfarenhet är märket känt för robust konstruktion, klassisk design och vagnar som håller länge. Här recenserar vi tre av Emmaljungas populäraste modeller och utvärderar vad märket levererar 2026.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Emmaljungas bästa barnvagnar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Emmaljunga NXT90"
+      badge="Bäst totalt"
+      price="9 999 kr"
+      rating={4.6}
+      ageRange="Från födseln till ca 22 kg"
+      pros={['Robust klassiskt chassi med hög livslängd', 'Stor liggdel med platt liggposition for nyfödda', 'God terrängförmåga', 'Högt andrahandsvärde']}
+      cons={['Tung — kan vara besvärlig att lyfta', 'Bredare profil — tar plats i hiss och bil', 'Inte lika smidig i tät stadsmiljö som kompaktare vagnar']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Emmaljunga City Cross"
+      badge="Bäst för stad"
+      price="8 999 kr"
+      rating={4.5}
+      ageRange="Från födseln till ca 22 kg"
+      pros={['Smidigare och lättare än NXT90', 'Bra for stadsmiljö och kollektivtrafik', 'Kan konfigureras som kombivagn', 'Typisk Emmaljunga-kvalitet']}
+      cons={['Sämre terrängförmåga jämfort med NXT90', 'Inte lika rymlig liggdel', 'Fortfarande relativt hög vikt']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Emmaljunga Scooter"
+      badge="Bäst pris"
+      price="5 499 kr"
+      rating={4.3}
+      ageRange="Från ca 6 månader (när barnet kan sitta)"
+      pros={['Betydligt lägre pris än övriga Emmaljunga-modeller', 'Lättare och mer kompakt', 'Välbyggd for priset', 'Enkel att ta med pa resor']}
+      cons={['Ingen liggdel — passar inte nyfödda', 'Enklare utrustning än NXT90 och City Cross', 'Mer begränsad terrängförmåga']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">For- och nackdelar med Emmaljunga</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fordelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Hundra ar av erfarenhet och beprövad kvalitet</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Robust konstruktion med lang livslängd</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Högt andrahandsvärde</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett sortiment — for alla livsstilar och budgetar</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> God service och reservdelstillgang i Sverige</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Traditionell design — inte lika modern som Bugaboo eller Cybex</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tunga vagnar i de flesta modeller</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Inte lika kompakta som nya konkurrenter</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Begränsade fargval jämfort med internationella märken</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Emmaljunga</h3>
+    <p>Emmaljunga grundades 1925 i den lilla byn Emmaljunga i Skåne av familjen Sjögren. Från början tillverkades vagnar for hand i en liten verkstad — idag är Emmaljunga ett av Nordens ledande barnvagnsmärken med export till mer än 30 länder. Märket förblir ett privatägt familjeföretag med starka rötter i det skånska hantverkstraditionen. Varje vagn speglar den kombinationen av klassisk Scandinavisk design och modern teknik.</p>
+
+    <h3>Vilken Emmaljunga passar dig?</h3>
+    <p>NXT90 är rätt val for dig som vill ha den klassiska, allroundiga Emmaljunga-vagnen med plats för nyfödda och god terrängförmåga. City Cross passar bättre om du bor i staden och vill ha en smidigare vagn som fortfarande håller Emmaljungas kvalitetsstandard. Scooter är det prismedvetna valet for ett andra barn eller for föräldrar som vill ha en enklare sittvagn utan liggdelens extra vikt och kostnad.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/liggdel/" class="text-accent hover:underline">Bästa barnvagn med liggdel 2026 — for nyfödda</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris pa Emmaljunga" />
+</ArticleLayout>

@@ -1,0 +1,134 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Bugaboo' },
+];
+
+const faqItems = [
+  {
+    question: 'Var tillverkas Bugaboos barnvagnar?',
+    answer: 'Bugaboo grundades 1999 i Amsterdam, Nederländerna, och är fortfarande ett nederländskt familjeföretag. Design och produktutveckling sker i Amsterdam. Bugaboo är idag ett av de mest igenkänningsbara premiumvarumärkena inom barnvagnar globalt, med stark närvaro i Sverige och övriga Skandinavien.',
+  },
+  {
+    question: 'Är Bugaboo Fox 5 värd priset?',
+    answer: 'Bugaboo Fox 5 kostar runt 15 999 kr och är en av marknadens dyraste sittvagnar. Vagnen motiverar priset med överlägsen fjädring, utmärkt terrängförmåga och hög byggkvalitet som håller i många år. Den passar dig som prioriterar komfort och körupplevelse framför priset. För den som är mer priskänslig finns alternativ från Emmaljunga eller Cybex Priam som presterar väl till lägre kostnad.',
+  },
+  {
+    question: 'Vad skiljer Bugaboo Fox 5 från Dragonfly?',
+    answer: 'Bugaboo Fox 5 är en fullstor sittvagn med enastående fjädring och terrängförmåga — det är Bugaboos flaggskepp. Dragonfly är mer kompakt och lättare, designad för städer och kollektivtrafik. Dragonfly kan vändas och fällas ihop med en hand, vilket Fox 5 inte klarar lika smidigt. Fox 5 passar den som vill ha det bästa körkomforten; Dragonfly passar stadsliv med enklare hantering.',
+  },
+  {
+    question: 'Kan Bugaboo Donkey 5 användas från födseln?',
+    answer: 'Ja, Bugaboo Donkey 5 Duo kan användas från födseln. Vagnen kan konfigureras med ett liggdel (bassinet) för nyfödda och ett sittdel för äldre syskon samtidigt. Det gör den till en av de mest populära syskonvagnarna på marknaden. Bassinet och tillbehör kan köpas separat eller ingå i paketpris beroende på butik.',
+  },
+  {
+    question: 'Var kan jag köpa Bugaboo i Sverige?',
+    answer: 'Bugaboo säljs hos de flesta stora babybutiker i Sverige, däribland Babyshop, Jollyroom, BabyWorld och Lekmer. Det finns även officiella Bugaboo-återförsäljare med fysiska butiker i Stockholm och andra större städer. Jämför alltid pris och kontrollera om tillbehör ingår, då vagnarna ofta säljs i olika paket.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bugaboo barnvagnar 2026 — recension & test"
+  description="Vi recenserar Bugaboos barnvagnar 2026. Fox 5, Dragonfly och Donkey 5 — är Bugaboos premium-vagnar värda priset?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Bugaboo är det nederländska premiummärket som blivit synonymt med hög byggkvalitet, elegant design och överlägsen fjädring. I Sverige är vagnar som Fox 5 och Donkey 5 välkända bland nyblivna föräldrar som vill ha det bästa. Här recenserar vi tre av märkets mest populära modeller och väger om premiumpriset är motiverat.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Bugaboos bästa barnvagnar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Bugaboo Fox 5"
+      badge="Bäst totalt"
+      price="15 999 kr"
+      rating={4.8}
+      ageRange="Från födseln till ca 22 kg"
+      pros={['Enastående fjädring och körkomfort', 'Robust konstruktion med lång livslängd', 'Stor liggdel med platt liggposition', 'Justerbar handtag och ergonomisk design']}
+      cons={['Mycket högt pris', 'Tung att lyfta upp för trappor', 'Tillbehör som bassinettet köps ofta separat']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Bugaboo Donkey 5 Duo"
+      badge="Bäst syskonvagn"
+      price="24 999 kr"
+      rating={4.7}
+      ageRange="Från födseln (duo-konfiguration)"
+      pros={['Kan användas som enkel- och dubbelvagn', 'Rymlig — plats for två barn sida vid sida', 'Hög byggkvalitet som Bugaboo är känt for', 'Justerbart handtag for olika föräldralängder']}
+      cons={['Mycket högt pris även for syskonvagnar', 'Bred — kan vara svår att ta sig fram i trånga utrymmen', 'Hög totalvikt']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+
+    <ProductCard
+      name="Bugaboo Dragonfly"
+      badge="Bäst för stad"
+      price="12 999 kr"
+      rating={4.6}
+      ageRange="Från födseln till ca 22 kg"
+      pros={['Kompakt och lättare än Fox 5', 'Kan vändas och fällas med en hand', 'Smalare profil — enkel att ta sig fram i butiker och kollektivtrafik', 'Elegant design']}
+      cons={['Sämre terrängförmåga än Fox 5', 'Fortfarande ett högt pris for en kompakt vagn', 'Mindre korg under vagnen']}
+      ctaText="Se pris"
+      ctaHref="#"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">For- och nackdelar med Bugaboo</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fordelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Överlägsen körkomfort och fjädring</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Hög byggkvalitet med lång livslängd</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Elegant, tidlös design</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett tillbehörssortiment</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Högt andrahandsvärde</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Marknadens dyraste barnvagnar</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Viktiga tillbehör säljs ofta separat</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tunga modeller — svåra att lyfta ensam</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Bredare vagnar svåra i trånga utrymmen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Bugaboo</h3>
+    <p>Bugaboo grundades 1999 av Max Barenbrug i Amsterdam och lanserade sin första barnvagn — Bugaboo Frog — samma år. Vagnen blev snabbt populär tack vare sin modulära design och möjligheten att anpassa den efter barnets ålder och föräldrarnas behov. Bugaboo är idag ett av världens mest välkända barnvagnsmärken och säljs i över 50 länder. I Sverige är märket starkt förknippat med premium och ses ofta i storstädernas innerstäder.</p>
+
+    <h3>Vilken Bugaboo passar dig?</h3>
+    <p>Fox 5 är det självklara valet for dig som vill ha det absolut bästa — överlägsen fjädring, maximal komfort och en vagn som klarar allt från asfalt till skogsstig. Donkey 5 Duo är rätt val when du har eller planerar att ha två barn nära i ålder och vill ha en vagn som växer med familjen. Dragonfly passar stadsliv med fokus på kompakt storlek och smidig hantering, utan att kompromissa med Bugaboos kärnvärden.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/syskonvagn/" class="text-accent hover:underline">Bästa syskonvagnen 2026 — test av dubbelvagnar</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="#" text="Se bästa pris pa Bugaboo" />
+</ArticleLayout>
