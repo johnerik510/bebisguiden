@@ -1,27 +1,42 @@
 ---
-const bastITest = [
+const kategorier = [
   { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
   { label: 'Barnvagnar', href: '/barnvagnar/' },
   { label: 'Babyvakter', href: '/babyvakter/' },
-  { label: 'Barselen', href: '/barselen/' },
+  { label: 'Bärselen', href: '/barselen/' },
   { label: 'Matstolar', href: '/matstolar/' },
-  { label: 'Spjalsangar', href: '/spjalsangar/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
   { label: 'Amning', href: '/amning/' },
   { label: 'Leksaker', href: '/leksaker/' },
-  { label: 'Blojor', href: '/blojor/' },
-  { label: 'Badkar bebis', href: '/badkar/' },
-  { label: 'Sakerhet', href: '/sakerhet/' },
-  { label: 'Marken', href: '/marken/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Bebisbadkar', href: '/badkar/' },
+  { label: 'Säkerhet', href: '/sakerhet/' },
+  { label: 'Märken', href: '/marken/' },
 ];
 
-const categories = [
-  { label: 'Guider', href: '/guider/' },
+const guider = [
+  { label: 'Alla guider', href: '/guider/' },
   { label: 'Bebis-checklista', href: '/guider/bebis-checklista/' },
-  { label: 'Saker sovmiljo', href: '/guider/saker-sovmiljo/' },
-  { label: 'Valja bilbarnstol', href: '/guider/valja-bilbarnstol/' },
-  { label: 'Valja barnvagn', href: '/guider/valja-barnvagn/' },
-  { label: 'Valja babyvakt', href: '/guider/valja-babyvakt/' },
+  { label: 'Säker sovmiljö', href: '/guider/saker-sovmiljo/' },
+  { label: 'Välja bilbarnstol', href: '/guider/valja-bilbarnstol/' },
+  { label: 'Välja barnvagn', href: '/guider/valja-barnvagn/' },
+  { label: 'Välja babyvakt', href: '/guider/valja-babyvakt/' },
+  { label: 'Välja bärsele', href: '/guider/valja-barsele/' },
+  { label: 'Välja matstol', href: '/guider/valja-matstol/' },
   { label: 'Bilbarnstolsregler', href: '/guider/bilbarnstol-regler/' },
+  { label: 'Bakåtvänd — hur länge?', href: '/guider/bakatvand-hur-lange/' },
+  { label: 'Barnvagn på flyg', href: '/guider/barnvagn-flyg/' },
+  { label: 'Amma eller flaska?', href: '/guider/amma-eller-flaska/' },
+];
+
+const marken = [
+  { label: 'Alla märken', href: '/marken/' },
+  { label: 'Britax recension', href: '/marken/britax/' },
+  { label: 'BabyBjörn recension', href: '/marken/babybjorn/' },
+  { label: 'Stokke recension', href: '/marken/stokke/' },
+  { label: 'Bugaboo recension', href: '/marken/bugaboo/' },
+  { label: 'Emmaljunga recension', href: '/marken/emmaljunga/' },
+  { label: 'Cybex recension', href: '/marken/cybex/' },
 ];
 
 const legal = [
@@ -34,17 +49,17 @@ const legal = [
 
 <footer class="bg-primary text-gray-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+      <div class="col-span-2 md:col-span-3 lg:col-span-1">
         <h3 class="font-heading text-white text-lg font-bold mb-4">Bebisguiden</h3>
         <p class="text-sm leading-relaxed">
-          Oberoende tester och jämförelser av barnprodukter. Vi granskar bilbarnstolar, barnvagnar, babyvakter och mer -- sa du väljer säkert och smart for ditt barn.
+          Oberoende tester och jämförelser av barnprodukter. Vi granskar bilbarnstolar, barnvagnar, babyvakter och mer — så du väljer säkert och smart för ditt barn.
         </p>
       </div>
       <div>
-        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Bast i test</h4>
+        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Kategorier</h4>
         <ul class="space-y-2">
-          {bastITest.map((item) => (
+          {kategorier.map((item) => (
             <li>
               <a href={item.href} class="text-sm hover:text-white transition-colors">{item.label}</a>
             </li>
@@ -52,9 +67,19 @@ const legal = [
         </ul>
       </div>
       <div>
-        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Kategorier</h4>
+        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Guider</h4>
         <ul class="space-y-2">
-          {categories.map((item) => (
+          {guider.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm hover:text-white transition-colors">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading text-white text-sm font-bold uppercase tracking-wider mb-4">Märken</h4>
+        <ul class="space-y-2">
+          {marken.map((item) => (
             <li>
               <a href={item.href} class="text-sm hover:text-white transition-colors">{item.label}</a>
             </li>
@@ -75,10 +100,10 @@ const legal = [
     <div class="mt-12 pt-8 border-t border-primary-light">
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <p class="text-sm">
-          &copy; 2026 Bebisguiden.se. Alla rattigheter forbehallna.
+          &copy; 2026 Bebisguiden.se. Alla rättigheter förbehållna.
         </p>
         <p class="text-xs text-text-lighter">
-          Bebisguiden.se innehaller affiliatelankar. Vi kan fa provision när du handlar via vara lankar, utan extra kostnad for dig.
+          Bebisguiden.se innehåller affiliatelänkar. Vi kan få provision när du handlar via våra länkar, utan extra kostnad för dig.
         </p>
       </div>
     </div>
