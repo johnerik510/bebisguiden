@@ -1,0 +1,146 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Säker sovmiljö för bebis' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur länge ska bebisen sova på rygg?',
+    answer: 'Rekommendationen från Socialstyrelsen och 1177 är att alltid lägga bebisen på rygg de första 12 månaderna. Risken för plötslig spädbarnsdöd (SIDS) är som störst under de första sex månaderna, men ryggläge rekommenderas hela första levnadsåret. När barnet kan rulla själv och tar sig upp på magen på egen hand behöver du inte lägga om det, men lägg alltid bebisen på rygg från start.',
+  },
+  {
+    question: 'Kan bebisen sova i en babynest?',
+    answer: 'Nej — babynests, samsovningskuddar och liknande mjuka produkter rekommenderas inte som sovplats. De är inte testade som säkra sovprodukter och kan innebära en kvävningsrisk. En babynest kan användas under uppsyn när barnet är vaket, men inte för nattsömn eller tillfällen då du inte aktivt övervakar bebisen.',
+  },
+  {
+    question: 'Vilken temperatur ska det vara på barnkammaren?',
+    answer: 'Den rekommenderade temperaturen i sovrummet är 18–20 grader Celsius. Bebisen ska inte vara för varm — ett enkelt test är att känna på nacken: om nacken är varm och lite fuktig är bebisen för varmt klädd eller rummet för varmt. Undvik elektriska filtar, varmvattenflaskor och direkta värmekällor nära sängen.',
+  },
+  {
+    question: 'Är det säkert att dela säng med bebisen?',
+    answer: 'Socialstyrelsen rekommenderar att bebisen sover i egen säng men i samma rum som föräldrarna, minst de första sex månaderna. Samsovning i föräldrasängen ökar risken för SIDS, särskilt om någon av föräldrarna röker, dricker alkohol, tar lugnande mediciner eller är mycket trött. En bedside crib är ett bra alternativ — bebisen sover nära men på en egen säker yta. Se vår guide om <a href="/spjalsangar/bedside-crib/" class="text-accent hover:underline">bedside cribs</a>.',
+  },
+  {
+    question: 'Vad ska bebisen ha på sig när den sover?',
+    answer: 'En sovsäck i rätt temperaturklass (TOG-värde) är det säkraste alternativet. Sovsäcken kan inte hamna över ansiktet som en filt kan. Välj TOG-värde efter rumstemperatur: TOG 1,0 vid 20–24°C, TOG 2,5 vid 16–20°C. Undvik lösa filtar, kuddar och täcken för barn under 12 månader.',
+  },
+  {
+    question: 'Hur länge ska bebisen sova i föräldrarnas rum?',
+    answer: 'WHO, Socialstyrelsen och de flesta barnhälsovårdsorganisationer rekommenderar att bebisen sover i samma rum som föräldrarna i minst sex månader, helst upp till ett år. Under denna period är risken för SIDS störst och närheten till föräldrarna verkar ha en skyddande effekt — sannolikt på grund av att föräldrarnas ljud och rörelser påverkar bebisens andningsmönster positivt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Säker sovmiljö för bebis — komplett guide 2026"
+  description="Komplett guide om säker sovmiljö för bebis 2026. Vi går igenom vad forskningen säger om SIDS-prevention och hur du skapar den tryggaste sovplatsen."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/guider/saker-sovmiljo/"
+  updatedDate="2026-03-29"
+  showDisclaimer={false}
+>
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    Plötslig spädbarnsdöd, SIDS (Sudden Infant Death Syndrome), är en av de vanligaste dödsorsakerna bland spädbarn i Sverige. Varje år drabbas ett tiotal familjer. Forskningen har identifierat tydliga riskfaktorer och skyddsfaktorer — och de flesta av dem hänger direkt samman med sovmiljön. Den här guiden sammanfattar vad du behöver veta för att skapa en så säker sovplats som möjligt för din bebis.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Det viktigaste på ett ögonblick</p>
+    <p class="text-sm text-text-light">Lägg bebisen <strong>på rygg</strong>, i <strong>egen säng med fast madrass</strong>, i ett <strong>rökfritt rum</strong> med <strong>18–20°C</strong>. Dela sovrum men inte säng. Inga lösa kuddar, filtar eller babynests i sängen.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Ryggläge — alltid på rygg</h2>
+  <p class="text-text-light mb-3">
+    Det enskilt viktigaste du kan göra för att minska risken för SIDS är att alltid lägga bebisen att sova på rygg. Forskning från 1990-talet och framåt visar att ryggläge halverar risken för plötslig spädbarnsdöd jämfört med mageläge. Socialstyrelsen och 1177 Vardguiden är tydliga: ryggläge gäller de första 12 månaderna.
+  </p>
+  <p class="text-text-light mb-3">
+    Undantag: om bebisen har ett medicinskt tillstånd som kräver mageläge ska du självklart följa din barnläkares råd. Kontakta alltid BVC om du är osäker.
+  </p>
+  <p class="text-text-light mb-6">
+    Många nyföddas föräldrar oroar sig för att bebisen ska kvävas om den kräks i ryggläge. Det är en begriplig oro, men forskning och klinisk erfarenhet visar att friska nyfödda har fullt fungerande reflexer som skyddar luftvägarna — ryggläge är säkrare även med hänsyn till detta.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Hård, plan yta — godkänd spjälsäng och fast madrass</h2>
+  <p class="text-text-light mb-3">
+    Bebisens sovyta ska vara hård och plan. En mjuk madrass, ett tjockt lakan med veck eller en mjuk babynest kan forma sig runt bebisens ansikte och blockera luftvägarna. Välj en godkänd spjälsäng med en fast madrass som passar exakt i sängen — utan glapp mellan madrassen och sängväggen.
+  </p>
+  <p class="text-text-light mb-3">
+    Ta bort alla lösa föremål från sängen: kuddar, täcken, tjocka textilier, mjukisdjur och positioneringskuddar ska inte finnas i bebisens sovplats. Det enda bebisen behöver är ett tätt åtsittande lakan och en sovsäck i rätt temperaturklass.
+  </p>
+  <p class="text-text-light mb-6">
+    Kontrollera alltid att spjälsängen uppfyller europeisk säkerhetsstandard (EN 716 för barnsängar). Köper du begagnad säng: kontrollera att madrassen inte är deformerad, sliten eller för gammal. En ny madrass kostar relativt lite och är väl värd investeringen. Se vår guide om <a href="/spjalsangar/" class="text-accent hover:underline">bästa spjälsängar 2026</a> för konkreta rekommendationer.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Rätt temperatur — 18–20°C i sovrummet</h2>
+  <p class="text-text-light mb-3">
+    Överhettning är en oberoende riskfaktor för SIDS. Håll barnkammaren sval — den rekommenderade temperaturen är 18 till 20 grader Celsius. Bebisen behöver inte vara i ett varmt rum för att sova bra; kroppen reglerar temperaturen bättre i svalare miljöer.
+  </p>
+  <p class="text-text-light mb-3">
+    Använd en sovsäck med rätt TOG-värde för rumstemperaturen i stället för lösa filtar. TOG är ett mått på isoleringsförmåga:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-3">
+    <li><strong>TOG 0,5:</strong> Passar vid 24–27°C</li>
+    <li><strong>TOG 1,0:</strong> Passar vid 20–24°C</li>
+    <li><strong>TOG 2,5:</strong> Passar vid 16–20°C</li>
+    <li><strong>TOG 3,5:</strong> Passar vid under 16°C (sällan aktuellt inomhus)</li>
+  </ul>
+  <p class="text-text-light mb-6">
+    Känn på bebisens nacke eller bröst — inte händer eller fötter, som alltid är svalare. En varm och fuktig nacke är ett tecken på att bebisen är för varm. Ta bort ett lager och kontrollera igen efter en stund.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Rökfri miljö — passiv rökning och SIDS-risk</h2>
+  <p class="text-text-light mb-3">
+    Rökning är en av de starkast dokumenterade riskfaktorerna för SIDS. Det gäller både rökning under graviditeten och rökning i bebisens närmiljö efter födseln. Barn som utsätts för passiv rökning löper en kraftigt förhöjd risk jämfört med barn i rökfria hem.
+  </p>
+  <p class="text-text-light mb-3">
+    Rök aldrig inomhus, i bilen eller i närheten av bebisen. Det räcker inte att vädra ut — rökpartiklar fastnar i textilier och på ytor och frigörs sedan successivt. Den som röker bör byta kläder och tvätta händer och ansikte innan de håller i bebisen.
+  </p>
+  <p class="text-text-light mb-6">
+    Om du röker och vill sluta: ta hjälp. Landstinget erbjuder kostnadsfri rökavvänjning via din vårdcentral, och 1177 har ett Sluta-röka-program. Det är en av de mest konkreta saker du kan göra för din bebis hälsa.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Dela sovrum, inte säng — 6 månaders rekommendationen</h2>
+  <p class="text-text-light mb-3">
+    Socialstyrelsen och de flesta barnhälsovårdsorganisationer i världen rekommenderar att bebisen sover i samma rum som föräldrarna men i en egen säng, minst de första sex månaderna. Att sova i samma rum har en dokumenterat skyddande effekt mot SIDS — troligen för att föräldrarnas rörelser och andningsljud påverkar bebisens egna andningsmönster.
+  </p>
+  <p class="text-text-light mb-3">
+    Samsovning i föräldrasängen innebär däremot ökade risker, särskilt om:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-text-light mb-3">
+    <li>Någon av föräldrarna röker (även utanför sovrummet)</li>
+    <li>Någon av föräldrarna har druckit alkohol eller tagit lugnande medicin</li>
+    <li>Föräldrarna är extremt trötta (vilket nästan alla nyblivna föräldrar är)</li>
+    <li>Sängen är mjuk med tjocka täcken eller kuddar</li>
+    <li>Bebisen är prematur eller har låg födelsevikt</li>
+  </ul>
+  <p class="text-text-light mb-6">
+    Om du ändå väljer att amma i föräldrasängen nattetid: lägg tillbaka bebisen i sin egna säng innan du somnar. Tillfällig amningstupplur i soffan är generellt farligare än i sängen — om du är trött, lägg dig i sängen med bebisen och lägg tillbaka den efteråt.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Bedside cribs — det bästa av två världar</h2>
+  <p class="text-text-light mb-3">
+    En bedside crib (ibland kallad sidosvängssäng eller co-sleeper) kombinerar fördelen av att sova nära bebisen med säkerheten av en separat sovyta. Sängen fästs vid föräldrasängen, en sida fälls ned och bebisen sover på sin egna fasta madrass direkt intill dig — nåbar för amning och tröst utan att ni delar sovyta.
+  </p>
+  <p class="text-text-light mb-3">
+    Bedside cribs är populära just för att de möjliggör samsovningsupplevelsen utan riskerna: bebisen har sin egna yta med fast madrass, kan inte rulla ner i föräldrasängen och är ändå omedelbart nåbar för nattamning.
+  </p>
+  <p class="text-text-light mb-6">
+    Se vår guide om <a href="/spjalsangar/bedside-crib/" class="text-accent hover:underline">bästa bedside cribs 2026</a> för konkreta produktrekommendationer och vad du ska tänka på vid köp.
+  </p>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Se även</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/spjalsangar/" class="text-accent hover:underline">Bästa spjälsängen 2026 – topplista och test</a></li>
+      <li><a href="/spjalsangar/bedside-crib/" class="text-accent hover:underline">Bästa bedside crib 2026 – test och jämförelse</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026 – köpguide</a></li>
+      <li><a href="/guider/bebis-checklista/" class="text-accent hover:underline">Komplett checklista inför bebisen – allt du behöver köpa</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>
