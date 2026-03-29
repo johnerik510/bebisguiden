@@ -1,0 +1,182 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Cybex Cloud T vs Britax Baby-Safe iSense' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Cybex Cloud T eller Britax Baby-Safe iSense?',
+    answer: 'Cybex Cloud T i-Size vinner på roterbarhet, sidokrocksskydd och mångsidighet — den kan användas bakåtvänd till 87 cm och framåtvänd från 75 cm. Britax Baby-Safe iSense är en mer dedikerad babysits för 0–18 månader med fokus på avancerat sidokrocksskydd och VitalShield. För ett spädbarn som primärt behöver en babysits: Britax. För ett system som håller längre: Cybex.',
+  },
+  {
+    question: 'Kan Cybex Cloud T i-Size användas som babybädd?',
+    answer: 'Ja — Cybex Cloud T i-Size kan ligga helt plant i liggläge (170°), vilket gör den lämplig som babybädd för nyfödda under korta resor. Britax Baby-Safe iSense lutar maximalt till 135°, vilket är godkänt men inte lika plant. För nyfödda och långa resor är Cybex Cloud Ts liggläge en fördel.',
+  },
+  {
+    question: 'Klarar Cybex Cloud T i-Size kraschtest?',
+    answer: 'Ja — Cybex Cloud T i-Size är certifierad enligt R129 (i-Size) och har bästa betyg i ADAC-kraschtest 2023. Britax Baby-Safe iSense är också R129-certifierad och fick toppbetyg i ADAC 2022. Båda är bland de säkraste i sina klasser — ingen av dem är ett dåligt val ur säkerhetsperspektiv.',
+  },
+  {
+    question: 'Är Britax Baby-Safe iSense kompatibel med Bugaboo barnvagnar?',
+    answer: 'Ja — Britax Baby-Safe iSense kopplas direkt till Bugaboo Fox 5, Donkey och Butterfly med adapter. Cybex Cloud T i-Size är kompatibel med Cybex Priam 4, Mios 4 och e-Priam 2. Om du har en Bugaboo-vagn är Britax Baby-Safe iSense eller Maxi-Cosi naturligare val.',
+  },
+  {
+    question: 'Hur länge kan barnet sitta i Cybex Cloud T vs Britax Baby-Safe iSense?',
+    answer: 'Cybex Cloud T i-Size används bakåtvänd 0–87 cm (ca 15 månader) och framåtvänd 75–105 cm (ca 3,5 år). Total användningstid: ca 3,5 år. Britax Baby-Safe iSense används bakåtvänd 0–83 cm (ca 12–15 månader). Cybex Cloud T är ett mer mångsidigt alternativ med längre användningstid.',
+  },
+  {
+    question: 'Vilket kostar mest — Cybex Cloud T eller Britax Baby-Safe iSense?',
+    answer: 'Cybex Cloud T i-Size kostar ca 3 990 kr och Britax Baby-Safe 5Z2 (senaste i-Size) kostar ca 3 290–3 990 kr. Priserna är liknande men Cybex Cloud T inkluderar rotation-funktion och längre användningstid. Räknat per månad är Cybex Cloud T billigare tack vare den längre livslängden.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Cybex Cloud T vs Britax Baby-Safe iSense 2026 — vilken babysits vinner?"
+  description="Vi jämför Cybex Cloud T i-Size och Britax Baby-Safe iSense sida vid sida. Säkerhet, roterbarhet, liggläge och kompatibilitet — vilken är bäst 2026?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Cybex Cloud T i-Size och Britax Baby-Safe iSense är de två mest populära babysitsarna i Sverige 2026 — och två av de säkraste bilbarnstolarna du kan köpa till ett nyfött barn.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Men de är inte lika. Cybex Cloud T erbjuder roterbarhet och längre användningstid. Britax Baby-Safe iSense är mer inriktad på bebisens tidiga månader med avancerat sidokrocksskydd. Vilken passar din familj?
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Cybex Cloud T i-Size</th>
+          <th class="p-3 text-left font-semibold">Britax Baby-Safe iSense</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">3 990 kr</td>
+          <td class="p-3 text-green-700 font-semibold">3 290 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Certifiering</td>
+          <td class="p-3 text-green-700 font-semibold">R129 (i-Size)</td>
+          <td class="p-3 text-green-700 font-semibold">R129 (i-Size)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">360° rotation</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-red-600 font-semibold">Nej</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Liggläge (nyfödda)</td>
+          <td class="p-3 text-green-700 font-semibold">170° (nästan plant)</td>
+          <td class="p-3 text-text-light">135°</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Bakåtvänd till</td>
+          <td class="p-3 text-green-700 font-semibold">87 cm</td>
+          <td class="p-3 text-text-light">83 cm</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Framåtvänd</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (75–105 cm)</td>
+          <td class="p-3 text-red-600 font-semibold">Nej — bara babysits</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">ADAC-betyg</td>
+          <td class="p-3 text-green-700 font-semibold">Bäst (2023)</td>
+          <td class="p-3 text-green-700 font-semibold">Bäst (2022)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vagnkompatibel</td>
+          <td class="p-3 text-text-light">Cybex, Maxi-Cosi (adapter)</td>
+          <td class="p-3 text-text-light">Bugaboo, Britax, Maxi-Cosi</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Användningstid</td>
+          <td class="p-3 text-green-700 font-semibold">0–3,5 år (bakåt + framåt)</td>
+          <td class="p-3 text-text-light">0–15 månader (babysits)</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Vinner för</td>
+          <td class="p-3 text-green-700 font-semibold">Mångsidighet, rotation, lång användning</td>
+          <td class="p-3 text-text-light">Bugaboo-ägare, dedikerat spädbarnskydd</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vår bedömning: Cybex Cloud T för de flesta</h2>
+  <p class="text-text-light mb-4">
+    Cybex Cloud T i-Size är den mer mångsidiga stolen. <strong class="text-text">360° rotation</strong> gör det dramatiskt enklare att lyfta in och ut ett litet barn ur bilen — du vänder stolen mot dörren, bucklar i barnet och vänder tillbaka. Det är en stor praktisk fördel i vardagen som du inte förstår förrän du använt det.
+  </p>
+  <p class="text-text-light mb-6">
+    Britax Baby-Safe iSense är rätt val om du <strong class="text-text">redan har en Bugaboo-vagn</strong> och vill ha en babysits som kopplas direkt till vagnchassin utan adapter, eller om du föredrar ett mer spedikalt skydd för spädbarnsskedet.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Säkerhet: båda toppar krashtester</h2>
+  <p class="text-text-light mb-4">
+    Cybex Cloud T i-Size fick bästa betyg i ADAC-kraschtestet 2023. Britax Baby-Safe 5Z2 (nyaste i-Size versionen av Baby-Safe serien) fick toppbetyg 2022. Båda har R129-certifiering som kräver sidokrockstestning.
+  </p>
+  <p class="text-text-light mb-6">
+    Britax profilerar sig starkt med sitt VitalShield-sidokrocksskydd och SensorSafe-teknologi (valfri: varnar om barnet lämnas kvar i bilen för länge). Cybex har Linear Side-Impact Protection (L.S.I.P.) som är lika effektivt. Ur säkerhetssynpunkt är de likvärdiga i tester.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Praktisk användning: rotation är avgörande</h2>
+  <p class="text-text-light mb-6">
+    Att lyfta ett sovande spädbarn ur en bakåtvänd bilstol är svårt. Med Cybex Cloud T:s 360° rotation vänder du stolen mot dig, lutar den till liggläge, tar ut barnet och vänder tillbaka — allt utan att böja dig in i bilen. Föräldrar med ont i ryggen eller kortare armar märker skillnaden direkt. Det är troligtvis den enskilt viktigaste praktiska faktorn när man väljer babysits.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Cybex Cloud T i-Size — vår topprekommendation</h2>
+  <ProductCard
+    name="Cybex Cloud T i-Size"
+    badge="Bäst i test babysits 2026"
+    price="3 990 kr"
+    rating={4.8}
+    ageRange="0–87 cm bakåt, 75–105 cm framåt"
+    pros={['360° rotation — enklast att lyfta in/ut', 'Liggläge 170° för nyfödda', 'ADAC-bäst 2023', 'Används bakåt + framåt']}
+    cons={['Ingen Bugaboo-adapter ingår', 'Tyngre stol']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilbarnstolar/grupp-0-1/cybex-cloud-t-i-size-bilbarnstol"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Britax Baby-Safe 5Z2 i-Size — bra val för Bugaboo</h2>
+  <ProductCard
+    name="Britax Baby-Safe 5Z2 i-Size"
+    badge="Bäst för Bugaboo-ägare"
+    price="3 290 kr"
+    rating={4.6}
+    ageRange="Nyfödda–83 cm (ca 15 månader)"
+    pros={['Direkt Bugaboo-kompatibel', 'VitalShield sidoskydd', 'SensorSafe valfri', 'ADAC-toppetyg']}
+    cons={['Ingen rotation', 'Kortare användningstid', 'Bara bakåtvänd']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilbarnstolar/grupp-0-1/britax-baby-safe-5z2-i-size-bilbarnstol"
+  />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett topplista</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+      <li><a href="/bilbarnstolar/i-size/" class="text-accent hover:underline">Bästa i-Size bilbarnstolen 2026</a></li>
+      <li><a href="/guider/valja-bilbarnstol/" class="text-accent hover:underline">Hur väljer man bilbarnstol? Komplett köpguide</a></li>
+      <li><a href="/marken/cybex/" class="text-accent hover:underline">Cybex recension 2026 — märkesöversikt</a></li>
+      <li><a href="/marken/britax/" class="text-accent hover:underline">Britax Römer recension 2026 — märkesöversikt</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/bilbarnstolar/grupp-0-1/cybex-cloud-t-i-size-bilbarnstol" productName="Cybex Cloud T i-Size" text="Se bästa pris — Cybex Cloud T i-Size" />
+</ArticleLayout>
