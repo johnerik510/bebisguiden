@@ -1,0 +1,231 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'i-Size' },
+];
+
+const products = [
+  {
+    name: 'Cybex Sirona T i-Size',
+    badge: 'Bäst i test',
+    price: '5 499 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
+    features: {
+      'Standard': 'i-Size (R129)',
+      'ISOFIX': 'Ja + stödben',
+      'Rotation': '360 grader',
+      'Bakåtvänd max vikt': '18 kg',
+      'Åldersgrupp': '0–4 år',
+      'Pris': '5 499 kr',
+    },
+  },
+  {
+    name: 'Joie i-Spin 360',
+    badge: 'Prisvärt',
+    price: '3 999 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-i-size-bilbarnstol',
+    features: {
+      'Standard': 'i-Size (R129)',
+      'ISOFIX': 'Ja + stödben',
+      'Rotation': '360 grader',
+      'Bakåtvänd max vikt': '18 kg',
+      'Åldersgrupp': '0–4 år',
+      'Pris': '3 999 kr',
+    },
+  },
+  {
+    name: 'BeSafe iZi Modular i-Size',
+    badge: 'Norsk säkerhetstänk',
+    price: '6 499 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-i-size-bilbarnstol',
+    features: {
+      'Standard': 'i-Size (R129)',
+      'ISOFIX': 'Ja + stödben',
+      'Rotation': 'Nej',
+      'Bakåtvänd max vikt': '18 kg',
+      'Åldersgrupp': '0–4 år',
+      'Pris': '6 499 kr',
+    },
+  },
+  {
+    name: 'Britax Römer Dualfix M Plus i-Size',
+    badge: 'Bäst för säkerhet',
+    price: '4 999 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-m-plus-i-size-bilbarnstol',
+    features: {
+      'Standard': 'i-Size (R129)',
+      'ISOFIX': 'Ja + stödben',
+      'Rotation': '360 grader',
+      'Bakåtvänd max vikt': '18 kg',
+      'Åldersgrupp': '0–4 år',
+      'Pris': '4 999 kr',
+    },
+  },
+  {
+    name: 'Recaro Kio i-Size',
+    badge: 'Budget-i-Size',
+    price: '2 999 kr',
+    rating: 4.3,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/recaro-kio-i-size-bilbarnstol',
+    features: {
+      'Standard': 'i-Size (R129)',
+      'ISOFIX': 'Ja',
+      'Rotation': 'Nej',
+      'Bakåtvänd max vikt': '13 kg',
+      'Åldersgrupp': '0–4 år',
+      'Pris': '2 999 kr',
+    },
+  },
+];
+
+const featureLabels = ['Standard', 'ISOFIX', 'Rotation', 'Bakåtvänd max vikt', 'Åldersgrupp', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad är i-Size (R129)?',
+    answer: 'i-Size är den senaste europeiska säkerhetsstandarden för bilbarnstolar, officiellt benämnd R129. Den ersätter successivt den äldre standarden ECE R44. i-Size kräver att alla stolar klarar sidokrocktester, att barn åker bakåtvänt till minst 15 månaders ålder, och att stolen storleksanpassas efter barnets längd istället för vikt. Alla stolar med i-Size-märkning kräver ISOFIX-montering.',
+  },
+  {
+    question: 'Vad är skillnaden mellan i-Size (R129) och ECE R44?',
+    answer: 'ECE R44 är den äldre standarden som certifierar stolar efter barnets vikt. i-Size (R129) är striktare: den certifierar stolar efter barnets längd, kräver obligatoriska sidokrocktester, kräver ISOFIX-montering och ställer krav på bakåtvänt åkande i minst 15 månader. En stol certifierad enligt i-Size ger generellt sett ett bättre och mer enhetligt skydd. Båda standarderna är dock lagligt godkända i Sverige.',
+  },
+  {
+    question: 'Måste jag köpa en i-Size-stol?',
+    answer: 'Nej — stolar certifierade enligt ECE R44 är fortfarande lagligt godkända och kan ge utmärkt skydd. Däremot ger i-Size-standarden en tydligare garanti att stolen klarat sidokrocktester och att ISOFIX-montering används korrekt. Om du köper ny stol idag rekommenderar vi att välja i-Size för bästa framtidssäkerhet.',
+  },
+  {
+    question: 'Vilken i-Size-stol är bäst 2026?',
+    answer: 'Cybex Sirona T i-Size är vårt toppval för 2026, med toppbetyg i säkerhetstester och 360-graders rotation som förenklar i- och urlastning. För den med en stramare budget erbjuder Recaro Kio i-Size solida testresultat till lägre pris. BeSafe iZi Modular i-Size är bäst för den som prioriterar bakåtvänt åkande länge.',
+  },
+  {
+    question: 'Kan jag använda en i-Size-stol utan ISOFIX?',
+    answer: 'Nej. i-Size-standarden kräver att stolen monteras med ISOFIX — det är ett grundläggande krav i R129. Om din bil saknar ISOFIX-fästen måste du välja en stol certifierad enligt ECE R44 som tillåter bältesmontering, till exempel Axkid Minikid.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa i-Size bilbarnstol 2026 – test & jämförelse | Bebisguiden"
+  description="Vi testar de bästa i-Size bilbarnstolarna 2026. i-Size (R129) är den senaste EU-säkerhetsstandarden — se vilka stolar som klarar kraven."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    i-Size (R129) är den senaste och strängaste EU-säkerhetsstandarden för bilbarnstolar. Den kräver obligatoriska sidokrocktester, ISOFIX-montering och bakåtvänt åkande i minst 15 månader — krav som den äldre ECE R44-standarden inte ställer. Vi har testat och jämfört de bästa i-Size-stolarna på den svenska marknaden 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Cybex Sirona T i-Size"
+      badge="Bäst i test"
+      price="5 499 kr"
+      rating={4.8}
+      ageRange="0–4 år (45–105 cm)"
+      pros={['Toppbetyg i säkerhetstester', '360-graders rotation för enkel i- och urlastning', 'Utmärkt sidoskydd (Linear Side-impact Protection)', 'Magnetiskt bälteslås']}
+      cons={['Hög prisklass', 'Tung (15,2 kg)', 'Kortare användningstid bakåtvänt']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
+    />
+
+    <ProductCard
+      name="Joie i-Spin 360"
+      badge="Prisvärt"
+      price="3 999 kr"
+      rating={4.6}
+      ageRange="0–4 år (40–105 cm)"
+      pros={['Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design som passar i mindre bilar']}
+      cons={['Något enklare material än premiumstolar', 'Kortare användningstid bakåtvänt än Axkid']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-i-size-bilbarnstol"
+    />
+
+    <ProductCard
+      name="BeSafe iZi Modular i-Size"
+      badge="Norsk säkerhetstänk"
+      price="6 499 kr"
+      rating={4.7}
+      ageRange="0–4 år (45–105 cm)"
+      pros={['Norsk säkerhetstänkande med extra fokus på sidoskydd', 'Bakåtvänt åkande länge', 'Modulärt system — kan kombineras med resesystem', 'Beprövat av BeSafe sedan 1960-talet']}
+      cons={['Ingen rotation — fast bakåtvänd', 'Hög prisklass', 'Kräver separat bas för full funktion']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-i-size-bilbarnstol"
+    />
+
+    <ProductCard
+      name="Britax Römer Dualfix M Plus i-Size"
+      badge="Bäst för säkerhet"
+      price="4 999 kr"
+      rating={4.7}
+      ageRange="0–4 år (40–105 cm)"
+      pros={['Toppbetyg i ADAC- och Folksam-krocktester', '360-graders rotation', 'ISOFIX med stödben för stabil montering']}
+      cons={['Tung (ca 14 kg)', 'Tar stor plats i bilen']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-m-plus-i-size-bilbarnstol"
+    />
+
+    <ProductCard
+      name="Recaro Kio i-Size"
+      badge="Budget-i-Size"
+      price="2 999 kr"
+      rating={4.3}
+      ageRange="0–4 år (40–87 cm)"
+      pros={['Lägst pris i i-Size-segmentet', 'Bra testresultat för priset', 'ISOFIX-montering inkluderad']}
+      cons={['Kortare användningstid (upp till 87 cm)', 'Ingen rotation', 'Färre komfortfunktioner']}
+      ctaText="Se pris"
+      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/recaro-kio-i-size-bilbarnstol"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">i-Size vs ECE R44 — vad är skillnaden?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Den nya standarden: i-Size (R129)</h3>
+    <p>i-Size, officiellt benämnd ECE R129, lanserades 2013 och uppdateras löpande. Standarden är strängare än föregångaren ECE R44 på tre avgörande punkter: sidokrocktester är obligatoriska (inte bara frontalkrocktester), stolen certifieras efter barnets längd istället för vikt vilket ger bättre passform, och ISOFIX-montering är ett grundkrav. Det innebär att alla stolar med i-Size-märkning per definition kräver ISOFIX och har klarat ett sidokrocktest.</p>
+
+    <h3>Den gamla standarden: ECE R44</h3>
+    <p>ECE R44 är den äldre standarden som fortfarande gäller parallellt med i-Size. Stolar certifierade enligt R44 är lagligt godkända och kan ge utmärkt skydd — Axkid Minikid är ett känt exempel. Skillnaden är att R44 inte kräver sidokrocktester och att stolens kapacitet anges i vikt istället för barnets längd. En R44-stol kan monteras med bilbälte, vilket är en fördel i bilar utan ISOFIX.</p>
+
+    <h3>Varför välja i-Size?</h3>
+    <p>Om du köper en ny stol idag ger i-Size bästa framtidssäkerhet. Standarden är mer stringent, kontrollen är enhetligare mellan olika märken och alla stolar garanterat klarat sidokrocktester. ISOFIX-kravet minskar risken för felmontering drastiskt — upp till 60 procent av baltesmonterade stolar monteras felaktigt enligt studier, jämfört med under 5 procent för ISOFIX. För familjer med ISOFIX i bilen är i-Size det självklara valet.</p>
+
+    <h3>Vad innebär ISOFIX-kravet i praktiken?</h3>
+    <p>Alla i-Size-stolar monteras via ISOFIX — stolen klickas fast i bilens metallpunkter, vanligtvis kombinerat med ett stödben mot golvet. Monteringen tar under en minut och indikatorlampor bekräftar att stolen sitter rätt. Kontrollera att din bil har ISOFIX-fästen i baksätet — de flesta bilar tillverkade från 2012 och framåt har det som standard.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026 — test och jämförelse</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/isofix/" class="text-accent hover:underline">ISOFIX bilbarnstol — allt du behöver veta 2026</a>
+      </li>
+      <li>
+        <a href="/bilbarnstolar/biltestade/" class="text-accent hover:underline">Biltestade bilbarnstolar 2026 — Folksam och Plus Test</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black" text="Se bästa i-Size-stol" />
+</ArticleLayout>
