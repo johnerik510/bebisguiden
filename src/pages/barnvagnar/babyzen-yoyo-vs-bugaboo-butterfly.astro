@@ -1,0 +1,217 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'BABYZEN YOYO vs Bugaboo Butterfly' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — BABYZEN YOYO eller Bugaboo Butterfly?',
+    answer: 'Det beror på ditt användningsmönster. YOYO vinner på vikt (5,5 kg vs 6,8 kg), flygtillåtet mått och lång livslängd (nyfödd till 22 kg). Bugaboo Butterfly vinner på körkomfort, enhandsvickning och bättre fjädring. Reser du mycket med flyg och kollektivtrafik: YOYO. Prioriterar du körkomfort i en kompakt vagn: Butterfly.',
+  },
+  {
+    question: 'Passar BABYZEN YOYO för nyfödda?',
+    answer: 'YOYO 0+ (nyföddpaketet) passar från födseln upp till 9 kg, men det kräver ett separat kit (YOYO 0+). Det är en mer halvliggande position och inte en riktig liggdel. Från 6 månader används YOYO 6+ sitsen. Bugaboo Butterfly är godkänd från födseln med en mer optimal lutningsposition. För nyfödda är Butterfly mer komplett direkt ur lådan.',
+  },
+  {
+    question: 'Får man ta med BABYZEN YOYO och Bugaboo Butterfly på flyget?',
+    answer: 'BABYZEN YOYO (hopvikt: 52 × 44 × 18 cm) är godkänd som handbagage på de flesta flygbolag inklusive SAS och Ryanair. Bugaboo Butterfly är för stor för handbagage — den ska checkas in. YOYO är ett tydligt bättre val för frekventa resenärer.',
+  },
+  {
+    question: 'Hur mycket väger de — och spelar vikten roll?',
+    answer: 'BABYZEN YOYO väger 5,5 kg och Bugaboo Butterfly 6,8 kg. Det är 1,3 kg skillnad — liten men märkbar om du bär vagnen uppför trappor i tunnelbanan dagligen. Båda är dock bland de lättaste stadsvagnarna på marknaden. För referens: en Bugaboo Fox 5 väger 12,4 kg.',
+  },
+  {
+    question: 'Vilken har bäst körkomfort på stadens gator?',
+    answer: 'Bugaboo Butterfly leder här. Den har bättre fjädring och större hjul (15 cm bakhjul) vilket gör den smidigare på stenstätens och lite ojämnare underlag. YOYO körs bra på jämnt underlag men märks mer på grus och sprucken asfalt. Planerar du promenader på landsbygd eller ojämnare vägar: Butterfly.',
+  },
+  {
+    question: 'Var köper man BABYZEN YOYO och Bugaboo Butterfly i Sverige?',
+    answer: 'Båda finns på Jollyroom, BabyShop, Babyland och Kid. BABYZEN YOYO kan även hittas på BABYZEN:s egen webbshop. Jämför alltid priser på Jollyroom och BabyShop — de har ofta kampanjer på premiummärken.',
+  },
+];
+---
+
+<ArticleLayout
+  title="BABYZEN YOYO vs Bugaboo Butterfly 2026 — vilken stadsvagn vinner?"
+  description="Vi jämför BABYZEN YOYO och Bugaboo Butterfly sida vid sida. Vikt, flygtillåten, körkomfort, pris och vilket som passar bäst för dig 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    BABYZEN YOYO och Bugaboo Butterfly är de två dominerande kompakta stadsvagnarna på den svenska marknaden. Båda är lätta, fällbara och designade för storstadslivet — men de gör det på olika sätt och för olika typer av föräldrar.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vi har jämfört båda modellerna ingående. Här är vår dom.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">BABYZEN YOYO</th>
+          <th class="p-3 text-left font-semibold">Bugaboo Butterfly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">ca 6 990 kr</td>
+          <td class="p-3 text-text-light">ca 7 990 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vikt</td>
+          <td class="p-3 font-semibold text-green-700">5,5 kg</td>
+          <td class="p-3 text-text-light">6,8 kg</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Flygtillåten (handbagage)</td>
+          <td class="p-3 font-semibold text-green-700">Ja — de flesta flygbolag</td>
+          <td class="p-3 text-text-light">Nej — incheckat bagage</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Hopvikt mått</td>
+          <td class="p-3 font-semibold text-green-700">52 × 44 × 18 cm</td>
+          <td class="p-3 text-text-light">57 × 43 × 20 cm</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Vikningssystem</td>
+          <td class="p-3 text-text-light">Tvåhandsvikning</td>
+          <td class="p-3 font-semibold text-green-700">Enhandsvikning</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Nyföddskompatibel</td>
+          <td class="p-3 text-text-light">Ja, med YOYO 0+ kit</td>
+          <td class="p-3 font-semibold text-green-700">Ja, direkt</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Max barnvikt</td>
+          <td class="p-3 text-text-light">22 kg</td>
+          <td class="p-3 text-text-light">22 kg</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Körkomfort</td>
+          <td class="p-3 text-text-light">Bra — jämnt underlag</td>
+          <td class="p-3 font-semibold text-green-700">Bättre fjädring, större hjul</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Sittkomfort barn</td>
+          <td class="p-3 text-text-light">Bra, smalare sits</td>
+          <td class="p-3 font-semibold text-green-700">Bredare, mer ergonomisk sits</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Väder­skydd</td>
+          <td class="p-3 font-semibold text-green-700">Utbytbar sufflett</td>
+          <td class="p-3 text-text-light">Integrerat solskydd</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vikt och kompakthet: BABYZEN YOYO vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    BABYZEN YOYO väger 5,5 kg — 1,3 kg lättare än Bugaboo Butterfly på 6,8 kg. Det är en märkbar skillnad om du bär vagnen i tunnelbanans trappor varje dag eller lyfter den i bilens bagageutrymme. Hopvikt är YOYO också kompaktare: 52 × 44 × 18 cm mot Butterfly 57 × 43 × 20 cm.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Den avgörande skillnaden för många: YOYO är flygtillåten som handbagage på de flesta flygbolag. Bugaboo Butterfly är för stor och måste checkas in. Om du reser med flyg regelbundet är detta ett tungt argument för YOYO.
+  </p>
+
+  <ProductCard
+    name="BABYZEN YOYO 6+"
+    badge="Lättast — flygtillåten"
+    price="ca 6 990 kr"
+    rating={8.8}
+    ageRange="6 mån – 4 år (6+ sits) / Nyfödd med 0+ kit"
+    pros={[
+      'Lättaste kompakta vagnen — 5,5 kg',
+      'Flygtillåten som handbagage',
+      'Beprövad konstruktion — used av miljoner familjer',
+      'Många colorways och tillbehör',
+    ]}
+    cons={[
+      'Tvåhandsvikning (inte enhandsvikning)',
+      'Nyföddpaketet kräver extra kit',
+      'Smalare sits än Butterfly',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/babyzen-yoyo-6-plus-barnvagn"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Körkomfort: Bugaboo Butterfly vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Bugaboo Butterfly har bättre fjädring och 15 cm bakhjul som hanterar ojämna underlag bättre än YOYO. Om du promenerar på stenstätens gator, grusvägar eller promenerar mer i varierat terräng är Butterfly ett märkbart bättre val.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Enhandsvickningen på Butterfly är också ett tydligt plus om du ofta håller i ditt barn med ena handen och behöver vika vagnen med den andra. YOYO kräver två händer för att vikas, vilket kan vara opraktiskt.
+  </p>
+
+  <ProductCard
+    name="Bugaboo Butterfly"
+    badge="Bäst körkomfort"
+    price="ca 7 990 kr"
+    rating={8.5}
+    ageRange="Nyfödd – 22 kg (ca 4 år)"
+    pros={[
+      'Enhandsvikning — snabb och enkel',
+      'Bättre fjädring och körkomfort',
+      'Nyföddskompatibel direkt utan extra kit',
+      'Bredare, ergonomisk sits',
+    ]}
+    cons={[
+      '1,3 kg tyngre än YOYO',
+      'Passar inte som flyg-handbagage',
+      '1 000 kr dyrare',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/bugaboo-butterfly-barnvagn"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Nyfödda: Bugaboo Butterfly är mer komplett</h2>
+  <p class="text-text-light mb-4 text-base">
+    Bugaboo Butterfly är godkänd från födseln med liggläge direkt — inget extra kit behövs. YOYO kräver ett separat YOYO 0+ newborn-kit (ca 1 200 kr extra) för nyfödda upp till 9 kg. Det är en merkostnad som gör priskillnaden mellan vagnarna mer marginell.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Planerar du att använda vagnen från dag ett utan extra inköp: Bugaboo Butterfly är det mer kompletta paketet.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vem passar vad?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj BABYZEN YOYO om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Reser med flyg och vill ha vagnen som handbagage</li>
+        <li>+ Prioriterar minsta möjliga vikt</li>
+        <li>+ Bor i stadsmiljö med jämnt underlag</li>
+        <li>+ Vill ha bred tillbehörsmarknad och många färger</li>
+        <li>+ Barnet är 6 månader+ (ingen extra kit behövs)</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Bugaboo Butterfly om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill ha en kompakt vagn från nyfödd utan extra kit</li>
+        <li>+ Prioriterar enhandsvikning</li>
+        <li>+ Promenerar på ojämnare underlag</li>
+        <li>+ Värdesätter körkomfort över absolut lägsta vikt</li>
+        <li>+ Flyger sällan eller kan checka in vagnen</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    href="https://www.jollyroom.se/babyzen-yoyo-6-plus-barnvagn"
+    productName="BABYZEN YOYO — Jollyroom"
+    text="Se pris"
+  />
+</ArticleLayout>
