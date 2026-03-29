@@ -1,6 +1,9 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -121,6 +124,29 @@ const faqItems = [
     </p>
 
   </div>
+
+  
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Bäst för flygresor — vår rekommendation</h2>
+  <ProductCard
+    name="Babyzen YOYO2"
+    badge="Bäst för flyg"
+    price="7 490 kr"
+    rating={4.7}
+    ageRange="0–4 år"
+    pros={[
+          'Ryms i kabinen på de flesta flygbolag'
+          'Väger 6,8 kg — lätt att lyfta'
+          'Vik på 5 sekunder'
+    ]}
+    cons={[
+          'Dyrare än vanliga barnvagnar'
+          'Enklare fjädring — inte för kuperad terräng'
+    ]}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/babyzen-yoyo2-barnvagn-vit"
+  />
+
+  <StickyCTA href="https://www.jollyroom.se/barnvagnar/sittvagnar-promenadvagnar/sittvagnar/babyzen-yoyo2-barnvagn-vit" productName="Babyzen YOYO2" />
 
   <FAQ items={faqItems} />
 

@@ -1,6 +1,9 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -173,6 +176,29 @@ const faqItems = [
       <li><a href="/guider/valja-barsele/" class="text-accent hover:underline">Så väljer du rätt bärsele – köpguide 2026</a></li>
     </ul>
   </div>
+
+  
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vår topprankning — bästa matstolen 2026</h2>
+  <ProductCard
+    name="Stokke Tripp Trapp"
+    badge="Bäst i test"
+    price="2 390 kr"
+    rating={4.9}
+    ageRange="6 mån–vuxen"
+    pros={[
+          'Justeras i höjd och djup — passar hela uppväxten'
+          'Exceptionellt hållbar och slitstark'
+          'Kan användas av vuxna'
+    ]}
+    cons={[
+          'Högt pris jämfört med enklare matstolar'
+          'BabySet och kuddar tillkommer extra'
+    ]}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babyutrustning/matstolar/stokke-tripp-trapp-matstol"
+  />
+
+  <StickyCTA href="https://www.jollyroom.se/babyutrustning/matstolar/stokke-tripp-trapp-matstol" productName="Stokke Tripp Trapp" />
 
   <FAQ items={faqItems} />
 </ArticleLayout>

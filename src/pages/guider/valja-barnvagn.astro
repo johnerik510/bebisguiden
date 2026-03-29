@@ -1,6 +1,9 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -143,6 +146,29 @@ const faqItems = [
       <li><a href="/barnvagnar/syskonvagn/" class="text-accent hover:underline">Bästa syskonvagnen 2026</a></li>
     </ul>
   </div>
+
+  
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vår topprankning — bästa barnvagnen 2026</h2>
+  <ProductCard
+    name="Bugaboo Fox 5"
+    badge="Bäst i test"
+    price="14 990 kr"
+    rating={4.8}
+    ageRange="0–4 år"
+    pros={[
+          'Bästa körkomfort i test'
+          'Enkel att vika med en hand'
+          'Hållbar för svenska underlag'
+    ]}
+    cons={[
+          'Hög prisklass'
+          'Tung chassi 12,4 kg'
+    ]}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn"
+  />
+
+  <StickyCTA href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn" productName="Bugaboo Fox 5" />
 
   <FAQ items={faqItems} />
 </ArticleLayout>

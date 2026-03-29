@@ -1,6 +1,9 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -157,6 +160,29 @@ const faqItems = [
       <li><a href="/guider/valja-bilbarnstol/" class="text-accent hover:underline">Så väljer du rätt bilbarnstol – köpguide 2026</a></li>
     </ul>
   </div>
+
+  
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vår topprankning — bästa bärselen 2026</h2>
+  <ProductCard
+    name="Ergobaby Omni 360"
+    badge="Bäst i test"
+    price="2 290 kr"
+    rating={4.8}
+    ageRange="0–4 år"
+    pros={[
+          'Fyra bärpositioner'
+          'Kan användas från födseln utan insats'
+          'Ergonomisk höftsits'
+    ]}
+    cons={[
+          'Dyrare än enklare bärselar'
+          'Kräver inlärning att sätta på korrekt'
+    ]}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/barselen/mjuka-barselen/ergobaby-omni-360-cool-air-barsele-carbon-grey"
+  />
+
+  <StickyCTA href="https://www.jollyroom.se/barnvagnar/barselen/mjuka-barselen/ergobaby-omni-360-cool-air-barsele-carbon-grey" productName="Ergobaby Omni 360" />
 
   <FAQ items={faqItems} />
 </ArticleLayout>

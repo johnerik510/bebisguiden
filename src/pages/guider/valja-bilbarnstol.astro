@@ -1,6 +1,9 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -160,6 +163,29 @@ const faqItems = [
       <li><a href="/guider/valja-barnvagn/" class="text-accent hover:underline">Så väljer du rätt barnvagn – köpguide 2026</a></li>
     </ul>
   </div>
+
+  
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vår topprankning — bästa bilbarnstolen 2026</h2>
+  <ProductCard
+    name="Cybex Cloud T i-Size"
+    badge="Bäst i test"
+    price="3 990 kr"
+    rating={4.9}
+    ageRange="0–24 mån"
+    pros={[
+          'Toppbetyg i Euro NCAP 2023'
+          'Roterbar 360° för enkel på- och avstigning'
+          'Fungerar bakåtvänd länge'
+    ]}
+    cons={[
+          'Dyrare än basalternativen'
+          'Stor och tung'
+    ]}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilbarnstolar/babyskydd-grupp-0/cybex-cloud-t-i-size-bilbarnstol-ocean-blue"
+  />
+
+  <StickyCTA href="https://www.jollyroom.se/bilbarnstolar/babyskydd-grupp-0/cybex-cloud-t-i-size-bilbarnstol-ocean-blue" productName="Cybex Cloud T i-Size" />
 
   <FAQ items={faqItems} />
 </ArticleLayout>
