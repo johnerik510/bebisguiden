@@ -1,0 +1,210 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Barnvagn till nyfödd' },
+];
+
+const products = [
+  {
+    name: 'Emmaljunga NXT60',
+    badge: 'Bäst i test',
+    price: '7 490 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt60-ergo-duovagn',
+    features: {
+      'Liggdel': 'Ja, medföljer',
+      'Vikt chassi': '12,4 kg',
+      'Tillverkning': 'Sverige',
+      'Fjädring': 'Fjäderfjädring',
+      'Pris': '7 490 kr',
+    },
+  },
+  {
+    name: 'Bugaboo Fox 5',
+    badge: 'Premiumval',
+    price: '14 990 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn',
+    features: {
+      'Liggdel': 'Ja, medföljer',
+      'Vikt chassi': '12,4 kg',
+      'Tillverkning': 'Nederländerna',
+      'Fjädring': 'Fullfjädrad',
+      'Pris': '14 990 kr',
+    },
+  },
+  {
+    name: 'Joolz Day+',
+    badge: 'Bäst mellanpris',
+    price: '9 990 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/joolz-day-plus-duovagn',
+    features: {
+      'Liggdel': 'Ja, medföljer',
+      'Vikt chassi': '11,3 kg',
+      'Tillverkning': 'Nederländerna',
+      'Fjädring': 'Fullfjädrad',
+      'Pris': '9 990 kr',
+    },
+  },
+  {
+    name: 'Britax Go Next 2',
+    badge: 'Budgetval',
+    price: '4 990 kr',
+    rating: 4.4,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-go-next-2-duovagn',
+    features: {
+      'Liggdel': 'Ja, medföljer',
+      'Vikt chassi': '13,1 kg',
+      'Tillverkning': 'Polen',
+      'Fjädring': 'Fjäderfjädring',
+      'Pris': '4 990 kr',
+    },
+  },
+];
+
+const featureLabels = ['Liggdel', 'Vikt chassi', 'Tillverkning', 'Fjädring', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad ska man tänka på vid barnvagn till nyfödd?',
+    answer: 'Det viktigaste är att vagnen har en plan liggdel — nyfödda ska ligga helt plant för att ryggraden och luftvägarna ska utvecklas korrekt. Liggdelen ska ha god ventilation och inte ha en rygg-kurva. Fjädring är viktigt för att dämpa vibrationer. Välj en vagn med vindskydd och regnskydd för svenska förhållanden. Kontrollera att chassit ryms i bagageutrymmet.',
+  },
+  {
+    question: 'Hur länge kan en nyfödd ligga i liggdelen?',
+    answer: 'En nyfödd bör inte sitta för länge i halvliggande position. Liggdelen används från födseln till ca 6 månader, eller tills barnet kan sitta själv. Då byter man till sittdelen. Barnets ryggradsutveckling gynnas av det plana läget under de första månaderna. Kontrollera alltid att liggdelen är helt plan — en kurva på mer än 30 grader är inte rekommenderad för nyfödda.',
+  },
+  {
+    question: 'Emmaljunga eller Bugaboo till nyfödd?',
+    answer: 'Emmaljunga NXT60 är det bästa valet för svenska förhållanden: tillverkad i Sverige, klarar snö och ojämn mark utmärkt, och priset är lägre. Bugaboo Fox 5 är premiumvalet med smidigare hantering, ett-handsfällning och bättre reseanpassning. För nordiskt klimat och allround-användning: Emmaljunga. För stadsliv, design och resande: Bugaboo.',
+  },
+  {
+    question: 'Kan man använda barnvagn direkt från födseln?',
+    answer: 'Ja, men bara om vagnen har en godkänd liggdel som ligger helt plant (0–10 grader). En sittvagn (sulky) passar inte till nyfödda. Alternativt kan man använda en duovagn i kombination med ett bilbarnstolsadapter — barnet sover i bilbarnstolen (bakåtvänd) som klickas på chassit. Kontrollera alltid vagntillverkarens åldersgräns.',
+  },
+  {
+    question: 'Vad är skillnaden på duovagn och liggvagn?',
+    answer: 'En liggvagn (pram) är en klassisk vagn med fast korg — barnet ligger helt plant i en stor korg. En duovagn har utbytbara delar: liggdel för nyfödda och sittdel för äldre barn. Duovagnen är mer flexibel och används längre (0–4 år). Liggvagnar är mer traditionella och används mest de första 6 månaderna. De flesta köper duovagn idag.',
+  },
+  {
+    question: 'Vilket tillbehör behöver man till barnvagn för nyfödd?',
+    answer: 'Nödvändiga tillbehör: regnskydd (ingår ofta), vindskydd/fotmuff för kallare dagar, och madrass till liggdelen (kontrollera att den är andningsbar och testad för SIDS-prevention). Bra att ha: solskydd/sol-parasoll, vagnväska. Undvika: lösa filtar och kuddar i liggdelen — de ökar SIDS-risken. Använd istället sovsäck anpassad för barnvagn.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Barnvagn till nyfödd 2026 – Bästa duovagnarna testade"
+  description="Bästa barnvagnen till nyfödd 2026: Emmaljunga NXT60, Bugaboo Fox 5 och Joolz Day+ jämförs. Vad ska liggdelen ha? Hur länge håller det? Komplett guide."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/barnvagnar/nyfodda/"
+  updatedDate="2026-03-29"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Till en nyfödd krävs en barnvagn med plan liggdel — det är det absolut viktigaste kriteriet. Vi har granskat de bästa vagnarna specifikt för nyfödda och rankar dem efter liggdelens kvalitet, fjädring, hantering och pris.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026 – till nyfödd</p>
+    <p class="text-sm text-text-light"><strong>Emmaljunga NXT60</strong> är bäst för nordiskt klimat och pris/kvalitet. <strong>Bugaboo Fox 5</strong> är premiumvalet med bäst hantering. <strong>Joolz Day+</strong> är bästa mellanprisvalet. Alla tre har plan liggdel från födseln.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-3">Jämförelsetabell – barnvagnar för nyfödda 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval till nyfödd 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Emmaljunga NXT60"
+      badge="Bäst i test"
+      price="7 490 kr"
+      rating={4.8}
+      ageRange="0–4 år"
+      pros={['Tillverkad i Sverige för nordiskt klimat', 'Fullständigt plan liggdel med god ventilation', 'Klarar snö, grus och ojämn mark', 'Lägre pris än konkurrenterna i premiumsegmentet']}
+      cons={['Tyngre chassi (12,4 kg)', 'Äldre design jämfört med Bugaboo', 'Mer voluminös ihopfälld']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt60-ergo-duovagn"
+    />
+
+    <ProductCard
+      name="Bugaboo Fox 5"
+      badge="Premiumval"
+      price="14 990 kr"
+      rating={4.8}
+      ageRange="0–4 år"
+      pros={['Smidigast att manövrera med en hand', 'Fullfjädring på alla fyra hjulen', 'Plan liggdel med utmärkt ventilation', 'Kan vändas mot eller från föräldrar']}
+      cons={['Hög prisklass', 'Tung chassi (12,4 kg)', 'Tillbehör och liggdel säljs separat']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/bugaboo-fox-5-duovagn"
+    />
+
+    <ProductCard
+      name="Joolz Day+"
+      badge="Bäst mellanpris"
+      price="9 990 kr"
+      rating={4.6}
+      ageRange="0–4 år"
+      pros={['Lättare chassi (11,3 kg) — lättast i segmentet', 'Plan liggdel med god ventilation', 'Kompakt ihopfälld', 'Bra pris/kvalitet i mellanprisskiktet']}
+      cons={['Inte lika tålig som Emmaljunga i svenska vintrar', 'Färre justeringsmöjligheter än Bugaboo', 'Begränsad tillgång till reservdelar']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/joolz-day-plus-duovagn"
+    />
+
+    <ProductCard
+      name="Britax Go Next 2"
+      badge="Budgetval"
+      price="4 990 kr"
+      rating={4.4}
+      ageRange="0–4 år"
+      pros={['Lägst pris i test med liggdel inkluderad', 'Enkel att montera och använda', 'Kompatibel med Britax bilbarnstolar', 'Stabil körning']}
+      cons={['Tyngst i test (13,1 kg)', 'Enklare fjädring jämfört med konkurrenterna', 'Design och materialvalitet märks av prisnivån']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-go-next-2-duovagn"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Vad är viktigt i en barnvagn till nyfödd?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Liggdelens planlighet — det viktigaste kriteriet</h3>
+    <p>En nyfödds ryggrad är inte färdigutvecklad och ska ligga plant de första månaderna. Luftvägarna hos en nyfödd är även känsliga — en halvliggande position kan orsaka haka-mot-bröst-kompression som försvårar andningen. Välj alltid en liggdel som är certifierad för nyfödda och som ligger i 0–10 graders vinkel. Kontrollera att madrassen är fastspänd och andningsbar.</p>
+
+    <h3>2. Ventilation i liggdelen</h3>
+    <p>En god liggdel har ventilation på sidorna eller i botten för att förhindra överhettning. Emmaljunga är känd för sin genomtänkta ventilation anpassad för nordiska förhållanden. Bugaboo Fox 5 har ett ventilationsnät i botten. Undvik liggdelar med stoppat tyg utan ventilationslösning — det ökar risken för överhettning.</p>
+
+    <h3>3. Fjädring — viktigare för nyfödd än för äldre barn</h3>
+    <p>Nyfödda är känsligare för vibrationer och stötar. En vagn med god fjädring ger en jämnare körupplevelse och bättre sömnkvalitet för barnet. Fullfjädrade chassin (Bugaboo Fox 5) ger bäst dämpning. Emmaljunga NXT-serien har fjäderfjädring som fungerar väl i svenska förhållanden med kullerstenar och snö.</p>
+
+    <h3>4. Bytbarhet — liggdel till sittdel</h3>
+    <p>Välj en duovagn där du enkelt kan byta liggdel mot sittdel när barnet är ca 6 månader. De bästa vagnarna tar under 30 sekunder att byta delar. Kontrollera att sittdelen har fullt ryggstöd och att övergången är smidig.</p>
+
+    <h3>5. Travel system — barnvagn + bilbarnstol</h3>
+    <p>Många familjer väljer ett travel system där bilbarnstolen klickar direkt på barnvagnschassit. Barnet behöver då inte väckas när ni byter från bil till vagn. Britax Go Next 2 passar med Britax bilbarnstolar. Bugaboo Fox 5 passar med flera märken via adaptrar. Kontrollera kompatibilitet innan köp.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 – alla typer jämförda</a></li>
+      <li><a href="/barnvagnar/duovagn/" class="text-accent hover:underline">Bästa duovagnen 2026 – test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 – krocktestade och rankade</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/emmaljunga-nxt60-ergo-duovagn"
+  text="Se bästa pris – Emmaljunga NXT60"
+  productName="Bäst i test till nyfödd 2026"
+/>
