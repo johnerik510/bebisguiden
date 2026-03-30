@@ -1,0 +1,190 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Sovsäckar', href: '/sovsackar/' },
+  { label: 'Voksi vs HALO SleepSack' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken sovsäck är säkrast för nyfödda — Voksi eller HALO?',
+    answer: 'Båda är säkra val som följer nuvarande säkerhetsrekommendationer (inga lösa filtar i babysängen). HALO SleepSack är specifikt utformad med svangad form som minskar risken att barnet glider ner i säcken, och har rekommendationer från barnläkare och AAP (American Academy of Pediatrics). Voksi Nordic är CE-godkänd och testad enligt europeisk standard. Välj HALO om säkerhetscertifieringen är ditt primära kriterium.',
+  },
+  {
+    question: 'Vad är TOG och vilken TOG ska jag välja?',
+    answer: 'TOG (Thermal Overall Grade) mäter sovsäckens värmeisolering. 1.0 TOG: sommar eller välvärmt rum (22–24°C). 1.5–2.5 TOG: standardrum (18–22°C) — vanligast för svenska sovrum. 3.5 TOG: kalla rum (under 16°C). Voksi Nordic N1 Wool (1.5 TOG) passar de flesta svenska sovrum. HALO Micro-Fleece (1.5 TOG) likaså. Mät rumstemperaturen i barnrummet och välj TOG efter det.',
+  },
+  {
+    question: 'Är ull bättre än micro-fleece i sovsäck?',
+    answer: 'Ull (Voksi Nordic) reglerar temperatur bättre — ull är fuktabsorberande och hjälper kroppen hålla rätt temperatur både vid svettning och kyla. Det är ett mer naturligt och hållbart material. Micro-fleece (HALO) är lättare att tvätta, torkar snabbare och är billigare. För de flesta bebissar fungerar båda utmärkt. Voksi ull är det bättre valet om barnet svettas lätt eller om ni har varierande rumstemperatur.',
+  },
+  {
+    question: 'Hur tvättar man Voksi sovsäck?',
+    answer: 'Voksi Nordic N1 Wool tvättas på ullprogram 30°C med ull-/fintvätt-detergent. Tumma inte — lägg platt eller häng på hängare för torkning. Tvättas ca 1 gång per vecka eller vid behov. Voksi Strikk och Voksi Nature är enklare att tvätta. HALO Micro-Fleece tål maskintvättning 40°C och kan tummas på låg värme.',
+  },
+  {
+    question: 'Från vilken ålder kan man använda sovsäck?',
+    answer: 'De flesta sovsäckar passar från födseln (0 mån, 50–56 cm) upp till 2–3 år. HALO SleepSack har en speciell "Swaddle"-version för de allra minsta (0–3 mån) som ger ett säkert lindningsalternativ. Voksi Nordic 0–9 månader passar de flesta nyfödda. Kontrollera alltid vikttabell — sovsäcken ska sitta bra, varken för lös vid hals/axlar eller för trång.',
+  },
+  {
+    question: 'Kan man använda sovsäck i barnvagn?',
+    answer: 'Sovsäckar är designade för babysäng, inte barnvagn. I barnvagn är risken lägre för täckesolyckor (barnet sitter/ligger med bälte), men en löst sittande sovsäck i liggvagnen kan ändå vara en risk om barnet glider ner. Använd täcken/linor anpassade för barnvagn eller sovsäckar specifikt avsedda för vagn om ni vill ha det. Till babysängen: välj alltid sovsäck istället för lös filt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Voksi vs HALO SleepSack 2026 — vilken sovsäck är bäst för din bebis?"
+  description="Vi jämför Voksi Nordic N1 Wool och HALO SleepSack 2026. Säkerhet, material, TOG och pris — vilken sovsäck passar din bebis och ditt sovrum bäst?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Voksi och HALO SleepSack är de två mest rekommenderade sovsäcksmärkena i Sverige. Voksi (norskt varumärke) är känt för naturmaterial och skandinavisk design. HALO (amerikanskt) är barnläkarrekommenderat med fokus på säkerhet. Vilket är rätt val för din bebis?
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Båda uppfyller säkerhetskraven och ersätter lösa filtar i babysängen — men de skiljer sig i material, pris, tvätt och temperaturreglering.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Voksi Nordic N1 Wool</th>
+          <th class="p-3 text-left font-semibold">HALO SleepSack</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">ca 899 kr</td>
+          <td class="p-3 text-green-700 font-semibold">ca 399 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Material</td>
+          <td class="p-3 text-green-700 font-semibold">Ull/bomull — naturlig temperaturreglering</td>
+          <td class="p-3 text-text-light">Micro-fleece eller bomull</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">TOG</td>
+          <td class="p-3 text-text-light">1.5 (standardmodell)</td>
+          <td class="p-3 text-text-light">1.5 (Micro-Fleece)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Certifiering</td>
+          <td class="p-3 text-text-light">CE-godkänd</td>
+          <td class="p-3 text-green-700 font-semibold">Rekommenderas av barnläkare (AAP-guidelines)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Blöjbyte nattetid</td>
+          <td class="p-3 text-text-light">Standard dragkedja</td>
+          <td class="p-3 text-green-700 font-semibold">Omvänd dragkedja — enklare byte utan att störa barnet</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Tvätt</td>
+          <td class="p-3 text-text-light">Ullprogram 30°C — varsam tvätt</td>
+          <td class="p-3 text-green-700 font-semibold">Maskin 40°C + tumtork på låg värme</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Åldersrange</td>
+          <td class="p-3 text-text-light">0–9 månader (Nordic N1)</td>
+          <td class="p-3 text-green-700 font-semibold">Newborn–36 månader (flera storlekar)</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Varumärke</td>
+          <td class="p-3 text-text-light">Norsk — stark i Skandinavien</td>
+          <td class="p-3 text-text-light">Amerikanskt — global barnläkarbrand</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Voksi Nordic N1 Wool — naturmaterialets fördel</h2>
+  <p class="text-text-light mb-3 text-base">
+    Voksi Nordic N1 Wool är den mest populära sovsäcken i Sverige och Norge. Ull är ett naturmaterial med unik temperaturreglerande förmåga — det absorberar fukt utan att kännas blöt och hjälper kroppen hålla rätt temperatur oavsett om det är lite varmt eller svalt. Det gör Voksi ull idealisk för skandinaviska sovrum med varierande temperatur.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Materialet är hållbart och kan hålla i flera år om det sköts rätt. Priset (ca 899 kr) är högt, men andrahandsvärdet är gott. CE-godkänd och testad enligt europeisk standard. Nackdelen: ullmodellen kräver varsam tvätt på ullprogram, vilket inte alltid passar en trött förälder klockan tre på natten.
+  </p>
+
+  <ProductCard
+    name="Voksi Nordic N1 Wool"
+    badge="Bäst i test"
+    price="899 kr"
+    rating={4.8}
+    ageRange="0–9 månader"
+    pros={['Ull — naturlig temperaturreglering', 'Hållbart material med lång livslängd', 'Skandinavisk design', 'CE-godkänd']}
+    cons={['Högt pris', 'Kräver varsam ulltvättning', 'Kortare åldersrange (0–9 mån)']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babytillbehor/sovsackar/voksi-nordic-n1-wool"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">HALO SleepSack — barnläkarrekommenderat val</h2>
+  <p class="text-text-light mb-3 text-base">
+    HALO SleepSack är den mest sålda sovsäcken globalt och rekommenderas av American Academy of Pediatrics (AAP) som ett säkert alternativ till lösa filtar. Den svangade designen säkerställer att nackutrymmet förblir öppet och minskar risken att barnet glider ner. Den omvända dragkedjan (öppnas nedifrån) är en praktisk fördel för nattliga blöjbyten utan att störa barnet.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Priset (ca 399 kr) är klart lägre än Voksi, och Micro-Fleece-varianten tål maskintvättning 40°C inklusive tumtorkning. HALO erbjuder även varianter i ekologisk bomull och bambu. Sizespan är bred — från newborn till 36 månader beroende på modell.
+  </p>
+
+  <ProductCard
+    name="HALO SleepSack Micro-Fleece"
+    badge="Barnläkarrekommenderad"
+    price="399 kr"
+    rating={4.7}
+    ageRange="0–36 månader (flera storlekar)"
+    pros={['Omvänd dragkedja — enkelt blöjbyte', 'Rekommenderas av barnläkare (AAP)', 'Enkel maskintvättning', 'Bredare storleksurval']}
+    cons={['Micro-fleece reglerar temperatur sämre än ull', 'Amerikansk brand — ej lika populär i Sverige']}
+    ctaText="Se pris hos Babyshop"
+    ctaHref="https://www.babyshop.se/halo-sleepsack-micro-fleece"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vem bör välja vad?</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Voksi Nordic om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill ha naturmaterial (ull) för bättre temperaturreglering</li>
+        <li>+ Bor i Skandinavien med varierande rumstemperatur</li>
+        <li>+ Värdesätter hållbarhet och lång livslängd</li>
+        <li>+ Barnet svettas lätt nattetid</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj HALO SleepSack om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill ha barnläkarrekommenderat val</li>
+        <li>+ Vill ha enklare tvätt (maskin 40°C)</li>
+        <li>+ Prioriterar lågt pris (399 vs 899 kr)</li>
+        <li>+ Byter blöja nattetid och vill ha omvänd dragkedja</li>
+        <li>+ Vill ha säck som räcker längre (till 36 mån)</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/sovsackar/" class="text-accent hover:underline">Bästa sovsäckarna 2026 — komplett topplista</a></li>
+      <li><a href="/spjalsangar/stokke-sleepi-vs-ikea-sniglar/" class="text-accent hover:underline">Stokke Sleepi vs IKEA Sniglar 2026</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnarna 2026</a></li>
+      <li><a href="/barselen/ergobaby-omni-360-vs-babybjorn-one/" class="text-accent hover:underline">Ergobaby Omni 360 vs BabyBjörn One 2026</a></li>
+    </ul>
+  </div>
+
+  <StickyCTA
+    href="https://www.jollyroom.se/babytillbehor/sovsackar/voksi-nordic-n1-wool"
+    text="Se bästa pris — Voksi Nordic N1 Wool"
+    productName="Bäst i test 2026"
+  />
+</ArticleLayout>
