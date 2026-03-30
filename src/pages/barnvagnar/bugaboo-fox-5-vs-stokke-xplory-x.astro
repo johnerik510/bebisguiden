@@ -1,0 +1,209 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Bugaboo Fox 5 vs Stokke Xplory X' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Bugaboo Fox 5 eller Stokke Xplory X?',
+    answer: 'Det beror på vad du prioriterar. Bugaboo Fox 5 (ca 14 990 kr) ger överlägsen körkomfort, fjädring och terrängförmåga — den är branschens bästa "all-terrain" vagn i premiumsegmentet. Stokke Xplory X (ca 14 490 kr) ger högre sittposition (ögonhöjd med förälder), elegant skandinavisk design och ett starkt ekosystem av tillbehör. Vill du ha bäst körkomfort: Bugaboo. Vill du ha hög sittposition och skandinavisk design: Stokke.',
+  },
+  {
+    question: 'Är Stokke Xplory X värd prisskillnaden?',
+    answer: 'Bugaboo Fox 5 och Stokke Xplory X kostar liknande — ca 14 490–14 990 kr i basutförande. Tillbehören skiljer sig: Stokkes ekosystem (liggdel, bärkorg, regnslag) är ofta separat köp. Bugaboo inkluderar ibland mer i startpaketet. Räkna alltid med vad som ingår — jämför totalkostnad inklusive liggdel för nyfödda.',
+  },
+  {
+    question: 'Hur hög är sittplatsen på Stokke Xplory X?',
+    answer: 'Stokke Xplory X har en justerbar sittposition med upp till 80 cm sitthöjd — det gör barnet till ungefär ögonhöjd med en vuxen som sitter ned, och nära ögonhöjd med stående förälder. Det är Stokkes starkaste USP och ger enklare kontakt och enklare in- och urplock. Bugaboo Fox 5 har lägre sittposition men är mer terrängduglig.',
+  },
+  {
+    question: 'Vilken är bäst för terrängkörning och ojämnt underlag?',
+    answer: 'Bugaboo Fox 5 vinner klart. Den har Bugaboos patenterade XL-hjulsystem med individuell fjädring (IntelliDrive 2.0) som absorberar stötar och ger en mjuk tur i terräng. Stokke Xplory X är designad för stadsmiljö — den klarar normala gator bra men är inte en terrängvagn. Bor du utanför stadskärnan eller promenerar mycket på grus och ojämna ytor: Bugaboo.',
+  },
+  {
+    question: 'Klarar Bugaboo Fox 5 och Stokke Xplory X svenska vintrar?',
+    answer: 'Båda klarar snö och kyla med rätt tillbehör (vinterfotmuff, regnslag). Bugaboo Fox 5s större hjul och fjädring ger ett försprång i snörik terräng. Stokkes höga chassi innebär att barnet sitter högt ovanför marken och snödrev. Bägge kräver vinterkläder och skydd för barnet i kall väderlek.',
+  },
+  {
+    question: 'Kan man använda Bugaboo Fox 5 och Stokke Xplory X från nyfödd?',
+    answer: 'Ja — båda är kompatibla från nyfödd med en liggdel. Bugaboo Fox 5 används med Bugaboo Stardust liggdel eller en kompatibel babyseat. Stokke Xplory X används med Stokke Newborn Inlay i sittdelen eller separat liggdel. Kontrollera alltid vad som ingår vid köp — liggdelen är ofta ett separat köp som kostar 1 500–3 000 kr extra.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bugaboo Fox 5 vs Stokke Xplory X 2026 — vilket premiummärke vinner?"
+  description="Vi jämför Bugaboo Fox 5 och Stokke Xplory X 2026. Körkomfort, sittposition, design och pris — vilken premiumvagn passar din familj?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Bugaboo Fox 5 och Stokke Xplory X är de två mest eftertraktade premiumvagnarna i Sverige 2026. Båda kostar ca 14 000–15 000 kr, men de är byggda för helt olika prioriteringar: Bugaboo ger överlägsen körkomfort och terrängförmåga, Stokke ger unik hög sittposition och skandinavisk design.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vilken passar din familj och ditt liv? Vi reder ut det.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Bugaboo Fox 5</th>
+          <th class="p-3 text-left font-semibold">Stokke Xplory X</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris (baspaket)</td>
+          <td class="p-3 text-text-light">ca 14 990 kr</td>
+          <td class="p-3 text-text-light">ca 14 490 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vikt</td>
+          <td class="p-3 text-text-light">12,4 kg</td>
+          <td class="p-3 font-semibold text-green-700">10,3 kg</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Sittposition</td>
+          <td class="p-3 text-text-light">Standard</td>
+          <td class="p-3 font-semibold text-green-700">Hög — upp till 80 cm</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Terrängförmåga</td>
+          <td class="p-3 font-semibold text-green-700">Utmärkt — IntelliDrive 2.0</td>
+          <td class="p-3 text-text-light">Stadsanpassad</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Fjädring</td>
+          <td class="p-3 font-semibold text-green-700">XL-hjul + individuell fjädring</td>
+          <td class="p-3 text-text-light">Grundläggande</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Nyföddskompatibel</td>
+          <td class="p-3 text-text-light">Ja (liggdel separat)</td>
+          <td class="p-3 text-text-light">Ja (Newborn Inlay/liggdel)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Max barnvikt</td>
+          <td class="p-3 text-text-light">22 kg</td>
+          <td class="p-3 text-text-light">22 kg</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Design</td>
+          <td class="p-3 text-text-light">Modern, sportig</td>
+          <td class="p-3 font-semibold text-green-700">Ikonisk skandinavisk</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Syskonvagn-kompatibel</td>
+          <td class="p-3 font-semibold text-green-700">Ja (Bugaboo Donkey 5)</td>
+          <td class="p-3 text-text-light">Nej</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Tillbehörsekosystem</td>
+          <td class="p-3 font-semibold text-green-700">Mycket brett</td>
+          <td class="p-3 text-text-light">Brett men dyrare</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Körkomfort och terräng: Bugaboo Fox 5 vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Bugaboo Fox 5 har IntelliDrive 2.0 — ett system med XL-hjul och individuell fjädring som gör körningen mjuk även på grus, stenstätens och ojämna vägar. Det är den vagn terapeuter och barnläkare rekommenderar för föräldrar som promenerar mycket i varierat landskap.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Stokke Xplory X är designad för stadsmiljö och platser med jämnt underlag. Den klarar normala svenska gator bra men är inte en terrängvagn. Planerar du promenader i skog, på grusvägar eller i kuperat landskap: Bugaboo Fox 5 är ett bättre val.
+  </p>
+
+  <ProductCard
+    name="Bugaboo Fox 5"
+    badge="Bäst körkomfort"
+    price="ca 14 990 kr"
+    rating={9.2}
+    ageRange="Nyfödd – 22 kg (ca 4 år)"
+    pros={[
+      'Branschens bästa körkomfort — IntelliDrive 2.0 fjädring',
+      'Klara terräng, snö och kuperat landskap',
+      'Stort tillbehörsekosystem',
+      'Kompatibel med Bugaboo Donkey 5 för syskon',
+    ]}
+    cons={[
+      'Tyngst av de två — 12,4 kg',
+      'Liggdel ofta separat köp',
+      'Stor och bred — kan vara opraktisk i trånga hissar',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/bugaboo-fox-5-barnvagn"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Sittposition och kontakt: Stokke Xplory X vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Stokkes starkaste USP är den justerbart höga sittplatsen — upp till 80 cm. Det placerar barnet nära förälderns ögonhöjd, vilket underlättar social interaktion och förbättrar kontakten. Många föräldrar vittnar om att barnet mår bättre av att sitta högt och se mer av omvärlden på förälderns nivå.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Den höga positionen underlättar också in- och urplockning — du böjer dig inte lika mycket. Och den skandinaviska designen med rena linjer och premiumdetaljer är en stor fördel för föräldrar som värdesätter estetik.
+  </p>
+
+  <ProductCard
+    name="Stokke Xplory X"
+    badge="Bäst sittposition"
+    price="ca 14 490 kr"
+    rating={8.9}
+    ageRange="Nyfödd – 22 kg (ca 4 år)"
+    pros={[
+      'Unik hög sittposition — upp till 80 cm',
+      'Ikonisk skandinavisk design',
+      '2,1 kg lättare än Bugaboo Fox 5',
+      'Enkel in- och urplockning tack vare hög sittposition',
+    ]}
+    cons={[
+      'Sämre terrängförmåga — stadsanpassad',
+      'Tillbehör ofta dyra tillägg',
+      'Ej kompatibel med syskonvagns-modul',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/stokke-xplory-x-barnvagn"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vem passar vad?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Bugaboo Fox 5 om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Promenerar på ojämnt underlag, grus eller kuperad terräng</li>
+        <li>+ Planerar ett andra barn och vill ha syskonvagnsmodul</li>
+        <li>+ Vill ha branschens bästa körkomfort</li>
+        <li>+ Bor utanför stadskärnan med varierat underlag</li>
+        <li>+ Vill ha ett stort tillbehörsekosystem</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Stokke Xplory X om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Prioriterar hög sittposition och kontakt med barnet</li>
+        <li>+ Bor i stadsmiljö med jämna gator</li>
+        <li>+ Värdesätter skandinavisk premium-design</li>
+        <li>+ Vill ha lättare vagn (10,3 kg vs 12,4 kg)</li>
+        <li>+ Gillar Stokkes färgutbud och estetik</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    href="https://www.jollyroom.se/bugaboo-fox-5-barnvagn"
+    productName="Bugaboo Fox 5 — Jollyroom"
+    text="Se pris"
+  />
+</ArticleLayout>
