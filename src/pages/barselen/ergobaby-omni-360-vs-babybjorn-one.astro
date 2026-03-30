@@ -1,0 +1,173 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bärselen', href: '/barselen/' },
+  { label: 'Ergobaby Omni 360 vs BabyBjörn One' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Ergobaby Omni 360 eller BabyBjörn One Air?',
+    answer: 'Det beror på vad du värderar. Ergobaby Omni 360 är mjukare, har bättre ergonomiskt stöd och tillåter mer naturligt bärande i höftpositioner. BabyBjörn One Air är mer mesh-ventilerat, lättare att ta på/av ensam och mer nybörjarvänlig. Har du ett nyfött barn och vill ha bäst ergonomi: Ergobaby. Gillar du enkelhet och luftigt material: BabyBjörn One Air.',
+  },
+  {
+    question: 'Fungerar Ergobaby Omni 360 med nyfödda?',
+    answer: 'Ja — Ergobaby Omni 360 fungerar från 3,2 kg utan separat inlägg. Den har ett inbyggt justerat nyföddsläge. BabyBjörn One Air fungerar också från nyfödda (3,5 kg) utan inlägg. Båda är designade att ta emot nyfödda från sjukhuset.',
+  },
+  {
+    question: 'Vilket är bättre för varma sommardagar?',
+    answer: 'BabyBjörn One Air vinner klart i ventilering — hela kropp och sadeln är i mesh-material som andas. Ergobaby 360 Cool Air är ett alternativ med mesh-panel på ryggen, men BabyBjörn One Air är luftigare totalt sett. Bor du i varmt klimat eller vill använda bärselen sommartid: BabyBjörn One Air är det bättre valet.',
+  },
+  {
+    question: 'Vad är M-position och har båda bärselena det?',
+    answer: 'M-positionen är barnets knän i nivå med eller högre än rumpan, med benen i M-form — den ergonomiskt korrekta ställningen för höftledens utveckling. Båda Ergobaby Omni 360 och BabyBjörn One Air är HIPS-certifierade (International Hip Dysplasia Institute) och stödjer M-positionen.',
+  },
+  {
+    question: 'Vilken är billigast?',
+    answer: 'Ergobaby Omni 360 kostar ca 2 190 kr. BabyBjörn One Air kostar ca 2 490 kr. Ergobaby är något billigare. Räknat per år använder de flesta bärsele i 12–24 månader, vilket gör kostnadsskillnaden liten per användningsdag.',
+  },
+  {
+    question: 'Kan pappor/partners använda samma bärsele?',
+    answer: 'Ja — båda bärselena är unisex och fullt justerbara för olika kroppsstorlekar. Ergobaby Omni 360 justeras med glidspännen. BabyBjörn One Air har elastiska clips och är extra enkel att dela. Båda passar de flesta vuxna utan extra delar.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Ergobaby Omni 360 vs BabyBjörn One Air 2026 — vilken bärsele är bäst?"
+  description="Vi jämför Ergobaby Omni 360 och BabyBjörn One Air 2026. Ergonomi, ventilering, nyfödda och pris — vilken bärsele passar dig och ditt barn bäst?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Ergobaby Omni 360 och BabyBjörn One Air är de två mest populära strukturerade bärselena i Sverige. Båda är HIPS-certifierade, fungerar med nyfödda och kan bäras framifrån, bakifrån och på höften. Men de är designade för lite olika preferenser.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Ergobaby Omni 360 har ett klassiskt, mjukt och ergonomiskt designat ryggstöd — populärt bland föräldrar som prioriterar maximal komfort. BabyBjörn One Air är byggd i ett svalt mesh-material och är enklare att ta på och av ensam. Vi reder ut skillnaderna.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Ergobaby Omni 360</th>
+          <th class="p-3 text-left font-semibold">BabyBjörn One Air</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-green-700 font-semibold">2 190 kr</td>
+          <td class="p-3 text-text-light">2 490 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">HIPS-certifierad</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Fungerar från</td>
+          <td class="p-3 text-green-700 font-semibold">3,2 kg (nyfödd)</td>
+          <td class="p-3 text-text-light">3,5 kg (nyfödd)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Används upp till</td>
+          <td class="p-3 text-text-light">20 kg (ca 3 år)</td>
+          <td class="p-3 text-green-700 font-semibold">15 kg (ca 3 år)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Ventilering</td>
+          <td class="p-3 text-text-light">Bra (bomull/mesh)</td>
+          <td class="p-3 text-green-700 font-semibold">Utmärkt (3D mesh)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Framifrån-bärande</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (2 riktningar)</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (2 riktningar)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Bakifrån-bärande</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Höftbärande</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-red-600 font-semibold">Nej</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Enkel att sätta på ensam</td>
+          <td class="p-3 text-text-light">Kräver lite träning</td>
+          <td class="p-3 text-green-700 font-semibold">Ja — quick-release</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Material (kontakt mot hud)</td>
+          <td class="p-3 text-green-700 font-semibold">Ekologisk bomull / mesh</td>
+          <td class="p-3 text-text-light">3D-mesh polyester</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Ergobaby Omni 360 — best overall ergonomi</h2>
+  <p class="text-text-light mb-3 text-base">
+    Ergobaby Omni 360 är ett välbeprövat val för föräldrar som prioriterar ergonomi och mångsidighet. Med 4 bärpositioner (framifrån-inåt, framifrån-utåt, bakifrån och på höften) och HIPS-certifiering är det en av de mest mångsidiga bärselena på marknaden.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Sadeln på Ergobaby är bred och kuddig och skapar ett naturligt M-läge. Ryggstödet är stabilt och justeras med glidspännen. Materialet är ekologisk bomull (standardversionen) eller mesh (360 Cool Air) — bomullsvarianten är mjukast mot hudens hud men inte lika ventilerande som BabyBjörns 3D-mesh.
+  </p>
+
+  <ProductCard
+    name="Ergobaby Omni 360 Cool Air"
+    badge="Bäst ergonomi"
+    price="2 190 kr"
+    rating={4.8}
+    ageRange="3,2 kg–20 kg (nyfödd–ca 3 år)"
+    pros={['4 bärpositioner inkl. höft', 'HIPS-certifierad', 'Fungerar från 3,2 kg', 'Ekologisk bomull eller mesh']}
+    cons={['Lite mer komplex att ta på', 'Tyngre än BabyBjörn', 'Meshversion aningens dyrare']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-cool-air-barsele"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">BabyBjörn One Air — bäst ventilering och enkelhet</h2>
+  <p class="text-text-light mb-3 text-base">
+    BabyBjörn One Air är en av marknadsens mest ventilerade bärselen. Hela konstruktionen — inklusive sadeln och ryggstödet — är i 3D mesh-polyester som andas och torkar snabbt. Det gör den perfekt för varma sommarmånader och aktiva föräldrar.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Quick-release-spännena gör att man kan ta på och av bärselen utan att behöva justera något från gång till gång — stor fördel om man delar bärselen med en partner. Enklare att klä på barnet ensam jämfört med Ergobaby. Nackdel: ingen höftposition och max 15 kg (mot Ergobabys 20 kg).
+  </p>
+
+  <ProductCard
+    name="BabyBjörn One Air"
+    badge="Bäst ventilering"
+    price="2 490 kr"
+    rating={4.7}
+    ageRange="3,5 kg–15 kg (nyfödd–ca 3 år)"
+    pros={['Bäst ventilering — 3D mesh', 'Enklast att ta på ensam', 'HIPS-certifierad', 'Snyggt minimalistisk design']}
+    cons={['Ingen höftposition', 'Max 15 kg (vs Ergobabys 20 kg)', 'Något dyrare']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele"
+  />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 — komplett topplista</a></li>
+      <li><a href="/barselen/nyfodd/" class="text-accent hover:underline">Bästa bärselen för nyfödda 2026</a></li>
+      <li><a href="/barselen/ergonomisk/" class="text-accent hover:underline">Ergonomisk bärsele — guide 2026</a></li>
+      <li><a href="/barnvagnar/babyzen-yoyo-vs-bugaboo-butterfly/" class="text-accent hover:underline">BABYZEN YOYO vs Bugaboo Butterfly 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-cool-air-barsele" productName="Ergobaby Omni 360 Cool Air" text="Se bästa pris — Ergobaby Omni 360" />
+</ArticleLayout>
