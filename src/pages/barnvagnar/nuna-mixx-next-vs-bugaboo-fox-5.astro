@@ -1,0 +1,219 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Nuna Mixx Next vs Bugaboo Fox 5' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Nuna Mixx Next eller Bugaboo Fox 5?',
+    answer: 'Bugaboo Fox 5 vinner på körkomfort och premium-känsla. Nuna Mixx Next vinner på pris (ca 6 990 vs 14 990 kr) och är ett utmärkt val för stadsmiljö. Om budget spelar roll är Nuna Mixx Next ett av de bästa köpen på marknaden. Har du råd och kör mycket i ojämn terräng, välj Bugaboo Fox 5.',
+  },
+  {
+    question: 'Vad kostar Nuna Mixx Next och Bugaboo Fox 5?',
+    answer: 'Nuna Mixx Next kostar ca 6 990 kr med sittdel (liggdel ca 1 990 kr extra). Bugaboo Fox 5 kostar ca 14 990 kr med liggdel och sittdel. Det är ca 8 000 kr i prisskillnad — en betydande summa som kan läggas på tillbehör, bilbarnstol eller sparas.',
+  },
+  {
+    question: 'Är Nuna Mixx Next kompatibel med bilbarnstolar?',
+    answer: 'Ja — Nuna Mixx Next är kompatibel med Maxi-Cosi-sittgrupper och Nuna PIPA-serien via adapter. Bugaboo Fox 5 är kompatibel med Bugaboo Turtle, Maxi-Cosi och Nuna. Nuna Mixx Next + Nuna PIPA R bilbarnstol är ett populärt kombo-system i Sverige.',
+  },
+  {
+    question: 'Vilken barnvagn klarar svenska vintrar bättre?',
+    answer: 'Bugaboo Fox 5 klarar svenska vintrar bättre tack vare sin fullfjädrade konstruktion och stora 30 cm bakhjul som hanterar snö och is överlägset. Nuna Mixx Next klarar lätta vinterförhållanden men kämpar vid djupare snö. Bor du i stad med snöröjda trottoarer: Nuna räcker. Bor du på landet med ostampade stigar: Bugaboo Fox 5.',
+  },
+  {
+    question: 'Vilken vagn är lättast att vika?',
+    answer: 'Nuna Mixx Next är lättare (ca 9,5 kg) och vikbarsare — en kompakt en-handsvickning som tar lite plats. Bugaboo Fox 5 väger 12,4 kg och är klumpigare att vika. Kör du kollektivtrafik eller har liten bil: Nuna Mixx Next är det praktiska alternativet.',
+  },
+  {
+    question: 'Kan man köpa Nuna Mixx Next på Jollyroom?',
+    answer: 'Ja, Nuna Mixx Next säljs hos Jollyroom, BabyV, Barnvagnsstaden och andra stora svenska barnbutiker. Jämför priser och kolla om liggdel ingår — det skiljer sig mellan återförsäljare.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Nuna Mixx Next vs Bugaboo Fox 5 2026 — stor pristest"
+  description="Vi jämför Nuna Mixx Next (ca 6 990 kr) och Bugaboo Fox 5 (ca 14 990 kr) sida vid sida. Körkomfort, vikt, vikbarhet och vem som bör välja vad 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Nuna Mixx Next och Bugaboo Fox 5 representerar två helt olika segment: den prisvärda mellanklassen och det premiumsegment. Ca 8 000 kr skiljer dem — en stor summa. Men ger Bugaboo Fox 5 8 000 kr mer värde? Här är svaret.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Kort svar: för stadsmiljö och normala svenska förhållanden — nej. Nuna Mixx Next levererar 80% av upplevelsen till hälften av priset. Bugaboo Fox 5 vinner tydligt i ojämn terräng och känsla av hög kvalitet.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Nuna Mixx Next</th>
+          <th class="p-3 text-left font-semibold">Bugaboo Fox 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris (med liggdel)</td>
+          <td class="p-3 text-green-700 font-semibold">ca 8 980 kr</td>
+          <td class="p-3 text-text-light">ca 14 990 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vikt</td>
+          <td class="p-3 text-green-700 font-semibold">ca 9,5 kg</td>
+          <td class="p-3 text-text-light">12,4 kg</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Körkomfort</td>
+          <td class="p-3 text-text-light">Bra (fjädrad framaxel)</td>
+          <td class="p-3 text-green-700 font-semibold">Bäst i test (fullfjädrad)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Bakhjulsstorlek</td>
+          <td class="p-3 text-text-light">28 cm</td>
+          <td class="p-3 text-green-700 font-semibold">30 cm</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Vikbarhet</td>
+          <td class="p-3 text-green-700 font-semibold">Kompakt en-handsvickning</td>
+          <td class="p-3 text-text-light">En-handsvickning, större</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Bilbarnstolskompatibilitet</td>
+          <td class="p-3 text-green-700 font-semibold">Maxi-Cosi, Nuna PIPA</td>
+          <td class="p-3 text-text-light">Bugaboo Turtle, Maxi-Cosi, Nuna</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Sitsriktningar</td>
+          <td class="p-3 text-green-700 font-semibold">Fram- och bakåtvänd</td>
+          <td class="p-3 text-green-700 font-semibold">Fram- och bakåtvänd</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Max barnvikt</td>
+          <td class="p-3 text-text-light">22 kg</td>
+          <td class="p-3 text-green-700 font-semibold">22 kg</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Ursprung</td>
+          <td class="p-3 text-text-light">Nederländerna</td>
+          <td class="p-3 text-text-light">Nederländerna</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bäst för</td>
+          <td class="p-3 text-green-700 font-semibold">Stad, budget, kollektivtrafik</td>
+          <td class="p-3 text-text-light">Terräng, premium, lång livstid</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Körkomfort: Bugaboo Fox 5 vinner klart</h2>
+  <p class="text-text-light mb-4 text-base">
+    Bugaboo Fox 5 har en fullfjädrad konstruktion med stora 30 cm bakhjul — den rullar mjukt över kullersten, snö, grus och trottoarkanter utan att du märker stötarna. Det är en av marknadens absolut bäst körande vagnar och det märks direkt vid en testpromenad.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Nuna Mixx Next har fjädring på framaxeln men inte den fullfjädrade konstruktionen. I stadsmiljö med hygglig asfalt är skillnaden liten. Tar du den ut på ojämn terräng, grusvägar eller tung snö märks skillnaden tydligt. Nuna Mixx Next klarar stadsmiljö utmärkt — Bugaboo Fox 5 klarar allt.
+  </p>
+
+  <ProductCard
+    name="Bugaboo Fox 5"
+    badge="Bäst körkomfort"
+    price="ca 14 990 kr"
+    rating={4.8}
+    ageRange="Från födseln till ca 22 kg"
+    pros={['Fullfjädrad konstruktion — bäst i test', 'Stora 30 cm bakhjul för all terräng', 'Premium material och långt liv', 'Brett tillbehörssortiment']}
+    cons={['Dyrare (ca 14 990 kr)', 'Tyngre (12,4 kg)', 'Dyrare syskonvagn-lösning']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/barnvagnar/bugaboo-fox-5"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Pris och prisvärde: Nuna Mixx Next vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Nuna Mixx Next med liggdel kostar ca 8 980 kr — mot Bugaboo Fox 5:s 14 990 kr. Det är 6 000 kr i skillnad som kan läggas på en bilbarnstol, en syskonvagnslösning eller sparas. Nuna levererar en vagn som fungerar utmärkt för de flesta svenska familjer till ett rimligt pris.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Nuna Mixx Next rankas konsekvent bland de bästa vagnarna i sin prisklass i europeiska tester. Bugaboo Fox 5 är bättre — men 6 000 kr bättre? Bara om du aktivt använder vagnen i terräng och prioriterar körkomfort över allt annat.
+  </p>
+
+  <ProductCard
+    name="Nuna Mixx Next"
+    badge="Bäst prisvärde"
+    price="ca 6 990 kr (sittdel)"
+    rating={4.6}
+    ageRange="Från födseln (med liggdel) till ca 22 kg"
+    pros={['Låg vikt (9,5 kg) — lätt att hantera', 'Kompakt vikbart — bra för kollektivtrafik', 'Pris/prestanda-vinnare i klassen', 'Kompatibel med Nuna PIPA bilbarnstolssystem']}
+    cons={['Sämre körkomfort vid ojämn terräng', 'Liggdel kostar extra (ca 1 990 kr)', 'Färre tillbehör än Bugaboo']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/barnvagnar/nuna-mixx-next"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vikt och hanterbarhet</h2>
+  <p class="text-text-light mb-4 text-base">
+    Nuna Mixx Next väger ca 9,5 kg och viker ihop kompakt. Det gör stor skillnad om du åker kollektivtrafik, lyfter vagnen i trappor eller kör med en liten bilbagageutrymme. En lättare vagn orkar du faktiskt använda dagligen — en tung vagn tar fort plats i hallen.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Bugaboo Fox 5 väger 12,4 kg — 2,9 kg mer. Det låter litet men märks vid lyft. Körupplevelsen är bättre men hanteringen är mer besvärlig. Om du bor i lägenhet utan hiss eller ofta åker pendeltåg: välj Nuna Mixx Next utan tvekan.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vem ska välja vad?</h2>
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-green-800 mb-3">Välj Nuna Mixx Next om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span><span>Bor i stad och rör dig på asfalt och vällagda ytor</span></li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span><span>Åker kollektivtrafik eller har liten bil</span></li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span><span>Vill ha bäst pris/prestanda i mellanklass</span></li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span><span>Planerar att kombinera med Nuna PIPA bilbarnstol</span></li>
+        <li class="flex gap-2"><span class="text-green-600 font-bold">+</span><span>Vill spara 6 000 kr för annat babyutrustning</span></li>
+      </ul>
+    </div>
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-blue-800 mb-3">Välj Bugaboo Fox 5 om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Promenerar mycket i ojämn terräng, skog eller snö</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Vill ha bästa möjliga körkomfort och inte kompromissa</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Bor på landsbygden med ojämna underlag</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Värdesätter lång livslängd och servicebart premium-system</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Relaterade guider</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <a href="/barnvagnar/uppababy-vista-vs-bugaboo-fox-5/" class="bg-white border border-border rounded-xl p-4 hover:shadow-md transition-shadow">
+      <p class="font-heading font-bold text-dark">UPPAbaby Vista V3 vs Bugaboo Fox 5</p>
+      <p class="text-sm text-text-light">Jämförelse av två premiumvagnar</p>
+    </a>
+    <a href="/barnvagnar/bugaboo-fox-5-vs-cybex-priam-4/" class="bg-white border border-border rounded-xl p-4 hover:shadow-md transition-shadow">
+      <p class="font-heading font-bold text-dark">Bugaboo Fox 5 vs Cybex Priam 4</p>
+      <p class="text-sm text-text-light">Fullfjädrad mot fullfjädrad</p>
+    </a>
+    <a href="/barnvagnar/bugaboo-fox-5-vs-stokke-xplory-x/" class="bg-white border border-border rounded-xl p-4 hover:shadow-md transition-shadow">
+      <p class="font-heading font-bold text-dark">Bugaboo Fox 5 vs Stokke Xplory X</p>
+      <p class="text-sm text-text-light">Terräng vs design och höjd</p>
+    </a>
+    <a href="/barnvagnar/" class="bg-white border border-border rounded-xl p-4 hover:shadow-md transition-shadow">
+      <p class="font-heading font-bold text-dark">Bästa barnvagnar 2026</p>
+      <p class="text-sm text-text-light">Fullständig topplista</p>
+    </a>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    product="Nuna Mixx Next"
+    store="Jollyroom"
+    price="ca 6 990 kr"
+    url="https://www.jollyroom.se/barnvagnar/barnvagnar/nuna-mixx-next"
+  />
+</ArticleLayout>
