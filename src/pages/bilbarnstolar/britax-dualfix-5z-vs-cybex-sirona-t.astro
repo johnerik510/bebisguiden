@@ -1,0 +1,208 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Britax Dualfix 5Z vs Cybex Sirona T' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Britax Römer Dualfix 5Z eller Cybex Sirona T?',
+    answer: 'Båda är toppmodeller i ADAC-test och R129-certifierade. Britax Dualfix 5Z vinner på läge-rotation (6 lägen) och stabilitet — den är den säkraste i ADAC:s test 2023. Cybex Sirona T vinner på pris (ca 500 kr billigare), vagns-kompatibilitet med Cybex barnvagnar och lätt in- och urlastning. Vill du ha bäst testresultat och maximal stabilitet: Britax. Vill du ha bättre pris och Cybex-system: Sirona T.',
+  },
+  {
+    question: 'Hur länge kan barnet sitta i Britax Dualfix 5Z och Cybex Sirona T?',
+    answer: 'Britax Römer Dualfix 5Z: 0–105 cm (ca 0–4 år), bakåtvänd 0–87 cm, framåtvänd 75–105 cm. Cybex Sirona T i-Size: 0–105 cm (ca 0–4 år), bakåtvänd 0–87 cm, framåtvänd 75–105 cm. Användningstiden är identisk — båda är gruppstolar för 0–4 år med rotation.',
+  },
+  {
+    question: 'Hur fungerar rotationen på Britax Dualfix 5Z och Cybex Sirona T?',
+    answer: 'Britax Dualfix 5Z roterar 360 grader med 6 incheckningspunkter för bakåtvänt och framåtvänt läge. Rotationen sker via en enhandsknapp. Cybex Sirona T roterar med en knapp i basen och låser i bakåtvänt och framåtvänt läge. Båda är enkla att hantera — Britax anses marginellt stabilare i roterat läge.',
+  },
+  {
+    question: 'Vad är skillnaden i ADAC-testresultat?',
+    answer: 'Britax Römer Dualfix 5Z fick betyget "Bäst" (1,5) i ADAC 2023 — ett av de bästa bilbarnstol-resultaten. Cybex Sirona T i-Size fick betyget "Bra" (2,0). Britax vinner alltså tydligt i ADAC-test, vilket är den viktigaste oberoende säkerhetsbedömningen för europeiska bilbarnstolar.',
+  },
+  {
+    question: 'Passar Cybex Sirona T till Cybex barnvagnar?',
+    answer: 'Ja — Cybex Sirona T med SensorSafe-teknologi är kompatibel med Cybex Priam 4, Mios 4 och Gazelle S-barnvagnar via adapter. Britax Römer Dualfix 5Z har begränsad vagns-kompatibilitet — den är primärt designad för bilinstallation. Har du en Cybex-vagn: Sirona T är det mer sömlösa valet.',
+  },
+  {
+    question: 'Vad kostar Britax Dualfix 5Z och Cybex Sirona T?',
+    answer: 'Britax Römer Dualfix 5Z kostar ca 4 990–5 490 kr (stol + flex-bas). Cybex Sirona T i-Size kostar ca 4 490–5 290 kr (stol + bas). Priserna är liknande — Cybex Sirona T är vanligtvis ca 300–500 kr billigare. Båda kräver ISOFIX-bas för rotation.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Britax Dualfix 5Z vs Cybex Sirona T 2026 — vilken roterande bilbarnstol vinner?"
+  description="Vi jämför Britax Römer Dualfix 5Z och Cybex Sirona T i-Size sida vid sida. ADAC-test, säkerhet, rotation och pris — vilken bilbarnstol väljer du 2026?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Britax Römer Dualfix 5Z och Cybex Sirona T i-Size är de två populäraste roterande bakåtvända bilbarnstolarna i Sverige 2026. Båda är R129-certifierade, roterar 360 grader och används 0–4 år. Men ADAC-testresultaten och priset skiljer sig.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vi reder ut skillnaderna och hjälper dig välja rätt.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Britax Römer Dualfix 5Z</th>
+          <th class="p-3 text-left font-semibold">Cybex Sirona T i-Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris (inkl. bas)</td>
+          <td class="p-3 text-text-light">ca 4 990–5 490 kr</td>
+          <td class="p-3 text-green-700 font-semibold">ca 4 490–5 290 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">ADAC-betyg 2023</td>
+          <td class="p-3 text-green-700 font-semibold">1,5 — Bäst</td>
+          <td class="p-3 text-text-light">2,0 — Bra</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Certifiering</td>
+          <td class="p-3 text-text-light">R129 (i-Size)</td>
+          <td class="p-3 text-text-light">R129 (i-Size)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Rotation</td>
+          <td class="p-3 text-green-700 font-semibold">360° — 6 lägen</td>
+          <td class="p-3 text-text-light">360° — enknappssystem</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Användningstid</td>
+          <td class="p-3 text-text-light">0–105 cm (ca 0–4 år)</td>
+          <td class="p-3 text-text-light">0–105 cm (ca 0–4 år)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vagns-kompatibilitet</td>
+          <td class="p-3 text-text-light">Begränsad</td>
+          <td class="p-3 text-green-700 font-semibold">Ja — Cybex-vagnar</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Säkerhets-indikator</td>
+          <td class="p-3 text-green-700 font-semibold">Integrerad klick-indikator</td>
+          <td class="p-3 text-text-light">Integrerad klick-indikator</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bäst för</td>
+          <td class="p-3 text-green-700 font-semibold">Maximal säkerhet (ADAC)</td>
+          <td class="p-3 text-text-light">Cybex-system och pris</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Säkerhet: Britax Dualfix 5Z vinner i ADAC</h2>
+  <p class="text-text-light mb-4 text-base">
+    Britax Römer Dualfix 5Z fick betyget "Bäst" (1,5) i ADAC:s bilbarnstolstest 2023 — ett av de bästa resultaten för en roterande bakåtvänd stol. ADAC är det viktigaste oberoende säkerhetstestet i Europa och ett "Bäst"-betyg är en stark kvalitetssignal.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Cybex Sirona T i-Size fick betyget "Bra" (2,0) i ADAC-test — ett starkt resultat men inte i toppklassen. Från ett rent säkerhetsperspektiv är Britax Dualfix 5Z det bättre valet.
+  </p>
+
+  <ProductCard
+    name="Britax Römer Dualfix 5Z"
+    badge="Bäst i ADAC-test"
+    price="ca 5 290 kr (inkl. bas)"
+    rating={9.1}
+    ageRange="0–105 cm (ca 0–4 år)"
+    pros={[
+      'ADAC-betyg 1,5 — bäst i klassen',
+      '360° rotation med 6 lägen och enhandsknapp',
+      'R129 i-Size certifierad',
+      'Integrerad klick-indikator för korrekt installation',
+    ]}
+    cons={[
+      'Något dyrare än Cybex Sirona T',
+      'Begränsad vagns-kompatibilitet',
+      'Tyngre att lyfta in/ur bilen',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Flexibilitet: Cybex Sirona T vinner på system</h2>
+  <p class="text-text-light mb-4 text-base">
+    Cybex Sirona T i-Size är kompatibel med Cybex barnvagnssystem (Priam, Mios, Gazelle S) — du kan använda stolen som babysits i vagnen och sedan i bilen via ISOFIX-basen. Det gör Sirona T till ett bättre val om du redan har eller planerar att köpa en Cybex barnvagn.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Priset är också marginellt lägre. Cybex Sirona T med Base T kostar vanligtvis ca 4 490–5 290 kr — ca 300–500 kr billigare än Britax Dualfix 5Z-systemet.
+  </p>
+
+  <ProductCard
+    name="Cybex Sirona T i-Size"
+    badge="Bäst vagns-kompatibilitet"
+    price="ca 5 290 kr (inkl. bas)"
+    rating={8.8}
+    ageRange="0–105 cm (ca 0–4 år)"
+    pros={[
+      'Kompatibel med Cybex barnvagnssystem',
+      'Enkel 360° rotation med en knapp',
+      'R129 i-Size certifierad',
+      'ADAC-betyg "Bra" (2,0)',
+    ]}
+    cons={[
+      'Lägre ADAC-betyg än Britax (2,0 vs 1,5)',
+      'Mindre rotation-lägen än Dualfix 5Z',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vem bör välja vad?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Britax Dualfix 5Z om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill ha bäst ADAC-säkerhetsbetyg (1,5)</li>
+        <li>+ Prioriterar maximal säkerhet framför pris</li>
+        <li>+ Inte behöver vagns-kompatibilitet</li>
+        <li>+ Vill ha fler rotationslägen (6 lägen)</li>
+        <li>+ Har en Britax-kompatibel vagn</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Cybex Sirona T om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Har eller planerar en Cybex barnvagn</li>
+        <li>+ Vill spara ca 300–500 kr</li>
+        <li>+ Vill ha enkel enknappssrotation</li>
+        <li>+ Söker Cybex-integration i ett samlat system</li>
+        <li>+ ADAC-betyget "Bra" är tillräckligt för dig</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/maxi-cosi-pebble-360-vs-cybex-cloud-t/" class="text-accent hover:underline">Maxi-Cosi Pebble 360 vs Cybex Cloud T 2026 — babysits jämförelse</a></li>
+      <li><a href="/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/" class="text-accent hover:underline">Cybex Cloud T vs Britax Baby-Safe iSense 2026</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — alla åldersgrupper</a></li>
+    </ul>
+  </div>
+
+  <StickyCTA
+    href="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+    productName="Britax Römer Dualfix 5Z — Jollyroom"
+    text="Se pris"
+  />
+</ArticleLayout>
