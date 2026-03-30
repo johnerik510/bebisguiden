@@ -1,0 +1,192 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
+  { label: 'Stokke Sleepi vs IKEA Sniglar' },
+];
+
+const faqItems = [
+  {
+    question: 'Är Stokke Sleepi värd 12x priset jämfört med IKEA Sniglar?',
+    answer: 'Det beror på hur länge du planerar att använda den och om du värdesätter adaptibilitet. IKEA Sniglar (499 kr) fungerar utmärkt 0–3 år. Stokke Sleepi V3 (5 999 kr) kan med tillbehör växa från nyfödd till 10 år — den oval designen möjliggör gynning för bebisar och converteras till junior-säng senare. Räknar du pris per användningsår är Sleepi faktiskt rimligare. Har du begränsad budget: Sniglar är ett utmärkt val.',
+  },
+  {
+    question: 'Vilken spjälsäng är lättast att montera?',
+    answer: 'IKEA Sniglar är enklare och snabbare att montera — IKEA:s instruktioner är tydliga och monteringen tar ca 20–30 minuter. Stokke Sleepi är mer komplex att sätta ihop tack vare den ovala designen och kan ta 45–60 minuter. Stokke levererar med tydliga instruktioner men fler komponenter.',
+  },
+  {
+    question: 'Hur länge kan barnet sova i IKEA Sniglar?',
+    answer: 'IKEA Sniglar rekommenderas från födseln till ca 3 år (max 15 kg). Sängen kan inte anpassas i höjd eller storlek. När barnet nått åldern för en vanlig säng (ca 3 år) behöver du byta ut Sniglar. Det är en instegsmodell som gör jobbet under de första åren utan att kosta en förmögenhet.',
+  },
+  {
+    question: 'Är Stokke Sleepi bra för nyfödda?',
+    answer: 'Ja — Stokke Sleepi V3 kan användas från födseln med New Born Set (köps separat, ca 1 499 kr). Den ovala designen gör att du kan gynna sängen, vilket är unikt och uppskattat av föräldrar till kolikbebisar. Utan tillbehör passar Sleepi från ca 6 månader. IKEA Sniglar passar direkt från födseln utan extra köp.',
+  },
+  {
+    question: 'Har Stokke Sleepi bra andrahandsvärde?',
+    answer: 'Ja — Stokke Sleepi håller sitt värde exceptionellt bra. En välhållen V2 eller V3 säljs för 2 000–4 000 kr på Blocket. Det innebär att din faktiska kostnad efter försäljning kan vara lägre än du tror. IKEA Sniglar har minimalt andrahandsvärde (50–200 kr). Räknar du nettokostnad är Sleepi mer prisvärd än den verkar.',
+  },
+  {
+    question: 'Vilken är säkrast — Stokke Sleepi eller IKEA Sniglar?',
+    answer: 'Båda möter europeisk säkerhetsstandard (EN 716) och är godkända för nyfödda. Stokke Sleepi har genomgått extra tester tack vare sin premiumpositionering och ovala design. IKEA Sniglar är en av världens mest sålda spjälsängar med dokumenterad säkerhet. Säkerhetsmässigt är båda fullt godkända — välj utifrån funktioner och budget, inte säkerhetsoro.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Stokke Sleepi vs IKEA Sniglar 2026 — vilken spjälsäng ska du välja?"
+  description="Vi jämför Stokke Sleepi V3 och IKEA Sniglar 2026. Pris, hållbarhet, nyfödda och lång användning — vilken spjälsäng ger mest värde för pengarna?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Stokke Sleepi V3 kostar 5 999 kr. IKEA Sniglar kostar 499 kr. Skillnaden är 12x. Men är den ovala, gynningsbara Sleepi tolv gånger bättre — eller är Sniglar helt enkelt tillräcklig? Vi reder ut det.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Svaret beror på dina prioriteringar: hur länge du vill använda sängen, om du värderar adaptibilitet och gynning, och hur viktig budgeten är. Båda sängarna är säkra och godkända — skillnaden ligger i filosofi och livslängd.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Stokke Sleepi V3</th>
+          <th class="p-3 text-left font-semibold">IKEA Sniglar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">5 999 kr (+ tillbehör vid behov)</td>
+          <td class="p-3 text-green-700 font-semibold">499 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Design</td>
+          <td class="p-3 text-green-700 font-semibold">Oval — unik, gynningsbar design</td>
+          <td class="p-3 text-text-light">Rektangulär — klassisk standard</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Passar från</td>
+          <td class="p-3 text-text-light">Nyfödd (med New Born Set) / 6 mån utan</td>
+          <td class="p-3 text-green-700 font-semibold">Direkt från födseln utan tillbehör</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Används upp till</td>
+          <td class="p-3 text-green-700 font-semibold">10 år (med Junior-kit)</td>
+          <td class="p-3 text-text-light">ca 3 år (max 15 kg)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Gynning möjlig</td>
+          <td class="p-3 text-green-700 font-semibold">Ja — unik funktion</td>
+          <td class="p-3 text-text-light">Nej</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Justerbara höjder</td>
+          <td class="p-3 text-green-700 font-semibold">Ja — 4 höjder</td>
+          <td class="p-3 text-text-light">2 höjder</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Andrahandsvärde</td>
+          <td class="p-3 text-green-700 font-semibold">Högt (2 000–4 000 kr)</td>
+          <td class="p-3 text-text-light">Lågt (50–200 kr)</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Material</td>
+          <td class="p-3 text-green-700 font-semibold">Massiv bok — hög kvalitet</td>
+          <td class="p-3 text-text-light">Massiv bok — enklare konstruktion</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Stokke Sleepi V3 — spjälsängarna för lång tid</h2>
+  <p class="text-text-light mb-3 text-base">
+    Stokke Sleepi V3 är inte en vanlig spjälsäng — den är en ovalformad sömnlösning designad för att växa med barnet. Med New Born Set (nyfödd), Baby Set (6 mån+) och Junior Kit kan samma säng användas från födseln till 10 år. Den ovala designen möjliggör gynning — du kan vagga barnet i sängen, en funktion som saknas i alla rektangulära alternativ.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Priset är högt, men andrahandsvärdet gör att nettokostnaden är rimligare: en välhållen Sleepi säljs för 2 000–4 000 kr på Blocket. Om du planerar fler barn är investeringen ännu mer motiverad.
+  </p>
+
+  <ProductCard
+    name="Stokke Sleepi V3"
+    badge="Bäst i test"
+    price="5 999 kr"
+    rating={4.8}
+    ageRange="Nyfödd–10 år (med Junior Kit)"
+    pros={['Oval design möjliggör gynning', 'Används i 10 år med tillbehör', 'Högt andrahandsvärde', '4 justerbara höjder']}
+    cons={['Högt pris', 'Tillbehör kostar extra (New Born Set 1 499 kr)', 'Oval madrassstorlek — specialmåttad']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/spjalsangar/stokke-sleepi-v3"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">IKEA Sniglar — det prisvärda valet</h2>
+  <p class="text-text-light mb-3 text-base">
+    IKEA Sniglar (499 kr) är en av världens mest sålda spjälsängar — och av goda skäl. Den är enkel, stabil och uppfyller europeisk säkerhetsstandard. Massiv bok, tvåstegs madrass-höjd, och en standard 70x140 cm-madrassstorlek (enkel att hitta). Ingenting mer, ingenting mindre.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Sniglar passar 0–3 år utan problem. Den är inte gjord för att hänga med barnet upp i vuxen ålder — det är en prisvärd instegsmodell som gör jobbet under de kritiska första åren. Perfekt för budget-medvetna föräldrar eller dem som vet att de inte vill ha sängen längre än 3 år.
+  </p>
+
+  <ProductCard
+    name="IKEA Sniglar"
+    badge="Bäst pris"
+    price="499 kr"
+    rating={4.3}
+    ageRange="0–3 år (max 15 kg)"
+    pros={['Överlägset lägst pris (499 kr)', 'Standard 70x140 cm — standardmadrass', 'Enkel montering', 'Massiv bok']}
+    cons={['Ingen gynningsfunktion', 'Används bara 0–3 år', 'Lågt andrahandsvärde', 'Begränsad justerbarhet']}
+    ctaText="Köp hos IKEA"
+    ctaHref="https://www.ikea.com/se/sv/p/sniglar-spjalsang-bok-00114291/"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vem bör välja vad?</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Stokke Sleepi V3 om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill använda sängen i 5–10 år</li>
+        <li>+ Vill ha möjlighet att gynna nyfödda</li>
+        <li>+ Planerar fler barn och vill återanvända</li>
+        <li>+ Värdesätter premium-design och build quality</li>
+        <li>+ Vill ha högt andrahandsvärde vid försäljning</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj IKEA Sniglar om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Har begränsad budget</li>
+        <li>+ Planerar att byta säng vid 3 år</li>
+        <li>+ Vill ha enkel montering och standardmadrass</li>
+        <li>+ Inte behöver gynningsfunktionen</li>
+        <li>+ Vill ha minimal investering för ett funktionellt val</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/spjalsangar/" class="text-accent hover:underline">Bästa spjälsängarna 2026 — komplett topplista</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnarna 2026 — test och jämförelse</a></li>
+      <li><a href="/matstolar/stokke-tripp-trapp-vs-ikea-antilop/" class="text-accent hover:underline">Stokke Tripp Trapp vs IKEA Antilop 2026</a></li>
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026</a></li>
+    </ul>
+  </div>
+
+  <StickyCTA
+    href="https://www.jollyroom.se/spjalsangar/stokke-sleepi-v3"
+    text="Se bästa pris — Stokke Sleepi V3"
+    productName="Bäst i test 2026"
+  />
+</ArticleLayout>
