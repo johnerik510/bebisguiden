@@ -1,0 +1,209 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Joie i-Spin XL vs Britax DualFix 5Z' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Joie i-Spin XL eller Britax Römer DualFix 5Z?',
+    answer: 'Det beror på budget och hur länge du vill använda stolen. Joie i-Spin XL kostar ca 2 490 kr och kan användas upp till 150 cm (ca 12 år) — ett extremt prisvärt val om du vill ha en stol som räcker länge. Britax DualFix 5Z kostar ca 4 990 kr, har ADAC-betyget "Bäst" (1,5) och är den säkrare stolen sett till oberoende testresultat. Har du budget och prioriterar det bästa tesade resultatet: Britax. Är du priskänslig och vill ha en stol som räcker till skolålder: Joie.',
+  },
+  {
+    question: 'Hur länge kan barnet sitta i Joie i-Spin XL och Britax DualFix 5Z?',
+    answer: 'Joie i-Spin XL: 40–150 cm (ca 0–12 år) — en av marknadens längsta användningstider. Britax Römer DualFix 5Z: 0–105 cm (ca 0–4 år). Joie i-Spin XL räcker alltså ca 8 år längre — det är en stor praktisk fördel och en del av varför priset per år faktiskt är liknande trots att inköpspriset är hälften.',
+  },
+  {
+    question: 'Är Joie i-Spin XL säker?',
+    answer: 'Ja — Joie i-Spin XL är R129 (i-Size) certifierad, vilket är det strängaste europeiska säkerhetskravet. Alla R129-certifierade stolar uppfyller EU:s säkerhetskrav. Britax DualFix 5Z har ett starkare oberoende testresultat (ADAC "Bäst"), men Joie i-Spin XL är en säker och vältestad stol för sin prisgrupp.',
+  },
+  {
+    question: 'Vad är skillnaden i rotation — Joie i-Spin XL vs Britax DualFix 5Z?',
+    answer: 'Båda roterar 360 grader. Joie i-Spin XL roterar smidigt via knapp och låser i bakåtvänt och framåtvänt läge. Britax DualFix 5Z har 6 incheckningspunkter och anses marginellt mer stabilt i roterat läge tack vare sitt mer massiva baskonstruktion. Praktisk skillnad: båda fungerar bra och är enkla att hantera.',
+  },
+  {
+    question: 'Passar Joie i-Spin XL till nyfödda?',
+    answer: 'Ja — Joie i-Spin XL börjar vid 40 cm (motsvarar ett nyfött barn) och används bakåtvänt tills barnet nått gränsen för bakåtvänt läge. Den har inbyggd körningsinliner för nyfödda. Britax DualFix 5Z börjar vid 0 cm och har en något mer omslutande position för de minsta. Båda fungerar för nyfödda men Britax har marginellt bättre stöd för de allra minsta.',
+  },
+  {
+    question: 'Kräver Joie i-Spin XL ISOFIX-bas?',
+    answer: 'Ja — Joie i-Spin XL installeras via ISOFIX och Top Tether. Stolen kan inte installeras med bilbälte (till skillnad från många äldre modeller). Britax DualFix 5Z installeras också via ISOFIX-bas (ingår inte alltid, kontrollera vid köp). Säkerställ att din bil har ISOFIX-fästen (praktiskt taget alla bilar från 2004 och framåt).',
+  },
+];
+---
+
+<ArticleLayout
+  title="Joie i-Spin XL vs Britax DualFix 5Z 2026 — budget mot premium?"
+  description="Vi jämför Joie i-Spin XL (ca 2 490 kr) och Britax Römer DualFix 5Z (ca 4 990 kr). R129, rotation, säkerhet och användningstid — vilken bilbarnstol ger bäst valuta 2026?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Joie i-Spin XL och Britax Römer DualFix 5Z är båda populära roterande bakåtvända bilbarnstolar — men på helt olika prisnivåer. Ca 2 500 kr mot ca 5 000 kr. Är premiumet värt det, eller ger Joie lika bra skydd för halva priset?
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vi jämför säkerhet, rotation, användningstid och totalkostnad.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Joie i-Spin XL</th>
+          <th class="p-3 text-left font-semibold">Britax Römer DualFix 5Z</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-green-700 font-semibold">ca 2 490 kr</td>
+          <td class="p-3 text-text-light">ca 4 990 kr (inkl. bas)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Certifiering</td>
+          <td class="p-3 text-text-light">R129 (i-Size)</td>
+          <td class="p-3 text-text-light">R129 (i-Size)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Oberoende test</td>
+          <td class="p-3 text-text-light">R129-godkänd</td>
+          <td class="p-3 text-green-700 font-semibold">ADAC "Bäst" (1,5)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Användningstid</td>
+          <td class="p-3 text-green-700 font-semibold">40–150 cm (ca 0–12 år)</td>
+          <td class="p-3 text-text-light">0–105 cm (ca 0–4 år)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Rotation</td>
+          <td class="p-3 text-text-light">360° bakåt/framåt</td>
+          <td class="p-3 text-green-700 font-semibold">360° — 6 lägen, stabil bas</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Installation</td>
+          <td class="p-3 text-text-light">ISOFIX + Top Tether</td>
+          <td class="p-3 text-text-light">ISOFIX-bas (ingår)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Vikt</td>
+          <td class="p-3 text-text-light">ca 13 kg</td>
+          <td class="p-3 text-text-light">ca 13,5 kg</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bäst för</td>
+          <td class="p-3 text-green-700 font-semibold">Pris, lång användningstid</td>
+          <td class="p-3 text-text-light">Bästa testresultat, ADAC</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Pris och totalkostnad: Joie vinner klart</h2>
+  <p class="text-text-light mb-4 text-base">
+    Joie i-Spin XL kostar ca 2 490 kr — drygt hälften av Britax DualFix 5Z:s ca 4 990 kr. Men det finns en viktig faktor att ta med i beräkningen: användningstiden.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Joie i-Spin XL kan användas upp till 150 cm (ca 12 år). Britax DualFix 5Z slutar vid 105 cm (ca 4 år). Det innebär att med Joie slipper du köpa en ny stol till förskoleåldern — med Britax behöver du investera i en ny stol vid ca 4 år. Räknat per år av användning är Joie klart mer prisvärd.
+  </p>
+
+  <ProductCard
+    name="Joie i-Spin XL"
+    badge="Bäst pris och användningstid"
+    price="ca 2 490 kr"
+    rating={8.5}
+    ageRange="40–150 cm (ca 0–12 år)"
+    pros={[
+      'Ca hälften av Britax-priset',
+      'Används hela vägen till 150 cm (ca 12 år)',
+      'R129 i-Size certifierad',
+      '360° rotation med enkel knapp',
+    ]}
+    cons={[
+      'Svagare oberoende testresultat jämfört med Britax ADAC-betyg',
+      'Något sämre stoppning och material',
+      'Bas ingår inte alltid vid köp',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-xl"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Säkerhet: Britax DualFix 5Z vinner i oberoende test</h2>
+  <p class="text-text-light mb-4 text-base">
+    Britax Römer DualFix 5Z fick betyget "Bäst" (1,5) i ADAC:s bilbarnstolstest 2023 — ett av de starkaste resultaten för en roterande bakåtvänd stol. ADAC är det ledande oberoende bilsäkerhetstestet i Europa och ett högt ADAC-betyg är ett viktigt kvitto på säkerheten utöver EU-minimikraven.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Joie i-Spin XL är R129 (i-Size) certifierad — det strängaste EU-standarden för bilbarnstolar. Det innebär att stolen uppfyller alla lagkrav. Skillnaden är att Britax har ett mer detaljerat oberoende test som visar hur väl stolen presterar utöver minimikraven.
+  </p>
+
+  <ProductCard
+    name="Britax Römer DualFix 5Z"
+    badge="ADAC Bäst — starkast säkerhetstest"
+    price="ca 4 990 kr (inkl. bas)"
+    rating={9.1}
+    ageRange="0–105 cm (ca 0–4 år)"
+    pros={[
+      'ADAC-betyg 1,5 — Bäst i klassen',
+      '360° rotation med 6 stabila incheckningspunkter',
+      'R129 i-Size certifierad',
+      'Integrerad installationsindikator',
+    ]}
+    cons={[
+      'Dubbelt priset mot Joie i-Spin XL',
+      'Används bara till 105 cm (ca 4 år) — sedan ny stol',
+      'Tyngre konstruktion',
+    ]}
+    ctaText="Se pris på Jollyroom"
+    ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vilken ska du välja?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Joie i-Spin XL om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Budget under 3 000 kr för bilbarnstol</li>
+        <li>+ Vill ha en stol som håller från baby till 12 år</li>
+        <li>+ Prioriterar prisvärdhet och långtidsanvändning</li>
+        <li>+ Nöjd med R129-certifiering som säkerhetsbevis</li>
+        <li>+ Inte behöver vagns-kompatibilitet</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Britax DualFix 5Z om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill ha det bästa oberoende testresultatet (ADAC)</li>
+        <li>+ Budget 4 500–6 000 kr för bilbarnstol</li>
+        <li>+ Prioriterar absolut bästa dokumenterade säkerhet</li>
+        <li>+ Vill ha Britax-kvalitet och material</li>
+        <li>+ Planerar att köpa ny stol vid 4 år ändå</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="p-5 bg-bg-alt rounded-xl border border-border mb-8">
+    <h2 class="font-heading text-lg font-bold text-text mb-3">Relaterade jämförelser</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/britax-dualfix-5z-vs-cybex-sirona-t/" class="text-accent hover:underline">Britax DualFix 5Z vs Cybex Sirona T — roterande bakåtvända</a></li>
+      <li><a href="/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/" class="text-accent hover:underline">Cybex Cloud T vs Britax Baby-Safe iSense — babyskydd</a></li>
+      <li><a href="/bilbarnstolar/maxi-cosi-pebble-360-vs-cybex-cloud-t/" class="text-accent hover:underline">Maxi-Cosi Pebble 360 vs Cybex Cloud T</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolar 2026</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Alla bilbarnstolar — komplett guide 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    url="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-xl"
+    text="Se pris på Joie i-Spin XL"
+  />
+</ArticleLayout>
