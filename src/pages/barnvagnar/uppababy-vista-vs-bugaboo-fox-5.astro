@@ -1,0 +1,201 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'UPPAbaby Vista vs Bugaboo Fox 5' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — UPPAbaby Vista V3 eller Bugaboo Fox 5?',
+    answer: 'Bugaboo Fox 5 vinner på körkomfort och är bäst för ojämna svenska underlag. UPPAbaby Vista V3 vinner på verklighet — det är en mer komplett paket för familjer som planerar syskon, med bättre syskonvagns-funktion och lägre pris (ca 11 990 vs 14 990 kr). Välj Fox 5 om körkomfort är allt. Välj Vista V3 om du planerar barn 2 och vill ha ett mer komplett system.',
+  },
+  {
+    question: 'Vad kostar UPPAbaby Vista V3 och Bugaboo Fox 5?',
+    answer: 'UPPAbaby Vista V3 kostar ca 11 990 kr i grundutförande (chassis + sittdel). Bugaboo Fox 5 kostar ca 14 990 kr med liggdel och sittdel. UPPAbaby är alltså ca 3 000 kr billigare. UPPAbabys Rumble Seat (syskonplats) kostar ca 2 490 kr extra.',
+  },
+  {
+    question: 'Vilken barnvagn passar bäst för syskon?',
+    answer: 'UPPAbaby Vista V3 är klart bättre för syskon. Den kan byggas ut till en duovagn med Rumble Seat och kan ta upp till tre barn (bassinet + sittdel + piggyback). Bugaboo Fox 5 kan kombineras med Bugaboo Donkey 5 eller Bugaboo Sibling Board men processen är dyrare och mer komplicerad.',
+  },
+  {
+    question: 'Vilken barnvagn är lättast att vika?',
+    answer: 'UPPAbaby Vista V3 väger 11,8 kg och Bugaboo Fox 5 väger 12,4 kg. UPPAbaby är något lättare. Båda har en-handsvickning men UPPAbaby anses ha ett mer intuitivt vikningssystem av de flesta föräldrar i tester. Vista V3 tar dessutom upp mindre plats vikad.',
+  },
+  {
+    question: 'Vilken barnvagn passar bäst för svenska vintrar?',
+    answer: 'Bugaboo Fox 5 anses överlag bättre för svenska vinterförhållanden tack vare sin fullfjädrade konstruktion och stora hjul som klarar snö och is bättre. UPPAbaby Vista V3 klarar sig bra men kräver mer kraft vid tyngre snöförhållanden. Båda fungerar med vinterpåsar och muffar.',
+  },
+  {
+    question: 'Är UPPAbaby Vista V3 kompatibel med bilbarnstolar?',
+    answer: 'Ja — UPPAbaby Vista V3 är kompatibel med Maxi-Cosi (via adapter), Cybex, Nuna PIPA och UPPAbaby MESA via adapter. Bugaboo Fox 5 tar Bugaboo Turtle, Maxi-Cosi och Nuna via Bugaboo-adapter. Kontrollera kompatibilitet med din bilbarnstol innan köp.',
+  },
+];
+---
+
+<ArticleLayout
+  title="UPPAbaby Vista V3 vs Bugaboo Fox 5 2026 — vilken premiumvagn vinner?"
+  description="Vi jämför UPPAbaby Vista V3 och Bugaboo Fox 5 sida vid sida. Pris, körkomfort, vikt, syskonvagn och vem som vinner 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-03-30"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    UPPAbaby Vista V3 och Bugaboo Fox 5 är de två mest diskuterade premiumvagnarna bland svenska föräldrar 2026. Bugaboo till 14 990 kr är den svenska marknadsledarens flaggskepp. UPPAbaby till 11 990 kr är den amerikanska utmanaren med ett starkare syskonvagns-system.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vi reder ut skillnaderna och hjälper dig välja rätt.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">UPPAbaby Vista V3</th>
+          <th class="p-3 text-left font-semibold">Bugaboo Fox 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris (grundutförande)</td>
+          <td class="p-3 text-green-700 font-semibold">ca 11 990 kr</td>
+          <td class="p-3 text-text-light">ca 14 990 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vikt</td>
+          <td class="p-3 text-green-700 font-semibold">11,8 kg</td>
+          <td class="p-3 text-text-light">12,4 kg</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Körkomfort</td>
+          <td class="p-3 text-text-light">Bra (fjädrad framaxel)</td>
+          <td class="p-3 text-green-700 font-semibold">Bäst i test (fullfjädrad)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Syskonvagn</td>
+          <td class="p-3 text-green-700 font-semibold">Inbyggt stöd (Rumble Seat, upp till 3 barn)</td>
+          <td class="p-3 text-text-light">Kräver Donkey 5 (dyrare)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Bassinet (liggdel)</td>
+          <td class="p-3 text-green-700 font-semibold">Ingår i priset</td>
+          <td class="p-3 text-text-light">Ingår i fullset</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Vikningsystem</td>
+          <td class="p-3 text-green-700 font-semibold">Kompakt och intuitiv</td>
+          <td class="p-3 text-text-light">Enkel en-handsvickning</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Bakhjulsstorlek</td>
+          <td class="p-3 text-text-light">28 cm</td>
+          <td class="p-3 text-green-700 font-semibold">30 cm</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Ursprung</td>
+          <td class="p-3 text-text-light">USA</td>
+          <td class="p-3 text-text-light">Nederländerna</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Bilbarnstolskompatibilitet</td>
+          <td class="p-3 text-green-700 font-semibold">Maxi-Cosi, Cybex, Nuna, MESA</td>
+          <td class="p-3 text-text-light">Bugaboo Turtle, Maxi-Cosi, Nuna</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bäst för</td>
+          <td class="p-3 text-green-700 font-semibold">Syskon, pris och värde</td>
+          <td class="p-3 text-text-light">Körkomfort och premium</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Körkomfort: Bugaboo Fox 5 vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Bugaboo Fox 5 har en fullfjädrad konstruktion — både fram och bak — med stora 30 cm bakhjul som rullar smidigt över grus, snö och ojämna underlag. Körupplevelsen är märkbar bättre vid backar, trottoarkanter och sämre asfalt. Det är en av de absolut mjukast körande vagnarna i testet.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    UPPAbaby Vista V3 har fjädring på framaxeln men inte lika fullständig som Fox 5. Det är en bra vagn som rullar väl, men vid sämre underlag märks skillnaden. I stadsmiljö med goda cykelbanor och vällagd asfalt är skillnaden minimal.
+  </p>
+
+  <ProductCard
+    name="Bugaboo Fox 5"
+    badge="Bäst körkomfort"
+    price="ca 14 990 kr"
+    rating={4.8}
+    ageRange="Från födseln till ca 22 kg"
+    pros={['Fullfjädrad — bäst körkomfort i test', 'Stora 30 cm bakhjul för ojämna underlag', 'Premium material och build quality', 'Väletablerat servicenätverk i Sverige']}
+    cons={['Dyrare (ca 14 990 kr)', 'Tyngre (12,4 kg)', 'Syskonvagn kräver separat och dyrare Donkey 5']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/barnvagnar/barnvagnar/bugaboo-fox-5"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Syskonvagn: UPPAbaby Vista V3 vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    UPPAbaby Vista V3 är designad från grunden för att växa med familjen. Med Rumble Seat (ca 2 490 kr extra) och PiggyBack-plattform kan Vista V3 ta upp till tre barn — bassinet + sittdel + syskonplattform. Det är ett imponerande system till ett rimligt extrapris.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Bugaboo Fox 5 kombineras med Bugaboo Donkey 5 för syskonvagn — en helt annan (och dyrare) vagn. Alternativet är Sibling Board (syskonbräda), men det ger inte lika ergonomisk lösning som Vista V3:s Rumble Seat. Om du planerar syskon inom 2–3 år är Vista V3 den mer kostnadseffektiva investeringen.
+  </p>
+
+  <ProductCard
+    name="UPPAbaby Vista V3"
+    badge="Bäst för syskon"
+    price="ca 11 990 kr"
+    rating={4.6}
+    ageRange="Från födseln till ca 22 kg"
+    pros={['3 000 kr billigare än Bugaboo Fox 5', 'Inbyggt syskonvagns-stöd (Rumble Seat + PiggyBack)', 'Bassinet ingår i priset', 'Lättare (11,8 kg) och kompaktare vikad']}
+    cons={['Inte lika bra körkomfort som Fox 5 vid ojämna underlag', 'Amerikanskt märke med något smalare servicenätverk i Sverige']}
+    ctaText="Se pris hos BabyShop"
+    ctaHref="https://www.babyshop.com/sv/brand/uppababy/barnvagnar/uppababy-vista-v3"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vem bör välja vad?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj UPPAbaby Vista V3 om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Planerar syskon och vill ha ett komplett system</li>
+        <li>+ Vill spara ca 3 000 kr mot Fox 5</li>
+        <li>+ Cyklar mestadels i vällagd stadsmiljö</li>
+        <li>+ Prioriterar ett lättare och kompaktare vikningsystem</li>
+        <li>+ Vill ha bassinet inkluderat i priset</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Bugaboo Fox 5 om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Prioriterar absolut bäst körkomfort</li>
+        <li>+ Cyklar mycket på ojämna underlag, grus eller snö</li>
+        <li>+ Vill ha branschens mest kända premium-vagn</li>
+        <li>+ Inte planerar syskon eller väljer Donkey 5 för det</li>
+        <li>+ Har budget för 14 990 kr</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/bugaboo-fox-5-vs-stokke-xplory-x/" class="text-accent hover:underline">Bugaboo Fox 5 vs Stokke Xplory X 2026</a></li>
+      <li><a href="/barnvagnar/bugaboo-fox-5-vs-cybex-priam-4/" class="text-accent hover:underline">Bugaboo Fox 5 vs Cybex Priam 4 2026</a></li>
+      <li><a href="/barnvagnar/babyzen-yoyo-vs-bugaboo-butterfly/" class="text-accent hover:underline">Babyzen YOYO vs Bugaboo Butterfly 2026 — resevagnar</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — alla kategorier</a></li>
+    </ul>
+  </div>
+
+  <StickyCTA
+    href="https://www.babyshop.com/sv/brand/uppababy/barnvagnar/uppababy-vista-v3"
+    text="Se bästa pris — UPPAbaby Vista V3"
+    productName="Bäst för syskon 2026"
+  />
+</ArticleLayout>
