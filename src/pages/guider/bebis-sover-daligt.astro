@@ -1,0 +1,140 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis sover dåligt' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur länge är det normalt att bebisen sover dåligt?',
+    answer: 'Det varierar enormt. De flesta nyfödda vaknar var 2–3 timme dygnet runt. Runt 3–4 månaders ålder sker ofta en regression som gör sömnmönstret sämre innan det förbättras. Majoriteten av bebisarna sover 5–6 timmar i sträck någon gång runt 3–6 månaders ålder. Det finns ingen definition av "sover genom natten" — många sömnforskare räknar 5 timmar i sträck som tillräckligt för ett litet barn.',
+  },
+  {
+    question: 'Vad är 4-månaders sömnregressionen?',
+    answer: '4-månaders sömnregressionen är en permanent förändring i bebisens sömnarkitektur. Runt 3–4 månader mognar sömncyklerna och bebisen börjar vakna mellan sömncykler precis som vuxna — men har inte lärt sig att somna om på egen hand. Det är inte en fas som går över av sig självt på samma sätt som en regression; bebisen behöver lära sig att somna om utan hjälp. Sömnträning kan vara ett verktyg här.',
+  },
+  {
+    question: 'Ska man låta bebisen gråta när man sömntränar?',
+    answer: 'Sömnträningsmetoderna varierar: CIO (Cry It Out / "låt gråta") innebär att man lägger bebisen i sängen vaken och inte går in förrän morgonen. Ferber-metoden innebär att man kontrollerar med ökande intervaller. "No tears"-metoder (Pantley, Sears) innebär att man gradvis tonar ned hjälpen utan att låta bebisen gråta. Forskning visar att CIO och Ferber inte skadar barnet psykologiskt — men det är ett personligt val. Sömnträning rekommenderas generellt inte före 4–6 månaders korrigerad ålder.',
+  },
+  {
+    question: 'Kan hunger vara orsaken till att bebisen vaknar?',
+    answer: 'Ja — fram till 4–6 månader är nattmålningar biologiskt normala och nödvändiga. En bebis under 3 månader bör inte sömntränas och ska alltid erbjudas mat vid uppvaknande. Runt 4–6 månader klarar de flesta bebisars magsäck att klara natten utan mat, men det beror på vikten och tillväxten. Vid amning är nattmålningar viktiga för mjölkproduktionen de första månaderna.',
+  },
+  {
+    question: 'Varför vaknar bebisen bara i armarna?',
+    answer: 'Bebisen somnar i en djup sömfas (NREM) medan du håller hen, men vaknar till när du lägger ner hen — antingen av temperaturfördringen eller att hen märker att situationen förändrats. Lösningar: lägg ner bebisen "sömnig men vaken" så hen övar att somna i sängen, värm madrassen lite med din hand innan du lägger ner, böj dig hela vägen ner med bebisen innan du lyfter dina händer.',
+  },
+  {
+    question: 'Hjälper en babyvakt om bebisen sover dåligt?',
+    answer: 'En babyvakt löser inte sömnproblem men kan hjälpa föräldrarna att reagera snabbare och sova lättare. Babyvakter med inbyggd ljud- och rörelseindikering kan ge varning när bebisen börjar röra på sig — ibland räcker det med ett hostningsljud eller ett napp för att bebisen inte ska vakna fullt. Se vår guide om bästa babyvakter.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis sover dåligt – orsaker och vad du kan göra 2026"
+  description="Bebis sover dåligt? Normala sömnmönster, sömnregressioner (4 månader, 8 månader), sömnträning och konkreta tips för varje ålder. Skrivet utifrån forskning."
+  breadcrumbs={breadcrumbs}
+  canonical="https://www.bebisguiden.se/guider/bebis-sover-daligt/"
+  updatedDate="2026-04-03"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+    { title: 'Bästa sovsäck för bebis', href: '/sovsackar/' },
+    { title: 'Bästa spjälsäng 2026', href: '/spjalsangar/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Att bebisen sover dåligt är det vanligaste samtalsämnet på BVC och i föräldragrupper. Det är normalt — och det är utmattande. Den här guiden går igenom varför bebisen vaknar, vad du kan göra för varje ålder, och när sömnträning kan vara ett alternativ.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigt att veta</p>
+  <p class="text-sm text-text-light">Nattuppvaknanden hos nyfödda är biologiskt normala och kan inte elimineras helt. Målet är att ge bebisen rätt förutsättningar — inte att tvinga fram en sömnrytm som inte matchar åldern.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Normalt sömnmönster – vad förvänta sig per ålder</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Ålder</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Total sömn/dygn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Nattsömn i sträck</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Nattmålningar</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">0–3 månader</td><td class="px-4 py-3 text-text-light">14–17 tim</td><td class="px-4 py-3 text-text-light">2–4 timmar</td><td class="px-4 py-3 text-text-light">2–4 per natt</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">3–6 månader</td><td class="px-4 py-3 text-text-light">12–15 tim</td><td class="px-4 py-3 text-text-light">4–6 timmar</td><td class="px-4 py-3 text-text-light">1–3 per natt</td></tr>
+      <tr><td class="px-4 py-3 font-medium">6–9 månader</td><td class="px-4 py-3 text-text-light">12–14 tim</td><td class="px-4 py-3 text-text-light">6–8 timmar</td><td class="px-4 py-3 text-text-light">0–2 per natt</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">9–12 månader</td><td class="px-4 py-3 text-text-light">12–14 tim</td><td class="px-4 py-3 text-text-light">8–10 timmar</td><td class="px-4 py-3 text-text-light">0–1 per natt</td></tr>
+      <tr><td class="px-4 py-3 font-medium">1–2 år</td><td class="px-4 py-3 text-text-light">11–14 tim</td><td class="px-4 py-3 text-text-light">10–12 timmar</td><td class="px-4 py-3 text-text-light">0–1 per natt</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-xs text-text-light mb-6">Källor: American Academy of Sleep Medicine, NHS, Socialstyrelsen. Siffrorna är genomsnitt — stor individuell variation är normal.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">De vanligaste sömnregressionerna</h2>
+<p class="text-text-light mb-4">En sömnregression innebär att en bebis som sovit acceptabelt plötsligt börjar vakna mycket mer. Det är kopplat till hjärnans utvecklingssteg.</p>
+
+<ul class="list-disc pl-5 text-text-light space-y-3 mb-6">
+  <li><strong>4 månaders regression (den svåraste):</strong> Permanent förändring i sömnarkitekturen. Bebisens sömn delas upp i tydligare cykler och hen börjar vakna mellan dem. Varar 2–6 veckor men sömnmönstret kan förbli förändrat om inget aktivt arbete görs.</li>
+  <li><strong>6 månaders regression:</strong> Kopplad till separation anxiety och motorisk utveckling (börjar krypa). Varar 2–4 veckor.</li>
+  <li><strong>8–10 månaders regression:</strong> Starkt kopplad till separation anxiety (Peak vid 9 månader). Bebisen förstår nu att du existerar när du inte syns och kan bli mycket orolig nattetid.</li>
+  <li><strong>12 månaders regression:</strong> Bebisen övergår från 2 sovstunder till 1 på dagen, vilket tillfälligt stör nattrutinen.</li>
+  <li><strong>18 månaders regression:</strong> Stark vilja till självständighet men inte förmåga. Nattliga uppvaknanden och svårighet att somna på kvällen.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">De vanligaste orsakerna till dålig sömn</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">1. Sömnassociation</h3>
+<p class="text-text-light mb-3">Om bebisen alltid somnar vid bröstet, med napp eller i barnvagnen kopplar hen ihop dessa saker med att somna. När hen vaknar naturligt mellan sömncykler kan hen inte somna om på egen hand eftersom "insomningsbetingelserna" saknas. Det är den vanligaste orsaken till frekventa nattuppvaknanden efter 4 månader.</p>
+<p class="text-text-light mb-4"><strong>Åtgärd:</strong> Lägg bebisen i sängen "sömnig men vaken" — inte djupt sovande. Det tar tid men lär bebisen att somna utan hjälpmedel.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">2. Övertrötthet</h3>
+<p class="text-text-light mb-4">Paradoxalt nog sover övertrötta bebisars sämre. Kortisol (stresshormon) stiger när bebisen är vaken för länge och gör det svårare att somna och lättare att vakna. Lösning: korta tider mellan sovstunder (wakewindows) och tidigare kvällsläggningstid.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">3. Undertrötthet och för sent dagssovande</h3>
+<p class="text-text-light mb-4">Om bebisen sover för sent på dagen förskjuts melatoninproduktionen och det tar längre tid att somna på kvällen. Sista dagssovstunden bör för de flesta avslutas 2–3 timmar innan kvällsläggningen.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">4. Hunger</h3>
+<p class="text-text-light mb-4">Under 4 månader är nattmålningar normala och ska inte begränsas. Från 4–6 månader börjar de flesta klara natten utan mat, förutsatt att de äter tillräckligt under dagen. Introduktion av fast föda (efter 6 månader) behöver inte förbättra sömnen — studier visar ingen statistisk skillnad.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">5. Miljön</h3>
+<p class="text-text-light mb-4">
+  Rumstemperatur (idealt 18–20°C), ljus (gardiner som mörknar rummet) och ljud (white noise kan hjälpa) påverkar sömnkvaliteten. En <a href="/sovsackar/" class="text-accent hover:underline">sovsäck med rätt TOG-värde</a> håller bebisen lagom varm utan att vara en kvävningsrisk. En <a href="/babyvakter/" class="text-accent hover:underline">babyvakt med white noise-funktion</a> kan fylla dubbel funktion.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Sömnträning – när och hur</h2>
+<p class="text-text-light mb-4">Sömnträning innebär att lära bebisen att somna in på egen hand. Det är inte lämpligt före 4 månaders korrigerad ålder och rekommenderas generellt från 4–6 månader.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Vanliga metoder</h3>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Ferber-metoden (kontrollerat gråtande):</strong> Lägg bebisen vaken i sängen, gå in och luta dig efter ökande intervaller (3, 5, 10 min) utan att ta upp bebisen. Vetenskapligt välstuderad, inga bevis på psykologisk skada.</li>
+  <li><strong>CIO / "låt gråta":</strong> Lägg bebisen i sängen vaken, gå inte in. Snabbast resultat men svårt för föräldrarna. Samma forskning gäller: ingen skada dokumenterad.</li>
+  <li><strong>Fading-metoden:</strong> Minska gradvis din närvaro — stå vid sängen, sedan vid dörren, sedan utanför. Tar längre tid men utan gråt.</li>
+  <li><strong>SWAP (Sleepy-But-Awake Putting):</strong> Inte en metod utan ett verktyg — lägg alltid bebisen i sängen vaken för att bryta sömnassociationerna.</li>
+</ul>
+<p class="text-text-light mb-4">Forskning från JAMA Pediatrics (2016) och Journal of Child Psychology (2020) visar att sömnträning varken ökar stressnivåer (kortisol) eller påverkar anknytningen negativt jämfört med kontrollgrupper.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Rutiner som faktiskt hjälper</h2>
+<ol class="list-decimal pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Konsekvent kvällsrutin:</strong> 20–30 minuter — bad, massage, sång, mörkrum, säng. Hjärnan lär sig att rutinen förutsäger sömn.</li>
+  <li><strong>Mörkrum:</strong> Blackout-gardiner undertrycker kortisol och triggrar melatonin.</li>
+  <li><strong>White noise:</strong> 65–70 dB (ungefär som ett hårförstärkare på låg volym) imiterar ljudet i livmodern och dämpar störande ljud.</li>
+  <li><strong>Tidiga läggningstider:</strong> De flesta bebisars biologiska sömnbehov är störst kring 18–19.30 — inte 21.00 som passar föräldrarna bättre.</li>
+  <li><strong>Väck för att mata:</strong> Fram till 4 månader hjälper ett "dream feed" runt 22.00 att förlänga den första sömnsträckan.</li>
+</ol>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
