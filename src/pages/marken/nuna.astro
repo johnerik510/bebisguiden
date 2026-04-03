@@ -1,0 +1,190 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Nuna' },
+];
+
+const products = [
+  {
+    name: 'Nuna Mixx Next',
+    badge: 'Bäst totalt',
+    price: 'ca 9 999 kr',
+    rating: 4.7,
+    ctaHref: 'https://addrevenue.io/t?a=987081&c=3467325',
+    features: {
+      'Typ': 'Barnvagn',
+      'Barnets vikt': 'upp till 22 kg',
+      'Liggdel': 'Ingår',
+      'Vikt vagn': 'ca 12,4 kg',
+      'Hjultyp': 'Allterräng',
+    },
+  },
+  {
+    name: 'Nuna Triv',
+    badge: 'Lättast',
+    price: 'ca 7 499 kr',
+    rating: 4.5,
+    ctaHref: 'https://addrevenue.io/t?a=987081&c=3467325',
+    features: {
+      'Typ': 'Barnvagn',
+      'Barnets vikt': 'upp till 22 kg',
+      'Liggdel': 'Ingår',
+      'Vikt vagn': 'ca 9,8 kg',
+      'Hjultyp': 'Stadshjul',
+    },
+  },
+  {
+    name: 'Nuna Demi Grow',
+    badge: 'Bäst syskonvagn',
+    price: 'ca 14 999 kr',
+    rating: 4.6,
+    ctaHref: 'https://addrevenue.io/t?a=987081&c=3467325',
+    features: {
+      'Typ': 'Syskonvagn',
+      'Antal barn': 'upp till 2',
+      'Max vikt': '20 kg per sits',
+      'Liggdel': 'Separat tillbehör',
+      'Vikt vagn': 'ca 15,5 kg',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Barnets vikt', 'Liggdel', 'Vikt vagn', 'Hjultyp'];
+
+const faqItems = [
+  {
+    question: 'Vad kostar en Nuna barnvagn?',
+    answer: 'Nuna barnvagnar kostar typiskt 7 000–15 000 kr för standardmodeller. Nuna Triv ligger kring 7 499 kr, Nuna Mixx Next kring 9 999 kr och syskonvagnen Demi Grow kring 14 999 kr. Det placerar Nuna i det övre mellanprissegmentet — dyrare än budgetalternativ men billigare än Bugaboo och Stokke.',
+  },
+  {
+    question: 'Är Nuna ett bra märke?',
+    answer: 'Ja, Nuna är ett välrenommerat holländskt varumärke grundat 2007 som är känt för kvalitet, säkerhet och snygg design. Märket har starka resultat i oberoende säkerhetstester. Nuna Mixx Next är en av de mest prisvärda premium-barnvagnarna på marknaden och har vunnit flera utmärkelser.',
+  },
+  {
+    question: 'Vilken Nuna barnvagn passar för nyfödda?',
+    answer: 'Nuna Mixx Next levereras med liggdel som passar från födseln. Nuna Triv är en sittvagn men kan kompletteras med separata tillbehör för nyfödda. Om du vill ha ett kompletterat system rekommenderas Mixx Next med liggdelen inkluderad. Du kan också kombinera Nuna PIPA bilstolsskal med Mixx Next för ett komplett resesystem.',
+  },
+  {
+    question: 'Var kan man köpa Nuna i Sverige?',
+    answer: 'Nuna säljs hos auktoriserade återförsäljare i Sverige, bland annat Babyonline, Jollyroom, Babyshop och utvalda fysiska babyfackhändlare. Köp alltid från auktoriserad återförsäljare för att garantin ska gälla — Nuna erbjuder garanti men enbart vid inköp via godkända kanaler.',
+  },
+  {
+    question: 'Hur skiljer sig Nuna Mixx Next från Bugaboo Fox 5?',
+    answer: 'Nuna Mixx Next (ca 9 999 kr) är ett mer prisvärt alternativ till Bugaboo Fox 5 (ca 17 000+ kr). Bugaboo Fox 5 är styvare i chassit och har ett kraftigare fjädringssystem för bättre terrängprestanda, men Nuna Mixx Next klarar de flesta stadsmiljöer och lätt terräng utan problem. För de flesta föräldrar i Sverige ger Nuna Mixx Next 80% av Bugaboos prestanda till halva priset.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Nuna barnvagnar 2026 — Mixx Next, Triv och Demi Grow recenserade"
+  description="Vi recenserar Nunas barnvagnar 2026. Nuna Mixx Next, Triv och Demi Grow — kvalitet, pris och vilken som passar dig bäst."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-03"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Nuna är ett holländskt premiummärke grundat 2007 som vuxit sig starkt på den svenska marknaden. Med fokus på säkerhet, snygg design och smarta detaljer erbjuder Nuna ett av de mest prisvärda premiumpaketen på barnvagnsmarknaden. Vi recenserar tre av deras populäraste modeller.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Nunas bästa barnvagnar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Nuna Mixx Next"
+      badge="Bäst totalt"
+      price="ca 9 999 kr"
+      rating={4.7}
+      ageRange="Från födseln (med liggdel) till ca 4 år"
+      pros={['Liggdel ingår — klar från dag ett', 'Lätt för sin klass (12,4 kg)', 'Bra fjädring för stadsbruk och lätt terräng', 'Snygg minimalistisk design']}
+      cons={['Inte lika kraftig fjädring som Bugaboo Fox 5 i tuff terräng', 'Kan vara dyr i kombination med tillbehör']}
+      ctaText="Se pris hos Babyonline"
+      ctaHref="https://addrevenue.io/t?a=987081&c=3467325"
+    />
+
+    <ProductCard
+      name="Nuna Triv"
+      badge="Lättast"
+      price="ca 7 499 kr"
+      rating={4.5}
+      ageRange="6 månader–ca 4 år (sittvagn)"
+      pros={['Lättast i klassen (9,8 kg)', 'Kompakt och smidig i stadsmiljö', 'Prisvärd ingångspunkt till Nuna', 'Enkel att vika med en hand']}
+      cons={['Liggdel ingår inte — extra kostnad', 'Inte lika bra för nyfödda utan tillbehör', 'Enklare fjädring jämfört med Mixx Next']}
+      ctaText="Se pris hos Babyonline"
+      ctaHref="https://addrevenue.io/t?a=987081&c=3467325"
+    />
+
+    <ProductCard
+      name="Nuna Demi Grow"
+      badge="Bäst syskonvagn"
+      price="ca 14 999 kr"
+      rating={4.6}
+      ageRange="Från födseln, upp till 2 barn"
+      pros={['Konvertibel — använd som enkelvagn, utöka till syskonvagn', 'Snygg design som inte ser ut som en syskonvagn', 'Stark och stabil konstruktion', 'Barn 1 kan sitta på platsen bak eller fram']}
+      cons={['Dyrt grundpris', 'Blir tung med två barn och tillbehör', 'Bredare och svårare att manövrera i trängre miljöer']}
+      ctaText="Se pris hos Babyonline"
+      ctaHref="https://addrevenue.io/t?a=987081&c=3467325"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">För- och nackdelar med Nuna</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fördelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Stark säkerhetsprofil — Nuna uppfyller höga certifieringskrav</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Snygg, minimalistisk design med fokus på funktion</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Bra pris-kvalitetsförhållande jämfört med Bugaboo och Stokke</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Kompatibelt PIPA-system för sömlöst byte bil/vagn</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Bra tillgänglighet hos svenska återförsäljare</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Priserna har stigit de senaste åren — konkurrensen är hård</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Inte lika robust i terräng som Bugaboo Fox 5 eller Thule</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tillbehör kan snabbt öka totalkostnaden</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Nuna Triv saknar inbyggd liggdel</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Nuna</h3>
+    <p>Nuna grundades 2007 i Holland med visionen att skapa barnprodukter som är både säkra och stilrena. Varumärket har på relativt kort tid etablerat sig som ett av de starkaste i premium-barnvagnsmarknaden i Europa. Nunas filosofi är att produkterna ska vara enkla att använda utan att kompromissa med säkerheten — och deras certifieringsstandarder ligger ofta över minimikraven i branschen. Märket säljs idag i över 40 länder.</p>
+
+    <h3>Är Nuna rätt märke för dig?</h3>
+    <p>Nuna passar dig som vill ha en premium-barnvagn med snygg design och hög säkerhetsstandard, men inte vill betala Bugaboo-priser. Nuna Mixx Next är ett utmärkt val för de flesta familjer i stadsmiljö som vill ha ett komplett system från födseln. Om du funderar på fler barn är Demi Grow ett smart val från start. Vill du ha något ännu lättare och mer kompakt för stadsbruk är Nuna Triv ett bra alternativ — men räkna med att tillbehörskostnader för nyfödda tillkommer.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li>
+        <a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett guide</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/nyfodda/" class="text-accent hover:underline">Bästa barnvagnen för nyfödda 2026</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/nuna-mixx-next-vs-bugaboo-fox-5/" class="text-accent hover:underline">Nuna Mixx Next vs Bugaboo Fox 5 — jämförelse</a>
+      </li>
+      <li>
+        <a href="/barnvagnar/budget/" class="text-accent hover:underline">Bästa billiga barnvagnen 2026</a>
+      </li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href="https://addrevenue.io/t?a=987081&c=3467325" text="Se bästa pris på Nuna" />
+</ArticleLayout>
