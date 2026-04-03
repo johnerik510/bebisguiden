@@ -1,0 +1,168 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis tandsprickning' },
+];
+
+const faqItems = [
+  {
+    question: 'När får bebisar sina första tänder?',
+    answer: 'De första tänderna (de nedre framtänderna) brukar komma vid ca 6 månaders ålder, men variationen är stor — helt normalt intervall är 4–14 månader. Om bebisen ännu inte har tänder vid 15 månaders ålder bör du kontakta BVC för att utesluta medicinsk orsak (t.ex. hypofosfatasi eller annan ovanlig tillstånd). Alla 20 mjölktänder är vanligtvis framme vid 2,5–3 år.',
+  },
+  {
+    question: 'Kan tandsprickning ge feber?',
+    answer: 'Lätt temperaturhöjning (37,5–37,8°C) i samband med tandsprickning förekommer och är ofarlig. Kliniska studier visar att tandsprickning kan ge 0,1–0,5°C temperaturhöjning under 1–2 dagar. Men: riktig feber (38°C+) beror INTE på tandsprickning — det är ett tecken på infektion. Kontakta 1177 om bebisen har feber 38°C+, oavsett om tänder håller på att komma in.',
+  },
+  {
+    question: 'Vad hjälper mot tandsprickningsmärta?',
+    answer: 'Bevisade metoder: kyld (ej fryst) tandningsring — kyla bedövar tillfälligt; mjuk massage på tandköttet med rent finger; tuggning på kall, mjuk mat (gurka, bröd) för äldre bebisar. Undvik: benzokain-innehållande tandningsgel till barn under 2 år (säljs i USA, FDA-varning 2011 p.g.a. metahemoglobinemi). Homeopatiska tandkrämer och tandningsringar med vätskeflöde rekommenderas ej. Paracetamol (Alvedon/Panodil) kan ges om bebisen är påtagligt besvärad — se doseringen på förpackningen.',
+  },
+  {
+    question: 'Vad beror tandsprickningstecken egentligen på?',
+    answer: 'Immunrelaterad: tandningsprocessen aktiverar ett lokalt inflammationssvar i tandköttet som kan ge systemiska effekter. Studier (Wake et al., 2000 — Pediatrics) visar att gråt, salivation, ökad nappsuckning och oro är de mest reliabla symptomen. Diarre och rinnande näsa är INTE bevisade som direkta tandningstecken — om sådana symtom förekommer, sök annan orsak.',
+  },
+  {
+    question: 'Hur sköter man tänderna när de börjar komma?',
+    answer: 'Börja tvätta tänderna direkt när de framkommer. Använd en liten mjuk tandborste (0–2 år) och tandkräm med fluor: 0–3 år: en liten mängd — en korn stor klick av tandkräm med 1 000 ppm fluor (Zendium Baby, Colgate My First). Fluortandkräm är viktigt — fluor stärker emaljen och förebygger håligheter. Borsta morgon och kväll. Kontakta Folktandvården för barnets första tandläkarbesök — erbjuds kostnadsfritt t.o.m. 23 år i Sverige.',
+  },
+  {
+    question: 'I vilken ordning kommer mjölktänderna?',
+    answer: 'Typisk ordning (med vanligt intervall): 1. Nedre centrala framtänder (6–10 mån). 2. Övre centrala framtänder (8–12 mån). 3. Övre laterala framtänder (9–13 mån). 4. Nedre laterala framtänder (10–16 mån). 5. Övre första molarer (13–19 mån). 6. Övre och nedre hörntänder (16–22 mån). 7. Nedre andra molarer (23–31 mån). 8. Övre andra molarer (25–33 mån). Ordning och tidpunkt varierar mycket — se det som en guide, inte en exakt tidsplan.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis tandsprickning – symtom, timing och vad som hjälper 2026"
+  description="Guide om tandsprickning hos bebis: när de första tänderna kommer, vilka symtom som är normala (och vilka som inte beror på tandsprickning), vad som lindrar och hur du sköter tänderna."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-tandsprickning/"
+  updatedDate="2026-04-03"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Bebis kolik', href: '/guider/bebis-kolik/' },
+    { title: 'Bebis feber', href: '/guider/bebis-feber/' },
+    { title: 'När börjar bebis äta fast föda?', href: '/guider/nar-borjar-bebis-ata/' },
+    { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Tandsprickning kan vara en tuff period — för bebisen och för föräldrarna. Men många symptom som tillskrivs tandsprickning beror faktiskt på annat. Den här guiden ger dig evidensbaserade svar om vad som verkligen händer, vad som hjälper och när du ska kontakta BVC.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigast att veta</p>
+  <p class="text-sm text-text-light">Tandsprickning kan ge lokal ömhet och lätt temperaturhöjning (under 38°C), men orsakar INTE riktig feber, diarré eller allvarlig sjukdom. Om bebisen har feber 38°C+ — sök annan orsak och kontakta 1177.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tändernas tidslinje</h2>
+<p class="text-text-light mb-4">
+  Bebisens 20 mjölktänder spricker fram under de första 2,5–3 åren. Tidpunkten varierar enormt — det finns inget "sent" eller "tidigt" om bebisen annars är frisk och utvecklas normalt.
+</p>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Tand</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Typisk ålder</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Normalt intervall</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Nedre centrala framtänder</td><td class="px-4 py-3 text-text-light">6–8 mån</td><td class="px-4 py-3 text-text-light">4–10 mån</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Övre centrala framtänder</td><td class="px-4 py-3 text-text-light">8–10 mån</td><td class="px-4 py-3 text-text-light">6–12 mån</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Laterala framtänder (övre + nedre)</td><td class="px-4 py-3 text-text-light">9–13 mån</td><td class="px-4 py-3 text-text-light">7–16 mån</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Första molarer</td><td class="px-4 py-3 text-text-light">13–19 mån</td><td class="px-4 py-3 text-text-light">10–22 mån</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Hörntänder</td><td class="px-4 py-3 text-text-light">16–22 mån</td><td class="px-4 py-3 text-text-light">13–26 mån</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Andra molarer</td><td class="px-4 py-3 text-text-light">23–31 mån</td><td class="px-4 py-3 text-text-light">17–34 mån</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Symtom på tandsprickning — bevisade och obevisade</h2>
+
+<p class="text-text-light mb-4">
+  En systematisk genomgång av 50 studier (Wake et al., Pediatrics 2000) identifierade de symtom som faktiskt är kopplade till tandsprickning. Det är viktigt att skilja dessa från symtom som ofta tillskrivs tänder men troligen har annan orsak.
+</p>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+  <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+    <p class="text-sm font-semibold text-green-900 mb-2">Bevisade symtom (kopplade till tandsprickning)</p>
+    <ul class="text-sm text-green-800 space-y-1 list-disc pl-4">
+      <li>Svullet, rött tandkött vid tandens plats</li>
+      <li>Ökad salivation (dregling)</li>
+      <li>Behov av att bita och tugga</li>
+      <li>Irritabilitet och ökad gråt</li>
+      <li>Lätt temperaturhöjning (max 37,8°C)</li>
+      <li>Minskad aptit och nattliga uppvaknanden</li>
+    </ul>
+  </div>
+  <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+    <p class="text-sm font-semibold text-red-900 mb-2">Obevisade — sök annan orsak</p>
+    <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+      <li>Feber 38°C eller högre</li>
+      <li>Diarré</li>
+      <li>Rinnande näsa / hosta</li>
+      <li>Utslag</li>
+      <li>Kräkningar</li>
+    </ul>
+    <p class="text-xs text-red-700 mt-2">Om bebisen har dessa symtom: kontakta 1177</p>
+  </div>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad hjälper mot tandsprickningsmärta?</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Kylda tandningsringar</h3>
+<p class="text-text-light mb-4">
+  Kylda (ej frysta) tandningsringar är den mest evidensbaserade och säkraste metoden. Kylan bedövar det svullna tandköttet tillfälligt. Välj solida silikon- eller gummiringar — undvik ringar med vätska inuti (risk för läckage). Kyl i kylskåpet, aldrig i frysen (frostbiteskada).
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Tandköttsmassage</h3>
+<p class="text-text-light mb-4">
+  Massera tandköttet med ett rent finger — tryck och rubba försiktigt mot den plats där tanden verkar sitta. Motrycket från ditt finger mot det svullna tandköttet ger ofta snabb lindring.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Paracetamol vid behov</h3>
+<p class="text-text-light mb-4">
+  Om bebisen är påtagligt besvärad och inte kan sova: paracetamol (Alvedon/Panodil barnform) kan ges från 3 månaders ålder. Dos: 15 mg/kg per dos. Ibuprofen (Ipren) från 6 månaders ålder vid 5–10 mg/kg. Använd inte regelbundet — bara vid akut behov.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Vad du ska undvika</h3>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Tandningsgel med benzokain (Bonjela-liknande):</strong> FDA-varning 2011 — risk för metahemoglobinemi hos spädbarn. Rekommenderas INTE till barn under 2 år</li>
+  <li><strong>Homeopatiska tandningsmedel:</strong> Ingen evidens, kan innehålla problematiska ingredienser (belladonna)</li>
+  <li><strong>Tandningsringar med vätska:</strong> Risk för läckage och kontamination</li>
+  <li><strong>Honungsbaserade produkter:</strong> Botulism-risk hos barn under 12 månader</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tändernas skötsel — börja direkt</h2>
+<p class="text-text-light mb-4">
+  Mjölktänderna är viktiga — de håller plats för permanenttänderna, behövs för tuggning och talutveckling. Håligheter i mjölktänder är vanliga och smärtsamma. Börja med tandskötseln direkt när den första tanden syns:
+</p>
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Tandborste för 0–2 år:</strong> Silikon-fingerborste till de allra minsta, mjuk plastborste med litet borstenhuvud när bebisen växer.
+  </li>
+  <li>
+    <strong>Fluortandkräm:</strong> En kornstorlek (risgrynstort) av 1 000 ppm fluortandkräm. I Sverige rekommenderar Socialstyrelsen fluortandkräm från den första tanden.
+  </li>
+  <li>
+    <strong>Borsta morgon och kväll:</strong> Gör det till en vana tidigt — bebisen vänjer sig lättare ju tidigare rutinen etableras.
+  </li>
+  <li>
+    <strong>Undvik att ta bort tandkrämen:</strong> Den lilla mängden behöver inte sköljas bort — svälja en kornstorlek är ofarligt.
+  </li>
+  <li>
+    <strong>Folktandvården:</strong> Alla barn upp till 23 år har rätt till kostnadsfri tandvård via Folktandvården. Boka det första besöket vid ca 1 år eller när bebisen har 4–6 tänder.
+  </li>
+</ol>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
