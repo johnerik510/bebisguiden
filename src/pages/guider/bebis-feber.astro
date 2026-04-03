@@ -1,0 +1,142 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis feber' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken temperatur är feber hos bebis?',
+    answer: '38,0°C eller högre räknas som feber hos bebis. Mäts rektalt (i ändtarmen) vilket ger exaktast värde. Öronmätning kan avvika 0,5–1°C. Axillärt (under armen) är minst exakt — lägg till 0,5°C för att uppskatta kärntemperaturen. Hos nyfödda 0–3 månader: feber 38°C eller högre = akut vård omedelbart.',
+  },
+  {
+    question: 'När ska man söka vård för bebis med feber?',
+    answer: 'Sök vård akut (ring 112 eller åk till akuten) om: bebisen är under 3 månader med temp 38°C+, bebisen har svårt att andas, är slapp och svår att väcka, har utslag som inte bleknar vid glaspress (meningokocktecken), eller krampar. Ring 1177 om: bebisen är 3–6 månader med feber 38°C+, om febern inte svarar på febernedsättande, om bebisen verkar påtagligt sjuk oavsett temperatur.',
+  },
+  {
+    question: 'Kan man ge Alvedon till bebis?',
+    answer: 'Paracetamol (Alvedon, Panodil) i lämplig barnform kan ges från 3 månaders ålder. Dos: 15 mg/kg kroppsvikt per dos, maximalt var 6:e timme, maximalt 4 doser per dygn. Ibuprofen (Ipren) ges från 6 månaders ålder, dos 5–10 mg/kg. Läs alltid dosanvisningen för barnets aktuella vikt. Kombinera inte utan läkares råd. Notera: febernedsättande bekämpar inte infektionen — de minskar bebisens obehag.',
+  },
+  {
+    question: 'Hur mäter man feber på bebis?',
+    answer: 'Rektal mätning är guld standard och ger exaktast värde. Använd en digital termometer, lägg lite vaselin på spetsen, för in 1–2 cm och håll i 30–60 sekunder. Öronmätning (tympanisk) fungerar från 6 månaders ålder. Pannmätning (infraröd) är snabb men kan ge falskt lågt värde vid svettning. Undvik kvicksilverstermometrar. Kontakta 1177 om du är osäker på hur man mäter.',
+  },
+  {
+    question: 'Vad orsakar feber hos bebisar?',
+    answer: 'Vanligaste orsaker: virusinfektioner i de övre luftvägarna (förkylning, RS-virus), öroninflammation, urinvägsinfektioner (vanligare hos bebisar under 1 år än man tror), och tandpressning (ger sällan mer än 37,8°C). Ovanligare men allvarligare: bakteriella infektioner (sepsis, meningit), lunginflammation. Feber efter vaccination (vanligt 12–24 timmar efteråt) — hantera med paracetamol och kontakta 1177 om tveksam.',
+  },
+  {
+    question: 'Ska man klä av ett febrig bebis eller klä på?',
+    answer: 'Klä INTE extra på en febrig bebis — det hindrar kroppen från att reglera värmen. Klä av till ett eller två lager tunna kläder. Håll rummet svalt (ca 18–20°C). Undvik filtar som täcker hela kroppen. Ge extra vätska — amning, välling, vatten (om äldre än 6 månader). Svala bad är inte rekommenderat av Socialstyrelsen — det kan ge skakningar och öka obehag.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis feber – temperatur, symtom och när du ska söka vård 2026"
+  description="Guide om feber hos bebis: vilken temperatur är feber, hur du mäter rätt, när du ska ringa 1177 eller åka till akuten, och hur du hanterar feber hemma."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-feber/"
+  updatedDate="2026-04-03"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/' },
+    { title: 'Bebis sover dåligt', href: '/guider/bebis-sover-daligt/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+    { title: 'Checklista inför bebis', href: '/guider/bebis-checklista/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Feber hos en liten bebis kan vara skrämmande. Det är viktigt att veta när du ska agera snabbt och när du kan hantera situationen hemma. Den här guiden sammanfattar Socialstyrelsens och 1177.se:s riktlinjer och ger konkreta svar.
+</p>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Ring 112 omedelbart om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Bebisen är under 3 månader och har 38,0°C eller högre</li>
+    <li>Bebisen är slapp, reagerar inte normalt eller är svår att väcka</li>
+    <li>Bebisen har svårt att andas, blåfärgade läppar eller andfåddhet</li>
+    <li>Utslag som inte bleknar vid glaspress (tryck ett glas mot huden)</li>
+    <li>Kramper</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad räknas som feber hos bebis?</h2>
+<p class="text-text-light mb-4">
+  Feber definieras som kroppstemperatur 38,0°C eller högre. Men mätmetoden spelar roll:
+</p>
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Mätmetod</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Feber-gräns</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Precision</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Rekommenderas</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Rektal (ändtarmen)</td><td class="px-4 py-3 text-text-light">38,0°C</td><td class="px-4 py-3 text-green-700 font-medium">Bäst</td><td class="px-4 py-3 text-text-light">Alla åldrar, guld standard</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Öron (tympanisk)</td><td class="px-4 py-3 text-text-light">38,0°C</td><td class="px-4 py-3 text-gray-600">God (från 6 mån)</td><td class="px-4 py-3 text-text-light">Från 6 månaders ålder</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Panna (infraröd)</td><td class="px-4 py-3 text-text-light">38,0°C</td><td class="px-4 py-3 text-orange-600">Variabel</td><td class="px-4 py-3 text-text-light">Kan ge falskt lågt</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Axillärt (armhålan)</td><td class="px-4 py-3 text-text-light">37,5°C</td><td class="px-4 py-3 text-orange-600">Lägst</td><td class="px-4 py-3 text-text-light">Lägg till 0,5°C</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Åldersanpassad guide — när söker du vård?</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">0–3 månader</h3>
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-4">
+  <p class="text-sm text-red-800"><strong>Feber 38°C+ = akut vård alltid.</strong> Nyfödda och yngre bebisar kan bli allvarligt sjuka mycket snabbt. Deras immunsystem är omoget och tidiga tecken på allvarlig infektion kan vara subtila. Vänta inte — åk till barnakuten eller ring 1177.</p>
+</div>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">3–6 månader</h3>
+<p class="text-text-light mb-4">Ring 1177 vid feber 38°C+. Sök akut om bebisen verkar påtagligt sjuk, vägrar att äta/amma under mer än ett dygn, har feber som inte sjunker efter febernedsättande, eller om du som förälder är orolig.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">6 månader – 1 år</h3>
+<p class="text-text-light mb-4">Mer tolerans möjlig om bebisen är alert, dricker vätska och inte verkar påtagligt sjuk. Ring ändå 1177 vid feber 39°C+, vid feber som varar mer än 2–3 dagar, vid tecken på öroninflammation (nafsandet av örat, gråt vid sugning) eller om du är orolig.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Hur hanterar du feber hemma?</h2>
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Mät temperaturen</strong> rektalt eller i örat. Notera klockslag och värde.
+  </li>
+  <li>
+    <strong>Ge paracetamol</strong> (Alvedon/Panodil barnform) vid feber 38,5°C+ eller om bebisen verkar ha ont och är otröstlig. Dos: 15 mg/kg. Ibuprofen (Ipren) från 6 månaders ålder vid 5–10 mg/kg.
+  </li>
+  <li>
+    <strong>Klä av, inte på.</strong> Ett lager tunna kläder. Kyl inte aktivt (svala bad rekommenderas inte).
+  </li>
+  <li>
+    <strong>Ge extra vätska.</strong> Amning oftare, välling, vatten (om 6+ månader). Bebisen kan vägra mat men ska inte vägra att dricka.
+  </li>
+  <li>
+    <strong>Håll koll.</strong> Kontrollera temperaturen var 3–4:e timme. Notera om febern stiger trots febernedsättande.
+  </li>
+</ol>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Kom ihåg</p>
+  <p class="text-sm text-text-light">Feber är ett symptom, inte en sjukdom. Kroppen höjer temperaturen som försvar mot infektioner. Febernedsättande behandlar inte infektionen — de minskar bebisens obehag. Målet är inte att normalisera temperaturen till varje pris, utan att bebisen ska ha det bra nog att äta, dricka och sova.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Feber efter vaccination</h2>
+<p class="text-text-light mb-4">
+  Lättare feber 12–24 timmar efter vaccination är normalt och tyder på att immunsvaret har aktiverats. Hantera med paracetamol om febern stiger över 38,5°C eller om bebisen verkar ha ont. Kontakta 1177 eller vaccinationsenheten om:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-1 mb-6">
+  <li>Febern är 40°C eller högre</li>
+  <li>Bebisen gråter ovanligt länge (mer än 3 timmar)</li>
+  <li>Febern varar mer än 2 dagar efter vaccination</li>
+  <li>Synliga biverkningar vid injektionsstället (kraftig svullnad, kraftig rodnad)</li>
+</ul>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
