@@ -1,0 +1,143 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Säkerhet', href: '/sakerhet/' },
+  { label: 'Barnsäkring' }
+];
+
+const faqItems = [
+  {
+    question: 'Från vilken ålder behöver man barnsäkra hemmet?',
+    answer: 'Börja barnsäkra när barnet börjar krypa – vanligtvis 6–9 månader. I praktiken rekommenderas att säkra de viktigaste riskerna (eluttag, trappor, giftiga produkter) redan vid 3–4 månader för att inte behöva stressa. Barn förändras snabbt och kan börja röra sig tidigare än förväntat.'
+  },
+  {
+    question: 'Vilka är de farligaste platserna i hemmet för ett litet barn?',
+    answer: 'Trappor (fallrisk), kök (skållning, skarpa föremål, kemikalier), badrum (drunkningsrisk, tvål och mediciner), balkong/fönster (fallrisk), och eluttag/sladdar. Statistik från Folkhälsomyndigheten visar att förgiftning, fall och drunkningsincidenter är de vanligaste allvarliga hemolyckor för barn under 5 år.'
+  },
+  {
+    question: 'Vilken trappgrind är bäst – skruvad eller tryckt?',
+    answer: 'Skruvad grind (väggmonterad med skruvar) är alltid säkrast och obligatorisk vid trappens överkant. Tryckt grind (klämgrind) får aldrig monteras vid trappens överkant – den kan vika sig utåt om barnet trycker hårt. Klämgrind kan användas som rumsskillare på plan yta. Välj EN 1930-certifierade grindar.'
+  },
+  {
+    question: 'Hur säkrar man eluttag?',
+    answer: 'Moderna eluttag i Sverige (typ F/Schuko) är svårare att sticka i fingrar i jämfört med äldre modeller. För extra säkerhet: använd socklar med barnlås (tidslucka som kräver rotation och tryck simultant), eller byt ut eluttagen mot modeller med inbyggd barnlåsning. Undvik enkla plastlock – de kan lossna och bli en kvävningsrisk i sig.'
+  },
+  {
+    question: 'Behöver man barnsäkra källare och förråd?',
+    answer: 'Ja om barnet kan nå dem. Källare och förråd innehåller ofta verktyg, kemikalier och föremål som är farliga för barn. En enkel haklåsning eller deadbolt som barnet inte kan öppna räcker. Kemikalier (färg, rengöringsmedel, bränsle) ska alltid förvaras i originalbehållare i låst skåp.'
+  },
+  {
+    question: 'Vad gör man om man inte kan skruva i väggar (hyresrätt)?',
+    answer: 'Alternativ utan borrning: tryckgrindar (på plan yta, inte trappöverkant), möbelankare med klister/häftkuddar (begränsad kapacitet), hörn- och kantskydd med klister, skåpslåsning med magnetlås (kräver montering på insidan av skåpet). För trappöverkanten i hyresrätt: prata med hyresvärden – en skruvgrind är ett säkerhetsmotiverat ingrepp.'
+  }
+];
+---
+
+<ArticleLayout
+  title="Barnsäkring hemma 2026 – Komplett checklista för småbarnsföräldrar"
+  description="Barnsäkra ditt hem med vår kompletta checklista. Trappgrindar, eluttag, skåplås, fönsterspärrar och mer. Vad man behöver och varför – med tips för hyresrätter."
+  breadcrumbs={breadcrumbs}
+  relatedArticles={[
+    { title: 'Bästa bilbarnstol 2026', href: '/bilbarnstolar/' },
+    { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/' },
+    { title: 'Välja barnvagn 2026', href: '/guider/valja-barnvagn/' },
+    { title: 'Babysäkring – bilbarnstolsregler', href: '/guider/bilbarnstol-regler/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-lg text-gray leading-relaxed mb-6">
+  Varje år skadar sig tusentals svenska barn under 5 år hemma. De flesta olyckorna är förebyggbara. Den här guiden ger dig en komplett checklista för barnsäkring – rum för rum – och förklarar varför varje åtgärd är viktig. Börja med de sex viktigaste punkterna om du är nybörjare.
+</p>
+
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-5 mb-8">
+  <h2 class="font-heading text-xl font-bold text-dark mb-3">De 6 viktigaste åtgärderna</h2>
+  <ol class="list-decimal pl-6 text-gray space-y-2">
+    <li><strong>Trappgrind (skruvad)</strong> vid trappens överkant</li>
+    <li><strong>Giftiga produkter</strong> i låst skåp eller utom räckhåll</li>
+    <li><strong>Fönsterspärrar</strong> eller ventilationsbegränsare (öppning max 10 cm)</li>
+    <li><strong>Eluttag</strong> med barnlåsning (speciellt i barnets ögonhöjd)</li>
+    <li><strong>Skåpslås</strong> under diskbänk (rengöringsmedel)</li>
+    <li><strong>Varmvattenberedare</strong> max 55°C (förhindrar skållning på 2–3 sekunder)</li>
+  </ol>
+</div>
+
+<h2 class="font-heading text-2xl font-bold text-dark mt-10 mb-4">Checklista – rum för rum</h2>
+
+<h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Trappa och hall</h3>
+<ul class="list-disc pl-6 text-gray space-y-2 mb-6">
+  <li><strong>Trappgrind vid trappöverkanten:</strong> Obligatoriskt skruvmonterad (väggfäst). Välj EN 1930-certifierad grind. Never a tryckt grind vid trapptoppen.</li>
+  <li><strong>Trappgrind vid trappedbotten:</strong> Tryckgrind fungerar här – förhindrar barnet från att kravla upp.</li>
+  <li><strong>Ballustrer-avstånd:</strong> Max 10 cm mellan spjälor – annars komplettera med nät.</li>
+  <li><strong>Halk-matta:</strong> Anti-halk-matta under mattor i trappa och vid trappfot.</li>
+  <li><strong>Hatthylla:</strong> Se till att hård hattyll med stötar är i trygg höjd för barn.</li>
+</ul>
+
+<h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Kök</h3>
+<ul class="list-disc pl-6 text-gray space-y-2 mb-6">
+  <li><strong>Spis-/ugnsknappsskydd:</strong> Förhindrar att barnet vrider på plattan. Tillgängligt för de flesta modeller.</li>
+  <li><strong>Skåpslås:</strong> Skåp under diskbänk med rengöringsmedel, plastpåsar och skarpa föremål.</li>
+  <li><strong>Knivblock:</strong> Aldrig åtkomligt för barn – lägg undan eller säkra separat.</li>
+  <li><strong>Vitvaror:</strong> Diskmaskin-lås och ugns-säkring om barn kan öppna luckor.</li>
+  <li><strong>Varmvatten:</strong> Sänk beredaren till 55°C. Handtagslock på kranarna om nödvändigt.</li>
+  <li><strong>Soppåse/sopkorg:</strong> Bakom skåpslås eller med lock.</li>
+</ul>
+
+<h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Badrum</h3>
+<ul class="list-disc pl-6 text-gray space-y-2 mb-6">
+  <li><strong>Badrumshandtag/lås:</strong> Lägg till säkring så barnet inte kan låsa in sig.</li>
+  <li><strong>Mediciner:</strong> Alltid i låst skåp eller skåp med barnlåsning på minst 1,5 meters höjd.</li>
+  <li><strong>Städprodukter:</strong> Aldrig under handfatskabinettet utan barnlås.</li>
+  <li><strong>Badkarssäkerhet:</strong> Aldrig lämna barn under 5 år ensamma i badkar. Anti-halk-matta i karet.</li>
+  <li><strong>Halkskydd:</strong> Anti-halk-matta utanför badkar och dusch.</li>
+  <li><strong>WC-lock:</strong> Barn kan falla i och inte ta sig upp – WC-lock-lås finns.</li>
+</ul>
+
+<h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vardagsrum och sovrum</h3>
+<ul class="list-disc pl-6 text-gray space-y-2 mb-6">
+  <li><strong>Möbelankare:</strong> Tv, bokhyllor, kommoder och tunga möbler förankras i väggen. IKEA och andra möbeltillverkare inkluderar ofta monteringssats – använd den.</li>
+  <li><strong>TV-säkring:</strong> Tv-bänkar är instabila om barn klättrar. Förankra tv-bänk OCH tv.</li>
+  <li><strong>Hörn- och kantskydd:</strong> Soffbord, vitrinskåp och skarpa möbelkanter.</li>
+  <li><strong>Eluttag:</strong> Barnlåsning på alla uttag i barnets höjd (under 50 cm).</li>
+  <li><strong>Sladdar:</strong> Kabelkanaler eller sladdar utom räckhåll. Kvävningsrisk.</li>
+  <li><strong>Gardinsträngar:</strong> Förkorta eller fäst upp – strypningsrisk. EU-direktiv kräver säkra snörsystem från 2014.</li>
+  <li><strong>Platsbyggda/fristående hyllor:</strong> Stabila? Barnet klättrar.</li>
+</ul>
+
+<h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Balkong och fönster</h3>
+<ul class="list-disc pl-6 text-gray space-y-2 mb-6">
+  <li><strong>Fönsterspärr:</strong> Fönster med öppning över 10 cm ovanför ett falls höjd bör ha fönsterspärr. Finns som skruvmonterade nyckelspärrar eller ventilationsbegränsare.</li>
+  <li><strong>Balkongräcke:</strong> Max 10 cm öppning. Nät om räcket är för glest.</li>
+  <li><strong>Inga klätterhjälpmedel:</strong> Flytta möbler, leksakscontainrar och lådor bort från fönster och balkongräcke.</li>
+</ul>
+
+<h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hem i övrigt</h3>
+<ul class="list-disc pl-6 text-gray space-y-2 mb-6">
+  <li><strong>Dörrfingerskydd:</strong> Förhindrar inklämt finger i dörrkarm.</li>
+  <li><strong>Dörrspärr:</strong> Förhindrar att dörren stängs helt av barnet.</li>
+  <li><strong>Pool/damm:</strong> Stängsla alltid, eller täck med godkänt skydd.</li>
+  <li><strong>Husdjursmat och matskålar:</strong> Kan vara kvävningsrisk. Sätt undan vid måltid.</li>
+  <li><strong>Plastpåsar:</strong> Aldrig åtkomliga för barn under 5 år.</li>
+</ul>
+
+<h2 class="font-heading text-2xl font-bold text-dark mt-10 mb-4">Giftsäkring – Giftinformationscentralens lista</h2>
+<p class="text-gray leading-relaxed mb-4">
+  Förgiftning är den vanligaste orsaken till akutbesök hos barn under 5 år. Låt följande alltid vara i låst eller oåtkomligt skåp:
+</p>
+<ul class="list-disc pl-6 text-gray space-y-2 mb-6">
+  <li>Alla mediciner (inklusive vitaminer och naturläkemedel)</li>
+  <li>Rengöringsmedel och diskmedel (speciellt diskmaskintabletter – farliga vid sväljning)</li>
+  <li>Kosmetika och personliga hygienartiklar (aftershave, nagellack)</li>
+  <li>Koffeinhaltiga drycker och alkohol</li>
+  <li>Plantor – flera vanliga krukväxter och trädgårdsväxter är giftiga (murgröna, oleander, Digitalis)</li>
+  <li>Nikotin (e-juice, snus) – extrem toxicitet vid sväljning</li>
+</ul>
+<p class="text-gray leading-relaxed mb-4">
+  <strong>Vid förgiftningsmisstanke:</strong> Ring Giftinformationscentralen 08-33 12 31 (dygnet runt).
+</p>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
