@@ -1,0 +1,165 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Badkar bebis', href: '/badkar/' },
+  { label: 'Stokke Flexi Bath vs IKEA LATTSAM' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Stokke Flexi Bath eller IKEA LATTSAM?',
+    answer: 'Det beror på vad du prioriterar. Stokke Flexi Bath är bäst om du vill ha ett hopfällbart, resekompatibelt babybadkar med premium-känsla och hög hållbarhet — men kostar ca 599 kr. IKEA LATTSAM är bäst om du vill ha ett enkelt, prisvärdt badkar (ca 149 kr) utan några fancy funktioner. Båda är CE-märkta och säkra. Reser du mycket med bebisen eller har lite förvaringsutrymme: Stokke.',
+  },
+  {
+    question: 'Är IKEA LATTSAM säkert för nyfödda?',
+    answer: 'Ja — IKEA LATTSAM är CE-märkt och testat för nyfödda. Det har ett inbyggt slukhål som förhindrar att babyn ramlar ur och en textil badrygge för bra stöd. IKEA LATTSAM är ett av Sveriges mest sålda och använda babybadkar. Det rekommenderas av barnmorskor och används på BB-avdelningar.',
+  },
+  {
+    question: 'Kan man använda Stokke Flexi Bath på resan?',
+    answer: 'Ja — det är en av Stokke Flexi Baths viktigaste egenskaper. Det fälls ihop till ca 7 cm tjocklek och rymmer i en resväska. Perfekt för resor, semester och grandparents som badar bebisen på besök. IKEA LATTSAM är inte hopfällbart och svårare att ta med på resan.',
+  },
+  {
+    question: 'Vilken badkar passar längst tid?',
+    answer: 'Stokke Flexi Bath är rekommenderat från 0 upp till 4 år (med badstöd för nyfödda) och passar barnets hela "badkarsålder". IKEA LATTSAM är bäst för 0–12 månader — efter det är det för litet för de flesta barn. Stokke ger bättre lång-tids-värde trots det högre priset.',
+  },
+  {
+    question: 'Behövs ett separat badstöd till Stokke Flexi Bath?',
+    answer: 'Ja — Stokke Flexi Bath kräver ett separat badstöd för nyfödda (Stokke Flexi Bath X Extra inkluderar ett medföljer badstöd). Grundmodellen har inget badstöd. IKEA LATTSAM inkluderar ett inbyggt textilt stöd. Räkna med att lägga till ca 199–299 kr för badstödet till Stokke om du köper grundmodellen.',
+  },
+  {
+    question: 'Håller Stokke Flexi Bath länge?',
+    answer: 'Ja — Stokke Flexi Bath är tillverkad av BPA-fri PP-plast av hög kvalitet. Gångjärnen klarar tusentals hopfällningar. Många familjer använder samma Stokke Flexi Bath för 2–3 barn och säljer den vidare i fint skick. IKEA LATTSAM är mer engångskvalitet men håller fint i 1–2 år.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Stokke Flexi Bath vs IKEA LATTSAM 2026 — vilket babybadkar ska du välja?"
+  description="Stokke Flexi Bath eller IKEA LATTSAM — 599 kr mot 149 kr. Vi jämför hopfällbarhet, hållbarhet, åldersintervall och vem som behöver vilket badkar."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-03"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Stokke Flexi Bath och IKEA LATTSAM är de två absolut vanligaste babybadkaren i Sverige. Priskillnaden är stor — 599 kr mot 149 kr — men det är stor skillnad på funktionalitet, hållbarhet och hur länge badkaret håller. Här är vad du behöver veta.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Stokke Flexi Bath</th>
+          <th class="p-3 text-left font-semibold">IKEA LATTSAM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">ca 599 kr</td>
+          <td class="p-3 text-green-700 font-semibold">ca 149 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Hopfällbart</td>
+          <td class="p-3 text-green-700 font-semibold">Ja — 7 cm tjockt</td>
+          <td class="p-3 text-text-light">Nej</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Lämplig ålder</td>
+          <td class="p-3 text-green-700 font-semibold">0–4 år</td>
+          <td class="p-3 text-text-light">0–12 månader</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Badstöd inkl.</td>
+          <td class="p-3 text-text-light">Nej (köps separat, ca 199 kr)</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (textilt stöd)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Termometer inkl.</td>
+          <td class="p-3 text-text-light">Nej</td>
+          <td class="p-3 text-text-light">Nej</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Material</td>
+          <td class="p-3 text-green-700 font-semibold">BPA-fri premium PP-plast</td>
+          <td class="p-3 text-text-light">PP-plast + textil</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Hållbarhet</td>
+          <td class="p-3 text-green-700 font-semibold">Utmärkt (flera barn)</td>
+          <td class="p-3 text-text-light">God (1–2 barn)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Reseanpassad</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-text-light">Nej</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">CE-märkt/säker</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ProductCard
+    name="Stokke Flexi Bath"
+    badge="Bäst hållbarhet"
+    price="ca 599 kr"
+    rating={4.8}
+    ageRange="0–4 år"
+    pros={['Hopfällbart — perfekt för resor och liten förvaring', 'Håller 0–4 år — bäst long-time-value', 'Premiumkvalitet — håller för 2–3 barn', 'BPA-fri och välbeprövad konstruktion']}
+    cons={['Inget medföljande badstöd (köps separat, ca 199 kr)', 'Dyrare — ca 450 kr mer än LATTSAM', 'Kräver extra tillbehör för nyfödda']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/badrum/babybadkar/stokke-flexi-bath"
+  />
+
+  <ProductCard
+    name="IKEA LATTSAM"
+    badge="Bäst pris"
+    price="ca 149 kr"
+    rating={4.4}
+    ageRange="0–12 månader"
+    pros={['Extremt prisvärt — 149 kr', 'Badstöd inkluderat för nyfödda', 'Enkel att rengöra', 'Tillgänglig i alla IKEA-butiker']}
+    cons={['Inte hopfällbart', 'Passar bara 0–12 månader', 'Lägre långtidsvärde']}
+    ctaText="Se pris hos IKEA"
+    ctaHref="https://www.ikea.com/se/sv/p/lattsam-babybadkar-gron-vit-60155539/"
+  />
+
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-purple-800 mb-3">Välj Stokke Flexi Bath om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Reser mycket och vill ha ett badkar som följer med</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Har litet badrum och behöver ett hopfällbart alternativ</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Planerar fler barn och vill ha ett badkar med lång livslängd</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Vill ha en investering som håller 0–4 år</span></li>
+      </ul>
+    </div>
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-blue-800 mb-3">Välj IKEA LATTSAM om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Vill ha ett billigt och enkelt babybadkar utan krångel</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Inte reser mycket och har tillräckligt förvaringsutrymme</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Vill ha badstöd inkluderat från dag ett</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Budgeten är tight och 149 kr är vad du kan lägga</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    product="Stokke Flexi Bath"
+    store="Jollyroom"
+    price="ca 599 kr"
+    url="https://www.jollyroom.se/badrum/babybadkar/stokke-flexi-bath"
+  />
+</ArticleLayout>
