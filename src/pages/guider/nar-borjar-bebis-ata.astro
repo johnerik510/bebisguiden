@@ -1,0 +1,149 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'När börjar bebis äta?' },
+];
+
+const faqItems = [
+  {
+    question: 'När kan bebisen börja med fast föda?',
+    answer: 'WHO, Livsmedelsverket och BVC rekommenderar att bebisen är runt 6 månader när smakportioner introduceras. Inte tidigare än 4 månader (17 veckor). Tecken på att bebisen är redo: kan sitta med stöd, förlorat kuggreflexen (slänger inte ut tunga automatiskt när något rörs vid munnen) och visar intresse för mat.',
+  },
+  {
+    question: 'Vilken mat är bäst att börja med?',
+    answer: 'Det spelar inte lika stor roll som man kan tro. Livsmedelsverket rekommenderar rotfrukter, grönsaker och frukt som ett naturligt startpunkt — morot, potatis, blomkål, äpple och päron. Traditionell smakportionsordning (grönsakspuré → frukostgröt → kött) är vanlig i Sverige men inte obligatorisk. Undvik honung under 1 år (botulismrisk) och tillsatt salt och socker.',
+  },
+  {
+    question: 'Vad är skillnaden mellan smakportioner och familjematen?',
+    answer: 'Smakportioner (6–8 månader): bebisen utforskar smaker och texturer, amning/välling är fortfarande huvudnäring. Övergångskost (8–10 månader): bebisen äter mer och maten kompletterar amning. Familjematen (10–12 månader): bebisen äter till stor del samma mat som familjen, anpassat i textur. Mjölk/välling är fortfarande viktig näringskälla upp till minst 1 år.',
+  },
+  {
+    question: 'Ska man prova ett livsmedel i taget?',
+    answer: 'Ja, initialt. Livsmedelsverket och allergologer rekommenderar att introducera ett nytt livsmedel åt gången med 2–3 dagars mellanrum i uppstartsfasen. Det gör det lättare att identifiera reaktioner. Vanliga allergener (jordnöt, mjölk, ägg, vete, soja, fisk) ska introduceras tidigt och inte undvikas — tidig exponering minskar allergirisken.',
+  },
+  {
+    question: 'Ska man undvika allergiframkallande livsmedel?',
+    answer: 'Nej — riktlinjerna har förändrats. Aktuell forskning (LEAP-studien och PETIT-studien) visar att tidig introduktion av vanliga allergener (jordnöt, ägg, sesam) runt 6 månaders ålder minskar risken för allergi. Barn med eksem eller familjehistorik av allergi bör introduceras under BVC-/allergolog-vägledning. Undvik inte dessa livsmedel av rädsla.',
+  },
+  {
+    question: 'Hur mycket ska bebisen äta?',
+    answer: 'I uppstartsfasen (smakportioner): 1–2 matskedar per dag är normalt. Bebisen bestämmer mängden — tvinga aldrig. Amning/välling ger fortfarande näst intill all näring vid 6 månader. Runt 8–9 månader ökar mängden naturligt till 2–3 mål om dagen. Tappar bebisen intresset, kryr och vänder bort huvudet — avsluta målet.',
+  },
+];
+---
+
+<ArticleLayout
+  title="När börjar bebis äta fast föda? – Guide till smakportioner 2026"
+  description="När kan bebisen börja med fast föda? Guide till introduktion av smakportioner: rätt ålder, vilka livsmedel man börjar med, hur man hanterar allergener och hur mycket bebisen ska äta."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/nar-borjar-bebis-ata/"
+  updatedDate="2026-04-03"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Amma eller flaska?', href: '/guider/amma-eller-flaska/' },
+    { title: 'Nappflaskor – bäst i test 2026', href: '/amning/nappflaska/' },
+    { title: 'Bästa matstol 2026', href: '/matstolar/' },
+    { title: 'Stokke Tripp Trapp vs IKEA Antilop', href: '/matstolar/stokke-tripp-trapp-vs-ikea-antilop/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Att börja med fast föda är en stor milstolpe — och ett område där råden kan verka motstrids. Den här guiden sammanfattar Livsmedelsverkets och WHO:s aktuella riktlinjer och vad forskningen säger om rätt tidpunkt och ordning.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigast att veta</p>
+  <p class="text-sm text-text-light">Börja runt <strong>6 månader</strong>, inte tidigare än 4 månader. Amning/välling är fortfarande huvudnäring. Tvinga aldrig. Introducera allergener tidigt.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tecken på att bebisen är redo</h2>
+<p class="text-text-light mb-4">
+  Ålder är en riktlinje, inte ett facit. Tre tecken indikerar att bebisen är redo för fast föda:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Kan sitta med stöd:</strong> Inte ensamt, men kan hålla huvudet stadigt upprätt med stöd av en matstol eller ditt knä</li>
+  <li><strong>Förlorat kuggreflexen:</strong> Bebisen slutar automatiskt sticka ut tungan när något rörs vid munnen. Testar du med en sked och bebisen kuggar ut allt — vänta ett par veckor till</li>
+  <li><strong>Visar intresse:</strong> Tittar med intresse på mat, sträcker sig mot det du äter, öppnar munnen när du äter</li>
+</ul>
+<p class="text-text-light mb-4">Alla tre tecken ska helst finnas — inte bara ett.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Hur man introducerar smakportioner</h2>
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Välj ett lugnt tillfälle:</strong> Mitt på dagen fungerar bra — inte när bebisen är för hungrig (irriterad) eller för mätt. Amma eller ge välling FÖRE smakportionen, inte efter.
+  </li>
+  <li>
+    <strong>Börja med ett livsmedel:</strong> Mos av morot, potatis eller äpple. 1–2 matskedar räcker. Vänta 2–3 dagar innan nästa nya livsmedel.
+  </li>
+  <li>
+    <strong>Låt bebisen styra:</strong> Om bebisen stänger munnen, vänder bort huvudet eller gråter — stoppa. Smakportioner är utforskning, inte obligatorisk nutrition.
+  </li>
+  <li>
+    <strong>Variera texturer:</strong> Slät puré → grovkornig puré → mjuk bitar. Bebisen behöver lära sig att hantera olika texturer.
+  </li>
+  <li>
+    <strong>Sitta upprätt:</strong> Alltid upprätt vid matning — aldrig liggande. <a href="/matstolar/" class="text-accent hover:underline">En bra matstol</a> gör matsituationen enklare från dag ett.
+  </li>
+</ol>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Rekommenderad ordning – Livsmedelsverket</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Ålder</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Vad</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Textur</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">~6 månader</td><td class="px-4 py-3 text-text-light">Rotfrukter, grönsaker, frukt. Välling och gröt</td><td class="px-4 py-3 text-text-light">Slät puré</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">7–8 månader</td><td class="px-4 py-3 text-text-light">Kött, fisk, ägg, bönor. Utökad variation</td><td class="px-4 py-3 text-text-light">Grovare puré</td></tr>
+      <tr><td class="px-4 py-3 font-medium">8–10 månader</td><td class="px-4 py-3 text-text-light">Mjuka bitar. Bröd, pasta, ris. Mjölkprodukter</td><td class="px-4 py-3 text-text-light">Mjuka bitar</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">10–12 månader</td><td class="px-4 py-3 text-text-light">Anpassad familjemåltid. Jordnöt, sesam</td><td class="px-4 py-3 text-text-light">Familjens mat, grov</td></tr>
+      <tr><td class="px-4 py-3 font-medium">12 månader+</td><td class="px-4 py-3 text-text-light">Komjölk som dryck. Honung OK</td><td class="px-4 py-3 text-text-light">Familjens mat</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Allergener – introducera tidigt</h2>
+<p class="text-text-light mb-4">
+  En av de viktigaste förändringarna i kostråden de senaste åren: vänta INTE med allergener. LEAP-studien (2015) och efterföljande forskning visade tydligt att tidig introduktion av jordnöt och ägg <em>minskar</em> allergirisken med 70–80% hos riskbarn.
+</p>
+<p class="text-text-light mb-4">
+  Livsmedelsverket rekommenderar nu att alla vanliga allergener introduceras runt 6 månader:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-1 mb-6">
+  <li>Komjölk (i mat, t.ex. fil i puré)</li>
+  <li>Ägg (välkokt)</li>
+  <li>Vete (välling, gröt)</li>
+  <li>Soja (sojasås i puré)</li>
+  <li>Jordnöt (jordnötssmör i puré — aldrig hela nötter)</li>
+  <li>Fisk (välkokt vit fisk)</li>
+  <li>Sesam (tahini i puré)</li>
+</ul>
+
+<div class="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
+  <p class="text-sm font-semibold text-orange-900 mb-1">Observera</p>
+  <p class="text-sm text-orange-800">Barn med svårt eksem, reaktioner på bröstmjölken eller familjehistorik av allergi bör introducera allergener under BVC:s vägledning. Kontakta BVC vid tvekan.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad man ska undvika under det första levnadsåret</h2>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Honung:</strong> Botulismrisk — aldrig under 1 år</li>
+  <li><strong>Tillsatt salt:</strong> Njurarna klarar inte salt under 1 år — salta inte barnets mat</li>
+  <li><strong>Tillsatt socker:</strong> Onödigt och skapar sockerberoende</li>
+  <li><strong>Komjölk som dryck:</strong> Kan ges i mat, men inte som dryck förrän 1 år</li>
+  <li><strong>Hela nötter och stora bitar:</strong> Kvävningsrisk</li>
+  <li><strong>Råa ägg:</strong> Salmonellarisk</li>
+  <li><strong>Inälvsmat mer än 1 gång/vecka:</strong> Levern innehåller mycket A-vitamin som kan ansamlas</li>
+</ul>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
