@@ -1,0 +1,129 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Amningstips' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur vet man om bebisen får tillräckligt med mjölk?',
+    answer: 'De viktigaste tecknen på att bebisen får nog: minst 6 blöjor per dygn (fulla av urin från dag 5), normalt viktutveckling (förväntat vikttapp max 7% under de första dagarna, tillbaka till födslovikt inom 10–14 dagar, sedan stabil uppgång), bebisen verkar mätt efter matning och somnar regelbundet. Om du är osäker: kontakta BVC eller amningsmottagning — väg bebisen, inte gissningar.',
+  },
+  {
+    question: 'Hur länge ska man amma?',
+    answer: 'WHO rekommenderar exklusiv amning i 6 månader, sedan fortsatt amning tillsammans med fast föda upp till 2 år eller längre. Socialstyrelsen rekommenderar amning så länge mor och barn trivs med det. Det finns inga medicinska skäl att sluta amma vid en viss ålder. Kom ihåg: delvis amning (kombinerat med välling) räknas och ger fortfarande hälsofördelar.',
+  },
+  {
+    question: 'Vad gör man om amningen gör ont?',
+    answer: 'Kortvarig ömhet de första dagarna är normalt när amningen etableras. Ihållande smärta — speciellt om bröstvårtan ser komprimerad, bleknad eller skadad ut efter amning — tyder på fel anslutning (latch). Kontakta barnmorskan eller en amningskonsult (IBCLC) för en latchbedömning. Självhjälp: bromsklämman-/bröstvårteformar hjälper temporärt men löser inte problemet. Rätt anläggningsteknik och korrekt position är grunden.',
+  },
+  {
+    question: 'Påverkar mammans kost bröstmjölken?',
+    answer: 'Bröstmjölkens sammansättning är stabil oavsett mammans kost — kroppen prioriterar barnets behov. Undantag: D-vitaminhalten i mjölken påverkas av mammans D-vitaminstatus. Ammande mödrar rekommenderas att fortsätta ta D-vitaminberedning (400 IE/dag för bebisen, eller mer till mamma om hon har brist). Koffein (max 300 mg/dag — 2–3 koppar kaffe) passerar till mjölken i liten mängd men är inte problematiskt i normala mängder. Alkohol bör undvikas under amning eller minst 2 timmar passera innan amning.',
+  },
+  {
+    question: 'Kan man amma om man är sjuk?',
+    answer: 'Ja, i de flesta fall. Vid vanlig förkylning, influensa, gastroenterit eller de flesta bakterieinfektioner: fortsätt amma. Dina antikroppar mot infektionen passerar till bebisen via mjölken — amning skyddar bebisen aktivt. Undantag: HIV, aktiv tuberkulos och ett fåtal specifika infektionssjukdomar. De flesta vanliga läkemedel (paracetamol, ibuprofen, de flesta antibiotika) är säkra under amning — kontrollera alltid med läkaren eller via Läkemedelsboken om du är osäker.',
+  },
+  {
+    question: 'Hur avslutar man amningen?',
+    answer: 'Gradvis avvänjning är lättast för båda — ersätt en amning i taget med välling eller mat. Börja med den amning bebisen bryr sig minst om. Vänta minst några dagar mellan varje bortagen amning för att tillåta mjölkproduktionen att anpassa sig och minska risken för mastit. Nattvak är ofta sist — de kan ersättas med välling av den andra föräldern. Plötslig avvänjning ökar risken för mastit och kan vara svår för bebisen psykologiskt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Amningstips 2026 – guide för nybörjare och vanliga problem"
+  description="Komplett amningstips-guide: anläggning, mjölkproduktion, smärta, hur du vet att bebisen får nog, och hur länge man bör amma. Baserat på WHO och Socialstyrelsen."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/amning-tips/"
+  updatedDate="2026-04-03"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Amma eller flaska?', href: '/guider/amma-eller-flaska/' },
+    { title: 'Bästa bröstpump 2026', href: '/amning/brostpump/' },
+    { title: 'Bästa nappflaska 2026', href: '/amning/nappflaska/' },
+    { title: 'Tillskott under graviditet', href: '/guider/tillskott-gravid/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Amning är en av de viktigaste sakerna du kan ge din bebis — men det är inte alltid enkelt. Den här guiden ger dig praktiska tips från dag ett, hjälper dig lösa vanliga problem och svarar på de frågor som BVC sällan hinner med.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigast att veta</p>
+  <p class="text-sm text-text-light">Rätt anläggning (latch) är grunden för lyckad amning. Smärta och problem beror nästan alltid på fel anläggning — inte på mjölkmängd eller bristande förmåga. Kontakta amningskonsult (IBCLC) tidigt om du har problem.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">De första 24 timmarna — kom igång rätt</h2>
+<p class="text-text-light mb-4">
+  Amning bör inledas så snart som möjligt efter födseln — helst inom en timme. Tidig hud-mot-hud-kontakt stimulerar bebisens sökreflex och ger mamman oxytocin som hjälper livmoderutdrivningen och mjölkproduktionen.
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Råmjölk (kolostrum):</strong> Den gula, tjocka mjölken de första dagarna är rik på antikroppar och näring. Det räcker — bebisen behöver bara 5–7 ml per matning dag 1–2.</li>
+  <li><strong>Amningstakt:</strong> Amma på bebisens signal — minst 8–12 gånger per dygn (var 2:e–3:e timme). Mer är bättre för att etablera mjölkproduktionen.</li>
+  <li><strong>Natt-amning:</strong> Kritisk de första veckorna. Prolaktin (mjölkhormonet) produceras som mest på natten.</li>
+  <li><strong>Väck bebisen om nödvändigt:</strong> Nyfödda kan vara sömniga och glömma att signalera hunger. Väck för att amma om mer än 3 timmar gått utan matning.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Rätt anläggning (latch) — steg för steg</h2>
+<p class="text-text-light mb-4">
+  Rätt anläggning är den viktigaste faktorn. Fel anläggning är orsaken till de flesta amningsproblem: smärta, skadade bröstvårtor, otillräcklig mjölköverföring, och underskjulet bebis.
+</p>
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Håll bebisen nära:</strong> Bebisens mage mot din mage, näsa i linje med bröstvårtan.
+  </li>
+  <li>
+    <strong>Stimulera gapningsreflexen:</strong> Stryk bröstvårtan mot bebisens overläpp. Vänta tills bebisen gapar STORT — som ett lejon, inte ett litet gäsp.
+  </li>
+  <li>
+    <strong>För bebisen till bröstet:</strong> Inte bröstet till bebisen. För in bröstvårtan djupt — bebisen ska ha merparten av det mörka (areola) i munnen, inte bara bröstvårtan.
+  </li>
+  <li>
+    <strong>Kontrollera anläggningen:</strong> Inga klickljud, läpparna är utåtvikta (inte inskrullade), hakan pressas mot bröstet, du ser rörelser i käken.
+  </li>
+  <li>
+    <strong>Om det gör ont:</strong> Bryt sug (stick in lillfingret i mungipan) och försök igen. Smärta är ett tecken på fel anläggning.
+  </li>
+</ol>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vanliga amnningsproblem och lösningar</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Ömma bröstvårtor</h3>
+<p class="text-text-light mb-4">
+  Kortvarig ömhet de första dagarna är normalt. Ihållande smärta under hela amningen tyder nästan alltid på fel anläggning. Åtgärder: be barnmorskan eller amningskonsulten bedöma anläggningen, kontrollera om bebisen har kort tungband (tungebandning) som kan försvåra amning.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Mjölkträngning (engorgement)</h3>
+<p class="text-text-light mb-4">
+  Uppstår vanligtvis dag 3–5 när mjölken "kommer". Bröstet kan bli hårt, varmt och smärtsamt. Åtgärder: amma ofta (10+ gånger/dygn), mjuk arealamassage, varmt bad för att mjuka upp vävnaden, pumpa lite för att avlasta trycket om bebisen inte kan amma nog. Mjölkträngning är tillfällig och brukar minska inom 24–48 timmar.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Igentäppt mjölkgång och mastit</h3>
+<p class="text-text-light mb-4">
+  Igentäppt mjölkgång: känslig knöl i bröstet. Amma noggrant med bebisens haka mot knölriktningen, massera mjukt. Mastit (inflammation): rödhet, värme, feber och hård knöl. <strong>Kontakta läkaren</strong> — kan kräva antibiotika. Fortsätt amma från det drabbade bröstet — det är säkert och hjälper.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Bebis som vägrar bröst</h3>
+<p class="text-text-light mb-4">
+  Kallas "bröstvägran" och kan ha många orsaker: öronvärk, förkylning som gör det svårt att andas under amning, förvirring från napp eller flaska, eller orsaker barnmorskan kan hjälpa med. Erbjud bröstet lugnt utan stress, amma i halvmörker och halvvaka, försök i olika positioner. Kontakta amningskonsult om det inte löser sig snabbt.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Amningspositioner — hitta din favorit</h2>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Vaggan (cradle hold):</strong> Klassisk position. Bebisens huvud i armvecket, kroppen längs armen. Bra när amningen är etablerad.</li>
+  <li><strong>Omvänd vagga (cross-cradle):</strong> Stöd bebisens huvud med handen på motsatt sida. Bra kontroll av anläggningen — rekommenderas för nybörjare.</li>
+  <li><strong>Football hold:</strong> Bebisen "under armen" längs din sida, benen bakåt. Bra efter kejsarsnitt (inga tryck mot buken) och vid stora bröst.</li>
+  <li><strong>Liggande sida mot sida:</strong> Båda liggande på sidan, bröst mot mun. Perfekt för nattvak.</li>
+  <li><strong>Naturlig amning (laid-back):</strong> Du halvliggande bakåt, bebisen på magen. Bebisens naturliga instinkter aktiveras. Bra vid mjölkträngning och aktiv utdrivningsreflex.</li>
+</ul>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
