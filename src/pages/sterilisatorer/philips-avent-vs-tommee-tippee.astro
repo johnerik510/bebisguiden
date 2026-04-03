@@ -1,0 +1,158 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Sterilisatorer', href: '/sterilisatorer/' },
+  { label: 'Philips Avent vs Tommee Tippee' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Philips Avent eller Tommee Tippee sterilisator?',
+    answer: 'Philips Avent 3-i-1 vinner totalt: snabbare (6 min vs 8 min), fungerar med alla flaskmärken, förblir steril i 24 timmar och är en komplett 3-i-1-lösning (sterilisator, förvaring, uppvärmning). Tommee Tippee är billigare och bäst om du redan använder Tommee Tippee-flaskor, men sämre anpassad för andra märken. Har du Philips Avent-flaskor: välj Philips Avent. Har du Tommee Tippee-flaskor och vill spara: Tommee Tippee räcker utmärkt.',
+  },
+  {
+    question: 'Hur lång tid tar sterilisering — Philips Avent vs Tommee Tippee?',
+    answer: 'Philips Avent 3-i-1 steriliserar på 6 minuter. Tommee Tippee Elektrisk Ångsterilisator tar 8 minuter. Skillnaden på 2 minuter märks knappt i praktiken — båda är snabba och effektiva. Philips Avents mikrovågsalternativ är ännu snabbare: 2 minuter i mikrovågsugnen.',
+  },
+  {
+    question: 'Kan jag använda Tommee Tippee-sterilisatorn för andra flaskmärken?',
+    answer: 'Ja, men med begränsningar. Tommee Tippee-sterilisatorn är optimerad för Tommee Tippee Closer to Nature-flaskor. Flaskor med bredare botten eller annan form kan ta upp mer plats och minska kapaciteten. Philips Avent 3-i-1 är universellare och passar bättre för en mix av flaskmärken.',
+  },
+  {
+    question: 'Hur länge förblir flaskorna sterila?',
+    answer: 'Båda sterilisatorerna håller flaskorna sterila i 24 timmar — förutsatt att locket inte öppnas. Philips Avent-sterilisatorn fungerar även som förvaringslåda med stängt lock, vilket bevarar sterilitet längre. Philips Avent mikrovågssterilisator håller bara 6 timmar.',
+  },
+  {
+    question: 'Vilken sterilisator är bäst för resor?',
+    answer: 'Philips Avent Mikrovågssterilisator (ca 299 kr) är bäst för resor: kompakt, lätt och kräver bara en mikrovågsugn — ingen el-kontakt. Steriliserar på 2 minuter. Varken Philips Avent 3-i-1 eller Tommee Tippee-sterilisatorn är designade för resor — båda är kompakta hemmasterilisatorer med sladd.',
+  },
+  {
+    question: 'Behöver man verkligen en sterilisator?',
+    answer: 'Inte strikt nödvändigt — kokning i 5 minuter steriliserar lika effektivt. Men en elektrisk ångsterilisator är snabbare, enklare och eliminerar risken att glömma kastrullen på spisen. Rekommenderas för de första 6 månaderna, varefter immunsystemet är tillräckligt utvecklat. Diskmaskin på 70°C fungerar också bra men steriliserar inte lika noggrant.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Philips Avent vs Tommee Tippee sterilisator 2026 — vilken ska du välja?"
+  description="Philips Avent 3-i-1 eller Tommee Tippee Elektrisk Ångsterilisator? Vi jämför steriliseringstid, kapacitet, kompatibilitet och pris. Hitta rätt sterilisator för din familj."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-03"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Philips Avent och Tommee Tippee är de två vanligaste sterilisatormärkena i Sverige. Philips Avent 3-i-1 (ca 599 kr) är snabbare och mer universell. Tommee Tippee (ca 399 kr) är billigare och bäst för dig som redan använder Tommee Tippee-flaskor. Här är vad du behöver veta.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Philips Avent 3-i-1</th>
+          <th class="p-3 text-left font-semibold">Tommee Tippee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">ca 599 kr</td>
+          <td class="p-3 text-green-700 font-semibold">ca 399 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Steriliseringstid</td>
+          <td class="p-3 text-green-700 font-semibold">6 minuter</td>
+          <td class="p-3 text-text-light">8 minuter</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Kapacitet</td>
+          <td class="p-3 text-green-700 font-semibold">6 flaskor</td>
+          <td class="p-3 text-text-light">6 flaskor</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Steril i</td>
+          <td class="p-3 text-green-700 font-semibold">24 timmar</td>
+          <td class="p-3 text-text-light">24 timmar</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Fungerar med alla flaskor</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-text-light">Bäst med TT-flaskor</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">3-i-1 funktion</td>
+          <td class="p-3 text-green-700 font-semibold">Sterilisator + förvaring + uppvärmning</td>
+          <td class="p-3 text-text-light">Sterilisator</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Metod</td>
+          <td class="p-3 text-green-700 font-semibold">Elektrisk ånga</td>
+          <td class="p-3 text-text-light">Elektrisk ånga</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">CE-godkänd</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ProductCard
+    name="Philips Avent 3-i-1 Elektrisk Sterilisator"
+    badge="Bäst i test"
+    price="ca 599 kr"
+    rating={4.8}
+    pros={['Snabbast — steriliserar på 6 minuter', '3-i-1: sterilisator + förvaring + uppvärmning', 'Fungerar med alla flaskmärken', 'Sterilt i 24 timmar med stängt lock']}
+    cons={['Dyrare — ca 200 kr mer än Tommee Tippee', 'Tar plats på köksbänken']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/tillbehor-for-matning/sterilisering/philips-avent-elektrisk-sterilisator"
+  />
+
+  <ProductCard
+    name="Tommee Tippee Elektrisk Ångsterilisator"
+    badge="Bäst pris"
+    price="ca 399 kr"
+    rating={4.6}
+    pros={['Prisvärd — ca 200 kr billigare', 'Perfekt kompatibilitet med TT-flaskor', 'Kompakt design', 'Steriliserar 6 flaskor']}
+    cons={['Långsammare — 8 min vs 6 min', 'Bäst anpassad för Tommee Tippee-flaskor', 'Ingen 3-i-1 funktion']}
+    ctaText="Se pris hos Barnkraft"
+    ctaHref="https://www.barnkraft.se/tommee-tippee-elektrisk-sterilisator"
+  />
+
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-purple-800 mb-3">Välj Philips Avent 3-i-1 om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Vill ha en komplett lösning — sterilisator, förvaring och uppvärmning i ett</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Använder blandade flaskmärken och behöver universell kompatibilitet</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Vill ha snabbaste sterilisering (6 min)</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Ser det som en långsiktig investering som håller för 2–3 barn</span></li>
+      </ul>
+    </div>
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-blue-800 mb-3">Välj Tommee Tippee om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Redan använder Tommee Tippee Closer to Nature-flaskor</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Vill spara 200 kr och har budgetfokus</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Behöver en enkel sterilisator utan extra funktioner</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Har ett litet kök och värdesätter kompakt design</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    product="Philips Avent 3-i-1"
+    store="Jollyroom"
+    price="ca 599 kr"
+    url="https://www.jollyroom.se/tillbehor-for-matning/sterilisering/philips-avent-elektrisk-sterilisator"
+  />
+</ArticleLayout>
