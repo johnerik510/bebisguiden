@@ -1,0 +1,199 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Medela vs Spectra' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken är bäst — Medela eller Spectra bröstpump?',
+    answer: 'Båda är utmärkta elektriska bröstpumpar — valet beror på dina behov. Spectra S1 Plus är bäst för dig som pumpar hemma och vill ha starka anpassningsbara inställningar till lägre pris (ca 2 490 kr med inbyggt batteri). Medela Freestyle Flex är bäst om du pumpar på språng — kompakt, app-ansluten och med bra tillgänglighet till tillbehör i Sverige.',
+  },
+  {
+    question: 'Är Spectra eller Medela tystast?',
+    answer: 'Spectra S1 och S2 anses generellt tystare än Medela — ca 45 dB mot Medelas 45–55 dB beroende på modell och sugstyrka. I praktiken är båda tysta nog för att använda i ett rum med sovande barn, men Spectra upplevs lite mer diskret vid hög sugstyrka.',
+  },
+  {
+    question: 'Vad kostar Medela Freestyle Flex vs Spectra S1?',
+    answer: 'Medela Freestyle Flex: ca 2 990–3 490 kr. Spectra S1 Plus: ca 2 290–2 490 kr. Spectra S1 är ca 500–1 000 kr billigare och erbjuder minst lika bra prestanda. Spectra S2 (utan inbyggt batteri) är ännu billigare — ca 1 690–1 990 kr.',
+  },
+  {
+    question: 'Kan jag använda Medela tillbehör med Spectra och tvärtom?',
+    answer: 'Nej — Medela och Spectra använder olika kopplingssystem och tillbehören är inte kompatibla utan adapter. Medela har ett bredare sortiment av tillbehör tillgängliga i svenska apotek och butiker. Spectras tillbehör finns hos specialistbutiker och online. Välj märke och håll dig till det för konsistenta ersättningstillbehör.',
+  },
+  {
+    question: 'Vilket är bäst för dubbelsidig pumpning?',
+    answer: 'Båda erbjuder dubbelsidig pumpning. Spectra S1 och S2 anses ha bättre motorstyrka för dubbelsidig pumpning — starkare sug (270 mmHg) och fler inställningar för sugstyrka och hastighet. Medela Freestyle Flex (250 mmHg max) är kompakt men kan ha svagare sugstyrka vid dubbelpumpning jämfört med Spectras hemmastationer. Pumpar du dubbelsidigt regelbundet: Spectra.',
+  },
+  {
+    question: 'Har Medela eller Spectra inbyggt batteri?',
+    answer: 'Medela Freestyle Flex har inbyggt batteri för portabel användning (ca 2–3 timmars batteritid). Spectra S1 Plus har inbyggt uppladdningsbart batteri (ca 3 timmars batteritid). Spectra S2 Plus saknar inbyggt batteri och kräver nätström — men är billigare. Pumpar du utanför hemmet: välj Medela Freestyle Flex eller Spectra S1 (inte S2).',
+  },
+];
+---
+
+<ArticleLayout
+  title="Medela vs Spectra 2026 — vilken bröstpump ska du välja?"
+  description="Vi jämför Medela Freestyle Flex och Spectra S1 Plus sida vid sida. Pris, sugstyrka, tystnad, batteri och vem som bör välja vad 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-03"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    Medela och Spectra är de två mest diskuterade bröstpumpsmärkena bland svenska mammor 2026. Medela är det etablerade märket med bäst butikstillgänglighet. Spectra är utmanaren med starka anpassningsbara inställningar och lägre pris. Här är vad du behöver veta.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse — Medela vs Spectra</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">Medela Freestyle Flex</th>
+          <th class="p-3 text-left font-semibold">Spectra S1 Plus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris</td>
+          <td class="p-3 text-text-light">ca 2 990–3 490 kr</td>
+          <td class="p-3 text-green-700 font-semibold">ca 2 290–2 490 kr</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Sugstyrka (max)</td>
+          <td class="p-3 text-text-light">250 mmHg</td>
+          <td class="p-3 text-green-700 font-semibold">270 mmHg</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Inbyggt batteri</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (2–3 timmar)</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (ca 3 timmar)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Dubbelpump</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Tystnad</td>
+          <td class="p-3 text-text-light">ca 45–55 dB</td>
+          <td class="p-3 text-green-700 font-semibold">ca 45 dB</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">App-anslutning</td>
+          <td class="p-3 text-green-700 font-semibold">Ja — MyMedela</td>
+          <td class="p-3 text-text-light">Nej</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Sughastighetsinst.</td>
+          <td class="p-3 text-text-light">2 faser</td>
+          <td class="p-3 text-green-700 font-semibold">Fler (stimulering + expression)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Tillbehör i Sverige</td>
+          <td class="p-3 text-green-700 font-semibold">Brett — apotek och ICA</td>
+          <td class="p-3 text-text-light">Specialistbutiker</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Ursprung</td>
+          <td class="p-3 text-text-light">Schweiz</td>
+          <td class="p-3 text-text-light">Sydkorea</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bäst för</td>
+          <td class="p-3 text-green-700 font-semibold">Portabilitet, tillgänglighet</td>
+          <td class="p-3 text-text-light">Styrka, pris, hemmapumpning</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Sugstyrka och inställningar: Spectra vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Spectra S1 Plus har högre maxsugstyrka (270 mmHg) än Medela Freestyle Flex (250 mmHg) och fler justerbara nivåer. Spectra delar upp pumpningen i en stimuleringsfas (mjuk, snabb) och en expressionsfas (starkare, långsammare) — vilket efterliknar naturlig amning bättre. Du kan justera båda faserna oberoende.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Medela använder sin 2-fas-teknik men har färre manuella justeringsmöjligheter. För mammor med mjölkproduktionsproblem eller som pumpar ofta: Spectras starkare och mer justerbara sugstyrka kan göra skillnad.
+  </p>
+
+  <ProductCard
+    name="Spectra S1 Plus"
+    badge="Bäst prestanda"
+    price="ca 2 390 kr"
+    rating={4.7}
+    ageRange="Nyfödd och uppåt"
+    pros={['Starkare sug (270 mmHg) — bäst för stimulering av mjölkproduktion', 'Inbyggt batteri ca 3 timmar', 'Tystare drift (ca 45 dB)', 'Fler justerbara inställningar för stimulering och expression', 'Lägre pris än Medela Freestyle Flex']}
+    cons={['Ingen app-anslutning', 'Tillbehör svårare att hitta i vanliga butiker', 'Tyngre och mer stationär']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/amning/brostpumpar/spectra-s1-plus"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Portabilitet och app: Medela Freestyle Flex vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Medela Freestyle Flex är utformad för portabelt bruk — kompakt, lätt och med MyMedela-appen som loggar pumptider och mängd. Du kan pumpa på bussen, jobbet eller i bilen. Tillbehör (bröstskydd, behållare, slangar) finns på apotek och de flesta Coop- och ICA-butiker.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Spectra S1 har inbyggt batteri och är portabel, men är större och tyngre. Spectras tillbehör är svårare att hitta fysiskt i Sverige — du behöver ofta beställa online.
+  </p>
+
+  <ProductCard
+    name="Medela Freestyle Flex"
+    badge="Bäst portabilitet"
+    price="ca 3 290 kr"
+    rating={4.5}
+    ageRange="Nyfödd och uppåt"
+    pros={['Kompakt och lätt — bäst för aktiva mammor', 'MyMedela-appen loggar pumptider och volymer', 'Tillbehör på apotek och de flesta mataffärer', 'Touchscreen-display', 'Brett sortiment reservdelar']}
+    cons={['Dyrare (ca 500–1 000 kr mer än Spectra)', 'Lägre maxsugstyrka (250 mmHg)', 'Färre sugjusteringsinställningar']}
+    ctaText="Se pris hos Jollyroom"
+    ctaHref="https://www.jollyroom.se/amning/brostpumpar/medela-freestyle-flex"
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vem bör välja vad?</h2>
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-purple-800 mb-3">Välj Spectra S1 Plus om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Pumpar hemma och vill ha starkare, mer justerbara inställningar</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Har svårt att stimulera mjölkproduktionen</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Prioriterar tystnad och pris framför app-funktioner</span></li>
+        <li class="flex gap-2"><span class="text-purple-600 font-bold">+</span><span>Pumpar dubbelsidigt regelbundet och vill ha mer kraft</span></li>
+      </ul>
+    </div>
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+      <h3 class="font-heading font-bold text-blue-800 mb-3">Välj Medela Freestyle Flex om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Pumpar på jobbet, kollektivtrafiken eller ofta utanför hemmet</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Vill ha app-stöd för att logga pumpning</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Värdesätter enkel tillgång till reservdelar på apotek</span></li>
+        <li class="flex gap-2"><span class="text-blue-600 font-bold">+</span><span>Vill ha ett kompakt och lättviktig alternativ</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Relaterade guider</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <a href="/amning/brostpump/" class="bg-white border border-border rounded-xl p-4 hover:shadow-md transition-shadow">
+      <p class="font-heading font-bold text-dark">Bästa bröstpump 2026</p>
+      <p class="text-sm text-text-light">Topplista — alla märken testade</p>
+    </a>
+    <a href="/amning/" class="bg-white border border-border rounded-xl p-4 hover:shadow-md transition-shadow">
+      <p class="font-heading font-bold text-dark">Amning & matning</p>
+      <p class="text-sm text-text-light">Komplett guide till amningsutrustning</p>
+    </a>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    product="Spectra S1 Plus"
+    store="Jollyroom"
+    price="ca 2 390 kr"
+    url="https://www.jollyroom.se/amning/brostpumpar/spectra-s1-plus"
+  />
+</ArticleLayout>
