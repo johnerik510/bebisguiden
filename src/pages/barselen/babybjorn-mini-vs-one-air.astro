@@ -1,0 +1,181 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bärselen', href: '/barselen/' },
+  { label: 'BabyBjörn Mini vs One Air' },
+];
+
+const faqItems = [
+  {
+    question: 'BabyBjörn Mini eller One Air — vilken ska jag välja?',
+    answer: 'Det beror på hur länge du vill använda bärselet. BabyBjörn Mini är enklare, billigare och perfekt för nyfödda de första 6–9 månaderna (upp till 11 kg). BabyBjörn One Air fungerar längre — upp till 15 kg (ca 2–3 år) — och har bättre ergonomi för äldre barn med bredare sätestöd. Planerar du bara nyfödda-fasen: Mini. Vill du ha ett bärsele för hela babytiden: One Air.',
+  },
+  {
+    question: 'Fungerar BabyBjörn Mini med nyfödda från sjukhuset?',
+    answer: 'Ja — BabyBjörn Mini är designad specifikt för nyfödda från 3,5 kg och kan användas direkt från sjukhuset. Inget extra nyföddsläge eller inlägg behövs. Det är just det som är Minis styrka: enkel och direkt användbar för det lilla nyfödda barnet. BabyBjörn One Air fungerar också med nyfödda från 3,5 kg men är något bulkigare.',
+  },
+  {
+    question: 'Har BabyBjörn Mini HIPS-certifiering?',
+    answer: 'Ja — BabyBjörn Mini är godkänd av International Hip Dysplasia Institute (HIPS-certifierad). Barnet sitter i korrekt M-position med knäna i nivå med eller högre än rumpan. Detsamma gäller BabyBjörn One Air. Båda bärselena är ergonomiskt godkända.',
+  },
+  {
+    question: 'Kan min partner och jag dela BabyBjörn Mini?',
+    answer: 'Ja — BabyBjörn Mini är unisex och justerbar för olika kroppsstorlekar. Banden justeras med clips och remmar. Dock är Mini bäst anpassad för dem med S–L-storlek på overkroppen. BabyBjörn One Air har fler justeringsmöjligheter och är något enklare att dela mellan föräldrar av olika storlek.',
+  },
+  {
+    question: 'Hur mycket väger BabyBjörn Mini jämfört med One Air?',
+    answer: 'BabyBjörn Mini väger ca 500 gram. BabyBjörn One Air väger ca 640 gram. Båda är lätta jämfört med många konkurrenter. Vikten skiljer inte mycket i praktiken — det är framför allt storleken och konstruktionen som skiljer dem åt.',
+  },
+  {
+    question: 'Kan jag bära barnet med ansiktet utåt i BabyBjörn Mini?',
+    answer: 'Ja — BabyBjörn Mini har tre bärpositioner: framifrån med ansiktet mot dig, framifrån med ansiktet utåt, och bakifrån. BabyBjörn One Air har fyra positioner: samma tre plus höftbärning. Ansiktet-utåt-positionen är populär när barnet är 4–6 månader och vill se världen, men rekommenderas bara i kortare stunder.',
+  },
+];
+---
+
+<ArticleLayout
+  title="BabyBjörn Mini vs One Air 2026 — vilket bärsele ska du välja?"
+  description="Vi jämför BabyBjörn Mini och One Air 2026. Mini är bäst för nyfödda och nybörjare. One Air passar längre och har bättre ergonomi för äldre barn. Vilket passar dig?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-03"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    BabyBjörn Mini och One Air är bägge populära val för svenska föräldrar — enkla att ta på, välbyggda och från ett etablerat märke. Men de är designade för lite olika syften och livslängd.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Mini är BabyBjörns nyföddsspecialist: enkel, kompakt och perfekt för de första månaderna. One Air är familjemodellen i mesh — luftig, ergonomisk och håller upp till 2–3 år. Vilket du bör välja beror på hur länge du planerar att bära och vad du värderar mest.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-center font-semibold">BabyBjörn Mini</th>
+          <th class="p-3 text-center font-semibold">BabyBjörn One Air</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          { label: 'Pris', mini: 'ca 999 kr', one: 'ca 2 490 kr', winner: 'mini' },
+          { label: 'Viktklass barn', mini: '3,5–11 kg (0–12 mån)', one: '3,5–15 kg (0–3 år)', winner: 'one' },
+          { label: 'Positioner', mini: '3 (fram in/ut, rygg)', one: '4 (fram in/ut, rygg, höft)', winner: 'one' },
+          { label: 'Material', mini: 'Bomull/polyester', one: '3D-mesh (luftig)', winner: 'one' },
+          { label: 'Nyfödda utan inlägg', mini: 'Ja — från 3,5 kg', one: 'Ja — från 3,5 kg', winner: 'draw' },
+          { label: 'HIPS-certifierad', mini: 'Ja', one: 'Ja', winner: 'draw' },
+          { label: 'Ventilering', mini: 'Standard', one: 'Utmärkt (mesh)', winner: 'one' },
+          { label: 'Vikt (bärselet)', mini: 'ca 500 g', one: 'ca 640 g', winner: 'mini' },
+          { label: 'Bäst för', mini: 'Nyfödda och kort period', one: 'Hela babytiden', winner: 'draw' },
+        ].map((row, i) => (
+          <tr class={i % 2 === 0 ? 'bg-white' : 'bg-bg-alt'}>
+            <td class="p-3 font-semibold text-text">{row.label}</td>
+            <td class={`p-3 text-center ${row.winner === 'mini' ? 'font-bold text-accent' : 'text-text-light'}`}>
+              {row.mini}
+              {row.winner === 'mini' && <span class="block text-xs font-normal text-accent/60 mt-0.5">Vinnare</span>}
+            </td>
+            <td class={`p-3 text-center ${row.winner === 'one' ? 'font-bold text-primary' : 'text-text-light'}`}>
+              {row.one}
+              {row.winner === 'one' && <span class="block text-xs font-normal text-primary/60 mt-0.5">Vinnare</span>}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Products -->
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <ProductCard
+      name="BabyBjörn Mini"
+      badge="Bäst för nyfödda"
+      price="ca 999 kr"
+      rating={4.5}
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-mini-3d-mesh-barsele-anthracite"
+      features={{
+        'Vikt barn': '3,5–11 kg',
+        'Positioner': '3 (fram in/ut, rygg)',
+        'Material': 'Bomull/polyester',
+        'Nyfödda': 'Ja, direkt från 3,5 kg',
+        'Pris': 'ca 999 kr',
+      }}
+    />
+    <ProductCard
+      name="BabyBjörn One Air"
+      badge="Bäst för längre användning"
+      price="ca 2 490 kr"
+      rating={4.7}
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-3d-mesh-barsele-anthracite"
+      features={{
+        'Vikt barn': '3,5–15 kg',
+        'Positioner': '4 (fram in/ut, rygg, höft)',
+        'Material': '3D-mesh',
+        'Nyfödda': 'Ja, direkt från 3,5 kg',
+        'Pris': 'ca 2 490 kr',
+      }}
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">BabyBjörn Mini — nyföddsspecialisten</h2>
+  <p class="text-text-light mb-3">
+    BabyBjörn Mini är designad med en sak i åtanke: att vara så enkel som möjligt för det nyföddas fas. Inga komplicerade knäppen, inga justeringsraster — bara enkla clips och remmar. Det gör Mini till det perfekta "första bärselet" för föräldrar som aldrig burit förut.
+  </p>
+  <p class="text-text-light mb-3">
+    Nackdelen är begränsad livslängd. Mini är dimensionerad för upp till 11 kg (ca 9–12 månader). Vill du fortsätta bära efter det behöver du ett annat bärsele. Paret Mini (0–12 mån) + ett annat bärsele för ryggsida kan vara ett kostnadseffektivt upplägg för aktiva bärare.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">BabyBjörn One Air — mesh och mångsidighet</h2>
+  <p class="text-text-light mb-3">
+    BabyBjörn One Air är byggd i 3D-mesh-material som är utmärkt för ventilering — bra val för sommarbarn eller varma klimat. Den extra positionen (höftbärning) och det bredare sätestödet gör att barnet sitter mer ergonomiskt när det blir tyngre.
+  </p>
+  <p class="text-text-light mb-3">
+    One Air är på ett annat prisskikt: ca 2 490 kr mot Minis 999 kr. Men den håller i 2–3 år. Räknar du kostnad per användningsmånad kan One Air vara mer prisvärd i längden — om du planerar att använda bärselet aktivt hela babytiden.
+  </p>
+
+  <!-- Who should choose -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vem bör välja vilket?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-6">
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-5">
+      <h3 class="font-bold text-accent mb-3">Välj BabyBjörn Mini om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-accent font-bold">+</span><span>Vill ha ett enklare och billigare alternativ för nyföddsperioden</span></li>
+        <li class="flex gap-2"><span class="text-accent font-bold">+</span><span>Planerar att komplettera med ett annat bärsele längre fram</span></li>
+        <li class="flex gap-2"><span class="text-accent font-bold">+</span><span>Är ny på bärande och vill ha enkelt att ta på/av</span></li>
+        <li class="flex gap-2"><span class="text-accent font-bold">+</span><span>Vill hålla budgeten nere för bärsele</span></li>
+      </ul>
+    </div>
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-5">
+      <h3 class="font-bold text-primary mb-3">Välj BabyBjörn One Air om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li class="flex gap-2"><span class="text-primary font-bold">+</span><span>Vill ha ett bärsele som räcker hela babytiden (0–3 år)</span></li>
+        <li class="flex gap-2"><span class="text-primary font-bold">+</span><span>Prioriterar ventilering och mesh-material</span></li>
+        <li class="flex gap-2"><span class="text-primary font-bold">+</span><span>Vill ha höftbärning som extra position när barnet blir äldre</span></li>
+        <li class="flex gap-2"><span class="text-primary font-bold">+</span><span>Vill undvika att köpa ett nytt bärsele när barnet växer</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Related -->
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Relaterade guider</h2>
+  <ul class="space-y-2 text-sm mb-8">
+    <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärsele 2026 — test och jämförelse</a></li>
+    <li><a href="/barselen/ergobaby-omni-360-vs-babybjorn-one/" class="text-accent hover:underline">Ergobaby Omni 360 vs BabyBjörn One Air 2026</a></li>
+    <li><a href="/barselen/nyfodd/" class="text-accent hover:underline">Bästa bärsele för nyfödda 2026</a></li>
+    <li><a href="/barselen/ergonomisk/" class="text-accent hover:underline">Bästa ergonomiska bärsele 2026</a></li>
+  </ul>
+
+  <FAQ items={faqItems} />
+</ArticleLayout>
+
+<StickyCTA
+  product="BabyBjörn One Air"
+  store="Jollyroom"
+  price="ca 2 490 kr"
+  url="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-3d-mesh-barsele-anthracite"
+/>
