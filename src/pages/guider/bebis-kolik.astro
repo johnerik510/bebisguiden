@@ -1,0 +1,160 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis kolik' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur länge varar kolik?',
+    answer: 'Kolik debuterar typiskt vid 2–4 veckors ålder, toppar runt 6 veckor och avtar vanligtvis helt vid 3–4 månaders ålder. Det är den goda nyheten: kolik är tidsbegränsad. Hos ca 90% av bebisar med kolik är det mesta över vid 4 månader. Trösten är svag när du är i den värsta fasen, men sluttiden är förutsägbar. Om gråten fortsätter utan förbättring efter 4 månader: kontakta BVC för att utesluta medicinska orsaker.',
+  },
+  {
+    question: 'Hjälper probiotika mot kolik?',
+    answer: 'Lactobacillus reuteri DSM 17938 är det mest studerade probiotikaet mot kolik hos ammade bebisar. Meta-analyser publicerade i Pediatrics och BMJ visar att L. reuteri minskade gråten med genomsnittligt 49–74 minuter per dag. Effekten verkar bättre hos ammade bebisar än formelmatade. Det finns också evidens för att bebisar med kolik har en annorlunda tarmflora (färre L. reuteri, fler Proteobacteria) — vilket stöder probiotika-teorin. Dose: 100 miljoner CFU/dag av den specifika stammen (BioGaia Protectis).',
+  },
+  {
+    question: 'Ska man byta välling/formel vid kolik?',
+    answer: 'Byte av formel rekommenderas INTE som förstahandsåtgärd mot kolik. Evidensen för att formeltyp orsakar kolik är svag. Undantag: om bebisen visar tecken på komjölksproteinintolerans (eksem, blodtillblandad avföring, kraftig uppstötning) — kontakta läkare innan du byter. Delvis hydrolyserade formler (HA-formel) minskar koliken hos vissa bebisar, men effekten är inte konsekvent i studier. Undvik att byta för ofta — det skapar stress och möjliggör inte att se om en åtgärd faktiskt hjälper.',
+  },
+  {
+    question: 'Kan ammat mat orsaka bebisens kolik?',
+    answer: 'Det finns inga starka bevis för att mammans kost orsakar kolik hos ammade bebisar. Eliminationsdieter (ta bort mejeriprodukter, koffein, lök, kål) rekommenderas INTE rutinmässigt — de skapar stress och undernäring utan tydlig nytta för de flesta. Undantag: om bebisen har bekräftad komjölksproteinintolerans kan mammans eliminering av mejeri hjälpa. Rådgör alltid med läkare innan eliminationsdieter under amning.',
+  },
+  {
+    question: 'Vad är skillnaden mellan kolik och gasplågor?',
+    answer: 'Gasplågor och kolik kan överlappa, men är inte samma sak. Gasplågor: bebisen verkar ha ont i magen, drar upp benen, är röd i ansiktet och lugnar sig när gasen passerar. Kolik: intensiv gråt som inte enkelt förklaras av hunger, gas, blöja eller trötthet, och som inte svarar på normala tröstmetoder. Gasproblem är ofta lindrigare och mer lättlöst. Hjälp bebisen "trampa cykel" med benen och massera magen medurs. Vid ren gassvårighet: Minifom (simetikon) kan hjälpa.',
+  },
+  {
+    question: 'Är kolik skadligt för bebisen?',
+    answer: 'Nej, kolik är inte skadligt för bebisen. Kolik innebär gråt och obehag, men orsakar inga long-term fysiska skador. Bebisens tillväxt och utveckling påverkas inte. Däremot kan kolik ha stor negativ inverkan på föräldrarnas välmående — utmattning, stress och risk för postpartumdepression ökar markant. Ta hand om dig själv: det är OK att lägga ner en säkert liggande bebis och gå ut i ett annat rum i några minuter. Kontakta BVC eller familjecentralen om du mår dåligt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis kolik – orsaker, tecken och vad som hjälper 2026"
+  description="Guide om kolik hos bebis: hur länge det varar, vad som hjälper (probiotika, bärande, rörelser), och vad forskningen säger om orsaker. Baserat på 1177 och aktuell forskning."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-kolik/"
+  updatedDate="2026-04-03"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Bebis sover dåligt', href: '/guider/bebis-sover-daligt/' },
+    { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/' },
+    { title: 'Amningstips', href: '/guider/amning-tips/' },
+    { title: 'Bästa bärsele 2026', href: '/barselen/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Kolik är ett av de mest utmattande problemen för nyblivna föräldrar — timmar av intensiv, otröstlig gråt utan uppenbar orsak. Den goda nyheten: kolik är nästan alltid övergående. Den här guiden ger dig evidensbaserade svar om vad kolik är, vad som hjälper och vad du kan vänta dig.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigast att veta</p>
+  <p class="text-sm text-text-light">Kolik är en diagnos per uteslutning — det finns ingen tydlig medicinsk orsak i de flesta fall. Regeln av tre (gråt 3+ timmar/dag, 3+ dagar/vecka, 3+ veckor) är en vägledning, inte en strikt diagnos. Det finns inget enskilt "botemedel", men kombination av bärande, rörelse och probiotika hjälper många.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad är kolik?</h2>
+<p class="text-text-light mb-4">
+  Kolik definieras traditionellt enligt Wessel-kriterierna ("regeln av tre"): gråt i mer än 3 timmar per dag, mer än 3 dagar per vecka, i mer än 3 veckor, hos en i övrigt frisk bebis under 5 månader. Det är en diagnos per uteslutning — medicinska orsaker till gråt ska uteslutas först.
+</p>
+<p class="text-text-light mb-4">
+  Kolik drabbar ca 10–30% av alla bebisar och förekommer lika ofta oavsett om bebisen ammas eller formelmatias, förstfödda eller syskon, pojkar eller flickor. Det är med andra ord inte något du gjort fel.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tecken på kolik</h2>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li>Intensiv, skrikande gråt som inte lugnar sig med normala tröstmetoder (mat, blöjbyte, kram)</li>
+  <li>Gråten sker ofta vid samma tidpunkt — klassiskt sen eftermiddag och kväll ("kvällskolik")</li>
+  <li>Bebisen drar upp benen mot magen, anspänner magen, knyts i händerna</li>
+  <li>Röd eller lila i ansiktet under episoderna</li>
+  <li>Episoderna slutar lika abrupt som de börjar</li>
+  <li>Bebisen verkar annars frisk, växer normalt och är alert och glad utanför episoderna</li>
+</ul>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Kontakta 1177 om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Bebisen gråter ovanligt och visar andra tecken på sjukdom (feber, uppkastningar, blod i avföringen)</li>
+    <li>Gråten är annorlunda till karaktären — svag och ansträngd snarare än kraftig</li>
+    <li>Bebisen växer dåligt eller verkar inte trivas</li>
+    <li>Du är orolig — BVC är till för att svara på just sådana frågor</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Teorier om orsaker</h2>
+<p class="text-text-light mb-4">
+  Ingen vet exakt vad som orsakar kolik. Det finns flera teorier som inte utesluter varandra:
+</p>
+<div class="space-y-3 mb-6">
+  <div class="bg-white border border-border rounded-xl p-4">
+    <h3 class="font-semibold text-text mb-1">Omogen tarmflora</h3>
+    <p class="text-sm text-text-light">Studier visar att koliksbebisar har annorlunda tarmflora — färre Lactobacillus reuteri och fler Proteobacteria. Det är den starkaste biologiska teorin och stöds av att probiotika (L. reuteri) hjälper många bebisar.</p>
+  </div>
+  <div class="bg-white border border-border rounded-xl p-4">
+    <h3 class="font-semibold text-text mb-1">Omogen tarmperistaltik</h3>
+    <p class="text-sm text-text-light">Bebisens mag-tarmkanal är fortfarande ovan vid livet utanför livmodern. Gas kan fastna och orsaka obehag, och tarmmotiliteten är oregelbunden under de första månaderna.</p>
+  </div>
+  <div class="bg-white border border-border rounded-xl p-4">
+    <h3 class="font-semibold text-text mb-1">Neurologisk reglering</h3>
+    <p class="text-sm text-text-light">Bebisens nervsystem är inte färdigutvecklat. Kvällskoliken kan förklaras av att bebisens förmåga att filtrera och bearbeta stimuli är uttömts under dagen — den "överbelastas" mot kvällen.</p>
+  </div>
+  <div class="bg-white border border-border rounded-xl p-4">
+    <h3 class="font-semibold text-text mb-1">Komjölksproteinintolerans (hos en minoritet)</h3>
+    <p class="text-sm text-text-light">Hos ca 10–15% av bebisar med kolik kan komjölksprotein spela roll. Dessa bebisar visar ofta även eksem, uppstötningar och ibland blodtillblandad avföring. En läkarbedömning bör göras innan elimineringsdieter påbörjas.</p>
+  </div>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad hjälper mot kolik?</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Probiotika — bäst evidens</h3>
+<p class="text-text-light mb-4">
+  Lactobacillus reuteri DSM 17938 (BioGaia Protectis) har den starkaste evidensen av alla kolikinterventioner. Flera randomiserade kontrollerade studier och meta-analyser visar att L. reuteri minskar gråttiden hos ammade koliksbebisar med upp till 74 minuter per dag. Dos: 5 droppar per dag. Effekten är bäst vid amning — evidensen för formelmatade bebisar är svagare.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Bärande och rörelse</h3>
+<p class="text-text-light mb-4">
+  Kontinuerlig rörelse och närkontakt lugnar de flesta koliksbebisar. En <a href="/barselen/" class="text-accent hover:underline font-medium">bärsele</a> frigör dina händer och håller bebisen i rörelse. Specifika tekniker som fungerar för många:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Magliggning i famnen:</strong> Bebisen på magen längs underarmen, ansiktet åt sidan — trycket mot magen kan lindra gasen</li>
+  <li><strong>Vuggande och rhythmisk rörelse:</strong> Rytmisk rörelse liknar rörelserna i livmodern — stillhet är det ovanliga, rörelse är normen</li>
+  <li><strong>Bakåtlutad amningsposition (laid-back nursing):</strong> Kan minska luftintag under matning</li>
+  <li><strong>Bilåkning eller promenad:</strong> Vibration och rörelse — ett klassiskt koliksknep</li>
+</ul>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Ljud och stimuli</h3>
+<p class="text-text-light mb-4">
+  Vitt brus, dammsugare, fläktljud och andra entoniga ljud hjälper många bebisar. Det imiterar ljudnivån i livmodern (ca 90 dB — ungefär som ett dammsugare). Appar och speakers med vitt brus kan vara ett viktigt verktyg nattetid.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Bukmassage</h3>
+<p class="text-text-light mb-4">
+  Medursrotation på magen (följ tarmens riktning) kan hjälpa gas att passera. Trampcykel med benen är klassiskt och kan ge snabb lindring. Genomför det försiktigt på en varm hand — inte omedelbart efter mat.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Gasdrops (simetikon)</h3>
+<p class="text-text-light mb-4">
+  Minifom och liknande simetikon-produkter bryter upp gasbubblor i tarmen och underlättar att de passerar. Studier visar blandade resultat — simetikon hjälper vid gasbesvär men är sannolikt inte effektivt om problemen beror på tarmfloran. Används ändå av många föräldrar och är ofarligt att prova.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Ta hand om dig som förälder</h2>
+<p class="text-text-light mb-4">
+  Kolik är en av de viktigaste riskfaktorerna för postpartumdepression och föräldrastress. Det är inte ovanligt att känna frustration, hjälplöshet och utmattning. Några viktiga principer:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Det är OK att lägga ner bebisen.</strong> En bebis som skriker men ligger säkert i sin säng tar ingen skada. Gå ut i ett annat rum i 5–10 minuter om du är på gränsen.</li>
+  <li><strong>Dela på bördan.</strong> Turas om med partner, be om hjälp av familj eller vänner — "det tar by att uppfostra ett barn" gäller också kolik</li>
+  <li><strong>Kolik är inte ditt fel.</strong> Det är inte ett tecken på dålig föräldra eller att bebisen är sjuk</li>
+  <li><strong>Det tar slut.</strong> De allra flesta koliksfall är borta vid 3–4 månaders ålder</li>
+</ul>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
