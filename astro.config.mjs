@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.bebisguiden.se',
+  site: 'https://bebisguiden.se',
   output: 'static',
   vite: { plugins: [tailwindcss()] },
   integrations: [sitemap()],
