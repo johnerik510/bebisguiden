@@ -1,0 +1,204 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const jollyUrl = 'https://addrevenue.io/t?a=987081&c=3467325';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'BabyBjörn vs Stokke Tripp Trapp' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken matstol är bäst — BabyBjörn eller Stokke Tripp Trapp?',
+    answer: 'De är bäst för olika behov. BabyBjörn High Chair har bäst ergonomi och komfort för barn 6 månader–3 år med minimal kladdighet och enkel rengöring. Stokke Tripp Trapp vinner på livslängd och andrahandsvärde — den används från 6 månader till vuxen (136 kg) och håller värdet exceptionellt bra. För de flesta familjer ger Tripp Trapp bättre värde per krona sett över tid.',
+  },
+  {
+    question: 'Hur länge kan man använda BabyBjörn High Chair?',
+    answer: 'BabyBjörn High Chair är rekommenderad för barn 6 månader–3 år (max 15 kg). Den är inte justerbar på samma sätt som Tripp Trapp — barnet "sitter ut" stolen vid 3 år. Det gör den till en babymatstol, inte en stol som följer barnet upp i skolåldern.',
+  },
+  {
+    question: 'Är Stokke Tripp Trapp svår att rengöra?',
+    answer: 'Tripp Trapp i trä kräver lite mer omsorg — torka av spill snabbt, undvik blötläggning. Baby Set (tillbehör) och sitskudde tvättas separat. BabyBjörn High Chair är enklare att rengöra: plast som kan torkas av direkt, sätets kudde tvättas i maskin. För de mest kaotiska mållunderna med ett litet barn kan BabyBjörn vara smidigare.',
+  },
+  {
+    question: 'Vilket andrahandsvärde har de båda?',
+    answer: 'Stokke Tripp Trapp är känt för att behålla sitt värde exceptionellt bra — välhållna stolar säljs för 800–1 500 kr på Blocket. BabyBjörn High Chair har också ett relativt bra andrahandsvärde för en babymatstol, men säljs billigare eftersom den inte är skalbar. Tripp Trapp är den klara vinnaren på andrahandsvärde.',
+  },
+  {
+    question: 'Behöver man köpa Baby Set till Stokke Tripp Trapp?',
+    answer: 'Ja, om barnet ska sitta i Tripp Trapp under 3 år behöver du Baby Set (ca 499–799 kr extra). Baby Set ger ryggstöd och fotplatta anpassad för de minsta. Från ca 3 år kan barnet sitta direkt i Tripp Trapp-stolen utan Baby Set. BabyBjörn High Chair inkluderar ryggstöd och bältessystem utan extra köp.',
+  },
+  {
+    question: 'Kan Stokke Tripp Trapp användas utan Baby Set?',
+    answer: 'Ja — barn från ca 3 år kan sitta i Tripp Trapp utan Baby Set. Stolen justeras i sits- och fotstödshöjd med medföljande skruvnyckel och anpassas allt eftersom barnet växer. Det är det som gör Tripp Trapp unik — den är en riktig vuxenstol som används hela livet.',
+  },
+];
+---
+
+<ArticleLayout
+  title="BabyBjörn High Chair vs Stokke Tripp Trapp April 2026 — vilken vinner?"
+  description="Vi jämför BabyBjörn High Chair och Stokke Tripp Trapp sida vid sida. Pris, ergonomi, rengöring, hållbarhet och vem som ger bäst värde 2026."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-04"
+  showDisclaimer={true}
+>
+  <p class="text-text-light mb-4 text-base">
+    BabyBjörn High Chair kostar 3 790 kr. Stokke Tripp Trapp kostar 2 990 kr (+ Baby Set ca 699 kr = 3 689 kr). Prisskillnaden är minimal — men stolarna är konstruerade för helt olika syften. BabyBjörn är en premiumbabymatstol optimerad för 6 månader–3 år. Stokke Tripp Trapp är en livstidsstol som anpassar sig från 6 månader till vuxen ålder.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Vi reder ut skillnaderna och hjälper dig välja rätt för din familj.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
+  <div class="mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th class="p-3 text-left font-semibold">Egenskap</th>
+          <th class="p-3 text-left font-semibold">BabyBjörn High Chair</th>
+          <th class="p-3 text-left font-semibold">Stokke Tripp Trapp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Pris (grundutförande)</td>
+          <td class="p-3 text-text-light">ca 3 790 kr</td>
+          <td class="p-3 text-text-light">ca 2 990 kr (+ Baby Set 699 kr)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Åldersintervall</td>
+          <td class="p-3 text-text-light">6 mån – 3 år (15 kg)</td>
+          <td class="p-3 text-green-700 font-semibold">6 mån – hela livet (136 kg)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Ergonomi</td>
+          <td class="p-3 text-green-700 font-semibold">Bäst för baby (stöttande sits)</td>
+          <td class="p-3 text-text-light">Bra (justerbar höjd och djup)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Rengöring</td>
+          <td class="p-3 text-green-700 font-semibold">Enklare (helplast)</td>
+          <td class="p-3 text-text-light">Kräver mer omsorg (trä)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Höjdjusterbar</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (anpassas till bord)</td>
+          <td class="p-3 text-green-700 font-semibold">Ja (7 sitshöjder)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Andrahandsvärde</td>
+          <td class="p-3 text-text-light">Bra</td>
+          <td class="p-3 text-green-700 font-semibold">Utmärkt (800–1 500 kr)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Bältessystem</td>
+          <td class="p-3 text-green-700 font-semibold">5-punkts (ingår)</td>
+          <td class="p-3 text-text-light">5-punkts (ingår i Baby Set)</td>
+        </tr>
+        <tr class="bg-bg-alt/50 border-b border-border">
+          <td class="p-3 font-medium text-text">Bord ingår</td>
+          <td class="p-3 text-green-700 font-semibold">Ja</td>
+          <td class="p-3 text-text-light">Nej (köps separat)</td>
+        </tr>
+        <tr class="border-b border-border">
+          <td class="p-3 font-medium text-text">Tillverkning</td>
+          <td class="p-3 text-text-light">Sverige (plast)</td>
+          <td class="p-3 text-text-light">Norge (bok/ek)</td>
+        </tr>
+        <tr class="bg-bg-alt/50">
+          <td class="p-3 font-medium text-text">Bäst för</td>
+          <td class="p-3 text-green-700 font-semibold">6 mån–3 år, enkel rengöring</td>
+          <td class="p-3 text-text-light">Livstidsstol, andrahandsvärde</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Ergonomi och komfort: BabyBjörn vinner för baby</h2>
+  <p class="text-text-light mb-4 text-base">
+    BabyBjörn High Chair är designad med ergonomi i fokus för de allra minsta. Den mjuka, formstöttande sittdelen håller barnet i rätt position och det inbyggda bordet med låsbart läge förhindrar att barnet glider framåt. Höjden justeras manuellt för att passa vid matbordet. Allt inklusive bord, sits och bältessystem ingår utan extrakostnad.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    Stokke Tripp Trapp är ergonomiskt för äldre barn och vuxna — stolar anpassas i höjd och djup med den patenterade skensystemet. Men för barn 6–18 månader kräver Baby Set (tillbehör) att stolen är rätt konfigurerad. Det är en bekväm stol men BabyBjörn är mer specifikt optimerad för de allra yngsta.
+  </p>
+
+  <ProductCard
+    name="BabyBjörn High Chair"
+    badge="Bäst ergonomi baby"
+    price="ca 3 790 kr"
+    rating={4.7}
+    ageRange="6 månader – 3 år"
+    pros={['Inkl. bord, bälte och kudde', 'Bäst ergonomi för 6 mån–3 år', 'Enkel rengöring (plast)', 'Höjdjusterbar till matbordet', 'Maskintvättbar kudde']}
+    cons={['Används bara 3 år (ej skalbar)', 'Lägre andrahandsvärde än Tripp Trapp', 'Plast vs Tripp Trapps trä-estetik']}
+    ctaText="Se pris hos Babyonline"
+    ctaHref={jollyUrl}
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Livslängd: Stokke Tripp Trapp vinner</h2>
+  <p class="text-text-light mb-4 text-base">
+    Stokke Tripp Trapp är en stol konstruerad för att hålla livet ut. Med justerbart sitsplan och fotbräda anpassas den allt eftersom barnet växer — från Baby Set vid 6 månader till en vuxenstol med maxvikt 136 kg. Korrekt underhållen och säljs välhållen stolar från 2010-talet fortfarande för 800–1 500 kr på Blocket.
+  </p>
+  <p class="text-text-light mb-6 text-base">
+    BabyBjörn High Chair är en babymatstol — excellent för sin period (6 månader–3 år) men sedan behöver du en ny stol. Det innebär att Tripp Trapps högre initialkostnad ofta vägs upp av att du aldrig behöver köpa en ny stol, och att återförsäljningsvärdet är exceptionellt starkt.
+  </p>
+
+  <ProductCard
+    name="Stokke Tripp Trapp"
+    badge="Bäst livslängd"
+    price="ca 2 990 kr"
+    rating={4.9}
+    ageRange="6 månader – hela livet (136 kg)"
+    pros={['Livstidsstol — 136 kg maxvikt', 'Utmärkt andrahandsvärde', 'Norsk design, bokträ', 'Passar vid alla matbord', 'Skalbar med tillbehör (Baby Set, Newborn Set)']}
+    cons={['Baby Set kostar extra (ca 699 kr)', 'Bord ingår inte', 'Kräver mer underhåll (trä)', 'Monteringsskruvnyckel behövs vid justering']}
+    ctaText="Se pris hos Babyonline"
+    ctaHref={jollyUrl}
+  />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vem bör välja vad?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj BabyBjörn High Chair om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill ha allt inkluderat (bord, bälte, kudde) utan extra köp</li>
+        <li>+ Prioriterar enkel rengöring — plast torkas av direkt</li>
+        <li>+ Har ett barn i åldern 6 månader–3 år och vill ha optimerad babymatstol</li>
+        <li>+ Föredrar skandinavisk design i plast</li>
+        <li>+ Inte planerar att använda stolen mer än 3 år</li>
+      </ul>
+    </div>
+    <div class="bg-bg-alt rounded-xl border border-border p-5">
+      <h3 class="font-heading font-bold text-text mb-3">Välj Stokke Tripp Trapp om du...</h3>
+      <ul class="space-y-2 text-sm text-text-light">
+        <li>+ Vill ha en stol barnet kan använda hela uppväxten (och du som vuxen)</li>
+        <li>+ Prioriterar andrahandsvärde och hållbarhet</li>
+        <li>+ Föredrar naturmaterial (bok- eller ekträ)</li>
+        <li>+ Planerar syskon och vill ha en stol som återanvänds</li>
+        <li>+ Vill ha en ikon i hemmet — Tripp Trapp är en designklassiker</li>
+      </ul>
+    </div>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/matstolar/stokke-tripp-trapp-vs-ikea-antilop/" class="text-accent hover:underline">Stokke Tripp Trapp vs IKEA Antilop April 2026 — klassikern mot budgetvalet</a></li>
+      <li><a href="/matstolar/tripp-trapp/" class="text-accent hover:underline">Stokke Tripp Trapp recension 2026 — komplett guide</a></li>
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstolen April 2026 — jämförelse av alla kategorier</a></li>
+      <li><a href="/marken/babybjorn/" class="text-accent hover:underline">BabyBjörn — märkesguide med bärsele, babyvakt och matstol</a></li>
+      <li><a href="/marken/stokke/" class="text-accent hover:underline">Stokke — märkesguide med Tripp Trapp, Xplory X och Sleepi</a></li>
+    </ul>
+  </div>
+
+  <StickyCTA
+    href={jollyUrl}
+    text="Se bästa pris — Stokke Tripp Trapp"
+    productName="Bäst livslängd April 2026"
+  />
+</ArticleLayout>
