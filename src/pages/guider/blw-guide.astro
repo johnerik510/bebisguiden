@@ -2,6 +2,7 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTABox from '../../components/CTABox.astro';
+import ProductCard from '../../components/ProductCard.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -144,6 +145,24 @@ const faqItems = [
 </p>
 
 <CTABox productName="Haklapp och skyddsutrustning för BLW" store="Reirei" affiliateUrl="https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2Fcollections%2Fmata" description="Vattentäta haklapp och ärmmatar — minska städandet efter BLW-måltider." />
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Smaknapp — ett bra komplement till BLW</h2>
+<p class="text-text-light mb-4">
+  En smaknapp (fruktsugnapp) låter bebisen utforska smakerna på frukt, grönsaker och fryst bröstmjölk i ett nät- eller silikonskydd — utan risk för stora bitar. Perfekt som ett säkert komplement de första BLW-veckorna, eller för att lindra tandvärk med fryst frukt.
+</p>
+
+<ProductCard
+  name="inoki Yumsi Smaknapp"
+  badge="BLW-komplement"
+  price="149 kr"
+  rating={4.6}
+  image="/images/products/inoki-yumsi-smaknapp.jpg"
+  ageRange="4 mån+"
+  pros={['Silikonmask — BPA-fritt och lättdiskad', 'Perfekt för fryst frukt vid tandsprickning', 'Låter bebisen utforska smaker säkert', 'Compact och enkel att ta med']}
+  cons={['Ersätter inte riktiga BLW-bitar', 'Kräver noggrann rengöring']}
+  ctaText="Köp hos inoki"
+  ctaHref="https://addrevenue.io/t?a=987691&c=3467325&url=https%3A%2F%2Finoki.se%2Fprodukt%2Fyumsi-smaknapp%2F"
+/>
 
 <FAQ items={faqItems} />
 
