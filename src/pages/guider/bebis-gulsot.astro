@@ -1,0 +1,216 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis gulsot' },
+];
+
+const faqItems = [
+  {
+    question: 'Är gulsot farligt för bebisen?',
+    answer: 'Fysiologisk gulsot -- den vanligaste formen som uppstår hos friska nyfödda under de första dagarna -- är i regel ofarlig och försvinner av sig självt inom en till två veckor. Patologisk gulsot, som uppkommer tidigt (inom 24 timmar), stiger snabbt eller kvarstår länge, kräver medicinsk bedömning och eventuell behandling. Obehandlad mycket hög bilirubinnivå kan i sällsynta fall orsaka kärnikterus, en permanent hjärnskada. Därför är det viktigt att personal på BB kontrollerar bilirubinnivåerna och att du som förälder vet när du ska söka vård.',
+  },
+  {
+    question: 'Hur länge varar gulsot hos nyfödda?',
+    answer: 'Fysiologisk gulsot börjar vanligen dag 2--3, når sin topp runt dag 4--5 och avtar sedan successivt. Hos fullgångna friska bebisar är gulsoten borta inom 10--14 dagar. Hos prematura bebisar kan den kvarstå upp till tre till fyra veckor. Amningsgulsot -- en form där gulsoten dröjer hos ammade bebisar -- kan kvarstå i upp till sex till åtta veckor, men är som regel inte skadlig och ska inte vara skäl att sluta amma.',
+  },
+  {
+    question: 'Hjälper solljus mot gulsot?',
+    answer: 'Solljus innehåller blått ljus som kan bryta ner bilirubin i huden, men att lägga bebisen i direkt solljus hemma rekommenderas inte. Risken för solbränna och överhettning är stor, och ljusintensiteten är svår att kontrollera. Sjukhusens foterapiutrustning (blått ljus av specifik våglängd) är säker och effektiv. Kort vistelse vid ett soligt fönster kan ha en mild effekt, men det ersätter aldrig sjukvårdens behandling om gulsoten behöver åtgärdas.',
+  },
+  {
+    question: 'Ska jag sluta amma om bebisen har gulsot?',
+    answer: 'Nej -- amning ska i de allra flesta fall fortsätta. Tät och effektiv amning (minst 8--12 gånger per dygn) hjälper kroppen att utsöndra bilirubin via avföringen. Om bebisen inte orkar suga effektivt eller har ett väldigt högt bilirubin kan läkaren rekommendera tillägg med ersättning tillfälligt, men detta är ett undantag och inte regeln. Rådgör alltid med barnmorska eller läkare innan du ändrar ditt amningsbeteende.',
+  },
+  {
+    question: 'När ska jag söka vård för bebisen med gulsot?',
+    answer: 'Sök vård omedelbart om: gulsoten uppkommer inom 24 timmar efter födseln, bebisen är svårvakt, slapp eller reagerar dåligt, bebisen äter dåligt eller vägrar ta bröstet, gulsoten sprider sig ner på magen och benen, det vita i ögonen (sklera) är tydligt gult, eller om gulsoten kvarstår längre än två veckor hos fullgångna bebisar. Ring 1177 vid minsta osäkerhet -- de kan bedöma om du behöver söka akut.',
+  },
+  {
+    question: 'Vad är kärnikterus?',
+    answer: 'Kärnikterus är en sällsynt men allvarlig komplikation som uppstår om bilirubinnivån i blodet stiger så högt att bilirubin ansamlas i hjärnans nervceller och orsakar permanent skada. Tidiga tecken kan vara ovanlig slöhet, dålig sugreflex, skrik med hög ton och bakåtböjt huvud och nacke. Kärnikterus är mycket ovanligt i Sverige tack vare rutinkontroller på BB, men det är orsaken till att höga bilirubinnivåer alltid tas på allvar och behandlas med fototerapi eller, i extrema fall, blodtransfusion.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis gulsot – orsaker, symtom och behandling 2026"
+  description="Guide om gulsot hos nyfödda: vad fysiologisk och patologisk gulsot är, normala bilirubinnivåer, tecken på allvarlig gulsot, ljusbehandling och amningens roll."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-gulsot/"
+  updatedDate="2026-04-04"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bebis feber -- temperatur och symtom', href: '/guider/bebis-feber/' },
+    { title: 'Bebis kolik -- orsaker och råd', href: '/guider/bebis-kolik/' },
+    { title: 'Amning -- råd och vanliga problem', href: '/guider/amning-tips/' },
+    { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Gulsot hos nyfödda är ett av de vanligaste tillstånden på BB och drabbar uppskattningsvis 60 procent av fullgångna och upp till 80 procent av prematura nyfödda. I de flesta fall är det helt ofarligt och läker ut av sig självt -- men det är viktigt att förstå när gulsot kräver behandling och när du ska kontakta vården.
+</p>
+
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-amber-900 mb-1">Sök vård omedelbart om bebisen:</p>
+  <ul class="text-sm text-amber-800 space-y-1 list-disc pl-4">
+    <li>Får gulsot inom de första 24 timmarna efter födseln</li>
+    <li>Är ovanligt slapp, svårväckt eller reagerar dåligt</li>
+    <li>Äter dåligt eller vägrar ta bröstet</li>
+    <li>Har tydligt gult i det vita av ögonen (skleral ikterus)</li>
+    <li>Har gulsot som sprider sig snabbt nedåt mot buk och ben</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad är gulsot hos nyfödda?</h2>
+<p class="text-text-light mb-4">
+  Gulsot (ikterus) uppstår när koncentrationen av bilirubin -- ett nedbrytningsprodukt av röda blodkroppar -- stiger i blodet och lagras i huden och slemhinnorna, vilket ger den karakteristiska gula färgen. Nyfödda har ett högt antal röda blodkroppar som bryts ner snabbt efter födseln, och leverns förmåga att ta hand om bilirubin är ännu inte fullt utvecklad. Det är grundorsaken till att gulsot är så vanligt under de första dagarna.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Fysiologisk jämfört med patologisk gulsot</h2>
+<p class="text-text-light mb-4">Det finns en viktig skillnad mellan den vanliga, ofarliga formen och gulsot som kräver utredning:</p>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Egenskap</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Fysiologisk gulsot</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Patologisk gulsot</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr>
+        <td class="px-4 py-3 font-medium">Debut</td>
+        <td class="px-4 py-3 text-text-light">Dag 2--3</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Inom 24 timmar efter födseln</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Förlopp</td>
+        <td class="px-4 py-3 text-text-light">Gradvis topp dag 4--5, avtar sedan</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Snabbt stigande, kvarstår länge</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Varaktighet</td>
+        <td class="px-4 py-3 text-text-light">Försvinner inom 10--14 dagar</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Kvarstår längre än 2 veckor</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Bebisens tillstånd</td>
+        <td class="px-4 py-3 text-text-light">Alert, äter normalt</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Slapp, äter dåligt, svårväckt</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Orsak</td>
+        <td class="px-4 py-3 text-text-light">Normal neonatal omställning</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Blodgruppskonflikt, infektion, leversjukdom m.m.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Bilirubinnivåer och gränsvärden</h2>
+<p class="text-text-light mb-4">
+  Bilirubin mäts i mikromol per liter (µmol/L). Behandlingsgränsen är inte ett fast värde -- den beror på bebisens ålder i timmar, om bebisen är fullgången eller prematur, och om det finns riskfaktorer. Personalen på BB använder ett nomogram (en behandlingsgraf) för att bedöma varje bebis individuellt. Nedanstående är riktlinjerna för fullgångna, friska nyfödda utan riskfaktorer:
+</p>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Ålder (dygn)</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Normalt bilirubin</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Fototerapi overvagas</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Fototerapi startas</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr>
+        <td class="px-4 py-3 font-medium">Dag 1 (0--24 h)</td>
+        <td class="px-4 py-3 text-text-light">Under 100 µmol/L</td>
+        <td class="px-4 py-3 text-orange-700">100--150 µmol/L</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Över 150 µmol/L (alltid utredning)</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Dag 2 (24--48 h)</td>
+        <td class="px-4 py-3 text-text-light">Under 150 µmol/L</td>
+        <td class="px-4 py-3 text-orange-700">150--260 µmol/L</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Över 260 µmol/L</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Dag 3 (48--72 h)</td>
+        <td class="px-4 py-3 text-text-light">Under 200 µmol/L</td>
+        <td class="px-4 py-3 text-orange-700">200--290 µmol/L</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Över 290 µmol/L</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Dag 4--7</td>
+        <td class="px-4 py-3 text-text-light">Under 220 µmol/L</td>
+        <td class="px-4 py-3 text-orange-700">220--300 µmol/L</td>
+        <td class="px-4 py-3 text-red-700 font-medium">Över 300 µmol/L</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-xs text-gray-400 mb-6">Värdena är ungefärliga riktlinjer för fullgångna bebisar utan riskfaktorer. Behandlingsgränser sätts alltid individuellt av ansvarig läkare.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tecken på allvarlig gulsot</h2>
+<p class="text-text-light mb-3">Kontakta vården omedelbart om du ser något av följande:</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Skleral ikterus:</strong> Det vita i ögonen är tydligt gult -- ett av de känsligaste tecknen på hög bilirubinnivå.</li>
+  <li><strong>Gulsot som sprider sig snabbt:</strong> Gulsoten börjar i ansiktet och rör sig nedåt. När den nått knäna och vristerna är bilirubinnivån sannolikt hög.</li>
+  <li><strong>Slöhet och svårighet att väcka bebisen:</strong> En bebis som inte reagerar normalt eller är svår att hålla vaken vid matning behöver bedömas omedelbart.</li>
+  <li><strong>Dålig matning:</strong> Om bebisen inte orkar suga, sover igenom alla matningsstunder eller kräks konsekvent.</li>
+  <li><strong>Högt och ovanligt gällt skrik:</strong> Kan vara ett tidigt tecken på att bilirubin påverkar nervsystemet.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Behandling -- fototerapi (ljusbehandling)</h2>
+<p class="text-text-light mb-4">
+  Fototerapi är standardbehandlingen för gulsot som överstiger behandlingsgränsen. Bebisen placeras under lampor som avger blått ljus med en specifik våglängd (430--490 nm). Ljuset omvandlar bilirubin i huden till en form som kroppen kan utsöndra i urinen utan att levern behöver bearbeta det.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+  <p class="text-sm font-semibold text-accent-dark mb-2">Praktisk information om fototerapi</p>
+  <ul class="text-sm text-text-light space-y-1 list-disc pl-4">
+    <li>Bebisen ligger avklädd (enbart blöja) under lamporna för maximal hudexponering</li>
+    <li>Ögonen skyddas med speciella skyddsglasögon som hindrar bländning</li>
+    <li>Amning eller matning sker som vanligt -- pauser för matning är tillåtna</li>
+    <li>Bilirubin kontrolleras var 6--12:e timme under behandlingen</li>
+    <li>De flesta bebisar är klara med behandlingen inom 24--48 timmar</li>
+    <li>Bebisen kan bli trött och lite slapp under behandlingen -- det är normalt</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Amning och gulsot</h2>
+<p class="text-text-light mb-4">
+  Det finns två amningsrelaterade former av gulsot som det är viktigt att skilja åt:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Amningsgulsot (bröstmjölksbrist-gulsot):</strong> Uppstår dag 2--5 när bröstmjölken ännu inte kommit igång och bebisen får för lite vätska och kalorier. Mer frekvent amning (minst 8--12 gånger per dygn) är det viktigaste du kan göra. Kontakta barnmorska om amningen inte fungerar.
+  </li>
+  <li>
+    <strong>Bröstmjölksgulsot:</strong> En godartad form som drabbar 2--4 procent av ammade bebisar. Gulsoten kvarstår längre (upp till 6--8 veckor) men bilirubinnivån stiger sällan till farliga nivåer. Amningen ska fortsätta. Orsaken är inte helt klarlagd men tros bero på ämnen i bröstmjölken som påverkar bilirubinets metabolism.
+  </li>
+</ul>
+<p class="text-text-light mb-6">
+  I båda fallen är amning det bästa du kan ge bebisen. Sluta aldrig amma utan att ha diskuterat med en barnmorska eller läkare.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Orsaker till patologisk gulsot</h2>
+<p class="text-text-light mb-3">När gulsoten är ovanligt kraftig eller uppkommer tidigt kan underliggande orsaker vara:</p>
+<ul class="list-disc pl-5 text-text-light space-y-1 mb-6">
+  <li><strong>Blodgruppskonflikt:</strong> Rh- eller ABO-inkompatibilitet mellan mor och barn (rh-konflikt) leder till snabb nedbrytning av bebisens röda blodkroppar och snabbt stigande bilirubin.</li>
+  <li><strong>Infektion:</strong> Sepsis eller urinvägsinfektion kan ge gulsot som debuterar tidigt och kräver omedelbar behandling.</li>
+  <li><strong>Leversjukdom:</strong> Gallatresi eller andra leversjukdomar ger ofta kvarstående gulsot med gul avföring och mörk urin.</li>
+  <li><strong>Sköldkörtelrubbning:</strong> Medfödd hypotyreos kan förlänga gulsot och screenas för i PKU-provtagningen.</li>
+  <li><strong>Metabola sjukdomar:</strong> Ovanliga ärftliga ämnesomsättningssjukdomar kan bidra till gulsot.</li>
+</ul>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
