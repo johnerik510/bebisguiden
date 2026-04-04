@@ -1,0 +1,170 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const jollyUrl = 'https://addrevenue.io/t?a=987081&c=3467325';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'UPPAbaby' },
+];
+
+const faqItems = [
+  {
+    question: 'Är UPPAbaby ett bra märke?',
+    answer: 'Ja — UPPAbaby är ett välrenommerat amerikanskt premiumvarumärke som rankas högt av svenska föräldrar för build quality, körkomfort och det flexibla syskonvagnssystemet. Vista V3 och Cruz V2 är deras populäraste modeller i Sverige. Prisnivån är lägre än Bugaboo och Stokke men kvaliteten är jämförbar.',
+  },
+  {
+    question: 'Vad skiljer UPPAbaby Vista V3 från Cruz V2?',
+    answer: 'Vista V3 är UPPAbabys flaggskepp och mer komplett barnvagnssystem — kan byggas ut till en duovagn med Rumble Seat (syskonplats) och är optimerad för familjer som planerar syskon. Cruz V2 är en mer kompakt, lättare vagn (ca 8,6 kg vs 11,8 kg) som inte kan byggas ut till duovagn. Vista V3 passar familjer som planerar syskon; Cruz V2 passar den som vill ha en lättare, mer stadsanpassad vagn.',
+  },
+  {
+    question: 'Var köper jag UPPAbaby i Sverige?',
+    answer: 'UPPAbaby säljs via Babyshop, Jollyroom och Lekmer i Sverige. Babyshop har störst urval. Jämför alltid priser mellan butikerna — UPPAbaby-vagnar säljs med och utan liggdel (bassinett) och tillbehör, vilket påverkar prisjämförelsen. Jollyroom har ibland kampanjpriser på UPPAbaby.',
+  },
+  {
+    question: 'Är UPPAbaby Vista kompatibel med bilbarnstolar?',
+    answer: 'Ja — UPPAbaby Vista V3 är kompatibel med UPPAbaby MESA (sin egen babyskål, bäst integration), Maxi-Cosi (via adapter), Cybex, och Nuna PIPA. Kontrollera alltid kompatibiliteten med din specifika bilbarnstolsmodell på UPPAbabys webbplats eller hos återförsäljaren innan köp.',
+  },
+  {
+    question: 'Hur länge kan man använda UPPAbaby Vista?',
+    answer: 'UPPAbaby Vista V3 kan användas från nyfödd (med bassinet/liggdel) till ungefär 4–5 år (ca 22 kg i sittdelen). Med Rumble Seat kan du köra ett äldre barn (upp till ca 20 kg) och ett yngre barn i bassinett eller sittdel simultant. Det är ett av de mer flexibla syskonvagnssystemen på marknaden.',
+  },
+  {
+    question: 'Vad kostar UPPAbaby Vista V3 i Sverige?',
+    answer: 'UPPAbaby Vista V3 kostar ca 11 990 kr i grundutförande med chassis och sittdel (utan bassinet/liggdel). Med bassinet tillkommer ca 2 000–2 500 kr. Rumble Seat (syskonplats) kostar ca 2 490 kr extra. Totalt för ett komplett syskonvagnssystem: ca 14 000–17 000 kr beroende på tillbehör. Jämfört med Bugaboo Fox 5 (ca 14 990 kr grundpaket) är UPPAbaby konkurrenskraftigt prisatt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="UPPAbaby barnvagnar April 2026 — Vista V3, Cruz V2 och MESA recension"
+  description="Vi recenserar UPPAbabys bästa barnvagnar 2026. Vista V3, Cruz V2 och MESA bilbarnstol — prisvärda premiumvagnar med starkt syskonvagnssystem. Är UPPAbaby värt det?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-04"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    UPPAbaby är ett amerikanskt babyutrustningsvarumärke grundat 2006 i Hannover, Massachusetts. Märket är känt för premiumbarnvagnar med stark build quality, intuitivt hopfällningssystem och det flexibla syskonvagnssystemet kring Vista-plattformen. I Sverige säljs UPPAbaby via Babyshop, Jollyroom och Lekmer till priser under Bugaboo och Stokke — men med jämförbar premiumkvalitet.
+  </p>
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">UPPAbabys barnvagnar 2026</h2>
+
+  <ProductCard
+    name="UPPAbaby Vista V3"
+    rating={4.8}
+    price="ca 11 990 kr"
+    highlight="Bäst för syskon"
+    pros={[
+      'Kan byggas ut till duovagn med Rumble Seat',
+      'Stark körkomfort med fjädrad ram',
+      'Intuitiv en-handsvickning',
+      'Kompatibel med MESA och Maxi-Cosi',
+    ]}
+    cons={[
+      'Tyngre än Cruz (11,8 kg)',
+      'Tillbehör kan bli dyra',
+    ]}
+    affiliateUrl={jollyUrl}
+    store="Jollyroom"
+    imageUrl="/images/products/uppababy-vista-v3.webp"
+  />
+
+  <p class="text-text-light leading-relaxed mb-4">
+    UPPAbaby Vista V3 är märkets flaggskepp och bäst för familjer som planerar syskon. Det unika Rumble Seat-systemet låter dig montera en andra sittplats för ett äldre barn (upp till ca 20 kg) medan det yngre barnet åker i bassinett eller sittdel. Till skillnad från Bugaboo Donkey-systemet är UPPAbabys syskonlösning mer kompakt — vagnen är inte märkbart bredare med dubbelsittning.
+  </p>
+  <p class="text-text-light leading-relaxed mb-6">
+    Vista V3-uppdateringen (2024) tillförde förbättrad fjädring, ett enklare vikningssystem och ny bassinet-design. Vagnen väger 11,8 kg vikad — tyngre än Cruz V2 men jämförbart med andra premiumvagnar i klassen.
+  </p>
+
+  <ProductCard
+    name="UPPAbaby Cruz V2"
+    rating={4.6}
+    price="ca 9 990 kr"
+    highlight="Bäst stadsvagn"
+    pros={[
+      'Lättare och kompaktare (ca 8,6 kg)',
+      'Enklare hantering i trängre miljöer',
+      'Kompatibel med MESA',
+      'Prisvärt alternativ till Vista',
+    ]}
+    cons={[
+      'Kan inte byggas ut till duovagn',
+      'Sämre terränganpassning',
+    ]}
+    affiliateUrl={jollyUrl}
+    store="Jollyroom"
+    imageUrl="/images/products/uppababy-cruz-v2.webp"
+  />
+
+  <p class="text-text-light leading-relaxed mb-4">
+    UPPAbaby Cruz V2 är den mer kompakta och lätta varianten — ca 8,6 kg och med snävare vändradius. Den passar stadsboende som prioriterar smidighet framför expanderbarhet. Cruz V2 kan inte byggas ut till duovagn, vilket gör den till ett sämre val om du planerar ett syskon som fortfarande behöver en sittplats i vagnen.
+  </p>
+  <p class="text-text-light leading-relaxed mb-6">
+    Körkomforten är god men inte lika fjädrad som Vista V3 — på ojämna underlag eller gruspåsar märks skillnaden. För innerstaden och jämna trottoarer är Cruz V2 ett utmärkt val.
+  </p>
+
+  <ProductCard
+    name="UPPAbaby MESA V2 bilbarnstol"
+    rating={4.7}
+    price="ca 4 990 kr"
+    highlight="Bäst integration med Vista"
+    pros={[
+      'Sömlös integration med Vista — enklick utan adapter',
+      'Enkel installation utan basbas',
+      'i-Size-certifierad',
+      'SMARTSecure-system bekräftar korrekt installation',
+    ]}
+    cons={[
+      'Kräver adapter med andra barnvagnar',
+      'Dyrare utan Vista-ekosystemet',
+    ]}
+    affiliateUrl={jollyUrl}
+    store="Jollyroom"
+    imageUrl="/images/products/uppababy-mesa-v2.webp"
+  />
+
+  <p class="text-text-light leading-relaxed mb-4">
+    UPPAbaby MESA V2 är en infant car seat (babyskål) för barn upp till 75 cm och 13 kg. Dess starkaste fördel är den sömlösa integrationen med Vista och Cruz — ett klick och babyskålen sitter fast utan adapter. SMARTSecure-systemet med indikatorer bekräftar korrekt installation — en viktig trygghet för nyföräldrar.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    MESA V2 kan installeras direkt med bilbältet utan separat bas — praktiskt för resande och byten. ISOFIX-basen (UPPAbaby Base V2) köps separat och rekommenderas för daglig användning.
+  </p>
+
+  <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-4">UPPAbaby vs konkurrenterna</h2>
+  <p class="text-text-light leading-relaxed mb-4">
+    <strong>UPPAbaby vs Bugaboo Fox 5:</strong> Vista V3 (ca 11 990 kr) är ca 3 000 kr billigare än Fox 5 (ca 14 990 kr) och har ett bättre syskonvagnssystem med Rumble Seat. Fox 5 vinner på körkomfort och terrängkörning. För familjer som planerar syskon: Vista V3. För par som prioriterar körkomfort: Fox 5.
+  </p>
+  <p class="text-text-light leading-relaxed mb-4">
+    <strong>UPPAbaby vs Stokke Xplory X:</strong> Stokke (ca 15 990 kr) har det ikoniska höga sittet och föräldraorienterat fokus. Vista V3 är mer mångsidigt, lättare och klart billigare. Om det höga sittet och designen är avgörande — välj Stokke. Om praktikalitet och syskonkompatibilitet prioriteras — välj UPPAbaby.
+  </p>
+  <p class="text-text-light leading-relaxed mb-6">
+    <strong>UPPAbaby vs Nuna MIXX Next:</strong> Nuna MIXX Next (ca 10 990 kr) och UPPAbaby Cruz V2 (ca 9 990 kr) är direkta konkurrenter. Nuna vinner på lägre vikt och skandinavisk design; UPPAbaby vinner på syskonexpanderbarheten (via Vista-plattformen).
+  </p>
+
+  <div class="bg-bg-alt border border-border rounded-xl p-5 mb-8">
+    <h3 class="font-heading text-lg font-bold text-primary mb-2">Är UPPAbaby rätt för dig?</h3>
+    <ul class="space-y-2 text-text-light text-sm">
+      <li><strong>Välj UPPAbaby Vista V3 om:</strong> Du planerar syskon och vill ha ett komplett system, söker premiumkvalitet till lägre pris än Bugaboo/Stokke, och vill ha ett intuitivt hopfällningssystem.</li>
+      <li><strong>Välj UPPAbaby Cruz V2 om:</strong> Du bor i stad, prioriterar smidighet och vikt, och inte planerar syskon i en duovagn.</li>
+      <li><strong>Välj ett annat märke om:</strong> Du prioriterar maximal terränganpassning (Bugaboo Fox 5), skandinavisk design och högt sittläge (Stokke Xplory), eller ett ultralätt alternativ (Babyzen YOYO).</li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-8 pt-6 border-t border-border">
+    <h3 class="font-heading text-lg font-bold text-primary mb-3">Relaterade sidor</h3>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/uppababy-vista-vs-bugaboo-fox-5/" class="text-accent hover:underline">UPPAbaby Vista V3 vs Bugaboo Fox 5 — direktjämförelse</a></li>
+      <li><a href="/marken/bugaboo/" class="text-accent hover:underline">Bugaboo barnvagnar — recension</a></li>
+      <li><a href="/marken/stokke/" class="text-accent hover:underline">Stokke barnvagnar — recension</a></li>
+      <li><a href="/marken/nuna/" class="text-accent hover:underline">Nuna barnvagnar — recension</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnar 2026 — jämförelselista</a></li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<StickyCTA href={jollyUrl} text="Se UPPAbaby hos Jollyroom" />
