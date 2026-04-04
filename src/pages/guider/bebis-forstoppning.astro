@@ -1,0 +1,152 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis förstoppning' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur ofta ska en bebis bajsa?',
+    answer: 'Det normala variationsintervallet är enormt. Ammade bebisar: kan bajsa efter varje matning (upp till 8–10 gånger/dygn) eller en gång per vecka — båda är normalt. Mjölken är så lättabsorberad att lite rester kvarstår. Formelmatade bebisar: vanligtvis 1–4 gånger per dag. Bebisens normala intervall varierar kraftigt. Oroande är inte frekvensen — utan konsistensen och om bebisen verkar ha ont.',
+  },
+  {
+    question: 'Vad gör man om bebisen inte bajsar?',
+    answer: 'Ammad bebis som inte bajsat på 5–7 dagar men verkar må bra, äter normalt och avföringen är mjuk (när den väl kommer) — sannolikt ingen förstoppning. Formelmatad bebis: om mer än 3 dagar utan avföring och/eller bebisen anstränger sig och verkar ha ont — prova magmassage, trampcykel och ändra från höft till mag-läge. Om ingen förbättring: kontakta BVC. Använd ALDRIG laxermedel för vuxna, fikonsirap eller mineralolja till bebisar — fråga alltid BVC.',
+  },
+  {
+    question: 'Kan amning orsaka förstoppning?',
+    answer: 'Nej — amning orsakar nästan aldrig förstoppning. Bröstmjölk absorberas mycket effektivt, vilket kan leda till ovanligt lite avföring, men det är inte förstoppning om det som kommer ut är mjukt. Formelmatning är en vanligare orsak till förstoppning hos bebisar — formeln kan ge fastare avföring, speciellt vid byte av märke eller vid koncentrering. Om du misstänker att formeln orsakar problem: kontakta BVC innan du byter — ett plötsligt byte kan förvärra situationen.',
+  },
+  {
+    question: 'Kan kosten till en ammande mamma påverka bebisens tarm?',
+    answer: 'Generellt nej — bröstmjölkens sammansättning påverkas inte nämnvärt av mammans mat. Men i enstaka fall kan komjölksprotein i mammans kost orsaka förstoppning eller kolik hos bebisar med komjölksproteinöverkänslighet. Tecken: blod i avföring, kraftigt missnöjd bebis utöver förstoppning, eksem. Kontakta läkare om du misstänker komjölksproteinöverkänslighet — inte självmedicin med elimineringsdieter.',
+  },
+  {
+    question: 'Är glycerinsprutor (lavemang) säkert för bebisar?',
+    answer: 'Glycerinsprutor (rektala suppositorier) kan användas till bebisar som ett kortfristigt hjälpmedel, men bör ALDRIG användas utan rådgivning från BVC eller läkare. Överkonsumtion kan irritera tarmslemhinnan och göra att bebisen inte lär sig att bajsa självständigt. Kontakta alltid BVC om du överväger detta — de kan bedöma om det är nödvändigt och visa rätt teknik.',
+  },
+  {
+    question: 'När ska man söka vård för bebis med förstoppning?',
+    answer: 'Kontakta BVC om: förstoppning varar mer än en vecka utan förbättring, bebisen gråter kraftigt vid försök att bajsa, det finns blod i avföringen, bebisen har feber, uppkastningar eller verkar påtagligt sjuk. Ring 1177 om bebisen inte åt under 24+ timmar, är slapp eller reagerar onormalt. Mycket sällan (men viktigt att utesluta): Hirschsprungs sjukdom (medfött tillstånd med frånvaro av ganglieceller i tjocktarmen) kräver kirurgisk behandling — diagnostiseras vanligtvis tidigt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis förstoppning – orsaker och vad som hjälper 2026"
+  description="Guide om förstoppning hos bebis: vad som är normalt, orsaker, säkra hemmetoder (magmassage, trampcykel, vätska) och när du ska kontakta BVC."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-forstoppning/"
+  updatedDate="2026-04-03"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bebis kolik', href: '/guider/bebis-kolik/' },
+    { title: 'Bebis feber', href: '/guider/bebis-feber/' },
+    { title: 'Amningstips', href: '/guider/amning-tips/' },
+    { title: 'När börjar bebis äta fast föda?', href: '/guider/nar-borjar-bebis-ata/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Förstoppning hos bebisar oroar många föräldrar — men det normala frekvensintervallet är mycket bredare än de flesta tror. Den här guiden hjälper dig skilja på vad som är normalt och vad som kräver åtgärd.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigast att veta</p>
+  <p class="text-sm text-text-light">Förstoppning hos bebisar handlar inte om frekvens — det handlar om konsistens och obehag. En ammad bebis kan gå en vecka utan avföring och vara helt frisk. Förstoppning är när avföringen är hård, torr och svår att passera — inte när den är sällsynt.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad är normalt?</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Ålder / Matning</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Normalt intervall</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Konsistens</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Ammad bebis, 0–6 veckor</td><td class="px-4 py-3 text-text-light">1–8+ gånger/dag</td><td class="px-4 py-3 text-text-light">Gul, löst (senapsgul)</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ammad bebis, 6 veckor–6 månader</td><td class="px-4 py-3 text-text-light">1 gång/vecka till 5 gånger/dag</td><td class="px-4 py-3 text-text-light">Lös till pastaformad</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Formelmatad bebis</td><td class="px-4 py-3 text-text-light">1–4 gånger/dag</td><td class="px-4 py-3 text-text-light">Fastare, gul–brun</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">6 månader+ (fast föda)</td><td class="px-4 py-3 text-text-light">1–3 gånger/dag vanligast</td><td class="px-4 py-3 text-text-light">Fastare när fast föda introducerats</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tecken på verklig förstoppning</h2>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li>Hård, torr avföring ("pellets", stenhård klumpar)</li>
+  <li>Bebisen anstränger sig kraftigt och gråter vid bajsförsök</li>
+  <li>Uppblåst, hård mage</li>
+  <li>Uppenbart obehag och irritabilitet som inte förklaras av annat</li>
+  <li>Minskad matning (matning pressar mot magen)</li>
+</ul>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Kontakta 1177 eller BVC om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Blod i avföringen</li>
+    <li>Förstoppning i kombination med feber, kräkningar eller påtaglig sjukdomskänsla</li>
+    <li>Bebisen börjar inte passera mekonium inom 48 timmar (nyfödd)</li>
+    <li>Ingen förbättring efter en vecka av hembehandling</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vanliga orsaker till förstoppning</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Formelmatning och formelbyten</h3>
+<p class="text-text-light mb-4">
+  Formelmatade bebisar har oftare fastare avföring än ammade — formeln innehåller mer kasein som bildar fastare ost-liknande massa. Byte av formel kan störa tarmfloran och orsaka tillfällig förstoppning. Diskutera alltid formelbyten med BVC.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Introduktion av fast föda</h3>
+<p class="text-text-light mb-4">
+  När fast föda introduceras vid 4–6 månaders ålder förändras avföringen markant — fastare, mörkare och mer välformad. Det är normalt men kan uppfattas som förstoppning. Säkerställ att bebisen får tillräckligt med vätska och fiber (bröstmjölk/formel fortsätter vara huvudnäring under det första halvåret).
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Otillräcklig vätsketillförsel</h3>
+<p class="text-text-light mb-4">
+  Dehydrering är en ovanlig men möjlig orsak, speciellt vid varm väderlek, sjukdom med kräkningar eller otillräcklig amning. Bebisar under 6 månader ska INTE ha extra vatten — bröstmjölk och formel är tillräckligt. Från 6 månader kan lite vatten ges, speciellt vid värme.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Säkra hemmetoder som hjälper</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Magmassage</h3>
+<p class="text-text-light mb-4">
+  Massera bukens nedre del (under naveln) medurs — i tarmens riktning — med ett varmt finger. Gör det mjukt i 5–10 minuter, 3–4 gånger per dag. Värme hjälper muskelrelaxation — ett varmt bad eller varm handflata mot magen kan vara effektivt.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Trampcykel och knäpressning</h3>
+<p class="text-text-light mb-4">
+  Rörelser stimulerar tarmperistaltiken. Håll bebisens ben och gör cyklande rörelser. Tryck sedan försiktigt knäna mot magen i 10–15 sekunder och slapp av. Upprepa 5–10 gånger. Kan avge gasljud — det är bra tecken.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Magläge under vakna stunder</h3>
+<p class="text-text-light mb-4">
+  "Tummy time" under vakna, övervakade stunder förbättrar tarmrörelserna och stärker magemusklerna. Börja med korta pass (2–3 minuter) och öka gradvis. ALDRIG tummy time under sömn.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Fruktjuice från 6 månader</h3>
+<p class="text-text-light mb-4">
+  Från 6 månaders ålder kan en liten mängd (30–60 ml) utspädd päron-, äpple- eller katrinplommonjuice hjälpa vid förstoppning — sorbitol i dessa frukter har mild laxerande effekt. Använd inte frekvent och diskutera alltid med BVC först.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad du INTE ska ge bebisen</h2>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Laxermedel för vuxna:</strong> Aldrig utan läkarordination — kan orsaka allvarliga elektrolytrubbningar</li>
+  <li><strong>Mineralolja:</strong> Kan förorsaka lipoid pneumoni om den aspireras</li>
+  <li><strong>Honung:</strong> Risk för botulism under 12 månader</li>
+  <li><strong>Klismor utan läkaranvisning:</strong> Kan irritera tarmslemhinnan och skapa beroende</li>
+  <li><strong>Extra vatten till bebisar under 6 månader:</strong> Kan störa elektrolytbalansen</li>
+</ul>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
