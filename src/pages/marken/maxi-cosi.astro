@@ -1,0 +1,166 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const jollyUrl = 'https://addrevenue.io/t?a=987081&c=3467325';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Maxi-Cosi' },
+];
+
+const faqItems = [
+  {
+    question: 'Är Maxi-Cosi ett bra märke?',
+    answer: 'Ja, Maxi-Cosi är ett av Europas mest välrenommerade märken för bilbarnstolar och babyutrustning. Det holländska varumärket har funnits sedan 1984 och är känt för hög säkerhet och smart design. Deras bilbarnstolar är bland de bäst testade och rekommenderas av bland annat ADAC och motortidningar i Sverige. Maxi-Cosi är ett tryggt val för barn 0–12 år.',
+  },
+  {
+    question: 'Vad skiljer Maxi-Cosi Pebble 360 Pro från Coral 360?',
+    answer: 'Pebble 360 Pro är en klassisk babyskål (infant carrier) som roterar 360 grader. Den passar från födseln till ca 15 månader (75 cm/13 kg). Coral 360 är ett "cocoon"-alternativ som omsluter den nyfödde mer — smidigare att bära och mer kuddig känsla. Coral 360 används enbart i bilen (kan inte tas av och bäras som en babyskål). Pebble 360 Pro är mer flexibel för familjer som vill kunna lyfta ur sovande barnet.',
+  },
+  {
+    question: 'Passar Maxi-Cosi Isofix-bas till alla bilbarnstolar?',
+    answer: 'Nej, Maxi-Cosibasserna är modellspecifika. FamilyFix 360 Pro passar Pebble 360 Pro och Pearl 360 Pro. FamilyFix One passar äldre modeller som Pebble Pro. Kontrollera alltid kompatibilitet på Maxi-Cosis webbplats innan du köper. Att använda fel bas är en säkerhetsrisk.',
+  },
+  {
+    question: 'Är Maxi-Cosi Pearl 360 Pro bra för förlängd bakåtvändning?',
+    answer: 'Pearl 360 Pro används framåtvänd för barn 76–105 cm. For förlängd bakåtvändning behöver du ett annat alternativ — till exempel Maxi-Cosi Pebble 360 Pro (upp till 15 månader bakåtvänd) eller en annan modell som kan hålla barnet bakåtvänt längre. Rekommendationen i Sverige är bakåtvändning tills barnet är minst 4 år.',
+  },
+  {
+    question: 'Vilken Maxi-Cosi barnvagn är bäst?',
+    answer: 'Maxi-Cosi Leona 3 är märkets bästa fullsortimentvagn — passar från födseln med liggläge och håller upp till 4 år. Zelia 3 Plus är ett komplett travel system med kompatibel babyskål och liggdel. Lara 2 är märkets lättaste alternativ (5,5 kg) för pendlare och storstadsföräldrar som prioriterar lättvikt. Välj Leona 3 för bäst allroundprestanda.',
+  },
+  {
+    question: 'Var kan jag köpa Maxi-Cosi i Sverige?',
+    answer: 'Maxi-Cosi säljs hos de flesta baby-återförsäljare i Sverige: Jollyroom, Babyshop, BabyWorld, Lekmer och Hemtex. Jollyroom brukar ha bäst urval och kampanjpriser. Jämför alltid om basen (Isofix) ingår i paketet — ibland säljs den separat och påverkar totalpriset.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Maxi-Cosi bilbarnstolar och barnvagnar April 2026 — recension & test"
+  description="Vi recenserar Maxi-Cosis bästa bilbarnstolar och barnvagnar 2026. Pebble 360 Pro, Pearl 360 Pro, Coral 360 och Leona 3 — är Maxi-Cosi värt det?"
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-04"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Maxi-Cosi är det holländska babyutrustningsvarumärket grundat 1984 som idag är ett av Europas mest sålda märken för bilbarnstolar. I Sverige hittar du dem hos alla stora babybutiker. Märket är känt för sin kombination av hög säkerhet, smart design och brett sortiment — från nyfödda till 12-åringen i bilen. Vi har testat fyra av deras mest populära produkter.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Maxi-Cosis bästa produkter 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Maxi-Cosi Pebble 360 Pro"
+      badge="Bäst babyskål"
+      price="ca 6 499 kr (exkl. bas)"
+      rating={4.9}
+      ageRange="Från födseln till ca 15 månader (75 cm / 13 kg)"
+      pros={[
+        '360° rotation — enkel att bälta in och ta ur sovande barn',
+        'I-Size (ECE R129) — strängaste säkerhetsstandarden',
+        'Vinkeljusterbart i fem lägen — korrekt liggvinkel for nyfödda',
+        'Kompatibel med Maxi-Cosi och Cybex barnvagnar',
+        'Mjuk inlaga for de minsta (från 40 cm)',
+      ]}
+      cons={[
+        'Kräver FamilyFix 360 Pro-bas for Isofix (köps separat, ca 2 099 kr)',
+        'Hög totalvikt inkl. bas — kämpigare att byta bil',
+        'Gäller enbart upp till 15 månader — sedan krävs nästa bilbarnstol',
+      ]}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={jollyUrl}
+    />
+
+    <ProductCard
+      name="Maxi-Cosi Coral 360"
+      badge="Bäst for nyfödda"
+      price="ca 5 799 kr"
+      rating={4.7}
+      ageRange="Från födseln till ca 12 månader (70 cm / 13 kg)"
+      pros={[
+        'Unikt cocoon-läge — omsluter den nyfödde optimalt',
+        '360° rotation for enkel in/ur-hantering',
+        'Ultralätt korg (3,4 kg) — lättaste i klassen',
+        'Mjukt och luftigt material — bra for varmare månader',
+        'Bra ventilation som minskar överhettning',
+      ]}
+      cons={[
+        'Kan inte tas ur och bäras som babyskål utan bas',
+        'Kortare användningsperiod — max 12 månader',
+        'Kräver FamilyFix 360-bas for Isofix',
+      ]}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={jollyUrl}
+    />
+
+    <ProductCard
+      name="Maxi-Cosi Pearl 360 Pro"
+      badge="Bäst framåtvänd"
+      price="ca 5 999 kr (exkl. bas)"
+      rating={4.7}
+      ageRange="76–105 cm (ca 15 månader till 4–5 år)"
+      pros={[
+        '360° rotation — enkel att spänna in barnet framåtvänt',
+        'I-Size (ECE R129) — strängaste standarden',
+        'Recline i sittläget — bra for sovande barn på resan',
+        'Kompatibel med FamilyFix 360 Pro-bas',
+        'Andningsbart material — bra for svenska sommaren',
+      ]}
+      cons={[
+        'Enbart framåtvänd — inte for förlängd bakåtvändning',
+        'Bas krävs for Isofix (FamilyFix 360 Pro, köps separat)',
+        'Kan inte användas bakåtvänt — välj Pebble 360 Pro for det',
+      ]}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={jollyUrl}
+    />
+
+    <ProductCard
+      name="Maxi-Cosi Leona 3"
+      badge="Bäst barnvagn Maxi-Cosi"
+      price="ca 5 999 kr"
+      rating={4.6}
+      ageRange="Från födseln till ca 4 år"
+      pros={[
+        'Vänd sittdelen mot och från föräldern',
+        'Liggläge for nyfödda — inga extra tillbehör krävs',
+        'Kompatibel med Pebble 360 Pro — enkelt travel system',
+        'Smal profil (55 cm) — enkel i butiker och kollektivtrafik',
+        'Generöst förvaringskorg under',
+      ]}
+      cons={[
+        'Tyngre chassi (ca 12 kg) jämfört med ultralätta vagnar',
+        'Terräng är inte Leonas styrka — håll dig på asfalt',
+        'Liggdel medföljer inte alltid — kolla vad som ingår i paketet',
+      ]}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={jollyUrl}
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Sammanfattning — är Maxi-Cosi värt det?</h2>
+  <p class="text-text-light leading-relaxed mb-4">
+    Maxi-Cosi lever upp till sitt rykte. Pebble 360 Pro är en av de bäst betygsatta babyskålarna på marknaden och 360°-rotationen är en funktion du verkligen uppskattar när du ska fästa ett nyfött barn i ett varmt sommarbilsäte eller trång stadsparkeringsgarage. Coral 360 är ett unikt val for nyfödda som prioriterar cocoon-känslan.
+  </p>
+  <p class="text-text-light leading-relaxed mb-6">
+    Pearl 360 Pro fungerar väl som nästa steg efter babyskålen. Leona 3 är en solid allround-barnvagn — inte i samma premiumklass som <a href="/marken/bugaboo/" class="text-accent hover:underline">Bugaboo Fox 5</a> eller <a href="/marken/cybex/" class="text-accent hover:underline">Cybex Priam</a> på körupplevelse, men ypperlig i pris/kvalitetsförhållande for urbana familjer.
+  </p>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen April 2026 — komplett test</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bäst bakåtvänd bilbarnstol 2026</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen April 2026</a></li>
+      <li><a href="/marken/" class="text-accent hover:underline">Alla märkesguider — Britax, Cybex, Bugaboo och fler</a></li>
+    </ul>
+  </div>
+
+  <StickyCTA href={jollyUrl} productName="Maxi-Cosi Pebble 360 Pro" text="Se bästa pris — Maxi-Cosi hos Jollyroom" />
+</ArticleLayout>
