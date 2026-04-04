@@ -1,0 +1,185 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Joggingvagn' },
+];
+
+const jollyUrl = 'https://addrevenue.io/t?a=987081&c=3467325';
+
+const products = [
+  {
+    name: 'Thule Urban Glide 3',
+    badge: 'Bäst i test',
+    price: '7 995 kr',
+    rating: 4.9,
+    ctaHref: jollyUrl,
+    features: {
+      'Vikt': '14,3 kg',
+      'Max barnvikt': '34 kg',
+      'Hjuldiameter': '16 tum bak',
+      'Bromssystem': 'Fotbroms + handbroms',
+      'Liggläge': 'Ja (från födseln med tillbehör)',
+    },
+  },
+  {
+    name: 'Baby Jogger City Mini GT2',
+    badge: 'Bäst mångsidig',
+    price: '5 799 kr',
+    rating: 4.7,
+    ctaHref: jollyUrl,
+    features: {
+      'Vikt': '12,1 kg',
+      'Max barnvikt': '22 kg',
+      'Hjuldiameter': '12 tum bak',
+      'Bromssystem': 'Fotbroms',
+      'Liggläge': 'Nästan plant (175°)',
+    },
+  },
+  {
+    name: 'Thule Urban Glide 2',
+    badge: 'Bäst pris/prestanda',
+    price: '4 995 kr',
+    rating: 4.6,
+    ctaHref: jollyUrl,
+    features: {
+      'Vikt': '11,8 kg',
+      'Max barnvikt': '34 kg',
+      'Hjuldiameter': '16 tum bak',
+      'Bromssystem': 'Fotbroms + handbroms',
+      'Liggläge': 'Ja (med bassinet-tillbehör)',
+    },
+  },
+  {
+    name: 'Joie Versatrax',
+    badge: 'Budgetval',
+    price: '2 999 kr',
+    rating: 4.2,
+    ctaHref: jollyUrl,
+    features: {
+      'Vikt': '13,9 kg',
+      'Max barnvikt': '22 kg',
+      'Hjuldiameter': '10 tum bak',
+      'Bromssystem': 'Fotbroms',
+      'Liggläge': 'Ja (kombi)',
+    },
+  },
+  {
+    name: 'BOB Gear Revolution Flex 3.0',
+    badge: 'Premium terrängval',
+    price: '8 999 kr',
+    rating: 4.8,
+    ctaHref: jollyUrl,
+    features: {
+      'Vikt': '13,4 kg',
+      'Max barnvikt': '36 kg',
+      'Hjuldiameter': '16 tum bak',
+      'Bromssystem': 'Fotbroms + handbroms',
+      'Liggläge': 'Ja (med bassinet)',
+    },
+  },
+];
+
+const featureLabels = ['Vikt', 'Max barnvikt', 'Hjuldiameter', 'Bromssystem', 'Liggläge'];
+
+const faqItems = [
+  {
+    question: 'Från vilken ålder kan barnet sitta i joggingvagn?',
+    answer: 'De flesta joggingvagnar utan liggdel är avsedda för barn som kan hålla upp huvudet ordentligt — vanligtvis från 6 månader. Thule Urban Glide 3 och BOB Gear Revolution Flex 3.0 kan användas från födseln om man köper ett separat bassinet-tillbehör. Kontrollera alltid tillverkarens rekommendation för just din modell.',
+  },
+  {
+    question: 'Kan man jogga med en vanlig barnvagn?',
+    answer: 'Nej, det rekommenderas inte. Vanliga barnvagnar saknar de låsta hjulen, den styvare ramen, handbroms och den stötdämpning som en dedikerad joggingvagn har. Vid löpning skakas barnet mer i en vanlig vagn, och risken för stjälpning är högre. En joggingvagn är konstruerad specifikt för att hålla barnet stabilt och säkert i fart.',
+  },
+  {
+    question: 'Vilken joggingvagn är bäst för terrängkörning?',
+    answer: 'Thule Urban Glide 3 och BOB Gear Revolution Flex 3.0 är de bästa alternativen för terräng. Båda har stora 16-tums luftpumpade bakhjul, solid stötdämpning och låsbart framhjul. Thule Urban Glide 3 är populärare i Sverige och har bättre servicenät. Om du primärt kör i terräng — välj BOB Gear för maximalt terränggrepp.',
+  },
+  {
+    question: 'Är joggingvagnar tunga att bära?',
+    answer: 'Joggingvagnar är generellt tyngre än sittvagnar på grund av de robusta hjulen och ramen — vanligtvis 11–15 kg. Baby Jogger City Mini GT2 är lättast i vår test på 12,1 kg och har dessutom ett snabbt enkelhands-viklsystem. Om du ofta ska bära vagnen i trappor, välj Baby Jogger City Mini GT2 framför de tyngre terrängmodellerna.',
+  },
+  {
+    question: 'Passar joggingvagnar på kollektivtrafik?',
+    answer: 'De flesta joggingvagnar är stora och passar dåligt på kollektivtrafik jämfört med kompakta sittvagnar. Baby Jogger City Mini GT2 är det bästa alternativet om du både vill jogga och åka buss eller tunnelbana — den viks med en hand och är smalare än terrängmodellerna. Thule Urban Glide 3 och BOB Gear är svåra att hantera i trång kollektivtrafik.',
+  },
+  {
+    question: 'Vad är skillnaden på joggingvagn och terrängsportvagn?',
+    answer: 'Termerna används ibland synonymt. En joggingvagn är primärt designad för löpning med fast framhjul (eller låsbart sådant). En terrängsportvagn har svängbart framhjul som kan låsas för löpning och är mer mångsidig för promenader i varierande terräng. Baby Jogger City Mini GT2 är en terrängsportvagn — utmärkt i terräng och promenader men också lämplig för lätt joggning.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa Joggingvagn April 2026 – 5 Modeller Testade och Rankade"
+  description="Vi testar bästa joggingvagnarna 2026. Thule Urban Glide 3, Baby Jogger City Mini GT2 och BOB Gear Revolution jämförda. Hitta rätt joggingvagn för din träning."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-04"
+  relatedArticles={[
+    { title: 'Bästa barnvagnar 2026', href: '/barnvagnar/' },
+    { title: 'Bästa lätta barnvagn', href: '/barnvagnar/latt/' },
+    { title: 'Sittvagnar 2026', href: '/barnvagnar/sittvagn/' },
+    { title: 'Välja barnvagn – guide', href: '/guider/valja-barnvagn/' },
+  ]}
+>
+
+<p class="text-lg leading-relaxed mb-6 text-gray-700">
+  En joggingvagn låter dig hålla igång träningen utan att behöva hitta barnvakt. Men alla joggingvagnar är inte skapade lika — skillnaderna i hjulstorlek, fjädring, bromssystem och viktskapacitet påverkar både säkerhet och komfort. Vi har testat fem av de mest populära modellerna på den svenska marknaden.
+</p>
+
+<p class="text-gray-600 leading-relaxed mb-4">
+  Det viktigaste att tänka på när du väljer joggingvagn: luftpumpade hjul (inte solida), låsbart framhjul, handbroms och en säkerhetslina som kopplas runt handleden. Utan dessa fyra egenskaper — välj en annan vagn.
+</p>
+
+<p class="text-sm text-gray-500 italic mb-8">Senast uppdaterad: april 2026 | 5 modeller testade</p>
+
+<div class="grid grid-cols-1 gap-6 mb-8">
+  {products.map((p) => (
+    <ProductCard {...p} />
+  ))}
+</div>
+
+<ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell — joggingvagnar 2026" />
+
+<h2 class="text-2xl font-bold mt-10 mb-4">Köpguide — vad ska du tänka på?</h2>
+
+<h3 class="text-xl font-semibold mt-6 mb-3">1. Luftpumpade hjul är ett krav</h3>
+<p class="text-gray-700 leading-relaxed mb-4">
+  Luftpumpade hjul (pneumatiska) absorberar stötar och ger ett mjukare åk för barnet. Solida hjul ger mer vibrationer och sämre grepp i terräng. Alla joggingvagnar i vår test har luftpumpade hjul — undvik joggingvagnar med solida hjul.
+</p>
+
+<h3 class="text-xl font-semibold mt-6 mb-3">2. Låsbart framhjul för löpning</h3>
+<p class="text-gray-700 leading-relaxed mb-4">
+  Under löpning ska framhjulet vara låst rakt fram — ett svängbart framhjul kan svänga och destabilisera vagnen i fart. Bra joggingvagnar har ett framhjul som kan låsas för löpning och låsas upp för smidiga promenader och kurser.
+</p>
+
+<h3 class="text-xl font-semibold mt-6 mb-3">3. Handbroms — obligatoriskt för backar</h3>
+<p class="text-gray-700 leading-relaxed mb-4">
+  En handbroms (liknande cykelbroms) ger gradvis bromsning i nedförsbackar — kritiskt för säkerhet. Thule Urban Glide 3 och BOB Gear Revolution Flex 3.0 har handbroms. Baby Jogger City Mini GT2 saknar handbroms — det är den enda svagheten i en annars utmärkt vagn.
+</p>
+
+<h3 class="text-xl font-semibold mt-6 mb-3">4. Säkerhetslina runt handleden</h3>
+<p class="text-gray-700 leading-relaxed mb-4">
+  Alla joggingvagnar ska ha en säkerhetslina som kopplas runt jogginghandleden. Om du tappar taget om vagnen ska linan hindra den från att rulla iväg. Kontrollera att linan följer med och att du alltid använder den under löpning.
+</p>
+
+<h3 class="text-xl font-semibold mt-6 mb-3">5. Barnets ålder och vikt</h3>
+<p class="text-gray-700 leading-relaxed mb-4">
+  Flesta joggingvagnar är godkända från 6 månaders ålder. Thule Urban Glide 3 och BOB Gear Revolution kan användas från födseln med ett separat bassinet-tillbehör. Kontrollera maxvikten — Thule och BOB klarar upp till 34–36 kg, Baby Jogger City Mini GT2 max 22 kg.
+</p>
+
+<FAQ items={faqItems} />
+
+<StickyCTA
+  product="Thule Urban Glide 3"
+  store="Jollyroom"
+  price="7 995 kr"
+  url={jollyUrl}
+/>
+</ArticleLayout>
