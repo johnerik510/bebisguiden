@@ -1,0 +1,150 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'BLW-guide' },
+];
+
+const faqItems = [
+  {
+    question: 'Vid vilken ålder kan man börja med BLW?',
+    answer: 'BLW rekommenderas från 6 månaders ålder (korrigerad ålder för förtidigt födda). De motoriska milstolparna för att vara redo är att sitta stadigt utan stöd, ha försvagad tungreflexen (extrusionsreflexen), visa intresse för mat (titta på mat, försöka ta maten), och kunna föra mat till munnen med händerna. Börja ALDRIG BLW före 6 månader — tarmens barriärfunktion och tuggförmågan är inte redo.',
+  },
+  {
+    question: 'Är BLW farligt? Kvävningsrisken?',
+    answer: 'Forskning (Cameron et al., 2012; Fangupo et al., 2016) visar att BLW-bebisars inte kvävs mer än bebisars som äter puré — förutsatt att du följer säkerhetsreglerna. Bebisars reflexmässiga spot-reflex (kräkningsreflexen) sitter längre fram än vuxnas och är ett aktivt skydd, inte ett kvävningstecken. Det är normalt att bebisen gagglar. Kvävning är däremot tyst — bebisen gråter/hostar inte. Undvik kvävningsrisker: runda druvor (halvera), hela körsbärstomater, nötter, rå morot, sega köttbitar och hårt bröd.',
+  },
+  {
+    question: 'Ska man ange salt när man lagar BLW-mat?',
+    answer: 'Nej. Bebisar under 1 år ska INTE få salt — njurarna kan inte hantera det. Undvik även produkter med salt: ost i stora mängder, sojasås, saltsticks, charkuterier och buljong. Smaksätt med örter (basilika, persilja, dill) och naturliga smaker istället. Salt kan introduceras gradvis efter 1 år.',
+  },
+  {
+    question: 'Behöver bebisen fortfarande bröstmjölk/välling vid BLW?',
+    answer: 'Ja, absolut. Mat under 1 år är "komplement" till bröstmjölk eller modersmjölksersättning — inte en ersättning. Bröstmjölk/ersättning är fortfarande den primära näringskällan och ska erbjudas FÖRE fasta maten de första månaderna. Amning/flaska minskar gradvis i takt med att matintaget ökar. Det är normalt att intaget av fast föda är minimalt de första 2–3 månaderna — bebisen utforskar, smakar och lär sig tuggrörelsen.',
+  },
+  {
+    question: 'Vilka är de bästa första BLW-maten?',
+    answer: 'Bra val för nybörjaren: Mjuk frukt (mogen avokado, banan, kokt päron, kokt äpple), ångkokta grönsaksstavar (morot, broccoli, potatis, sötpotatis), mjuk pasta, risnudlar, kött i remsor (kycklingben/-lår lätt att hålla i), ägg (fullt genomkokta), rostat bröd i stavar. Format: Längre bitar (fingerform) som bebisen kan gripa tag om och ha uppe ur näven. Inte för litet — bebisars kan inte plocka med fingrarna de första veckorna.',
+  },
+  {
+    question: 'BLW eller purékost — vad är bäst?',
+    answer: 'Forskning visar inga signifikanta skillnader i näringsstatus mellan BLW och traditionell purékost vid korrekt genomförande. BLW: stärker oral motorik och tuggförmåga, bevis för lägre BMI i skolåldern (Townsend & Pitchford, 2012), mer positiv relation till mat. Purékost: enklare att kontrollera intaget, lättare vid specifika näringsbehov, lägre oro för mesighet. Kombinerat (BLISS — Baby-Led Introduction to Solids) är en kompromiss som rekommenderas av Livsmedelsverket i Sverige.',
+  },
+];
+---
+
+<ArticleLayout
+  title="BLW-guide 2026 – Kom igång med baby-led weaning steg för steg"
+  description="Komplett BLW-guide: rätt ålder, säkra livsmedel, kvävningsrisker och hur du börjar. Baby-led weaning på svenska — baserat på forskning och Livsmedelsverkets råd."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/blw-guide/"
+  updatedDate="2026-04-04"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'När börjar bebis äta fast föda?', href: '/guider/nar-borjar-bebis-ata/' },
+    { title: 'Bästa matstol 2026', href: '/matstolar/' },
+    { title: 'Bebis checklista', href: '/guider/bebis-checklista/' },
+    { title: 'Bebis förstoppning', href: '/guider/bebis-forstoppning/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  BLW (Baby-Led Weaning / baby-ledd avvänjning) innebär att bebisen från 6 månaders ålder äter riktig mat i bitar — utan puréer — och leder sin egen mating. I stället för att matas med sked utforskar bebisen maten med händerna och lär sig äta i sin egen takt. Metoden är vetenskapligt studerad och allt mer vanlig i Sverige.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Kortversion för nybörjare</p>
+  <p class="text-sm text-text-light">Starta vid 6 månader. Erbjud mjuka grönsaksstavar, mogen frukt och ångkokad mat. Sitta vid bordet med familjen. Bröstmjölk/ersättning är fortfarande primär näring — mat är komplement. Förvänta mesighet och minimal matätning de första veckorna — det är normalt.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Är bebisen redo för BLW? Checklista</h2>
+<ul class="list-none space-y-2 mb-6">
+  <li class="flex items-start gap-2"><span class="text-green-500 font-bold mt-0.5">✓</span><span class="text-text-light">Sitter stadigt utan stöd (inte enbart med stöd av kudde/napphållare)</span></li>
+  <li class="flex items-start gap-2"><span class="text-green-500 font-bold mt-0.5">✓</span><span class="text-text-light">Tungreflexen (extrusionsreflexen) är borta — maten putas inte ut automatiskt</span></li>
+  <li class="flex items-start gap-2"><span class="text-green-500 font-bold mt-0.5">✓</span><span class="text-text-light">Visar intresse för mat — stirrar på din mat, försöker ta den</span></li>
+  <li class="flex items-start gap-2"><span class="text-green-500 font-bold mt-0.5">✓</span><span class="text-text-light">Kan föra föremål till munnen med händerna</span></li>
+  <li class="flex items-start gap-2"><span class="text-green-500 font-bold mt-0.5">✓</span><span class="text-text-light">Minst 6 månaders ålder (korrigerad ålder för förtidiga)</span></li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Säkerhetsregler — kvävning och BLW</h2>
+<p class="text-text-light mb-4">
+  Rädslan för kvävning är den vanligaste anledningen att föräldrar tvekar inför BLW. Forskning visar att rätt implementerat BLW inte ökar kvävningsrisken jämfört med purékost. Det är viktigt att lära sig skillnaden:
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+  <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+    <p class="font-semibold text-red-900 mb-2">Kvävning (allvarligt)</p>
+    <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+      <li>Tyst — bebisen gråter/hostar inte</li>
+      <li>Blå/lila läppar</li>
+      <li>Oförmåga att hosta, andas eller gråta</li>
+      <li>Kräver omedelbar åtgärd (Heimlich)</li>
+    </ul>
+  </div>
+  <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+    <p class="font-semibold text-green-900 mb-2">Gagglar (normalt)</p>
+    <ul class="text-sm text-green-800 space-y-1 list-disc pl-4">
+      <li>Hostar, kräks, rödnar</li>
+      <li>Bebisen rensar själv</li>
+      <li>Normalt skyddsreflexen</li>
+      <li>Händer fler gånger i början</li>
+    </ul>
+  </div>
+</div>
+
+<p class="text-text-light mb-4"><strong>Undvik alltid:</strong> hela druvor och körsbärstomater (halvera eller kvarta), hela nötter, rå morot och råa äpplen, sega köttbitar, store bitar hård frukt, rund svalgulkad godis och selebitar.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Första veckorna — vad du kan förvänta dig</h2>
+<p class="text-text-light mb-4">
+  De flesta bebisars äter väldigt lite mat de första 2–4 veckorna. Det är normalt — syftet är utforskning, inte näring. Bebisen lär sig smak, konsistens och tuggrörelse. Bröstmjölk eller modersmjölksersättning är fortfarande det som mättar.
+</p>
+<p class="text-text-light mb-4">Praktiska råd för start:</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li>Erbjud mat 1–2 gånger per dag i lugn stund — inte när bebisen är trött eller för hungrig</li>
+  <li>Bröstmjölk/ersättning <strong>före</strong> maten — inte efter. Bebisen mättas av mjölk och kan utforska mat utan press</li>
+  <li>Sitta med familjen vid bordet — socialt lärande</li>
+  <li>Lägg maten framför bebisen — låt bebisen bestämma takten och mängden</li>
+  <li>Stanna alltid kvar och övervaka hela måltiden</li>
+</ul>
+
+<CTABox productName="Matstolar för BLW" store="Babyonline" affiliateUrl="https://addrevenue.io/t?a=987081&c=3467325" description="Matstolar med stadig fotplatta och lätt att torka ren — viktigt för mesiga BLW-måltider." />
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Mat att erbjuda — första 4 veckorna</h2>
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Livsmedel</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Format</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Tips</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Avokado</td><td class="px-4 py-3 text-text-light">Långa klyftor</td><td class="px-4 py-3 text-text-light">Mogen = mjuk och gripvänlig. Hög fetthalt = bra näring</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Banan</td><td class="px-4 py-3 text-text-light">Halvskala kvar som grepp</td><td class="px-4 py-3 text-text-light">Lämna det nedre skalsegmentet kvar — enkelt grepp</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ångkokt broccoli</td><td class="px-4 py-3 text-text-light">Buketter med stjälk</td><td class="px-4 py-3 text-text-light">Kokt mjukt — stålktar som ett naturligt handtag</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Sötpotatis</td><td class="px-4 py-3 text-text-light">Stavar, ugnsbakade</td><td class="px-4 py-3 text-text-light">Lätt att mosa mot tandlösa tandköttet</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ägg</td><td class="px-4 py-3 text-text-light">Hårdkokt, halverat</td><td class="px-4 py-3 text-text-light">Viktigt allergen — introducera tidigt. Välkokat!</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Pasta (rigatoni)</td><td class="px-4 py-3 text-text-light">Rörformad, al dente</td><td class="px-4 py-3 text-text-light">Stor pasta lätt att hålla. Servera utan salt</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Kycklinglår</td><td class="px-4 py-3 text-text-light">Ben kvar — handtag</td><td class="px-4 py-3 text-text-light">Ben är naturliga handtag. Köttet gnags av lätt</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Allergener — introducera tidigt</h2>
+<p class="text-text-light mb-4">
+  Forskning (LEAP-studien, EAT-studien) visar att tidig introduktion av allergener minskar risken för matallergi. Livsmedelsverket rekommenderar att introducera alla 14 stora allergener tidigt i avvänjningen:
+</p>
+<p class="text-text-light mb-4">
+  Gluten, ägg, fisk, skaldjur, jordnötter, trädnötter, mjölk, soja, vete, sesam, lupin, selleri, senap och sulfiter. Introducera ett nytt allergen i taget och vänta 2–3 dagar för att kunna identifiera eventuell reaktion.
+</p>
+
+<CTABox productName="Haklapp och skyddsutrustning för BLW" store="Babyonline" affiliateUrl="https://addrevenue.io/t?a=987081&c=3467325" description="Vattentäta haklapp och ärmmatar — minska städandet efter BLW-måltider." />
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>
