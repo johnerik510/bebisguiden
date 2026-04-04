@@ -7,13 +7,17 @@ interface Props {
   description?: string;
 }
 
-const { productName, store = 'Babyonline', affiliateUrl, price, description } = Astro.props;
+const { productName, store = 'Reirei', affiliateUrl, price, description } = Astro.props;
 
 const storeUrls: Record<string, string> = {
-  'Babyonline': 'https://addrevenue.io/t?a=987081&c=3467325',
+  'Reirei': 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2F',
+  'Babyonline': 'https://addrevenue.io/t?a=987081&c=3467325&url=https%3A%2F%2Fwww.babyonline.se%2F',
+  'Crescent Barnvagnar': 'https://addrevenue.io/t?a=986149&c=3467325&url=https%3A%2F%2Fwww.crescentbarnvagnar.se%2F',
+  'Najell': 'https://addrevenue.io/t?a=984973&c=3467325&url=https%3A%2F%2Fnajell.com%2F',
+  'Summerville': 'https://addrevenue.io/t?a=985585&c=3467325&url=https%3A%2F%2Fsummervilleorganic.com%2F',
 };
 
-const finalUrl = affiliateUrl || storeUrls[store] || 'https://addrevenue.io/t?a=987081&c=3467325';
+const finalUrl = affiliateUrl || storeUrls[store] || 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2F';
 ---
 
 <div class="bg-cta/5 border border-cta/20 rounded-xl p-5 my-6 flex flex-col sm:flex-row items-center justify-between gap-4" data-product={productName}>
