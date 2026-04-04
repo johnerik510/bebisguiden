@@ -1,0 +1,208 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis sovschema' },
+];
+
+const faqItems = [
+  {
+    question: 'När börjar bebisen sova hela natten?',
+    answer: 'De flesta bebisars sover sin längsta sträck (5–6 timmar) någon gång mellan 3–6 månader. Att sova "hela natten" (7–8 timmar utan väckning) uppnår de flesta runt 6–9 månader, men det varierar enormt. Viktigt: barn under 4 månader bör inte sömntränas — nattmålningar är biologiskt nödvändiga. Faktorer som påverkar: vikt, amning vs. bröstmjölksersättning, sömnassociationer och temperament.',
+  },
+  {
+    question: 'Hur många sovstunder behöver en bebis på 3 månader?',
+    answer: 'Vid 3 månader behöver bebisen vanligtvis 3–4 sovstunder per dag (totalt 4–6 timmar dagsömn) plus ca 10–12 timmar nattsömn. Sovstunderna är oregelbundna och varierar från 30 minuter till 2 timmar. Runt 3–4 månader börjar ett mönster formas med förmiddags-, midag- och eftermiddagslur.',
+  },
+  {
+    question: 'Vad är en bra läggningsrutin för bebis?',
+    answer: 'En effektiv läggningsrutin är 20–30 minuter lång och konsekvent: bad eller tvätt av ansikte och händer, byta till sovsäck/pyjamas, matning, mörkläggning och vitt brus om ni använder det, sång eller vaggsaga, lägg ner "sömnig men vaken". Konsistens är viktigare än innehållet — hjärnan lär sig att rutinen signalerar "nu är det dags att sova" och melatoninproduktionen ökar.',
+  },
+  {
+    question: 'Varför sover bebisen bättre i sovsäck?',
+    answer: 'Sovsäck ersätter täcket och ger en stabil sovmiljö. Bebisen kan inte sparka av sovsäcken, vilket innebär att sovmiljön förblir densamma under natten. Sovsäck håller jämnare temperatur än lösa täcken och är säkrare — täcken i spjälsängen ökar risken för SIDS. En sovsäck med rätt TOG-värde för årstiden är det enklaste sättet att hålla bebisen lagom varm.',
+  },
+  {
+    question: 'Hur vet man att bebisen är trött?',
+    answer: 'Tidiga trötthetssignaler (agera direkt): gäspar, gnider ögonen, drar i öronen, stirrar tomt, tappar intresse för leksaker, gör en speciell "trött" sång. Sena signaler (övertrötthet): hyperaktivitet, skriker utan uppenbar anledning, svårt att trösta. Övertrötta bebisars är svårare att lägga ner och sover kortare stunder — det lönar sig att lägga i tid.',
+  },
+  {
+    question: 'Vad är "wake window" och hur använder man det?',
+    answer: 'Wake window är den tid bebisen kan vara vaken utan att bli övertröttad. Det varierar med åldern: 0–6 veckor: 45–60 min, 2–3 månader: 60–90 min, 4–5 månader: 1,5–2 timmar, 6–8 månader: 2–3 timmar, 9–12 månader: 3–4 timmar. Håll koll på klockan — lägg bebisen vid rätt wake window-slut, inte när den skriker av trötthet.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis sovschema 2026 – Schema per ålder från nyfödd till 1 år"
+  description="Komplett bebis sovschema per ålder: antal sovstunder, sömnbehov, wake windows och läggningsrutiner från nyfödd till 12 månader. Baserat på forskning."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-sovschema/"
+  updatedDate="2026-04-04"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Bebis sover dåligt', href: '/guider/bebis-sover-daligt/' },
+    { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/' },
+    { title: 'Bästa sovsäck för bebis', href: '/sovsackar/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Bebisars sömnbehov förändras snabbt under det första året. Det som fungerade vid 6 veckor funkar inte längre vid 4 månader — och tvärtom. Den här guiden ger konkreta sovscheman per åldersgrupp, från nyfödd till 12 månader, med sömnbehov, antal sovstunder och wake windows.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigast att veta</p>
+  <p class="text-sm text-text-light">Alla bebisars är olika — scheman är riktlinjer, inte regler. Om din bebis är glad, växer bra och visar trötthetssignaler vid rätt tid fungerar sömnmönstret oavsett om det matchar schemat exakt.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Nyfödd: 0–6 veckor</h2>
+<div class="overflow-x-auto mb-4">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Sömnbehov totalt</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Dagsömn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Nattsömn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Wake window</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-3">14–17 timmar/dygn</td><td class="px-4 py-3">6–8 timmar (4–8 lurer)</td><td class="px-4 py-3">8–9 timmar (med nattmålningar)</td><td class="px-4 py-3">45–60 minuter</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-text-light mb-4">Nyfödda har inget dygnsrytm ännu — de skiljer inte på dag och natt. Exponera bebisen för dagsljus på dagen och håll det mörkt och tyst på natten. Förväntad läggdags: oregelbunden, var 1–2 timme dygnet runt. Sträva inte efter ett fast schema ännu — följ bebisens signaler.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">2–3 månader</h2>
+<div class="overflow-x-auto mb-4">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Sömnbehov totalt</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Dagsömn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Antal lurer</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Wake window</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-3">13–16 timmar/dygn</td><td class="px-4 py-3">4–6 timmar</td><td class="px-4 py-3">3–5 lurer</td><td class="px-4 py-3">60–90 minuter</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-text-light mb-4">Vid 2 månader börjar en rudimentär dygnsrytm formas. Läggdags 19–21-tiden ger bäst nattsömn. Längsta sträcka kan vara 4–5 timmar. Fortfarande normalt med 2–3 nattmålningar. Börja med en kort, konsekvent kvällsrutin (bad, matning, sång).</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">4–5 månader</h2>
+<div class="overflow-x-auto mb-4">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Sömnbehov totalt</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Dagsömn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Antal lurer</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Wake window</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-3">12–15 timmar/dygn</td><td class="px-4 py-3">3–5 timmar</td><td class="px-4 py-3">3–4 lurer</td><td class="px-4 py-3">1,5–2 timmar</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-text-light mb-4"><strong>4-månaders sömnregression:</strong> Vid 3,5–4 månader genomgår bebisen en permanent förändring i sömnarkitektur. Sömncyklerna mognar och bebisen börjar vakna mellan cyklerna — precis som vuxna. Det är normalt att en bebis som sovit bra plötsligt börjar vakna oftare. Reglet varar i 2–6 veckor. Läggdags 18.30–20.00 rekommenderas vid 4 månader.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">6–8 månader</h2>
+<div class="overflow-x-auto mb-4">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Sömnbehov totalt</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Dagsömn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Antal lurer</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Wake window</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-3">12–15 timmar/dygn</td><td class="px-4 py-3">2,5–4 timmar</td><td class="px-4 py-3">2–3 lurer</td><td class="px-4 py-3">2–3 timmar</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-text-light mb-4">Övergång till 2-lursschema sker ofta runt 6–8 månader. Typiskt mönster: förmiddagslur (9–10) + middagslur (13–14). Läggdags 18.30–19.30. Från 6 månader är sömnträning möjlig om ni önskar. Introduktion av fast föda påverkar inte sömnmönstret direkt — myten att välling ger bättre sömn saknar stöd i forskningen.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">9–12 månader</h2>
+<div class="overflow-x-auto mb-4">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Sömnbehov totalt</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Dagsömn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Antal lurer</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Wake window</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-3">11–14 timmar/dygn</td><td class="px-4 py-3">2–3 timmar</td><td class="px-4 py-3">2 lurer</td><td class="px-4 py-3">3–4 timmar</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-text-light mb-4">Vid 9–10 månader sker ofta <strong>8-månaders sömnregression</strong> — orsakad av motorisk utveckling (krypa, stå) och separation anxiety. Många bebisars som sovit bra börjar åter vakna på natten. Håll rutinen stabil. Övergång till 1-lursschemat sker vanligtvis vid 12–18 månader, inte 9–12.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Snabböversikt — sömnbehov per ålder</h2>
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Ålder</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Total sömn</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Antal lurer</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Wake window</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Läggdags</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">0–6 veckor</td><td class="px-4 py-3 text-text-light">14–17 tim</td><td class="px-4 py-3 text-text-light">4–8</td><td class="px-4 py-3 text-text-light">45–60 min</td><td class="px-4 py-3 text-text-light">Oregelbunden</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">2–3 månader</td><td class="px-4 py-3 text-text-light">13–16 tim</td><td class="px-4 py-3 text-text-light">3–5</td><td class="px-4 py-3 text-text-light">60–90 min</td><td class="px-4 py-3 text-text-light">19–21</td></tr>
+      <tr><td class="px-4 py-3 font-medium">4–5 månader</td><td class="px-4 py-3 text-text-light">12–15 tim</td><td class="px-4 py-3 text-text-light">3–4</td><td class="px-4 py-3 text-text-light">1,5–2 tim</td><td class="px-4 py-3 text-text-light">18.30–20</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">6–8 månader</td><td class="px-4 py-3 text-text-light">12–15 tim</td><td class="px-4 py-3 text-text-light">2–3</td><td class="px-4 py-3 text-text-light">2–3 tim</td><td class="px-4 py-3 text-text-light">18.30–19.30</td></tr>
+      <tr><td class="px-4 py-3 font-medium">9–12 månader</td><td class="px-4 py-3 text-text-light">11–14 tim</td><td class="px-4 py-3 text-text-light">2</td><td class="px-4 py-3 text-text-light">3–4 tim</td><td class="px-4 py-3 text-text-light">18.30–19.30</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-xs text-text-light mb-6">Källa: American Academy of Sleep Medicine, National Sleep Foundation (2023). Siffrorna är riktlinjer — normala variationer förekommer.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Skapa en fungerande kvällsrutin</h2>
+<p class="text-text-light mb-4">
+  En konsekvent kvällsrutin på 20–30 minuter är det mest evidensbaserade sättet att förbättra bebisens sömn. Ordningen spelar roll — samma sekvens varje kväll tränar bebisens hjärna att "nu ska jag sova".
+</p>
+<ol class="list-decimal pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Mörkläggning:</strong> Dämpa ljuset i hemmet 30–60 minuter före läggdags — stimulerar melatoninproduktionen</li>
+  <li><strong>Bad eller tvätt</strong> (valfritt men effektivt — kroppstemperaturens fall efter bad signalerar sömn)</li>
+  <li><strong>Byta om</strong> till sovsäck och pyjamas — samma sovplagg varje natt</li>
+  <li><strong>Matning</strong> (amning eller flaska) — men undvik att bebisen somnar vid bröstet/flaskan om ni vill undvika sömnassociation</li>
+  <li><strong>Lugn aktivitet:</strong> sång, vaggsaga eller lugn stund utan skärmar</li>
+  <li><strong>Lägg ner</strong> "sömnig men vaken" — bebisen övar att somna på sin plats</li>
+</ol>
+
+<CTABox productName="Sovsäckar för bebis" store="Babyonline" affiliateUrl="https://addrevenue.io/t?a=987081&c=3467325" description="Sovsäckar i rätt TOG för årstiden — säkrare och varmare än lösa täcken." />
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Sömnregressioner — förvänta dig dessa</h2>
+<p class="text-text-light mb-4">
+  Sömnregressioner är perioder då en bebis som sovit bra plötsligt sover sämre. Det är normalt och orsakas av neurologisk eller motorisk utveckling.
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>4 månader (permanent):</strong> Sömnarkitekturen mognar. Varar 2–6 veckor. Den mest utmanande — kräver ibland ett skifte i sovrutiner.</li>
+  <li><strong>8–10 månader:</strong> Krypning, stående, separation anxiety. Varar 3–6 veckor.</li>
+  <li><strong>12 månader:</strong> Gående, ytterligare motorik. Varar 2–4 veckor.</li>
+  <li><strong>Tandsprickning</strong> kan ge sämre sömn i kortare perioder — men forskning stödjer inte att det är den primära orsaken till nattuppvaknanden.</li>
+</ul>
+
+<CTABox productName="Babyvakter med nattläge" store="Babyonline" affiliateUrl="https://addrevenue.io/t?a=987081&c=3467325" description="Babyvakter med infraröd nattvy — se bebisen utan att störa sömnen." />
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>
