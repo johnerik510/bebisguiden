@@ -1,0 +1,34 @@
+---
+interface Props {
+  productName: string;
+  store?: string;
+  affiliateUrl?: string;
+  price?: string;
+  description?: string;
+}
+
+const { productName, store = 'Babyonline', affiliateUrl, price, description } = Astro.props;
+
+const storeUrls: Record<string, string> = {
+  'Babyonline': 'https://addrevenue.io/t?a=987081&c=3467325',
+};
+
+const finalUrl = affiliateUrl || storeUrls[store] || 'https://addrevenue.io/t?a=987081&c=3467325';
+---
+
+<div class="bg-cta/5 border border-cta/20 rounded-xl p-5 my-6 flex flex-col sm:flex-row items-center justify-between gap-4" data-product={productName}>
+  <div>
+    <p class="font-heading font-bold text-dark text-base">{productName}</p>
+    {description && <p class="text-sm text-text-light mt-1">{description}</p>}
+    {price && <p class="text-sm text-text-light">{price} hos {store}</p>}
+  </div>
+  <a
+    href={finalUrl}
+    rel="nofollow sponsored noopener noreferrer"
+    target="_blank"
+    class="inline-flex items-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold py-3 px-6 rounded-lg transition-colors text-sm whitespace-nowrap"
+  >
+    Se hos {store}
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+  </a>
+</div>
