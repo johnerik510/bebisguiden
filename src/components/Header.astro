@@ -6,7 +6,11 @@ const navItems = [
   { label: 'Bärselen', href: '/barselen/' },
   { label: 'Matstolar', href: '/matstolar/' },
   { label: 'Spjälsängar', href: '/spjalsangar/' },
-  { label: 'Amning', href: '/amning/' },
+  { label: 'Amning & matning', href: '/amning/', dropdown: [
+    { label: 'Bröstpumpar', href: '/amning/brostpump/' },
+    { label: 'Amningskuddar', href: '/amning/amningskudde/' },
+    { label: 'Nappflaskor', href: '/amning/nappflaska/' },
+  ]},
   { label: 'Leksaker', href: '/leksaker/' },
   { label: 'Guider', href: '/guider/' },
 ];
@@ -49,9 +53,27 @@ const uspItems = [
         </a>
         <nav class="hidden md:flex items-center gap-1" aria-label="Huvudnavigering">
           {navItems.map((item) => (
+            item.dropdown ? (
+              <div class="relative group">
+                <a href={item.href} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1">
+                  {item.label}
+                  <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </a>
+                <div class="absolute left-0 top-full pt-1 hidden group-hover:block z-50">
+                  <div class="bg-white border border-gray-200 rounded-xl shadow-lg py-1 min-w-[180px]">
+                    {item.dropdown.map((sub) => (
+                      <a href={sub.href} class="block px-4 py-2 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">
+                        {sub.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
             <a href={item.href} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors">
               {item.label}
             </a>
+            )
           ))}
           <a href="/bilbarnstolar/" class="ml-2 px-4 py-2 text-sm font-semibold bg-accent text-white rounded-lg hover:opacity-90 transition-opacity">
             Se tester
@@ -68,9 +90,20 @@ const uspItems = [
   <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100" aria-label="Mobilnavigering">
     <div class="px-4 py-3 space-y-1">
       {navItems.map((item) => (
-        <a href={item.href} class="block py-2.5 text-sm text-gray-700 hover:text-primary transition-colors">
-          {item.label}
-        </a>
+        <div>
+          <a href={item.href} class="block py-2.5 text-sm text-gray-700 hover:text-primary transition-colors font-medium">
+            {item.label}
+          </a>
+          {item.dropdown && (
+            <div class="ml-4 space-y-0.5 mb-1">
+              {item.dropdown.map((sub) => (
+                <a href={sub.href} class="block py-1.5 text-sm text-gray-500 hover:text-primary transition-colors">
+                  {sub.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       ))}
     </div>
   </nav>
