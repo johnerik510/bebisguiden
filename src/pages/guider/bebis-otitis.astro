@@ -1,0 +1,179 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Oroninflammation hos bebis' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur vet jag om bebisen har oroninflammation?',
+    answer: 'Bebisen kan inte peka på att örat gör ont, men tydliga tecken är: drar eller nafsar sig i ett eller båda öronen, skriker mer än vanligt och är svår att trösta, vägrar suga eller amma (suggrörelsen ökar trycket i mellanörat och gör ont), verkar ha ont när den ligger ner, har feber. Symtomen kombineras ofta med en förkylning som verkat bli bättre men sedan förvärrades igen. Öroninflammation kan bara säkert diagnostiseras med ett otoskop hos läkare eller sjuksköterska.',
+  },
+  {
+    question: 'Behöver bebisen alltid antibiotika vid oroninflammation?',
+    answer: 'Nej — inte alltid. Socialstyrelsen och 1177 rekommenderar ofta en vänta-och-se-period på 1–3 dagar för barn över 6 månader med mild till måttlig öroninflammation, eftersom de flesta fall läker ut av sig självt. Undantag: bebisar under 6 månader behandlas alltid med antibiotika. Barn med kraftiga symtom, hög feber, pus ur örat eller dubbelsidig inflammation behandlas också oftast med antibiotika. Smärtlindring med paracetamol ges alltid oavsett antibiotikaval.',
+  },
+  {
+    question: 'Ska man undvika att få vatten i orat vid oroninflammation?',
+    answer: 'Det beror på vilken typ av inflammation det handlar om. Vid mellanöreinflammation (otitis media) — den vanligaste typen hos bebisar — är vatten i ytterörat inte ett problem eftersom trumhinnan stänger av mellanörat. Bad och bad i duschen är normalt OK. Vid ytteröresinflammation (simmaröra) däremot ska vatten undvikas aktivt. Om bebisen har rör (dränering) i trumhinnan ska vatten i örat undvikas — fråga läkaren vad som gäller specifikt.',
+  },
+  {
+    question: 'Kan flaskmatning oka risken for oroninflammation?',
+    answer: 'Ja — flaskmatning i liggandes läge ökar risken avsevärt. När bebisen äter liggandes kan mjölk rinna in i Eustachiska röret (som förbinder svalget med mellanörat) och orsaka inflammation. Mata alltid flaskan i upprätt eller halvsittande läge, aldrig helt plant. Bebisar som ammas har lägre risk för öroninflammation, delvis för att amning kräver ett aktivt sugmönster och delvis för att bröstmjölk innehåller antikroppar.',
+  },
+  {
+    question: 'Kan upprepade oroninflammationer paverka horseln?',
+    answer: 'Upprepade öroninflammationer kan leda till att vätska samlas i mellanörat (sekretorisk otitis, klistrig öra), vilket tillfälligt försämrar hörseln. Hos de flesta barn normaliseras hörseln när vätskan dräneras bort. Om hörselproblemen kvarstår kan läkaren rekommendera rör (ventilationsrör/dränrör) som sätts in i trumhinnan. Bestående hörselskada till följd av okomplicerad öroninflammation är ovanligt vid korrekt behandling. Kontakta BVC om du misstänker att barnets hörsel påverkas.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Oroninflammation hos bebis 2026 – symtom, behandling och forebyggande"
+  description="Guide om oroninflammation hos bebis: hur du känner igen symtomen, när antibiotika behövs, hur amning skyddar och hur du förebygger framtida infektioner."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-otitis/"
+  updatedDate="2026-04-04"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bebis feber – temperatur och när du söker vård', href: '/guider/bebis-feber/' },
+    { title: 'Bebis kolik – orsaker och vad som hjälper', href: '/guider/bebis-kolik/' },
+    { title: 'Bebis magont – orsaker, symtom och vad som hjälper', href: '/guider/bebis-magont/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Oroninflammation (otitis media) är en av de vanligaste bakterieinfektionerna hos bebisar och smabarns — de flesta barn drabbas minst en gang innan fyra ars alder. Det kan vara svart att avgora om bebisen har ont i orat, men det finns tydliga tecken att halla koll pa.
+</p>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Kontakta 1177 eller sök läkare om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Bebisen är under 6 månader med misstänkt öroninflammation — alltid läkarkontakt</li>
+    <li>Hög feber (38,5°C+) kombinerat med öronsmärta</li>
+    <li>Pus eller vätska rinner ut ur örat</li>
+    <li>Bebisen verkar kraftigt sjuk, slapp eller svår att väcka</li>
+    <li>Symtomen förbättras inte efter 2–3 dagar trots smärtlindring</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad är oroninflammation?</h2>
+<p class="text-text-light mb-4">
+  Otitis media innebär att mellanörat — utrymmet bakom trumhinnan — fylls med vätska och infekteras av bakterier eller virus. Det uppstår ofta som en följd av en förkylning: slemhinnorna i näsan och halsen sväller, Eustachiska röret (som förbinder svalget med mellanörat) blockeras, och vätska samlas i mellanörat där bakterier kan trivas.
+</p>
+<p class="text-text-light mb-4">
+  Bebisar är extra känsliga eftersom deras Eustachiska rör är kortare, mer horisontellt och mjukare än hos vuxna, vilket gör att infektioner lättare sprider sig uppåt.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Typisk ålder och riskfaktorer</h2>
+<p class="text-text-light mb-4">
+  Öroninflammation är vanligast mellan 6 månaders och 2 års ålder. Riskfaktorer som ökar risken:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-1 mb-6">
+  <li>Flaskmatning i liggandes läge</li>
+  <li>Passiv rökning (sekundärrök)</li>
+  <li>Daghemsstart (exponering för fler virus och bakterier)</li>
+  <li>Nappsugning efter 6 månaders ålder (kan öka trycket i Eustachiska röret)</li>
+  <li>Inte fått amning de första 6 månaderna</li>
+  <li>Hereditet — öroninflammationer löper i familjer</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Symtom — vad du ska titta efter</h2>
+<p class="text-text-light mb-4">
+  Eftersom bebisen inte kan peka och säga att örat gör ont, behöver du läsa av kroppsliga signaler:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Drar eller nafsar i örat</strong> — vanligaste tecknet, men notera att alla bebisar utforskar öronen och det behöver inte tyda på infektion</li>
+  <li><strong>Intensiv gråt och svår att trösta</strong> — smärtan ökar när bebisen ligger ner eftersom trycket i mellanörat ökar</li>
+  <li><strong>Vägrar amma eller suga</strong> — suggrörelsen ökar trycket och gör ont</li>
+  <li><strong>Feber</strong> — ofta men inte alltid, kan vara låggradigt (37,5–38°C) eller högt</li>
+  <li><strong>Sömnsvårigheter</strong> — smärtan förvärras i liggandes läge</li>
+  <li><strong>Förekommer ofta efter förkylning</strong> — barnet verkar bli bättre och sedan plötsligt sämre igen</li>
+  <li><strong>Pus eller vätska ur örat</strong> — tyder på att trumhinnan brustit (spontanperforering), vilket faktiskt minskar smärtan</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Ytteroreinflammation vs. mellanoreinflammation</h2>
+<p class="text-text-light mb-4">
+  Det är viktigt att skilja på dessa två typer:
+</p>
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Egenskap</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Ytteroreinflammation (simmaröra)</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Mellanoreinflammation (otitis media)</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr>
+        <td class="px-4 py-3 font-medium">Plats</td>
+        <td class="px-4 py-3 text-text-light">Ytteröregången</td>
+        <td class="px-4 py-3 text-text-light">Mellanörat (bakom trumhinnan)</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Orsak</td>
+        <td class="px-4 py-3 text-text-light">Vatten/fukt, rivsår, bakterier i öregången</td>
+        <td class="px-4 py-3 text-text-light">Förkylning, bakterier/virus i mellanörat</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Smärta</td>
+        <td class="px-4 py-3 text-text-light">Värre vid dragning i örat utifrån</td>
+        <td class="px-4 py-3 text-text-light">Värre i liggandes läge, vid suggestion</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Vatten i orat</td>
+        <td class="px-4 py-3 text-text-light">Undvik aktivt — förvärrar</td>
+        <td class="px-4 py-3 text-text-light">Spelar ingen roll (trumhinnan stänger av)</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Behandling</td>
+        <td class="px-4 py-3 text-text-light">Örondroppar, håll torrt</td>
+        <td class="px-4 py-3 text-text-light">Paracetamol, antibiotika vid behov</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Behandling — vad läkaren beslutar</h2>
+<p class="text-text-light mb-4">
+  Läkaren tittar i örat med ett otoskop och bedömer om trumhinnan är röd, utbuktad eller har vätska bakom sig. Behandlingen anpassas efter ålder och svårighetsgrad:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Under 6 månader:</strong> Alltid antibiotika (amoxicillin är förstahandsval) — bebisar i den här åldern ska inte avvakta.</li>
+  <li><strong>6 månader – 2 år, milda symtom:</strong> Vänta-och-se i 1–3 dagar med smärtlindring. Antibiotika sätts in om symtomen inte förbättras.</li>
+  <li><strong>Svåra symtom, hög feber, dubbelsidig inflammation:</strong> Antibiotika direkt oavsett ålder.</li>
+  <li><strong>Smärtlindring:</strong> Paracetamol (Alvedon/Panodil) alltid — minskar smärtan och eventuell feber. Ibuprofen från 6 månaders ålder.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Forebygga oroninflammation — vad som faktiskt hjälper</h2>
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Amma i minst 6 månader:</strong> Amning halverar risken för öroninflammation. Bröstmjölken innehåller antikroppar och amningspositionen minskar risken att vätska samlas i Eustachiska röret.
+  </li>
+  <li>
+    <strong>Mata flaskan i upprätt läge:</strong> Aldrig flaska liggandes plant — mjölken kan ta sig in i Eustachiska röret.
+  </li>
+  <li>
+    <strong>Undvik sekundärrök:</strong> Passiv rökning skadar slemhinnorna och ökar risken för alla övre luftvägsinfektioner markant.
+  </li>
+  <li>
+    <strong>Vaccinera enligt BVCs schema:</strong> Pneumokockvaccinet (ingår i barnvaccinprogrammet) minskar risken för de allvarligaste bakteriella öroninflammationerna.
+  </li>
+  <li>
+    <strong>Handtvattsvanor i familjen:</strong> Förkylningar är startpunkten — minska smittspridning med god handhygien.
+  </li>
+</ol>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Om öroninflammationerna återkommer</p>
+  <p class="text-sm text-text-light">Tre eller fler öroninflammationer på 6 månader, eller fyra på ett år, räknas som återkommande öroninflammation. Läkaren kan då utreda om ventilationsrör (plaströr i trumhinnan) är aktuellt. Rören förhindrar att vätska samlas och minskar antalet infektioner avsevärt. Ingreppet görs i narkos och tar några minuter.</p>
+</div>
+
+<FAQ items={faqItems} />
+</ArticleLayout>

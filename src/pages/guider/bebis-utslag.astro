@@ -1,0 +1,191 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Utslag hos bebis' },
+];
+
+const faqItems = [
+  {
+    question: 'Är utslag hos bebis alltid farliga?',
+    answer: 'Nej — de flesta utslag hos bebisar är helt ofarliga och går över av sig självt. Erythema toxicum, miliaria (värmeutslag) och mjölkskorpor är extremt vanliga och kräver ingen behandling. Det viktiga är att kunna skilja på ofarliga utslag och sådana som kräver snabb vård. Huvudregeln: om bebisen också verkar sjuk, är slapp, har hög feber eller utslaget sprider sig snabbt — sök alltid vård.',
+  },
+  {
+    question: 'Hur gör jag glastestet?',
+    answer: 'Glastestet används för att skilja petekier (blödningsutslag) från vanliga utslag. Tryck ett genomskinligt glas hårt mot huden där utslaget finns. Normala utslag bleknar (försvinner) under glaset när blodet pressas undan. Petekier bleknar INTE — de syns kvar som röda eller lila prickar under glaset. Petekier kan vara tecken på meningokocksepsis eller annan allvarlig infektion och kräver akut vård. Ring 112 om utslaget inte bleknar vid glaspress.',
+  },
+  {
+    question: 'Vad är mjolkskorpor och hur behandlar jag dem?',
+    answer: 'Mjölkskorpor (seborroisk dermatit) är gulaktiga, fettiga fjällande hudfjäll på bebisens skalp, ibland även i ögonbrynen och bakom öronen. De orsakas av en överstimulering av talgkörtlarna i huden, troligen av kvarvarande hormoner från mamman. Mjölkskorpor är ofarliga och försvinner vanligtvis av sig självt inom de första månaderna. För att lösa upp skorporna: massera in lite kokosolja eller barnolja, låt verka 20–30 minuter, kamma sedan försiktigt med en mjuk barnkam och tvätta med mild schampo. Undvik att riva eller plocka.',
+  },
+  {
+    question: 'Vad hjälper mot blöjeksem?',
+    answer: 'Blöjeksem orsakas av att fuktig hud irriteras av urin och avföring. Effektivaste åtgärderna: byt blöjan ofta (varannan timme eller vid varje blöja med avföring), låt bebisen ha blöjfri tid varje dag (luftning är det bästa botemedlet), använd zinkoxid-kräm (t.ex. Sudocrem, Inotyol) vid varje byte, torka försiktigt och undvik att gnida. Undvik väldoftande blöjor och våtservetter med parfym. Om utslaget är rött med skarpa kanter och satellit-prickar runt om — kan det vara svamp. Kontakta BVC, behandlas med antimykotisk kräm.',
+  },
+  {
+    question: 'Nar soker jag vard for utslag hos bebis?',
+    answer: 'Sök vård akut (ring 112) om: utslaget inte bleknar vid glaspress (petekier). Sök vård samma dag eller ring 1177 om: bebisen har hög feber kombinerat med utslag, utslaget sprider sig snabbt, bebisen verkar allvarligt sjuk eller är svår att väcka, utslaget ser infekterat ut (varbildning, kraftig rodnad, värme). Boka BVC-tid om: utslaget håller i sig mer än 1–2 veckor, du misstänker eksem eller allergi, bebisen kliar sig mycket.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Utslag hos bebis 2026 – vad de ser ut, orsaker och vad du ska gora"
+  description="Guide om utslag hos bebis: vanliga och ovanliga typer, glastest för petekier, behandling av blöjeksem och eksem, och när du söker akut vård."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-utslag/"
+  updatedDate="2026-04-04"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bebis feber – temperatur och när du söker vård', href: '/guider/bebis-feber/' },
+    { title: 'Bebis gulsot – orsaker, symtom och behandling', href: '/guider/bebis-gulsot/' },
+    { title: 'Bebis kolik – orsaker och vad som hjälper', href: '/guider/bebis-kolik/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Hudutslag är extremt vanliga hos bebisar — de allra flesta är helt ofarliga och försvinner av sig självt. Men som ny förälder kan det vara svårt att avgöra vad som är normalt och vad som kräver vård. Den här guiden hjälper dig identifiera de vanligaste utslagstyperna och ger tydliga signaler för när du behöver agera snabbt.
+</p>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Ring 112 omedelbart om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Utslaget inte bleknar när du trycker ett glas mot huden (glastest) — tecken på petekier/purpura</li>
+    <li>Hög feber kombinerat med snabbt spridande utslag</li>
+    <li>Bebisen verkar allvarligt sjuk, är slapp eller svår att väcka</li>
+    <li>Utslaget sprider sig synligt snabbt under minuter eller timmar</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Glastest — det viktigaste du behöver lära dig</h2>
+<p class="text-text-light mb-4">
+  Glastest är en enkel metod för att avgöra om ett utslag är potentiellt livshotande. Tryck ett genomskinligt glas hårt mot huden där utslaget sitter. Observera vad som händer under glaset:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Utslaget bleknar (försvinner under glaset):</strong> Normalt utslag — blodet pressas undan av trycket. Sannolikt ofarligt.</li>
+  <li><strong>Utslaget bleknar INTE (syns kvar som röda/lila prickar):</strong> Petekier eller purpura — blödning under huden. Ring 112 omedelbart. Kan vara tecken på meningokocksepsis eller annan allvarlig infektion.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vanliga utslag — oversikt</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Utslag</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Utseende</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Ålder</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Allvarlighet</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Åtgärd</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr>
+        <td class="px-4 py-3 font-medium">Erythema toxicum</td>
+        <td class="px-4 py-3 text-text-light">Röda fläckar med gula/vita prickar i mitten, kroppen</td>
+        <td class="px-4 py-3 text-text-light">1–5 dagar gammal</td>
+        <td class="px-4 py-3 text-green-700 font-medium">Helt ofarlig</td>
+        <td class="px-4 py-3 text-text-light">Ingen — försvinner av sig självt</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Miliaria (värmeutslag)</td>
+        <td class="px-4 py-3 text-text-light">Små röda prickar eller genomskinliga blåsor, hals/axlar/panna</td>
+        <td class="px-4 py-3 text-text-light">Alla åldrar</td>
+        <td class="px-4 py-3 text-green-700 font-medium">Ofarlig</td>
+        <td class="px-4 py-3 text-text-light">Sval miljö, luftiga kläder, undvik överhettning</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Eksem (atopisk dermatit)</td>
+        <td class="px-4 py-3 text-text-light">Röd, torr, kliande hud, kinder/armbågsknän/handled</td>
+        <td class="px-4 py-3 text-text-light">2 månader+</td>
+        <td class="px-4 py-3 text-orange-600 font-medium">Kräver behandling</td>
+        <td class="px-4 py-3 text-text-light">Fuktkräm flera gånger/dag, steroid vid behov, BVC</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Blöjeksem</td>
+        <td class="px-4 py-3 text-text-light">Röd, irriterad hud i blöjregionen</td>
+        <td class="px-4 py-3 text-text-light">Alla åldrar med blöja</td>
+        <td class="px-4 py-3 text-orange-600 font-medium">Behöver åtgärd</td>
+        <td class="px-4 py-3 text-text-light">Luftning, zinkoxid-kräm, tätare byten</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Seborroisk dermatit (mjölkskorpor)</td>
+        <td class="px-4 py-3 text-text-light">Gulaktiga, fettiga fjäll på skalp och ögonbryn</td>
+        <td class="px-4 py-3 text-text-light">0–6 månader</td>
+        <td class="px-4 py-3 text-green-700 font-medium">Ofarlig</td>
+        <td class="px-4 py-3 text-text-light">Olja + kamma, går ofta över av sig självt</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Roseola (exanthem subitum)</td>
+        <td class="px-4 py-3 text-text-light">Rosa utslag på bål efter 3–5 dagars hög feber</td>
+        <td class="px-4 py-3 text-text-light">6 månader – 2 år</td>
+        <td class="px-4 py-3 text-green-700 font-medium">Ofarlig (utslaget = läker ut)</td>
+        <td class="px-4 py-3 text-text-light">Ingen — utslaget är ett gott tecken</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Vattkoppor</td>
+        <td class="px-4 py-3 text-text-light">Kliade blåsor i alla stadier, sprider sig över kroppen</td>
+        <td class="px-4 py-3 text-text-light">Alla åldrar</td>
+        <td class="px-4 py-3 text-orange-600 font-medium">Allvarligare hos bebisar under 1 mån</td>
+        <td class="px-4 py-3 text-text-light">Smittsamhetsisolering, antihistamin mot klåda, 1177</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Femte sjukan (parvovirus)</td>
+        <td class="px-4 py-3 text-text-light">Rött "slagsmärke" på kinderna, sedan spetsigt utslag på kropp/armar</td>
+        <td class="px-4 py-3 text-text-light">2 år+, ovanligare hos bebisar</td>
+        <td class="px-4 py-3 text-green-700 font-medium">Ofarlig efter utslag</td>
+        <td class="px-4 py-3 text-text-light">Ingen — smittsamheten är borta när utslaget syns</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Petekier / purpura (meningit)</td>
+        <td class="px-4 py-3 text-text-light">Icke-blekbara röda/lila prickar, kan snabbt bli större fläckar</td>
+        <td class="px-4 py-3 text-text-light">Alla åldrar</td>
+        <td class="px-4 py-3 text-red-700 font-bold">AKUT — livshotande</td>
+        <td class="px-4 py-3 text-text-light">Ring 112 omedelbart</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Erythema toxicum — det normala nyföddhetsutslaget</h2>
+<p class="text-text-light mb-4">
+  Erythema toxicum neonatorum drabbar upp till 70 % av alla nyfödda och är ett av de vanligaste utslagen du kommer se under de första dagarna. Utslaget ser skrämmande ut — röda fläckar med en gulvit prick i mitten, som påminner om myggstickor — men är helt ofarligt och kräver ingen behandling.
+</p>
+<p class="text-text-light mb-4">
+  Det uppträder vanligen dag 1–5 efter födseln, kan komma och gå under ett par dagar och försvinner helt av sig självt utan att lämna spår. Orsaken är okänd men troligen kopplad till hudkolonisering av bakterier. Inga åtgärder behövs.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Eksem (atopisk dermatit)</h2>
+<p class="text-text-light mb-4">
+  Atopiskt eksem är den vanligaste kroniska hudsjukdomen hos spädbarn och drabbar ca 15–20 % av alla barn. Det uppträder vanligtvis från 2 månaders ålder med röd, torr och kliande hud, ofta på kinderna och i böjveck (armbågsknän, handledsveck).
+</p>
+<p class="text-text-light mb-4">
+  Behandlingsgrunden är regelbunden återfuktning med tjock fuktkräm (utan parfym) minst 2–3 gånger per dag. Vid skov med kraftig rodnad och klåda kan kortikosteroidsalva (receptbelagt, utskrivet av läkare) behövas kortvarigt. Undvik parfymerade produkter, starka tvålar och om möjligt syntettyger närmast huden. Kontakta BVC för diagnos och behandlingsplan.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Blöjeksem — orsak, behandling och förebyggande</h2>
+<p class="text-text-light mb-4">
+  Blöjeksem uppstår när huden i blöjregionen utsätts för fukt, friktion och kemiska irritanter från urin och avföring. Huden rodnar, kan bli lite svullen och bebisen gråter vid blöjbytet.
+</p>
+<ol class="list-decimal pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Byt blöja ofta</strong> — minst varannan timme, omedelbart vid avföring</li>
+  <li><strong>Luftning</strong> — låt bebisen ligga blöjfri en stund varje dag (lägg ett lakan under)</li>
+  <li><strong>Zinkoxid-kräm</strong> vid varje byte (Sudocrem, Inotyol eller liknande) — skapar ett skyddande lager</li>
+  <li><strong>Torka varsamt</strong> — klappa torrt, aldrig gnida</li>
+  <li><strong>Undvik doftande produkter</strong> — välj operfymerade blöjor och torra tork</li>
+</ol>
+<p class="text-text-light mb-4">
+  Om utslaget har skarpa kanter och små satellitprickar runt om, eller om det finns vita beläggningar, kan det vara en svampinfektion (candidainfektion). Kontakta BVC — behandlas effektivt med antimykotisk kräm.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Roseola — fe­berns hemliga mönster</h2>
+<p class="text-text-light mb-4">
+  Roseola (exanthem subitum eller sjätte sjukan) börjar med 3–5 dagars hög feber utan synlig orsak. Föräldrarna är ofta oroliga. Sedan, precis när febern sjunker, dyker ett rosa, platt utslag upp på bålen. Det är paradoxalt nog ett gott tecken — det innebär att infektionen (HHV-6-virus) är på väg ut ur kroppen. Utslaget bleknar vid glaspress, är inte kliigt och försvinner av sig självt på 1–3 dagar. Ingen behandling behövs.
+</p>
+
+<FAQ items={faqItems} />
+</ArticleLayout>
