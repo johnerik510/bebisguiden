@@ -1,0 +1,208 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const jollyUrl = 'https://addrevenue.io/t?a=987081&c=3467325';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Framåtvänd bilbarnstol' },
+];
+
+const products = [
+  {
+    name: 'Cybex Anoris T i-Size',
+    badge: 'Safest Forward-Facing',
+    price: '7 999 kr',
+    rating: 4.9,
+    ctaHref: jollyUrl,
+    features: {
+      'Grupp': '76–150 cm (ca 1–12 år)',
+      'Anti-submarine': 'Ja — unik kudde',
+      'Montering': 'ISOFIX + top tether',
+      'Vikt': '12,5 kg',
+      'Standard': 'i-Size (R129)',
+    },
+  },
+  {
+    name: 'Britax Römer Kidfix Pro M',
+    badge: 'Bäst för äldre barn',
+    price: '3 999 kr',
+    rating: 4.7,
+    ctaHref: jollyUrl,
+    features: {
+      'Grupp': '100–150 cm (ca 3–12 år)',
+      'Anti-submarine': 'Nej',
+      'Montering': 'Bilbälte + ISOFIX optional',
+      'Vikt': '7,5 kg',
+      'Standard': 'i-Size (R129)',
+    },
+  },
+  {
+    name: 'Joie i-Trillo FX',
+    badge: 'Bäst pris/prestanda',
+    price: '2 499 kr',
+    rating: 4.5,
+    ctaHref: jollyUrl,
+    features: {
+      'Grupp': '100–150 cm (ca 3–12 år)',
+      'Anti-submarine': 'Nej',
+      'Montering': 'ISOFIX + bilbälte',
+      'Vikt': '8,5 kg',
+      'Standard': 'i-Size (R129)',
+    },
+  },
+];
+
+const featureLabels = ['Grupp', 'Anti-submarine', 'Montering', 'Vikt', 'Standard'];
+
+const faqItems = [
+  {
+    question: 'Nar ska man byta till framåtvänd bilbarnstol?',
+    answer: 'Sa sent som möjligt. Transportstyrelsen och säkerhetsexperter rekommenderar bakåtvänt åkande till minst 4 år — gärna längre. Var inte stressad av att "barnet har blivit för stort" — det handlar om barnets längd och vikt, inte ålder. Mer information: Axkid Minikid 3 tillåter bakåtvänt åkande till 36 kg (ca 7 år). Byt bara till framåtvänd när den bakåtvända stolen är för liten.',
+  },
+  {
+    question: 'Vad är anti-submarine i Cybex Anoris T?',
+    answer: 'Cybex Anoris T i-Size är den enda bilbarnstolen med en anti-submarine-kudde — en kudde under barnets säte som förhindrar "submarining" (att barnet glider under bältet vid krock). Submarining är den största säkerhetsrisken med framåtvända stolar och kan orsaka allvarliga bukskador. Kudden är godkänd och testad av tyska ADAC och anses av många som den säkraste framåtvända stolen på marknaden.',
+  },
+  {
+    question: 'Hur väljer man storlek på framåtvänd bilbarnstol?',
+    answer: 'Moderna i-Size-stolar anpassas efter barnets längd, inte vikt. Kontrollera alltid min/max-längd på stolen mot barnets faktiska längd. Typiska spannet: 76–150 cm (för de allra flesta barn), 100–150 cm (för barn som redan är längre än 100 cm). Kontrollera även att barnets huvud inte sticker upp över stolens ryggstöd — det är gränsen för när stolen är för liten.',
+  },
+  {
+    question: 'Är framåtvänd med ISOFIX säkrare än utan?',
+    answer: 'ISOFIX ger ett säkrare fäste än bilbältesmontering och minskar risken för felmontering dramatiskt. För framåtvända stolar med högt ryggstöd är ISOFIX starkt rekommenderat. För bälteskuddar (booster cushions) för äldre barn saknas ofta ISOFIX — då är bilbältet enda fästet. Välj alltid ISOFIX-stol om möjligt.',
+  },
+  {
+    question: 'Vad är skillnaden mellan grupp 1, 2 och 3?',
+    answer: 'Grupp 1: 9–18 kg (ca 9 månader till 4 år), framåtvändt. Grupp 2: 15–25 kg (ca 3–7 år), bältessits. Grupp 3: 22–36 kg (ca 6–12 år), bälteskudde eller sittdyna. Moderna stolar kombinerar ofta grupper: t.ex. grupp 1/2/3 eller 2/3 — de passar barnet längre utan byte. i-Size-standarden har ersatt grupp-systemet med cm-baserat spann, vilket är mer exakt.',
+  },
+  {
+    question: 'Vad kostar en bra framåtvänd bilbarnstol?',
+    answer: 'Bra framåtvända bilbarnstolar kostar 2 000–8 000 kr. Cybex Anoris T i-Size (ca 8 000 kr) är dyrt men har unik anti-submarine-teknik. Britax Kidfix Pro M (ca 4 000 kr) är ett välbeprövat mellanklassval. Joie i-Trillo FX (ca 2 500 kr) ger hög säkerhet till bra pris. Välj aldrig den billigaste stolen utan att kontrollera krocktestresultat.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa Framåtvända Bilbarnstolen April 2026 — Test & Guide"
+  description="Vi jämför de bästa framåtvända bilbarnstolarna 2026. Cybex Anoris T, Britax Kidfix och Joie i-Trillo i test. Se vilken som är säkrast och bäst för ditt barn."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-04"
+>
+  <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+    <p class="text-sm text-amber-900 font-medium">Säkerhetsnotering: Transportstyrelsen och säkerhetsexperter rekommenderar att barn åker bakåtvänt sa länge som möjligt — minst till 4 år. Byt bara till framåtvänd när den bakåtvända stolen är för liten.</p>
+  </div>
+
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    När barnet växt ur sin bakåtvända stol är det dags for framåtvänd bilbarnstol. Vi har jämfört de bästa modellerna för 2026 — från Cybex Anoris T med unik anti-submarine-skydd till prisvärda alternativ som klarar säkerhetskrav på topp.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Cybex Anoris T i-Size"
+      badge="Säkrast framåtvänd"
+      price="7 999 kr"
+      rating={4.9}
+      ageRange="76–150 cm (ca 1–12 år)"
+      pros={[
+        'Unik anti-submarine-kudde — förhindrar farligt submarining vid krock',
+        'Toppbetyg i ADAC-krocktester — säkrast i sin klass',
+        'Bred åldersgrupp 76–150 cm — behöver inte bytas länge',
+        'ISOFIX + top tether — säkraste monteringstypen',
+        'Rymligt och bekvämt sittläge',
+      ]}
+      cons={[
+        'Hög prisklass — ca 7 999 kr',
+        'Stor och tung — passar bäst i medelstora till stora bilar',
+        'Anti-submarine-kudden begränsar lite hur barnet sitter',
+      ]}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={jollyUrl}
+    />
+
+    <ProductCard
+      name="Britax Römer Kidfix Pro M"
+      badge="Bäst för skolbarn"
+      price="3 999 kr"
+      rating={4.7}
+      ageRange="100–150 cm (ca 3,5–12 år)"
+      pros={[
+        'HUGS-sidoskydd — avancerat sidokrockskydd',
+        'Toppbetyg i Folksams krocktester',
+        'Kompakt och lätt — enkel att flytta mellan bilar',
+        'ISOFIX-kompatibel (optional)',
+        'Stort färg- och tygurval',
+      ]}
+      cons={[
+        'Startar vid 100 cm — passar inte de minsta barnen',
+        'Inget anti-submarine-skydd',
+        'Kräver barnets eget bilbälte (ingen fem-punktssele)',
+      ]}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={jollyUrl}
+    />
+
+    <ProductCard
+      name="Joie i-Trillo FX"
+      badge="Bäst pris/prestanda"
+      price="2 499 kr"
+      rating={4.5}
+      ageRange="100–150 cm (ca 3,5–12 år)"
+      pros={[
+        'Bra pris for i-Size-certifierad stol',
+        'ISOFIX med tillägg (köps separat)',
+        'Justerbart ryggstöd i höjd och vinkel',
+        'Godkänd i oberoende säkerhetstester',
+        'Lätt (8,5 kg) — smidig att flytta',
+      ]}
+      cons={[
+        'Enklare material och finish än premium-stolar',
+        'ISOFIX-adapter ingår inte alltid — kolla paket',
+        'Startar vid 100 cm — inte for de minsta',
+      ]}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={jollyUrl}
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Sa väljer du framåtvänd bilbarnstol</h2>
+
+  <div class="space-y-4 text-text-light text-sm leading-relaxed">
+    <div>
+      <h3 class="font-semibold text-text mb-1">Nar är rätt tid?</h3>
+      <p>Nar barnets bakåtvända stol blivit for liten. Inte fore. Transportstyrelsen rekommenderar minst 4 år bakåtvänt, men manga barn kan åka bakåtvänt till 5–6 ar med stolar som Axkid Minikid 3. Mät barnets längd och jamför med stolens max-gräns for bakåtvänt.</p>
+    </div>
+    <div>
+      <h3 class="font-semibold text-text mb-1">Grupp 2/3 vs grupp 1/2/3</h3>
+      <p>Många föräldrar hoppar direkt till grupp 2/3-stolar (från 100 cm) istallet for grupp 1 framåtvänd (från 9 kg). Det kan vara klokt — grupp 2/3-stolen räcker längre och barnet förblir bakåtvänt längre i föregående stol. Om barnet redan är 100 cm+: välj direkt grupp 2/3.</p>
+    </div>
+    <div>
+      <h3 class="font-semibold text-text mb-1">Cybex Anoris T — värt det extra priset?</h3>
+      <p>Anti-submarine-kudden i Anoris T är unik på marknaden och adresserar den största risken vid framåtvänt åkande. Om säkerhet är din högsta prioritet och du har budget for det: ja, det är värt det. For de flesta familjer med normalbudget ger Britax Kidfix Pro M eller Joie i-Trillo FX hög säkerhet till rimligare pris.</p>
+    </div>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen April 2026 — håll barnet bakåtvänt längre</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen 2026 — komplett test alla grupper</a></li>
+      <li><a href="/bilbarnstolar/isofix/" class="text-accent hover:underline">ISOFIX bilbarnstol — allt du behöver veta 2026</a></li>
+      <li><a href="/marken/britax/" class="text-accent hover:underline">Britax Römer — recensioner av alla modeller</a></li>
+      <li><a href="/marken/cybex/" class="text-accent hover:underline">Cybex — recensioner av alla modeller</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA href={jollyUrl} text="Se bästa pris — Cybex Anoris T i-Size" />
+</ArticleLayout>
