@@ -1,0 +1,194 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babykläder', href: '/babyklader/' },
+  { label: 'Body bebis' },
+];
+
+const products = [
+  {
+    name: 'Joha Body Merinomix, Dark Rose',
+    badge: 'Bäst i test',
+    price: '209 kr',
+    rating: 4.8,
+    image: '/images/products/joha-body-merinomix.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/joha-body-merinomix-dark-rose',
+    features: {
+      'Material': 'Merinoull/bomull',
+      'Certifiering': 'OEKO-TEX',
+      'Stängning': 'Tryckknappar',
+      'Ärmtyp': 'Långärmad',
+      'Passar': 'Nyfödd–18 mån',
+    },
+  },
+  {
+    name: 'Hummel Mini Bold Bee Body, Polignac',
+    badge: 'Bäst bomull',
+    price: '249 kr',
+    rating: 4.6,
+    image: '/images/products/hummel-mini-body.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/hummel-mini-bold-bee-body-polignac',
+    features: {
+      'Material': 'Ekologisk bomull',
+      'Certifiering': 'GOTS',
+      'Stängning': 'Tryckknappar',
+      'Ärmtyp': 'Kortärmad',
+      'Passar': 'Nyfödd–24 mån',
+    },
+  },
+  {
+    name: 'Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black',
+    badge: 'Bäst startset',
+    price: '219 kr',
+    rating: 4.5,
+    image: '/images/products/beemoo-care-carry.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black',
+    features: {
+      'Material': 'Bomull',
+      'Certifiering': 'OEKO-TEX',
+      'Stängning': 'Tryckknappar',
+      'Ärmtyp': 'Kortärmad',
+      'Passar': 'Nyfödd–12 mån',
+    },
+  },
+];
+
+const featureLabels = ['Material', 'Certifiering', 'Stängning', 'Ärmtyp', 'Passar'];
+
+const faqItems = [
+  {
+    question: 'Hur många bodys behöver en nyfödd?',
+    answer: 'En praktisk grundstomme är 5–7 bodys i storlek 56–68. Med tätare tvätt (3–4 gånger per vecka) räcker 4–5. Nyfödda kräver ofta byt 3–4 gånger per dag pga kräkningar och blöjbyte. Köp inte för många i storlek 50 — bebisen växer ur dem på 2–4 veckor. Prioritera storlek 56–68 som håller längre.',
+  },
+  {
+    question: 'Är merinoull bra för nyfödda?',
+    answer: 'Ja — merinoull är utmärkt för nyfödda. Den är naturligt temperaturreglerande (värmer vid kyla, kyler vid värme), fukttransporterande och antimikrobiell. Merinoull av god kvalitet (som Joha Merinomix) är mjuk och sticks inte. Den tvättas enkelt i maskin på ullprogram. Merinoull-bodys är dock dyrare — de betalar sig i längre livslängd och mer sällan behov av tvätt.',
+  },
+  {
+    question: 'Vad är skillnaden på kortärmad och långärmad body?',
+    answer: 'Kortärmad body är basen — används som ett lager under sparkdräkt eller byxa. Använd kortärmad body inomhus sommartid och som basplagg under kaldare månader. Långärmad body ersätter kortärmad + tröja — ett lager färre. Välj merinoull-body med lång ärm för kyla: den reglerar temperaturen och är tunn nog att bära under sparkdräkt.',
+  },
+  {
+    question: 'Vad är GOTS och OEKO-TEX — vad ska man välja?',
+    answer: 'OEKO-TEX Standard 100 kontrollerar att textilen inte innehåller skadliga ämnen — bra miniminivå. GOTS (Global Organic Textile Standard) är mer heltäckande: certifierar ekologisk odling, kemikaliefrihet och socialt ansvarstagande i hela produktionskedjan. GOTS är en starkare garanti för babykläder. Välj GOTS när möjligt — framför allt för plagg mot huden.',
+  },
+  {
+    question: 'Vilken storlek ska man köpa till nyfödda?',
+    answer: 'Storlek 50 passar de allra minsta (under 3,5 kg) men de flesta nyfödda startar i storlek 56 (ca 3,5–5 kg). Storlek 62 håller ca 3–6 månader och 68 ca 6–9 månader. Köp inte för mycket i 50/56 — babyn växer ur dem snabbt. En blandning av 56 och 62 täcker de första 4–5 månaderna. Kolla alltid tillverkarens vikttabell.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa body bebis 2026 — mjukaste bodys för nyfödd och spädbarn"
+  description="Bästa babybody 2026: merinoull, ekologisk bomull och GOTS-certifierat. Vi testar mjukaste bodys för nyfödda och spädbarn."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyklader/body/"
+  updatedDate="2026-04-05"
+  relatedArticles={[
+    { title: 'Bästa babykläder 2026', href: '/babyklader/' },
+    { title: 'Bästa sovsäckar baby 2026', href: '/sovsackar/' },
+    { title: 'Säker sovmiljö', href: '/guider/saker-sovmiljo/' },
+    { title: 'Bebis-checklista', href: '/guider/bebis-checklista/' },
+  ]}
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Bodyn är det viktigaste basplagg för nyfödda — den bärs närmast huden alla timmar om dygnet. Vi testar de mjukaste och bäst certifierade bodys på svenska marknaden 2026.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — babybody 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Joha Merinomix</strong> är bäst för temperaturreglering och komfort. <strong>Hummel Mini Bold Bee</strong> är bäst i GOTS-certifierad ekologisk bomull. <strong>Beemoo</strong> är bäst budget.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Joha Body Merinomix, Dark Rose"
+      badge="Bäst i test"
+      price="209 kr"
+      rating={4.8}
+      image="/images/products/joha-body-merinomix.jpg"
+      ageRange="Nyfödd–18 månader"
+      pros={['Merinoull naturligt temperaturreglerande', 'Mjuk och sticker inte', 'OEKO-TEX-certifierad', 'Tvättbar i maskin', 'Lång livslängd']}
+      cons={['Dyrare per plagg', 'Kräver ullprogram i maskin', 'Ullalergi ovanlig men förekommer']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/joha-body-merinomix-dark-rose"
+    />
+
+    <ProductCard
+      name="Hummel Mini Bold Bee Body, Polignac"
+      badge="Bäst ekologisk bomull"
+      price="249 kr"
+      rating={4.6}
+      image="/images/products/hummel-mini-body.jpg"
+      ageRange="Nyfödd–24 månader"
+      pros={['GOTS-certifierad ekologisk bomull', 'Mjuk mot huden', 'Enkel tryckknappar', 'Snygg design', 'Hög kvalitet']}
+      cons={['Kortärmad — behöver kombineras med tröja', 'Lite dyrare']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/hummel-mini-bold-bee-body-polignac"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Guide: Babybody för nyfödda</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Merinoull eller bomull?</h3>
+    <p>Merinoull är naturligt temperaturreglerande — perfekt för nyfödda som inte kan reglera sin temperatur själva. Den värmer vid kyla och kyler vid värme. Ekologisk bomull är mjuk, andningsbar och ett utmärkt val för alla årstider. Många familjer kombinerar: merinoull-body natt och ekologisk bomull dag.</p>
+
+    <h3>Så väljer du rätt storlek</h3>
+    <p>Babykläder storleksätts efter längd i Sverige. Storlek 56 = ca 50–56 cm, passar nyfödda upp till ca 4,5 kg. Storlek 62 = ca 56–62 cm, passar 3–6 månader. Storlek 68 = ca 62–68 cm, passar 6–9 månader. Bebisen växer snabbt — köp hellre lite för stor än för liten.</p>
+
+    <h3>Tryckknappar — vad ska man tänka på?</h3>
+    <p>Tryckknappar längs skrevet gör blöjbytet enklare utan att ta av hela bodyn. Se till att knapparna sitter på insidan (inga hårda knappar mot huden). Undvik knappar som kräver stor kraft att stänga — nyfödda tolererar inte lång tid i utsatt position.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler klädguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/babyklader/" class="text-accent hover:underline">Bästa babykläder 2026 — komplett guide</a></li>
+      <li><a href="/sovsackar/" class="text-accent hover:underline">Bästa sovsäckar baby 2026</a></li>
+      <li><a href="/guider/bebis-checklista/" class="text-accent hover:underline">Bebis-checklista — klädlista för nyfödda</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Joha Body Merinomix, Dark Rose',
+      description: 'Babybody i merinoull/bomullsmix. Temperaturreglerande, OEKO-TEX-certifierad, tvättbar i maskin. Passar nyfödd till 18 månader.',
+      image: 'https://bebisguiden.se/images/products/joha-body-merinomix.jpg',
+      brand: 'Joha',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 209, url: 'https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/joha-body-merinomix-dark-rose', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Hummel Mini Bold Bee Body, Polignac',
+      description: 'Kortärmad babybody i GOTS-certifierad ekologisk bomull. Tryckknappar vid skrevet. Passar nyfödd till 24 månader.',
+      image: 'https://bebisguiden.se/images/products/hummel-mini-body.jpg',
+      brand: 'Hummel',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 249, url: 'https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/hummel-mini-bold-bee-body-polignac', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/joha-body-merinomix-dark-rose"
+  text="Se bästa pris — Joha Body Merinomix"
+  productName="Bäst i test 2026"
+/>

@@ -1,0 +1,236 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bärselar', href: '/barselen/' },
+  { label: 'Ringslinga' },
+];
+
+const products = [
+  {
+    name: 'Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black',
+    badge: 'Bäst för nyfödd',
+    price: '219 kr',
+    rating: 4.4,
+    image: '/images/products/beemoo-care-carry.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black',
+    features: {
+      'Typ': 'Sjal/bärsele',
+      'Bärlägen': '4 lägen',
+      'Vikt barn': '3,5–15 kg',
+      'Material': 'Bomull',
+      'Passar': 'Nyfödd–toddler',
+    },
+  },
+  {
+    name: 'Love Radius HoodieCarrier 2 Bärsele, Black Forest',
+    badge: 'Populär sjalbärsele',
+    price: '1 349 kr',
+    rating: 4.6,
+    image: '/images/products/love-radius-hoodiecarrier.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/love-radius-hoodiecarrier-2-barsele-black-forest',
+    features: {
+      'Typ': 'Hoodie sjalbärsele',
+      'Bärlägen': '2 lägen',
+      'Vikt barn': '3–15 kg',
+      'Material': 'Bomull/elastan',
+      'Passar': 'Nyfödd–toddler',
+    },
+  },
+  {
+    name: 'Manduca First PureCotton Bärsele, Night Black',
+    badge: 'Ergonomisk',
+    price: '1 349 kr',
+    rating: 4.7,
+    image: '/images/products/manduca-first-barsele.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/manduca-first-purecotton-barsele-night-black',
+    features: {
+      'Typ': 'Strukturerad bärsele',
+      'Bärlägen': '3 lägen',
+      'Vikt barn': '3,5–20 kg',
+      'Material': 'Ekologisk bomull',
+      'Passar': 'Nyfödd–toddler',
+    },
+  },
+  {
+    name: 'Wildride Bärsele, Basic Black',
+    badge: 'Budget',
+    price: '199 kr',
+    rating: 4.2,
+    image: '/images/products/wildride-barsele.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/wildride-barsele-basic-black',
+    features: {
+      'Typ': 'Mjuk sjalbärsele',
+      'Bärlägen': '2 lägen',
+      'Vikt barn': '3–12 kg',
+      'Material': 'Bomull/elastan',
+      'Passar': 'Nyfödd–6 mån',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Bärlägen', 'Vikt barn', 'Material', 'Passar'];
+
+const faqItems = [
+  {
+    question: 'Vad är en ringslinga och hur fungerar den?',
+    answer: 'En ringslinga är ett tygstycke med två ringar i ena änden. Du trär tyget genom ringarna och justerar passformen genom att dra i den lösa änden. Ringslingan bärs diagonalt över ena axeln med bebisen vid bröstet eller höften. Den är snabb att ta på och av — idealisk för korta bärpass och amning. Mjuka sjalbärselar utan ringar fungerar på liknande sätt och är ett populärt alternativ.',
+  },
+  {
+    question: 'Är ringslinga säker för nyfödda?',
+    answer: 'En korrekt använd ringslinga eller sjalbärsele är säker för nyfödda. Nyckeln är att bebisens luftvägar alltid är fria: hakan ska inte vila mot bröstet, ansiktet ska vara synligt och vänt mot bäraren. Ryggen ska vara i C-form. Lär dig binda rätt — gärna med hjälp av en babywearing-konsult eller instruktionsvideo från tillverkaren. Kontrollera att ringarna sitter fast ordentligt.',
+  },
+  {
+    question: 'Vad är skillnaden mellan ringslinga och mjuksjal?',
+    answer: 'Ringslinga: justeras med ringar, bärs på en axel, snabb att ta på och ta av, passar korta stunder. Mjuksjal (stretch wrap): ett längre tygstycke som lindas runt kroppen, bärs på båda axlarna, ger jämnare viktfördelning och är bättre för längre bärpass. Mjuksjal kräver mer övning att binda korrekt men ger mer stöd. Ringslingan är lättare att lära sig.',
+  },
+  {
+    question: 'Hur länge kan man använda ringslinga och sjalbärsele?',
+    answer: 'Ringslinga och enkla sjalbärselar passar bäst för nyfödda och spädbarn upp till ca 6–8 månaders ålder eller 8–10 kg. För längre bärpass och tyngre barn är en strukturerad ergonomisk bärsele med axel- och midjerem mer bekväm. Ringslingan är utmärkt för ammningsstöd och korta stunder i alla åldrar fram till ca 12 månader.',
+  },
+  {
+    question: 'Kan man amma i ringslinga eller sjalbärsele?',
+    answer: 'Ja — ringslingan är extra populär för amning tack vare den enkla justeringen. Du kan sänka bebisens position i slingan för att amma diskret. Mjuksjal fungerar också men kräver mer övning. Tänk alltid på att bebisens luftvägar är fria och att du kan se ansiktet under hela amningspasset. Lär dig rätt teknik — det finns bra instruktionsfilmer från tillverkarna.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Ringslinga bärsele 2026 — bäst för nyfödd och amning"
+  description="Ringslinga är lätthanterad och perfekt för korta stunder och nyfödda. Vi testar de bästa modellerna."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barselen/ringslinga/"
+  updatedDate="2026-04-05"
+  relatedArticles={[
+    { title: 'Bästa bärselen 2026', href: '/barselen/' },
+    { title: 'Bärsele för nyfödd', href: '/barselen/nyfodd/' },
+    { title: 'Bärsele för pappor', href: '/barselen/pappa/' },
+    { title: 'Ergonomisk bärsele', href: '/barselen/ergonomisk/' },
+  ]}
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Ringslingor och mjuka sjalbärselar är de enklaste bärhjälpmedlen för nyfödda. De är snabba att ta på, justerbara och perfekta för amning. Vi testar de bästa alternativen på svenska marknaden 2026.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — sjalbärselar och ringslingor 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst för nyfödd 2026</p>
+    <p class="text-sm text-text-light"><strong>Beemoo CARE Carry</strong> är bäst budget. <strong>Love Radius HoodieCarrier 2</strong> är populärast för amning och nyfödda. <strong>Manduca First</strong> är bäst ergonomi för lång användning.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black"
+      badge="Bäst för nyfödd"
+      price="219 kr"
+      rating={4.4}
+      image="/images/products/beemoo-care-carry.jpg"
+      ageRange="3,5–15 kg"
+      pros={['Mycket prisvärd', '4 bärpositioner', 'Fungerar från nyfödda', 'Enkel att lära sig', 'Höftbärare ingår']}
+      cons={['Enklare material', 'Andas sämre vid värme', 'Kräver korrekt bindningsteknik']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black"
+    />
+
+    <ProductCard
+      name="Love Radius HoodieCarrier 2 Bärsele, Black Forest"
+      badge="Populär sjalbärsele"
+      price="1 349 kr"
+      rating={4.6}
+      image="/images/products/love-radius-hoodiecarrier.jpg"
+      ageRange="3–15 kg"
+      pros={['Mjuk bomull/elastan', 'Perfekt för nyfödda och amning', 'Inbyggd huva för regn och sol', 'Enkel att ta på', 'Går att bära ensam utan hjälp']}
+      cons={['Lär sig ta tid för perfekt passform', 'Varmare vid hetta']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/love-radius-hoodiecarrier-2-barsele-black-forest"
+    />
+
+    <ProductCard
+      name="Manduca First PureCotton Bärsele, Night Black"
+      badge="Ergonomisk"
+      price="1 349 kr"
+      rating={4.7}
+      image="/images/products/manduca-first-barsele.jpg"
+      ageRange="3,5–20 kg"
+      pros={['Ekologisk bomull', 'Passar nyfödd utan insats', 'Ergonomisk M-position', 'Bär upp till 20 kg', '3 bärpositioner']}
+      cons={['Kräver mer justering', 'Dyrare än enklare sjalar']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/manduca-first-purecotton-barsele-night-black"
+    />
+
+    <ProductCard
+      name="Wildride Bärsele, Basic Black"
+      badge="Budget"
+      price="199 kr"
+      rating={4.2}
+      image="/images/products/wildride-barsele.jpg"
+      ageRange="3–12 kg"
+      pros={['Lägst pris', 'Enkel att använda', 'Mjuk bomull/elastan', 'Passar nyfödda']}
+      cons={['Kortare användningstid (max ca 6 mån)', 'Enklare kvalitet', 'Färre bärpositioner']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/wildride-barsele-basic-black"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Guide: Ringslingor och sjalbärselar för nyfödda</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Fördelar med ringslinga och sjalbärsele</h3>
+    <p>Mjuka sjalbärselar och ringslingor har en rad fördelar jämfört med strukturerade bärselar: de är lättare att packa ner, väger nästan ingenting och är ofta billigare. De håller bebisen nära kroppen med mjukt, andningsbart tyg — perfekt för nyfödda som söker den kroppsliga närheten de hade i magen.</p>
+
+    <h3>Säkerhet — TICKS-regeln</h3>
+    <p>Tight (tät mot kroppen), In view at all times (ansiktet alltid synligt), Close enough to kiss (du når huvudet med en kyss), Keep chin off chest (hakan fri — luftvägar öppna), Supported back (ryggen i naturlig C-form). Kontrollera alltid dessa punkter varje gång du bär.</p>
+
+    <h3>Korrekt position för nyfödda</h3>
+    <p>Nyfödda ska alltid bäras i M-position (frosk-position): höfterna böjda och knäna högre än rumpan, som en groda. Ryggen ska vara stöttad i sin naturliga runda form. Benen ska hänga fritt utanför tyget — aldrig hängande rakt ned. Felaktig position kan påverka höftutvecklingen negativt.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler bärseleguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen 2026 — alla typer jämförda</a></li>
+      <li><a href="/barselen/nyfodd/" class="text-accent hover:underline">Bärsele för nyfödd 2026</a></li>
+      <li><a href="/barselen/pappa/" class="text-accent hover:underline">Bärsele för pappor 2026</a></li>
+      <li><a href="/barselen/ergonomisk/" class="text-accent hover:underline">Ergonomisk bärsele 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Love Radius HoodieCarrier 2 Bärsele, Black Forest',
+      description: 'Sjalbärsele med inbyggd huva i mjuk bomull/elastan. Passar nyfödda från 3 kg. Utmärkt för amning.',
+      image: 'https://bebisguiden.se/images/products/love-radius-hoodiecarrier.jpg',
+      brand: 'Love Radius',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 1349, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/love-radius-hoodiecarrier-2-barsele-black-forest', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Manduca First PureCotton Bärsele, Night Black',
+      description: 'Ergonomisk bärsele i ekologisk bomull. Passar nyfödda utan extra insats, bär upp till 20 kg.',
+      image: 'https://bebisguiden.se/images/products/manduca-first-barsele.jpg',
+      brand: 'Manduca',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 1349, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/manduca-first-purecotton-barsele-night-black', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/love-radius-hoodiecarrier-2-barsele-black-forest"
+  text="Se bästa pris — Love Radius HoodieCarrier 2"
+  productName="Bäst för nyfödda 2026"
+/>

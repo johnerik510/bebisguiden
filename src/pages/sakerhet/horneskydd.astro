@@ -1,0 +1,217 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Säkerhet', href: '/sakerhet/' },
+  { label: 'Hörnskydd' },
+];
+
+const products = [
+  {
+    name: 'Nordbaby Hörnskydd, Vit',
+    badge: 'Bäst i test',
+    price: '699 kr',
+    rating: 4.7,
+    image: '/images/products/nordbaby-hornskydd.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/nordbaby-hornskydd-vit',
+    features: {
+      'Antal': 'Komplett set',
+      'Material': 'EVA-skum',
+      'Fäste': 'Självhäftande',
+      'Form': 'Rund',
+      'Färg': 'Vit',
+    },
+  },
+  {
+    name: 'Reer Hörnskydd i Skum, Grå',
+    badge: 'Bäst design',
+    price: '279 kr',
+    rating: 4.5,
+    image: '/images/products/reer-hornskydd.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/reer-hornskydd-i-skum-gra',
+    features: {
+      'Antal': 'Flerpak',
+      'Material': 'Skum',
+      'Fäste': 'Självhäftande',
+      'Form': 'Rund',
+      'Färg': 'Grå',
+    },
+  },
+  {
+    name: 'Safety 1st Hörnskydd Gel 4-Pack',
+    badge: 'Bäst budget',
+    price: '149 kr',
+    rating: 4.3,
+    image: '/images/products/safety1st-hornskydd.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack',
+    features: {
+      'Antal': '4-pack',
+      'Material': 'Gel',
+      'Fäste': 'Självhäftande',
+      'Form': 'Rund',
+      'Färg': 'Transparent',
+    },
+  },
+];
+
+const featureLabels = ['Antal', 'Material', 'Fäste', 'Form', 'Färg'];
+
+const faqItems = [
+  {
+    question: 'Varför behövs hörnskydd och kantskydd?',
+    answer: 'När bebis börjar krypa, resa sig och ta sina första steg — vanligen mellan 6 och 14 månaders ålder — ökar risken för fall mot skarpa möbelkanter drastiskt. Soffbord, tv-bänkar och barnmöbler har ofta vassa hörn i huvudhöjd för ett krypande barn. Hörnskydd är ett enkelt och billigt sätt att eliminera risken för allvarliga skär- och krossår.',
+  },
+  {
+    question: 'Vilka möbler behöver hörnskydd?',
+    answer: 'Prioritera möbler med skarpa hörn i babyhöjd: soffbord, tv-bänkar, sängkanter, bokhyllor, skrivbord och matsalsbord. Tänk i barnets ögonhöjd — kryp gärna runt på golvet och identifiera alla vassa ytor som är på nivå med ett krypande eller nybörjargående barns huvud och ansikte. Glöm inte dörrkarmar och fönsterbänkar.',
+  },
+  {
+    question: 'Vad är skillnaden på gel- och skumhörnskydd?',
+    answer: 'Gelskydd (som Safety 1st Gel) är transparenta och syns knappt — estetiskt snyggare. Skumskydd (som Reer och Nordbaby) är mjukare och ger i regel bättre stötdämpning men syns mer. Gelskydd håller bättre på blanka ytor. Skumskydd sitter ofta bättre på träytor. Båda typerna är effektiva — välj efter hur viktig estetiken är för dig.',
+  },
+  {
+    question: 'Hur länge sitter hörnskydden fast?',
+    answer: 'Självhäftande hörnskydd håller vanligtvis 6–18 månader beroende på yta och rengöring. Blanka lackytor och glas håller bättre än porösa trä- eller textilyta. Kontrollera fästet regelbundet — ett löst hörnskydd kan ge falskt intryck av säkerhet. Byt ut hörnskyddet om det börjar lossna. Undvik att sätta skydden på ytor som tvättas ofta.',
+  },
+  {
+    question: 'Räcker hörnskydd ensamt som barnsäkring?',
+    answer: 'Hörnskydd är ett bra komplement men inte tillräckligt ensamt. En komplett barnsäkring inkluderar: trappgrindar, lås på lådor och skåp, uttags skydd för eluttag, säkring av tunga möbler (bokhyllor, byrår) mot väggen och borttagning av kvävningsrisker. Se vår fullständiga guide till barnsäkring hemma för en komplett checklista.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Hörnskydd och kantskydd 2026 — skydda barnet mot skarpa kanter"
+  description="Hörnskydd och kantskydd förhindrar allvarliga skador när bebis börjar krypa. Test av bästa alternativen 2026."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sakerhet/horneskydd/"
+  updatedDate="2026-04-05"
+  relatedArticles={[
+    { title: 'Barnsäkring hemma — komplett guide', href: '/sakerhet/barnsakring/' },
+    { title: 'Säkerhet för bebis', href: '/sakerhet/' },
+    { title: 'Bästa trappgrinden 2026', href: '/sakerhet/trappgrind/' },
+    { title: 'Babyvakt 2026', href: '/babyvakter/' },
+  ]}
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Hörnskydd och kantskydd är en av de enklaste och billigaste åtgärderna för barnsäkring hemma. När bebis börjar krypa och resa sig är vassa möbelkanter en av de vanligaste skadeorsakerna. Sätt upp skydden i god tid — innan bebisen börjar röra sig.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — hörnskydd 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Nordbaby</strong> är bäst totalt — komplett set, hög kvalitet, bra passform. <strong>Reer</strong> är bäst för design och diskret utseende. <strong>Safety 1st Gel</strong> är bäst budget och nästan osynliga på blanka ytor.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Nordbaby Hörnskydd, Vit"
+      badge="Bäst i test"
+      price="699 kr"
+      rating={4.7}
+      image="/images/products/nordbaby-hornskydd.jpg"
+      pros={['Komplett set för hela hemmet', 'Mjukt EVA-skum', 'Bra självhäftande fäste', 'Hög stötdämpning']}
+      cons={['Syns tydligt på mörka möbler', 'Högre pris']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/nordbaby-hornskydd-vit"
+    />
+
+    <ProductCard
+      name="Reer Hörnskydd i Skum, Grå"
+      badge="Bäst design"
+      price="279 kr"
+      rating={4.5}
+      image="/images/products/reer-hornskydd.jpg"
+      pros={['Diskret grå färg', 'Mjukt skum med bra dämpning', 'Bra pris-kvalitet', 'Passar de flesta möbelytor']}
+      cons={['Flerpak kan behövas för hela hemmet', 'Syns mer än gelskydd']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/reer-hornskydd-i-skum-gra"
+    />
+
+    <ProductCard
+      name="Safety 1st Hörnskydd Gel 4-Pack"
+      badge="Bäst budget"
+      price="149 kr"
+      rating={4.3}
+      image="/images/products/safety1st-hornskydd.jpg"
+      pros={['Lägst pris', 'Transparenta — syns knappt', 'Gelkudde ger god dämpning', 'Enkel montering']}
+      cons={['Endast 4-pack — kan behöva komplettera', 'Sitter sämre på porösa ytor', 'Något kortare livslängd']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hörnskydd och kantskydd</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>När ska man sätta upp hörnskydd?</h3>
+    <p>Sätt upp hörnskydden redan vid 4–5 månaders ålder — innan bebisen börjar krypa. Det är lättare att göra det i lugn och ro än i panik när bebisen plötsligt börjar röra sig. Rör dig runt på golvet och identifiera alla skarpa kanter i barnhöjd (upp till ca 80 cm från golvet).</p>
+
+    <h3>Vilka ytor fungerar bäst?</h3>
+    <p>Självhäftande hörnskydd sitter bäst på: lackad träyta, plastlaminat, glas och metall. Sitter sämre på: obehandlat trä, textil, kork och porösa ytor. Rengör ytan noga med alkohol innan montering — fett och damm minskar häftförmågan dramatiskt.</p>
+
+    <h3>Kantskydd vs hörnskydd</h3>
+    <p>Hörnskydd skyddar specifikt möbelns hörn. Kantskydd (längre remsor) skyddar hela kanten — exempelvis en lång soffbordskant. Kombinera båda för fullständigt skydd. Kantskydd i skumgummi fästs med dubbelsidig tejp längs hela möbelkanten.</p>
+
+    <h3>Hörnskydd räcker inte ensamt</h3>
+    <p>Hörnskydd är en av flera delar i en komplett barnsäkring. Komplettera alltid med trappgrind, lås på skåp och lådor, eluttags skydd och säkrade tunga möbler. Se vår fullständiga guide till barnsäkring.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler säkerhetsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/sakerhet/barnsakring/" class="text-accent hover:underline">Barnsäkring hemma — komplett guide 2026</a></li>
+      <li><a href="/sakerhet/" class="text-accent hover:underline">Säkerhet för bebis — alla guider</a></li>
+      <li><a href="/sakerhet/trappgrind/" class="text-accent hover:underline">Bästa trappgrinden 2026</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Nordbaby Hörnskydd, Vit',
+      description: 'Hörnskydd i mjukt EVA-skum med självhäftande fäste. Komplett set för att skydda bebis mot skarpa möbelkanter.',
+      image: 'https://bebisguiden.se/images/products/nordbaby-hornskydd.jpg',
+      brand: 'Nordbaby',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 699, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/nordbaby-hornskydd-vit', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Reer Hörnskydd i Skum, Grå',
+      description: 'Hörnskydd i mjukt skum med diskret grå design. Självhäftande fäste passar de flesta möbelytor.',
+      image: 'https://bebisguiden.se/images/products/reer-hornskydd.jpg',
+      brand: 'Reer',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 279, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/reer-hornskydd-i-skum-gra', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Safety 1st Hörnskydd Gel 4-Pack',
+      description: 'Transparenta gelskydd som knappt syns. Självhäftande, 4-pack. Bäst budget för hörnskydd.',
+      image: 'https://bebisguiden.se/images/products/safety1st-hornskydd.jpg',
+      brand: 'Safety 1st',
+      ratingValue: 4.3,
+      reviewCount: 1,
+      offers: [{ price: 149, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/nordbaby-hornskydd-vit"
+  text="Se bästa pris — Nordbaby Hörnskydd"
+  productName="Bäst i test 2026"
+/>
