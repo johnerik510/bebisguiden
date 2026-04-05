@@ -1,0 +1,57 @@
+---
+interface Props {
+  author?: string;
+  authorTitle?: string;
+  authorImage?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const {
+  author = 'John Erik Johansson',
+  authorTitle = 'Grundare & barnproduktexpert',
+  authorImage = '/images/john-erik-johansson.webp',
+  datePublished,
+  dateModified,
+} = Astro.props;
+
+const formatDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
+};
+---
+
+<div class="flex items-center gap-4 py-4 mb-6 border-b border-gray-200">
+  <img src={authorImage} alt={author} class="w-12 h-12 rounded-full object-cover" width="48" height="48" loading="lazy" />
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center gap-2 flex-wrap">
+      <a href="/om-redaktionen/" class="font-semibold text-gray-900 hover:text-sky-700 transition-colors">{author}</a>
+      <span class="text-gray-400">·</span>
+      <span class="text-sm text-gray-500">{authorTitle}</span>
+    </div>
+    <div class="flex items-center gap-3 text-sm text-gray-500 mt-0.5">
+      {datePublished && (
+        <span>Publicerad: <time datetime={datePublished}>{formatDate(datePublished)}</time></span>
+      )}
+      {dateModified && (
+        <span>Uppdaterad: <time datetime={dateModified}>{formatDate(dateModified)}</time></span>
+      )}
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: author,
+  url: 'https://bebisguiden.se/om-redaktionen/',
+  image: `https://bebisguiden.se${authorImage}`,
+  jobTitle: authorTitle,
+  description: 'Foraldrer och barnproduktexpert. Testat 100+ produkter med fokus pa sakerhet, kvalitet och anvandarvanlighet.',
+  knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsakerhet', 'i-Size', 'ISOFIX'],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Bebisguiden.se',
+    url: 'https://bebisguiden.se'
+  }
+})} />

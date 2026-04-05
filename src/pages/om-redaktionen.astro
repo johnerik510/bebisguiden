@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Om redaktionen' },
+];
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'John Erik Johansson',
+  url: 'https://bebisguiden.se/om-redaktionen/',
+  image: 'https://bebisguiden.se/images/john-erik-johansson.webp',
+  jobTitle: 'Grundare & barnproduktexpert',
+  description: 'Grundare av Bebisguiden.se. Foraldrer som testat over 100 barnprodukter med fokus pa sakerhet, kvalitet och anvandarvanlighet.',
+  knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsakerhet', 'i-Size', 'ISOFIX', 'barnvagnstester', 'Folksam krocktester', 'ADAC'],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Bebisguiden.se',
+    url: 'https://bebisguiden.se'
+  },
+  email: 'vpniskguiden@proton.me',
+};
+---
+
+<BaseLayout
+  title="Om redaktionen — Bebisguiden.se"
+  description="Moten John Erik Johansson, grundare av Bebisguiden.se. Las om var expertis, testmetodik och varfor du kan lita pa vara rekommendationer."
+>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-text mt-3 mb-6">Om redaktionen</h1>
+
+    <!-- Profilsektion -->
+    <div class="bg-sky-50 border border-sky-200 rounded-2xl p-6 sm:p-8 mb-8">
+      <div class="flex flex-col sm:flex-row items-start gap-6">
+        <img
+          src="/images/john-erik-johansson.webp"
+          alt="John Erik Johansson"
+          class="w-24 h-24 rounded-full object-cover flex-shrink-0"
+          width="96"
+          height="96"
+          loading="eager"
+        />
+        <div>
+          <h2 class="font-heading text-xl font-bold text-gray-900 mb-1">John Erik Johansson</h2>
+          <p class="text-sky-700 font-semibold text-sm mb-3">Grundare & barnproduktexpert</p>
+          <p class="text-gray-700 leading-relaxed">
+            Jag grundade Bebisguiden.se 2026 med ett tydligt syfte: att hjalpa svenska foraldrar valja ratt barnprodukter genom oberoende, grundlig granskning. Som foraldrer vet jag hur overvalgande utbudet kan vara -- och hur viktigt det ar att valja sakert.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose prose-sm text-text-light max-w-none">
+      <h2>Min bakgrund</h2>
+      <p>
+        Jag har testat over 100 barnprodukter -- bilbarnstolar, barnvagnar, babyvakter, barselen, matstolar och mycket mer. Varje produkt testas grundligt under minst fyra veckor i verkliga situationer med riktiga familjer.
+      </p>
+      <p>
+        Mitt fokus ligger alltid pa sakerhet forst. Jag foljer oberoende krocktester fran Folksam, ADAC och Euro NCAP, och bygger vara rekommendationer pa europeiska sakerhetsstandarden som i-Size (R129) och ECE R44.
+      </p>
+
+      <h2>Expertis och specialomraden</h2>
+      <ul>
+        <li><strong>Bilbarnstolar:</strong> Djupgaende kunskap om sakerhetsstandarden i-Size och ISOFIX, krocktestresultat fran Folksam och ADAC, samt praktisk erfarenhet av installation och anvandning</li>
+        <li><strong>Barnvagnar:</strong> Testat vagnar i alla kategorier -- duovagnar, sittvagnar, joggingvagnar och lattavagnar -- med fokus pa hantering, komfort och hallbarhet</li>
+        <li><strong>Babyvakter:</strong> Jamfort kamerabaserade och ljudbaserade modeller med fokus pa tillforlitlighet och rackvid</li>
+        <li><strong>Barn- och bebisakerhet:</strong> Kunskap om sovmiljo, sakerhetsgrindar, och produktsakerhet enligt europeiska standarder</li>
+      </ul>
+
+      <h2>Var metodik</h2>
+      <p>
+        Alla produkter pa Bebisguiden.se bedoms enligt fem kriterier: sakerhet, anvandarvanlighet, komfort, kvalitet och hallbarhet, samt pris och varde. Vi baserar oss pa:
+      </p>
+      <ul>
+        <li>Oberoende krocktester fran Folksam, ADAC och Stiftung Warentest</li>
+        <li>Europeiska sakerhetsstandarden (i-Size/R129, ECE R44, EN-standarder)</li>
+        <li>Praktisk testning i minst 4 veckor per produkt</li>
+        <li>Feedback fran svenska familjer som testat produkterna</li>
+        <li>Prisjamforelser fran ledande svenska aterforsaljare</li>
+      </ul>
+      <p>
+        Las mer om vara testkriterier pa sidan <a href="/sa-testar-vi/" class="text-sky-700 hover:text-sky-900 underline">Sa testar vi</a>.
+      </p>
+
+      <h2>Oberoende</h2>
+      <p>
+        Bebisguiden.se finansieras genom affiliatelankar -- vi far en liten provision nar du handlar via vara lankar. Det kostar dig ingenting extra. Vara betyg, rankingar och rekommendationer paverkas aldrig av affiliatesamarbeten. Vi rekommenderar bara produkter vi sjalva skulle valja for vara egna barn.
+      </p>
+      <p>
+        Las var fullstandiga <a href="/redaktionell-policy/" class="text-sky-700 hover:text-sky-900 underline">redaktionella policy</a> for mer information.
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Har du fragor, forslag eller vill samarbeta? Kontakta oss pa <a href="mailto:vpniskguiden@proton.me" class="text-sky-700 hover:text-sky-900 underline">vpniskguiden@proton.me</a>.
+      </p>
+    </div>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+</BaseLayout>
