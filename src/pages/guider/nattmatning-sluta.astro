@@ -1,0 +1,153 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Sluta med nattmatning' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur vet jag att bebisen är redo att sluta med nattmatning?',
+    answer: 'Tecken på att bebisen klarar sig utan nattmat: väger minst 6–7 kg, är minst 4–6 månader gammal (korrigerad ålder för prematura), äter bra under dagen, är frisk och växer som förväntat, och nattuppvaknandena är korta och inte kopplat till stark hunger. Om bebisen suger häftigt och är otröstlig länge vid uppvaknandet är hen fortfarande hungrig. Rådgör alltid med BVC innan du börjar trappa ned nattmatningarna.',
+  },
+  {
+    question: 'Vad är Ferber-metoden för nattmatning?',
+    answer: 'Ferber-metoden tillämpas på nattmatning så här: Ersätt nattmat med ökade intervaller. Lägg bebisen vaken i sängen, vänta 3 minuter, gå in och luta dig utan att ta upp bebisen (1–2 minuter), lämna. Upprepa med ökande väntetid (5, 10, 15 minuter). Minska gradvis mängden mat vid nattmål under 5–7 dagar parallellt med det. Fungerar bäst från 4–6 månaders ålder och kräver att föräldrarna är ense och konsekventa.',
+  },
+  {
+    question: 'Minskar amningen om man slutar med nattmatning?',
+    answer: 'Det beror på. De första 3 månaderna är nattmatningarna viktiga för att upprätthålla mjölkproduktionen — det är då prolaktinnivåerna är som högst på natten. Från 4–6 månader kan de flesta ammande mammor trappa ned nattmatningarna gradvis utan att det påverkar totala mjölkproduktionen, förutsatt att dagsamningarna fortsätter. En abrupt avveckling kan påverka produktionen mer. Rådgör med amningsrådgivare om du är osäker.',
+  },
+  {
+    question: 'Kan man sluta med nattmatning om bebisen fortfarande vaknar?',
+    answer: 'Ja. Nattuppvaknanden och hunger är inte samma sak. Bebisar vaknar naturligt mellan sömncykler (var 45–90 minuter) hela livet — de flesta lär sig att somna om utan att behöva mat. Om bebisen vaknar men snabbt somnar om utan mat är uppvaknandet sannolikt inte hungerrelaterat. Att bryta sömnassociationen (amning vid uppvaknande) kan lösa nattuppvaknandena utan att det handlar om hunger.',
+  },
+  {
+    question: 'Är det okej att drömma mata (dream feed)?',
+    answer: 'Drömmating (dream feed) är en amning/flaska du ger bebisen kring 22–23.00 medan hen fortfarande sover eller är halvvaken. Målet är att förlänga den första sömnsträckan och minska tidiga nattuppvaknanden. Det fungerar bra för många bebisar 2–5 månader. Runt 5–6 månader minskar effekten och drömmaten kan börja störa snarare än hjälpa — det är ett tecken på att trappa ned den gradvis.',
+  },
+  {
+    question: 'Vad är chair method för att trappa ned nattmatning?',
+    answer: 'Chair method (stolsmetoden) är en gradvis avtrappning där du minskar din närvaro steg för steg: Natt 1–3: Sitta bredvid sängen och ge kortare amning/flaska. Natt 4–6: Sitta lite längre ifrån, ge ännu kortare amning. Natt 7–9: Sitta vid dörren, ge minimal mat. Natt 10+: Gå inte in alls. Metoden är långsammare än Ferber men innebär ingen separationsperiod för bebisen.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Sluta med nattmatning — när och hur 2026"
+  description="När kan bebis sova utan nattmatning? Vi guidar dig steg-för-steg för att trappa ner nattmatningar."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/nattmatning-sluta/"
+  updatedDate="2026-04-05"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Sovrutin för bebis', href: '/guider/bebis-sovrutin/' },
+    { title: 'Bebis sover dåligt', href: '/guider/bebis-sover-daligt/' },
+    { title: 'Amning guide', href: '/amning/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Nattmatningar är biologiskt normala och nödvändiga under de första månaderna. Men vid någon punkt är bebisen redo att sova längre utan mat — och föräldrarna är mer än redo att sova om natten igen. Den här guiden hjälper dig att avgöra när det är dags och hur du trappa ned på ett tryggt sätt.
+</p>
+
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-blue-900 mb-1">Viktigt att veta</p>
+  <p class="text-sm text-blue-800">Sluta aldrig abrupt med nattmatningar hos bebisar under 4 månader. Nattmålningar är biologiskt nödvändiga för tillväxt och amning under de första 3–4 månaderna. Rådgör med BVC innan du börjar trappa ned.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">När är bebisen redo?</h2>
+<p class="text-text-light mb-4">Det finns ingen exakt ålder — det handlar om biologisk mognad. Kontrollera dessa kriterier:</p>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Kriterium</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Riktvärde</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Varför</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Vikt</td><td class="px-4 py-3 text-text-light">Minst 6–7 kg</td><td class="px-4 py-3 text-text-light">Tillräckliga energireserver för att klara natten</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ålder</td><td class="px-4 py-3 text-text-light">4–6 månader (korrigerad)</td><td class="px-4 py-3 text-text-light">Magsäcken klarar längre utan mat</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Dagsintag</td><td class="px-4 py-3 text-text-light">Äter bra under dagen</td><td class="px-4 py-3 text-text-light">Kompenserar för utebliven nattmat</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Tillväxt</td><td class="px-4 py-3 text-text-light">Normal viktuppgång</td><td class="px-4 py-3 text-text-light">Nattmat är inte kritisk om dagstillväxten är bra</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Metod 1 — Gradvis avtrappning (rekommenderas)</h2>
+<p class="text-text-light mb-4">
+  Den mildaste och mest skonsamma metoden. Minska mängden mat vid varje nattmål gradvis under 5–10 dagar:
+</p>
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Identifiera nattmålningarna:</strong> Notera hur många du ger och ungefär när. Vanligtvis 1–3 under natten vid 4–6 månaders ålder.
+  </li>
+  <li>
+    <strong>Börja med det sista nattmålet:</strong> Det som är närmast morgonen är lättast att ta bort — bebisen är minst hungrig då.
+  </li>
+  <li>
+    <strong>Minska gradvis:</strong> Amning: korta ner ammingstiden med 1–2 minuter per natt. Flaska: minska med 10–15 ml per natt.
+  </li>
+  <li>
+    <strong>Vänta 3–5 dagar</strong> innan du tar bort nästa nattmål för att ge bebisen tid att anpassa dagintaget.
+  </li>
+  <li>
+    <strong>Öka dagsintaget:</strong> Erbjud mer mat under dagen, särskilt kvällsmålet, för att kompensera.
+  </li>
+</ol>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Metod 2 — Ferber-metoden anpassad för nattmatning</h2>
+<p class="text-text-light mb-4">
+  Mer strukturerad metod, fungerar bäst från 5–6 månaders ålder. Kräver att föräldrarna är ense och konsekventa:
+</p>
+<ol class="list-decimal pl-5 text-text-light space-y-2 mb-6">
+  <li>Lägg bebisen i sängen vaken</li>
+  <li>Vid uppvaknande: vänta 3 minuter innan du går in</li>
+  <li>Gå in, luta dig, lugna med ord och hand — ta inte upp</li>
+  <li>Lämna och öka väntetiden (5, 10, 15 min) vid nästa uppvaknande</li>
+  <li>Ge mat bara vid det "riktiga" nattmålet (t.ex. om mer än 5 timmar gått sedan föregående)</li>
+  <li>Minska gradvis mängden mat parallellt med intervallerna</li>
+</ol>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Metod 3 — Chair method (stolsmetoden)</h2>
+<p class="text-text-light mb-4">Långsammare men utan separation. Flytta gradvis stolens placering längre från sängen under 10–14 dagar:</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Natt 1–3:</strong> Sitt bredvid sängen, ge kortad amning/flaska</li>
+  <li><strong>Natt 4–6:</strong> Flytta stolen halvvägs till dörren, ge minimal mat</li>
+  <li><strong>Natt 7–9:</strong> Sitt vid dörren, ge ingen mat</li>
+  <li><strong>Natt 10+:</strong> Gå inte in vid uppvaknanden som inte kräver det</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad som är normalt under avtrappningen</h2>
+<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6">
+  <ul class="text-sm text-yellow-800 space-y-1 list-disc pl-4">
+    <li>Bebisen kan gråta mer de första 2–4 nätterna — det är förväntat</li>
+    <li>Tillfälligt sämre dagshumör den första veckan</li>
+    <li>Äter mer under dagen som kompensation</li>
+    <li>Vaknar fortfarande men lättare att trösta utan mat</li>
+  </ul>
+</div>
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Avbryt och kontakta BVC om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Bebisen slutar gå upp i vikt</li>
+    <li>Antalet blöjbyten minskar drastiskt (under 4 per dygn)</li>
+    <li>Bebisen verkar dehydrerad (torra läppar, insjunkna ögon)</li>
+    <li>Bebisen är sjuk under avtrappningen — pausa och börja om</li>
+  </ul>
+</div>
+
+<CTABox productName="Babyvakter för bättre nätter" store="Jollyroom" description="En babyvakt med inbyggt white noise och rörelseindikering kan hjälpa dig att reagera rätt i tid — och sova lugnare." affiliateUrl="https://www.jollyroom.se/barnsakerhet/babyvakter/" />
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>

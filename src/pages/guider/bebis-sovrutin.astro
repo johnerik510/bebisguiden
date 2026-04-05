@@ -1,0 +1,164 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Sovrutin för bebis' },
+];
+
+const faqItems = [
+  {
+    question: 'När ska man börja med en sovrutin för bebis?',
+    answer: 'Du kan börja etablera en enkel sovrutin redan från 6–8 veckors ålder — inte för att tvinga fram ett mönster, utan för att ge bebisens hjärna tydliga signaler om att sömn är på gång. En konsekvent ordning (t.ex. bad, amning, sång, mörkt rum) etablerar associationer. Runt 3–4 månader börjar bebisens cirkadiska rytm mogna, och en tydligare rutin får bättre effekt.',
+  },
+  {
+    question: 'Vad ska en bra sovrutin innehålla?',
+    answer: 'En effektiv sovrutin för bebis brukar innehålla: varmt bad (10 minuter), massage med mjuk lotion (5 minuter), ren pyjamas och sovsäck, amning eller flaska i svagt ljus, sång eller lugn musik, mörkt rum och white noise. Hela rutinen bör ta 20–35 minuter. Det viktiga är inte exakt vilka aktiviteter du väljer, utan att ordningen är konsekvent varje kväll.',
+  },
+  {
+    question: 'Vad är Eat-Play-Sleep-metoden?',
+    answer: 'Eat-Play-Sleep (äta-leka-sova) är ett strukturerat vakentidsmönster för nyfödda och späda bebisar. Principen: bebisen ammas/äter direkt efter uppvaknande (Eat), sedan har hen en aktiv period med lek och stimulans (Play), sedan sovstund (Sleep). Metoden förhindrar att amning/flaska kopplas ihop med insomning — ett vanligt orsak till frekvent nattuppvaknande.',
+  },
+  {
+    question: 'Hur länge ska bebisen vara vaken mellan sovstunder (wake window)?',
+    answer: 'Wake windows (vakentidsfönster) varierar med åldern: 0–6 veckor: 45–60 minuter. 6–12 veckor: 60–90 minuter. 3–4 månader: 90 minuter. 5–6 månader: 2–2,5 timmar. 6–8 månader: 2,5–3 timmar. 9–12 månader: 3–4 timmar. Tecken på övertrötthet: gnällighet, gnuggande av ögon, stirrig blick, hicka. Övertrötthet gör det svårare att somna — inte lättare.',
+  },
+  {
+    question: 'Fungerar sovrutiner för alla bebisar?',
+    answer: 'Rutiner hjälper de flesta bebisar men det finns stor individuell variation. Temperament spelar roll — "lätta" bebisar anpassar sig snabbare till rutiner. "Intensiva" bebisar kan ta längre tid. Ge det minst 2 veckor av konsekvent genomförande innan du bedömer om rutinen fungerar. Har bebisen medicinska orsaker till dålig sömn (reflux, kolik, allergi) bör dessa utredas och behandlas parallellt.',
+  },
+  {
+    question: 'Ska man låta bebisen somna i sovsäck?',
+    answer: 'Ja — sovsäck rekommenderas av Socialstyrelsen och SIDS-förebyggande organisationer. En sovsäck med rätt TOG-värde håller bebisen lagom varm utan risk för övertäckning. Den ersätter lösa filtar i sängen som kan orsaka kvävning. Sovsäcken signalerar också sömn för bebisen och kan bli en del av insomningsrutinen. Välj TOG 1,0 för varma rum, TOG 2,5 för svalare rum.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Sovrutin för bebis — hur skapar du bra sömnvanor 2026"
+  description="En tydlig sovrutin hjälper bebis att sova bättre och längre. Guide till när och hur du etablerar rutiner."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-sovrutin/"
+  updatedDate="2026-04-05"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Bebis sover dåligt', href: '/guider/bebis-sover-daligt/' },
+    { title: 'Sluta med nattmatning', href: '/guider/nattmatning-sluta/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+    { title: 'Bästa sovsäck för bebis', href: '/sovsackar/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  En konsekvent sovrutin är ett av de mest effektiva verktygen för att hjälpa bebisen att sova bättre. Bebisars hjärnor trivs med förutsägbarhet — när samma sekvens av händelser leder till samma utfall varje kväll lär sig bebisen vad som väntar och kan slappna av i tid. Den här guiden ger dig en praktisk plan per ålder.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Det viktigaste du kan göra</p>
+  <p class="text-sm text-text-light">Välj en enkel sekvens på 20–35 minuter och genomför den exakt likadant varje kväll — oavsett om det är fredag eller måndag, hemma eller hos morföräldrar. Konsekvens är viktigare än vilka aktiviteter du väljer.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Varför rutiner fungerar — cirkadisk rytm</h2>
+<p class="text-text-light mb-4">
+  Bebisens inre klocka (cirkadisk rytm) styrs av ljus, mörker och återkommande mönster. Nyfödda saknar en fullt utvecklad cirkadisk rytm — den formas gradvis under de första 3–4 månaderna med hjälp av yttre ledtrådar:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Ljus och mörker:</strong> Exponera bebisen för dagsljus under dagen och mörker på kvällen. Mörkläggningsgardiner i sovrummet är viktigt.</li>
+  <li><strong>Konsekvent timing:</strong> Försök lägga bebisen ungefär samma tid varje kväll — kroppen anpassar sig och melatoninproduktionen börjar tidigare.</li>
+  <li><strong>Aktivitetsmönster:</strong> Lugna aktiviteter på kvällen (bad, massage, sång) sänker kortisol och signalerar att sömn är på gång.</li>
+  <li><strong>Temperatur:</strong> Rummet bör vara 18–20°C. Kroppen sänker innertemperaturen inför sömn — ett svalt rum underlättar detta.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Bra sovrutin — steg för steg</h2>
+
+<div class="space-y-3 mb-8">
+  <div class="flex items-start gap-4 bg-gray-50 rounded-xl p-4">
+    <div class="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+    <div>
+      <p class="font-semibold text-dark">Varmt bad (5–10 min)</p>
+      <p class="text-sm text-text-light">Varmt vatten sänker kroppstemperaturen efteråt — en av de starkaste naturliga sömnsignalerna. Gör det avslappnat och lugnt, inte lekfullt och stimulerande.</p>
+    </div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-50 rounded-xl p-4">
+    <div class="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+    <div>
+      <p class="font-semibold text-dark">Massage (3–5 min)</p>
+      <p class="text-sm text-text-light">Lugn massage med mjuk lotion stimulerar oxytocinfrisättning och hjälper bebisen att slappna av. Studier visar att bebisar som masseras somnar snabbare och sover längre.</p>
+    </div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-50 rounded-xl p-4">
+    <div class="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
+    <div>
+      <p class="font-semibold text-dark">Ren pyjamas och sovsäck</p>
+      <p class="text-sm text-text-light">Byte av kläder och sovsäck signalerar natt. Sovsäcken ersätter lösa filtar och minskar SIDS-risken. Välj TOG-värde efter rumstemperatur.</p>
+    </div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-50 rounded-xl p-4">
+    <div class="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">4</div>
+    <div>
+      <p class="font-semibold text-dark">Amning eller flaska (i svagt ljus)</p>
+      <p class="text-sm text-text-light">Ge maten innan bebisen somnar — inte som sista insomningssteg. Lägg ner bebisen "sömnig men vaken" för att undvika sömnassociation med bröstet/flaskan.</p>
+    </div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-50 rounded-xl p-4">
+    <div class="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">5</div>
+    <div>
+      <p class="font-semibold text-dark">Sång eller lugn musik (5 min)</p>
+      <p class="text-sm text-text-light">Samma sång varje kväll bygger en stark association. Det behöver inte vara ett mästerverk — repetitiva enkla melodier fungerar bäst. Staffla ner volymen gradvis.</p>
+    </div>
+  </div>
+  <div class="flex items-start gap-4 bg-gray-50 rounded-xl p-4">
+    <div class="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">6</div>
+    <div>
+      <p class="font-semibold text-dark">Mörkt rum + white noise</p>
+      <p class="text-sm text-text-light">Mörkläggningsgardiner är en av de billigaste och mest effektiva sömnförbättringarna. White noise (65–70 dB) dämpar störande ljud och imiterar brus från livmodern.</p>
+    </div>
+  </div>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Åldersanpassad sovrutin</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">0–3 månader</h3>
+<p class="text-text-light mb-4">
+  Fokusera på förutsägbarhet snarare än fasta klockslag. Nyfödda har inget dygnsrytm och vaknar var 2–3 timme. Etablera en enkel kvällsrutin (bad, amning, sång) för att skilja natt från dag, men ha realistiska förväntningar. Lägg bebisen i mörkare rum på natten och ljusare under dagssovstunden.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">3–6 månader</h3>
+<p class="text-text-light mb-4">
+  Den cirkadiska rytmen börjar mogna. Börja sikta på en konsekvent kvällsläggning kring 18.30–19.30. Eat-Play-Sleep-mönstret fungerar bra nu. Bebisen klarar längre vakentidsfönster (90–120 min). Dagssovstunderna börjar bli mer förutsägbara.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">6–12 månader</h3>
+<p class="text-text-light mb-4">
+  3 sovstunder minskar till 2 (runt 6–8 månader) och sedan till 1 (mot slutet av 1 år). Läggdags 18.30–19.00 är biologiskt optimal för de flesta bebisar. Separation anxiety topper vid 9 månader — var konsekvent med rutinen men ge extra trygghet vid uppvaknanden.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Eat-Play-Sleep — strukturerat vakentidsmönster</h2>
+<p class="text-text-light mb-4">
+  Eat-Play-Sleep-metoden bryter kopplingen mellan amning och insomning, vilket är den vanligaste orsaken till frekvent nattuppvaknande efter 4 månader:
+</p>
+<ol class="list-decimal pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Eat (äta):</strong> Ge mat direkt när bebisen vaknar — inte vid sömnighet</li>
+  <li><strong>Play (leka):</strong> Aktiv tid med lek, kontakt, utforskande</li>
+  <li><strong>Sleep (sova):</strong> Lägg ner bebisen "sömnig men vaken" — inte djupt sovande</li>
+</ol>
+
+<CTABox productName="Bästa sovsäckar för bebis" store="Jollyroom" description="Sovsäckar i rätt TOG-värde för alla årstider — en viktig del av sovrutinen och en SIDS-förebyggande åtgärd." affiliateUrl="https://www.jollyroom.se/barnrummet/sovsackar/" />
+
+<div class="mt-8 bg-gray-50 rounded-xl p-5">
+  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider och produkter</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/babyvakter/" class="text-accent hover:underline font-medium">Bästa babyvakten 2026 — med white noise och nattljus</a></li>
+    <li><a href="/sovsackar/" class="text-accent hover:underline font-medium">Bästa sovsäckar för bebis 2026</a></li>
+    <li><a href="/guider/bebis-sover-daligt/" class="text-accent hover:underline font-medium">Bebis sover dåligt — orsaker och vad du kan göra</a></li>
+    <li><a href="/guider/nattmatning-sluta/" class="text-accent hover:underline font-medium">Sluta med nattmatning — steg-för-steg guide</a></li>
+  </ul>
+</div>
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>

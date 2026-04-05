@@ -1,0 +1,202 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis allergier' },
+];
+
+const faqItems = [
+  {
+    question: 'Vid vilken ålder ska man introducera allergener?',
+    answer: 'Livsmedelsverket och WHO rekommenderar att introducera allergener vid 6 månaders ålder — inte vänta. Forskning (LEAP-studien) visar att tidig introduktion av jordnötter minskar risken för jordnötsallergi med upp till 81 %. Principen gäller för alla stora allergener. Introducera ett i taget, med 2–3 dagars mellanrum, för att kunna identifiera eventuella reaktioner.',
+  },
+  {
+    question: 'Vilka är de 14 stora allergenerna som EU kräver märkning av?',
+    answer: 'EU kräver märkning av: gluten (vete, råg, korn, spelt), kräftdjur, ägg, fisk, jordnötter, soja, mjölk/laktos, nötter (mandel, hasselnöt, valnöt, cashew, pekannöt, paranöt, pistaschmandel, makadamianöt), selleri, senap, sesamfrön, svaveldioxid/sulfiter, lupin och blötdjur. Introducera alla tidigt under avvänjningen.',
+  },
+  {
+    question: 'Hur ser en allergisk reaktion ut hos bebis?',
+    answer: 'Milda reaktioner: nässelutslag (röda, upphöjda prickar), rodnad kring munnen, klåda, svullna läppar, rinnande ögon, nysningar. Måttliga reaktioner: kräkningar, diarré, hosta, pipande andning. Allvarlig reaktion (anafylaxi): svullnad i halsen/tungan, andningssvårigheter, blekhet, svaghet, snabb puls, medvetslöshet — ring 112 omedelbart. Reaktioner uppkommer vanligen inom 30 minuter till 2 timmar efter intag.',
+  },
+  {
+    question: 'Vad gör jag om bebisen får en allergisk reaktion?',
+    answer: 'Vid mild reaktion (litet utslag, lätt rodnad): ge inte mer av livsmedlet, dokumentera vad bebisen ätit och när, kontakta 1177. Vid måttlig reaktion (kräkningar, hosta): ring 1177 direkt. Vid svår reaktion (andningssvårigheter, svullnad i halsen, blekhet, medvetslöshet): ring 112 omedelbart. Om du har en adrenalinpenna (EpiPen) och bebisen tidigare fått en svår reaktion: använd den och ring 112.',
+  },
+  {
+    question: 'Måste man testa allergener på sjukhus?',
+    answer: 'Nej, för de flesta bebisar utan känd allergihistorik eller hög risk rekommenderas introduktion hemma. Gör det gärna på morgonen så du kan observera reaktioner under dagen. Ha 1177:s nummer tillgängligt. Om bebisen har eksem (atopisk dermatit), astma eller förstärkts hereditet (nära familjemedlem med svår matallergi) bör du rådgöra med barnläkare eller allergolog om du ska göra introduktionen under medicinsk övervakning.',
+  },
+  {
+    question: 'Kan bebis med eksem introducera allergener normalt?',
+    answer: 'Eksem (atopisk dermatit) är en riskfaktor för matallergi — bebisar med svårt eksem löper ökad risk. Det är ÄNNU viktigare att introducera allergener tidigt för dessa bebisar — forskning visar att det fortfarande minskar risken. Rådgör dock med barnläkare eller allergolog om eksem är svårt — de kan rekommendera testning före introduktion eller utföra introduktionen under kontrollerade former.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis allergier — tidigt introducera allergener och tecken att känna igen"
+  description="Forskning visar: introduceringen av allergener tidigt (6 mån) minskar risken för allergi. Lär dig hur och vilka tecken att se."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-allergier/"
+  updatedDate="2026-04-05"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Introduktion av fast föda', href: '/guider/introduktion-fast-foda/' },
+    { title: 'BLW-guide 2026', href: '/guider/blw-guide/' },
+    { title: 'Mat till bebis 4 månader', href: '/guider/bebis-mat-4-manader/' },
+    { title: 'Bästa matstol 2026', href: '/matstolar/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Matallergi hos bebisar är ett ämne som oroar många föräldrar. Den goda nyheten: forskning har de senaste åren visat att tidig introduktion av allergener vid avvänjningen faktiskt minskar — inte ökar — risken för allergi. Den här guiden förklarar vilka allergener du ska introducera, i vilken ordning och vilka tecken du ska vara uppmärksam på.
+</p>
+
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-blue-900 mb-1">Ny rekommendation sedan 2020</p>
+  <p class="text-sm text-blue-800">Livsmedelsverket reviderade riktlinjerna 2020 baserat på LEAP-studien och EAT-studien. Rekommendationen är nu: introducera alla stora allergener tidigt vid 6 månaders avvänjning — vänta inte. Tidigare råd om att vänta med nötter och fisk tills efter 1 år är föråldrade.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Forskning bakom tidig allergenintroduktion</h2>
+<p class="text-text-light mb-4">
+  Tre avgörande studier har förändrat riktlinjerna de senaste åren:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-3 mb-6">
+  <li><strong>LEAP-studien (2015):</strong> 640 högriskbebisar. De som introducerades till jordnötter vid 4–11 månader hade 81 % lägre risk för jordnötsallergi vid 5 års ålder jämfört med de som undvek jordnötter.</li>
+  <li><strong>EAT-studien (2016):</strong> Tidig introduktion av 6 allergener vid 3 månaders ålder (parallellt med amning) minskade risken för äggallergi med 75 % och jordnötsallergi med 67 %.</li>
+  <li><strong>LEAP-ON-studien (2016):</strong> Visade att skyddet kvarstår — även om jordnötter senare undveks i ett år — om introduktionen skett tidigt.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">De 8 vanligaste allergenerna — och hur du introducerar dem</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Allergen</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Hur du introducerar</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Mängd att börja med</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr>
+        <td class="px-4 py-3 font-medium">Ägg</td>
+        <td class="px-4 py-3 text-text-light">Hårdkokt ägg, mosad. Fullt genomkokt alltid.</td>
+        <td class="px-4 py-3 text-text-light">1/4 äggula att börja</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Gluten (vete)</td>
+        <td class="px-4 py-3 text-text-light">Välling med vete, liten bit mjukt bröd, pasta</td>
+        <td class="px-4 py-3 text-text-light">En matsked välling</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Jordnötter</td>
+        <td class="px-4 py-3 text-text-light">Tunnt jordnötssmör blandat i välling/gröt (aldrig hela nötter)</td>
+        <td class="px-4 py-3 text-text-light">1/4 tsk utblandat</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Trädnötter</td>
+        <td class="px-4 py-3 text-text-light">Finmalet/pasta av mandel, cashew, hasselnöt blandat i mat</td>
+        <td class="px-4 py-3 text-text-light">1/4 tsk utblandat</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Fisk</td>
+        <td class="px-4 py-3 text-text-light">Kokt lax, torsk eller makrill. Mosa noggrant och kontrollera ben.</td>
+        <td class="px-4 py-3 text-text-light">1–2 tsk kokt fisk</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Skaldjur</td>
+        <td class="px-4 py-3 text-text-light">Kokt räka eller lax. Välkokat, finmalet.</td>
+        <td class="px-4 py-3 text-text-light">1–2 tsk</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Soja</td>
+        <td class="px-4 py-3 text-text-light">Tofu, edamame (välkokt och mosad)</td>
+        <td class="px-4 py-3 text-text-light">1–2 tsk</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Mjölk</td>
+        <td class="px-4 py-3 text-text-light">Yoghurt, välling med komjölk, kokt med mjölk. OK i matlagning.</td>
+        <td class="px-4 py-3 text-text-light">1–2 tsk yoghurt</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Steg-för-steg — hur du introducerar allergener säkert</h2>
+
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li>
+    <strong>Välj rätt tillfälle:</strong> Ge allergenet på morgonen — inte kvällen — så du kan observera reaktioner under dagen. Ge inte när bebisen är sjuk eller har ökat eksem.
+  </li>
+  <li>
+    <strong>En i taget:</strong> Introducera ett nytt allergen per tillfälle. Vänta 2–3 dagar innan du introducerar nästa.
+  </li>
+  <li>
+    <strong>Börja litet:</strong> Ge en liten mängd (se tabellen ovan) och öka gradvis om ingen reaktion uppkommer.
+  </li>
+  <li>
+    <strong>Observera i 2 timmar:</strong> De flesta reaktioner uppkommer inom 30 minuter till 2 timmar. Ha 1177:s nummer tillgängligt.
+  </li>
+  <li>
+    <strong>Dokumentera:</strong> Notera vad bebisen ätit, mängd och klockslag. Underlättar vid läkarkontakt om reaktion uppkommer.
+  </li>
+  <li>
+    <strong>Fortsätt ge:</strong> Om ingen reaktion — fortsätt ge allergenet regelbundet (1–2 gånger per vecka) för att bibehålla toleransen.
+  </li>
+</ol>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tecken på allergisk reaktion — från mild till allvarlig</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+  <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+    <p class="font-semibold text-yellow-900 mb-2">Mild reaktion</p>
+    <ul class="text-sm text-yellow-800 space-y-1 list-disc pl-4">
+      <li>Nässelutslag — röda, upphöjda fläckar</li>
+      <li>Rodnad kring munnen</li>
+      <li>Klåda i ansiktet</li>
+      <li>Rinnande näsa/ögon</li>
+    </ul>
+    <p class="text-xs text-yellow-700 mt-2">Åtgärd: Ring 1177</p>
+  </div>
+  <div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
+    <p class="font-semibold text-orange-900 mb-2">Måttlig reaktion</p>
+    <ul class="text-sm text-orange-800 space-y-1 list-disc pl-4">
+      <li>Svullna läppar eller tunga</li>
+      <li>Kräkningar eller diarré</li>
+      <li>Hosta, pipande andning</li>
+      <li>Magsmärtor, blek hy</li>
+    </ul>
+    <p class="text-xs text-orange-700 mt-2">Åtgärd: Ring 1177 omedelbart</p>
+  </div>
+  <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+    <p class="font-semibold text-red-900 mb-2">Anafylaxi (allvarlig)</p>
+    <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+      <li>Svullnad i halsen, sväljsvårigheter</li>
+      <li>Andningssvårigheter, rosslande</li>
+      <li>Blekhet, slapphet, darrighet</li>
+      <li>Medvetslöshet</li>
+    </ul>
+    <p class="text-xs font-bold text-red-700 mt-2">Ring 112 OMEDELBART</p>
+  </div>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Riskfaktorer för matallergi</h2>
+<p class="text-text-light mb-4">Bebisar med följande tillstånd löper ökad risk för matallergi och bör rådgöra med barnläkare:</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Svårt eksem (atopisk dermatit):</strong> Starkt kopplat till ökad risk för jordnöts- och äggallergi</li>
+  <li><strong>Förälder eller syskon med svår matallergi:</strong> Ärftligheten är tydlig</li>
+  <li><strong>Befintlig bekräftad matallergi:</strong> Höjer risken för allergi mot andra livsmedel</li>
+  <li><strong>Tidigare allergisk reaktion:</strong> Alltid kontakt med barnläkare innan fortsatt introduktion</li>
+</ul>
+
+<CTABox productName="Matstolar och avvänjningsprodukter" store="Jollyroom" description="Säker matstol och praktiska avvänjningsprodukter — ett bra sortiment för hela avvänjningsperioden." affiliateUrl="https://www.jollyroom.se/barnrummet/matstolar/" />
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>

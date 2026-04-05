@@ -1,0 +1,159 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Mat till bebis 4 månader' },
+];
+
+const faqItems = [
+  {
+    question: 'Kan man ge välling till bebis vid 4 månader?',
+    answer: 'Livsmedelsverket och WHO rekommenderar att inte introducera välling eller annan fast föda före 6 månaders ålder. Välling innehåller spannmål och räknas som fast föda — bebisens tarmfunktion är inte fullt mogen att hantera det innan 6 månader. Undantag kan finnas om läkare eller BVC rekommenderar det specifikt för ditt barn av medicinska skäl.',
+  },
+  {
+    question: 'Vad händer om man börjar med fast föda vid 4 månader?',
+    answer: 'Forskning visar att tidig introduktion av fast föda (före 6 månader) är kopplat till ökad risk för övervikt, allergier och tarmbesvär. Bebisens tarm saknar de enzymer och den barriärfunktion som behövs för att ta upp och bryta ner fast föda. Det kan även störa amningsproduktionen och minska bebisens intag av bröstmjölk, som fortfarande är det viktigaste i detta skede.',
+  },
+  {
+    question: 'Vilka tecken visar att bebisen är redo för fast föda?',
+    answer: 'Fyra tecken på mognad: (1) Bebisen kan sitta med stöd och hålla huvudet stabilt. (2) Tungreflexen (extrusionsreflexen) har försvagats — maten putas inte automatiskt ut. (3) Bebisen visar intresse för mat — följer din mat med blicken, når mot den. (4) Bebisen är 6 månader gammal (korrigerad ålder för prematura). Alla fyra tecken bör vara uppfyllda, inte bara ett eller två.',
+  },
+  {
+    question: 'Är amning tillräckligt för bebis vid 4 månader?',
+    answer: 'Ja, fullt ut. WHO och Livsmedelsverket rekommenderar exklusiv amning de första 6 månaderna. Bröstmjölk ger all den näring, antikroppar och skydd bebisen behöver. Vid 4 månader behöver en normalt växande bebis ingenting utöver bröstmjölk eller modersmjölksersättning.',
+  },
+  {
+    question: 'Vad kan jag ge bebisen vid 4 månader om hen är missnöjd?',
+    answer: 'Om bebisen verkar orolig eller hungrig vid 4 månader är lösningen mer amning — inte fast föda. Growth spurts (tillväxtperioder) gör att bebisen vill amma mer ofta, och flitigare amning ökar mjölkproduktionen. Kontakta BVC om du är orolig för bebisens tillväxt eller om hen verkar konstant missnöjd — det kan finnas andra orsaker som kolik, tandning eller behov av mer samspel.',
+  },
+  {
+    question: 'Ska man vänta om bebisen är mycket liten eller prematurt född?',
+    answer: 'Ja. Prematura bebisar räknar sin "korrigerade ålder" från beräknat, inte faktiskt, förlossningsdatum. En bebis född 2 månader för tidigt bör inte introducera fast föda förrän vid 8 månaders faktisk ålder (6 månaders korrigerad ålder). Rådgör alltid med barnläkare eller BVC för prematura bebisar.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Mat till bebis 4 månader — introduktion eller vänta?"
+  description="Ska du börja med mat vid 4 månader? Vi förklarar vad WHO rekommenderar och tecken på att bebis är redo."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-mat-4-manader/"
+  updatedDate="2026-04-05"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'Introduktion av fast föda — komplett guide', href: '/guider/introduktion-fast-foda/' },
+    { title: 'BLW-guide 2026', href: '/guider/blw-guide/' },
+    { title: 'Bebis allergier', href: '/guider/bebis-allergier/' },
+    { title: 'Bästa matstol 2026', href: '/matstolar/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Det är vanligt att föräldrar funderar på om bebisen är redo för mat vid 4 månader — kanske verkar hen hungrigare, nyfiken på maten eller söker bröst oftare. Svaret från WHO, Livsmedelsverket och Socialstyrelsen är tydligt: vänta till 6 månader. Här är anledningarna och vad du ska göra istället.
+</p>
+
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-blue-900 mb-1">Rekommendationen är tydlig</p>
+  <p class="text-sm text-blue-800">WHO, Livsmedelsverket och BVC rekommenderar exklusiv amning eller ersättning de första 6 månaderna. Fast föda (inklusive välling, gröt och juice) ska inte introduceras före 6 månader.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Varför vänta till 6 månader?</h2>
+<p class="text-text-light mb-4">
+  Vid 4 månader är bebisens matsmältningssystem fortfarande omoget på flera viktiga sätt:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-3 mb-6">
+  <li><strong>Tarmbarriären är inte stängd:</strong> Tarmväggen hos yngre bebisar är mer genomsläpplig. Proteiner från fast föda kan passera in i blodomloppet och trigga immunreaktioner som kan leda till allergi.</li>
+  <li><strong>Tungreflexen skjuter ut maten:</strong> Bebisens extrusionsreflex — som automatiskt puttar ut allt som läggs i munnen — är fortfarande stark vid 4 månader. Det är ett biologiskt skydd mot att svälja fast föda för tidigt.</li>
+  <li><strong>Enzymer saknas:</strong> Amylaser och andra enzymer som bryter ner stärkelse finns inte i tillräckliga mängder förrän runt 6 månader.</li>
+  <li><strong>Sittmotoriken är inte klar:</strong> Säker matning kräver att bebisen kan sitta med stöd och hålla huvudet stabilt för att minimera kvävningsrisken.</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad forskning säger om tidig introduktion</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Risk vid tidig introduktion (före 6 mån)</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Evidensgrad</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3">Ökad risk för övervikt och fetma i barnaåren</td><td class="px-4 py-3 text-text-light">Hög (metaanalyser)</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3">Ökad risk för matallergier</td><td class="px-4 py-3 text-text-light">Måttlig</td></tr>
+      <tr><td class="px-4 py-3">Störd amning — minskad mjölkproduktion</td><td class="px-4 py-3 text-text-light">Hög</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3">Ökad risk för mag-tarmbesvär</td><td class="px-4 py-3 text-text-light">Måttlig</td></tr>
+      <tr><td class="px-4 py-3">Ökad risk för celiaki (gluten tidigt)</td><td class="px-4 py-3 text-text-light">Diskuteras — se nedan</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Tecken på att bebisen är redo — vid 6 månader</h2>
+<p class="text-text-light mb-4">Alla fyra tecken ska vara uppfyllda innan du börjar med fast föda:</p>
+
+<ul class="list-none space-y-3 mb-6">
+  <li class="flex items-start gap-3 bg-gray-50 rounded-xl p-3">
+    <span class="text-green-600 font-bold text-lg mt-0.5">1</span>
+    <div>
+      <p class="font-semibold text-dark">Sitter med stöd och stabilt huvud</p>
+      <p class="text-sm text-text-light">Kan sitta i matstol med stöd, håller huvudet upprätt utan att falla framåt.</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3 bg-gray-50 rounded-xl p-3">
+    <span class="text-green-600 font-bold text-lg mt-0.5">2</span>
+    <div>
+      <p class="font-semibold text-dark">Försvagad extrusionsreflex</p>
+      <p class="text-sm text-text-light">Maten putas inte omedelbart ut. Bebisen kan hålla mat i munnen och flytta den bakåt.</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3 bg-gray-50 rounded-xl p-3">
+    <span class="text-green-600 font-bold text-lg mt-0.5">3</span>
+    <div>
+      <p class="font-semibold text-dark">Visar intresse för mat</p>
+      <p class="text-sm text-text-light">Följer din mat med blicken, försöker ta den, öppnar munnen när du äter.</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3 bg-gray-50 rounded-xl p-3">
+    <span class="text-green-600 font-bold text-lg mt-0.5">4</span>
+    <div>
+      <p class="font-semibold text-dark">Minst 6 månaders ålder</p>
+      <p class="text-sm text-text-light">Korrigerad ålder för prematura bebisar — räkna från beräknat förlossningsdatum.</p>
+    </div>
+  </li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Om bebisen verkar hungrig vid 4 månader</h2>
+<p class="text-text-light mb-4">
+  Det är normalt att bebisar runt 4 månader vill amma oftare. Det kan bero på:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Growth spurt:</strong> Tillväxtperiod gör att bebisen behöver mer energi. Mer amning ökar mjölkproduktionen — lösningen är mer bröst, inte fast föda.</li>
+  <li><strong>4-månaders sömnregression:</strong> Kognitiv och motorisk utveckling stör sömnen och skapar mer behov av tröst och amning.</li>
+  <li><strong>Tandning:</strong> Kan börja redan vid 3–4 månader och öka sugbehovet utan att bebisen faktiskt är hungrig.</li>
+  <li><strong>Mer vakentid:</strong> Bebisen är mer alert och vill ha mer stimulans — inte nödvändigtvis mer mat.</li>
+</ul>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Kontakta BVC om</p>
+  <p class="text-sm text-text-light">Du är orolig för bebisens tillväxt, hen verkar konstant missnöjd trots amning, eller om viktutvecklingen har planat av. BVC kan avgöra om det finns medicinska skäl att avvika från rekommendationen.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Förberedelser du kan göra vid 4 månader</h2>
+<p class="text-text-light mb-4">Även om du väntar med maten kan du förbereda:</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li>Köp en matstol och låt bebisen sitta vid bordet under familjemåltider</li>
+  <li>Låt bebisen titta på när ni äter — socialt lärande pågår redan</li>
+  <li>Läs på om <a href="/guider/introduktion-fast-foda/" class="text-accent hover:underline">introduktion av fast föda</a> och <a href="/guider/blw-guide/" class="text-accent hover:underline">BLW-metoden</a></li>
+  <li>Utforska allergenguider — du vill veta vilka allergener du ska introducera tidigt</li>
+</ul>
+
+<CTABox productName="Matstolar för bebis" store="Jollyroom" description="En bra matstol är en av de viktigaste köpen inför avvänjningen. Säker, stabil och lätt att göra ren." affiliateUrl="https://www.jollyroom.se/barnrummet/matstolar/" />
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>

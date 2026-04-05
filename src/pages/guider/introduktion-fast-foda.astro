@@ -1,0 +1,177 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Introduktion av fast föda' },
+];
+
+const faqItems = [
+  {
+    question: 'Vad är det första man ska ge bebisen?',
+    answer: 'Livsmedelsverket rekommenderar att börja med grönsaker, rotfrukter eller frukt som puré eller mjuka bitar (BLW). Populära förstaval: morot, sötpotatis, ärtor, avokado, banan. Välling och gröt kan också vara ett första val — välj berikad välling utan tillsatt socker. Det viktigaste är att börja introducera de stora allergenerna tidigt: ägg, gluten, fisk, nötter, mjölk och soja.',
+  },
+  {
+    question: 'Hur mycket ska bebisen äta i början?',
+    answer: 'Mycket lite — och det är normalt. De första 1–2 månaderna är avvänjningen i första hand smakutforskning, inte näring. Bröstmjölk eller modersmjölksersättning är fortfarande den primära näringen upp till minst 12 månaders ålder. En tesked puré eller en liten bit frukt per måltid räcker i början. Tvinga aldrig — låt bebisen bestämma mängden.',
+  },
+  {
+    question: 'Hur ofta ska man ge mat vid avvänjningen?',
+    answer: 'Börja med 1 gång per dag, öka gradvis till 2–3 gånger per dag under de första månaderna. Ge alltid bröstmjölk/ersättning före fasta maten de första veckorna — bebisen ska inte vara hungrig när den utforskar mat. Runt 8–9 månaders ålder brukar de flesta bebisar äta 3 mål fast föda per dag plus bröstmjölk/ersättning.',
+  },
+  {
+    question: 'Vad ska bebisen absolut inte äta under det första året?',
+    answer: 'Strikt undvika under första levnadsåret: honung (risk för botulism), tillsatt salt (njurarna klarar inte det), tillsatt socker, hela nötter och frön (kvävningsrisk), råa eller halvkokta ägg, stark kryddning, energidrycker och sötsaker. Sälta inte maten och läs på förpackningar — många produkter har dolt salt.',
+  },
+  {
+    question: 'Hur introducerar man allergener på ett säkert sätt?',
+    answer: 'Introducera ett nytt allergen i taget. Ge en liten mängd (t.ex. lite jordnötssmör utblandat i välling, en liten bit kokt ägg) och vänta 2–3 dagar innan du introducerar nästa allergen. Observera för reaktioner: nässelutslag, svullnad kring munnen, kräkningar, klåda. Anafylaxi (svår reaktion med svullnad i halsen, andningsproblem) är ovanligt men kräver 112 omedelbart. Introducera allergenerna gärna på morgonen — lättare att observera reaktioner under dagen.',
+  },
+  {
+    question: 'BLW eller puré — vilket är bäst för bebisen?',
+    answer: 'Forskning visar inga väsentliga skillnader i näringsstatus eller hälsoutfall om båda metoderna utförs korrekt. BLW stärker oral motorik och tuggförmåga, och det finns studier som visar lägre BMI i skolåldern. Purékost ger bättre kontroll över mängden och är enklare vid specifika näringsbehov. Kombinerat (BLISS-metoden) rekommenderas av Livsmedelsverket och är den vanligaste varianten i Sverige.',
+  },
+  {
+    question: 'Kan bebisen äta familje mat eller behöver hen special mat?',
+    answer: 'Från 8–9 månaders ålder kan de flesta bebisar äta anpassad familjjemat — utan tillsatt salt, socker och stark kryddning. Det är faktiskt att föredra: bebisen lär sig familjens smaker och matrytm. Undvik stark mat, rökta produkter och hårda råa grönsaker fram till 1 år. Köttet ska vara mört och väl genomstekt. En bra mixer i närheten är bra för att snabbt texturanpassa.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Introduktion av fast föda — komplett guide för bebis 2026"
+  description="Hur introducerar du fast föda för din bebis? Steg-för-steg guide med råd om när, vad och hur för 6 månader+."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/introduktion-fast-foda/"
+  updatedDate="2026-04-05"
+  showDisclaimer={false}
+  relatedArticles={[
+    { title: 'BLW-guide 2026', href: '/guider/blw-guide/' },
+    { title: 'Bebis allergier', href: '/guider/bebis-allergier/' },
+    { title: 'Mat till bebis 4 månader', href: '/guider/bebis-mat-4-manader/' },
+    { title: 'Bästa matstol 2026', href: '/matstolar/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Avvänjningen — introduktionen av fast föda — är en stor milstolpe för bebis och föräldrar. Den börjar vid 6 månaders ålder och sker gradvis under det första halvåret. Den här guiden tar dig steg för steg genom hela processen: vad du börjar med, hur du ökar, vad du undviker och hur du introducerar allergener rätt.
+</p>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Grundprinciper</p>
+  <ul class="text-sm text-text-light space-y-1 list-disc pl-4">
+    <li>Börja vid 6 månader (korrigerad ålder för prematura)</li>
+    <li>Bröstmjölk/ersättning är fortfarande primär näring till 12 månader</li>
+    <li>Introducera allergener tidigt — det minskar risken för allergi</li>
+    <li>Tvinga aldrig — låt bebisen bestämma mängden</li>
+    <li>Undvik honung, tillsatt salt och socker under hela första levnadsåret</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Steg-för-steg — avvänjningens fem faser</h2>
+
+<div class="space-y-4 mb-8">
+  <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-accent">
+    <h3 class="font-heading font-bold text-dark mb-2">Steg 1 — Välling och gröt (6 månader)</h3>
+    <p class="text-sm text-text-light mb-2">Börja med berikad välling eller spannmålsgröt utan tillsatt socker. Berika med bröstmjölk eller ersättning för välbekant smak. Ge 1–2 matskedar per gång, 1 gång per dag. Konsistens: lösflytande till en början, öka gradvis.</p>
+    <p class="text-xs text-text-light">Näringsvärde: järn, B-vitaminer, energi. Vällingen ersätter INTE bröstmjölk/ersättning.</p>
+  </div>
+
+  <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-green-500">
+    <h3 class="font-heading font-bold text-dark mb-2">Steg 2 — Grönsaker och rotfrukter (6–7 månader)</h3>
+    <p class="text-sm text-text-light mb-2">Introducera en grönsak i taget: morot, sötpotatis, ärtor, blomkål, broccoli, pumpa. Ångkoka och mixa till slät puré eller erbjud som mjuka bitar (BLW). Ge 2–4 matskedar per portion, 1–2 gånger per dag.</p>
+    <p class="text-xs text-text-light">Tips: Introducera grönsaker tidigt — befintlig forskning tyder på att tidig exponering skapar mer positiv inställning till grönsaker senare i livet.</p>
+  </div>
+
+  <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-blue-500">
+    <h3 class="font-heading font-bold text-dark mb-2">Steg 3 — Frukt (7 månader)</h3>
+    <p class="text-sm text-text-light mb-2">Banan, avokado, kokt äpple, päron, mango. Frukt är söt och populär men bör inte dominera — bebisen ska lära sig variation av smaker. Ge efter grönsaker för att undvika att bebisen föredrar söt mat.</p>
+    <p class="text-xs text-text-light">Undvik: juice och smoothies — bebisen ska äta mat, inte dricka kalorier. Hel frukt alltid.</p>
+  </div>
+
+  <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-orange-500">
+    <h3 class="font-heading font-bold text-dark mb-2">Steg 4 — Protein (7–8 månader)</h3>
+    <p class="text-sm text-text-light mb-2">Kött, fisk, ägg och baljväxter (linser, bönor). Välkokat kött mixat till puré eller som mört finrivet. Fisk 2–3 gånger per vecka — viktig källa till omega-3 och jod. Ägg är ett viktigt allergen — introducera tidigt och fullt genomkokt.</p>
+    <p class="text-xs text-text-light">Järn: Bebisar har begränsade järnreserver från födseln. Kött är den bästa järnkällan vid avvänjningen — prioritera det.</p>
+  </div>
+
+  <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-purple-500">
+    <h3 class="font-heading font-bold text-dark mb-2">Steg 5 — Varierad familjjekost (8–12 månader)</h3>
+    <p class="text-sm text-text-light mb-2">Bebisen kan nu äta anpassad familjekost utan tillsatt salt och socker. 3 mål per dag plus bröstmjölk/ersättning. Texturen kan vara grövre — klumpig puré, mosaad mat, mjuka bitar. Fortsätt introducera nya smaker och konsistenser för att undvika selektivt ätande.</p>
+    <p class="text-xs text-text-light">Mål: vid 12 månader äter bebisen i stort sett samma mat som resten av familjen, anpassad i textur.</p>
+  </div>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">BLW vs. puré — eller kombinerat?</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="font-semibold text-dark mb-2">Traditionell purékost</p>
+    <ul class="text-sm text-text-light space-y-1 list-disc pl-4">
+      <li>Lättare att kontrollera intaget</li>
+      <li>Fungerar om bebisen inte klarar bitar</li>
+      <li>Mer tidskrävande att tillaga</li>
+    </ul>
+  </div>
+  <div class="bg-accent/10 rounded-xl p-4 border border-accent/30">
+    <p class="font-semibold text-dark mb-2">BLW (baby-led weaning)</p>
+    <ul class="text-sm text-text-light space-y-1 list-disc pl-4">
+      <li>Stärker oral motorik</li>
+      <li>Bebisen äter med familjen</li>
+      <li>Lägre BMI i studier</li>
+      <li>Mer mesigt i början</li>
+    </ul>
+  </div>
+  <div class="bg-green-50 rounded-xl p-4 border border-green-200">
+    <p class="font-semibold text-green-900 mb-2">Kombinerat (BLISS)</p>
+    <ul class="text-sm text-green-800 space-y-1 list-disc pl-4">
+      <li>Rekommenderas av Livsmedelsverket</li>
+      <li>Flexibelt — anpassa per dag</li>
+      <li>Bäst av två världar</li>
+    </ul>
+  </div>
+</div>
+
+<p class="text-text-light mb-4">
+  Läs mer om BLW i vår <a href="/guider/blw-guide/" class="text-accent hover:underline">kompletta BLW-guide</a>.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Allergener — introducera alla tidigt</h2>
+<p class="text-text-light mb-4">
+  Forskning (LEAP-studien, EAT-studien) visar att tidig introduktion av allergener vid 6 månader minskar risken för matallergi med upp till 70–80 % för de vanligaste allergenerna. Livsmedelsverket rekommenderar numera att introducera alla stora allergener tidigt.
+</p>
+<p class="text-text-light mb-4">
+  Läs vår detaljerade guide om <a href="/guider/bebis-allergier/" class="text-accent hover:underline">bebis allergier och allergenintroduktion</a>.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Mat att undvika hela första levnadsåret</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-red-50">
+        <th class="text-left px-4 py-3 font-semibold text-red-900">Livsmedel</th>
+        <th class="text-left px-4 py-3 font-semibold text-red-900">Anledning</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Honung</td><td class="px-4 py-3 text-text-light">Risk för botulism — livsfarligt under 1 år</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Tillsatt salt</td><td class="px-4 py-3 text-text-light">Njurarna klarar inte att filtrera det</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Tillsatt socker</td><td class="px-4 py-3 text-text-light">Ökar risk för karies och övervikt, stör aptitreglering</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Hela nötter och stora frön</td><td class="px-4 py-3 text-text-light">Kvävningsrisk — mala eller mal fint till pasta</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Råa ägg</td><td class="px-4 py-3 text-text-light">Risk för salmonella — alltid fullt genomkokta</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Komjölk som dryck</td><td class="px-4 py-3 text-text-light">OK i matlagning, men ersätter inte bröstmjölk/ersättning</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Juice och sötade drycker</td><td class="px-4 py-3 text-text-light">Socker utan fiber — undvik helt under 1 år</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<CTABox productName="Matstolar för avvänjningen" store="Jollyroom" description="En stabil matstol med bra stöd är grundläggande för säker avvänjning. Jollyroom har ett brett sortiment." affiliateUrl="https://www.jollyroom.se/barnrummet/matstolar/" />
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>

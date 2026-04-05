@@ -1,0 +1,154 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Bilbarnstol prematur' },
+];
+
+const faqItems = [
+  {
+    question: 'Vilken minimivikt krävs för en bilbarnstol?',
+    answer: 'De flesta babyskydd är godkända från 45 cm och 2,0–2,5 kg. Cybex Cloud T i-Size är godkänd från 45 cm och ca 1,8 kg (i kombination med nedliggande läge). Kontrollera alltid tillverkarens specifikationer för exakt minimivikt. Prematura bebisar under 2 kg bör inte transporteras i vanligt babyskydd utan läkarinstruktioner och eventuell sjukhusutrustning.',
+  },
+  {
+    question: 'Kan prematura bebisar åka i vanlig bilbarnstol?',
+    answer: 'Det beror på bebisens vikt och hälsotillstånd. Mycket prematura bebisar (under 1,5 kg) rekommenderas ofta att ligga plant i bil — inte sitta i babyskydd. Många NICU-avdelningar gör en "car seat challenge" innan hemgång: bebisen sitter i bilbarnstolen under 90 minuter under övervakning för att kontrollera syresättning och andning. Följ alltid NICUs instruktioner.',
+  },
+  {
+    question: 'Vad är "car seat challenge" för prematura bebisar?',
+    answer: 'Car seat challenge är ett standardiserat test som utförs på NICU-avdelningen innan hemgång. Bebisen placeras i bilbarnstolen i 90–120 minuter medan syresättning, hjärtfrekvens och andning övervakas. Om bebisen klarar testet utan desaturationer (syredroppar) eller apné-episoder (andningsuppehåll) godkänns hemgång med babyskyddet. Om inte kan läggande transport rekommenderas.',
+  },
+  {
+    question: 'Vilket babyskydd passar bäst för prematura bebisar?',
+    answer: 'Cybex Cloud T i-Size är ett av de mest rekommenderade alternativen för prematura bebisar tack vare sitt uttöjbara läge (nästan horisontellt), vilket minskar belastningen på prematurens svaga rygg och nacke. Det är godkänt från 45 cm. Konsultera alltid din NICU eller barnläkare för specifik rekommendation baserat på ditt barns hälsotillstånd.',
+  },
+  {
+    question: 'Hur länge kan en prematur bebis sitta i babyskyddet?',
+    answer: 'Begränsa varje bilfärd till maximalt 2 timmar för späda bebisar — och kortare för prematura. Prematura bebisar är mer känsliga för den halvliggande positionen och riskerar syredroppar vid längre sittande. Ta pauser vid längre resor och lyft ur bebisen ur stolen. Under de första veckorna hemma: håll bilresor korta och nödvändiga.',
+  },
+  {
+    question: 'Ska prematura bebisar åka bakåtvänt?',
+    answer: 'Ja, precis som alla bebisar. Bakåtvänt åkande är säkrast och gäller i ännu högre grad för prematura bebisar vars nackmuskulatur är ännu svagare. Prematura bebisar bör åka bakåtvänt längre än terminsbebisar — det finns inga undantag för det. Babyskyddet du köper ska vara bakåtvänt och ska användas bakåtvänt tills stolen är utväxt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bilbarnstol prematur 2026 — för för tidigt födda bebisar"
+  description="Prematura bebisar har speciella krav på bilbarnstolen. Vi guidar dig till rätt val och vad du måste tänka på."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/bilbarnstolar/prematur/"
+  updatedDate="2026-04-05"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bästa bilbarnstol 2026', href: '/bilbarnstolar/' },
+    { title: 'Bakåtvänd bilbarnstol', href: '/bilbarnstolar/bakatvand/' },
+    { title: 'Bilbarnstol 0–18 kg', href: '/bilbarnstolar/0-18kg/' },
+    { title: 'Barnvagn för prematur', href: '/barnvagnar/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-4 max-w-2xl">
+  Att välja bilbarnstol för en prematur bebis är mer komplicerat än för en terminsbebis. Prematura bebisar har svagare muskulatur, mer känslig andning och speciella krav på position. Den här guiden hjälper dig att förstå vad du behöver veta — och vilket babyskydd som faktiskt passar.
+</p>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Konsultera alltid NICU och barnläkare</p>
+  <p class="text-sm text-red-800">Information i den här guiden är generell. Prematura bebisar har individuella behov som kan kräva avvikande lösningar. Din NICU-avdelning och barnläkare är den primära källan för rekommendationer om just ditt barn.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-4">Rekommenderat val — Cybex Cloud T i-Size</h2>
+
+<ProductCard
+  name="Cybex Cloud T i-Size"
+  badge="Passar prematura"
+  price="2 516 kr"
+  rating={4.7}
+  ageRange="Från 45 cm / ca 1,8 kg"
+  pros={[
+    'Uttöjbart läge — nästan horisontalt för prematura',
+    'Godkänd från 45 cm och lägst startgewicht på marknaden',
+    'i-Size (R129) med sidokrockskydd',
+    'ISOFIX + stödben för stabil montering',
+    'Enkel en-hands-anpassning av ryggvinkel'
+  ]}
+  cons={[
+    'Premiumpriser jämfört med standardbabyskydd',
+    'Tyngre att bära (ca 4,5 kg utan bas)'
+  ]}
+  ctaText="Se pris hos Jollyroom"
+  ctaHref="https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-sepia-black"
+/>
+
+<h2 class="font-heading text-xl font-bold mt-10 mb-3">Speciella krav för prematura bebisar</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">1. Minimivikt och minimillängd</h3>
+<p class="text-text-light mb-4">
+  De flesta babyskydd på marknaden är godkända från 40–45 cm och 2,0–2,5 kg. Cybex Cloud T har en av marknadens lägsta startnivåer (ca 1,8 kg med uttöjt läge). Kontrollera alltid exakt specifikation för just den stol du köper — det är inte tillåtet att använda en stol under angiven minimivikt.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">2. Liggande läge minskar andningsrisken</h3>
+<p class="text-text-light mb-4">
+  Prematura bebisar riskerar syredroppar (desaturationer) i sittande position. En halvliggande eller nästan horisontell position minskar risken för att nacken faller framåt och blockerar luftvägen. Välj babyskydd med möjlighet att ställa in en flack vinkel — och använd alltid den flataste inställningen för de minsta bebisarna.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">3. Car seat challenge — obligatorisk innan hemgång</h3>
+<p class="text-text-light mb-4">
+  Nästan alla NICU-avdelningar i Sverige utför en "car seat challenge" (bilfårstoler-test) innan en prematur bebis skrivs ut. Bebisen placeras i bilbarnstolen under 90–120 minuter medan andning och syresättning övervakas. Om testet passeras utan problem är babyskyddet godkänt. Misslyckas testet kan alternativ transport (plan position) behövas.
+</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">4. Krockkuddar och sele</h3>
+<p class="text-text-light mb-4">
+  Prematura bebisar är extra smala och kan ha svårt att passa i standard selebredder. Kontrollera att stolen har smala selealternativ och mjuka krockkuddar som håller bebisen stadigt på plats utan att skapa tryckpunkter.
+</p>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Kriterium</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Vad du letar efter</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Minimivikt</td><td class="px-4 py-3 text-text-light">Under 2,5 kg — helst 1,8–2,0 kg</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ryggvinkel</td><td class="px-4 py-3 text-text-light">Möjlighet till nästan horisontalt läge</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Seleanpassning</td><td class="px-4 py-3 text-text-light">Smala axelinlägg / selekuddar inkluderade</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Montering</td><td class="px-4 py-3 text-text-light">ISOFIX för stabil, felaktig-säker montering</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Sidoskydd</td><td class="px-4 py-3 text-text-light">Sidokrockskydd (LSP) — krav i i-Size</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad NICU brukar rekommendera</h2>
+<p class="text-text-light mb-4">
+  Svenska NICU-avdelningar har något varierande rutiner men delar generellt dessa rekommendationer:
+</p>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li>Utför car seat challenge innan hemgång — obligatorisk för bebisar under 37 veckors gestationsålder</li>
+  <li>Kortare bilfärder de första veckorna hemma — max 30–60 minuter åt gången</li>
+  <li>Alltid bakåtvänt — gäller i ännu högre grad än för terminsfödda</li>
+  <li>Använd medföljande nyföddinlägg och selekuddar — ta bort dem när bebisen växt ur dem</li>
+  <li>Kontrollera varannan månad att stolen fortfarande passar bebisens vikt och längd</li>
+</ul>
+
+<div class="mt-8 bg-gray-50 rounded-xl p-5">
+  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/bilbarnstolar/" class="text-accent hover:underline font-medium">Bästa bilbarnstolen 2026 — komplett test och jämförelse</a></li>
+    <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline font-medium">Bakåtvänd bilbarnstol — varför och hur länge</a></li>
+    <li><a href="/bilbarnstolar/0-18kg/" class="text-accent hover:underline font-medium">Bilbarnstol 0–18 kg — hela spädbarnsperioden</a></li>
+  </ul>
+</div>
+
+<FAQ items={faqItems} />
+
+<StickyCTA href="https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-sepia-black" text="Se Cybex Cloud T — passar prematura" />
+
+</ArticleLayout>

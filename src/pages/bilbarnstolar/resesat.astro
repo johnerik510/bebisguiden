@@ -1,0 +1,150 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Resesäte för bil' },
+];
+
+const faqItems = [
+  {
+    question: 'Kan man ta med barnstolen på flyget?',
+    answer: 'Ja, de flesta bilbarnstolar är godkända att installeras i flygplanet om flygbolaget tillåter det. CARES-harness (FAA-godkänd säkele) är ett bra alternativ till att ta med hela stolen. Kontrollera med flygbolaget i förväg — reglerna varierar. Vissa stolen kan checkas in kostnadsfritt som barnvagnsutrustning. Bilbarnstolen ska alltid skyddas i ett transportfodral vid incheckning.',
+  },
+  {
+    question: 'Måste man ha bilbarnstol i hyrbil?',
+    answer: 'Ja — barn under 135 cm och 36 kg måste alltid sitta i godkänd bilbarnstol, oavsett om bilen är hyrd eller inte. Du kan hyra barnstol av hyrbilsföretaget (kontrollera standard och skick noga) eller ta med din egen. En portabel bilbarnstol utan ISOFIX-bas kan vara smidigare i hyrbil.',
+  },
+  {
+    question: 'Vad är skillnaden mellan ett resesäte och ett vanligt babyskydd?',
+    answer: 'Resesäten och portabla bilbarnstolar är designade för att vara lätta att flytta mellan bilar, utan bas eller med en enkel adapter. Vanliga babyskydd med ISOFIX-bas är tyngre och mer optimerade för en specifik bil. Resesäten installeras ofta med bilbältet (utan ISOFIX) vilket gör dem mer universella men kräver noggrannare montering.',
+  },
+  {
+    question: 'Är bilbältesmonterade stolar lika säkra som ISOFIX?',
+    answer: 'Ja, om de monteras korrekt. Studier visar att felmontering är det stora säkerhetsproblemet — inte om det är ISOFIX eller bilbälte. Bilbältesmonterade stolar kräver mer noggrannhet vid installation men fungerar i alla bilar. Välj alltid ett märke med goda instruktioner och kontrollera att stolen sitter helt fast utan rörelse.',
+  },
+  {
+    question: 'Hur kontrollerar man att bilbarnstolen sitter rätt i hyrbilen?',
+    answer: 'Kontrollera: (1) Stolen rör sig inte mer än 2,5 cm åt något håll när du drar i den. (2) Bältet/ISOFIX är korrekt låst och synliga indikatorer visar grönt. (3) Barnets bröstklammer sitter i armhöjdsnivå. (4) Selen sitter tätt mot kroppen — du ska inte kunna klämma in mer än en finger under. Hyrbilsföretag har ofta personal som kan hjälpa med installation — fråga.',
+  },
+  {
+    question: 'Vad gäller i andra länder — är svenska regler tillräckliga?',
+    answer: 'Svenska bilbarnstolar godkända enligt i-Size (R129) eller R44/04 gäller i hela EU. De flesta länder utanför EU har liknande krav men kontrollera alltid lokala regler för ditt resmål. I USA gäller FMVSS-standarder — svenska stolar är inte automatiskt godkända för bil i USA. Flygsäkerheten styrs av flygbolaget och FAA/EASA, inte av bilstandarden.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Resesäte för bil 2026 — bilbarnstol för resor och hyrbil"
+  description="Planerar du resa med bebis? Guide till resesäten för bil, hyrbil och flyg — och vad du måste kontrollera."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/bilbarnstolar/resesat/"
+  updatedDate="2026-04-05"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bästa bilbarnstol 2026', href: '/bilbarnstolar/' },
+    { title: 'Bakåtvänd bilbarnstol', href: '/bilbarnstolar/bakatvand/' },
+    { title: 'Hopfällbar barnvagn för resor', href: '/barnvagnar/hopfallbar/' },
+    { title: 'Bilbarnstol prematur', href: '/bilbarnstolar/prematur/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-4 max-w-2xl">
+  Att resa med bebis ställer extra krav på bilbarnstolen. Oavsett om du hyr bil på semestern, reser med tåg och hyrbil eller behöver en stol som enkelt kan växlas mellan farföräldrarnas och din bil — den här guiden hjälper dig välja rätt.
+</p>
+
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-blue-900 mb-1">Lagkrav gäller alltid</p>
+  <p class="text-sm text-blue-800">Barn under 135 cm och 36 kg måste sitta i godkänd bilbarnstol i alla bilar — även hyrbilar, taxi och farföräldrarnas bil. Det gäller i hela EU. Kontrollera lokala regler vid resor utanför EU.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-4">Bäst för resor — Cybex Aton B2 i-Size</h2>
+
+<ProductCard
+  name="Cybex Aton B2 i-Size"
+  badge="Bäst för resor"
+  price="1 795 kr"
+  rating={4.5}
+  ageRange="0–18 månader (40–83 cm)"
+  pros={[
+    'Lätt (ca 2,9 kg) och enkel att bära utan bas',
+    'Kan monteras med bilbälte i hyrbil utan adapter',
+    'i-Size godkänd med sidokrocksskydd',
+    'Lägre pris — mer skonsamt om stolen skadas vid bagagehantering',
+    'Kompatibel med de flesta CYBEX-chassier för barnvagn'
+  ]}
+  cons={[
+    'Kräver mer noggrannhet vid bältesinstallation',
+    'Utan ISOFIX-bas är installationen mer tidskrävande',
+    'Kortare användningstid (till 83 cm) än bredare stolar'
+  ]}
+  ctaText="Se pris hos Jollyroom"
+  ctaHref="https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-aton-b2-i-size-babyskydd-sepia-black"
+/>
+
+<h2 class="font-heading text-xl font-bold mt-10 mb-4">Alternativ — Joie i-Gemm 2</h2>
+
+<ProductCard
+  name="Joie i-Gemm 2"
+  badge="Prisvärt resealternativ"
+  price="1 299 kr"
+  rating={4.3}
+  ageRange="0–12 månader (40–75 cm)"
+  pros={[
+    'Lågt pris — bra om du inte vill riskera primärstolen på resor',
+    'Extremt lätt (2,2 kg)',
+    'Kompatibel med Joie- och Aviva-chassier för barnvagn',
+    'Bältesmonterad — fungerar i alla bilar'
+  ]}
+  cons={[
+    'Kortare användningstid',
+    'Enklare sidoskydd jämfört med premium alternativ',
+    'Ingen ISOFIX — kräver korrekt bältesinstallation'
+  ]}
+  ctaText="Se pris hos Jollyroom"
+  ctaHref="https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/joie-i-gemm-2-babyskydd-carbon"
+/>
+
+<h2 class="font-heading text-xl font-bold mt-10 mb-3">Vad ska du tänka på vid resor?</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Hyrbil — det här måste du kontrollera</h3>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Har hyrbilen ISOFIX?</strong> Bilar från 2012 och framåt har det som standard, äldre bilar inte alltid. Välj alltid bältesmonterbar stol om du är osäker.</li>
+  <li><strong>Ta med montagebeskrivning</strong> — installera aldrig en stol utan att ha instruktionerna tillgängliga</li>
+  <li><strong>Testa installationen</strong> i hyrbilen innan du sätter i bebisen — dra i stolen och kontrollera att den sitter fast</li>
+  <li><strong>Hyr inte barnstol av hyrbilsföretaget</strong> utan att kontrollera skick, märke och tillverkningsår — gamla eller skadade stolar ger sämre skydd</li>
+</ul>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Flyg med bilbarnstol</h3>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li>Packa stolen i ett transportfodral — många babyskydd har egna väskor, annars köp ett universellt</li>
+  <li>Märk tydligt med ditt namn och kontaktuppgifter</li>
+  <li>De flesta flygbolag låter dig checka in barnstol kostnadsfritt — kontrollera med flygbolaget</li>
+  <li>Om du vill använda stolen på flyget: kontrollera med flygbolaget om det är tillåtet och om stolen har FAA-godkännande</li>
+  <li>CARES-harness (flygsele) är ett lättare alternativ till bilbarnstolen på planet</li>
+</ul>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Taxi och samåkning</h3>
+<p class="text-text-light mb-4">
+  I Sverige är du juridiskt skyldig att använda bilbarnstol även i taxi. Undantaget: om bilen är en taxi utan bakre ISOFIX och du inte har med dig en stol — du är inte straffrättsligt ansvarig om taxibolaget inte tillhandahåller stol. Men säkerhetsmässigt: ha alltid med en portabel stol eller välj en taxi som kan tillhandahålla godkänd stol.
+</p>
+
+<div class="mt-8 bg-gray-50 rounded-xl p-5">
+  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/bilbarnstolar/" class="text-accent hover:underline font-medium">Bästa bilbarnstolen 2026 — komplett guide</a></li>
+    <li><a href="/barnvagnar/hopfallbar/" class="text-accent hover:underline font-medium">Bästa hopfällbara barnvagnen 2026 — för resor</a></li>
+    <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline font-medium">Bakåtvänd bilbarnstol — allt du behöver veta</a></li>
+  </ul>
+</div>
+
+<FAQ items={faqItems} />
+
+<StickyCTA href="https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-aton-b2-i-size-babyskydd-sepia-black" text="Se Cybex Aton B2 — lättast för resor" />
+
+</ArticleLayout>
