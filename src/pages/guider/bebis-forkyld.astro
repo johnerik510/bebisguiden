@@ -1,0 +1,134 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis förkyld' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur vet jag om min bebis är förkyld?',
+    answer: 'Typiska förkylningssymtom hos bebis: snuva (klar eller gul/grön), hosta, nysningar, lindrig feber (under 38,5°C), trötthet och eventuellt svårigheter att amma eller suga pga igentäppt näsa. Bebisen kan vara irritabel och sova sämre. En förkylning varar typiskt 7–10 dagar. Gul/grön snuva betyder inte alltid bakterieinfektion — det är normalt att snuvan ändrar färg under en förkylning.',
+  },
+  {
+    question: 'Hur använder man saltvattendroppar rätt?',
+    answer: 'Håll bebisen med huvudet lätt bakåtlutat. Droppa 2–3 droppar Nasosal, Renässans eller liknande koksaltdroppar i varje näsborre. Vänta 1–2 minuter. Använd sedan en nässugare för att försiktigt suga ut det upplösta slemmet. Upprepa 3–4 gånger om dagen och alltid 15 minuter före matning så bebisen kan andas och äta. Receptfritt på apotek.',
+  },
+  {
+    question: 'Vad är skillnaden mellan förkylning, influensa och RSV?',
+    answer: 'Förkylning börjar gradvis med snuva och hosta — mild till måttlig sjukdomskänsla. Influensa kommer snabbt med hög feber (39–40°C), kraftig trötthet och muskelvärk. RSV (RS-virus) liknar en förkylning men kan ge allvarligare andningsbesvär hos spädbarn — pip-ljud, snabb andning, indragningar. RSV-symptom hos bebis under 3 månader kräver alltid vård.',
+  },
+  {
+    question: 'Kan man ge Nasoferm eller avsvällande näsdroppar till bebis?',
+    answer: 'Avsvällande näsdroppar med xylometazolin (Nezeril, Nasoferm) rekommenderas inte till bebisar under 2 år. De kan ge biverkningar och beredskapskravet är strängt. Rena koksaltdroppar (NaCl 9 mg/ml) är det säkra alternativet för att lösa upp slem. Kontakta alltid BVC eller apotek innan du ger näsdroppar till en liten bebis.',
+  },
+  {
+    question: 'Ska en förkyld bebis stanna hemma från öppen förskola?',
+    answer: 'Ja — stanna hemma med en sjuk bebis tills febern är borta och allmäntillståndet är gott. Viruset sprids via luften och kontakt. Det är extra viktigt att skydda nyfödda och immunsvaga barn. En tumregel: om bebisen inte orkar leka och är påtagligt sjuk — stanna hemma. Det är en hänsyn till andra familjer i gruppen.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis förkyld — symtom, råd och när söker du vård"
+  description="Vad gör du när din bebis är förkyld? Symtom, hemmaråd och tydlig guide till när du bör ringa 1177."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-forkyld/"
+  updatedDate="2026-04-05"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bebis hostar', href: '/guider/bebis-hostad/' },
+    { title: 'Bebis feber', href: '/guider/bebis-feber/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+    { title: 'Säker sovmiljö', href: '/guider/saker-sovmiljo/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  En förkyld bebis är jobbig att se — och som förälder är det svårt att veta när man ska agera. Den här guiden sammanfattar vad 1177.se och Socialstyrelsen säger om förkylning hos spädbarn.
+</p>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-2">Sök akutvård om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Bebisen är under 3 månader med feber 38°C+</li>
+    <li>Bebisen andas snabbt (mer än 60 andetag/minut) eller har synliga indragningar vid revbenen</li>
+    <li>Bebisen är slapp och svår att väcka</li>
+    <li>Bebisen vägrar att äta under mer än ett dygn</li>
+    <li>Läppar eller fingertoppar blåfärgas</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Symtom — vad är normalt vid förkylning?</h2>
+<ul class="list-disc pl-5 text-text-light space-y-2 mb-6">
+  <li><strong>Snuva</strong> — börjar klar, kan bli gul/grön — det är normalt och betyder inte alltid bakterieinfektion</li>
+  <li><strong>Nysningar</strong> — kroppens sätt att rensa näsan</li>
+  <li><strong>Hosta</strong> — slem som rinner ner i halsen</li>
+  <li><strong>Lindrig feber</strong> — 37,5–38,5°C är vanligt vid förkylning</li>
+  <li><strong>Matningssvårigheter</strong> — igentäppt näsa gör det svårare att suga</li>
+  <li><strong>Trötthet och irritabilitet</strong> — bebisen sover mer och är gnälligare</li>
+</ul>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Speciellt viktigt under 3 månaders ålder</h2>
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
+  <p class="text-sm text-red-800"><strong>Bebis under 3 månader med feber 38°C+ = akut vård alltid.</strong> Det gäller även vid förkylning. Nyfödda har omoget immunsystem och kan inte visa tidiga tecken på allvarlig infektion lika tydligt som äldre barn. Vänta inte — ring 1177 eller åk till barnakuten.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Hemmaråd — vad hjälper?</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Saltvattendroppar och nässugare</h3>
+<p class="text-text-light mb-4">Det effektivaste hemmarådet för förkyld bebis. Koksaltdroppar löser upp slem och gör det möjligt att suga ut det med nässugare. Använd 2–3 droppar per näsborre, vänta en minut, sug sedan ut slemmet. Gör det 3–4 gånger om dagen och alltid före matning.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Nässugarens roll</h3>
+<p class="text-text-light mb-4">En bra nässugare gör en stor skillnad. Bebisar andas genom näsan och kan inte snyta sig. Elektriska nässugare (exempelvis Frida NoseFrida Electric) fungerar bättre än manuella för de flesta föräldrar. Rengör nässugaren noggrant efter varje användning.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Amning</h3>
+<p class="text-text-light mb-4">Fortsätt amma — bröstmjölk innehåller antikroppar som hjälper bebisen att bekämpa infektionen. Ge kortare men oftare ammningar om bebisen har svårt att suga med igentäppt näsa. Amningshjälpen (0200-61 69 00) kan ge stöd.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Luftfuktighet och sovposition</h3>
+<p class="text-text-light mb-4">Fuktig luft (luftfuktare, 50–55%) kan lindra torrhosta och irriterade slemhinnor. Höj madrassen lätt (lägg en handduk under madrassen, inte under bebisen) för att underlätta andning under sömn. Bebisen ska aldrig sova med löst material i sängen.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Skillnad förkylning, influensa och RSV</h2>
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Diagnos</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Debut</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Feber</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Allvarlighetsgrad hos spädbarn</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Förkylning</td><td class="px-4 py-3 text-text-light">Gradvis</td><td class="px-4 py-3 text-text-light">Mild eller ingen</td><td class="px-4 py-3 text-text-light">Vanligtvis mild</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Influensa</td><td class="px-4 py-3 text-text-light">Snabb</td><td class="px-4 py-3 text-text-light">Hög (39–40°C)</td><td class="px-4 py-3 text-text-light">Kan vara allvarlig</td></tr>
+      <tr><td class="px-4 py-3 font-medium">RSV</td><td class="px-4 py-3 text-text-light">Gradvis</td><td class="px-4 py-3 text-text-light">Variabel</td><td class="px-4 py-3 text-text-light">Kan ge bronkiolit — allvarlig hos spädbarn</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Kom ihåg</p>
+  <p class="text-sm text-text-light">En vanlig förkylning varar 7–10 dagar. Bebisar under 2 år kan ha 6–10 förkylningar per år — det är normalt och bygger upp immunförsvaret. Ring alltid 1177 om du är osäker.</p>
+</div>
+
+<CTABox productName="Nässugare och koksaltdroppar" store="Jollyroom" description="Elektrisk nässugare och koksaltdroppar — de viktigaste verktygen vid bebis förkylning." affiliateUrl="https://www.jollyroom.se/babyprodukter/halsa-hygien" />
+
+<div class="mt-8 bg-gray-50 rounded-xl p-5">
+  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/guider/bebis-hostad/" class="text-accent hover:underline font-medium">Bebis hostar — orsaker och råd</a></li>
+    <li><a href="/guider/bebis-feber/" class="text-accent hover:underline font-medium">Bebis feber — när söker du vård</a></li>
+    <li><a href="/babyvakter/" class="text-accent hover:underline font-medium">Bästa babyvakten 2026</a></li>
+    <li><a href="/guider/saker-sovmiljo/" class="text-accent hover:underline font-medium">Säker sovmiljö för bebisen</a></li>
+  </ul>
+</div>
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>

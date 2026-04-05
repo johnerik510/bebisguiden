@@ -1,0 +1,150 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis hostar' },
+];
+
+const faqItems = [
+  {
+    question: 'När ska man ringa 1177 om bebisen hostar?',
+    answer: 'Ring 1177 om: bebisen är under 3 månader och hostar, hostan kombineras med feber 38°C+, bebisen hostar ihållande i mer än 1 vecka, bebisen har svårt att sova eller äta på grund av hostan, du hör ett pipande ljud vid andning, eller om du som förälder är orolig. 1177 är alltid rätt att ringa när du är osäker.',
+  },
+  {
+    question: 'Kan jag ge hostmedicin till bebis?',
+    answer: 'Nej — hostmedicin (hostsirap, hostdroppar) rekommenderas inte till barn under 2 år och är inte godkänd för bebisar. Läkemedelsverket varnar mot det. Saltvattendroppar i näsan kan lindra besvären indirekt genom att mjuka upp slem och underlätta andning, vilket minskar behovet av att hosta. Kontakta alltid 1177 innan du ger bebisen något läkemedel.',
+  },
+  {
+    question: 'Vad är krupp och hur känner man igen det?',
+    answer: 'Krupp (strupkatarr) är en virusinfektion i luftstrupen som ger svullnad och ett karakteristiskt skällande, skrovligt hostljud — som ett säls skall. Det åtföljs ofta av ett pip-ljud (stridor) vid inandning. Krupp är vanligast hos barn 6 månader till 3 år, ofta värst nattetid. Mild krupp kan hanteras hemma med kall luft (öppna ett fönster). Sök akut om bebisen andas snabbt, har svårt att andas eller är blåfärgad.',
+  },
+  {
+    question: 'Hur länge varar bebis hosta?',
+    answer: 'En vanlig förkylningshosta varar typiskt 1–2 veckor. Hosta kan kvarstå upp till 3–4 veckor efter en förkylning, även om bebisen i övrigt är frisk. Det är normalt. Om hostan kvarstår mer än 3–4 veckor eller om bebisen ser sjukare ut än förväntat, bör du kontakta BVC eller 1177 för bedömning.',
+  },
+  {
+    question: 'Är hosta smittsamt?',
+    answer: 'Hosta är ofta ett symptom på en virusinfektion och är smittsamt via luften och direktkontakt. Stanna hemma med en hostande bebis tills febern är borta och allmäntillståndet är gott. Tvätta händer ofta. Viruset sprids via droppar när bebisen hostar eller nyser — håll avstånd till känsliga personer som nyfödda och äldre.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis hostar — orsaker, hemmaråd och när du söker vård"
+  description="Din bebis hostar? Lär dig skilja torrhosta, slemhosta och krupp — och vet när du ska ringa 1177."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-hostad/"
+  updatedDate="2026-04-05"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Bebis feber — guide', href: '/guider/bebis-feber/' },
+    { title: 'Bebis förkyld', href: '/guider/bebis-forkyld/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+    { title: 'Checklista inför bebis', href: '/guider/bebis-checklista/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Hosta hos en liten bebis kan vara skrämmande. De flesta hostfall hos bebisar är ofarliga, men det finns situationer som kräver snabb vård. Den här guiden hjälper dig att förstå vad bebisens hosta beror på och när du måste agera.
+</p>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-2">Ring 112 omedelbart om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Bebisen har allvarliga andningssvårigheter, blåfärgade läppar eller andas mycket snabbt</li>
+    <li>Bebisen är slapp, reagerar inte normalt eller är svår att väcka</li>
+    <li>Bebisen är under 3 månader med hosta kombinerad med feber 38°C+</li>
+    <li>Kramper</li>
+  </ul>
+  <p class="text-sm font-semibold text-red-900 mt-3 mb-2">Ring 1177 om:</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Bebisen under 3 månader hostar</li>
+    <li>Du hör ett skällande hostljud (krupp) eller pipljud vid inandning</li>
+    <li>Hostan hindrar bebisen från att äta eller sova</li>
+    <li>Hostan kombineras med feber hos bebis 3–6 månader</li>
+    <li>Du är orolig — alltid rätt att ringa</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Typer av hosta — vad hörs?</h2>
+
+<div class="overflow-x-auto mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Typ av hosta</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Hur den låter</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Vanlig orsak</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">Åtgärd</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr><td class="px-4 py-3 font-medium">Torrhosta</td><td class="px-4 py-3 text-text-light">Torr, hackig, irriterande</td><td class="px-4 py-3 text-text-light">Tidig förkylning, allergi, torr luft</td><td class="px-4 py-3 text-text-light">Luftfuktare, saltvattendroppar</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Slemhosta</td><td class="px-4 py-3 text-text-light">Blöt, rosslig</td><td class="px-4 py-3 text-text-light">Förkylning, RSV</td><td class="px-4 py-3 text-text-light">Nässugare, saltvattendroppar</td></tr>
+      <tr><td class="px-4 py-3 font-medium">Skällande hosta</td><td class="px-4 py-3 text-text-light">Som ett säls skall, skrovlig</td><td class="px-4 py-3 text-text-light">Krupp (strupkatarr)</td><td class="px-4 py-3 text-text-light">Kall luft, ring 1177</td></tr>
+      <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Hosta med pipljud</td><td class="px-4 py-3 text-text-light">Pip vid inandning (stridor)</td><td class="px-4 py-3 text-text-light">Krupp, objekt i luftvägarna</td><td class="px-4 py-3 text-text-light">Sök akut</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vanliga orsaker till hosta hos bebis</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Förkylning (vanligaste orsaken)</h3>
+<p class="text-text-light mb-4">Virus i de övre luftvägarna orsakar snuva som rinner ner i halsen och utlöser hosta. En normal förkylning ger hosta i 1–2 veckor. Hostan kan kvarstå upp till 3–4 veckor även om febern och snuvan är borta.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">RS-virus (RSV)</h3>
+<p class="text-text-light mb-4">RSV är ett vanligt luftvägsvirus som hos vuxna ger en mild förkylning, men hos spädbarn — särskilt under 6 månader — kan ge allvarligare andningsbesvär (bronkiolit). Symptom: snuva, hosta, andningssvårigheter, pip-ljud. Sök alltid vård om bebisen under 3 månader har symtom på RSV.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Krupp (strupkatarr)</h3>
+<p class="text-text-light mb-4">Krupp orsakas av ett virus som svullnar upp luftstrupen. Det karakteristiska skällande hostljudet är typiskt. Krupp förvärras ofta nattetid. Kall luft (öppna ett fönster) kan lindra. Mild krupp hanteras hemma — ring 1177 för råd, sök akut vid andningssvårigheter.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">Kikhosta</h3>
+<p class="text-text-light mb-4">Kikhosta ger kraftiga hostattacker som slutar med ett "kikande" ljud vid inandning. Hos bebisar under 6 månader kan kikhosta vara livshotande — de kan inte hosta effektivt. Kikhosta vaccineras mot i barnvaccinationsprogrammet (DTP-vaccin). Sök vård omedelbart om du misstänker kikhosta hos en liten bebis.</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Hemmaråd vid bebis hosta</h2>
+<ol class="list-decimal pl-5 text-text-light space-y-3 mb-6">
+  <li><strong>Saltvattendroppar i näsan</strong> — löser upp slem och underlättar andning. Ge 2–3 droppar i varje näsborre 15 minuter före matning och vid behov. Bekomst receptfritt på apotek.</li>
+  <li><strong>Nässugare</strong> — använd efter saltvattendroppar för att suga ut slem. Fungerar bäst för bebisar under 6 månader som inte kan snyta sig.</li>
+  <li><strong>Höj huvudändan</strong> — lägg en handduk under madrassen (inte under bebisen) för att höja huvudändan lätt. Obs: bebisen ska aldrig sova med kudde eller liknande löst material i sängen.</li>
+  <li><strong>Luftfuktare</strong> — fuktig luft kan lindra torrhosta. Håll rummet runt 50–55% luftfuktighet. Tvätta luftfuktaren regelbundet för att undvika mögeltillväxt.</li>
+  <li><strong>Amning</strong> — bröstmjölk innehåller antikroppar och ger vätska och näring. Amma oftare om bebisen är sjuk.</li>
+</ol>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigt att veta</p>
+  <p class="text-sm text-text-light">Hostmedicin och hostsirap är inte godkänt för bebisar och kan vara farligt. Ge aldrig hostmedicin till barn under 2 år utan läkares ordination.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Åldersguide — extra viktigt för yngre bebisar</h2>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">0–3 månader — extra allvarligt</h3>
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-4">
+  <p class="text-sm text-red-800">Nyfödda och unga bebisar har omogna luftvägar och immunsystem. Hosta kombinerat med feber 38°C+ = akut vård omedelbart. Kikhosta och RSV kan vara livshotande i den här åldern. Ring alltid 1177 vid hosta hos bebis under 3 månader.</p>
+</div>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">3–6 månader</h3>
+<p class="text-text-light mb-4">Ring 1177 vid hosta kombinerad med feber, andningssvårigheter eller om bebisen vägrar äta. Titta på andningsfrekvensen — mer än 60 andetag per minut hos en liten bebis är ett varningstecken.</p>
+
+<h3 class="font-heading text-lg font-semibold mt-6 mb-2">6–12 månader</h3>
+<p class="text-text-light mb-4">Bebisen klarar en enkel förkylningshosta bättre nu. Hemmaråd kan fungera. Ring 1177 om hostan är kraftig, kombineras med andningssvårigheter, varar mer än 2 veckor eller om du är orolig.</p>
+
+<CTABox productName="Babyvakt — håll koll på bebisen" store="Bebisguiden" description="En bra babyvakt gör det enklare att höra bebisen sova och andas när hon är sjuk." affiliateUrl="/babyvakter/" />
+
+<div class="mt-8 bg-gray-50 rounded-xl p-5">
+  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/guider/bebis-forkyld/" class="text-accent hover:underline font-medium">Bebis förkyld — symtom och råd</a></li>
+    <li><a href="/guider/bebis-feber/" class="text-accent hover:underline font-medium">Bebis feber — när söker du vård</a></li>
+    <li><a href="/babyvakter/" class="text-accent hover:underline font-medium">Bästa babyvakten 2026 — håll koll på bebisen</a></li>
+    <li><a href="/guider/saker-sovmiljo/" class="text-accent hover:underline font-medium">Säker sovmiljö för bebisen</a></li>
+  </ul>
+</div>
+
+<FAQ items={faqItems} />
+
+</ArticleLayout>

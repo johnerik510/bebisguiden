@@ -1,0 +1,247 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker', href: '/leksaker/' },
+  { label: 'Leksaker 6–12 månader' },
+];
+
+const products = [
+  {
+    name: 'Alice & Fox Stapeltorn Safari',
+    badge: 'Bäst i test',
+    price: '299 kr',
+    rating: 4.8,
+    image: '/images/products/alice-fox-stapeltorn-safari.jpg',
+    ctaHref: 'https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari',
+    features: {
+      'Lämplig ålder': '6–36 mån',
+      'Material': 'Trä',
+      'Stimulerar': 'Finmotorik + kognition',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+  {
+    name: 'PolarB Stapelklossar Djur',
+    badge: 'Bäst budget',
+    price: '149 kr',
+    rating: 4.6,
+    image: '/images/products/polarb-stapelklossar-djur.jpg',
+    ctaHref: 'https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-djur',
+    features: {
+      'Lämplig ålder': '6 mån+',
+      'Material': 'Trä',
+      'Stimulerar': 'Grepp + kognition',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+  {
+    name: 'Little Dutch Fairy Garden Stapelklossar',
+    badge: 'Bäst design',
+    price: '149 kr',
+    rating: 4.7,
+    image: '/images/products/little-dutch-fairy-garden-stapelklossar.jpg',
+    ctaHref: 'https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar',
+    features: {
+      'Lämplig ålder': '6 mån+',
+      'Material': 'Trä',
+      'Stimulerar': 'Finmotorik + syn',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+  {
+    name: 'Oball Classic Bold Boll, Röd, Blå, Grön och Gul',
+    badge: 'Bäst för krypning',
+    price: '129 kr',
+    rating: 4.8,
+    image: '/images/products/oball-classic-boll.jpg',
+    ctaHref: 'https://www.jollyroom.se/leksaker/babyleksaker/bitringar/oball-classic-bold-boll-rod-bla-gron-och-gul',
+    features: {
+      'Lämplig ålder': '0–12 mån',
+      'Material': 'Plast BPA-fri',
+      'Stimulerar': 'Grepp + krypning',
+      'Säkerhetsgodkänd': 'Ja',
+    },
+  },
+];
+
+const featureLabels = ['Lämplig ålder', 'Material', 'Stimulerar', 'Säkerhetsgodkänd'];
+
+const faqItems = [
+  {
+    question: 'Vilka leksaker är bäst för en bebis som börjar krypa?',
+    answer: 'Bollar som rullar iväg är perfekta för att motivera krypning — bebisen vill ta tag i bollen och rör sig framåt. Oball Classic Bold Boll är en favorit för det ändamålet eftersom den är lätt att greppa med öppna mönster. Stapeltorn och klossar är bra komplement som tränar finmotorik när bebisen sitter.',
+  },
+  {
+    question: 'Vad tränar stapelleksaker?',
+    answer: 'Stapelleksaker som Alice & Fox Stapeltorn Safari tränar finmotorik (att plocka upp och placera ringer), orsak-verkan-förståelse (om jag staplar för högt faller tornet), storleksuppfattning (stora ringar på botten, små på toppen) och ögon-handkoordination. Det är också en av de första leksakerna där bebisen kan se ett tydligt "resultat" av sina handlingar.',
+  },
+  {
+    question: 'Är träleksaker säkra för en 6 månaders bebis?',
+    answer: 'Ja, om de är korrekt tillverkade och bär CE-märkning. Kontrollera att lackeringen är fri från skadliga ämnen, att inga delar kan lossna och att leksaken saknar vassa kanter. PolarB och Little Dutch är välkända märken med hög säkerhetsstandard. Alla tre stapelleksaker i vår test är godkända för bebis från 6 månader.',
+  },
+  {
+    question: 'Hur stimulerar jag bebisens kognitiva utveckling med leksaker?',
+    answer: 'Leksaker med orsak-verkan (tryck på knapp — händer något) och lösa delar som kan plockas isär och sättas ihop är bäst för kognitiv stimulans runt 6–12 månader. Stapelleksaker, formsorterar och bollar att rulla är alla bra. Prata med bebisen om vad hon gör — "nu lägger du den stora ringen", "vad händer nu?" — det kombinerar motorisk och språklig stimulans.',
+  },
+  {
+    question: 'Från vilken ålder kan bebisen spela boll?',
+    answer: 'Att kasta en boll med precision kräver motorisk kontroll som de flesta bebisar inte har förrän runt 18 månader. Men att rulla en boll fram och tillbaka är roligt redan från 6–8 månader. Sitt på golvet med bebisen och rulla Oball-bollen mot henne. Det tränar ögon-handskoordination och är en av de första interaktiva lekarna.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa leksaker bebis 6–12 månader 2026 — krypning, grepp och kognitiv utveckling"
+  description="Vilka leksaker passar bebis 6–12 månader? Vi rankar bästa stapelleksaker, bollar och aktivitetsleksaker — med riktiga priser från Jollyroom."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/leksaker/6-12-manader/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Mellan 6 och 12 månader börjar bebisen sitta, krypa och stå med stöd. Det är en tid av explosiv motorisk och kognitiv utveckling. Stapelklossar, bollar och formsorterar stimulerar finmotorik, orsak-verkan-förståelse och krypning.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — leksaker 6–12 månader</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val</p>
+    <p class="text-sm text-text-light"><strong>Alice & Fox Stapeltorn Safari</strong> är den mest kompletta stapelleksaken med vackert hantverk i trä. <strong>Oball Classic Bold Boll</strong> är bäst för att stimulera krypning och grepp. <strong>PolarB Stapelklossar</strong> är det bästa budgetalternativet.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval för 6–12 månader</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Alice & Fox Stapeltorn Safari"
+      badge="Bäst i test"
+      price="299 kr"
+      rating={4.8}
+      image="/images/products/alice-fox-stapeltorn-safari.jpg"
+      ageRange="6–36 månader"
+      pros={['Vackert målat trä i safari-motiv', 'Stimulerar storleksuppfattning och finmotorik', 'Hållbart och lätttvättat', 'Passar som gåva']}
+      cons={['Medelstort pris', 'Kräver finkontroll — utmanande för de yngsta 6-månadersbebisarna']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari"
+    />
+
+    <ProductCard
+      name="PolarB Stapelklossar Djur"
+      badge="Bäst budget"
+      price="149 kr"
+      rating={4.6}
+      image="/images/products/polarb-stapelklossar-djur.jpg"
+      ageRange="6 månader och uppåt"
+      pros={['Lågt pris', 'Trä med djurmotiv som stimulerar igenkänning', 'Lämplig storlek för bebisens hand', 'CE-godkänd']}
+      cons={['Enklare design', 'Färre bitar än dyrare alternativ']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-djur"
+    />
+
+    <ProductCard
+      name="Little Dutch Fairy Garden Stapelklossar"
+      badge="Bäst design"
+      price="149 kr"
+      rating={4.7}
+      image="/images/products/little-dutch-fairy-garden-stapelklossar.jpg"
+      ageRange="6 månader och uppåt"
+      pros={['Vacker Fairy Garden-illustration', 'Trä med säker ytbehandling', 'Little Dutch — känt kvalitetsmärke', 'Bra pris för märket']}
+      cons={['Rundade former — kan rulla iväg', 'Passar bäst 8 månader och uppåt']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar"
+    />
+
+    <ProductCard
+      name="Oball Classic Bold Boll"
+      badge="Bäst för krypning"
+      price="129 kr"
+      rating={4.8}
+      image="/images/products/oball-classic-boll.jpg"
+      ageRange="0–12 månader"
+      pros={['Öppet mönster — enkel att greppa med liten hand', 'Lätt och smidig', 'Stimulerar krypning när bollen rullar iväg', 'Mycket lågt pris', 'BPA-fri plast']}
+      cons={['Ingen pedagogisk funktion utöver rullning och grepp', 'Kan trilla under möbler']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/leksaker/babyleksaker/bitringar/oball-classic-bold-boll-rod-bla-gron-och-gul"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vad händer i bebisens utveckling 6–12 månader?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Grovmotorik — sitta, krypa, stå</h3>
+    <p>Runt 6 månader sitter de flesta bebisar med lite stöd. Krypning startar typiskt runt 7–10 månader, och mot slutet av det första året börjar många stå med stöd och ta sina första steg. Leksaker som motiverar rörelse — bollar, leksaker att hämta — stödjer den här processen naturligt.</p>
+
+    <h3>Finmotorik — pincettgreppet</h3>
+    <p>Runt 9 månader börjar bebisen använda tumme och pekfinger för att plocka upp föremål — det så kallade pincettgreppet. Stapelklossar och formsorterar med olika storlekar är perfekt träning för det här. Ge bebisen klossar att plocka upp, flytta och lägga ned.</p>
+
+    <h3>Kognition — orsak och verkan</h3>
+    <p>Bebisen förstår allt mer om hur världen fungerar. Om jag knuffar klossarna faller de — och det är roligt. Orsak-verkan-förståelse bygger grunden för logiskt tänkande. Välj leksaker där bebisen ser ett direkt resultat av sina handlingar.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler leksaksguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/leksaker/3-6-manader/" class="text-accent hover:underline">Bästa leksaker bebis 3–6 månader 2026</a></li>
+      <li><a href="/leksaker/montessori/" class="text-accent hover:underline">Montessorileksaker bebis 2026</a></li>
+      <li><a href="/leksaker/" class="text-accent hover:underline">Alla babyleksaker — översikt</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Alice & Fox Stapeltorn Safari',
+      description: 'Stapeltorn i trä med safari-motiv. Stimulerar finmotorik och storleksuppfattning. Lämplig 6–36 månader.',
+      image: 'https://bebisguiden.se/images/products/alice-fox-stapeltorn-safari.jpg',
+      brand: 'Alice & Fox',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 299, url: 'https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'PolarB Stapelklossar Djur',
+      description: 'Stapelklossar i trä med djurmotiv. CE-godkänd. Lämplig från 6 månader.',
+      image: 'https://bebisguiden.se/images/products/polarb-stapelklossar-djur.jpg',
+      brand: 'PolarB',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 149, url: 'https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-djur', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Little Dutch Fairy Garden Stapelklossar',
+      description: 'Stapelklossar i trä med Fairy Garden-design. Säker ytbehandling. Lämplig från 6 månader.',
+      image: 'https://bebisguiden.se/images/products/little-dutch-fairy-garden-stapelklossar.jpg',
+      brand: 'Little Dutch',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 149, url: 'https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Oball Classic Bold Boll',
+      description: 'Lätt boll i BPA-fri plast med öppet mönster. Enkel att greppa för bebis. Stimulerar krypning. Lämplig 0–12 månader.',
+      image: 'https://bebisguiden.se/images/products/oball-classic-boll.jpg',
+      brand: 'Oball',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 129, url: 'https://www.jollyroom.se/leksaker/babyleksaker/bitringar/oball-classic-bold-boll-rod-bla-gron-och-gul', seller: 'Jollyroom' }],
+    },
+  ]} />
+
+  <CTABox productName="Leksaker 6–12 månader" store="Jollyroom" affiliateUrl="https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar" description="Stort sortiment stapelleksaker och aktivitetsleksaker för bebis." />
+
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari"
+  text="Se pris — Alice & Fox Stapeltorn Safari"
+  productName="Bäst i test April 2026"
+/>
