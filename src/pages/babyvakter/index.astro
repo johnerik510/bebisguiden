@@ -13,33 +13,48 @@ const breadcrumbs = [
 
 const products = [
   {
-    name: 'Philips Avent SCD923',
+    name: 'Philips Avent DECT SCD503/26',
     badge: 'Bäst i test',
-    price: '2 490 kr',
+    price: '849 kr',
     rating: 4.7,
     image: '/images/products/philips-avent-scd923.jpg',
-    ctaHref: 'https://www.philips.se/c-p/SCD923_26/connected-connected-baby-monitor',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt',
     features: {
       'Typ': 'Ljud (DECT)',
-      'Räckvidd': '300 m',
+      'Räckvidd': '330 m',
       'Batteritid': '24 h (sparläge)',
       'Säkerhet': 'DECT – ingen WiFi-risk',
-      'Pris': '2 490 kr',
+      'Pris': '849 kr',
     },
   },
   {
-    name: 'Luvion Grand Elite 3',
+    name: 'Philips Avent SCD735/26',
     badge: 'Bästa video',
-    price: '3 290 kr',
+    price: '1 299 kr',
     rating: 4.6,
-    image: '/images/products/luvion-grand-elite-3.jpg',
-    ctaHref: 'https://www.luvion.com/wifi-baby-monitor/luvion-grand-elite-3-connect-plus-black-set/',
+    image: '/images/products/philips-avent-scd735.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus',
     features: {
-      'Typ': 'Video (sluten signal)',
+      'Typ': 'Video med ljusfunktion',
       'Räckvidd': '300 m',
-      'Batteritid': '8 h (videoläge)',
-      'Säkerhet': 'Sluten signal – ingen internet',
-      'Pris': '3 290 kr',
+      'Batteritid': '10 h (sparläge)',
+      'Säkerhet': 'DECT – ingen WiFi-risk',
+      'Pris': '1 299 kr',
+    },
+  },
+  {
+    name: 'Neonate BC-5800D V2',
+    badge: 'Bäst budget',
+    price: '499 kr',
+    rating: 4.3,
+    image: '/images/products/neonate-bc5800d.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt',
+    features: {
+      'Typ': 'Ljud (DECT)',
+      'Räckvidd': '300 m',
+      'Batteritid': '6 h',
+      'Säkerhet': 'DECT – ingen WiFi-risk',
+      'Pris': '499 kr',
     },
   },
   {
@@ -101,34 +116,46 @@ const faqItems = [
 
   <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
     <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>Philips Avent SCD923</strong> är bäst för säkert ljud (DECT). <strong>Luvion Grand Elite 3</strong> är bäst för video. <strong>Owlet Cam 2</strong> är bäst för WiFi-flexibilitet.</p>
+    <p class="text-sm text-text-light"><strong>Philips Avent DECT SCD503/26</strong> är bäst för säkert ljud. <strong>Philips Avent SCD735/26</strong> är bäst för video. <strong>Neonate BC-5800D V2</strong> är bäst budget. <strong>Owlet Cam 2</strong> är bäst för WiFi-flexibilitet.</p>
   </div>
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
   <div class="space-y-4">
     <ProductCard
-      name="Philips Avent SCD923"
+      name="Philips Avent DECT SCD503/26"
       badge="Bäst i test"
-      price="2 490 kr"
+      price="849 kr"
       rating={4.7}
       image="/images/products/philips-avent-scd923.jpg"
-      pros={['Kristallklart ljud', 'DECT-teknik — ingen WiFi-risk', 'Lång batteritid (24 h sparläge)', '300 m räckvidd']}
-      cons={['Enbart ljud — ingen video', 'Högre pris för en ljudvakt']}
-      ctaText="Se pris hos Reirei"
-      ctaHref="https://www.philips.se/c-p/SCD923_26/connected-connected-baby-monitor"
+      pros={['Kristallklart ljud', 'DECT-teknik — ingen WiFi-risk', 'Lång batteritid (24 h sparläge)', '330 m räckvidd']}
+      cons={['Enbart ljud — ingen video', 'Ingen app-koppling']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt"
     />
 
     <ProductCard
-      name="Luvion Grand Elite 3 Connect"
+      name="Philips Avent SCD735/26"
       badge="Bästa video"
-      price="3 290 kr"
+      price="1 299 kr"
       rating={4.6}
-      image="/images/products/luvion-grand-elite-3.jpg"
-      pros={['Stor 4,3-tumsskärm', 'Nattkamera med skarp bild', 'Temperaturvisning', 'Sluten signal — ingen internet']}
-      cons={['Tyngre föräldraenhet', 'Kort batteritid vid videovisning']}
-      ctaText="Se pris hos Reirei"
-      ctaHref="https://www.luvion.com/wifi-baby-monitor/luvion-grand-elite-3-connect-plus-black-set/"
+      image="/images/products/philips-avent-scd735.jpg"
+      pros={['Video med nattkamera', 'DECT-teknik — ingen WiFi-risk', 'Temperaturvisning', 'Mjusikspelning för att lugna barnet']}
+      cons={['Ingen app-koppling', 'Begränsad räckvidd vid videoläge']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus"
+    />
+
+    <ProductCard
+      name="Neonate BC-5800D V2"
+      badge="Bäst budget"
+      price="499 kr"
+      rating={4.3}
+      image="/images/products/neonate-bc5800d.jpg"
+      pros={['Prisvärd DECT-babyvakt', 'Enkel att använda', 'Pålitlig räckvidd upp till 300 m', 'Nattlampa ingår']}
+      cons={['Kortare batteritid (ca 6 h)', 'Ingen video eller app']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt"
     />
 
     <ProductCard
@@ -139,7 +166,7 @@ const faqItems = [
       image="/images/products/owlet-cam-2.jpg"
       pros={['HD-video via app', 'Tvåvägskommunikation', 'Se barnet varifrån som helst med internet', 'Prisvärd WiFi-lösning']}
       cons={['Beroende av WiFi-anslutning', 'Möjlig månadskostnad för molnlagring']}
-      ctaText="Se pris hos Reirei"
+      ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white"
     />
   </div>
@@ -185,22 +212,31 @@ const faqItems = [
 
   <ProductSchema products={[
     {
-      name: 'Philips Avent SCD923',
-      description: 'DECT-babyvakt med kristallklart ljud och 300 meters räckvidd. Upp till 24 timmars batteritid i sparläge. Ingen WiFi-risk.',
+      name: 'Philips Avent DECT SCD503/26',
+      description: 'DECT-babyvakt med kristallklart ljud och 330 meters räckvidd. Upp till 24 timmars batteritid i sparläge. Ingen WiFi-risk.',
       image: 'https://bebisguiden.se/images/products/philips-avent-scd923.jpg',
       brand: 'Philips',
       ratingValue: 4.7,
       reviewCount: 1,
-      offers: [{ price: 2490, url: 'https://www.philips.se/c-p/SCD923_26/connected-connected-baby-monitor', seller: 'Reirei' }],
+      offers: [{ price: 849, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt', seller: 'Jollyroom' }],
     },
     {
-      name: 'Luvion Grand Elite 3 Connect',
-      description: 'Videobabyvakt med 4,3-tumsskärm och sluten signal. Nattkamera, temperaturvisning och 300 meters räckvidd. Ingen internet krävs.',
-      image: 'https://bebisguiden.se/images/products/luvion-grand-elite-3.jpg',
-      brand: 'Luvion',
+      name: 'Philips Avent SCD735/26',
+      description: 'Videobabyvakt med nattkamera och DECT-teknik. Temperaturvisning och musikfunktion. Ingen WiFi-risk.',
+      image: 'https://bebisguiden.se/images/products/philips-avent-scd735.jpg',
+      brand: 'Philips',
       ratingValue: 4.6,
       reviewCount: 1,
-      offers: [{ price: 3290, url: 'https://www.luvion.com/wifi-baby-monitor/luvion-grand-elite-3-connect-plus-black-set/', seller: 'Reirei' }],
+      offers: [{ price: 1299, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Neonate BC-5800D V2',
+      description: 'Prisvärd DECT-babyvakt med 300 meters räckvidd och nattlampa. Enkel och pålitlig.',
+      image: 'https://bebisguiden.se/images/products/neonate-bc5800d.jpg',
+      brand: 'Neonate',
+      ratingValue: 4.3,
+      reviewCount: 1,
+      offers: [{ price: 499, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt', seller: 'Jollyroom' }],
     },
     {
       name: 'Owlet Cam 2',
@@ -209,13 +245,13 @@ const faqItems = [
       brand: 'Owlet',
       ratingValue: 4.4,
       reviewCount: 1,
-      offers: [{ price: 1990, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white', seller: 'Reirei' }],
+      offers: [{ price: 1990, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white', seller: 'Jollyroom' }],
     },
   ]} />
 </ArticleLayout>
 
 <StickyCTA
-  href="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/"
-  text="Se bästa pris – Philips Avent SCD923"
+  href="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt"
+  text="Se pris hos Jollyroom – Philips Avent DECT"
   productName="Bäst i test April 2026"
 />

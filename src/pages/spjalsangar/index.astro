@@ -28,12 +28,12 @@ const products = [
     },
   },
   {
-    name: 'Stokke Sleepi V3',
+    name: 'Stokke Sleepi Säng V3 Natural',
     badge: 'Bäst i test',
     price: '5 999 kr',
     rating: 4.8,
     image: '/images/products/stokke-sleepi-v3.jpg',
-    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-vit',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural',
     features: {
       'Typ': 'Oval spjälsäng',
       'Mått': 'Oval, utbyggbar',
@@ -85,6 +85,36 @@ const products = [
       'Material': 'Bok',
       'Åldersgrupp': '0–3 år',
       'Pris': '4 499 kr',
+    },
+  },
+  {
+    name: 'Woodies Starlight Spjälsäng Växa',
+    badge: 'Bra pris/kvalitet',
+    price: '1 999 kr',
+    rating: 4.5,
+    image: '/images/products/woodies-starlight.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/woodies-starlight-spjalsang-vaxa-vit',
+    features: {
+      'Typ': 'Växasäng',
+      'Mått': '70x140 cm',
+      'Material': 'Trä',
+      'Åldersgrupp': '0–6 år',
+      'Pris': '1 999 kr',
+    },
+  },
+  {
+    name: 'Woodies Modern Spjälsäng',
+    badge: 'Snyggast budget',
+    price: '1 299 kr',
+    rating: 4.4,
+    image: '/images/products/woodies-modern.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/woodies-modern-spjalsang-vit',
+    features: {
+      'Typ': 'Standard spjälsäng',
+      'Mått': '70x140 cm',
+      'Material': 'Trä',
+      'Åldersgrupp': '0–3 år',
+      'Pris': '1 299 kr',
     },
   },
 ];
@@ -155,15 +185,15 @@ const faqItems = [
     />
 
     <ProductCard
-      name="Stokke Sleepi V3"
+      name="Stokke Sleepi Säng V3 Natural"
       badge="Bäst i test"
       price="5 999 kr"
       rating={4.8}
       image="/images/products/stokke-sleepi-v3.jpg"
-      pros={['Oval design -- säkrare hörn', 'Växer med barnet från 0 till 10 år', 'Utbyggbar med tillbehör', 'Tidlös skandinavisk design']}
+      pros={['Oval design — säkrare hörn', 'Växer med barnet från 0 till 10 år', 'Utbyggbar med tillbehör', 'Tidlös skandinavisk design']}
       cons={['Högt pris', 'Kräver märkets egna madrasser och tillbehör']}
-      ctaText="Se pris hos Reirei"
-      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-vit"
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural"
       rel="sponsored noopener"
     />
 
@@ -199,10 +229,36 @@ const faqItems = [
       price="4 499 kr"
       rating={4.7}
       image="/images/products/leander-luna.jpg"
-      pros={['Skandinavisk design', 'Massiv bok med rena linjer', 'Regulerbar sängbotten', 'Passar 0-3 år']}
-      cons={['Högt pris for standardstorlek', 'Begränsat tillbehörssortiment']}
+      pros={['Skandinavisk design', 'Massiv bok med rena linjer', 'Regulerbar sängbotten', 'Passar 0–3 år']}
+      cons={['Högt pris för standardstorlek', 'Begränsat tillbehörssortiment']}
       ctaText="Se pris hos Reirei"
       ctaHref="https://miixi.se/brand/leander/leander-spjalsang-luna-140x70-cm/"
+      rel="sponsored noopener"
+    />
+
+    <ProductCard
+      name="Woodies Starlight Spjälsäng Växa"
+      badge="Bra pris/kvalitet"
+      price="1 999 kr"
+      rating={4.5}
+      image="/images/products/woodies-starlight.jpg"
+      pros={['Växasäng — passar 0–6 år', 'Standardmått 70x140 cm', 'Justerbar sängbotten', 'Bra pris för funktionerna']}
+      cons={['Enklare material än premiumalternativ', 'Kräver egna madrasser']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/woodies-starlight-spjalsang-vaxa-vit"
+      rel="sponsored noopener"
+    />
+
+    <ProductCard
+      name="Woodies Modern Spjälsäng"
+      badge="Snyggast budget"
+      price="1 299 kr"
+      rating={4.4}
+      image="/images/products/woodies-modern.jpg"
+      pros={['Modern minimalistisk design', 'Standardmått 70x140 cm', 'Prisvärd', 'Enkel montering']}
+      cons={['Inga extras', 'Passar bara 0–3 år']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/woodies-modern-spjalsang-vit"
       rel="sponsored noopener"
     />
   </div>
@@ -254,13 +310,13 @@ const faqItems = [
       offers: [{ price: 499, url: 'https://www.ikea.com/se/sv/p/sniglar-spjalsang-bok-00114291/', seller: 'IKEA' }],
     },
     {
-      name: 'Stokke Sleepi V3',
+      name: 'Stokke Sleepi Säng V3 Natural',
       description: 'Oval spjälsäng i bok som växer med barnet från 0 till 10 år. Utbyggbar med tillbehör. Skandinavisk design.',
       image: 'https://bebisguiden.se/images/products/stokke-sleepi-v3.jpg',
       brand: 'Stokke',
       ratingValue: 4.8,
       reviewCount: 1,
-      offers: [{ price: 5999, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-vit', seller: 'Reirei' }],
+      offers: [{ price: 5999, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural', seller: 'Jollyroom' }],
     },
     {
       name: 'Joie Roomie Bedside Crib',
@@ -282,12 +338,30 @@ const faqItems = [
     },
     {
       name: 'Leander Luna',
-      description: 'Spjälsäng i massiv bok med skandinavisk design. Regulerbar sängbotten. Passar 0-3 år.',
+      description: 'Spjälsäng i massiv bok med skandinavisk design. Regulerbar sängbotten. Passar 0–3 år.',
       image: 'https://bebisguiden.se/images/products/leander-luna.jpg',
       brand: 'Leander',
       ratingValue: 4.7,
       reviewCount: 1,
       offers: [{ price: 4499, url: 'https://miixi.se/brand/leander/leander-spjalsang-luna-140x70-cm/', seller: 'Reirei' }],
+    },
+    {
+      name: 'Woodies Starlight Spjälsäng Växa',
+      description: 'Växasäng i trä som passar 0–6 år. Standardmått 70x140 cm med justerbar sängbotten.',
+      image: 'https://bebisguiden.se/images/products/woodies-starlight.jpg',
+      brand: 'Woodies',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 1999, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/woodies-starlight-spjalsang-vaxa-vit', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Woodies Modern Spjälsäng',
+      description: 'Modern minimalistisk spjälsäng 70x140 cm. Prisvärd med enkel montering. Passar 0–3 år.',
+      image: 'https://bebisguiden.se/images/products/woodies-modern.jpg',
+      brand: 'Woodies',
+      ratingValue: 4.4,
+      reviewCount: 1,
+      offers: [{ price: 1299, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/woodies-modern-spjalsang-vit', seller: 'Jollyroom' }],
     },
   ]} />
 
@@ -304,8 +378,8 @@ const faqItems = [
 </ArticleLayout>
 
 <StickyCTA
-  href="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-vit"
-  text="Se bästa pris -- Stokke Sleepi V3"
+  href="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural"
+  text="Se pris hos Jollyroom – Stokke Sleepi V3"
   productName="Bäst i test April 2026"
   rel="sponsored noopener"
 />
