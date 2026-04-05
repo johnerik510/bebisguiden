@@ -1,0 +1,161 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Ergobaby' },
+];
+
+const products = [
+  {
+    name: 'Ergobaby Omni 360 Bärsele',
+    badge: 'Bäst totalt',
+    price: '1 699 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-luminous-ivory',
+    features: {
+      'Typ': 'Bärsele',
+      'Barnets vikt': '3,2–20 kg',
+      'Bärpositioner': '4',
+      'Material': 'Bomull',
+      'HIPS-certifierad': 'Ja',
+    },
+  },
+  {
+    name: 'Ergobaby Embrace Bärsele',
+    badge: 'Bäst för nyfödda',
+    price: '1 199 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black',
+    features: {
+      'Typ': 'Nyföddbärsele',
+      'Barnets vikt': '3,2–11,3 kg',
+      'Bärpositioner': '2',
+      'Material': 'Mjuk bomull',
+      'HIPS-certifierad': 'Ja',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Barnets vikt', 'Bärpositioner', 'Material', 'HIPS-certifierad'];
+
+const faqItems = [
+  {
+    question: 'Vad är Ergobaby känt för?',
+    answer: 'Ergobaby är ett amerikanskt varumärke grundat 2003 som specialiserat sig på ergonomiska bärselen. Märket är känt för att sätta M-positionen i centrum — det innebär att barnets knän är i nivå med höften vilket ger rätt stöd för höftutvecklingen. Ergobabys bärselen är certifierade av HIPS (International Hip Dysplasia Institute).',
+  },
+  {
+    question: 'Vad är skillnaden mellan Ergobaby Omni 360 och Embrace?',
+    answer: 'Ergobaby Omni 360 är den mångsidiga modellen som används från nyfödd (3,2 kg) till 4 år (20 kg) i fyra positioner: framåtvänd, inåtvänd, ryggbärning och höftbärning. Ergobaby Embrace är specifikt designad för nyfödda (0–6 månader, upp till 11,3 kg) och har en mjukare, mer omslutande konstruktion. Många familjer börjar med Embrace och övergår sedan till Omni 360.',
+  },
+  {
+    question: 'Är Ergobaby Omni 360 bra för ryggen?',
+    answer: 'Ja, Ergobaby Omni 360 har ett brett vadderat midjebälte som tar ca 70% av barnets vikt och avlastar axlarna. Axelbanden är justerbara och ger stöd för olika kroppslängder. Bärselen ska sitta tätt mot kroppen — ett löst sittande barn belastar ryggen mer oavsett märke. Ergobaby rekommenderas av fysioterapeuter för sin ergonomiska utformning.',
+  },
+  {
+    question: 'Kan man använda Ergobaby Omni 360 från födseln?',
+    answer: 'Ja, Ergobaby Omni 360 kan användas från nyfödd (från 3,2 kg) utan extra inlägg. Sitsen justeras för att ge rätt stöd för nyfödda med en smalare position. Det är en av fördelarna jämfört med äldre modeller som krävde ett inlägg de första månaderna.',
+  },
+  {
+    question: 'Var köper man Ergobaby i Sverige?',
+    answer: 'Ergobaby säljs hos Jollyroom och andra barnproduktsbutiker i Sverige. Jollyroom har ett brett urval av Ergobabys bärselen med snabb leverans. Kontrollera alltid att du köper från en auktoriserad återförsäljare för att garantin ska gälla.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Ergobaby — recension och test av bärselen 2026"
+  description="Vi recenserar Ergobabys bärselen 2026. Omni 360 vs Embrace — vilken passar dig? Se priser, ergonomi och betyg hos Jollyroom."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Ergobaby är ett av världens ledande märken för ergonomiska bärselen. Det amerikanska varumärket grundades 2003 och är känt för att sätta M-positionen och HIPS-certifieringen i centrum. Vi recenserar deras två mest sålda modeller i Sverige 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Ergobabys bästa bärselen 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Ergobaby Omni 360 Bärsele"
+      badge="Bäst totalt"
+      price="1 699 kr"
+      rating={4.8}
+      image="/images/products/ergobaby-omni-360.jpg"
+      ageRange="0–4 år (3,2–20 kg)"
+      pros={['HIPS-certifierad M-position för korrekt höftutveckling', '4 bärpositioner inkl. ryggbärning', 'Används från nyfödd — inget extra inlägg behövs', 'Brett midjebälte avlastar ryggen']}
+      cons={['Varm under sommaren — välj Cool Air-versionen då', 'Tar lite tid att lära sig knäppa rätt']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-luminous-ivory"
+    />
+
+    <ProductCard
+      name="Ergobaby Embrace Bärsele"
+      badge="Bäst för nyfödda"
+      price="1 199 kr"
+      rating={4.6}
+      image="/images/products/ergobaby-embrace.jpg"
+      ageRange="0–6 mån (3,2–11,3 kg)"
+      pros={['Mjukast och mest omslutande av Ergobabys modeller', 'HIPS-certifierad M-position', 'Korsbara axelremmar — bra stöd för bärarens rygg', 'Lägsta priset bland Ergobabys bärselen']}
+      cons={['Används bara till ca 6 månader (11,3 kg)', 'Bara 2 bärpositioner', 'Behöver kompletteras med Omni 360 när barnet växer']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">För- och nackdelar med Ergobaby</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fördelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> HIPS-certifierad — rekommenderas av höftspecialister</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Används från nyfödd utan extra inlägg</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Lång livslängd — Omni 360 används upp till 4 år</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett sortiment för olika behov och åldrar</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Välkänt internationellt märke med bra service</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Kan vara varmt att bära i sommarvärme</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tar lite tid att lära sig använda rätt</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Embrace har begränsad livslängd (0–6 mån)</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Dyrare än enklare bärselen utan ergonomicertifiering</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Ergobaby</h3>
+    <p>Ergobaby grundades 2003 i Hawaii av en mor som ville ha en bekvämare lösning för att bära sin son. Märket har sedan dess vuxit till ett av världens ledande inom ergonomiska bärselen och säljs i över 50 länder. Ergobabys produkter är designade i USA och tillverkas med fokus på barnets naturliga kroppsposition och förälderns komfort. Alla Ergobaby-bärselen är HIPS-certifierade av International Hip Dysplasia Institute.</p>
+
+    <h3>Är Ergobaby rätt märke för dig?</h3>
+    <p>Ergobaby är ett utmärkt val om du prioriterar ergonomi, säker bärning från dag ett och lång livslängd. Omni 360 är en av de mest mångsidiga bärselarna på marknaden och används av många familjer som enda bärsele under hela bärningsperioden. Om du söker en mjuk nyföddbärsele är Embrace ett bra komplement eller startpunkt.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen April 2026 — test och jämförelse</a></li>
+      <li><a href="/barselen/nyfodd/" class="text-accent hover:underline">Bästa bärsele för nyfödd April 2026</a></li>
+      <li><a href="/barselen/sommar/" class="text-accent hover:underline">Bästa sommarbärsele April 2026 — lätt och svalkande</a></li>
+      <li><a href="/marken/babybjorn/" class="text-accent hover:underline">BabyBjörn produkter 2026 — recension och test</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    href="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-luminous-ivory"
+    text="Se pris hos Jollyroom — Ergobaby Omni 360"
+  />
+</ArticleLayout>

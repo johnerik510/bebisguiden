@@ -1,0 +1,160 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Kinderkraft' },
+];
+
+const products = [
+  {
+    name: 'Kinderkraft MOOV 2 3-in-1 Kombivagn',
+    badge: 'Bäst kombivagn',
+    price: '2 995 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/kombivagnar/kinderkraft-moov-2-3-in-1-kombivagn-pure-black',
+    features: {
+      'Typ': 'Kombivagn 3-in-1',
+      'Vikt chassi': '9,8 kg',
+      'Sufflett': 'UPF50+',
+      'Sits': 'Vändbar 2-in-1',
+      'Pris': '2 995 kr',
+    },
+  },
+  {
+    name: 'Kinderkraft 3-i-1 NEWLY Travelsystem',
+    badge: 'Komplett paket',
+    price: '2 695 kr',
+    rating: 4.3,
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/kinderkraft-3-i-1-newly-kombivagn-travelsystem-classic-black',
+    features: {
+      'Typ': 'Kombivagn 3-i-1 Travelsystem',
+      'Vikt chassi': '10,5 kg',
+      'Sufflett': 'Ingår',
+      'Sits': 'Vändbar ergonomisk',
+      'Pris': '2 695 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Vikt chassi', 'Sufflett', 'Sits', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad är Kinderkraft känt för?',
+    answer: 'Kinderkraft är ett polskt varumärke grundat 2005 som är känt för prisvärda barnprodukter med modern design. Märket erbjuder ett brett sortiment av barnvagnar, bilbarnstolar och tillbehör till ett lägre pris än etablerade premiumvagnar. Kinderkraft är populärt bland föräldrar som söker snygg design och god funktion utan premiumprislapp.',
+  },
+  {
+    question: 'Är Kinderkraft-vagnar säkra?',
+    answer: 'Ja, alla Kinderkraft-produkter uppfyller europeiska säkerhetsstandarder och är CE-märkta. Märket testades och godkändes av oberoende europeiska testnätverk. Som med alla barnvagnar bör du alltid kontrollera att selen är korrekt monterad och att bromsarna fungerar. Kinderkraft levererar god säkerhet för sitt prissegment.',
+  },
+  {
+    question: 'Vad innebär 3-in-1 på Kinderkrafts vagnar?',
+    answer: 'Kinderkrafts 3-in-1-vagnar kan användas som tre olika system: som duovagn med liggdel, som sittvagn och (med kompatibel bilbarnstol) som ett komplett travelsystem. Den 2-in-1-sits som ingår kan fällas ner till ett liggläge för nyfödda och fällas upp till ett sittläge när barnet är äldre. Det gör vagnen till ett kostnadseffektivt alternativ som räcker från nyfödd till 3–4 år.',
+  },
+  {
+    question: 'Hur länge håller en Kinderkraft-vagn?',
+    answer: 'Kinderkrafts vagnar håller generellt 3–5 år vid normalt bruk. Materialkvaliteten är lägre än premiumvagnar men bättre än de allra billigaste alternativen. Begagnatmarknaden är begränsad — premiumvagnar har bättre andrahandsvärde. Kinderkraft är ett bra val om du söker en ny vagn på budget och inte planerar att sälja vidare.',
+  },
+  {
+    question: 'Passar Kinderkraft-vagnar i en vanlig bil?',
+    answer: 'Kinderkrafts vagnar är generellt mer kompakta och lättviktiga än premiumvagnar, vilket gör dem lättare att lyfta in i bagageutrymmet. MOOV 2-chassit väger 9,8 kg och är konstruerat för att fällas ihop kompakt. Kontrollera alltid de exakta måtten ihopfällt mot ditt bagageutrymme — mät alltid innan köp.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Kinderkraft — test av barnvagnar och bilstolar 2026"
+  description="Vi recenserar Kinderkrafts barnvagnar och bilstolar 2026. MOOV 2 och NEWLY Travelsystem — prisvärda polska vagnar testade. Se priser hos Jollyroom."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Kinderkraft är ett polskt varumärke grundat 2005 som erbjuder ett brett sortiment av barnprodukter med modern design till priser under premiumsegmentet. Märket är ett populärt val för föräldrar som söker god funktion utan att betala premiumpriser. Vi recenserar deras mest populära vagnar hos Jollyroom i Sverige 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Kinderkrafts bästa barnvagnar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Kinderkraft MOOV 2 3-in-1 Kombivagn"
+      badge="Bäst kombivagn"
+      price="2 995 kr"
+      rating={4.5}
+      image="/images/products/kinderkraft-moov2.jpg"
+      ageRange="Från nyfödd till 3 år"
+      pros={['3-in-1: duovagn, sittvagn och travelsystem', 'Lättviktig chassi (9,8 kg)', 'UPF50+ sufflett för solskydd', 'Vändbar 2-in-1 sits']}
+      cons={['Enklare materialval', 'Begränsad fjädring', 'Kortare livslängd än premiumvagnar']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/kombivagnar/kinderkraft-moov-2-3-in-1-kombivagn-pure-black"
+    />
+
+    <ProductCard
+      name="Kinderkraft 3-i-1 NEWLY Travelsystem"
+      badge="Komplett paket"
+      price="2 695 kr"
+      rating={4.3}
+      image="/images/products/kinderkraft-prime2.jpg"
+      ageRange="Från nyfödd till 3 år"
+      pros={['Komplett travelsystem i ett paket', 'Vändbar ergonomisk sits', '2-in-1 sittdel som förvandlas till liggdel', 'Bäst pris i Kinderkrafts sortiment']}
+      cons={['Lite tyngre chassi (10,5 kg)', 'Begränsad fjädring', 'Enklare finish']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/kinderkraft-3-i-1-newly-kombivagn-travelsystem-classic-black"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">För- och nackdelar med Kinderkraft</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fördelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Bäst pris per funktion i sin kategori</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Modern design som konkurrerar med dyrare märken</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> CE-märkt och säkerhetsgodkänd</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett produktsortiment — vagnar, bilstolar och tillbehör</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Lättviktig konstruktion — enkel att lyfta</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Lägre materialkvalitet än premium</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Begränsat andrahandsvärde</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Enklare fjädring — märks på ojämnt underlag</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Mindre tillbehörssortiment än etablerade märken</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Kinderkraft</h3>
+    <p>Kinderkraft grundades 2005 i Polen och har snabbt vuxit till ett av Europas mest sålda barnvagnsmärken i mellansegmentet. Märket designar sina produkter med fokus på modern estetik och praktisk funktion till ett rimligt pris. Kinderkraft säljer i över 70 länder och har ett brett sortiment av barnvagnar, bilbarnstolar, leksaker och tillbehör. Alla produkter uppfyller europeiska säkerhetsstandarder och är CE-märkta.</p>
+
+    <h3>Är Kinderkraft rätt märke för dig?</h3>
+    <p>Kinderkraft är rätt val om du söker en modern och funktionell vagn till ett lägre pris. Märket levererar god funktion och snygg design utan premiumprislapp. Om du däremot söker maximal hållbarhet, bästa möjliga körkomfort och vill sälja vagnen vidare efter användning kan ett premiumalternativ som Cybex ge bättre värde på sikt.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen April 2026 — test och jämförelse</a></li>
+      <li><a href="/barnvagnar/budget/" class="text-accent hover:underline">Bästa budgetbarnvagnen 2026</a></li>
+      <li><a href="/marken/hauck/" class="text-accent hover:underline">Hauck barnvagnar 2026 — recension och test</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/kombivagnar/kinderkraft-moov-2-3-in-1-kombivagn-pure-black"
+    text="Se pris hos Jollyroom — Kinderkraft MOOV 2"
+  />
+</ArticleLayout>

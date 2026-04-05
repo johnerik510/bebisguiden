@@ -1,0 +1,161 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'Medela' },
+];
+
+const products = [
+  {
+    name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
+    badge: 'Bäst totalt',
+    price: '3 099 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump',
+    features: {
+      'Typ': 'Elektrisk dubbelpump',
+      'Hands-free': 'Ja — kupor döljs i BH',
+      'Teknologi': '2-Phase Expression',
+      'Portabilitet': 'Ryms i fickan',
+      'Pris': '3 099 kr',
+    },
+  },
+  {
+    name: 'Medela Swing Maxi Hands-free Elektrisk Dubbelbröstpump',
+    badge: 'Bäst pris/prestanda',
+    price: '2 279 kr',
+    rating: 4.6,
+    ctaHref: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-hands-free-elektrisk-dubbelbrostpump',
+    features: {
+      'Typ': 'Elektrisk dubbelpump',
+      'Hands-free': 'Ja',
+      'Teknologi': '2-Phase Expression',
+      'Portabilitet': 'Kompakt',
+      'Pris': '2 279 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Hands-free', 'Teknologi', 'Portabilitet', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad är Medela känt för?',
+    answer: 'Medela är ett schweiziskt företag grundat 1961 som är världsledande inom bröstpumpar och amningsprodukter. Märket används av sjukhus och ammningskliniker världen över och är känt för sin 2-Phase Expression-teknologi som efterliknar barnets naturliga sugmönster med stimulationsfas och uttryckningsfas. Medela är det mest rekommenderade bröstpumpsmärket av barnmorskor och ammningskonsulter i Sverige.',
+  },
+  {
+    question: 'Vad är 2-Phase Expression-teknologin?',
+    answer: 'Medelas 2-Phase Expression-teknologi efterliknar hur ett barn naturligt ammar. Fas 1 (stimulering) är snabb och lätt suction som stimulerar mjölknedsläppet — precis som när ett barn börjar amma. Fas 2 (uttryckning) är långsammare och kraftfullare och tömmer bröstet effektivt. Forskning visar att teknologin ger mer mjölk på kortare tid jämfört med enpumpar.',
+  },
+  {
+    question: 'Vad är skillnaden mellan Freestyle Hands-free och Swing Maxi?',
+    answer: 'Medela Freestyle Hands-free är den mest avancerade och diskreta modellen — kuporna döljs inuti BH:n och pumpen ryms i fickan, vilket ger total rörelsefrihet. Swing Maxi Hands-free är mer kompakt och prisvärd men kräver att du håller kuporna på plats. Båda använder 2-Phase Expression-teknologin. Freestyle är bäst för den aktiva mamman; Swing Maxi ger bäst pris/prestanda.',
+  },
+  {
+    question: 'Kan man använda Medelas bröstpump på sjukhuset?',
+    answer: 'Medelas sjukhusmodeller (Symphony) är standardutrustning på svenska BB-avdelningar och neonatalavdelningar. Hemmodellerna (Freestyle, Swing Maxi) är designade för eget bruk och ska inte delas med andra av hygienskäl — de är så kallade single-user-pumpar. Om du behöver en kraftfullare pump tidigt efter förlossningen kan du hyra en Medela Symphony-pump via apotek.',
+  },
+  {
+    question: 'Hur rengör man en Medela bröstpump?',
+    answer: 'Alla delar som kommer i kontakt med bröstmjölk ska rengöras efter varje pumpning. Skölj med kallt vatten, sedan tvätta med diskmedel och varmt vatten. Alternativt kan du lägga delarna i en Medela Quick Clean Micro-påse för mikrovågsugn. Membranet och ventilerna ska kontrolleras regelbundet och bytas vid tecken på slitage — de påverkar pumpens effektivitet.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Medela — test och recension av bröstpumpar 2026"
+  description="Vi recenserar Medelas bröstpumpar 2026. Freestyle Hands-free vs Swing Maxi — vilken passar dig? Se priser och betyg hos Jollyroom."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    Medela är världens ledande märke för bröstpumpar och amningsprodukter. Det schweiziska företaget, grundat 1961, är känt för sin 2-Phase Expression-teknologi och används av sjukhus i hela världen. Vi recenserar deras två mest populära hemmodeller för 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Medelas bästa bröstpumpar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump"
+      badge="Bäst totalt"
+      price="3 099 kr"
+      rating={4.8}
+      image="/images/products/medela-freestyle-hands-free.jpg"
+      ageRange="Från förlossningen"
+      pros={['Helt hands-free — kupor döljs i BH', 'Ryms i fickan — pumpa var som helst', '2-Phase Expression-teknologi', 'Tyst motor — diskret att använda']}
+      cons={['Dyraste modellen i sortimentet', 'Kuporna kan behöva anpassas för rätt passform', 'Kräver kompatibel BH för bästa resultat']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+    />
+
+    <ProductCard
+      name="Medela Swing Maxi Hands-free Elektrisk Dubbelbröstpump"
+      badge="Bäst pris/prestanda"
+      price="2 279 kr"
+      rating={4.6}
+      image="/images/products/medela-swing-maxi.jpg"
+      ageRange="Från förlossningen"
+      pros={['Bäst pris/prestanda i Medelas sortiment', 'Hands-free funktion', '2-Phase Expression-teknologi', 'Kompakt och lätt att ta med']}
+      cons={['Lite mindre diskret än Freestyle', 'Kortare batteritid än Freestyle', 'Kräver bra passform på kuporna']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-hands-free-elektrisk-dubbelbrostpump"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">För- och nackdelar med Medela</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fördelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Kliniskt beprövad 2-Phase Expression-teknologi</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Rekommenderas av barnmorskor och ammningskonsulter</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Bred tillgång till reservdelar och tillbehör</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Världsledande märke med lång erfarenhet</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Hands-free modeller ger rörelsefrihet</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Premiumprissättning jämfört med okända märken</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Kräver rätt kupstorlek för effektivt pumpande</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Freestyle kräver kompatibel BH för hands-free</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Reservdelar (membran, ventiler) behöver bytas regelbundet</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om Medela</h3>
+    <p>Medela grundades 1961 i Baar, Schweiz av Olle Larsson. Företaget startade som tillverkare av industriella pumpar men övergick tidigt till medicinsk utrustning. Idag är Medela världens ledande bröstpumpsvarumärke med produkter i över 100 länder. Medelas forskning och utveckling sker i nära samarbete med ammningsexperter och forskningsinstitut världen över. Alla Medela-pumpar är CE-märkta och uppfyller europeiska medicinska säkerhetskrav.</p>
+
+    <h3>Vilken Medela-pump passar dig?</h3>
+    <p>Välj Freestyle Hands-free om du vill ha maximal rörelsefrihet och diskret pumpning — perfekt om du ska pumpa på jobbet eller i offentliga miljöer. Välj Swing Maxi om du vill ha Medelas kliniska teknologi till ett lägre pris och klarar dig utan total diskrethet. Båda är utmärkta val för regelbundet pumpande.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen April 2026 — ergonomisk och HIPS-certifierad</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen April 2026 — test och jämförelse</a></li>
+      <li><a href="/marken/babybjorn/" class="text-accent hover:underline">BabyBjörn produkter 2026 — recension och test</a></li>
+      <li><a href="/marken/ergobaby/" class="text-accent hover:underline">Ergobaby bärselen 2026 — recension och test</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    href="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+    text="Se pris hos Jollyroom — Medela Freestyle"
+  />
+</ArticleLayout>

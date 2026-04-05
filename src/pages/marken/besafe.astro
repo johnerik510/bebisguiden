@@ -1,0 +1,160 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Märken', href: '/marken/' },
+  { label: 'BeSafe' },
+];
+
+const products = [
+  {
+    name: 'BeSafe iZi Modular RF X1 i-Size',
+    badge: 'Bäst bakåtvänd',
+    price: '2 999 kr',
+    rating: 4.8,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
+    features: {
+      'Typ': 'Bakåtvänd bilbarnstol',
+      'Vikt barn': '61–105 cm (i-Size)',
+      'Godkännande': 'R129 i-Size + Plus Test',
+      'ISOFIX': 'Ja',
+      'Pris': '2 999 kr',
+    },
+  },
+  {
+    name: 'BeSafe Stretch Bilbarnstol',
+    badge: 'Premiumval',
+    price: '5 895 kr',
+    rating: 4.7,
+    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-stretch-bilbarnstol-fresh-black-cab',
+    features: {
+      'Typ': 'Bakåtvänd bilbarnstol',
+      'Vikt barn': 'Upp till 125 cm',
+      'Godkännande': 'R129 i-Size + Plus Test',
+      'ISOFIX': 'Ja',
+      'Pris': '5 895 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Vikt barn', 'Godkännande', 'ISOFIX', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad är BeSafe känt för?',
+    answer: 'BeSafe är ett norskt varumärke grundat 1986 som specialiserar sig på bakåtvända bilbarnstolar. Märket är känt för att ha lett arbetet för utökad bakåtvänd åkning i Norden och Europa. BeSafes produkter är godkända i Plus-testet — världens tuffaste krocktest som testar frontalkrockstyrka utöver vad EU-lagstiftningen kräver.',
+  },
+  {
+    question: 'Varför är bakåtvänd åkning säkrare?',
+    answer: 'Bakåtvänd åkning är säkrare för barn under 15 kg (ca 4 år) eftersom stolen sprider krockkraften jämnt över barnets rygg, nacke och huvud vid en frontal kollision. Framåtvänd åkning koncentrerar kraften till axelbanden vid en frontal krock, vilket belastar nacken kraftigt. Studier visar att bakåtvänd åkning är upp till 5 gånger säkrare vid frontalkrock.',
+  },
+  {
+    question: 'Vad är Plus-testet?',
+    answer: 'Plus-testet är ett frivilligt säkerhetstest som utförs av oberoende bilsäkerhetsorganisationer i Norden (ADAC, FIA, Folksam m.fl.). Det testar frontalkrockstyrka vid 64 km/h — hårdare än det obligatoriska EU-kravet. BeSafes produkter är godkända i Plus-testet, vilket är ett av de tyngsta säkerhetsbevisen för en bilbarnstol.',
+  },
+  {
+    question: 'Hur länge kan man sitta bakåtvänt i BeSafe?',
+    answer: 'BeSafe iZi Modular RF X1 används bakåtvänt upp till 105 cm barnets höjd. BeSafe Stretch används bakåtvänt upp till 125 cm — vilket för de flesta barn innebär 6–7 år. BeSafe rekommenderar bakåtvänd åkning så länge barnet ryms i stolen med rakt huvud under taklinjen. Bakåtvänd är alltid säkrare än framåtvänd för barn under 15 kg.',
+  },
+  {
+    question: 'Är BeSafe-stolar svåra att installera?',
+    answer: 'BeSafes stolar har ISOFIX-fästen som gör installationen säker och enkel — stolen klickas fast i bilens ISOFIX-punkter och låses med en indikator. Stretch-modellen har ett självspännande bälte med en ratt som gör det enkelt att klämma fast bilens säkerhetsbälte korrekt. Vi rekommenderar alltid att kontrollera kompatibilitet med din specifika bilmodell innan köp.',
+  },
+];
+---
+
+<ArticleLayout
+  title="BeSafe — recension och säkerhetstest av bilbarnstolar 2026"
+  description="Vi recenserar BeSafes bilbarnstolar 2026. iZi Modular RF X1 och Stretch — Skandinaviens ledande bakåtvända bilbarnstolar. Se priser hos Jollyroom."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-4 max-w-2xl">
+    BeSafe är ett norskt varumärke som sedan 1986 specialiserat sig på bakåtvända bilbarnstolar. Märket är känt för att ligga i framkant inom säkerhetsutveckling och är ett av få märken vars produkter är godkända i det stränga Plus-testet. Vi recenserar deras två mest sålda modeller i Sverige 2026.
+  </p>
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">BeSafes bästa bilbarnstolar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BeSafe iZi Modular RF X1 i-Size"
+      badge="Bäst bakåtvänd"
+      price="2 999 kr"
+      rating={4.8}
+      image="/images/products/besafe-izi-modular-rf-x1.jpg"
+      ageRange="Från nyfödd till ca 105 cm"
+      pros={['Godkänd i Plus-testet — världens tuffaste krocktest', 'R129 i-Size-certifiering', 'ISOFIX för enkel och säker montering', 'Kompatibel med iZi Modular-systemet']}
+      cons={['Används bakåtvänt till 105 cm — kortare än Stretch', 'Kräver iZi Modular-bas för smidigast installation', 'Begränsad benfrihet för äldre barn']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
+    />
+
+    <ProductCard
+      name="BeSafe Stretch Bilbarnstol"
+      badge="Premiumval"
+      price="5 895 kr"
+      rating={4.7}
+      image="/images/products/besafe-stretch.jpg"
+      ageRange="Från nyfödd till ca 125 cm"
+      pros={['Bakåtvänd upp till 125 cm — längst i testet', 'Fem lutningslägen för komfort i alla lägen', 'Självspännande bälte — lätt att montera rätt', 'Godkänd i Plus-testet']}
+      cons={['Högt pris', 'Stor och tung — passar inte alla bilar', 'Kräver gott om benutrymme bakåtvänd']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-stretch-bilbarnstol-fresh-black-cab"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">För- och nackdelar med BeSafe</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+      <h3 class="font-semibold text-safe-dark mb-2">Fördelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Plus-testgodkänd — branschens hårdaste säkerhetstest</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Skandinavisk expertis i bakåtvänd åkning sedan 1986</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> R129 i-Size-certifiering — det senaste EU-kravet</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> ISOFIX för säker och enkel montering</li>
+        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Norskt varumärke designat för nordiska förhållanden</li>
+      </ul>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+      <ul class="space-y-1.5 text-sm text-text-light">
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Premiumprissättning — framför allt Stretch-modellen</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Stora och tunga modeller passar inte alla bilar</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Bakåtvänd kräver gott om benutrymme i bilen</li>
+        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Begränsat färgurval jämfört med andra märken</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Om BeSafe</h3>
+    <p>BeSafe grundades 1986 i Stranda, Norge som en del av den norska säkerhetsindustrin. Märket fokuserar uteslutande på bilsäkerhet för barn och är ett av de mest välrenommerade inom bakåtvänd åkning i Norden. BeSafes forskning och testning sker i samarbete med norska trafiksäkerhetsmyndigheter och oberoende testorganisationer. Alla BeSafe-produkter uppfyller de senaste R129 i-Size-kraven och är rekommenderade av Trafikverket och Vägverket i Norden.</p>
+
+    <h3>Är BeSafe rätt val för dig?</h3>
+    <p>BeSafe är rätt val om du prioriterar maximal säkerhet och vill ha en bakåtvänd stol så länge som möjligt. iZi Modular RF X1 är ett utmärkt val för de som söker en bakåtvänd stol till ett lägre pris. Stretch är för de som vill ha bakåtvänd åkning längst möjligt och inte kompromissar med komfort. Kontrollera alltid att stolen passar i din specifika bil innan köp.</p>
+  </div>
+
+  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen April 2026 — krocktestade och rankade</a></li>
+      <li><a href="/bilbarnstolar/bakatvand/" class="text-accent hover:underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen April 2026 — test och jämförelse</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <StickyCTA
+    href="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
+    text="Se pris hos Jollyroom — BeSafe iZi Modular RF X1"
+  />
+</ArticleLayout>

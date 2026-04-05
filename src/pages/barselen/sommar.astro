@@ -1,0 +1,206 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bärselen', href: '/barselen/' },
+  { label: 'Sommarbärsele' },
+];
+
+const products = [
+  {
+    name: 'Ergobaby Omni 360 Cool Air Bärsele',
+    badge: 'Bäst i test',
+    price: '1 349 kr',
+    rating: 4.8,
+    image: '/images/products/ergobaby-omni-360-cool-air.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-cool-air-barsele-svart',
+    features: {
+      'Vikt barn': '3,2–20 kg (0–4 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': 'Cool Air mesh',
+      'Ergonomi': 'HIPS-certifierad',
+      'Pris': '1 349 kr',
+    },
+  },
+  {
+    name: 'BabyBjörn One Air Bärsele 3D Mesh',
+    badge: 'Premiumval',
+    price: '1 749 kr',
+    rating: 4.7,
+    image: '/images/products/babybjorn-one-air.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele-3d-mesh-black',
+    features: {
+      'Vikt barn': '3,5–15 kg (0–3 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': '3D-mesh',
+      'Ergonomi': 'Hip-Healthy Institute',
+      'Pris': '1 749 kr',
+    },
+  },
+  {
+    name: 'Ergobaby Omni 360 Bärsele',
+    badge: 'Bäst mångsidighet',
+    price: '1 699 kr',
+    rating: 4.7,
+    image: '/images/products/ergobaby-omni-360.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-luminous-ivory',
+    features: {
+      'Vikt barn': '3,2–20 kg (0–4 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': 'Bomull',
+      'Ergonomi': 'HIPS-certifierad',
+      'Pris': '1 699 kr',
+    },
+  },
+];
+
+const featureLabels = ['Vikt barn', 'Positioner', 'Material', 'Ergonomi', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken bärsele är bäst på sommaren?',
+    answer: 'Ergobaby Omni 360 Cool Air är bäst för sommarbruk tack vare det speciella Cool Air-mesh-tyget som ger maximal luftcirkulation. BabyBjörn One Air i 3D-mesh är ett starkt alternativ med liknande luftighet. Undvik bärselen i tjockt bomullstyg under varma dagar — barn kan inte reglera sin kroppstemperatur effektivt och overhettas lätt i tät textil.',
+  },
+  {
+    question: 'Hur klär man barnet i bärsele på sommaren?',
+    answer: 'Klä barnet tunnare än du tror — en tunn body eller kortärmat plagg räcker ofta. Barnets kropp täcks av bärselen och du tillför ytterligare värme med din egen kroppsvärme. Tumregel: ta av ett lager på barnet jämfört med vad du bär. Kontrollera regelbundet barnets nacke och rygg — svettiga är tecken på överhettning. Undvik direkt sol i bärselen och använd hatt.',
+  },
+  {
+    question: 'Kan man bära nyfödd i sommar-bärsele?',
+    answer: 'Ja, Ergobaby Omni 360 Cool Air och BabyBjörn One Air kan användas från nyfödd (från ca 3,2–3,5 kg). Kontrollera att barnets huvud och nacke får tillräckligt stöd. På sommaren — klä barnet extra tunt under bärselen och kontrollera ofta att barnet inte är för varm.',
+  },
+  {
+    question: 'Vad är skillnaden mellan Cool Air och vanlig Omni 360?',
+    answer: 'Ergobaby Omni 360 Cool Air har ett speciellt perforerat mesh-tyg som ger bättre luftcirkulation än standardbomullen i Omni 360. Funktionsmässigt är de identiska — samma 4 positioner, samma HIPS-certifiering, samma maxvikt (20 kg). Cool Air är dyrare men rekommenderas starkt om du planerar att bära aktivt under sommarmånader eller i varmt klimat.',
+  },
+  {
+    question: 'Ska man undvika bärsele i stark värme?',
+    answer: 'Var försiktig vid temperaturer över 25–28 grader Celsius. Kontrollera barnets temperatur (nacke/rygg) var 10–15:e minut. Bär helst under morgon eller kväll när det är svalare. Om barnet verkar varm, röd eller slö — ta ut barnet ur bärselen direkt och ge svalkande vätska (amning eller vatten för barn över 6 månader). Undvik direkt solljus på barnet.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bärsele sommar 2026 — lätt och svalkande material"
+  description="Bästa sommarbärsele 2026: Vi testar Ergobaby Cool Air och BabyBjörn One Air 3D Mesh. Se vilket luftigt material som är bäst i värmen."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barselen/sommar/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Rätt bärsele gör stor skillnad i sommarvärmen. Vi har valt ut de bästa bärselarna med luftiga mesh-material som håller både dig och barnet svala. Här är våra toppval för sommaren 2026.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — sommarbärselen 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test sommaren 2026</p>
+    <p class="text-sm text-text-light"><strong>Ergobaby Omni 360 Cool Air</strong> vinner för luftighet och komfort i värme. <strong>BabyBjörn One Air</strong> är premiumvalet i 3D-mesh. Båda är HIPS-certifierade och fungerar från nyfödd.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval för sommaren 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Ergobaby Omni 360 Cool Air Bärsele"
+      badge="Bäst i test"
+      price="1 349 kr"
+      rating={4.8}
+      image="/images/products/ergobaby-omni-360-cool-air.jpg"
+      ageRange="0–4 år (3,2–20 kg)"
+      pros={['Speciellt Cool Air-mesh för maximal luftcirkulation', 'HIPS-certifierad M-position', '4 bärpositioner inkl. ryggbärning', 'Billigare än BabyBjörn One Air']}
+      cons={['Lite tjockare mesh än BabyBjörn 3D-mesh', 'Tar lite tid att lära sig']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-cool-air-barsele-svart"
+    />
+
+    <ProductCard
+      name="BabyBjörn One Air Bärsele 3D Mesh"
+      badge="Premiumval"
+      price="1 749 kr"
+      rating={4.7}
+      image="/images/products/babybjorn-one-air.jpg"
+      ageRange="0–3 år (3,5–15 kg)"
+      pros={['Extremt luftigt 3D-mesh — det tunnaste på marknaden', 'Enkel att ta på och ta av — bra för nybörjare', 'Hip-Healthy Institute-certifierad', '4 bärpositioner']}
+      cons={['Dyraste alternativet', 'Lägre maxvikt (15 kg) jämfört med Cool Air (20 kg)', 'Kortare livslängd (0–3 år)']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele-3d-mesh-black"
+    />
+
+    <ProductCard
+      name="Ergobaby Omni 360 Bärsele"
+      badge="Bäst mångsidighet"
+      price="1 699 kr"
+      rating={4.7}
+      image="/images/products/ergobaby-omni-360.jpg"
+      ageRange="0–4 år (3,2–20 kg)"
+      pros={['4 bärpositioner — mest mångsidiga', 'Används från nyfödd till 4 år (20 kg)', 'HIPS-certifierad M-position', 'Bomull — skön mot huden']}
+      cons={['Bomull håller mer värme än mesh-versionen', 'Kan bli varmt i stark sommarvärme']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-luminous-ivory"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Bärsele på sommaren</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Välj mesh-material i sommarvärmen</h3>
+    <p>I temperaturer över 22–25 grader är mesh-bärselen klart bättre. Cool Air-mesh (Ergobaby) och 3D-mesh (BabyBjörn) ger luftcirkulation som vanlig bomull inte kan matcha. Skillnaden märks tydligast under långa bärpass eller när du rör på dig aktivt.</p>
+
+    <h3>2. Klä barnet tunnare</h3>
+    <p>En av de vanligaste misstagen är att klä barnet för varmt i bärselen. Barnets kropp är täckt av bärselen och du tillför ytterligare kroppsvärme. Ta av ett lager jämfört med vad du bär — en tunn body utan övrigt räcker ofta när det är 25 grader.</p>
+
+    <h3>3. Undvik sol på barnet</h3>
+    <p>En bärsele ger inget automatiskt solskydd. Bär i skugga, använd hatt på barnet och lägg ett lätt muslinstäcke över barnet om ni är i solen. Undvik direkt middagsol (11–15) helt med nyfödd och spädbarn.</p>
+
+    <h3>4. Kontrollera temperaturen regelbundet</h3>
+    <p>Kontrollera barnets nacke och rygg var 10–15:e minut i varmt väder — de ska kännas svalt och inte svettiga. Om barnet verkar röd, slö eller varm — ta ut barnet direkt, ge svalkande vätska och flytta till ett svalt ställe.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om bärselen</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barselen/" class="text-accent hover:underline">Bästa bärselen April 2026 — komplett guide</a></li>
+      <li><a href="/barselen/nyfodd/" class="text-accent hover:underline">Bästa bärsele för nyfödd April 2026</a></li>
+      <li><a href="/barselen/ergonomisk/" class="text-accent hover:underline">Bästa ergonomiska bärsele April 2026</a></li>
+      <li><a href="/marken/ergobaby/" class="text-accent hover:underline">Ergobaby — recension och test 2026</a></li>
+      <li><a href="/marken/babybjorn/" class="text-accent hover:underline">BabyBjörn — recension och test 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Ergobaby Omni 360 Cool Air Bärsele, Svart',
+      description: 'HIPS-certifierad bärsele med Cool Air-mesh för maximal luftcirkulation i värmen. 4 bärpositioner. Från nyfödd till 20 kg (0-4 år).',
+      image: 'https://bebisguiden.se/images/products/ergobaby-omni-360-cool-air.jpg',
+      brand: 'Ergobaby',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 1349, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-cool-air-barsele-svart', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'BabyBjörn One Air Bärsele 3D Mesh, Black',
+      description: 'Luftig bärsele i 3D-mesh. Hip-Healthy Institute-certifierad. 4 bärpositioner. Från nyfödd till 15 kg (0-3 år).',
+      image: 'https://bebisguiden.se/images/products/babybjorn-one-air.jpg',
+      brand: 'BabyBjörn',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 1749, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele-3d-mesh-black', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-cool-air-barsele-svart"
+  text="Se pris hos Jollyroom — Ergobaby Cool Air"
+  productName="Bäst sommarbärsele April 2026"
+/>
