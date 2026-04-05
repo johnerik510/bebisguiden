@@ -1,0 +1,188 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Storleksguide' },
+];
+
+const faqItems = [
+  {
+    question: 'Stämmer blöjstorlekarna mellan märken?',
+    answer: 'Viktintervallen stämmer ungefär men inte exakt. Pampers stl 3 är 6–10 kg, Libero stl 3 är 5–9 kg. Skillnaderna är små men kan märkas vid gränsvärdena. Om din bebis väger precis på gränsen: prova den nya storleken innan du köper storpack. Passformen varierar också — vissa märken sitter tajt runt benen, andra har mer genu runt höfterna.',
+  },
+  {
+    question: 'Hur vet jag att blöjan är för liten?',
+    answer: 'Tecken på för liten blöja: röda märken eller avtryck runt benen och magen efter byte, blöjan läcker trots att den inte är full, svårt att fästa banden utan att de sträcks maximalt, blöjan drar in i veck och skapar läckagerisker. Byt upp en storlek om du ser ett eller flera av dessa tecken.',
+  },
+  {
+    question: 'Hur vet jag att blöjan är för stor?',
+    answer: 'Tecken på för stor blöja: gäspar runt benen och magen (luftglapp), blöjan hänger ner och sitter löst, avföring och urin läcker ut trots att blöjan är långt ifrån full. För stor blöja är lika vanligt som för liten — och läcker precis lika ofta. Byt ner en storlek och testa.',
+  },
+  {
+    question: 'Varför skiljer sig storlekarna åt mellan olika länder?',
+    answer: 'Blöjstorlekar är inte standardiserade globalt — varje tillverkare sätter sina egna viktintervall. I Sverige och Europa används vanligtvis stl 1–6+, men i USA används siffror och S/M/L som inte direkt motsvarar europeiska storlekar. Köp alltid blöjor avsedda för den svenska marknaden och se på viktintervallet, inte storleksnumret.',
+  },
+  {
+    question: 'Kan jag använda blöjbyxor istället för vanliga blöjor?',
+    answer: 'Blöjbyxor (pull-up) passar bättre från ca 9–12 månaders ålder när barnet börjar röra sig mer och stå upp. De är enklare att ta på stående barn men dyrare per blöja. För nyfödda och yngre bebisar är vanliga viksblöjor praktiska och ekonomiska. Många familjer byter till blöjbyxor på nätterna och vid utflykter när barnet är rörligare.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Blöjstorlek guide 2026 — vilken storlek passar din bebis?"
+  description="Fullständig guide till blöjstorlekar: storlekstabell stl 1–6+, hur du vet om blöjan är för liten eller stor, och skillnader mellan märken."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/blojor/storlek-guide/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    Blöjstorlek baseras alltid på barnets vikt, inte ålder. En tvåmånaders bebis kan behöva storlek 2 eller storlek 3 beroende på hur snabbt hen vuxit. Använd tabellen nedan och kontrollera passformen regelbundet.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-4">Blöjstorlek tabell — vikt och ålder</h2>
+
+  <div class="mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-accent/10">
+          <th class="text-left px-4 py-3 font-semibold text-dark">Storlek</th>
+          <th class="text-left px-4 py-3 font-semibold text-dark">Vikt</th>
+          <th class="text-left px-4 py-3 font-semibold text-dark">Ungefärlig ålder</th>
+          <th class="text-left px-4 py-3 font-semibold text-dark">Byten/dygn</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-semibold">Stl 1 — Newborn</td>
+          <td class="px-4 py-3 text-text-light">2–5 kg</td>
+          <td class="px-4 py-3 text-text-light">Fött–4 veckor</td>
+          <td class="px-4 py-3 text-text-light">8–12 st</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-3 font-semibold">Stl 2 — Mini</td>
+          <td class="px-4 py-3 text-text-light">3–8 kg</td>
+          <td class="px-4 py-3 text-text-light">2 veckor–3 månader</td>
+          <td class="px-4 py-3 text-text-light">8–10 st</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-semibold">Stl 3 — Midi</td>
+          <td class="px-4 py-3 text-text-light">4–9 kg</td>
+          <td class="px-4 py-3 text-text-light">2–7 månader</td>
+          <td class="px-4 py-3 text-text-light">6–8 st</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-3 font-semibold">Stl 4 — Maxi</td>
+          <td class="px-4 py-3 text-text-light">7–18 kg</td>
+          <td class="px-4 py-3 text-text-light">5–18 månader</td>
+          <td class="px-4 py-3 text-text-light">5–7 st</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-semibold">Stl 5 — Junior</td>
+          <td class="px-4 py-3 text-text-light">11–25 kg</td>
+          <td class="px-4 py-3 text-text-light">12 månader–3 år</td>
+          <td class="px-4 py-3 text-text-light">4–6 st</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-3 font-semibold">Stl 6 — Extra Large</td>
+          <td class="px-4 py-3 text-text-light">13–18 kg</td>
+          <td class="px-4 py-3 text-text-light">18 månader–3 år</td>
+          <td class="px-4 py-3 text-text-light">4–5 st</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-semibold">Stl 6+ / XL</td>
+          <td class="px-4 py-3 text-text-light">15 kg+</td>
+          <td class="px-4 py-3 text-text-light">2 år+</td>
+          <td class="px-4 py-3 text-text-light">3–5 st</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Kom ihåg</p>
+    <p class="text-sm text-text-light">Viktintervallen överlappar — storlek 2 och 3 delar intervallet 4–8 kg. Byt storlek när passformen börjar bli tajt, inte exakt vid viktgränsen. Prova alltid ett litet paket i ny storlek innan du köper storpack.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Skillnader mellan märken</h2>
+
+  <div class="mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-accent/10">
+          <th class="text-left px-4 py-3 font-semibold text-dark">Märke</th>
+          <th class="text-left px-4 py-3 font-semibold text-dark">Stl 1</th>
+          <th class="text-left px-4 py-3 font-semibold text-dark">Stl 2</th>
+          <th class="text-left px-4 py-3 font-semibold text-dark">Stl 3</th>
+          <th class="text-left px-4 py-3 font-semibold text-dark">Stl 4</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-medium">Pampers</td>
+          <td class="px-4 py-3 text-text-light">2–5 kg</td>
+          <td class="px-4 py-3 text-text-light">4–8 kg</td>
+          <td class="px-4 py-3 text-text-light">6–10 kg</td>
+          <td class="px-4 py-3 text-text-light">9–14 kg</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-3 font-medium">Libero</td>
+          <td class="px-4 py-3 text-text-light">2–5 kg</td>
+          <td class="px-4 py-3 text-text-light">3–6 kg</td>
+          <td class="px-4 py-3 text-text-light">5–9 kg</td>
+          <td class="px-4 py-3 text-text-light">7–14 kg</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium">Huggies</td>
+          <td class="px-4 py-3 text-text-light">2–5 kg</td>
+          <td class="px-4 py-3 text-text-light">4–7 kg</td>
+          <td class="px-4 py-3 text-text-light">5–8 kg</td>
+          <td class="px-4 py-3 text-text-light">8–14 kg</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-3 font-medium">Naty Eco</td>
+          <td class="px-4 py-3 text-text-light">2–5 kg</td>
+          <td class="px-4 py-3 text-text-light">3–6 kg</td>
+          <td class="px-4 py-3 text-text-light">4–9 kg</td>
+          <td class="px-4 py-3 text-text-light">7–14 kg</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium">Bambo Nature</td>
+          <td class="px-4 py-3 text-text-light">2–5 kg</td>
+          <td class="px-4 py-3 text-text-light">4–8 kg</td>
+          <td class="px-4 py-3 text-text-light">4–8 kg</td>
+          <td class="px-4 py-3 text-text-light">7–14 kg</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Hur kontrollerar du passformen?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none mb-8">
+    <h3>Benen — det viktigaste att kontrollera</h3>
+    <p>Kontrollera att blöjans benkanter sitter runt benen utan att skapa röda märken. Du ska kunna sticka in ett finger under benkanten — men inte mer. Om du kan sticka in hela handen är blöjan för stor. Om kanten skaver och skapar röda märken är blöjan för liten.</p>
+
+    <h3>Magen — banden ska mötas på mitten</h3>
+    <p>Fästbanden ska fästas i mitten av blöjan, ungefär i höjd med naveln. Om banden sträcks till yttersta läget är blöjan för liten. Om banden fästs vid kanten av mittzonen och det fortfarande finns mycket blöja som "gäspar" är blöjan för stor.</p>
+
+    <h3>Ryggen — blöjan ska ligga tätt</h3>
+    <p>Det ska inte finnas ett glapp vid ryggen. Om du kan se in i blöjan bakifrån är den för stor — detta är en vanlig orsak till att avföring läcker ut bakåt. Dra försiktigt upp blöjan bakifrån och se till att kanten sitter tätt mot ryggen.</p>
+  </div>
+
+  <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade blöjguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/blojor/" class="text-accent hover:underline">Bästa blöja 2026 — alla märken jämförda</a></li>
+      <li><a href="/blojor/newborn/" class="text-accent hover:underline">Bästa newborn-blöja 2026 — för nyfödda bebis</a></li>
+      <li><a href="/blojor/ekologisk/" class="text-accent hover:underline">Bästa ekologisk blöja 2026 — miljövänliga alternativ</a></li>
+      <li><a href="/blojor/natt/" class="text-accent hover:underline">Bästa nattblöja 2026 — extra absorberande för hela natten</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+</ArticleLayout>

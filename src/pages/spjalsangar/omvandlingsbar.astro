@@ -1,0 +1,226 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
+  { label: 'Omvandlingsbar' },
+];
+
+const products = [
+  {
+    name: 'Stokke Sleepi V3 Natural',
+    badge: 'Bäst i test',
+    price: '5 999 kr',
+    rating: 4.9,
+    image: '/images/products/stokke-sleepi-v3.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural',
+    features: {
+      'Typ': 'Oval — omvandlingsbar',
+      'Livslängd': '0–10 år',
+      'Omvandlas till': 'Juniorsäng + dagbädd',
+      'Material': 'Massiv bok',
+      'Pris': '5 999 kr',
+    },
+  },
+  {
+    name: 'Leander Classic Spjälsäng — Juniorsängs-set',
+    badge: 'Bäst design',
+    price: '5 499 kr',
+    rating: 4.7,
+    image: '/images/products/leander-classic-natural.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/leander-classic-spjalsang-natural',
+    features: {
+      'Typ': 'Standard — omvandlingsbar',
+      'Livslängd': '0–7 år',
+      'Omvandlas till': 'Juniorsäng',
+      'Material': 'Massiv bok (FSC)',
+      'Pris': '5 499 kr',
+    },
+  },
+  {
+    name: 'Troll Crossover Omvandlingsbar Spjälsäng',
+    badge: 'Bäst pris-kvalitet',
+    price: '2 999 kr',
+    rating: 4.6,
+    image: '/images/products/troll-crossover.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/troll-crossover-spjalsang-white',
+    features: {
+      'Typ': 'Standard — omvandlingsbar',
+      'Livslängd': '0–6 år',
+      'Omvandlas till': 'Juniorsäng',
+      'Material': 'Trä med vitlack',
+      'Pris': '2 999 kr',
+    },
+  },
+  {
+    name: 'Joie Roomie Glide DLX Omvandlingsbar',
+    badge: 'Bäst för nyfödda',
+    price: '3 499 kr',
+    rating: 4.5,
+    image: '/images/products/joie-roomie-glide-dlx.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/joie-roomie-glide-dlx-spjalsang',
+    features: {
+      'Typ': 'Bedside + spjälsäng — omvandlingsbar',
+      'Livslängd': '0–6 år',
+      'Omvandlas till': 'Fristående säng + juniorsäng',
+      'Material': 'MDF + trä',
+      'Pris': '3 499 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Livslängd', 'Omvandlas till', 'Material', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad är en omvandlingsbar spjälsäng?',
+    answer: 'En omvandlingsbar spjälsäng kan byggas om till en juniorsäng (eller dagbädd) när barnet vuxit ur spjälsängen. Ofta tas en eller flera sidor bort och sängen får en utbyggnad för att passa ett längre barn. Stokke Sleepi kan omvandlas till dagbädd och sedan juniorsäng, vilket gör att barnet kan använda den från 0 till 10 år.',
+  },
+  {
+    question: 'Behöver jag köpa tillbehör för att omvandla sängen?',
+    answer: 'Vanligtvis ja — de flesta omvandlingsbara sängar kräver ett separat omvandlingspaket. För Stokke Sleepi behöver du Sleepi Extension Set för att förlänga sängen till juniorsäng. Leander Classic kräver ett Juniorsängs Extension Kit. Kontrollera alltid vad som ingår och vad som kostar extra — omvandlingstillbehören kan kosta 1 000–3 000 kr extra.',
+  },
+  {
+    question: 'Hur länge kan barnet sova i spjälsängen innan omvandling?',
+    answer: 'De flesta barn sover i spjälsäng till 2–4 års ålder, beroende på storlek. Standardspjälsängar (70x140 cm) håller till ca 3–4 år. Stokke Sleepi i oval design håller till ca 5 år i spjälsängsläge. Byt till juniorsängsläge när barnet kan klättra ur sängen på egen hand.',
+  },
+  {
+    question: 'Är omvandlingsbara sängar värda det extra priset?',
+    answer: 'Räknat på livslängden: en Stokke Sleepi till 5 999 kr används 0–10 år. En IKEA Sniglar till 499 kr byts ut till juniorsäng runt 3 år — totalkostnaden för säng+juniorsäng kan bli 2 000–4 000 kr. Prisskillnaden minskar när man räknar rätt. Om du planerar fler barn ökar värdet ytterligare.',
+  },
+  {
+    question: 'Stokke Sleepi vs vanlig omvandlingsbar spjälsäng?',
+    answer: 'Stokke Sleepi är oval, vilket ger mjukare hörn och en unik estetik. Den kan omvandlas till dagbädd och juniorsäng och håller till 10 år med tillbehör. Vanliga omvandlingsbara sängar som Leander Classic och Troll Crossover är rektangulära och omvandlas till juniorsäng till ca 6–7 år. Stokke är det längst hållande alternativet men kräver märkets egna tillbehör och madrasser.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Omvandlingsbar spjälsäng 2026 — växer med barnet till juniorsäng"
+  description="Bästa omvandlingsbara spjälsängar 2026: Stokke Sleepi V3, Leander Classic och Troll Crossover jämförda. Se livslängd, material och pris."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/spjalsangar/omvandlingsbar/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En omvandlingsbar spjälsäng är en långsiktig investering — barnet sover i samma säng från nyfödd till 6–10 år. Vi har jämfört de bästa alternativen på den svenska marknaden, inklusive den bekräftade Stokke Sleepi V3 till 5 999 kr.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — omvandlingsbara spjälsängar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Stokke Sleepi V3</strong> vinner för längst livslängd (0–10 år) och unik oval design. <strong>Troll Crossover</strong> är bäst pris-kvalitet för den som vill ha omvandlingsbar säng utan premiumkostnad.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval — omvandlingsbara spjälsängar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Stokke Sleepi V3 Natural"
+      badge="Bäst i test"
+      price="5 999 kr"
+      rating={4.9}
+      image="/images/products/stokke-sleepi-v3.jpg"
+      pros={['Längest livslängd — 0 till 10 år med tillbehör', 'Oval design — säkrare mjuka hörn', 'Omvandlas till dagbädd och juniorsäng', 'Massiv bok, skandinavisk design']}
+      cons={['Högt pris', 'Kräver märkets egna madrasser och tillbehör (extra kostnad)', 'Omvandlingstillbehör köps separat']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural"
+    />
+
+    <ProductCard
+      name="Leander Classic Spjälsäng Natural"
+      badge="Bäst design"
+      price="5 499 kr"
+      rating={4.7}
+      image="/images/products/leander-classic-natural.jpg"
+      pros={['FSC-certifierat trä — ekologiskt', 'Danskt hantverk med tidlös design', 'Omvandlas till juniorsäng', 'OEKO-TEX-certifierade material']}
+      cons={['Högt pris nära Stokke Sleepi', 'Kortare livslängd (0–7 år) mot Sleepi', 'Juniortillbehör köps separat']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/leander-classic-spjalsang-natural"
+    />
+
+    <ProductCard
+      name="Troll Crossover Omvandlingsbar Spjälsäng"
+      badge="Bäst pris-kvalitet"
+      price="2 999 kr"
+      rating={4.6}
+      image="/images/products/troll-crossover.jpg"
+      pros={['Halva priset mot Stokke/Leander', 'Omvandlas till juniorsäng', 'Justerbar sängbotten — 3 höjdlägen', 'Enkel design som passar de flesta barnrum']}
+      cons={['Inte lika exklusivt material som Leander', 'Kortare livslängd (0–6 år)', 'MDF-inslag i konstruktionen']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/troll-crossover-spjalsang-white"
+    />
+
+    <ProductCard
+      name="Joie Roomie Glide DLX Omvandlingsbar"
+      badge="Bäst för nyfödda"
+      price="3 499 kr"
+      rating={4.5}
+      image="/images/products/joie-roomie-glide-dlx.jpg"
+      pros={['Fungerar som bedside crib de första månaderna', 'Omvandlas till fristående säng och juniorsäng', 'Glidrörelse lugnar nyfödda', 'Tre produkter i ett']}
+      cons={['MDF-material (inte massivt trä)', 'Tyngre och svårare att flytta', 'Kortare livslängd i juniorsängsläge']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/joie-roomie-glide-dlx-spjalsang"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Omvandlingsbar spjälsäng</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Räkna på totalkostnaden</h3>
+    <p>En omvandlingsbar säng kostar mer initialt men kan spara pengar på sikt. Stokke Sleepi till 5 999 kr används 0–10 år. En vanlig spjälsäng (499 kr) + juniorsäng (2 000–4 000 kr) ger en totalkostnad på 2 500–4 500 kr. Räknar du in andrahandsvärdet på Stokke Sleepi (ofta 2 000–3 000 kr på Blocket) är prisskillnaden liten.</p>
+
+    <h3>Kontrollera vad omvandlingstillbehören kostar</h3>
+    <p>Alla omvandlingsbara sängar kräver extra tillbehör för omvandling — detta ingår sällan i grundpriset. Stokke Sleepi Extension Set kostar ca 2 000–3 000 kr extra. Leander Juniortillägg kostar ca 1 500–2 000 kr. Räkna alltid med dessa kostnader i jämförelsen.</p>
+
+    <h3>Oval vs rektangulär</h3>
+    <p>Stokke Sleepi är oval — det ger mjukare hörn och minskar risken att barnet slår i skarpa kanter. Det är också estetiskt unikt. Nackdelen: kräver märkets egna madrasser och tillbehör. Rektangulära omvandlingssängar (Leander, Troll) passar standardmadrasser och tillbehör från alla märken.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler spjälsängsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/spjalsangar/" class="text-accent hover:underline">Bästa spjälsäng 2026 — alla modeller jämförda</a></li>
+      <li><a href="/spjalsangar/ekologisk/" class="text-accent hover:underline">Bästa ekologisk spjälsäng 2026</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Stokke Sleepi V3 Natural',
+      description: 'Oval omvandlingsbar spjälsäng i massiv bok. Används från 0 till 10 år med tillbehör. Omvandlas till dagbädd och juniorsäng.',
+      image: 'https://bebisguiden.se/images/products/stokke-sleepi-v3.jpg',
+      brand: 'Stokke',
+      ratingValue: 4.9,
+      reviewCount: 1,
+      offers: [{ price: 5999, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Troll Crossover Omvandlingsbar Spjälsäng',
+      description: 'Omvandlingsbar spjälsäng som växer med barnet till juniorsäng. Justerbar sängbotten i 3 höjdlägen. Passar 0–6 år.',
+      image: 'https://bebisguiden.se/images/products/troll-crossover.jpg',
+      brand: 'Troll',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 2999, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/troll-crossover-spjalsang-white', seller: 'Jollyroom' }],
+    },
+  ]} />
+
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-natural"
+  text="Se bästa pris — Stokke Sleepi V3 Natural"
+  productName="Bäst i test omvandlingsbar spjälsäng April 2026"
+/>

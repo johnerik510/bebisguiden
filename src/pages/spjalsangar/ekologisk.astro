@@ -1,0 +1,226 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
+  { label: 'Ekologisk' },
+];
+
+const products = [
+  {
+    name: 'IKEA Sniglar Spjälsäng Massiv Bok 70x140 cm',
+    badge: 'Bäst budget ekologisk',
+    price: '499 kr',
+    rating: 4.5,
+    image: '/images/products/ikea-sniglar.jpg',
+    ctaHref: 'https://www.ikea.com/se/sv/p/sniglar-spjalsang-bok-00114291/',
+    features: {
+      'Material': 'Massiv bok',
+      'Certifiering': 'IKEA IWAY Standard',
+      'Mått': '70x140 cm',
+      'Lackat/målat': 'Nej — naturligt trä',
+      'Pris': '499 kr',
+    },
+  },
+  {
+    name: 'Leander Classic Spjälsäng Natural',
+    badge: 'Bäst i test',
+    price: '5 499 kr',
+    rating: 4.8,
+    image: '/images/products/leander-classic-natural.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/leander-classic-spjalsang-natural',
+    features: {
+      'Material': 'Massiv bok — FSC-certifierad',
+      'Certifiering': 'FSC, OEKO-TEX',
+      'Mått': '70x140 cm',
+      'Lackat/målat': 'Obehandlat naturträ',
+      'Pris': '5 499 kr',
+    },
+  },
+  {
+    name: 'Troll Sun Ekologisk Spjälsäng 70x140 cm',
+    badge: 'Bäst mellanklass',
+    price: '1 999 kr',
+    rating: 4.6,
+    image: '/images/products/troll-sun-spjalsang.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/troll-sun-spjalsang-natural',
+    features: {
+      'Material': 'Massiv bok',
+      'Certifiering': 'OEKO-TEX Standard 100',
+      'Mått': '70x140 cm',
+      'Lackat/målat': 'Vattenburen lack',
+      'Pris': '1 999 kr',
+    },
+  },
+  {
+    name: 'Geuther Salto Naturlig Spjälsäng 70x140 cm',
+    badge: 'Bäst tysk kvalitet',
+    price: '2 799 kr',
+    rating: 4.5,
+    image: '/images/products/geuther-salto-natural.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/geuther-salto-spjalsang-natural',
+    features: {
+      'Material': 'Massiv bok',
+      'Certifiering': 'TÜV, OEKO-TEX',
+      'Mått': '70x140 cm',
+      'Lackat/målat': 'Vattenbaserade ytbehandlingar',
+      'Pris': '2 799 kr',
+    },
+  },
+];
+
+const featureLabels = ['Material', 'Certifiering', 'Mått', 'Lackat/målat', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vad gör en spjälsäng ekologisk?',
+    answer: 'En ekologisk spjälsäng tillverkas av certifierat naturmaterial (FSC-certifierat trä från ansvarsfullt skogsbruk), behandlas med vattenbaserade och giftfria ytbehandlingar, och är fri från formaldehyd och tungmetaller. OEKO-TEX Standard 100 på tyg- och madrass-material garanterar att inga skadliga ämnen finns kvar i slutprodukten.',
+  },
+  {
+    question: 'Är obehandlat trä bättre än lackat?',
+    answer: 'Obehandlat trä (naturträ) är det renaste alternativet — inga lösningsmedel eller lacker. Nackdelen är att det är känsligare för fläckar och kroppsfetter. Vattenbaserade lacker (som IKEA Sniglar och Geuther Salto) är ett bra mellanalternativ — de skyddar träet utan lösningsmedelsbaserade kemikalier. Undvik sängar lackade med traditionell lösningsmedelsbaserad lack.',
+  },
+  {
+    question: 'Vilka certifieringar ska jag leta efter?',
+    answer: 'FSC (Forest Stewardship Council) garanterar att träet kommer från ansvarsfullt skogsbruk. OEKO-TEX Standard 100 på sängtyg och madrass garanterar att inga skadliga ämnen testkraven passerar. TÜV GS (Tyskland) och EN 716 garanterar säkerhet. Leander Classic uppfyller FSC och OEKO-TEX — den strängaste kombinationen i vårt test.',
+  },
+  {
+    question: 'Vilken madrass väljer jag till en ekologisk spjälsäng?',
+    answer: 'Välj en madrass med OEKO-TEX Standard 100-certifiering och helst naturmaterial som naturlatex eller kokosfibrer. Undvik skummadrasser utan certifiering — de kan avge flyktiga organiska föreningar (VOC). Madrassen ska passa tätt mot sängens kanter utan glapp (max 2 cm) och vara fast, inte mjuk. Byt alltid till ny madrass vid begagnad säng.',
+  },
+  {
+    question: 'Är dyra ekologiska sängar värda priset?',
+    answer: 'Det beror på vad du värderar. IKEA Sniglar (499 kr) i massiv bok uppfyller alla säkerhetskrav och är ett hederligt naturmaterialsval. Leander Classic (5 499 kr) ger certifierad FSC-bok, dansk hantverksdesign och ett andrahandsvärde som är avsevärt högre. Mellanalternativen Troll Sun och Geuther Salto ger bättre certifieringar än IKEA till rimligare pris än premiumsängarna.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Ekologisk spjälsäng 2026 — naturliga material och säkert trä"
+  description="Bästa ekologiska spjälsängar 2026: Vi jämför Leander Classic, Troll Sun och IKEA Sniglar. Se FSC-certifiering, material och säkerhet."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/spjalsangar/ekologisk/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En ekologisk spjälsäng i massivt naturträ är fri från skadliga kemikalier och tillverkad med certifierat skogsbruk. Vi har jämfört de bästa ekologiska spjälsängarna — från budgetalternativet IKEA Sniglar till premiummärket Leander Classic.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — ekologiska spjälsängar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Leander Classic Natural</strong> vinner för bäst certifiering och material. <strong>IKEA Sniglar</strong> är bäst för den som vill ha naturträ till lägsta kostnad.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval — ekologiska spjälsängar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="IKEA Sniglar Spjälsäng Massiv Bok 70x140 cm"
+      badge="Bäst budget ekologisk"
+      price="499 kr"
+      rating={4.5}
+      image="/images/products/ikea-sniglar.jpg"
+      pros={['Massiv bok — inga skumplastar eller MDF', 'Obehandlat naturträ utan lösningsmedellack', 'Extremt prisvärd', 'Standardmått 70x140 cm']}
+      cons={['Ingen höjdjustering av sängbotten', 'Obehandlat trä mer känsligt för fläckar', 'Enkel design']}
+      ctaText="Se pris hos IKEA"
+      ctaHref="https://www.ikea.com/se/sv/p/sniglar-spjalsang-bok-00114291/"
+    />
+
+    <ProductCard
+      name="Leander Classic Spjälsäng Natural"
+      badge="Bäst i test"
+      price="5 499 kr"
+      rating={4.8}
+      image="/images/products/leander-classic-natural.jpg"
+      pros={['FSC-certifierat trä från ansvarsfullt skogsbruk', 'OEKO-TEX-certifierade material', 'Dansk hantverksdesign med rena linjer', 'Högt andrahandsvärde']}
+      cons={['Högt pris', 'Kräver märkets egna madrasser för optimal passform']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/leander-classic-spjalsang-natural"
+    />
+
+    <ProductCard
+      name="Troll Sun Ekologisk Spjälsäng 70x140 cm"
+      badge="Bäst mellanklass"
+      price="1 999 kr"
+      rating={4.6}
+      image="/images/products/troll-sun-spjalsang.jpg"
+      pros={['OEKO-TEX Standard 100-certifierat', 'Massiv bok med vattenbaserad lack', 'Justerbar sängbotten i 3 höjdlägen', 'Nordisk design']}
+      cons={['Inte FSC-certifierat trä', 'Mellanklass — varken budgetalternativ eller premium']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/troll-sun-spjalsang-natural"
+    />
+
+    <ProductCard
+      name="Geuther Salto Naturlig Spjälsäng 70x140 cm"
+      badge="Bäst tysk kvalitet"
+      price="2 799 kr"
+      rating={4.5}
+      image="/images/products/geuther-salto-natural.jpg"
+      pros={['TÜV GS-certifierad säkerhet', 'OEKO-TEX Standard 100', 'Vattenbaserade ytbehandlingar', 'Hög materialkvalitet']}
+      cons={['Inte FSC-certifierat trä', 'Dyrare än Troll Sun']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/geuther-salto-spjalsang-natural"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Ekologisk spjälsäng</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Massivt trä vs skivmaterial</h3>
+    <p>Välj alltid massivt trä (bok, ek, björk) framför MDF och spånskivor. MDF och spånskivor kan innehålla formaldehyd och andra VOC som avger sig i barnrummet. Massivt trä är mer hållbart, reparerbart och miljövänligare. Alla sängar i vår lista är i massivt trä.</p>
+
+    <h3>Ytbehandling — vad är säkert?</h3>
+    <p>Obehandlat naturträ är renast men mer känsligt. Vattenbaserade lacker och vaxer är säkra alternativ som skyddar träet utan farliga lösningsmedel. Undvik sängar lackade med traditionell alkydlack — den kan innehålla lösningsmedel som avger sig länge efter tillverkning.</p>
+
+    <h3>Välj rätt madrass till ekologisk säng</h3>
+    <p>En ekologisk säng förtjänar en ekologisk madrass. Välj naturlatex eller kokosfibermadrass med OEKO-TEX-certifiering. Undvik skummadrasser utan certifiering. Madrassen ska passa tätt mot sängens kanter — mät alltid innermatten innan du köper.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler spjälsängsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/spjalsangar/" class="text-accent hover:underline">Bästa spjälsäng 2026 — alla modeller jämförda</a></li>
+      <li><a href="/spjalsangar/omvandlingsbar/" class="text-accent hover:underline">Omvandlingsbar spjälsäng 2026 — växer med barnet</a></li>
+      <li><a href="/babyvakter/" class="text-accent hover:underline">Bästa babyvakten 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Leander Classic Spjälsäng Natural',
+      description: 'Ekologisk spjälsäng i FSC-certifierad massiv bok med OEKO-TEX-certifierade material. Dansk design. 70x140 cm.',
+      image: 'https://bebisguiden.se/images/products/leander-classic-natural.jpg',
+      brand: 'Leander',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 5499, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/leander-classic-spjalsang-natural', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'IKEA Sniglar Spjälsäng Massiv Bok 70x140 cm',
+      description: 'Prisvärd spjälsäng i massiv bok utan ytbehandling. 70x140 cm. Uppfyller EU-standarden EN 716.',
+      image: 'https://bebisguiden.se/images/products/ikea-sniglar.jpg',
+      brand: 'IKEA',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 499, url: 'https://www.ikea.com/se/sv/p/sniglar-spjalsang-bok-00114291/', seller: 'IKEA' }],
+    },
+  ]} />
+
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/leander-classic-spjalsang-natural"
+  text="Se bästa pris — Leander Classic Natural"
+  productName="Bäst i test ekologisk spjälsäng April 2026"
+/>

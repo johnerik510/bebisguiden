@@ -1,0 +1,226 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'Hopfällbar' },
+];
+
+const products = [
+  {
+    name: 'Chicco 360° Travel Highchair',
+    badge: 'Bäst i test',
+    price: '1 299 kr',
+    rating: 4.8,
+    image: '/images/products/chicco-360-travel-highchair.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-360-travel-highchair-black',
+    features: {
+      'Vikt': '5,5 kg',
+      'Hopfällt mått': '55x44x25 cm',
+      'Ålder': '6 mån–3 år',
+      'Bältessystem': '5-punkts',
+      'Bricka': 'Ja, avtagbar',
+    },
+  },
+  {
+    name: 'Joie Mimzy Snacker Hopfällbar Matstol',
+    badge: 'Lättast',
+    price: '899 kr',
+    rating: 4.6,
+    image: '/images/products/joie-mimzy-snacker.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-mimzy-snacker-matstol',
+    features: {
+      'Vikt': '4,0 kg',
+      'Hopfällt mått': '46x47x20 cm',
+      'Ålder': '6 mån–3 år',
+      'Bältessystem': '5-punkts',
+      'Bricka': 'Ja, avtagbar',
+    },
+  },
+  {
+    name: 'Badabulle Compact Air Hopfällbar Matstol',
+    badge: 'Kompaktast',
+    price: '1 099 kr',
+    rating: 4.5,
+    image: '/images/products/badabulle-compact-air.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/badabulle-compact-air-matstol',
+    features: {
+      'Vikt': '5,2 kg',
+      'Hopfällt mått': '30x48x50 cm',
+      'Ålder': '6 mån–3 år',
+      'Bältessystem': '5-punkts',
+      'Bricka': 'Ja, avtagbar och diskmaskinssäker',
+    },
+  },
+  {
+    name: 'Inglesina Fast Table Chair',
+    badge: 'Bäst för resor',
+    price: '799 kr',
+    rating: 4.4,
+    image: '/images/products/inglesina-fast-table-chair.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/inglesina-fast-table-chair',
+    features: {
+      'Vikt': '1,9 kg',
+      'Hopfällt mått': '35x33x8 cm',
+      'Ålder': '6 mån–15 kg',
+      'Bältessystem': '3-punkts',
+      'Bricka': 'Nej (klämmer fast vid bord)',
+    },
+  },
+];
+
+const featureLabels = ['Vikt', 'Hopfällt mått', 'Ålder', 'Bältessystem', 'Bricka'];
+
+const faqItems = [
+  {
+    question: 'Vad skiljer en hopfällbar matstol från en vanlig?',
+    answer: 'En hopfällbar matstol kan viks ihop till ett kompakt paket — perfekt för resor, restaurangbesök eller om du bor i en liten lägenhet med begränsat förvaringsutrymme. De är generellt lättare (4–6 kg) men lite sämre på ergonomi och stabilitet jämfört med en fast matstol som Tripp Trapp. Perfekt som andrastol eller om du reser ofta.',
+  },
+  {
+    question: 'Är hopfällbara matstolar lika säkra som vanliga?',
+    answer: 'Ja, om de uppfyller EU-standarden EN 14988 är de lika säkra. Kontrollera alltid att stolen har 5-punkts bälte för de minsta barnen och att lås och spärrar fungerar korrekt varje gång du fäller upp stolen. Låt aldrig ett barn sitta i stolen utan att bältet är fastspänt.',
+  },
+  {
+    question: 'Vilken hopfällbar matstol är bäst för resor med flyg?',
+    answer: 'Inglesina Fast Table Chair är det kompaktaste och lättaste alternativet (1,9 kg, 35x33x8 cm hopfällt) och passar i handbagage. Den klämmer fast direkt vid ett bord utan egna benstöd. För längre vistelser med mer stabilitet är Joie Mimzy Snacker (4 kg) bäst — lätt nog att ta med men stabilare än bordsstolar.',
+  },
+  {
+    question: 'Kan jag använda en hopfällbar matstol som primär matstol?',
+    answer: 'Det fungerar men är inte optimalt för daglig användning. Hopfällbara matstolar har sämre ergonomi och justering jämfört med fasta alternativ. För de flesta barn rekommenderar vi en fast matstol (som Tripp Trapp eller Antilop) som primär stol och en hopfällbar som komplement för resor och restauranger.',
+  },
+  {
+    question: 'Hur länge kan man använda en hopfällbar matstol?',
+    answer: 'De flesta hopfällbara matstolar passar från 6 månaders ålder upp till ca 3 år eller 15 kg. Inglesina Fast Table Chair passar barn upp till 15 kg. Chicco och Joie passar till 3 år. Kontrollera alltid tillverkarens viktgräns — en för tung bebis i en hopfällbar stol är en säkerhetsrisk.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Hopfällbar matstol 2026 — bäst för resande och liten lägenhet"
+  description="Bästa hopfällbara matstolen 2026: Vi jämför Chicco, Joie Mimzy och Inglesina. Se vikt, hopfällt mått och säkerhet — hitta den bästa resmätstolen."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/matstolar/hopfallbar/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En hopfällbar matstol är perfekt för resor, restaurangbesök eller om du bor trångt. Vi har jämfört de bästa hopfällbara matstolarna på den svenska marknaden — från den ultralätta Inglesina Fast Table Chair till den helhjärtade resematstolen Chicco 360.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — hopfällbara matstolar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Chicco 360° Travel Highchair</strong> vinner för bäst stabilitet och komfort bland hopfällbara matstolar. <strong>Inglesina Fast Table Chair</strong> är bäst för flygresor och ultralätt packning.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval — hopfällbara matstolar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Chicco 360° Travel Highchair"
+      badge="Bäst i test"
+      price="1 299 kr"
+      rating={4.8}
+      image="/images/products/chicco-360-travel-highchair.jpg"
+      pros={['Fäller ihop snabbt med ett handtag', 'Stabil på de flesta underlag', '5-punkts bälte ingår', 'Avtagbar och diskmaskinssäker bricka']}
+      cons={['5,5 kg — inte ultralätt', 'Dyrast i testet']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-360-travel-highchair-black"
+    />
+
+    <ProductCard
+      name="Joie Mimzy Snacker Hopfällbar Matstol"
+      badge="Lättast"
+      price="899 kr"
+      rating={4.6}
+      image="/images/products/joie-mimzy-snacker.jpg"
+      pros={['Lättast i testet — 4 kg', 'Kompakt när hopfälld', '5-punkts bälte', 'Prisvärd i förhållande till funktioner']}
+      cons={['Något sämre stabilitet på ojämnt underlag', 'Begränsad justerbarhet']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-mimzy-snacker-matstol"
+    />
+
+    <ProductCard
+      name="Badabulle Compact Air Hopfällbar Matstol"
+      badge="Kompaktast"
+      price="1 099 kr"
+      rating={4.5}
+      image="/images/products/badabulle-compact-air.jpg"
+      pros={['Kompaktast hopfällt mått', 'Diskmaskinssäker bricka', '5-punkts bälte', 'Enkel montering och hopfällning']}
+      cons={['Tyngre än Joie Mimzy', 'Mellanpris utan utmärkande extras']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/badabulle-compact-air-matstol"
+    />
+
+    <ProductCard
+      name="Inglesina Fast Table Chair"
+      badge="Bäst för resor"
+      price="799 kr"
+      rating={4.4}
+      image="/images/products/inglesina-fast-table-chair.jpg"
+      pros={['Ultralätt — 1,9 kg', 'Minst hopfällt mått — ryms i handbagage', 'Kräver inget eget benstöd', 'Passar de flesta bord']}
+      cons={['Kräver ett fast bord att fästa vid', '3-punkts bälte (inte 5-punkts)', 'Sämre stabilitet om bordet är smalt']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/inglesina-fast-table-chair"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hopfällbar matstol</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Fristående stol eller bordsstol?</h3>
+    <p>Fristående hopfällbara matstolar (Chicco, Joie, Badabulle) har egna ben och fungerar överallt — på restaurang, hos morföräldrar och hemma. Bordsstolar som Inglesina Fast Table Chair kräver ett fast bord att fästa vid men väger hälften och tar minimalt med plats. Välj bordsstol för flygresor, fristående för längre vistelser.</p>
+
+    <h3>2. Vikt och hopfällt mått avgör</h3>
+    <p>Ska du ta med stolen på flyg? Inglesina ryms i handbagage. Ska du bara ha den i bilen för restaurangbesök? Joie Mimzy och Chicco 360 är praktiska och lätta nog att bära. Undvik matstolar tyngre än 6 kg om du planerar att bära dem ofta.</p>
+
+    <h3>3. Säkerhet — kontrollera bältessystemet</h3>
+    <p>Välj 5-punkts bälte för barn under 18 månader — det ger bäst fixering. Bordsstolar med 3-punkts bälte är okej för äldre barn men gör ett noggrant val för de yngsta. Kontrollera alltid att bältet är fastspänt och att stolen är korrekt monterad varje gång du använder den.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler matstolsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstol 2026 — alla modeller jämförda</a></li>
+      <li><a href="/matstolar/boosterkudde/" class="text-accent hover:underline">Bästa boosterkudde och sittförhöjare 2026</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Chicco 360° Travel Highchair',
+      description: 'Hopfällbar matstol med 5-punkts bälte och diskmaskinssäker bricka. Väger 5,5 kg och passar barn 6 månader till 3 år.',
+      image: 'https://bebisguiden.se/images/products/chicco-360-travel-highchair.jpg',
+      brand: 'Chicco',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 1299, url: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-360-travel-highchair-black', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Joie Mimzy Snacker Hopfällbar Matstol',
+      description: 'Lätt hopfällbar matstol på 4 kg med 5-punkts bälte. Passar barn 6 månader till 3 år.',
+      image: 'https://bebisguiden.se/images/products/joie-mimzy-snacker.jpg',
+      brand: 'Joie',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 899, url: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-mimzy-snacker-matstol', seller: 'Jollyroom' }],
+    },
+  ]} />
+
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-360-travel-highchair-black"
+  text="Se bästa pris — Chicco 360° Travel Highchair"
+  productName="Bäst i test hopfällbar matstol April 2026"
+/>

@@ -1,0 +1,230 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Newborn' },
+];
+
+const products = [
+  {
+    name: 'Pampers New Baby Blöjor Stl 1 2-5 kg 44-pack',
+    badge: 'Bäst i test',
+    price: '119 kr',
+    rating: 4.9,
+    image: '/images/products/pampers-new-baby-stl1.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack',
+    features: {
+      'Storlek': 'Stl 1 — 2–5 kg',
+      'Navelurringning': 'Ja',
+      'Fuktindikator': 'Ja',
+      'Antal i förpackning': '44-pack',
+      'Pris/st': 'ca 2,70 kr',
+    },
+  },
+  {
+    name: 'Pampers Premium Protection Stl 2 4-8 kg 46-pack',
+    badge: 'Mjukast',
+    price: '149 kr',
+    rating: 4.8,
+    image: '/images/products/pampers-premium-stl2.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-2-4-8-kg-46-pack',
+    features: {
+      'Storlek': 'Stl 2 — 4–8 kg',
+      'Navelurringning': 'Ja',
+      'Fuktindikator': 'Ja',
+      'Antal i förpackning': '46-pack',
+      'Pris/st': 'ca 3,24 kr',
+    },
+  },
+  {
+    name: 'Libero Newborn Blöjor Stl 1 2-5 kg 30-pack',
+    badge: 'Svensk favorit',
+    price: '89 kr',
+    rating: 4.7,
+    image: '/images/products/libero-newborn-stl1.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/libero-newborn-blojor-stl-1-2-5-kg-30-pack',
+    features: {
+      'Storlek': 'Stl 1 — 2–5 kg',
+      'Navelurringning': 'Ja',
+      'Fuktindikator': 'Ja',
+      'Antal i förpackning': '30-pack',
+      'Pris/st': 'ca 2,97 kr',
+    },
+  },
+  {
+    name: 'Huggies Extra Care Blöjor Stl 1 2-5 kg 25-pack',
+    badge: 'Bäst passform',
+    price: '79 kr',
+    rating: 4.6,
+    image: '/images/products/huggies-extra-care-stl1.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/huggies-extra-care-blojor-stl-1-2-5-kg-25-pack',
+    features: {
+      'Storlek': 'Stl 1 — 2–5 kg',
+      'Navelurringning': 'Ja',
+      'Fuktindikator': 'Ja',
+      'Antal i förpackning': '25-pack',
+      'Pris/st': 'ca 3,16 kr',
+    },
+  },
+];
+
+const featureLabels = ['Storlek', 'Navelurringning', 'Fuktindikator', 'Antal i förpackning', 'Pris/st'];
+
+const faqItems = [
+  {
+    question: 'Vilken blöja är bäst för nyfödda?',
+    answer: 'Pampers New Baby är ett av de mest populära valen för nyfödda tack vare navelurringningen i storlek 1 och 2 samt den mjuka inre ytan. Libero Newborn är ett bra alternativ som är lättillgängligt i svenska butiker. Huggies Extra Care passar nyfödda med sin anpassade formgivning. Prova ett litet paket innan du köper storpack.',
+  },
+  {
+    question: 'Vad är navelurringning och varför är det viktigt?',
+    answer: 'Navelurringning är en U-formad urskärning framtill på blöjan som gör att den inte skaver mot navelsträngsomfånget. Det är extra viktigt de första 1–3 veckorna tills naveln torkar och faller av. Blöjor utan navelurringning kan orsaka irritation och fördröja läkning. Alla blöjor i vår lista har navelurringning i storlek 1 och 2.',
+  },
+  {
+    question: 'Hur många newborn-blöjor behöver man?',
+    answer: 'En nyfödd byter blöja 8–12 gånger per dygn — det innebär ungefär 60–85 blöjor per vecka. Under de första 2–3 veckorna behöver du ofta storlek 1. Köp inte för många i minsta storlek — många nyfödda, framför allt vid beräknad tidpunkt eller lite över, kan hoppa direkt till storlek 2. Ha 2–3 förpackningar stl 1 och fyll på med stl 2 när barnet väger 4+ kg.',
+  },
+  {
+    question: 'Hur vet jag när det är dags att byta till nästa storlek?',
+    answer: 'Tecken på att blöjan är för liten: röda märken runt benen eller magen, blöjan läcker trots att den inte är full, svårt att fästa banden utan att de sträcks maximalt. Viktregeln: storlek 1 passar 2–5 kg, storlek 2 passar 4–8 kg. Blöjstorlekarna överlappar — byt upp när blöjan börjar sitta tajt, inte exakt när barnet passerar viktgränsen.',
+  },
+  {
+    question: 'Är det okej att använda vanliga blöjor (utan navelurringning) på nyfödda?',
+    answer: 'Det går, men är inte optimalt under navelperioden. Vanliga blöjor kan viks ner framtill manuellt för att inte täcka naveln — men det är opraktiskt och håller inte alltid. Välj blöjor med navelurringning de första veckorna för att göra byten enklare och minska risken för irritation. När naveln fallit av spelar navelurringningen ingen roll.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa blöja nyfödd 2026 — mjuka och skonsamma för nyfödda"
+  description="Bästa blöja till nyfödd bebis 2026: Vi jämför Pampers New Baby, Libero Newborn och Huggies Extra Care. Se vilken som passar nyfödda bäst — pris och betyg."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/blojor/newborn/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En nyfödd bebis byter blöja upp till 12 gånger per dygn. Rätt blöja gör skillnad — mjukt material, säker navelurringning och bra läckageskydd är avgörande de första veckorna. Vi har jämfört de bästa newborn-blöjorna på den svenska marknaden.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — newborn-blöjor 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Pampers New Baby stl 1</strong> är bäst för nyfödda tack vare navelurringning, fuktindikator och mjuk yta. <strong>Libero Newborn</strong> är bäst för den som vill ha ett lättillgängligt alternativ i svenska butiker.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval för nyfödda 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Pampers New Baby Blöjor Stl 1 2-5 kg 44-pack"
+      badge="Bäst i test"
+      price="119 kr"
+      rating={4.9}
+      image="/images/products/pampers-new-baby-stl1.jpg"
+      pros={['Navelurringning — skyddar naveln', 'Fuktindikator — vet när det är dags att byta', 'Mjuk och luftig inre yta', 'Bra läckageskydd även för lösa nyfödda avföringar']}
+      cons={['Något dyrare per blöja än budget-alternativ', 'Finns i liten förpackning (44-pack)']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack"
+    />
+
+    <ProductCard
+      name="Pampers Premium Protection Stl 2 4-8 kg 46-pack"
+      badge="Mjukast"
+      price="149 kr"
+      rating={4.8}
+      image="/images/products/pampers-premium-stl2.jpg"
+      pros={['Mjukast material av alla testade', 'Navelurringning i stl 1–2', 'Extra absorberande kärna', 'Laminerat ytterlag — håller ihop även vid full blöja']}
+      cons={['Dyraste alternativet', 'Inte ekologisk']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-2-4-8-kg-46-pack"
+    />
+
+    <ProductCard
+      name="Libero Newborn Blöjor Stl 1 2-5 kg 30-pack"
+      badge="Svensk favorit"
+      price="89 kr"
+      rating={4.7}
+      image="/images/products/libero-newborn-stl1.jpg"
+      pros={['Populäraste märket i Sverige', 'Navelurringning', 'Mjuk och skonsam yta', 'Lättillgänglig i alla svenska butiker']}
+      cons={['Något sämre läckageskydd för lösa avföringar än Pampers', 'Liten förpackning (30-pack)']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/libero-newborn-blojor-stl-1-2-5-kg-30-pack"
+    />
+
+    <ProductCard
+      name="Huggies Extra Care Blöjor Stl 1 2-5 kg 25-pack"
+      badge="Bäst passform"
+      price="79 kr"
+      rating={4.6}
+      image="/images/products/huggies-extra-care-stl1.jpg"
+      pros={['Formad speciellt för nyfödda', 'Navelurringning', 'Naturliga fibrer mot huden', 'Mjuk ytteryta']}
+      cons={['Minst förpackning (25-pack)', 'Något svårare att hitta i butik']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/huggies-extra-care-blojor-stl-1-2-5-kg-25-pack"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Vad ska du tänka på för newborn-blöjor?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Navelurringning är ett måste de första veckorna</h3>
+    <p>Alla blöjor i storlek 1 och 2 på vår lista har navelurringning — en U-formad urskärning som gör att blöjan inte skaver mot det känsliga navelsträngsomfånget. Utan denna kan du vika ner blöjan manuellt, men det är opraktiskt och håller inte alltid. Välj alltid blöja med navelurringning tills naveln torkat och fallit av (vanligtvis 5–15 dagar).</p>
+
+    <h3>2. Fuktindikator gör livet lättare</h3>
+    <p>Pampers New Baby och Premium Protection har en gul rand längs blöjan som byter färg till blå när blöjan är blöt. Det gör att du slipper kontrollera manuellt — extra praktiskt nattetid och de första dagarna när du fortfarande lär känna bebisens rytm.</p>
+
+    <h3>3. Köp inte för stor mängd i stl 1</h3>
+    <p>Nyfödda växer snabbt och kan gå från stl 1 till stl 2 inom 2–4 veckor. Köp 1–2 förpackningar stl 1 till att börja med, fyll på med stl 2 när barnet passerar 4 kg. Om du köper i förväg: ha majoriteten i stl 2 och 3.</p>
+
+    <h3>4. Lösa avföringar kräver bra läckageskydd</h3>
+    <p>Ammade nyfödda har ofta lösa, gulaktiga avföringar flera gånger om dagen. Det ställer höga krav på läckageskyddet runt benen. Pampers New Baby och Premium Protection presterar bäst här tack vare dubbla läckageskydd längs benen.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler blöjguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/blojor/" class="text-accent hover:underline">Bästa blöja 2026 — alla storlekar jämförda</a></li>
+      <li><a href="/blojor/ekologisk/" class="text-accent hover:underline">Bästa ekologisk blöja 2026 — miljövänliga alternativ</a></li>
+      <li><a href="/blojor/natt/" class="text-accent hover:underline">Bästa nattblöja 2026 — extra absorberande</a></li>
+      <li><a href="/blojor/storlek-guide/" class="text-accent hover:underline">Blöjstorlek guide 2026 — vilken storlek passar?</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Pampers New Baby Blöjor Stl 1 2-5 kg 44-pack',
+      description: 'Newborn-blöja med navelurringning och fuktindikator. Mjuk inre yta och bra läckageskydd för nyfödda. Passar 2–5 kg.',
+      image: 'https://bebisguiden.se/images/products/pampers-new-baby-stl1.jpg',
+      brand: 'Pampers',
+      ratingValue: 4.9,
+      reviewCount: 1,
+      offers: [{ price: 119, url: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Libero Newborn Blöjor Stl 1 2-5 kg 30-pack',
+      description: 'Populär svensk newborn-blöja med navelurringning och mjuk yta. Passar 2–5 kg.',
+      image: 'https://bebisguiden.se/images/products/libero-newborn-stl1.jpg',
+      brand: 'Libero',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 89, url: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/libero-newborn-blojor-stl-1-2-5-kg-30-pack', seller: 'Jollyroom' }],
+    },
+  ]} />
+
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack"
+  text="Se bästa pris — Pampers New Baby Stl 1"
+  productName="Bäst i test April 2026"
+/>

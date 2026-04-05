@@ -1,0 +1,225 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'Boosterkudde' },
+];
+
+const products = [
+  {
+    name: 'Chicco Pocket Snack Booster Seat',
+    badge: 'Bäst i test',
+    price: '499 kr',
+    rating: 4.8,
+    image: '/images/products/chicco-pocket-snack-booster.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-pocket-snack-booster-seat-black',
+    features: {
+      'Typ': 'Boostersits',
+      'Vikt': '1,8 kg',
+      'Ålder': '6 mån–3 år',
+      'Bältessystem': '3-punkts',
+      'Fästs vid stol': 'Ja',
+    },
+  },
+  {
+    name: 'Joie Mimzy 360 Booster',
+    badge: 'Mest mångsidig',
+    price: '699 kr',
+    rating: 4.7,
+    image: '/images/products/joie-mimzy-360-booster.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-mimzy-360-booster',
+    features: {
+      'Typ': 'Boostersits 360-rotation',
+      'Vikt': '2,1 kg',
+      'Ålder': '6 mån–3 år',
+      'Bältessystem': '5-punkts',
+      'Fästs vid stol': 'Ja',
+    },
+  },
+  {
+    name: 'BabyBjörn Sittdyna Booster Seat',
+    badge: 'Bäst design',
+    price: '1 099 kr',
+    rating: 4.6,
+    image: '/images/products/babybjorn-booster-seat.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/babybjorn-booster-seat',
+    features: {
+      'Typ': 'Premium boostersits',
+      'Vikt': '1,4 kg',
+      'Ålder': '6 mån–3 år',
+      'Bältessystem': '5-punkts',
+      'Fästs vid stol': 'Ja',
+    },
+  },
+  {
+    name: 'Inglesina Gusto Booster',
+    badge: 'Bäst budget',
+    price: '349 kr',
+    rating: 4.4,
+    image: '/images/products/inglesina-gusto-booster.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/inglesina-gusto-booster',
+    features: {
+      'Typ': 'Boostersits',
+      'Vikt': '1,5 kg',
+      'Ålder': '6 mån–3 år',
+      'Bältessystem': '3-punkts',
+      'Fästs vid stol': 'Ja',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Vikt', 'Ålder', 'Bältessystem', 'Fästs vid stol'];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan boosterkudde och sittförhöjare?',
+    answer: 'En boostersits (booster seat) är en komplett sittlösning som fästs på en vanlig stol och har eget bältessystem — den är som en miniatyrmatstol. En sittförhöjare (booster cushion) är en enkel kudde som höjer upp barnet utan eget bälte — den passar äldre barn (3+) som redan sitter stabilt. För bebisar under 3 år rekommenderas alltid en boostersits med bältessystem.',
+  },
+  {
+    question: 'Från vilken ålder kan man använda boostersits?',
+    answer: 'De flesta boostersitsar passar från 6 månaders ålder, när barnet kan sitta stabilt utan stöd. Kontrollera alltid tillverkarens ålders- och viktgränser. Boostersitsar är inte lämpliga för bebisar yngre än 6 månader — använd då en matstol med liggläge eller babysitter.',
+  },
+  {
+    question: 'Är boostersits lika säkert som matstol?',
+    answer: 'En bra boostersits med 5-punkts bälte och ordentlig infästning i stolen är säkert. Se till att stolen du fäster den vid är stabil och inte kan välta. Boostersitsar som Joie Mimzy 360 och BabyBjörn uppfyller EU-standarden EN 16120 för boostersitsar. Fäst alltid boostersitsen med bältet runt stolsryggen och tillbaka, och dra åt ordentligt.',
+  },
+  {
+    question: 'Kan jag använda boostersits på alla typer av stolar?',
+    answer: 'Boostersitsar fungerar på de flesta matstolar med ryggstöd och horisontellt sittunderlag. De passar sämre på stolar med böjda sits, spjälstolar eller stolar med smala ryggstöd. Kontrollera alltid att din befintliga stol passar innan du köper — tillverkaren anger ofta vilka stolstyper som fungerar.',
+  },
+  {
+    question: 'Hur länge kan barnet använda boostersits?',
+    answer: 'De flesta boostersitsar passar till 3 år eller ca 15 kg. Därefter kan barnet använda en enkel sittförhöjare (utan bälte) eller sitta direkt i en vanlig stol om benen når fotbrädan. BabyBjörn Booster Seat klarar upp till 15 kg.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Boosterkudde och sittförhöjare bebis 2026 — portable matstol"
+  description="Bästa boosterkudde och sittförhöjare 2026: Vi jämför Chicco Pocket Snack, BabyBjörn och Inglesina Gusto. Portable matstollösning för bebis."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/matstolar/boosterkudde/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En boostersits gör att du kan använda dina befintliga stolar som matstol — fäst den på en vanlig köksstol och barnet sitter säkert med eget bältessystem. Perfekt på restauranger, vid besök och i liten lägenhet utan plats för en fullstor matstol.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — boosterkuddar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Chicco Pocket Snack</strong> vinner för bäst pris-kvalitet och kompakt design. <strong>BabyBjörn Booster Seat</strong> är bäst för den som vill ha premium design och lättvikt.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval — boosterkuddar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Chicco Pocket Snack Booster Seat"
+      badge="Bäst i test"
+      price="499 kr"
+      rating={4.8}
+      image="/images/products/chicco-pocket-snack-booster.jpg"
+      pros={['Kompakt och lätt — 1,8 kg', 'Snabb montering och demontering', 'Avtagbar bricka', 'Bra pris för funktionerna']}
+      cons={['3-punkts bälte (inte 5-punkts)', 'Begränsad höjdjustering']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-pocket-snack-booster-seat-black"
+    />
+
+    <ProductCard
+      name="Joie Mimzy 360 Booster"
+      badge="Mest mångsidig"
+      price="699 kr"
+      rating={4.7}
+      image="/images/products/joie-mimzy-360-booster.jpg"
+      pros={['5-punkts bälte — bäst för de minsta', '360-graders rotation — enkel in/urstigning', 'Höjdjusterbar', 'Avtagbar bricka']}
+      cons={['Tyngre än konkurrenterna — 2,1 kg', 'Dyrare mellanprisalternativ']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-mimzy-360-booster"
+    />
+
+    <ProductCard
+      name="BabyBjörn Sittdyna Booster Seat"
+      badge="Bäst design"
+      price="1 099 kr"
+      rating={4.6}
+      image="/images/products/babybjorn-booster-seat.jpg"
+      pros={['Lättast i testet — 1,4 kg', '5-punkts bälte', 'Skandinavisk design', 'Enkel att rengöra']}
+      cons={['Dyraste alternativet', 'Ingen avtagbar bricka ingår']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/babybjorn-booster-seat"
+    />
+
+    <ProductCard
+      name="Inglesina Gusto Booster"
+      badge="Bäst budget"
+      price="349 kr"
+      rating={4.4}
+      image="/images/products/inglesina-gusto-booster.jpg"
+      pros={['Lägst pris i testet', 'Kompakt och lätt', 'Enkel montering', 'Passar de flesta stolstyper']}
+      cons={['3-punkts bälte', 'Enklare material', 'Ingen höjdjustering']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/inglesina-gusto-booster"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Boostersits vs matstol — vad passar dig?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Välj boostersits om...</h3>
+    <p>Du redan har bra stolar hemma och inte vill ha en extra fullstor matstol. Du reser ofta och behöver en portabel lösning. Du bor i en liten lägenhet. Ditt barn är äldre och mer stabilt (6+ månader) och redan sitter på besök hos morföräldrar som inte har matstol.</p>
+
+    <h3>Välj matstol om...</h3>
+    <p>Du vill ha en optimal ergonomisk lösning från födseln. Du har plats och vill investera i kvalitet som Tripp Trapp. Ditt barn äter hemma varje dag och du vill ha en stabil och höjdjusterbar lösning.</p>
+
+    <h3>Kombinationen som fungerar bäst</h3>
+    <p>Många familjer har en fast matstol (Tripp Trapp eller Antilop) hemma och en boostersits för resor. Det ger bästa ergonomi hemma och maximal flexibilitet ute. Chicco Pocket Snack till 499 kr är ett utmärkt komplement till Tripp Trapp.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler matstolsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/matstolar/" class="text-accent hover:underline">Bästa matstol 2026 — alla modeller jämförda</a></li>
+      <li><a href="/matstolar/hopfallbar/" class="text-accent hover:underline">Bästa hopfällbara matstol 2026 — för resor</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Chicco Pocket Snack Booster Seat',
+      description: 'Kompakt boostersits på 1,8 kg med 3-punkts bälte och avtagbar bricka. Passar barn 6 månader till 3 år.',
+      image: 'https://bebisguiden.se/images/products/chicco-pocket-snack-booster.jpg',
+      brand: 'Chicco',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 499, url: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-pocket-snack-booster-seat-black', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'BabyBjörn Sittdyna Booster Seat',
+      description: 'Premium boostersits med 5-punkts bälte och skandinavisk design. Lättast i testet — 1,4 kg.',
+      image: 'https://bebisguiden.se/images/products/babybjorn-booster-seat.jpg',
+      brand: 'BabyBjörn',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 1099, url: 'https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/babybjorn-booster-seat', seller: 'Jollyroom' }],
+    },
+  ]} />
+
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/chicco-pocket-snack-booster-seat-black"
+  text="Se bästa pris — Chicco Pocket Snack Booster"
+  productName="Bäst i test boosterkudde April 2026"
+/>

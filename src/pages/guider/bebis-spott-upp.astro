@@ -1,0 +1,178 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Bebis spottar upp' },
+];
+
+const faqItems = [
+  {
+    question: 'Hur mycket är det normalt att spottar upp?',
+    answer: 'Upp till hälften av alla bebisar spottar upp regelbundet de första månaderna — det är ett av de vanligaste fenomenen under spädbarnsåret. Det anses normalt om bebisen mår bra, ökar i vikt och är glad. De flesta bebisar slutar spotta upp vid 12–18 månaders ålder när de börjar sitta upprätt mer och maten är fastare.',
+  },
+  {
+    question: 'Vad är skillnaden mellan GER och GERD?',
+    answer: 'GER (gastroesofageal reflux) är det normala tillståndet — magsäckens innehåll rinner tillbaka upp i matstrupen. Nästan alla nyfödda har GER i varierande grad. GERD (gastroesofageal refluxsjukdom) är när refluxen orsakar komplikationer: dålig viktuppgång, smärta, matningssvårigheter, andningsproblem. GERD kräver läkarbedömning och ibland behandling.',
+  },
+  {
+    question: 'Är det farligt om bebisen spottar upp i sömnen?',
+    answer: 'Risken är låg. Bebisar har en skyddsreflex (laryngeal chemoreflex) som gör att de andas ut om vätska når luftvägarna — de sväljer eller hostar. Lägg alltid bebisar på rygg för sömn (minskar SIDS-risken) — de klarar att hantera uppspottning i ryggläge. Undantaget: om bebisen verkar kvävas, bli blåfärgad eller har upprepade andningsstopp — sök vård direkt.',
+  },
+  {
+    question: 'Hjälper olika bröstmjölksersättning mot uppspottning?',
+    answer: 'Specialformuleringar mot reflux (AR-formel) innehåller förtjockningsmedel som gör mjölken tjockare och minskar uppspottning. De kan hjälpa mot synlig uppspottning men behandlar inte GERD-smärta. Diskutera alltid med barnläkare eller BVC-sjuksköterska innan du byter formula. Om du ammar: undantag mejeriprodukter i din kost kan ibland hjälpa om bebisen är komjölksallergisk.',
+  },
+  {
+    question: 'När ska jag söka vård för uppspottning?',
+    answer: 'Sök vård om: bebisen verkar ha smärta vid matning (skriker, böjer sig bakåt), vägrar att äta, inte ökar i vikt eller minskar i vikt, spottar upp grönt eller blodigt innehåll, har andningsproblem, verkar påtagligt sjuk. Ring 1177 vid osäkerhet — det är alltid bättre att kontakta BVC eller 1177 tidigt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bebis spottar upp — normalt eller oro? Komplett guide 2026"
+  description="Bebis spottar upp är vanligt men när är det normalt? Läs om gastroesofageal reflux (GER) och GERD, praktiska råd och när du ska söka vård."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/bebis-spott-upp/"
+  updatedDate="2026-04-05"
+  showDisclaimer={true}
+  relatedArticles={[
+    { title: 'Amning — guide och råd', href: '/amning/' },
+    { title: 'Bebis kolik — vad gör du?', href: '/guider/bebis-kolik/' },
+    { title: 'Bebis feber — guide', href: '/guider/bebis-feber/' },
+    { title: 'Bästa babyvakt 2026', href: '/babyvakter/' },
+  ]}
+  faqItems={faqItems}
+>
+
+<p class="text-base text-text-light mb-6 max-w-2xl">
+  Nästan alla nyfödda spottar upp — det är ett av de vanligaste fenomenen under spädbarnsåret. Men när är det normalt och när ska du kontakta vård? Den här guiden förklarar skillnaden mellan normal reflux (GER) och refluxsjukdom (GERD), och ger konkreta råd för att minska uppspottning.
+</p>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Varför spottar bebisar upp?</h2>
+<p class="text-text-light mb-4">
+  Den viktigaste orsaken är att nedre esofageala sfinktern (LES) — muskeln som stänger öppningen mellan matstrupen och magsäcken — inte är färdigutvecklad hos nyfödda. Den sluter sig inte lika tätt som hos äldre barn och vuxna, vilket gör att magsäckens innehåll kan rinna tillbaka upp.
+</p>
+<p class="text-text-light mb-6">
+  Kombinerat med att nyfödda har en liten magsäck (bara 5–7 ml de första dagarna, växer till ca 80–150 ml vid en månad), äter ofta och ligger ner större delen av dygnet — är förutsättningarna för uppspottning optimala.
+</p>
+
+<div class="bg-green-50 border border-green-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-green-900 mb-1">Normal reflux (GER) — lugn</p>
+  <ul class="text-sm text-green-800 space-y-1 list-disc pl-4">
+    <li>Bebisen ökar normalt i vikt</li>
+    <li>Verkar nöjd och glad — kallas ibland "happy spitter"</li>
+    <li>Spottar upp men verkar inte ha smärta</li>
+    <li>Uppspottningen minskar när bebisen börjar sitta upp och äta fastare mat</li>
+  </ul>
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-red-900 mb-1">Refluxsjukdom (GERD) — kontakta vård</p>
+  <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+    <li>Dålig viktuppgång eller viktminskning</li>
+    <li>Verkar ha smärta vid matning — skriker, böjer sig bakåt</li>
+    <li>Vägrar att äta</li>
+    <li>Andningsproblem, upprepade andningsstopp</li>
+    <li>Spottar upp grönt eller blodigt innehåll</li>
+  </ul>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">GER vs GERD — vad är skillnaden?</h2>
+
+<div class="mb-6">
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="bg-accent/10">
+        <th class="text-left px-4 py-3 font-semibold text-dark">Faktor</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">GER (normalt)</th>
+        <th class="text-left px-4 py-3 font-semibold text-dark">GERD (sjukdom)</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <tr>
+        <td class="px-4 py-3 font-medium">Viktuppgång</td>
+        <td class="px-4 py-3 text-green-700">Normal</td>
+        <td class="px-4 py-3 text-red-700">Dålig eller ingen</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Bebisens humör</td>
+        <td class="px-4 py-3 text-green-700">Glad, nöjd</td>
+        <td class="px-4 py-3 text-red-700">Irritabel, gråter mycket</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Matning</td>
+        <td class="px-4 py-3 text-green-700">Äter bra</td>
+        <td class="px-4 py-3 text-red-700">Vägrar mat, avbryter matning</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-3 font-medium">Andning</td>
+        <td class="px-4 py-3 text-green-700">Normal</td>
+        <td class="px-4 py-3 text-red-700">Pipande andning, andningsstopp</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3 font-medium">Behandling</td>
+        <td class="px-4 py-3 text-green-700">Inga åtgärder krävs</td>
+        <td class="px-4 py-3 text-red-700">Läkarbedömning krävs</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Praktiska råd för att minska uppspottning</h2>
+
+<ol class="list-decimal pl-5 text-text-light space-y-4 mb-8">
+  <li>
+    <strong>Mata i upprätt position.</strong> Håll bebisen upprätt (ca 45-graders vinkel) under och efter matning. Håll bebisen upprätt i minst 20–30 minuter efter maten — sätt dig gärna i soffan med bebisen mot bröstet.
+  </li>
+  <li>
+    <strong>Rapa ordentligt.</strong> Rapa bebisen under och efter matning. Många bebisar behöver rappas flera gånger per matning. Om bebisen ammas: byt sida och rapa emellan.
+  </li>
+  <li>
+    <strong>Mata tätare med mindre mängd.</strong> Istället för sällan och mycket — ofta och lite. En magsäck som inte är överfull läcker mindre. För ammade bebisar: kortare amningstider men oftare.
+  </li>
+  <li>
+    <strong>Undvik tryck mot magen.</strong> Byt blöja INNAN matning om möjligt. Undvik att pressa ihop bebisens ben mot magen direkt efter maten. Bilbarnstolssits med böjd sittposition ökar trycket — undvik lång tid i bilstol direkt efter matning.
+  </li>
+  <li>
+    <strong>Prova höjd på madrassen.</strong> Höj huvudändan på madrassen med 15–30 grader (använd ett kil-kudde under madrassen, aldrig lös kudde). Socialstyrelsen rekommenderar ryggläge — en lätt höjning av huvudändan är tillåten.
+  </li>
+</ol>
+
+<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+  <p class="text-sm font-semibold text-accent-dark mb-1">Bra att veta</p>
+  <p class="text-sm text-text-light">De flesta bebisar slutar spotta upp vid 12–18 månaders ålder — när de börjar gå upprätt, äter fastare mat och magsäcken är mer mogen. Det är sällan ett tecken på allvarlig sjukdom. Men om du är orolig: kontakta alltid BVC eller ring 1177.</p>
+</div>
+
+<h2 class="font-heading text-xl font-bold mt-8 mb-3">Kräkning vs uppspottning — viktigt att skilja</h2>
+<p class="text-text-light mb-4">
+  Uppspottning sker passivt och utan ansträngning — maten rinner ut. Kräkning är ett aktivt, kraftfullt utdrivande av magsäckens innehåll med sammandragningar. Kräkning är mer oroande än uppspottning, särskilt om den är kraftig, upprepas eller innehåller grönt (galla) eller blod.
+</p>
+<p class="text-text-light mb-6">
+  Kraftig kräkning hos nyfödda (projektilikräkning — kräks kraftigt i en båge) kan vara tecken på pylorusstenos, en förträngning vid magsäcksöppningen som kräver operation. Kontakta vård omedelbart vid kraftig kräkning.
+</p>
+
+<FAQ items={faqItems} />
+
+<CTABox
+  productName="Amningskudde och refluxkil"
+  store="Jollyroom"
+  description="Amningskuddar, refluxkilar och sittfixar som hjälper vid uppspottning."
+  affiliateUrl="https://www.jollyroom.se/mamma/amningsprodukter/"
+/>
+
+<div class="mt-10 bg-gray-50 rounded-xl p-5">
+  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/amning/" class="text-accent hover:underline font-medium">Amning — guide och råd</a></li>
+    <li><a href="/guider/bebis-kolik/" class="text-accent hover:underline font-medium">Bebis kolik — orsaker och råd</a></li>
+    <li><a href="/guider/bebis-feber/" class="text-accent hover:underline font-medium">Bebis feber — när söker du vård?</a></li>
+    <li><a href="/guider/bebis-sovschema/" class="text-accent hover:underline font-medium">Sovschema bebis — hur mycket ska bebis sova?</a></li>
+  </ul>
+</div>
+
+</ArticleLayout>

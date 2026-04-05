@@ -1,0 +1,227 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Nattblöja' },
+];
+
+const products = [
+  {
+    name: 'Pampers Baby-Dry Night Pants Stl 6 15 kg+ 138-pack',
+    badge: 'Bäst i test',
+    price: '449 kr',
+    rating: 4.8,
+    image: '/images/products/pampers-baby-dry-night-stl6.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-6-15-kg-138-pack',
+    features: {
+      'Typ': 'Nattbyxblöja',
+      'Storlek': 'Stl 6 — 15 kg+',
+      'Absorptionsförmåga': 'Extra (12 timmar)',
+      'Antal': '138-pack',
+      'Pris/st': 'ca 3,25 kr',
+    },
+  },
+  {
+    name: 'Pampers Baby-Dry Blöjor Stl 4 9-14 kg 120-pack',
+    badge: 'Bäst nattblöja stl 4',
+    price: '379 kr',
+    rating: 4.7,
+    image: '/images/products/pampers-baby-dry-stl4.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-blojor-stl-4-9-14-kg-xxl-120-pack',
+    features: {
+      'Typ': 'Nattblöja',
+      'Storlek': 'Stl 4 — 9–14 kg',
+      'Absorptionsförmåga': 'Extra (12 timmar)',
+      'Antal': '120-pack',
+      'Pris/st': 'ca 3,16 kr',
+    },
+  },
+  {
+    name: 'Pampers Baby-Dry Pants Stl 5 12-17 kg 160-pack',
+    badge: 'Bäst nattbyxblöja stl 5',
+    price: '429 kr',
+    rating: 4.7,
+    image: '/images/products/pampers-baby-dry-pants-stl5.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-pants-blojor-stl-5-12-17-kg-160-pack',
+    features: {
+      'Typ': 'Nattbyxblöja',
+      'Storlek': 'Stl 5 — 12–17 kg',
+      'Absorptionsförmåga': 'Extra (12 timmar)',
+      'Antal': '160-pack',
+      'Pris/st': 'ca 2,68 kr',
+    },
+  },
+  {
+    name: 'Libero Comfort Blöjor Stl 5 10-14 kg 56-pack',
+    badge: 'Bäst för 6-12 månader',
+    price: '219 kr',
+    rating: 4.6,
+    image: '/images/products/libero-comfort-stl5.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/libero-comfort-blojor-stl-5-10-14-kg-56-pack',
+    features: {
+      'Typ': 'Nattvariabel dagsblöja',
+      'Storlek': 'Stl 5 — 10–14 kg',
+      'Absorptionsförmåga': 'Hög (10 timmar)',
+      'Antal': '56-pack',
+      'Pris/st': 'ca 3,91 kr',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Storlek', 'Absorptionsförmåga', 'Antal', 'Pris/st'];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan nattblöja och vanlig blöja?',
+    answer: 'Nattblöjor har en förstärkt absorberande kärna som klarar upp till 12 timmar utan att behöva bytas. Vanliga dagsblöjor är designade för snabba byten och absorberar bra men håller inte lika länge. Nattblöjor är också ofta tjockare och lite stramare runt benen för att förhindra läckage när bebisen ligger ner.',
+  },
+  {
+    question: 'Från vilken ålder kan man använda nattblöja?',
+    answer: 'Du kan börja använda nattblöjor (eller blöjor med extra absorptionsförmåga) från födseln — men det är viktigast när bebisen börjar sova längre perioder utan att vakna, typiskt 3–6 månaders ålder. Nyfödda som ammas behöver bytas oftare även nattetid, så nattblöjor är mindre relevanta de första månaderna.',
+  },
+  {
+    question: 'Ska jag välja nattblöja i samma storlek som dagsblöja?',
+    answer: 'Ja, välj nattblöjan i samma storlek som dagsblöjan baserat på barnets vikt. Nattblöjor är inte storleksmässigt annorlunda — de är tjockare och mer absorberande men samma vikt- och åldersgränser gäller. Välj aldrig en storlek upp för nattblöjan — en för stor blöja läcker lättare.',
+  },
+  {
+    question: 'Varför läcker blöjan nattetid?',
+    answer: 'Vanliga orsaker till nattläckage: blöjan är för liten (nattblöjor sitter extra tajt — justera storleken), blöjan är en vanlig dagsblöja som inte håller hela natten, bebisen rör sig mycket och benen skapar glapp, eller blöjan har nått sin maximala kapacitet. Byt till en nattblöja, kontrollera passformen och se till att benkanter sitter tätt mot benen.',
+  },
+  {
+    question: 'Är det OK att inte byta blöja nattetid?',
+    answer: 'Ja, om bebisen sover igenom och blöjan håller är det fullt okej att inte byta mitt i natten. Moderna nattblöjor är designade för 10–12 timmar utan byte. Det finns inget medicinskt skäl att väcka en sovande bebis för blöjbyte om blöjan fungerar. Undantag: vid blöjeksem eller hudirrititation kan täta byten rekommenderas av läkare.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Nattblöja bebis 2026 — extra absorberande för hela natten"
+  description="Bästa nattblöja bebis 2026: Vi jämför Pampers Baby-Dry Night och Libero Comfort. Se absorptionsförmåga och pris — håller natten torr."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/blojor/natt/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En bra nattblöja håller bebisen torr i upp till 12 timmar utan att du behöver byta mitt i natten. Vi har jämfört de bästa nattblöjorna på den svenska marknaden — Pampers Baby-Dry Night, Baby-Dry Pants och Libero Comfort.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — nattblöjor 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Pampers Baby-Dry Night Pants</strong> vinner för bäst absorptionsförmåga och lägst läckagefrekvens. <strong>Pampers Baby-Dry Pants stl 5</strong> är bäst för pris per blöja i storpack.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval — nattblöjor 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Pampers Baby-Dry Night Pants Stl 6 15 kg+ 138-pack"
+      badge="Bäst i test"
+      price="449 kr"
+      rating={4.8}
+      image="/images/products/pampers-baby-dry-night-stl6.jpg"
+      pros={['Upp till 12 timmars torr sömn', 'Byxblöja — enkel att ta av stående', 'Extra absorberade kärna med 3 lager', 'Passar aktiva barn som sover rörigt']}
+      cons={['Dyrare per blöja än dagsblöjor', 'Byxformat passar inte nyfödda']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-6-15-kg-138-pack"
+    />
+
+    <ProductCard
+      name="Pampers Baby-Dry Blöjor Stl 4 9-14 kg 120-pack"
+      badge="Bäst nattblöja stl 4"
+      price="379 kr"
+      rating={4.7}
+      image="/images/products/pampers-baby-dry-stl4.jpg"
+      pros={['Bäst i test för 5–12 månader', 'Upp till 12 timmars absorptionsförmåga', 'Extra absorberande kärna', 'Ekonomiskt storpack 120-pack']}
+      cons={['Vanlig vikblöja — svårare att byta på rörligt barn', 'Något tjockare under kläderna']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-blojor-stl-4-9-14-kg-xxl-120-pack"
+    />
+
+    <ProductCard
+      name="Pampers Baby-Dry Pants Stl 5 12-17 kg 160-pack"
+      badge="Bäst pris per blöja"
+      price="429 kr"
+      rating={4.7}
+      image="/images/products/pampers-baby-dry-pants-stl5.jpg"
+      pros={['Lägst pris per blöja (2,68 kr/st)', 'Byxblöja — enkel att byta på aktiv bebis', '160-pack räcker länge', 'Extra absorberande nattskydd']}
+      cons={['Byxformat passar bäst rörliga barn (10+ mån)', 'Stor förpackning tar plats']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-pants-blojor-stl-5-12-17-kg-160-pack"
+    />
+
+    <ProductCard
+      name="Libero Comfort Blöjor Stl 5 10-14 kg 56-pack"
+      badge="Bäst för 6-12 månader"
+      price="219 kr"
+      rating={4.6}
+      image="/images/products/libero-comfort-stl5.jpg"
+      pros={['Bra absorptionsförmåga för natten', 'Libero Comfort är Liberoas nattvariant', 'Mjukt material som passar känslig hud', 'Lättillgänglig i svenska butiker']}
+      cons={['Dyrare per blöja i 56-pack', 'Inte lika hög absorptionsförmåga som Pampers Baby-Dry']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/libero-comfort-blojor-stl-5-10-14-kg-56-pack"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Välja rätt nattblöja</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Vikblöja eller byxblöja nattetid?</h3>
+    <p>För nyfödda och bebisar upp till ca 8–10 månader är vanliga vikblöjor lättast att byta liggande. Pampers Baby-Dry är ett bra nattval i stl 3–4. Från det att barnet är rörligare och föredrar att stå vid blöjbyte passar byxblöjor bättre — Pampers Baby-Dry Pants och Night Pants fungerar utmärkt som nattblöjor.</p>
+
+    <h3>2. Välj rätt storlek för nattblöja</h3>
+    <p>Samma viktbaserade storlekstabell gäller för nattblöjor som för dagsblöjor. Välj INTE upp en storlek för natten — en för stor blöja läcker lättare. Kontrollera att benkanter sitter tätt utan att skava.</p>
+
+    <h3>3. Byt nattblöja precis före läggdags</h3>
+    <p>Byt alltid till ny nattblöja precis innan bebisen ska sova — en halvfull blöja räcker inte hela natten. Pampers Baby-Dry Night Pants klarar 12 timmar från ny blöja.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade blöjguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/blojor/" class="text-accent hover:underline">Bästa blöja 2026 — alla märken jämförda</a></li>
+      <li><a href="/blojor/newborn/" class="text-accent hover:underline">Bästa newborn-blöja 2026</a></li>
+      <li><a href="/blojor/ekologisk/" class="text-accent hover:underline">Bästa ekologisk blöja 2026</a></li>
+      <li><a href="/blojor/storlek-guide/" class="text-accent hover:underline">Blöjstorlek guide 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Pampers Baby-Dry Night Pants Stl 6 15 kg+ 138-pack',
+      description: 'Extra absorberande nattbyxblöja med upp till 12 timmars torr sömn. Passar aktiva barn som rör sig mycket i sömnen.',
+      image: 'https://bebisguiden.se/images/products/pampers-baby-dry-night-stl6.jpg',
+      brand: 'Pampers',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 449, url: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-6-15-kg-138-pack', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Pampers Baby-Dry Blöjor Stl 4 9-14 kg 120-pack',
+      description: 'Extra absorberande nattblöja för bebisar 9–14 kg. Upp till 12 timmars absorptionsförmåga. Ekonomiskt 120-pack.',
+      image: 'https://bebisguiden.se/images/products/pampers-baby-dry-stl4.jpg',
+      brand: 'Pampers',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 379, url: 'https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-blojor-stl-4-9-14-kg-xxl-120-pack', seller: 'Jollyroom' }],
+    },
+  ]} />
+
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-6-15-kg-138-pack"
+  text="Se bästa pris — Pampers Baby-Dry Night Pants"
+  productName="Bäst i test nattblöja April 2026"
+/>
