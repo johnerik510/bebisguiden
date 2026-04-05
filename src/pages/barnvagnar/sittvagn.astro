@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -217,4 +218,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/barnvagnar/sittvagnar/" text="Se bästa pris – Bugaboo Butterfly" />
+  <ProductSchema products={[
+    { name: 'Bugaboo Butterfly', description: 'Premiumsittvagn med Bugaboos kvalitet och smidiga enhandsvikning.', brand: 'Bugaboo', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5990, url: 'https://www.jollyroom.se/barnvagnar/sittvagnar/', seller: 'Jollyroom' }] },
+    { name: 'Cybex Libelle', description: 'Ultralätt sittvagn som ryms i handbagagefacket. Under 7 kg.', brand: 'Cybex', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3999, url: 'https://www.jollyroom.se/barnvagnar/sittvagnar/', seller: 'Jollyroom' }] },
+    { name: 'Babyzen Yoyo2', description: 'Ikonisk kabinvagn med premium material och enkel 1-stegsvikning.', brand: 'Babyzen', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5290, url: 'https://www.jollyroom.se/barnvagnar/sittvagnar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

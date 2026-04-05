@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -151,4 +152,7 @@ const faqItems = [
 
 <StickyCTA href="https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-sepia-black" text="Se Cybex Cloud T — passar prematura" />
 
+  <ProductSchema products={[
+    { name: 'Cybex Cloud T i-Size', description: 'Babyskydd för prematura med extra liten nackstoppskudde och platt liggfunktion.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 2516, url: 'https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-sepia-black', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

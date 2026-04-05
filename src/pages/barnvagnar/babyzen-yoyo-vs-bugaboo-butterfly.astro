@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -214,4 +215,8 @@ const faqItems = [
     productName="BABYZEN YOYO"
     text="Se pris"
   />
+  <ProductSchema products={[
+    { name: 'BABYZEN YOYO 6+', description: 'Ultrakompakt kabinbagage-vagn med premium material och enhandsvikning.', brand: 'BABYZEN', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 6990, url: 'https://www.jollyroom.se/barnvagnar/kompakta-vagnar/', seller: 'Jollyroom' }] },
+    { name: 'Bugaboo Butterfly', description: 'Kompakt sittvagn med Bugaboos kvalitet. Enkel vikning och ergonomisk sits.', brand: 'Bugaboo', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 7990, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

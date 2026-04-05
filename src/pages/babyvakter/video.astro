@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -193,4 +194,11 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href={reireiUrl} text="Se bästa pris – Luvion Grand Elite 3" />
+
+  <ProductSchema products={[
+    { name: 'Luvion Grand Elite 3 Connect Pro', description: 'Toppmodell videobabyvakt med 5-tumsskärm, kristallklar HD-video och lång räckvidd. Utan WiFi.', brand: 'Luvion', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 3290, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'Motorola VM85 Connect', description: 'Videobabyvakt med WIFI och stor skärm, upp till 300 meters räckvidd.', brand: 'Motorola', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 2790, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'Philips Avent SCD923/26', description: 'Videobabyvakt med DECT och WiFi-kombination, klart ljud och bild. Kan ses via app.', brand: 'Philips', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3990, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'Vtech BM5252', description: 'Prisvärd videobabyvakt med DECT-signal och 5-tumsskärm. Bra val för budgetmedvetna.', brand: 'Vtech', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 1990, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

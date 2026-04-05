@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -257,4 +258,12 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/" text="Se bästa pris – Nanit Pro" />
+
+  <ProductSchema products={[
+    { name: 'Nanit Pro', description: 'Smart WiFi-babykamera med AI-sömnanalys och app-styrning. Bäst i test bland app-babyvakter.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 3299, url: 'https://www.elgiganten.se/product/personvard-halsa-skonhet/babyprodukter/babyvakt/nanit-pro-babymonitor-n322sw-med-flexibelt-stall/633758', seller: 'Elgiganten' }] },
+    { name: 'Owlet Cam 2', description: 'WiFi-babykamera med enkel app och tydlig HD-bild. Enklast att sätta upp.', brand: 'Owlet', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1299, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white', seller: 'Jollyroom' }] },
+    { name: 'Motorola Halo+', description: 'App-babyvakt med skärm och mobilapp kombinerat. 360-kamera och lång batteritid.', brand: 'Motorola', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'iBaby M7', description: 'WiFi-babykamera med 360-graders rotation och app-styrning.', brand: 'iBaby', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 1799, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'VTech VM819', description: 'Budgetvänlig app-babyvakt med WiFi och tydlig bild.', brand: 'VTech', ratingValue: 4.2, reviewCount: 1, offers: [{ price: 1199, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

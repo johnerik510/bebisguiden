@@ -1,0 +1,189 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Kompakt barnvagn' },
+];
+
+const products = [
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Pitch Black',
+    badge: 'Bäst kompakt',
+    price: '2 849 kr',
+    rating: 4.8,
+    image: '/images/products/baby-jogger-city-tour-2.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black',
+    features: {
+      'Bredd': '47 cm',
+      'Vikt': '6,5 kg',
+      'Hopfällt': '56 × 46 × 25 cm',
+      'Passage': 'Passa 55+ cm dörrar',
+      'Fällning': 'En hand',
+    },
+  },
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Everett Green',
+    badge: 'Populär färg',
+    price: '2 849 kr',
+    rating: 4.7,
+    image: '/images/products/baby-jogger-city-tour-2.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-everett-green',
+    features: {
+      'Bredd': '47 cm',
+      'Vikt': '6,5 kg',
+      'Hopfällt': '56 × 46 × 25 cm',
+      'Passage': 'Passar 55+ cm dörrar',
+      'Fällning': 'En hand',
+    },
+  },
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Seacrest',
+    badge: 'Stilrenast',
+    price: '2 849 kr',
+    rating: 4.7,
+    image: '/images/products/baby-jogger-city-tour-2.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-seacrest',
+    features: {
+      'Bredd': '47 cm',
+      'Vikt': '6,5 kg',
+      'Hopfällt': '56 × 46 × 25 cm',
+      'Passage': 'Passar 55+ cm dörrar',
+      'Fällning': 'En hand',
+    },
+  },
+];
+
+const featureLabels = ['Bredd', 'Vikt', 'Hopfällt', 'Passage', 'Fällning'];
+
+const faqItems = [
+  {
+    question: 'Hur bred ska en kompakt barnvagn vara för att passa i smala dörröppningar?',
+    answer: 'Standard dörröppning i svenska hem är 80–90 cm. Smala dörrar, hissar och butiksgångar kan vara 60–75 cm. En barnvagn med vagnkropp runt 47–52 cm bred passar i de flesta svenska hem. Kontrollera alltid den bredaste delen av vagnen (inte bara sittdelen) — hjulens ytterbredd är ofta bredare.',
+  },
+  {
+    question: 'Passar en kompakt sulky som enda barnvagn för ett litet barn?',
+    answer: 'Om barnet är 6 månader eller äldre och kan sitta fungerar en kompakt sulky utmärkt som enda vagn i stadsbruk. Behöver du transportera yngre bebisar (0–6 månader) behöver du antingen en kombivagn eller ett babyskydd som kan kopplas till sulkyn. Baby Jogger säljer kompatibla babyskyddsadaptrar separat.',
+  },
+  {
+    question: 'Vad är viktigt för köregenskaper på stadens underlag?',
+    answer: 'I stadsmiljö med kullersten, trottoarkanter och ojämna gångbanor är däckstorlek och fjädring viktiga. Större hjul (25 cm+) rullar lättare över hinder. Baby Jogger City Tour 2 har 17,5 cm hjul vilket fungerar bra för normalt stadsbruk men kan kännas stötigt på grövre underlag. För mer terräng, välj en vagn med större hjul.',
+  },
+  {
+    question: 'Hur bred är en standard hiss i Sverige?',
+    answer: 'En standard hissdörröppning i äldre svenska fastigheter kan vara så smal som 60–65 cm. Nyare hissar har bredare dörrar (75–80 cm). En barnvagn med 47 cm bredd (som City Tour 2) passar i de flesta hissar. Mät alltid hissdörröppningen i ditt hem om du bor i en lägenhet — det är ett av de vanligaste problemområdena för barnvagnar.',
+  },
+  {
+    question: 'Kan man använda en kompakt barnvagn i kollektivtrafiken?',
+    answer: 'Ja — kompakta barnvagnar är designade för just detta. I Stockholm, Göteborg och Malmö är barnvagnar välkomna i kollektivtrafiken utan extra avgift. En smalare vagn (under 55 cm) passar bättre i trånga bussar och tunnelbanakorridorer. Fällbar vagn är bra att ha på snabbare tåg och flyg.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Kompakt barnvagn 2026 — bäst för stad och smal dörröppning"
+  description="En kompakt barnvagn passar i smala dörrar, hissar och kollektivtrafik. Vi testar och rankar bästa kompakta modellerna 2026."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/kompakt/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En kompakt barnvagn med smal profil gör vardagen enklare i smala dörröppningar, hissar och kollektivtrafik. Vi guidar dig till de bästa modellerna för stadsliv.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — kompakta barnvagnar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Baby Jogger City Tour 2</strong> är bäst för kompakt stadsliv — 47 cm bred, 6,5 kg lätt och fälls ihop med en hand till ett litet paket.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Baby Jogger City Tour 2 Sulky, Pitch Black"
+      badge="Bäst kompakt"
+      price="2 849 kr"
+      rating={4.8}
+      image="/images/products/baby-jogger-city-tour-2.jpg"
+      pros={['Bara 47 cm bred — passar smala hissar', 'En-hands-fällning för enkel hantering', 'UPF 50+ solskydd', '5-punktsbälte för säkerhet']}
+      cons={['Passar från 6 månader', 'Begränsat förvaringsutrymme', 'Halvliggande — inte fullt liggläge']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
+    />
+
+    <ProductCard
+      name="Baby Jogger City Tour 2 Sulky, Everett Green"
+      badge="Populär färg"
+      price="2 849 kr"
+      rating={4.7}
+      image="/images/products/baby-jogger-city-tour-2.jpg"
+      pros={['Snygg grön nyans som sticker ut i folkmassan', 'Lätt att identifiera vid tågstation', 'Samma kompakta prestanda som övriga färger', 'Populärt val bland stadsfamiljer']}
+      cons={['Grön kan kännas trendig — fundera på långsiktig stil', 'Samma begränsningar som övriga modeller']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-everett-green"
+    />
+
+    <ProductCard
+      name="Baby Jogger City Tour 2 Sulky, Seacrest"
+      badge="Stilrenast"
+      price="2 849 kr"
+      rating={4.7}
+      image="/images/products/baby-jogger-city-tour-2.jpg"
+      pros={['Stilren ljusgrå-grön färg', 'Neutral nog för alla miljöer', 'Döljer vardagssmuts bättre än svart', 'Präglas av skandinavisk enkelhet']}
+      cons={['Kan vara svår att skilja från Shadow Grey i dåligt ljus', 'Samma begränsningar som övriga modeller']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-seacrest"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vad räknas som kompakt barnvagn?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Bredden är viktigast</h3>
+    <p>Den avgörande faktorn för om en barnvagn passar i smala utrymmen är bredden. En vagn under 52 cm bred passar i de flesta svenska hissar och butikskorridorer. Under 50 cm är utmärkt för de trångaste miljöerna. Mät alltid bredden på hjulens yttersidor — det är den reella bredden när vagnen rullar.</p>
+
+    <h3>Längd spelar roll i hissar</h3>
+    <p>I en trång hiss kan en lång barnvagn vara svår att vända. City Tour 2 är 81 cm lång (utfälld), vilket är kortare än de flesta kombivagnar (90–105 cm). Kortare vagnar är enklare att manövrera i trånga utrymmen.</p>
+
+    <h3>Hopfällt mått — inte bara utfällt</h3>
+    <p>I en liten lägenhet är det hopfällda måttet lika viktigt som det utfällda. City Tour 2 hopfälld är 56 × 46 × 25 cm — liten nog att ställa i ett trångt hallskåp eller under en trappa.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade barnvagnsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — komplett guide</a></li>
+      <li><a href="/barnvagnar/hopfallbar/" class="text-accent hover:underline">Hopfällbar barnvagn 2026 — för flyg och kollektivtrafik</a></li>
+      <li><a href="/barnvagnar/latt/" class="text-accent hover:underline">Lätt barnvagn 2026 — under 7 kg</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Baby Jogger City Tour 2 Sulky, Pitch Black',
+      description: 'Kompakt sulky 47 cm bred, 6,5 kg. Hopfällt 56 × 46 × 25 cm. En-hands-fällning. Passar smala hissar och dörrar. Från 6 månader.',
+      image: 'https://bebisguiden.se/images/products/baby-jogger-city-tour-2.jpg',
+      brand: 'Baby Jogger',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 2849, url: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
+  text="Se pris — Baby Jogger City Tour 2"
+  productName="Bäst kompakt 2026"
+/>

@@ -1,0 +1,211 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Sovsackar', href: '/sovsackar/' },
+  { label: 'Sommarsovsack bebis' },
+];
+
+const products = [
+  {
+    name: 'Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant',
+    badge: 'Bäst i test',
+    price: '499 kr',
+    rating: 4.8,
+    image: '/images/products/ergobaby-sovpase-tog1.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant',
+    features: {
+      'TOG': '1.0',
+      'Ålder': '6–18 månader',
+      'Material': 'Polyester',
+      'Öppning': 'Tvåvägsdragkedja',
+      'Tvätt': '40°C maskin',
+    },
+  },
+  {
+    name: 'Ergobaby On The Move Sovpåse 6-18M TOG 1.0, Sheep',
+    badge: 'Populärast',
+    price: '499 kr',
+    rating: 4.7,
+    image: '/images/products/ergobaby-sovpase-tog1.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-1-0-sheep',
+    features: {
+      'TOG': '1.0',
+      'Ålder': '6–18 månader',
+      'Material': 'Polyester',
+      'Öppning': 'Tvåvägsdragkedja',
+      'Tvätt': '40°C maskin',
+    },
+  },
+  {
+    name: 'Little Dutch Sage Sommar Sovpåse',
+    badge: 'Snyggast design',
+    price: '499 kr',
+    rating: 4.6,
+    image: '/images/products/little-dutch-vinter-sovpase.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar',
+    features: {
+      'TOG': '1.0',
+      'Ålder': '0–36 månader',
+      'Material': 'Bomull',
+      'Öppning': 'Tvåvägsdragkedja',
+      'Tvätt': '40°C maskin',
+    },
+  },
+];
+
+const featureLabels = ['TOG', 'Ålder', 'Material', 'Öppning', 'Tvätt'];
+
+const faqItems = [
+  {
+    question: 'Vad betyder TOG och vilket TOG-värde ska man välja på sommaren?',
+    answer: 'TOG är ett mått på värmemotståndet i en sovsäck — ju högre TOG, desto varmare sovsäck. På sommaren när rumstemperaturen är 22–25°C rekommenderas TOG 0.5–1.0. TOG 1.0 är ett mångsidigt val som fungerar vid rumstemperaturer från 18°C upp till 24°C med anpassade kläder. Undvik TOG 2.5 på sommaren — bebisen riskerar att bli för varm.',
+  },
+  {
+    question: 'Vilken rumstemperatur är säker för bebisen på natten?',
+    answer: 'Den ideala sovrumstemperaturen för en bebis är 16–20°C. Varmare än 20°C ökar risken för överhettning, vilket är kopplat till plötslig spädbarnsdöd (SIDS). Undvik att klä bebisen för varmt — det är viktigare att sovrummet är svalt än att lägga på mer kläder. Kontrollera alltid om bebisens nacke eller bröst känns svettigt — det är ett tecken på att bebisen är för varm.',
+  },
+  {
+    question: 'Vad ska bebisen ha på sig under sovsäcken på sommaren?',
+    answer: 'Vid 22–24°C rumstemperatur: enkel kortärmad body under TOG 1.0 sovsäck. Vid 24–26°C: bara blöja och sovsäck, eller välj TOG 0.5. Vid 20–22°C: långärmad body eller tunn pyjamas under TOG 1.0. Kom ihåg att sovsäcken ersätter täcket — ingen extra filt behövs.',
+  },
+  {
+    question: 'Från vilken ålder kan bebisen använda sovsäck?',
+    answer: 'Sovsäckar är säkra att använda från födseln om storleken är rätt. Nyfödda (0–3 månader) behöver en sovsäck i storlek 50–56 cm eller 0–3 månader. Det är viktigt att sovsäcken inte är för stor — bebisens huvud ska inte kunna glida in i sovsäcken. Välj alltid en sovsäck med passande storleksgräns och kontrollera att halsöppningen är anpassad till bebisens storlek.',
+  },
+  {
+    question: 'Kan man använda sovsäck och filt samtidigt?',
+    answer: 'Nej — en sovsäck ersätter täcket och ingen extra filt ska användas. Lösa filtar och kuddar i spjälsängen utgör kvävningsrisk och bör undvikas tills barnet är minst 12 månader gammalt. Sovsäcken hålls på plats och kan inte täcka bebisens ansikte på samma sätt som en lös filt.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Sovsäck bebis sommar 2026 — rätt TOG-värde och material"
+  description="Sovsäck med TOG 0.5–1 är perfekt för varma sommarnätter. Vi rekommenderar bästa sommarsovsäckar för bebis och förklarar TOG-systemet."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sovsackar/sommar/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En sovsäck med rätt TOG-värde håller bebisen lagom varm utan överhettningsrisk. På sommaren gäller TOG 0.5–1.0 — vi guidar dig till rätt val.
+  </p>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+    <p class="text-sm font-semibold text-blue-900 mb-1">TOG-guide för sommaren</p>
+    <div class="text-sm text-blue-800 space-y-1">
+      <p><strong>26°C+ i rummet:</strong> TOG 0.5 + bara blöja</p>
+      <p><strong>24–26°C:</strong> TOG 0.5–1.0 + kortärmad body</p>
+      <p><strong>22–24°C:</strong> TOG 1.0 + kortärmad body</p>
+      <p><strong>20–22°C:</strong> TOG 1.0 + långärmad body</p>
+      <p><strong>Under 20°C:</strong> Byt till vintersovsäck TOG 2.5</p>
+    </div>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell — sommarsovsäckar bebis 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Ergobaby On The Move TOG 1.0</strong> är bäst för de flesta — välbyggd, enkel att öppna för blöjbyte och finns i flera designer.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval — sommarsovsäckar 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant"
+      badge="Bäst i test"
+      price="499 kr"
+      rating={4.8}
+      image="/images/products/ergobaby-sovpase-tog1.jpg"
+      pros={['Tvåvägsdragkedja — enkel blöjbyte', 'Mjukt och hudvänligt material', 'Anpassad rörelsefrihet för benen', 'Passar 6–18 månader']}
+      cons={['Passar bara från 6 månader', 'Begränsad storleksmöjlighet', 'Polyestermaterial — inte ekologiskt']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant"
+    />
+
+    <ProductCard
+      name="Ergobaby On The Move Sovpåse 6-18M TOG 1.0, Sheep"
+      badge="Populärast"
+      price="499 kr"
+      rating={4.7}
+      image="/images/products/ergobaby-sovpase-tog1.jpg"
+      pros={['Lekfull fårdesign', 'Samma kvalitet som Elephant-versionen', 'Populär och vältestad', 'Enkel blöjbyte via tvåvägsdragkedja']}
+      cons={['Samma begränsningar som Elephant-versionen', 'Passar bara från 6 månader']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-1-0-sheep"
+    />
+
+    <ProductCard
+      name="Little Dutch Sage Sommar Sovpåse"
+      badge="Snyggast design"
+      price="499 kr"
+      rating={4.6}
+      image="/images/products/little-dutch-vinter-sovpase.jpg"
+      pros={['Mjuk bomull nära huden', 'Stilren skandinavisk design', 'Passar 0–36 månader i olika storlekar', 'Bra kvalitet från känt märke']}
+      cons={['Bomull håller inte värme lika bra som fleece vid kallare nätter', 'Kan krympa i tvätten']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Förstå TOG-systemet</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <p>TOG (Thermal Overall Grade) är ett standardiserat mått på värmemotståndet i textilier. Systemet är enkelt:</p>
+    <ul>
+      <li><strong>TOG 0.5:</strong> Sommar, varm bostad (24°C+)</li>
+      <li><strong>TOG 1.0:</strong> Sommar/tidig höst, normal bostad (20–24°C)</li>
+      <li><strong>TOG 2.5:</strong> Höst och vinter, sval bostad (16–20°C)</li>
+      <li><strong>TOG 3.5:</strong> Kall vinter, kyligt sovrum (under 16°C)</li>
+    </ul>
+    <p>Kläderna bebisen har på sig under sovsäcken påverkar den effektiva värmen. En kortärmad body under TOG 1.0 ger ungefär samma värme som en långärmad body under TOG 0.5.</p>
+
+    <h3>Säkerhet är viktigast</h3>
+    <p>Överhettning är kopplat till ökad risk för plötslig spädbarnsdöd (SIDS). Välj alltid hellre ett lägre TOG-värde och lägg på mer kläder vid behov, snarare än att ta i med ett högt TOG-värde. Känn på bebisens nacke och bröst — de ska vara svalt varma, aldrig svettiga.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade sovprodukter</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/sovsackar/" class="text-accent hover:underline">Alla sovsäckar för bebis 2026</a></li>
+      <li><a href="/sovsackar/vinter/" class="text-accent hover:underline">Vintersovsäck bebis 2026 — TOG 2.5 och 3.5</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant',
+      description: 'Sommarsovsäck för bebis 6–18 månader med TOG 1.0. Tvåvägsdragkedja för enkel blöjbyte. Mjukt polyestermaterial.',
+      image: 'https://bebisguiden.se/images/products/ergobaby-sovpase-tog1.jpg',
+      brand: 'Ergobaby',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 499, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Ergobaby On The Move Sovpåse 6-18M TOG 1.0, Sheep',
+      description: 'Sommarsovsäck för bebis 6–18 månader med TOG 1.0 i fårdesign. Tvåvägsdragkedja för enkel blöjbyte.',
+      image: 'https://bebisguiden.se/images/products/ergobaby-sovpase-tog1.jpg',
+      brand: 'Ergobaby',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 499, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-1-0-sheep', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant"
+  text="Se pris — Ergobaby Sovpåse TOG 1.0"
+  productName="Bäst sommarsovsäck 2026"
+/>

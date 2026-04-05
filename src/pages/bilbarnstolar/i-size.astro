@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -228,4 +229,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black" text="Se bästa i-Size-stol" />
+  <ProductSchema products={[
+    { name: 'Cybex Sirona T i-Size', description: 'i-Size bakåtvänd bilbarnstol med 360-rotation och sidokrocksskydd. ISOFIX.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5499, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black', seller: 'Jollyroom' }] },
+    { name: 'Joie i-Spin 360', description: 'i-Size bakåtvänd bilbarnstol med 360-rotation och bra pris.', brand: 'Joie', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3999, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal', seller: 'Jollyroom' }] },
+    { name: 'BeSafe iZi Modular i-Size', description: 'Modulär i-Size bilbarnstol med hög säkerhetsrating. Bakåtvänd länge.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 6499, url: 'https://www.besafe.com/sv/bilstolar/bilbarnstolar/izi-modular-i-size/', seller: 'BeSafe' }] },
+  ]} />
 </ArticleLayout>

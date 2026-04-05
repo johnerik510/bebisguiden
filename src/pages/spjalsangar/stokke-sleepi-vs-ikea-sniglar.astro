@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -189,4 +190,8 @@ const faqItems = [
     text="Se bästa pris — Stokke Sleepi V3"
     productName="Bäst i test April 2026"
   />
+  <ProductSchema products={[
+    { name: 'Stokke Sleepi V3', description: 'Oval spjälsäng som växer med barnet. Omvandlingsbar till juniorsäng och soffa. Premium kvalitet.', brand: 'Stokke', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5999, url: 'https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-sang-v3-vit', seller: 'Jollyroom' }] },
+    { name: 'IKEA Sniglar', description: 'Enkel och prisvärd spjälsäng i massiv bok. Stabil och lätt att rengöra.', brand: 'IKEA', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 499, url: 'https://www.ikea.com/se/sv/p/sniglar-spjalsang-bok-00114291/', seller: 'IKEA' }] },
+  ]} />
 </ArticleLayout>

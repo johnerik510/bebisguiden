@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -201,6 +202,11 @@ const faqItems = [
   </div>
 
   <FAQ items={faqItems} />
+  <ProductSchema products={[
+    { name: 'Emmaljunga NXT60', description: 'Klassisk svensk kombivagn med djup liggdel för nyfödda. Robust kvalitet.', brand: 'Emmaljunga', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 7490, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },
+    { name: 'Bugaboo Fox 5', description: 'Premiumbarnvagn med bäst fjädring och den djupaste liggdelen på marknaden.', brand: 'Bugaboo', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 14990, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },
+    { name: 'Joolz Day+', description: 'Holländsk kombivagn med hög sits och bred liggdel. Bra för nyfödda.', brand: 'Joolz', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 9990, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>
 
 <StickyCTA

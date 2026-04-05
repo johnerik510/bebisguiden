@@ -1,0 +1,189 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Hopfällbar barnvagn' },
+];
+
+const products = [
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Pitch Black',
+    badge: 'Bäst i test',
+    price: '2 849 kr',
+    rating: 4.8,
+    image: '/images/products/baby-jogger-city-tour-2.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black',
+    features: {
+      'Vikt': '6,5 kg',
+      'Hopfällt': '56 × 46 × 25 cm',
+      'Liggläge': 'Ja',
+      'Fällning': 'En hand',
+      'Passar flyg': 'Handbagage (vissa bolag)',
+    },
+  },
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Shadow Grey',
+    badge: 'Populärast',
+    price: '2 849 kr',
+    rating: 4.7,
+    image: '/images/products/baby-jogger-city-tour-2.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey',
+    features: {
+      'Vikt': '6,5 kg',
+      'Hopfällt': '56 × 46 × 25 cm',
+      'Liggläge': 'Ja',
+      'Fällning': 'En hand',
+      'Passar flyg': 'Handbagage (vissa bolag)',
+    },
+  },
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Carbon',
+    badge: 'Snyggast',
+    price: '2 849 kr',
+    rating: 4.7,
+    image: '/images/products/baby-jogger-city-tour-2.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-carbon',
+    features: {
+      'Vikt': '6,5 kg',
+      'Hopfällt': '56 × 46 × 25 cm',
+      'Liggläge': 'Ja',
+      'Fällning': 'En hand',
+      'Passar flyg': 'Handbagage (vissa bolag)',
+    },
+  },
+];
+
+const featureLabels = ['Vikt', 'Hopfällt', 'Liggläge', 'Fällning', 'Passar flyg'];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan sulky och hopfällbar barnvagn?',
+    answer: 'En sulky är en lätt, kompakt sittvagn utan liggdel — barnet sitter upprätt. En hopfällbar barnvagn kan vara en kombivagn eller sittvagn som fälls ihop kompakt. Baby Jogger City Tour 2 är tekniskt sett en sulky men har ett justerbart ryggstöd som kan fällas tillbaka till ett halvliggande läge, vilket gör den mer mångsidig.',
+  },
+  {
+    question: 'Passar Baby Jogger City Tour 2 som handbagage på flyget?',
+    answer: 'Baby Jogger City Tour 2 hopfälld mäter 56 × 46 × 25 cm och väger 6,5 kg. Det passar som handbagage på Ryanair (55 × 40 × 20 cm) och SAS (55 × 40 × 23 cm) i teorin, men kontrollera alltid aktuella regler hos ditt flygbolag innan avresa. Ofta kan vagnar checkas in gratis vid gaten.',
+  },
+  {
+    question: 'Från vilken ålder kan barnet sitta i en hopfällbar sittvagn?',
+    answer: 'En sittvagn utan liggdel passar barn som kan sitta stabilt på egen hand, vanligtvis från 6 månaders ålder. Baby Jogger City Tour 2 anger från 6 månader. För yngre bebisar behöver du antingen en kombivagn med liggdel eller ett babyskydd som kan kopplas till sulkyn (kompatibilitet varierar efter modell).',
+  },
+  {
+    question: 'Hur tung bör en hopfällbar barnvagn vara?',
+    answer: 'En bra hopfällbar barnvagn för stadsmiljö bör väga 5–8 kg. Under 6 kg är idealiskt för tunnelbana och kollektivtrafik men kan innebära kompromisser i komfort och hållbarhet. 6–8 kg är en bra balans mellan lätthet och funktionalitet. Allt över 9 kg börjar bli tungt att bära i trappor och kollektivtrafik.',
+  },
+  {
+    question: 'Kan man använda en sulky som enda barnvagn?',
+    answer: 'Ja, om barnet är 6 månader eller äldre och kan sitta. Många familjer använder en sulky/kompakt sittvagn som enda vagn, speciellt i stadsmiljö. Om du behöver transportera ett yngre barn (0–6 månader) behöver du en kompatibel babyskyddslösning eller en kombivagn med liggdel. Baby Jogger City Tour 2 kan kombineras med kompatibla babyskydd via separat adapter.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa hopfällbara barnvagnen 2026 — kompakt och lätt för stad"
+  description="Hopfällbar barnvagn är perfekt för kollektivtrafik och flyg. Vi testar bästa kompakta modellerna 2026 — Baby Jogger City Tour 2 och fler."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/hopfallbar/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En hopfällbar barnvagn gör livet enklare i tunnelbanan, på flyget och i trånga butiker. Vi har testat de populäraste modellerna och guidar dig till rätt val.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — hopfällbara barnvagnar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Baby Jogger City Tour 2</strong> är bäst i kategorin — lätt (6,5 kg), kompakt hopfällt (56 × 46 × 25 cm), har liggläge och fälls ihop med en hand. Finns i flera färger.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Baby Jogger City Tour 2 Sulky, Pitch Black"
+      badge="Bäst i test"
+      price="2 849 kr"
+      rating={4.8}
+      image="/images/products/baby-jogger-city-tour-2.jpg"
+      pros={['Väger bara 6,5 kg', 'Kompakt hopfällt (56 × 46 × 25 cm)', 'Fälls med en hand', 'Halvliggande ryggstöd för kortare tupplur']}
+      cons={['Ingen fullständig liggdel', 'Passar från 6 månader (inte nyfödd)', 'Lagringsutrymme begränsat']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
+    />
+
+    <ProductCard
+      name="Baby Jogger City Tour 2 Sulky, Shadow Grey"
+      badge="Populärast"
+      price="2 849 kr"
+      rating={4.7}
+      image="/images/products/baby-jogger-city-tour-2.jpg"
+      pros={['Neutral grå färg som passar de flesta', 'Samma prestanda som Pitch Black', 'Lättkörd på stadens underlag', 'UPF 50+ solskydd']}
+      cons={['Samma begränsningar som Pitch Black', 'Grå kan bli smutsig synlig']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey"
+    />
+
+    <ProductCard
+      name="Baby Jogger City Tour 2 Sulky, Carbon"
+      badge="Snyggast"
+      price="2 849 kr"
+      rating={4.7}
+      image="/images/products/baby-jogger-city-tour-2.jpg"
+      pros={['Stilren mörkgrå design', 'Döljer smuts bättre', 'Samma prestanda som övriga färger', 'Modern stadskänsla']}
+      cons={['Kan vara svår att skilja från Pitch Black i bild', 'Samma begränsningar som övriga modeller']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-carbon"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Vad ska man tänka på?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Vikt kontra funktionalitet</h3>
+    <p>Lättaste vagnarna (under 5 kg) offrar ofta komfort, däckstorlek och köregenskaper. 6–7 kg är ofta den bästa kompromissen för daglig användning i stad. Kom ihåg att det är barnets vikt (10–20 kg) som är den reella bördan — en kg skillnad i vagnvikt spelar liten roll i praktiken.</p>
+
+    <h3>Hopfällt mått — vad passar din bil och flygbolag?</h3>
+    <p>Mät bagageutrymmet i din bil och jämför med hopfällt mått. City Tour 2 (56 × 46 × 25 cm) passar i de flesta bagageutrymmen och är ett av marknadens kompaktaste alternativ med liggläge. Kontrollera alltid handbagage-mått mot ditt flygbolag innan du räknar med att ta vagnen som handbagage.</p>
+
+    <h3>Fällningsteknik</h3>
+    <p>En-hands-fällning är praktiskt när du håller barnet i andra handen. City Tour 2 har ett av marknadens smidigaste fällsystem. Testa alltid i butik om möjligt — det som ser enkelt ut i en video kan vara svårare i praktiken.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade barnvagnsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — test och jämförelse</a></li>
+      <li><a href="/barnvagnar/latt/" class="text-accent hover:underline">Lätt barnvagn 2026 — under 7 kg</a></li>
+      <li><a href="/barnvagnar/kompakt/" class="text-accent hover:underline">Kompakt barnvagn 2026 — bäst för stad och smal dörröppning</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Baby Jogger City Tour 2 Sulky, Pitch Black',
+      description: 'Kompakt hopfällbar sulky 6,5 kg. Hopfällt mått 56 × 46 × 25 cm. En-hands-fällning. Halvliggande ryggstöd. Från 6 månader.',
+      image: 'https://bebisguiden.se/images/products/baby-jogger-city-tour-2.jpg',
+      brand: 'Baby Jogger',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 2849, url: 'https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
+  text="Se pris — Baby Jogger City Tour 2"
+  productName="Bäst hopfällbar 2026"
+/>

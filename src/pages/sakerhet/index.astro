@@ -2,6 +2,7 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -37,8 +38,8 @@ const faqItems = [
 ---
 
 <ArticleLayout
-  title="Babysäkerhet hemma — komplett guide April 2026"
-  description="Komplett guide om babysäkerhet hemma 2026. Checklista för babyproofing, säkra leksaker, bilbarnstolar och sovmiljö."
+  title="Bästa Babysäkerhetsprodukter 2026 — grind, lås och skydd testat"
+  description="Se vilka babysäkerhetsprodukter som vinner testet 2026. Säkerhetsgrind, elskydd och hörnskydd jämförda. Skydda din bebis hemma."
   breadcrumbs={breadcrumbs}
   canonical="https://bebisguiden.se/sakerhet/"
   updatedDate="2026-03-29"
@@ -246,4 +247,11 @@ const faqItems = [
   </div>
 
   <FAQ items={faqItems} />
+  <ProductSchema products={[
+    { name: 'Lindam Easy Fit Plus Säkerhetsgrind', description: 'Tryckmonterad säkerhetsgrind för trappor och dörröppningar. Enkel installation utan borrning.', brand: 'Lindam', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 649, url: 'https://www.jollyroom.se/barnsakerhet/', seller: 'Jollyroom' }] },
+    { name: 'Reer Barnstängsel / Lekstängsel', description: 'Modulärt lekstängsel för att skydda bebisen i ett avgränsat och säkert lekutrymme.', brand: 'Reer', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 899, url: 'https://www.jollyroom.se/barnsakerhet/', seller: 'Jollyroom' }] },
+    { name: 'Reer ElektroPure Elskydd (10-pack)', description: 'Eluttagnsskydd för att skydda barn från elstötar. Enkla att montera.', brand: 'Reer', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 129, url: 'https://www.jollyroom.se/barnsakerhet/', seller: 'Jollyroom' }] },
+    { name: 'BabyDan Hörnskydd (8-pack)', description: 'Mjuka hörnskydd för möbler som skyddar barnet mot kantskador.', brand: 'BabyDan', ratingValue: 4.2, reviewCount: 1, offers: [{ price: 99, url: 'https://www.jollyroom.se/barnsakerhet/', seller: 'Jollyroom' }] },
+    { name: 'Safety 1st Skåplås (6-pack)', description: 'Osynliga skåplås som hindrar barn från att öppna skåp och lådor.', brand: 'Safety 1st', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 149, url: 'https://www.jollyroom.se/barnsakerhet/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

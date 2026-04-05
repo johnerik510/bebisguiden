@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const reireiUrl = 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/';
 
@@ -205,4 +206,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href={reireiUrl} text="Se bästa pris — Cybex Anoris T i-Size" />
+  <ProductSchema products={[
+    { name: 'Cybex Anoris T i-Size', description: 'Framåtvänd bilbarnstol med unik sidokrocksskydd och airbag-integration.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 7999, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/', seller: 'Jollyroom' }] },
+    { name: 'Britax Römer Kidfix Pro M', description: 'Framåtvänd bältad bilbarnstol med ISOfix och XP-PAD-teknik för extra säkerhet.', brand: 'Britax Römer', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 3999, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/', seller: 'Jollyroom' }] },
+    { name: 'Joie i-Trillo FX', description: 'Prisvärd framåtvänd bilbarnstol med ISOfix. Bäst pris/prestanda.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 2499, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -200,4 +201,8 @@ const faqItems = [
     text="Se bästa pris — UPPAbaby Vista V3"
     productName="Bäst för syskon April 2026"
   />
+  <ProductSchema products={[
+    { name: 'Bugaboo Fox 5', description: 'Premiumbarnvagn med bäst körbarhet och djup liggdel. Vinnare i test 2026.', brand: 'Bugaboo', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 14990, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
+    { name: 'UPPAbaby Vista V3', description: 'Expanderbar kombivagn som enkelt byggs ut till syskonvagn. Populär i USA och Europa.', brand: 'UPPAbaby', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 11990, url: 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2Fproducts%2Fuppababy-vista-v2-alice', seller: 'Reirei' }] },
+  ]} />
 </ArticleLayout>

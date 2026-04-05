@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -191,4 +192,11 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/" text="Se bästa pris – Owlet Cam 2" />
+
+  <ProductSchema products={[
+    { name: 'Owlet Cam 2', description: 'WiFi-babyvakt med tydlig HD-bild och enkel app. Bäst i test bland WiFi-babyvakter.', brand: 'Owlet', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 1990, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white', seller: 'Jollyroom' }] },
+    { name: 'Nanit Pro', description: 'Premiumvalt WiFi-babykamera med AI-sömnanalys och app.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 3490, url: 'https://www.elgiganten.se/product/personvard-halsa-skonhet/babyprodukter/babyvakt/nanit-pro-babymonitor-n322sw-med-flexibelt-stall/633758', seller: 'Elgiganten' }] },
+    { name: 'eufy SpaceView Pro', description: 'Hybrid WiFi-babyvakt med stor 5-tumsskärm och app. Bra räckvidd och bildkvalitet.', brand: 'Eufy', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 2490, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'TP-Link Tapo C210', description: 'Budgetvänlig WiFi-kamera som fungerar som babyvakt. Ingen dedikerad babyskärm.', brand: 'TP-Link', ratingValue: 4.1, reviewCount: 1, offers: [{ price: 499, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

@@ -1,0 +1,241 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Sakerhet', href: '/sakerhet/' },
+  { label: 'Trappgrind' },
+];
+
+const products = [
+  {
+    name: 'BabyDan Adjust Pro Skruvgrind Baluster Edition, Wood',
+    badge: 'Bäst för trapptoppen',
+    price: '1 349 kr',
+    rating: 4.8,
+    image: '/images/products/babydan-adjust-pro-trappgrind.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-adjust-pro-skruvgrind-baluster-edition-wood',
+    features: {
+      'Typ': 'Skruvmonterad',
+      'Bredd': '74,5–114 cm',
+      'Material': 'Trä + metall',
+      'Placering': 'Trapptopp + dörröppningar',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'BabyDan Premier Spänngrind, Vit',
+    badge: 'Bäst tryckmonterad',
+    price: '599 kr',
+    rating: 4.6,
+    image: '/images/products/babydan-premier-spanngrind.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit',
+    features: {
+      'Typ': 'Tryckmonterad',
+      'Bredd': '67–105 cm',
+      'Material': 'Stål',
+      'Placering': 'Korridor, nedre trappan',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'BabyDan Danamic Spänngrind, Vit',
+    badge: 'Prisvärt val',
+    price: '589 kr',
+    rating: 4.5,
+    image: '/images/products/babydan-danamic-spanngrind.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-danamic-spanngrind-3-ext-80-86-cm-vit',
+    features: {
+      'Typ': 'Tryckmonterad',
+      'Bredd': '80–86 cm',
+      'Material': 'Stål',
+      'Placering': 'Korridor, dörröppningar',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'BabyDan Flex L Skruvgrind, Vit',
+    badge: 'Brett urval',
+    price: '799 kr',
+    rating: 4.6,
+    image: '/images/products/babydan-adjust-pro-trappgrind.jpg',
+    ctaHref: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-sakerhetsgrind-skruvgrind-vit',
+    features: {
+      'Typ': 'Skruvmonterad',
+      'Bredd': '62–106,8 cm',
+      'Material': 'Stål',
+      'Placering': 'Trapptopp + dörröppningar',
+      'Öppning': 'En hand',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Bredd', 'Material', 'Placering', 'Öppning'];
+
+const faqItems = [
+  {
+    question: 'Vilken grind passar trapptoppen?',
+    answer: 'Vid trapptoppen ska du alltid använda en skruvmonterad grind. Tryckmonterade grindar är inte godkända för trapptopp eftersom de kan vicka loss under belastning. BabyDan Adjust Pro och BabyDan Flex L är populära val som är certifierade för trapptopp och kräver skruvar i väggen.',
+  },
+  {
+    question: 'Hur hög ska en trappgrind vara?',
+    answer: 'En trappgrind ska vara minst 73–75 cm hög för att uppfylla europeisk säkerhetsstandard (EN 1930). De flesta moderna grindar på marknaden uppfyller detta krav. Kontrollera alltid att grinden du köper är CE-märkt och uppfyller EN 1930.',
+  },
+  {
+    question: 'Från vilken ålder behöver man en trappgrind?',
+    answer: 'Du bör montera trappgrinden innan barnet börjar krypa, vanligtvis runt 6–9 månaders ålder. Många väljer att montera grinden redan från 4–5 månaders ålder för att hinna vänja sig vid att använda den korrekt. Grindar används vanligtvis tills barnet är 2–3 år och förstår trappans fara.',
+  },
+  {
+    question: 'Vad är skillnaden mellan tryckmonterad och skruvmonterad grind?',
+    answer: 'En tryckmonterad grind (spänngrind) håller sig på plats med tryck mot väggarna och lämnar inga hål. Den passar för dörröppningar, korridorer och nedre trappavsatsen. En skruvmonterad grind skruvas fast i väggen och är den enda typ som är godkänd för trapptoppen, eftersom den inte kan tryckas loss av ett barn som lutar sig mot den.',
+  },
+  {
+    question: 'Hur länge behöver man ha en trappgrind?',
+    answer: 'De flesta barn behöver trappgrind tills de är 2–3 år gamla och förstår att trappan är farlig. En del barn med hög rörelseglädje kan behöva grinden längre. Det viktigaste är att barnet konsekvent visar att det kan hantera trappan säkert på egen hand innan grinden tas bort.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa trappgrind 2026 — barngrind test och jämförelse"
+  description="Hitta rätt trappgrind för din trappa. Vi testar tryckmonterade och skruvmonterade grindar för bebis och barn. Bäst i test: BabyDan Adjust Pro."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sakerhet/trappgrind/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Rätt trappgrind kan förhindra allvarliga fall. Vi går igenom skillnaden mellan tryckmonterade och skruvmonterade grindar — och vilken typ som är godkänd för trapptoppen.
+  </p>
+
+  <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+    <p class="text-sm font-semibold text-amber-900 mb-1">Viktigt om trapptoppen</p>
+    <p class="text-sm text-amber-800">Vid trapptoppen krävs alltid en <strong>skruvmonterad grind</strong>. Tryckmonterade grindar är inte godkända för trapptopp — de kan ge efter under barnets tryck och orsaka fall.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell — trappgrindar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>BabyDan Adjust Pro Skruvgrind</strong> är bäst för trapptoppen — stabil, enkel att öppna med en hand och passar de flesta öppningar. <strong>BabyDan Premier Spänngrind</strong> är bäst för korridorer och dörröppningar utan borrning.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BabyDan Adjust Pro Skruvgrind Baluster Edition, Wood"
+      badge="Bäst för trapptoppen"
+      price="1 349 kr"
+      rating={4.8}
+      image="/images/products/babydan-adjust-pro-trappgrind.jpg"
+      pros={['Godkänd för trapptoppen', 'Öppnas med en hand', 'Justerbara vinklade beslag för sneda väggar', 'Passar öppningar 74,5–114 cm']}
+      cons={['Kräver borrning i väggen', 'Högre pris än spänngrindar', 'Träram kan repas']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-adjust-pro-skruvgrind-baluster-edition-wood"
+    />
+
+    <ProductCard
+      name="BabyDan Premier Spänngrind, Vit"
+      badge="Bäst tryckmonterad"
+      price="599 kr"
+      rating={4.6}
+      image="/images/products/babydan-premier-spanngrind.jpg"
+      pros={['Inga hål i väggen', 'Enkel att montera och flytta', 'Passar korridorer och dörröppningar', 'Kompletterbar med förlängningar']}
+      cons={['Inte godkänd för trapptoppen', 'Kan klivas över av äldre barn', 'Kräver jämna väggar för bäst grepp']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit"
+    />
+
+    <ProductCard
+      name="BabyDan Danamic Spänngrind, Vit"
+      badge="Prisvärt val"
+      price="589 kr"
+      rating={4.5}
+      image="/images/products/babydan-danamic-spanngrind.jpg"
+      pros={['Lågt pris', 'Enkel montering utan verktyg', 'Kompakt design', 'CE-certifierad']}
+      cons={['Smalare öppning (80–86 cm)', 'Inte för trapptoppen', 'Färre storleksalternativ']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-danamic-spanngrind-3-ext-80-86-cm-vit"
+    />
+
+    <ProductCard
+      name="BabyDan Flex L Skruvgrind, Vit"
+      badge="Brett urval"
+      price="799 kr"
+      rating={4.6}
+      image="/images/products/babydan-adjust-pro-trappgrind.jpg"
+      pros={['Godkänd för trapptoppen', 'Bred öppning upp till 106,8 cm', 'Ren vit design', 'Enkel handtag']}
+      cons={['Kräver borrning', 'Vit färg kan gulna med tiden', 'Tyngre än spänngrindar']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-sakerhetsgrind-skruvgrind-vit"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Välj rätt typ av trappgrind</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Skruvmonterad grind — för trapptoppen</h3>
+    <p>En skruvmonterad grind fästs direkt i väggen med skruvar och monteringsbeslag. Den är den enda typ som är godkänd att placera överst på trappan, eftersom den inte kan tryckas loss av ett barn som lutar sig mot den. Räkna med att borra 4–6 hål i väggen vid montering.</p>
+
+    <h3>Tryckmonterad grind — för dörrar och nedre trappan</h3>
+    <p>En tryckmonterad grind (spänngrind) håller sig på plats med fjädertryck mot väggarna och lämnar inga hål. Den är enkel att montera och flytta, och passar perfekt i dörröppningar, korridorer och vid nedre trappavsatsen. Placera aldrig en spänngrind vid trapptoppen.</p>
+
+    <h3>Mät öppningen noggrant</h3>
+    <p>Mät bredden på din dörröppning eller trappöppning i tre höjder (topp, mitten, botten) och använd det smalaste måttet. De flesta grindar är justerbara inom ett intervall. Behöver du täcka en bredare öppning finns förlängningsdelar att köpa separat.</p>
+
+    <h3>Kontrollera säkerhetsstandarder</h3>
+    <p>Välj alltid en grind med CE-märkning och certifiering enligt EN 1930. Undvik begagnade grindar utan känd historia — säkerhetsfel kan vara svåra att upptäcka visuellt.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade säkerhetsprodukter</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/sakerhet/" class="text-accent hover:underline">Barnsäkerhet hemma — komplett guide</a></li>
+      <li><a href="/sakerhet/barnsakring/" class="text-accent hover:underline">Barnlåsning och barnsäkring — vad behöver du?</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'BabyDan Adjust Pro Skruvgrind Baluster Edition, Wood',
+      description: 'Skruvmonterad trappgrind godkänd för trapptoppen. Passar öppningar 74,5–114 cm. Öppnas med en hand. CE-certifierad enligt EN 1930.',
+      image: 'https://bebisguiden.se/images/products/babydan-adjust-pro-trappgrind.jpg',
+      brand: 'BabyDan',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 1349, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-adjust-pro-skruvgrind-baluster-edition-wood', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'BabyDan Premier Spänngrind, Vit',
+      description: 'Tryckmonterad barngrind utan borrning. Passar öppningar 67–105 cm. För dörröppningar och korridorer. CE-certifierad.',
+      image: 'https://bebisguiden.se/images/products/babydan-premier-spanngrind.jpg',
+      brand: 'BabyDan',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 599, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'BabyDan Danamic Spänngrind, Vit',
+      description: 'Tryckmonterad spänngrind för dörröppningar 80–86 cm. Enkel montering utan verktyg. CE-certifierad.',
+      image: 'https://bebisguiden.se/images/products/babydan-danamic-spanngrind.jpg',
+      brand: 'BabyDan',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 589, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-danamic-spanngrind-3-ext-80-86-cm-vit', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-adjust-pro-skruvgrind-baluster-edition-wood"
+  text="Se bästa pris — BabyDan Adjust Pro Trappgrind"
+  productName="Bäst för trapptoppen 2026"
+/>

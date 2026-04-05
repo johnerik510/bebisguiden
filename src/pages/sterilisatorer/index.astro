@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -286,4 +287,12 @@ const faqItems = [
     productName="Philips Avent 3-i-1 Sterilisator"
     text="Se bästa pris — Philips Avent hos Reirei"
   />
+
+  <ProductSchema products={[
+    { name: 'Philips Avent 3-i-1 Elektrisk Sterilisator', description: 'Elektrisk ångsterilisator som steriliserar på 6 minuter. Kapacitet 6 flaskor. Behåller sterilitet i 24 timmar.', image: 'https://bebisguiden.se/images/products/philips-avent-sterilisator-3-i-1.jpg', brand: 'Philips', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 599, url: 'https://www.jollyroom.se/mat-sug-o-napp/', seller: 'Jollyroom' }] },
+    { name: 'Tommee Tippee Elektrisk Ångsterilisator', description: 'Elektrisk ångsterilisator anpassad för Tommee Tippee-flaskor. Steriliserar på 8 minuter.', image: 'https://bebisguiden.se/images/products/tommee-tippee-sterilisator.jpg', brand: 'Tommee Tippee', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 399, url: 'https://www.jollyroom.se/mat-sug-o-napp/', seller: 'Jollyroom' }] },
+    { name: 'NUK Elektrisk Ångsterilisator', description: 'Elektrisk sterilisator optimerad för NUK-flaskor och nappar. Kapacitet 6 flaskor + nappar.', image: 'https://bebisguiden.se/images/products/nuk-elektrisk-sterilisator.jpg', brand: 'NUK', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 449, url: 'https://www.jollyroom.se/mat-sug-o-napp/', seller: 'Jollyroom' }] },
+    { name: 'Philips Avent Mikrovågssterilisator', description: 'Kompakt sterilisator för mikrovågsugn. Perfekt för resor. Steriliserar på 2 minuter.', image: 'https://bebisguiden.se/images/products/philips-avent-mikrovag-sterilisator.jpg', brand: 'Philips', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 299, url: 'https://www.jollyroom.se/mat-sug-o-napp/', seller: 'Jollyroom' }] },
+    { name: 'Chicco Elektrisk Sterilisator och Tork', description: 'Kombinerad sterilisator och tork för nappflaskor. Steriliserar och torkar i en enhet.', image: 'https://bebisguiden.se/images/products/chicco-elektrisk-sterilisator.jpg', brand: 'Chicco', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 799, url: 'https://www.jollyroom.se/mat-sug-o-napp/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -215,4 +216,8 @@ const faqItems = [
     productName="Nuna Mixx Next"
     text="Se bästa pris — Nuna Mixx Next hos Reirei"
   />
+  <ProductSchema products={[
+    { name: 'Bugaboo Fox 5', description: 'Premiumbarnvagn med unikt fjädringssystem och djup liggdel. Bäst i test.', brand: 'Bugaboo', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 14990, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
+    { name: 'Nuna Mixx Next', description: 'Kompakt kombivagn med smidig vikning och god körbarhet. Bäst pris/prestanda.', brand: 'Nuna', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 6990, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

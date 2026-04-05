@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -224,4 +225,10 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/barselar-o-babyhallare/barselar/" text="Se bästa pris – BabyBjörn Mini" productName="Bäst i test April 2026" />
+  <ProductSchema products={[
+    { name: 'BabyBjörn Mini', description: 'Lättviktsbärsele för nyfödda. Enkel att ta på och av med en hand.', brand: 'BabyBjörn', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 1099, url: 'https://www.jollyroom.se/barselar-o-babyhallare/barselar/', seller: 'Jollyroom' }] },
+    { name: 'Ergobaby Embrace', description: 'Mjuk bärsele för nyfödda med inbyggt stöd. Ingen insert behövs.', brand: 'Ergobaby', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 899, url: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black', seller: 'Jollyroom' }] },
+    { name: 'Cybex Yema Tie', description: 'Mjuk sjalbärsele för nyfödda. Enkel att knyta och anpassa.', brand: 'Cybex', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 749, url: 'https://www.jollyroom.se/barselar-o-babyhallare/barselar/', seller: 'Jollyroom' }] },
+    { name: 'Manduca XT', description: 'Ergonomisk bärsele utan insert för nyfödda. Bred och anpassbar.', brand: 'Manduca', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1299, url: 'https://www.jollyroom.se/barselar-o-babyhallare/barselar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

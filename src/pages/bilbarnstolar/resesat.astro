@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -147,4 +148,8 @@ const faqItems = [
 
 <StickyCTA href="https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-aton-b2-i-size-babyskydd-sepia-black" text="Se Cybex Aton B2 — lättast för resor" />
 
+  <ProductSchema products={[
+    { name: 'Cybex Aton B2 i-Size', description: 'Babyskydd med bärhandtag och ISOFIX-bas-kompatibilitet. Bäst för resor.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 1795, url: 'https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-aton-b2-i-size-babyskydd-sepia-black', seller: 'Jollyroom' }] },
+    { name: 'Joie i-Gemm 2', description: 'Prisvärt babyskydd med i-Size certifiering och bärhandtag. Bra val för budgetmedvetna.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1299, url: 'https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/joie-i-gemm-2-babyskydd-carbon', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

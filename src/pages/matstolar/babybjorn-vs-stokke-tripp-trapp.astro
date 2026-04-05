@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const reireiUrl = 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/';
 
@@ -201,4 +202,8 @@ const faqItems = [
     text="Se bästa pris — Stokke Tripp Trapp"
     productName="Bäst livslängd April 2026"
   />
+  <ProductSchema products={[
+    { name: 'BabyBjörn High Chair', description: 'Ergonomisk matstol med brett justeringsspann och smart fäste under bordet. Modern design.', brand: 'BabyBjörn', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3790, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+    { name: 'Stokke Tripp Trapp', description: 'Klassisk justerbar matstol som följer barnet från spädbarnsålder till vuxen. Bevisad hållbarhet.', brand: 'Stokke', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 2990, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

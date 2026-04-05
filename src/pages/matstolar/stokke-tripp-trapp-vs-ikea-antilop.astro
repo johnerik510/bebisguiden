@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -182,4 +183,8 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/barnrummet/matstolar-tillbehor/" productName="Stokke Tripp Trapp" text="Se bästa pris — Stokke Tripp Trapp" />
+  <ProductSchema products={[
+    { name: 'Stokke Tripp Trapp', description: 'Justerbar matstol som växer med barnet från 6 månader till vuxen. Klassisk design, godkänd upp till 136 kg.', brand: 'Stokke', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 2990, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+    { name: 'IKEA Antilop', description: 'Enkel och prisvärd matstol med 3-punkts säkerhetsbälte. Passar 6 månader till 3 år.', brand: 'IKEA', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 249, url: 'https://www.ikea.com/se/sv/p/antilop-highchair-with-safety-belt-white-silver-colour-69058163/', seller: 'IKEA' }] },
+  ]} />
 </ArticleLayout>

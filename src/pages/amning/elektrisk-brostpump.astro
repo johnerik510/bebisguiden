@@ -1,0 +1,228 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Amning', href: '/amning/' },
+  { label: 'Elektrisk bröstpump' },
+];
+
+const products = [
+  {
+    name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
+    badge: 'Bäst i test',
+    price: '3 099 kr',
+    rating: 4.8,
+    image: '/images/products/medela-freestyle-hands-free.jpg',
+    ctaHref: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump',
+    features: {
+      'Typ': 'Elektrisk dubbel',
+      'Handfri': 'Ja — i BH',
+      'Vikt': '0,3 kg',
+      'Laddning': 'USB-C',
+      'Batteri': 'Inbyggt',
+    },
+  },
+  {
+    name: 'Medela Swing Maxi Flex Elektrisk Dubbelbröstpump',
+    badge: 'Bäst dubbelpump',
+    price: '1 899 kr',
+    rating: 4.7,
+    image: '/images/products/medela-swing-maxi-flex.jpg',
+    ctaHref: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-flex-elektrisk-dubbelbrostpump',
+    features: {
+      'Typ': 'Elektrisk dubbel',
+      'Handfri': 'Nej',
+      'Vikt': '0,9 kg',
+      'Laddning': 'Nätadapter',
+      'Batteri': 'Inbyggt',
+    },
+  },
+  {
+    name: 'Medela Swing Flex Elektrisk Bröstpump',
+    badge: 'Bäst enkelpump',
+    price: '1 199 kr',
+    rating: 4.6,
+    image: '/images/products/medela-swing-maxi-flex.jpg',
+    ctaHref: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-flex-elektrisk-brostpump',
+    features: {
+      'Typ': 'Elektrisk enkel',
+      'Handfri': 'Nej',
+      'Vikt': '0,5 kg',
+      'Laddning': 'Nätadapter',
+      'Batteri': 'Inbyggt',
+    },
+  },
+  {
+    name: 'Philips Avent Natural Motion Elektrisk Bröstpump',
+    badge: 'Naturlig känsla',
+    price: '1 399 kr',
+    rating: 4.5,
+    image: '/images/products/medela-freestyle-hands-free.jpg',
+    ctaHref: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-natural-motion-elektrisk-brostpump',
+    features: {
+      'Typ': 'Elektrisk enkel',
+      'Handfri': 'Nej',
+      'Vikt': '0,6 kg',
+      'Laddning': 'Nätadapter',
+      'Batteri': 'AA-batterier',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Handfri', 'Vikt', 'Laddning', 'Batteri'];
+
+const faqItems = [
+  {
+    question: 'Vad är skillnaden mellan enkel- och dubbelpump?',
+    answer: 'En enkelpump pumpar ett bröst i taget, vilket tar ungefär dubbelt så lång tid men kostar ofta hälften. En dubbelpump pumpar båda brösten simultaneously och halverar pumptiden — från 20–30 minuter ner till 10–15 minuter. Om du pumpar regelbundet (mer än en gång om dagen) är en dubbelpump nästan alltid värt det. Vid enstaka tillfällen räcker en enkelpump.</p>',
+  },
+  {
+    question: 'Vad innebär "handfri" bröstpump och är den värd priset?',
+    answer: 'En handfri pump (som Medela Freestyle Hands-free) sitter i BH:n utan slangar och låter dig röra dig fritt under pumpningen — äta, arbeta vid datorn eller ta hand om äldre barn. Prisskillnaden jämfört med traditionella pumpar är 1 000–2 000 kr. Om du återgår till arbete tidigt eller pumpar ofta är handfri-funktionen extremt praktisk och ofta värd investeringen.',
+  },
+  {
+    question: 'Hur länge tar det innan bröstpumpen ökar mjölkproduktionen?',
+    answer: 'Bröstpumpning stimulerar mjölkproduktionen på liknande sätt som barnets sugning. Du kan se ökad produktion redan efter 3–5 dagar av regelbunden pumpning. För bäst effekt bör du pumpa 8–12 gånger per dygn under de första veckorna om du etablerar produktion. Konsultera en amningsrådgivare om du upplever problem med produktionen.',
+  },
+  {
+    question: 'Kan man dela bröstpump med någon annan?',
+    answer: 'Nej — bröstpumpar är personliga och ska inte delas. Mjölkpartiklar kan tränga in i motorenheten och inte rengöras bort, vilket innebär risk för smittspridning. Alla delar som kommer i kontakt med mjölk (trattar, slangar, behållare) kan bytas ut och köpas separat, men motorenheten bör vara personlig.',
+  },
+  {
+    question: 'Hur länge håller en elektrisk bröstpump?',
+    answer: 'En välskött elektrisk bröstpump håller i 1–3 år av regelbunden användning. Motorns livslängd varierar mellan märken. Medela och Philips Avent har gott rykte för hållbarhet. Byt ut slitdelar (membran, ventiler) regelbundet enligt tillverkarens anvisningar — slitna delar minskar pumpeffektiviteten märkbart.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa elektriska bröstpump 2026 — test och jämförelse"
+  description="Elektrisk bröstpump sparar tid och ökar mjölkproduktionen. Vi testar Medela Freestyle Hands-free, Swing Maxi Flex och fler — se vilket som vinner."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/amning/elektrisk-brostpump/"
+  updatedDate="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En bra elektrisk bröstpump kan halvera pumptiden och göra amningsresan betydligt enklare. Vi har granskat de populäraste modellerna och guidar dig till rätt val.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — elektriska bröstpumpar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Medela Freestyle Hands-free</strong> är bäst för mammor som pumpar på språng eller vill ha händerna fria. <strong>Medela Swing Maxi Flex</strong> är bäst dubbelpump för hemmet. <strong>Medela Swing Flex</strong> är bäst enkelpump för enstaka tillfällen.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump"
+      badge="Bäst i test"
+      price="3 099 kr"
+      rating={4.8}
+      image="/images/products/medela-freestyle-hands-free.jpg"
+      pros={['Helt handfri — sitter i BH:n', 'Kompakt och tyst', 'USB-C laddning', '2-fas-teknologi som efterliknar barnets sugning']}
+      cons={['Högt pris', 'Kräver anpassad amnings-BH', 'Kortare batteritid jämfört med nätdriven pump']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+    />
+
+    <ProductCard
+      name="Medela Swing Maxi Flex Elektrisk Dubbelbröstpump"
+      badge="Bäst dubbelpump"
+      price="1 899 kr"
+      rating={4.7}
+      image="/images/products/medela-swing-maxi-flex.jpg"
+      pros={['Pumpar båda brösten simultaneously', 'Halverar pumptiden', 'Inbyggt batteri', '2-fas-teknologi']}
+      cons={['Inte handfri', 'Kräver slangar och hållare', 'Tyngre än handfria alternativ']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-flex-elektrisk-dubbelbrostpump"
+    />
+
+    <ProductCard
+      name="Medela Swing Flex Elektrisk Bröstpump"
+      badge="Bäst enkelpump"
+      price="1 199 kr"
+      rating={4.6}
+      image="/images/products/medela-swing-maxi-flex.jpg"
+      pros={['Prisvärd', 'Lätt och kompakt', 'PersonalFit Flex trattar', 'Inbyggt batteri']}
+      cons={['Pumpar ett bröst i taget', 'Dubblar pumptiden vs. dubbelpump', 'Inte handfri']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-flex-elektrisk-brostpump"
+    />
+
+    <ProductCard
+      name="Philips Avent Natural Motion Elektrisk Bröstpump"
+      badge="Naturlig känsla"
+      price="1 399 kr"
+      rating={4.5}
+      image="/images/products/medela-freestyle-hands-free.jpg"
+      pros={['Natural Motion-teknologi efterliknar barnets sugning', 'Mjuka brösttrattar', 'Kompatibel med Avent-flaskor', 'Tyst motor']}
+      cons={['Enkelpump — pumpar ett bröst i taget', 'AA-batterier (inte inbyggt batteri)', 'Fler delar att rengöra']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-natural-motion-elektrisk-brostpump"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Enkel eller dubbelpump? Handfri eller traditionell?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Enkelpump — för enstaka tillfällen</h3>
+    <p>Om du pumpar sällan (ett par gånger i veckan) räcker en enkelpump utmärkt. Den är billigare, lättare och enklare att rengöra. Medela Swing Flex och Philips Avent Natural Motion är bra val i den kategorin.</p>
+
+    <h3>Dubbelpump — för daglig pumpning</h3>
+    <p>Om du pumpar dagligen eller vill etablera och upprätthålla mjölkproduktionen är en dubbelpump praktiskt taget nödvändig. Den halverar pumptiden och stimulerar brösten mer effektivt. Medela Swing Maxi Flex är ett populärt val för hemmabruk.</p>
+
+    <h3>Handfri pump — för aktiva mammor</h3>
+    <p>En handfri pump sitter i BH:n utan slangar och låter dig röra dig fritt. Perfekt för att pumpa på jobbet, ta hand om äldre barn eller bara ha händerna fria. Medela Freestyle Hands-free är marknadsledande i denna kategori.</p>
+
+    <h3>Trattstorlek spelar roll</h3>
+    <p>Fel trattstorlek är en vanlig orsak till att bröstpumpning känns obehagligt och ger dålig mjölkmängd. Mät bröstvårtan i diameter och välj tratt som är 1–3 mm större. De flesta märken erbjuder trattar i flera storlekar.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade amningsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/amning/" class="text-accent hover:underline">Amning — komplett guide för nyblivna mammor</a></li>
+      <li><a href="/amning/brostpump/" class="text-accent hover:underline">Bästa bröstpump 2026 — manuell och elektrisk jämförd</a></li>
+      <li><a href="/amning/amningsbh/" class="text-accent hover:underline">Bästa amnings-BH 2026 — komfort och funktion</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
+      description: 'Handfri elektrisk dubbelbröstpump från Medela. Sitter i BH:n utan slangar. USB-C laddning. 2-fas-teknologi. 0,3 kg.',
+      image: 'https://bebisguiden.se/images/products/medela-freestyle-hands-free.jpg',
+      brand: 'Medela',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 3099, url: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Medela Swing Maxi Flex Elektrisk Dubbelbröstpump',
+      description: 'Elektrisk dubbelbröstpump från Medela med 2-fas-teknologi. Pumpar båda brösten simultaneously. Inbyggt batteri.',
+      image: 'https://bebisguiden.se/images/products/medela-swing-maxi-flex.jpg',
+      brand: 'Medela',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 1899, url: 'https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-flex-elektrisk-dubbelbrostpump', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+  text="Se bästa pris — Medela Freestyle Hands-free"
+  productName="Bäst i test 2026"
+/>

@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -286,4 +287,8 @@ const faqItems = [
     productName="Body och overall set – ekologisk bomull"
     text="Se babykläder hos Reirei"
   />
+  <ProductSchema products={[
+    { name: 'Body och overall set — ekologisk bomull', description: 'Ekologisk babyklädsel i mjuk bomull GOTS-certifierad. Perfekt startset för nyfödda.', image: 'https://bebisguiden.se/images/products/newborn-set-ekologisk.jpg', brand: 'Jollyroom', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 399, url: 'https://www.jollyroom.se/barnklader/nattklader/', seller: 'Jollyroom' }] },
+    { name: 'Sparkdräkt i frotté', description: 'Mjuk sparkdräkt i frotté för bebis. Enkel dragkedja och platt söm mot huden.', image: 'https://bebisguiden.se/images/products/sparkdrakt-frotte.jpg', brand: 'Jollyroom', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 199, url: 'https://www.jollyroom.se/barnklader/nattklader/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

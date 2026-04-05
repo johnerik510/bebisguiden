@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -188,4 +189,8 @@ const faqItems = [
     productName="Pampers Premium Protection"
     text="Se pris"
   />
+  <ProductSchema products={[
+    { name: 'Pampers Premium Protection', description: 'Premiumblöja med mjuka material och extra absorptionskärna. Bra passform för nyfödda.', brand: 'Pampers', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 0, url: 'https://www.jollyroom.se/blojor-hygien-o-hud/blojor/', seller: 'Jollyroom' }] },
+    { name: 'Libero Touch', description: 'Populär blöja med andningsbar yttersida och bra passform. Ofta prisvärd.', brand: 'Libero', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 0, url: 'https://www.jollyroom.se/blojor-hygien-o-hud/blojor/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

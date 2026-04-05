@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -226,4 +227,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/" text="Se bästa pris" rel="sponsored noopener" />
+  <ProductSchema products={[
+    { name: 'Hauck Shopper SLX', description: 'Budgetvänlig sittvagn med bra grundfunktioner. Perfekt för priskänsliga familjer.', brand: 'Hauck', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 999, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },
+    { name: 'Kinderkraft Cruiser', description: 'Kompakt sittvagn med aluminiumram och hopfällbar design till ett bra pris.', brand: 'Kinderkraft', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },
+    { name: 'Chicco Miinimo 4', description: 'Ultrakompakt sittvagn med god körbarhet för priset. Under 2 kg.', brand: 'Chicco', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1999, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

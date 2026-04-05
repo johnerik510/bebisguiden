@@ -1,0 +1,220 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Terrängvagn' },
+];
+
+const products = [
+  {
+    name: 'Beemoo Activity Go Aktivitetsvagn, Black',
+    badge: 'Bäst i test',
+    price: '2 295 kr',
+    rating: 4.7,
+    image: '/images/products/beemoo-activity-go.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/beemoo-activity-go-aktivitetsvagn-black',
+    features: {
+      'Hjul': 'Stora luftfyllda',
+      'Fjädring': 'Ja',
+      'Vikt': '12 kg',
+      'Ålder': 'Från 6 månader',
+      'Fällbar': 'Ja',
+    },
+  },
+  {
+    name: 'Kinderkraft HELSI 2 Terrängvagn, Black',
+    badge: 'Bäst budget',
+    price: '2 199 kr',
+    rating: 4.5,
+    image: '/images/products/kinderkraft-helsi-2.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/kinderkraft-helsi-2-terrangvagn-black',
+    features: {
+      'Hjul': 'Stora EVA-hjul',
+      'Fjädring': 'Ja',
+      'Vikt': '11,5 kg',
+      'Ålder': 'Från 6 månader',
+      'Fällbar': 'Ja',
+    },
+  },
+  {
+    name: 'UPPAbaby RIDGE Joggingvagn, Jake Black',
+    badge: 'Premiumval',
+    price: '5 990 kr',
+    rating: 4.8,
+    image: '/images/products/uppababy-ridge.jpg',
+    ctaHref: 'https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/uppababy-ridge-joggingvagn-jake-black',
+    features: {
+      'Hjul': 'Stora lufthjul 12"',
+      'Fjädring': 'Allhjulsfjädring',
+      'Vikt': '16 kg',
+      'Ålder': 'Från 6 månader',
+      'Fällbar': 'Ja',
+    },
+  },
+];
+
+const featureLabels = ['Hjul', 'Fjädring', 'Vikt', 'Ålder', 'Fällbar'];
+
+const faqItems = [
+  {
+    question: 'När kan man börja jogga med bebis i terrängvagn?',
+    answer: 'De flesta tillverkare rekommenderar att vänta tills bebisen är minst 6 månader och har ett stabilt huvud. Innan dess saknar nyfödda den nackmuskulatur som behövs för att klara stötar och vibrationer vid jogging. Kontakta din BVC för individuell bedömning. Att promenera i terrängvagnen kan man göra från det att vagnen tillåter det — ofta redan från nyfödda med speciell tilläggsdel.',
+  },
+  {
+    question: 'Vad är skillnaden mellan terrängvagn och vanlig barnvagn?',
+    answer: 'En terrängvagn har tre hjul (varav ett styrbart framhjul), stora luftfyllda däck och robustare fjädring. Det gör dem överlägsna på grusvägar, skogsstigar och ojämnt underlag. Vanliga barnvagnar har fyra hjul och är byggda för stadsmiljö och hårdgjorda ytor. Terrängvagnar är dock tyngre och skrymmande — sämre att ta med på kollektivtrafik.',
+  },
+  {
+    question: 'Måste terrängvagnen ha luftfyllda hjul?',
+    answer: 'Luftfyllda däck ger bäst stötdämpning och rullmotstånd på ojämna underlag — klart bäst för jogging och terräng. EVA-skum-hjul (fasta) kräver inget underhåll men ger sämre dämpning. Om du planerar att jogga regelbundet på grusvägar och skogsstigar är lufthjul ett krav. Om du mest kör på lättare grusvägar fungerar EVA-hjul väl.',
+  },
+  {
+    question: 'Kan man använda terrängvagnen som vanlig barnvagn?',
+    answer: 'Ja — de flesta terrängvagnar fungerar utmärkt som vardagsvagn om du bor i ett område med grusvägar, parkstråk och ojämnt underlag. De är dock tyngre och bredare än sittvagnar, vilket gör dem opraktiska på trånga trottoarer och kollektivtrafik. Många familjer använder terrängvagnen som komplement till en kompaktare stadsvagn.',
+  },
+  {
+    question: 'Vilken säkerhetsutrustning behövs vid jogging med bebis?',
+    answer: 'Säkerhetsrem som kopplas ihop med handledsbandet på vagnen (ingår i de flesta joggingvagnar). 5-punktssele på barnet. Alltid låst framhjul vid jogging — styrbart framhjul låses för stabilitet vid löpning. Undvik att jogga i trafik utan reflex. Joggingvagnens eget handbromshandtag används i backar. Bebisen ska ha passande hjälm om man cyklar, men det gäller ej jogging.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa terrängvagn och joggingvagn 2026 — för löpning och ojämn mark"
+  description="Terrängvagn med fjädring och stora hjul är perfekt för löpning och utomhusäventyr. Vi testar bästa modellerna 2026."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/terrangvagn/"
+  updatedDate="2026-04-05"
+  relatedArticles={[
+    { title: 'Bästa joggingvagn 2026', href: '/barnvagnar/joggingvagn/' },
+    { title: 'Bästa barnvagnen 2026', href: '/barnvagnar/' },
+    { title: 'Bästa bärselen 2026', href: '/barselen/' },
+    { title: 'Barnvagn för nyfödda', href: '/barnvagnar/nyfodda/' },
+  ]}
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En terrängvagn öppnar upp skogsstigar, grusvägar och kuperade parker som en vanlig barnvagn inte klarar. Vi har testat de bästa modellerna 2026 — från prisvärda alternativ till premium joggingvagnar.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — terrängvagnar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Beemoo Activity Go</strong> är bäst för de flesta — prisvärdt, stort utbud och toppbetyg. <strong>UPPAbaby RIDGE</strong> är bäst för seriösa löpare med allhjulsfjädring och 12" lufthjul. <strong>Kinderkraft HELSI 2</strong> är bäst budget.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Beemoo Activity Go Aktivitetsvagn, Black"
+      badge="Bäst i test"
+      price="2 295 kr"
+      rating={4.7}
+      image="/images/products/beemoo-activity-go.jpg"
+      ageRange="Från 6 månader"
+      pros={['Stora luftfyllda hjul för terräng', 'Robust fjädring', 'Lättstyrd på grus och skogsstig', 'Bra pris för kvaliteten']}
+      cons={['Tyngre än stadsvagnar', 'Tar mer plats i bilen']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/beemoo-activity-go-aktivitetsvagn-black"
+    />
+
+    <ProductCard
+      name="Kinderkraft HELSI 2 Terrängvagn, Black"
+      badge="Bäst budget"
+      price="2 199 kr"
+      rating={4.5}
+      image="/images/products/kinderkraft-helsi-2.jpg"
+      ageRange="Från 6 månader"
+      pros={['Prisvärd terrängvagn', 'Stabil och lättkörd', 'Klarar skogsstigar och grusvägar', 'Kompakt fällning']}
+      cons={['EVA-hjul ger något mer stötning', 'Färre färgval']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/kinderkraft-helsi-2-terrangvagn-black"
+    />
+
+    <ProductCard
+      name="UPPAbaby RIDGE Joggingvagn, Jake Black"
+      badge="Premiumval"
+      price="5 990 kr"
+      rating={4.8}
+      image="/images/products/uppababy-ridge.jpg"
+      ageRange="Från 6 månader"
+      pros={['Allhjulsfjädring', '12" lufthjul — bäst på riktigt ojämn mark', 'Byggd för seriös löpning', 'Stor och djup sitthink']}
+      cons={['Högt pris', 'Tung (16 kg)', 'Stor — kräver rymlig bil']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/uppababy-ridge-joggingvagn-jake-black"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Terrängvagn 2026</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>När kan man börja jogga?</h3>
+    <p>Barn behöver stabilt huvud och hals — det uppnås vanligtvis vid 6 månaders ålder. Kontrollera alltid med BVC innan du börjar jogga med bebis. Att promenera på grusvägar och i terräng kan du däremot börja med direkt.</p>
+
+    <h3>Lufthjul vs EVA-hjul</h3>
+    <p>Luftfyllda däck ger bäst dämpning och lägst rullmotstånd på ojämna underlag. Välj lufthjul om du planerar att jogga regelbundet. EVA-skumhjul (fasta) kräver inget underhåll men ger sämre komfort i tuff terräng. För promenader på grusvägar och lättare stigar fungerar EVA bra.</p>
+
+    <h3>Terrängvagn vs sittvagn</h3>
+    <p>Terrängvagnar har tre hjul, stor spårvidd och hög markclearance. Det gör dem stabila och lättkörda i terräng men klumpiga i trånga butiker och kollektivtrafik. En sittvagn är bättre i stadsmiljö. Bor du nära skog eller kuperad terräng är terrängvagnen ett utmärkt förstaval — annars ett bra komplement.</p>
+
+    <h3>Säkerhet vid jogging</h3>
+    <p>Använd alltid handledssäkerhetsremmen. Lås framhjulet vid löpning. Kontrollera lufttrycket i däcken regelbundet. Kör inte på starkt trafikerade vägar utan reflex och synliga kläder.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler barnvagnsguider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/barnvagnar/joggingvagn/" class="text-accent hover:underline">Bästa joggingvagnen 2026 — komplett test</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen 2026 — alla typer jämförda</a></li>
+      <li><a href="/barnvagnar/nyfodda/" class="text-accent hover:underline">Barnvagn för nyfödda 2026</a></li>
+      <li><a href="/barnvagnar/budget/" class="text-accent hover:underline">Bästa billiga barnvagnen 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Beemoo Activity Go Aktivitetsvagn, Black',
+      description: 'Terrängvagn med stora luftfyllda hjul och robust fjädring. Passar från 6 månaders ålder för jogging och promenader i terräng.',
+      image: 'https://bebisguiden.se/images/products/beemoo-activity-go.jpg',
+      brand: 'Beemoo',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 2295, url: 'https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/beemoo-activity-go-aktivitetsvagn-black', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Kinderkraft HELSI 2 Terrängvagn, Black',
+      description: 'Prisvärd terrängvagn med stor stabilitet och bra fjädring för grusvägar och lättare skogsstigar.',
+      image: 'https://bebisguiden.se/images/products/kinderkraft-helsi-2.jpg',
+      brand: 'Kinderkraft',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 2199, url: 'https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/kinderkraft-helsi-2-terrangvagn-black', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'UPPAbaby RIDGE Joggingvagn, Jake Black',
+      description: 'Premium joggingvagn med allhjulsfjädring och 12-tums lufthjul. Byggd för seriösa löpare från 6 månaders ålder.',
+      image: 'https://bebisguiden.se/images/products/uppababy-ridge.jpg',
+      brand: 'UPPAbaby',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 5990, url: 'https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/uppababy-ridge-joggingvagn-jake-black', seller: 'Jollyroom' }],
+    },
+  ]} />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/beemoo-activity-go-aktivitetsvagn-black"
+  text="Se bästa pris — Beemoo Activity Go"
+  productName="Bäst i test 2026"
+/>

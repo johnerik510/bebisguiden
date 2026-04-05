@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -223,4 +224,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F" text="Se bästa pris — Axkid Minikid 4" />
+  <ProductSchema products={[
+    { name: 'Axkid Minikid 4', description: 'Bäst i test bakåtvänd bilbarnstol med topp krocksäkerhet och lång användningstid.', brand: 'Axkid', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5299, url: 'https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F', seller: 'Axkid' }] },
+    { name: 'Cybex Sirona T i-Size', description: 'Biltestestbäst komfort med 360-rotation och LinearSideSleep. ISOFIX-monterad.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5499, url: 'https://www.cybex-online.com/sv/se/p/cs-pl-sirona-t-i-size.html', seller: 'Cybex' }] },
+    { name: 'BeSafe iZi Turn B i-Size', description: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4299, url: 'https://www.besafe.com/sv/bilstolar/babyskydd/', seller: 'BeSafe' }] },
+  ]} />
 </ArticleLayout>

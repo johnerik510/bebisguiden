@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -229,4 +230,11 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/barnrummet/matstolar-tillbehor/" text="Se bästa pris – Stokke Clikk" productName="Bäst i test April 2026" rel="sponsored noopener" />
+  <ProductSchema products={[
+    { name: 'Stokke Clikk', description: 'Kompakt resmatstol med säkerhetsräls och brickplatta. Passar från 6 månader till 3 år.', brand: 'Stokke', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 1299, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+    { name: 'Chicco Pocket Snack', description: 'Hopfällbar boosterstol att fästa på stol. Liten och lätt för resan.', brand: 'Chicco', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 549, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+    { name: 'Inglesina Fast Table Chair', description: 'Bordsstol som fästs direkt på bordsytan. Elegant design utan behov av stol.', brand: 'Inglesina', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 799, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+    { name: 'Joie MimzySnacker', description: 'Kompakt boosterstol för resor med liten yta. Lätt att packa.', brand: 'Joie', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 699, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+    { name: 'Summer Infant Pop n Sit', description: 'Uppblåsbar sittkudde med bricka. Lättast att packa ihop av alla.', brand: 'Summer Infant', ratingValue: 4.2, reviewCount: 1, offers: [{ price: 399, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

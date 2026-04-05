@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -215,4 +216,8 @@ const faqItems = [
     productName="Bugaboo Fox 5"
     text="Se pris"
   />
+  <ProductSchema products={[
+    { name: 'Bugaboo Fox 5', description: 'Premiumbarnvagn med bäst körbarhet och djup liggdel. Vinnare i test 2026.', brand: 'Bugaboo', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 14990, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
+    { name: 'Stokke Xplory X', description: 'Ikonisk högsitsvagn med justerbar sits nära förälder. Unik design och kvalitet.', brand: 'Stokke', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 14490, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

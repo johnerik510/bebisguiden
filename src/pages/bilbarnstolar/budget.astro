@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -221,4 +222,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/bilstolar/bilbarnstolar/alla-bilbarnstolar/" text="Se bästa pris hos Reirei" />
+  <ProductSchema products={[
+    { name: 'Joie i-Trillo FX', description: 'Budgetbilbarnstol med ISOfix och bra grundskydd. Bäst pris i test.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1399, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/alla-bilbarnstolar/', seller: 'Jollyroom' }] },
+    { name: 'Chicco Bi-Seat Air', description: 'Budgetvänlig bilbarnstol som används framåt- och bakåtvänd. Bäst för pengarna.', brand: 'Chicco', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1199, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/alla-bilbarnstolar/', seller: 'Jollyroom' }] },
+    { name: 'Britax Römer Kidfix M i-Size', description: 'Prisvärd bältad bilbarnstol med ISOfix från Britax. God säkerhetsrating.', brand: 'Britax Römer', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 1499, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/alla-bilbarnstolar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

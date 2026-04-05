@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -221,4 +222,12 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/" text="Se bästa pris hos Reirei" />
+
+  <ProductSchema products={[
+    { name: 'Philips Avent DECT SCD711', description: 'Budgetvänlig DECT-babyvakt med pålitlig signal och enkel hantering.', brand: 'Philips', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 399, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'Chicco Talky Energy', description: 'Billigaste babyvakten med grundläggande DECT-funktion.', brand: 'Chicco', ratingValue: 4.1, reviewCount: 1, offers: [{ price: 299, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'Summer Infant Baby Pixel Cadet', description: 'Budget videobabyvakt med liten skärm. Bäst video för pengarna.', brand: 'Summer Infant', ratingValue: 4.2, reviewCount: 1, offers: [{ price: 499, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'Motorola Halo+', description: 'Budget-babyvakt med 360-kamera och app för de priskänsliga.', brand: 'Motorola', ratingValue: 4.2, reviewCount: 1, offers: [{ price: 449, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+    { name: 'VTech VM819', description: 'Budget-babyvakt med stor skärm och god batteritid.', brand: 'VTech', ratingValue: 4.2, reviewCount: 1, offers: [{ price: 389, url: 'https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -196,4 +197,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.babybjorn.com/sv/se/produkter/babyutrustning/babyvakter/" productName="BabyBjörn Video Baby Monitor" text="Se bästa pris — BabyBjörn Video Baby Monitor" />
+
+  <ProductSchema products={[
+    { name: 'BabyBjörn Video Baby Monitor', description: 'Stor 5-tumsskärm, DECT-signal och kristallklar nattbild. Ingen WiFi — ingen säkerhetsrisk.', brand: 'BabyBjörn', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 2195, url: 'https://www.babybjorn.com/sv/se/produkter/babyutrustning/babyvakter/', seller: 'BabyBjörn' }] },
+    { name: 'Philips Avent SCD923', description: 'DECT+WiFi-kombination som låter dig se bebisen via app. Bra pris och reliabilitet.', brand: 'Philips', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://www.philips.se/c-p/SCD923_26/connected-connected-baby-monitor', seller: 'Philips' }] },
+  ]} />
 </ArticleLayout>

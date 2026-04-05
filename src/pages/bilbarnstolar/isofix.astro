@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -178,4 +179,9 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black" text="Se bästa pris – Cybex Sirona T i-Size" />
+  <ProductSchema products={[
+    { name: 'Cybex Sirona T i-Size', description: 'ISOFIX-bilbarnstol med 360-rotation och bäst säkerhet i klassen.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 6999, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black', seller: 'Jollyroom' }] },
+    { name: 'Britax Romer Dualfix 5Z i-Size', description: 'ISOFIX-bilbarnstol med 360-rotation och premium krocksäkerhet.', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5999, url: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-deep-black', seller: 'Jollyroom' }] },
+    { name: 'Maxi-Cosi Pearl 360', description: 'ISOFIX-bilbarnstol med 360-rotation och FamilyFix-baskompatibilitet.', brand: 'Maxi-Cosi', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4999, url: 'https://www.maxi-cosi.se/bilstolar/pearl-360', seller: 'Maxi-Cosi' }] },
+  ]} />
 </ArticleLayout>

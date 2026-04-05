@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -195,4 +196,8 @@ const faqItems = [
     productName="Spectra S1 Plus"
     text="Se bästa pris — Spectra S1 Plus hos Reirei"
   />
+  <ProductSchema products={[
+    { name: 'Spectra S1 Plus', description: 'Dubbel elektrisk bröstpump med inbyggt batteri. Tyst motor och ergonomisk design.', brand: 'Spectra', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 2390, url: 'https://www.jollyroom.se/amning/brostpumpar/', seller: 'Jollyroom' }] },
+    { name: 'Medela Freestyle Flex', description: 'Trådlös dubbel bröstpump med app och 2 inbyggda batterier. Portabel och tyst.', brand: 'Medela', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 3290, url: 'https://www.jollyroom.se/amning/brostpumpar/', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -177,4 +178,8 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://www.cybex-online.com/sv/se/p/cs-pl-cloud-t-i-size.html" productName="Cybex Cloud T i-Size" text="Se bästa pris — Cybex Cloud T i-Size" />
+  <ProductSchema products={[
+    { name: 'Cybex Cloud T i-Size', description: 'Babyskydd med 360-rotation och premium sidokrocksskydd. Passar från prematura.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 2516, url: 'https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-sepia-black', seller: 'Jollyroom' }] },
+    { name: 'Maxi-Cosi Pebble 360 Pro i-Size', description: 'Babyskydd med 360-rotation och FamilyFix-baskompatibilitet. Klassiker från Maxi-Cosi.', brand: 'Maxi-Cosi', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 2762, url: 'https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/maxi-cosi-pebble-360-babyskydd-essential-graphite', seller: 'Jollyroom' }] },
+  ]} />
 </ArticleLayout>

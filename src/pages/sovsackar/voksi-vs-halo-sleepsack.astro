@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -187,4 +188,8 @@ const faqItems = [
     text="Se bästa pris — Voksi Nordic N1 Wool"
     productName="Bäst i test April 2026"
   />
+  <ProductSchema products={[
+    { name: 'Voksi Nordic N1 Wool', description: 'Sovsäck i naturlig ull med optimala temperaturregulerande egenskaper. OEKO-TEX certifierad.', brand: 'Voksi', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 899, url: 'https://www.jollyroom.se/barnrummet/sovsackar/', seller: 'Jollyroom' }] },
+    { name: 'HALO SleepSack Micro-Fleece', description: 'Mjuk fleecesovsäck med bevisad säkerhetsdesign. Ersätter filt och minskar risk för SIDS.', brand: 'HALO', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 399, url: 'https://www.babyshop.se/halo-sleepsack-micro-fleece', seller: 'Babyshop' }] },
+  ]} />
 </ArticleLayout>
