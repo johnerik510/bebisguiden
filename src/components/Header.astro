@@ -1,18 +1,77 @@
 ---
 const navItems = [
-  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
-  { label: 'Barnvagnar', href: '/barnvagnar/' },
-  { label: 'Babyvakter', href: '/babyvakter/' },
-  { label: 'Bärselen', href: '/barselen/' },
-  { label: 'Matstolar', href: '/matstolar/' },
-  { label: 'Spjälsängar', href: '/spjalsangar/' },
-  { label: 'Amning & matning', href: '/amning/', dropdown: [
-    { label: 'Bröstpumpar', href: '/amning/brostpump/' },
-    { label: 'Amningskuddar', href: '/amning/amningskudde/' },
-    { label: 'Nappflaskor', href: '/amning/nappflaska/' },
-  ]},
-  { label: 'Leksaker', href: '/leksaker/' },
-  { label: 'Guider', href: '/guider/' },
+  {
+    label: 'Bilbarnstolar',
+    href: '/bilbarnstolar/',
+    dropdown: [
+      { label: 'Alla bilbarnstolar', href: '/bilbarnstolar/' },
+      { label: 'Bakåtvända', href: '/bilbarnstolar/bakatvand/' },
+      { label: 'Framåtvända', href: '/bilbarnstolar/framåtvänd/' },
+      { label: 'Med Isofix', href: '/bilbarnstolar/isofix/' },
+      { label: 'I-size', href: '/bilbarnstolar/i-size/' },
+      { label: 'Biltestade', href: '/bilbarnstolar/biltestade/' },
+      { label: 'Budget', href: '/bilbarnstolar/budget/' },
+    ],
+  },
+  {
+    label: 'Barnvagnar',
+    href: '/barnvagnar/',
+    dropdown: [
+      { label: 'Alla barnvagnar', href: '/barnvagnar/' },
+      { label: 'Nyfödda', href: '/barnvagnar/nyfodda/' },
+      { label: 'Lätta barnvagnar', href: '/barnvagnar/latt/' },
+      { label: 'Duovagnar', href: '/barnvagnar/duovagn/' },
+      { label: 'Joggingvagnar', href: '/barnvagnar/joggingvagn/' },
+      { label: 'Sittvagnar', href: '/barnvagnar/sittvagn/' },
+      { label: 'Budget', href: '/barnvagnar/budget/' },
+    ],
+  },
+  {
+    label: 'Baby & sömn',
+    href: null,
+    dropdown: [
+      { label: 'Babyvakter', href: '/babyvakter/' },
+      { label: 'Bärselen', href: '/barselen/' },
+      { label: 'Spjälsängar', href: '/spjalsangar/' },
+      { label: 'Sövsäckar', href: '/sovsackar/' },
+      { label: 'Säkerhet', href: '/sakerhet/' },
+    ],
+  },
+  {
+    label: 'Mat & amning',
+    href: null,
+    dropdown: [
+      { label: 'Matstolar', href: '/matstolar/' },
+      { label: 'Bröstpumpar', href: '/amning/brostpump/' },
+      { label: 'Amningskuddar', href: '/amning/amningskudde/' },
+      { label: 'Nappflaskor', href: '/amning/nappflaska/' },
+      { label: 'Sterilisatorer', href: '/sterilisatorer/' },
+    ],
+  },
+  {
+    label: 'Mer',
+    href: null,
+    dropdown: [
+      { label: 'Leksaker', href: '/leksaker/' },
+      { label: 'Badkar', href: '/badkar/' },
+      { label: 'Blöjor', href: '/blojor/' },
+      { label: 'Babykläder', href: '/babyklader/' },
+      { label: 'Märken', href: '/marken/' },
+    ],
+  },
+  {
+    label: 'Guider',
+    href: '/guider/',
+    dropdown: [
+      { label: 'Alla guider', href: '/guider/' },
+      { label: 'Bebis-checklista', href: '/guider/bebis-checklista/' },
+      { label: 'Säker sovmiljö', href: '/guider/saker-sovmiljo/' },
+      { label: 'Välja bilbarnstol', href: '/guider/valja-bilbarnstol/' },
+      { label: 'Välja barnvagn', href: '/guider/valja-barnvagn/' },
+      { label: 'Amma eller flaska?', href: '/guider/amma-eller-flaska/' },
+      { label: 'Bilbarnstolsregler', href: '/guider/bilbarnstol-regler/' },
+    ],
+  },
 ];
 
 const uspItems = [
@@ -37,77 +96,145 @@ const uspItems = [
       ))}
     </div>
   </div>
+
   <!-- White nav -->
   <div class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <a href="/" class="flex items-center">
+
+        <a href="/" class="flex items-center flex-shrink-0">
           <img src="/images/logo.svg" alt="Bebisguiden" class="h-8 w-auto" width="181" height="32" />
         </a>
-        <nav class="hidden md:flex items-center gap-1" aria-label="Huvudnavigering">
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-0.5" aria-label="Huvudnavigering">
           {navItems.map((item) => (
-            item.dropdown ? (
-              <div class="relative group">
-                <a href={item.href} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1">
+            <div class="relative group">
+              {item.href ? (
+                <a
+                  href={item.href}
+                  class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1 whitespace-nowrap"
+                  aria-haspopup="true"
+                >
                   {item.label}
-                  <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                  <svg class="w-3 h-3 opacity-50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
                 </a>
-                <div class="absolute left-0 top-full pt-1 hidden group-hover:block z-50">
-                  <div class="bg-white border border-gray-200 rounded-xl shadow-lg py-1 min-w-[180px]">
-                    {item.dropdown.map((sub) => (
-                      <a href={sub.href} class="block px-4 py-2 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">
-                        {sub.label}
-                      </a>
-                    ))}
-                  </div>
+              ) : (
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1 whitespace-nowrap cursor-pointer"
+                  aria-haspopup="true"
+                  tabindex="0"
+                >
+                  {item.label}
+                  <svg class="w-3 h-3 opacity-50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+              )}
+              <!-- Dropdown -->
+              <div class="absolute left-0 top-full pt-1 hidden group-hover:block group-focus-within:block z-50">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-lg py-1.5 min-w-[200px]">
+                  {item.dropdown.map((sub) => (
+                    <a
+                      href={sub.href}
+                      class="block px-4 py-2 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors"
+                    >
+                      {sub.label}
+                    </a>
+                  ))}
                 </div>
               </div>
-            ) : (
-            <a href={item.href} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors">
-              {item.label}
-            </a>
-            )
+            </div>
           ))}
-          <a href="/bilbarnstolar/" class="ml-2 px-4 py-2 text-sm font-semibold bg-accent text-white rounded-lg hover:opacity-90 transition-opacity">
-            Se tester
+
+          <a href="/guider/bebis-checklista/" class="ml-3 px-4 py-2 text-sm font-semibold bg-accent text-white rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap">
+            Bebis-checklista
           </a>
         </nav>
-        <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+        <!-- Mobile toggle -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700"
+          aria-label="Öppna meny"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
     </div>
   </div>
-  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100" aria-label="Mobilnavigering">
-    <div class="px-4 py-3 space-y-1">
-      {navItems.map((item) => (
-        <div>
-          <a href={item.href} class="block py-2.5 text-sm text-gray-700 hover:text-primary transition-colors font-medium">
-            {item.label}
-          </a>
-          {item.dropdown && (
-            <div class="ml-4 space-y-0.5 mb-1">
-              {item.dropdown.map((sub) => (
-                <a href={sub.href} class="block py-1.5 text-sm text-gray-500 hover:text-primary transition-colors">
-                  {sub.label}
-                </a>
-              ))}
-            </div>
-          )}
+
+  <!-- Mobile menu -->
+  <nav id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 max-h-[80vh] overflow-y-auto" aria-label="Mobilnavigering">
+    <div class="px-4 py-2 divide-y divide-gray-100">
+      {navItems.map((item, i) => (
+        <div class="mobile-section py-1">
+          <button
+            class="mobile-toggle w-full flex items-center justify-between py-3 text-sm font-semibold text-gray-800 hover:text-primary transition-colors"
+            aria-expanded="false"
+            data-index={i}
+          >
+            <span>{item.label}</span>
+            <svg class="toggle-chevron w-4 h-4 opacity-50 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="mobile-dropdown hidden pb-2">
+            {item.dropdown.map((sub) => (
+              <a
+                href={sub.href}
+                class="flex items-center gap-2 pl-3 py-2.5 text-sm text-gray-600 hover:text-primary transition-colors border-l-2 border-transparent hover:border-accent ml-1"
+              >
+                {sub.label}
+              </a>
+            ))}
+          </div>
         </div>
       ))}
+      <div class="py-3">
+        <a href="/guider/bebis-checklista/" class="block w-full text-center px-4 py-3 text-sm font-semibold bg-accent text-white rounded-lg hover:opacity-90 transition-opacity">
+          Bebis-checklista
+        </a>
+      </div>
     </div>
   </nav>
 </header>
 
 <script>
+  // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
   btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
     menu?.classList.toggle('hidden');
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen ? 'false' : 'true'));
+  });
+
+  // Mobile accordion
+  document.querySelectorAll('.mobile-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const section = toggle.closest('.mobile-section');
+      const dropdown = section?.querySelector('.mobile-dropdown');
+      const chevron = toggle.querySelector('.toggle-chevron');
+      const isOpen = !dropdown?.classList.contains('hidden');
+
+      dropdown?.classList.toggle('hidden', isOpen);
+      chevron?.classList.toggle('rotate-180', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
   });
 </script>
