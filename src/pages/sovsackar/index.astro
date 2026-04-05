@@ -282,16 +282,48 @@ const faqItems = [
     "item": {
       "@type": "Product",
       "name": p.name,
+      "description": `${p.name} — ${p.features?.Material || ''} sovsäck för baby. TOG ${p.features?.TOG || ''}.`,
+      "image": p.image ? `https://bebisguiden.se${p.image}` : "https://bebisguiden.se/og-default.png",
+      "brand": {
+        "@type": "Brand",
+        "name": p.name.split(' ')[0]
+      },
       "review": {
         "@type": "Review",
         "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
         "author": { "@type": "Organization", "name": "Bebisguiden" }
       },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": p.rating,
+        "bestRating": 5,
+        "worstRating": 1,
+        "reviewCount": 1
+      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "SEK",
+        "price": parseFloat(p.price?.replace(/[^\d]/g, '') || "0"),
         "availability": "https://schema.org/InStock",
-        "url": p.ctaHref
+        "url": p.ctaHref,
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" },
+          "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY" },
+            "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "DAY" }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "SE",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
       }
     }
   }))

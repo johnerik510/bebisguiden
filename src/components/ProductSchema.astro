@@ -14,6 +14,7 @@ interface ProductItem {
   brand?: string;
   ratingValue?: number;
   reviewCount?: number;
+  reviewBody?: string;
   offers?: Offer[];
 }
 
@@ -23,18 +24,69 @@ interface Props {
 
 const { products } = Astro.props;
 
+const shippingDetails = {
+  "@type": "OfferShippingDetails",
+  "shippingRate": {
+    "@type": "MonetaryAmount",
+    "value": "0",
+    "currency": "SEK",
+  },
+  "shippingDestination": {
+    "@type": "DefinedRegion",
+    "addressCountry": "SE",
+  },
+  "deliveryTime": {
+    "@type": "ShippingDeliveryTime",
+    "handlingTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+      "maxValue": 3,
+      "unitCode": "DAY",
+    },
+    "transitTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+      "maxValue": 5,
+      "unitCode": "DAY",
+    },
+  },
+};
+
+const merchantReturnPolicy = {
+  "@type": "MerchantReturnPolicy",
+  "applicableCountry": "SE",
+  "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+  "merchantReturnDays": 30,
+  "returnMethod": "https://schema.org/ReturnByMail",
+  "returnFees": "https://schema.org/FreeReturn",
+};
+
+const buildOffer = (offer: Offer) => ({
+  "@type": "Offer",
+  "priceCurrency": offer.currency || "SEK",
+  "price": offer.price,
+  "url": offer.url,
+  "availability": offer.availability || "https://schema.org/InStock",
+  "shippingDetails": shippingDetails,
+  "hasMerchantReturnPolicy": merchantReturnPolicy,
+  ...(offer.seller ? {
+    "seller": {
+      "@type": "Organization",
+      "name": offer.seller,
+    },
+  } : {}),
+});
+
 const schemas = products.map((product) => ({
   "@context": "https://schema.org",
   "@type": "Product",
   "name": product.name,
-  ...(product.description ? { "description": product.description } : {}),
-  ...(product.image ? { "image": product.image } : {}),
-  ...(product.brand ? {
-    "brand": {
-      "@type": "Brand",
-      "name": product.brand,
-    },
-  } : {}),
+  "description": product.description || product.name,
+  "image": product.image || `https://bebisguiden.se/og-default.png`,
+  "brand": {
+    "@type": "Brand",
+    "name": product.brand || "Okänt",
+  },
   ...(product.ratingValue ? {
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -44,32 +96,23 @@ const schemas = products.map((product) => ({
       "reviewCount": product.reviewCount || 1,
     },
   } : {}),
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": product.ratingValue || 4,
+      "bestRating": 5,
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Bebisguiden",
+    },
+    ...(product.reviewBody ? { "reviewBody": product.reviewBody } : {}),
+  },
   ...(product.offers && product.offers.length > 0 ? {
-    "offers": product.offers.length === 1 ? {
-      "@type": "Offer",
-      "priceCurrency": product.offers[0].currency || "SEK",
-      "price": product.offers[0].price,
-      "url": product.offers[0].url,
-      "availability": product.offers[0].availability || "https://schema.org/InStock",
-      ...(product.offers[0].seller ? {
-        "seller": {
-          "@type": "Organization",
-          "name": product.offers[0].seller,
-        },
-      } : {}),
-    } : product.offers.map((offer) => ({
-      "@type": "Offer",
-      "priceCurrency": offer.currency || "SEK",
-      "price": offer.price,
-      "url": offer.url,
-      "availability": offer.availability || "https://schema.org/InStock",
-      ...(offer.seller ? {
-        "seller": {
-          "@type": "Organization",
-          "name": offer.seller,
-        },
-      } : {}),
-    })),
+    "offers": product.offers.length === 1
+      ? buildOffer(product.offers[0])
+      : product.offers.map(buildOffer),
   } : {}),
 }));
 ---
