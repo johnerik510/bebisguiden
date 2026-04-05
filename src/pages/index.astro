@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 
-const topprodukter = [
+const testvinnare = [
   {
     name: 'Britax Römer Dualfix 5Z i-Size',
     badge: 'Bäst i test — bilbarnstolar',
@@ -11,38 +11,109 @@ const topprodukter = [
     ageRange: '0–4 år (40–105 cm)',
     pros: ['Toppbetyg i ADAC-krocktest', '360-graders rotation', 'ISOFIX + stödben'],
     cons: ['Tung (14,8 kg)'],
-    ctaText: 'Se pris hos Reirei',
+    ctaText: 'Se pris',
     ctaHref: 'https://www.jollyroom.se/amning/brostpumpar/bilbarnstolar-c-3%2F',
-    image: '/images/britax-romer-dualfix-5z.jpg',
+    image: '/images/products/britax-dualfix-5z.jpg',
   },
   {
-    name: 'Cybex Melio Carbon',
+    name: 'Bugaboo Fox 5',
     badge: 'Bäst i test — barnvagnar',
-    price: '9 990 kr',
-    rating: 4.7,
-    pros: ['Ultralätt (5,9 kg)', 'Carbon-ram', 'Vändbar liggdel'],
+    price: '13 990 kr',
+    rating: 4.8,
+    pros: ['Suveränt terränggrepp', 'Justerbara handtag', 'Liggdel från födseln'],
     cons: ['Högt pris'],
-    ctaText: 'Jämför barnvagnar',
+    ctaText: 'Se pris',
     ctaHref: 'https://www.jollyroom.se/barnvagnar/',
-    image: '/images/cybex-melio-carbon.jpg',
+    image: '/images/products/bugaboo-fox-5.jpg',
   },
   {
-    name: 'Philips Avent SCD843',
+    name: 'Philips Avent SCD923',
     badge: 'Bäst i test — babyvakter',
-    price: '1 299 kr',
-    rating: 4.5,
-    pros: ['Rörelsedetektor', 'Nattljus inbyggt', 'Räckvidd 300 m'],
-    cons: ['Ingen app-koppling'],
-    ctaText: 'Se pris hos Reirei',
+    price: '1 599 kr',
+    rating: 4.7,
+    pros: ['HD-kamera med nattseende', 'App-koppling via WiFi', 'Rörelsedetektor'],
+    cons: ['Kräver stabil WiFi'],
+    ctaText: 'Se pris',
     ctaHref: 'https://www.jollyroom.se/amning/brostpumpar/',
-    image: '/images/philips-avent-scd843.jpg',
+    image: '/images/products/philips-avent-scd923.jpg',
   },
+  {
+    name: 'Ergobaby Omni Breeze',
+    badge: 'Bäst i test — bärselen',
+    price: '2 099 kr',
+    rating: 4.7,
+    pros: ['Ergonomisk höftposition', 'Bärs 4 lägen', 'Luftigt mesh-material'],
+    cons: ['Tar tid att justera first time'],
+    ctaText: 'Se pris',
+    ctaHref: 'https://www.jollyroom.se/barselen/',
+    image: '/images/products/ergobaby-omni-breeze.jpg',
+  },
+  {
+    name: 'Stokke Tripp Trapp',
+    badge: 'Bäst i test — matstolar',
+    price: '2 895 kr',
+    rating: 4.9,
+    pros: ['Växer med barnet 0–12 år', 'Justerbar sits och fotstöd', 'Sitter kvar i familjens hem'],
+    cons: ['Babyset köps separat'],
+    ctaText: 'Se pris',
+    ctaHref: 'https://www.jollyroom.se/matstolar/',
+    image: '/images/products/stokke-tripp-trapp.jpg',
+  },
+  {
+    name: 'Stokke Sleepi V3',
+    badge: 'Bäst i test — spjälsängar',
+    price: '5 495 kr',
+    rating: 4.6,
+    pros: ['Oval form — säkrare för bebis', 'Växer till juniorsäng', 'Tidlös design'],
+    cons: ['Dyr — men långsiktig investering'],
+    ctaText: 'Se pris',
+    ctaHref: 'https://www.jollyroom.se/spjalsangar/',
+    image: '/images/products/stokke-sleepi-v3.jpg',
+  },
+  {
+    name: 'Voksi Nordic N1 Wool',
+    badge: 'Bäst i test — sovsäckar',
+    price: '1 299 kr',
+    rating: 4.8,
+    pros: ['100% merinoull — temperaturreglering', 'GOTS-certifierad', 'Funkar från –10 °C'],
+    cons: ['Handtvätt rekommenderas'],
+    ctaText: 'Se pris',
+    ctaHref: 'https://www.jollyroom.se/sovsackar/',
+    image: '/images/products/voksi-nordic-n1-wool.jpg',
+  },
+  {
+    name: 'Elvie Pump Singel',
+    badge: 'Bäst i test — bröstpumpar',
+    price: '3 499 kr',
+    rating: 4.6,
+    pros: ['Bärbar och helt tyst', 'App-kontroll', 'Inga sladdar'],
+    cons: ['Högt pris jämfört med traditionella pumpar'],
+    ctaText: 'Se pris',
+    ctaHref: 'https://www.jollyroom.se/amning/',
+    image: '/images/products/elvie-pump-singel.jpg',
+  },
+];
+
+const allaKategorier = [
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Bärselen', href: '/barselen/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
+  { label: 'Babykläder', href: '/babyklader/' },
+  { label: 'Sovsäckar', href: '/sovsackar/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Badkar bebis', href: '/badkar/' },
+  { label: 'Sterilisatorer', href: '/sterilisatorer/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Leksaker 0–12 mån', href: '/leksaker/' },
 ];
 ---
 
 <BaseLayout
   title="Bebisguiden.se — Bästa barnprodukter i test 2026"
-  description="Oberoende tester av bilbarnstolar, barnvagnar, babyvakter och mer. Vi jämför och rankar barnprodukter sa att du väljer säkert och smart 2026."
+  description="Oberoende tester av bilbarnstolar, barnvagnar, babyvakter och mer. Vi jämför och rankar barnprodukter så att du väljer säkert och smart 2026."
 >
   <!-- Hero -->
   <section class="text-white relative overflow-hidden min-h-[380px] sm:min-h-[440px] md:min-h-[500px] flex flex-col justify-center">
@@ -92,184 +163,161 @@ const topprodukter = [
     </div>
   </section>
 
-  <!-- Topprodukter — synliga direkt -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="flex items-center justify-between mb-5">
-      <div>
-        <h2 class="font-heading text-2xl font-bold text-text">Bäst i test 2026</h2>
-        <p class="text-text-light text-sm mt-1">Tre kategorier — en testvinnare per kategori</p>
+  <!-- Trust Badges -->
+  <section class="bg-white border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-heading font-bold text-primary">100+</div>
+          <div class="text-sm text-text-light">Produkter testade</div>
+        </div>
+        <div>
+          <div class="text-3xl font-heading font-bold text-primary">13</div>
+          <div class="text-sm text-text-light">Kategorier granskade</div>
+        </div>
+        <div>
+          <div class="text-3xl font-heading font-bold text-primary">100%</div>
+          <div class="text-sm text-text-light">Oberoende &amp; ärligt</div>
+        </div>
+        <div>
+          <div class="text-3xl font-heading font-bold text-primary">2026</div>
+          <div class="text-sm text-text-light">Alltid uppdaterat</div>
+        </div>
       </div>
     </div>
-    <div class="space-y-4">
-      {topprodukter.map((p) => (
-        <ProductCard {...p} />
-      ))}
+  </section>
+
+  <!-- Testvinnare -->
+  <section class="py-10 bg-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary">Testvinnare 2026</h2>
+          <p class="text-text-light text-sm mt-1">8 kategorier testade — en vinnare per kategori</p>
+        </div>
+        <a href="/bilbarnstolar/" class="hidden sm:inline-block text-sm font-semibold text-accent hover:text-accent-dark transition-colors">Se alla tester →</a>
+      </div>
+      <div class="space-y-4">
+        {testvinnare.map((p) => (
+          <ProductCard {...p} />
+        ))}
+      </div>
+      <div class="text-center mt-6">
+        <a href="/bilbarnstolar/" class="inline-block bg-primary hover:bg-primary-light text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+          Se alla tester
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Category cards -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-
-      <a href="/bilbarnstolar/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-bilbarnstol.webp?v=3" alt="Bilbarnstolar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Bilbarnstolar</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Krocktestade och rankade.</p>
-        </div>
-      </a>
-
-      <a href="/barnvagnar/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-barnvagn.webp?v=3" alt="Barnvagnar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Barnvagnar</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Duovagnar, sittvagnar och syskonvagnar.</p>
-        </div>
-      </a>
-
-      <a href="/babyvakter/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-babyvakt.webp?v=3" alt="Babyvakter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Babyvakter</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Ljud, video och WiFi jämförda.</p>
-        </div>
-      </a>
-
-      <a href="/barselen/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-barsele.webp?v=3" alt="Bärselen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Bärselen</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Ergonomi och komfort testat.</p>
-        </div>
-      </a>
-
-      <a href="/matstolar/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-matstol.webp?v=3" alt="Matstolar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Matstolar</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Tripp Trapp, Antilop och BabyBjörn.</p>
-        </div>
-      </a>
-
-      <a href="/spjalsangar/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-spjalsang.webp?v=3" alt="Spjälsängar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Spjälsängar</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Standard, bedside crib och resesäng.</p>
-        </div>
-      </a>
-
-      <a href="/babyklader/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-babyklader.webp?v=3" alt="Babykläder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Babykläder</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">GOTS, OEKO-TEX och rätt storlek.</p>
-        </div>
-      </a>
-
-      <a href="/sovsackar/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-sovsack.webp?v=3" alt="Sovsäckar bebis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Sovsäckar bebis</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Voksi, HALO och Leander.</p>
-        </div>
-      </a>
-
-      <a href="/amning/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-amning.webp?v=3" alt="Amning och matning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Amning & matning</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Bröstpumpar, kuddar och nappflaskor.</p>
-        </div>
-      </a>
-
-      <a href="/badkar/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-badkar.webp?v=3" alt="Badkar bebis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Badkar bebis</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Med termometer, hopfällbara och badstöd.</p>
-        </div>
-      </a>
-
-      <a href="/sterilisatorer/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-sterilisator.webp?v=3" alt="Sterilisatorer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Sterilisatorer</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Philips Avent, Tommee Tippee och NUK.</p>
-        </div>
-      </a>
-
-      <a href="/blojor/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-bloja.webp?v=3" alt="Blöjor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Blöjor</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Engångsblöjor och tygblöjor testade.</p>
-        </div>
-      </a>
-
-      <a href="/leksaker/" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <div class="relative h-36 sm:h-40 overflow-hidden">
-          <img src="/images/cat-leksaker.webp?v=3" alt="Leksaker 0-12 mån" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-        </div>
-        <div class="p-3 sm:p-4">
-          <h2 class="font-heading text-sm sm:text-base font-bold text-text group-hover:text-accent transition-colors">Leksaker 0-12 mån</h2>
-          <p class="text-xs sm:text-sm text-text-light mt-0.5">Babygym, skallror och stimulerande leksaker.</p>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- Trust signals -->
-  <section class="bg-bg-alt py-10">
+  <!-- Alla kategorier -->
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-        <div>
-          <p class="font-heading text-2xl font-bold text-accent">100+</p>
-          <p class="text-sm text-text-light mt-1">Produkter testade</p>
-        </div>
-        <div>
-          <p class="font-heading text-2xl font-bold text-accent">100%</p>
-          <p class="text-sm text-text-light mt-1">Oberoende recensioner</p>
-        </div>
-        <div>
-          <p class="font-heading text-2xl font-bold text-accent">2026</p>
-          <p class="text-sm text-text-light mt-1">Uppdaterat innehåll</p>
-        </div>
+      <div class="text-center mb-10">
+        <h2 class="font-heading text-3xl font-bold text-primary mb-4">Alla kategorier testade</h2>
+        <p class="text-text-light max-w-2xl mx-auto">
+          Vi har testat och rankat produkter inom 13 kategorier. Klicka på en kategori för att se vilka produkter som faktiskt håller måttet.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        {allaKategorier.map((item) => (
+          <a
+            href={item.href}
+            class="block text-center px-3 py-3 bg-bg rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-all text-sm font-semibold text-text hover:text-accent"
+          >
+            {item.label}
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- About section for E-E-A-T -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h2 class="font-heading text-xl font-bold mb-4">Därför Bebisguiden</h2>
-    <div class="prose prose-sm text-text-light max-w-none">
-      <p>Att välja rätt barnprodukt är ett av de viktigaste besluten du fattar som föräldrar. Vi på Bebisguiden granskar varje produkt noggrant — från Folksams krocktester till faktisk användarvänlighet i vardagen.</p>
-      <p>Alla våra tester är oberoende. Vi tjänar pengar genom affiliatelänkar, men det påverkar aldrig våra betyg eller rekommendationer. Vi rekommenderar bara produkter vi själva skulle välja för våra barn.</p>
+  <!-- Populära kategorier med bilder -->
+  <section class="py-16 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-heading text-3xl font-bold text-primary mb-4">Populära kategorier</h2>
+        <p class="text-text-light max-w-2xl mx-auto">
+          De kategorier svenska föräldrar söker mest — granskade och rankade.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
+        {[
+          { href: '/bilbarnstolar/', name: 'Bilbarnstolar', img: '/images/cat-bilbarnstol.webp', desc: 'Krocktestade och rankade' },
+          { href: '/barnvagnar/', name: 'Barnvagnar', img: '/images/cat-barnvagn.webp', desc: 'Duovagnar, sittvagnar och syskonvagnar' },
+          { href: '/babyvakter/', name: 'Babyvakter', img: '/images/cat-babyvakt.webp', desc: 'Ljud, video och WiFi jämförda' },
+          { href: '/barselen/', name: 'Bärselen', img: '/images/cat-barsele.webp', desc: 'Ergonomi och komfort testat' },
+          { href: '/matstolar/', name: 'Matstolar', img: '/images/cat-matstol.webp', desc: 'Tripp Trapp, Antilop och BabyBjörn' },
+          { href: '/sovsackar/', name: 'Sovsäckar bebis', img: '/images/cat-sovsack.webp', desc: 'Voksi, HALO och Leander' },
+        ].map((cat) => (
+          <a href={cat.href} class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+            <div class="relative h-36 sm:h-40 overflow-hidden bg-gray-100">
+              <img src={cat.img} alt={cat.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            </div>
+            <div class="p-3 sm:p-4">
+              <h3 class="font-heading font-bold text-sm sm:text-base text-text group-hover:text-accent transition-colors">{cat.name}</h3>
+              <p class="text-xs sm:text-sm text-text-light mt-0.5">{cat.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About / E-E-A-T -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-bg rounded-2xl shadow-sm border border-border p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="font-heading text-3xl font-bold text-primary mb-4">Därför Bebisguiden</h2>
+            <p class="text-text-light leading-relaxed mb-4">
+              Att välja rätt barnprodukt är ett av de viktigaste besluten du fattar som förälder. Vi på Bebisguiden granskar varje produkt noggrant — från Folksams krocktester till faktisk användarvänlighet i vardagen.
+            </p>
+            <p class="text-text-light leading-relaxed mb-4">
+              Alla våra tester är oberoende. Vi tjänar pengar genom affiliatelänkar, men det påverkar aldrig våra betyg eller rekommendationer. Vi rekommenderar bara produkter vi själva skulle välja för våra barn.
+            </p>
+            <a href="/om-oss/" class="inline-block text-accent hover:text-accent-dark font-semibold transition-colors">
+              Mer om oss →
+            </a>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 bg-white rounded-lg">
+              <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">Säkerhet i fokus</h4>
+                <p class="text-sm text-text-light">Krocktestad data, CE-märkning och verkliga tester ligger till grund för alla rekommendationer</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white rounded-lg">
+              <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">Alltid aktuellt</h4>
+                <p class="text-sm text-text-light">Nya produkter och tester — vi håller rankingarna uppdaterade löpande</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white rounded-lg">
+              <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-text">Noll sponsrade omdömen</h4>
+                <p class="text-sm text-text-light">Inga tillverkare påverkar våra rankningar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
