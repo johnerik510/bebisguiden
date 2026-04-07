@@ -64,7 +64,6 @@ const articleSchema = {
     {updatedDate && (
       <p class="text-sm text-text-light mb-2">Senast uppdaterad: {updatedDate}</p>
     )}
-    {showDisclaimer && <AffiliateDisclaimer />}
     {showAuthor && (
       <AuthorByline
         datePublished={datePublished}
@@ -74,6 +73,7 @@ const articleSchema = {
     <div class="mt-4">
       <slot />
     </div>
+    {showDisclaimer && <AffiliateDisclaimer />}
   </article>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 </BaseLayout>
