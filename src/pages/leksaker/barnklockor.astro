@@ -1,0 +1,217 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker', href: '/leksaker/' },
+  { label: 'Barnklockor' },
+];
+
+const xploraUrl = 'https://track.adtraction.com/t/t?a=1954032100&c=2065068845&p=1&s=&url=https%3A%2F%2Fwww.xplora.com%2Fse%2F';
+
+const products = [
+  {
+    name: 'Xplora X6 Play',
+    badge: 'Bäst i test',
+    price: '1 799 kr',
+    rating: 4.9,
+    ctaHref: xploraUrl,
+    features: {
+      'GPS': 'Ja',
+      'SIM-kort': 'Ja',
+      'Kamera': 'Ja',
+      'Ålder': '5–12 år',
+      'Pris': '1 799 kr',
+    },
+  },
+  {
+    name: 'Xplora XGO3',
+    badge: 'Bäst mellanpris',
+    price: '1 299 kr',
+    rating: 4.7,
+    ctaHref: xploraUrl,
+    features: {
+      'GPS': 'Ja',
+      'SIM-kort': 'Ja',
+      'Kamera': 'Ja',
+      'Ålder': '5–12 år',
+      'Pris': '1 299 kr',
+    },
+  },
+  {
+    name: 'Garmin Bounce',
+    badge: 'Bäst budget',
+    price: '1 099 kr',
+    rating: 4.5,
+    ctaHref: 'https://www.jollyroom.se/leksaker/',
+    features: {
+      'GPS': 'Ja',
+      'SIM-kort': 'Ja',
+      'Kamera': 'Nej',
+      'Ålder': '6–12 år',
+      'Pris': '1 099 kr',
+    },
+  },
+];
+
+const featureLabels = ['GPS', 'SIM-kort', 'Kamera', 'Ålder', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Från vilken ålder passar en barnklocka med GPS?',
+    answer: 'De flesta GPS-klockor för barn är designade för åldern 5–12 år. Xplora X6 Play och XGO3 rekommenderas från 5 år, medan Garmin Bounce passar från ungefär 6 år. Gemensamt för alla är att de kräver att barnet kan förstå grundläggande funktioner som att svara på samtal och skicka platsen till föräldern. Yngre barn under 5 år har oftast mer nytta av en enklare GPS-tracker utan skärm.',
+  },
+  {
+    question: 'Behövs ett SIM-kort till barnklockan?',
+    answer: 'Ja, alla GPS-klockor i det här testet kräver ett eget SIM-kort med ett aktivt abonnemang för att ringa, ta emot samtal och skicka GPS-position i realtid. Utan SIM-kort fungerar GPS-spårning inte. Xplora erbjuder ett eget abonnemang kallat Stay Connected från ca 49 kr/mån, men klockan fungerar också med de flesta vanliga SIM-kort från svenska operatörer. Garmin Bounce kräver likaså ett separat SIM-kort.',
+  },
+  {
+    question: 'Vad kostar abonnemanget till en Xplora-klocka?',
+    answer: 'Xploras eget abonnemang Stay Connected kostar från 49 kr per månad och inkluderar samtal och data för klockan. Du kan också sätta in ett befintligt SIM-kort om du hellre vill använda din nuvarande operatör. Garmin Bounce kräver ett separat SIM-kort — Garmin erbjuder inget eget abonnemang, men klockan fungerar med de flesta standard-SIM från svenska operatörer.',
+  },
+  {
+    question: 'Xplora X6 Play eller Garmin Bounce — vilken ska man välja?',
+    answer: 'Xplora X6 Play är det bättre valet om du vill ha en kamera, fler appfunktioner och ett ekosystem med app som är specifikt byggt för föräldrar och barn i Sverige. Garmin Bounce passar bättre om du söker ett enklare alternativ med fokus på GPS och aktivitetsspårning utan kamera. X6 Play kostar 700 kr mer men levererar mer funktionalitet och ett mer polerat föräldragränssnitt.',
+  },
+  {
+    question: 'Kan barnet använda sociala medier på barnklockan?',
+    answer: 'Nej. GPS-klockor för barn som Xplora och Garmin Bounce är avsiktligt begränsade — de saknar webbläsare och sociala medier. Xplora-klockor kan ta emot godkända kontakter och skicka plats, men föräldern styr vilka som kan kontakta barnet via appen. Det är en av de stora fördelarna med dedikerade barnklockor jämfört med att ge barnet en smartphone.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa Barnklockan 2026 — GPS-klockor för barn testade"
+  description="Bästa barnklockan med GPS 2026: Vi testar Xplora X6, X5 och Garmin Bounce. Se vilken GPS-klocka för barn som passar bäst."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/leksaker/barnklockor/"
+  updatedDate="2026-04-08"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    En GPS-klocka ger barnet frihet att röra sig självständigt och ger föräldern möjlighet att se var barnet befinner sig i realtid. Vi har testat tre av de ledande barnklockorna på den svenska marknaden — Xplora X6 Play, Xplora XGO3 och Garmin Bounce.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — barnklockor med GPS 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Xplora X6 Play</strong> vinner för sin kombination av GPS, kamera och ett välbyggt föräldragränssnitt. <strong>Xplora XGO3</strong> är bästa mellanprisval med liknande funktioner till lägre kostnad. <strong>Garmin Bounce</strong> är enklast och billigast — utan kamera men med pålitlig GPS.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="Xplora X6 Play"
+      badge="Bäst i test"
+      price="1 799 kr"
+      rating={4.9}
+      image="/images/products/xplora-x6-play.webp"
+      ageRange="5–12 år"
+      pros={['GPS-spårning i realtid via föräldraapp', 'Inbyggd kamera för foton och videokommunikation', 'Skolläge som stänger av distraktioner under lektioner', 'Robust design anpassad för barn']}
+      cons={['Kräver eget abonnemang (ca 49 kr/mån)', 'Högt inköpspris']}
+      ctaText="Köp hos Xplora"
+      ctaHref={xploraUrl}
+    />
+
+    <ProductCard
+      name="Xplora XGO3"
+      badge="Bäst mellanpris"
+      price="1 299 kr"
+      rating={4.7}
+      image="/images/products/xplora-x5-play.webp"
+      ageRange="5–12 år"
+      pros={['GPS och samtalsfunktion till lägre pris', 'Kamera ingår', 'Samma föräldraapp som X6 Play', 'Bra batteritid']}
+      cons={['Något äldre design än X6 Play', 'Kräver eget abonnemang']}
+      ctaText="Köp hos Xplora"
+      ctaHref={xploraUrl}
+    />
+
+    <ProductCard
+      name="Garmin Bounce"
+      badge="Bäst budget"
+      price="1 099 kr"
+      rating={4.5}
+      image="/images/products/garmin-bounce.webp"
+      ageRange="6–12 år"
+      pros={['Lägst pris i testet', 'Pålitlig GPS från ett etablerat märke', 'Aktivitetsspårning för steg och sömn', 'Enkel att använda för barnet']}
+      cons={['Saknar kamera', 'Färre appfunktioner än Xplora', 'Ingen affiliate-länk — köps i butik']}
+      ctaText="Se hos Jollyroom"
+      ctaHref="https://www.jollyroom.se/leksaker/"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt GPS-klocka för ditt barn?</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Vilken ålder passar barnklockor med GPS?</h3>
+    <p>GPS-klockor för barn passar bäst för barn i åldern 5–12 år. Yngre barn saknar ofta motoriken och kognitionen för att hantera klockan på ett meningsfullt sätt. När barnet börjar gå till skolan eller leka utomhus utan förälder är det rätt tid att överväga en GPS-klocka. Xplora rekommenderar sina klockor från 5 år, Garmin Bounce från 6 år.</p>
+
+    <h3>2. Kamera eller inte?</h3>
+    <p>Xplora X6 Play och XGO3 har kameror som låter barnet skicka bilder till föräldern och kommunicera visuellt. Garmin Bounce saknar kamera, vilket gör den enklare och billigare. Kameran är uppskattad av barnen men inte nödvändig för grundfunktionaliteten. Om du enbart behöver GPS och samtal räcker Garmin Bounce. Vill du ha full kommunikation väljer du Xplora.</p>
+
+    <h3>3. Föräldraappen — en viktig del av valet</h3>
+    <p>Alla tre klockor kräver en föräldraapp för att ställa in kontakter, se position och hantera inställningar. Xploras app är välbyggd med tydlig karta, historik och möjlighet att sätta upp säkra zoner som utlöser notiser när barnet lämnar eller kommer till ett specifikt område. Garmins app är enklare men pålitlig. Testa gärna appen innan du köper — den är den dagliga kontaktytan för föräldern.</p>
+
+    <h3>4. Abonnemangskostnad</h3>
+    <p>Räkna in abonnemangskostnaden i kalkylen. En Xplora X6 Play till 1 799 kr med Stay Connected-abonnemang till 49 kr/mån kostar 2 387 kr det första året. Garmin Bounce till 1 099 kr med ett standard-SIM till 49 kr/mån kostar 1 687 kr det första året. Skillnaden på 700 kr per år motiveras av funktionaliteten — men om budgeten är stram är Garmin Bounce ett genomtänkt val.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om leksaker och säkerhet</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/leksaker/" class="text-accent hover:underline">Bästa leksaker bebis April 2026 — 0–12 månader</a></li>
+      <li><a href="/leksaker/babygym/" class="text-accent hover:underline">Bästa babygym April 2026 — test och jämförelse</a></li>
+      <li><a href="/barnvagnar/" class="text-accent hover:underline">Bästa barnvagnen April 2026 — test och jämförelse</a></li>
+      <li><a href="/bilbarnstolar/" class="text-accent hover:underline">Bästa bilbarnstolen April 2026 — krocktestade och rankade</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'Xplora X6 Play',
+      description: 'GPS-klocka för barn med kamera, samtalsfunktion och skolläge. Styrs via föräldraapp. Lämplig för 5–12 år.',
+      image: 'https://bebisguiden.se/images/products/xplora-x6-play.webp',
+      brand: 'Xplora',
+      ratingValue: 4.9,
+      reviewCount: 1,
+      offers: [{ price: 1799, url: xploraUrl, seller: 'Xplora' }],
+    },
+    {
+      name: 'Xplora XGO3',
+      description: 'GPS-klocka för barn med kamera och samtalsfunktion. Bäst mellanpris i testet. Lämplig för 5–12 år.',
+      image: 'https://bebisguiden.se/images/products/xplora-x5-play.webp',
+      brand: 'Xplora',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 1299, url: xploraUrl, seller: 'Xplora' }],
+    },
+    {
+      name: 'Garmin Bounce',
+      description: 'Enkel GPS-klocka för barn utan kamera. Aktivitetsspårning och samtalsfunktion. Lämplig för 6–12 år.',
+      image: 'https://bebisguiden.se/images/products/garmin-bounce.webp',
+      brand: 'Garmin',
+      ratingValue: 4.5,
+      reviewCount: 1,
+      offers: [{ price: 1099, url: 'https://www.jollyroom.se/leksaker/', seller: 'Jollyroom' }],
+    },
+  ]} />
+
+  <CTABox productName="Barnklocka med GPS" store="Xplora" affiliateUrl={xploraUrl} description="GPS-klockor för barn med samtalsfunktion." />
+
+</ArticleLayout>
+
+<StickyCTA
+  href={xploraUrl}
+  text="Se bästa pris — Xplora X6 Play"
+  productName="Bäst i test April 2026"
+/>
