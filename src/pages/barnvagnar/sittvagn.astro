@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -217,7 +218,9 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/barnvagnar/sittvagnar/" text="Se bästa pris – Bugaboo Butterfly" />
+    <CTABox productName="Sittvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+  <CTABox productName="Sittvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+<StickyCTA href="https://www.jollyroom.se/barnvagnar/sittvagnar/" text="Se bästa pris – Bugaboo Butterfly" />
   <ProductSchema products={[
     { name: 'Bugaboo Butterfly', description: 'Premiumsittvagn med Bugaboos kvalitet och smidiga enhandsvikning.', brand: 'Bugaboo', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5990, url: 'https://www.jollyroom.se/barnvagnar/sittvagnar/', seller: 'Jollyroom' }] },
     { name: 'Cybex Libelle', description: 'Ultralätt sittvagn som ryms i handbagagefacket. Under 7 kg.', brand: 'Cybex', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3999, url: 'https://www.jollyroom.se/barnvagnar/sittvagnar/', seller: 'Jollyroom' }] },

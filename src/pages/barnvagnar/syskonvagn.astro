@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -245,7 +246,9 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/barnvagnar/" text="Jämför syskonvagnar" />
+    <CTABox productName="Syskonvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+  <CTABox productName="Syskonvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+<StickyCTA href="https://www.jollyroom.se/barnvagnar/" text="Jämför syskonvagnar" />
   <ProductSchema products={[
     { name: 'Bugaboo Donkey 5 Duo', description: 'Bredaste syskonvagnen med plats för två i full bredd sida vid sida.', brand: 'Bugaboo', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 24999, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
     { name: 'UPPAbaby Vista V3', description: 'Expanderbar kombivagn som enkelt byggs ut till syskonvagn med rumble seat.', brand: 'UPPAbaby', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 15999, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },

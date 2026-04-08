@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -223,7 +224,9 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/barnvagnar/" text="Se bästa pris — Emmaljunga NXT90" productName="Bäst i test April 2026" />
+    <CTABox productName="Barnvagnar med liggdel" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+  <CTABox productName="Barnvagnar med liggdel" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+<StickyCTA href="https://www.jollyroom.se/barnvagnar/" text="Se bästa pris — Emmaljunga NXT90" productName="Bäst i test April 2026" />
   <ProductSchema products={[
     { name: 'Emmaljunga NXT90', description: 'Klassisk svensk kombibarnyagn med djup liggdel och bra väggrepp. Tillverkad i Sverige.', brand: 'Emmaljunga', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 9999, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
     { name: 'iCandy Peach 7', description: 'Brittisk kombivagn med bred platt liggdel och smidig körning. Premiumkvalitet.', brand: 'iCandy', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 12999, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },

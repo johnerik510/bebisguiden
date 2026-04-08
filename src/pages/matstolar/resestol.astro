@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -229,7 +230,9 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/barnrummet/matstolar-tillbehor/" text="Se bästa pris – Stokke Clikk" productName="Bäst i test April 2026" rel="sponsored noopener" />
+    <CTABox productName="Resematstol" store="inoki" description="Barnservis, matstolar och matningstillbehör i silikon." />
+  <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
+<StickyCTA href="https://www.jollyroom.se/barnrummet/matstolar-tillbehor/" text="Se bästa pris – Stokke Clikk" productName="Bäst i test April 2026" rel="sponsored noopener" />
   <ProductSchema products={[
     { name: 'Stokke Clikk', description: 'Kompakt resmatstol med säkerhetsräls och brickplatta. Passar från 6 månader till 3 år.', brand: 'Stokke', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 1299, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },
     { name: 'Chicco Pocket Snack', description: 'Hopfällbar boosterstol att fästa på stol. Liten och lätt för resan.', brand: 'Chicco', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 549, url: 'https://www.jollyroom.se/barnrummet/matstolar-tillbehor/', seller: 'Jollyroom' }] },

@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -217,7 +218,9 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/barnvagnar/" text="Se bästa pris – Bugaboo Fox 5" />
+    <CTABox productName="Duovagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+  <CTABox productName="Duovagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+<StickyCTA href="https://www.jollyroom.se/barnvagnar/" text="Se bästa pris – Bugaboo Fox 5" />
   <ProductSchema products={[
     { name: 'Bugaboo Fox 5', description: 'Premiumkombivagn med utbyggbar duo-funktion. Bäst i test för duo-körning.', brand: 'Bugaboo', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 14990, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },
     { name: 'Cybex Priam 4', description: 'Elegant kombivagn med utmärkt körbarhet och lyxig finish.', brand: 'Cybex', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 13990, url: 'https://www.jollyroom.se/barnvagnar/', seller: 'Jollyroom' }] },

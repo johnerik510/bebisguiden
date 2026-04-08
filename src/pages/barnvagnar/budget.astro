@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -226,7 +227,9 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/" text="Se bästa pris" rel="sponsored noopener" />
+    <CTABox productName="Billiga barnvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+  <CTABox productName="Billiga barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+<StickyCTA href="https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/" text="Se bästa pris" rel="sponsored noopener" />
   <ProductSchema products={[
     { name: 'Hauck Shopper SLX', description: 'Budgetvänlig sittvagn med bra grundfunktioner. Perfekt för priskänsliga familjer.', brand: 'Hauck', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 999, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },
     { name: 'Kinderkraft Cruiser', description: 'Kompakt sittvagn med aluminiumram och hopfällbar design till ett bra pris.', brand: 'Kinderkraft', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/', seller: 'Jollyroom' }] },

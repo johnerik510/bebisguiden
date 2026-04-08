@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -240,7 +241,9 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/barnvagnar/sulkys/" text="Se bästa pris — Silver Cross Zest" productName="Bäst i test April 2026" />
+    <CTABox productName="Lätta barnvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+  <CTABox productName="Lätta barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+<StickyCTA href="https://www.jollyroom.se/barnvagnar/sulkys/" text="Se bästa pris — Silver Cross Zest" productName="Bäst i test April 2026" />
   <ProductSchema products={[
     { name: 'Silver Cross Zest', description: 'Lätt sittvagn för resor och stad. Väger under 6 kg och är enkel att vika ihop.', brand: 'Silver Cross', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 2999, url: 'https://www.jollyroom.se/barnvagnar/sulkys/', seller: 'Jollyroom' }] },
     { name: 'Cybex Eezy S Twist+2', description: 'Kompakt sittvagn med 360-graders vridbar sits. Passar från 6 månader.', brand: 'Cybex', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4999, url: 'https://www.jollyroom.se/barnvagnar/sulkys/', seller: 'Jollyroom' }] },
