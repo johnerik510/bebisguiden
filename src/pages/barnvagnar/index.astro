@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -94,7 +95,7 @@ const featureLabels = ['Typ', 'Vikt chassi', 'Tillverkning', 'Fjädring', 'Pris'
 const faqItems = [
   {
     question: 'Vad är skillnaden mellan duovagn och sittvagn?',
-    answer: 'En duovagn har både liggdel (för nyfödd) och sittdel som används när barnet är större. En sittvagn (sulky) har bara sittdel och passar från ca 6 månader. Duovagnen är dyrare men används längre -- från födseln upp till 3-4 år.',
+    answer: 'En duovagn har både liggdel (för nyfödd) och sittdel som används när barnet är större. En sittvagn (sulky) har bara sittdel och passar från ca 6 månader. Duovagnen är dyrare men används längre — från födseln upp till 3-4 år.',
   },
   {
     question: 'När kan barnet sitta i sittvagn?',
@@ -106,19 +107,19 @@ const faqItems = [
   },
   {
     question: 'Hur mycket väger en barnvagn?',
-    answer: 'En duovagn väger vanligtvis 10-15 kg chassi (utan liggdel). Joolz Day+ är lättast i vår jämförelse med 10,9 kg, Bugaboo Fox 5 väger 12,4 kg och Emmaljunga NXT90 är tyngst med 14,5 kg. Lätta sittvagnar kan väga 5-7 kg. Överväg vikten mot stabilitet -- lättare vagnar är smidigare att bära men kan kännas mindre stadiga på ojämnt underlag.',
+    answer: 'En duovagn väger vanligtvis 10-15 kg chassi (utan liggdel). Joolz Day+ är lättast i vår jämförelse med 10,9 kg, Bugaboo Fox 5 väger 12,4 kg och Emmaljunga NXT90 är tyngst med 14,5 kg. Lätta sittvagnar kan väga 5-7 kg. Överväg vikten mot stabilitet — lättare vagnar är smidigare att bära men kan kännas mindre stadiga på ojämnt underlag.',
   },
   {
     question: 'Vad ska bagageutrymmet rymma?',
-    answer: 'Kontrollera alltid att vagnen ryms i ditt bagageutrymme ihopfälld innan köp. Skillnaderna är stora -- Bugaboo Fox 5 ihopfälld är 89x61x34 cm, Emmaljunga NXT90 är större. Joolz Day+ är kompaktast ihopfälld bland premiumvagnarna. Mät bilen och jämför innan du bestämmer dig.',
+    answer: 'Kontrollera alltid att vagnen ryms i ditt bagageutrymme ihopfälld innan köp. Skillnaderna är stora — Bugaboo Fox 5 ihopfälld är 89x61x34 cm, Emmaljunga NXT90 är större. Joolz Day+ är kompaktast ihopfälld bland premiumvagnarna. Mät bilen och jämför innan du bestämmer dig.',
   },
   {
     question: 'Vilken barnvagn är bäst för stadsliv?',
-    answer: 'Joolz Day+ är bäst för stadsliv tack vare sin låga vikt (10,9 kg) och kompakta storlek ihopfälld. Bugaboo Fox 5 är ett nära tvåa -- den fälls ihop med en hand och är smidig att manövrera. Stokke Xplory X passar bra i stadsmiljö men är tyngre. Om du ofta åker kollektivt är vikten avgörande -- prioritera under 12 kg.',
+    answer: 'Joolz Day+ är bäst för stadsliv tack vare sin låga vikt (10,9 kg) och kompakta storlek ihopfälld. Bugaboo Fox 5 är ett nära tvåa — den fälls ihop med en hand och är smidig att manövrera. Stokke Xplory X passar bra i stadsmiljö men är tyngre. Om du ofta åker kollektivt är vikten avgörande — prioritera under 12 kg.',
   },
   {
     question: 'Behöver jag en barnvagn med fjädring?',
-    answer: 'Fjädring gör stor skillnad för barnets komfort och ditt körmotstånd. Fullfjädrad vagn (Bugaboo Fox 5, Cybex Priam 4, Joolz Day+) dämpar stötar effektivt -- viktigt på svenska trottoarer med ojämna plattor och gatstenar. Emmaljunga NXT90 har fjäderfjädring som fungerar bra i terräng. Om du mestadels promenerar på asfalt klarar du dig utan avancerad fjädring, men de flesta upplever att det är värt investeringen.',
+    answer: 'Fjädring gör stor skillnad för barnets komfort och ditt körmotstånd. Fullfjädrad vagn (Bugaboo Fox 5, Cybex Priam 4, Joolz Day+) dämpar stötar effektivt — viktigt på svenska trottoarer med ojämna plattor och gatstenar. Emmaljunga NXT90 har fjäderfjädring som fungerar bra i terräng. Om du mestadels promenerar på asfalt klarar du dig utan avancerad fjädring, men de flesta upplever att det är värt investeringen.',
   },
   {
     question: 'Vad kostar en barnvagn i Sverige 2026?',
@@ -235,17 +236,17 @@ const faqItems = [
     <h3>3. Kontrollera bagageutrymmet</h3>
     <p>Mät bagageutrymmet i bilen innan du köper. En barnvagn som inte får plats i bilen är värdelös oavsett hur bra den är. Kontrollera ihopfälld storlek — skillnaderna är stora. Bugaboo Fox 5 ihopfälld: 89×61×34 cm. Emmaljunga NXT90 ihopfälld: 100×62×75 cm. Jämför alltid mot ditt specifika bilmärke.</p>
 
-    <h3>4. Travel system -- barnvagn + bilbarnstol</h3>
-    <p>M��nga duovagnar kan kombineras med en kompatibel bilbarnstol som klickar direkt på chassit utan att barnet behöver vakna. Cybex Priam 4 passar med Cybex Cloud T. Bugaboo Fox 5 passar med flera adaptrar. Joolz Day+ fungerar med Maxi-Cosi och Cybex via adapter. Kontrollera alltid kompatibilitet innan köp -- inte alla kombinationer fungerar.</p>
+    <h3>4. Travel system — barnvagn + bilbarnstol</h3>
+    <p>Många duovagnar kan kombineras med en kompatibel bilbarnstol som klickar direkt på chassit utan att barnet behöver vakna. Cybex Priam 4 passar med Cybex Cloud T. Bugaboo Fox 5 passar med flera adaptrar. Joolz Day+ fungerar med Maxi-Cosi och Cybex via adapter. Kontrollera alltid kompatibilitet innan köp — inte alla kombinationer fungerar.</p>
 
-    <h3>5. Hjultyp -- luftfyllda eller skumfyllda?</h3>
+    <h3>5. Hjultyp — luftfyllda eller skumfyllda?</h3>
     <p>Luftfyllda hjul ger bäst komfort och grepp på ojämnt underlag men kräver att du pumpar dem regelbundet. Skumfyllda hjul (som på Bugaboo Fox 5) är underhållsfria och punkteringsfria men ger något hårdare gång. Emmaljunga NXT90 har luftfyllda bakhjul som standard. Om du bor i stad räcker skumfyllda hjul. Om du promenerar i skog och terräng regelbundet ger luftfyllda hjul märkbar skillnad.</p>
 
-    <h3>6. Tillbehör -- vad behövs egentligen?</h3>
+    <h3>6. Tillbehör — vad behövs egentligen?</h3>
     <p>De flesta barnvagnar kommer med chassi, liggdel och sittdel i grundpaketet, men tillbehören tillkommer ofta. Regnskydd (ca 300-500 kr) är ett måste i Sverige. Åkpåse eller muff (ca 500-1 000 kr) är nödvändigt på vintern. Insektsnät (ca 200-300 kr) är bra att ha sommartid. Mugghållare, organizer och fotstöd är trevliga men inte nödvändiga. Budgetera 1 500-3 000 kr utöver vagnens pris för tillbehör.</p>
 
     <h3>7. Garanti och service</h3>
-    <p>Bugaboo erbjuder 2 års garanti. Emmaljunga erbjuder 4 års garanti -- bäst i testet. Cybex och Joolz har 2 års garanti. Stokke erbjuder 3 års garanti om du registrerar produkten. Reservdelar är enklast att få tag på för Emmaljunga (tillverkad i Sverige) och Bugaboo (stort återförsäljarnätverk). Kontrollera alltid att du köper från en auktoriserad återförsäljare för att garantin ska gälla.</p>
+    <p>Bugaboo erbjuder 2 års garanti. Emmaljunga erbjuder 4 års garanti — bäst i testet. Cybex och Joolz har 2 års garanti. Stokke erbjuder 3 års garanti om du registrerar produkten. Reservdelar är enklast att få tag på för Emmaljunga (tillverkad i Sverige) och Bugaboo (stort återförsäljarnätverk). Kontrollera alltid att du köper från en auktoriserad återförsäljare för att garantin ska gälla.</p>
   </div>
 
   <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
@@ -301,6 +302,8 @@ const faqItems = [
       offers: [{ price: 2995, url: 'https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/kombivagnar/kinderkraft-moov-2-3-in-1-kombivagn-pure-black', seller: 'Jollyroom' }],
     },
   ]} />
+  <CTABox productName="Barnvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+  <CTABox productName="Barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
 </ArticleLayout>
 
 <StickyCTA
