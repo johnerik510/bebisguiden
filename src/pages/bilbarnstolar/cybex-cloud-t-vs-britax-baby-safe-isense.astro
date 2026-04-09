@@ -1,6 +1,7 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import CTABox from '../../components/CTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
@@ -179,7 +180,14 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.cybex-online.com/sv/se/p/cs-pl-cloud-t-i-size.html" productName="Cybex Cloud T i-Size" text="Se bästa pris — Cybex Cloud T i-Size" />
+  <CTABox
+    productName="Cybex Cloud T & Britax Baby-Safe — köp hos Babysam"
+    store="Babysam"
+    description="Se priser på Cybex och Britax babyskydd hos Babysam"
+    affiliateUrl="https://to.babyworld.se/t/t?a=1945556823&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babysam.se%2Fbilstolar%2F"
+  />
+
+  <StickyCTA href="https://to.babyworld.se/t/t?a=1945556823&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babysam.se%2Fbilstolar%2F" productName="Cybex Cloud T i-Size" text="Se pris hos Babysam" />
   <ProductSchema products={[
     { name: 'Cybex Cloud T i-Size', description: 'Babyskydd med 360-rotation och LinearSideSleep för trygg körning. Passar prematura.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 2516, url: 'https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-sepia-black', seller: 'Jollyroom' }] },
     { name: 'Britax Baby-Safe 5Z2 i-Size', description: 'Bakåtvänd babyskydd med säker bas och premium krocksäkerhet. ISOFIX.', brand: 'Britax Römer', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 3290, url: 'https://www.babyland.se/britax-baby-safe-pro-babyskydd-urban-olive', seller: 'Babyland' }] },

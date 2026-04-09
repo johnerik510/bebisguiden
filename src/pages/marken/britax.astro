@@ -1,6 +1,7 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import CTABox from '../../components/CTABox.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
@@ -183,5 +184,12 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/" text="Se bästa pris pa Britax Römer" />
+  <CTABox
+    productName="Britax Römer — se alla bilbarnstolar hos Babysam"
+    store="Babysam"
+    description="Britax Römer Baby-Safe, Dualfix och Kidfix hos Babysam"
+    affiliateUrl="https://to.babyworld.se/t/t?a=1945556823&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babysam.se%2Fbilstolar%2F"
+  />
+
+  <StickyCTA href="https://to.babyworld.se/t/t?a=1945556823&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babysam.se%2Fbilstolar%2F" text="Se bästa pris på Britax Römer hos Babysam" />
 </ArticleLayout>
