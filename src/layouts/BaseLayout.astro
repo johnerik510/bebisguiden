@@ -108,5 +108,12 @@ const canonicalUrl = canonical || Astro.url.href;
   </main>
   <Footer />
   <CookieConsent />
+  <script is:inline>
+    document.querySelectorAll('.js-email').forEach(function(el){
+      var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),e=u+'@'+d;
+      var a=document.createElement('a');a.href='mai'+'lto:'+e;a.textContent=e;
+      a.className='text-accent hover:underline';el.replaceWith(a);
+    });
+  </script>
 </body>
 </html>
