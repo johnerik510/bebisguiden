@@ -123,6 +123,8 @@ const allaKategorier = [
     <img
       src="/images/hero-bebis.webp"
       alt="Förälder med nyfödd bebis"
+      width="1920"
+      height="1280"
       class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
       fetchpriority="high"
@@ -246,16 +248,16 @@ const allaKategorier = [
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
         {[
-          { href: '/bilbarnstolar/', name: 'Bilbarnstolar', img: '/images/cat-bilbarnstol.webp', desc: 'Krocktestade och rankade' },
-          { href: '/barnvagnar/', name: 'Barnvagnar', img: '/images/cat-barnvagn.webp', desc: 'Duovagnar, sittvagnar och syskonvagnar' },
-          { href: '/babyvakter/', name: 'Babyvakter', img: '/images/cat-babyvakt.webp', desc: 'Ljud, video och WiFi jämförda' },
-          { href: '/barselen/', name: 'Bärselen', img: '/images/cat-barsele.webp', desc: 'Ergonomi och komfort testat' },
-          { href: '/matstolar/', name: 'Matstolar', img: '/images/cat-matstol.webp', desc: 'Tripp Trapp, Antilop och BabyBjörn' },
-          { href: '/sovsackar/', name: 'Sovsäckar bebis', img: '/images/cat-sovsack.webp', desc: 'Voksi, HALO och Leander' },
+          { href: '/bilbarnstolar/', name: 'Bilbarnstolar', img: '/images/cat-bilbarnstol.webp', desc: 'Krocktestade och rankade', w: 450, h: 600 },
+          { href: '/barnvagnar/', name: 'Barnvagnar', img: '/images/cat-barnvagn.webp', desc: 'Duovagnar, sittvagnar och syskonvagnar', w: 800, h: 533 },
+          { href: '/babyvakter/', name: 'Babyvakter', img: '/images/cat-babyvakt.webp', desc: 'Ljud, video och WiFi jämförda', w: 752, h: 600 },
+          { href: '/barselen/', name: 'Bärselen', img: '/images/cat-barsele.webp', desc: 'Ergonomi och komfort testat', w: 800, h: 450 },
+          { href: '/matstolar/', name: 'Matstolar', img: '/images/cat-matstol.webp', desc: 'Tripp Trapp, Antilop och BabyBjörn', w: 400, h: 600 },
+          { href: '/sovsackar/', name: 'Sovsäckar bebis', img: '/images/cat-sovsack.webp', desc: 'Voksi, HALO och Leander', w: 800, h: 534 },
         ].map((cat) => (
           <a href={cat.href} class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
             <div class="relative h-36 sm:h-40 overflow-hidden bg-gray-100">
-              <img src={cat.img} alt={cat.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <img src={cat.img} alt={cat.name} width={cat.w} height={cat.h} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
             </div>
             <div class="p-3 sm:p-4">
               <h3 class="font-heading font-bold text-sm sm:text-base text-text group-hover:text-accent transition-colors">{cat.name}</h3>

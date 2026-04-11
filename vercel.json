@@ -2,7 +2,20 @@
   "redirects": [
     { "source": "/:path*", "has": [{ "type": "host", "value": "www.bebisguiden.se" }], "destination": "https://bebisguiden.se/:path*", "permanent": true },
     { "source": "/barsele/", "destination": "/barselen/", "permanent": true },
-    { "source": "/barsele", "destination": "/barselen/", "permanent": true }
+    { "source": "/barsele", "destination": "/barselen/", "permanent": true },
+    { "source": "/guider/bebis-diarr%C3%A9/", "destination": "/guider/bebis-diarre/", "permanent": true },
+    { "source": "/guider/bebis-diarr%C3%A9", "destination": "/guider/bebis-diarre/", "permanent": true },
+    { "source": "/guider/v%C3%A4lja-matstol/", "destination": "/guider/valja-matstol/", "permanent": true },
+    { "source": "/guider/v%C3%A4lja-bilbarnstol/", "destination": "/guider/valja-bilbarnstol/", "permanent": true },
+    { "source": "/guider/v%C3%A4lja-barsele/", "destination": "/guider/valja-barsele/", "permanent": true },
+    { "source": "/guider/v%C3%A4lja-barnvagn/", "destination": "/guider/valja-barnvagn/", "permanent": true },
+    { "source": "/guider/v%C3%A4lja-babyvakt/", "destination": "/guider/valja-babyvakt/", "permanent": true },
+    { "source": "/guider/n%C3%A4r-borjar-bebis-ata/", "destination": "/guider/nar-borjar-bebis-ata/", "permanent": true },
+    { "source": "/guider/bebis-mat-4-m%C3%A5nader/", "destination": "/guider/bebis-mat-4-manader/", "permanent": true },
+    { "source": "/leksaker/0-3-m%C3%A5nader/", "destination": "/leksaker/0-3-manader/", "permanent": true },
+    { "source": "/leksaker/3-6-m%C3%A5nader/", "destination": "/leksaker/3-6-manader/", "permanent": true },
+    { "source": "/leksaker/6-12-m%C3%A5nader/", "destination": "/leksaker/6-12-manader/", "permanent": true },
+    { "source": "/bilbarnstolar/fram%C3%A5tv%C3%A4nd/", "destination": "/bilbarnstolar/framatvand/", "permanent": true }
   ],
   "headers": [
     {
@@ -12,7 +25,9 @@
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://addrevenue.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://addrevenue.io; frame-ancestors 'none'" }
       ]
     },
     {
