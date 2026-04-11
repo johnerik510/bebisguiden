@@ -156,14 +156,14 @@ const breadcrumbs = [
     <h3 class="font-semibold text-text mb-3">Åldersfördelning vid SIDS-dödsfall</h3>
     <div class="space-y-2">
       {[
-        { alder: 'Under 1 månad', andel: 5, label: '~5%' },
-        { alder: '1–2 månader', andel: 15, label: '~15%' },
-        { alder: '2–4 månader', andel: 45, label: '~45% (topp)' },
-        { alder: '4–6 månader', andel: 20, label: '~20%' },
-        { alder: '6–12 månader', andel: 15, label: '~15%' },
+        { ålder: 'Under 1 månad', andel: 5, label: '~5%' },
+        { ålder: '1–2 månader', andel: 15, label: '~15%' },
+        { ålder: '2–4 månader', andel: 45, label: '~45% (topp)' },
+        { ålder: '4–6 månader', andel: 20, label: '~20%' },
+        { ålder: '6–12 månader', andel: 15, label: '~15%' },
       ].map(row => (
         <div class="flex items-center gap-3">
-          <div class="w-32 text-xs text-text-light shrink-0">{row.alder}</div>
+          <div class="w-32 text-xs text-text-light shrink-0">{row.ålder}</div>
           <div class="flex-1 bg-border rounded-full h-3 overflow-hidden">
             <div class="bg-accent h-3 rounded-full" style={`width: ${row.andel}%`}></div>
           </div>
