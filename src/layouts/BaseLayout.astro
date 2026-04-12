@@ -101,6 +101,9 @@ const canonicalUrl = canonical || Astro.url.href;
     });
   </script>
 
+  <!-- Pages can inject additional head content (e.g. preload hints) -->
+  <slot name="head" />
+
   <!-- Addrevenue Easylinks – deferred to reduce render-blocking -->
   <script is:inline>
     window.addEventListener('load', function() {
