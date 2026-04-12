@@ -30,8 +30,23 @@ const products = [
     },
   },
   {
+    name: 'Body randig – Polarn O. Pyret',
+    badge: 'Bäst ekologisk bomull',
+    price: '199 kr',
+    rating: 4.8,
+    image: '/images/products/polarnopyret-body-randig.webp',
+    ctaHref: 'https://pin.polarnopyret.se/t/t?a=1126522829&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.polarnopyret.se%2Fbarnklader%2Fklader%2Fbodys%2Fbody-randig-ljusgron-60603309-9019',
+    features: {
+      'Material': 'Ekologisk bomull',
+      'Certifiering': 'GOTS',
+      'Stängning': 'Tryckknappar',
+      'Ärmtyp': 'Långärmad',
+      'Passar': 'Nyfödd–24 mån',
+    },
+  },
+  {
     name: 'Hummel Mini Bold Bee Body, Polignac',
-    badge: 'Bäst bomull',
+    badge: 'Bäst design',
     price: '249 kr',
     rating: 4.6,
     image: '/images/products/hummel-mini-body.webp',
@@ -42,21 +57,6 @@ const products = [
       'Stängning': 'Tryckknappar',
       'Ärmtyp': 'Kortärmad',
       'Passar': 'Nyfödd–24 mån',
-    },
-  },
-  {
-    name: 'Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black',
-    badge: 'Bäst startset',
-    price: '219 kr',
-    rating: 4.5,
-    image: '/images/products/beemoo-care-carry.webp',
-    ctaHref: 'https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black',
-    features: {
-      'Material': 'Bomull',
-      'Certifiering': 'OEKO-TEX',
-      'Stängning': 'Tryckknappar',
-      'Ärmtyp': 'Kortärmad',
-      'Passar': 'Nyfödd–12 mån',
     },
   },
 ];
@@ -109,7 +109,7 @@ const faqItems = [
 
   <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
     <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>Joha Merinomix</strong> är bäst för temperaturreglering och komfort. <strong>Hummel Mini Bold Bee</strong> är bäst i GOTS-certifierad ekologisk bomull. <strong>Beemoo</strong> är bäst budget.</p>
+    <p class="text-sm text-text-light"><strong>Joha Merinomix</strong> är bäst för temperaturreglering och komfort. <strong>Polarn O. Pyret randig body</strong> är bäst i GOTS-certifierad ekologisk bomull. <strong>Hummel Mini Bold Bee</strong> är bäst design.</p>
   </div>
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -129,13 +129,26 @@ const faqItems = [
     />
 
     <ProductCard
-      name="Hummel Mini Bold Bee Body, Polignac"
+      name="Body randig – Polarn O. Pyret"
       badge="Bäst ekologisk bomull"
+      price="199 kr"
+      rating={4.8}
+      image="/images/products/polarnopyret-body-randig.webp"
+      ageRange="Nyfödd–24 månader"
+      pros={['GOTS-certifierad ekologisk bomull', 'Klassiskt randigt mönster sedan 1976', 'Mjuk och andningsbar', 'Tryckknappar längs skrevet', 'Tvättäkta färger']}
+      cons={['Inte lika temperaturreglerande som merinoull', 'Begränsat urval i minsta storlekar']}
+      ctaText="Se pris hos Polarn O. Pyret"
+      ctaHref="https://pin.polarnopyret.se/t/t?a=1126522829&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.polarnopyret.se%2Fbarnklader%2Fklader%2Fbodys%2Fbody-randig-ljusgron-60603309-9019"
+    />
+
+    <ProductCard
+      name="Hummel Mini Bold Bee Body, Polignac"
+      badge="Bäst design"
       price="249 kr"
       rating={4.6}
       image="/images/products/hummel-mini-body.webp"
       ageRange="Nyfödd–24 månader"
-      pros={['GOTS-certifierad ekologisk bomull', 'Mjuk mot huden', 'Enkel tryckknappar', 'Snygg design', 'Hög kvalitet']}
+      pros={['GOTS-certifierad ekologisk bomull', 'Mjuk mot huden', 'Enkla tryckknappar', 'Snygg design', 'Hög kvalitet']}
       cons={['Kortärmad — behöver kombineras med tröja', 'Lite dyrare']}
       ctaText="Se pris hos Jollyroom"
       ctaHref="https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/hummel-mini-bold-bee-body-polignac"
@@ -177,6 +190,15 @@ const faqItems = [
       offers: [{ price: 209, url: 'https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/joha-body-merinomix-dark-rose', seller: 'Jollyroom' }],
     },
     {
+      name: 'Body randig – Polarn O. Pyret',
+      description: 'Långärmad babybody i GOTS-certifierad ekologisk bomull. Klassiskt randigt mönster. Tryckknappar vid skrevet. Passar nyfödd till 24 månader.',
+      image: 'https://bebisguiden.se/images/products/polarnopyret-body-randig.webp',
+      brand: 'Polarn O. Pyret',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 199, url: 'https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019', seller: 'Polarn O. Pyret' }],
+    },
+    {
       name: 'Hummel Mini Bold Bee Body, Polignac',
       description: 'Kortärmad babybody i GOTS-certifierad ekologisk bomull. Tryckknappar vid skrevet. Passar nyfödd till 24 månader.',
       image: 'https://bebisguiden.se/images/products/hummel-mini-body.webp',
@@ -186,13 +208,13 @@ const faqItems = [
       offers: [{ price: 249, url: 'https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/hummel-mini-bold-bee-body-polignac', seller: 'Jollyroom' }],
     },
   ]} />
+  <CTABox productName="Body bebis" store="Polarn O. Pyret" description="GOTS-certifierade babybodys i ekologisk bomull sedan 1976." />
   <CTABox productName="Babykläder" store="Knattis" description="Babykläder och barnkläder för alla åldrar." />
-  <CTABox productName="Namnlappar" store="Namnlappskungen" description="Personliga namnlappar till förskolan och skolan." />
 
 </ArticleLayout>
 
 <StickyCTA
-  href="https://www.jollyroom.se/barnklader/bodys-bodysuits/bodys/joha-body-merinomix-dark-rose"
-  text="Se bästa pris — Joha Body Merinomix"
-  productName="Bäst i test 2026"
+  href="https://pin.polarnopyret.se/t/t?a=1126522829&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.polarnopyret.se%2Fbarnklader%2Fklader%2Fbodys%2Fbody-randig-ljusgron-60603309-9019"
+  text="Se babybodys hos Polarn O. Pyret"
+  productName="GOTS-certifierad ekologisk bomull"
 />
