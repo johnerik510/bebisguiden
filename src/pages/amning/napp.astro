@@ -1,0 +1,274 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Napp' },
+];
+
+const products = [
+  {
+    name: 'BIBS Colour Napp Latex 2-pack',
+    badge: 'Bäst i test',
+    price: '139 kr',
+    rating: 4.8,
+    image: '/images/products/bibs-colour-latex.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fnappar-napphallare%2Fnappar%2Fbibs-napp-colour-2-pack-latex-storlek-1-vanilla-glow-dark-oak-glow',
+    features: {
+      'Material': 'Naturgummi (latex)',
+      'Form': 'Rund',
+      'Storlek': '0–6 mån (stl 1)',
+      'Antal': '2-pack',
+      'Pris': '139 kr',
+    },
+  },
+  {
+    name: 'Philips Avent Ultra Air 2-pack',
+    badge: 'Bäst för känslig hud',
+    price: '149 kr',
+    rating: 4.7,
+    image: '/images/products/philips-avent-ultra-air.webp',
+    ctaHref: 'https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyland.se%2F',
+    features: {
+      'Material': 'Silikon',
+      'Form': 'Ortodontisk',
+      'Storlek': '0–6 mån',
+      'Antal': '2-pack',
+      'Pris': '149 kr',
+    },
+  },
+  {
+    name: 'MAM Perfect Night Silikon 2-pack',
+    badge: 'Bäst för natten',
+    price: '129 kr',
+    rating: 4.6,
+    image: '/images/products/mam-perfect-night.webp',
+    ctaHref: 'https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.storochliten.se%2F',
+    features: {
+      'Material': 'Silikon',
+      'Form': 'Ortodontisk, smal hals',
+      'Storlek': '0–6 mån',
+      'Antal': '2-pack (lyser i mörker)',
+      'Pris': '129 kr',
+    },
+  },
+  {
+    name: 'Philips Avent Soothie 0–6m',
+    badge: 'Bäst för nyfödda',
+    price: '189 kr',
+    rating: 4.5,
+    image: '/images/products/philips-avent-soothie.webp',
+    ctaHref: 'https://go.adt231.net/t/t?a=1327902115&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyv.se%2F',
+    features: {
+      'Material': 'Silikon (en del)',
+      'Form': 'Rund sjukhus-modell',
+      'Storlek': '0–6 mån',
+      'Antal': '1-pack',
+      'Pris': '189 kr',
+    },
+  },
+  {
+    name: 'MAM Original Naturgummi 2-pack',
+    badge: 'Bäst budget',
+    price: '89 kr',
+    rating: 4.4,
+    image: '/images/products/mam-original-naturgummi.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fnappar-napphallare%2Fnappar',
+    features: {
+      'Material': 'Naturgummi (latex)',
+      'Form': 'Ortodontisk',
+      'Storlek': '0–6 mån',
+      'Antal': '2-pack',
+      'Pris': '89 kr',
+    },
+  },
+];
+
+const featureLabels = ['Material', 'Form', 'Storlek', 'Antal', 'Pris'];
+
+const faqItems = [
+  {
+    question: 'Vilken napp är bäst för en nyfödd?',
+    answer: 'För nyfödda rekommenderas en napp i storlek 1 (0–6 mån) med rund form och mjukt material. BIBS Colour i naturgummi är populär bland föräldrar till nyfödda tack vare den mjuka latex-spenen som liknar bröstvårtan. Philips Avent Soothie är modellen som delas ut på många BB-avdelningar och är ett tryggt val från dag ett. Undvik alltid nappar som är för stora — börja med 0–6 månaders storlek och byt upp när tillverkaren rekommenderar.',
+  },
+  {
+    question: 'Silikon eller naturgummi — vad ska man välja?',
+    answer: 'Silikon är hårdare, hållbarare och tål högre temperaturer. Naturgummi (latex) är mjukare, mer flexibelt och har en mer bröstliknande känsla — många bebisar föredrar det. Nackdelen med latex är att det åldras snabbare (ska bytas var 4–6 vecka) och kan orsaka allergi i sällsynta fall. Silikonnappar håller längre och rekommenderas om någon i familjen är latexallergisk.',
+  },
+  {
+    question: 'Påverkar napp amningen?',
+    answer: 'Forskning är blandad. De flesta experter rekommenderar att vänta med napp tills amningen är välestablerad (ca 3–4 veckor) för att minimera risken för nipple confusion. När amningen fungerar bra finns inget entydigt vetenskapligt stöd för att måttlig nappanvändning skulle störa amningen. Välj en napp med mjukt material och anatomisk form, och undvik att använda den som första val när barnet är hungrigt.',
+  },
+  {
+    question: 'Hur ofta ska man byta napp?',
+    answer: 'Latexnappar (BIBS, MAM Original Naturgummi) ska bytas var 4–6 vecka eftersom materialet åldras. Silikonnappar håller längre, ungefär 2 månader, men ska alltid bytas direkt vid tecken på slitage: sprickor, missfärgning, klibbig yta eller förlorad form. Kontrollera napparna varje dag innan du ger dem till barnet — en sliten napp kan gå sönder och utgöra kvävningsrisk.',
+  },
+  {
+    question: 'När ska man sluta med napp?',
+    answer: 'De flesta barntandvårdsexperter rekommenderar att fasa ut nappen mellan 2 och 4 års ålder för att undvika bett- och talutvecklingsproblem. Efter 4 år ökar risken för överbett och öppet bett som kan kräva tandreglering. Många familjer väljer att göra det gradvis: först ta bort nappen på dagen, sedan bara vid sovning, och till sist helt. Gör det vid en lugn period — inte under flytt, sjukdom eller andra stora förändringar.',
+  },
+  {
+    question: 'Kan napp minska SIDS-risken?',
+    answer: 'Ja, flera studier visar att napp vid insomning kan minska risken för plötslig spädbarnsdöd (SIDS). Socialstyrelsen och amerikanska AAP rekommenderar napp vid insomning från ca 1 månads ålder (när amningen är etablerad) fram till 1 års ålder. Om nappen faller ut när barnet sover behöver du inte sätta tillbaka den.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa nappen April 2026 — test och jämförelse"
+  description="Vi jämför de bästa napparna 2026: BIBS Colour, Philips Avent Ultra Air, MAM Perfect Night, Soothie och MAM Original. Silikon vs naturgummi, storlekar och köpguide."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/amning/napp/"
+  updatedDate="2026-04-14"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Rätt napp kan göra skillnad för bebisens komfort — och förälderns nätter. Vi har jämfört de fem mest populära napparna 2026 med fokus på material, form, åldersstorlek och hur de faktiskt fungerar i vardagen.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — nappar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>BIBS Colour Latex</strong> vinner på mjuk spenkänsla och klassisk design. <strong>Philips Avent Ultra Air</strong> är bäst för känslig hud tack vare luftigt skal. <strong>MAM Perfect Night</strong> är perfekt för den som vill hitta nappen i mörkret.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BIBS Colour Napp Latex 2-pack"
+      badge="Bäst i test"
+      price="139 kr"
+      rating={4.8}
+      image="/images/products/bibs-colour-latex.webp"
+      pros={['Mjuk naturgummi-spen som liknar bröstvårtan', 'Klassisk dansk design i många färger', 'BPA-, PVC- och ftalatfri', 'Väl beprövad — över 40 år på marknaden']}
+      cons={['Latex måste bytas var 4–6 vecka', 'Ej lämplig vid latexallergi', 'Runt skal passar inte alla ansikten']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fnappar-napphallare%2Fnappar%2Fbibs-napp-colour-2-pack-latex-storlek-1-vanilla-glow-dark-oak-glow"
+    />
+
+    <ProductCard
+      name="Philips Avent Ultra Air 2-pack"
+      badge="Bäst för känslig hud"
+      price="149 kr"
+      rating={4.7}
+      image="/images/products/philips-avent-ultra-air.webp"
+      pros={['Fyra stora lufthål minskar svett och irritation', 'Ortodontisk spen stödjer bettutvecklingen', 'Silikon — hållbart och hypoallergent', 'Uppvisat 98 % acceptans bland bebisar i tillverkartest']}
+      cons={['Skalet kan samla damm i hålen', 'Inte lika mjuk känsla som naturgummi']}
+      ctaText="Se pris hos Babyland"
+      ctaHref="https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyland.se%2F"
+    />
+
+    <ProductCard
+      name="MAM Perfect Night Silikon 2-pack"
+      badge="Bäst för natten"
+      price="129 kr"
+      rating={4.6}
+      image="/images/products/mam-perfect-night.webp"
+      pros={['Lyser i mörkret — enkel att hitta på natten', 'Extra smal halszon — mindre tryck på gommen', 'Ortodontisk form rekommenderad av tandläkare', 'SkinSoft-yta känns mjuk mot läppen']}
+      cons={['Dyrare än en enkel nattnapp', 'Fosforeffekten avtar över tid']}
+      ctaText="Se pris hos Stor och Liten"
+      ctaHref="https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.storochliten.se%2F"
+    />
+
+    <ProductCard
+      name="Philips Avent Soothie 0–6m"
+      badge="Bäst för nyfödda"
+      price="189 kr"
+      rating={4.5}
+      image="/images/products/philips-avent-soothie.webp"
+      pros={['Delas ut på BB — klassiker för nyfödda', 'Tillverkad av en sammanhängande bit — ingen risk för demontering', 'Rund sjukhus-form uppskattas av de minsta', 'Enkel att rengöra']}
+      cons={['Enbart 1-pack till ett förhållandevis högt pris', 'Klassisk form — vissa föräldrar föredrar ortodontisk']}
+      ctaText="Se pris hos Baby V"
+      ctaHref="https://go.adt231.net/t/t?a=1327902115&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyv.se%2F"
+    />
+
+    <ProductCard
+      name="MAM Original Naturgummi 2-pack"
+      badge="Bäst budget"
+      price="89 kr"
+      rating={4.4}
+      image="/images/products/mam-original-naturgummi.webp"
+      pros={['Lägsta pris per napp i testet', 'Naturgummi med mjuk spen', 'Ortodontisk form från MAM', '2-pack ingår']}
+      cons={['Latex måste bytas oftare än silikon', 'Mindre premium-känsla än BIBS', 'Färgurvalet är begränsat']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fnappar-napphallare%2Fnappar"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Så väljer du rätt napp</h2>
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>1. Material — silikon eller naturgummi</h3>
+    <p>Silikon är hårdare, håller längre och är hypoallergent. Naturgummi (latex) är mjukare och mer bröstliknande — många bebisar tar det lättare. Nackdelen med latex är att det åldras fortare och ska bytas var fjärde till sjätte vecka. Har någon i familjen latexallergi, välj silikon.</p>
+
+    <h3>2. Form — rund eller ortodontisk</h3>
+    <p>Rund spen (som BIBS Colour och Soothie) påminner mest om bröstvårtan och passar ofta nyfödda bäst. Ortodontisk spen (MAM, Philips Avent Ultra Air) är plattare på undersidan och är designad för att stödja bettutvecklingen på sikt. Båda fungerar — det viktigaste är att barnet accepterar den.</p>
+
+    <h3>3. Storlek efter ålder</h3>
+    <p>Alla tillverkare har storlekar kopplade till ålder: 0–6 mån, 6–18 mån och 18+ mån. Ge aldrig en för stor napp till ett litet barn — det ökar kvävningsrisken. Byt upp i storlek när tillverkaren rekommenderar, inte tidigare.</p>
+
+    <h3>4. Säkerhet — kolla före varje användning</h3>
+    <p>Inspektera nappen dagligen. Dra försiktigt i spenen — om den inte studsar tillbaka eller har sprickor, kasta den direkt. En trasig napp kan gå sönder och bli en kvävningsrisk. Förvara rent och sterilisera regelbundet, särskilt under de första sex månaderna.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/amning/" class="text-accent hover:underline">Amning & matning 2026 — komplett guide</a></li>
+      <li><a href="/amning/nappflaska/" class="text-accent hover:underline">Bästa nappflaskan 2026</a></li>
+      <li><a href="/sterilisatorer/" class="text-accent hover:underline">Bästa sterilisatorn 2026</a></li>
+      <li><a href="/guider/sids-statistik/" class="text-accent hover:underline">SIDS och säker sömn — vad forskningen säger</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    {
+      name: 'BIBS Colour Napp Latex 2-pack',
+      description: 'Klassisk dansk napp i naturgummi med mjuk rund spen. BPA-, PVC- och ftalatfri. 2-pack storlek 1 (0–6 mån). Ca 139 kr.',
+      image: 'https://bebisguiden.se/images/products/bibs-colour-latex.webp',
+      brand: 'BIBS',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 139, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fnappar-napphallare%2Fnappar%2Fbibs-napp-colour-2-pack-latex-storlek-1-vanilla-glow-dark-oak-glow', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Philips Avent Ultra Air 2-pack',
+      description: 'Silikonnapp med ortodontisk form och fyra lufthål som håller huden torr. 0–6 månader. 2-pack. Ca 149 kr.',
+      image: 'https://bebisguiden.se/images/products/philips-avent-ultra-air.webp',
+      brand: 'Philips Avent',
+      ratingValue: 4.7,
+      reviewCount: 1,
+      offers: [{ price: 149, url: 'https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyland.se%2F', seller: 'Babyland' }],
+    },
+    {
+      name: 'MAM Perfect Night Silikon 2-pack',
+      description: 'Ortodontisk silikonnapp med smal halszon och SkinSoft-yta. Lyser i mörker för enkel natthantering. 0–6 mån. Ca 129 kr.',
+      image: 'https://bebisguiden.se/images/products/mam-perfect-night.webp',
+      brand: 'MAM',
+      ratingValue: 4.6,
+      reviewCount: 1,
+      offers: [{ price: 129, url: 'https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.storochliten.se%2F', seller: 'Stor och Liten' }],
+    },
+  ]} />
+
+  <CTABox productName="Nappar och napptillbehör" store="inoki" description="Barnservis, matstolar och matningstillbehör i silikon." />
+</ArticleLayout>
+
+<StickyCTA
+  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fnappar-napphallare%2Fnappar%2Fbibs-napp-colour-2-pack-latex-storlek-1-vanilla-glow-dark-oak-glow"
+  text="Se bästa pris — BIBS Colour Latex"
+  productName="Bäst i test napp April 2026"
+/>
+</content>
+</invoke>
