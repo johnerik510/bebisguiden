@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const reireiUrl = 'https://to.babyworld.se/t/t?a=1945556823&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babysam.se%2Fbarnvagnar';
 
@@ -93,7 +94,7 @@ const faqItems = [
         'Bredare fotavtryck i bilen',
         'Enklare finish än premiumalternativen',
       ]}
-      ctaText="Se pris hos Babysam"
+      ctaText="Se pris hos Babyland"
       ctaHref={reireiUrl}
     />
 
@@ -115,7 +116,7 @@ const faqItems = [
         'ISOFIX-adapter ingår inte alltid',
         'Enklare material jämfört med Britax Kidfix',
       ]}
-      ctaText="Se pris hos Babysam"
+      ctaText="Se pris hos Stor och Liten"
       ctaHref={reireiUrl}
     />
 
@@ -137,7 +138,7 @@ const faqItems = [
         'Hjulen är sämre på gropig terräng',
         'Parasoll ingår inte',
       ]}
-      ctaText="Se pris hos Babysam"
+      ctaText="Se pris hos Baby V"
       ctaHref={reireiUrl}
     />
   </div>
@@ -174,4 +175,7 @@ const faqItems = [
   <FAQ items={faqItems} />
 
   <StickyCTA href={reireiUrl} text="Se bästa pris — Joie i-Spin XL" />
+
+
+  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>
