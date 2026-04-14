@@ -6,6 +6,7 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
+import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -69,7 +70,7 @@ const products = [
     badge: 'Bäst för sommaren',
     price: '249 kr',
     rating: 4.5,
-    ctaHref: 'https://www.jollyroom.se/barnklader/nattklader/',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnklader%2Fnattklader%2F',
     image: '/images/products/uv-drakt-bebis.webp',
     pros: ['UPF 50+ solskydd', 'Snabbtorkande material', 'Inkluderar solhatt med nackskydd', 'Passar för badstrand och pool'],
     cons: ['Används bara på sommaren', 'Ej lämplig vid kyla'],
@@ -86,7 +87,7 @@ const products = [
     badge: 'Bäst för vintern',
     price: '349 kr',
     rating: 4.4,
-    ctaHref: 'https://www.jollyroom.se/barnklader/nattklader/',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnklader%2Fnattklader%2F',
     image: '/images/products/vinterdrak-fleece.webp',
     pros: ['Varm fleece – perfekt för kalla dagar', 'Tumvantar och fötter inbyggda', 'Lätt att ta av/på med full dragkedja', 'Tvättbar och slitstark'],
     cons: ['För varm som innekläder', 'Fleece kan pilla med tvätt'],
@@ -214,7 +215,7 @@ const faqItems = [
     price="249 kr"
     rating={4.5}
     ctaText="Se pris hos Reirei"
-    ctaHref="https://www.jollyroom.se/barnklader/nattklader/"
+    ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnklader%2Fnattklader%2F"
     image="/images/products/uv-drakt-bebis.webp"
     pros={['UPF 50+ – blockerar 98% av UV-strålning', 'Snabbtorkande – bra vid vattenlek', 'Inkluderar hatt med nackskydd', 'Bättre än solkräm under 6 månaders ålder']}
     cons={['Säsongsprodukt', 'Ej för kalla dagar']}
@@ -233,7 +234,7 @@ const faqItems = [
     price="349 kr"
     rating={4.4}
     ctaText="Se pris hos Reirei"
-    ctaHref="https://www.jollyroom.se/barnklader/nattklader/"
+    ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnklader%2Fnattklader%2F"
     image="/images/products/vinterdrak-fleece.webp"
     pros={['Varm och lätt fleece', 'Inbyggda tumvantar och fötter', 'Full dragkedja – enkelt att ta av/på', 'Hållbart och tvättbart material']}
     cons={['För varm inomhus', 'Fleece kan "pilla" efter många tvättar']}
@@ -271,6 +272,8 @@ const faqItems = [
   <p class="text-text-light leading-relaxed mb-4">
     Populära märken med bra kvalitet och certifieringar: Lindex Baby, H&M Baby (Conscious-linjen), Name It, Joha (ull/ekologisk bomull), Polarn O. Pyret, Mini Rodini och Smallstuff. Reirei är en av de vanligaste nätbutikerna med brett utbud av ekologiska babykläder.
   </p>
+
+  <RetailerCTAs />
 
   <FAQ items={faqItems} title="Vanliga frågor om babykläder" />
 

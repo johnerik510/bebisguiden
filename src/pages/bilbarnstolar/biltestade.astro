@@ -5,6 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -46,7 +47,7 @@ const products = [
     badge: 'Plus Test-topp',
     price: '4 299 kr',
     rating: 4.7,
-    ctaHref: 'https://www.besafe.com/sv/bilstolar/babyskydd/',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilbarnstolar%2Fbabyskydd%2F',
     features: {
       'Folksam-betyg': 'Bra val',
       'Plus Test': 'Topplacering',
@@ -60,7 +61,7 @@ const products = [
     badge: 'Plus Test-godkänd',
     price: '3 499 kr',
     rating: 4.6,
-    ctaHref: 'https://www.babyland.se/britax-baby-safe-pro-babyskydd-urban-olive',
+    ctaHref: 'https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyland.se%2Fbritax-baby-safe-pro-babyskydd-urban-olive',
     features: {
       'Folksam-betyg': 'Godkänd',
       'Plus Test': 'Godkänd',
@@ -74,7 +75,7 @@ const products = [
     badge: 'Prisvärd testetta',
     price: '3 999 kr',
     rating: 4.6,
-    ctaHref: 'https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal',
     features: {
       'Folksam-betyg': 'Godkänd',
       'Plus Test': 'Godkänd',
@@ -159,7 +160,7 @@ const faqItems = [
       pros={['Konsekvent topplacering i Plus Test', 'Norsk säkerhetstänkande', 'Roterande för enkel i- och urlastning', 'Solid ISOFIX-montering']}
       cons={['Ingen sidolinjär rotation till 360 grader', 'Begränsad bakåtvänd användningstid']}
       ctaText="Se pris"
-      ctaHref="https://www.besafe.com/sv/bilstolar/babyskydd/"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilbarnstolar%2Fbabyskydd%2F"
     />
 
     <ProductCard
@@ -171,7 +172,7 @@ const faqItems = [
       pros={['Plus Test-godkänt babyskydd', 'Enkel på- och avmontering med Flex Base', 'Bra sidoskydd för nyfödda', 'Kompatibelt med barnvagnschassi']}
       cons={['Kortare användningstid (babyskydd)', 'Kräver separat Flex Base för bästa funktion', 'Inte för äldre barn']}
       ctaText="Se pris"
-      ctaHref="https://www.babyland.se/britax-baby-safe-pro-babyskydd-urban-olive"
+      ctaHref="https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyland.se%2Fbritax-baby-safe-pro-babyskydd-urban-olive"
     />
 
     <ProductCard
@@ -183,7 +184,7 @@ const faqItems = [
       pros={['Godkänd i Folksams och Plus Test', 'Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design']}
       cons={['Något enklare material än premiumstolar', 'Kortare bakåtvänd användningstid']}
       ctaText="Se pris"
-      ctaHref="https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal"
     />
   </div>
 
@@ -221,12 +222,14 @@ const faqItems = [
     </ul>
   </div>
 
+  <RetailerCTAs />
+
   <FAQ items={faqItems} />
 
   <StickyCTA href="https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F" text="Se bästa pris — Axkid Minikid 4" />
   <ProductSchema products={[
     { name: 'Axkid Minikid 4', description: 'Bäst i test bakåtvänd bilbarnstol med topp krocksäkerhet och lång användningstid.', brand: 'Axkid', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5299, url: 'https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F', seller: 'Axkid' }] },
     { name: 'Cybex Sirona T i-Size', description: 'Biltestestbäst komfort med 360-rotation och LinearSideSleep. ISOFIX-monterad.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5499, url: 'https://www.cybex-online.com/sv/se/p/cs-pl-sirona-t-i-size.html', seller: 'Cybex' }] },
-    { name: 'BeSafe iZi Turn B i-Size', description: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4299, url: 'https://www.besafe.com/sv/bilstolar/babyskydd/', seller: 'BeSafe' }] },
+    { name: 'BeSafe iZi Turn B i-Size', description: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilbarnstolar%2Fbabyskydd%2F', seller: 'BeSafe' }] },
   ]} />
 </ArticleLayout>
