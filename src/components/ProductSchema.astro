@@ -15,6 +15,8 @@ interface ProductItem {
   ratingValue?: number;
   reviewCount?: number;
   reviewBody?: string;
+  pros?: string[];
+  cons?: string[];
   offers?: Offer[];
 }
 
@@ -108,6 +110,18 @@ const schemas = products.map((product) => ({
       "name": "Bebisguiden",
     },
     ...(product.reviewBody ? { "reviewBody": product.reviewBody } : {}),
+    ...(product.pros && product.pros.length > 0 ? {
+      "positiveNotes": {
+        "@type": "ItemList",
+        "itemListElement": product.pros.map((pro, i) => ({ "@type": "ListItem", "position": i + 1, "name": pro })),
+      },
+    } : {}),
+    ...(product.cons && product.cons.length > 0 ? {
+      "negativeNotes": {
+        "@type": "ItemList",
+        "itemListElement": product.cons.map((con, i) => ({ "@type": "ListItem", "position": i + 1, "name": con })),
+      },
+    } : {}),
   },
   ...(product.offers && product.offers.length > 0 ? {
     "offers": product.offers.length === 1

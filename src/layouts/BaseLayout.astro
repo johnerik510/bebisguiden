@@ -13,6 +13,7 @@ interface Props {
 
 const { title, description, ogImage = '/og-default.png', canonical } = Astro.props;
 const canonicalUrl = canonical || Astro.url.href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://bebisguiden.se${ogImage}`;
 ---
 
 <!DOCTYPE html>
@@ -23,6 +24,7 @@ const canonicalUrl = canonical || Astro.url.href;
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="google-site-verification" content="4dKGYCqJRWJ1DYOkFrPSsY6V7TMbenbvcLNKPoZVrbs" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://addrevenue.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://scripts.clarity.ms https://addrevenue.io" />
 
@@ -32,12 +34,12 @@ const canonicalUrl = canonical || Astro.url.href;
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:site_name" content="Bebisguiden" />
   <meta property="og:locale" content="sv_SE" />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={ogImageUrl} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image" content={ogImageUrl} />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
