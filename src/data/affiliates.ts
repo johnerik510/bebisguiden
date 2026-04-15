@@ -58,3 +58,123 @@ export const defaultRetailers: Retailer[] = ['jollyroom', 'babyland', 'storochli
 
 /** Barnvagnssidor: inkluderar Köpbarnvagn (nischbutik specialiserad på barnvagnar). */
 export const barnvagnRetailers: Retailer[] = ['jollyroom', 'kopbarnvagn', 'babyland', 'storochliten', 'babyv'];
+
+/**
+ * Förbyggda deeplink-paths per sidtyp → retailer. Används av RetailerCTAs
+ * för att skicka besökaren till rätt kategori i varje butik, inte startsidan.
+ * Köpbarnvagn har egen URL-struktur (/sv/artiklar/barnvagnar/modell/...).
+ */
+export const barnvagnPaths = {
+  index: {
+    jollyroom: '/barnvagnar',
+    babyland: '/barnvagn',
+    storochliten: '/barnvagnar',
+    babyv: '/barnvagnar',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/',
+  },
+  nyfodda: {
+    jollyroom: '/barnvagnar/duovagnar',
+    babyland: '/barnvagn/duovagn',
+    storochliten: '/barnvagnar/duovagnar',
+    babyv: '/barnvagnar/duovagn',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/barnvagnspaket/',
+  },
+  duovagn: {
+    jollyroom: '/barnvagnar/duovagnar',
+    babyland: '/barnvagn/duovagn',
+    storochliten: '/barnvagnar/duovagnar',
+    babyv: '/barnvagnar/duovagn',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/duovagnar/',
+  },
+  sittvagn: {
+    jollyroom: '/barnvagnar/sittvagnar',
+    babyland: '/barnvagn/sittvagn',
+    storochliten: '/barnvagnar/sittvagnar',
+    babyv: '/barnvagnar/sittvagn',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/sittvagnar/',
+  },
+  syskonvagn: {
+    jollyroom: '/barnvagnar/syskonvagnar',
+    babyland: '/barnvagn/syskonvagn',
+    storochliten: '/barnvagnar/syskonvagnar',
+    babyv: '/barnvagnar/syskonvagn',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/syskonvagnar/',
+  },
+  joggingvagn: {
+    jollyroom: '/barnvagnar/aktivitetsvagnar/joggingvagnar',
+    babyland: '/barnvagn/joggingvagn',
+    storochliten: '/barnvagnar/joggingvagnar',
+    babyv: '/barnvagnar/joggingvagn',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/joggingvagnar/',
+  },
+  terrangvagn: {
+    jollyroom: '/barnvagnar/aktivitetsvagnar/joggingvagnar',
+    babyland: '/barnvagn/joggingvagn',
+    storochliten: '/barnvagnar/joggingvagnar',
+    babyv: '/barnvagnar/joggingvagn',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/terrangvagnar/',
+  },
+  hopfallbar: {
+    jollyroom: '/barnvagnar/sulkys/sulkys',
+    babyland: '/barnvagn/sulky',
+    storochliten: '/barnvagnar/sulkys',
+    babyv: '/barnvagnar/sulky',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/sulkys/',
+  },
+  kompakt: {
+    jollyroom: '/barnvagnar/sulkys/sulkys',
+    babyland: '/barnvagn/sulky',
+    storochliten: '/barnvagnar/sulkys',
+    babyv: '/barnvagnar/sulky',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/sulkys/',
+  },
+  latt: {
+    jollyroom: '/barnvagnar/sulkys/sulkys',
+    babyland: '/barnvagn/sulky',
+    storochliten: '/barnvagnar/sulkys',
+    babyv: '/barnvagnar/sulky',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/sulkys/',
+  },
+  liggdel: {
+    jollyroom: '/barnvagnar/duovagnar',
+    babyland: '/barnvagn/duovagn',
+    storochliten: '/barnvagnar/duovagnar',
+    babyv: '/barnvagnar/duovagn',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/modell/duovagnar/',
+  },
+  budget: {
+    jollyroom: '/barnvagnar',
+    babyland: '/barnvagn',
+    storochliten: '/barnvagnar',
+    babyv: '/barnvagnar',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/',
+  },
+  bugaboo: {
+    jollyroom: '/varumarken/bugaboo',
+    babyland: '/varumarken/bugaboo',
+    storochliten: '/varumarken/bugaboo',
+    babyv: '/varumarken/bugaboo',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/marke-2/bugaboo/',
+  },
+  nuna: {
+    jollyroom: '/varumarken/nuna',
+    babyland: '/varumarken/nuna',
+    storochliten: '/varumarken/nuna',
+    babyv: '/varumarken/nuna',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/marke-2/nuna/',
+  },
+  stokke: {
+    jollyroom: '/varumarken/stokke',
+    babyland: '/varumarken/stokke',
+    storochliten: '/varumarken/stokke',
+    babyv: '/varumarken/stokke',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/marke-2/stokke/',
+  },
+  cybex: {
+    jollyroom: '/varumarken/cybex',
+    babyland: '/varumarken/cybex',
+    storochliten: '/varumarken/cybex',
+    babyv: '/varumarken/cybex',
+    kopbarnvagn: '/sv/artiklar/barnvagnar/marke-2/cybex_barnvagnar/',
+  },
+} satisfies Record<string, Partial<Record<Retailer, string>>>;

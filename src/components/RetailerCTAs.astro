@@ -10,6 +10,8 @@ interface Props {
   retailers?: Retailer[];
   /** Valfri deeplink-path som skickas vidare till butiken (t.ex. "/barnvagnar/") */
   path?: string;
+  /** Per-retailer path-override. Används när butiker har olika URL-struktur (ex. Köpbarnvagn). */
+  retailerPaths?: Partial<Record<Retailer, string>>;
   compact?: boolean;
 }
 
@@ -18,12 +20,18 @@ const {
   subheading = 'Klicka dig direkt till aktuellt pris — vi tjänar en liten provision utan extra kostnad för dig.',
   retailers = defaultRetailers,
   path,
+  retailerPaths,
   compact = false,
 } = Astro.props;
 
 const items = retailers.map((r) => {
   const meta = retailerMeta[r];
-  const target = path ? `https://www.${meta.domain}${path.startsWith('/') ? '' : '/'}${path}` : undefined;
+  const retailerPath = retailerPaths?.[r] ?? path;
+  const target = retailerPath
+    ? (retailerPath.startsWith('http')
+        ? retailerPath
+        : `https://${meta.domain.startsWith('www.') ? '' : 'www.'}${meta.domain}${retailerPath.startsWith('/') ? '' : '/'}${retailerPath}`)
+    : undefined;
   return {
     key: r,
     name: meta.name,
