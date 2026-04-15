@@ -7,7 +7,7 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
-import { barnvagnRetailers, barnvagnPaths } from '../../data/affiliates';
+import { barnvagnRetailers } from '../../data/affiliates';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -273,7 +273,7 @@ const faqItems = [
     </ul>
   </div>
 
-  <RetailerCTAs retailers={barnvagnRetailers} retailerPaths={barnvagnPaths.index} />
+  <RetailerCTAs retailers={barnvagnRetailers} />
 
   <FAQ items={faqItems} />
 
