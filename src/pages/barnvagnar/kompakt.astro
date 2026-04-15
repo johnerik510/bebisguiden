@@ -2,6 +2,8 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import { barnvagnRetailers } from '../../data/affiliates';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
@@ -100,6 +102,7 @@ const faqItems = [
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — kompakta barnvagnar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
+  <RetailerCTAs retailers={barnvagnRetailers} heading="Jämför pris hos våra partnerbutiker" />
 
   <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
     <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>

@@ -2,6 +2,8 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import { barnvagnRetailers } from '../../data/affiliates';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
@@ -155,6 +157,7 @@ const faqItems = [
 </div>
 
 <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell — joggingvagnar 2026" />
+<RetailerCTAs retailers={barnvagnRetailers} heading="Jämför pris hos våra partnerbutiker" />
 
 <h2 class="text-2xl font-bold mt-10 mb-4">Köpguide — vad ska du tänka på?</h2>
 

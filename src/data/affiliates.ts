@@ -2,7 +2,7 @@
 // Alla utgående klick till dessa butiker ska gå via tracking för att räknas som affiliate-intäkt.
 // Deeplink-format: base + "&url=" + encodeURIComponent(target)
 
-export type Retailer = 'jollyroom' | 'babyland' | 'storochliten' | 'babyv';
+export type Retailer = 'jollyroom' | 'babyland' | 'storochliten' | 'babyv' | 'kopbarnvagn';
 
 export const retailerMeta: Record<Retailer, { name: string; domain: string; trackBase: string; color: string; }> = {
   jollyroom: {
@@ -29,6 +29,12 @@ export const retailerMeta: Record<Retailer, { name: string; domain: string; trac
     trackBase: 'https://go.adt231.net/t/t?a=1327902115&as=2065068845&t=2&tk=1',
     color: 'bg-emerald-600 hover:bg-emerald-700',
   },
+  kopbarnvagn: {
+    name: 'Köpbarnvagn',
+    domain: 'kopbarnvagn.se',
+    trackBase: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1',
+    color: 'bg-violet-600 hover:bg-violet-700',
+  },
 };
 
 /**
@@ -49,3 +55,6 @@ export const jolly = (path: string = '') => {
 
 /** Default-lista över butiker att visa som multi-retailer CTA, i visningsordning. */
 export const defaultRetailers: Retailer[] = ['jollyroom', 'babyland', 'storochliten', 'babyv'];
+
+/** Barnvagnssidor: inkluderar Köpbarnvagn (nischbutik specialiserad på barnvagnar). */
+export const barnvagnRetailers: Retailer[] = ['jollyroom', 'kopbarnvagn', 'babyland', 'storochliten', 'babyv'];
