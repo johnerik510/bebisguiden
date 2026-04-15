@@ -2,7 +2,7 @@
 // Alla utgående klick till dessa butiker ska gå via tracking för att räknas som affiliate-intäkt.
 // Deeplink-format: base + "&url=" + encodeURIComponent(target)
 
-export type Retailer = 'jollyroom' | 'babyland' | 'storochliten' | 'babyv';
+export type Retailer = 'jollyroom' | 'kopbarnvagn' | 'babyland' | 'storochliten' | 'babyv';
 
 export const retailerMeta: Record<Retailer, { name: string; domain: string; trackBase: string; color: string; }> = {
   jollyroom: {
@@ -10,6 +10,12 @@ export const retailerMeta: Record<Retailer, { name: string; domain: string; trac
     domain: 'jollyroom.se',
     trackBase: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1',
     color: 'bg-pink-600 hover:bg-pink-700',
+  },
+  kopbarnvagn: {
+    name: 'Köpbarnvagn',
+    domain: 'kopbarnvagn.se',
+    trackBase: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1',
+    color: 'bg-violet-600 hover:bg-violet-700',
   },
   babyland: {
     name: 'Babyland',
