@@ -21,19 +21,19 @@ export const retailerMeta: Record<Retailer, { name: string; domain: string; trac
     name: 'Babyland',
     domain: 'babyland.se',
     trackBase: 'https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1',
-    color: 'bg-sky-600 hover:bg-sky-700',
+    color: 'bg-sky-700 hover:bg-sky-800',
   },
   storochliten: {
     name: 'Stor och Liten',
     domain: 'storochliten.se',
     trackBase: 'https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1',
-    color: 'bg-amber-600 hover:bg-amber-700',
+    color: 'bg-amber-700 hover:bg-amber-800',
   },
   babyv: {
     name: 'Baby V',
     domain: 'babyv.se',
     trackBase: 'https://go.adt231.net/t/t?a=1327902115&as=2065068845&t=2&tk=1',
-    color: 'bg-emerald-600 hover:bg-emerald-700',
+    color: 'bg-emerald-700 hover:bg-emerald-800',
   },
 };
 
