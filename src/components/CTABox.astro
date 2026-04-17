@@ -1,13 +1,31 @@
 ---
+import { retailerMeta, sortByCommission, track, defaultRetailers, type Retailer } from '../data/affiliates';
+
 interface Props {
   productName: string;
   store?: string;
   affiliateUrl?: string;
   price?: string;
   description?: string;
+  /**
+   * Visa sekundär "Jämför pris hos:"-rad med Adtraction-butikerna sorterade efter provision.
+   * Default true — sätt false för nisch-produkter som inte säljs via de stora babybutikerna.
+   */
+  showCompare?: boolean;
+  retailers?: Retailer[];
+  retailerPaths?: Partial<Record<Retailer, string>>;
 }
 
-const { productName, store = 'Reirei', affiliateUrl, price, description } = Astro.props;
+const {
+  productName,
+  store = 'Reirei',
+  affiliateUrl,
+  price,
+  description,
+  showCompare = true,
+  retailers = defaultRetailers,
+  retailerPaths = {},
+} = Astro.props;
 
 const storeUrls: Record<string, string> = {
   'Reirei': 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2F',
@@ -32,21 +50,61 @@ const storeUrls: Record<string, string> = {
 };
 
 const finalUrl = affiliateUrl || storeUrls[store] || 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2F';
+
+// Autodetektera om primär CTA går till en av våra 5 huvudbutiker, så vi inte dubbletterar.
+function detectRetailer(url: string | undefined): Retailer | undefined {
+  if (!url) return undefined;
+  for (const key of Object.keys(retailerMeta) as Retailer[]) {
+    const meta = retailerMeta[key];
+    if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
+  }
+  return undefined;
+}
+const detectedPrimary = detectRetailer(finalUrl);
+const sortedRetailers = sortByCommission(retailers).filter((r) => r !== detectedPrimary);
 ---
 
-<div class="bg-cta/5 border border-cta/20 rounded-xl p-5 my-6 flex flex-col sm:flex-row items-center justify-between gap-4" data-product={productName}>
-  <div>
-    <p class="font-heading font-bold text-dark text-base">{productName}</p>
-    {description && <p class="text-sm text-text-light mt-1">{description}</p>}
-    {price && <p class="text-sm text-text-light">{price} hos {store}</p>}
+<div class="bg-cta/5 border border-cta/20 rounded-xl p-5 my-6 flex flex-col gap-3" data-product={productName}>
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div>
+      <p class="font-heading font-bold text-dark text-base">{productName}</p>
+      {description && <p class="text-sm text-text-light mt-1">{description}</p>}
+      {price && <p class="text-sm text-text-light">{price} hos {store}</p>}
+    </div>
+    <a
+      href={finalUrl}
+      rel="nofollow sponsored noopener noreferrer"
+      target="_blank"
+      class="inline-flex items-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold py-3 px-6 rounded-lg transition-colors text-sm whitespace-nowrap"
+    >
+      Se pris hos {store}
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+    </a>
   </div>
-  <a
-    href={finalUrl}
-    rel="nofollow sponsored noopener noreferrer"
-    target="_blank"
-    class="inline-flex items-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold py-3 px-6 rounded-lg transition-colors text-sm whitespace-nowrap"
-  >
-    Se hos {store}
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-  </a>
+  {showCompare && sortedRetailers.length > 0 && (
+    <div class="pt-2 border-t border-cta/10">
+      <p class="text-xs text-text-light mb-1.5">Jämför pris hos:</p>
+      <div class="flex flex-wrap gap-2">
+        {sortedRetailers.map((r) => {
+          const meta = retailerMeta[r];
+          const p = retailerPaths[r];
+          // Djuplänk-prioritet: explicit path > produktsök via produktnamn > tracking-startsida
+          const target = p
+            ? (p.startsWith('http') ? p : `https://www.${meta.domain}${p.startsWith('/') ? '' : '/'}${p}`)
+            : meta.searchUrl(productName);
+          return (
+            <a
+              href={track(r, target)}
+              target="_blank"
+              rel="nofollow sponsored noopener noreferrer"
+              class={`${meta.color} text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors`}
+              aria-label={`Se pris hos ${meta.name}`}
+            >
+              {meta.name}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  )}
 </div>

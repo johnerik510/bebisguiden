@@ -1,11 +1,17 @@
 ---
+import { retailerMeta, sortByCommission, track, defaultRetailers, type Retailer } from '../data/affiliates';
+
 interface Product {
   name: string;
+  image?: string;
   price?: string;
   rating?: number;
   badge?: string;
   ctaHref?: string;
   features: Record<string, string>;
+  /** Valfria extra butiker att visa som jämförelsepris-knappar. Default: alla 5 i provisionsordning. */
+  retailers?: Retailer[];
+  retailerPaths?: Partial<Record<Retailer, string>>;
 }
 
 interface Props {
@@ -14,6 +20,37 @@ interface Props {
 }
 
 const { products, featureLabels } = Astro.props;
+
+function detectRetailer(url: string | undefined): Retailer | undefined {
+  if (!url) return undefined;
+  for (const key of Object.keys(retailerMeta) as Retailer[]) {
+    const meta = retailerMeta[key];
+    if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
+  }
+  return undefined;
+}
+
+// Djuplänk-prioritet: explicit path > produktsök via namn > butikens tracking-startsida
+function buildHref(retailer: Retailer, productName: string, path?: string): string {
+  const meta = retailerMeta[retailer];
+  if (path) {
+    const target = path.startsWith('http') ? path : `https://www.${meta.domain}${path.startsWith('/') ? '' : '/'}${path}`;
+    return track(retailer, target);
+  }
+  return track(retailer, meta.searchUrl(productName));
+}
+
+function primaryLabelFor(product: Product): string {
+  const detected = detectRetailer(product.ctaHref);
+  return detected ? `Se pris hos ${retailerMeta[detected].name}` : 'Se pris';
+}
+
+function secondaryFor(product: Product): Retailer[] {
+  const list = product.retailers && product.retailers.length > 0 ? product.retailers : defaultRetailers;
+  const sorted = sortByCommission(list);
+  const detected = detectRetailer(product.ctaHref);
+  return detected ? sorted.filter((r) => r !== detected) : sorted;
+}
 ---
 
 {/* Mobile: stacked product cards */}
@@ -26,6 +63,11 @@ const { products, featureLabels } = Astro.props;
         </div>
       )}
       <div class="p-4">
+        {p.image && (
+          <div class="bg-gray-50 rounded-lg p-3 mb-3 flex items-center justify-center">
+            <img src={p.image} alt={p.name} class="max-h-40 w-auto object-contain" loading="lazy" width="200" height="160" />
+          </div>
+        )}
         <div class="flex items-start justify-between gap-3 mb-3">
           <h3 class="font-semibold text-text text-sm leading-snug">{p.name}</h3>
           {p.rating && <span class="text-star font-bold text-sm whitespace-nowrap">{p.rating}/5</span>}
@@ -43,10 +85,32 @@ const { products, featureLabels } = Astro.props;
         </dl>
         {p.ctaHref && (
           <a href={p.ctaHref} target="_blank" rel="nofollow sponsored noopener noreferrer"
-             class="flex items-center justify-center w-full bg-cta text-white font-semibold text-sm py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
-            Se pris
+             class="flex items-center justify-center gap-1.5 w-full bg-cta text-white font-semibold text-sm py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+            {primaryLabelFor(p)}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
         )}
+        {(() => {
+          const secs = secondaryFor(p);
+          return secs.length > 0 ? (
+            <div class="mt-2.5">
+              <p class="text-xs text-text-light mb-1.5">Jämför pris hos:</p>
+              <div class="flex flex-wrap gap-1.5">
+                {secs.map((r) => {
+                  const meta = retailerMeta[r];
+                  const href = buildHref(r, p.name, p.retailerPaths?.[r]);
+                  return (
+                    <a href={href} target="_blank" rel="nofollow sponsored noopener noreferrer"
+                       class={`${meta.color} text-white text-xs font-semibold px-2.5 py-1 rounded-md transition-colors`}
+                       aria-label={`Se pris hos ${meta.name}`}>
+                      {meta.name}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null;
+        })()}
       </div>
     </div>
   ))}
@@ -59,9 +123,14 @@ const { products, featureLabels } = Astro.props;
       <tr class="bg-bg-alt">
         <th class="text-left p-3 font-semibold text-text min-w-[120px]">Produkt</th>
         {products.map(p => (
-          <th class="text-center p-3 font-semibold text-text min-w-[150px]">
+          <th class="text-center p-3 font-semibold text-text min-w-[160px] align-bottom">
+            {p.image && (
+              <div class="bg-gray-50 rounded-lg p-2 mb-2 flex items-center justify-center mx-auto" style="height: 130px;">
+                <img src={p.image} alt={p.name} class="max-h-28 w-auto object-contain" loading="lazy" width="160" height="120" />
+              </div>
+            )}
             {p.badge && <span class="block text-xs text-accent-dark font-bold mb-1">{p.badge}</span>}
-            {p.name}
+            <span class="block leading-snug">{p.name}</span>
           </th>
         ))}
       </tr>
@@ -84,13 +153,32 @@ const { products, featureLabels } = Astro.props;
       <tr class="border-t border-border">
         <td class="p-3"></td>
         {products.map(p => (
-          <td class="p-3 text-center">
+          <td class="p-3 text-center align-top">
             {p.ctaHref && (
               <a href={p.ctaHref} target="_blank" rel="nofollow sponsored noopener noreferrer"
-                 class="inline-flex items-center justify-center bg-cta text-white font-semibold text-xs px-4 py-2.5 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
-                Se pris
+                 class="inline-flex items-center justify-center gap-1 bg-cta text-white font-semibold text-xs px-4 py-2.5 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+                {primaryLabelFor(p)}
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
             )}
+            {(() => {
+              const secs = secondaryFor(p);
+              return secs.length > 0 ? (
+                <div class="mt-2 flex flex-wrap justify-center gap-1">
+                  {secs.map((r) => {
+                    const meta = retailerMeta[r];
+                    const href = buildHref(r, p.name, p.retailerPaths?.[r]);
+                    return (
+                      <a href={href} target="_blank" rel="nofollow sponsored noopener noreferrer"
+                         class={`${meta.color} text-white text-[10px] font-semibold px-1.5 py-0.5 rounded transition-colors`}
+                         aria-label={`Se pris hos ${meta.name}`}>
+                        {meta.name}
+                      </a>
+                    );
+                  })}
+                </div>
+              ) : null;
+            })()}
           </td>
         ))}
       </tr>

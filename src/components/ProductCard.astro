@@ -1,4 +1,6 @@
 ---
+import { retailerMeta, sortByCommission, track, defaultRetailers, type Retailer } from '../data/affiliates';
+
 interface Props {
   name: string;
   image?: string;
@@ -10,6 +12,18 @@ interface Props {
   ctaText?: string;
   ctaHref?: string;
   ageRange?: string;
+  /**
+   * Lista av butiker att visa som CTA:er. Default: alla 5 i provisionsordning.
+   * Om ctaHref anges exkluderas den butik vars domän matchar ctaHref från sekundärlistan
+   * (autodetekteras) så att Jollyroom-produktlänk inte dubbletteras som "Jämför pris hos Jollyroom".
+   * Sätt till [] för att dölja sekundära CTA:er helt.
+   */
+  retailers?: Retailer[];
+  /**
+   * Valfria deeplink-paths per butik (t.ex. "/barnvagnar" eller fullständig produkt-URL).
+   * Om saknas används butikens startsida via tracking-länken.
+   */
+  retailerPaths?: Partial<Record<Retailer, string>>;
 }
 
 const {
@@ -21,9 +35,45 @@ const {
   pros = [],
   cons = [],
   ctaText = 'Se pris',
-  ctaHref = '#',
+  ctaHref,
   ageRange,
+  retailers = defaultRetailers,
+  retailerPaths = {},
 } = Astro.props;
+
+// Autodetektera primär retailer från ctaHref så vi inte dubbletterar butiken som sekundär.
+function detectRetailer(url: string | undefined): Retailer | undefined {
+  if (!url) return undefined;
+  for (const key of Object.keys(retailerMeta) as Retailer[]) {
+    const meta = retailerMeta[key];
+    if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
+  }
+  return undefined;
+}
+
+const detectedPrimary = detectRetailer(ctaHref);
+const hasCustomCta = Boolean(ctaHref);
+const sortedRetailers = retailers.length > 0 ? sortByCommission(retailers) : [];
+
+const primaryRetailer = hasCustomCta ? detectedPrimary : sortedRetailers[0];
+const primaryMeta = primaryRetailer ? retailerMeta[primaryRetailer] : null;
+const primaryPath = !hasCustomCta && primaryRetailer ? retailerPaths[primaryRetailer] : undefined;
+const primaryTarget = primaryPath
+  ? (primaryPath.startsWith('http') ? primaryPath : `https://www.${primaryMeta!.domain}${primaryPath.startsWith('/') ? '' : '/'}${primaryPath}`)
+  : undefined;
+// Om ingen ctaHref och vi har produktnamn: djuplänka sekundärer (och primär) till produktsök hos butiken.
+const primaryHref = hasCustomCta
+  ? ctaHref!
+  : (primaryRetailer
+      ? track(primaryRetailer, primaryTarget ?? retailerMeta[primaryRetailer].searchUrl(name))
+      : '#');
+// Auto-label: "Se pris hos BUTIK" när butik kan detekteras, annars ctaText.
+const primaryLabel = primaryMeta
+  ? `Se pris hos ${primaryMeta.name}`
+  : (ctaText !== 'Se pris' ? ctaText : 'Se pris');
+
+const secondaryBase = hasCustomCta ? sortedRetailers : sortedRetailers.slice(1);
+const secondaryRetailers = detectedPrimary ? secondaryBase.filter((r) => r !== detectedPrimary) : secondaryBase;
 ---
 
 <div class="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -72,10 +122,36 @@ const {
           )}
         </div>
       )}
-      <a href={ctaHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
-        {ctaText}
-        <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+        {primaryLabel}
+        <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
       </a>
+      {secondaryRetailers.length > 0 && (
+        <div class="mt-3">
+          <p class="text-xs text-text-light mb-1.5">Jämför pris hos:</p>
+          <div class="flex flex-wrap gap-2">
+            {secondaryRetailers.map((r) => {
+              const meta = retailerMeta[r];
+              const p = retailerPaths[r];
+              // Djuplänk-prioritet: explicit path > produktsök via namn > butikens tracking-startsida
+              const target = p
+                ? (p.startsWith('http') ? p : `https://www.${meta.domain}${p.startsWith('/') ? '' : '/'}${p}`)
+                : meta.searchUrl(name);
+              return (
+                <a
+                  href={track(r, target)}
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class={`${meta.color} text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors`}
+                  aria-label={`Se pris hos ${meta.name}`}
+                >
+                  {meta.name}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   </div>
 </div>

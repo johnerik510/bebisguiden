@@ -4,36 +4,46 @@
 
 export type Retailer = 'jollyroom' | 'kopbarnvagn' | 'babyland' | 'storochliten' | 'babyv';
 
-export const retailerMeta: Record<Retailer, { name: string; domain: string; trackBase: string; color: string; }> = {
+export const retailerMeta: Record<Retailer, { name: string; domain: string; trackBase: string; color: string; commission: number; searchUrl: (q: string) => string; }> = {
   jollyroom: {
     name: 'Jollyroom',
     domain: 'jollyroom.se',
     trackBase: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1',
     color: 'bg-pink-600 hover:bg-pink-700',
-  },
-  kopbarnvagn: {
-    name: 'Köpbarnvagn',
-    domain: 'kopbarnvagn.se',
-    trackBase: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1',
-    color: 'bg-violet-600 hover:bg-violet-700',
-  },
-  babyland: {
-    name: 'Babyland',
-    domain: 'babyland.se',
-    trackBase: 'https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1',
-    color: 'bg-sky-700 hover:bg-sky-800',
-  },
-  storochliten: {
-    name: 'Stor och Liten',
-    domain: 'storochliten.se',
-    trackBase: 'https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1',
-    color: 'bg-amber-700 hover:bg-amber-800',
+    commission: 7,
+    searchUrl: (q) => `https://www.jollyroom.se/sok?text=${encodeURIComponent(q)}`,
   },
   babyv: {
     name: 'Baby V',
     domain: 'babyv.se',
     trackBase: 'https://go.adt231.net/t/t?a=1327902115&as=2065068845&t=2&tk=1',
     color: 'bg-emerald-700 hover:bg-emerald-800',
+    commission: 7,
+    searchUrl: (q) => `https://www.babyv.se/?s=${encodeURIComponent(q)}`,
+  },
+  kopbarnvagn: {
+    name: 'Köpbarnvagn',
+    domain: 'kopbarnvagn.se',
+    trackBase: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1',
+    color: 'bg-violet-600 hover:bg-violet-700',
+    commission: 5,
+    searchUrl: (q) => `https://www.kopbarnvagn.se/?s=${encodeURIComponent(q)}`,
+  },
+  babyland: {
+    name: 'Babyland',
+    domain: 'babyland.se',
+    trackBase: 'https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1',
+    color: 'bg-sky-700 hover:bg-sky-800',
+    commission: 4,
+    searchUrl: (q) => `https://www.babyland.se/sok?q=${encodeURIComponent(q)}`,
+  },
+  storochliten: {
+    name: 'Stor och Liten',
+    domain: 'storochliten.se',
+    trackBase: 'https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1',
+    color: 'bg-amber-700 hover:bg-amber-800',
+    commission: 4,
+    searchUrl: (q) => `https://www.storochliten.se/sok?q=${encodeURIComponent(q)}`,
   },
 };
 
@@ -53,5 +63,14 @@ export const jolly = (path: string = '') => {
   return track('jollyroom', url);
 };
 
-/** Default-lista över butiker att visa som multi-retailer CTA, i visningsordning. */
-export const defaultRetailers: Retailer[] = ['jollyroom', 'babyland', 'storochliten', 'babyv'];
+/**
+ * Default-lista över butiker i provisionsordning (högst först).
+ * Jollyroom & Baby V delar topp på 7%, sedan Köpbarnvagn 5%, sedan Babyland & Stor&Liten 4%.
+ * Använd denna ordning för multi-retailer CTA:er så att de butiker vi tjänar mest på visas först.
+ */
+export const defaultRetailers: Retailer[] = ['jollyroom', 'babyv', 'kopbarnvagn', 'babyland', 'storochliten'];
+
+/** Sortera en retailer-lista efter provision (högst först). */
+export function sortByCommission(retailers: Retailer[]): Retailer[] {
+  return [...retailers].sort((a, b) => retailerMeta[b].commission - retailerMeta[a].commission);
+}
