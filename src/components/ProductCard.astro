@@ -1,5 +1,5 @@
 ---
-import { retailerMeta, sortByCommission, track, defaultRetailers, type Retailer } from '../data/affiliates';
+import { retailerMeta, sortByCommission, track, defaultRetailers, resolveTarget, type Retailer } from '../data/affiliates';
 
 interface Props {
   name: string;
@@ -55,25 +55,30 @@ const detectedPrimary = detectRetailer(ctaHref);
 const hasCustomCta = Boolean(ctaHref);
 const sortedRetailers = retailers.length > 0 ? sortByCommission(retailers) : [];
 
-const primaryRetailer = hasCustomCta ? detectedPrimary : sortedRetailers[0];
-const primaryMeta = primaryRetailer ? retailerMeta[primaryRetailer] : null;
-const primaryPath = !hasCustomCta && primaryRetailer ? retailerPaths[primaryRetailer] : undefined;
-const primaryTarget = primaryPath
-  ? (primaryPath.startsWith('http') ? primaryPath : `https://www.${primaryMeta!.domain}${primaryPath.startsWith('/') ? '' : '/'}${primaryPath}`)
+// Hitta första retailer som har en resolverbar produkt-URL (inte fallback till sökning)
+const firstRetailerWithPath = !hasCustomCta
+  ? sortedRetailers.find((r) => resolveTarget(r, retailerPaths[r]) !== null)
   : undefined;
-// Om ingen ctaHref och vi har produktnamn: djuplänka sekundärer (och primär) till produktsök hos butiken.
+const primaryRetailer = hasCustomCta ? detectedPrimary : firstRetailerWithPath;
+const primaryMeta = primaryRetailer ? retailerMeta[primaryRetailer] : null;
+const primaryTarget = !hasCustomCta && primaryRetailer
+  ? resolveTarget(primaryRetailer, retailerPaths[primaryRetailer])
+  : null;
+
+// Primary CTA byggs bara om vi har antingen custom ctaHref eller en retailer med riktig produkt-URL.
+// Search-fallback har tagits bort — det är bättre att inte visa CTA än att visa en länk till 0 träffar.
 const primaryHref = hasCustomCta
   ? ctaHref!
-  : (primaryRetailer
-      ? track(primaryRetailer, primaryTarget ?? retailerMeta[primaryRetailer].searchUrl(name))
-      : '#');
+  : (primaryRetailer && primaryTarget ? track(primaryRetailer, primaryTarget) : null);
 // Auto-label: "Se pris hos BUTIK" när butik kan detekteras, annars ctaText.
 const primaryLabel = primaryMeta
   ? `Se pris hos ${primaryMeta.name}`
   : (ctaText !== 'Se pris' ? ctaText : 'Se pris');
 
-const secondaryBase = hasCustomCta ? sortedRetailers : sortedRetailers.slice(1);
-const secondaryRetailers = detectedPrimary ? secondaryBase.filter((r) => r !== detectedPrimary) : secondaryBase;
+const secondaryBase = hasCustomCta ? sortedRetailers : sortedRetailers.filter((r) => r !== primaryRetailer);
+// Filtrera bort retailers utan resolverbar produkt-URL — annars genereras söklänkar (brutna djuplänkar)
+const secondaryRetailers = (detectedPrimary ? secondaryBase.filter((r) => r !== detectedPrimary) : secondaryBase)
+  .filter((r) => resolveTarget(r, retailerPaths[r]) !== null);
 ---
 
 <div class="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -122,21 +127,20 @@ const secondaryRetailers = detectedPrimary ? secondaryBase.filter((r) => r !== d
           )}
         </div>
       )}
-      <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
-        {primaryLabel}
-        <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-      </a>
+      {primaryHref && (
+        <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+          {primaryLabel}
+          <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      )}
       {secondaryRetailers.length > 0 && (
         <div class="mt-3">
           <p class="text-xs text-text-light mb-1.5">Jämför pris hos:</p>
           <div class="flex flex-wrap gap-2">
             {secondaryRetailers.map((r) => {
               const meta = retailerMeta[r];
-              const p = retailerPaths[r];
-              // Djuplänk-prioritet: explicit path > produktsök via namn > butikens tracking-startsida
-              const target = p
-                ? (p.startsWith('http') ? p : `https://www.${meta.domain}${p.startsWith('/') ? '' : '/'}${p}`)
-                : meta.searchUrl(name);
+              const target = resolveTarget(r, retailerPaths[r]);
+              if (!target) return null;
               return (
                 <a
                   href={track(r, target)}

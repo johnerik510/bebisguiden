@@ -56,9 +56,22 @@ export function track(retailer: Retailer, targetUrl?: string): string {
   return `${base}&url=${encodeURIComponent(targetUrl)}`;
 }
 
-/** Kortfattad helper för Jollyroom — vanligaste butiken. */
+/**
+ * Resolva en deeplink-target från en path. Returnerar null om path saknas.
+ * Komponenter ska använda denna istället för searchUrl-fallback —
+ * search-URL:er resulterar ofta i 0 träffar och är därmed brutna djuplänkar.
+ */
+export function resolveTarget(retailer: Retailer, path?: string): string | null {
+  if (!path) return null;
+  if (path.startsWith('http')) return path;
+  const meta = retailerMeta[retailer];
+  return `https://www.${meta.domain}${path.startsWith('/') ? '' : '/'}${path}`;
+}
+
+/** Kortfattad helper för Jollyroom — vanligaste butiken.
+ *  Om path saknas: returnera tom sträng (komponent ska sedan dölja CTA). */
 export const jolly = (path: string = '') => {
-  if (!path) return track('jollyroom');
+  if (!path) return '';  // Inga homepage-länkar — anroparen ska kontrollera och dölja CTA
   const url = path.startsWith('http') ? path : `https://www.jollyroom.se${path.startsWith('/') ? '' : '/'}${path}`;
   return track('jollyroom', url);
 };

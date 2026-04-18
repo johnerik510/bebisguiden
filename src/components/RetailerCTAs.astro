@@ -21,18 +21,22 @@ const {
   compact = false,
 } = Astro.props;
 
-const items = retailers.map((r) => {
-  const meta = retailerMeta[r];
-  const target = path ? `https://www.${meta.domain}${path.startsWith('/') ? '' : '/'}${path}` : undefined;
-  return {
-    key: r,
-    name: meta.name,
-    color: meta.color,
-    href: track(r, target),
-  };
-});
+// Bara bygg CTA om vi har en target (path) — annars är det homepage-länk = bruten djuplänk
+const items = path
+  ? retailers.map((r) => {
+      const meta = retailerMeta[r];
+      const target = `https://www.${meta.domain}${path.startsWith('/') ? '' : '/'}${path}`;
+      return {
+        key: r,
+        name: meta.name,
+        color: meta.color,
+        href: track(r, target),
+      };
+    })
+  : [];
 ---
 
+{items.length > 0 && (
 <section class={`my-8 ${compact ? 'py-4' : 'py-6'} px-4 sm:px-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200`}>
   {!compact && (
     <div class="mb-4">
@@ -54,3 +58,4 @@ const items = retailers.map((r) => {
     ))}
   </div>
 </section>
+)}

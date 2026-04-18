@@ -1,5 +1,5 @@
 ---
-import { retailerMeta, sortByCommission, track, defaultRetailers, type Retailer } from '../data/affiliates';
+import { retailerMeta, sortByCommission, track, defaultRetailers, resolveTarget, type Retailer } from '../data/affiliates';
 
 interface Product {
   name: string;
@@ -30,14 +30,12 @@ function detectRetailer(url: string | undefined): Retailer | undefined {
   return undefined;
 }
 
-// Djuplänk-prioritet: explicit path > produktsök via namn > butikens tracking-startsida
-function buildHref(retailer: Retailer, productName: string, path?: string): string {
-  const meta = retailerMeta[retailer];
-  if (path) {
-    const target = path.startsWith('http') ? path : `https://www.${meta.domain}${path.startsWith('/') ? '' : '/'}${path}`;
-    return track(retailer, target);
-  }
-  return track(retailer, meta.searchUrl(productName));
+// Bygger en deeplink-href om det finns en riktig produkt-URL, annars null.
+// Search-fallback har tagits bort — det är bättre att inte visa CTA än att leda till sökresultat med 0 träffar.
+function buildHref(retailer: Retailer, _productName: string, path?: string): string | null {
+  const target = resolveTarget(retailer, path);
+  if (!target) return null;
+  return track(retailer, target);
 }
 
 function primaryLabelFor(product: Product): string {
@@ -49,7 +47,9 @@ function secondaryFor(product: Product): Retailer[] {
   const list = product.retailers && product.retailers.length > 0 ? product.retailers : defaultRetailers;
   const sorted = sortByCommission(list);
   const detected = detectRetailer(product.ctaHref);
-  return detected ? sorted.filter((r) => r !== detected) : sorted;
+  const filtered = detected ? sorted.filter((r) => r !== detected) : sorted;
+  // Filtrera bort retailers utan resolverbar produkt-URL
+  return filtered.filter((r) => resolveTarget(r, product.retailerPaths?.[r]) !== null);
 }
 ---
 
@@ -99,6 +99,7 @@ function secondaryFor(product: Product): Retailer[] {
                 {secs.map((r) => {
                   const meta = retailerMeta[r];
                   const href = buildHref(r, p.name, p.retailerPaths?.[r]);
+                  if (!href) return null;
                   return (
                     <a href={href} target="_blank" rel="nofollow sponsored noopener noreferrer"
                        class={`${meta.color} text-white text-xs font-semibold px-2.5 py-1 rounded-md transition-colors`}
@@ -168,6 +169,7 @@ function secondaryFor(product: Product): Retailer[] {
                   {secs.map((r) => {
                     const meta = retailerMeta[r];
                     const href = buildHref(r, p.name, p.retailerPaths?.[r]);
+                    if (!href) return null;
                     return (
                       <a href={href} target="_blank" rel="nofollow sponsored noopener noreferrer"
                          class={`${meta.color} text-white text-[10px] font-semibold px-1.5 py-0.5 rounded transition-colors`}
