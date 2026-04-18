@@ -1,0 +1,157 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Lag och regler i Sverige' },
+];
+
+const faqItems = [
+  {
+    question: 'Är det olagligt att köra utan bilbarnstol i Sverige?',
+    answer: 'Ja. Enligt trafikförordningen (1998:1276) är det obligatoriskt att använda bilbarnstol för barn under 135 cm. Böterna för överträdelse är 1 500 kr (en pricklast). Ansvaret ligger alltid hos föraren — oavsett om barnet är ditt eget eller andras barn.',
+  },
+  {
+    question: 'Vilken bilbarnstol är obligatorisk för nyfödd?',
+    answer: 'En nyfödd ska sitta bakåtvänt i en babyskål (grupp 0+, max 13 kg) eller en kombistol som täcker grupp 0+ från födseln. Babyskålen ska vara certifierad enligt R44 (äldre) eller det nyare R129 (i-Size). Båda är lagliga i Sverige.',
+  },
+  {
+    question: 'Hur länge ska ett barn sitta bakåtvänt?',
+    answer: 'Svensk lag kräver bakåtvänd placering tills barnet väger minst 9 kg. Trafikverket och Folkhälsomyndigheten rekommenderar dock bakåtvänd körning tills barnet är minst 4 år (eller tills vikten överstiger bakåtstolens gräns). Bakåtvänd ger upp till 5 gånger bättre skydd vid frontalkollision.',
+  },
+  {
+    question: 'Gäller samma regler för taxi och buss?',
+    answer: 'Barn under 135 cm ska alltid ha bilbarnstol i personbil, lätt lastbil och taxi. Undantag: buss och fordon registrerade som taxi om ingen bilbarnstol finns tillgänglig. I taxi är chauffören skyldig att ha bilbarnstol om passageraren beställt det i förväg eller om en finns i fordonet.',
+  },
+  {
+    question: 'Kan jag använda en begagnad bilbarnstol?',
+    answer: 'Lagmässigt finns inget hinder mot begagnad bilbarnstol — det viktiga är att den uppfyller godkänd standard (R44 eller R129). Dock rekommenderar samtliga säkerhetsorganisationer att INTE använda en stol av okänt ursprung. En stol som ingått i en krock kan ha osynliga skador och ska kasseras. Köp bara begagnat från känd person med känd historik.',
+  },
+  {
+    question: 'Vad händer om polisen stoppar mig utan bilbarnstol?',
+    answer: 'Föraren får en ordningsbot på 1 500 kr och en pricklast. Vid upprepade brott inom en viss period kan körkortet påverkas. Försäkringen kan dessutom neka ersättning för personskada om barnet suttit utan godkänd bilbarnstol vid en olycka.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bilbarnstol Lag Sverige 2026 – Regler, Åldrar och Böter"
+  description="Vad säger lagen om bilbarnstol i Sverige 2026? Obligatorisk till 135 cm, bakåtvänd rekommendation, böter och vad som gäller i taxi. Allt du behöver veta."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/bilbarnstolar/lag-sverige/"
+  updatedDate="2026-04-18"
+  showDisclaimer={false}
+>
+  <p class="text-base text-text-light mb-6 max-w-2xl">
+    I Sverige är bilbarnstol lagkrav för alla barn under 135 cm. Lagen är tydlig men det finns detaljer som många missar — till exempel reglerna i taxi, vad som gäller för utländska gäster och skillnaden mellan lagkrav och säkerhetsrekommendationer.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Lagkravet i korthet</p>
+    <p class="text-sm text-text-light">Bilbarnstol är obligatorisk för alla barn under 135 cm i personbil och taxi. Böter: 1 500 kr (föraren ansvarar). Bakåtvänd är lagkrav upp till 9 kg — rekommenderas tills 4 år.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Grundlagen: trafikförordningen</h2>
+  <p class="text-text-light mb-4">
+    Reglerna om bilbarnstol regleras i <strong>trafikförordningen (1998:1276), 4 kap. 10 §</strong>. Där framgår att barn under 135 cm alltid ska använda en godkänd bilbarnstol eller förhöjningsdyna med ryggstöd. Kravet gäller i personbilar, lätta lastbilar och taxi.
+  </p>
+  <p class="text-text-light mb-6">
+    Ansvaret ligger hos föraren — inte hos barnets förälder eller målsman. Det spelar ingen roll om det är ditt eget barn eller ett annat barns förälder som är med.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Regler per åldersgrupp</h2>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-bg">
+          <th class="text-left px-4 py-3 font-semibold text-text border-b border-border">Barnets ålder/vikt</th>
+          <th class="text-left px-4 py-3 font-semibold text-text border-b border-border">Lagkrav</th>
+          <th class="text-left px-4 py-3 font-semibold text-text border-b border-border">Rekommendation</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-border">
+        <tr>
+          <td class="px-4 py-3 text-text-light">Nyfödd–9 kg (~9 månader)</td>
+          <td class="px-4 py-3 text-text">Bakåtvänd babyskål</td>
+          <td class="px-4 py-3 text-text-light">Bakåtvänd babyskål</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 text-text-light">9 kg–4 år (ca 105 cm)</td>
+          <td class="px-4 py-3 text-text">Godkänd bilbarnstol</td>
+          <td class="px-4 py-3 text-text-light">Bakåtvänd till 4 år</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 text-text-light">4–6 år (ca 105–120 cm)</td>
+          <td class="px-4 py-3 text-text">Godkänd bilbarnstol</td>
+          <td class="px-4 py-3 text-text-light">Framåtvänd med 5-punktssele</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 text-text-light">6–12 år (ca 120–135 cm)</td>
+          <td class="px-4 py-3 text-text">Boosterkudde med ryggstöd</td>
+          <td class="px-4 py-3 text-text-light">Boosterkudde med ryggstöd</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 text-text-light">135 cm+</td>
+          <td class="px-4 py-3 text-text">Bilbälte räcker</td>
+          <td class="px-4 py-3 text-text-light">Bilbälte</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Godkända säkerhetsstandarder</h2>
+  <p class="text-text-light mb-4">
+    I Sverige är två säkerhetsstandarder godkända:
+  </p>
+  <ul class="space-y-3 mb-6">
+    <li class="flex gap-3">
+      <span class="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-700 font-bold text-xs flex items-center justify-center mt-0.5">R</span>
+      <div>
+        <strong class="text-text">ECE R129 (i-Size)</strong> — nyare standarden sedan 2013. Kräver ISOFIX, testar sidokrockar och anger höjdgränser istället för vikter. Rekommenderas för nya inköp.
+      </div>
+    </li>
+    <li class="flex gap-3">
+      <span class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center mt-0.5">R</span>
+      <div>
+        <strong class="text-text">ECE R44</strong> — äldre standarden, fortfarande laglig att använda. Anger vikter (grupp 0+, 1, 2, 3). R44-stolar kan inte längre säljas som nya i EU sedan 2023, men befintliga stolar är fullt godkända att använda.
+      </div>
+    </li>
+  </ul>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Böter och konsekvenser</h2>
+  <p class="text-text-light mb-4">
+    Kör du utan bilbarnstol riskerar du:
+  </p>
+  <ul class="list-disc list-inside space-y-1 text-text-light mb-4">
+    <li>Ordningsbot: <strong>1 500 kr</strong></li>
+    <li>Pricklast i körkortsregistret</li>
+    <li>Eventuellt nedsatt försäkringsersättning vid olycka med personskada</li>
+  </ul>
+  <p class="text-text-light mb-6">
+    Utöver böter är risken förstås den verkliga konsekvensen: utan bilbarnstol ökar risken för allvarlig skada eller dödsfall vid krock dramatiskt.
+  </p>
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-5 mb-8">
+    <p class="font-semibold text-text mb-1">Hitta rätt bilbarnstol</p>
+    <p class="text-sm text-text-light mb-3">Se våra rekommenderade bilbarnstolar för alla åldrar — bakåtvända, framåtvända och boostrar med ryggstöd. Alla uppfyller R129 (i-Size).</p>
+    <a href="/bilbarnstolar/" class="inline-flex items-center bg-accent text-white font-semibold px-5 py-2.5 rounded-lg text-sm hover:bg-accent-dark transition-colors">Visa bilbarnstolar</a>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-3">Regler i taxi och buss</h2>
+  <p class="text-text-light mb-4">
+    <strong>Taxi:</strong> Bilbarnstol är obligatorisk i taxi på samma sätt som i privatbil. Taxiföretaget är skyldigt att tillhandahålla bilbarnstol om passageraren beställer det, eller om en stol finns i fordonet. Kan inte chauffören erbjuda bilbarnstol och ingen finns att tillgå kan barn åka utan — men föräldern bör i sådant fall tacka nej och ta annat transportmedel om möjligt.
+  </p>
+  <p class="text-text-light mb-6">
+    <strong>Buss och tåg:</strong> I bussar (linjetrafik) behöver barn inte använda bilbarnstol. Bilbälte ska dock användas om det finns. I tåg gäller inga krav på bilbarnstol.
+  </p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Utlandsresa med barn</h2>
+  <p class="text-text-light mb-4">
+    Reser du till ett annat EU-land gäller det landets regler — inte Sveriges. De flesta EU-länder har liknande regler (obligatorisk bilbarnstol upp till 135 cm eller 12 år), men detaljerna skiljer sig. Kontrollera alltid reglerna i det land du besöker. Hyr du bil i utlandet bör du boka bilbarnstol via biluthyrningsfirman i förväg — det är sällan tillgängligt utan förhandsbeställning.
+  </p>
+
+  <FAQ items={faqItems} title="Vanliga frågor om bilbarnstol och lag" />
+</ArticleLayout>
