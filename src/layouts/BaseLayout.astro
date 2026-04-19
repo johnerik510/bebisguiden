@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import '../styles/global.css';
 
@@ -121,6 +122,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://bebisguiden.s
   <Header />
   <main id="main-content">
     <slot />
+    <RelatedGuides />
   </main>
   <Footer />
   <CookieConsent />

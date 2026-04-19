@@ -1,0 +1,52 @@
+---
+/**
+ * Callout — standardiserad informationsbox.
+ *
+ * Användning:
+ *   <Callout type="tip" title="Tips">Innehåll</Callout>
+ *   <Callout type="warning">Varning utan titel</Callout>
+ *
+ * type: 'tip' | 'warning' | 'key' | 'info'
+ */
+interface Props {
+  type?: 'tip' | 'warning' | 'key' | 'info';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const styles: Record<string, { container: string; label: string; defaultTitle: string }> = {
+  tip: {
+    container: 'bg-green-50 border-l-4 border-green-600 text-text',
+    label: 'text-green-700',
+    defaultTitle: 'Tips',
+  },
+  warning: {
+    container: 'bg-amber-50 border-l-4 border-amber-500 text-amber-900',
+    label: 'text-amber-700',
+    defaultTitle: 'Varning',
+  },
+  key: {
+    container: 'bg-rose-50 border-l-4 border-accent text-text',
+    label: 'text-accent',
+    defaultTitle: 'Viktigt',
+  },
+  info: {
+    container: 'bg-bg-alt border-l-4 border-border-dark text-text',
+    label: 'text-text-light',
+    defaultTitle: 'Info',
+  },
+};
+
+const s = styles[type];
+const finalTitle = title ?? s.defaultTitle;
+---
+
+<aside class={`my-6 p-4 rounded-r-lg ${s.container}`} role="note">
+  {finalTitle && (
+    <p class={`font-heading text-xs font-bold uppercase tracking-wide mb-2 ${s.label}`}>{finalTitle}</p>
+  )}
+  <div class="text-sm leading-relaxed [&>p]:mb-2 last:[&>p]:mb-0">
+    <slot />
+  </div>
+</aside>

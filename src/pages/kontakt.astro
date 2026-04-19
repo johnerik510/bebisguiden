@@ -1,25 +1,72 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
+import FAQ from '../components/FAQ.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
   { label: 'Kontakt' },
 ];
+
+const faqItems = [
+  {
+    question: 'Jag har hittat felaktig information — vad gör jag?',
+    answer: 'Maila oss direkt med sidans URL och vad som är fel. Vi rättar faktafel inom 48 timmar och noterar alltid större ändringar i sidans uppdateringslogg. Faktakorrigeringar prioriteras alltid framför andra inkommande mail.',
+  },
+  {
+    question: 'Kan ni recensera min produkt?',
+    answer: 'Vi tar tacksamt emot förfrågningar från varumärken och återförsäljare som vill att vi testar deras produkter. Vi tar dock inte emot betalning för positiva recensioner och vi förbehåller oss alltid rätten att ge ärlig feedback — även om den är kritisk. Beskriv produkten, målgrupp och skicka gärna provexemplar till vår adress efter initial kontakt.',
+  },
+  {
+    question: 'Hur fungerar affiliatesamarbeten?',
+    answer: 'Vi arbetar med etablerade affiliatenätverk (Tradedoubler, Awin, Adtraction, Addrevenue) och direktavtal med enskilda butiker. Länkar är alltid märkta enligt svensk lagstiftning om sponsrade länkar och påverkar inte våra rekommendationer. Kontakta oss om du vill diskutera samarbete.',
+  },
+  {
+    question: 'Kan jag skriva gästinlägg?',
+    answer: 'Vi tar emot förfrågningar om gästinlägg från experter (barnläkare, barnmorskor, sjuksköterskor, dietister, psykologer). Skicka ett pitch-mail med ämne, relevant bakgrund och länkar till tidigare publicerade texter. Vi svarar även om vi inte kan publicera.',
+  },
+  {
+    question: 'Varför publicerar ni inte en fysisk adress?',
+    answer: 'Vi drivs som en liten redaktion och publicerar inte fysisk adress av integritetsskäl. E-post är den primära kanalen för all kommunikation, inklusive juridiska frågor och dataskyddsförfrågningar (GDPR). Vi är registrerade i Sverige och följer svensk lagstiftning.',
+  },
+  {
+    question: 'Hur snabbt svarar ni?',
+    answer: 'Normalt inom 1-3 arbetsdagar. Faktakorrigeringar och GDPR-relaterade förfrågningar prioriteras och besvaras oftast samma dag eller nästa arbetsdag. Under sommar- och julledighet kan svarstiden vara längre — vi informerar då i ett autosvar.',
+  },
+];
 ---
 
 <ArticleLayout
   title="Kontakta oss — Bebisguiden.se | Frågor och samarbeten"
-  description="Kontakta Bebisguiden.se med frågor, samarbetsförfrågningar eller feedback. Vi svarar så snart vi kan via e-post."
+  description="Kontakta Bebisguiden.se med frågor, samarbetsförfrågningar eller feedback. Vi svarar inom 1-3 arbetsdagar via e-post."
   breadcrumbs={breadcrumbs}
   showDisclaimer={false}
 >
   <div class="prose prose-sm text-text-light max-w-none">
-    <p>Har du frågor om våra tester, vill rapportera felaktig information eller är intresserad av samarbete? Kontakta oss via e-post.</p>
+    <p>Har du frågor om våra tester, vill rapportera felaktig information eller är intresserad av ett samarbete? Vi är en liten redaktion och läser alla mail som kommer in. Oavsett om du är förälder, partner, varumärke eller journalist — vi hör gärna från dig.</p>
 
     <h2>Kontaktuppgifter</h2>
-    <p>Grundare: John Erik Johansson<br />
-    E-post: <span class="js-email" data-u="vpniskguiden" data-d="proton.me"></span></p>
+    <p>
+      <strong>Grundare och redaktör:</strong> John Erik Johansson<br />
+      <strong>E-post:</strong> <span class="js-email" data-u="vpniskguiden" data-d="proton.me"></span><br />
+      <strong>Svarstid:</strong> 1-3 arbetsdagar (längre under helger och storhelger)
+    </p>
 
-    <p>Vi svarar normalt inom 1-3 arbetsdagar.</p>
+    <h2>Vad du kan kontakta oss om</h2>
+    <ul>
+      <li><strong>Faktafel eller föråldrad information:</strong> Upptäcker du att ett pris, en specifikation eller en medicinsk uppgift inte stämmer — hör av dig. Vi rättar snabbt och transparent.</li>
+      <li><strong>Frågor om våra tester:</strong> Om du vill veta hur vi testat en produkt, vilka kriterier vi använt, eller varför en viss produkt rankats på ett visst sätt.</li>
+      <li><strong>Förslag på nya guider eller ämnen:</strong> Saknar du en guide om något specifikt? Vi uppdaterar vår redaktionella kalender utifrån läsarbehov.</li>
+      <li><strong>Samarbeten och annonsering:</strong> Varumärken, butiker och återförsäljare — kontakta oss för affiliatesamarbeten, produkttester eller sponsrat innehåll (alltid tydligt märkt).</li>
+      <li><strong>Gästinlägg från experter:</strong> Barnläkare, barnmorskor, sjuksköterskor, dietister och psykologer är välkomna att pitcha gästinlägg.</li>
+      <li><strong>Press och media:</strong> För citat, intervjuer eller bakgrundsinformation till artiklar — hör av dig så återkommer vi snabbt.</li>
+      <li><strong>GDPR och personuppgifter:</strong> Begäran om dataåtkomst, radering eller invändning mot behandling besvaras enligt dataskyddsförordningen.</li>
+    </ul>
+
+    <h2>Hur vi arbetar</h2>
+    <p>Bebisguiden är en oberoende konsumentguide. Vi säljer inte produkter själva, utan länkar till etablerade svenska butiker via affiliatenätverk. Det innebär att vi får en mindre provision om du köper via våra länkar — men ersättningen påverkar inte våra rekommendationer. Vi dömer alltid utifrån pris, säkerhet, användarvänlighet och vad oberoende tester (Folksam, Plus Test, Testfakta) visar.</p>
+
+    <p>Läs gärna vår <a href="/redaktionell-policy/" class="text-accent hover:underline">redaktionella policy</a> för mer information om hur vi granskar, faktakontrollerar och uppdaterar innehåll.</p>
   </div>
+
+  <FAQ items={faqItems} />
 </ArticleLayout>

@@ -3,6 +3,34 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const faqItems = [
+  {
+    question: 'Hur väljer ni vilka märken som presenteras?',
+    answer: 'Vi täcker de varumärken som är vanligast på den svenska marknaden och som finns hos våra partnerbutiker. Fokus ligger på märken med gedigen säkerhetsprofil (bilbarnstolar, spjälsängar) och produkter med dokumenterad kvalitet från användare och krocktester (Folksam, Plus Test).',
+  },
+  {
+    question: 'Är premiummärken som Bugaboo och Stokke värda priset?',
+    answer: 'Det beror på hur länge du tänker använda produkten. Premium-barnvagnar håller ofta för två barn eller andrahandsmarknad, vilket sänker effektiv kostnad. Stokke Tripp Trapp används ofta upp i skolålder. Budgetmärken som Joie, Maxi-Cosi och Britax kan i många fall leverera likvärdig säkerhet till lägre pris.',
+  },
+  {
+    question: 'Vilket märke är säkrast för bilbarnstolar?',
+    answer: 'Säkerhet bestäms av specifik modell, inte märke. Leta efter i-Size-certifiering, Plus Test-godkänd (Folksam) och bakåtvänt läge upp till 4 år. Britax Römer, Cybex, Joie och BeSafe har alla modeller som presterat högst i svenska krocktester.',
+  },
+  {
+    question: 'Hur vet jag att ett märke är tillverkat i Sverige eller Europa?',
+    answer: 'Svenska varumärken: BabyBjörn, Emmaljunga, Stokke (norskt), Voksi. Tyska premiummärken: Cybex, Britax Römer, Recaro. Nederländska: Bugaboo, Nuna. Tillverkningsland står alltid på produktförpackningen och hos återförsäljarens produktsida.',
+  },
+  {
+    question: 'Finns reservdelar och service tillgängligt för alla märken?',
+    answer: 'Etablerade märken som Bugaboo, Emmaljunga, Stokke och Britax har officiell reservdelsservice i Sverige. Billigare märken har ofta sämre tillgång till reservdelar, vilket kan göra totalkostnaden högre över tid om något går sönder.',
+  },
+  {
+    question: 'Kan jag lita på säkerhet från mindre kända märken?',
+    answer: 'Ja, om produkten uppfyller EU-standarder och svenska säkerhetskrav (ECE R129/i-Size för bilbarnstolar, EN 1888 för barnvagnar, EN 716 för spjälsängar). Testresultat från Folksam Plus Test och Testfakta är oberoende och täcker både kända och mindre märken.',
+  },
+];
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -165,6 +193,8 @@ const brands = [
     </ul>
   </div>
 
+
+  <FAQ items={faqItems} />
 
   <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

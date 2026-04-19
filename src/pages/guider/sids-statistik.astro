@@ -1,25 +1,52 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import FAQ from '../../components/FAQ.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
   { label: 'Guider', href: '/guider/' },
   { label: 'SIDS-statistik Sverige' },
 ];
----
 
+const faqItems = [
+  {
+    question: 'Hur vanligt är plötslig spädbarnsdöd i Sverige idag?',
+    answer: 'Enligt Socialstyrelsen inträffar cirka 10–15 fall per år i Sverige. Sverige är ett av världens säkraste länder för spädbarn tack vare tidig implementering av ryggläge-kampanjen och BVC-rådgivning. Absolut risk är låg, men förebyggande åtgärder minskar risken ytterligare.',
+  },
+  {
+    question: 'När i bebisens liv är SIDS-risken störst?',
+    answer: 'Risken är högst mellan 2 och 4 månaders ålder. Över 90% av alla SIDS-fall inträffar före 6 månaders ålder, och majoriteten i sömn under natten eller dagsömn. Efter 12 månader är SIDS extremt ovanligt.',
+  },
+  {
+    question: 'Vilka är de viktigaste riskfaktorerna för SIDS?',
+    answer: 'De dokumenterade riskfaktorerna är: mageläge eller sidoläge vid sömn, för varm sovmiljö, rökning i omgivningen eller under graviditeten, samsömn på soffa/fåtölj, lösa föremål i sängen (kuddar, täcken, gosedjur), och prematur födsel. Det viktigaste skyddet är ryggläge vid all sömn.',
+  },
+  {
+    question: 'Varför minskade SIDS så dramatiskt efter 1991?',
+    answer: 'År 1992 startade Socialstyrelsens kampanj "Tillbaka till ryggen" efter att forskning från flera länder visat att ryggläge halverade risken. Inom några år sjönk antalet fall med över 80%. Andra faktorer som bidragit: sänkt andel rökande föräldrar, bättre förlossningsvård och ökad kännedom om säker sovmiljö.',
+  },
+  {
+    question: 'Kan en babyvakt förebygga SIDS?',
+    answer: 'Det finns inga vetenskapliga studier som visar att babyvakter eller andningsmonitorer (även så kallade smarta babyvakter) minskar risken för SIDS. Svenska barnläkarföreningen och amerikanska AAP avråder från att förlita sig på dessa enheter som SIDS-skydd. Säker sovmiljö och ryggläge är det som faktiskt fungerar.',
+  },
+  {
+    question: 'Påverkar amning SIDS-risken?',
+    answer: 'Ja. Flera studier (bl.a. AAP:s metaanalys) visar att amning i minst två månader sänker risken för SIDS, och att amning i minst fyra månader ger en ännu tydligare skyddseffekt. Effekten är oberoende av andra riskfaktorer.',
+  },
+];
+---
 <ArticleLayout
   title="SIDS-statistik Sverige 2026 – riskfaktorer"
   description="Plötslig spädbarnsdöd (SIDS) i Sverige: antal fall, riskfaktorer och historisk minskning. Källor: Socialstyrelsen och SKR."
   breadcrumbs={breadcrumbs}
   canonical="https://bebisguiden.se/guider/sids-statistik/"
-  updatedDate="2026-04-05"
+  updatedDate="2026-04-19"
   showDisclaimer={false}
 >
   <p class="text-base text-text-light mb-8 max-w-2xl">
     Plötslig spädbarnsdöd (SIDS, Sudden Infant Death Syndrome) är en av de mest fruktade riskerna bland nyblivna föräldrar. Den goda nyheten är att Sverige är ett av världens säkraste länder för spädbarn och att antalet SIDS-fall har minskat dramatiskt de senaste decennierna tack vare förebyggande kampanjer. Här samlar vi aktuell statistik och vad forskningen säger om riskfaktorer.
-  </p>
+   För mer information och vårdkontakt, se <a href="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/" rel="noopener noreferrer" target="_blank" class="text-accent hover:underline">1177.se om plötslig spädbarnsdöd och förebyggande råd</a>.</p>
 
   <!-- Nyckeltal -->
   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
@@ -184,6 +211,8 @@ const breadcrumbs = [
       <li><a href="/guider/bebis-checklista/" class="text-accent hover:underline">Komplett checklista inför bebisen</a></li>
     </ul>
   </div>
+
+  <FAQ items={faqItems} />
 
   <RetailerCTAs heading="Säkra sovprodukter — jämför hos våra partnerbutiker" compact />
 </ArticleLayout>

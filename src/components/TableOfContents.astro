@@ -1,0 +1,40 @@
+---
+/**
+ * TableOfContents — återanvändbar innehållsförteckning.
+ *
+ * Användning:
+ *   <TableOfContents headings={[{ text: 'Rubrik', slug: 'rubrik' }, ...]} />
+ *
+ * Tips: generera headings-arrayen från MDX frontmatter eller manuellt för
+ * .astro-sidor. Varje H2 på sidan måste ha id={slug} för att länkarna ska fungera.
+ */
+interface Heading {
+  text: string;
+  slug: string;
+}
+
+interface Props {
+  headings: Heading[];
+  title?: string;
+}
+
+const { headings, title = 'Innehåll' } = Astro.props;
+---
+
+{headings.length > 0 && (
+  <nav class="my-6 p-5 bg-bg-alt border border-border rounded-xl" aria-label={title}>
+    <p class="font-heading text-sm font-semibold text-primary uppercase tracking-wide mb-3">{title}</p>
+    <ol class="space-y-2 list-decimal list-inside">
+      {headings.map((h) => (
+        <li class="text-sm">
+          <a
+            href={`#${h.slug}`}
+            class="text-accent hover:text-accent-dark underline decoration-dotted underline-offset-4"
+          >
+            {h.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
