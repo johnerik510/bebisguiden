@@ -36,11 +36,13 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://bebisguiden.s
   <meta property="og:site_name" content="Bebisguiden" />
   <meta property="og:locale" content="sv_SE" />
   <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:alt" content={`${title} — Bebisguiden`} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageUrl} />
+  <meta name="twitter:image:alt" content={`${title} — Bebisguiden`} />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -76,6 +78,21 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://bebisguiden.s
     "description": "Oberoende tester och jämförelser av barnprodukter",
     "foundingDate": "2026",
     "sameAs": []
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Erik Johansson",
+    "jobTitle": "Grundare & redaktör",
+    "url": "https://bebisguiden.se/om-oss/",
+    "email": "vpniskguiden@proton.me",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Bebisguiden",
+      "url": "https://bebisguiden.se"
+    },
+    "knowsAbout": ["barnprodukter", "bilbarnstolar", "barnvagnar", "babyvakter", "föräldraskap", "spädbarnsutveckling", "barnsäkerhet"]
   })} />
 
   <!-- GA4: deferred to after page load, respects cookie consent -->

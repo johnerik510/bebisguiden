@@ -273,18 +273,29 @@ const allaKategorier = [
     </div>
   </section>
 
-  <!-- Guider -->
-  <section class="py-10 bg-white border-t border-border">
+  <!-- Guider — mellan-hubbar -->
+  <section class="py-12 bg-white border-t border-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="font-heading text-xl sm:text-2xl font-bold text-primary">Köpguider och babyguider</h2>
-          <p class="text-text-light text-sm mt-1">Allt du behöver veta innan du köper — från bilbarnstolsregler till hur du väljer rätt barnvagn</p>
-        </div>
-        <a href="/guider/" class="hidden sm:inline-block text-sm font-semibold text-accent hover:text-accent-dark transition-colors whitespace-nowrap">Se alla guider →</a>
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary mb-2">Bläddra guider efter ämne</h2>
+        <p class="text-text-light text-sm max-w-2xl mx-auto">Fem temaområden — från hälsa och sömn till utrustning och förberedelser inför babyn.</p>
       </div>
-      <div class="mt-4">
-        <a href="/guider/" class="inline-flex items-center gap-2 text-accent font-semibold hover:underline sm:hidden text-sm">Se alla köpguider och babyguider →</a>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {[
+          { name: 'Hälsa & symptom', href: '/guider/halsa-och-symptom/', desc: 'Feber, kolik, magont, utslag' },
+          { name: 'Sömn', href: '/guider/somn/', desc: 'Säker sovmiljö, sovrutiner' },
+          { name: 'Mat & amning', href: '/guider/mat-och-amning/', desc: 'Amning, fast föda, BLW' },
+          { name: 'Utrustning', href: '/guider/utrustning/', desc: 'Bilbarnstol, vagn, bärsele' },
+          { name: 'Förberedelser', href: '/guider/forberedelser/', desc: 'Checklista, packlista, vecka för vecka' },
+        ].map((hub) => (
+          <a href={hub.href} class="block p-4 bg-bg-soft rounded-xl border border-border hover:border-accent hover:shadow-md transition-all">
+            <div class="font-heading font-bold text-text text-sm mb-1">{hub.name}</div>
+            <div class="text-xs text-text-light leading-snug">{hub.desc}</div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-6">
+        <a href="/guider/" class="text-sm font-semibold text-accent hover:underline">Se alla guider →</a>
       </div>
     </div>
   </section>
