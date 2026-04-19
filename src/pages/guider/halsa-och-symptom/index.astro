@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const guides = [
+  { title: 'Bebis feber — när ska jag oroa mig?', href: '/guider/bebis-feber/', desc: 'Normal kroppstemperatur, gränsvärden per ålder och när du ska kontakta 1177 eller åka in akut.' },
+  { title: 'Bebis förkyld — symtom och egenvård', href: '/guider/bebis-forkyld/', desc: 'Snuva, hosta och feber hos småbarn. Vad du gör hemma och när det blir allvarligt.' },
+  { title: 'Bebis hostar — orsaker och behandling', href: '/guider/bebis-hostad/', desc: 'Skäll-hosta, slemhosta och kikhosta — så känner du igen dem och vad du gör åt dem.' },
+  { title: 'Bebis kolik — vad det är och hur du hjälper', href: '/guider/bebis-kolik/', desc: '3-3-3-regeln, varför kolik uppstår och vilka tröstmetoder som faktiskt fungerar enligt forskningen.' },
+  { title: 'Bebis magont — gaser, förstoppning, infektioner', href: '/guider/bebis-magont/', desc: 'Hur du skiljer på gasknip, förstoppning, virus och något allvarligare som behöver vård.' },
+  { title: 'Bebis diarré — när är det farligt?', href: '/guider/bebis-diarre/', desc: 'Vätskeersättning, varningstecken på uttorkning och när 1177 är rätt nummer att ringa.' },
+  { title: 'Bebis förstoppning — orsaker och åtgärder', href: '/guider/bebis-forstoppning/', desc: 'Hur ofta är normalt, vad kan provas hemma och när du ska söka vård.' },
+  { title: 'Bebis spottar upp — kräks eller ofarligt?', href: '/guider/bebis-spott-upp/', desc: 'Skillnaden mellan harmlös spottning, reflux och kräkning som kräver bedömning.' },
+  { title: 'Bebis utslag — utredning per typ', href: '/guider/bebis-utslag/', desc: 'Eksem, blöjutslag, värmeutslag, allergiska reaktioner — så identifierar du orsaken.' },
+  { title: 'Bebis allergier — symtom och utredning', href: '/guider/bebis-allergier/', desc: 'Komjölk, ägg, nötter och pollen. Hur allergi yttrar sig hos småbarn och hur den utreds.' },
+  { title: 'Bebis tandsprickning — symtom och lindring', href: '/guider/bebis-tandsprickning/', desc: 'När de första tänderna kommer, vad som är normalt och vad som lindrar.' },
+  { title: 'Bebis öroninflammation (otitis)', href: '/guider/bebis-otitis/', desc: 'Symtom, när antibiotika behövs och hur du själv kan lindra smärta i hemmet.' },
+  { title: 'Bebis gulsot — när är den ofarlig?', href: '/guider/bebis-gulsot/', desc: 'Fysiologisk vs patologisk gulsot, ljusbehandling och uppföljning på BB.' },
+];
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Hälsa och symtom hos bebis',
+  description: 'Guider om vanliga symtom hos bebis: feber, hosta, kolik, magont, diarré, utslag, allergi och mer. Faktagranskat mot 1177 och Socialstyrelsen.',
+  url: 'https://bebisguiden.se/guider/halsa-och-symptom/',
+  hasPart: guides.map((g) => ({ '@type': 'WebPage', name: g.title, url: `https://bebisguiden.se${g.href}` })),
+};
+---
+
+<BaseLayout
+  title="Hälsa och symtom hos bebis — guider och råd | Bebisguiden"
+  description="Symtomguider för bebis: feber, hosta, kolik, diarré, utslag, allergi, tandsprickning och mer. Faktagranskat mot 1177 och Socialstyrelsen."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Hem', href: '/' }, { label: 'Guider', href: '/guider/' }, { label: 'Hälsa och symtom' }]} />
+    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-4">Hälsa och symtom hos bebis</h1>
+    <p class="text-text-light mb-6">Vanliga åkommor hos småbarn — vad är normalt, vad kan vänta till morgonen och när är det 112-läge? Allt faktagranskat mot 1177 och Socialstyrelsen.</p>
+
+    <div class="prose prose-lg max-w-none text-text mb-8">
+      <p>Att vara förälder första gången innebär att tolka kroppssignaler från en person som inte kan berätta vad som är fel. Bebisar blir sjuka oftare än vuxna — det är en del av immunförsvarets mognad — men det betyder också att du kommer att möta feber, hosta, magbesvär och utslag i en omfattning du inte sett tidigare. De flesta tillfällen är ofarliga och löser sig själva. Några kräver vård. Skillnaden går oftast att avgöra på enkla bedömningskriterier, om man vet vilka man ska titta efter.</p>
+      <p>De vanligaste anledningarna till oro hos småbarnsföräldrar är feber, hosta, kolik och utslag. Här samlar vi allt vi skrivit om just dessa symtom — varje guide är skriven utifrån officiella riktlinjer från 1177, Socialstyrelsen och svenska BVC-rekommendationer, och varje guide förklarar både vad som är normalt och var gränsen går till "ring 1177" eller "åk in".</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">När du alltid ska söka vård direkt</h2>
+      <p>Oavsett vilket symtom det rör sig om finns det tecken som alltid ska tas på allvar: bebisen är slö och svår att väcka, andas väldigt snabbt eller väldigt tungt, har petekier (små röda prickar som inte bleknar vid tryck), kraftig oavbruten gråt över flera timmar, eller feber under tre månaders ålder. Är något av dessa tecken på plats är det inte längre en hemmabedömning — då ringer du 1177 eller åker till barnakut direkt.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Det som ofta känns dramatiskt men sällan är farligt</h2>
+      <p>Spottning efter måltid, skinnlika utslag i blöjan, tandsprickning som verkar göra ont, en hosta som låter värre än den är. De flesta av de saker som småbarn dagligen visar upp är normala — kroppen är ny, huden är känslig, magen lär sig fungera. Vi går igenom varje vanligt symtom enskilt och förklarar både hur det yttrar sig, vad som triggar det och hur du själv kan lindra hemma. Tanken är att du ska kunna agera lugnt istället för att googla mitt i natten.</p>
+      <p>Inget på den här sidan ersätter sjukvården. Är du osäker — ring 1177. Vi finns för att ge dig grundkunskap så att du vet vilka frågor du själv ska kunna besvara, och när proffshjälp är rätt steg.</p>
+    </div>
+
+    <div class="space-y-4">
+      {guides.map((g) => (
+        <a href={g.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
+          <h2 class="font-heading text-lg font-bold text-text group-hover:text-accent transition-colors">{g.title}</h2>
+          <p class="text-sm text-text-light mt-1">{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+</BaseLayout>

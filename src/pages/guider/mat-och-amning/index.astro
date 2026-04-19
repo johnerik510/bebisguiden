@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const guides = [
+  { title: 'Amma eller flaska — fördelar och nackdelar', href: '/guider/amma-eller-flaska/', desc: 'Faktagrundad jämförelse utan moraliserande pekpinnar — välj det som funkar för er familj.' },
+  { title: 'Amningstips — så får du det att funka', href: '/guider/amning-tips/', desc: 'Tag, ställning, mjölkproduktion och vanliga problem under första veckorna.' },
+  { title: 'När börjar bebis äta fast föda?', href: '/guider/nar-borjar-bebis-ata/', desc: 'Tecken på att bebisen är redo, vad WHO och Livsmedelsverket säger om timing.' },
+  { title: 'Bebis mat 4 månader — vad kan introduceras?', href: '/guider/bebis-mat-4-manader/', desc: 'Tidig smakintroduktion vs full fast föda — vad är skillnaden och vad rekommenderas.' },
+  { title: 'Introduktion av fast föda — steg för steg', href: '/guider/introduktion-fast-foda/', desc: 'Vilka livsmedel, i vilken ordning, allergener och hur du undviker kvävning.' },
+  { title: 'BLW-guide (Baby-Led Weaning)', href: '/guider/blw-guide/', desc: 'Bebisstyrd matning — fördelar, säkerhet, exempel på första måltiderna.' },
+];
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Mat och amning',
+  description: 'Guider om amning, flaskmatning, fast föda och BLW för bebis.',
+  url: 'https://bebisguiden.se/guider/mat-och-amning/',
+  hasPart: guides.map((g) => ({ '@type': 'WebPage', name: g.title, url: `https://bebisguiden.se${g.href}` })),
+};
+---
+
+<BaseLayout
+  title="Mat och amning — bröst, flaska, fast föda och BLW | Bebisguiden"
+  description="Allt om bebisens mat: amningstips, flaskmatning, introduktion av fast föda, BLW och tidig smakintroduktion. Faktagranskat mot Livsmedelsverket."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Hem', href: '/' }, { label: 'Guider', href: '/guider/' }, { label: 'Mat och amning' }]} />
+    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-4">Mat och amning</h1>
+    <p class="text-text-light mb-6">Bröst eller flaska, när maten startar och hur du introducerar smaker, allergener och vanlig familjemat — utan onödig stress.</p>
+
+    <div class="prose prose-lg max-w-none text-text mb-8">
+      <p>Få områden i föräldraskapet är så omgärdade av åsikter som mat. Amning vs flaska, BLW vs purér, allergener tidigt vs sent, sockerförbud vs avslappnad inställning — alla har en uppfattning, många är mycket bestämda i sin åsikt, och få är faktiskt baserade på aktuell forskning. Vår ambition är att samla det Livsmedelsverket, WHO och svenska BVC faktiskt rekommenderar — och förklara nyanserna utan att moralisera.</p>
+      <p>Här samlar vi guiderna om amning, flaskmatning och introduktion av fast föda. Allt utgår från officiella svenska riktlinjer kombinerat med praktiska erfarenheter.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Amning är rekommendationen — men inte ett krav</h2>
+      <p>WHO och Livsmedelsverket rekommenderar helamning de första sex månaderna och fortsatt amning kombinerat med fast föda upp till 1–2 års ålder. Det är väl underbyggt. Men det betyder inte att flaskmatning är dåligt — modersmjölksersättning är säkert, näringsmässigt komplett och ger bebisen allt den behöver för att växa och utvecklas. Det viktigaste är att bebisen blir matad, älskad och får en lugn matsituation. Om amning fungerar är det utmärkt. Om det inte fungerar är flaska helt OK.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Fast föda — när och hur</h2>
+      <p>Tidigast vid 4 månader, senast vid 6 månader, ska bebisen få börja med smakprover och successivt övergå till fast föda. Tecken att bebisen är redo: kan sitta upp med stöd, har bra huvudkontroll, har tappat tungstötningsreflexen och visar intresse för det vuxna äter. Innan dessa tecken är på plats är det fortfarande mjölk som gäller.</p>
+      <p>Allergener (jordnöt, ägg, mjölk, fisk, vete) ska introduceras TIDIGT, inte sent. Forskning från senaste 10 åren visar att tidig introduktion (4–6 mån) minskar risken för matallergi senare i livet — det är tvärtom mot vad som rekommenderades fram till 2010.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">BLW vs purér — finns inget rätt svar</h2>
+      <p>Baby-Led Weaning (bebisstyrd matning) innebär att bebisen själv plockar upp och äter mjuka bitar från start, utan purésteget. Det fungerar utmärkt för många familjer och stöttar finmotorik. Klassiska purér fungerar också utmärkt. Många kombinerar — purér när det är praktiskt, BLW vid sittande måltider. Båda är säkra om du följer enkla regler om konsistens och bitstorlek.</p>
+      <p>Inget i den här hubben ersätter individuell rådgivning från BVC eller dietist om bebisen har specifika behov.</p>
+    </div>
+
+    <div class="space-y-4">
+      {guides.map((g) => (
+        <a href={g.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
+          <h2 class="font-heading text-lg font-bold text-text group-hover:text-accent transition-colors">{g.title}</h2>
+          <p class="text-sm text-text-light mt-1">{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+</BaseLayout>

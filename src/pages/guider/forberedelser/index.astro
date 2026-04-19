@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const guides = [
+  { title: 'Checklista inför bebis — allt du behöver köpa', href: '/guider/bebis-checklista/', desc: 'Maste-ha, bra-att-ha och vad du faktiskt kan vänta med tills bebisen är på plats.' },
+  { title: 'Packlista till sjukhuset (BB)', href: '/guider/packlista-sjukhuset/', desc: 'Vad du ska packa till förlossning och BB — för dig, partnern och bebisen.' },
+  { title: 'Vad behöver en nyfödd?', href: '/guider/vad-behover-nyfodd/', desc: 'De första veckornas absolut nödvändiga saker — inget överflödigt, inget bortglömt.' },
+  { title: 'Graviditetsveckor — vad händer när?', href: '/guider/graviditetsveckor/', desc: 'Vecka för vecka från befruktning till förlossning — utveckling, kontroller och vad som är normalt.' },
+];
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Förberedelser inför bebis',
+  description: 'Checklistor och guider för förberedelser inför bebisens ankomst — checklistor, packlistor, graviditet och första veckorna hemma.',
+  url: 'https://bebisguiden.se/guider/forberedelser/',
+  hasPart: guides.map((g) => ({ '@type': 'WebPage', name: g.title, url: `https://bebisguiden.se${g.href}` })),
+};
+---
+
+<BaseLayout
+  title="Förberedelser inför bebis — checklistor och packlistor | Bebisguiden"
+  description="Förberedelseguider för bebisens ankomst: checklista, packlista till BB, vad nyfödd behöver och graviditetsveckor förklarade."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Hem', href: '/' }, { label: 'Guider', href: '/guider/' }, { label: 'Förberedelser' }]} />
+    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-4">Förberedelser inför bebis</h1>
+    <p class="text-text-light mb-6">Checklistor, packlistor och vad du faktiskt behöver under graviditet och första veckorna — utan överköp.</p>
+
+    <div class="prose prose-lg max-w-none text-text mb-8">
+      <p>Att vänta sitt första barn innebär ett konstant beslutsfattande om saker man aldrig tidigare behövt ha en åsikt om. Vad är skillnaden mellan en duovagn och en sittvagn? Hur många bodyer behövs egentligen? Måste vi ha skötbord eller räcker det med skötunderlag? Och vad ska faktiskt packas till BB — utöver det självklara?</p>
+      <p>Här samlar vi förberedelseguiderna — listor som är realistiska och inte överköper. Tanken är att du ska ha det som verkligen behövs, slippa stå med 30 fleecedräkter du aldrig använder, och kunna fokusera på det viktiga: att förbereda er båda mentalt för det stora som händer.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Maste-ha vs trevligt-att-ha</h2>
+      <p>De flesta bebischecklistor du hittar online är överdrivna — skrivna antingen av butiker (som vill sälja allt) eller av föräldrar i Instagram-tyngd nostalgi. Vi delar in alla checklistor i tre kategorier: kritiskt (kan inte klara sig utan), bra-att-ha (gör vardagen smidigare) och vänta-och-se (köp efter behov). Det sparar både pengar, plats och beslutsångest.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Packlista till BB — börja förbereda i vecka 35</h2>
+      <p>Att ha väskan packad senast i graviditetsvecka 36 är en god regel. Förlossningen kan starta tidigare än planerat. Packlistan finns färdig — det enda du behöver göra är att gå igenom den, packa det som krävs och ställa väskan vid dörren. Glöm inte din egna komfort: dina kläder, snacks, laddare med lång sladd och något att läsa eller lyssna på.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Graviditetsveckor — förstå vad som händer</h2>
+      <p>Att läsa på vecka för vecka under graviditeten har två funktioner: dels förstå vad som faktiskt händer i kroppen och med fostret, dels veta vilka kontroller och rutiner som dyker upp när. Det dämpar ovetenhetsoron och hjälper dig ställa rätt frågor till barnmorskan vid kontrollerna.</p>
+      <p>Och slutligen: ingen är någonsin "färdigförberedd" inför första bebisen. Det går aldrig. Det är en del av resan. Du gör det bästa du kan — och det är mer än tillräckligt.</p>
+    </div>
+
+    <div class="space-y-4">
+      {guides.map((g) => (
+        <a href={g.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
+          <h2 class="font-heading text-lg font-bold text-text group-hover:text-accent transition-colors">{g.title}</h2>
+          <p class="text-sm text-text-light mt-1">{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+</BaseLayout>

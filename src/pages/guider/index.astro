@@ -2,6 +2,34 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const faqItems = [
+  {
+    question: 'Hur är guiderna på Bebisguiden framtagna?',
+    answer: 'Varje guide bygger på officiella källor (Socialstyrelsen, 1177, Läkemedelsverket, BVC-rekommendationer) kombinerat med praktiska erfarenheter. Vi verifierar fakta mot primärkällor innan publicering och anger senast uppdaterat-datum på varje guide.',
+  },
+  {
+    question: 'Hur ofta uppdateras guiderna?',
+    answer: 'Hälso- och säkerhetsguider ses över minst var tredje månad. Köpguider uppdateras löpande när nya produkter lanseras eller när priser och specifikationer ändras. Alla större revisioner bumpar sidans uppdateringsdatum.',
+  },
+  {
+    question: 'Ersätter guiderna vård eller medicinsk rådgivning?',
+    answer: 'Nej. Våra hälsoguider är informativa och hänvisar alltid till 1177 och BVC vid konkreta symtom eller osäkerhet. Kontakta alltid sjukvården om din bebis verkar sjuk, och ring 112 vid akutläge.',
+  },
+  {
+    question: 'Varför finns det affiliatelänkar i guiderna?',
+    answer: 'När vi rekommenderar produkter länkar vi till butiker via affiliatelänkar. Det kostar inget extra för dig och hjälper oss att driva sajten. Vi rekommenderar bara produkter vi själva skulle köpa och våra åsikter påverkas inte av provisioner.',
+  },
+  {
+    question: 'Vilken guide ska jag läsa först som nybliven förälder?',
+    answer: 'Börja med Checklista inför bebis och Packlista sjukhuset. Läs sedan Säker sovmiljö och SIDS-statistik innan bebisen kommer hem. När bebisen är född är Bebis sovschema, Amningstips och Bebis feber ofta mest relevanta de första veckorna.',
+  },
+  {
+    question: 'Hur hittar jag svar på en specifik fråga?',
+    answer: 'Guiderna är uppdelade i köpguider (barnvagn, bilbarnstol, bärsele etc.), hälsoguider (feber, hosta, kolik, utslag) och livssituationer (sömn, amning, fast föda). Använd även sökfunktionen eller klicka dig vidare via de relaterade artiklarna längst ner på varje sida.',
+  },
+];
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -66,7 +94,18 @@ const guides = [
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
     <Breadcrumbs items={breadcrumbs} />
-    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-6">Guider</h1>
+    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-4">Guider</h1>
+
+    <h2 class="font-heading text-lg font-bold text-text mb-3">Bläddra efter ämne</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+      <a href="/guider/halsa-och-symptom/" class="block bg-bg-soft border border-border rounded-lg px-4 py-3 text-text hover:border-accent hover:text-accent transition-colors text-sm font-medium">Hälsa & symtom</a>
+      <a href="/guider/somn/" class="block bg-bg-soft border border-border rounded-lg px-4 py-3 text-text hover:border-accent hover:text-accent transition-colors text-sm font-medium">Sömn</a>
+      <a href="/guider/mat-och-amning/" class="block bg-bg-soft border border-border rounded-lg px-4 py-3 text-text hover:border-accent hover:text-accent transition-colors text-sm font-medium">Mat & amning</a>
+      <a href="/guider/utrustning/" class="block bg-bg-soft border border-border rounded-lg px-4 py-3 text-text hover:border-accent hover:text-accent transition-colors text-sm font-medium">Utrustning</a>
+      <a href="/guider/forberedelser/" class="block bg-bg-soft border border-border rounded-lg px-4 py-3 text-text hover:border-accent hover:text-accent transition-colors text-sm font-medium">Förberedelser</a>
+    </div>
+
+    <h2 class="font-heading text-lg font-bold text-text mb-3">Alla guider</h2>
     <div class="space-y-4">
       {guides.map(guide => (
         <a href={guide.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
@@ -75,8 +114,9 @@ const guides = [
         </a>
       ))}
     </div>
-  </div>
 
+    <FAQ items={faqItems} />
+  </div>
 
   <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </BaseLayout>

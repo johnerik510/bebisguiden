@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const guides = [
+  { title: 'Så väljer du rätt bilbarnstol', href: '/guider/valja-bilbarnstol/', desc: 'ISOFIX eller bältat? i-Size, bakåtvänd körning och vad krocktesterna säger.' },
+  { title: 'Regler för bilbarnstol i Sverige 2026', href: '/guider/bilbarnstol-regler/', desc: 'Vad lagen säger, hur länge bakåtvänt och vad som gäller i taxi och på flyg.' },
+  { title: 'Hur länge ska barn åka bakåtvänt?', href: '/guider/bakatvand-hur-lange/', desc: 'Forskningen bakom bakåtvänd körning och konkreta råd per ålder och vikt.' },
+  { title: 'Så väljer du rätt barnvagn', href: '/guider/valja-barnvagn/', desc: 'Duovagn, sittvagn, terrängvagn — vi sorterar mellan alternativen.' },
+  { title: 'Så väljer du rätt syskonvagn', href: '/guider/valja-syskonvagn/', desc: 'Tandem, bredvid eller toddler-board? Plus, minus och vilka modeller som funkar.' },
+  { title: 'Barnvagn på flyg — regler och tips', href: '/guider/barnvagn-flyg/', desc: 'Vilka vagnar du får ta med, hur du checkar in dem och vad som händer vid skada.' },
+  { title: 'Så väljer du rätt babyvakt', href: '/guider/valja-babyvakt/', desc: 'DECT, video eller WiFi — vi jämför typerna och rekommenderar utifrån behov.' },
+  { title: 'Så väljer du rätt bärsele', href: '/guider/valja-barsele/', desc: 'Mjukbärare, bärsjal eller strukturbärare — och vad M-positionen betyder.' },
+  { title: 'Så väljer du rätt matstol', href: '/guider/valja-matstol/', desc: 'Hög matstol, klaffstol eller tillväxtstol — ergonomi, fotstöd och städvänlighet.' },
+];
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Köpguider för utrustning',
+  description: 'Köpguider för bilbarnstol, barnvagn, babyvakt, bärsele och matstol — så väljer du rätt produkter till bebisen.',
+  url: 'https://bebisguiden.se/guider/utrustning/',
+  hasPart: guides.map((g) => ({ '@type': 'WebPage', name: g.title, url: `https://bebisguiden.se${g.href}` })),
+};
+---
+
+<BaseLayout
+  title="Köpguider bebisutrustning — vagn & bilbarnstol | Bebisguiden"
+  description="Komplett samling köpguider för bebisutrustning: bilbarnstol, barnvagn, syskonvagn, babyvakt, bärsele och matstol. Krocktester, regler och rekommendationer."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Hem', href: '/' }, { label: 'Guider', href: '/guider/' }, { label: 'Utrustning' }]} />
+    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-4">Köpguider för utrustning</h1>
+    <p class="text-text-light mb-6">Bilbarnstol, barnvagn, babyvakt, bärsele och matstol — fokuserade köpguider för de stora investeringarna under första året.</p>
+
+    <div class="prose prose-lg max-w-none text-text mb-8">
+      <p>Bebisutrustning är ett område där priserna varierar enormt — från bilbarnstolar i 2 000-kronorsklass till lyxvagnar för 12 000+. Skillnaden i pris speglar sällan skillnaden i säkerhet eller funktion. Vad som däremot spelar enorm roll är att du väljer rätt KATEGORI för era behov: rätt typ av barnvagn för var ni bor, rätt sorts bilbarnstol för era bilar, rätt bärsele för bebisens ålder och så vidare.</p>
+      <p>Här samlar vi alla våra köpguider för bebisutrustning — fokuserade på FUNKTION och SÄKERHET snarare än varumärke och pris. Allt utgår från officiella krocktester (Folksam, Plus Test), EU-standarder och svenska transportstyrelsens rekommendationer.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Bilbarnstol är den absolut viktigaste investeringen</h2>
+      <p>Inget annat på listan har lika stor faktisk säkerhetspåverkan som bilbarnstolen. Sverige har världens strängaste rekommendationer kring bakåtvänd körning — barn ska sitta bakåtvänt minst till 4 års ålder, gärna längre. Det halverar dödsrisken vid frontalkollision. Här finns inget utrymme för "tillräckligt bra" — välj en stol som krocktestats högt, är rätt för bilen och som är rätt monterad. Vi har separata guider för val av stol, gällande regler och hur länge bakåtvänd körning ska pågå.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Barnvagn — köp efter livsstil, inte efter trend</h2>
+      <p>Bor ni i lägenhet med trapphus utan hiss? Då spelar vagnens vikt och hopfällbarhet enorm roll. Bor ni på landet och promenerar i terräng? Stora luftgummihjul. Behöver vagnen passa två barn med litet åldersskillnad? Syskonvagn eller toddler-board. De flesta köper "fel" första vagn — välj efter er konkreta vardag, inte vad som syns mest på Instagram.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Babyvakt — välj enkelt, inte häftigt</h2>
+      <p>WiFi-babyvakter med video, andningsövervakning och AI-funktioner låter imponerande. För de flesta familjer räcker en enkel ljudbabyvakt eller en grundläggande videovakt. De avancerade modellerna har fler felkällor, kortare batteritid och i vissa fall integritetsfrågor som bör tas på allvar.</p>
+      <p>Bärselen och matstolen är mindre kritiska men där ergonomi och praktiska detaljer (M-position, fotstöd, städvänlighet) skiljer agnarna från vetet.</p>
+    </div>
+
+    <div class="space-y-4">
+      {guides.map((g) => (
+        <a href={g.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
+          <h2 class="font-heading text-lg font-bold text-text group-hover:text-accent transition-colors">{g.title}</h2>
+          <p class="text-sm text-text-light mt-1">{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+</BaseLayout>

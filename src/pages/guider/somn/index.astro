@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const guides = [
+  { title: 'Säker sovmiljö för bebis', href: '/guider/saker-sovmiljo/', desc: 'Ryggläge, rätt temperatur, fast underlag och rökfri miljö — så minimerar du SIDS-risken.' },
+  { title: 'SIDS-statistik och riskfaktorer', href: '/guider/sids-statistik/', desc: 'Hur vanligt är plötslig spädbarnsdöd i Sverige idag och vilka faktorer minskar risken mest.' },
+  { title: 'Bebis sovschema per ålder', href: '/guider/bebis-sovschema/', desc: 'Sömnbehov, antal sovstunder och wake windows från nyfödd till 12 månader.' },
+  { title: 'Bebis sovrutin — så bygger du den', href: '/guider/bebis-sovrutin/', desc: 'Konsekvent läggrutin steg för steg — det enda som faktiskt fungerar långsiktigt.' },
+  { title: 'Bebis sover dåligt — vanliga orsaker', href: '/guider/bebis-sover-daligt/', desc: 'Sömnregression, nattuppvaknanden och vad du faktiskt kan göra åt dem.' },
+  { title: 'Sluta nattmata — när och hur', href: '/guider/nattmatning-sluta/', desc: 'När bebisen är redo att sova natten igenom utan måltid och hur du genomför övergången skonsamt.' },
+];
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Sömn och säker sovmiljö',
+  description: 'Guider om bebisens sömn: sovschema per ålder, säker sovmiljö, sömnregression och nattmatning.',
+  url: 'https://bebisguiden.se/guider/somn/',
+  hasPart: guides.map((g) => ({ '@type': 'WebPage', name: g.title, url: `https://bebisguiden.se${g.href}` })),
+};
+---
+
+<BaseLayout
+  title="Bebis sömn — sovschema, sovrutin och säker sovmiljö | Bebisguiden"
+  description="Allt om bebisens sömn: sovschema per ålder, sovrutiner, säker sovmiljö, SIDS-prevention och hur du slutar nattmata."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Hem', href: '/' }, { label: 'Guider', href: '/guider/' }, { label: 'Sömn' }]} />
+    <h1 class="font-heading text-2xl sm:text-3xl font-bold text-text mt-3 mb-4">Sömn och säker sovmiljö</h1>
+    <p class="text-text-light mb-6">Sovschema, läggrutiner, sömnregression och säker sovmiljö — de viktigaste guiderna för att förstå och förbättra bebisens nätter.</p>
+
+    <div class="prose prose-lg max-w-none text-text mb-8">
+      <p>Sömn är den absolut största stressfaktorn för småbarnsföräldrar. Det är också det område där förväntningar och verklighet skiljer sig mest. En nyfödd sover totalt 14–17 timmar per dygn — men i intervaller om 2–4 timmar och utan att skilja på dag och natt. Att förstå hur sömnen utvecklas under första året gör enorm skillnad för hur man tolkar nattuppvaknanden, dagsovsmotstånd och plötsliga sömnregressioner.</p>
+      <p>Här samlar vi allt vi skrivit om sömn — från säker sovmiljö och SIDS-prevention till sovschema per ålder, sovrutiner och hur du slutar nattmata när bebisen är redo. Allt utgår från svenska BVC-rekommendationer och aktuell barnsömnsforskning.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Säker sovmiljö är viktigast</h2>
+      <p>Innan vi pratar om sovrutiner och sömnträning är säker sovmiljö grundförutsättningen. Bebisen ska sova på rygg, på fast underlag, utan kuddar, täcken eller mjukleksaker i sängen, i ett rökfritt rum med temperatur runt 18 grader. SIDS — plötslig spädbarnsdöd — är extremt ovanligt i Sverige idag tack vare just ryggläggning som standard, men förutsättningarna behöver vara på plats varje natt, inte bara ibland.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Sovschema vs sömnträning</h2>
+      <p>Det finns en skillnad mellan att förstå bebisens sömnbehov (sovschema) och att aktivt försöka påverka beteendet (sömnträning). Vi förespråkar att du först lär dig vad som är normalt för åldern — många "sömnproblem" är i själva verket helt normala 4-månaders-, 8-månaders- eller 12-månadersregressioner. Att ha rimliga förväntningar minskar oron drastiskt.</p>
+      <h2 class="font-heading text-xl font-bold mt-6 mb-3">Wake windows är ofta lösningen</h2>
+      <p>Det vanligaste skälet till skrikiga, motvilliga läggningar är att bebisen blivit för trött. Wake windows — den tid bebisen kan vara vaken mellan sovstunder — är åldersspecifika och tightare än de flesta tror. För en treåring är 5–6 timmar normalt, men för en två månader gammal bebis är det max 60–90 minuter. Att lägga bebisen INNAN den blir överstimulerad ger nästan alltid lugnare nätter.</p>
+      <p>Slutligen: nästan alla föräldrar känner skuld kring sömn. Det finns inte ett "rätt" sätt — bara det som fungerar för er familj. Guiderna här ger fakta och verktyg, inte pekpinnar.</p>
+    </div>
+
+    <div class="space-y-4">
+      {guides.map((g) => (
+        <a href={g.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
+          <h2 class="font-heading text-lg font-bold text-text group-hover:text-accent transition-colors">{g.title}</h2>
+          <p class="text-sm text-text-light mt-1">{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+</BaseLayout>
