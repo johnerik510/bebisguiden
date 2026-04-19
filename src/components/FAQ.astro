@@ -8,6 +8,10 @@ const { items } = Astro.props;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["summary", ".faq-answer"]
+  },
   "mainEntity": items.map(item => ({
     "@type": "Question",
     "name": item.question,
@@ -30,7 +34,7 @@ const jsonLd = {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
         </summary>
-        <div class="px-4 pb-4 text-sm text-text-light leading-relaxed" set:html={item.answer} />
+        <div class="faq-answer px-4 pb-4 text-sm text-text-light leading-relaxed" set:html={item.answer} />
       </details>
     ))}
   </div>

@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AffiliateDisclaimer from '../components/AffiliateDisclaimer.astro';
 import AuthorByline from '../components/AuthorByline.astro';
+import { buildArticleSchema, DEFAULT_PUBLISHED, DEFAULT_MODIFIED } from '../utils/schema.js';
 
 interface Props {
   title: string;
@@ -26,35 +27,20 @@ const {
   breadcrumbs,
   updatedDate,
   showDisclaimer = true,
-  datePublished = '2026-03-28',
-  dateModified = '2026-04-05',
+  datePublished = DEFAULT_PUBLISHED,
+  dateModified = DEFAULT_MODIFIED,
   image,
   showAuthor = true,
 } = Astro.props;
 
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: title,
-  description: description,
-  image: image ? `https://bebisguiden.se${image}` : undefined,
-  datePublished: datePublished,
-  dateModified: dateModified,
-  author: {
-    '@type': 'Person',
-    name: 'John Erik Johansson',
-    url: 'https://bebisguiden.se/om-redaktionen/',
-    image: 'https://bebisguiden.se/images/john-erik-johansson.webp',
-    jobTitle: 'Grundare & barnproduktexpert'
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Bebisguiden.se',
-    url: 'https://bebisguiden.se',
-    logo: { '@type': 'ImageObject', url: 'https://bebisguiden.se/favicon.svg' }
-  },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://bebisguiden.se${Astro.url.pathname}` }
-};
+const articleSchema = buildArticleSchema({
+  title,
+  description,
+  image,
+  datePublished,
+  dateModified,
+  pathname: Astro.url.pathname,
+});
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage} canonical={canonical}>
