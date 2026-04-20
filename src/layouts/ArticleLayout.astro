@@ -41,6 +41,33 @@ const articleSchema = buildArticleSchema({
   dateModified,
   pathname: Astro.url.pathname,
 });
+
+// Auto-generera relaterade artiklar från samma sektion
+const pathname = Astro.url.pathname.replace(/\/$/, '');
+const section = pathname.split('/').filter(Boolean)[0];
+let autoRelated: { title: string; href: string }[] = [];
+if (section) {
+  const pagesGlob = import.meta.glob('/src/pages/**/*.astro', { eager: false });
+  const mdGlob = import.meta.glob('/src/pages/**/*.md', { eager: false });
+  const allPaths = [...Object.keys(pagesGlob), ...Object.keys(mdGlob)];
+  autoRelated = allPaths
+    .map((p) => {
+      const rel = p.replace('/src/pages', '').replace(/\.(astro|md)$/, '').replace(/\/index$/, '');
+      return rel || '/';
+    })
+    .filter((href) => {
+      if (href === pathname || href === pathname + '/') return false;
+      if (href.startsWith('/404') || href.includes('[')) return false;
+      if (href === '/' || href === `/${section}` || href === `/${section}/`) return false;
+      return href.startsWith(`/${section}/`);
+    })
+    .slice(0, 6)
+    .map((href) => {
+      const slug = href.split('/').filter(Boolean).pop() || '';
+      const label = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+      return { title: label, href: href.endsWith('/') ? href : href + '/' };
+    });
+}
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage} canonical={canonical}>
@@ -59,6 +86,18 @@ const articleSchema = buildArticleSchema({
     <div class="mt-4">
       <slot />
     </div>
+    {autoRelated.length > 0 && (
+      <aside class="mt-12 pt-8 border-t border-sand-dark">
+        <h2 class="font-heading text-xl font-bold text-text mb-4">Relaterade artiklar</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {autoRelated.map((article) => (
+            <a href={article.href} class="block p-4 bg-white rounded-lg border border-sand-dark hover:border-primary hover:shadow-md transition-all">
+              <span class="font-body font-medium text-text hover:text-primary">{article.title}</span>
+            </a>
+          ))}
+        </div>
+      </aside>
+    )}
     {showDisclaimer && <AffiliateDisclaimer />}
   </article>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
