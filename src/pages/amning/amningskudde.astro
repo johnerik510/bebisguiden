@@ -14,6 +14,7 @@ const breadcrumbs = [
 ];
 
 const JR = 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=';
+const NAJELL_GRAVIDKUDDE = 'https://addrevenue.io/t?a=984973&c=3467325&url=https%3A%2F%2Fnajell.com%2Fsv-se%2Fp%2Fgravidkudde-powder-beige';
 
 const products = [
   {
@@ -29,6 +30,21 @@ const products = [
       'Tvättbart överdrag': 'Ja',
       'Längd': '150 cm',
       'Pris': '559 kr',
+    },
+  },
+  {
+    name: 'Najell Gravidkudde, Powder Beige',
+    image: '/images/products/najell-gravidkudde-powder-beige.webp',
+    badge: 'Redaktionens favorit',
+    price: '1 299 kr',
+    rating: 4.8,
+    ctaHref: NAJELL_GRAVIDKUDDE,
+    features: {
+      'Form': 'Lång 2-i-1',
+      'Material': '95% bomull / 5% elastan',
+      'Tvättbart överdrag': 'Ja',
+      'Längd': '145–175 cm',
+      'Pris': '1 299 kr',
     },
   },
   {
@@ -106,7 +122,7 @@ const faqItems = [
   },
   {
     question: 'Kan man använda amningskudden under graviditeten?',
-    answer: 'Beemoo CARE Cozy Gravid- och Amningskudde är den i vår lista som är utformad för både graviditet och amning. Den är 108 cm lång och stödjer hela kroppen. That\'s Mine Moon är också formbar och kan anpassas som graviditetsstöd.',
+    answer: 'Najell Gravidkudde är vår redaktionsfavorit för kombinerad användning — justerbar längd 145–175 cm, delbar i två mindre kuddar á 90 cm och överdrag i 95% bomull/5% elastan. Beemoo CARE Cozy är ett billigare 2-i-1-alternativ på 108 cm. That\'s Mine Moon är också formbar och kan anpassas som graviditetsstöd.',
   },
   {
     question: 'Hur tvättar man en amningskudde?',
@@ -127,7 +143,7 @@ const faqItems = [
   updatedDate="2026-04-18"
 >
   <p class="text-base text-text-light mb-3 max-w-2xl">
-    En bra amningskudde avlastar axlar, nacke och armar och håller bebisen i rätt höjd. Vi har jämfört fem amningskuddar som finns hos Jollyroom April 2026 — med rätt pris, material och form för olika behov.
+    En bra amningskudde avlastar axlar, nacke och armar och håller bebisen i rätt höjd. Vi har jämfört sex amningskuddar April 2026 — från budgetval till svenska Najell Gravidkudde, vår redaktionsfavorit som fungerar både under graviditet och amning.
   </p>
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — amningskuddar 2026</h2>
@@ -135,7 +151,7 @@ const faqItems = [
 
   <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
     <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>Doomoo Amningskudde Softy</strong> är bäst totalt. <strong>bbhugme Amningskudde</strong> är bäst på material och ergonomi. <strong>Beemoo CARE Snug</strong> är bäst pris på 449 kr.</p>
+    <p class="text-sm text-text-light"><strong>Doomoo Amningskudde Softy</strong> är bäst totalt. <strong>Najell Gravidkudde</strong> är redaktionens favorit — en 2-i-1-kudde vi använt dagligen under hela graviditeten och amningen. <strong>bbhugme Amningskudde</strong> är bäst på material och ergonomi. <strong>Beemoo CARE Snug</strong> är bäst pris på 449 kr.</p>
   </div>
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Toppval April 2026</h2>
@@ -151,6 +167,18 @@ const faqItems = [
       cons={['Tar mer plats än C-formade kuddar', 'Lång kudde kan vara opraktisk i små utrymmen']}
       ctaText="Se pris hos Jollyroom"
       ctaHref={JR + 'https%3A%2F%2Fwww.jollyroom.se%2Fmamma%2Famningsprodukter%2Famningskuddar%2Fdoomoo-amningskudde-svampar'}
+    />
+
+    <ProductCard
+      name="Najell Gravidkudde, Powder Beige"
+      image="/images/products/najell-gravidkudde-powder-beige.webp"
+      badge="Redaktionens favorit"
+      price="1 299 kr"
+      rating={4.8}
+      pros={['2-i-1 — stödjer hela kroppen under graviditet och fungerar som amningskudde efter förlossning', 'Delbar konstruktion — en stor kudde 145–175 cm eller två små kuddar á 90 cm', 'Justerbar längd — dra åt knuten för att anpassa storleken efter behov', 'Formbar till U, C, I eller J beroende på hur du vill använda den', 'Överdrag i 95% bomull / 5% elastan, testat för skadliga ämnen', 'Avtagbara överdrag — tvättas i 40°C', 'Fyllning av EPS-mikropärlor som formar sig efter kroppen', 'Svensk design']}
+      cons={['Dyrare än rena amningskuddar', 'Tar stor plats att förvara mellan användningar']}
+      ctaText="Se pris hos Najell"
+      ctaHref={NAJELL_GRAVIDKUDDE}
     />
 
     <ProductCard
@@ -212,7 +240,7 @@ const faqItems = [
     <p>Doomoo och bbhugme har Oeko-Tex-certifierat material vilket innebär att tyget är testat för skadliga ämnen. That's Mine Moon är gjord av 45% ekologisk bomull. Om materialval är viktigt för dig är Doomoo och bbhugme de tryggaste valen — båda har certifieringar som verifierats av tredje part.</p>
 
     <h3>3. Graviditet eller enbart amning?</h3>
-    <p>Beemoo CARE Cozy är den enda i vår lista som är utformad specifikt som en kombinerad gravid- och amningskudde. Den är 108 cm lång och stödjer hela kroppen. That's Mine Moon kan också formas som graviditetsstöd. Väljer du en kudde enbart för amning räcker Doomoo Softy eller Beemoo CARE Snug.</p>
+    <p>Najell Gravidkudde och Beemoo CARE Cozy är de två i vår lista som är utformade specifikt som kombinerade gravid- och amningskuddar. Najell är justerbar i längd mellan 145 och 175 cm via en knut — och kan dessutom delas i två mindre kuddar á 90 cm när du inte behöver hela stödet. Beemoo CARE Cozy är 108 cm lång och ett billigare alternativ. That's Mine Moon kan också formas som graviditetsstöd. Väljer du en kudde enbart för amning räcker Doomoo Softy eller Beemoo CARE Snug.</p>
 
     <h3>4. Budget</h3>
     <p>Beemoo CARE Snug på 449 kr är det billigaste alternativet och håller god kvalitet för priset. Doomoo Softy på 559 kr ger bättre materialcertifieringar och längre kudde för 110 kr mer. bbhugme på 799 kr är dyrast men motiverar priset med BioFoam-fyllning och kiropraktordesign om du ammar mycket och länge.</p>
@@ -239,6 +267,15 @@ const faqItems = [
       ratingValue: 4.7,
       reviewCount: 1,
       offers: [{ price: 559, url: JR + 'https%3A%2F%2Fwww.jollyroom.se%2Fmamma%2Famningsprodukter%2Famningskuddar%2Fdoomoo-amningskudde-svampar', seller: 'Jollyroom' }],
+    },
+    {
+      name: 'Najell Gravidkudde, Powder Beige',
+      description: 'Svensk 2-i-1 gravid- och amningskudde. Justerbar längd 145–175 cm via knut och delbar i två mindre kuddar á 90 cm. Överdrag i 95% bomull/5% elastan med EPS-mikropärlor som fyllning.',
+      image: 'https://bebisguiden.se/images/products/najell-gravidkudde-powder-beige.webp',
+      brand: 'Najell',
+      ratingValue: 4.8,
+      reviewCount: 1,
+      offers: [{ price: 1299, url: NAJELL_GRAVIDKUDDE, seller: 'Najell' }],
     },
     {
       name: 'bbhugme Amningskudde, Pink Melange',
