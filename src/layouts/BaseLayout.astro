@@ -152,5 +152,20 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://bebisguiden.s
       a.className='text-accent hover:underline';el.replaceWith(a);
     });
   </script>
+  <script is:inline>
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a[rel*="sponsored"], a[data-affiliate="true"]');
+      if (!a) return;
+      if (typeof window.gtag !== 'function') return;
+      var merchant = '';
+      try { merchant = new URL(a.href).hostname.replace(/^www\./, ''); } catch (err) {}
+      window.gtag('event', 'affiliate_click', {
+        merchant: merchant,
+        product: a.getAttribute('data-product') || '',
+        article: location.pathname,
+        link_url: a.href
+      });
+    }, { passive: true });
+  </script>
 </body>
 </html>
