@@ -1,10 +1,8 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -12,85 +10,110 @@ const breadcrumbs = [
   { label: 'Tygblöjor' },
 ];
 
+// Sökbaserad discovery — ärlig vägledning. Inga svenska återförsäljare i vårt
+// affiliatenätverk (Jollyroom/Baby V/Köpbarnvagn/Babyland/Stor&Liten) stockar
+// dessa specialistmärken. Tills tygblöjespecifikt affiliateprogram finns på
+// plats pekar CTA:er till Google Shopping för äkta prisupptäckt.
+const shop = (q: string) =>
+  `https://www.google.com/search?tbm=shop&q=${encodeURIComponent(q + ' sverige')}`;
+
 const products = [
   {
     name: 'GroVia Hybrid',
-    image: '/images/products/grovia-hybrid.webp',
     badge: 'Bäst i test',
-    price: '159 kr/blöja',
+    priceRange: '150–180 kr/blöja',
     rating: 4.8,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
-    features: {
-      'System': 'Hybrid (engångs + tyg)',
-      'Material': 'Polyester yttertyg',
-      'Tvättbarheter': 'Obegränsad',
-      'Pris/blöja': 'ca 159 kr',
-      'Startpaket': 'Ja',
-    },
+    system: 'Hybrid (engångs + tyg)',
+    material: 'Polyester yttertyg',
+    washes: 'Obegränsad',
+    starter: 'Ja',
+    ctaHref: shop('GroVia Hybrid tygblöja'),
   },
   {
     name: 'TotsBots Bamboozle',
-    image: '/images/products/totsbots-bamboozle.webp',
     badge: 'Bäst absorption',
-    price: '179 kr/blöja',
+    priceRange: '170–200 kr/blöja',
     rating: 4.7,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
-    features: {
-      'System': 'Prefold',
-      'Material': 'Bambu',
-      'Tvättbarheter': 'Obegränsad',
-      'Pris/blöja': 'ca 179 kr',
-      'Startpaket': 'Ja',
-    },
+    system: 'Prefold',
+    material: 'Bambu',
+    washes: 'Obegränsad',
+    starter: 'Ja',
+    ctaHref: shop('TotsBots Bamboozle'),
   },
   {
     name: 'Thirsties Duo Wrap',
-    image: '/images/products/thirsties-duo-wrap.webp',
     badge: 'Bäst överdel',
-    price: '139 kr/blöja',
+    priceRange: '130–160 kr/blöja',
     rating: 4.6,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
-    features: {
-      'System': 'Överdel + insats',
-      'Material': 'Polyester/PUL',
-      'Tvättbarheter': 'Obegränsad',
-      'Pris/blöja': 'ca 139 kr',
-      'Startpaket': 'Nej',
-    },
+    system: 'Överdel + insats',
+    material: 'Polyester/PUL',
+    washes: 'Obegränsad',
+    starter: 'Nej',
+    ctaHref: shop('Thirsties Duo Wrap'),
   },
   {
     name: 'Bambino Mio miosolo',
-    image: '/images/products/bambino-mio-miosolo.webp',
     badge: 'Enklast att använda',
-    price: '199 kr/blöja',
+    priceRange: '190–230 kr/blöja',
     rating: 4.5,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
-    features: {
-      'System': 'All-in-one',
-      'Material': 'Mikrofiber/bomull',
-      'Tvättbarheter': 'Obegränsad',
-      'Pris/blöja': 'ca 199 kr',
-      'Startpaket': 'Ja',
-    },
+    system: 'All-in-one',
+    material: 'Mikrofiber/bomull',
+    washes: 'Obegränsad',
+    starter: 'Ja',
+    ctaHref: shop('Bambino Mio miosolo'),
   },
   {
     name: 'Charlie Banana',
-    image: '/images/products/charlie-banana.webp',
     badge: 'Bäst premium',
-    price: '229 kr/blöja',
+    priceRange: '220–260 kr/blöja',
     rating: 4.4,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
-    features: {
-      'System': 'Hybrid/All-in-one',
-      'Material': 'Fleece + mikrofiber',
-      'Tvättbarheter': 'Obegränsad',
-      'Pris/blöja': 'ca 229 kr',
-      'Startpaket': 'Ja',
-    },
+    system: 'Hybrid/All-in-one',
+    material: 'Fleece + mikrofiber',
+    washes: 'Obegränsad',
+    starter: 'Ja',
+    ctaHref: shop('Charlie Banana tygblöja'),
   },
 ];
 
+const tableProducts = products.map((p) => ({
+  name: p.name,
+  badge: p.badge,
+  price: p.priceRange,
+  rating: p.rating,
+  ctaHref: p.ctaHref,
+  features: {
+    'System': p.system,
+    'Material': p.material,
+    'Tvättbarheter': p.washes,
+    'Pris/blöja': p.priceRange,
+    'Startpaket': p.starter,
+  },
+}));
+
 const featureLabels = ['System', 'Material', 'Tvättbarheter', 'Pris/blöja', 'Startpaket'];
+
+const productDetails: Record<string, { pros: string[]; cons: string[] }> = {
+  'GroVia Hybrid': {
+    pros: ['Flexibelt hybridsystem — välj engångs- eller tyginsats', 'Bra passform från nyfödd till potträning', 'Tvättbar överdel håller länge', 'Startpaket tillgängligt'],
+    cons: ['Kräver separata insatser', 'Högre startkostnad än överdel-system'],
+  },
+  'TotsBots Bamboozle': {
+    pros: ['Bambu ger utmärkt absorption', 'Mjuk mot huden', 'Bra för nattsömn med extra insats', 'Startpaket tillgängligt'],
+    cons: ['Torkar långsammare än mikrofiber', 'Kräver separat överdel'],
+  },
+  'Thirsties Duo Wrap': {
+    pros: ['Lågt inköpspris', 'Passar de flesta insatstyper', 'Hållbar PUL-konstruktion', 'Tvättas snabbt och torkar fort'],
+    cons: ['Inget startpaket — köp insatser separat', 'Kräver lite mer hantering'],
+  },
+  'Bambino Mio miosolo': {
+    pros: ['All-in-one — precis som engångsblöja', 'Perfekt för dagis och barnvakt', 'Startpaket tillgängligt', 'Justerbara snäppknappar'],
+    cons: ['Torkar långsammare än överdel-system', 'Högre pris per blöja'],
+  },
+  'Charlie Banana': {
+    pros: ['Premium material och konstruktion', 'Fleece-foder håller huden torr', 'Flexibelt hybridssystem', 'Startpaket med allt du behöver'],
+    cons: ['Dyraste alternativet', 'Begränsad tillgänglighet i Sverige'],
+  },
+};
 
 const faqItems = [
   {
@@ -141,14 +164,19 @@ const faqItems = [
   description="Tygblöjor bäst i test 2026: Vi har testat 5 populära tygblöjor. Se vilken som vinner, startpaket och hur mycket du sparar jämfört med engångsblöjor."
   breadcrumbs={breadcrumbs}
   canonical="https://bebisguiden.se/blojor/tygblojor/"
-  updatedDate="2026-04-14"
+  updatedDate="2026-04-23"
 >
   <p class="text-base text-text-light mb-3 max-w-2xl">
-    Vilka tygblöjor är bäst i test 2026? Vi har testat de populäraste systemen och jämfört absorption, passform och användarvänlighet. Tygblöjor sparar 10 000--15 000 kr per barn jämfört med engångsblöjor och är bättre för miljön.
+    Vilka tygblöjor är bäst i test 2026? Vi har testat de populäraste systemen och jämfört absorption, passform och användarvänlighet. Tygblöjor sparar 10 000–15 000 kr per barn jämfört med engångsblöjor och är bättre för miljön.
   </p>
 
+  <div class="bg-sky-50 border border-sky-200 rounded-xl p-4 mt-4 mb-5 text-sm text-text-light">
+    <p class="font-semibold text-sky-900 mb-1">Om var du köper</p>
+    <p>Tygblöjor är en specialistkategori — de stora svenska barnkedjorna (Jollyroom, Babyland, Baby V, Stor &amp; Liten, Köpbarnvagn) lagerhåller sällan dessa varumärken. Vi skickar dig därför till Google Shopping för aktuell prisjämförelse från Sveriges tygblöjespecialister. Föredrar du engångsblöjor? <a href="/blojor/" class="text-accent hover:underline font-semibold">Se vår test av engångsblöjor</a> — där har vi direktlänkar till aktuella priser.</p>
+  </div>
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell — tygblöjor 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+  <ComparisonTable products={tableProducts} featureLabels={featureLabels} />
 
   <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
     <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
@@ -158,65 +186,59 @@ const faqItems = [
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
   <div class="space-y-4">
-    <ProductCard
-      name="GroVia Hybrid"
-      image="/images/products/grovia-hybrid.webp"
-      badge="Bäst i test"
-      price="ca 159 kr/blöja"
-      rating={4.8}
-      pros={['Flexibelt hybridssystem — välj engångs- eller tyginsats', 'Bra passform från nyfödd till potträning', 'Tvättbar överdel håller länge', 'Startpaket tillgängligt']}
-      cons={['Kräver separata insatser', 'Högre startkostnad än överdel-system']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
-    />
+    {products.map((p) => (
+      <div class="bg-white rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="px-4 py-2 text-white text-sm font-bold text-center bg-gradient-to-r from-primary to-primary/70">
+          {p.badge}
+        </div>
+        <div class="p-4 sm:p-5">
+          <h3 class="font-heading text-lg font-bold text-text">{p.name}</h3>
+          <div class="flex items-center gap-4 mt-2">
+            <div class="flex items-center gap-1">
+              <span class="text-star font-bold text-sm">{p.rating}/5</span>
+              <div class="flex" role="img" aria-label={`Betyg ${p.rating} av 5`}>
+                {[1,2,3,4,5].map((s) => (
+                  <svg class={`w-4 h-4 ${s <= Math.round(p.rating) ? 'text-star' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <span class="font-bold text-text">{p.priceRange}</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-sm">
+            <ul class="space-y-1">
+              {productDetails[p.name].pros.map((pr) => (
+                <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> {pr}</li>
+              ))}
+            </ul>
+            <ul class="space-y-1">
+              {productDetails[p.name].cons.map((c) => (
+                <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> {c}</li>
+              ))}
+            </ul>
+          </div>
+          <a
+            href={p.ctaHref}
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]"
+          >
+            Jämför pris på Google Shopping
+            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
 
-    <ProductCard
-      name="TotsBots Bamboozle"
-      image="/images/products/totsbots-bamboozle.webp"
-      badge="Bäst absorption"
-      price="ca 179 kr/blöja"
-      rating={4.7}
-      pros={['Bambu ger utmärkt absorption', 'Mjuk mot huden', 'Bra för nattsömn med extra insats', 'Startpaket tillgängligt']}
-      cons={['Torkar långsammare än mikrofiber', 'Kräver separat överdel']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
-    />
-
-    <ProductCard
-      name="Thirsties Duo Wrap"
-      image="/images/products/thirsties-duo-wrap.webp"
-      badge="Bäst överdel"
-      price="ca 139 kr/blöja"
-      rating={4.6}
-      pros={['Lågt inköpspris', 'Passar de flesta insatstyper', 'Hållbar PUL-konstruktion', 'Tvättas snabbt och torkar fort']}
-      cons={['Inget startpaket — köp insatser separat', 'Kräver lite mer hantering']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
-    />
-
-    <ProductCard
-      name="Bambino Mio miosolo"
-      image="/images/products/bambino-mio-miosolo.webp"
-      badge="Enklast att använda"
-      price="ca 199 kr/blöja"
-      rating={4.5}
-      pros={['All-in-one — precis som engångsblöja', 'Perfekt för dagis och barnvakt', 'Startpaket tillgängligt', 'Justerbara snäppknappar']}
-      cons={['Torkar långsammare än överdel-system', 'Högre pris per blöja']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
-    />
-
-    <ProductCard
-      name="Charlie Banana"
-      image="/images/products/charlie-banana.webp"
-      badge="Bäst premium"
-      price="ca 229 kr/blöja"
-      rating={4.4}
-      pros={['Premium material och konstruktion', 'Fleece-foder håller huden torr', 'Flexibelt hybridssystem', 'Startpaket med allt du behöver']}
-      cons={['Dyraste alternativet', 'Begränsad tillgänglighet i Sverige']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
-    />
+  <div class="mt-8 p-5 bg-accent/10 border border-accent/30 rounded-xl">
+    <h2 class="font-heading text-lg font-bold mb-2">Vill du ha engångsblöjor istället?</h2>
+    <p class="text-sm text-text-light mb-3">Många familjer kombinerar tygblöjor dagtid med engångsblöjor till natt, dagis och resor. Vi har testat de fem populäraste engångsblöjorna i Sverige med direktlänkar till aktuella priser.</p>
+    <a href="/blojor/" class="inline-flex items-center bg-accent text-white font-semibold text-sm px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
+      Se bästa engångsblöjor 2026
+      <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
   </div>
 
   <section class="mt-10 mb-2">
@@ -271,57 +293,12 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <ProductSchema products={[
-    {
-      name: 'GroVia Hybrid',
-      description: 'Hybridblöja som kombinerar tvättbart yttre med valfria engångs- eller tyginsatser. Bra passform från nyfödd till potträning.',
-      image: 'https://bebisguiden.se/og-default.png',
-      brand: 'GroVia',
-      ratingValue: 4.8,
-      reviewCount: 1,
-      offers: [{ price: 159, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'TotsBots Bamboozle',
-      description: 'Prefold-blöja i bambu med utmärkt absorption. Mjuk mot huden och bra för nattsömn med extra insats.',
-      image: 'https://bebisguiden.se/og-default.png',
-      brand: 'TotsBots',
-      ratingValue: 4.7,
-      reviewCount: 1,
-      offers: [{ price: 179, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Thirsties Duo Wrap',
-      description: 'Överdel i hållbar PUL-konstruktion som passar de flesta insatstyper. Lågt inköpspris och snabb torktid.',
-      image: 'https://bebisguiden.se/og-default.png',
-      brand: 'Thirsties',
-      ratingValue: 4.6,
-      reviewCount: 1,
-      offers: [{ price: 139, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Bambino Mio miosolo',
-      description: 'All-in-one tygblöja som används precis som en engångsblöja. Perfekt för dagis och barnvakt. Startpaket tillgängligt.',
-      image: 'https://bebisguiden.se/og-default.png',
-      brand: 'Bambino Mio',
-      ratingValue: 4.5,
-      reviewCount: 1,
-      offers: [{ price: 199, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Charlie Banana',
-      description: 'Premiumtygblöja med fleece-foder och flexibelt hybridsystem. Startpaket med allt som behövs för att komma igång.',
-      image: 'https://bebisguiden.se/og-default.png',
-      brand: 'Charlie Banana',
-      ratingValue: 4.4,
-      reviewCount: 1,
-      offers: [{ price: 229, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack', seller: 'Jollyroom' }],
-    },
-  ]} />
+  <ProductSchema products={products.map((p) => ({
+    name: p.name,
+    description: `${p.name} — tygblöja (${p.system}) i ${p.material}. Bedömning och jämförelse för svensk marknad.`,
+    image: 'https://bebisguiden.se/og-default.png',
+    brand: p.name.split(' ')[0],
+    ratingValue: p.rating,
+    reviewCount: 1,
+  }))} />
 </ArticleLayout>
-
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
-  text="Se bästa pris — Tygblöjor"
-  productName="Bäst i test tygblöjor 2026"
-/>
