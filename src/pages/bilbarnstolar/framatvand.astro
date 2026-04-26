@@ -6,7 +6,12 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
-const reireiUrl = 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Faxkid-minikid-4-pro-bilbarnstol-coastal-storm-black';
+const jollyroomUrl = (slug: string) =>
+  `https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=${encodeURIComponent('https://www.jollyroom.se' + slug)}`;
+
+const cybexAnorisUrl = jollyroomUrl('/bilstolar/bilbarnstolar/i-size/cybex-anoris-t-i-size-bilbarnstol-soho-grey');
+const britaxKidfixUrl = jollyroomUrl('/bilstolar/baltesstolar/baltesstolar/britax-romer-kidfix-pro-m-baltesstol-space-black');
+const joieTrilloUrl = jollyroomUrl('/bilstolar/baltesstolar/baltesstolar/joie-i-trillo-fx-baltesstol-thunder');
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -21,7 +26,7 @@ const products = [
     badge: 'Safest Forward-Facing',
     price: '7 999 kr',
     rating: 4.9,
-    ctaHref: reireiUrl,
+    ctaHref: cybexAnorisUrl,
     features: {
       'Grupp': '76–150 cm (ca 1–12 år)',
       'Anti-submarine': 'Ja — unik kudde',
@@ -36,7 +41,7 @@ const products = [
     badge: 'Bäst för äldre barn',
     price: '3 999 kr',
     rating: 4.7,
-    ctaHref: reireiUrl,
+    ctaHref: britaxKidfixUrl,
     features: {
       'Grupp': '100–150 cm (ca 3–12 år)',
       'Anti-submarine': 'Nej',
@@ -47,11 +52,11 @@ const products = [
   },
   {
     name: 'Joie i-Trillo FX',
-    image: '/images/products/joie-i-spin-xl.webp',
+    image: '/images/products/joie-i-trillo-fx.webp',
     badge: 'Bäst pris/prestanda',
     price: '2 499 kr',
     rating: 4.5,
-    ctaHref: reireiUrl,
+    ctaHref: joieTrilloUrl,
     features: {
       'Grupp': '100–150 cm (ca 3–12 år)',
       'Anti-submarine': 'Nej',
@@ -66,7 +71,7 @@ const featureLabels = ['Grupp', 'Anti-submarine', 'Montering', 'Vikt', 'Standard
 
 const faqItems = [
   {
-    question: 'Nar ska man byta till framåtvänd bilbarnstol?',
+    question: 'När ska man byta till framåtvänd bilbarnstol?',
     answer: 'Sa sent som möjligt. Transportstyrelsen och säkerhetsexperter rekommenderar bakåtvänt åkande till minst 4 år — gärna längre. Var inte stressad av att "barnet har blivit för stort" — det handlar om barnets längd och vikt, inte ålder. Mer information: Axkid Minikid 4 Pro tillåter bakåtvänt åkande till 36 kg (ca 7 år). Byt bara till framåtvänd när den bakåtvända stolen är för liten.',
   },
   {
@@ -131,7 +136,7 @@ const faqItems = [
         'Anti-submarine-kudden begränsar lite hur barnet sitter',
       ]}
       ctaText="Se pris hos Jollyroom"
-      ctaHref={reireiUrl}
+      ctaHref={cybexAnorisUrl}
     />
 
     <ProductCard
@@ -153,13 +158,13 @@ const faqItems = [
         'Inget anti-submarine-skydd',
         'Kräver barnets eget bilbälte (ingen fem-punktssele)',
       ]}
-      ctaText="Se pris hos Babyland"
-      ctaHref={reireiUrl}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={britaxKidfixUrl}
     />
 
     <ProductCard
       name="Joie i-Trillo FX"
-      image="/images/products/joie-i-spin-xl.webp"
+      image="/images/products/joie-i-trillo-fx.webp"
       badge="Bäst pris/prestanda"
       price="2 499 kr"
       rating={4.5}
@@ -176,8 +181,8 @@ const faqItems = [
         'ISOFIX-adapter ingår inte alltid — kolla paket',
         'Startar vid 100 cm — inte för de minsta',
       ]}
-      ctaText="Se pris hos Stor och Liten"
-      ctaHref={reireiUrl}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref={joieTrilloUrl}
     />
   </div>
 
@@ -185,16 +190,16 @@ const faqItems = [
 
   <div class="space-y-4 text-text-light text-sm leading-relaxed">
     <div>
-      <h3 class="font-semibold text-text mb-1">Nar är rätt tid?</h3>
-      <p>Nar barnets bakåtvända stol blivit för liten. Inte fore. Transportstyrelsen rekommenderar minst 4 år bakåtvänt, men manga barn kan åka bakåtvänt till 5–6 år med stolar som Axkid Minikid 4 Pro. Mät barnets längd och jamför med stolens max-gräns för bakåtvänt.</p>
+      <h3 class="font-semibold text-text mb-1">När är rätt tid?</h3>
+      <p>När barnets bakåtvända stol blivit för liten. Inte före. Transportstyrelsen rekommenderar minst 4 år bakåtvänt, men många barn kan åka bakåtvänt till 5–6 år med stolar som Axkid Minikid 4 Pro. Mät barnets längd och jämför med stolens max-gräns för bakåtvänt.</p>
     </div>
     <div>
       <h3 class="font-semibold text-text mb-1">Grupp 2/3 vs grupp 1/2/3</h3>
-      <p>Många föräldrar hoppar direkt till grupp 2/3-stolar (från 100 cm) istallet för grupp 1 framåtvänd (från 9 kg). Det kan vara klokt — grupp 2/3-stolen räcker längre och barnet förblir bakåtvänt längre i föregående stol. Om barnet redan är 100 cm+: välj direkt grupp 2/3.</p>
+      <p>Många föräldrar hoppar direkt till grupp 2/3-stolar (från 100 cm) istället för grupp 1 framåtvänd (från 9 kg). Det kan vara klokt — grupp 2/3-stolen räcker längre och barnet förblir bakåtvänt längre i föregående stol. Om barnet redan är 100 cm+: välj direkt grupp 2/3.</p>
     </div>
     <div>
       <h3 class="font-semibold text-text mb-1">Cybex Anoris T — värt det extra priset?</h3>
-      <p>Anti-submarine-kudden i Anoris T är unik på marknaden och adresserar den största risken vid framåtvänt åkande. Om säkerhet är din högsta prioritet och du har budget för det: ja, det är värt det. For de flesta familjer med normalbudget ger Britax Kidfix Pro M eller <a href="/marken/joie/" class="text-accent hover:underline">Joie</a> i-Trillo FX hög säkerhet till rimligare pris.</p>
+      <p>Anti-submarine-kudden i Anoris T är unik på marknaden och adresserar den största risken vid framåtvänt åkande. Om säkerhet är din högsta prioritet och du har budget för det: ja, det är värt det. För de flesta familjer med normalbudget ger Britax Kidfix Pro M eller <a href="/marken/joie/" class="text-accent hover:underline">Joie</a> i-Trillo FX hög säkerhet till rimligare pris.</p>
     </div>
   </div>
 
@@ -211,10 +216,10 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href={reireiUrl} text="Se bästa pris — Cybex Anoris T i-Size" />
+  <StickyCTA href={cybexAnorisUrl} text="Se bästa pris — Cybex Anoris T i-Size" />
   <ProductSchema products={[
-    { name: 'Cybex Anoris T i-Size', description: 'Framåtvänd bilbarnstol med unik sidokrocksskydd och airbag-integration.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 7999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black', seller: 'Jollyroom' }] },
-    { name: 'Britax Römer Kidfix Pro M', description: 'Framåtvänd bältad bilbarnstol med ISOfix och XP-PAD-teknik för extra säkerhet.', brand: 'Britax Römer', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 3999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Faxkid-minikid-4-pro-bilbarnstol-coastal-storm-black', seller: 'Jollyroom' }] },
-    { name: 'Joie i-Trillo FX', description: 'Prisvärd framåtvänd bilbarnstol med ISOfix. Bäst pris/prestanda.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 2499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal', seller: 'Jollyroom' }] },
+    { name: 'Cybex Anoris T i-Size', description: 'Framåtvänd bilbarnstol med unik sidokrocksskydd och airbag-integration.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 7999, url: cybexAnorisUrl, seller: 'Jollyroom' }] },
+    { name: 'Britax Römer Kidfix Pro M', description: 'Framåtvänd bältad bilbarnstol med ISOfix och XP-PAD-teknik för extra säkerhet.', brand: 'Britax Römer', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 3999, url: britaxKidfixUrl, seller: 'Jollyroom' }] },
+    { name: 'Joie i-Trillo FX', description: 'Prisvärd framåtvänd bilbarnstol med ISOfix. Bäst pris/prestanda.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 2499, url: joieTrilloUrl, seller: 'Jollyroom' }] },
   ]} />
 </ArticleLayout>
