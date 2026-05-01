@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { currentMonthYear } from '../utils/currentDate';
+
+const now = new Date();
+const monthNum = String(now.getMonth() + 1).padStart(2, '0');
+const monthYear = currentMonthYear();
+const monthYearCap = monthYear.charAt(0).toUpperCase() + monthYear.slice(1);
 
 const granskningsomraden = [
   {
@@ -75,7 +81,7 @@ const senasteNyheter = [
     anchor: 'Läs hela guiden om bilbarnstolsregler 2026',
     category: 'Säkerhet',
     date: '2026-04-20',
-    dateLabel: '20 april 2026',
+    dateLabel: '20 maj 2026',
     excerpt: 'Vad gäller för bakåtvänt åkande, ISOFIX och vilka stolar som snart fasas ut enligt R44-04.',
     image: '/images/cat-bilbarnstol.webp',
     imageAlt: 'Bilbarnstol monterad i bil — regler och standarder 2026',
@@ -86,7 +92,7 @@ const senasteNyheter = [
     anchor: 'Läs guiden om kolik hos bebis',
     category: 'Hälsa',
     date: '2026-04-19',
-    dateLabel: '19 april 2026',
+    dateLabel: '19 maj 2026',
     excerpt: 'Så skiljer du vanlig spädbarnsgråt från kolik — och vilka tröstmetoder som faktiskt är bevisade.',
     image: '/images/hero-bebis.webp',
     imageAlt: 'Nyfödd bebis i förälders famn',
@@ -97,7 +103,7 @@ const senasteNyheter = [
     anchor: 'Läs guiden om feber hos bebis',
     category: 'Hälsa',
     date: '2026-04-19',
-    dateLabel: '19 april 2026',
+    dateLabel: '19 maj 2026',
     excerpt: 'Temperaturgränser, vanliga missförstånd och en tydlig checklista för när 1177 är rätt steg.',
     image: '/images/cat-babyvakt.webp',
     imageAlt: 'Bebis som sover — feber och temperatur',
@@ -108,7 +114,7 @@ const senasteNyheter = [
     anchor: 'Läs checklistan för nyfödd utrustning',
     category: 'Förberedelser',
     date: '2026-04-19',
-    dateLabel: '19 april 2026',
+    dateLabel: '19 maj 2026',
     excerpt: 'Vi har skurit ned de fluffiga 200-poster-listorna till det du faktiskt använder månad ett.',
     image: '/images/cat-babyklader.webp',
     imageAlt: 'Babykläder och nyföddutrustning',
@@ -119,7 +125,7 @@ const senasteNyheter = [
     anchor: 'Läs hela BLW-guiden',
     category: 'Mat & amning',
     date: '2026-04-19',
-    dateLabel: '19 april 2026',
+    dateLabel: '19 maj 2026',
     excerpt: 'Första maten, säkra bitstorlekar och vad barnläkare egentligen tycker om metoden.',
     image: '/images/cat-matstol.webp',
     imageAlt: 'Bebis i matstol som testar fast föda',
@@ -130,7 +136,7 @@ const senasteNyheter = [
     anchor: 'Läs guiden om bebisens sovschema',
     category: 'Sömn',
     date: '2026-04-18',
-    dateLabel: '18 april 2026',
+    dateLabel: '18 maj 2026',
     excerpt: 'Från nyfödd till 12 månader — genomsnittlig sömn, vakenintervall och vanliga regressioner.',
     image: '/images/cat-sovsack.webp',
     imageAlt: 'Bebis som sover i sovsäck',
@@ -170,13 +176,13 @@ const senasteNyheter = [
         <div class="flex items-center gap-5">
           <span class="inline-flex items-center gap-2">
             <span class="italic font-normal normal-case tracking-normal text-sm text-white/90" style="font-family: Georgia, 'Times New Roman', serif;">Nº</span>
-            <span class="text-white/90">04 / April 2026</span>
+            <span class="text-white/90">{monthNum} / {monthYearCap}</span>
           </span>
           <span class="hidden md:inline-block w-8 h-px bg-accent/60"></span>
           <span class="hidden md:inline text-white/60">Oberoende redaktion</span>
         </div>
         <div class="flex items-center gap-5">
-          <span class="hidden sm:inline text-white/60">Uppdaterad 23 april 2026</span>
+          <span class="hidden sm:inline text-white/60">Uppdaterad {monthYearCap}</span>
           <span class="hidden sm:inline-block w-8 h-px bg-accent/60"></span>
           <span class="flex items-center gap-2">
             <span class="relative flex h-1.5 w-1.5">
