@@ -10,7 +10,7 @@ export const AUTHOR = {
   url: `${SITE_URL}/om-redaktionen/`,
   image: `${SITE_URL}/images/john-erik-johansson.webp`,
   jobTitle: 'Grundare & barnproduktexpert',
-  email: 'vpniskguiden@proton.me'
+  email: 'elscatalyst@proton.me'
 };
 
 export const PUBLISHER = {
