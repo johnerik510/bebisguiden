@@ -77,7 +77,7 @@ const guidehubbar = [
 const allMods = import.meta.glob('./**/*.astro', { eager: true })
 type ArtMeta = { title: string; description: string; publishDate: string; category: string; image: string }
 const senasteNyheter = Object.entries(allMods)
-  .filter(([path, mod]) => path !== './index.astro' && !path.endsWith('/index.astro') && !!(mod as any).articleMeta)
+  .filter(([path, mod]) => path !== './index.astro' && !path.endsWith('/index.astro') && !!(mod as any).articleMeta && !!(mod as any).articleMeta.image)
   .map(([path, mod]) => {
     const meta = (mod as any).articleMeta as ArtMeta
     const href = '/' + path.replace(/^\.\//, '').replace(/\.astro$/, '/')
