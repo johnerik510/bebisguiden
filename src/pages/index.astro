@@ -74,74 +74,22 @@ const guidehubbar = [
   { name: 'Förberedelser', href: '/guider/forberedelser/', desc: 'Checklistor inför förlossningen, packlista och graviditetsveckor.', anchor: 'Läs guider om förberedelser', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
 ];
 
-const senasteNyheter = [
-  {
-    href: '/guider/bilbarnstol-regler/',
-    title: 'Nya regler för bilbarnstolar 2026 — så gäller i-Size och ECE R44',
-    anchor: 'Läs hela guiden om bilbarnstolsregler 2026',
-    category: 'Säkerhet',
-    date: '2026-04-20',
-    dateLabel: '20 april 2026',
-    excerpt: 'Vad gäller för bakåtvänt åkande, ISOFIX och vilka stolar som snart fasas ut enligt R44-04.',
-    image: '/images/cat-bilbarnstol.webp',
-    imageAlt: 'Bilbarnstol monterad i bil — regler och standarder 2026',
-  },
-  {
-    href: '/guider/bebis-kolik/',
-    title: 'Kolik hos bebis: symptom, tröstmetoder och när du ska kontakta BVC',
-    anchor: 'Läs guiden om kolik hos bebis',
-    category: 'Hälsa',
-    date: '2026-04-19',
-    dateLabel: '19 april 2026',
-    excerpt: 'Så skiljer du vanlig spädbarnsgråt från kolik — och vilka tröstmetoder som faktiskt är bevisade.',
-    image: '/images/hero-bebis.webp',
-    imageAlt: 'Nyfödd bebis i förälders famn',
-  },
-  {
-    href: '/guider/bebis-feber/',
-    title: 'Feber hos bebis — när bör du söka vård?',
-    anchor: 'Läs guiden om feber hos bebis',
-    category: 'Hälsa',
-    date: '2026-04-19',
-    dateLabel: '19 april 2026',
-    excerpt: 'Temperaturgränser, vanliga missförstånd och en tydlig checklista för när 1177 är rätt steg.',
-    image: '/images/cat-babyvakt.webp',
-    imageAlt: 'Bebis som sover — feber och temperatur',
-  },
-  {
-    href: '/guider/vad-behover-nyfodd/',
-    title: 'Vad behöver en nyfödd? Realistisk checklista för första veckorna',
-    anchor: 'Läs checklistan för nyfödd utrustning',
-    category: 'Förberedelser',
-    date: '2026-04-19',
-    dateLabel: '19 april 2026',
-    excerpt: 'Vi har skurit ned de fluffiga 200-poster-listorna till det du faktiskt använder månad ett.',
-    image: '/images/cat-babyklader.webp',
-    imageAlt: 'Babykläder och nyföddutrustning',
-  },
-  {
-    href: '/guider/blw-guide/',
-    title: 'BLW-guide: starta baby-led weaning tryggt från sex månader',
-    anchor: 'Läs hela BLW-guiden',
-    category: 'Mat & amning',
-    date: '2026-04-19',
-    dateLabel: '19 april 2026',
-    excerpt: 'Första maten, säkra bitstorlekar och vad barnläkare egentligen tycker om metoden.',
-    image: '/images/cat-matstol.webp',
-    imageAlt: 'Bebis i matstol som testar fast föda',
-  },
-  {
-    href: '/guider/bebis-sovschema/',
-    title: 'Sovschema för bebis månad för månad — så ser ett realistiskt dygn ut',
-    anchor: 'Läs guiden om bebisens sovschema',
-    category: 'Sömn',
-    date: '2026-04-18',
-    dateLabel: '18 april 2026',
-    excerpt: 'Från nyfödd till 12 månader — genomsnittlig sömn, vakenintervall och vanliga regressioner.',
-    image: '/images/cat-sovsack.webp',
-    imageAlt: 'Bebis som sover i sovsäck',
-  },
-];
+const allMods = import.meta.glob('./**/*.astro', { eager: true })
+type ArtMeta = { title: string; description: string; publishDate: string; category: string; image: string }
+const senasteNyheter = Object.entries(allMods)
+  .filter(([path, mod]) => path !== './index.astro' && !path.endsWith('/index.astro') && !!(mod as any).articleMeta)
+  .map(([path, mod]) => {
+    const meta = (mod as any).articleMeta as ArtMeta
+    const href = '/' + path.replace(/^\.\//, '').replace(/\.astro$/, '/')
+    return { ...meta, href }
+  })
+  .sort((a, b) => b.publishDate.localeCompare(a.publishDate))
+  .slice(0, 6)
+
+function fmtDate(d: string) {
+  return new Date(d + 'T12:00:00').toLocaleDateString('sv-SE', { year: 'numeric', month: 'long', day: 'numeric' })
+}
+
 ---
 
 <BaseLayout
@@ -381,14 +329,14 @@ const senasteNyheter = [
             <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider mb-2">
               <span class="text-accent">{artikel.category}</span>
               <span class="text-border">·</span>
-              <time datetime={artikel.date} class="text-text-light">{artikel.dateLabel}</time>
+              <time datetime={artikel.publishDate} class="text-text-light">{fmtDate(artikel.publishDate)}</time>
             </div>
             <h3 class="font-heading text-lg font-bold text-primary mb-2 leading-snug">
               <a href={artikel.href} class="hover:text-accent transition-colors">{artikel.title}</a>
             </h3>
-            <p class="text-sm text-text-light leading-relaxed mb-3 line-clamp-2">{artikel.excerpt}</p>
+            <p class="text-sm text-text-light leading-relaxed mb-3 line-clamp-2">{artikel.description}</p>
             <a href={artikel.href} class="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:underline">
-              {artikel.anchor}
+              Läs guiden
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
           </article>
