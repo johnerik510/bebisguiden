@@ -74,14 +74,27 @@ const guidehubbar = [
   { name: 'Förberedelser', href: '/guider/forberedelser/', desc: 'Checklistor inför förlossningen, packlista och graviditetsveckor.', anchor: 'Läs guider om förberedelser', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
 ];
 
+const categoryFallbackImages: Record<string, string> = {
+  'Bilbarnstolar': '/images/cat-bilbarnstol.webp',
+  'Barnvagnar': '/images/cat-barnvagn.webp',
+  'Babyvakter': '/images/cat-babyvakt.webp',
+  'Bärselen': '/images/cat-barsele.webp',
+  'Matstolar': '/images/cat-matstol.webp',
+  'Spjälsängar': '/images/cat-spjalsang.webp',
+  'Sovsäckar': '/images/cat-sovsack.webp',
+  'Amning': '/images/cat-amning.webp',
+  'Guider': '/images/hero-bebis.webp',
+}
+
 const allMods = import.meta.glob('./**/*.astro', { eager: true })
 type ArtMeta = { title: string; description: string; publishDate: string; category: string; image: string }
 const senasteNyheter = Object.entries(allMods)
-  .filter(([path, mod]) => path !== './index.astro' && !path.endsWith('/index.astro') && !!(mod as any).articleMeta && !!(mod as any).articleMeta.image)
+  .filter(([path, mod]) => path !== './index.astro' && !path.endsWith('/index.astro') && !!(mod as any).articleMeta)
   .map(([path, mod]) => {
     const meta = (mod as any).articleMeta as ArtMeta
     const href = '/' + path.replace(/^\.\//, '').replace(/\.astro$/, '/')
-    return { ...meta, href }
+    const image = meta.image || categoryFallbackImages[meta.category] || '/images/hero-bebis.webp'
+    return { ...meta, image, href }
   })
   .sort((a, b) => b.publishDate.localeCompare(a.publishDate))
   .slice(0, 6)
