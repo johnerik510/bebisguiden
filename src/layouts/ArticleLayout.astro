@@ -83,6 +83,11 @@ if (section) {
         dateModified={dateModified}
       />
     )}
+    {image && (
+      <div class="mt-4 mb-6 rounded-xl overflow-hidden aspect-[16/9] bg-sand">
+        <img src={image} alt="" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    )}
     <div class="mt-4">
       <slot />
     </div>
