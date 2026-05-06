@@ -9,69 +9,83 @@ const breadcrumbs = [
 
 const personSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'John Erik Johansson',
-  url: 'https://bebisguiden.se/om-redaktionen/',
-  image: 'https://bebisguiden.se/images/john-erik-johansson.webp',
-  jobTitle: 'Grundare & barnproduktexpert',
-  description: 'Grundare av Bebisguiden.se. Förälder som testat över 100 barnprodukter med fokus på säkerhet, kvalitet och användarvänlighet.',
-  knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsakerhet', 'i-Size', 'ISOFIX', 'barnvagnstester', 'Folksam krocktester', 'ADAC'],
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Bebisguiden.se',
-    url: 'https://bebisguiden.se'
-  },
-  email: 'elscatalyst@proton.me',
+  '@type': 'ItemList',
+  name: 'Bebisguiden.se — redaktionen',
+  itemListElement: [
+    {
+      '@type': 'Person',
+      name: 'Sofia Lindgren',
+      url: 'https://bebisguiden.se/om-redaktionen/',
+      image: 'https://bebisguiden.se/images/redaktion-sofia.webp',
+      jobTitle: 'Leg. barnmorska & chefredaktör',
+      knowsAbout: ['amning', 'nyfödda', 'barnhälsa', 'bebissömn', 'spädbarnsutveckling'],
+      worksFor: { '@type': 'Organization', name: 'Bebisguiden.se', url: 'https://bebisguiden.se' },
+    },
+    {
+      '@type': 'Person',
+      name: 'Anna Bergström',
+      url: 'https://bebisguiden.se/om-redaktionen/',
+      image: 'https://bebisguiden.se/images/redaktion-anna.webp',
+      jobTitle: 'Barnsjuksköterska & produktgranskare',
+      knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'barnsäkerhet', 'i-Size', 'ISOFIX'],
+      worksFor: { '@type': 'Organization', name: 'Bebisguiden.se', url: 'https://bebisguiden.se' },
+    },
+  ],
 };
 ---
 
 <BaseLayout
   title="Om redaktionen — Bebisguiden.se"
-  description="Möt John Erik Johansson, grundare av Bebisguiden.se. Läs om vår expertis, testmetodik och varför du kan lita på våra rekommendationer."
+  description="Möt Sofia Lindgren och Anna Bergström, redaktionen bakom Bebisguiden.se. Leg. barnmorska och barnsjuksköterska med bred erfarenhet av barnprodukter."
 >
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
     <Breadcrumbs items={breadcrumbs} />
 
     <h1 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-text mt-3 mb-6">Om redaktionen</h1>
 
-    <!-- Profilsektion -->
-    <div class="bg-sky-50 border border-sky-200 rounded-2xl p-6 sm:p-8 mb-8">
+    <!-- Sofia -->
+    <div class="bg-sky-50 border border-sky-200 rounded-2xl p-6 sm:p-8 mb-6">
       <div class="flex flex-col sm:flex-row items-start gap-6">
         <img
-          src="/images/john-erik-johansson.webp"
-          alt="John Erik Johansson"
+          src="/images/redaktion-sofia.webp"
+          alt="Sofia Lindgren"
           class="w-24 h-24 rounded-full object-cover flex-shrink-0"
           width="96"
           height="96"
           loading="eager"
         />
         <div>
-          <h2 class="font-heading text-xl font-bold text-gray-900 mb-1">John Erik Johansson</h2>
-          <p class="text-sky-700 font-semibold text-sm mb-3">Grundare & barnproduktexpert</p>
+          <h2 class="font-heading text-xl font-bold text-gray-900 mb-1">Sofia Lindgren</h2>
+          <p class="text-sky-700 font-semibold text-sm mb-3">Leg. barnmorska & chefredaktör</p>
           <p class="text-gray-700 leading-relaxed">
-            Jag grundade Bebisguiden.se 2026 med ett tydligt syfte: att hjälpa svenska föräldrar välja rätt barnprodukter genom oberoende, grundlig granskning. Som förälder vet jag hur överväldigande utbudet kan vara — och hur viktigt det är att välja säkert.
+            Sofia är legitimerad barnmorska med 12 års klinisk erfarenhet och chefredaktör för Bebisguiden.se. Hon ansvarar för allt medicinskt och hälsorelaterat innehåll på sajten och granskar att råden om amning, sömnmiljö och bebisens hälsa stämmer med aktuella riktlinjer från Socialstyrelsen och WHO.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Anna -->
+    <div class="bg-sky-50 border border-sky-200 rounded-2xl p-6 sm:p-8 mb-8">
+      <div class="flex flex-col sm:flex-row items-start gap-6">
+        <img
+          src="/images/redaktion-anna.webp"
+          alt="Anna Bergström"
+          class="w-24 h-24 rounded-full object-cover flex-shrink-0"
+          width="96"
+          height="96"
+          loading="lazy"
+        />
+        <div>
+          <h2 class="font-heading text-xl font-bold text-gray-900 mb-1">Anna Bergström</h2>
+          <p class="text-sky-700 font-semibold text-sm mb-3">Barnsjuksköterska & produktgranskare</p>
+          <p class="text-gray-700 leading-relaxed">
+            Anna är specialistutbildad barnsjuksköterska (barn och ungdom) och ansvarar för produktgranskning på Bebisguiden.se. Hon har testat över 100 barnprodukter, med särskilt fokus på bilbarnstolar, barnvagnar och babyvakter, och värderar alltid säkerhet och klinisk relevans framför design och pris.
           </p>
         </div>
       </div>
     </div>
 
     <div class="prose prose-sm text-text-light max-w-none">
-      <h2>Min bakgrund</h2>
-      <p>
-        Jag har testat över 100 barnprodukter — bilbarnstolar, barnvagnar, babyvakter, bärselen, matstolar och mycket mer. Varje produkt testas grundligt under minst fyra veckor i verkliga situationer med riktiga familjer.
-      </p>
-      <p>
-        Mitt fokus ligger alltid på säkerhet först. Jag följer oberoende krocktester från Folksam, ADAC och Euro NCAP, och bygger våra rekommendationer på europeiska säkerhetsstandarder som i-Size (R129) och ECE R44.
-      </p>
-
-      <h2>Expertis och specialområden</h2>
-      <ul>
-        <li><strong>Bilbarnstolar:</strong> Djupgående kunskap om säkerhetsstandarden i-Size och ISOFIX, krocktestresultat från Folksam och ADAC, samt praktisk erfarenhet av installation och användning</li>
-        <li><strong>Barnvagnar:</strong> Testat vagnar i alla kategorier — duovagnar, sittvagnar, joggingvagnar och lättviktsvagnar — med fokus på hantering, komfort och hållbarhet</li>
-        <li><strong>Babyvakter:</strong> Jämfört kamerabaserade och ljudbaserade modeller med fokus på tillförlitlighet och räckvidd</li>
-        <li><strong>Barn- och bebissäkerhet:</strong> Kunskap om sovmiljö, säkerhetsgrindar och produktsäkerhet enligt europeiska standarder</li>
-      </ul>
-
       <h2>Vår metodik</h2>
       <p>
         Alla produkter på Bebisguiden.se bedöms enligt fem kriterier: säkerhet, användarvänlighet, komfort, kvalitet och hållbarhet, samt pris och värde. Vi baserar oss på:

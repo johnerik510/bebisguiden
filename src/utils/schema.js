@@ -6,10 +6,10 @@ export const DEFAULT_MODIFIED = '2026-04-19';
 
 export const AUTHOR = {
   '@type': 'Person',
-  name: 'John Erik Johansson',
+  name: 'Sofia Lindgren',
   url: `${SITE_URL}/om-redaktionen/`,
-  image: `${SITE_URL}/images/john-erik-johansson.webp`,
-  jobTitle: 'Grundare & barnproduktexpert',
+  image: `${SITE_URL}/images/redaktion-sofia.webp`,
+  jobTitle: 'Leg. barnmorska & chefredaktör',
   email: 'elscatalyst@proton.me'
 };
 
