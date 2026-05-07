@@ -236,7 +236,7 @@ function fmtDate(d: string) {
         <div class="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-3">Redaktionen</div>
         <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <h2 class="font-heading text-3xl sm:text-4xl font-bold text-primary leading-tight">Personerna bakom råden</h2>
-          <a href="/om-redaktionen/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline shrink-0">
+          <a href="/om-redaktionen/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline shrink-0">
             Läs om vår metodik
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -292,7 +292,7 @@ function fmtDate(d: string) {
                 <a href={omr.href} class="hover:text-accent transition-colors">{omr.name}</a>
               </h3>
               <p class="text-sm text-text-light leading-relaxed mb-3 line-clamp-3">{omr.lede}</p>
-              <a href={omr.href} class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline w-fit">
+              <a href={omr.href} class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline w-fit">
                 Läs våra tester av {omr.name.toLowerCase()}
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
               </a>
@@ -320,7 +320,7 @@ function fmtDate(d: string) {
             Nya guider och uppdateringar publiceras löpande. Här är det senaste — välj ämne och läs mer.
           </p>
         </div>
-        <a href="/guider/" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline self-start sm:self-end whitespace-nowrap">
+        <a href="/guider/" class="inline-flex items-center gap-2 text-sm font-semibold text-accent underline self-start sm:self-end whitespace-nowrap">
           Se alla guider och nyheter
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -333,7 +333,7 @@ function fmtDate(d: string) {
             </a>
             <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider mb-2">
               <span class="text-accent">{artikel.category}</span>
-              <span class="text-border">·</span>
+              <span class="text-text-light">·</span>
               <time datetime={artikel.publishDate} class="text-text-light">{fmtDate(artikel.publishDate)}</time>
             </div>
             <h3 class="font-heading text-lg font-bold text-primary mb-2 leading-snug">
@@ -469,7 +469,7 @@ function fmtDate(d: string) {
             </div>
             <h3 class="font-heading font-bold text-lg text-primary mb-2 leading-tight">{hub.name}</h3>
             <p class="text-sm text-text-light leading-snug mb-4 flex-1">{hub.desc}</p>
-            <a href={hub.href} class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline w-fit">
+            <a href={hub.href} class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline w-fit">
               {hub.anchor}
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
@@ -477,7 +477,7 @@ function fmtDate(d: string) {
         ))}
       </div>
       <div class="text-center mt-10">
-        <a href="/guider/" class="inline-flex items-center gap-2 text-accent font-semibold hover:underline">
+        <a href="/guider/" class="inline-flex items-center gap-2 text-accent font-semibold underline">
           Alla guider
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
