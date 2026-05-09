@@ -103,12 +103,17 @@ const hasStores = stores.length > 0;
           rel="nofollow sponsored noopener noreferrer"
           target="_blank"
           class:list={[
-            'no-underline inline-flex items-center justify-between gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-colors',
+            'no-underline relative inline-flex items-center justify-between gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-colors',
             i === 0
               ? 'bg-accent hover:bg-accent-dark !text-white shadow-sm'
               : 'bg-white hover:bg-sand !text-dark border border-sand-dark',
           ]}
         >
+          {i === 0 && (
+            <span class="absolute -top-2 right-3 inline-block bg-emerald-500 !text-white text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full shadow-sm">
+              Redaktionens val
+            </span>
+          )}
           <span>Köp hos {s.name}</span>
           <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />

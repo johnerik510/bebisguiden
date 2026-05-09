@@ -76,9 +76,11 @@ const primaryLabel = primaryMeta
   : (ctaText !== 'Se pris' ? ctaText : 'Se pris');
 
 const secondaryBase = hasCustomCta ? sortedRetailers : sortedRetailers.filter((r) => r !== primaryRetailer);
-// Filtrera bort retailers utan resolverbar produkt-URL, annars genereras söklänkar (brutna djuplänkar)
-const secondaryRetailers = (detectedPrimary ? secondaryBase.filter((r) => r !== detectedPrimary) : secondaryBase)
-  .filter((r) => resolveTarget(r, retailerPaths[r]) !== null);
+// Sekundära butiker: använd resolverbar djuplänk om den finns, annars fall tillbaka på search-URL.
+// Söklänkar är inte perfekta men ger fler köpalternativ och högre konvertering än att dölja CTA helt.
+const secondaryRetailers = detectedPrimary
+  ? secondaryBase.filter((r) => r !== detectedPrimary)
+  : secondaryBase;
 ---
 
 <div class="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -128,7 +130,8 @@ const secondaryRetailers = (detectedPrimary ? secondaryBase.filter((r) => r !== 
         </div>
       )}
       {primaryHref && (
-        <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+        <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="relative inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+          <span class="absolute -top-2 right-3 inline-block bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full shadow-sm">Redaktionens val</span>
           {primaryLabel}
           <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
@@ -139,8 +142,7 @@ const secondaryRetailers = (detectedPrimary ? secondaryBase.filter((r) => r !== 
           <div class="flex flex-wrap gap-2">
             {secondaryRetailers.map((r) => {
               const meta = retailerMeta[r];
-              const target = resolveTarget(r, retailerPaths[r]);
-              if (!target) return null;
+              const target = resolveTarget(r, retailerPaths[r]) ?? meta.searchUrl(name);
               return (
                 <a
                   href={track(r, target)}
