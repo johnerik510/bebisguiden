@@ -5,7 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -237,8 +237,18 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-    <CTABox productName="Billiga barnvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
-  <CTABox productName="Billiga barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+    <MultiStoreCTA
+  productName="Billiga barnvagnar"
+  brand="ll"
+  primaryStore="Crescent Barnvagnar"
+  description="Svenska barnvagnar med hög kvalitet och ergonomi."
+/>
+  <MultiStoreCTA
+  productName="Billiga barnvagnar"
+  brand="ll"
+  primaryStore="Babyonline"
+  description="Stort urval barnvagnar, bärslar och babyutrustning."
+/>
 <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-litetrax-sulky-shale" text="Se bästa pris, Joie Litetrax 4 Air" rel="sponsored noopener" />
   <ProductSchema products={[
     { name: 'Hauck Shopper SLX', description: 'Budgetvänlig sittvagn med bra grundfunktioner. Perfekt för priskänsliga familjer.', brand: 'Hauck', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fhauck-shopper-slx', seller: 'Jollyroom' }] },

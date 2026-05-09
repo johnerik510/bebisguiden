@@ -5,7 +5,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -181,8 +181,18 @@ const faqItems = [
       offers: [{ price: 2849, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fbaby-jogger-city-tour-2-sulky-pitch-black', seller: 'Jollyroom' }],
     },
   ]} />
-  <CTABox productName="Hopfällbara barnvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
-  <CTABox productName="Hopfällbara barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+  <MultiStoreCTA
+  productName="Hopfällbara barnvagnar"
+  brand="ll"
+  primaryStore="Crescent Barnvagnar"
+  description="Svenska barnvagnar med hög kvalitet och ergonomi."
+/>
+  <MultiStoreCTA
+  productName="Hopfällbara barnvagnar"
+  brand="ll"
+  primaryStore="Babyonline"
+  description="Stort urval barnvagnar, bärslar och babyutrustning."
+/>
 </ArticleLayout>
 
 <StickyCTA

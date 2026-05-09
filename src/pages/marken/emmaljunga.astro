@@ -1,7 +1,7 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import CTABox from '../../components/CTABox.astro';
+import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -134,12 +134,13 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <CTABox
-    productName="Emmaljunga SENTO, köp direkt hos Emmaljunga"
-    store="Emmaljunga"
-    description="SENTO ERGO+, SENTO PRO och SENTO MAX, hela serien hos Emmaljunga"
-    affiliateUrl="https://do.emmaljunga.com/t/t?a=2011244539&as=2065068845&t=2&tk=1&url=https%3A%2F%2Femmaljunga.com%2Fsv-se%2Fcollections%2Fsento-1"
-  />
+  <MultiStoreCTA
+  productName="Emmaljunga SENTO, köp direkt hos Emmaljunga"
+  brand="emmaljunga"
+  primaryStore="Emmaljunga"
+  primaryUrl="https://do.emmaljunga.com/t/t?a=2011244539&as=2065068845&t=2&tk=1&url=https%3A%2F%2Femmaljunga.com%2Fsv-se%2Fcollections%2Fsento-1"
+  description="SENTO ERGO+, SENTO PRO och SENTO MAX, hela serien hos Emmaljunga"
+/>
 
   <StickyCTA href="https://do.emmaljunga.com/t/t?a=2011244539&as=2065068845&t=2&tk=1&url=https%3A%2F%2Femmaljunga.com%2Fsv-se%2Fcollections%2Fsento-1" text="Se alla Emmaljunga barnvagnar" />
 

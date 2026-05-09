@@ -3,7 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
-import CTABox from '../../components/CTABox.astro';
+import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -199,7 +199,12 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <CTABox productName="BabyBjörn och Philips Avent babyvakter" store="Babyonline" description="Stort urval babyvakter, ljud, video och WiFi." />
+  <MultiStoreCTA
+  productName="BabyBjörn och Philips Avent babyvakter"
+  brand="philips avent"
+  primaryStore="Babyonline"
+  description="Stort urval babyvakter, ljud, video och WiFi."
+/>
 
   <StickyCTA href="https://addrevenue.io/t?a=987081&c=3467325&url=https%3A%2F%2Fwww.babyonline.se%2Fbabybjorn%2F" productName="BabyBjörn Video Baby Monitor" text="Se BabyBjörn hos Babyonline" />
 

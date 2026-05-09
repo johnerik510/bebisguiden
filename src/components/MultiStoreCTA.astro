@@ -1,0 +1,122 @@
+---
+/**
+ * Multi-store CTA-block, bara butiker med riktig affiliate-tracking.
+ *
+ * Genererar en lista CTA-knappar för alla butiker som säljer märket OCH
+ * har ett aktivt affiliateprogram (network !== 'direct'). Direkta butiker
+ * utan provision (Apotek Hjärtat, Kronans Apotek) filtreras bort.
+ *
+ * - Primär butik (verifierad djuplänk) först om angiven
+ * - Övriga butiker rankas efter provision (högst först) via search-deeplink
+ * - Duplicates filtreras bort case-insensitive
+ */
+import { getStore, buildSearchDeeplink } from '../data/affiliate-stores';
+import { BRAND_TO_STORES } from '../data/brand-stores';
+import { buildSearchQuery, detectBrandFromProductName } from '../lib/affiliate';
+
+interface Props {
+  productName: string;
+  brand?: string;
+  /** Verifierad primär djuplänk (visas som primär CTA om angiven) */
+  primaryStore?: string;
+  primaryUrl?: string;
+  /** Övriga verifierade djuplänkar (skipper search-fallback för dessa) */
+  verified?: { name: string; url: string }[];
+  price?: string;
+  description?: string;
+  /** Max antal butiker totalt (default 5) */
+  max?: number;
+}
+
+const {
+  productName,
+  brand,
+  primaryStore,
+  primaryUrl,
+  verified = [],
+  price,
+  description,
+  max = 5,
+} = Astro.props;
+
+const detectedBrand = brand || detectBrandFromProductName(productName);
+const query = buildSearchQuery(detectedBrand, productName);
+
+// Hitta alla butiker som säljer märket
+const brandStoreNames = detectedBrand
+  ? (BRAND_TO_STORES[detectedBrand.toLowerCase()] || [])
+  : [];
+
+type CTA = { name: string; url: string; commission: number; isPrimary: boolean };
+const seen = new Set<string>();
+const ctas: CTA[] = [];
+
+const addCTA = (name: string, url: string, isPrimary = false) => {
+  const key = name.trim().toLowerCase();
+  if (seen.has(key)) return;
+  const store = getStore(name);
+  // Filtrera bort butiker utan affiliate-tracking
+  if (!store || store.network === 'direct') return;
+  seen.add(key);
+  ctas.push({ name: store.name, url, commission: store.commission, isPrimary });
+};
+
+// 1) Primär verifierad djuplänk
+if (primaryStore && primaryUrl) {
+  addCTA(primaryStore, primaryUrl, true);
+}
+
+// 2) Övriga verifierade
+for (const v of verified) {
+  addCTA(v.name, v.url);
+}
+
+// 3) Brand-mappade butiker via search-deeplink
+for (const storeName of brandStoreNames) {
+  const link = buildSearchDeeplink(storeName, query);
+  if (link) addCTA(storeName, link);
+}
+
+// Sortera: primär först, sen efter provision desc
+ctas.sort((a, b) => {
+  if (a.isPrimary && !b.isPrimary) return -1;
+  if (!a.isPrimary && b.isPrimary) return 1;
+  return b.commission - a.commission;
+});
+
+const stores = ctas.slice(0, max);
+const hasStores = stores.length > 0;
+---
+
+{hasStores && (
+  <div class="not-prose bg-accent/5 border border-accent/20 rounded-xl p-5 my-6" data-product={productName}>
+    <div class="mb-4">
+      <p class="font-heading font-bold text-dark text-base">{productName}</p>
+      {price && <p class="text-sm text-gray mt-0.5">{price}</p>}
+      {description && <p class="text-sm text-text-light mt-1.5 leading-relaxed">{description}</p>}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      {stores.map((s, i) => (
+        <a
+          href={s.url}
+          rel="nofollow sponsored noopener noreferrer"
+          target="_blank"
+          class:list={[
+            'no-underline inline-flex items-center justify-between gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-colors',
+            i === 0
+              ? 'bg-accent hover:bg-accent-dark !text-white shadow-sm'
+              : 'bg-white hover:bg-sand !text-dark border border-sand-dark',
+          ]}
+        >
+          <span>Köp hos {s.name}</span>
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      ))}
+    </div>
+
+    <p class="text-xs text-gray mt-3">Annonslänkar, vi får provision om du handlar via knapparna.</p>
+  </div>
+)}
