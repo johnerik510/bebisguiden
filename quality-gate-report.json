@@ -1,14 +1,21 @@
 {
   "site": "bebisguiden",
   "siteRoot": "/Users/axeljonemyr/Documents/bebisguiden",
-  "timestamp": "2026-05-09T06:23:32.307Z",
-  "durationMs": 1007,
+  "timestamp": "2026-05-09T07:40:42.840Z",
+  "durationMs": 3891,
   "summary": {
-    "checks": 8,
-    "errors": 31,
-    "warnings": 4
+    "checks": 9,
+    "errors": 34,
+    "warnings": 4,
+    "newErrors": 0,
+    "baselinedErrors": 34
   },
-  "results": [
+  "results": [],
+  "baseline": {
+    "saved": true,
+    "count": 34
+  },
+  "allResults": [
     {
       "check": "04-articlemeta",
       "severity": "warning",
@@ -183,6 +190,24 @@
       "check": "08-image-binary-duplicates",
       "severity": "error",
       "message": "2 bildfiler är binär-identiska (15KB) — samma bild laddats med olika filnamn: public/images/products/stokke-sleepi-sang-v3-natural.webp | public/images/products/stokke-sleepi-v3-natural.webp"
+    },
+    {
+      "check": "15-rendered-images",
+      "severity": "error",
+      "file": "index.html",
+      "message": "2 <article>-kort delar samma <img src=\"/images/cat-barnvagn.webp\"> på index.html — varje kort behöver unik bild"
+    },
+    {
+      "check": "15-rendered-images",
+      "severity": "error",
+      "file": "index.html",
+      "message": "2 <article>-kort delar samma <img src=\"/images/cat-sovsack.webp\"> på index.html — varje kort behöver unik bild"
+    },
+    {
+      "check": "15-rendered-images",
+      "severity": "error",
+      "file": "index.html",
+      "message": "2 <article>-kort delar samma <img src=\"/images/cat-amning.webp\"> på index.html — varje kort behöver unik bild"
     }
   ]
 }
