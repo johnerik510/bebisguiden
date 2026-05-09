@@ -1,7 +1,7 @@
 ---
 // Multi-retailer prisjämförelse-CTA.
 // Visas på money pages för att sprida klick över flera affiliate-butiker
-// och ge användaren val — maximerar både konvertering och täckning.
+// och ge användaren val, maximerar både konvertering och täckning.
 import { retailerMeta, defaultRetailers, track, type Retailer } from '../data/affiliates';
 
 interface Props {
@@ -15,13 +15,13 @@ interface Props {
 
 const {
   heading = 'Jämför pris hos våra partnerbutiker',
-  subheading = 'Klicka dig direkt till aktuellt pris — vi tjänar en liten provision utan extra kostnad för dig.',
+  subheading = 'Klicka dig direkt till aktuellt pris, vi tjänar en liten provision utan extra kostnad för dig.',
   retailers = defaultRetailers,
   path,
   compact = false,
 } = Astro.props;
 
-// Bara bygg CTA om vi har en target (path) — annars är det homepage-länk = bruten djuplänk
+// Bara bygg CTA om vi har en target (path), annars är det homepage-länk = bruten djuplänk
 const items = path
   ? retailers.map((r) => {
       const meta = retailerMeta[r];

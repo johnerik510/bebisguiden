@@ -9,7 +9,7 @@ interface Props {
   description?: string;
   /**
    * Visa sekundär "Jämför pris hos:"-rad med Adtraction-butikerna sorterade efter provision.
-   * Default true — sätt false för nisch-produkter som inte säljs via de stora babybutikerna.
+   * Default true, sätt false för nisch-produkter som inte säljs via de stora babybutikerna.
    */
   showCompare?: boolean;
   retailers?: Retailer[];
@@ -51,7 +51,7 @@ const storeUrls: Record<string, string> = {
 };
 
 // affiliateUrl är förstaval (specifik produkt-URL).
-// Fallback: storeUrls ger en spårad butikssida även utan djuplänk — bättre än ingen CTA.
+// Fallback: storeUrls ger en spårad butikssida även utan djuplänk, bättre än ingen CTA.
 const finalUrl: string | null = affiliateUrl || (store && storeUrls[store]) || null;
 
 // Autodetektera om primär CTA går till en av våra 5 huvudbutiker, så vi inte dubbletterar.
@@ -64,7 +64,7 @@ function detectRetailer(url: string | undefined): Retailer | undefined {
   return undefined;
 }
 const detectedPrimary = detectRetailer(finalUrl);
-// Filtrera bort retailers utan resolverbar produkt-URL — search-fallback är borttagen
+// Filtrera bort retailers utan resolverbar produkt-URL, search-fallback är borttagen
 const sortedRetailers = sortByCommission(retailers)
   .filter((r) => r !== detectedPrimary)
   .filter((r) => resolveTarget(r, retailerPaths[r]) !== null);

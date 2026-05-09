@@ -31,7 +31,7 @@ function detectRetailer(url: string | undefined): Retailer | undefined {
 }
 
 // Bygger en deeplink-href om det finns en riktig produkt-URL, annars null.
-// Search-fallback har tagits bort — det är bättre att inte visa CTA än att leda till sökresultat med 0 träffar.
+// Search-fallback har tagits bort, det är bättre att inte visa CTA än att leda till sökresultat med 0 träffar.
 function buildHref(retailer: Retailer, _productName: string, path?: string): string | null {
   const target = resolveTarget(retailer, path);
   if (!target) return null;
@@ -79,7 +79,7 @@ function secondaryFor(product: Product): Retailer[] {
           {featureLabels.map(label => (
             <div class="flex justify-between gap-2 text-sm">
               <dt class="text-text-light">{label}</dt>
-              <dd class="font-medium text-text text-right">{p.features[label] || '–'}</dd>
+              <dd class="font-medium text-text text-right">{p.features[label] || ','}</dd>
             </div>
           ))}
         </dl>
@@ -139,16 +139,16 @@ function secondaryFor(product: Product): Retailer[] {
     <tbody>
       <tr class="border-t border-border">
         <td class="p-3 font-medium text-text-light">Pris</td>
-        {products.map(p => <td class="p-3 text-center font-bold">{p.price || '–'}</td>)}
+        {products.map(p => <td class="p-3 text-center font-bold">{p.price || ','}</td>)}
       </tr>
       <tr class="border-t border-border bg-bg-alt/50">
         <td class="p-3 font-medium text-text-light">Betyg</td>
-        {products.map(p => <td class="p-3 text-center font-bold text-star">{p.rating ? `${p.rating}/5` : '–'}</td>)}
+        {products.map(p => <td class="p-3 text-center font-bold text-star">{p.rating ? `${p.rating}/5` : ','}</td>)}
       </tr>
       {featureLabels.map((label, i) => (
         <tr class={`border-t border-border ${i % 2 === 0 ? '' : 'bg-bg-alt/50'}`}>
           <td class={`p-3 font-medium text-text-light`}>{label}</td>
-          {products.map(p => <td class="p-3 text-center">{p.features[label] || '–'}</td>)}
+          {products.map(p => <td class="p-3 text-center">{p.features[label] || ','}</td>)}
         </tr>
       ))}
       <tr class="border-t border-border">

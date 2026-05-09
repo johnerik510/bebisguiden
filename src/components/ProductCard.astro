@@ -66,7 +66,7 @@ const primaryTarget = !hasCustomCta && primaryRetailer
   : null;
 
 // Primary CTA byggs bara om vi har antingen custom ctaHref eller en retailer med riktig produkt-URL.
-// Search-fallback har tagits bort — det är bättre att inte visa CTA än att visa en länk till 0 träffar.
+// Search-fallback har tagits bort, det är bättre att inte visa CTA än att visa en länk till 0 träffar.
 const primaryHref = hasCustomCta
   ? ctaHref!
   : (primaryRetailer && primaryTarget ? track(primaryRetailer, primaryTarget) : null);
@@ -76,7 +76,7 @@ const primaryLabel = primaryMeta
   : (ctaText !== 'Se pris' ? ctaText : 'Se pris');
 
 const secondaryBase = hasCustomCta ? sortedRetailers : sortedRetailers.filter((r) => r !== primaryRetailer);
-// Filtrera bort retailers utan resolverbar produkt-URL — annars genereras söklänkar (brutna djuplänkar)
+// Filtrera bort retailers utan resolverbar produkt-URL, annars genereras söklänkar (brutna djuplänkar)
 const secondaryRetailers = (detectedPrimary ? secondaryBase.filter((r) => r !== detectedPrimary) : secondaryBase)
   .filter((r) => resolveTarget(r, retailerPaths[r]) !== null);
 ---

@@ -23,7 +23,7 @@ export const hubs = {
     href: '/guider/somn/',
     children: [
       { slug: 'saker-sovmiljo', title: 'Säker sovmiljö' },
-      { slug: 'sids-statistik', title: 'SIDS — statistik' },
+      { slug: 'sids-statistik', title: 'SIDS, statistik' },
       { slug: 'bebis-sovschema', title: 'Bebisens sovschema' },
       { slug: 'bebis-sovrutin', title: 'Bebisens sovrutin' },
       { slug: 'bebis-sover-daligt', title: 'Bebis som sover dåligt' },
@@ -37,7 +37,7 @@ export const hubs = {
       { slug: 'amma-eller-flaska', title: 'Amma eller flaska?' },
       { slug: 'amning-tips', title: 'Amningstips' },
       { slug: 'nar-borjar-bebis-ata', title: 'När börjar bebisen äta?' },
-      { slug: 'bebis-mat-4-manader', title: 'Bebismat — 4 månader' },
+      { slug: 'bebis-mat-4-manader', title: 'Bebismat, 4 månader' },
       { slug: 'introduktion-fast-foda', title: 'Introduktion till fast föda' },
       { slug: 'blw-guide', title: 'BLW-guide' },
     ],
@@ -47,8 +47,8 @@ export const hubs = {
     href: '/guider/utrustning/',
     children: [
       { slug: 'valja-bilbarnstol', title: 'Välja bilbarnstol' },
-      { slug: 'bilbarnstol-regler', title: 'Bilbarnstol — regler' },
-      { slug: 'bakatvand-hur-lange', title: 'Bakåtvänd — hur länge?' },
+      { slug: 'bilbarnstol-regler', title: 'Bilbarnstol, regler' },
+      { slug: 'bakatvand-hur-lange', title: 'Bakåtvänd, hur länge?' },
       { slug: 'valja-barnvagn', title: 'Välja barnvagn' },
       { slug: 'valja-syskonvagn', title: 'Välja syskonvagn' },
       { slug: 'barnvagn-flyg', title: 'Barnvagn på flyget' },
@@ -61,7 +61,7 @@ export const hubs = {
     title: 'Förberedelser',
     href: '/guider/forberedelser/',
     children: [
-      { slug: 'bebis-checklista', title: 'Bebis — checklista' },
+      { slug: 'bebis-checklista', title: 'Bebis, checklista' },
       { slug: 'packlista-sjukhuset', title: 'Packlista till sjukhuset' },
       { slug: 'vad-behover-nyfodd', title: 'Vad behöver en nyfödd?' },
       { slug: 'graviditetsveckor', title: 'Graviditetsveckor' },
