@@ -152,20 +152,40 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://bebisguiden.s
       a.className='text-accent hover:underline';el.replaceWith(a);
     });
   </script>
+  <!-- AFFI_TRACKING_V1_START -->
   <script is:inline>
-    document.addEventListener('click', function(e) {
-      var a = e.target.closest('a[rel*="sponsored"], a[data-affiliate="true"]');
-      if (!a) return;
-      if (typeof window.gtag !== 'function') return;
-      var merchant = '';
-      try { merchant = new URL(a.href).hostname.replace(/^www\./, ''); } catch (err) {}
-      window.gtag('event', 'affiliate_click', {
-        merchant: merchant,
-        product: a.getAttribute('data-product') || '',
-        article: location.pathname,
-        link_url: a.href
-      });
-    }, { passive: true });
+    (function() {
+      var SITE = 'bebisguiden';
+      function ancestorAttr(link, attr) {
+        var el = link.closest('[' + attr + ']');
+        return el ? el.getAttribute(attr) : '';
+      }
+      function fire(eventName, link) {
+        if (typeof window.gtag !== 'function') return;
+        var host = '';
+        try { host = new URL(link.href).hostname.replace(/^www\./, ''); } catch (e) {}
+        var anchor = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100);
+        window.gtag('event', eventName, {
+          site: SITE,
+          merchant: host,
+          product: link.getAttribute('data-product') || ancestorAttr(link, 'data-product') || '',
+          network: link.getAttribute('data-network') || ancestorAttr(link, 'data-network') || '',
+          position: link.getAttribute('data-position') || ancestorAttr(link, 'data-position') || '',
+          page_path: location.pathname,
+          anchor_text: anchor,
+          link_url: link.href
+        });
+      }
+      document.addEventListener('click', function(e) {
+        var t = e.target;
+        if (!t || !t.closest) return;
+        var link = t.closest('a[rel*="sponsored"], a[data-affiliate="true"], a[data-cta]');
+        if (!link) return;
+        var isAffiliate = !!(link.matches('a[rel*="sponsored"]') || link.getAttribute('data-affiliate') === 'true');
+        fire(isAffiliate ? 'affiliate_click' : 'cta_click', link);
+      }, { passive: true, capture: true });
+    })();
   </script>
+  <!-- AFFI_TRACKING_V1_END -->
 </body>
 </html>
