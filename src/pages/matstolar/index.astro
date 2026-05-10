@@ -10,298 +10,283 @@ import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Matstolar' },
+ { label: 'Hem', href: '/' },
+ { label: 'Matstolar' },
 ];
 
 const products = [
-  {
-    name: 'Stokke Tripp Trapp Oak Natural',
-    badge: 'Bäst i test',
-    price: '2 439 kr',
-    rating: 4.9,
-    image: '/images/products/stokke-tripp-trapp-oak-natural.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural',
-    features: {
-      'Ålder': 'Från 6 mån (med tillbehör)',
-      'Maxvikt': '136 kg (vuxen)',
-      'Tillverkning': 'Norge, bok/ek',
-      'Anpassningsbar': 'Ja, följer barnet',
-      'Bältessystem': '5-punkts (köps separat)',
-    },
-  },
-  {
-    name: 'IKEA Antilop',
-    badge: 'Bäst budget',
-    price: '249 kr',
-    rating: 4.6,
-    image: '/images/products/ikea-antilop.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural',
-    features: {
-      'Ålder': '6 mån, 3 år',
-      'Maxvikt': '15 kg',
-      'Tillverkning': 'Plast',
-      'Anpassningsbar': 'Nej',
-      'Bältessystem': '3-punkts (ingår)',
-    },
-  },
-  {
-    name: 'Beemoo CARE Eat Matstol',
-    badge: 'Bäst komfort',
-    image: '/images/products/beemoo-care-eat-matstol.webp',
-    price: '1 299 kr',
-    rating: 4.6,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-care-eat-matstol-basil-green',
-    features: {
-      'Ålder': '6 mån, 3 år',
-      'Maxvikt': '15 kg',
-      'Tillverkning': 'Europa',
-      'Anpassningsbar': 'Ja, höjdjusterbar',
-      'Bältessystem': '5-punkts (ingår)',
-    },
-  },
-  {
-    name: 'Beemoo Selection Life Barnmatstol',
-    badge: 'Bäst mångsidig',
-    price: '1 799 kr',
-    rating: 4.5,
-    image: '/images/products/beemoo-selection-life-barnmatstol.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-selection-life-barnmatstol-walnut',
-    features: {
-      'Ålder': '6 mån, 10 år',
-      'Maxvikt': '90 kg',
-      'Tillverkning': 'Europa',
-      'Anpassningsbar': 'Ja, växer med barnet',
-      'Bältessystem': '5-punkts (ingår)',
-    },
-  },
+ {
+ name: 'Stokke Tripp Trapp Oak Natural',
+ badge: 'Bäst i test',
+ rating: 4.9,
+ image: '/images/products/stokke-tripp-trapp-oak-natural.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural',
+ features: {
+ 'Ålder': 'Från 6 mån (med tillbehör)',
+ 'Maxvikt': '136 kg (vuxen)',
+ 'Tillverkning': 'Norge, bok/ek',
+ 'Anpassningsbar': 'Ja, följer barnet',
+ 'Bältessystem': '5-punkts (köps separat)',
+ },
+ },
+ {
+ name: 'IKEA Antilop',
+ badge: 'Bäst budget',
+ rating: 4.6,
+ image: '/images/products/ikea-antilop.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural',
+ features: {
+ 'Ålder': '6 mån, 3 år',
+ 'Maxvikt': '15 kg',
+ 'Tillverkning': 'Plast',
+ 'Anpassningsbar': 'Nej',
+ 'Bältessystem': '3-punkts (ingår)',
+ },
+ },
+ {
+ name: 'Beemoo CARE Eat Matstol',
+ badge: 'Bäst komfort',
+ image: '/images/products/beemoo-care-eat-matstol.webp',
+ rating: 4.6,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-care-eat-matstol-basil-green',
+ features: {
+ 'Ålder': '6 mån, 3 år',
+ 'Maxvikt': '15 kg',
+ 'Tillverkning': 'Europa',
+ 'Anpassningsbar': 'Ja, höjdjusterbar',
+ 'Bältessystem': '5-punkts (ingår)',
+ },
+ },
+ {
+ name: 'Beemoo Selection Life Barnmatstol',
+ badge: 'Bäst mångsidig',
+ rating: 4.5,
+ image: '/images/products/beemoo-selection-life-barnmatstol.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-selection-life-barnmatstol-walnut',
+ features: {
+ 'Ålder': '6 mån, 10 år',
+ 'Maxvikt': '90 kg',
+ 'Tillverkning': 'Europa',
+ 'Anpassningsbar': 'Ja, växer med barnet',
+ 'Bältessystem': '5-punkts (ingår)',
+ },
+ },
 ];
 
 const featureLabels = ['Ålder', 'Maxvikt', 'Tillverkning', 'Anpassningsbar', 'Bältessystem'];
 
 const faqItems = [
-  {
-    question: 'Från vilken ålder kan man använda matstol?',
-    answer: 'De flesta matstolar är lämpliga från 6 månaders ålder, när barnet kan sitta stabilt utan stöd. Modeller som Chicco Polly kan användas från födseln i liggläge. Stokke Tripp Trapp kräver Baby Set-tillbehöret för de minsta. Kontrollera alltid tillverkarens ålders- och viktsrekommendationer.',
-  },
-  {
-    question: 'Är Tripp Trapp värd pengarna?',
-    answer: 'Ja, för många familjer är Tripp Trapp en av de bästa investeringarna. Den följer barnet från spädbarn till vuxen (upp till 136 kg), håller i decennier, och behåller ett högt andrahandsvärde. Räknat på livslängden kostar den ofta less per år än billigare alternativ som byts ut snabbare.',
-  },
-  {
-    question: 'Är IKEA Antilop bra?',
-    answer: 'Antilop är fantastisk för priset (249 kr) och är ett av de mest använda barnkategori-produkterna i världen. Den är lätt att rengöra, stabil och enkel att ta med. Nackdelarna är att den inte är höjdjusterbar och att sittkomforten är begränsad för äldre barn. Perfekt för många familjer som komplement eller till sommarstugan.',
-  },
-  {
-    question: 'Vad är skillnaden mellan matstol och sittplatta?',
-    answer: 'En matstol (highchair) är en fristående stol på benstöd med bricka, avsedd för barn 0 till 3 år. En sittplatta (booster seat) fästs på en vanlig stol och passar äldre barn. För de yngsta behöver du en matstol med bältessystem. Tripp Trapp är en hybridlösning som fungerar som vanlig stol utan bricka.',
-  },
-  {
-    question: 'Hur rengör man en matstol?',
-    answer: 'Välj en matstol med avtagbar bricka och tvättbart sittskydd, det gör rengöringen radikalt enklare. Antilop är bland de lättaste att rengöra (ingen stoppning). Tripp Trapp utan sittdyna är också enkel. Chicco Polly har fler veck och fogar som kan samla matrester. Diskbarhethet: Antilop-brickan är diskmaskinssäker.',
-  },
+ {
+ question: 'Från vilken ålder kan man använda matstol?',
+ answer: 'De flesta matstolar är lämpliga från 6 månaders ålder, när barnet kan sitta stabilt utan stöd. Modeller som Chicco Polly kan användas från födseln i liggläge. Stokke Tripp Trapp kräver Baby Set-tillbehöret för de minsta. Kontrollera alltid tillverkarens ålders- och viktsrekommendationer.',
+ },
+ {
+ question: 'Är Tripp Trapp värd pengarna?',
+ answer: 'Ja, för många familjer är Tripp Trapp en av de bästa investeringarna. Den följer barnet från spädbarn till vuxen (upp till 136 kg), håller i decennier, och behåller ett högt andrahandsvärde. Räknat på livslängden kostar den ofta less per år än billigare alternativ som byts ut snabbare.',
+ },
+ {
+ question: 'Är IKEA Antilop bra?',
+ answer: 'Antilop är fantastisk för priset och är ett av de mest använda barnkategori-produkterna i världen. Den är lätt att rengöra, stabil och enkel att ta med. Nackdelarna är att den inte är höjdjusterbar och att sittkomforten är begränsad för äldre barn. Perfekt för många familjer som komplement eller till sommarstugan.',
+ },
+ {
+ question: 'Vad är skillnaden mellan matstol och sittplatta?',
+ answer: 'En matstol (highchair) är en fristående stol på benstöd med bricka, avsedd för barn 0 till 3 år. En sittplatta (booster seat) fästs på en vanlig stol och passar äldre barn. För de yngsta behöver du en matstol med bältessystem. Tripp Trapp är en hybridlösning som fungerar som vanlig stol utan bricka.',
+ },
+ {
+ question: 'Hur rengör man en matstol?',
+ answer: 'Välj en matstol med avtagbar bricka och tvättbart sittskydd, det gör rengöringen radikalt enklare. Antilop är bland de lättaste att rengöra (ingen stoppning). Tripp Trapp utan sittdyna är också enkel. Chicco Polly har fler veck och fogar som kan samla matrester. Diskbarhethet: Antilop-brickan är diskmaskinssäker.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa Matstol Barn 2026, Stokke Tripp Trapp vs IKEA Antilop"
-  description="Bästa matstol 2026: vi testar Stokke Tripp Trapp, IKEA Antilop och BabyBjörn. Priser från 499 kr. Vilken håller längst och är säkrast för ditt barn?"
-  breadcrumbs={breadcrumbs}
-  canonical="https://bebisguiden.se/matstolar/"
-  updatedDate="2026-04-14"
+ title="Bästa Matstol Barn 2026, Stokke Tripp Trapp vs IKEA Antilop"
+ description="Bästa matstol 2026: vi testar Stokke Tripp Trapp, IKEA Antilop och BabyBjörn. Priser. Vilken håller längst och är säkrast för ditt barn?"
+ breadcrumbs={breadcrumbs}
+ canonical="https://bebisguiden.se/matstolar/"
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-    En bra matstol är en av de mest använda barnprodukterna de första åren. Vi har jämfört fyra av de mest populära stolarna på svenska marknaden, från budgetvänliga IKEA Antilop till premiumalternativet <a href="/marken/stokke/" class="text-accent underline">Stokke</a> Tripp Trapp.
-  </p>
+ <p class="text-base text-text-light mb-3 max-w-2xl">
+ En bra matstol är en av de mest använda barnprodukterna de första åren. Vi har jämfört fyra av de mest populära stolarna på svenska marknaden, från budgetvänliga IKEA Antilop till premiumalternativet <a href="/marken/stokke/" class="text-accent underline">Stokke</a> Tripp Trapp.
+ </p>
 
-  <TopPick product={products[0]} description="Stokke Tripp Trapp Oak Natural är vårt bäst i test bland matstolar: Från 6 mån (med tillbehör) och 136 kg (vuxen) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Stokke Tripp Trapp Oak Natural är vårt bäst i test bland matstolar: Från 6 mån (med tillbehör) och 136 kg (vuxen) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, matstolar 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, matstolar 2026</h2>
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
-    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>Stokke Tripp Trapp Oak Natural</strong> vinner för långsiktig investering och kvalitet. <strong>IKEA Antilop</strong> är bäst för priset. <strong>Beemoo CARE Eat</strong> är bäst för komfort och enkelt underhåll.</p>
-  </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+ <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+ <p class="text-sm text-text-light"><strong>Stokke Tripp Trapp Oak Natural</strong> vinner för långsiktig investering och kvalitet. <strong>IKEA Antilop</strong> är bäst för priset. <strong>Beemoo CARE Eat</strong> är bäst för komfort och enkelt underhåll.</p>
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Stokke Tripp Trapp Oak Natural"
-  image="/images/products/stokke-tripp-trapp-oak-natural.webp"
-      badge="Bäst i test"
-      price="2 439 kr"
-      rating={4.9}
-      image="/images/products/stokke-tripp-trapp-oak-natural.webp"
-      ageRange="6 mån, vuxen (upp till 136 kg)"
-      pros={['Följer barnet livet ut', 'Extremt hållbar och tidlös design', 'Högt andrahandsvärde', 'Anpassas i höjd och djup']}
-      cons={['Baby Set-tillbehör kostar extra (499 kr)', 'Kräver skruvnyckel vid justering']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Stokke Tripp Trapp Oak Natural"
+ image="/images/products/stokke-tripp-trapp-oak-natural.webp"
+ badge="Bäst i test"
+ rating={4.9}
+ image="/images/products/stokke-tripp-trapp-oak-natural.webp"
+ ageRange="6 mån, vuxen (upp till 136 kg)"
+ pros={['Följer barnet livet ut', 'Extremt hållbar och tidlös design', 'Högt andrahandsvärde', 'Anpassas i höjd och djup']}
+ cons={['Baby Set-tillbehör kostar extra ', 'Kräver skruvnyckel vid justering']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
+ />
 
-    <ProductCard
-      name="IKEA Antilop"
-  image="/images/products/ikea-antilop.webp"
-      badge="Bäst budget"
-      price="249 kr"
-      rating={4.6}
-      image="/images/products/ikea-antilop.webp"
-      ageRange="6 mån, 3 år (max 15 kg)"
-      pros={['Extremt lättrengjord', 'Prisvärd (249 kr)', 'Stabil och lätt', '3-punkts bälte ingår']}
-      cons={['Ej höjdjusterbar', 'Sämre ergonomi än premiumalternativ', 'Kortare livslängd']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-care-eat-matstol-basil-green"
-    />
+ <ProductCard
+ name="IKEA Antilop"
+ image="/images/products/ikea-antilop.webp"
+ badge="Bäst budget"
+ rating={4.6}
+ image="/images/products/ikea-antilop.webp"
+ ageRange="6 mån, 3 år (max 15 kg)"
+ pros={['Extremt lättrengjord', 'Prisvärd ', 'Stabil och lätt', '3-punkts bälte ingår']}
+ cons={['Ej höjdjusterbar', 'Sämre ergonomi än premiumalternativ', 'Kortare livslängd']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-care-eat-matstol-basil-green"
+ />
 
-    <ProductCard
-      name="Beemoo CARE Eat Matstol"
-      badge="Bäst komfort"
-      price="1 299 kr"
-      rating={4.6}
-      image="/images/products/beemoo-care-eat-matstol.webp"
-      ageRange="6 mån, 3 år (max 15 kg)"
-      pros={['5-punkts bälte ingår', 'Höjdjusterbar sits', 'Enkelt att rengöra', 'Bra pris för funktionerna']}
-      cons={['Kortare livslängd än Tripp Trapp', 'Enklare materialval']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-selection-life-barnmatstol-walnut"
-    />
+ <ProductCard
+ name="Beemoo CARE Eat Matstol"
+ badge="Bäst komfort"
+ rating={4.6}
+ image="/images/products/beemoo-care-eat-matstol.webp"
+ ageRange="6 mån, 3 år (max 15 kg)"
+ pros={['5-punkts bälte ingår', 'Höjdjusterbar sits', 'Enkelt att rengöra', 'Bra pris för funktionerna']}
+ cons={['Kortare livslängd än Tripp Trapp', 'Enklare materialval']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-selection-life-barnmatstol-walnut"
+ />
 
-    <ProductCard
-      name="Beemoo Selection Life Barnmatstol"
-      badge="Bäst mångsidig"
-      price="1 799 kr"
-      rating={4.5}
-      image="/images/products/beemoo-selection-life-barnmatstol.webp"
-      ageRange="6 mån, 10 år (max 90 kg)"
-      pros={['Växer med barnet upp till 10 år', 'Höjd- och djupjusterbar', '5-punkts bälte ingår', 'Bra alternativ till Tripp Trapp']}
-      cons={['Dyrare än enklare alternativ', 'Kräver periodisk justering']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-selection-life-barnmatstol-walnut"
-    />
-  </div>
+ <ProductCard
+ name="Beemoo Selection Life Barnmatstol"
+ badge="Bäst mångsidig"
+ rating={4.5}
+ image="/images/products/beemoo-selection-life-barnmatstol.webp"
+ ageRange="6 mån, 10 år (max 90 kg)"
+ pros={['Växer med barnet upp till 10 år', 'Höjd- och djupjusterbar', '5-punkts bälte ingår', 'Bra alternativ till Tripp Trapp']}
+ cons={['Dyrare än enklare alternativ', 'Kräver periodisk justering']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-selection-life-barnmatstol-walnut"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-3">Matkärl och tillbehör</h2>
-  <p class="text-sm text-text-light mb-4">Komplettera matstolen med rätt matkärl. Silikon är BPA-fritt, tåler diskmaskin och är skonsamt mot tandborste och gom.</p>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-3">Matkärl och tillbehör</h2>
+ <p class="text-sm text-text-light mb-4">Komplettera matstolen med rätt matkärl. Silikon är BPA-fritt, tåler diskmaskin och är skonsamt mot tandborste och gom.</p>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="inoki Nami Startkit"
-      badge="Bäst startkit"
-      price="479 kr"
-      rating={4.7}
-      image="/images/products/inoki-nami-startkit.webp"
-      ageRange="4 mån+"
-      pros={['BPA-fritt silikon, säkert för bebis', 'Komplett kit: tallrik, skål, sked och gaffel', 'Starka sugkoppar håller tallriken på plats', 'Tåler diskmaskin']}
-      cons={['Passar bäst till BLW/näringsledd avvänjning', 'Inte för barn under 4 månader']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="inoki Nami Startkit"
+ badge="Bäst startkit"
+ rating={4.7}
+ image="/images/products/inoki-nami-startkit.webp"
+ ageRange="4 mån+"
+ pros={['BPA-fritt silikon, säkert för bebis', 'Komplett kit: tallrik, skål, sked och gaffel', 'Starka sugkoppar håller tallriken på plats', 'Tåler diskmaskin']}
+ cons={['Passar bäst till BLW/näringsledd avvänjning', 'Inte för barn under 4 månader']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
+ />
 
-    <ProductCard
-      name="Leas Lillebror Matset"
-      badge="Prisvärdast"
-      price="319 kr"
-      rating={4.5}
-      image="/images/products/leas-lillebror-matset.webp"
-      ageRange="6 mån+"
-      pros={['Prisvärt komplett matset', 'BPA-fritt material', 'Enkel att rengöra', 'Söt nordisk design']}
-      cons={['Färre delar än inoki-startkitet', 'Sugkopp håller inte lika bra som inoki']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
-    />
-  </div>
+ <ProductCard
+ name="Leas Lillebror Matset"
+ badge="Prisvärdast"
+ rating={4.5}
+ image="/images/products/leas-lillebror-matset.webp"
+ ageRange="6 mån+"
+ pros={['Prisvärt komplett matset', 'BPA-fritt material', 'Enkel att rengöra', 'Söt nordisk design']}
+ cons={['Färre delar än inoki-startkitet', 'Sugkopp håller inte lika bra som inoki']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">För de allra minsta, babysitter och sittbabys</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">För de allra minsta, babysitter och sittbabys</h2>
 
-  <div class="space-y-4 mb-8">
-    <ProductCard
-      name="Inovi Babysitter Throne"
-      badge="Bäst för nyfödda"
-      price="999 kr"
-      rating={4.6}
-      image="/images/products/inovi-babysitter-throne.webp"
-      ageRange="0 till 9 mån"
-      pros={['Ergonomisk sits anpassad för nyfödda', 'Lättare att bära runt hemma', 'Lugnande gungrörelse', 'Skandinavisk design i tre färger']}
-      cons={['Kan inte ersätta matstol när barnet är redo', 'Golvstol utan bricka']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
-    />
-  </div>
+ <div class="space-y-4 mb-8">
+ <ProductCard
+ name="Inovi Babysitter Throne"
+ badge="Bäst för nyfödda"
+ rating={4.6}
+ image="/images/products/inovi-babysitter-throne.webp"
+ ageRange="0 till 9 mån"
+ pros={['Ergonomisk sits anpassad för nyfödda', 'Lättare att bära runt hemma', 'Lugnande gungrörelse', 'Skandinavisk design i tre färger']}
+ cons={['Kan inte ersätta matstol när barnet är redo', 'Golvstol utan bricka']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt matstol?</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt matstol?</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>1. Hur länge ska stolen användas?</h3>
-    <p>Tänk på livscykelkostnaden. En Tripp Trapp på 2 990 kr används i 15+ år och ger högt andrahandsvärde. En Antilop på 249 kr byts ut efter 2 till 3 år. Om du planerar flera barn kan investeringen i en dyr stol snabbt löna sig.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>1. Hur länge ska stolen användas?</h3>
+ <p>Tänk på livscykelkostnaden. En Tripp Trapp på används i 15+ år och ger högt andrahandsvärde. En Antilop på byts ut efter 2 till 3 år. Om du planerar flera barn kan investeringen i en dyr stol snabbt löna sig.</p>
 
-    <h3>2. Enkel rengöring är viktigare än du tror</h3>
-    <p>Matstolen rengörs flera gånger om dagen. Välj en modell med avtagbar och diskmaskinssäker bricka, tvättbart sittskydd och helst utan djupa fogar där mat kan fastna. Antilop är etta på rengöringsbarhet, Tripp Trapp med nackdel att sittdynor köps separat.</p>
+ <h3>2. Enkel rengöring är viktigare än du tror</h3>
+ <p>Matstolen rengörs flera gånger om dagen. Välj en modell med avtagbar och diskmaskinssäker bricka, tvättbart sittskydd och helst utan djupa fogar där mat kan fastna. Antilop är etta på rengöringsbarhet, Tripp Trapp med nackdel att sittdynor köps separat.</p>
 
-    <h3>3. Säkerhetsgodkännande, kräv EN 14988</h3>
-    <p>Alla matstolar på EU-marknaden ska uppfylla säkerhetsstandarden EN 14988. Det innebär krav på stabilitet, hållfasthet och bältessystem. Alla stolarna vi testat uppfyller standarden. Välj alltid en stol med bälte och använd det varje gång, barn kan falla ut ur stolen utan bälte.</p>
+ <h3>3. Säkerhetsgodkännande, kräv EN 14988</h3>
+ <p>Alla matstolar på EU-marknaden ska uppfylla säkerhetsstandarden EN 14988. Det innebär krav på stabilitet, hållfasthet och bältessystem. Alla stolarna vi testat uppfyller standarden. Välj alltid en stol med bälte och använd det varje gång, barn kan falla ut ur stolen utan bälte.</p>
 
-    <h3>4. Bältessystem, 3-punkt eller 5-punkt?</h3>
-    <p>För de minsta barnen (6 till 12 månader) rekommenderas 5-punkts bälte (axlar + midja + skrev) för bästa fixering. Äldre och mer rörliga barn klarar sig med 3-punkts bälte. IKEA Antilop levereras med 3-punkts bälte, <a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> och Chicco Polly med 5-punkts.</p>
-  </div>
+ <h3>4. Bältessystem, 3-punkt eller 5-punkt?</h3>
+ <p>För de minsta barnen (6 till 12 månader) rekommenderas 5-punkts bälte (axlar + midja + skrev) för bästa fixering. Äldre och mer rörliga barn klarar sig med 3-punkts bälte. IKEA Antilop levereras med 3-punkts bälte, <a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> och Chicco Polly med 5-punkts.</p>
+ </div>
 
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om matstolar</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/matstolar/tripp-trapp/" class="text-accent underline">Stokke Tripp Trapp recension 2026, värd pengarna?</a></li>
-      <li><a href="/matstolar/babybjorn-vs-stokke-tripp-trapp/" class="text-accent underline">BabyBjörn High Chair vs Stokke Tripp Trapp 2026, premium vs livstidsstol</a></li>
-      <li><a href="/matstolar/resestol/" class="text-accent underline">Bästa resematstolen 2026, kompakt och resevänlig</a></li>
-      <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
-      <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
-      <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
-    </ul>
-  </div>
+ <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Fler guider om matstolar</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/matstolar/tripp-trapp/" class="text-accent underline">Stokke Tripp Trapp recension 2026, värd pengarna?</a></li>
+ <li><a href="/matstolar/babybjorn-vs-stokke-tripp-trapp/" class="text-accent underline">BabyBjörn High Chair vs Stokke Tripp Trapp 2026, premium vs livstidsstol</a></li>
+ <li><a href="/matstolar/resestol/" class="text-accent underline">Bästa resematstolen 2026, kompakt och resevänlig</a></li>
+ <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+ <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
+ <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
+ </ul>
+ </div>
 
-  <RetailerCTAs />
+ <RetailerCTAs />
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <ProductSchema products={[
-    {
-      name: 'Stokke Tripp Trapp Oak Natural',
-      description: 'Norsk matstol i ek som följer barnet från 6 månader till vuxen (136 kg). Höjd- och djupjusterbar. Tidlös design med högt andrahandsvärde.',
-      image: 'https://bebisguiden.se/images/products/stokke-tripp-trapp.webp',
-      brand: 'Stokke',
-      ratingValue: 4.9,
-      reviewCount: 1,
-      offers: [{ price: 2439, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'IKEA Antilop',
-      description: 'Budgetvänlig matstol med 3-punkts bälte. Lätt att rengöra, stabil och enkel att transportera. För barn 6 månader till 3 år.',
-      image: 'https://bebisguiden.se/images/products/ikea-antilop.webp',
-      brand: 'IKEA',
-      ratingValue: 4.6,
-      reviewCount: 1,
-      offers: [{ price: 249, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural', seller: 'IKEA' }],
-    },
-    {
-      name: 'Beemoo CARE Eat Matstol',
-      description: 'Matstol med 5-punkts bälte och höjdjusterbar sits. Enkel att rengöra. För barn 6 månader till 3 år.',
-      image: 'https://bebisguiden.se/images/products/beemoo-care-eat.webp',
-      brand: 'Beemoo',
-      ratingValue: 4.6,
-      reviewCount: 1,
-      offers: [{ price: 1299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-care-eat-matstol-basil-green', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Beemoo Selection Life Barnmatstol',
-      description: 'Växamatstol med 5-punkts bälte som passar barn från 6 månader upp till 10 år (90 kg). Höjd- och djupjusterbar.',
-      image: 'https://bebisguiden.se/images/products/beemoo-selection-life.webp',
-      brand: 'Beemoo',
-      ratingValue: 4.5,
-      reviewCount: 1,
-      offers: [{ price: 1799, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fbeemoo-selection-life-barnmatstol-walnut', seller: 'Jollyroom' }],
-    },
-  ]} />
-  <CTABox productName="Matstolar bebis" store="inoki" description="Barnservis, matstolar och matningstillbehör i silikon." />
-  <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
+ <ProductSchema products={[
+ {
+ name: 'Stokke Tripp Trapp Oak Natural',
+ description: 'Norsk matstol i ek som följer barnet från 6 månader till vuxen (136 kg). Höjd- och djupjusterbar. Tidlös design med högt andrahandsvärde.',
+ image: 'https://bebisguiden.se/images/products/stokke-tripp-trapp.webp',
+ brand: 'Stokke',
+ ratingValue: 4.9,
+ reviewCount: 1,
+ },
+ {
+ name: 'IKEA Antilop',
+ description: 'Budgetvänlig matstol med 3-punkts bälte. Lätt att rengöra, stabil och enkel att transportera. För barn 6 månader till 3 år.',
+ image: 'https://bebisguiden.se/images/products/ikea-antilop.webp',
+ brand: 'IKEA',
+ ratingValue: 4.6,
+ reviewCount: 1,
+ },
+ {
+ name: 'Beemoo CARE Eat Matstol',
+ description: 'Matstol med 5-punkts bälte och höjdjusterbar sits. Enkel att rengöra. För barn 6 månader till 3 år.',
+ image: 'https://bebisguiden.se/images/products/beemoo-care-eat.webp',
+ brand: 'Beemoo',
+ ratingValue: 4.6,
+ reviewCount: 1,
+ },
+ {
+ name: 'Beemoo Selection Life Barnmatstol',
+ description: 'Växamatstol med 5-punkts bälte som passar barn från 6 månader upp till 10 år (90 kg). Höjd- och djupjusterbar.',
+ image: 'https://bebisguiden.se/images/products/beemoo-selection-life.webp',
+ brand: 'Beemoo',
+ ratingValue: 4.5,
+ reviewCount: 1,
+ },
+ ]} />
+ <CTABox productName="Matstolar bebis" store="inoki" description="Barnservis, matstolar och matningstillbehör i silikon." />
+ <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
 </ArticleLayout>
 
 <StickyTop3Bar products={products} />

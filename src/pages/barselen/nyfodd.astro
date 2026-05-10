@@ -9,248 +9,233 @@ import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Bärselen', href: '/barselen/' },
-  { label: 'Nyfödd' },
+ { label: 'Hem', href: '/' },
+ { label: 'Bärselen', href: '/barselen/' },
+ { label: 'Nyfödd' },
 ];
 
 const products = [
-  {
-    name: 'BabyBjörn Mini',
-    image: '/images/products/babybjorn-mini.webp',
-    badge: 'Bäst i test',
-    price: '1 099 kr',
-    rating: 4.8,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron',
-    features: {
-      'Vikt barn': '3,5 till 11 kg',
-      'Positioner': '2 (fram inåt/utåt)',
-      'Material': 'Mesh eller bomull',
-      'Ergonomi': 'Hip-Healthy Institute',
-      'Pris': '1 099 kr',
-    },
-  },
-  {
-    name: 'Ergobaby Embrace',
-    badge: 'Mjukast',
-    price: '899 kr',
-    rating: 4.7,
-    image: '/images/products/ergobaby-embrace.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-embrace-barsele-pure-black',
-    features: {
-      'Vikt barn': '3,2 till 11 kg',
-      'Positioner': '2 (fram inåt/utåt)',
-      'Material': 'Mjukt stretch-tyg',
-      'Ergonomi': 'HIPS-certifierad',
-      'Pris': '899 kr',
-    },
-  },
-  {
-    name: 'Cybex Yema Tie',
-    image: '/images/products/cybex-yema-tie.webp',
-    badge: 'Flexibel',
-    price: '749 kr',
-    rating: 4.5,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron',
-    features: {
-      'Vikt barn': '3,5 till 13 kg',
-      'Positioner': '3 (fram, höft, rygg)',
-      'Material': 'Bomull',
-      'Ergonomi': 'HIPS-certifierad',
-      'Pris': '749 kr',
-    },
-  },
-  {
-    name: 'Manduca XT',
-    image: '/images/products/manduca-xt.webp',
-    badge: 'Bäst hållbarhet',
-    price: '1 299 kr',
-    rating: 4.6,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fmanduca-xt-cotton-barsele-denimblue-toffee',
-    features: {
-      'Vikt barn': '3,5 till 20 kg',
-      'Positioner': '4 (fram, rygg, höft, vändbar)',
-      'Material': 'Organisk bomull',
-      'Ergonomi': 'HKDSI-certifierad',
-      'Pris': '1 299 kr',
-    },
-  },
-  {
-    name: 'Didymos Didy Meh Dai',
-    image: '/images/products/didymos-didy-meh-dai.webp',
-    badge: 'Hybrid-bärare',
-    price: '849 kr',
-    rating: 4.4,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron',
-    features: {
-      'Vikt barn': '3,5 till 15 kg',
-      'Positioner': '3 (fram, rygg, höft)',
-      'Material': 'Vävt bomullstyg',
-      'Ergonomi': 'M-position',
-      'Pris': '849 kr',
-    },
-  },
+ {
+ name: 'BabyBjörn Mini',
+ image: '/images/products/babybjorn-mini.webp',
+ badge: 'Bäst i test',
+ rating: 4.8,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron',
+ features: {
+ 'Vikt barn': '3,5 till 11 kg',
+ 'Positioner': '2 (fram inåt/utåt)',
+ 'Material': 'Mesh eller bomull',
+ 'Ergonomi': 'Hip-Healthy Institute',
+ },
+ },
+ {
+ name: 'Ergobaby Embrace',
+ badge: 'Mjukast',
+ rating: 4.7,
+ image: '/images/products/ergobaby-embrace.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-embrace-barsele-pure-black',
+ features: {
+ 'Vikt barn': '3,2 till 11 kg',
+ 'Positioner': '2 (fram inåt/utåt)',
+ 'Material': 'Mjukt stretch-tyg',
+ 'Ergonomi': 'HIPS-certifierad',
+ },
+ },
+ {
+ name: 'Cybex Yema Tie',
+ image: '/images/products/cybex-yema-tie.webp',
+ badge: 'Flexibel',
+ rating: 4.5,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron',
+ features: {
+ 'Vikt barn': '3,5 till 13 kg',
+ 'Positioner': '3 (fram, höft, rygg)',
+ 'Material': 'Bomull',
+ 'Ergonomi': 'HIPS-certifierad',
+ },
+ },
+ {
+ name: 'Manduca XT',
+ image: '/images/products/manduca-xt.webp',
+ badge: 'Bäst hållbarhet',
+ rating: 4.6,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fmanduca-xt-cotton-barsele-denimblue-toffee',
+ features: {
+ 'Vikt barn': '3,5 till 20 kg',
+ 'Positioner': '4 (fram, rygg, höft, vändbar)',
+ 'Material': 'Organisk bomull',
+ 'Ergonomi': 'HKDSI-certifierad',
+ },
+ },
+ {
+ name: 'Didymos Didy Meh Dai',
+ image: '/images/products/didymos-didy-meh-dai.webp',
+ badge: 'Hybrid-bärare',
+ rating: 4.4,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron',
+ features: {
+ 'Vikt barn': '3,5 till 15 kg',
+ 'Positioner': '3 (fram, rygg, höft)',
+ 'Material': 'Vävt bomullstyg',
+ 'Ergonomi': 'M-position',
+ },
+ },
 ];
 
-const featureLabels = ['Vikt barn', 'Positioner', 'Material', 'Ergonomi', 'Pris'];
+const featureLabels = ['Vikt barn', 'Positioner', 'Material', 'Ergonomi'];
 
 const faqItems = [
-  {
-    question: 'Från vilken ålder kan man använda bärsele för nyfödd?',
-    answer: 'De flesta bärselen för nyfödda är godkända från födseln, från ca 3,2 till 3,5 kg. Det viktigaste är att bebisens huvud och nacke har fullgott stöd, och att bärselen håller barnets rygg i en naturlig C-form. BabyBjörn Mini och Ergobaby Embrace är speciellt konstruerade för de allra minsta och kräver inget separat insert.',
-  },
-  {
-    question: 'Behövs ett insert för nyfödda?',
-    answer: 'Inte alltid. BabyBjörn Mini, Ergobaby Embrace och Manduca XT kan användas från födseln utan insert. Många universalbärselen (som Ergobaby Omni eller BabyBjörn Harmony) kräver däremot ett nyföddinsert för barn under 4 till 5 kg. Kontrollera alltid tillverkarens rekommendation för just din modell.',
-  },
-  {
-    question: 'Hur länge kan man använda en nyfödd-bärsele?',
-    answer: 'BabyBjörn Mini och Ergobaby Embrace är optimerade för de första 4 till 6 månaderna (upp till ca 11 kg). Manduca XT och Cybex Yema Tie kan däremot användas längre, upp till 13 till 20 kg. Om du vill slippa byta bärsele är Manduca XT eller en universal-bärsele med nyföddläge ett bättre val långsiktigt.',
-  },
-  {
-    question: 'Vad är M-positionen och varför är den viktig för nyfödda?',
-    answer: 'M-positionen innebär att barnets knän är i nivå med eller högre än rumpan, med benen böjda i en M-form. Det är den ergonomiskt korrekta ställningen för ett nyfött barns höftledsuveckling. Välj alltid en bärsele som är certifierad av HIPS (International Hip Dysplasia Institute) eller HKDSI för att säkerställa rätt position.',
-  },
-  {
-    question: 'Kan pappan eller annan medbärare använda samma bärsele?',
-    answer: 'Ja, de flesta bärselen är justerbara så att bärarna kan ha olika kroppsstorlek. Manduca XT och Ergobaby Embrace är särskilt lätta att justera snabbt. Om bärarna är väldigt olika i storlek kan det vara praktiskt att ha ett midjebälte som är lätt att öppna och stänga utan att behöva justera hela bärselen.',
-  },
-  {
-    question: 'Är det säkert att bära nyfödda tätt mot kroppen?',
-    answer: 'Ja, under förutsättning att du följer TICKS-reglerna: Tight (bärselen sitter tätt), In view at all times (alltid barnets ansikte synligt), Close enough to kiss (nära nog att kyssa), Keep chin off chest (hakan ej mot bröstet), Supported back (ryggen stöttad). En korrekt buren bebis i en godkänd bärsele är fullständigt säker.',
-  },
+ {
+ question: 'Från vilken ålder kan man använda bärsele för nyfödd?',
+ answer: 'De flesta bärselen för nyfödda är godkända från födseln, från ca 3,2 till 3,5 kg. Det viktigaste är att bebisens huvud och nacke har fullgott stöd, och att bärselen håller barnets rygg i en naturlig C-form. BabyBjörn Mini och Ergobaby Embrace är speciellt konstruerade för de allra minsta och kräver inget separat insert.',
+ },
+ {
+ question: 'Behövs ett insert för nyfödda?',
+ answer: 'Inte alltid. BabyBjörn Mini, Ergobaby Embrace och Manduca XT kan användas från födseln utan insert. Många universalbärselen (som Ergobaby Omni eller BabyBjörn Harmony) kräver däremot ett nyföddinsert för barn under 4 till 5 kg. Kontrollera alltid tillverkarens rekommendation för just din modell.',
+ },
+ {
+ question: 'Hur länge kan man använda en nyfödd-bärsele?',
+ answer: 'BabyBjörn Mini och Ergobaby Embrace är optimerade för de första 4 till 6 månaderna (upp till ca 11 kg). Manduca XT och Cybex Yema Tie kan däremot användas längre, upp till 13 till 20 kg. Om du vill slippa byta bärsele är Manduca XT eller en universal-bärsele med nyföddläge ett bättre val långsiktigt.',
+ },
+ {
+ question: 'Vad är M-positionen och varför är den viktig för nyfödda?',
+ answer: 'M-positionen innebär att barnets knän är i nivå med eller högre än rumpan, med benen böjda i en M-form. Det är den ergonomiskt korrekta ställningen för ett nyfött barns höftledsuveckling. Välj alltid en bärsele som är certifierad av HIPS (International Hip Dysplasia Institute) eller HKDSI för att säkerställa rätt position.',
+ },
+ {
+ question: 'Kan pappan eller annan medbärare använda samma bärsele?',
+ answer: 'Ja, de flesta bärselen är justerbara så att bärarna kan ha olika kroppsstorlek. Manduca XT och Ergobaby Embrace är särskilt lätta att justera snabbt. Om bärarna är väldigt olika i storlek kan det vara praktiskt att ha ett midjebälte som är lätt att öppna och stänga utan att behöva justera hela bärselen.',
+ },
+ {
+ question: 'Är det säkert att bära nyfödda tätt mot kroppen?',
+ answer: 'Ja, under förutsättning att du följer TICKS-reglerna: Tight (bärselen sitter tätt), In view at all times (alltid barnets ansikte synligt), Close enough to kiss (nära nog att kyssa), Keep chin off chest (hakan ej mot bröstet), Supported back (ryggen stöttad). En korrekt buren bebis i en godkänd bärsele är fullständigt säker.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa Bärsele för Nyfödd 2026, Test och tips"
-  description="Bästa bärsele för nyfödd 2026: Vi testar höftstöd, nackkudde och komfort from dag ett. Se vilken bärsele som passar nyfödd bäst."
-  breadcrumbs={breadcrumbs}
-  updatedDate="2026-04-14"
+ title="Bästa Bärsele för Nyfödd 2026, Test och tips"
+ description="Bästa bärsele för nyfödd 2026: Vi testar höftstöd, nackkudde och komfort from dag ett. Se vilken bärsele som passar nyfödd bäst."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-    Rätt bärsele för en nyfödd ger stöd till bebisens omogna höfter och ryggrad, och frigör händerna redan från dag ett. Vi har jämfört fem bärselen speciellt lämpade för nyfödda, med fokus på ergonomi, säkerhet och hur enkla de är att använda.
-  </p>
+ <p class="text-base text-text-light mb-3 max-w-2xl">
+ Rätt bärsele för en nyfödd ger stöd till bebisens omogna höfter och ryggrad, och frigör händerna redan från dag ett. Vi har jämfört fem bärselen speciellt lämpade för nyfödda, med fokus på ergonomi, säkerhet och hur enkla de är att använda.
+ </p>
 
-  <TopPick product={products[0]} description="BabyBjörn Mini är vårt bäst i test bland nyfödd: 3,5 till 11 kg och 2 (fram inåt/utåt) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="BabyBjörn Mini är vårt bäst i test bland nyfödd: 3,5 till 11 kg och 2 (fram inåt/utåt) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bärsele för nyfödda 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bärsele för nyfödda 2026</h2>
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
-    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong><a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> Mini</strong> är specialdesignad för nyfödda och enkel att ta på. <strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> Embrace</strong> är mjukast och skönast för bebisen. <strong>Manduca XT</strong> räcker längst, upp till 20 kg utan byte.</p>
-  </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+ <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+ <p class="text-sm text-text-light"><strong><a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> Mini</strong> är specialdesignad för nyfödda och enkel att ta på. <strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> Embrace</strong> är mjukast och skönast för bebisen. <strong>Manduca XT</strong> räcker längst, upp till 20 kg utan byte.</p>
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="BabyBjörn Mini"
-      image="/images/products/babybjorn-mini.webp"
-      badge="Bäst i test"
-      price="1 099 kr"
-      rating={4.8}
-      ageRange="0 till 6 mån (3,5 till 11 kg)"
-      pros={['Speciellt designad för nyfödda', 'Enkel att ta på, inga knutar eller justering', 'Hip-Healthy Institute-certifierad', 'Väl ventilerad mesh-version tillgänglig']}
-      cons={['Kortare användningstid (till 11 kg)', 'Färre barpositioner än universalmodeller']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-omni-360-cool-air-barsele-svart"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="BabyBjörn Mini"
+ image="/images/products/babybjorn-mini.webp"
+ badge="Bäst i test"
+ rating={4.8}
+ ageRange="0 till 6 mån (3,5 till 11 kg)"
+ pros={['Speciellt designad för nyfödda', 'Enkel att ta på, inga knutar eller justering', 'Hip-Healthy Institute-certifierad', 'Väl ventilerad mesh-version tillgänglig']}
+ cons={['Kortare användningstid (till 11 kg)', 'Färre barpositioner än universalmodeller']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-omni-360-cool-air-barsele-svart"
+ />
 
-    <ProductCard
-      name="Ergobaby Embrace"
-  image="/images/products/ergobaby-embrace.webp"
-      badge="Mjukast"
-      price="899 kr"
-      rating={4.7}
-      ageRange="0 till 6 mån (3,2 till 11 kg)"
-      pros={['Mjukt stretch-tyg som formar sig efter bebisen', 'HIPS-certifierad M-position', 'Inga justerbara spännen, lätt att ta på', 'Passar de allra minsta från 3,2 kg']}
-      cons={['Kan vara varm under sommaren', 'Kortare livslängd (till 11 kg)']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-embrace-barsele-pure-black"
-    />
+ <ProductCard
+ name="Ergobaby Embrace"
+ image="/images/products/ergobaby-embrace.webp"
+ badge="Mjukast"
+ rating={4.7}
+ ageRange="0 till 6 mån (3,2 till 11 kg)"
+ pros={['Mjukt stretch-tyg som formar sig efter bebisen', 'HIPS-certifierad M-position', 'Inga justerbara spännen, lätt att ta på', 'Passar de allra minsta från 3,2 kg']}
+ cons={['Kan vara varm under sommaren', 'Kortare livslängd (till 11 kg)']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-embrace-barsele-pure-black"
+ />
 
-    <ProductCard
-      name="Cybex Yema Tie"
-      image="/images/products/cybex-yema-tie.webp"
-      badge="Flexibel"
-      price="749 kr"
-      rating={4.5}
-      ageRange="0 till 12 mån (3,5 till 13 kg)"
-      pros={['Lägst pris i testet', 'Nyföddläge ingår utan extra insert', 'Flexibel, fungerar i 3 barpositioner', 'Lätt att tvätta']}
-      cons={['Kräver mer inlärning att knyta korrekt', 'Enklare material än BabyBjörn och Ergobaby']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-omni-deluxe-barsele-mesh-natural-beige"
-    />
+ <ProductCard
+ name="Cybex Yema Tie"
+ image="/images/products/cybex-yema-tie.webp"
+ badge="Flexibel"
+ rating={4.5}
+ ageRange="0 till 12 mån (3,5 till 13 kg)"
+ pros={['Lägst pris i testet', 'Nyföddläge ingår utan extra insert', 'Flexibel, fungerar i 3 barpositioner', 'Lätt att tvätta']}
+ cons={['Kräver mer inlärning att knyta korrekt', 'Enklare material än BabyBjörn och Ergobaby']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-omni-deluxe-barsele-mesh-natural-beige"
+ />
 
-    <ProductCard
-      name="Manduca XT"
-      image="/images/products/manduca-xt.webp"
-      badge="Bäst hållbarhet"
-      price="1 299 kr"
-      rating={4.6}
-      ageRange="0 till 4 år (3,5 till 20 kg)"
-      pros={['Nyföddläge utan insert, justeras med panelinbyggd mekanism', 'Räcker till 20 kg, inget byte behövs', 'HKDSI-certifierad ergonomi', 'Organisk bomull, GOTS-certifierat']}
-      cons={['Högre ingångspris', 'Fler spännen att lära sig i början']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fmanduca-xt-cotton-barsele-denimblue-toffee"
-    />
+ <ProductCard
+ name="Manduca XT"
+ image="/images/products/manduca-xt.webp"
+ badge="Bäst hållbarhet"
+ rating={4.6}
+ ageRange="0 till 4 år (3,5 till 20 kg)"
+ pros={['Nyföddläge utan insert, justeras med panelinbyggd mekanism', 'Räcker till 20 kg, inget byte behövs', 'HKDSI-certifierad ergonomi', 'Organisk bomull, GOTS-certifierat']}
+ cons={['Högre ingångspris', 'Fler spännen att lära sig i början']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fmanduca-xt-cotton-barsele-denimblue-toffee"
+ />
 
-    <ProductCard
-      name="Didymos Didy Meh Dai"
-      image="/images/products/didymos-didy-meh-dai.webp"
-      badge="Hybrid-bärare"
-      price="849 kr"
-      rating={4.4}
-      ageRange="0 till 2 år (3,5 till 15 kg)"
-      pros={['Hybrid mellan bärsjal och bärsele', 'Vävt tyg med mjukt stöd', 'M-position säkerställd', 'Kan användas på fram och rygg']}
-      cons={['Kräver mer inlärning', 'Tar längre att ta på än spännesystem']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron"
-    />
-  </div>
+ <ProductCard
+ name="Didymos Didy Meh Dai"
+ image="/images/products/didymos-didy-meh-dai.webp"
+ badge="Hybrid-bärare"
+ rating={4.4}
+ ageRange="0 till 2 år (3,5 till 15 kg)"
+ pros={['Hybrid mellan bärsjal och bärsele', 'Vävt tyg med mjukt stöd', 'M-position säkerställd', 'Kan användas på fram och rygg']}
+ cons={['Kräver mer inlärning', 'Tar längre att ta på än spännesystem']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du bärsele för nyfödda</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du bärsele för nyfödda</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Prioritera ergonomi framför allt</h3>
-    <p>Det viktigaste för en nyfödd är att bärselen säkerställer M-position och ger tillräckligt stöd till ryggrad och huvud. Välj alltid en bärsele certifierad av HIPS (International Hip Dysplasia Institute) eller HKDSI. Alla bärselen i vår lista uppfyller det kravet.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>Prioritera ergonomi framför allt</h3>
+ <p>Det viktigaste för en nyfödd är att bärselen säkerställer M-position och ger tillräckligt stöd till ryggrad och huvud. Välj alltid en bärsele certifierad av HIPS (International Hip Dysplasia Institute) eller HKDSI. Alla bärselen i vår lista uppfyller det kravet.</p>
 
-    <h3>Specialmodell eller universal?</h3>
-    <p>BabyBjörn Mini och Ergobaby Embrace är designade enbart för nyfödda och är enklast att använda under de första månaderna. Manduca XT och <a href="/marken/cybex/" class="text-accent underline">Cybex</a> Yema Tie kan justeras för nyfödda men används även längre upp i åldrarna. Om du bara vill ha en bärsele som håller hela spädbarnsperioden är Manduca XT det bästa valet.</p>
+ <h3>Specialmodell eller universal?</h3>
+ <p>BabyBjörn Mini och Ergobaby Embrace är designade enbart för nyfödda och är enklast att använda under de första månaderna. Manduca XT och <a href="/marken/cybex/" class="text-accent underline">Cybex</a> Yema Tie kan justeras för nyfödda men används även längre upp i åldrarna. Om du bara vill ha en bärsele som håller hela spädbarnsperioden är Manduca XT det bästa valet.</p>
 
-    <h3>TICKS-reglerna, alltid</h3>
-    <p>Oavsett vilken bärsele du väljer ska du följa TICKS: bärselen sitter Tight (tätt), In view at all times (barnets ansikte alltid synligt), Close enough to kiss (nära nog att kyssa), Keep chin off chest (hakan ej mot bröstet), Supported back (ryggen stöttad i C-form). Följer du dessa regler är bärning säkert från dag ett.</p>
+ <h3>TICKS-reglerna, alltid</h3>
+ <p>Oavsett vilken bärsele du väljer ska du följa TICKS: bärselen sitter Tight (tätt), In view at all times (barnets ansikte alltid synligt), Close enough to kiss (nära nog att kyssa), Keep chin off chest (hakan ej mot bröstet), Supported back (ryggen stöttad i C-form). Följer du dessa regler är bärning säkert från dag ett.</p>
 
-    <h3>Varmt väder, välj mesh</h3>
-    <p>Under sommarmånaderna är ett luftigt mesh-tyg att föredra. BabyBjörn Mini finns i mesh-version, och Ergobaby har en SoftAir-variant. Klä bebisen tunnare under bärning, kroppskontakten ger tillräcklig värme i de flesta temperaturer.</p>
-  </div>
+ <h3>Varmt väder, välj mesh</h3>
+ <p>Under sommarmånaderna är ett luftigt mesh-tyg att föredra. BabyBjörn Mini finns i mesh-version, och Ergobaby har en SoftAir-variant. Klä bebisen tunnare under bärning, kroppskontakten ger tillräcklig värme i de flesta temperaturer.</p>
+ </div>
 
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, Ergobaby, BabyBjörn och Najell testat</a></li>
-      <li><a href="/barselen/ergonomisk/" class="text-accent underline">Bästa ergonomiska bärsele 2026, godkänd av fysioterapeut</a></li>
-      <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
-    </ul>
-  </div>
+ <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, Ergobaby, BabyBjörn och Najell testat</a></li>
+ <li><a href="/barselen/ergonomisk/" class="text-accent underline">Bästa ergonomiska bärsele 2026, godkänd av fysioterapeut</a></li>
+ <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+ </ul>
+ </div>
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <MultiStoreCTA
-  productName="Najell Easy Volume 2"
-  brand="najell"
-  primaryStore="Najell"
-  primaryUrl="https://addrevenue.io/t?a=984973&c=3467325&url=https%3A%2F%2Fnajell.com%2Fsv-se%2Fp%2Feasy-volume-2-honey-beige"
-  description="Bärsele som fungerar från nyfödd (3,5 kg) utan extrainsats. Ergonomisk M-position."
+ <MultiStoreCTA
+ productName="Najell Easy Volume 2"
+ brand="najell"
+ primaryStore="Najell"
+ primaryUrl="https://addrevenue.io/t?a=984973&c=3467325&url=https%3A%2F%2Fnajell.com%2Fsv-se%2Fp%2Feasy-volume-2-honey-beige"
+ description="Bärsele som fungerar från nyfödd (3,5 kg) utan extrainsats. Ergonomisk M-position."
 />
 
-  <StickyTop3Bar products={products} />
+ <StickyTop3Bar products={products} />
 <ProductSchema products={[
-    { name: 'BabyBjörn Mini', description: 'Lättviktsbärsele för nyfödda. Enkel att ta på och av med en hand.', brand: 'BabyBjörn', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 1099, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron', seller: 'Jollyroom' }] },
-    { name: 'Ergobaby Embrace', description: 'Mjuk bärsele för nyfödda med inbyggt stöd. Ingen insert behövs.', brand: 'Ergobaby', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 899, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-embrace-barsele-pure-black', seller: 'Jollyroom' }] },
-    { name: 'Cybex Yema Tie', description: 'Mjuk sjalbärsele för nyfödda. Enkel att knyta och anpassa.', brand: 'Cybex', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 749, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron', seller: 'Jollyroom' }] },
-    { name: 'Manduca XT', description: 'Ergonomisk bärsele utan insert för nyfödda. Bred och anpassbar.', brand: 'Manduca', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fmanduca-xt-cotton-barsele-denimblue-toffee', seller: 'Jollyroom' }] },
-  ]} />
+ { name: 'BabyBjörn Mini', description: 'Lättviktsbärsele för nyfödda. Enkel att ta på och av med en hand.', brand: 'BabyBjörn', ratingValue: 4.6, reviewCount: 1 },
+ { name: 'Ergobaby Embrace', description: 'Mjuk bärsele för nyfödda med inbyggt stöd. Ingen insert behövs.', brand: 'Ergobaby', ratingValue: 4.7, reviewCount: 1 },
+ { name: 'Cybex Yema Tie', description: 'Mjuk sjalbärsele för nyfödda. Enkel att knyta och anpassa.', brand: 'Cybex', ratingValue: 4.4, reviewCount: 1 },
+ { name: 'Manduca XT', description: 'Ergonomisk bärsele utan insert för nyfödda. Bred och anpassbar.', brand: 'Manduca', ratingValue: 4.5, reviewCount: 1 },
+ ]} />
 </ArticleLayout>

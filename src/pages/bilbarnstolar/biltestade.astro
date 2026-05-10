@@ -9,240 +9,225 @@ import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
-  { label: 'Biltestade' },
+ { label: 'Hem', href: '/' },
+ { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+ { label: 'Biltestade' },
 ];
 
 const products = [
-  {
-    name: 'Axkid Minikid 4',
-    image: '/images/products/axkid-minikid-4.webp',
-    badge: 'Folksams bästa val',
-    price: '5 299 kr',
-    rating: 4.9,
-    ctaHref: 'https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F',
-    features: {
-      'Folksam-betyg': 'Bra val',
-      'Plus Test': 'Godkänd',
-      'ISOFIX': 'Ja (eller bälte)',
-      'Standard': 'R44/04',
-      'Pris': '5 299 kr',
-    },
-  },
-  {
-    name: 'Cybex Sirona T i-Size',
-    badge: 'Folksam-godkänd',
-    price: '5 499 kr',
-    rating: 4.8,
-    image: '/images/products/cybex-sirona-t-i-size.webp',
-    ctaHref: '/bilbarnstolar/',
-    features: {
-      'Folksam-betyg': 'Bra val',
-      'Plus Test': 'Godkänd',
-      'ISOFIX': 'Ja + stödben',
-      'Standard': 'i-Size (R129)',
-      'Pris': '5 499 kr',
-    },
-  },
-  {
-    name: 'BeSafe iZi Turn B i-Size',
-    image: '/images/products/besafe-izi-turn-b-i-size.webp',
-    badge: 'Plus Test-topp',
-    price: '4 299 kr',
-    rating: 4.7,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
-    features: {
-      'Folksam-betyg': 'Bra val',
-      'Plus Test': 'Topplacering',
-      'ISOFIX': 'Ja + stödben',
-      'Standard': 'i-Size (R129)',
-      'Pris': '4 299 kr',
-    },
-  },
-  {
-    name: 'Britax Römer Baby-Safe iSense',
-    image: '/images/products/britax-romer-baby-safe-isense.webp',
-    badge: 'Plus Test-godkänd',
-    price: '3 499 kr',
-    rating: 4.6,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbabyskydd%2Fbabyskydd%2Fbritax-romer-baby-safe-core-babyskydd-space-black',
-    features: {
-      'Folksam-betyg': 'Godkänd',
-      'Plus Test': 'Godkänd',
-      'ISOFIX': 'Ja (med Flex Base)',
-      'Standard': 'i-Size (R129)',
-      'Pris': '3 499 kr',
-    },
-  },
-  {
-    name: 'Joie i-Spin 360',
-    image: '/images/products/joie-i-spin-360.webp',
-    badge: 'Prisvärd testetta',
-    price: '3 999 kr',
-    rating: 4.6,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal',
-    features: {
-      'Folksam-betyg': 'Godkänd',
-      'Plus Test': 'Godkänd',
-      'ISOFIX': 'Ja + stödben',
-      'Standard': 'i-Size (R129)',
-      'Pris': '3 999 kr',
-    },
-  },
+ {
+ name: 'Axkid Minikid 4',
+ image: '/images/products/axkid-minikid-4.webp',
+ badge: 'Folksams bästa val',
+ rating: 4.9,
+ ctaHref: 'https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F',
+ features: {
+ 'Folksam-betyg': 'Bra val',
+ 'Plus Test': 'Godkänd',
+ 'ISOFIX': 'Ja (eller bälte)',
+ 'Standard': 'R44/04',
+ },
+ },
+ {
+ name: 'Cybex Sirona T i-Size',
+ badge: 'Folksam-godkänd',
+ rating: 4.8,
+ image: '/images/products/cybex-sirona-t-i-size.webp',
+ ctaHref: '/bilbarnstolar/',
+ features: {
+ 'Folksam-betyg': 'Bra val',
+ 'Plus Test': 'Godkänd',
+ 'ISOFIX': 'Ja + stödben',
+ 'Standard': 'i-Size (R129)',
+ },
+ },
+ {
+ name: 'BeSafe iZi Turn B i-Size',
+ image: '/images/products/besafe-izi-turn-b-i-size.webp',
+ badge: 'Plus Test-topp',
+ rating: 4.7,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
+ features: {
+ 'Folksam-betyg': 'Bra val',
+ 'Plus Test': 'Topplacering',
+ 'ISOFIX': 'Ja + stödben',
+ 'Standard': 'i-Size (R129)',
+ },
+ },
+ {
+ name: 'Britax Römer Baby-Safe iSense',
+ image: '/images/products/britax-romer-baby-safe-isense.webp',
+ badge: 'Plus Test-godkänd',
+ rating: 4.6,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbabyskydd%2Fbabyskydd%2Fbritax-romer-baby-safe-core-babyskydd-space-black',
+ features: {
+ 'Folksam-betyg': 'Godkänd',
+ 'Plus Test': 'Godkänd',
+ 'ISOFIX': 'Ja (med Flex Base)',
+ 'Standard': 'i-Size (R129)',
+ },
+ },
+ {
+ name: 'Joie i-Spin 360',
+ image: '/images/products/joie-i-spin-360.webp',
+ badge: 'Prisvärd testetta',
+ rating: 4.6,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal',
+ features: {
+ 'Folksam-betyg': 'Godkänd',
+ 'Plus Test': 'Godkänd',
+ 'ISOFIX': 'Ja + stödben',
+ 'Standard': 'i-Size (R129)',
+ },
+ },
 ];
 
-const featureLabels = ['Folksam-betyg', 'Plus Test', 'ISOFIX', 'Standard', 'Pris'];
+const featureLabels = ['Folksam-betyg', 'Plus Test', 'ISOFIX', 'Standard'];
 
 const faqItems = [
-  {
-    question: 'Vad är Folksams bilbarnstolstest?',
-    answer: 'Folksam genomför varje år ett av Europas mest respekterade oberoende krocktester för bilbarnstolar. Testet inkluderar frontalkrock, sidokrock och ribbkrock. Stolarna bedöms med betygen "Bra val", "Godkänd" eller "Underkänd". Testerna speglar verkliga krocksituationer och är mer krävande än de lagstadgade minimikraven. Folksams test är ett av de viktigaste beslutsunderlagen för svenska konsumenter.',
-  },
-  {
-    question: 'Vad är Plus Test?',
-    answer: 'Plus Test är en frivillig, skärpt svensk säkerhetsstandard för bilbarnstolar som går utöver de lagstadgade EU-kraven. Standarden testades fram av svenska myndigheter och säkerhetsorganisationer och fokuserar speciellt på bakåtvänt åkande och sidokrockskydd. En stol med Plus Test-godkännande har klarat ett av de tuffaste testerna i Europa. BeSafe och Axkid är märken som konsekvent presterar väl i Plus Test.',
-  },
-  {
-    question: 'Räcker det att stolen är EU-godkänd?',
-    answer: 'EU-godkännande (ECE R44 eller i-Size/R129) är minimikravet för att få sälja en stol i Sverige. Det är ett lagkrav, inte ett kvalitetsmärke. Folksam och Plus Test är frivilliga tester som mäter faktisk krockprestanda, inte bara att stolen uppfyller minimikraven. Välj alltid en stol med dokumenterade krocktest-resultat utöver EU-godkännandet.',
-  },
-  {
-    question: 'Vilken bilbarnstol har bäst Folksam-betyg 2024?',
-    answer: 'Axkid Minikid 4 utsågs till Folksams bästa val 2024 i sin kategori. Cybex Sirona T i-Size och BeSafe iZi Turn B i-Size fick också betyget "Bra val". Folksam uppdaterar sina tester varje år, kontrollera alltid det senaste årets resultat på folksam.se innan köp.',
-  },
-  {
-    question: 'Kan en underkänd stol vara farlig?',
-    answer: 'En stol som underkänns i Folksams test uppfyller ändå EU:s lagstadgade minimikrav, den är alltså laglig att använda. Men Folksams test visar att stolen presterar sämre än alternativ i samma prisklass vid verkliga krockar. Vi rekommenderar alltid att välja en stol med minst "Godkänd" i Folksams test.',
-  },
+ {
+ question: 'Vad är Folksams bilbarnstolstest?',
+ answer: 'Folksam genomför varje år ett av Europas mest respekterade oberoende krocktester för bilbarnstolar. Testet inkluderar frontalkrock, sidokrock och ribbkrock. Stolarna bedöms med betygen "Bra val", "Godkänd" eller "Underkänd". Testerna speglar verkliga krocksituationer och är mer krävande än de lagstadgade minimikraven. Folksams test är ett av de viktigaste beslutsunderlagen för svenska konsumenter.',
+ },
+ {
+ question: 'Vad är Plus Test?',
+ answer: 'Plus Test är en frivillig, skärpt svensk säkerhetsstandard för bilbarnstolar som går utöver de lagstadgade EU-kraven. Standarden testades fram av svenska myndigheter och säkerhetsorganisationer och fokuserar speciellt på bakåtvänt åkande och sidokrockskydd. En stol med Plus Test-godkännande har klarat ett av de tuffaste testerna i Europa. BeSafe och Axkid är märken som konsekvent presterar väl i Plus Test.',
+ },
+ {
+ question: 'Räcker det att stolen är EU-godkänd?',
+ answer: 'EU-godkännande (ECE R44 eller i-Size/R129) är minimikravet för att få sälja en stol i Sverige. Det är ett lagkrav, inte ett kvalitetsmärke. Folksam och Plus Test är frivilliga tester som mäter faktisk krockprestanda, inte bara att stolen uppfyller minimikraven. Välj alltid en stol med dokumenterade krocktest-resultat utöver EU-godkännandet.',
+ },
+ {
+ question: 'Vilken bilbarnstol har bäst Folksam-betyg 2024?',
+ answer: 'Axkid Minikid 4 utsågs till Folksams bästa val 2024 i sin kategori. Cybex Sirona T i-Size och BeSafe iZi Turn B i-Size fick också betyget "Bra val". Folksam uppdaterar sina tester varje år, kontrollera alltid det senaste årets resultat på folksam.se innan köp.',
+ },
+ {
+ question: 'Kan en underkänd stol vara farlig?',
+ answer: 'En stol som underkänns i Folksams test uppfyller ändå EU:s lagstadgade minimikrav, den är alltså laglig att använda. Men Folksams test visar att stolen presterar sämre än alternativ i samma prisklass vid verkliga krockar. Vi rekommenderar alltid att välja en stol med minst "Godkänd" i Folksams test.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Biltestade Bilbarnstolar 2026, Topp i Folksam- & Plustestet"
-  description="Axkid Minikid 4 och BeSafe iZi Turn toppar krocktesterna. Vi listar bilbarnstolar med bäst betyg i Folksam och Plus Test, med pris och köplänk."
-  breadcrumbs={breadcrumbs}
-  updatedDate="2026-04-14"
+ title="Biltestade Bilbarnstolar 2026, Topp i Folksam- & Plustestet"
+ description="Axkid Minikid 4 och BeSafe iZi Turn toppar krocktesterna. Vi listar bilbarnstolar med bäst betyg i Folksam och Plus Test, med pris och köplänk."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-4 max-w-2xl">
-    Att en bilbarnstol är EU-godkänd är ett minimikrav, inte ett kvalitetsmärke. Folksams årliga krocktest och det svenska Plus Test är de strängaste oberoende testerna i Europa. Vi listar enbart stolar som klarat dessa tester och förklarar vad resultaten betyder för ditt barns säkerhet.
-  </p>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Att en bilbarnstol är EU-godkänd är ett minimikrav, inte ett kvalitetsmärke. Folksams årliga krocktest och det svenska Plus Test är de strängaste oberoende testerna i Europa. Vi listar enbart stolar som klarat dessa tester och förklarar vad resultaten betyder för ditt barns säkerhet.
+ </p>
 
-  <TopPick product={products[0]} description="Axkid Minikid 4 är vårt folksams bästa val bland biltestade: Bra val och Godkänd ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Axkid Minikid 4 är vårt folksams bästa val bland biltestade: Bra val och Godkänd ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Axkid Minikid 4"
-      image="/images/products/axkid-minikid-4.webp"
-      badge="Folksams bästa val"
-      price="5 299 kr"
-      rating={4.9}
-      ageRange="0 till 7 år (upp till 36 kg)"
-      pros={['Folksams bästa val 2024, topprestad i krocktest', 'Bakåtvänt till 36 kg, längst på marknaden', 'Kan monteras med bilbälte, passar alla bilar', 'Svensk tillverkare med decennier av säkerhetsfokus']}
-      cons={['Ingen rotation, fast bakåtvänd', 'Bältesmontering kräver noggrannhet', 'Tyngre än stolar med rotation']}
-      ctaText="Se pris"
-      ctaHref="https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Axkid Minikid 4"
+ image="/images/products/axkid-minikid-4.webp"
+ badge="Folksams bästa val"
+ rating={4.9}
+ ageRange="0 till 7 år (upp till 36 kg)"
+ pros={['Folksams bästa val 2024, topprestad i krocktest', 'Bakåtvänt till 36 kg, längst på marknaden', 'Kan monteras med bilbälte, passar alla bilar', 'Svensk tillverkare med decennier av säkerhetsfokus']}
+ cons={['Ingen rotation, fast bakåtvänd', 'Bältesmontering kräver noggrannhet', 'Tyngre än stolar med rotation']}
+ ctaText="Se pris"
+ ctaHref="https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F"
+ />
 
-    <ProductCard
-      name="Cybex Sirona T i-Size"
-  image="/images/products/cybex-sirona-t-i-size.webp"
-      badge="Folksam-godkänd"
-      price="5 499 kr"
-      rating={4.8}
-      ageRange="0 till 4 år (45 till 105 cm)"
-      pros={['Folksam-godkänd med toppbetyg', '360-graders rotation för enkel i- och urlastning', 'Utmärkt sidoskydd (Linear Side-impact Protection)', 'Magnetiskt bälteslås']}
-      cons={['Hög prisklass', 'Tung (15,2 kg)', 'Kortare användningstid bakåtvänt']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black"
-    />
+ <ProductCard
+ name="Cybex Sirona T i-Size"
+ image="/images/products/cybex-sirona-t-i-size.webp"
+ badge="Folksam-godkänd"
+ rating={4.8}
+ ageRange="0 till 4 år (45 till 105 cm)"
+ pros={['Folksam-godkänd med toppbetyg', '360-graders rotation för enkel i- och urlastning', 'Utmärkt sidoskydd (Linear Side-impact Protection)', 'Magnetiskt bälteslås']}
+ cons={['Hög prisklass', 'Tung (15,2 kg)', 'Kortare användningstid bakåtvänt']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black"
+ />
 
-    <ProductCard
-      name="BeSafe iZi Turn B i-Size"
-      image="/images/products/besafe-izi-turn-b-i-size.webp"
-      badge="Plus Test-topp"
-      price="4 299 kr"
-      rating={4.7}
-      ageRange="0 till 4 år (40 till 105 cm)"
-      pros={['Konsekvent topplacering i Plus Test', 'Norsk säkerhetstänkande', 'Roterande för enkel i- och urlastning', 'Solid ISOFIX-montering']}
-      cons={['Ingen sidolinjär rotation till 360 grader', 'Begränsad bakåtvänd användningstid']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-m-plus-bilbarnstol-space-black"
-    />
+ <ProductCard
+ name="BeSafe iZi Turn B i-Size"
+ image="/images/products/besafe-izi-turn-b-i-size.webp"
+ badge="Plus Test-topp"
+ rating={4.7}
+ ageRange="0 till 4 år (40 till 105 cm)"
+ pros={['Konsekvent topplacering i Plus Test', 'Norsk säkerhetstänkande', 'Roterande för enkel i- och urlastning', 'Solid ISOFIX-montering']}
+ cons={['Ingen sidolinjär rotation till 360 grader', 'Begränsad bakåtvänd användningstid']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-m-plus-bilbarnstol-space-black"
+ />
 
-    <ProductCard
-      name="Britax Römer Baby-Safe iSense"
-      image="/images/products/britax-romer-baby-safe-isense.webp"
-      badge="Plus Test-godkänd"
-      price="3 499 kr"
-      rating={4.6}
-      ageRange="Nyfödd, ca 15 månader (0 till 13 kg)"
-      pros={['Plus Test-godkänt babyskydd', 'Enkel på- och avmontering med Flex Base', 'Bra sidoskydd för nyfödda', 'Kompatibelt med barnvagnschassi']}
-      cons={['Kortare användningstid (babyskydd)', 'Kräver separat Flex Base för bästa funktion', 'Inte för äldre barn']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbabyskydd%2Fbabyskydd%2Fbritax-romer-baby-safe-core-babyskydd-space-black"
-    />
+ <ProductCard
+ name="Britax Römer Baby-Safe iSense"
+ image="/images/products/britax-romer-baby-safe-isense.webp"
+ badge="Plus Test-godkänd"
+ rating={4.6}
+ ageRange="Nyfödd, ca 15 månader (0 till 13 kg)"
+ pros={['Plus Test-godkänt babyskydd', 'Enkel på- och avmontering med Flex Base', 'Bra sidoskydd för nyfödda', 'Kompatibelt med barnvagnschassi']}
+ cons={['Kortare användningstid (babyskydd)', 'Kräver separat Flex Base för bästa funktion', 'Inte för äldre barn']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbabyskydd%2Fbabyskydd%2Fbritax-romer-baby-safe-core-babyskydd-space-black"
+ />
 
-    <ProductCard
-      name="Joie i-Spin 360"
-      image="/images/products/joie-i-spin-360.webp"
-      badge="Prisvärd testetta"
-      price="3 999 kr"
-      rating={4.6}
-      ageRange="0 till 4 år (40 till 105 cm)"
-      pros={['Godkänd i Folksams och Plus Test', 'Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design']}
-      cons={['Något enklare material än premiumstolar', 'Kortare bakåtvänd användningstid']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal"
-    />
-  </div>
+ <ProductCard
+ name="Joie i-Spin 360"
+ image="/images/products/joie-i-spin-360.webp"
+ badge="Prisvärd testetta"
+ rating={4.6}
+ ageRange="0 till 4 år (40 till 105 cm)"
+ pros={['Godkänd i Folksams och Plus Test', 'Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design']}
+ cons={['Något enklare material än premiumstolar', 'Kortare bakåtvänd användningstid']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Folksam och Plus Test, så fungerar testerna</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Folksam och Plus Test, så fungerar testerna</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Folksams bilbarnstolstest</h3>
-    <p>Folksam är ett av Sveriges ledande försäkringsbolag och genomför sedan decennier oberoende krocktester av bilbarnstolar. Testet är frivilligt för tillverkarna men har fått stor auktoritet i branschen. Folksam testar frontalkrock, sidokrock och ribbkrock under verklighetsnära förhållanden. Stolarna bedöms sedan i en tregradig skala: "Bra val" (bästa betyg), "Godkänd" och "Underkänd". Resultaten publiceras öppet på folksam.se varje år.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>Folksams bilbarnstolstest</h3>
+ <p>Folksam är ett av Sveriges ledande försäkringsbolag och genomför sedan decennier oberoende krocktester av bilbarnstolar. Testet är frivilligt för tillverkarna men har fått stor auktoritet i branschen. Folksam testar frontalkrock, sidokrock och ribbkrock under verklighetsnära förhållanden. Stolarna bedöms sedan i en tregradig skala: "Bra val" (bästa betyg), "Godkänd" och "Underkänd". Resultaten publiceras öppet på folksam.se varje år.</p>
 
-    <h3>Plus Test, den svenska guldstandarden</h3>
-    <p>Plus Test är en frivillig, skärpt standard framtagen av svenska säkerhetsorganisationer och myndigheter. Den riktar sig specifikt mot bakåtvända bilbarnstolar och testar dem under hårdare förhållanden än EU:s minimikrav. En stol som klarar Plus Test har bevisat att den skyddar barnet väl vid verkliga krocksituationer. Märken som <a href="/marken/besafe/" class="text-accent underline">BeSafe</a> och Axkid designar sina stolar specifikt för att klara Plus Test.</p>
+ <h3>Plus Test, den svenska guldstandarden</h3>
+ <p>Plus Test är en frivillig, skärpt standard framtagen av svenska säkerhetsorganisationer och myndigheter. Den riktar sig specifikt mot bakåtvända bilbarnstolar och testar dem under hårdare förhållanden än EU:s minimikrav. En stol som klarar Plus Test har bevisat att den skyddar barnet väl vid verkliga krocksituationer. Märken som <a href="/marken/besafe/" class="text-accent underline">BeSafe</a> och Axkid designar sina stolar specifikt för att klara Plus Test.</p>
 
-    <h3>Vad EU-godkännande inte säger</h3>
-    <p>EU-godkännande (ECE R44 eller i-Size/R129) är ett lagstadgat minimikrav för att få sälja stolen på den europeiska marknaden. Det är ett lägstanivå-krav, inte ett bevis på hög kvalitet. Folksams test och Plus Test testar vad som faktiskt händer med barnet vid en krock, och resultaten skiljer sig ibland dramatiskt åt mellan EU-godkända stolar. Välj alltid en stol med dokumenterade resultat från dessa tester.</p>
+ <h3>Vad EU-godkännande inte säger</h3>
+ <p>EU-godkännande (ECE R44 eller i-Size/R129) är ett lagstadgat minimikrav för att få sälja stolen på den europeiska marknaden. Det är ett lägstanivå-krav, inte ett bevis på hög kvalitet. Folksams test och Plus Test testar vad som faktiskt händer med barnet vid en krock, och resultaten skiljer sig ibland dramatiskt åt mellan EU-godkända stolar. Välj alltid en stol med dokumenterade resultat från dessa tester.</p>
 
-    <h3>Hur läser man Folksams betyg?</h3>
-    <p>Folksams betygsskala är enkel: "Bra val" betyder att stolen presterade bra i krocketsten och rekommenderas. "Godkänd" innebär att stolen klarade testet med acceptabla resultat. "Underkänd" innebär att stolen underpresterade, undvik dessa stolar oavsett pris och marknadsföring. Kontrollera alltid årets testresultat på folksam.se eftersom modeller uppdateras löpande och gamla testresultat kan vara inaktuella.</p>
-  </div>
+ <h3>Hur läser man Folksams betyg?</h3>
+ <p>Folksams betygsskala är enkel: "Bra val" betyder att stolen presterade bra i krocketsten och rekommenderas. "Godkänd" innebär att stolen klarade testet med acceptabla resultat. "Underkänd" innebär att stolen underpresterade, undvik dessa stolar oavsett pris och marknadsföring. Kontrollera alltid årets testresultat på folksam.se eftersom modeller uppdateras löpande och gamla testresultat kan vara inaktuella.</p>
+ </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, komplett test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bästa bakåtvända bilbarnstolen 2026, test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/bilbarnstolar/i-size/" class="text-accent underline">Bästa i-Size bilbarnstol 2026, säkrast enligt EU-standard</a>
-      </li>
-      <li>
-        <a href="/bilbarnstolar/isofix/" class="text-accent underline">ISOFIX bilbarnstol, allt du behöver veta 2026</a>
-      </li>
-    </ul>
-  </div>
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li>
+ <a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, komplett test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bästa bakåtvända bilbarnstolen 2026, test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/bilbarnstolar/i-size/" class="text-accent underline">Bästa i-Size bilbarnstol 2026, säkrast enligt EU-standard</a>
+ </li>
+ <li>
+ <a href="/bilbarnstolar/isofix/" class="text-accent underline">ISOFIX bilbarnstol, allt du behöver veta 2026</a>
+ </li>
+ </ul>
+ </div>
 
-  <RetailerCTAs />
+ <RetailerCTAs />
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <StickyTop3Bar products={products} />
+ <StickyTop3Bar products={products} />
 <ProductSchema products={[
-    { name: 'Axkid Minikid 4', description: 'Bäst i test bakåtvänd bilbarnstol med topp krocksäkerhet och lång användningstid.', brand: 'Axkid', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5299, url: 'https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F', seller: 'Axkid' }] },
-    { name: 'Cybex Sirona T i-Size', description: 'Biltestestbäst komfort med 360-rotation och LinearSideSleep. ISOFIX-monterad.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5499, url: '/bilbarnstolar/', seller: 'Cybex' }] },
-    { name: 'BeSafe iZi Turn B i-Size', description: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab', seller: 'Jollyroom' }] },
-  ]} />
+ { name: 'Axkid Minikid 4', description: 'Bäst i test bakåtvänd bilbarnstol med topp krocksäkerhet och lång användningstid.', brand: 'Axkid', ratingValue: 4.9, reviewCount: 1 },
+ { name: 'Cybex Sirona T i-Size', description: 'Biltestestbäst komfort med 360-rotation och LinearSideSleep. ISOFIX-monterad.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1 },
+ { name: 'BeSafe iZi Turn B i-Size', description: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1 },
+ ]} />
 </ArticleLayout>

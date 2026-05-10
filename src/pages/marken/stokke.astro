@@ -8,191 +8,185 @@ import FAQ from '../../components/FAQ.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Märken', href: '/marken/' },
-  { label: 'Stokke' },
+ { label: 'Hem', href: '/' },
+ { label: 'Märken', href: '/marken/' },
+ { label: 'Stokke' },
 ];
 
 const products = [
-  {
-    name: 'Stokke Tripp Trapp',
-    badge: 'Klassiker',
-    price: '2 999 kr',
-    rating: 4.9,
-    image: '/images/products/stokke-tripp-trapp.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
-    features: {
-      'Typ': 'Matstol',
-      'Barnets vikt': 'max 85 kg',
-      'Justeras': 'Sits och fotstöd',
-      'Material': 'Bokträ / FSC-certifierat',
-      'Certifiering': 'EN 14988',
-    },
-  },
-  {
-    name: 'Stokke Xplory X',
-    image: '/images/products/stokke-xplory-x.webp',
-    badge: 'Premiumvagn',
-    price: '17 999 kr',
-    rating: 4.6,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
-    features: {
-      'Typ': 'Barnvagn',
-      'Barnets vikt': 'upp till 22 kg',
-      'Liggdel': 'Ingår',
-      'Justerbar höjd': 'Ja',
-      'Vikt vagn': 'ca 15 kg',
-    },
-  },
-  {
-    name: 'Stokke Sleepi V3',
-    badge: 'Bästa spjälsängen',
-    price: '5 999 kr',
-    rating: 4.7,
-    image: '/images/products/stokke-sleepi-v3.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
-    features: {
-      'Typ': 'Spjälsäng',
-      'Barnets vikt': 'upp till 25 kg',
-      'Oval form': 'Ja',
-      'Konvertibel': 'Ja (till juniorsäng)',
-      'Material': 'Bokträ',
-    },
-  },
+ {
+ name: 'Stokke Tripp Trapp',
+ badge: 'Klassiker',
+ rating: 4.9,
+ image: '/images/products/stokke-tripp-trapp.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
+ features: {
+ 'Typ': 'Matstol',
+ 'Barnets vikt': 'max 85 kg',
+ 'Justeras': 'Sits och fotstöd',
+ 'Material': 'Bokträ / FSC-certifierat',
+ 'Certifiering': 'EN 14988',
+ },
+ },
+ {
+ name: 'Stokke Xplory X',
+ image: '/images/products/stokke-xplory-x.webp',
+ badge: 'Premiumvagn',
+ rating: 4.6,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
+ features: {
+ 'Typ': 'Barnvagn',
+ 'Barnets vikt': 'upp till 22 kg',
+ 'Liggdel': 'Ingår',
+ 'Justerbar höjd': 'Ja',
+ 'Vikt vagn': 'ca 15 kg',
+ },
+ },
+ {
+ name: 'Stokke Sleepi V3',
+ badge: 'Bästa spjälsängen',
+ rating: 4.7,
+ image: '/images/products/stokke-sleepi-v3.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
+ features: {
+ 'Typ': 'Spjälsäng',
+ 'Barnets vikt': 'upp till 25 kg',
+ 'Oval form': 'Ja',
+ 'Konvertibel': 'Ja (till juniorsäng)',
+ 'Material': 'Bokträ',
+ },
+ },
 ];
 
 const featureLabels = ['Typ', 'Barnets vikt', 'Justerbar', 'Material', 'Certifiering / Form'];
 
 const faqItems = [
-  {
-    question: 'Varför är Stokke Tripp Trapp sa dyr?',
-    answer: 'Stokke Tripp Trapp kostar mer än de flesta matstolar på marknaden, men erbjuder något unikt: stolen växer med barnet från spädbarnsalder upp till vuxen (stolen klarar upp till 85 kg). Konstruktionen är i massivt bokträ av hög kvalitet, stolen är ergonomiskt utformad av en norsk designer och den kan vid behov repareras eller fä reservdelar, vilket gör den mer hållbar än billigare alternativ. Mange använder samma Tripp Trapp i decennier, ibland till fler än ett barn.',
-  },
-  {
-    question: 'Från vilken ålder kan man använda Tripp Trapp?',
-    answer: 'Grundstolen passar barn som kan sitta självständigt, vanligtvis från ca 6 till 9 månaders ålder. Med tillbehöret Newborn Set kan man dock använda Tripp Trapp från födseln, detta är ett separat tillbehör som köps till. Baby Set (ryggstöd och bricka) gör stolen trygg för de minsta barnen och kan användas tills barnet är ca 3 år.',
-  },
-  {
-    question: 'Är Stokke Xplory X värd 18 000 kr?',
-    answer: 'Stokke Xplory X tillhör det absoluta premiumsegmentet för barnvagnar. Den unika höjdjusterbara stolen gör att barnet sitter högt upp och kan ha ögonkontakt med föräldern, vilket uppskattas av manga. Vagnen är välbyggd och håller lång livslängd. Huruvida den är värd priset är subjektivt, det finns utmärkta barnvagnar för 4 000 till 8 000 kr som tekniskt sett är lika bra eller bättre. Xplory X är ett val för den som prioriterar design, status och interaktion med barnet.',
-  },
-  {
-    question: 'Vad skiljer Stokke Sleepi från vanliga spjälsängar?',
-    answer: 'Stokke Sleepi har en oval form istallet för den traditionella rektangulara formen, vilket gör att den tar mindre plats och att barnet inte kan kila fast händer eller fotter i hörnen. Den konvertiblas till en juniorsäng och sedermera till två bänkar, vilket förlänger livslängden avsevärt. Sleepi tillverkas i bokträ och har ett karakteristiskt skandinaviskt utseende. Det ingär vippfunktion i nyare versioner, vilket kan underlatta att vagga ett oroligt barn.',
-  },
-  {
-    question: 'Var köper man Stokke i Sverige?',
-    answer: 'Stokke säljs via auktoriserade återförsäljare i Sverige, däribland Jollyroom, Babyshop, Babyland och Webhallen. Produkterna finns ocksä i utvalda fysiska butiker. Köp alltid från en auktoriserad återförsäljare för att fa giltig garanti, Stokke erbjuder garanti på sina produkter men den gäller bara via godkända kanaler.',
-  },
+ {
+ question: 'Varför är Stokke Tripp Trapp sa dyr?',
+ answer: 'Stokke Tripp Trapp kostar mer än de flesta matstolar på marknaden, men erbjuder något unikt: stolen växer med barnet från spädbarnsalder upp till vuxen (stolen klarar upp till 85 kg). Konstruktionen är i massivt bokträ av hög kvalitet, stolen är ergonomiskt utformad av en norsk designer och den kan vid behov repareras eller fä reservdelar, vilket gör den mer hållbar än billigare alternativ. Mange använder samma Tripp Trapp i decennier, ibland till fler än ett barn.',
+ },
+ {
+ question: 'Från vilken ålder kan man använda Tripp Trapp?',
+ answer: 'Grundstolen passar barn som kan sitta självständigt, vanligtvis från ca 6 till 9 månaders ålder. Med tillbehöret Newborn Set kan man dock använda Tripp Trapp från födseln, detta är ett separat tillbehör som köps till. Baby Set (ryggstöd och bricka) gör stolen trygg för de minsta barnen och kan användas tills barnet är ca 3 år.',
+ },
+ {
+ question: 'Är Stokke Xplory X värd?',
+ answer: 'Stokke Xplory X tillhör det absoluta premiumsegmentet för barnvagnar. Den unika höjdjusterbara stolen gör att barnet sitter högt upp och kan ha ögonkontakt med föräldern, vilket uppskattas av manga. Vagnen är välbyggd och håller lång livslängd. Huruvida den är värd priset är subjektivt, det finns utmärkta barnvagnar för som tekniskt sett är lika bra eller bättre. Xplory X är ett val för den som prioriterar design, status och interaktion med barnet.',
+ },
+ {
+ question: 'Vad skiljer Stokke Sleepi från vanliga spjälsängar?',
+ answer: 'Stokke Sleepi har en oval form istallet för den traditionella rektangulara formen, vilket gör att den tar mindre plats och att barnet inte kan kila fast händer eller fotter i hörnen. Den konvertiblas till en juniorsäng och sedermera till två bänkar, vilket förlänger livslängden avsevärt. Sleepi tillverkas i bokträ och har ett karakteristiskt skandinaviskt utseende. Det ingär vippfunktion i nyare versioner, vilket kan underlatta att vagga ett oroligt barn.',
+ },
+ {
+ question: 'Var köper man Stokke i Sverige?',
+ answer: 'Stokke säljs via auktoriserade återförsäljare i Sverige, däribland Jollyroom, Babyshop, Babyland och Webhallen. Produkterna finns ocksä i utvalda fysiska butiker. Köp alltid från en auktoriserad återförsäljare för att fa giltig garanti, Stokke erbjuder garanti på sina produkter men den gäller bara via godkända kanaler.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Stokke produkter 2026, barnvagn & matstol"
-  description="Vi recenserar Stokkes produkter 2026. Tripp Trapp, Xplory och Sleepi, är Stokkes premium-produkter värda det höga priset?"
-  breadcrumbs={breadcrumbs}
-  updatedDate="2026-04-14"
+ title="Stokke produkter 2026, barnvagn & matstol"
+ description="Vi recenserar Stokkes produkter 2026. Tripp Trapp, Xplory och Sleepi, är Stokkes premium-produkter värda det höga priset?"
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-4 max-w-2xl">
-    Stokke är ett norskt premiumvarumärke känt för produkter som växer med barnet och håller i generationer. Tripp Trapp är en av världens mest sålda matstolar nagonsin. Men är det höga priset alltid motiverat? Vi recenserar Stokkes tre mest populära produkter och ger dig underlaget för att fatta rätt beslut.
-  </p>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Stokke är ett norskt premiumvarumärke känt för produkter som växer med barnet och håller i generationer. Tripp Trapp är en av världens mest sålda matstolar nagonsin. Men är det höga priset alltid motiverat? Vi recenserar Stokkes tre mest populära produkter och ger dig underlaget för att fatta rätt beslut.
+ </p>
 
-  <TopPick product={products[0]} description="Stokke Tripp Trapp är vårt klassiker bland stokke: Matstol och max 85 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Stokke Tripp Trapp är vårt klassiker bland stokke: Matstol och max 85 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Stokkes bästa produkter 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Stokkes bästa produkter 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Stokke Tripp Trapp"
-  image="/images/products/stokke-tripp-trapp.webp"
-      badge="Klassiker"
-      price="2 999 kr"
-      rating={4.9}
-      ageRange="6 månader, vuxen (med tillbehör från födseln)"
-      pros={['Växer med barnet från baby till vuxen', 'Massivt bokträ av hög kvalitet, håller decennier', 'Ergonomisk sits med justerbart fotstöd']}
-      cons={['Tillbehör (Baby Set, Newborn Set) kostar extra', 'Dyrare än de flesta matstolar på marknaden']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Stokke Tripp Trapp"
+ image="/images/products/stokke-tripp-trapp.webp"
+ badge="Klassiker"
+ rating={4.9}
+ ageRange="6 månader, vuxen (med tillbehör från födseln)"
+ pros={['Växer med barnet från baby till vuxen', 'Massivt bokträ av hög kvalitet, håller decennier', 'Ergonomisk sits med justerbart fotstöd']}
+ cons={['Tillbehör (Baby Set, Newborn Set) kostar extra', 'Dyrare än de flesta matstolar på marknaden']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
+ />
 
-    <ProductCard
-      name="Stokke Xplory X"
-      image="/images/products/stokke-xplory-x.webp"
-      badge="Premiumvagn"
-      price="17 999 kr"
-      rating={4.6}
-      ageRange="0 till 22 kg (från födseln till ca 4 till 5 år)"
-      pros={['Höjdjusterbar sits, barnet i ögonhöjd med föräldern', 'Välbyggd och håller lång livslängd', 'Snygg, ikonisk design']}
-      cons={['Mycket högt pris', 'Tung (ca 15 kg), kräver bil med stor bagageutrymme', 'Inte lika smidig i terräng som bredare terrängvagnar']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
-    />
+ <ProductCard
+ name="Stokke Xplory X"
+ image="/images/products/stokke-xplory-x.webp"
+ badge="Premiumvagn"
+ rating={4.6}
+ ageRange="0 till 22 kg (från födseln till ca 4 till 5 år)"
+ pros={['Höjdjusterbar sits, barnet i ögonhöjd med föräldern', 'Välbyggd och håller lång livslängd', 'Snygg, ikonisk design']}
+ cons={['Mycket högt pris', 'Tung (ca 15 kg), kräver bil med stor bagageutrymme', 'Inte lika smidig i terräng som bredare terrängvagnar']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
+ />
 
-    <ProductCard
-      name="Stokke Sleepi V3"
-  image="/images/products/stokke-sleepi-v3.webp"
-      badge="Bästa spjälsängen"
-      price="5 999 kr"
-      rating={4.7}
-      ageRange="0 till 25 kg (från födseln, konvertibel till juniorsäng)"
-      pros={['Oval form, inga farliga hörn, tar mindre plats', 'Konvertiblas till juniorsäng och bänkar', 'Hög materialkvalitet i massivt bokträ']}
-      cons={['Högt pris jämfort med rektangulara alternativ', 'Oval form kräver egna Stokke-madrasser']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
-    />
-  </div>
+ <ProductCard
+ name="Stokke Sleepi V3"
+ image="/images/products/stokke-sleepi-v3.webp"
+ badge="Bästa spjälsängen"
+ rating={4.7}
+ ageRange="0 till 25 kg (från födseln, konvertibel till juniorsäng)"
+ pros={['Oval form, inga farliga hörn, tar mindre plats', 'Konvertiblas till juniorsäng och bänkar', 'Hög materialkvalitet i massivt bokträ']}
+ cons={['Högt pris jämfort med rektangulara alternativ', 'Oval form kräver egna Stokke-madrasser']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">For- och nackdelar med Stokke</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">For- och nackdelar med Stokke</h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-    <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
-      <h3 class="font-semibold text-safe-dark mb-2">Fordelar</h3>
-      <ul class="space-y-1.5 text-sm text-text-light">
-        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Produkter designade för att växa med barnet, lång livslängd</li>
-        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Exceptionellt hög materialkvalitet och hantverksskicklighet</li>
-        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Ikonisk design som passar moderna hem</li>
-        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Hög andrahandsvärde, Tripp Trapp behaller sitt värde väl</li>
-        <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Bred tillgänglighet hos auktoriserade svenska återförsäljare</li>
-      </ul>
-    </div>
-    <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
-      <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
-      <ul class="space-y-1.5 text-sm text-text-light">
-        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Mycket höga priser, dyrast i de flesta kategorier</li>
-        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Nödvändiga tillbehör säljs ofta separat och kostar extra</li>
-        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Oval sängform kräver märkesspecifika tillbehör (lakan, madrass)</li>
-        <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Xplory X är tung och klumpig jamfort med mer kompakta vagnar</li>
-      </ul>
-    </div>
-  </div>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+ <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+ <h3 class="font-semibold text-safe-dark mb-2">Fordelar</h3>
+ <ul class="space-y-1.5 text-sm text-text-light">
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Produkter designade för att växa med barnet, lång livslängd</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Exceptionellt hög materialkvalitet och hantverksskicklighet</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Ikonisk design som passar moderna hem</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Hög andrahandsvärde, Tripp Trapp behaller sitt värde väl</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Bred tillgänglighet hos auktoriserade svenska återförsäljare</li>
+ </ul>
+ </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+ <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+ <ul class="space-y-1.5 text-sm text-text-light">
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Mycket höga priser, dyrast i de flesta kategorier</li>
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Nödvändiga tillbehör säljs ofta separat och kostar extra</li>
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Oval sängform kräver märkesspecifika tillbehör (lakan, madrass)</li>
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Xplory X är tung och klumpig jamfort med mer kompakta vagnar</li>
+ </ul>
+ </div>
+ </div>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Om Stokke</h3>
-    <p>Stokke grundades 1932 i Ålesund, Norge, ursprungligen som möbelproducent. Produkten som satte Stokke på kartan globalt var Tripp Trapp-stolen, lanserad 1972 av den norske formgivaren Peter Opsvik. Stolen revolutionerade matstolsmarknaden med sin filosofi om att produkten ska anpassa sig efter barnet, inte tvärtom. Idag är Stokke ett premiumvarumärke för babyutrustning med fokus på nordisk design, hög kvalitet och produkter avsedda att halla i generationer. Märket säljs i över 60 länder.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>Om Stokke</h3>
+ <p>Stokke grundades 1932 i Ålesund, Norge, ursprungligen som möbelproducent. Produkten som satte Stokke på kartan globalt var Tripp Trapp-stolen, lanserad 1972 av den norske formgivaren Peter Opsvik. Stolen revolutionerade matstolsmarknaden med sin filosofi om att produkten ska anpassa sig efter barnet, inte tvärtom. Idag är Stokke ett premiumvarumärke för babyutrustning med fokus på nordisk design, hög kvalitet och produkter avsedda att halla i generationer. Märket säljs i över 60 länder.</p>
 
-    <h3>Är Stokke rätt märke för dig?</h3>
-    <p>Stokke är ett naturligt val om du prioriterar designkvalitet, lång hållbarhet och produkter som kan gä i arv. Tripp Trapp är ett av fa babyköp som faktiskt behaller sitt värde, många familjer använder stolen till fler än ett barn och säljer den vidare i gott skick. Xplory X och Sleepi V3 är mer utpräglat lyxprodukter där premiet till stor del handlar om design och märkesvärde. Om budget är en faktor finns konkurrenter som levererar liknande funktion till lägre pris.</p>
-  </div>
+ <h3>Är Stokke rätt märke för dig?</h3>
+ <p>Stokke är ett naturligt val om du prioriterar designkvalitet, lång hållbarhet och produkter som kan gä i arv. Tripp Trapp är ett av fa babyköp som faktiskt behaller sitt värde, många familjer använder stolen till fler än ett barn och säljer den vidare i gott skick. Xplory X och Sleepi V3 är mer utpräglat lyxprodukter där premiet till stor del handlar om design och märkesvärde. Om budget är en faktor finns konkurrenter som levererar liknande funktion till lägre pris.</p>
+ </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, komplett guide</a>
-      </li>
-      <li>
-        <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängen 2026, guide och tester</a>
-      </li>
-    </ul>
-  </div>
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li>
+ <a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, komplett guide</a>
+ </li>
+ <li>
+ <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängen 2026, guide och tester</a>
+ </li>
+ </ul>
+ </div>
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <StickyTop3Bar products={products} />
+ <StickyTop3Bar products={products} />
 <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

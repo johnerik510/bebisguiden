@@ -9,276 +9,261 @@ import CTABox from '../../components/CTABox.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Babyvakter', href: '/babyvakter/' },
-  { label: 'App' },
+ { label: 'Hem', href: '/' },
+ { label: 'Babyvakter', href: '/babyvakter/' },
+ { label: 'App' },
 ];
 
 const products = [
-  {
-    name: 'Nanit Pro',
-    image: '/images/products/luvion-grand-elite-3.webp',
-    badge: 'Bäst i test',
-    price: '3 299 kr',
-    rating: 4.8,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit',
-    features: {
-      'App (iOS/Android)': 'Ja (Nanit)',
-      'Live-ström': 'Ja, 1080p',
-      'Rörelselarm': 'Ja',
-      'Nattseende': 'Ja, IR',
-      'Tvåvägsljud': 'Ja',
-      'Pris': '3 299 kr',
-    },
-  },
-  {
-    name: 'Owlet Cam 2',
-    badge: 'Enklast setup',
-    price: '1 299 kr',
-    rating: 4.5,
-    image: '/images/products/owlet-cam-2.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white',
-    features: {
-      'App (iOS/Android)': 'Ja (Owlet)',
-      'Live-ström': 'Ja, 1080p',
-      'Rörelselarm': 'Ja',
-      'Nattseende': 'Ja, IR',
-      'Tvåvägsljud': 'Ja',
-      'Pris': '1 299 kr',
-    },
-  },
-  {
-    name: 'Motorola Halo+',
-    image: '/images/products/motorola-halo.webp',
-    badge: 'App + skärm',
-    price: '1 599 kr',
-    rating: 4.4,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
-    features: {
-      'App (iOS/Android)': 'Ja (Hubble)',
-      'Live-ström': 'Ja, 720p',
-      'Rörelselarm': 'Ja',
-      'Nattseende': 'Ja, IR',
-      'Tvåvägsljud': 'Ja',
-      'Pris': '1 599 kr',
-    },
-  },
-  {
-    name: 'iBaby M7',
-    image: '/images/products/ibaby-m7.webp',
-    badge: '360° kamera',
-    price: '1 799 kr',
-    rating: 4.3,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
-    features: {
-      'App (iOS/Android)': 'Ja (iBaby)',
-      'Live-ström': 'Ja, 1080p',
-      'Rörelselarm': 'Ja',
-      'Nattseende': 'Ja, IR',
-      'Tvåvägsljud': 'Ja',
-      'Pris': '1 799 kr',
-    },
-  },
-  {
-    name: 'VTech VM819',
-    image: '/images/products/vtech-vm819.webp',
-    badge: 'Budgetval',
-    price: '1 199 kr',
-    rating: 4.2,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
-    features: {
-      'App (iOS/Android)': 'Ja (MyVTech)',
-      'Live-ström': 'Ja, 720p',
-      'Rörelselarm': 'Ja',
-      'Nattseende': 'Ja, IR',
-      'Tvåvägsljud': 'Ja',
-      'Pris': '1 199 kr',
-    },
-  },
+ {
+ name: 'Nanit Pro',
+ image: '/images/products/luvion-grand-elite-3.webp',
+ badge: 'Bäst i test',
+ rating: 4.8,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit',
+ features: {
+ 'App (iOS/Android)': 'Ja (Nanit)',
+ 'Live-ström': 'Ja, 1080p',
+ 'Rörelselarm': 'Ja',
+ 'Nattseende': 'Ja, IR',
+ 'Tvåvägsljud': 'Ja',
+ },
+ },
+ {
+ name: 'Owlet Cam 2',
+ badge: 'Enklast setup',
+ rating: 4.5,
+ image: '/images/products/owlet-cam-2.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white',
+ features: {
+ 'App (iOS/Android)': 'Ja (Owlet)',
+ 'Live-ström': 'Ja, 1080p',
+ 'Rörelselarm': 'Ja',
+ 'Nattseende': 'Ja, IR',
+ 'Tvåvägsljud': 'Ja',
+ },
+ },
+ {
+ name: 'Motorola Halo+',
+ image: '/images/products/motorola-halo.webp',
+ badge: 'App + skärm',
+ rating: 4.4,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
+ features: {
+ 'App (iOS/Android)': 'Ja (Hubble)',
+ 'Live-ström': 'Ja, 720p',
+ 'Rörelselarm': 'Ja',
+ 'Nattseende': 'Ja, IR',
+ 'Tvåvägsljud': 'Ja',
+ },
+ },
+ {
+ name: 'iBaby M7',
+ image: '/images/products/ibaby-m7.webp',
+ badge: '360° kamera',
+ rating: 4.3,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
+ features: {
+ 'App (iOS/Android)': 'Ja (iBaby)',
+ 'Live-ström': 'Ja, 1080p',
+ 'Rörelselarm': 'Ja',
+ 'Nattseende': 'Ja, IR',
+ 'Tvåvägsljud': 'Ja',
+ },
+ },
+ {
+ name: 'VTech VM819',
+ image: '/images/products/vtech-vm819.webp',
+ badge: 'Budgetval',
+ rating: 4.2,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
+ features: {
+ 'App (iOS/Android)': 'Ja (MyVTech)',
+ 'Live-ström': 'Ja, 720p',
+ 'Rörelselarm': 'Ja',
+ 'Nattseende': 'Ja, IR',
+ 'Tvåvägsljud': 'Ja',
+ },
+ },
 ];
 
-const featureLabels = ['App (iOS/Android)', 'Live-ström', 'Rörelselarm', 'Nattseende', 'Tvåvägsljud', 'Pris'];
+const featureLabels = ['App (iOS/Android)', 'Live-ström', 'Rörelselarm', 'Nattseende', 'Tvåvägsljud'];
 
 const faqItems = [
-  {
-    question: 'Vilken babyvakt med app är bäst 2026?',
-    answer: 'Nanit Pro är vårt toppval 2026. Nanit-appen är den mest genomarbetade, den erbjuder live-ström i 1080p, detaljerad sömnstatistik, sömnanalys med AI och push-notiser vid ljud och rörelse. För den som vill ha en prisvärd app-babyvakt utan att kompromissa på bildkvaliteten är Owlet Cam 2 bäst val.',
-  },
-  {
-    question: 'Fungerar babyvakt-appar på både iPhone och Android?',
-    answer: 'Ja, alla babyvakter i vår jämförelse har appar för både iOS och Android. Nanit-appen och Owlet-appen är mest polerade och uppdateras regelbundet. Hubble (Motorola) och MyVTech (VTech) fungerar bra men har något enklare gränssnitt. iBaby-appen är fullfunktionell men har fått blandade recensioner för stabilitet.',
-  },
-  {
-    question: 'Kan jag se mitt barn via appen när jag är på jobbet?',
-    answer: 'Ja, det är den stora fördelen med app-babyvakter. Så länge du har internetanslutning, via WiFi eller mobilnät, kan du se live-strömmen från kameran var du än är. Förseningen är vanligtvis 1 till 3 sekunder. Perfekt när en barnvakt är hemma eller om du är på kontoret.',
-  },
-  {
-    question: 'Kostar babyvakt-appar pengar?',
-    answer: 'Grundfunktionerna är gratis på alla modeller i testet, live-ström, notiser och nattseende ingår utan kostnad. Nanit och Owlet erbjuder premium-abonnemang (ca 100 till 150 kr/mån) för utökad videologgning, sömnanalys och historik. VTech VM819 och Motorola Halo+ har inga obligatoriska abonnemang.',
-  },
-  {
-    question: 'Vad händer med app-babyvakten om WiFi går ner?',
-    answer: 'Om WiFi-anslutningen bryts tappar du tillgången till live-strömmen och appen. Motorola Halo+ har en inbyggd separat skärm som fungerar via sluten signal även utan internet, ett bra alternativ för familjer som vill ha backup. För de andra modellerna: se till att ha en stabil router och överväg att placera routern nära barnrummet.',
-  },
-  {
-    question: 'Är babyvakt-appar säkra? Kan någon hacka sig in?',
-    answer: 'Säkerheten beror på tillverkaren. Nanit och Owlet använder end-to-end-kryptering, vilket gör det mycket svårt att avlyssna. Generella tips: byt alltid standardlösenord, aktivera tvåfaktorsautentisering om det erbjuds, använd ett starkt WiFi-lösenord och håll alltid kamerans firmware uppdaterad. Undvik billiga no-name-kameror utan kryptering, de är betydligt enklare att hacka.',
-  },
-  {
-    question: 'Vilken babyvakt-app klarar flera kameror?',
-    answer: 'Nanit-appen stödjer flera kameror i samma app, så du kan ha en kamera i barnrummet och en annan i vardagsrummet. Owlet och iBaby stödjer också multikamera. Motorola Halo+ via Hubble-appen hanterar flera kameror men kräver separat köp av extra enheter.',
-  },
-  {
-    question: 'Kan flera familjemedlemmar använda samma babyvakt-app?',
-    answer: 'Ja, de flesta babyvakt-appar stödjer att flera användare är inloggade samtidigt. Nanit låter dig bjuda in medförälder och andra (barnvakt, mor- och farföräldrar) via delningsfunktionen. Owlet och VTech har liknande funktioner. Varje person som ska ha åtkomst behöver en egen enhet med appen installerad.',
-  },
-  {
-    question: 'Vilken babyvakt-app funkar bäst med dålig WiFi?',
-    answer: 'Motorola Halo+ är bäst vid instabil WiFi eftersom den har en separat skärm som fungerar via dedikerad signal utan internet. Bland de rena app-babyvakterna anpassar Nanit Pro och Owlet Cam 2 videoströmmen automatiskt, de sänker upplösningen till 480p vid svag anslutning istället för att stanna helt. Om du har dålig WiFi-täckning i barnrummet, överväg en WiFi-repeater eller mesh-nätverk.',
-  },
-  {
-    question: 'Hur mycket ström drar en babyvakt-app?',
-    answer: 'Kameran drivs med nätström och drar 3 till 8 watt beroende på modell, försumbart på elräkningen. Appen på mobilen drar batteri när du har live-strömmen öppen, ungefär som att streama video. Nanit och Owlet har energieffektiva bakgrundsnotiser som inte drar batteri märkbart. Undvik att ha live-strömmen öppen i bakgrunden hela natten, använd istället push-notiser vid ljud eller rörelse.',
-  },
+ {
+ question: 'Vilken babyvakt med app är bäst 2026?',
+ answer: 'Nanit Pro är vårt toppval 2026. Nanit-appen är den mest genomarbetade, den erbjuder live-ström i 1080p, detaljerad sömnstatistik, sömnanalys med AI och push-notiser vid ljud och rörelse. För den som vill ha en prisvärd app-babyvakt utan att kompromissa på bildkvaliteten är Owlet Cam 2 bäst val.',
+ },
+ {
+ question: 'Fungerar babyvakt-appar på både iPhone och Android?',
+ answer: 'Ja, alla babyvakter i vår jämförelse har appar för både iOS och Android. Nanit-appen och Owlet-appen är mest polerade och uppdateras regelbundet. Hubble (Motorola) och MyVTech (VTech) fungerar bra men har något enklare gränssnitt. iBaby-appen är fullfunktionell men har fått blandade recensioner för stabilitet.',
+ },
+ {
+ question: 'Kan jag se mitt barn via appen när jag är på jobbet?',
+ answer: 'Ja, det är den stora fördelen med app-babyvakter. Så länge du har internetanslutning, via WiFi eller mobilnät, kan du se live-strömmen från kameran var du än är. Förseningen är vanligtvis 1 till 3 sekunder. Perfekt när en barnvakt är hemma eller om du är på kontoret.',
+ },
+ {
+ question: 'Kostar babyvakt-appar pengar?',
+ answer: 'Grundfunktionerna är gratis på alla modeller i testet, live-ström, notiser och nattseende ingår utan kostnad. Nanit och Owlet erbjuder premium-abonnemang (ca 100 till 150 kr/mån) för utökad videologgning, sömnanalys och historik. VTech VM819 och Motorola Halo+ har inga obligatoriska abonnemang.',
+ },
+ {
+ question: 'Vad händer med app-babyvakten om WiFi går ner?',
+ answer: 'Om WiFi-anslutningen bryts tappar du tillgången till live-strömmen och appen. Motorola Halo+ har en inbyggd separat skärm som fungerar via sluten signal även utan internet, ett bra alternativ för familjer som vill ha backup. För de andra modellerna: se till att ha en stabil router och överväg att placera routern nära barnrummet.',
+ },
+ {
+ question: 'Är babyvakt-appar säkra? Kan någon hacka sig in?',
+ answer: 'Säkerheten beror på tillverkaren. Nanit och Owlet använder end-to-end-kryptering, vilket gör det mycket svårt att avlyssna. Generella tips: byt alltid standardlösenord, aktivera tvåfaktorsautentisering om det erbjuds, använd ett starkt WiFi-lösenord och håll alltid kamerans firmware uppdaterad. Undvik billiga no-name-kameror utan kryptering, de är betydligt enklare att hacka.',
+ },
+ {
+ question: 'Vilken babyvakt-app klarar flera kameror?',
+ answer: 'Nanit-appen stödjer flera kameror i samma app, så du kan ha en kamera i barnrummet och en annan i vardagsrummet. Owlet och iBaby stödjer också multikamera. Motorola Halo+ via Hubble-appen hanterar flera kameror men kräver separat köp av extra enheter.',
+ },
+ {
+ question: 'Kan flera familjemedlemmar använda samma babyvakt-app?',
+ answer: 'Ja, de flesta babyvakt-appar stödjer att flera användare är inloggade samtidigt. Nanit låter dig bjuda in medförälder och andra (barnvakt, mor- och farföräldrar) via delningsfunktionen. Owlet och VTech har liknande funktioner. Varje person som ska ha åtkomst behöver en egen enhet med appen installerad.',
+ },
+ {
+ question: 'Vilken babyvakt-app funkar bäst med dålig WiFi?',
+ answer: 'Motorola Halo+ är bäst vid instabil WiFi eftersom den har en separat skärm som fungerar via dedikerad signal utan internet. Bland de rena app-babyvakterna anpassar Nanit Pro och Owlet Cam 2 videoströmmen automatiskt, de sänker upplösningen till 480p vid svag anslutning istället för att stanna helt. Om du har dålig WiFi-täckning i barnrummet, överväg en WiFi-repeater eller mesh-nätverk.',
+ },
+ {
+ question: 'Hur mycket ström drar en babyvakt-app?',
+ answer: 'Kameran drivs med nätström och drar 3 till 8 watt beroende på modell, försumbart på elräkningen. Appen på mobilen drar batteri när du har live-strömmen öppen, ungefär som att streama video. Nanit och Owlet har energieffektiva bakgrundsnotiser som inte drar batteri märkbart. Undvik att ha live-strömmen öppen i bakgrunden hela natten, använd istället push-notiser vid ljud eller rörelse.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Babyvakt App Bäst i Test 2026 till 5 modeller testade"
-  description="Babyvakt med app bäst i test 2026: Vi jämför Nanit Pro, Owlet Cam 2 och fler. Övervaka bebis via mobilen med live-video och push-notiser."
-  breadcrumbs={breadcrumbs}
-  updatedDate="2026-04-14"
+ title="Babyvakt App Bäst i Test 2026 till 5 modeller testade"
+ description="Babyvakt med app bäst i test 2026: Vi jämför Nanit Pro, Owlet Cam 2 och fler. Övervaka bebis via mobilen med live-video och push-notiser."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-4 max-w-2xl">
-    Vilken babyvakt med app är bäst i test 2026? Vi har testat 5 populära babyvakt-appar och jämfört bildkvalitet, fördröjning och push-notiser. En babyvakt app låter dig övervaka bebis live via mobilen, hemma, på jobbet eller varifrån som helst.
-  </p>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Vilken babyvakt med app är bäst i test 2026? Vi har testat 5 populära babyvakt-appar och jämfört bildkvalitet, fördröjning och push-notiser. En babyvakt app låter dig övervaka bebis live via mobilen, hemma, på jobbet eller varifrån som helst.
+ </p>
 
-  <TopPick product={products[0]} description="Nanit Pro är vårt bäst i test bland app: Ja (Nanit) och Ja, 1080p ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Nanit Pro är vårt bäst i test bland app: Ja (Nanit) och Ja, 1080p ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Nanit Pro"
-      image="/images/products/luvion-grand-elite-3.webp"
-      badge="Bäst i test"
-      price="3 299 kr"
-      rating={4.8}
-      ageRange="Från nyfödd"
-      pros={['Nanit-appen är bäst i testet, sömnanalys och AI-tips', '1080p Full HD live-ström', 'Push-notiser vid ljud, rörelse och gråt', 'Takmonterad, full översikt av hela sängen']}
-      cons={['Högst pris i jämförelsen', 'Premium-sömnfunktioner kräver abonnemang']}
-      ctaText="Se pris"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Nanit Pro"
+ image="/images/products/luvion-grand-elite-3.webp"
+ badge="Bäst i test"
+ rating={4.8}
+ ageRange="Från nyfödd"
+ pros={['Nanit-appen är bäst i testet, sömnanalys och AI-tips', '1080p Full HD live-ström', 'Push-notiser vid ljud, rörelse och gråt', 'Takmonterad, full översikt av hela sängen']}
+ cons={['Högst pris i jämförelsen', 'Premium-sömnfunktioner kräver abonnemang']}
+ ctaText="Se pris"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit"
+ />
 
-    <ProductCard
-      name="Owlet Cam 2"
-  image="/images/products/owlet-cam-2.webp"
-      badge="Enklast setup"
-      price="1 299 kr"
-      rating={4.5}
-      ageRange="Från nyfödd"
-      pros={['Enklast och snabbast installation i testet', '1080p Full HD, bästa bildkvaliteten för priset', 'Owlet-appen är intuitiv och stabil', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
-      cons={['Utökad molnlagring kostar extra', 'Kräver stabil WiFi-anslutning']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white"
-    />
+ <ProductCard
+ name="Owlet Cam 2"
+ image="/images/products/owlet-cam-2.webp"
+ badge="Enklast setup"
+ rating={4.5}
+ ageRange="Från nyfödd"
+ pros={['Enklast och snabbast installation i testet', '1080p Full HD, bästa bildkvaliteten för priset', 'Owlet-appen är intuitiv och stabil', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
+ cons={['Utökad molnlagring kostar extra', 'Kräver stabil WiFi-anslutning']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white"
+ />
 
-    <ProductCard
-      name="Motorola Halo+"
-      image="/images/products/motorola-halo.webp"
-      badge="App + skärm"
-      price="1 599 kr"
-      rating={4.4}
-      ageRange="Från nyfödd"
-      pros={['Fungerar via app OCH separat skärm', 'Backup om WiFi går ner, skärmen fungeraar', 'Hubble-appen med bra notisfunktioner', 'Bra pris för dubbelt övervakningssätt']}
-      cons={['720p, lägre upplösning än Nanit och Owlet', 'Hubble-appen något enklare än Nanit/Owlet']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
-    />
+ <ProductCard
+ name="Motorola Halo+"
+ image="/images/products/motorola-halo.webp"
+ badge="App + skärm"
+ rating={4.4}
+ ageRange="Från nyfödd"
+ pros={['Fungerar via app OCH separat skärm', 'Backup om WiFi går ner, skärmen fungeraar', 'Hubble-appen med bra notisfunktioner', 'Bra pris för dubbelt övervakningssätt']}
+ cons={['720p, lägre upplösning än Nanit och Owlet', 'Hubble-appen något enklare än Nanit/Owlet']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
+ />
 
-    <ProductCard
-      name="iBaby M7"
-      image="/images/products/ibaby-m7.webp"
-      badge="360° kamera"
-      price="1 799 kr"
-      rating={4.3}
-      ageRange="Från nyfödd"
-      pros={['360° panorering via appen, täcker hela rummet', '1080p Full HD med bra nattseende', 'Luftkvalitetssensor inbyggd', 'Vaggvisor via appen']}
-      cons={['iBaby-appen har fått blandade stabilitetsrecensioner', 'Högre pris för liknande kärna som Owlet']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
-    />
+ <ProductCard
+ name="iBaby M7"
+ image="/images/products/ibaby-m7.webp"
+ badge="360° kamera"
+ rating={4.3}
+ ageRange="Från nyfödd"
+ pros={['360° panorering via appen, täcker hela rummet', '1080p Full HD med bra nattseende', 'Luftkvalitetssensor inbyggd', 'Vaggvisor via appen']}
+ cons={['iBaby-appen har fått blandade stabilitetsrecensioner', 'Högre pris för liknande kärna som Owlet']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
+ />
 
-    <ProductCard
-      name="VTech VM819"
-      image="/images/products/vtech-vm819.webp"
-      badge="Budgetval"
-      price="1 199 kr"
-      rating={4.2}
-      ageRange="Från nyfödd"
-      pros={['Bäst pris med app + separat 4,3-tumsskärm', 'Ingen obligatorisk månadsavgift', 'MyVTech-appen fungeraar pålitligt', 'Temperaturvisning och vaggvisor']}
-      cons={['720p, lägre bildkvalitet i mörker', 'App något enklare jämfört med Nanit/Owlet']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
-    />
-  </div>
+ <ProductCard
+ name="VTech VM819"
+ image="/images/products/vtech-vm819.webp"
+ badge="Budgetval"
+ rating={4.2}
+ ageRange="Från nyfödd"
+ pros={['Bäst pris med app + separat 4,3-tumsskärm', 'Ingen obligatorisk månadsavgift', 'MyVTech-appen fungeraar pålitligt', 'Temperaturvisning och vaggvisor']}
+ cons={['720p, lägre bildkvalitet i mörker', 'App något enklare jämfört med Nanit/Owlet']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du babyvakt med app</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du babyvakt med app</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>App-kvalitet, inte bara kameran</h3>
-    <p>Kamerans bildkvalitet är viktig, men appen är det du faktiskt använder varje dag. En dålig app med hackig live-ström eller opålitliga notiser förstör upplevelsen oavsett hur bra kameran är. Nanit-appen och Owlet-appen är marknadsstandard, snabb live-ström, stabila notiser och enkel navigering. Testa alltid appen i appbutiken för aktuella recensioner innan köp.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>App-kvalitet, inte bara kameran</h3>
+ <p>Kamerans bildkvalitet är viktig, men appen är det du faktiskt använder varje dag. En dålig app med hackig live-ström eller opålitliga notiser förstör upplevelsen oavsett hur bra kameran är. Nanit-appen och Owlet-appen är marknadsstandard, snabb live-ström, stabila notiser och enkel navigering. Testa alltid appen i appbutiken för aktuella recensioner innan köp.</p>
 
-    <h3>Live-ström och fördröjning</h3>
-    <p>Alla app-babyvakter har en viss fördröjning i live-strömmen, vanligtvis 1 till 3 sekunder. Det räcker för att övervaka ett sovande barn men kan upplevas som hackigt om barnet rör sig snabbt. Nanit Pro och Owlet Cam 2 har minst fördröjning i vårt test tack vare optimerad kodning.</p>
+ <h3>Live-ström och fördröjning</h3>
+ <p>Alla app-babyvakter har en viss fördröjning i live-strömmen, vanligtvis 1 till 3 sekunder. Det räcker för att övervaka ett sovande barn men kan upplevas som hackigt om barnet rör sig snabbt. Nanit Pro och Owlet Cam 2 har minst fördröjning i vårt test tack vare optimerad kodning.</p>
 
-    <h3>Notiser, välj rätt känslighet</h3>
-    <p>Rörelsevakt och ljudvakt skickar push-notiser till mobilen. Sätt känsligheten rätt, för hög känslighet ger konstanta notiser vid minsta rörelse, för låg och du missar när barnet vaknar. Nanit Pro har den mest sofistikerade algoritmen och skiljer automatiskt på barnets ljud och bakgrundsljud.</p>
+ <h3>Notiser, välj rätt känslighet</h3>
+ <p>Rörelsevakt och ljudvakt skickar push-notiser till mobilen. Sätt känsligheten rätt, för hög känslighet ger konstanta notiser vid minsta rörelse, för låg och du missar när barnet vaknar. Nanit Pro har den mest sofistikerade algoritmen och skiljer automatiskt på barnets ljud och bakgrundsljud.</p>
 
-    <h3>Molnlagring vs utan abonnemang</h3>
-    <p>Nanit och Owlet erbjuder betald molnlagring för videologgning och historik. VTech VM819 och Motorola Halo+ kräver inga abonnemang för grundfunktioner. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning och notiser utan extra kostnad.</p>
+ <h3>Molnlagring vs utan abonnemang</h3>
+ <p>Nanit och Owlet erbjuder betald molnlagring för videologgning och historik. VTech VM819 och Motorola Halo+ kräver inga abonnemang för grundfunktioner. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning och notiser utan extra kostnad.</p>
 
-    <h3>Säkerhet och integritet</h3>
-    <p>En app-babyvakt skickar videoström via internet, vilket ställer krav på säkerhet. Välj alltid en babyvakt från ett etablerat varumärke som erbjuder krypterad dataöverföring. Nanit Pro och Owlet Cam 2 använder end-to-end-kryptering. Byt alltid standardlösenord och aktivera tvåfaktorsautentisering om det erbjuds. Håll kamerans firmware uppdaterad, tillverkarna släpper regelbundet säkerhetsuppdateringar.</p>
+ <h3>Säkerhet och integritet</h3>
+ <p>En app-babyvakt skickar videoström via internet, vilket ställer krav på säkerhet. Välj alltid en babyvakt från ett etablerat varumärke som erbjuder krypterad dataöverföring. Nanit Pro och Owlet Cam 2 använder end-to-end-kryptering. Byt alltid standardlösenord och aktivera tvåfaktorsautentisering om det erbjuds. Håll kamerans firmware uppdaterad, tillverkarna släpper regelbundet säkerhetsuppdateringar.</p>
 
-    <h3>WiFi-krav och placering</h3>
-    <p>App-babyvakter kräver stabil WiFi-anslutning. En 5 GHz-anslutning ger bättre prestanda om kameran är nära routern, men 2,4 GHz har bättre räckvidd genom väggar. De flesta babyvakt-kameror stödjer båda frekvenserna. Placera kameran minst 1 meter från spjälsängen och fäst sladden utom räckhåll för barnet. Takmonterade kameror som Nanit Pro eliminerar sladdrisken helt.</p>
+ <h3>WiFi-krav och placering</h3>
+ <p>App-babyvakter kräver stabil WiFi-anslutning. En 5 GHz-anslutning ger bättre prestanda om kameran är nära routern, men 2,4 GHz har bättre räckvidd genom väggar. De flesta babyvakt-kameror stödjer båda frekvenserna. Placera kameran minst 1 meter från spjälsängen och fäst sladden utom räckhåll för barnet. Takmonterade kameror som Nanit Pro eliminerar sladdrisken helt.</p>
 
-    <h3>Babyvakt-app vs traditionell babyvakt</h3>
-    <p>En traditionell babyvakt med separat föräldraenhet fungerar utan WiFi och internet, pålitligt men begränsat till hemmet. En app-babyvakt ger fjärråtkomst varifrån som helst, bättre bildkvalitet och smarta funktioner som sömnanalys. Nackdelen är beroendet av WiFi. Det bästa av båda världar: Motorola Halo+ som har både app och separat skärm, eller VTech VM819 med 4,3-tumsskärm plus app-stöd.</p>
-  </div>
+ <h3>Babyvakt-app vs traditionell babyvakt</h3>
+ <p>En traditionell babyvakt med separat föräldraenhet fungerar utan WiFi och internet, pålitligt men begränsat till hemmet. En app-babyvakt ger fjärråtkomst varifrån som helst, bättre bildkvalitet och smarta funktioner som sömnanalys. Nackdelen är beroendet av WiFi. Det bästa av båda världar: Motorola Halo+ som har både app och separat skärm, eller VTech VM819 med 4,3-tumsskärm plus app-stöd.</p>
+ </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/babyvakter/kamera/" class="text-accent underline">Bästa babyvakt med kamera 2026, se och hör ditt barn</a>
-      </li>
-      <li>
-        <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
-      </li>
-    </ul>
-  </div>
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li>
+ <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/babyvakter/kamera/" class="text-accent underline">Bästa babyvakt med kamera 2026, se och hör ditt barn</a>
+ </li>
+ <li>
+ <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
+ </li>
+ </ul>
+ </div>
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <CTABox productName="Babyvakt med app" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt%2520app" description="Stort urval app-babyvakter, Nanit, Owlet, Motorola och mer." />
+ <CTABox productName="Babyvakt med app" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt%2520app" description="Stort urval app-babyvakter, Nanit, Owlet, Motorola och mer." />
 
-  <StickyTop3Bar products={products} />
+ <StickyTop3Bar products={products} />
 <ProductSchema products={[
-    { name: 'Nanit Pro', description: 'Smart WiFi-babykamera med AI-sömnanalys och app-styrning. Bäst i test bland app-babyvakter.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 3299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit', seller: 'Jollyroom' }] },
-    { name: 'Owlet Cam 2', description: 'WiFi-babykamera med enkel app och tydlig HD-bild. Enklast att sätta upp.', brand: 'Owlet', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white', seller: 'Jollyroom' }] },
-    { name: 'Motorola Halo+', description: 'App-babyvakt med skärm och mobilapp kombinerat. 360-kamera och lång batteritid.', brand: 'Motorola', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt', seller: 'Jollyroom' }] },
-    { name: 'iBaby M7', description: 'WiFi-babykamera med 360-graders rotation och app-styrning.', brand: 'iBaby', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 1799, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt', seller: 'Jollyroom' }] },
-    { name: 'VTech VM819', description: 'Budgetvänlig app-babyvakt med WiFi och tydlig bild.', brand: 'VTech', ratingValue: 4.2, reviewCount: 1, offers: [{ price: 1199, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt', seller: 'Jollyroom' }] },
-  ]} />
+ { name: 'Nanit Pro', description: 'Smart WiFi-babykamera med AI-sömnanalys och app-styrning. Bäst i test bland app-babyvakter.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1 },
+ { name: 'Owlet Cam 2', description: 'WiFi-babykamera med enkel app och tydlig HD-bild. Enklast att sätta upp.', brand: 'Owlet', ratingValue: 4.5, reviewCount: 1 },
+ { name: 'Motorola Halo+', description: 'App-babyvakt med skärm och mobilapp kombinerat. 360-kamera och lång batteritid.', brand: 'Motorola', ratingValue: 4.4, reviewCount: 1 },
+ { name: 'iBaby M7', description: 'WiFi-babykamera med 360-graders rotation och app-styrning.', brand: 'iBaby', ratingValue: 4.3, reviewCount: 1 },
+ { name: 'VTech VM819', description: 'Budgetvänlig app-babyvakt med WiFi och tydlig bild.', brand: 'VTech', ratingValue: 4.2, reviewCount: 1 },
+ ]} />
 </ArticleLayout>

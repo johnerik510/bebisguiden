@@ -9,253 +9,243 @@ import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Barnvagnar', href: '/barnvagnar/' },
-  { label: 'Budget' },
+ { label: 'Hem', href: '/' },
+ { label: 'Barnvagnar', href: '/barnvagnar/' },
+ { label: 'Budget' },
 ];
 
 const products = [
-  {
-    name: 'Hauck Shopper SLX',
-    image: '/images/products/hauck-travel-n-care-plus-sulky.webp',
-    badge: 'Billigast',
-    price: '999 kr',
-    rating: 4.1,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fhauck-shopper-slx',
-    features: {
-      'Typ': 'Sittvagn',
-      'Vikt': 'ca 7 kg',
-      'Hopfälld': 'Kompakt',
-      'Hjul': '4 hjul',
-      'Liggläge': 'Ja',
-    },
-  },
-  {
-    name: 'Kinderkraft Cruiser',
-    image: '/images/products/kinderkraft-grande-2.webp',
-    badge: 'Terrängvänlig',
-    price: '1 599 kr',
-    rating: 4.2,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fkinderkraft-cruiser',
-    features: {
-      'Typ': 'Sittvagn, 3-hjulig',
-      'Vikt': 'ca 9 kg',
-      'Hopfälld': 'Kompakt',
-      'Hjul': '3 hjul (luftfyllda)',
-      'Liggläge': 'Ja',
-    },
-  },
-  {
-    name: 'Chicco Miinimo 4',
-    image: '/images/products/chicco-miinimo-4.webp',
-    badge: 'Kompaktest',
-    price: '1 999 kr',
-    rating: 4.3,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fchicco-miinimo-4',
-    features: {
-      'Typ': 'Sittvagn',
-      'Vikt': 'ca 7,5 kg',
-      'Hopfälld': 'Mycket kompakt',
-      'Hjul': '4 hjul',
-      'Liggläge': 'Nej (recline)',
-    },
-  },
-  {
-    name: 'Joie Litetrax 4 Air',
-    image: '/images/products/joie-litetrax-4-air.webp',
-    badge: 'Bäst i test',
-    price: '2 499 kr',
-    rating: 4.5,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fjoie-litetrax-4-air',
-    features: {
-      'Typ': 'Sittvagn',
-      'Vikt': 'ca 9,5 kg',
-      'Hopfälld': 'Kompakt',
-      'Hjul': '4 lufthjul',
-      'Liggläge': 'Ja',
-    },
-  },
-  {
-    name: 'Silver Cross Zest',
-    image: '/images/products/silver-cross-clic-sulky.webp',
-    badge: 'Lättast',
-    price: '2 999 kr',
-    rating: 4.4,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fsilver-cross-zest',
-    features: {
-      'Typ': 'Sittvagn',
-      'Vikt': '6 kg',
-      'Hopfälld': 'Kompakt',
-      'Hjul': '4 hjul',
-      'Liggläge': 'Nej (recline)',
-    },
-  },
+ {
+ name: 'Hauck Shopper SLX',
+ image: '/images/products/hauck-travel-n-care-plus-sulky.webp',
+ badge: 'Billigast',
+ rating: 4.1,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fhauck-shopper-slx',
+ features: {
+ 'Typ': 'Sittvagn',
+ 'Vikt': 'ca 7 kg',
+ 'Hopfälld': 'Kompakt',
+ 'Hjul': '4 hjul',
+ 'Liggläge': 'Ja',
+ },
+ },
+ {
+ name: 'Kinderkraft Cruiser',
+ image: '/images/products/kinderkraft-grande-2.webp',
+ badge: 'Terrängvänlig',
+ rating: 4.2,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fkinderkraft-cruiser',
+ features: {
+ 'Typ': 'Sittvagn, 3-hjulig',
+ 'Vikt': 'ca 9 kg',
+ 'Hopfälld': 'Kompakt',
+ 'Hjul': '3 hjul (luftfyllda)',
+ 'Liggläge': 'Ja',
+ },
+ },
+ {
+ name: 'Chicco Miinimo 4',
+ image: '/images/products/chicco-miinimo-4.webp',
+ badge: 'Kompaktest',
+ rating: 4.3,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fchicco-miinimo-4',
+ features: {
+ 'Typ': 'Sittvagn',
+ 'Vikt': 'ca 7,5 kg',
+ 'Hopfälld': 'Mycket kompakt',
+ 'Hjul': '4 hjul',
+ 'Liggläge': 'Nej (recline)',
+ },
+ },
+ {
+ name: 'Joie Litetrax 4 Air',
+ image: '/images/products/joie-litetrax-4-air.webp',
+ badge: 'Bäst i test',
+ rating: 4.5,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fjoie-litetrax-4-air',
+ features: {
+ 'Typ': 'Sittvagn',
+ 'Vikt': 'ca 9,5 kg',
+ 'Hopfälld': 'Kompakt',
+ 'Hjul': '4 lufthjul',
+ 'Liggläge': 'Ja',
+ },
+ },
+ {
+ name: 'Silver Cross Zest',
+ image: '/images/products/silver-cross-clic-sulky.webp',
+ badge: 'Lättast',
+ rating: 4.4,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fsilver-cross-zest',
+ features: {
+ 'Typ': 'Sittvagn',
+ 'Vikt': '6 kg',
+ 'Hopfälld': 'Kompakt',
+ 'Hjul': '4 hjul',
+ 'Liggläge': 'Nej (recline)',
+ },
+ },
 ];
 
 const featureLabels = ['Typ', 'Vikt', 'Hopfälld', 'Hjul', 'Liggläge'];
 
 const faqItems = [
-  {
-    question: 'Vad ska jag tänka på när jag köper en billig barnvagn?',
-    answer: 'Prioritera vikt, säkerhet och hur du ska använda vagnen. En lätt vagn (under 8 kg) är enklare att hantera på kollektivtrafik och i smala butiksgångar. Kontrollera att selen är godkänd och att vagnen uppfyller europeisk säkerhetsstandard (EN 1888). Tänk också på om du behöver liggläge, det kräver barnet under de första 6 månaderna.',
-  },
-  {
-    question: 'Kan ett nyfött barn åka i en budget-sittvagn?',
-    answer: 'De flesta sittvagnar i budget-segmentet passar barn från 6 månader när de kan sitta med stöd. Hauck Shopper SLX och Joie Litetrax 4 Air har liggläge och passar från yngre ålder. Chicco Miinimo 4 och Silver Cross Zest har recline men inget plant liggläge, de rekommenderas från 6 månader. Kontrollera alltid tillverkarens åldersgräns.',
-  },
-  {
-    question: 'Är lufthjul verkligen nödvändigt på en barnvagn?',
-    answer: 'Lufthjul ger bättre komfort på ojämna underlag som grus, kullersten och skogsstigar. Joie Litetrax 4 Air och Kinderkraft Cruiser har lufthjul och rullar mjukare på alla underlag. Bor du i en stad med mestadels jämna trottoarer räcker hårdgummihjul utmärkt och kräver inget underhåll. Lufthjul kan platta sig, ett litet extra besvär.',
-  },
-  {
-    question: 'Vilken budget-barnvagn passar bäst för resor och flyg?',
-    answer: 'Silver Cross Zest på 6 kg är lättast i testet och passar utmärkt för resor och flyg. Chicco Miinimo 4 är också kompakt hopvikad. Kontrollera med flygbolaget vilken maxvikt som tillåts i handbagaget, de flesta kräver under 10 kg och att vagnen ryms i bagageutrymmet.',
-  },
-  {
-    question: 'Hur lång livslängd har en billig barnvagn?',
-    answer: 'En välvårdad budget-barnvagn håller typiskt för ett till två barn. Joie och Silver Cross har ett gott rykte för hållbarhet i sin prisklass. Plastdelar och textil slits snabbare på billigare modeller än på premiumvagnar, men om vagnen används normalt och förvaras torrt är den livslängden fullt tillräcklig för de flesta familjer.',
-  },
-  {
-    question: 'Kan jag koppla en bilbarnstol till en budget-barnvagn?',
-    answer: 'Det beror på modell. Joie Litetrax 4 Air är kompatibel med flera Joie-bilbarnstolar via adapter och bildar ett travel system. Hauck Shopper SLX stödjer också några bilbarnstolar via adapter. Chicco Miinimo 4 kan kombineras med Chicco-bilbarnstolar. Kontrollera kompatibilitetslistan för just den vagn och stol du överväger innan köp.',
-  },
+ {
+ question: 'Vad ska jag tänka på när jag köper en billig barnvagn?',
+ answer: 'Prioritera vikt, säkerhet och hur du ska använda vagnen. En lätt vagn (under 8 kg) är enklare att hantera på kollektivtrafik och i smala butiksgångar. Kontrollera att selen är godkänd och att vagnen uppfyller europeisk säkerhetsstandard (EN 1888). Tänk också på om du behöver liggläge, det kräver barnet under de första 6 månaderna.',
+ },
+ {
+ question: 'Kan ett nyfött barn åka i en budget-sittvagn?',
+ answer: 'De flesta sittvagnar i budget-segmentet passar barn från 6 månader när de kan sitta med stöd. Hauck Shopper SLX och Joie Litetrax 4 Air har liggläge och passar från yngre ålder. Chicco Miinimo 4 och Silver Cross Zest har recline men inget plant liggläge, de rekommenderas från 6 månader. Kontrollera alltid tillverkarens åldersgräns.',
+ },
+ {
+ question: 'Är lufthjul verkligen nödvändigt på en barnvagn?',
+ answer: 'Lufthjul ger bättre komfort på ojämna underlag som grus, kullersten och skogsstigar. Joie Litetrax 4 Air och Kinderkraft Cruiser har lufthjul och rullar mjukare på alla underlag. Bor du i en stad med mestadels jämna trottoarer räcker hårdgummihjul utmärkt och kräver inget underhåll. Lufthjul kan platta sig, ett litet extra besvär.',
+ },
+ {
+ question: 'Vilken budget-barnvagn passar bäst för resor och flyg?',
+ answer: 'Silver Cross Zest på 6 kg är lättast i testet och passar utmärkt för resor och flyg. Chicco Miinimo 4 är också kompakt hopvikad. Kontrollera med flygbolaget vilken maxvikt som tillåts i handbagaget, de flesta kräver under 10 kg och att vagnen ryms i bagageutrymmet.',
+ },
+ {
+ question: 'Hur lång livslängd har en billig barnvagn?',
+ answer: 'En välvårdad budget-barnvagn håller typiskt för ett till två barn. Joie och Silver Cross har ett gott rykte för hållbarhet i sin prisklass. Plastdelar och textil slits snabbare på billigare modeller än på premiumvagnar, men om vagnen används normalt och förvaras torrt är den livslängden fullt tillräcklig för de flesta familjer.',
+ },
+ {
+ question: 'Kan jag koppla en bilbarnstol till en budget-barnvagn?',
+ answer: 'Det beror på modell. Joie Litetrax 4 Air är kompatibel med flera Joie-bilbarnstolar via adapter och bildar ett travel system. Hauck Shopper SLX stödjer också några bilbarnstolar via adapter. Chicco Miinimo 4 kan kombineras med Chicco-bilbarnstolar. Kontrollera kompatibilitetslistan för just den vagn och stol du överväger innan köp.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Billig Barnvagn 2026, Bäst under 3 000 kr testad"
-  description="Bästa billiga barnvagn 2026: Prisvärda barnvagnar under 3 000 kr testade. Se vilken budgetvagn som ger bäst kvalitet för pengarna."
-  breadcrumbs={breadcrumbs}
-  updatedDate="2026-04-14"
+ title="Billig Barnvagn 2026, Bäst under testad"
+ description="Bästa billiga barnvagn 2026: Prisvärda barnvagnar under testade. Se vilken budgetvagn som ger bäst kvalitet för pengarna."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-4 max-w-2xl">
-    En bra barnvagn behöver inte kosta tusentals kronor. Vi har jämfört de bästa barnvagnarna under 3 000 kr på den svenska marknaden, vagnar som kombinerar lågt pris med tillräcklig kvalitet, säkerhet och praktisk hantering för vardagsbruk.
-  </p>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ En bra barnvagn behöver inte kosta tusentals kronor. Vi har jämfört de bästa barnvagnarna under på den svenska marknaden, vagnar som kombinerar lågt pris med tillräcklig kvalitet, säkerhet och praktisk hantering för vardagsbruk.
+ </p>
 
-  <TopPick product={products[0]} description="Hauck Shopper SLX är vårt billigast bland budget: Sittvagn och ca 7 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Hauck Shopper SLX är vårt billigast bland budget: Sittvagn och ca 7 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Hauck Travel N Care Plus Sulky"
-      image="/images/products/hauck-travel-n-care-plus-sulky.webp"
-      badge="Billigast"
-      price="1 495 kr"
-      rating={4.1}
-      ageRange="6 mån, 3,5 år"
-      pros={['Lågt pris, sista chansen hos Jollyroom', 'Kompakt och lätt att vika ihop', 'Canopy med UV-skydd', 'Perfekt som resevagn']}
-      cons={['Enklare material', 'Sämre fjädring på ojämna underlag']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fhauck-travel-n-care-plus-sulky-green"
-      rel="sponsored noopener"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Hauck Travel N Care Plus Sulky"
+ image="/images/products/hauck-travel-n-care-plus-sulky.webp"
+ badge="Billigast"
+ rating={4.1}
+ ageRange="6 mån, 3,5 år"
+ pros={['Lågt pris, sista chansen hos Jollyroom', 'Kompakt och lätt att vika ihop', 'Canopy med UV-skydd', 'Perfekt som resevagn']}
+ cons={['Enklare material', 'Sämre fjädring på ojämna underlag']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fhauck-travel-n-care-plus-sulky-green"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Kinderkraft Grande 2"
-      image="/images/products/kinderkraft-grande-2.webp"
-      badge="Prisvärd"
-      price="1 449 kr"
-      rating={4.2}
-      ageRange="6 mån, 3,5 år"
-      pros={['Stötdämpande hjul för bekväm körning', 'Lätt att manövrera med låsbara svänghjul', 'Rymlig varukorg undertill', 'Justerbart ryggstöd till liggläge']}
-      cons={['Enklare chassi än premiummodeller', 'Inget fullt plant liggläge för nyfödda']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fkinderkraft-grande-2-sittvagn-midnight-black"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Kinderkraft Grande 2"
+ image="/images/products/kinderkraft-grande-2.webp"
+ badge="Prisvärd"
+ rating={4.2}
+ ageRange="6 mån, 3,5 år"
+ pros={['Stötdämpande hjul för bekväm körning', 'Lätt att manövrera med låsbara svänghjul', 'Rymlig varukorg undertill', 'Justerbart ryggstöd till liggläge']}
+ cons={['Enklare chassi än premiummodeller', 'Inget fullt plant liggläge för nyfödda']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fkinderkraft-grande-2-sittvagn-midnight-black"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Chicco Miinimo 4"
-      image="/images/products/chicco-miinimo-4.webp"
-      badge="Kompaktest"
-      price="1 999 kr"
-      rating={4.3}
-      ageRange="6 mån, 3,5 år"
-      pros={['Mycket kompakt hopvikad, passar i de flesta bilar', 'Lätt (ca 7,5 kg)', 'Pålitligt italienskt märke']}
-      cons={['Inget plant liggläge', 'Mindre varukorg']}
-      ctaText="Se pris hos Stor & Liten"
-      ctaHref="https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.storochliten.se%2Fchicco-miinimo-black-night"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Chicco Miinimo 4"
+ image="/images/products/chicco-miinimo-4.webp"
+ badge="Kompaktest"
+ rating={4.3}
+ ageRange="6 mån, 3,5 år"
+ pros={['Mycket kompakt hopvikad, passar i de flesta bilar', 'Lätt (ca 7,5 kg)', 'Pålitligt italienskt märke']}
+ cons={['Inget plant liggläge', 'Mindre varukorg']}
+ ctaText="Se pris hos Stor & Liten"
+ ctaHref="https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.storochliten.se%2Fchicco-miinimo-black-night"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Joie Litetrax 4 Air"
-      image="/images/products/joie-litetrax-4-air.webp"
-      badge="Bäst i test"
-      price="2 499 kr"
-      rating={4.5}
-      ageRange="6 mån, 3,5 år"
-      pros={['Lufthjul ger mjuk körning på alla underlag', 'Liggläge, passar yngre barn', 'Kompatibel med Joie-bilbarnstolar']}
-      cons={['Tyngre än övriga (ca 9,5 kg)', 'Lufthjul kräver punkteringsreparation vid behov']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-litetrax-sulky-shale"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Joie Litetrax 4 Air"
+ image="/images/products/joie-litetrax-4-air.webp"
+ badge="Bäst i test"
+ rating={4.5}
+ ageRange="6 mån, 3,5 år"
+ pros={['Lufthjul ger mjuk körning på alla underlag', 'Liggläge, passar yngre barn', 'Kompatibel med Joie-bilbarnstolar']}
+ cons={['Tyngre än övriga (ca 9,5 kg)', 'Lufthjul kräver punkteringsreparation vid behov']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-litetrax-sulky-shale"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Silver Cross Clic Sulky"
-      image="/images/products/silver-cross-clic-sulky.webp"
-      badge="Lättast"
-      price="3 939 kr"
-      rating={4.4}
-      ageRange="6 mån, 3,5 år"
-      pros={['Lätt, bara 6,5 kg', 'Perfekt för resor och kollektivtrafik', 'Stilren design från brittiskt märke', 'Enkelt enhandsfall']}
-      cons={['Inget plant liggläge', 'Dyrast i testet']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fsilver-cross-clic-sulky-space"
-      rel="sponsored noopener"
-    />
-  </div>
+ <ProductCard
+ name="Silver Cross Clic Sulky"
+ image="/images/products/silver-cross-clic-sulky.webp"
+ badge="Lättast"
+ rating={4.4}
+ ageRange="6 mån, 3,5 år"
+ pros={['Lätt, bara 6,5 kg', 'Perfekt för resor och kollektivtrafik', 'Stilren design från brittiskt märke', 'Enkelt enhandsfall']}
+ cons={['Inget plant liggläge', 'Dyrast i testet']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fsilver-cross-clic-sulky-space"
+ rel="sponsored noopener"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt budgetvagn</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt budgetvagn</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Vikt är avgörande</h3>
-    <p>En tung vagn är ett dagligt besvär i trappor, kollektivtrafik och vid bilens bagageutrymme. Silver Cross Zest på 6 kg är lättast i testet och utmärkt för den som rör sig mycket. <a href="/marken/hauck/" class="text-accent underline">Hauck</a> Shopper SLX och Chicco Miinimo 4 är också lätta alternativ. <a href="/marken/joie/" class="text-accent underline">Joie</a> Litetrax 4 Air och <a href="/marken/kinderkraft/" class="text-accent underline">Kinderkraft</a> Cruiser är tyngre men kompenserar med bättre körkomfort tack vare lufthjulen.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>Vikt är avgörande</h3>
+ <p>En tung vagn är ett dagligt besvär i trappor, kollektivtrafik och vid bilens bagageutrymme. Silver Cross Zest på 6 kg är lättast i testet och utmärkt för den som rör sig mycket. <a href="/marken/hauck/" class="text-accent underline">Hauck</a> Shopper SLX och Chicco Miinimo 4 är också lätta alternativ. <a href="/marken/joie/" class="text-accent underline">Joie</a> Litetrax 4 Air och <a href="/marken/kinderkraft/" class="text-accent underline">Kinderkraft</a> Cruiser är tyngre men kompenserar med bättre körkomfort tack vare lufthjulen.</p>
 
-    <h3>Liggläge, nödvändigt under 6 månader</h3>
-    <p>Barn under 6 månader behöver ligga plant i vagnen. Hauck Shopper SLX och Joie Litetrax 4 Air har riktigt liggläge. Chicco Miinimo 4 och Silver Cross Zest har recline men inte ett plant liggläge, de passar från 6 månader när barnet kan sitta med stöd. Kinderkraft Cruiser har liggläge och passar för lite yngre barn.</p>
+ <h3>Liggläge, nödvändigt under 6 månader</h3>
+ <p>Barn under 6 månader behöver ligga plant i vagnen. Hauck Shopper SLX och Joie Litetrax 4 Air har riktigt liggläge. Chicco Miinimo 4 och Silver Cross Zest har recline men inte ett plant liggläge, de passar från 6 månader när barnet kan sitta med stöd. Kinderkraft Cruiser har liggläge och passar för lite yngre barn.</p>
 
-    <h3>Hjultyp och underlag</h3>
-    <p>Lufthjul (Joie Litetrax 4 Air, Kinderkraft Cruiser) rullar mjukt och dämpar stötar från ojämna underlag. Hårdgummihjul är underhållsfria men sämre på grus och kullersten. Välj efter var du oftast promenerar, bor du i stan med jämna trottoarer räcker hårdgummihjul väl.</p>
+ <h3>Hjultyp och underlag</h3>
+ <p>Lufthjul (Joie Litetrax 4 Air, Kinderkraft Cruiser) rullar mjukt och dämpar stötar från ojämna underlag. Hårdgummihjul är underhållsfria men sämre på grus och kullersten. Välj efter var du oftast promenerar, bor du i stan med jämna trottoarer räcker hårdgummihjul väl.</p>
 
-    <h3>Travel system, kombination med bilbarnstol</h3>
-    <p>Joie Litetrax 4 Air kan kombineras med Joie-bilbarnstolar för ett komplett travel system där du lyfter bilstolen rakt in i vagnen. Det är praktiskt med ett sovande spädbarn. Kontrollera vilka adapter och bilbarnstolar som är kompatibla med den modell du väljer.</p>
-  </div>
+ <h3>Travel system, kombination med bilbarnstol</h3>
+ <p>Joie Litetrax 4 Air kan kombineras med Joie-bilbarnstolar för ett komplett travel system där du lyfter bilstolen rakt in i vagnen. Det är praktiskt med ett sovande spädbarn. Kontrollera vilka adapter och bilbarnstolar som är kompatibla med den modell du väljer.</p>
+ </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a>
-      </li>
-    </ul>
-  </div>
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li>
+ <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a>
+ </li>
+ </ul>
+ </div>
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-    <MultiStoreCTA
-  productName="Billiga barnvagnar"
-  brand="ll"
-  primaryStore="Crescent Barnvagnar"
-  description="Svenska barnvagnar med hög kvalitet och ergonomi."
+ <MultiStoreCTA
+ productName="Billiga barnvagnar"
+ brand="ll"
+ primaryStore="Crescent Barnvagnar"
+ description="Svenska barnvagnar med hög kvalitet och ergonomi."
 />
-  <MultiStoreCTA
-  productName="Billiga barnvagnar"
-  brand="ll"
-  primaryStore="Babyonline"
-  description="Stort urval barnvagnar, bärslar och babyutrustning."
+ <MultiStoreCTA
+ productName="Billiga barnvagnar"
+ brand="ll"
+ primaryStore="Babyonline"
+ description="Stort urval barnvagnar, bärslar och babyutrustning."
 />
 <StickyTop3Bar products={products} />
 <ProductSchema products={[
-    { name: 'Hauck Shopper SLX', description: 'Budgetvänlig sittvagn med bra grundfunktioner. Perfekt för priskänsliga familjer.', brand: 'Hauck', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fhauck-shopper-slx', seller: 'Jollyroom' }] },
-    { name: 'Kinderkraft Cruiser', description: 'Kompakt sittvagn med aluminiumram och hopfällbar design till ett bra pris.', brand: 'Kinderkraft', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fkinderkraft-cruiser', seller: 'Jollyroom' }] },
-    { name: 'Chicco Miinimo 4', description: 'Ultrakompakt sittvagn med god körbarhet för priset. Under 2 kg.', brand: 'Chicco', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fchicco-miinimo-4', seller: 'Jollyroom' }] },
-  ]} />
+ { name: 'Hauck Shopper SLX', description: 'Budgetvänlig sittvagn med bra grundfunktioner. Perfekt för priskänsliga familjer.', brand: 'Hauck', ratingValue: 4.3, reviewCount: 1 },
+ { name: 'Kinderkraft Cruiser', description: 'Kompakt sittvagn med aluminiumram och hopfällbar design till ett bra pris.', brand: 'Kinderkraft', ratingValue: 4.4, reviewCount: 1 },
+ { name: 'Chicco Miinimo 4', description: 'Ultrakompakt sittvagn med god körbarhet för priset. Under 2 kg.', brand: 'Chicco', ratingValue: 4.5, reviewCount: 1 },
+ ]} />
 </ArticleLayout>

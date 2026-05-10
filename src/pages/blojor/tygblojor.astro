@@ -7,9 +7,9 @@ import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Blöjor', href: '/blojor/' },
-  { label: 'Tygblöjor' },
+ { label: 'Hem', href: '/' },
+ { label: 'Blöjor', href: '/blojor/' },
+ { label: 'Tygblöjor' },
 ];
 
 // Sökbaserad discovery, ärlig vägledning. Inga svenska återförsäljare i vårt
@@ -17,293 +17,288 @@ const breadcrumbs = [
 // dessa specialistmärken. Tills tygblöjespecifikt affiliateprogram finns på
 // plats pekar CTA:er till Google Shopping för äkta prisupptäckt.
 const shop = (q: string) =>
-  `https://www.google.com/search?tbm=shop&q=${encodeURIComponent(q + ' sverige')}`;
+ `https://www.google.com/search?tbm=shop&q=${encodeURIComponent(q + ' sverige')}`;
 
 const products = [
-  {
-    name: 'GroVia Hybrid',
-    badge: 'Bäst i test',
-    priceRange: '150 till 180 kr/blöja',
-    rating: 4.8,
-    system: 'Hybrid (engångs + tyg)',
-    material: 'Polyester yttertyg',
-    washes: 'Obegränsad',
-    starter: 'Ja',
-    ctaHref: shop('GroVia Hybrid tygblöja'),
-  },
-  {
-    name: 'TotsBots Bamboozle',
-    badge: 'Bäst absorption',
-    priceRange: '170 till 200 kr/blöja',
-    rating: 4.7,
-    system: 'Prefold',
-    material: 'Bambu',
-    washes: 'Obegränsad',
-    starter: 'Ja',
-    ctaHref: shop('TotsBots Bamboozle'),
-  },
-  {
-    name: 'Thirsties Duo Wrap',
-    badge: 'Bäst överdel',
-    priceRange: '130 till 160 kr/blöja',
-    rating: 4.6,
-    system: 'Överdel + insats',
-    material: 'Polyester/PUL',
-    washes: 'Obegränsad',
-    starter: 'Nej',
-    ctaHref: shop('Thirsties Duo Wrap'),
-  },
-  {
-    name: 'Bambino Mio miosolo',
-    badge: 'Enklast att använda',
-    priceRange: '190 till 230 kr/blöja',
-    rating: 4.5,
-    system: 'All-in-one',
-    material: 'Mikrofiber/bomull',
-    washes: 'Obegränsad',
-    starter: 'Ja',
-    ctaHref: shop('Bambino Mio miosolo'),
-  },
-  {
-    name: 'Charlie Banana',
-    badge: 'Bäst premium',
-    priceRange: '220 till 260 kr/blöja',
-    rating: 4.4,
-    system: 'Hybrid/All-in-one',
-    material: 'Fleece + mikrofiber',
-    washes: 'Obegränsad',
-    starter: 'Ja',
-    ctaHref: shop('Charlie Banana tygblöja'),
-  },
+ {
+ name: 'GroVia Hybrid',
+ badge: 'Bäst i test',
+ rating: 4.8,
+ system: 'Hybrid (engångs + tyg)',
+ material: 'Polyester yttertyg',
+ washes: 'Obegränsad',
+ starter: 'Ja',
+ ctaHref: shop('GroVia Hybrid tygblöja'),
+ },
+ {
+ name: 'TotsBots Bamboozle',
+ badge: 'Bäst absorption',
+ rating: 4.7,
+ system: 'Prefold',
+ material: 'Bambu',
+ washes: 'Obegränsad',
+ starter: 'Ja',
+ ctaHref: shop('TotsBots Bamboozle'),
+ },
+ {
+ name: 'Thirsties Duo Wrap',
+ badge: 'Bäst överdel',
+ rating: 4.6,
+ system: 'Överdel + insats',
+ material: 'Polyester/PUL',
+ washes: 'Obegränsad',
+ starter: 'Nej',
+ ctaHref: shop('Thirsties Duo Wrap'),
+ },
+ {
+ name: 'Bambino Mio miosolo',
+ badge: 'Enklast att använda',
+ rating: 4.5,
+ system: 'All-in-one',
+ material: 'Mikrofiber/bomull',
+ washes: 'Obegränsad',
+ starter: 'Ja',
+ ctaHref: shop('Bambino Mio miosolo'),
+ },
+ {
+ name: 'Charlie Banana',
+ badge: 'Bäst premium',
+ rating: 4.4,
+ system: 'Hybrid/All-in-one',
+ material: 'Fleece + mikrofiber',
+ washes: 'Obegränsad',
+ starter: 'Ja',
+ ctaHref: shop('Charlie Banana tygblöja'),
+ },
 ];
 
 const tableProducts = products.map((p) => ({
-  name: p.name,
-  badge: p.badge,
-  price: p.priceRange,
-  rating: p.rating,
-  ctaHref: p.ctaHref,
-  features: {
-    'System': p.system,
-    'Material': p.material,
-    'Tvättbarheter': p.washes,
-    'Pris/blöja': p.priceRange,
-    'Startpaket': p.starter,
-  },
+ name: p.name,
+ badge: p.badge,
+ price: p.priceRange,
+ rating: p.rating,
+ ctaHref: p.ctaHref,
+ features: {
+ 'System': p.system,
+ 'Material': p.material,
+ 'Tvättbarheter': p.washes,
+ 'Pris/blöja': p.priceRange,
+ 'Startpaket': p.starter,
+ },
 }));
 
 const featureLabels = ['System', 'Material', 'Tvättbarheter', 'Pris/blöja', 'Startpaket'];
 
 const productDetails: Record<string, { pros: string[]; cons: string[] }> = {
-  'GroVia Hybrid': {
-    pros: ['Flexibelt hybridsystem, välj engångs- eller tyginsats', 'Bra passform från nyfödd till potträning', 'Tvättbar överdel håller länge', 'Startpaket tillgängligt'],
-    cons: ['Kräver separata insatser', 'Högre startkostnad än överdel-system'],
-  },
-  'TotsBots Bamboozle': {
-    pros: ['Bambu ger utmärkt absorption', 'Mjuk mot huden', 'Bra för nattsömn med extra insats', 'Startpaket tillgängligt'],
-    cons: ['Torkar långsammare än mikrofiber', 'Kräver separat överdel'],
-  },
-  'Thirsties Duo Wrap': {
-    pros: ['Lågt inköpspris', 'Passar de flesta insatstyper', 'Hållbar PUL-konstruktion', 'Tvättas snabbt och torkar fort'],
-    cons: ['Inget startpaket, köp insatser separat', 'Kräver lite mer hantering'],
-  },
-  'Bambino Mio miosolo': {
-    pros: ['All-in-one, precis som engångsblöja', 'Perfekt för dagis och barnvakt', 'Startpaket tillgängligt', 'Justerbara snäppknappar'],
-    cons: ['Torkar långsammare än överdel-system', 'Högre pris per blöja'],
-  },
-  'Charlie Banana': {
-    pros: ['Premium material och konstruktion', 'Fleece-foder håller huden torr', 'Flexibelt hybridssystem', 'Startpaket med allt du behöver'],
-    cons: ['Dyraste alternativet', 'Begränsad tillgänglighet i Sverige'],
-  },
+ 'GroVia Hybrid': {
+ pros: ['Flexibelt hybridsystem, välj engångs- eller tyginsats', 'Bra passform från nyfödd till potträning', 'Tvättbar överdel håller länge', 'Startpaket tillgängligt'],
+ cons: ['Kräver separata insatser', 'Högre startkostnad än överdel-system'],
+ },
+ 'TotsBots Bamboozle': {
+ pros: ['Bambu ger utmärkt absorption', 'Mjuk mot huden', 'Bra för nattsömn med extra insats', 'Startpaket tillgängligt'],
+ cons: ['Torkar långsammare än mikrofiber', 'Kräver separat överdel'],
+ },
+ 'Thirsties Duo Wrap': {
+ pros: ['Lågt inköpspris', 'Passar de flesta insatstyper', 'Hållbar PUL-konstruktion', 'Tvättas snabbt och torkar fort'],
+ cons: ['Inget startpaket, köp insatser separat', 'Kräver lite mer hantering'],
+ },
+ 'Bambino Mio miosolo': {
+ pros: ['All-in-one, precis som engångsblöja', 'Perfekt för dagis och barnvakt', 'Startpaket tillgängligt', 'Justerbara snäppknappar'],
+ cons: ['Torkar långsammare än överdel-system', 'Högre pris per blöja'],
+ },
+ 'Charlie Banana': {
+ pros: ['Premium material och konstruktion', 'Fleece-foder håller huden torr', 'Flexibelt hybridssystem', 'Startpaket med allt du behöver'],
+ cons: ['Dyraste alternativet', 'Begränsad tillgänglighet i Sverige'],
+ },
 };
 
 const faqItems = [
-  {
-    question: 'Hur många tygblöjor behöver man?',
-    answer: 'För ett nyfödd barn som byts 8 till 12 gånger per dygn behöver du 20 till 25 tygblöjor om du tvättar varannan dag. Med tvätt varje dag räcker 15 till 18 blöjor. Köp inte för många i nyföddstorleken, bebisar växer snabbt. Starta med 10 till 12 stycken och komplettera. De flesta system passar från 3 kg upp till 16 kg (en storlek).',
-  },
-  {
-    question: 'Hur tvättar man tygblöjor?',
-    answer: 'Skaka av fasta rester i toaletten. Blöjor utan fasta rester kan gå direkt i tvätthink. Tvätta i 60 grader för ordentlig hygien, lägre temperatur räcker om barnet är friskt och blöjorna ser rena ut. Använd ofärgat, parfymfritt tvättmedel utan sköljmedel. Torka i torktumlare eller utomhus, solljus har naturliga desinficerande egenskaper. Undvik tygsköljmedel och balsam.',
-  },
-  {
-    question: 'Sparar man verkligen pengar på tygblöjor?',
-    answer: 'Ja, men det kräver att du använder dem konsekvent. En komplett tygblöjeutrusning (20 till 25 blöjor) kostar 3 000 till 5 000 kr. Engångsblöjor kostar 15 000 till 20 000 kr för hela blöjperioden (0 till 3 år). Tygblöjor ger en besparing på 10 000 till 15 000 kr per barn, och kan användas till syskon. Räknat på 2 barn mer än fördubblas besparingen.',
-  },
-  {
-    question: 'Vad är skillnaden mellan de olika systemen?',
-    answer: 'All-in-one (som Bambino Mio miosolo) är enklast, allt i ett plagg, precis som engångsblöja. Hybrid (som GroVia) kombinerar tvättbart yttre med valfria engångs- eller tyginsatser. Prefold/överdel-system (Thirsties) är billigare men kräver lite mer hantering. AIO är bäst för nybörjare och dagis; överdel-system passar ekonomiska användare som vill ha lägre inköpspris.',
-  },
-  {
-    question: 'Fungerar tygblöjor på dagis?',
-    answer: 'Många dagis accepterar tygblöjor, men du behöver prata med personalen i förväg. All-in-one-system och hybridblöjor är lättast för dagiset att hantera, de liknar engångsblöjor i användandet. Ha med en blöjhink eller en vattentät väska för använda blöjor. Vissa kommuner ger bidrag för inköp av tygblöjor, kolla med din kommun.',
-  },
-  {
-    question: 'Är tygblöjor bättre för miljön?',
-    answer: 'Ja, men med reservation. Tygblöjors miljöpåverkan beror på hur de tvättas. Tvätt i 40 till 60 grader och torkning utomhus ger den lägsta miljöpåverkan, upp till 40% lägre koldioxidavtryck jämfört med engångsblöjor. Torktumlaren ökar energiförbrukningen avsevärt. Att återanvända till syskon minskar miljöpåverkan ytterligare.',
-  },
-  {
-    question: 'Kan man börja med tygblöjor vid 3 till 4 månader?',
-    answer: 'Ja, absolut. Många föräldrar startar med tygblöjor när barnet väger 4 till 5 kg och blivit lite mer förutsägbart i sitt blöjschema. All-in-one-system och hybridblöjor passar bra som start för äldre bebisar. Du behöver färre blöjor (15 till 18 räcker) och kan starta med ett litet testpaket på 5 till 6 blöjor innan du bestämmer dig för system.',
-  },
-  {
-    question: 'Läcker tygblöjor mer än engångsblöjor?',
-    answer: 'Inte om de sitter rätt och byts i tid. De vanligaste orsakerna till läckage är: blöjan byts för sällan (tygblöjor behöver bytas var 2 till 3 timme), fel storlek, eller att elastiken vid benen blivit för löst åtdragen. Bomull och bambu absorberar mer initialt, medan microfiber absorberar snabbast. Nattsömn kräver vanligtvis extra insats.',
-  },
-  {
-    question: 'Vilka tygblöjor passar nyfödd bäst?',
-    answer: 'Nyfödda (2 till 4 kg) passar bäst i blöjor med nyföddsinsats eller speciella nyföddskit. GroVia Hybrid och Thirsties Duo Wrap har utmärkt passform på nyfödd. Undvik blöjor som anges passa "från födseln" om de inte har tydliga nyföddsanpassningar, många one-size-blöjor är för stora under de första veckorna. Alternativt: använd engångsblöjor de första 4 till 6 veckorna.',
-  },
-  {
-    question: 'Vad gör man med tygblöjorna när barnet är pottränat?',
-    answer: 'Tygblöjor i gott skick säljs enkelt vidare på Blocket, Facebook Marketplace eller Mammagruppen, begagnade säljs för 40 till 70% av inköpspriset. Populära märken som GroVia och TotsBots håller bra andrahandsvärde. Alternativt kan du spara dem till nästa barn. Med 2 barn sparar du dubbelt upp, och andrahandsvärdet gör den totala besparingen ännu större.',
-  },
+ {
+ question: 'Hur många tygblöjor behöver man?',
+ answer: 'För ett nyfödd barn som byts 8 till 12 gånger per dygn behöver du 20 till 25 tygblöjor om du tvättar varannan dag. Med tvätt varje dag räcker 15 till 18 blöjor. Köp inte för många i nyföddstorleken, bebisar växer snabbt. Starta med 10 till 12 stycken och komplettera. De flesta system passar från 3 kg upp till 16 kg (en storlek).',
+ },
+ {
+ question: 'Hur tvättar man tygblöjor?',
+ answer: 'Skaka av fasta rester i toaletten. Blöjor utan fasta rester kan gå direkt i tvätthink. Tvätta i 60 grader för ordentlig hygien, lägre temperatur räcker om barnet är friskt och blöjorna ser rena ut. Använd ofärgat, parfymfritt tvättmedel utan sköljmedel. Torka i torktumlare eller utomhus, solljus har naturliga desinficerande egenskaper. Undvik tygsköljmedel och balsam.',
+ },
+ {
+ question: 'Sparar man verkligen pengar på tygblöjor?',
+ answer: 'Ja, men det kräver att du använder dem konsekvent. En komplett tygblöjeutrusning (20 till 25 blöjor). Engångsblöjor kostar för hela blöjperioden (0 till 3 år). Tygblöjor ger en besparing på per barn, och kan användas till syskon. Räknat på 2 barn mer än fördubblas besparingen.',
+ },
+ {
+ question: 'Vad är skillnaden mellan de olika systemen?',
+ answer: 'All-in-one (som Bambino Mio miosolo) är enklast, allt i ett plagg, precis som engångsblöja. Hybrid (som GroVia) kombinerar tvättbart yttre med valfria engångs- eller tyginsatser. Prefold/överdel-system (Thirsties) är billigare men kräver lite mer hantering. AIO är bäst för nybörjare och dagis; överdel-system passar ekonomiska användare som vill ha lägre inköpspris.',
+ },
+ {
+ question: 'Fungerar tygblöjor på dagis?',
+ answer: 'Många dagis accepterar tygblöjor, men du behöver prata med personalen i förväg. All-in-one-system och hybridblöjor är lättast för dagiset att hantera, de liknar engångsblöjor i användandet. Ha med en blöjhink eller en vattentät väska för använda blöjor. Vissa kommuner ger bidrag för inköp av tygblöjor, kolla med din kommun.',
+ },
+ {
+ question: 'Är tygblöjor bättre för miljön?',
+ answer: 'Ja, men med reservation. Tygblöjors miljöpåverkan beror på hur de tvättas. Tvätt i 40 till 60 grader och torkning utomhus ger den lägsta miljöpåverkan, upp till 40% lägre koldioxidavtryck jämfört med engångsblöjor. Torktumlaren ökar energiförbrukningen avsevärt. Att återanvända till syskon minskar miljöpåverkan ytterligare.',
+ },
+ {
+ question: 'Kan man börja med tygblöjor vid 3 till 4 månader?',
+ answer: 'Ja, absolut. Många föräldrar startar med tygblöjor när barnet väger 4 till 5 kg och blivit lite mer förutsägbart i sitt blöjschema. All-in-one-system och hybridblöjor passar bra som start för äldre bebisar. Du behöver färre blöjor (15 till 18 räcker) och kan starta med ett litet testpaket på 5 till 6 blöjor innan du bestämmer dig för system.',
+ },
+ {
+ question: 'Läcker tygblöjor mer än engångsblöjor?',
+ answer: 'Inte om de sitter rätt och byts i tid. De vanligaste orsakerna till läckage är: blöjan byts för sällan (tygblöjor behöver bytas var 2 till 3 timme), fel storlek, eller att elastiken vid benen blivit för löst åtdragen. Bomull och bambu absorberar mer initialt, medan microfiber absorberar snabbast. Nattsömn kräver vanligtvis extra insats.',
+ },
+ {
+ question: 'Vilka tygblöjor passar nyfödd bäst?',
+ answer: 'Nyfödda (2 till 4 kg) passar bäst i blöjor med nyföddsinsats eller speciella nyföddskit. GroVia Hybrid och Thirsties Duo Wrap har utmärkt passform på nyfödd. Undvik blöjor som anges passa "från födseln" om de inte har tydliga nyföddsanpassningar, många one-size-blöjor är för stora under de första veckorna. Alternativt: använd engångsblöjor de första 4 till 6 veckorna.',
+ },
+ {
+ question: 'Vad gör man med tygblöjorna när barnet är pottränat?',
+ answer: 'Tygblöjor i gott skick säljs enkelt vidare på Blocket, Facebook Marketplace eller Mammagruppen, begagnade säljs för 40 till 70% av inköpspriset. Populära märken som GroVia och TotsBots håller bra andrahandsvärde. Alternativt kan du spara dem till nästa barn. Med 2 barn sparar du dubbelt upp, och andrahandsvärdet gör den totala besparingen ännu större.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Tygblöjor Bäst i Test 2026 till 5 system jämförda"
-  description="Tygblöjor bäst i test 2026: Vi har testat 5 populära tygblöjor. Se vilken som vinner, startpaket och hur mycket du sparar jämfört med engångsblöjor."
-  breadcrumbs={breadcrumbs}
-  canonical="https://bebisguiden.se/blojor/tygblojor/"
-  updatedDate="2026-04-23"
+ title="Tygblöjor Bäst i Test 2026 till 5 system jämförda"
+ description="Tygblöjor bäst i test 2026: Vi har testat 5 populära tygblöjor. Se vilken som vinner, startpaket och hur mycket du sparar jämfört med engångsblöjor."
+ breadcrumbs={breadcrumbs}
+ canonical="https://bebisguiden.se/blojor/tygblojor/"
+ updatedDate="2026-04-23"
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-    Vilka tygblöjor är bäst i test 2026? Vi har testat de populäraste systemen och jämfört absorption, passform och användarvänlighet. Tygblöjor sparar 10 000 till 15 000 kr per barn jämfört med engångsblöjor och är bättre för miljön.
-  </p>
+ <p class="text-base text-text-light mb-3 max-w-2xl">
+ Vilka tygblöjor är bäst i test 2026? Vi har testat de populäraste systemen och jämfört absorption, passform och användarvänlighet. Tygblöjor sparar per barn jämfört med engångsblöjor och är bättre för miljön.
+ </p>
 
-  <div class="bg-sky-50 border border-sky-200 rounded-xl p-4 mt-4 mb-5 text-sm text-text-light">
-    <p class="font-semibold text-sky-900 mb-1">Om var du köper</p>
-    <p>Tygblöjor är en specialistkategori, de stora svenska barnkedjorna (Jollyroom, Babyland, Baby V, Stor &amp; Liten, Köpbarnvagn) lagerhåller sällan dessa varumärken. Vi skickar dig därför till Google Shopping för aktuell prisjämförelse från Sveriges tygblöjespecialister. Föredrar du engångsblöjor? <a href="/blojor/" class="text-accent underline font-semibold">Se vår test av engångsblöjor</a>, där har vi direktlänkar till aktuella priser.</p>
-  </div>
+ <div class="bg-sky-50 border border-sky-200 rounded-xl p-4 mt-4 mb-5 text-sm text-text-light">
+ <p class="font-semibold text-sky-900 mb-1">Om var du köper</p>
+ <p>Tygblöjor är en specialistkategori, de stora svenska barnkedjorna (Jollyroom, Babyland, Baby V, Stor &amp; Liten, Köpbarnvagn) lagerhåller sällan dessa varumärken. Vi skickar dig därför till Google Shopping för aktuell prisjämförelse från Sveriges tygblöjespecialister. Föredrar du engångsblöjor? <a href="/blojor/" class="text-accent underline font-semibold">Se vår test av engångsblöjor</a>, där har vi direktlänkar till aktuella priser.</p>
+ </div>
 
-  <TopPick product={products[0]} description="GroVia Hybrid är vårt bäst i test bland tygblöjor. Bra balans mellan kvalitet, prestanda och pris i jämförelsen." />
+ <TopPick product={products[0]} description="GroVia Hybrid är vårt bäst i test bland tygblöjor. Bra balans mellan kvalitet, prestanda och pris i jämförelsen." />
 
-  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, tygblöjor 2026</h2>
-  <ComparisonTable products={tableProducts} featureLabels={featureLabels} />
+ <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, tygblöjor 2026</h2>
+ <ComparisonTable products={tableProducts} featureLabels={featureLabels} />
 
-  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
-    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>GroVia Hybrid</strong> är bäst för flexibilitet. <strong>TotsBots Bamboozle</strong> är bäst för absorption. <strong>Bambino Mio miosolo</strong> är enklast för nybörjare.</p>
-  </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+ <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+ <p class="text-sm text-text-light"><strong>GroVia Hybrid</strong> är bäst för flexibilitet. <strong>TotsBots Bamboozle</strong> är bäst för absorption. <strong>Bambino Mio miosolo</strong> är enklast för nybörjare.</p>
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    {products.map((p) => (
-      <div class="bg-white rounded-xl border border-border shadow-sm overflow-hidden">
-        <div class="px-4 py-2 text-white text-sm font-bold text-center bg-gradient-to-r from-primary to-primary/70">
-          {p.badge}
-        </div>
-        <div class="p-4 sm:p-5">
-          <h3 class="font-heading text-lg font-bold text-text">{p.name}</h3>
-          <div class="flex items-center gap-4 mt-2">
-            <div class="flex items-center gap-1">
-              <span class="text-star font-bold text-sm">{p.rating}/5</span>
-              <div class="flex" role="img" aria-label={`Betyg ${p.rating} av 5`}>
-                {[1,2,3,4,5].map((s) => (
-                  <svg class={`w-4 h-4 ${s <= Math.round(p.rating) ? 'text-star' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                  </svg>
-                ))}
-              </div>
-            </div>
-            <span class="font-bold text-text">{p.priceRange}</span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-sm">
-            <ul class="space-y-1">
-              {productDetails[p.name].pros.map((pr) => (
-                <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">+</span> {pr}</li>
-              ))}
-            </ul>
-            <ul class="space-y-1">
-              {productDetails[p.name].cons.map((c) => (
-                <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> {c}</li>
-              ))}
-            </ul>
-          </div>
-          <a
-            href={p.ctaHref}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]"
-          >
-            Jämför pris på Google Shopping
-            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-    ))}
-  </div>
+ <div class="space-y-4">
+ {products.map((p) => (
+ <div class="bg-white rounded-xl border border-border shadow-sm overflow-hidden">
+ <div class="px-4 py-2 text-white text-sm font-bold text-center bg-gradient-to-r from-primary to-primary/70">
+ {p.badge}
+ </div>
+ <div class="p-4 sm:p-5">
+ <h3 class="font-heading text-lg font-bold text-text">{p.name}</h3>
+ <div class="flex items-center gap-4 mt-2">
+ <div class="flex items-center gap-1">
+ <span class="text-star font-bold text-sm">{p.rating}/5</span>
+ <div class="flex" role="img" aria-label={`Betyg ${p.rating} av 5`}>
+ {[1,2,3,4,5].map((s) => (
+ <svg class={`w-4 h-4 ${s <= Math.round(p.rating)? 'text-star': 'text-border'}`} fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+ <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+ </svg>
+ ))}
+ </div>
+ </div>
+ <span class="font-bold text-text">{p.priceRange}</span>
+ </div>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-sm">
+ <ul class="space-y-1">
+ {productDetails[p.name].pros.map((pr) => (
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">+</span> {pr}</li>
+ ))}
+ </ul>
+ <ul class="space-y-1">
+ {productDetails[p.name].cons.map((c) => (
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> {c}</li>
+ ))}
+ </ul>
+ </div>
+ <a
+ href={p.ctaHref}
+ target="_blank"
+ rel="nofollow noopener noreferrer"
+ class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]"
+ >
+ Jämför pris på Google Shopping
+ <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+ </a>
+ </div>
+ </div>
+ ))}
+ </div>
 
-  <div class="mt-8 p-5 bg-accent/10 border border-accent/30 rounded-xl">
-    <h2 class="font-heading text-lg font-bold mb-2">Vill du ha engångsblöjor istället?</h2>
-    <p class="text-sm text-text-light mb-3">Många familjer kombinerar tygblöjor dagtid med engångsblöjor till natt, dagis och resor. Vi har testat de fem populäraste engångsblöjorna i Sverige med direktlänkar till aktuella priser.</p>
-    <a href="/blojor/" class="inline-flex items-center bg-accent text-white font-semibold text-sm px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
-      Se bästa engångsblöjor 2026
-      <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </a>
-  </div>
+ <div class="mt-8 p-5 bg-accent/10 border border-accent/30 rounded-xl">
+ <h2 class="font-heading text-lg font-bold mb-2">Vill du ha engångsblöjor istället?</h2>
+ <p class="text-sm text-text-light mb-3">Många familjer kombinerar tygblöjor dagtid med engångsblöjor till natt, dagis och resor. Vi har testat de fem populäraste engångsblöjorna i Sverige med direktlänkar till aktuella priser.</p>
+ <a href="/blojor/" class="inline-flex items-center bg-accent text-white font-semibold text-sm px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
+ Se bästa engångsblöjor 2026
+ <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+ </a>
+ </div>
 
-  <section class="mt-10 mb-2">
-    <h2 class="font-heading text-xl font-bold mb-4">Tygblöjor vs engångsblöjor, vad passar dig?</h2>
-    <div class="overflow-x-visible">
-      <table class="w-full text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
-        <thead>
-          <tr class="bg-primary text-white">
-            <th class="p-3 text-left font-semibold"></th>
-            <th class="p-3 text-left font-semibold">Tygblöjor</th>
-            <th class="p-3 text-left font-semibold">Engångsblöjor</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-100">
-          <tr><td class="p-3 font-medium text-gray-700">Totalkostnad (1 barn)</td><td class="p-3 text-green-700 font-semibold">3 000 till 5 000 kr</td><td class="p-3 text-red-600">15 000 till 20 000 kr</td></tr>
-          <tr class="bg-gray-50"><td class="p-3 font-medium text-gray-700">Besparing 2 barn</td><td class="p-3 text-green-700 font-semibold">20 000 till 35 000 kr</td><td class="p-3 text-gray-500">,</td></tr>
-          <tr><td class="p-3 font-medium text-gray-700">Miljöpåverkan</td><td class="p-3 text-green-700 font-semibold">Upp till 40% lägre CO₂</td><td class="p-3 text-red-600">Hög (engångsprodukter)</td></tr>
-          <tr class="bg-gray-50"><td class="p-3 font-medium text-gray-700">Bytesbehov</td><td class="p-3 text-gray-700">Var 2 till 3 timme</td><td class="p-3 text-green-700 font-semibold">Var 3 till 4 timme</td></tr>
-          <tr><td class="p-3 font-medium text-gray-700">Dagisanvändning</td><td class="p-3 text-yellow-700">Fungerar, kräver info till dagis</td><td class="p-3 text-green-700 font-semibold">Enkelt</td></tr>
-          <tr class="bg-gray-50"><td class="p-3 font-medium text-gray-700">Startkostnad</td><td class="p-3 text-red-600">Hög (3 000 till 5 000 kr)</td><td class="p-3 text-green-700 font-semibold">Låg (köps löpande)</td></tr>
-          <tr><td class="p-3 font-medium text-gray-700">Andrahandsvärde</td><td class="p-3 text-green-700 font-semibold">Ja, 40 till 70% av inköpspris</td><td class="p-3 text-gray-500">Ingen</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="text-sm text-text-light mt-3"><strong>Slutsats:</strong> Tygblöjor lönar sig ekonomiskt om du använder dem konsekvent och gärna till fler barn. Engångsblöjor är smidigare för resor, dagis och nyföddsperioden.</p>
-  </section>
+ <section class="mt-10 mb-2">
+ <h2 class="font-heading text-xl font-bold mb-4">Tygblöjor vs engångsblöjor, vad passar dig?</h2>
+ <div class="overflow-x-visible">
+ <table class="w-full text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+ <thead>
+ <tr class="bg-primary text-white">
+ <th class="p-3 text-left font-semibold"></th>
+ <th class="p-3 text-left font-semibold">Tygblöjor</th>
+ <th class="p-3 text-left font-semibold">Engångsblöjor</th>
+ </tr>
+ </thead>
+ <tbody class="bg-white divide-y divide-gray-100">
+ <tr><td class="p-3 font-medium text-gray-700">Totalkostnad (1 barn)</td><td class="p-3 text-green-700 font-semibold"></td><td class="p-3 text-red-600"></td></tr>
+ <tr class="bg-gray-50"><td class="p-3 font-medium text-gray-700">Besparing 2 barn</td><td class="p-3 text-green-700 font-semibold"></td><td class="p-3 text-gray-500">,</td></tr>
+ <tr><td class="p-3 font-medium text-gray-700">Miljöpåverkan</td><td class="p-3 text-green-700 font-semibold">Upp till 40% lägre CO₂</td><td class="p-3 text-red-600">Hög (engångsprodukter)</td></tr>
+ <tr class="bg-gray-50"><td class="p-3 font-medium text-gray-700">Bytesbehov</td><td class="p-3 text-gray-700">Var 2 till 3 timme</td><td class="p-3 text-green-700 font-semibold">Var 3 till 4 timme</td></tr>
+ <tr><td class="p-3 font-medium text-gray-700">Dagisanvändning</td><td class="p-3 text-yellow-700">Fungerar, kräver info till dagis</td><td class="p-3 text-green-700 font-semibold">Enkelt</td></tr>
+ <tr class="bg-gray-50"><td class="p-3 font-medium text-gray-700">Startkostnad</td><td class="p-3 text-red-600">Hög </td><td class="p-3 text-green-700 font-semibold">Låg (köps löpande)</td></tr>
+ <tr><td class="p-3 font-medium text-gray-700">Andrahandsvärde</td><td class="p-3 text-green-700 font-semibold">Ja, 40 till 70% av inköpspris</td><td class="p-3 text-gray-500">Ingen</td></tr>
+ </tbody>
+ </table>
+ </div>
+ <p class="text-sm text-text-light mt-3"><strong>Slutsats:</strong> Tygblöjor lönar sig ekonomiskt om du använder dem konsekvent och gärna till fler barn. Engångsblöjor är smidigare för resor, dagis och nyföddsperioden.</p>
+ </section>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Kom igång med tygblöjor</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Kom igång med tygblöjor</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>1. Välj rätt system för din livsstil</h3>
-    <p>All-in-one är enklast och passar familjer som vill ha ett system som liknar engångsblöjor. Hybridblöjor ger mer flexibilitet, du kan använda engångsinsatser vid utflykt och tyginsatser hemma. Överdel-system med separata insatser är billigaste alternativet men kräver mest hantering.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>1. Välj rätt system för din livsstil</h3>
+ <p>All-in-one är enklast och passar familjer som vill ha ett system som liknar engångsblöjor. Hybridblöjor ger mer flexibilitet, du kan använda engångsinsatser vid utflykt och tyginsatser hemma. Överdel-system med separata insatser är billigaste alternativet men kräver mest hantering.</p>
 
-    <h3>2. Starta med ett testpaket</h3>
-    <p>Köp aldrig 20 blöjor av samma märke innan du vet att systemet passar ditt barn. Starta med 3 till 5 blöjor från 2 till 3 olika märken och testa i en vecka. Alla barn är olika, passform och absorption varierar. De flesta leverantörer erbjuder startpaket med rabatt.</p>
+ <h3>2. Starta med ett testpaket</h3>
+ <p>Köp aldrig 20 blöjor av samma märke innan du vet att systemet passar ditt barn. Starta med 3 till 5 blöjor från 2 till 3 olika märken och testa i en vecka. Alla barn är olika, passform och absorption varierar. De flesta leverantörer erbjuder startpaket med rabatt.</p>
 
-    <h3>3. Rätt tvättutrustning är nyckeln</h3>
-    <p>Du behöver en blöjhink med lock (eller tät väska), parfymfritt tvättmedel utan sköljmedel, och en rutin för tvätt varannan dag. Torka gärna utomhus, solljus bleker och desinficerar naturligt. Undvik tygsköljmedel och balsam som sätter igen absorptionsmaterialet.</p>
+ <h3>3. Rätt tvättutrustning är nyckeln</h3>
+ <p>Du behöver en blöjhink med lock (eller tät väska), parfymfritt tvättmedel utan sköljmedel, och en rutin för tvätt varannan dag. Torka gärna utomhus, solljus bleker och desinficerar naturligt. Undvik tygsköljmedel och balsam som sätter igen absorptionsmaterialet.</p>
 
-    <h3>4. Räkna på besparingen</h3>
-    <p>20 blöjor á 150 till 200 kr = 3 000 till 4 000 kr startinvestering. Jämfört med engångsblöjor (15 000 till 20 000 kr per barn) sparar du 11 000 till 16 000 kr. Används blöjorna till syskon ökar besparingen ytterligare med minimalt merarbete.</p>
-  </div>
+ <h3>4. Räkna på besparingen</h3>
+ <p>20 blöjor á = startinvestering. Jämfört med engångsblöjor ( per barn) sparar du. Används blöjorna till syskon ökar besparingen ytterligare med minimalt merarbete.</p>
+ </div>
 
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/blojor/" class="text-accent underline">Bästa blöjor 2026, engångsblöjor testade och rankade</a></li>
-      <li><a href="/badkar/" class="text-accent underline">Bästa badkar bebis 2026, test och jämförelse</a></li>
-      <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
-    </ul>
-  </div>
+ <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/blojor/" class="text-accent underline">Bästa blöjor 2026, engångsblöjor testade och rankade</a></li>
+ <li><a href="/badkar/" class="text-accent underline">Bästa badkar bebis 2026, test och jämförelse</a></li>
+ <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
+ </ul>
+ </div>
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <ProductSchema products={products.map((p) => ({
-    name: p.name,
-    description: `${p.name}, tygblöja (${p.system}) i ${p.material}. Bedömning och jämförelse för svensk marknad.`,
-    image: 'https://bebisguiden.se/og-default.png',
-    brand: p.name.split(' ')[0],
-    ratingValue: p.rating,
-    reviewCount: 1,
-  }))} />
+ <ProductSchema products={products.map((p) => ({
+ name: p.name,
+ description: `${p.name}, tygblöja (${p.system}) i ${p.material}. Bedömning och jämförelse för svensk marknad.`,
+ image: 'https://bebisguiden.se/og-default.png',
+ brand: p.name.split(' ')[0],
+ ratingValue: p.rating,
+ reviewCount: 1,
+ }))} />
 <StickyTop3Bar products={products} />
 </ArticleLayout>

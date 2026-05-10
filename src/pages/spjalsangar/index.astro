@@ -10,384 +10,356 @@ import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Spjälsängar' },
+ { label: 'Hem', href: '/' },
+ { label: 'Spjälsängar' },
 ];
 
 const products = [
-  {
-    name: 'IKEA Sniglar',
-    badge: 'Bäst budget',
-    price: '499 kr',
-    rating: 4.3,
-    image: '/images/products/ikea-sniglar.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fjly-dream-ella-spjalsang-dropside-vit',
-    features: {
-      'Typ': 'Standard spjälsäng',
-      'Mått': '70x140 cm',
-      'Material': 'Massiv bok',
-      'Åldersgrupp': '0 till 3 år',
-      'Pris': '499 kr',
-    },
-  },
-  {
-    name: 'Stokke Sleepi Säng V3 Natural',
-    badge: 'Bäst i test',
-    price: '5 999 kr',
-    rating: 4.8,
-    image: '/images/products/stokke-sleepi-sang-v3-natural.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural',
-    features: {
-      'Typ': 'Oval spjälsäng',
-      'Mått': 'Oval, utbyggbar',
-      'Material': 'Bok',
-      'Åldersgrupp': '0 till 10 år',
-      'Pris': '5 999 kr',
-    },
-  },
-  {
-    name: 'Joie Roomie Bedside Crib',
-    badge: 'Bästa bedside',
-    image: '/images/products/joolz-roomie-crib.webp',
-    price: '3 299 kr',
-    rating: 4.6,
-    image: '/images/products/joolz-roomie-crib.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fbedside-cribs%2Fjoie-roomie-bedside-crib-gray-flannel',
-    features: {
-      'Typ': 'Bedside crib + stående',
-      'Mått': 'Standard',
-      'Material': 'MDF + tyg',
-      'Åldersgrupp': '0 till 6 månader',
-      'Pris': '3 299 kr',
-    },
-  },
-  {
-    name: 'Troll Torsten',
-    badge: 'Prisvärt',
-    image: '/images/products/troll-crossover.webp',
-    price: '1 299 kr',
-    rating: 4.4,
-    features: {
-      'Typ': 'Standard spjälsäng',
-      'Mått': '70x140 cm',
-      'Material': 'Trä',
-      'Åldersgrupp': '0 till 3 år',
-      'Pris': '1 299 kr',
-    },
-  },
-  {
-    name: 'Leander Luna',
-    badge: 'Bäst design',
-    price: '4 499 kr',
-    rating: 4.7,
-    image: '/images/products/leander-luna.webp',
-    features: {
-      'Typ': 'Standard spjälsäng',
-      'Mått': '70x140 cm',
-      'Material': 'Bok',
-      'Åldersgrupp': '0 till 3 år',
-      'Pris': '4 499 kr',
-    },
-  },
-  {
-    name: 'Woodies Starlight Spjälsäng Växa',
-    badge: 'Bra pris/kvalitet',
-    price: '1 999 kr',
-    rating: 4.5,
-    image: '/images/products/woodies-starlight-spjalsang-vaxa.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit',
-    features: {
-      'Typ': 'Växasäng',
-      'Mått': '70x140 cm',
-      'Material': 'Trä',
-      'Åldersgrupp': '0 till 6 år',
-      'Pris': '1 999 kr',
-    },
-  },
-  {
-    name: 'Woodies Modern Spjälsäng',
-    badge: 'Snyggast budget',
-    price: '1 299 kr',
-    rating: 4.4,
-    image: '/images/products/woodies-modern-spjalsang.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-modern-spjalsang-vit',
-    features: {
-      'Typ': 'Standard spjälsäng',
-      'Mått': '70x140 cm',
-      'Material': 'Trä',
-      'Åldersgrupp': '0 till 3 år',
-      'Pris': '1 299 kr',
-    },
-  },
+ {
+ name: 'IKEA Sniglar',
+ badge: 'Bäst budget',
+ rating: 4.3,
+ image: '/images/products/ikea-sniglar.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fjly-dream-ella-spjalsang-dropside-vit',
+ features: {
+ 'Typ': 'Standard spjälsäng',
+ 'Mått': '70x140 cm',
+ 'Material': 'Massiv bok',
+ 'Åldersgrupp': '0 till 3 år',
+ },
+ },
+ {
+ name: 'Stokke Sleepi Säng V3 Natural',
+ badge: 'Bäst i test',
+ rating: 4.8,
+ image: '/images/products/stokke-sleepi-sang-v3-natural.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural',
+ features: {
+ 'Typ': 'Oval spjälsäng',
+ 'Mått': 'Oval, utbyggbar',
+ 'Material': 'Bok',
+ 'Åldersgrupp': '0 till 10 år',
+ },
+ },
+ {
+ name: 'Joie Roomie Bedside Crib',
+ badge: 'Bästa bedside',
+ image: '/images/products/joolz-roomie-crib.webp',
+ rating: 4.6,
+ image: '/images/products/joolz-roomie-crib.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fbedside-cribs%2Fjoie-roomie-bedside-crib-gray-flannel',
+ features: {
+ 'Typ': 'Bedside crib + stående',
+ 'Mått': 'Standard',
+ 'Material': 'MDF + tyg',
+ 'Åldersgrupp': '0 till 6 månader',
+ },
+ },
+ {
+ name: 'Troll Torsten',
+ badge: 'Prisvärt',
+ image: '/images/products/troll-crossover.webp',
+ rating: 4.4,
+ features: {
+ 'Typ': 'Standard spjälsäng',
+ 'Mått': '70x140 cm',
+ 'Material': 'Trä',
+ 'Åldersgrupp': '0 till 3 år',
+ },
+ },
+ {
+ name: 'Leander Luna',
+ badge: 'Bäst design',
+ rating: 4.7,
+ image: '/images/products/leander-luna.webp',
+ features: {
+ 'Typ': 'Standard spjälsäng',
+ 'Mått': '70x140 cm',
+ 'Material': 'Bok',
+ 'Åldersgrupp': '0 till 3 år',
+ },
+ },
+ {
+ name: 'Woodies Starlight Spjälsäng Växa',
+ badge: 'Bra pris/kvalitet',
+ rating: 4.5,
+ image: '/images/products/woodies-starlight-spjalsang-vaxa.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit',
+ features: {
+ 'Typ': 'Växasäng',
+ 'Mått': '70x140 cm',
+ 'Material': 'Trä',
+ 'Åldersgrupp': '0 till 6 år',
+ },
+ },
+ {
+ name: 'Woodies Modern Spjälsäng',
+ badge: 'Snyggast budget',
+ rating: 4.4,
+ image: '/images/products/woodies-modern-spjalsang.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-modern-spjalsang-vit',
+ features: {
+ 'Typ': 'Standard spjälsäng',
+ 'Mått': '70x140 cm',
+ 'Material': 'Trä',
+ 'Åldersgrupp': '0 till 3 år',
+ },
+ },
 ];
 
-const featureLabels = ['Typ', 'Mått', 'Material', 'Åldersgrupp', 'Pris'];
+const featureLabels = ['Typ', 'Mått', 'Material', 'Åldersgrupp'];
 
 const faqItems = [
-  {
-    question: 'Vilken storlek spjälsäng ska jag välja?',
-    answer: 'Standardmåttet 70x140 cm är det vanligaste och passar madrasser från de flesta märken. Mindre format (60x120 cm) passar bättre i trånga sovrum men kräver specialmadrass. Väljer du en oval säng som Stokke Sleepi behöver du märkets egna madrass och tillägg.',
-  },
-  {
-    question: 'Vad är skillnaden mellan en spjälsäng och en bedside crib?',
-    answer: 'En spjälsäng är en fristående säng för bebisen med fyra sidor. En bedside crib fästs mot föräldrasängen med en sida öppen så att bebisen sover nära men i sin egen säkra yta. Bedside cribs rekommenderas av Socialstyrelsen som ett säkrare alternativ till samsovning i vuxensängen.',
-  },
-  {
-    question: 'Hur länge kan bebisen sova i spjälsäng?',
-    answer: 'De flesta spjälsängar i standardstorlek (70x140 cm) passar barn upp till ungefär 3 till 4 år, beroende på barnets storlek. Stokke Sleepi är ett undantag och kan byggas ut till att passa barn upp till 10 år. När barnet kan klättra ur sängen på egen hand är det dags att byta till en juniorsäng.',
-  },
-  {
-    question: 'Vad ska jag tänka på när det gäller säkerhet i spjälsängen?',
-    answer: 'Se till att avstånd mellan spjälorna inte överstiger 4,5 till 6,5 cm (EU-standard EN 716) så att barnets huvud inte kan fastna. Madrassen ska passa tätt mot sängens kanter utan glapp. Använd aldrig kudde, täcke eller mjuka utfyllnadsdetaljer för bebis under 12 månader, det ökar risken för SIDS. Välj alltid CE-märkta produkter.',
-  },
-  {
-    question: 'Är det värt att investera i en dyrare spjälsäng?',
-    answer: 'Det beror på dina behov. IKEA Sniglar till 499 kr uppfyller alla säkerhetskrav och fungerar utmärkt. En dyrare säng som Stokke Sleepi (5 999 kr) motiveras om du vill ha en säng som växer med barnet i flera år, har estetiska krav eller planerar fler barn. Leander Luna och Troll Crossover är bra mellanalternativ med bra material till rimligt pris.',
-  },
-  {
-    question: 'Kan jag köpa begagnad spjälsäng?',
-    answer: 'Det går, men var försiktig. Kontrollera att säkerhetsstandarden (EN 716) är uppfylld, att inga spilor är skadade eller saknas, och att madrassen inte är gammal eller fuktig. Köp alltid ny madrass till en begagnad säng. Undvik sängar som är äldre än 10 år eftersom standarderna har skärpts.',
-  },
+ {
+ question: 'Vilken storlek spjälsäng ska jag välja?',
+ answer: 'Standardmåttet 70x140 cm är det vanligaste och passar madrasser från de flesta märken. Mindre format (60x120 cm) passar bättre i trånga sovrum men kräver specialmadrass. Väljer du en oval säng som Stokke Sleepi behöver du märkets egna madrass och tillägg.',
+ },
+ {
+ question: 'Vad är skillnaden mellan en spjälsäng och en bedside crib?',
+ answer: 'En spjälsäng är en fristående säng för bebisen med fyra sidor. En bedside crib fästs mot föräldrasängen med en sida öppen så att bebisen sover nära men i sin egen säkra yta. Bedside cribs rekommenderas av Socialstyrelsen som ett säkrare alternativ till samsovning i vuxensängen.',
+ },
+ {
+ question: 'Hur länge kan bebisen sova i spjälsäng?',
+ answer: 'De flesta spjälsängar i standardstorlek (70x140 cm) passar barn upp till ungefär 3 till 4 år, beroende på barnets storlek. Stokke Sleepi är ett undantag och kan byggas ut till att passa barn upp till 10 år. När barnet kan klättra ur sängen på egen hand är det dags att byta till en juniorsäng.',
+ },
+ {
+ question: 'Vad ska jag tänka på när det gäller säkerhet i spjälsängen?',
+ answer: 'Se till att avstånd mellan spjälorna inte överstiger 4,5 till 6,5 cm (EU-standard EN 716) så att barnets huvud inte kan fastna. Madrassen ska passa tätt mot sängens kanter utan glapp. Använd aldrig kudde, täcke eller mjuka utfyllnadsdetaljer för bebis under 12 månader, det ökar risken för SIDS. Välj alltid CE-märkta produkter.',
+ },
+ {
+ question: 'Är det värt att investera i en dyrare spjälsäng?',
+ answer: 'Det beror på dina behov. IKEA Sniglar till uppfyller alla säkerhetskrav och fungerar utmärkt. En dyrare säng som Stokke Sleepi motiveras om du vill ha en säng som växer med barnet i flera år, har estetiska krav eller planerar fler barn. Leander Luna och Troll Crossover är bra mellanalternativ med bra material till rimligt pris.',
+ },
+ {
+ question: 'Kan jag köpa begagnad spjälsäng?',
+ answer: 'Det går, men var försiktig. Kontrollera att säkerhetsstandarden (EN 716) är uppfylld, att inga spilor är skadade eller saknas, och att madrassen inte är gammal eller fuktig. Köp alltid ny madrass till en begagnad säng. Undvik sängar som är äldre än 10 år eftersom standarderna har skärpts.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa Spjälsäng 2026, Test och jämförelse"
-  description="Bästa spjälsäng 2026: Vi testar spjälsängar, bedside cribs och resesängar. Se vilken säng som är säkrast och bäst för din bebis."
-  breadcrumbs={breadcrumbs}
-  canonical="https://bebisguiden.se/spjalsangar/"
-  updatedDate="2026-04-14"
+ title="Bästa Spjälsäng 2026, Test och jämförelse"
+ description="Bästa spjälsäng 2026: Vi testar spjälsängar, bedside cribs och resesängar. Se vilken säng som är säkrast och bäst för din bebis."
+ breadcrumbs={breadcrumbs}
+ canonical="https://bebisguiden.se/spjalsangar/"
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-    Vi har testat och jämfört de bästa spjälsängarna på den svenska marknaden, från budgetalternativet IKEA Sniglar till premiumsängar som <a href="/marken/stokke/" class="text-accent underline">Stokke</a> Sleepi V3 och Leander Luna. Oavsett budget finns en säker och bra spjälsäng för din bebis.
-  </p>
+ <p class="text-base text-text-light mb-3 max-w-2xl">
+ Vi har testat och jämfört de bästa spjälsängarna på den svenska marknaden, från budgetalternativet IKEA Sniglar till premiumsängar som <a href="/marken/stokke/" class="text-accent underline">Stokke</a> Sleepi V3 och Leander Luna. Oavsett budget finns en säker och bra spjälsäng för din bebis.
+ </p>
 
-  <TopPick product={products[0]} description="IKEA Sniglar är vårt bäst budget bland spjälsängar: Standard spjälsäng och 70x140 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="IKEA Sniglar är vårt bäst budget bland spjälsängar: Standard spjälsäng och 70x140 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, spjälsängar 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, spjälsängar 2026</h2>
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
-    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>Stokke Sleepi V3</strong> är bäst totalt, oval design och växer med barnet 0-10 år. <strong>IKEA Sniglar</strong> är bäst för den som vill ha en prisvärd och pålitlig standardsäng.</p>
-  </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+ <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+ <p class="text-sm text-text-light"><strong>Stokke Sleepi V3</strong> är bäst totalt, oval design och växer med barnet 0-10 år. <strong>IKEA Sniglar</strong> är bäst för den som vill ha en prisvärd och pålitlig standardsäng.</p>
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="IKEA Sniglar"
-  image="/images/products/ikea-sniglar.webp"
-      badge="Bäst budget"
-      price="499 kr"
-      rating={4.3}
-      image="/images/products/ikea-sniglar.webp"
-      pros={['Extremt prisvärd, 499 kr', 'Massiv bok, hållbart material', 'Standardmått 70x140 cm', 'Enkel montering']}
-      cons={['Ingen höjdjustering av botten', 'Enkel design utan extras']}
-      ctaText="Se pris hos IKEA"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-warm-brown"
-      rel="noopener noreferrer"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="IKEA Sniglar"
+ image="/images/products/ikea-sniglar.webp"
+ badge="Bäst budget"
+ rating={4.3}
+ image="/images/products/ikea-sniglar.webp"
+ pros={['Extremt prisvärd, ', 'Massiv bok, hållbart material', 'Standardmått 70x140 cm', 'Enkel montering']}
+ cons={['Ingen höjdjustering av botten', 'Enkel design utan extras']}
+ ctaText="Se pris hos IKEA"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-warm-brown"
+ rel="noopener noreferrer"
+ />
 
-    <ProductCard
-      name="Stokke Sleepi Säng V3 Natural"
-  image="/images/products/stokke-sleepi-sang-v3-natural.webp"
-      badge="Bäst i test"
-      price="5 999 kr"
-      rating={4.8}
-      image="/images/products/stokke-sleepi-sang-v3-natural.webp"
-      pros={['Oval design, säkrare hörn', 'Växer med barnet från 0 till 10 år', 'Utbyggbar med tillbehör', 'Tidlös skandinavisk design']}
-      cons={['Högt pris', 'Kräver märkets egna madrasser och tillbehör']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Stokke Sleepi Säng V3 Natural"
+ image="/images/products/stokke-sleepi-sang-v3-natural.webp"
+ badge="Bäst i test"
+ rating={4.8}
+ image="/images/products/stokke-sleepi-sang-v3-natural.webp"
+ pros={['Oval design, säkrare hörn', 'Växer med barnet från 0 till 10 år', 'Utbyggbar med tillbehör', 'Tidlös skandinavisk design']}
+ cons={['Högt pris', 'Kräver märkets egna madrasser och tillbehör']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Joie Roomie Bedside Crib"
-  image="/images/products/joie-roomie-bedside-crib.webp"
-      badge="Bästa bedside"
-      price="3 299 kr"
-      rating={4.6}
-      image="/images/products/joolz-roomie-crib.webp"
-      pros={['Fungerar som bedside crib och fristående', 'Justerbar höjd för att matcha föräldrasängen', 'Smidig övergång från natt till dag', 'Snygg design']}
-      cons={['Passar bara de minsta bebisar som bedside crib', 'Kräver måttanpassning mot föräldrasängen']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fbedside-cribs%2Fjoie-roomie-bedside-crib-gray-flannel"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Joie Roomie Bedside Crib"
+ image="/images/products/joie-roomie-bedside-crib.webp"
+ badge="Bästa bedside"
+ rating={4.6}
+ image="/images/products/joolz-roomie-crib.webp"
+ pros={['Fungerar som bedside crib och fristående', 'Justerbar höjd för att matcha föräldrasängen', 'Smidig övergång från natt till dag', 'Snygg design']}
+ cons={['Passar bara de minsta bebisar som bedside crib', 'Kräver måttanpassning mot föräldrasängen']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fbedside-cribs%2Fjoie-roomie-bedside-crib-gray-flannel"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Troll Torsten"
-      badge="Prisvärt"
-      price="1 299 kr"
-      rating={4.4}
-      image="/images/products/troll-crossover.webp"
-      pros={['Regulerbar sängbotten, 3 höjdlägen', 'Standardmått 70x140 cm', 'Enkel montering', 'Bra pris-kvalitet']}
-      cons={['Enklare material än premiumalternativ', 'Begränsad designvariation']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fleander-classic-baby-cot-wood"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Troll Torsten"
+ badge="Prisvärt"
+ rating={4.4}
+ image="/images/products/troll-crossover.webp"
+ pros={['Regulerbar sängbotten, 3 höjdlägen', 'Standardmått 70x140 cm', 'Enkel montering', 'Bra pris-kvalitet']}
+ cons={['Enklare material än premiumalternativ', 'Begränsad designvariation']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fleander-classic-baby-cot-wood"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Leander Luna"
-  image="/images/products/leander-luna.webp"
-      badge="Bäst design"
-      price="4 499 kr"
-      rating={4.7}
-      image="/images/products/leander-luna.webp"
-      pros={['Skandinavisk design', 'Massiv bok med rena linjer', 'Regulerbar sängbotten', 'Passar 0 till 3 år']}
-      cons={['Högt pris för standardstorlek', 'Begränsat tillbehörssortiment']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Leander Luna"
+ image="/images/products/leander-luna.webp"
+ badge="Bäst design"
+ rating={4.7}
+ image="/images/products/leander-luna.webp"
+ pros={['Skandinavisk design', 'Massiv bok med rena linjer', 'Regulerbar sängbotten', 'Passar 0 till 3 år']}
+ cons={['Högt pris för standardstorlek', 'Begränsat tillbehörssortiment']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Woodies Starlight Spjälsäng Växa"
-  image="/images/products/woodies-starlight-spjalsang-vaxa.webp"
-      badge="Bra pris/kvalitet"
-      price="1 999 kr"
-      rating={4.5}
-      image="/images/products/woodies-starlight-spjalsang-vaxa.webp"
-      pros={['Växasäng, passar 0 till 6 år', 'Standardmått 70x140 cm', 'Justerbar sängbotten', 'Bra pris för funktionerna']}
-      cons={['Enklare material än premiumalternativ', 'Kräver egna madrasser']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit"
-      rel="sponsored noopener"
-    />
+ <ProductCard
+ name="Woodies Starlight Spjälsäng Växa"
+ image="/images/products/woodies-starlight-spjalsang-vaxa.webp"
+ badge="Bra pris/kvalitet"
+ rating={4.5}
+ image="/images/products/woodies-starlight-spjalsang-vaxa.webp"
+ pros={['Växasäng, passar 0 till 6 år', 'Standardmått 70x140 cm', 'Justerbar sängbotten', 'Bra pris för funktionerna']}
+ cons={['Enklare material än premiumalternativ', 'Kräver egna madrasser']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit"
+ rel="sponsored noopener"
+ />
 
-    <ProductCard
-      name="Woodies Modern Spjälsäng"
-  image="/images/products/woodies-modern-spjalsang.webp"
-      badge="Snyggast budget"
-      price="1 299 kr"
-      rating={4.4}
-      image="/images/products/woodies-modern-spjalsang.webp"
-      pros={['Modern minimalistisk design', 'Standardmått 70x140 cm', 'Prisvärd', 'Enkel montering']}
-      cons={['Inga extras', 'Passar bara 0 till 3 år']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-modern-spjalsang-vit"
-      rel="sponsored noopener"
-    />
-  </div>
+ <ProductCard
+ name="Woodies Modern Spjälsäng"
+ image="/images/products/woodies-modern-spjalsang.webp"
+ badge="Snyggast budget"
+ rating={4.4}
+ image="/images/products/woodies-modern-spjalsang.webp"
+ pros={['Modern minimalistisk design', 'Standardmått 70x140 cm', 'Prisvärd', 'Enkel montering']}
+ cons={['Inga extras', 'Passar bara 0 till 3 år']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-modern-spjalsang-vit"
+ rel="sponsored noopener"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt spjälsäng?</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt spjälsäng?</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>1. Standardsäng, bedside crib eller resesäng?</h3>
-    <p>En standardspjälsäng (70x140 cm) är det vanligaste valet och passar de flesta familjer. En bedside crib rekommenderas om du vill sova nära bebisen de första månaderna utan att dela säng, det anses säkrare än att ha bebisen i vuxensängen. En resesäng är ett komplement för resor och besök, inte en primärsäng.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>1. Standardsäng, bedside crib eller resesäng?</h3>
+ <p>En standardspjälsäng (70x140 cm) är det vanligaste valet och passar de flesta familjer. En bedside crib rekommenderas om du vill sova nära bebisen de första månaderna utan att dela säng, det anses säkrare än att ha bebisen i vuxensängen. En resesäng är ett komplement för resor och besök, inte en primärsäng.</p>
 
-    <h3>2. Säkerhetskrav, vad ska du kontrollera?</h3>
-    <p>All spjälsäng som säljs i Sverige ska uppfylla EU-standarden EN 716. Se till att spilornas avstånd är 4,5 till 6,5 cm, att madrassen passar tätt utan glapp, och att inga lösa delar kan lossna. Köp alltid CE-märkta produkter och kontrollera att inga återkallelser gjorts på modellen.</p>
+ <h3>2. Säkerhetskrav, vad ska du kontrollera?</h3>
+ <p>All spjälsäng som säljs i Sverige ska uppfylla EU-standarden EN 716. Se till att spilornas avstånd är 4,5 till 6,5 cm, att madrassen passar tätt utan glapp, och att inga lösa delar kan lossna. Köp alltid CE-märkta produkter och kontrollera att inga återkallelser gjorts på modellen.</p>
 
-    <h3>3. Madrass, lika viktigt som sängen</h3>
-    <p>En säker madrass ska vara fast (inte mjuk), passa tätt mot sängens kanter och vara av ett material som andas. Minsta rekommenderade madrass-tjocklek är 8 cm. Byt alltid till ny madrass om du köper begagnad säng.</p>
+ <h3>3. Madrass, lika viktigt som sängen</h3>
+ <p>En säker madrass ska vara fast (inte mjuk), passa tätt mot sängens kanter och vara av ett material som andas. Minsta rekommenderade madrass-tjocklek är 8 cm. Byt alltid till ny madrass om du köper begagnad säng.</p>
 
-    <h3>4. Budget vs premium, vad får du för pengarna?</h3>
-    <p>IKEA Sniglar till 499 kr uppfyller alla säkerhetskrav. Premiumsängar som Stokke Sleepi motiveras av design, längre användningstid och utbyggbarhet. Mellanalternativ som Troll Torsten (1 299 kr) och Leander Luna (4 499 kr) erbjuder bättre material och funktion till rimligare pris än toppmodellerna.</p>
-  </div>
+ <h3>4. Budget vs premium, vad får du för pengarna?</h3>
+ <p>IKEA Sniglar till uppfyller alla säkerhetskrav. Premiumsängar som Stokke Sleepi motiveras av design, längre användningstid och utbyggbarhet. Mellanalternativ som Troll Torsten och Leander Luna erbjuder bättre material och funktion till rimligare pris än toppmodellerna.</p>
+ </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Underkategorier, spjälsängar</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside crib 2026, sova nära bebis utan att dela säng</a></li>
-      <li><a href="/spjalsangar/resesang/" class="text-accent underline">Bästa resesäng barn 2026, vikbar och resevänlig</a></li>
-      <li><a href="/spjalsangar/stokke-sleepi-vs-ikea-sniglar/" class="text-accent underline">Stokke Sleepi vs IKEA Sniglar 2026, premium vs budget jämförd</a></li>
-    </ul>
-  </div>
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Underkategorier, spjälsängar</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside crib 2026, sova nära bebis utan att dela säng</a></li>
+ <li><a href="/spjalsangar/resesang/" class="text-accent underline">Bästa resesäng barn 2026, vikbar och resevänlig</a></li>
+ <li><a href="/spjalsangar/stokke-sleepi-vs-ikea-sniglar/" class="text-accent underline">Stokke Sleepi vs IKEA Sniglar 2026, premium vs budget jämförd</a></li>
+ </ul>
+ </div>
 
-  <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
-      <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
-      <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
-    </ul>
-  </div>
+ <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
+ <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+ <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
+ </ul>
+ </div>
 
-  <RetailerCTAs />
+ <RetailerCTAs />
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <ProductSchema products={[
-    {
-      name: 'IKEA Sniglar',
-      description: 'Standard spjälsäng i massiv bok, 70x140 cm. Uppfyller EU-standarden EN 716. Enkel montering och prisvärd.',
-      image: 'https://bebisguiden.se/images/products/ikea-sniglar.webp',
-      brand: 'IKEA',
-      ratingValue: 4.3,
-      reviewCount: 1,
-      offers: [{ price: 499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fjly-dream-ella-spjalsang-dropside-vit', seller: 'IKEA' }],
-    },
-    {
-      name: 'Stokke Sleepi Säng V3 Natural',
-      description: 'Oval spjälsäng i bok som växer med barnet från 0 till 10 år. Utbyggbar med tillbehör. Skandinavisk design.',
-      image: 'https://bebisguiden.se/images/products/stokke-sleepi-v3.webp',
-      brand: 'Stokke',
-      ratingValue: 4.8,
-      reviewCount: 1,
-      offers: [{ price: 5999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Joie Roomie Bedside Crib',
-      description: 'Bedside crib som också fungerar som fristående spjälsäng. Justerbar höjd för att matcha föräldrasängen.',
-      image: 'https://bebisguiden.se/images/products/joolz-roomie-crib.webp',
-      brand: 'Joie',
-      ratingValue: 4.6,
-      reviewCount: 1,
-      offers: [{ price: 3299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fbedside-cribs%2Fjoie-roomie-bedside-crib-gray-flannel', seller: 'Reirei' }],
-    },
-    {
-      name: 'Troll Torsten',
-      description: 'Standard spjälsäng 70x140 cm med regulerbar sängbotten i tre höjdlägen. Bra pris-kvalitet.',
-      image: 'https://bebisguiden.se/images/products/troll-crossover.webp',
-      brand: 'Troll',
-      ratingValue: 4.4,
-      reviewCount: 1,
-      offers: [{ price: 1299, url: 'https://bebisguiden.se/spjalsangar/', seller: 'Bebisguiden' }],
-    },
-    {
-      name: 'Leander Luna',
-      description: 'Spjälsäng i massiv bok med skandinavisk design. Regulerbar sängbotten. Passar 0 till 3 år.',
-      image: 'https://bebisguiden.se/images/products/leander-luna.webp',
-      brand: 'Leander',
-      ratingValue: 4.7,
-      reviewCount: 1,
-      offers: [{ price: 4499, url: 'https://bebisguiden.se/spjalsangar/', seller: 'Bebisguiden' }],
-    },
-    {
-      name: 'Woodies Starlight Spjälsäng Växa',
-      description: 'Växasäng i trä som passar 0 till 6 år. Standardmått 70x140 cm med justerbar sängbotten.',
-      image: 'https://bebisguiden.se/images/products/woodies-starlight.webp',
-      brand: 'Woodies',
-      ratingValue: 4.5,
-      reviewCount: 1,
-      offers: [{ price: 1999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Woodies Modern Spjälsäng',
-      description: 'Modern minimalistisk spjälsäng 70x140 cm. Prisvärd med enkel montering. Passar 0 till 3 år.',
-      image: 'https://bebisguiden.se/images/products/woodies-modern.webp',
-      brand: 'Woodies',
-      ratingValue: 4.4,
-      reviewCount: 1,
-      offers: [{ price: 1299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-modern-spjalsang-vit', seller: 'Jollyroom' }],
-    },
-  ]} />
+ <ProductSchema products={[
+ {
+ name: 'IKEA Sniglar',
+ description: 'Standard spjälsäng i massiv bok, 70x140 cm. Uppfyller EU-standarden EN 716. Enkel montering och prisvärd.',
+ image: 'https://bebisguiden.se/images/products/ikea-sniglar.webp',
+ brand: 'IKEA',
+ ratingValue: 4.3,
+ reviewCount: 1,
+ },
+ {
+ name: 'Stokke Sleepi Säng V3 Natural',
+ description: 'Oval spjälsäng i bok som växer med barnet från 0 till 10 år. Utbyggbar med tillbehör. Skandinavisk design.',
+ image: 'https://bebisguiden.se/images/products/stokke-sleepi-v3.webp',
+ brand: 'Stokke',
+ ratingValue: 4.8,
+ reviewCount: 1,
+ },
+ {
+ name: 'Joie Roomie Bedside Crib',
+ description: 'Bedside crib som också fungerar som fristående spjälsäng. Justerbar höjd för att matcha föräldrasängen.',
+ image: 'https://bebisguiden.se/images/products/joolz-roomie-crib.webp',
+ brand: 'Joie',
+ ratingValue: 4.6,
+ reviewCount: 1,
+ },
+ {
+ name: 'Troll Torsten',
+ description: 'Standard spjälsäng 70x140 cm med regulerbar sängbotten i tre höjdlägen. Bra pris-kvalitet.',
+ image: 'https://bebisguiden.se/images/products/troll-crossover.webp',
+ brand: 'Troll',
+ ratingValue: 4.4,
+ reviewCount: 1,
+ },
+ {
+ name: 'Leander Luna',
+ description: 'Spjälsäng i massiv bok med skandinavisk design. Regulerbar sängbotten. Passar 0 till 3 år.',
+ image: 'https://bebisguiden.se/images/products/leander-luna.webp',
+ brand: 'Leander',
+ ratingValue: 4.7,
+ reviewCount: 1,
+ },
+ {
+ name: 'Woodies Starlight Spjälsäng Växa',
+ description: 'Växasäng i trä som passar 0 till 6 år. Standardmått 70x140 cm med justerbar sängbotten.',
+ image: 'https://bebisguiden.se/images/products/woodies-starlight.webp',
+ brand: 'Woodies',
+ ratingValue: 4.5,
+ reviewCount: 1,
+ },
+ {
+ name: 'Woodies Modern Spjälsäng',
+ description: 'Modern minimalistisk spjälsäng 70x140 cm. Prisvärd med enkel montering. Passar 0 till 3 år.',
+ image: 'https://bebisguiden.se/images/products/woodies-modern.webp',
+ brand: 'Woodies',
+ ratingValue: 4.4,
+ reviewCount: 1,
+ },
+ ]} />
 
 <div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
-  <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-  <ul class="space-y-2 text-sm">
-    <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Saker sovmiljo för bebis, rekommendationer</a></li>
-    <li><a href="/guider/bebis-sovschema/" class="text-accent underline">Bebisens sovschema, aldersanpassat</a></li>
-    <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside cribs 2026</a></li>
-    <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsackarna för bebis</a></li>
-  </ul>
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Saker sovmiljo för bebis, rekommendationer</a></li>
+ <li><a href="/guider/bebis-sovschema/" class="text-accent underline">Bebisens sovschema, aldersanpassat</a></li>
+ <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside cribs 2026</a></li>
+ <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsackarna för bebis</a></li>
+ </ul>
 </div>
 
-  <CTABox productName="Spjälsängar" store="Babyonline" description="Stort urval spjälsängar och sovsäckar." />
+ <CTABox productName="Spjälsängar" store="Babyonline" description="Stort urval spjälsängar och sovsäckar." />
 </ArticleLayout>
 
 <StickyTop3Bar products={products} />

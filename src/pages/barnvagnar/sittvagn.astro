@@ -9,234 +9,224 @@ import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Barnvagnar', href: '/barnvagnar/' },
-  { label: 'Sittvagn' },
+ { label: 'Hem', href: '/' },
+ { label: 'Barnvagnar', href: '/barnvagnar/' },
+ { label: 'Sittvagn' },
 ];
 
 const products = [
-  {
-    name: 'Bugaboo Butterfly',
-    image: '/images/products/bugaboo-butterfly.webp',
-    badge: 'Bäst i test',
-    price: '5 990 kr',
-    rating: 4.8,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fbugaboo-butterfly',
-    features: {
-      'Vikt': '7,3 kg',
-      'Fällmått': '54 x 45 x 23 cm',
-      'Maxvikt barn': '22 kg',
-      'Ryggstöd': 'Nästan plant liggläge',
-      'Kapell': 'UPF 50+ solskydd',
-    },
-  },
-  {
-    name: 'Cybex Libelle',
-    image: '/images/products/cybex-libelle.webp',
-    badge: 'Mest kompakt',
-    price: '3 999 kr',
-    rating: 4.6,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fcybex-libelle',
-    features: {
-      'Vikt': '6,2 kg',
-      'Fällmått': '48 x 32 x 20 cm',
-      'Maxvikt barn': '22 kg',
-      'Ryggstöd': 'Lutning i två lägen',
-      'Kapell': 'UPF 50+ solskydd',
-    },
-  },
-  {
-    name: 'Babyzen Yoyo2',
-    image: '/images/products/uppababy-minu-v2.webp',
-    badge: 'Premium resevagn',
-    price: '5 290 kr',
-    rating: 4.7,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fbabyzen-yoyo2',
-    features: {
-      'Vikt': '6,6 kg',
-      'Fällmått': '52 x 44 x 18 cm',
-      'Maxvikt barn': '22 kg',
-      'Ryggstöd': 'Nästan plant liggläge',
-      'Kapell': 'UPF 50+ solskydd',
-    },
-  },
-  {
-    name: 'Joie Pact Pro',
-    image: '/images/products/joie-pact-pro.webp',
-    badge: 'Budgetval',
-    price: '2 999 kr',
-    rating: 4.3,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-pact-pro-sulky-pebble',
-    features: {
-      'Vikt': '6,6 kg',
-      'Fällmått': '54 x 49 x 26 cm',
-      'Maxvikt barn': '22 kg',
-      'Ryggstöd': 'Lutning i två lägen',
-      'Kapell': 'UPF 50+ solskydd',
-    },
-  },
-  {
-    name: 'Ergobaby Metro+',
-    image: '/images/products/ergobaby-metro.webp',
-    badge: 'Bäst fjädring',
-    price: '4 990 kr',
-    rating: 4.5,
-    ctaHref: 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2Fproducts%2Fergobaby-metro-3-stroller-onyx-black',
-    features: {
-      'Vikt': '7,8 kg',
-      'Fällmått': '55 x 46 x 23 cm',
-      'Maxvikt barn': '22 kg',
-      'Ryggstöd': 'Plant liggläge',
-      'Kapell': 'UPF 50+ solskydd',
-    },
-  },
+ {
+ name: 'Bugaboo Butterfly',
+ image: '/images/products/bugaboo-butterfly.webp',
+ badge: 'Bäst i test',
+ rating: 4.8,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fbugaboo-butterfly',
+ features: {
+ 'Vikt': '7,3 kg',
+ 'Fällmått': '54 x 45 x 23 cm',
+ 'Maxvikt barn': '22 kg',
+ 'Ryggstöd': 'Nästan plant liggläge',
+ 'Kapell': 'UPF 50+ solskydd',
+ },
+ },
+ {
+ name: 'Cybex Libelle',
+ image: '/images/products/cybex-libelle.webp',
+ badge: 'Mest kompakt',
+ rating: 4.6,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fcybex-libelle',
+ features: {
+ 'Vikt': '6,2 kg',
+ 'Fällmått': '48 x 32 x 20 cm',
+ 'Maxvikt barn': '22 kg',
+ 'Ryggstöd': 'Lutning i två lägen',
+ 'Kapell': 'UPF 50+ solskydd',
+ },
+ },
+ {
+ name: 'Babyzen Yoyo2',
+ image: '/images/products/uppababy-minu-v2.webp',
+ badge: 'Premium resevagn',
+ rating: 4.7,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fbabyzen-yoyo2',
+ features: {
+ 'Vikt': '6,6 kg',
+ 'Fällmått': '52 x 44 x 18 cm',
+ 'Maxvikt barn': '22 kg',
+ 'Ryggstöd': 'Nästan plant liggläge',
+ 'Kapell': 'UPF 50+ solskydd',
+ },
+ },
+ {
+ name: 'Joie Pact Pro',
+ image: '/images/products/joie-pact-pro.webp',
+ badge: 'Budgetval',
+ rating: 4.3,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-pact-pro-sulky-pebble',
+ features: {
+ 'Vikt': '6,6 kg',
+ 'Fällmått': '54 x 49 x 26 cm',
+ 'Maxvikt barn': '22 kg',
+ 'Ryggstöd': 'Lutning i två lägen',
+ 'Kapell': 'UPF 50+ solskydd',
+ },
+ },
+ {
+ name: 'Ergobaby Metro+',
+ image: '/images/products/ergobaby-metro.webp',
+ badge: 'Bäst fjädring',
+ rating: 4.5,
+ ctaHref: 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2Fproducts%2Fergobaby-metro-3-stroller-onyx-black',
+ features: {
+ 'Vikt': '7,8 kg',
+ 'Fällmått': '55 x 46 x 23 cm',
+ 'Maxvikt barn': '22 kg',
+ 'Ryggstöd': 'Plant liggläge',
+ 'Kapell': 'UPF 50+ solskydd',
+ },
+ },
 ];
 
 const featureLabels = ['Vikt', 'Fällmått', 'Maxvikt barn', 'Ryggstöd', 'Kapell'];
 
 const faqItems = [
-  {
-    question: 'Från vilken ålder kan barnet sitta i en sittvagn?',
-    answer: 'De flesta sittvagnar är godkända från 6 månader, när barnet kan sitta stadigt själv. Vissa modeller med plant liggläge, som Bugaboo Butterfly och Ergobaby Metro+, kan användas från födsel. Kontrollera alltid tillverkarens åldersrekommendation för den specifika modellen.',
-  },
-  {
-    question: 'Kan man ta med sittvagnen på flygplanet?',
-    answer: 'Ja, många kompakta sittvagnar får plats i flygplanets kabinbagage. Cybex Libelle (48 x 32 x 20 cm) och Babyzen Yoyo2 (52 x 44 x 18 cm) är båda godkända som handbagage på de flesta flygbolag. Kontrollera alltid ditt flygbolags specifika måttbegränsningar innan resan.',
-  },
-  {
-    question: 'Hur lätt bör en sittvagn vara?',
-    answer: 'En bra sittvagn väger mellan 5 och 8 kg. Cybex Libelle är lättast i vårt test på 6,2 kg. Om du ofta bär vagnen i trappor eller på kollektivtrafik är lägre vikt en stor fördel. Tänk dock på att lättare vagnar ibland har sämre stabilitet på ojämnt underlag.',
-  },
-  {
-    question: 'Fungerar en sittvagn på grus och ojämnt underlag?',
-    answer: 'De flesta sittvagnar är optimerade för stadsmiljö med jämna ytor. För grusvägar och ojämnt underlag är Ergobaby Metro+ bäst i testet tack vare sin allhjulsfjädring. Bugaboo Butterfly hanterar också ojämnt underlag väl. Undvik de allra lättaste modellerna om du promenerar mycket på grus.',
-  },
-  {
-    question: 'Behöver sittvagnen ha liggläge?',
-    answer: 'Liggläge är väldigt praktiskt om barnet somnar under promenaden, vilket är vanligt för yngre barn. Det är också ett krav om du vill använda vagnen från födsel. Bugaboo Butterfly, Babyzen Yoyo2 och Ergobaby Metro+ har alla nästan plant eller plant liggläge. Om barnet är över 1 år och sällan somnar i vagnen är liggläge mindre viktigt.',
-  },
+ {
+ question: 'Från vilken ålder kan barnet sitta i en sittvagn?',
+ answer: 'De flesta sittvagnar är godkända från 6 månader, när barnet kan sitta stadigt själv. Vissa modeller med plant liggläge, som Bugaboo Butterfly och Ergobaby Metro+, kan användas från födsel. Kontrollera alltid tillverkarens åldersrekommendation för den specifika modellen.',
+ },
+ {
+ question: 'Kan man ta med sittvagnen på flygplanet?',
+ answer: 'Ja, många kompakta sittvagnar får plats i flygplanets kabinbagage. Cybex Libelle (48 x 32 x 20 cm) och Babyzen Yoyo2 (52 x 44 x 18 cm) är båda godkända som handbagage på de flesta flygbolag. Kontrollera alltid ditt flygbolags specifika måttbegränsningar innan resan.',
+ },
+ {
+ question: 'Hur lätt bör en sittvagn vara?',
+ answer: 'En bra sittvagn väger mellan 5 och 8 kg. Cybex Libelle är lättast i vårt test på 6,2 kg. Om du ofta bär vagnen i trappor eller på kollektivtrafik är lägre vikt en stor fördel. Tänk dock på att lättare vagnar ibland har sämre stabilitet på ojämnt underlag.',
+ },
+ {
+ question: 'Fungerar en sittvagn på grus och ojämnt underlag?',
+ answer: 'De flesta sittvagnar är optimerade för stadsmiljö med jämna ytor. För grusvägar och ojämnt underlag är Ergobaby Metro+ bäst i testet tack vare sin allhjulsfjädring. Bugaboo Butterfly hanterar också ojämnt underlag väl. Undvik de allra lättaste modellerna om du promenerar mycket på grus.',
+ },
+ {
+ question: 'Behöver sittvagnen ha liggläge?',
+ answer: 'Liggläge är väldigt praktiskt om barnet somnar under promenaden, vilket är vanligt för yngre barn. Det är också ett krav om du vill använda vagnen från födsel. Bugaboo Butterfly, Babyzen Yoyo2 och Ergobaby Metro+ har alla nästan plant eller plant liggläge. Om barnet är över 1 år och sällan somnar i vagnen är liggläge mindre viktigt.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa Sittvagn (Sulky) 2026, Test och jämförelse"
-  description="Bästa sittvagnen 2026: Vi testar Bugaboo Butterfly, Babyzen YOYO, Cybex Libelle och fler. Se vilken sulky som är lättast och smidigast."
-  breadcrumbs={breadcrumbs}
-  updatedDate="2026-04-14"
+ title="Bästa Sittvagn (Sulky) 2026, Test och jämförelse"
+ description="Bästa sittvagnen 2026: Vi testar Bugaboo Butterfly, Babyzen YOYO, Cybex Libelle och fler. Se vilken sulky som är lättast och smidigast."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-4 max-w-2xl">
-    En sittvagn (sulky) är den lätta, kompakta vagnen som gör vardagen smidigare, perfekt för stan, resor och kollektivtrafik. Vi har jämfört de bästa sittvagnarna på svenska marknaden utifrån vikt, fällmått, komfort och pris.
-  </p>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ En sittvagn (sulky) är den lätta, kompakta vagnen som gör vardagen smidigare, perfekt för stan, resor och kollektivtrafik. Vi har jämfört de bästa sittvagnarna på svenska marknaden utifrån vikt, fällmått, komfort och pris.
+ </p>
 
-  <TopPick product={products[0]} description="Bugaboo Butterfly är vårt bäst i test bland sittvagn: 7,3 kg och 54 x 45 x 23 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Bugaboo Butterfly är vårt bäst i test bland sittvagn: 7,3 kg och 54 x 45 x 23 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Bugaboo Butterfly"
-      image="/images/products/bugaboo-butterfly.webp"
-      badge="Bäst i test"
-      price="5 990 kr"
-      rating={4.8}
-      ageRange="0-4 år (med liggläge)"
-      pros={['Nästan plant liggläge, användbar från födsel', 'Enhandsfall med kompakt fällmått', 'Smidig körning även på ojämnt underlag']}
-      cons={['Högre pris för en sittvagn', 'Något tyngre än de lättaste (7,3 kg)']}
-      ctaText="Se pris hos Köpbarnvagn"
-      ctaHref="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbugaboo-butterfly%2Findex.html"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Bugaboo Butterfly"
+ image="/images/products/bugaboo-butterfly.webp"
+ badge="Bäst i test"
+ rating={4.8}
+ ageRange="0-4 år (med liggläge)"
+ pros={['Nästan plant liggläge, användbar från födsel', 'Enhandsfall med kompakt fällmått', 'Smidig körning även på ojämnt underlag']}
+ cons={['Högre pris för en sittvagn', 'Något tyngre än de lättaste (7,3 kg)']}
+ ctaText="Se pris hos Köpbarnvagn"
+ ctaHref="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbugaboo-butterfly%2Findex.html"
+ />
 
-    <ProductCard
-      name="Cybex Libelle"
-      image="/images/products/cybex-libelle.webp"
-      badge="Mest kompakt"
-      price="3 999 kr"
-      rating={4.6}
-      ageRange="6 månader - 4 år"
-      pros={['Lättast i testet (6,2 kg)', 'Minsta fällmåttet, godkänd som flygkabinbagage', 'Bra pris för en kvalitetsvagn']}
-      cons={['Inget plant liggläge', 'Enklare fjädring än premiummodeller']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fcybex-libelle-sulky-magic-black"
-    />
+ <ProductCard
+ name="Cybex Libelle"
+ image="/images/products/cybex-libelle.webp"
+ badge="Mest kompakt"
+ rating={4.6}
+ ageRange="6 månader - 4 år"
+ pros={['Lättast i testet (6,2 kg)', 'Minsta fällmåttet, godkänd som flygkabinbagage', 'Bra pris för en kvalitetsvagn']}
+ cons={['Inget plant liggläge', 'Enklare fjädring än premiummodeller']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fcybex-libelle-sulky-magic-black"
+ />
 
-    <ProductCard
-      name="Babyzen Yoyo2"
-      image="/images/products/uppababy-minu-v2.webp"
-      badge="Premium resevagn"
-      price="5 290 kr"
-      rating={4.7}
-      ageRange="0-4 år (med liggläge)"
-      pros={['Ikonisk resevagn, godkänd som handbagage', 'Nästan plant liggläge tillgängligt', 'Premiumkänsla i material och körning']}
-      cons={['Hög prisklass', 'Små hjul begränsar terrängförmåga']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fstokke-yoyo-3-sittvagn-6-black-black"
-    />
+ <ProductCard
+ name="Babyzen Yoyo2"
+ image="/images/products/uppababy-minu-v2.webp"
+ badge="Premium resevagn"
+ rating={4.7}
+ ageRange="0-4 år (med liggläge)"
+ pros={['Ikonisk resevagn, godkänd som handbagage', 'Nästan plant liggläge tillgängligt', 'Premiumkänsla i material och körning']}
+ cons={['Hög prisklass', 'Små hjul begränsar terrängförmåga']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fstokke-yoyo-3-sittvagn-6-black-black"
+ />
 
-    <ProductCard
-      name="Joie Pact Pro"
-      image="/images/products/joie-pact-pro.webp"
-      badge="Budgetval"
-      price="2 999 kr"
-      rating={4.3}
-      ageRange="6 månader - 4 år"
-      pros={['Lägst pris i testet', 'Lätt (6,6 kg) och enkel att fälla ihop', 'Inkluderar regnskydd och reseväska']}
-      cons={['Enklare material och finish', 'Större fällmått än Cybex Libelle']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-pact-pro-sulky-pebble"
-    />
+ <ProductCard
+ name="Joie Pact Pro"
+ image="/images/products/joie-pact-pro.webp"
+ badge="Budgetval"
+ rating={4.3}
+ ageRange="6 månader - 4 år"
+ pros={['Lägst pris i testet', 'Lätt (6,6 kg) och enkel att fälla ihop', 'Inkluderar regnskydd och reseväska']}
+ cons={['Enklare material och finish', 'Större fällmått än Cybex Libelle']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-pact-pro-sulky-pebble"
+ />
 
-    <ProductCard
-      name="Ergobaby Metro+"
-      image="/images/products/ergobaby-metro.webp"
-      badge="Bäst fjädring"
-      price="4 990 kr"
-      rating={4.5}
-      ageRange="0-4 år (med liggläge)"
-      pros={['Bäst allhjulsfjädring i klassen', 'Plant liggläge för nyfödd', 'Hanterar grus och ojämnt underlag väl']}
-      cons={['Tyngst i testet (7,8 kg)', 'Större fällmått än de mest kompakta']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fergobaby-metro-sulky-black"
-    />
-  </div>
+ <ProductCard
+ name="Ergobaby Metro+"
+ image="/images/products/ergobaby-metro.webp"
+ badge="Bäst fjädring"
+ rating={4.5}
+ ageRange="0-4 år (med liggläge)"
+ pros={['Bäst allhjulsfjädring i klassen', 'Plant liggläge för nyfödd', 'Hanterar grus och ojämnt underlag väl']}
+ cons={['Tyngst i testet (7,8 kg)', 'Större fällmått än de mest kompakta']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fergobaby-metro-sulky-black"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt sittvagn</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt sittvagn</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>När behövs en sittvagn?</h3>
-    <p>De flesta familjer skaffar en sittvagn när barnet är runt 6 till 12 månader, som komplement till eller ersättning för duovagnen. En sittvagn är lättare, smidigare och tar mindre plats, perfekt för kollektivtrafik, resor och dagligt bruk i stadsmiljö. Om du bara ska ha en vagn och barnet är över 6 månader kan en sittvagn med bra liggläge räcka hela vägen.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>När behövs en sittvagn?</h3>
+ <p>De flesta familjer skaffar en sittvagn när barnet är runt 6 till 12 månader, som komplement till eller ersättning för duovagnen. En sittvagn är lättare, smidigare och tar mindre plats, perfekt för kollektivtrafik, resor och dagligt bruk i stadsmiljö. Om du bara ska ha en vagn och barnet är över 6 månader kan en sittvagn med bra liggläge räcka hela vägen.</p>
 
-    <h3>Vikt och fällmått</h3>
-    <p>De två viktigaste faktorerna för en sittvagn är vikt och ihopfällt mått. En lätt vagn (under 7 kg) är enklare att bära i trappor, lyfta på bussen och packa i bilen. Fällmåttet avgör om vagnen får plats i flygkabinen, bagageutrymmet eller hallen. <a href="/marken/cybex/" class="text-accent underline">Cybex</a> Libelle och Babyzen Yoyo2 är branschledande på båda punkter.</p>
+ <h3>Vikt och fällmått</h3>
+ <p>De två viktigaste faktorerna för en sittvagn är vikt och ihopfällt mått. En lätt vagn (under 7 kg) är enklare att bära i trappor, lyfta på bussen och packa i bilen. Fällmåttet avgör om vagnen får plats i flygkabinen, bagageutrymmet eller hallen. <a href="/marken/cybex/" class="text-accent underline">Cybex</a> Libelle och Babyzen Yoyo2 är branschledande på båda punkter.</p>
 
-    <h3>Liggläge, behövs det?</h3>
-    <p>Om barnet är under 1 år eller fortfarande sover mycket under promenader är liggläge nästan ett krav. <a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a> Butterfly, Babyzen Yoyo2 och <a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> Metro+ erbjuder alla nästan plant eller plant liggläge. För barn över 1 år som sällan sover i vagnen är liggläge en bonus snarare än ett krav.</p>
+ <h3>Liggläge, behövs det?</h3>
+ <p>Om barnet är under 1 år eller fortfarande sover mycket under promenader är liggläge nästan ett krav. <a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a> Butterfly, Babyzen Yoyo2 och <a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> Metro+ erbjuder alla nästan plant eller plant liggläge. För barn över 1 år som sällan sover i vagnen är liggläge en bonus snarare än ett krav.</p>
 
-    <h3>Stadsvagn eller terrängsulky?</h3>
-    <p>De flesta sittvagnar är byggda för stad, jämna trottoarer, gallerior och kollektivtrafik. Om du promenerar mycket på grus, i park eller i skogen behöver du en modell med bra fjädring och större hjul. Ergobaby Metro+ är bäst i testet för ojämnt underlag. För renodlat stadsbruk är Cybex Libelle svårslagen.</p>
-  </div>
+ <h3>Stadsvagn eller terrängsulky?</h3>
+ <p>De flesta sittvagnar är byggda för stad, jämna trottoarer, gallerior och kollektivtrafik. Om du promenerar mycket på grus, i park eller i skogen behöver du en modell med bra fjädring och större hjul. Ergobaby Metro+ är bäst i testet för ojämnt underlag. För renodlat stadsbruk är Cybex Libelle svårslagen.</p>
+ </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a>
-      </li>
-    </ul>
-  </div>
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li>
+ <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a>
+ </li>
+ </ul>
+ </div>
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-    <CTABox productName="Sittvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
-  <CTABox productName="Sittvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+ <CTABox productName="Sittvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+ <CTABox productName="Sittvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
 <StickyTop3Bar products={products} />
 <ProductSchema products={[
-    { name: 'Bugaboo Butterfly', description: 'Premiumsittvagn med Bugaboos kvalitet och smidiga enhandsvikning.', brand: 'Bugaboo', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5990, url: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbugaboo-butterfly%2Findex.html', seller: 'Köpbarnvagn' }] },
-    { name: 'Cybex Libelle', description: 'Ultralätt sittvagn som ryms i handbagagefacket. Under 7 kg.', brand: 'Cybex', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fcybex-libelle-sulky-magic-black', seller: 'Jollyroom' }] },
-    { name: 'Babyzen Yoyo2', description: 'Ikonisk kabinvagn med premium material och enkel 1-stegsvikning.', brand: 'Babyzen', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5290, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fstokke-yoyo-3-sittvagn-6-black-black', seller: 'Jollyroom' }] },
-  ]} />
+ { name: 'Bugaboo Butterfly', description: 'Premiumsittvagn med Bugaboos kvalitet och smidiga enhandsvikning.', brand: 'Bugaboo', ratingValue: 4.8, reviewCount: 1 },
+ { name: 'Cybex Libelle', description: 'Ultralätt sittvagn som ryms i handbagagefacket. Under 7 kg.', brand: 'Cybex', ratingValue: 4.6, reviewCount: 1 },
+ { name: 'Babyzen Yoyo2', description: 'Ikonisk kabinvagn med premium material och enkel 1-stegsvikning.', brand: 'Babyzen', ratingValue: 4.8, reviewCount: 1 },
+ ]} />
 </ArticleLayout>

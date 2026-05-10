@@ -6,186 +6,186 @@ import CookieConsent from '../components/CookieConsent.astro';
 import '../styles/global.css';
 
 interface Props {
-  title: string;
-  description: string;
-  ogImage?: string;
-  canonical?: string;
+ title: string;
+ description: string;
+ ogImage?: string;
+ canonical?: string;
 }
 
 const { title, description, ogImage = '/og-default.png', canonical } = Astro.props;
 const canonicalUrl = canonical || Astro.url.href;
-const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://bebisguiden.se${ogImage}`;
+const ogImageUrl = ogImage.startsWith('http')? ogImage: `https://bebisguiden.se${ogImage}`;
 ---
 
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href={canonicalUrl} />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="google-site-verification" content="4dKGYCqJRWJ1DYOkFrPSsY6V7TMbenbvcLNKPoZVrbs" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://addrevenue.io https://analytics.ahrefs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://a.clarity.ms https://addrevenue.io https://analytics.ahrefs.com" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>{title}</title>
+ <meta name="description" content={description} />
+ <link rel="canonical" href={canonicalUrl} />
+ <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+ <meta name="google-site-verification" content="4dKGYCqJRWJ1DYOkFrPSsY6V7TMbenbvcLNKPoZVrbs" />
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://addrevenue.io https://analytics.ahrefs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://a.clarity.ms https://addrevenue.io https://analytics.ahrefs.com" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:site_name" content="Bebisguiden" />
-  <meta property="og:locale" content="sv_SE" />
-  <meta property="og:image" content={ogImageUrl} />
-  <meta property="og:image:alt" content={`${title}, Bebisguiden`} />
+ <meta property="og:type" content="website" />
+ <meta property="og:title" content={title} />
+ <meta property="og:description" content={description} />
+ <meta property="og:url" content={canonicalUrl} />
+ <meta property="og:site_name" content="Bebisguiden" />
+ <meta property="og:locale" content="sv_SE" />
+ <meta property="og:image" content={ogImageUrl} />
+ <meta property="og:image:alt" content={`${title}, Bebisguiden`} />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImageUrl} />
-  <meta name="twitter:image:alt" content={`${title}, Bebisguiden`} />
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:title" content={title} />
+ <meta name="twitter:description" content={description} />
+ <meta name="twitter:image" content={ogImageUrl} />
+ <meta name="twitter:image:alt" content={`${title}, Bebisguiden`} />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" /></noscript>
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+ <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" /></noscript>
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="alternate" type="application/rss+xml" title="Bebisguiden, Guider" href="https://bebisguiden.se/rss.xml" />
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+ <link rel="alternate" type="application/rss+xml" title="Bebisguiden, Guider" href="https://bebisguiden.se/rss.xml" />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Bebisguiden",
-    "url": "https://bebisguiden.se",
-    "description": "Oberoende tester och jämförelser av barnprodukter. Bilbarnstolar, barnvagnar, babyvakter och mer, så du väljer rätt för ditt barn.",
-    "inLanguage": "sv-SE",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://www.google.se/search?q=site%3Abebisguiden.se+{search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  })} />
+ <script type="application/ld+json" set:html={JSON.stringify({
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "Bebisguiden",
+ "url": "https://bebisguiden.se",
+ "description": "Oberoende tester och jämförelser av barnprodukter. Bilbarnstolar, barnvagnar, babyvakter och mer, så du väljer rätt för ditt barn.",
+ "inLanguage": "sv-SE",
+ "potentialAction": {
+ "@type": "SearchAction",
+ "target": {
+ "@type": "EntryPoint",
+ "urlTemplate": "https://www.google.se/search?q=site%3Abebisguiden.se+{search_term_string}"
+ },
+ "query-input": "required name=search_term_string"
+ }
+ })} />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Bebisguiden",
-    "url": "https://bebisguiden.se",
-    "description": "Oberoende tester och jämförelser av barnprodukter",
-    "foundingDate": "2026",
-    "sameAs": []
-  })} />
+ <script type="application/ld+json" set:html={JSON.stringify({
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "name": "Bebisguiden",
+ "url": "https://bebisguiden.se",
+ "description": "Oberoende tester och jämförelser av barnprodukter",
+ "foundingDate": "2026",
+ "sameAs": []
+ })} />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Sofia Lindgren",
-    "jobTitle": "Leg. barnmorska & chefredaktör",
-    "url": "https://bebisguiden.se/om-redaktionen/",
-    "email": "elscatalyst@proton.me",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Bebisguiden",
-      "url": "https://bebisguiden.se"
-    },
-    "knowsAbout": ["barnprodukter", "bilbarnstolar", "barnvagnar", "babyvakter", "föräldraskap", "spädbarnsutveckling", "barnsäkerhet", "amning", "nyfödda"]
-  })} />
+ <script type="application/ld+json" set:html={JSON.stringify({
+ "@context": "https://schema.org",
+ "@type": "Person",
+ "name": "Sofia Lindgren",
+ "jobTitle": "Leg. barnmorska & chefredaktör",
+ "url": "https://bebisguiden.se/om-redaktionen/",
+ "email": "elscatalyst@proton.me",
+ "worksFor": {
+ "@type": "Organization",
+ "name": "Bebisguiden",
+ "url": "https://bebisguiden.se"
+ },
+ "knowsAbout": ["barnprodukter", "bilbarnstolar", "barnvagnar", "babyvakter", "föräldraskap", "spädbarnsutveckling", "barnsäkerhet", "amning", "nyfödda"]
+ })} />
 
-  <!-- GA4: deferred to after page load, respects cookie consent -->
-  <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-    window.addEventListener('load', function() {
-      if (localStorage.getItem('cookie-consent') !== 'rejected') {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2KNTLGJFMG';
-        s.async = true;
-        document.head.appendChild(s);
-        gtag('js', new Date());
-        gtag('config', 'G-2KNTLGJFMG');
-      }
-    });
-  </script>
+ <!-- GA4: deferred to after page load, respects cookie consent -->
+ <script is:inline>
+ window.dataLayer = window.dataLayer || [];
+ function gtag{dataLayer.push(arguments);}
+ window.gtag = gtag;
+ window.addEventListener('load', function {
+ if (localStorage.getItem('cookie-consent')!== 'rejected') {
+ var s = document.createElement('script');
+ s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2KNTLGJFMG';
+ s.async = true;
+ document.head.appendChild(s);
+ gtag('js', new Date());
+ gtag('config', 'G-2KNTLGJFMG');
+ }
+ });
+ </script>
 
-  <!-- Microsoft Clarity: deferred to after page load -->
-  <script is:inline>
-    window.addEventListener('load', function() {
-      if (localStorage.getItem('cookie-consent') !== 'rejected' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-        (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","w30r3ir63x");
-      }
-    });
-  </script>
+ <!-- Microsoft Clarity: deferred to after page load -->
+ <script is:inline>
+ window.addEventListener('load', function {
+ if (localStorage.getItem('cookie-consent')!== 'rejected' && window.location.hostname!== 'localhost' && window.location.hostname!== '127.0.0.1') {
+ (function(c,l,a,r,i,t,y){c[a]=c[a]||function{(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","w30r3ir63x");
+ }
+ });
+ </script>
 
-  <!-- Pages can inject additional head content (e.g. preload hints) -->
-  <slot name="head" />
+ <!-- Pages can inject additional head content (e.g. preload hints) -->
+ <slot name="head" />
 
-  <!-- Addrevenue Easylinks, deferred to reduce render-blocking -->
-  <script is:inline>
-    window.addEventListener('load', function() {
-      var s = document.createElement('script');
-      s.src = 'https://addrevenue.io/easylinks.min.js?c=3467325';
-      s.async = true;
-      document.head.appendChild(s);
-    });
-  </script>
-  <script src="https://analytics.ahrefs.com/analytics.js" data-key="lR83mfNKMbk0sxGHF8iwdQ" async></script>
+ <!-- Addrevenue Easylinks, deferred to reduce render-blocking -->
+ <script is:inline>
+ window.addEventListener('load', function {
+ var s = document.createElement('script');
+ s.src = 'https://addrevenue.io/easylinks.min.js?c=3467325';
+ s.async = true;
+ document.head.appendChild(s);
+ });
+ </script>
+ <script src="https://analytics.ahrefs.com/analytics.js" data-key="lR83mfNKMbk0sxGHF8iwdQ" async></script>
 </head>
 <body class="bg-bg text-text font-sans antialiased">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Hoppa till innehåll</a>
-  <Header />
-  <main id="main-content">
-    <slot />
-    <RelatedGuides />
-  </main>
-  <Footer />
-  <CookieConsent />
-  <script is:inline>
-    document.querySelectorAll('.js-email').forEach(function(el){
-      var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),e=u+'@'+d;
-      var a=document.createElement('a');a.href='mai'+'lto:'+e;a.textContent=e;
-      a.className='text-accent hover:underline';el.replaceWith(a);
-    });
-  </script>
-  <!-- AFFI_TRACKING_V1_START -->
-  <script is:inline>
-    (function() {
-      var SITE = 'bebisguiden';
-      function ancestorAttr(link, attr) {
-        var el = link.closest('[' + attr + ']');
-        return el ? el.getAttribute(attr) : '';
-      }
-      function fire(eventName, link) {
-        if (typeof window.gtag !== 'function') return;
-        var host = '';
+ <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Hoppa till innehåll</a>
+ <Header />
+ <main id="main-content">
+ <slot />
+ <RelatedGuides />
+ </main>
+ <Footer />
+ <CookieConsent />
+ <script is:inline>
+ document.querySelectorAll('.js-email').forEach(function(el){
+ var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),e=u+'@'+d;
+ var a=document.createElement('a');a.href='mai'+'lto:'+e;a.textContent=e;
+ a.className='text-accent hover:underline';el.replaceWith(a);
+ });
+ </script>
+ <!-- AFFI_TRACKING_V1_START -->
+ <script is:inline>
+ (function {
+ var SITE = 'bebisguiden';
+ function ancestorAttr(link, attr) {
+ var el = link.closest('[' + attr + ']');
+ return el? el.getAttribute(attr): '';
+ }
+ function fire(eventName, link) {
+ if (typeof window.gtag!== 'function') return;
+ var host = '';
         try { host = new URL(link.href).hostname.replace(/^www\./, ''); } catch (e) {}
-        var anchor = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100);
-        window.gtag('event', eventName, {
-          site: SITE,
-          merchant: host,
-          product: link.getAttribute('data-product') || ancestorAttr(link, 'data-product') || '',
-          network: link.getAttribute('data-network') || ancestorAttr(link, 'data-network') || '',
-          position: link.getAttribute('data-position') || ancestorAttr(link, 'data-position') || '',
-          page_path: location.pathname,
-          anchor_text: anchor,
-          link_url: link.href
-        });
-      }
-      document.addEventListener('click', function(e) {
-        var t = e.target;
-        if (!t || !t.closest) return;
-        var link = t.closest('a[rel*="sponsored"], a[data-affiliate="true"], a[data-cta]');
-        if (!link) return;
-        var isAffiliate = !!(link.matches('a[rel*="sponsored"]') || link.getAttribute('data-affiliate') === 'true');
-        fire(isAffiliate ? 'affiliate_click' : 'cta_click', link);
-      }, { passive: true, capture: true });
-    })();
-  </script>
-  <!-- AFFI_TRACKING_V1_END -->
+ var anchor = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100);
+ window.gtag('event', eventName, {
+ site: SITE,
+ merchant: host,
+ product: link.getAttribute('data-product') || ancestorAttr(link, 'data-product') || '',
+ network: link.getAttribute('data-network') || ancestorAttr(link, 'data-network') || '',
+ position: link.getAttribute('data-position') || ancestorAttr(link, 'data-position') || '',
+ page_path: location.pathname,
+ anchor_text: anchor,
+ link_url: link.href
+ });
+ }
+ document.addEventListener('click', function(e) {
+ var t = e.target;
+ if (!t ||!t.closest) return;
+ var link = t.closest('a[rel*="sponsored"], a[data-affiliate="true"], a[data-cta]');
+ if (!link) return;
+ var isAffiliate =!!(link.matches('a[rel*="sponsored"]') || link.getAttribute('data-affiliate') === 'true');
+ fire(isAffiliate? 'affiliate_click': 'cta_click', link);
+ }, { passive: true, capture: true });
+ });
+ </script>
+ <!-- AFFI_TRACKING_V1_END -->
 </body>
 </html>

@@ -10,306 +10,288 @@ import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Barnvagnar' },
+ { label: 'Hem', href: '/' },
+ { label: 'Barnvagnar' },
 ];
 
 const products = [
-  {
-    name: 'Cybex Priam Duovagn',
-    badge: 'Bäst i test',
-    price: '11 922 kr',
-    rating: 4.8,
-    image: '/images/products/cybex-priam-duovagn.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-priam-duovagn',
-    features: {
-      'Typ': 'Duovagn',
-      'Vikt chassi': '11,5 kg',
-      'Tillverkning': 'Tyskland',
-      'Fjädring': 'Fullfjädrad',
-      'Pris': '11 922 kr',
-    },
-  },
-  {
-    name: 'Cybex EOS Lux Duovagn',
-    badge: 'Bäst pris/kvalitet',
-    price: '5 095 kr',
-    rating: 4.6,
-    image: '/images/products/cybex-eos-lux-duovagn.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-eos-lux-duovagn-black-moon-black',
-    features: {
-      'Typ': 'Duovagn',
-      'Vikt chassi': '10,1 kg',
-      'Tillverkning': 'Tyskland',
-      'Fjädring': 'Fjäderfjädring',
-      'Pris': '5 095 kr',
-    },
-  },
-  {
-    name: 'Kinderkraft MOOV 2 3-in-1',
-    badge: 'Bäst budget',
-    price: '2 995 kr',
-    rating: 4.4,
-    image: '/images/products/kinderkraft-moov-2-3-in-1.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fkombivagnar%2Fkinderkraft-moov-2-3-in-1-kombivagn-pure-black',
-    features: {
-      'Typ': 'Kombivagn 3-in-1',
-      'Vikt chassi': '9,8 kg',
-      'Tillverkning': 'Polen',
-      'Fjädring': 'Fjäderfjädring',
-      'Pris': '2 995 kr',
-    },
-  },
-  {
-    name: 'Kinderkraft 3-i-1 NEWLY',
-    badge: 'Komplett travelsystem',
-    price: '2 695 kr',
-    rating: 4.3,
-    image: '/images/products/kinderkraft-3-i-1-newly-travelsystem.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fkinderkraft-3-i-1-newly-kombivagn-travelsystem-classic-black',
-    features: {
-      'Typ': 'Kombivagn 3-i-1',
-      'Vikt chassi': '10,5 kg',
-      'Tillverkning': 'Polen',
-      'Fjädring': 'Fjäderfjädring',
-      'Pris': '2 695 kr',
-    },
-  },
-  {
-    name: 'Beemoo Move 2-in-1 Duovagn',
-    badge: 'Bäst för nybörjare',
-    price: '2 295 kr',
-    rating: 4.2,
-    image: '/images/products/beemoo-move-2-in-1-duovagn.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fbeemoo-move-2-in-1-duovagn',
-    features: {
-      'Typ': 'Duovagn',
-      'Vikt chassi': '9,5 kg',
-      'Tillverkning': 'Polen',
-      'Fjädring': 'Fjäderfjädring',
-      'Pris': '2 295 kr',
-    },
-  },
+ {
+ name: 'Cybex Priam Duovagn',
+ badge: 'Bäst i test',
+ rating: 4.8,
+ image: '/images/products/cybex-priam-duovagn.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-priam-duovagn',
+ features: {
+ 'Typ': 'Duovagn',
+ 'Vikt chassi': '11,5 kg',
+ 'Tillverkning': 'Tyskland',
+ 'Fjädring': 'Fullfjädrad',
+ },
+ },
+ {
+ name: 'Cybex EOS Lux Duovagn',
+ badge: 'Bäst pris/kvalitet',
+ rating: 4.6,
+ image: '/images/products/cybex-eos-lux-duovagn.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-eos-lux-duovagn-black-moon-black',
+ features: {
+ 'Typ': 'Duovagn',
+ 'Vikt chassi': '10,1 kg',
+ 'Tillverkning': 'Tyskland',
+ 'Fjädring': 'Fjäderfjädring',
+ },
+ },
+ {
+ name: 'Kinderkraft MOOV 2 3-in-1',
+ badge: 'Bäst budget',
+ rating: 4.4,
+ image: '/images/products/kinderkraft-moov-2-3-in-1.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fkombivagnar%2Fkinderkraft-moov-2-3-in-1-kombivagn-pure-black',
+ features: {
+ 'Typ': 'Kombivagn 3-in-1',
+ 'Vikt chassi': '9,8 kg',
+ 'Tillverkning': 'Polen',
+ 'Fjädring': 'Fjäderfjädring',
+ },
+ },
+ {
+ name: 'Kinderkraft 3-i-1 NEWLY',
+ badge: 'Komplett travelsystem',
+ rating: 4.3,
+ image: '/images/products/kinderkraft-3-i-1-newly-travelsystem.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fkinderkraft-3-i-1-newly-kombivagn-travelsystem-classic-black',
+ features: {
+ 'Typ': 'Kombivagn 3-i-1',
+ 'Vikt chassi': '10,5 kg',
+ 'Tillverkning': 'Polen',
+ 'Fjädring': 'Fjäderfjädring',
+ },
+ },
+ {
+ name: 'Beemoo Move 2-in-1 Duovagn',
+ badge: 'Bäst för nybörjare',
+ rating: 4.2,
+ image: '/images/products/beemoo-move-2-in-1-duovagn.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fbeemoo-move-2-in-1-duovagn',
+ features: {
+ 'Typ': 'Duovagn',
+ 'Vikt chassi': '9,5 kg',
+ 'Tillverkning': 'Polen',
+ 'Fjädring': 'Fjäderfjädring',
+ },
+ },
 ];
 
-const featureLabels = ['Typ', 'Vikt chassi', 'Tillverkning', 'Fjädring', 'Pris'];
+const featureLabels = ['Typ', 'Vikt chassi', 'Tillverkning', 'Fjädring'];
 
 const faqItems = [
-  {
-    question: 'Vad är skillnaden mellan duovagn och sittvagn?',
-    answer: 'En duovagn har både liggdel (för nyfödd) och sittdel som används när barnet är större. En sittvagn (sulky) har bara sittdel och passar från ca 6 månader. Duovagnen är dyrare men används längre, från födseln upp till 3-4 år.',
-  },
-  {
-    question: 'När kan barnet sitta i sittvagn?',
-    answer: 'De flesta barn kan börja sitta i sittvagn när de sitter stadigt själva, vanligtvis runt 6-9 månader. Innan dess behövs en liggdel eller barnvagnsinsats som ger fullt stöd för ryggrad och nacke.',
-  },
-  {
-    question: 'Vilka barnvagnsmärken är bäst?',
-    answer: 'Populära och välttestade märken i Sverige är Cybex, Emmaljunga, Bugaboo, Joolz, Stokke och Kinderkraft. Cybex har starka modeller i flera prisklasser, Priam i premium och EOS Lux i mellansegmentet. Emmaljunga tillverkar i Sverige och är känd för hållbarhet. Kinderkraft erbjuder bäst valuta i budgetsegmentet.',
-  },
-  {
-    question: 'Hur mycket väger en barnvagn?',
-    answer: 'En duovagn väger vanligtvis 9-12 kg chassi (utan liggdel). Kinderkraft MOOV 2 är lättast i vår jämförelse med 9,8 kg, Cybex EOS Lux väger 10,1 kg och Cybex Priam är tyngst med 11,5 kg. Lätta sittvagnar kan väga 5-7 kg. Överväg vikten mot stabilitet, lättare vagnar är smidigare att bära men kan kännas mindre stadiga på ojämnt underlag.',
-  },
-  {
-    question: 'Vad ska bagageutrymmet rymma?',
-    answer: 'Kontrollera alltid att vagnen ryms i ditt bagageutrymme ihopfälld innan köp. Skillnaderna är stora, Bugaboo Fox 5 ihopfälld är 89x61x34 cm, Emmaljunga NXT90 är större. Joolz Day+ är kompaktast ihopfälld bland premiumvagnarna. Mät bilen och jämför innan du bestämmer dig.',
-  },
-  {
-    question: 'Vilken barnvagn är bäst för stadsliv?',
-    answer: 'Cybex EOS Lux är ett starkt stadsval med sin låga vikt (10,1 kg) och kompakta ihopfällning. Kinderkraft MOOV 2 är ännu lättare (9,8 kg) och budgetvänlig. Cybex Priam är tyngre men har bäst fjädring om du vill ha premiumkänsla i staden. Om du ofta åker kollektivt är vikten avgörande, prioritera under 11 kg.',
-  },
-  {
-    question: 'Behöver jag en barnvagn med fjädring?',
-    answer: 'Fjädring gör stor skillnad för barnets komfort och ditt körmotstånd. Cybex Priam har fullfjädring som dämpar stötar effektivt, viktigt på svenska trottoarer med ojämna plattor och gatstenar. Cybex EOS Lux och Kinderkraft-modellerna har fjäderfjädring som fungerar bra för vardagsbruk. Om du mestadels promenerar på asfalt klarar du dig utan avancerad fjädring, men de flesta upplever att det är värt investeringen.',
-  },
-  {
-    question: 'Vad kostar en barnvagn i Sverige 2026?',
-    answer: 'Prisspannet är stort. Budgetvagnar (Britax, Hauck) börjar runt 3 000-5 000 kr. Mellansegmentet (Emmaljunga NXT90) ligger runt 8 000-10 000 kr. Premium (Joolz Day+, Cybex Priam 4, Bugaboo Fox 5, Stokke Xplory X) kostar 11 000-15 000 kr. Tillbehör som regnskydd, insektsnät, muff och extra sittdel tillkommer ofta med 1 000-3 000 kr. Begagnat hittar du premiumvagnar i bra skick för halva priset.',
-  },
-  {
-    question: 'Kan jag köpa barnvagn begagnad?',
-    answer: 'Ja, barnvagnar har generellt lång livslängd och begagnatmarknaden i Sverige är stor (Blocket, Facebook Marketplace). Kontrollera chassit efter sprickor, att hjulen rullar rakt, att bromsarna fungerar och att textilierna inte är slitna. Köp alltid liggdelens madrass ny av hygienskäl. Premiumvagnar som Bugaboo och Emmaljunga håller bra andrahandsvärde.',
-  },
-  {
-    question: 'Vilken barnvagn är bäst i snö och vinterväder?',
-    answer: 'Cybex Priam har fullfjädring och stora bakhjul som klarar snö bra. Av modellerna i vår topplista är den tyngsta (11,5 kg) men också den stabilaste i vinterväglag. Generellt: ju större hjul desto bättre i snö. Luftfyllda hjul ger bättre grepp men kräver att du pumpar dem. Skumfyllda hjul är underhållsfria men något sämre i djup snö. Om du bor i en snörik del av landet kan det vara värt att kolla Emmaljunga som tillverkas i Sverige för nordiskt klimat.',
-  },
+ {
+ question: 'Vad är skillnaden mellan duovagn och sittvagn?',
+ answer: 'En duovagn har både liggdel (för nyfödd) och sittdel som används när barnet är större. En sittvagn (sulky) har bara sittdel och passar från ca 6 månader. Duovagnen är dyrare men används längre, från födseln upp till 3-4 år.',
+ },
+ {
+ question: 'När kan barnet sitta i sittvagn?',
+ answer: 'De flesta barn kan börja sitta i sittvagn när de sitter stadigt själva, vanligtvis runt 6-9 månader. Innan dess behövs en liggdel eller barnvagnsinsats som ger fullt stöd för ryggrad och nacke.',
+ },
+ {
+ question: 'Vilka barnvagnsmärken är bäst?',
+ answer: 'Populära och välttestade märken i Sverige är Cybex, Emmaljunga, Bugaboo, Joolz, Stokke och Kinderkraft. Cybex har starka modeller i flera prisklasser, Priam i premium och EOS Lux i mellansegmentet. Emmaljunga tillverkar i Sverige och är känd för hållbarhet. Kinderkraft erbjuder bäst valuta i budgetsegmentet.',
+ },
+ {
+ question: 'Hur mycket väger en barnvagn?',
+ answer: 'En duovagn väger vanligtvis 9-12 kg chassi (utan liggdel). Kinderkraft MOOV 2 är lättast i vår jämförelse med 9,8 kg, Cybex EOS Lux väger 10,1 kg och Cybex Priam är tyngst med 11,5 kg. Lätta sittvagnar kan väga 5-7 kg. Överväg vikten mot stabilitet, lättare vagnar är smidigare att bära men kan kännas mindre stadiga på ojämnt underlag.',
+ },
+ {
+ question: 'Vad ska bagageutrymmet rymma?',
+ answer: 'Kontrollera alltid att vagnen ryms i ditt bagageutrymme ihopfälld innan köp. Skillnaderna är stora, Bugaboo Fox 5 ihopfälld är 89x61x34 cm, Emmaljunga NXT90 är större. Joolz Day+ är kompaktast ihopfälld bland premiumvagnarna. Mät bilen och jämför innan du bestämmer dig.',
+ },
+ {
+ question: 'Vilken barnvagn är bäst för stadsliv?',
+ answer: 'Cybex EOS Lux är ett starkt stadsval med sin låga vikt (10,1 kg) och kompakta ihopfällning. Kinderkraft MOOV 2 är ännu lättare (9,8 kg) och budgetvänlig. Cybex Priam är tyngre men har bäst fjädring om du vill ha premiumkänsla i staden. Om du ofta åker kollektivt är vikten avgörande, prioritera under 11 kg.',
+ },
+ {
+ question: 'Behöver jag en barnvagn med fjädring?',
+ answer: 'Fjädring gör stor skillnad för barnets komfort och ditt körmotstånd. Cybex Priam har fullfjädring som dämpar stötar effektivt, viktigt på svenska trottoarer med ojämna plattor och gatstenar. Cybex EOS Lux och Kinderkraft-modellerna har fjäderfjädring som fungerar bra för vardagsbruk. Om du mestadels promenerar på asfalt klarar du dig utan avancerad fjädring, men de flesta upplever att det är värt investeringen.',
+ },
+ {
+ question: 'Vad kostar en barnvagn i Sverige 2026?',
+ answer: 'Prisspannet är stort. Budgetvagnar (Britax, Hauck) börjar. Mellansegmentet (Emmaljunga NXT90) ligger. Premium (Joolz Day+, Cybex Priam 4, Bugaboo Fox 5, Stokke Xplory X). Tillbehör som regnskydd, insektsnät, muff och extra sittdel tillkommer ofta med. Begagnat hittar du premiumvagnar i bra skick för halva priset.',
+ },
+ {
+ question: 'Kan jag köpa barnvagn begagnad?',
+ answer: 'Ja, barnvagnar har generellt lång livslängd och begagnatmarknaden i Sverige är stor (Blocket, Facebook Marketplace). Kontrollera chassit efter sprickor, att hjulen rullar rakt, att bromsarna fungerar och att textilierna inte är slitna. Köp alltid liggdelens madrass ny av hygienskäl. Premiumvagnar som Bugaboo och Emmaljunga håller bra andrahandsvärde.',
+ },
+ {
+ question: 'Vilken barnvagn är bäst i snö och vinterväder?',
+ answer: 'Cybex Priam har fullfjädring och stora bakhjul som klarar snö bra. Av modellerna i vår topplista är den tyngsta (11,5 kg) men också den stabilaste i vinterväglag. Generellt: ju större hjul desto bättre i snö. Luftfyllda hjul ger bättre grepp men kräver att du pumpar dem. Skumfyllda hjul är underhållsfria men något sämre i djup snö. Om du bor i en snörik del av landet kan det vara värt att kolla Emmaljunga som tillverkas i Sverige för nordiskt klimat.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa barnvagnen 2026: vinnaren av 5 testade modeller"
-  description="5 barnvagnar testade och jämförda 2026. Cybex Priam, EOS Lux och Kinderkraft MOOV från 2 295 kr. Se vinnaren och bäst pris/kvalitet."
-  breadcrumbs={breadcrumbs}
-  canonical="https://bebisguiden.se/barnvagnar/"
-  updatedDate="2026-04-17"
+ title="Bästa barnvagnen 2026: vinnaren av 5 testade modeller"
+ description="5 barnvagnar testade och jämförda 2026. Cybex Priam, EOS Lux och Kinderkraft MOOV. Se vinnaren och bäst pris/kvalitet."
+ breadcrumbs={breadcrumbs}
+ canonical="https://bebisguiden.se/barnvagnar/"
+ updatedDate="2026-04-17"
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-    Vi har testat och jämfört 5 duovagnar i olika prisklasser, från <a href="/barnvagnar/budget/" class="text-accent underline">budgetvagnar</a> runt 2 300 kr till premiummodeller över 11 000 kr. <a href="/marken/cybex/" class="text-accent underline">Cybex Priam</a> vinner totalt, men <strong>Cybex EOS Lux</strong> ger bäst valuta för pengarna. Nedan hittar du jämförelsetabell, detaljerade omdömen och vår köpguide.
-  </p>
+ <p class="text-base text-text-light mb-3 max-w-2xl">
+ Vi har testat och jämfört 5 duovagnar i olika prisklasser, från <a href="/barnvagnar/budget/" class="text-accent underline">budgetvagnar</a> till premiummodeller över. <a href="/marken/cybex/" class="text-accent underline">Cybex Priam</a> vinner totalt, men <strong>Cybex EOS Lux</strong> ger bäst valuta för pengarna. Nedan hittar du jämförelsetabell, detaljerade omdömen och vår köpguide.
+ </p>
 
-  <TopPick product={products[0]} description="Cybex Priam Duovagn är vårt bäst i test bland barnvagnar: Duovagn och 11,5 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Cybex Priam Duovagn är vårt bäst i test bland barnvagnar: Duovagn och 11,5 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, barnvagnar 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, barnvagnar 2026</h2>
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
-    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>Cybex Priam Duovagn</strong> är premiumvalet med bäst körkomfort. <strong>Cybex EOS Lux</strong> är bäst pris/kvalitet i mellanprisskiktet. <strong>Kinderkraft MOOV 2</strong> är bäst budget med 3-in-1-funktion.</p>
-  </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+ <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+ <p class="text-sm text-text-light"><strong>Cybex Priam Duovagn</strong> är premiumvalet med bäst körkomfort. <strong>Cybex EOS Lux</strong> är bäst pris/kvalitet i mellanprisskiktet. <strong>Kinderkraft MOOV 2</strong> är bäst budget med 3-in-1-funktion.</p>
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Cybex Priam Duovagn"
-      badge="Bäst i test"
-      price="11 922 kr"
-      rating={4.8}
-      image="/images/products/cybex-priam-duovagn.webp"
-      ageRange="0 till 4 år"
-      pros={['Fullfjädrad chassi med utmärkt körkomfort', 'Vändbar sittdel mot och från förälder', 'Enkel ett-handsfällning', 'Kompatibel med Cybex Cloud bilbarnstolar']}
-      cons={['Hög prisklass', 'Liggdel och sittdel kan säljas separat', 'Tung chassi (11,5 kg)']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-priam-duovagn-miragegrey-chromebro"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Cybex Priam Duovagn"
+ badge="Bäst i test"
+ rating={4.8}
+ image="/images/products/cybex-priam-duovagn.webp"
+ ageRange="0 till 4 år"
+ pros={['Fullfjädrad chassi med utmärkt körkomfort', 'Vändbar sittdel mot och från förälder', 'Enkel ett-handsfällning', 'Kompatibel med Cybex Cloud bilbarnstolar']}
+ cons={['Hög prisklass', 'Liggdel och sittdel kan säljas separat', 'Tung chassi (11,5 kg)']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-priam-duovagn-miragegrey-chromebro"
+ />
 
-    <ProductCard
-      name="Cybex EOS Lux Duovagn"
-      badge="Bäst pris/kvalitet"
-      price="5 095 kr"
-      rating={4.6}
-      image="/images/products/cybex-eos-lux-duovagn.webp"
-      ageRange="0 till 4 år"
-      pros={['Lättviktig chassi (10,1 kg)', 'Vändbar sittdel, kan vändas mot och från förälder', 'Stor sufflett med bra solskydd', 'Bra pris för Cybex-kvalitet']}
-      cons={['Enklare fjädring än Priam', 'Sittdelen ej justerbar i benläge', 'Mer av en stadsvagn, sämre i snö']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-eos-lux-duovagn-black-moon-black"
-    />
+ <ProductCard
+ name="Cybex EOS Lux Duovagn"
+ badge="Bäst pris/kvalitet"
+ rating={4.6}
+ image="/images/products/cybex-eos-lux-duovagn.webp"
+ ageRange="0 till 4 år"
+ pros={['Lättviktig chassi (10,1 kg)', 'Vändbar sittdel, kan vändas mot och från förälder', 'Stor sufflett med bra solskydd', 'Bra pris för Cybex-kvalitet']}
+ cons={['Enklare fjädring än Priam', 'Sittdelen ej justerbar i benläge', 'Mer av en stadsvagn, sämre i snö']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-eos-lux-duovagn-black-moon-black"
+ />
 
-    <ProductCard
-      name="Kinderkraft MOOV 2 3-in-1"
-      badge="Bäst budget"
-      price="2 995 kr"
-      rating={4.4}
-      image="/images/products/kinderkraft-moov-2-3-in-1.webp"
-      ageRange="0 till 3 år"
-      pros={['3-in-1: duovagn, sittvagn och barnvagnspaket', 'Lättviktig och kompakt (9,8 kg)', 'UPF50+ sufflett ingår', 'Lågt pris för komplett paket']}
-      cons={['Enklare materialval', 'Begränsad fjädring', 'Kortare livslängd än premiumvagnar']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fkombivagnar%2Fkinderkraft-moov-2-3-in-1-kombivagn-pure-black"
-    />
+ <ProductCard
+ name="Kinderkraft MOOV 2 3-in-1"
+ badge="Bäst budget"
+ rating={4.4}
+ image="/images/products/kinderkraft-moov-2-3-in-1.webp"
+ ageRange="0 till 3 år"
+ pros={['3-in-1: duovagn, sittvagn och barnvagnspaket', 'Lättviktig och kompakt (9,8 kg)', 'UPF50+ sufflett ingår', 'Lågt pris för komplett paket']}
+ cons={['Enklare materialval', 'Begränsad fjädring', 'Kortare livslängd än premiumvagnar']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fkombivagnar%2Fkinderkraft-moov-2-3-in-1-kombivagn-pure-black"
+ />
 
-    <ProductCard
-      name="Kinderkraft 3-i-1 NEWLY Travelsystem"
-      badge="Komplett paket"
-      price="2 695 kr"
-      rating={4.3}
-      image="/images/products/kinderkraft-3-i-1-newly-travelsystem.webp"
-      ageRange="0 till 3 år"
-      pros={['Komplett travelsystem i ett paket', 'Vändbar ergonomisk sits', '2-in-1 sittdel som blir liggdel', 'Lågt pris för komplett system']}
-      cons={['Tyngre i förhållande till priset', 'Enklare materialval', 'Begränsat utbud av tillbehör']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fkinderkraft-3-i-1-newly-kombivagn-travelsystem-classic-black"
-    />
+ <ProductCard
+ name="Kinderkraft 3-i-1 NEWLY Travelsystem"
+ badge="Komplett paket"
+ rating={4.3}
+ image="/images/products/kinderkraft-3-i-1-newly-travelsystem.webp"
+ ageRange="0 till 3 år"
+ pros={['Komplett travelsystem i ett paket', 'Vändbar ergonomisk sits', '2-in-1 sittdel som blir liggdel', 'Lågt pris för komplett system']}
+ cons={['Tyngre i förhållande till priset', 'Enklare materialval', 'Begränsat utbud av tillbehör']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fkinderkraft-3-i-1-newly-kombivagn-travelsystem-classic-black"
+ />
 
-    <ProductCard
-      name="Beemoo Move 2-in-1 Duovagn"
-      badge="Enklast att komma igång"
-      price="2 295 kr"
-      rating={4.2}
-      image="/images/products/beemoo-move-2-in-1-duovagn.webp"
-      ageRange="0 till 3 år"
-      pros={['Lägst pris i testet', 'Enkel att montera och använda', 'Lätt chassi (9,5 kg)', 'Bra för kortare användning']}
-      cons={['Enklast utrustning av alla', 'Begränsad fjädring', 'Kortare livslängd']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fbeemoo-move-2-in-1-duovagn-black"
-    />
-  </div>
+ <ProductCard
+ name="Beemoo Move 2-in-1 Duovagn"
+ badge="Enklast att komma igång"
+ rating={4.2}
+ image="/images/products/beemoo-move-2-in-1-duovagn.webp"
+ ageRange="0 till 3 år"
+ pros={['Lägst pris i testet', 'Enkel att montera och använda', 'Lätt chassi (9,5 kg)', 'Bra för kortare användning']}
+ cons={['Enklast utrustning av alla', 'Begränsad fjädring', 'Kortare livslängd']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fbeemoo-move-2-in-1-duovagn-black"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt barnvagn?</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hur väljer du rätt barnvagn?</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>1. Duovagn eller sittvagn?</h3>
-    <p>Om du köper till en nyfödd behöver du en duovagn med liggdel. Liggdelen ger nyfödda det platta läget som ryggrad och nacke kräver under de första månaderna. En sittvagn kan användas från ca 6 månader. Många familjer köper duovagn till en nyfödd och sedan en lätt sulky när barnet är 1 till 2 år. Läs vår guide om <a href="/guider/valja-barnvagn/" class="text-accent underline">att välja rätt barnvagn</a> för en djupare genomgång av alla vagntyperna.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>1. Duovagn eller sittvagn?</h3>
+ <p>Om du köper till en nyfödd behöver du en duovagn med liggdel. Liggdelen ger nyfödda det platta läget som ryggrad och nacke kräver under de första månaderna. En sittvagn kan användas från ca 6 månader. Många familjer köper duovagn till en nyfödd och sedan en lätt sulky när barnet är 1 till 2 år. Läs vår guide om <a href="/guider/valja-barnvagn/" class="text-accent underline">att välja rätt barnvagn</a> för en djupare genomgång av alla vagntyperna.</p>
 
-    <h3>2. Stad eller landsbygd?</h3>
-    <p>Bor du i stad med mycket trottoarer, smala dörrar och kollektivtrafik? Då är en lätt, kompakt vagn viktig, prioritera låg vikt och liten ihopfälld storlek. Cybex EOS Lux och Kinderkraft MOOV 2 är smidiga stadsval under 10,5 kg. Bor du på landet eller promenerar mycket i skog och ojämn mark? Prioritera stora hjul och bra fjädring, Cybex Priam med fullfjädring klarar ojämnt underlag bäst.</p>
+ <h3>2. Stad eller landsbygd?</h3>
+ <p>Bor du i stad med mycket trottoarer, smala dörrar och kollektivtrafik? Då är en lätt, kompakt vagn viktig, prioritera låg vikt och liten ihopfälld storlek. Cybex EOS Lux och Kinderkraft MOOV 2 är smidiga stadsval under 10,5 kg. Bor du på landet eller promenerar mycket i skog och ojämn mark? Prioritera stora hjul och bra fjädring, Cybex Priam med fullfjädring klarar ojämnt underlag bäst.</p>
 
-    <h3>3. Kontrollera bagageutrymmet</h3>
-    <p>Mät bagageutrymmet i bilen innan du köper. En barnvagn som inte får plats i bilen är värdelös oavsett hur bra den är. Kontrollera ihopfälld storlek, skillnaderna är stora mellan modellerna. Jämför alltid mot ditt specifika bilmärke och testa gärna att fälla ihop vagnen i butik innan köp.</p>
+ <h3>3. Kontrollera bagageutrymmet</h3>
+ <p>Mät bagageutrymmet i bilen innan du köper. En barnvagn som inte får plats i bilen är värdelös oavsett hur bra den är. Kontrollera ihopfälld storlek, skillnaderna är stora mellan modellerna. Jämför alltid mot ditt specifika bilmärke och testa gärna att fälla ihop vagnen i butik innan köp.</p>
 
-    <h3>4. Travel system, barnvagn + bilbarnstol</h3>
-    <p>Många duovagnar kan kombineras med en kompatibel <a href="/bilbarnstolar/" class="text-accent underline">bilbarnstol</a> som klickar direkt på chassit utan att barnet behöver vakna. Cybex Priam passar med Cybex Cloud T och Z2. Cybex EOS Lux fungerar med samma Cybex-babyskydd. Kinderkraft-modellerna har adaptrar för Maxi-Cosi. Kontrollera alltid kompatibilitet innan köp, inte alla kombinationer fungerar.</p>
+ <h3>4. Travel system, barnvagn + bilbarnstol</h3>
+ <p>Många duovagnar kan kombineras med en kompatibel <a href="/bilbarnstolar/" class="text-accent underline">bilbarnstol</a> som klickar direkt på chassit utan att barnet behöver vakna. Cybex Priam passar med Cybex Cloud T och Z2. Cybex EOS Lux fungerar med samma Cybex-babyskydd. Kinderkraft-modellerna har adaptrar för Maxi-Cosi. Kontrollera alltid kompatibilitet innan köp, inte alla kombinationer fungerar.</p>
 
-    <h3>5. Hjultyp, luftfyllda eller skumfyllda?</h3>
-    <p>Luftfyllda hjul ger bäst komfort och grepp på ojämnt underlag men kräver att du pumpar dem regelbundet. Skumfyllda hjul är underhållsfria och punkteringsfria men ger något hårdare gång. Om du bor i stad räcker skumfyllda hjul. Om du promenerar i skog och terräng regelbundet ger luftfyllda hjul märkbar skillnad.</p>
+ <h3>5. Hjultyp, luftfyllda eller skumfyllda?</h3>
+ <p>Luftfyllda hjul ger bäst komfort och grepp på ojämnt underlag men kräver att du pumpar dem regelbundet. Skumfyllda hjul är underhållsfria och punkteringsfria men ger något hårdare gång. Om du bor i stad räcker skumfyllda hjul. Om du promenerar i skog och terräng regelbundet ger luftfyllda hjul märkbar skillnad.</p>
 
-    <h3>6. Tillbehör, vad behövs egentligen?</h3>
-    <p>De flesta barnvagnar kommer med chassi, liggdel och sittdel i grundpaketet, men tillbehören tillkommer ofta. Regnskydd (ca 300-500 kr) är ett måste i Sverige. Åkpåse eller muff (ca 500-1 000 kr) är nödvändigt på vintern. Insektsnät (ca 200-300 kr) är bra att ha sommartid. Mugghållare, organizer och fotstöd är trevliga men inte nödvändiga. Budgetera 1 500-3 000 kr utöver vagnens pris för tillbehör.</p>
+ <h3>6. Tillbehör, vad behövs egentligen?</h3>
+ <p>De flesta barnvagnar kommer med chassi, liggdel och sittdel i grundpaketet, men tillbehören tillkommer ofta. Regnskydd är ett måste i Sverige. Åkpåse eller muff är nödvändigt på vintern. Insektsnät är bra att ha sommartid. Mugghållare, organizer och fotstöd är trevliga men inte nödvändiga. Budgetera utöver vagnens pris för tillbehör.</p>
 
-    <h3>7. Garanti och service</h3>
-    <p>Cybex erbjuder 2 års garanti på alla sina modeller. Kinderkraft har 2 års garanti. Beemoo erbjuder 2 års garanti via Jollyroom. Kontrollera alltid att du köper från en auktoriserad återförsäljare för att garantin ska gälla. Spara kvittot, det är ditt bevis vid reklamation.</p>
-  </div>
+ <h3>7. Garanti och service</h3>
+ <p>Cybex erbjuder 2 års garanti på alla sina modeller. Kinderkraft har 2 års garanti. Beemoo erbjuder 2 års garanti via Jollyroom. Kontrollera alltid att du köper från en auktoriserad återförsäljare för att garantin ska gälla. Spara kvittot, det är ditt bevis vid reklamation.</p>
+ </div>
 
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/barnvagnar/uppababy-vista-vs-bugaboo-fox-5/" class="text-accent underline">UPPAbaby Vista V3 vs Bugaboo Fox 5 2026, vilken premiumvagn vinner?</a></li>
-      <li><a href="/barnvagnar/bugaboo-fox-5-vs-stokke-xplory-x/" class="text-accent underline">Bugaboo Fox 5 vs Stokke Xplory X 2026, vilket premiummärke vinner?</a></li>
-      <li><a href="/barnvagnar/bugaboo-fox-5-vs-cybex-priam-4/" class="text-accent underline">Bugaboo Fox 5 vs Cybex Priam 4 2026, vilken vinner?</a></li>
-      <li><a href="/barnvagnar/babyzen-yoyo-vs-bugaboo-butterfly/" class="text-accent underline">BABYZEN YOYO vs Bugaboo Butterfly 2026, bästa stadsvagnen?</a></li>
-      <li><a href="/barnvagnar/nyfodda/" class="text-accent underline">Barnvagn till nyfödd 2026, bästa duovagnarna</a></li>
-      <li><a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, Bugaboo, Emmaljunga och Joolz</a></li>
-      <li><a href="/barnvagnar/sittvagn/" class="text-accent underline">Bästa sittvagnen 2026, lätta och kompakta</a></li>
-      <li><a href="/barnvagnar/latt/" class="text-accent underline">Bästa lätta barnvagn 2026, under 10 kg</a></li>
-      <li><a href="/barnvagnar/liggdel/" class="text-accent underline">Barnvagn med liggdel 2026, för nyfödda och spädbarn</a></li>
-      <li><a href="/barnvagnar/joggingvagn/" class="text-accent underline">Bästa joggingvagn 2026, Thule, Baby Jogger och BOB Gear testad</a></li>
-      <li><a href="/barnvagnar/hopfallbar/" class="text-accent underline">Bästa hopfällbara barnvagnen 2026, lätt och kompakt</a></li>
-      <li><a href="/barnvagnar/kompakt/" class="text-accent underline">Bästa kompakta barnvagnen 2026, perfekt för stad och resa</a></li>
-      <li><a href="/barnvagnar/budget/" class="text-accent underline">Bästa budget-barnvagn 2026, prisvärd och säker</a></li>
-      <li><a href="/guider/valja-barnvagn/" class="text-accent underline">Så väljer du rätt barnvagn, komplett köpguide 2026</a></li>
-      <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
-      <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
-    </ul>
-  </div>
+ <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/barnvagnar/uppababy-vista-vs-bugaboo-fox-5/" class="text-accent underline">UPPAbaby Vista V3 vs Bugaboo Fox 5 2026, vilken premiumvagn vinner?</a></li>
+ <li><a href="/barnvagnar/bugaboo-fox-5-vs-stokke-xplory-x/" class="text-accent underline">Bugaboo Fox 5 vs Stokke Xplory X 2026, vilket premiummärke vinner?</a></li>
+ <li><a href="/barnvagnar/bugaboo-fox-5-vs-cybex-priam-4/" class="text-accent underline">Bugaboo Fox 5 vs Cybex Priam 4 2026, vilken vinner?</a></li>
+ <li><a href="/barnvagnar/babyzen-yoyo-vs-bugaboo-butterfly/" class="text-accent underline">BABYZEN YOYO vs Bugaboo Butterfly 2026, bästa stadsvagnen?</a></li>
+ <li><a href="/barnvagnar/nyfodda/" class="text-accent underline">Barnvagn till nyfödd 2026, bästa duovagnarna</a></li>
+ <li><a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, Bugaboo, Emmaljunga och Joolz</a></li>
+ <li><a href="/barnvagnar/sittvagn/" class="text-accent underline">Bästa sittvagnen 2026, lätta och kompakta</a></li>
+ <li><a href="/barnvagnar/latt/" class="text-accent underline">Bästa lätta barnvagn 2026, under 10 kg</a></li>
+ <li><a href="/barnvagnar/liggdel/" class="text-accent underline">Barnvagn med liggdel 2026, för nyfödda och spädbarn</a></li>
+ <li><a href="/barnvagnar/joggingvagn/" class="text-accent underline">Bästa joggingvagn 2026, Thule, Baby Jogger och BOB Gear testad</a></li>
+ <li><a href="/barnvagnar/hopfallbar/" class="text-accent underline">Bästa hopfällbara barnvagnen 2026, lätt och kompakt</a></li>
+ <li><a href="/barnvagnar/kompakt/" class="text-accent underline">Bästa kompakta barnvagnen 2026, perfekt för stad och resa</a></li>
+ <li><a href="/barnvagnar/budget/" class="text-accent underline">Bästa budget-barnvagn 2026, prisvärd och säker</a></li>
+ <li><a href="/guider/valja-barnvagn/" class="text-accent underline">Så väljer du rätt barnvagn, komplett köpguide 2026</a></li>
+ <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
+ <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
+ </ul>
+ </div>
 
-  <RetailerCTAs />
+ <RetailerCTAs />
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <ProductSchema products={[
-    {
-      name: 'Cybex Priam Duovagn, Mirage Grey/Chrome Brown',
-      description: 'Premium duovagn med fullfjädring och vändbar sittdel. Kompatibel med Cybex Cloud bilbarnstolar. För barn 0-4 år.',
-      image: 'https://bebisguiden.se/images/products/cybex-priam-duovagn.webp',
-      brand: 'Cybex',
-      ratingValue: 4.8,
-      reviewCount: 1,
-      offers: [{ price: 11922, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Cybex EOS Lux Duovagn, Black/Moon Black',
-      description: 'Lättviktig duovagn med vändbar sittdel och stor sufflett. Chassivikt 10,1 kg. För barn 0-4 år.',
-      image: 'https://bebisguiden.se/images/products/cybex-eos-lux.webp',
-      brand: 'Cybex',
-      ratingValue: 4.6,
-      reviewCount: 1,
-      offers: [{ price: 5095, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-eos-lux-duovagn-black-moon-black', seller: 'Jollyroom' }],
-    },
-    {
-      name: 'Kinderkraft MOOV 2 3-in-1 Kombivagn, Pure Black',
-      description: '3-in-1 kombivagn som kan användas som duovagn, sittvagn och barnvagnspaket. Lättviktig chassi 9,8 kg. UPF50+ sufflett.',
-      image: 'https://bebisguiden.se/images/products/kinderkraft-moov2.webp',
-      brand: 'Kinderkraft',
-      ratingValue: 4.4,
-      reviewCount: 1,
-      offers: [{ price: 2995, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fkombivagnar%2Fkinderkraft-moov-2-3-in-1-kombivagn-pure-black', seller: 'Jollyroom' }],
-    },
-  ]} />
-  <CTABox productName="Barnvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
-  <CTABox productName="Barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+ <ProductSchema products={[
+ {
+ name: 'Cybex Priam Duovagn, Mirage Grey/Chrome Brown',
+ description: 'Premium duovagn med fullfjädring och vändbar sittdel. Kompatibel med Cybex Cloud bilbarnstolar. För barn 0-4 år.',
+ image: 'https://bebisguiden.se/images/products/cybex-priam-duovagn.webp',
+ brand: 'Cybex',
+ ratingValue: 4.8,
+ reviewCount: 1,
+ },
+ {
+ name: 'Cybex EOS Lux Duovagn, Black/Moon Black',
+ description: 'Lättviktig duovagn med vändbar sittdel och stor sufflett. Chassivikt 10,1 kg. För barn 0-4 år.',
+ image: 'https://bebisguiden.se/images/products/cybex-eos-lux.webp',
+ brand: 'Cybex',
+ ratingValue: 4.6,
+ reviewCount: 1,
+ },
+ {
+ name: 'Kinderkraft MOOV 2 3-in-1 Kombivagn, Pure Black',
+ description: '3-in-1 kombivagn som kan användas som duovagn, sittvagn och barnvagnspaket. Lättviktig chassi 9,8 kg. UPF50+ sufflett.',
+ image: 'https://bebisguiden.se/images/products/kinderkraft-moov2.webp',
+ brand: 'Kinderkraft',
+ ratingValue: 4.4,
+ reviewCount: 1,
+ },
+ ]} />
+ <CTABox productName="Barnvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
+ <CTABox productName="Barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
 </ArticleLayout>
 
 <StickyTop3Bar products={products} />

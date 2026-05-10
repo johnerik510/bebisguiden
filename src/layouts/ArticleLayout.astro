@@ -6,40 +6,40 @@ import AuthorByline from '../components/AuthorByline.astro';
 import { buildArticleSchema, DEFAULT_PUBLISHED, DEFAULT_MODIFIED } from '../utils/schema.js';
 
 interface Props {
-  title: string;
-  description: string;
-  ogImage?: string;
-  canonical?: string;
-  breadcrumbs: { label: string; href?: string }[];
-  updatedDate?: string;
-  showDisclaimer?: boolean;
-  datePublished?: string;
-  dateModified?: string;
-  image?: string;
-  showAuthor?: boolean;
+ title: string;
+ description: string;
+ ogImage?: string;
+ canonical?: string;
+ breadcrumbs: { label: string; href?: string }[];
+ updatedDate?: string;
+ showDisclaimer?: boolean;
+ datePublished?: string;
+ dateModified?: string;
+ image?: string;
+ showAuthor?: boolean;
 }
 
 const {
-  title,
-  description,
-  ogImage,
-  canonical,
-  breadcrumbs,
-  updatedDate,
-  showDisclaimer = true,
-  datePublished = DEFAULT_PUBLISHED,
-  dateModified = DEFAULT_MODIFIED,
-  image,
-  showAuthor = true,
+ title,
+ description,
+ ogImage,
+ canonical,
+ breadcrumbs,
+ updatedDate,
+ showDisclaimer = true,
+ datePublished = DEFAULT_PUBLISHED,
+ dateModified = DEFAULT_MODIFIED,
+ image,
+ showAuthor = true,
 } = Astro.props;
 
 const articleSchema = buildArticleSchema({
-  title,
-  description,
-  image,
-  datePublished,
-  dateModified,
-  pathname: Astro.url.pathname,
+ title,
+ description,
+ image,
+ datePublished,
+ dateModified,
+ pathname: Astro.url.pathname,
 });
 
 // Auto-generera relaterade artiklar från samma sektion
@@ -47,63 +47,63 @@ const pathname = Astro.url.pathname.replace(/\/$/, '');
 const section = pathname.split('/').filter(Boolean)[0];
 let autoRelated: { title: string; href: string }[] = [];
 if (section) {
-  const pagesGlob = import.meta.glob('/src/pages/**/*.astro', { eager: false });
-  const mdGlob = import.meta.glob('/src/pages/**/*.md', { eager: false });
-  const allPaths = [...Object.keys(pagesGlob), ...Object.keys(mdGlob)];
-  autoRelated = allPaths
-    .map((p) => {
-      const rel = p.replace('/src/pages', '').replace(/\.(astro|md)$/, '').replace(/\/index$/, '');
-      return rel || '/';
-    })
-    .filter((href) => {
-      if (href === pathname || href === pathname + '/') return false;
-      if (href.startsWith('/404') || href.includes('[')) return false;
-      if (href === '/' || href === `/${section}` || href === `/${section}/`) return false;
-      return href.startsWith(`/${section}/`);
-    })
-    .slice(0, 6)
-    .map((href) => {
-      const slug = href.split('/').filter(Boolean).pop() || '';
-      const label = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-      return { title: label, href: href.endsWith('/') ? href : href + '/' };
-    });
+ const pagesGlob = import.meta.glob('/src/pages/**/*.astro', { eager: false });
+ const mdGlob = import.meta.glob('/src/pages/**/*.md', { eager: false });
+ const allPaths = [...Object.keys(pagesGlob),...Object.keys(mdGlob)];
+ autoRelated = allPaths
+.map((p) => {
+ const rel = p.replace('/src/pages', '').replace(/\.(astro|md)$/, '').replace(/\/index$/, '');
+ return rel || '/';
+ })
+.filter((href) => {
+ if (href === pathname || href === pathname + '/') return false;
+ if (href.startsWith('/404') || href.includes('[')) return false;
+ if (href === '/' || href === `/${section}` || href === `/${section}/`) return false;
+ return href.startsWith(`/${section}/`);
+ })
+.slice(0, 6)
+.map((href) => {
+ const slug = href.split('/').filter(Boolean).pop() || '';
+ const label = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+ return { title: label, href: href.endsWith('/')? href: href + '/' };
+ });
 }
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage} canonical={canonical}>
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <Breadcrumbs items={breadcrumbs} />
-    <h1 class="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold text-text mt-3 mb-2">{title}</h1>
-    {updatedDate && (
-      <p class="text-sm text-text-light mb-2">Senast uppdaterad: {updatedDate}</p>
-    )}
-    {showAuthor && (
-      <AuthorByline
-        datePublished={datePublished}
-        dateModified={dateModified}
-      />
-    )}
-    {image && (
-      <div class="mt-4 mb-6 rounded-xl overflow-hidden aspect-[16/9] bg-sand">
-        <img src={image} alt={title} class="w-full h-full object-cover" loading="lazy" />
-      </div>
-    )}
-    <div class="mt-4">
-      <slot />
-    </div>
-    {autoRelated.length > 0 && (
-      <aside class="mt-12 pt-8 border-t border-sand-dark">
-        <h2 class="font-heading text-xl font-bold text-text mb-4">Relaterade artiklar</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {autoRelated.map((article) => (
-            <a href={article.href} class="block p-4 bg-white rounded-lg border border-sand-dark hover:border-primary hover:shadow-md transition-all">
-              <span class="font-body font-medium text-text hover:text-primary">{article.title}</span>
-            </a>
-          ))}
-        </div>
-      </aside>
-    )}
-    {showDisclaimer && <AffiliateDisclaimer />}
-  </article>
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+ <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+ <Breadcrumbs items={breadcrumbs} />
+ <h1 class="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold text-text mt-3 mb-2">{title}</h1>
+ {updatedDate && (
+ <p class="text-sm text-text-light mb-2">Senast uppdaterad: {updatedDate}</p>
+ )}
+ {showAuthor && (
+ <AuthorByline
+ datePublished={datePublished}
+ dateModified={dateModified}
+ />
+ )}
+ {image && (
+ <div class="mt-4 mb-6 rounded-xl overflow-hidden aspect-[16/9] bg-sand">
+ <img src={image} alt={title} class="w-full h-full object-cover" loading="lazy" />
+ </div>
+ )}
+ <div class="mt-4">
+ <slot />
+ </div>
+ {autoRelated.length > 0 && (
+ <aside class="mt-12 pt-8 border-t border-sand-dark">
+ <h2 class="font-heading text-xl font-bold text-text mb-4">Relaterade artiklar</h2>
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+ {autoRelated.map((article) => (
+ <a href={article.href} class="block p-4 bg-white rounded-lg border border-sand-dark hover:border-primary hover:shadow-md transition-all">
+ <span class="font-body font-medium text-text hover:text-primary">{article.title}</span>
+ </a>
+ ))}
+ </div>
+ </aside>
+ )}
+ {showDisclaimer && <AffiliateDisclaimer />}
+ </article>
+ <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 </BaseLayout>

@@ -1,15 +1,15 @@
 ---
 interface Product {
-  name: string;
-  badge?: string;
-  price?: string;
-  image: string;
-  ctaHref?: string;
+ name: string;
+ badge?: string;
+ price?: string;
+ image: string;
+ ctaHref?: string;
 }
 
 interface Props {
-  products: Product[];
-  max?: number;
+ products: Product[];
+ max?: number;
 }
 
 const { products, max = 3 } = Astro.props;
@@ -17,43 +17,43 @@ const top = products.filter(p => p.ctaHref).slice(0, max);
 ---
 
 {top.length > 0 && (
-  <div
-    id="sticky-top3"
-    class="fixed left-0 right-0 bottom-0 z-50 bg-white border-t border-border shadow-[0_-4px_12px_rgba(0,0,0,0.08)] md:hidden translate-y-full transition-transform duration-300"
-    style="padding-bottom: env(safe-area-inset-bottom, 0px);"
-  >
-    <div class="flex divide-x divide-border">
-      {top.map((p, i) => (
-        <a
-          href={p.ctaHref}
-          target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
-          class:list={[
-            'flex-1 flex flex-col items-center text-center px-2 py-2.5 no-underline transition-colors active:bg-sand/40',
-            i === 0 ? '!text-cta-dark' : '!text-dark',
-          ]}
-        >
-          <span class="text-[10px] font-bold uppercase tracking-wide leading-tight mb-1 line-clamp-1 w-full">
-            {p.badge || 'Toppval'}
-          </span>
-          <img src={p.image} alt="" class="w-9 h-9 object-contain mb-1" loading="lazy" />
-          <span class="text-[11px] font-semibold leading-tight line-clamp-1 w-full px-1">{p.name.split(' ').slice(0,3).join(' ')}</span>
-          {p.price && <span class="text-[11px] font-bold text-cta mt-0.5">{p.price.split('/')[0].trim()}</span>}
-        </a>
-      ))}
-    </div>
-  </div>
+ <div
+ id="sticky-top3"
+ class="fixed left-0 right-0 bottom-0 z-50 bg-white border-t border-border shadow-[0_-4px_12px_rgba(0,0,0,0.08)] md:hidden translate-y-full transition-transform duration-300"
+ style="padding-bottom: env(safe-area-inset-bottom, 0px);"
+ >
+ <div class="flex divide-x divide-border">
+ {top.map((p, i) => (
+ <a
+ href={p.ctaHref}
+ target="_blank"
+ rel="nofollow sponsored noopener noreferrer"
+ class:list={[
+ 'flex-1 flex flex-col items-center text-center px-2 py-2.5 no-underline transition-colors active:bg-sand/40',
+ i === 0? '!text-cta-dark': '!text-dark',
+ ]}
+ >
+ <span class="text-[10px] font-bold uppercase tracking-wide leading-tight mb-1 line-clamp-1 w-full">
+ {p.badge || 'Toppval'}
+ </span>
+ <img src={p.image} alt="" class="w-9 h-9 object-contain mb-1" loading="lazy" />
+ <span class="text-[11px] font-semibold leading-tight line-clamp-1 w-full px-1">{p.name.split(' ').slice(0,3).join(' ')}</span>
+ {p.price && <span class="text-[11px] font-bold text-cta mt-0.5">{p.price.split('/')[0].trim()}</span>}
+ </a>
+ ))}
+ </div>
+ </div>
 )}
 
 <script>
-  const bar = document.getElementById('sticky-top3');
-  if (bar) {
-    let visible = false;
-    const show = () => { if (!visible) { visible = true; bar.classList.remove('translate-y-full'); } };
-    const hide = () => { if (visible) { visible = false; bar.classList.add('translate-y-full'); } };
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) show();
-      else if (window.scrollY < 250) hide();
-    }, { passive: true });
-  }
+ const bar = document.getElementById('sticky-top3');
+ if (bar) {
+ let visible = false;
+ const show = () => { if (!visible) { visible = true; bar.classList.remove('translate-y-full'); } };
+ const hide = () => { if (visible) { visible = false; bar.classList.add('translate-y-full'); } };
+ window.addEventListener('scroll', () => {
+ if (window.scrollY > 500) show();
+ else if (window.scrollY < 250) hide();
+ }, { passive: true });
+ }
 </script>

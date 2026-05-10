@@ -9,207 +9,199 @@ import CTABox from '../../components/CTABox.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
-  { label: 'Hem', href: '/' },
-  { label: 'Babyvakter', href: '/babyvakter/' },
-  { label: 'WiFi' },
+ { label: 'Hem', href: '/' },
+ { label: 'Babyvakter', href: '/babyvakter/' },
+ { label: 'WiFi' },
 ];
 
 const products = [
-  {
-    name: 'Owlet Cam 2',
-    badge: 'Bäst i test',
-    price: '1 990 kr',
-    rating: 4.6,
-    image: '/images/products/owlet-cam-2.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white',
-    features: {
-      'Upplösning': '1080p Full HD',
-      'App': 'iOS + Android',
-      'Nättsyn': 'Ja, IR',
-      'Tvåvägskommunikation': 'Ja',
-      'Molnlagring': 'Tillval (avg.)',
-    },
-  },
-  {
-    name: 'Nanit Pro',
-    image: '/images/products/luvion-grand-elite-3.webp',
-    badge: 'Premiumval',
-    price: '3 490 kr',
-    rating: 4.7,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit',
-    features: {
-      'Upplösning': '1080p Full HD',
-      'App': 'iOS + Android',
-      'Nättsyn': 'Ja, IR',
-      'Tvåvägskommunikation': 'Ja',
-      'Molnlagring': 'Ingaar (begränsad)',
-    },
-  },
-  {
-    name: 'eufy SpaceView Pro',
-    image: '/images/products/eufy-spaceview-pro.webp',
-    badge: 'Bäst hybrid',
-    price: '2 490 kr',
-    rating: 4.5,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit',
-    features: {
-      'Upplösning': '720p HD',
-      'App': 'iOS + Android + skärm',
-      'Nättsyn': 'Ja, IR',
-      'Tvåvägskommunikation': 'Ja',
-      'Molnlagring': 'Nej (lokal)',
-    },
-  },
-  {
-    name: 'TP-Link Tapo C210',
-    image: '/images/products/tp-link-tapo-c210.webp',
-    badge: 'Budgetval',
-    price: '499 kr',
-    rating: 4.3,
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
-    features: {
-      'Upplösning': '2K (2304x1296)',
-      'App': 'iOS + Android',
-      'Nättsyn': 'Ja, IR',
-      'Tvåvägskommunikation': 'Ja',
-      'Molnlagring': 'Tillval + microSD',
-    },
-  },
+ {
+ name: 'Owlet Cam 2',
+ badge: 'Bäst i test',
+ rating: 4.6,
+ image: '/images/products/owlet-cam-2.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white',
+ features: {
+ 'Upplösning': '1080p Full HD',
+ 'App': 'iOS + Android',
+ 'Nättsyn': 'Ja, IR',
+ 'Tvåvägskommunikation': 'Ja',
+ 'Molnlagring': 'Tillval (avg.)',
+ },
+ },
+ {
+ name: 'Nanit Pro',
+ image: '/images/products/luvion-grand-elite-3.webp',
+ badge: 'Premiumval',
+ rating: 4.7,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit',
+ features: {
+ 'Upplösning': '1080p Full HD',
+ 'App': 'iOS + Android',
+ 'Nättsyn': 'Ja, IR',
+ 'Tvåvägskommunikation': 'Ja',
+ 'Molnlagring': 'Ingaar (begränsad)',
+ },
+ },
+ {
+ name: 'eufy SpaceView Pro',
+ image: '/images/products/eufy-spaceview-pro.webp',
+ badge: 'Bäst hybrid',
+ rating: 4.5,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit',
+ features: {
+ 'Upplösning': '720p HD',
+ 'App': 'iOS + Android + skärm',
+ 'Nättsyn': 'Ja, IR',
+ 'Tvåvägskommunikation': 'Ja',
+ 'Molnlagring': 'Nej (lokal)',
+ },
+ },
+ {
+ name: 'TP-Link Tapo C210',
+ image: '/images/products/tp-link-tapo-c210.webp',
+ badge: 'Budgetval',
+ rating: 4.3,
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt',
+ features: {
+ 'Upplösning': '2K (2304x1296)',
+ 'App': 'iOS + Android',
+ 'Nättsyn': 'Ja, IR',
+ 'Tvåvägskommunikation': 'Ja',
+ 'Molnlagring': 'Tillval + microSD',
+ },
+ },
 ];
 
 const featureLabels = ['Upplösning', 'App', 'Nättsyn', 'Tvåvägskommunikation', 'Molnlagring'];
 
 const faqItems = [
-  {
-    question: 'Är WiFi-babyvakter sakra?',
-    answer: 'WiFi-babyvakter sänder via ditt hemnätverk, vilket innebär en viss säkerhetsrisk jämfört med slutna system (DECT/FHSS). För att minimera risken: välj en modell med krypterad anslutning (AES-128 eller högre), använd starka och unika lösenord, håll firmwår uppdaterad och placera kameran på ett separat gasnätverk om din router stödjer det. De modeller vi rekommenderar har alla kryptering som standard.',
-  },
-  {
-    question: 'Vilken WiFi-babyvakt är bäst 2026?',
-    answer: 'Owlet Cam 2 är vårt toppval, den erbjuder Full HD-bild, bra app, tvåvägskommunikation och rimligt pris. För den som vill ha premiumfunktioner som sömnanalys och andningsövervakning (med Owlet-strumpa som tillbehör) är Nanit Pro bäst. På tight budget är TP-Link Tapo C210 oslagbar, högupplöst bild för under 500 kr.',
-  },
-  {
-    question: 'Behöver jag betala för molnlagring?',
-    answer: 'Det varierar. Nanit ger begränsad molnlagring gratis. Owlet och TP-Link erbjuder grundläggande funktioner gratis men tar betalt för utökad videologgning. eufy SpaceView Pro sparar allt lokalt utan månadskostnad. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning.',
-  },
-  {
-    question: 'Kan jag använda WiFi-babyvakten utanför hemmet?',
-    answer: 'Ja, det är WiFi-babyvaktens största fördel. Bara du har internetanslutning kan du övervaka barnet oavsett var du befinner dig, perfekt för att kolla till barnet när en barnvakt är hemma eller när du är på jobb. Fördröjningen är vanligtvis 1 till 3 sekunder beroende på uppkopplingen.',
-  },
-  {
-    question: 'Vad händer om WiFi går ner?',
-    answer: 'Om WiFi-anslutningen bryts tappar du tillgång till appen och kan inte se barnet. Därför rekommenderar vi eufy SpaceView Pro för familjer som vill ha en hybridlösning, den har både WiFi-app och en separat skärm som fungerar via sluten signal även utan internet.',
-  },
+ {
+ question: 'Är WiFi-babyvakter sakra?',
+ answer: 'WiFi-babyvakter sänder via ditt hemnätverk, vilket innebär en viss säkerhetsrisk jämfört med slutna system (DECT/FHSS). För att minimera risken: välj en modell med krypterad anslutning (AES-128 eller högre), använd starka och unika lösenord, håll firmwår uppdaterad och placera kameran på ett separat gasnätverk om din router stödjer det. De modeller vi rekommenderar har alla kryptering som standard.',
+ },
+ {
+ question: 'Vilken WiFi-babyvakt är bäst 2026?',
+ answer: 'Owlet Cam 2 är vårt toppval, den erbjuder Full HD-bild, bra app, tvåvägskommunikation och rimligt pris. För den som vill ha premiumfunktioner som sömnanalys och andningsövervakning (med Owlet-strumpa som tillbehör) är Nanit Pro bäst. På tight budget är TP-Link Tapo C210 oslagbar, högupplöst bild för under.',
+ },
+ {
+ question: 'Behöver jag betala för molnlagring?',
+ answer: 'Det varierar. Nanit ger begränsad molnlagring gratis. Owlet och TP-Link erbjuder grundläggande funktioner gratis men tar betalt för utökad videologgning. eufy SpaceView Pro sparar allt lokalt utan månadskostnad. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning.',
+ },
+ {
+ question: 'Kan jag använda WiFi-babyvakten utanför hemmet?',
+ answer: 'Ja, det är WiFi-babyvaktens största fördel. Bara du har internetanslutning kan du övervaka barnet oavsett var du befinner dig, perfekt för att kolla till barnet när en barnvakt är hemma eller när du är på jobb. Fördröjningen är vanligtvis 1 till 3 sekunder beroende på uppkopplingen.',
+ },
+ {
+ question: 'Vad händer om WiFi går ner?',
+ answer: 'Om WiFi-anslutningen bryts tappar du tillgång till appen och kan inte se barnet. Därför rekommenderar vi eufy SpaceView Pro för familjer som vill ha en hybridlösning, den har både WiFi-app och en separat skärm som fungerar via sluten signal även utan internet.',
+ },
 ];
 ---
 
 <ArticleLayout
-  title="Bästa WiFi-babyvakt 2026, Test och jämförelse"
-  description="Bästa WiFi-babyvakten 2026: Vi testar Owlet, Nanit och eufy. Se vilken som ger bäst bild, app-funktion och säkerhet. Priser och betyg."
-  breadcrumbs={breadcrumbs}
-  updatedDate="2026-04-14"
+ title="Bästa WiFi-babyvakt 2026, Test och jämförelse"
+ description="Bästa WiFi-babyvakten 2026: Vi testar Owlet, Nanit och eufy. Se vilken som ger bäst bild, app-funktion och säkerhet. Priser och betyg."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-4 max-w-2xl">
-    En WiFi-babyvakt låter dig övervaka barnet via app oavsett var du befinner dig. Vi har jämfört de bästa WiFi-babyvakterna på den svenska marknaden, från premiummodeller med somanalys till prisvärda kameror med Full HD-bild.
-  </p>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ En WiFi-babyvakt låter dig övervaka barnet via app oavsett var du befinner dig. Vi har jämfört de bästa WiFi-babyvakterna på den svenska marknaden, från premiummodeller med somanalys till prisvärda kameror med Full HD-bild.
+ </p>
 
-  <TopPick product={products[0]} description="Owlet Cam 2 är vårt bäst i test bland wifi: 1080p Full HD och iOS + Android ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+ <TopPick product={products[0]} description="Owlet Cam 2 är vårt bäst i test bland wifi: 1080p Full HD och iOS + Android ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+ <ComparisonTable products={products} featureLabels={featureLabels} />
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
-  <div class="space-y-4">
-    <ProductCard
-      name="Owlet Cam 2"
-  image="/images/products/owlet-cam-2.webp"
-      badge="Bäst i test"
-      price="1 990 kr"
-      rating={4.6}
-      ageRange="Från nyfödd"
-      pros={['Full HD 1080p, skarp bild dag och natt', 'Bra app med notiser vid ljud och rörelse', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
-      cons={['Månadskostnad för utökad molnlagring', 'Beroende av stabil WiFi-anslutning']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white"
-    />
+ <div class="space-y-4">
+ <ProductCard
+ name="Owlet Cam 2"
+ image="/images/products/owlet-cam-2.webp"
+ badge="Bäst i test"
+ rating={4.6}
+ ageRange="Från nyfödd"
+ pros={['Full HD 1080p, skarp bild dag och natt', 'Bra app med notiser vid ljud och rörelse', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
+ cons={['Månadskostnad för utökad molnlagring', 'Beroende av stabil WiFi-anslutning']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white"
+ />
 
-    <ProductCard
-      name="Nanit Pro"
-      image="/images/products/luvion-grand-elite-3.webp"
-      badge="Premiumval"
-      price="3 490 kr"
-      rating={4.7}
-      ageRange="Från nyfödd"
-      pros={['Inbyggd sömnanalys och sömnstips', 'Takmonterad för full översikt av spjälsängen', 'Andningsövervakning med Breathing Band (tillbehör)']}
-      cons={['Högst pris i jämförelsen', 'Premium-funktioner kräver abonnemang']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit"
-    />
+ <ProductCard
+ name="Nanit Pro"
+ image="/images/products/luvion-grand-elite-3.webp"
+ badge="Premiumval"
+ rating={4.7}
+ ageRange="Från nyfödd"
+ pros={['Inbyggd sömnanalys och sömnstips', 'Takmonterad för full översikt av spjälsängen', 'Andningsövervakning med Breathing Band (tillbehör)']}
+ cons={['Högst pris i jämförelsen', 'Premium-funktioner kräver abonnemang']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit"
+ />
 
-    <ProductCard
-      name="eufy SpaceView Pro"
-      image="/images/products/eufy-spaceview-pro.webp"
-      badge="Bäst hybrid"
-      price="2 490 kr"
-      rating={4.5}
-      ageRange="Från nyfödd"
-      pros={['Både WiFi-app och separat skärm, fungerar även utan internet', 'Ingen månadskostnad, all lagring lokalt', 'Bra bildkvalitet och lätt panorering via app']}
-      cons={['Något lägre upplösning än konkurrenterna (720p)', 'Största enheten i testet']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
-    />
+ <ProductCard
+ name="eufy SpaceView Pro"
+ image="/images/products/eufy-spaceview-pro.webp"
+ badge="Bäst hybrid"
+ rating={4.5}
+ ageRange="Från nyfödd"
+ pros={['Både WiFi-app och separat skärm, fungerar även utan internet', 'Ingen månadskostnad, all lagring lokalt', 'Bra bildkvalitet och lätt panorering via app']}
+ cons={['Något lägre upplösning än konkurrenterna (720p)', 'Största enheten i testet']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
+ />
 
-    <ProductCard
-      name="TP-Link Tapo C210"
-      image="/images/products/tp-link-tapo-c210.webp"
-      badge="Budgetval"
-      price="499 kr"
-      rating={4.3}
-      ageRange="Från nyfödd"
-      pros={['Oslagbart pris för 2K-upplösning', 'Motoriserad panorering och tilt', 'MicroSD-lagring, ingen månadskostnad']}
-      cons={['Inte designad specifikt som babyvakt', 'Saknar babyvakt-funktioner som vaggvisa och temperatur']}
-      ctaText="Se pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
-    />
-  </div>
+ <ProductCard
+ name="TP-Link Tapo C210"
+ image="/images/products/tp-link-tapo-c210.webp"
+ badge="Budgetval"
+ rating={4.3}
+ ageRange="Från nyfödd"
+ pros={['Oslagbart pris för 2K-upplösning', 'Motoriserad panorering och tilt', 'MicroSD-lagring, ingen månadskostnad']}
+ cons={['Inte designad specifikt som babyvakt', 'Saknar babyvakt-funktioner som vaggvisa och temperatur']}
+ ctaText="Se pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt"
+ />
+ </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du WiFi-babyvakt</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du WiFi-babyvakt</h2>
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>WiFi vs sluten signal, vad är bäst?</h3>
-    <p>WiFi-babyvakter sänder video via ditt hemnätverk till en app på telefonen. Det innebär att du kan övervaka barnet var som helst, hemma, på jobbet eller på semester. Nackdelen är att du är beroende av stabil WiFi-anslutning och att det finns en teoretisk hackningsrisk. Babyvakter med sluten signal (DECT/FHSS) sänder direkt till en föräldraenhet utan internet, vilket ger högre säkerhet men begränsad räckvidd.</p>
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>WiFi vs sluten signal, vad är bäst?</h3>
+ <p>WiFi-babyvakter sänder video via ditt hemnätverk till en app på telefonen. Det innebär att du kan övervaka barnet var som helst, hemma, på jobbet eller på semester. Nackdelen är att du är beroende av stabil WiFi-anslutning och att det finns en teoretisk hackningsrisk. Babyvakter med sluten signal (DECT/FHSS) sänder direkt till en föräldraenhet utan internet, vilket ger högre säkerhet men begränsad räckvidd.</p>
 
-    <h3>Säkerhet och integritet</h3>
-    <p>Välj alltid en WiFi-babyvakt med krypterad anslutning (minimum AES-128). Ändra standardlösenordet direkt vid installation. Håll firmware och app uppdaterade. Överväg att placera kameran på ett separat gästnätverk. Undvik kameror från okända tillverkare utan tydlig säkerhetsinformation. Alla modeller i vår jämförelse har testats för grundläggande säkerhet.</p>
+ <h3>Säkerhet och integritet</h3>
+ <p>Välj alltid en WiFi-babyvakt med krypterad anslutning (minimum AES-128). Ändra standardlösenordet direkt vid installation. Håll firmware och app uppdaterade. Överväg att placera kameran på ett separat gästnätverk. Undvik kameror från okända tillverkare utan tydlig säkerhetsinformation. Alla modeller i vår jämförelse har testats för grundläggande säkerhet.</p>
 
-    <h3>Bildkvalitet</h3>
-    <p>Full HD (1080p) är standard på moderna WiFi-babyvakter och ger tillräckligt skarp bild för att se barnet tydligt. 2K-upplösning, som TP-Link Tapo C210 erbjuder, ger ännu skarpare bild men kräver mer bandbredd. Nättsyn via infraröd är standard och fungerar bra på alla testade modeller.</p>
+ <h3>Bildkvalitet</h3>
+ <p>Full HD (1080p) är standard på moderna WiFi-babyvakter och ger tillräckligt skarp bild för att se barnet tydligt. 2K-upplösning, som TP-Link Tapo C210 erbjuder, ger ännu skarpare bild men kräver mer bandbredd. Nättsyn via infraröd är standard och fungerar bra på alla testade modeller.</p>
 
-    <h3>Molnlagring vs lokal lagring</h3>
-    <p>Många WiFi-babyvakter erbjuder molnlagring av videoinspelningar, ofta mot en månadskostnad. Överväg om du verkligen behöver sparade inspelningar, för de flesta föräldrar räcker realtidsvisning. eufy SpaceView Pro och TP-Link Tapo C210 sparar allt lokalt utan månadskostnad, vilket både sparar pengar och skyddar din integritet.</p>
-  </div>
+ <h3>Molnlagring vs lokal lagring</h3>
+ <p>Många WiFi-babyvakter erbjuder molnlagring av videoinspelningar, ofta mot en månadskostnad. Överväg om du verkligen behöver sparade inspelningar, för de flesta föräldrar räcker realtidsvisning. eufy SpaceView Pro och TP-Link Tapo C210 sparar allt lokalt utan månadskostnad, vilket både sparar pengar och skyddar din integritet.</p>
+ </div>
 
-  <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
-    <ul class="space-y-2 text-sm">
-      <li>
-        <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
-      </li>
-      <li>
-        <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
-      </li>
-    </ul>
-  </div>
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li>
+ <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
+ </li>
+ </ul>
+ </div>
 
-  <FAQ items={faqItems} />
+ <FAQ items={faqItems} />
 
-  <CTABox productName="WiFi-babyvakt" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt%2520wifi" description="Stort urval WiFi-babyvakter hos Jollyroom, Owlet, Nanit och eufy." />
+ <CTABox productName="WiFi-babyvakt" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt%2520wifi" description="Stort urval WiFi-babyvakter hos Jollyroom, Owlet, Nanit och eufy." />
 
-  <StickyTop3Bar products={products} />
+ <StickyTop3Bar products={products} />
 <ProductSchema products={[
-    { name: 'Owlet Cam 2', description: 'WiFi-babyvakt med tydlig HD-bild och enkel app. Bäst i test bland WiFi-babyvakter.', brand: 'Owlet', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 1990, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white', seller: 'Jollyroom' }] },
-    { name: 'Nanit Pro', description: 'Premiumvalt WiFi-babykamera med AI-sömnanalys och app.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 3490, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit', seller: 'Jollyroom' }] },
-    { name: 'eufy SpaceView Pro', description: 'Hybrid WiFi-babyvakt med stor 5-tumsskärm och app. Bra räckvidd och bildkvalitet.', brand: 'Eufy', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 2490, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit', seller: 'Jollyroom' }] },
-    { name: 'TP-Link Tapo C210', description: 'Budgetvänlig WiFi-kamera som fungerar som babyvakt. Ingen dedikerad babyskärm.', brand: 'TP-Link', ratingValue: 4.1, reviewCount: 1, offers: [{ price: 499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt', seller: 'Jollyroom' }] },
-  ]} />
+ { name: 'Owlet Cam 2', description: 'WiFi-babyvakt med tydlig HD-bild och enkel app. Bäst i test bland WiFi-babyvakter.', brand: 'Owlet', ratingValue: 4.7, reviewCount: 1 },
+ { name: 'Nanit Pro', description: 'Premiumvalt WiFi-babykamera med AI-sömnanalys och app.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1 },
+ { name: 'eufy SpaceView Pro', description: 'Hybrid WiFi-babyvakt med stor 5-tumsskärm och app. Bra räckvidd och bildkvalitet.', brand: 'Eufy', ratingValue: 4.5, reviewCount: 1 },
+ { name: 'TP-Link Tapo C210', description: 'Budgetvänlig WiFi-kamera som fungerar som babyvakt. Ingen dedikerad babyskärm.', brand: 'TP-Link', ratingValue: 4.1, reviewCount: 1 },
+ ]} />
 </ArticleLayout>

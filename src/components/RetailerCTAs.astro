@@ -5,57 +5,57 @@
 import { retailerMeta, defaultRetailers, track, type Retailer } from '../data/affiliates';
 
 interface Props {
-  heading?: string;
-  subheading?: string;
-  retailers?: Retailer[];
-  /** Valfri deeplink-path som skickas vidare till butiken (t.ex. "/barnvagnar/") */
-  path?: string;
-  compact?: boolean;
+ heading?: string;
+ subheading?: string;
+ retailers?: Retailer[];
+ /** Valfri deeplink-path som skickas vidare till butiken (t.ex. "/barnvagnar/") */
+ path?: string;
+ compact?: boolean;
 }
 
 const {
-  heading = 'Jämför pris hos våra partnerbutiker',
-  subheading = 'Klicka dig direkt till aktuellt pris, vi tjänar en liten provision utan extra kostnad för dig.',
-  retailers = defaultRetailers,
-  path,
-  compact = false,
+ heading = 'Jämför pris hos våra partnerbutiker',
+ subheading = 'Klicka dig direkt till aktuellt pris, vi tjänar en liten provision utan extra kostnad för dig.',
+ retailers = defaultRetailers,
+ path,
+ compact = false,
 } = Astro.props;
 
 // Bara bygg CTA om vi har en target (path), annars är det homepage-länk = bruten djuplänk
 const items = path
-  ? retailers.map((r) => {
-      const meta = retailerMeta[r];
-      const target = `https://www.${meta.domain}${path.startsWith('/') ? '' : '/'}${path}`;
-      return {
-        key: r,
-        name: meta.name,
-        color: meta.color,
-        href: track(r, target),
-      };
-    })
-  : [];
+? retailers.map((r) => {
+ const meta = retailerMeta[r];
+ const target = `https://www.${meta.domain}${path.startsWith('/')? '': '/'}${path}`;
+ return {
+ key: r,
+ name: meta.name,
+ color: meta.color,
+ href: track(r, target),
+ };
+ })
+: [];
 ---
 
 {items.length > 0 && (
-<section class={`my-8 ${compact ? 'py-4' : 'py-6'} px-4 sm:px-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200`}>
-  {!compact && (
-    <div class="mb-4">
-      <h2 class="text-lg sm:text-xl font-bold text-gray-900">{heading}</h2>
-      <p class="text-sm text-gray-600 mt-1">{subheading}</p>
-    </div>
-  )}
-  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
-    {items.map((item) => (
-      <a
-        href={item.href}
-        target="_blank"
-        rel="nofollow sponsored noopener noreferrer"
-        class={`${item.color} text-white font-bold text-center py-4 px-4 rounded-xl transition-colors text-base sm:text-lg shadow-sm hover:shadow-md`}
-        aria-label={`Se pris hos ${item.name}`}
-      >
-        {item.name}
-      </a>
-    ))}
-  </div>
+<section class={`my-8 ${compact? 'py-4': 'py-6'} px-4 sm:px-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200`}>
+ {!compact && (
+ <div class="mb-4">
+ <h2 class="text-lg sm:text-xl font-bold text-gray-900">{heading}</h2>
+ <p class="text-sm text-gray-600 mt-1">{subheading}</p>
+ </div>
+ )}
+ <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+ {items.map((item) => (
+ <a
+ href={item.href}
+ target="_blank"
+ rel="nofollow sponsored noopener noreferrer"
+ class={`${item.color} text-white font-bold text-center py-4 px-4 rounded-xl transition-colors text-base sm:text-lg shadow-sm hover:shadow-md`}
+ aria-label={`Se pris hos ${item.name}`}
+ >
+ {item.name}
+ </a>
+ ))}
+ </div>
 </section>
 )}
