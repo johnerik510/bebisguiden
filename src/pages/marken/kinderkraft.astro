@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -81,6 +82,8 @@ const faqItems = [
     Kinderkraft är ett polskt varumärke grundat 2005 som erbjuder ett brett sortiment av barnprodukter med modern design till priser under premiumsegmentet. Märket är ett populärt val för föräldrar som söker god funktion utan att betala premiumpriser. Vi recenserar deras mest populära vagnar hos Jollyroom i Sverige 2026.
   </p>
 
+  <TopPick product={products[0]} description="Kinderkraft MOOV 2 3-in-1 Kombivagn är vårt bäst kombivagn bland kinderkraft: Kombivagn 3-in-1 och 9,8 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Kinderkrafts bästa barnvagnar 2026</h2>
@@ -156,11 +159,6 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA
-    href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fkombivagnar%2Fkinderkraft-moov-2-3-in-1-kombivagn-pure-black"
-    text="Se pris hos Jollyroom, Kinderkraft MOOV 2"
-  />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

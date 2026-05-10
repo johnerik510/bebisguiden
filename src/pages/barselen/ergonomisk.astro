@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -131,6 +132,8 @@ const faqItems = [
     En ergonomisk bärsele skyddar bebisens höfter och rygg, och avlastar bärarens kropp. Vi har testat fem av de bästa ergonomiska bärselarna på marknaden, bedömda utifrån HKDSI-certifiering, M-position och komfort för bäraren.
   </p>
 
+  <TopPick product={products[0]} description="Ergobaby 360 är vårt bäst i test bland ergonomisk: 3,5 till 20 kg (0 till 4 år) och 4 (fram, rygg, höft, vändbar) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, ergonomiska bärselen 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -243,8 +246,8 @@ const faqItems = [
   description="HIPS-certifierad M-position och ergonomiskt stöd, bärsele för nyfödd upp till 15 kg."
 />
 
-  <StickyCTA href="https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2Fproducts%2Fergobaby-omni-360-svart" text="Se bästa pris, Ergobaby 360" productName="Bäst i test 2026" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Ergobaby 360', description: 'Ergonomisk bärsele med 4 bärpositioner. Stöder höftutveckling med bred sittposition.', brand: 'Ergobaby', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 1799, url: 'https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2Fproducts%2Fergobaby-omni-360-svart', seller: 'Reirei' }] },
     { name: 'Manduca 4everFix', description: 'Tysk ergonomisk bärsele med clicksystem och justerbara höftgördel.', brand: 'Manduca', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 1499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-omni-deluxe-barsele-mesh-natural-beige', seller: 'Jollyroom' }] },
     { name: 'Tula Free-to-Grow', description: 'Ergonomisk bärsele för nyfödda utan infant insert. Mjuk och anpassbar.', brand: 'Tula', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 1299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Ftula-free-to-grow-barsele-fawn-gingham', seller: 'Jollyroom' }] },

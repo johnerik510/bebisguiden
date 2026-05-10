@@ -3,9 +3,10 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -127,9 +128,12 @@ const faqItems = [
   canonical="https://bebisguiden.se/blojor/"
   updatedDate="2026-04-14"
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
+  <p class="text-base text-text-light mb-4 max-w-2xl">
     Vi har testat och jämfört de mest populära engångsblöjorna på den svenska marknaden. Från premiumalternativet Pampers Premium Protection till budgetvänliga ekologiska alternativ, här hittar du rätt blöja för din bebis.
   </p>
+
+  {/* TOPPICK_KEEP */}
+  <TopPick product={products[0]} description="Bäst totalt i vårt test: överlägset läckageskydd, mjukast mot huden och rimligt pris per blöja. Det säkra valet för dagsbruk om du vill ha minimal risk för missar." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, blöjor 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -300,8 +304,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
-  text="Se Pampers Premium Protection 24-pack hos Jollyroom"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

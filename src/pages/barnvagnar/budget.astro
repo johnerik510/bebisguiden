@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -131,6 +132,8 @@ const faqItems = [
     En bra barnvagn behöver inte kosta tusentals kronor. Vi har jämfört de bästa barnvagnarna under 3 000 kr på den svenska marknaden, vagnar som kombinerar lågt pris med tillräcklig kvalitet, säkerhet och praktisk hantering för vardagsbruk.
   </p>
 
+  <TopPick product={products[0]} description="Hauck Shopper SLX är vårt billigast bland budget: Sittvagn och ca 7 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -249,8 +252,8 @@ const faqItems = [
   primaryStore="Babyonline"
   description="Stort urval barnvagnar, bärslar och babyutrustning."
 />
-<StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fjoie-litetrax-sulky-shale" text="Se bästa pris, Joie Litetrax 4 Air" rel="sponsored noopener" />
-  <ProductSchema products={[
+<StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Hauck Shopper SLX', description: 'Budgetvänlig sittvagn med bra grundfunktioner. Perfekt för priskänsliga familjer.', brand: 'Hauck', ratingValue: 4.3, reviewCount: 1, offers: [{ price: 999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fhauck-shopper-slx', seller: 'Jollyroom' }] },
     { name: 'Kinderkraft Cruiser', description: 'Kompakt sittvagn med aluminiumram och hopfällbar design till ett bra pris.', brand: 'Kinderkraft', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fkinderkraft-cruiser', seller: 'Jollyroom' }] },
     { name: 'Chicco Miinimo 4', description: 'Ultrakompakt sittvagn med god körbarhet för priset. Under 2 kg.', brand: 'Chicco', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsittvagnar%2Fframatvand-sittdel%2Fchicco-miinimo-4', seller: 'Jollyroom' }] },

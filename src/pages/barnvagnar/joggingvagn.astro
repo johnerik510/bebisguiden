@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -154,7 +155,9 @@ const faqItems = [
   ))}
 </div>
 
-<ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, joggingvagnar 2026" />
+<TopPick product={products[0]} description="Thule Urban Glide 3 är vårt bäst i test bland joggingvagn: 14,3 kg och 34 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
+  <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, joggingvagnar 2026" />
 
 <h2 class="text-2xl font-bold mt-10 mb-4">Köpguide, vad ska du tänka på?</h2>
 
@@ -187,12 +190,8 @@ const faqItems = [
 
   <CTABox productName="Joggingvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
   <CTABox productName="Joggingvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
-<StickyCTA
-  href={thuleGlide3Url}
-  productName="Thule Urban Glide 3"
-  text="Se bästa pris, Thule Urban Glide 3"
-/>
-  <ProductSchema products={[
+<StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Thule Urban Glide 3', description: 'Toppmodell joggingvagn med luftfyllda däck och smidig enhandsvikning. Löparvänlig design.', brand: 'Thule', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 7995, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fjoggingvagnar%2Fjoggingvagnar%2Fthule-urban-glide-3', seller: 'Jollyroom' }] },
     { name: 'Baby Jogger City Mini GT2', description: 'Allterrängsjoggingvagn med enkel vikning och bra stötdämpning. Klassiker.', brand: 'Baby Jogger', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 5799, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fjoggingvagnar%2Fjoggingvagnar%2Fbaby-jogger-city-mini-gt2', seller: 'Jollyroom' }] },
     { name: 'Thule Urban Glide 2', description: 'Smidig joggingvagn med svängbart framhjul och bra manövrering.', brand: 'Thule', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4995, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fjoggingvagnar%2Fjoggingvagnar%2Fthule-urban-glide-2', seller: 'Jollyroom' }] },

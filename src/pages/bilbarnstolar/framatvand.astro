@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const jollyroomUrl = (slug: string) =>
@@ -111,6 +112,8 @@ const faqItems = [
     När barnet växt ur sin bakåtvända stol är det dags för framåtvänd bilbarnstol. Vi har jämfört de bästa modellerna för 2026, från Cybex Anoris T med unik anti-submarine-skydd till prisvärda alternativ som klarar säkerhetskrav på topp.
   </p>
 
+  <TopPick product={products[0]} description="Cybex Anoris T i-Size är vårt safest forward-facing bland framåtvänd bilbarnstol: 76 till 150 cm (ca 1 till 12 år) och Ja, unik kudde ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
@@ -216,8 +219,8 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href={cybexAnorisUrl} text="Se bästa pris, Cybex Anoris T i-Size" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Cybex Anoris T i-Size', description: 'Framåtvänd bilbarnstol med unik sidokrocksskydd och airbag-integration.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 7999, url: cybexAnorisUrl, seller: 'Jollyroom' }] },
     { name: 'Britax Römer Kidfix Pro M', description: 'Framåtvänd bältad bilbarnstol med ISOfix och XP-PAD-teknik för extra säkerhet.', brand: 'Britax Römer', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 3999, url: britaxKidfixUrl, seller: 'Jollyroom' }] },
     { name: 'Joie i-Trillo FX', description: 'Prisvärd framåtvänd bilbarnstol med ISOfix. Bäst pris/prestanda.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 2499, url: joieTrilloUrl, seller: 'Jollyroom' }] },

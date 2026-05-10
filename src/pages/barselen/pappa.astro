@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -103,6 +104,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En bra bärsele för pappor ska vara enkel att ta på och ta av, passa olika kroppstyper och ge stöd vid längre bärpass. Vi har testat de mest populära modellerna 2026.
   </p>
+
+  <TopPick product={products[0]} description="BabyBjörn Move Bärsele 3D Mesh inkl. Regnskydd, Svart är vårt bäst för pappor bland bärsele för pappor: 4 lägen och 3D Mesh ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bärselar för pappor 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -211,8 +214,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-move-barsele-3d-mesh-svart"
-  text="Se bästa pris, BabyBjörn Move"
-  productName="Bäst för pappor 2026"
-/>
+<StickyTop3Bar products={products} />

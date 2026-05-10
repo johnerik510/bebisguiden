@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -108,6 +109,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Montessorileksaker är designade för fri utforskning, naturmaterial, enkel funktion, inga batterier. Bebisen lär sig genom att göra, inte genom att titta på. Här är de bästa montessori-inspirerade leksakerna för bebis, tillgängliga hos Jollyroom.
   </p>
+
+  <TopPick product={products[0]} description="Alice & Fox Stapeltorn Safari är vårt bäst i test bland montessorileksaker bebis: 6 till 36 mån och Storleksordning ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, montessorileksaker bebis 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -245,8 +248,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fleksaker%2Fbabyleksaker%2Fstapelbara-klossar%2Falice-fox-stapeltorn-safari"
-  text="Se pris, Alice & Fox Stapeltorn Safari"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -95,6 +96,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-4 max-w-2xl">
     Nuna är ett holländskt premiummärke grundat 2007 som vuxit sig starkt på den svenska marknaden. Med fokus på säkerhet, snygg design och smarta detaljer erbjuder Nuna ett av de mest prisvärda premiumpaketen på barnvagnsmarknaden. Vi recenserar tre av deras populäraste modeller.
   </p>
+
+  <TopPick product={products[0]} description="Nuna Mixx Next är vårt bäst totalt bland nuna: Barnvagn och upp till 22 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -193,8 +196,6 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack" text="Se bästa pris på Nuna hos Jollyroom" />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -129,6 +130,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Att välja rätt nappflaska är extra viktigt för föräldrar som kombinerar amning och flaskmatning. Vi har jämfört de bästa nappflaskorna 2026 med fokus på bröstvårtedesign, anti-koliklösning och materialval.
   </p>
+
+  <TopPick product={products[0]} description="Philips Avent Natural 3.0 är vårt bäst i test bland nappflaska: Bred, naturlik och PP-plast / glas ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, nappflaskor 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -266,8 +269,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fata-dricka%2Fnappflaskor-tillbehor%2Fnappflaskor%2Fphilips-avent-natural-response-nappflaska-240-ml"
-  text="Se bästa pris, Philips Avent Natural 3.0"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

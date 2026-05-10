@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -111,6 +112,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En nyfödd bebis byter blöja upp till 12 gånger per dygn. Rätt blöja gör skillnad, mjukt material, säker navelurringning och bra läckageskydd är avgörande de första veckorna. Vi har jämfört de bästa newborn-blöjorna på den svenska marknaden.
   </p>
+
+  <TopPick product={products[0]} description="Pampers New Baby Blöjor Stl 1 2-5 kg 44-pack är vårt bäst i test bland newborn: Stl 1 till 2, 5 kg och 44-pack ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, newborn-blöjor 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -225,8 +228,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-new-baby-blojor-stl-1-2-5-kg-44-pack"
-  text="Se bästa pris, Pampers New Baby Stl 1"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

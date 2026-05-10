@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -160,6 +161,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Vi har testat och jämfört de bästa spjälsängarna på den svenska marknaden, från budgetalternativet IKEA Sniglar till premiumsängar som <a href="/marken/stokke/" class="text-accent underline">Stokke</a> Sleepi V3 och Leander Luna. Oavsett budget finns en säker och bra spjälsäng för din bebis.
   </p>
+
+  <TopPick product={products[0]} description="IKEA Sniglar är vårt bäst budget bland spjälsängar: Standard spjälsäng och 70x140 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, spjälsängar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -387,9 +390,4 @@ const faqItems = [
   <CTABox productName="Spjälsängar" store="Babyonline" description="Stort urval spjälsängar och sovsäckar." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural"
-  text="Se pris hos Jollyroom, Stokke Sleepi V3"
-  productName="Bäst i test 2026"
-  rel="sponsored noopener"
-/>
+<StickyTop3Bar products={products} />

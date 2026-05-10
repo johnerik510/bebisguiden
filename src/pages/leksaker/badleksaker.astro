@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -113,6 +114,8 @@ const faqItems = [
     <p class="text-sm font-semibold text-red-900 mb-1">Viktigaste säkerhetsregeln</p>
     <p class="text-sm text-red-800">Lämna ALDRIG bebisen ensam i badet, inte ens en sekund. Ha all utrustning klar innan du börjar båda bebisen.</p>
   </div>
+
+  <TopPick product={products[0]} description="Rätt Start Badleksaker Koralldjur & Fiskar 7-pack är vårt bäst i test bland badleksaker bebis: 6 mån+ och Plast BPA-fri ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, badleksaker bebis 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -243,8 +246,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
-  text="Se pris, Rätt Start Badleksaker 7-pack"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

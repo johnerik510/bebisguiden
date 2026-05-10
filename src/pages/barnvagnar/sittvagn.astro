@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -127,6 +128,8 @@ const faqItems = [
     En sittvagn (sulky) är den lätta, kompakta vagnen som gör vardagen smidigare, perfekt för stan, resor och kollektivtrafik. Vi har jämfört de bästa sittvagnarna på svenska marknaden utifrån vikt, fällmått, komfort och pris.
   </p>
 
+  <TopPick product={products[0]} description="Bugaboo Butterfly är vårt bäst i test bland sittvagn: 7,3 kg och 54 x 45 x 23 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -230,8 +233,8 @@ const faqItems = [
 
     <CTABox productName="Sittvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
   <CTABox productName="Sittvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
-<StickyCTA href="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbugaboo-butterfly%2Findex.html" text="Se pris, Bugaboo Butterfly" />
-  <ProductSchema products={[
+<StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Bugaboo Butterfly', description: 'Premiumsittvagn med Bugaboos kvalitet och smidiga enhandsvikning.', brand: 'Bugaboo', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5990, url: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbugaboo-butterfly%2Findex.html', seller: 'Köpbarnvagn' }] },
     { name: 'Cybex Libelle', description: 'Ultralätt sittvagn som ryms i handbagagefacket. Under 7 kg.', brand: 'Cybex', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fcybex-libelle-sulky-magic-black', seller: 'Jollyroom' }] },
     { name: 'Babyzen Yoyo2', description: 'Ikonisk kabinvagn med premium material och enkel 1-stegsvikning.', brand: 'Babyzen', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5290, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fstokke-yoyo-3-sittvagn-6-black-black', seller: 'Jollyroom' }] },

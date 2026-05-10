@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -131,6 +132,8 @@ const faqItems = [
     En bra resematstol gör att barnet kan äta säkert var du än befinner dig, på hotellet, hos farmor eller på restaurangen. Vi har testat fem resevänliga alternativ: från hopfällbara matstolar till bordsklämmare och uppblåsbara stolar.
   </p>
 
+  <TopPick product={products[0]} description="Stokke Clikk är vårt bäst i test bland resematstol: Hopfällbar matstol och 6 mån, 3 år ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, resematstolar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -242,8 +245,8 @@ const faqItems = [
 
     <CTABox productName="Resematstol" store="inoki" description="Barnservis, matstolar och matningstillbehör i silikon." />
   <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
-<StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-clikk-matstol-cloud-grey" text="Se bästa pris, Stokke Clikk" productName="Bäst i test 2026" rel="sponsored noopener" />
-  <ProductSchema products={[
+<StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Stokke Clikk', description: 'Kompakt resmatstol med säkerhetsräls och brickplatta. Passar från 6 månader till 3 år.', brand: 'Stokke', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 1299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-clikk-matstol-cloud-grey', seller: 'Jollyroom' }] },
     { name: 'Chicco Pocket Snack', description: 'Hopfällbar boosterstol att fästa på stol. Liten och lätt för resan.', brand: 'Chicco', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 549, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural', seller: 'Jollyroom' }] },
     { name: 'Inglesina Fast Table Chair', description: 'Bordsstol som fästs direkt på bordsytan. Elegant design utan behov av stol.', brand: 'Inglesina', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 799, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural', seller: 'Jollyroom' }] },

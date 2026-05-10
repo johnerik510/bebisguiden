@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -113,6 +114,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Vilken bedside crib är bäst 2026? Vi har jämfört tre modeller som finns i lager hos svenska butiker och som faktiskt levererar nära föräldrasängen. En bedside crib låter din bebis sova tryggt bredvid dig utan att dela säng, säkrare och enklare vid nattamning.
   </p>
+
+  <TopPick product={products[0]} description="Inovi Air Bedside Crib är vårt bäst totalt bland bedside crib: Fällbar och 83×50 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bedside cribs 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -258,10 +261,6 @@ const faqItems = [
   <CTABox productName="Spjälsängar" store="Babyonline" description="Stort urval spjälsängar och sovsäckar." />
 </ArticleLayout>
 
-<StickyCTA
-  href={inoviUrl}
-  text="Bäst totalt, Inovi Air Bedside Crib"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />
 </content>
 </invoke>

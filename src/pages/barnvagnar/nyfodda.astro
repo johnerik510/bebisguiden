@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -117,6 +118,8 @@ const faqItems = [
     Till en nyfödd krävs en barnvagn med plan liggdel, det är det absolut viktigaste kriteriet. Vi har granskat de bästa vagnarna specifikt för nyfödda och rankar dem efter liggdelens kvalitet, fjädring, hantering och pris.
   </p>
 
+  <TopPick product={products[0]} description="Emmaljunga NXT60 är vårt bäst i test bland barnvagn till nyfödd: Ja, medföljer och 12,4 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, barnvagnar för nyfödda 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -220,8 +223,4 @@ const faqItems = [
   <CTABox productName="Barnvagnar för nyfödda" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://addrevenue.io/t?a=986001&c=3467325&url=https%3A%2F%2Fwww.emmaljunga.com%2Fsv%2F"
-  text="Se pris hos Emmaljunga"
-  productName="Bäst i test till nyfödd 2026"
-/>
+<StickyTop3Bar products={products} />

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
@@ -113,6 +114,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En hopfällbar matstol är perfekt för resor, restaurangbesök eller om du bor trångt. Vi har jämfört de bästa hopfällbara matstolarna på den svenska marknaden, från den ultralätta Inglesina Fast Table Chair till den helhjärtade resematstolen Chicco 360.
   </p>
+
+  <TopPick product={products[0]} description="Chicco 360° Travel Highchair är vårt bäst i test bland hopfällbar: 5,5 kg och 55x44x25 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, hopfällbara matstolar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -232,8 +235,4 @@ const faqItems = [
   <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
-  text="Se bästa pris, Chicco 360° Travel Highchair"
-  productName="Bäst i test hopfällbar matstol 2026"
-/>
+<StickyTop3Bar products={products} />

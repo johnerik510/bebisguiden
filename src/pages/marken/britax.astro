@@ -3,8 +3,9 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -96,6 +97,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-4 max-w-2xl">
     Britax Römer är ett av de mest välkända märkena inom bilbarnstolar i Norden. Med rötter i brittisk säkerhetsteknik och decennier av krocktestning är märket synonymt med hög säkerhet. Här recenserar vi deras tre mest populära modeller för 2026 och väger för- och nackdelar med märket som helhet.
   </p>
+
+  <TopPick product={products[0]} description="Britax Römer Baby-Safe iSense är vårt bäst babyskydd bland britax römer: Babyskydd och 0 till 13 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -199,8 +202,6 @@ const faqItems = [
   description="Britax Römer Baby-Safe, Dualfix och Kidfix hos Jollyroom"
 />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-m-plus-bilbarnstol-space-black" text="Se bästa pris på Britax Römer hos Jollyroom" />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

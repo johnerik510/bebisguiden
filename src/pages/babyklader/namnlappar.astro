@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -132,6 +133,8 @@ const faqItems = [
     Namnlappar till förskolan är en av de mer underskattade inköpen inför skolstart. Lappar som lossnar i tvätten, bleknar efter ett par månader eller inte fäster ordentligt på vattenflaskor skapar mer problem än de löser. Vi har testat tre typer från Namnlappskungen, stryk-på, silikon och klistermärken, och jämfört hållbarhet, användningsområde och pris.
   </p>
 
+  <TopPick product={products[0]} description="Namnlappskungen Stryk-på är vårt bäst i test bland namnlappar: Stryk-på och 60 st ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, namnlappar 2026" />
 
   <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">Våra toppval 2026</h2>
@@ -238,13 +241,8 @@ const faqItems = [
 
   <CTABox productName="Namnlappar" store="Namnlappskungen" description="Personliga namnlappar som håller i tvätten." />
 
-  <StickyCTA
-    href={affiliateUrl}
-    productName="Namnlappskungen Stryk-på"
-    text="Köp namnlappar hos Namnlappskungen"
-  />
-
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     {
       name: 'Namnlappskungen Stryk-på',
       description: 'Slitstarka stryk-på-namnlappar som håller i 60-graderstvätt. 60 lappar per förpackning.',

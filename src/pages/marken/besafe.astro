@@ -3,8 +3,9 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -81,6 +82,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-4 max-w-2xl">
     BeSafe är ett norskt varumärke som sedan 1986 specialiserat sig på bakåtvända bilbarnstolar. Märket är känt för att ligga i framkant inom säkerhetsutveckling och är ett av få märken vars produkter är godkända i det stränga Plus-testet. Vi recenserar deras två mest sålda modeller i Sverige 2026.
   </p>
+
+  <TopPick product={products[0]} description="BeSafe iZi Modular RF X1 i-Size är vårt bäst bakåtvänd bland besafe: Bakåtvänd bilbarnstol och 61 till 105 cm (i-Size) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -167,11 +170,6 @@ const faqItems = [
   description="BeSafe iZi Modular RF X1 och Stretch hos Jollyroom"
 />
 
-  <StickyCTA
-    href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
-    text="Se pris på BeSafe hos Jollyroom"
-  />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

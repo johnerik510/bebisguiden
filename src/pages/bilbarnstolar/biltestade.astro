@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
@@ -127,6 +128,8 @@ const faqItems = [
     Att en bilbarnstol är EU-godkänd är ett minimikrav, inte ett kvalitetsmärke. Folksams årliga krocktest och det svenska Plus Test är de strängaste oberoende testerna i Europa. Vi listar enbart stolar som klarat dessa tester och förklarar vad resultaten betyder för ditt barns säkerhet.
   </p>
 
+  <TopPick product={products[0]} description="Axkid Minikid 4 är vårt folksams bästa val bland biltestade: Bra val och Godkänd ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -236,8 +239,8 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F" text="Se bästa pris, Axkid Minikid 4" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Axkid Minikid 4', description: 'Bäst i test bakåtvänd bilbarnstol med topp krocksäkerhet och lång användningstid.', brand: 'Axkid', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5299, url: 'https://addrevenue.io/t?a=985989&c=3467325&url=https%3A%2F%2Faxkid.com%2Fsv%2Fprodukt%2Fminikid-4%2F', seller: 'Axkid' }] },
     { name: 'Cybex Sirona T i-Size', description: 'Biltestestbäst komfort med 360-rotation och LinearSideSleep. ISOFIX-monterad.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5499, url: '/bilbarnstolar/', seller: 'Cybex' }] },
     { name: 'BeSafe iZi Turn B i-Size', description: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab', seller: 'Jollyroom' }] },

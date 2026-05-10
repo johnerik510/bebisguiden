@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -97,6 +98,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Rätt bärsele gör stor skillnad i sommarvärmen. Vi har valt ut de bästa bärselarna med luftiga mesh-material som håller både dig och barnet svala. Här är våra toppval för sommaren 2026.
   </p>
+
+  <TopPick product={products[0]} description="Ergobaby Omni 360 Cool Air Bärsele är vårt bäst i test bland sommarbärsele: 3,2 till 20 kg (0 till 4 år) och 4 (fram, rygg, höft, vändbar) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, sommarbärselen 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -209,8 +212,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Fwww.reirei.se%2Fbarselen"
-  text="Se pris hos Reirei, Ergobaby Cool Air"
-  productName="Bäst sommarbärsele 2026"
-/>
+<StickyTop3Bar products={products} />

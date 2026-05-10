@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -112,6 +113,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En bra elektrisk bröstpump kan halvera pumptiden och göra amningsresan betydligt enklare. Vi har granskat de populäraste modellerna och guidar dig till rätt val.
   </p>
+
+  <TopPick product={products[0]} description="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump är vårt bäst i test bland elektrisk bröstpump: Elektrisk dubbel och Ja, i BH ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, elektriska bröstpumpar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -224,8 +227,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fmamma%2Famningsprodukter%2Famningskuddar%2Fbbhugme-gravid-och-amningskudde-stone"
-  text="Se bästa pris, Medela Freestyle Hands-free"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

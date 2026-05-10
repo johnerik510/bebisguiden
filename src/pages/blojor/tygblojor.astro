@@ -1,6 +1,8 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
@@ -175,6 +177,8 @@ const faqItems = [
     <p>Tygblöjor är en specialistkategori, de stora svenska barnkedjorna (Jollyroom, Babyland, Baby V, Stor &amp; Liten, Köpbarnvagn) lagerhåller sällan dessa varumärken. Vi skickar dig därför till Google Shopping för aktuell prisjämförelse från Sveriges tygblöjespecialister. Föredrar du engångsblöjor? <a href="/blojor/" class="text-accent underline font-semibold">Se vår test av engångsblöjor</a>, där har vi direktlänkar till aktuella priser.</p>
   </div>
 
+  <TopPick product={products[0]} description="GroVia Hybrid är vårt bäst i test bland tygblöjor. Bra balans mellan kvalitet, prestanda och pris i jämförelsen." />
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, tygblöjor 2026</h2>
   <ComparisonTable products={tableProducts} featureLabels={featureLabels} />
 
@@ -301,4 +305,5 @@ const faqItems = [
     ratingValue: p.rating,
     reviewCount: 1,
   }))} />
+<StickyTop3Bar products={products} />
 </ArticleLayout>

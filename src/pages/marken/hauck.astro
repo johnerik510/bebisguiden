@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -81,6 +82,8 @@ const faqItems = [
     Hauck är ett tyskt barnproduktsmärke med anor sedan 1923. Märket är känt för att erbjuda god funktionalitet till ett lägre pris än premiumkonkurrenterna. Vi recenserar deras mest tillgängliga modeller hos Jollyroom i Sverige 2026.
   </p>
 
+  <TopPick product={products[0]} description="Hauck Rapid 4D Sittvagn är vårt bäst sittvagn bland hauck: Sittvagn och Fällbart, liggande läge ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Haucks bästa produkter 2026</h2>
@@ -157,11 +160,6 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA
-    href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
-    text="Se pris hos Jollyroom, Hauck Rapid 4D"
-  />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

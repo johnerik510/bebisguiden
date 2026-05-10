@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
@@ -129,6 +130,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Ett babybadkar gör de första badbadningarna tryggare och enklare. Vi har testat och jämfört fem av de mest populära babybadkaren på den svenska marknaden, från IKEA:s budgetalternativ till Stokkes hopfällbara resvinnare.
   </p>
+
+  <TopPick product={products[0]} description="Stokke Flexi Bath är vårt bäst i test bland badkar bebis: Nej (köps separat) och Nej (köps separat) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, babybadkar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -324,8 +327,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbadrummet%2Fbadbaljor%2Fstokke-flexi-bath-badbalja-xl-white"
-  text="Se bästa pris, Stokke Flexi Bath"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

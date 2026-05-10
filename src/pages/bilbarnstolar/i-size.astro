@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
@@ -131,6 +132,8 @@ const faqItems = [
     i-Size (R129) är den senaste och strängaste EU-säkerhetsstandarden för bilbarnstolar. Den kräver obligatoriska sidokrocktester, ISOFIX-montering och bakåtvänt åkande i minst 15 månader, krav som den äldre ECE R44-standarden inte ställer. Vi har testat och jämfört de bästa i-Size-stolarna på den svenska marknaden 2026.
   </p>
 
+  <TopPick product={products[0]} description="Cybex Sirona T i-Size är vårt bäst i test bland i-size: i-Size (R129) och Ja + stödben ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -238,8 +241,8 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black" text="Se bästa i-Size-stol" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Cybex Sirona T i-Size', description: 'i-Size bakåtvänd bilbarnstol med 360-rotation och sidokrocksskydd. ISOFIX.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black', seller: 'Jollyroom' }] },
     { name: 'Joie i-Spin 360', description: 'i-Size bakåtvänd bilbarnstol med 360-rotation och bra pris.', brand: 'Joie', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 3999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal', seller: 'Jollyroom' }] },
     { name: 'BeSafe iZi Modular i-Size', description: 'Modulär i-Size bilbarnstol med hög säkerhetsrating. Bakåtvänd länge.', brand: 'BeSafe', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 6499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab', seller: 'Jollyroom' }] },

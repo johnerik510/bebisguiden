@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -126,6 +127,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     De rätta leksakerna stimulerar bebisens syn, hörsel och motorik redan från födseln. Vi har testat och jämfört fem av de mest populära leksakerna för bebis 0 till 12 månader på den svenska marknaden.
   </p>
+
+  <TopPick product={products[0]} description="Fisher-Price Deluxe Kick & Play är vårt bäst i test bland leksaker: 0 till 9 mån och Plast ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, leksaker bebis 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -307,8 +310,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fleksaker%2Fbabyleksaker%2Fbabygym%2Fbeemoo-play-bunny-babygym-beige"
-  text="Se babyleksaker hos Jollyroom"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

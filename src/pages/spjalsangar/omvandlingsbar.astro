@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -112,6 +113,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En omvandlingsbar spjälsäng är en långsiktig investering, barnet sover i samma säng från nyfödd till 6 till 10 år. Vi har jämfört de bästa alternativen på den svenska marknaden, inklusive den bekräftade <a href="/marken/stokke/" class="text-accent underline">Stokke</a> Sleepi V3 till 5 999 kr.
   </p>
+
+  <TopPick product={products[0]} description="Stokke Sleepi V3 Natural är vårt bäst i test bland omvandlingsbar: Oval, omvandlingsbar och 0 till 10 år ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, omvandlingsbara spjälsängar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -224,8 +227,4 @@ const faqItems = [
   <CTABox productName="Spjälsängar" store="Babyonline" description="Stort urval spjälsängar och sovsäckar." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural"
-  text="Se bästa pris, Stokke Sleepi V3 Natural"
-  productName="Bäst i test omvandlingsbar spjälsäng 2026"
-/>
+<StickyTop3Bar products={products} />

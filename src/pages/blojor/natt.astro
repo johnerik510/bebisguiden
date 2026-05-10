@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -111,6 +112,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En bra nattblöja håller bebisen torr i upp till 12 timmar utan att du behöver byta mitt i natten. Vi har jämfört de bästa nattblöjorna på den svenska marknaden, Pampers Baby-Dry Night, Baby-Dry Pants och Libero Comfort.
   </p>
+
+  <TopPick product={products[0]} description="Pampers Baby-Dry Night Pants Stl 6 15 kg+ 138-pack är vårt bäst i test bland nattblöja: Nattbyxblöja och Stl 6 till 15 kg+ ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, nattblöjor 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -222,8 +225,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-baby-dry-night-pants-blojor-stl-6-15-kg-138-pack"
-  text="Se bästa pris, Pampers Baby-Dry Night Pants"
-  productName="Bäst i test nattblöja 2026"
-/>
+<StickyTop3Bar products={products} />

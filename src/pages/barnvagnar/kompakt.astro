@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -98,6 +99,8 @@ const faqItems = [
     En kompakt barnvagn med smal profil gör vardagen enklare i smala dörröppningar, hissar och kollektivtrafik. Vi guidar dig till de bästa modellerna för stadsliv.
   </p>
 
+  <TopPick product={products[0]} description="Baby Jogger City Tour 2 Sulky, Pitch Black är vårt bäst kompakt bland kompakt barnvagn: 47 cm och 6,5 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, kompakta barnvagnar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -185,8 +188,4 @@ const faqItems = [
   <CTABox productName="Kompakta barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fsulkys%2Fsulkys%2Fbaby-jogger-city-tour-2-sulky-pitch-black"
-  text="Se pris, Baby Jogger City Tour 2"
-  productName="Bäst kompakt 2026"
-/>
+<StickyTop3Bar products={products} />

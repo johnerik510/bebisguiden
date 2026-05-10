@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
@@ -151,6 +152,8 @@ const faqItems = [
     En bra sterilisator sparar tid och ger trygghet, särskilt för nyfödda med omoget immunförsvar. Vi har jämfört de fem bästa elektriska sterilisatorerna för baby på svenska marknaden, med fokus på steriliseringstid, kapacitet och daglig användbarhet.
   </p>
 
+  <TopPick product={products[0]} description="Philips Avent 3-i-1 Elektrisk Sterilisator är vårt bäst i test bland sterilisatorer: Ånga (elektrisk) och 6 flaskor ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, sterilisatorer baby 2026" />
 
   <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">Våra toppval 2026</h2>
@@ -296,13 +299,8 @@ const faqItems = [
     </ul>
   </div>
 
-  <StickyCTA
-    href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fata-dricka%2Fnappflaskor-tillbehor%2Frengoring%2Fbeemoo-care-3-in-1-uv-desinfektionsskap-white"
-    productName="Philips Avent 3-i-1 Sterilisator"
-    text="Se pris hos Jollyroom, Philips Avent Sterilisator"
-  />
-
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Philips Avent 3-i-1 Elektrisk Sterilisator', description: 'Elektrisk ångsterilisator som steriliserar på 6 minuter. Kapacitet 6 flaskor. Behåller sterilitet i 24 timmar.', image: 'https://bebisguiden.se/images/products/philips-avent-sterilisator-3-i-1.webp', brand: 'Philips', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 599, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fata-dricka%2Fnappflaskor-tillbehor%2Frengoring%2Fbeemoo-care-3-in-1-uv-desinfektionsskap-white', seller: 'Jollyroom' }] },
     { name: 'Tommee Tippee Elektrisk Ångsterilisator', description: 'Elektrisk ångsterilisator anpassad för Tommee Tippee-flaskor. Steriliserar på 8 minuter.', image: 'https://bebisguiden.se/images/products/tommee-tippee-sterilisator.webp', brand: 'Tommee Tippee', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 399, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fata-dricka%2Fnappflaskor-tillbehor%2Fnappflaskor%2Fphilips-avent-natural-response-nappflaska-260-ml-2-pack', seller: 'Jollyroom' }] },
     { name: 'NUK Elektrisk Ångsterilisator', description: 'Elektrisk sterilisator optimerad för NUK-flaskor och nappar. Kapacitet 6 flaskor + nappar.', image: 'https://bebisguiden.se/images/products/nuk-elektrisk-sterilisator.webp', brand: 'NUK', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 449, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fata-dricka%2Fnappflaskor-tillbehor%2Frengoring%2Fbeemoo-care-3-in-1-uv-desinfektionsskap-white', seller: 'Jollyroom' }] },

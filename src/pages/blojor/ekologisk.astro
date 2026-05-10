@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -111,6 +112,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Ekologiska blöjor är fria från klor, parfym och skadliga kemikalier. Märken som Naty, Bambo Nature och Muumi Baby är certifierade med Nordic Swan eller EU Ecolabel och presterar i nivå med konventionella premiumblöjor. Vi har jämfört de bästa ekologiska alternativen på den svenska marknaden.
   </p>
+
+  <TopPick product={products[0]} description="Naty Eco Blöjor Stl 2 3-6 kg 33-pack är vårt bäst i test bland ekologisk: EU Ecolabel, FSC och Ja (stl 1 till 2) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, ekologiska blöjor 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -229,8 +232,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
-  text="Se bästa pris, Naty Eco Blöjor"
-  productName="Bäst i test ekologisk 2026"
-/>
+<StickyTop3Bar products={products} />

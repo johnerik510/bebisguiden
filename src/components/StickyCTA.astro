@@ -18,7 +18,7 @@ const { text = 'Se bästa pris', href, productName } = Astro.props;
     href={href}
     target="_blank"
     rel="nofollow sponsored noopener noreferrer"
-    class="flex items-center justify-center w-full bg-cta text-white font-bold text-sm py-3.5 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]"
+    class="flex items-center justify-center w-full bg-cta text-white font-bold text-base px-4 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[52px] text-center"
   >
     {text}
     <svg class="w-4 h-4 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -39,15 +39,4 @@ const { text = 'Se bästa pris', href, productName } = Astro.props;
     if (window.scrollY > 400) show();
     else if (window.scrollY < 200) hide();
   }, { passive: true });
-
-  const vv = window.visualViewport;
-  if (vv) {
-    const pin = () => {
-      const gap = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
-      bar.style.bottom = `${gap}px`;
-    };
-    vv.addEventListener('resize', pin, { passive: true });
-    vv.addEventListener('scroll', pin, { passive: true });
-    pin();
-  }
 </script>

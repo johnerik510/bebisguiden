@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -95,6 +96,8 @@ const faqItems = [
     ISOFIX är det säkraste och enklaste sättet att montera en bilbarnstol. Vi förklarår hur systemet fungerar, hur du vet om din bil här det och vilka ISOFIX-stolar som är bast i test 2026.
   </p>
 
+  <TopPick product={products[0]} description="Cybex Sirona T i-Size är vårt premiumval bland isofix: ISOFIX + stödben och Bakatatvand/framåtatvand ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -183,8 +186,8 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black" text="Se bästa pris, Cybex Sirona T i-Size" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Cybex Sirona T i-Size', description: 'ISOFIX-bilbarnstol med 360-rotation och bäst säkerhet i klassen.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 6999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black', seller: 'Jollyroom' }] },
     { name: 'Britax Romer Dualfix 5Z i-Size', description: 'ISOFIX-bilbarnstol med 360-rotation och premium krocksäkerhet.', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-5z-bilbarnstol-harbor-blue', seller: 'Jollyroom' }] },
     { name: 'Maxi-Cosi Pearl 360', description: 'ISOFIX-bilbarnstol med 360-rotation och FamilyFix-baskompatibilitet.', brand: 'Maxi-Cosi', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 4999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fisofix%2Fmaxi-cosi-pearl-360-bilbarnstol-authentic-graphite', seller: 'Jollyroom' }] },

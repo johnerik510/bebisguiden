@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -147,6 +148,8 @@ const faqItems = [
   <p class="text-lg text-text-light leading-relaxed mb-4">
     Babykläder är ett av de första inköpen du gör, och ett av de mest förvirrande. Hur många kläder behövs? Vilka material är säkra? Vad är skillnaden på GOTS och OEKO-TEX? Vi går igenom de viktigaste kläderna för nyfödda och de bästa alternativen på svenska marknaden.
   </p>
+
+  <TopPick product={products[0]} description="Body randig, Polarn O. Pyret är vårt bäst totalt bland babykläder: Ekologisk bomull och GOTS ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, babykläder 2026" />
 
@@ -293,12 +296,8 @@ const faqItems = [
   <CTABox productName="Babykläder" store="Knattis" description="Babykläder och barnkläder för alla åldrar." />
   <CTABox productName="Namnlappar" store="Namnlappskungen" description="Personliga namnlappar till förskolan och skolan." />
 
-  <StickyCTA
-    href="https://pin.polarnopyret.se/t/t?a=1126522829&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.polarnopyret.se%2Fbarnklader%2Fklader%2Fbodys%2Fbody-randig-ljusgron-60603309-9019"
-    productName="Body randig, Polarn O. Pyret"
-    text="Se babykläder hos Polarn O. Pyret"
-  />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Body randig, Polarn O. Pyret', description: 'GOTS-certifierad ekologisk bomull. Klassisk randig design sedan 1976 med mjuka platta sömmar.', image: 'https://bebisguiden.se/images/products/polarnopyret-body-randig.webp', brand: 'Polarn O. Pyret', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 199, url: 'https://pin.polarnopyret.se/t/t?a=1126522826&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.polarnopyret.se%2Fbarnklader%2Fklader%2Fbodys%2Fbody-randig-ljusgron-60603309-9019', seller: 'Polarn O. Pyret' }] },
     { name: 'Trikåoverall randig, Polarn O. Pyret', description: 'Klassisk randig trikåoverall i GOTS-certifierad ekologisk bomull. Stl 44 till 92.', image: 'https://bebisguiden.se/images/products/polarnopyret-trikaoverall-randig.webp', brand: 'Polarn O. Pyret', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 329, url: 'https://pin.polarnopyret.se/t/t?a=1126522826&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.polarnopyret.se%2Fbarnklader%2Fklader%2Fsparkdrakt-overall%2Ftrikaoverall-randig-beige-60603336-2013', seller: 'Polarn O. Pyret' }] },
   ]} />

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -95,6 +96,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-4 max-w-2xl">
     Stokke är ett norskt premiumvarumärke känt för produkter som växer med barnet och håller i generationer. Tripp Trapp är en av världens mest sålda matstolar nagonsin. Men är det höga priset alltid motiverat? Vi recenserar Stokkes tre mest populära produkter och ger dig underlaget för att fatta rätt beslut.
   </p>
+
+  <TopPick product={products[0]} description="Stokke Tripp Trapp är vårt klassiker bland stokke: Matstol och max 85 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -190,8 +193,6 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack" text="Se bästa pris pa Stokke" />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import CTABox from '../../components/CTABox.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -112,6 +113,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En babyvakt ger trygghet när barnet sover i ett annat rum. Vi har jämfört ljud-, video- och WiFi-babyvakter och bedömt räckvidd, bildkvalitet, batteritid och säkerhet.
   </p>
+
+  <TopPick product={products[0]} description="Philips Avent DECT SCD503/26 är vårt bäst i test bland babyvakter: Ljud (DECT) och 330 m ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, babyvakter 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -259,8 +262,4 @@ const faqItems = [
 
 <CTABox productName="Babyvakter" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt" description="Stort urval babyvakter, ljud, video och WiFi." />
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fphilips-avent-dect-scd50326-babyvakt"
-  text="Se pris hos Jollyroom, Philips Avent DECT"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

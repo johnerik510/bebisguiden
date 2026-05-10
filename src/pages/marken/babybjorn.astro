@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -95,6 +96,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-4 max-w-2xl">
     BabyBjörn är ett av Sveriges mest kända babymärken, grundat 1961 i Stockholm. Märket är känt för minimalistisk design, hög materialkvalitet och ett premium-pris. Vi recenserar deras tre mest populära produkter för 2026 och utvärderar om BabyBjörns rykte fortfarande är välfortjänt.
   </p>
+
+  <TopPick product={products[0]} description="BabyBjörn Harmony är vårt bästa bärselen bland babybjörn: Bärsele och 3,5 till 15 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -190,8 +193,6 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack" text="Se bästa pris pa BabyBjörn hos Jollyroom" />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -112,6 +113,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En bra matstol är en av de mest använda barnprodukterna de första åren. Vi har jämfört fyra av de mest populära stolarna på svenska marknaden, från budgetvänliga IKEA Antilop till premiumalternativet <a href="/marken/stokke/" class="text-accent underline">Stokke</a> Tripp Trapp.
   </p>
+
+  <TopPick product={products[0]} description="Stokke Tripp Trapp Oak Natural är vårt bäst i test bland matstolar: Från 6 mån (med tillbehör) och 136 kg (vuxen) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, matstolar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -301,8 +304,4 @@ const faqItems = [
   <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnstolar-tillbehor%2Fbarnmatstolar%2Fstokke-tripp-trapp-matstol-oak-natural"
-  text="Se pris hos Jollyroom, Tripp Trapp"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

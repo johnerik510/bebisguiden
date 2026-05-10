@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import CTABox from '../../components/CTABox.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
@@ -152,6 +153,8 @@ const faqItems = [
     Vilken babyvakt med app är bäst i test 2026? Vi har testat 5 populära babyvakt-appar och jämfört bildkvalitet, fördröjning och push-notiser. En babyvakt app låter dig övervaka bebis live via mobilen, hemma, på jobbet eller varifrån som helst.
   </p>
 
+  <TopPick product={products[0]} description="Nanit Pro är vårt bäst i test bland app: Ja (Nanit) och Ja, 1080p ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -270,9 +273,8 @@ const faqItems = [
 
   <CTABox productName="Babyvakt med app" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt%2520app" description="Stort urval app-babyvakter, Nanit, Owlet, Motorola och mer." />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt" text="Se app-babyvakter hos Jollyroom" />
-
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Nanit Pro', description: 'Smart WiFi-babykamera med AI-sömnanalys och app-styrning. Bäst i test bland app-babyvakter.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 3299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit', seller: 'Jollyroom' }] },
     { name: 'Owlet Cam 2', description: 'WiFi-babykamera med enkel app och tydlig HD-bild. Enklast att sätta upp.', brand: 'Owlet', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1299, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white', seller: 'Jollyroom' }] },
     { name: 'Motorola Halo+', description: 'App-babyvakt med skärm och mobilapp kombinerat. 360-kamera och lång batteritid.', brand: 'Motorola', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1599, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt', seller: 'Jollyroom' }] },

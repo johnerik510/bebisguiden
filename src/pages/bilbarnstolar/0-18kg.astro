@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -95,7 +96,9 @@ const faqItems = [
   En bilbarnstol för 0 till 18 kg (40 till 105 cm) är en allroundlösning som täcker hela spädbarnsperioden, från nyfödd upp till ungefär 4 år. Du slipper köpa ny stol tidigt och bebisen sitter bakåtvänt hela perioden. Vi jämför de bästa alternativen på marknaden 2026.
 </p>
 
-<ComparisonTable products={products} featureLabels={featureLabels} />
+<TopPick product={products[0]} description="Britax Römer Dualfix 5Z i-Size är vårt bäst i test bland bilbarnstol 0 till 18 kg: 0 till 18 kg och 40 till 105 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
+  <ComparisonTable products={products} featureLabels={featureLabels} />
 
 <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
 
@@ -187,9 +190,8 @@ const faqItems = [
 
 <FAQ items={faqItems} />
 
-<StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-5z-bilbarnstol-harbor-blue" text="Se pris, Britax Dualfix 5Z bäst i test" />
-
-  <ProductSchema products={[
+<StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Britax Römer Dualfix 5Z i-Size', description: 'Bakåtvänd bilbarnstol 0 till 18 kg med 360-rotation och ISOFIX. Toppval för nyfödda.', image: 'https://bebisguiden.se/images/products/britax-dualfix-5z.webp', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 2995, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-5z-bilbarnstol-harbor-blue', seller: 'Jollyroom' }] },
     { name: 'BeSafe iZi Modular RF X1 i-Size', description: 'Bakåtvänd bilbarnstol 0 till 18 kg med modulärt system och ISOFIX.', image: 'https://bebisguiden.se/images/products/besafe-izi-modular-rf-x1.webp', brand: 'BeSafe', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 2999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab', seller: 'Jollyroom' }] },
   ]} />

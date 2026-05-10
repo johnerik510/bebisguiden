@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -80,6 +81,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-4 max-w-2xl">
     Ergobaby är ett av världens ledande märken för ergonomiska bärselen. Det amerikanska varumärket grundades 2003 och är känt för att sätta M-positionen och HIPS-certifieringen i centrum. Vi recenserar deras två mest sålda modeller i Sverige 2026.
   </p>
+
+  <TopPick product={products[0]} description="Ergobaby Omni 360 Bärsele är vårt bäst totalt bland ergobaby: Bärsele och 3,2 till 20 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -159,11 +162,6 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA
-    href="https://addrevenue.io/t?a=987575&c=3467325&url=https%3A%2F%2Freirei.se%2Fproducts%2Fergobaby-omni-360-svart"
-    text="Se pris hos Jollyroom, Ergobaby Omni 360"
-  />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>

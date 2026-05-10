@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -99,6 +100,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En GPS-klocka ger barnet frihet att röra sig självständigt och ger föräldern möjlighet att se var barnet befinner sig i realtid. Vi har testat tre av de ledande barnklockorna på den svenska marknaden, Xplora X6 Play, Xplora XGO3 och Garmin Bounce.
   </p>
+
+  <TopPick product={products[0]} description="Xplora X6 Play är vårt bäst i test bland barnklockor, främst tack vare 5 till 12 år. Bra balans mellan kvalitet, prestanda och pris." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, barnklockor med GPS 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -215,8 +218,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href={xploraUrl}
-  text="Se bästa pris, Xplora X6 Play"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

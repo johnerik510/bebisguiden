@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -131,6 +132,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Rätt napp kan göra skillnad för bebisens komfort, och förälderns nätter. Vi har jämfört de fem mest populära napparna 2026 med fokus på material, form, åldersstorlek och hur de faktiskt fungerar i vardagen.
   </p>
+
+  <TopPick product={products[0]} description="BIBS Colour Napp Latex 2-pack är vårt bäst i test bland napp: Naturgummi (latex) och Rund ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, nappar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -271,10 +274,6 @@ const faqItems = [
 />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fnappar-napphallare%2Fnappar%2Fbibs-colour-napp-2-pack-latex-stl-1-rund-vanilla-glow-dark-oak-glow"
-  text="Se bästa pris, BIBS Colour Latex"
-  productName="Bäst i test napp 2026"
-/>
+<StickyTop3Bar products={products} />
 </content>
 </invoke>

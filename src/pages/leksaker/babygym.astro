@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -126,6 +127,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Ett babygym ger bebisen ett dedikerat utrymme att utforska och stimuleras från dag ett. Vi har testat och jämfört fem av de bästa babygymmen på den svenska marknaden, från budgetalternativ till montessori-premium.
   </p>
+
+  <TopPick product={products[0]} description="Lovevery The Play Gym är vårt bäst i test bland babygym, främst tack vare 0 till 12 mån. Bra balans mellan kvalitet, prestanda och pris." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, babygym 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -305,8 +308,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fleksaker%2Fbabyleksaker%2Fbabygym%2Fbeemoo-play-bunny-babygym-beige"
-  text="Se babygym hos Jollyroom"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -145,6 +146,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En bra amningskudde avlastar axlar, nacke och armar och håller bebisen i rätt höjd. Vi har jämfört sex amningskuddar 2026, från budgetval till svenska Najell Gravidkudde, vår redaktionsfavorit som fungerar både under graviditet och amning.
   </p>
+
+  <TopPick product={products[0]} description="Doomoo Amningskudde Softy, Svampar är vårt bäst i test bland amningskudde: U-form och Bomull/EPS ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, amningskuddar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -319,8 +322,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href={JR + 'https%3A%2F%2Fwww.jollyroom.se%2Fmamma%2Famningsprodukter%2Famningskuddar%2Fdoomoo-amningskudde-svampar'}
-  text="Se bästa pris, Doomoo Softy"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

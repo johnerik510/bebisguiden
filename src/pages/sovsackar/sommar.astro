@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -108,6 +109,8 @@ const faqItems = [
     </div>
   </div>
 
+  <TopPick product={products[0]} description="Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant är vårt bäst i test bland sommarsovsack bebis: 6 till 18 månader och Polyester ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, sommarsovsäckar bebis 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -206,8 +209,4 @@ const faqItems = [
   ]} />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fsangtillbehor%2Fsovpasar"
-  text="Se sommarsovsäckar hos Jollyroom"
-  productName="Bäst sommarsovsäck 2026"
-/>
+<StickyTop3Bar products={products} />

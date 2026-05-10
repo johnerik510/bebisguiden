@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -130,6 +131,8 @@ const faqItems = [
     En säker bilbarnstol behöver inte kosta skjortan. Vi har jämfört de bästa bilbarnstolarna under 2 000 kr på den svenska marknaden, modeller som klarar europeiska krocktester och ger barnet ett pålitligt skydd utan att tömma plånboken.
   </p>
 
+  <TopPick product={products[0]} description="Joie i-Trillo FX är vårt bäst i test bland budget: ISOFIX och Ej tillämpligt ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -231,8 +234,8 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbaltesstolar%2Fbaltesstolar%2Fjoie-i-trillo-fx-baltesstol-ember" text="Se bästa pris hos Jollyroom" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Joie i-Trillo FX', description: 'Prisvärd bältesstol (grupp 2/3) med ISOFIX och i-Size-godkännande. Bäst pris i test.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 1399, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbaltesstolar%2Fbaltesstolar%2Fjoie-i-trillo-fx-baltesstol-ember', seller: 'Jollyroom' }] },
     { name: 'Chicco Bi-Seat Air', description: 'Budgetvänlig bilbarnstol som används framåt- och bakåtvänd. Bäst för pengarna.', brand: 'Chicco', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 1199, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fchicco-bi-seat-air-bilbarnstol-black', seller: 'Jollyroom' }] },
     { name: 'Britax Römer Kidfix M i-Size', description: 'Prisvärd bältad bilbarnstol med ISOfix från Britax. God säkerhetsrating.', brand: 'Britax Römer', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 1499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbaltesstolar%2Fbaltesstolar%2Fbritax-romer-kidfix-m-i-size-classic-baltesstol-space-black', seller: 'Jollyroom' }] },

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -147,6 +148,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Vi har testat och jämfört 5 duovagnar i olika prisklasser, från <a href="/barnvagnar/budget/" class="text-accent underline">budgetvagnar</a> runt 2 300 kr till premiummodeller över 11 000 kr. <a href="/marken/cybex/" class="text-accent underline">Cybex Priam</a> vinner totalt, men <strong>Cybex EOS Lux</strong> ger bäst valuta för pengarna. Nedan hittar du jämförelsetabell, detaljerade omdömen och vår köpguide.
   </p>
+
+  <TopPick product={products[0]} description="Cybex Priam Duovagn är vårt bäst i test bland barnvagnar: Duovagn och 11,5 kg ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, barnvagnar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -309,8 +312,4 @@ const faqItems = [
   <CTABox productName="Barnvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fcybex-priam-duovagn-miragegrey-chromebro"
-  text="Se pris hos Jollyroom, Cybex Priam"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -118,6 +119,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Ringslingor och mjuka sjalbärselar är de enklaste bärhjälpmedlen för nyfödda. De är snabba att ta på, justerbara och perfekta för amning. Vi testar de bästa alternativen på svenska marknaden 2026.
   </p>
+
+  <TopPick product={products[0]} description="Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black är vårt bäst för nyfödd bland ringslinga: Sjal/bärsele och 4 lägen ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, sjalbärselar och ringslingor 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -239,8 +242,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-omni-deluxe-barsele-mesh-natural-beige"
-  text="Se bästa pris, Love Radius HoodieCarrier 2"
-  productName="Bäst för nyfödda 2026"
-/>
+<StickyTop3Bar products={products} />

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -131,6 +132,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     En bra resesäng ska vara lätt, snabb att montera och godkänd som primärsäng. Vi har testat och jämfort de bästa resesängarna för bebis och barn, från budgetalternativet <a href="/marken/hauck/" class="text-accent underline">Hauck</a> Dream N Play Plus till premiummärken som <a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> och Nuna.
   </p>
+
+  <TopPick product={products[0]} description="BabyBjörn Travel Crib Light är vårt bäst i test bland resesäng: 5 kg och Under 2 min ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, resesängar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -288,8 +291,4 @@ const faqItems = [
   <CTABox productName="Spjälsängar" store="Babyonline" description="Stort urval spjälsängar och sovsäckar." />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fjly-dream-ella-spjalsang-dropside-vit"
-  text="Se bästa pris, BabyBjörn Travel Crib Light"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

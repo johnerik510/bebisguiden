@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
@@ -148,6 +149,8 @@ const faqItems = [
   <p class="text-lg text-text-light leading-relaxed mb-4">
     En sovsäck är ett av de viktigaste inköpen för en nyfödd, och det säkraste alternativet till lösa täcken. Vi har testat och jämfört de fem bästa sovsäckarna för baby på svenska marknaden, med fokus på säkerhet, TOG-värde och materialval.
   </p>
+
+  <TopPick product={products[0]} description="Voksi Nordic N1 Wool är vårt bäst i test bland sovsäckar: Ull/bomull och 0 till 9 mån ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, sovsäckar baby 2026" />
 
@@ -351,8 +354,8 @@ const faqItems = [
   </ul>
 </div>
 
-  <StickyCTA href={products[0].ctaHref} productName={products[0].name} text="Se bästa pris" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Voksi Nordic N1 Wool', description: 'Sovsäck i ull för bebis. Naturliga temperaturregulerande egenskaper, OEKO-TEX-certifierad.', image: 'https://bebisguiden.se/images/products/voksi-nordic-n1-wool.webp', brand: 'Voksi', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 899, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fsangtillbehor%2Fsovpasar', seller: 'Jollyroom' }] },
     { name: 'HALO SleepSack Micro-Fleece', description: 'Populär sovsäck i mjuk fleece med omslutande design. Ersätter filt på ett säkert sätt.', image: 'https://bebisguiden.se/images/products/halo-sleepsack.webp', brand: 'HALO', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 399, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fsangtillbehor%2Fsovpasar%2Fergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep', seller: 'Jollyroom' }] },
   ]} />

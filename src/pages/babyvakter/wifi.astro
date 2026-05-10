@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import CTABox from '../../components/CTABox.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
@@ -112,6 +113,8 @@ const faqItems = [
     En WiFi-babyvakt låter dig övervaka barnet via app oavsett var du befinner dig. Vi har jämfört de bästa WiFi-babyvakterna på den svenska marknaden, från premiummodeller med somanalys till prisvärda kameror med Full HD-bild.
   </p>
 
+  <TopPick product={products[0]} description="Owlet Cam 2 är vårt bäst i test bland wifi: 1080p Full HD och iOS + Android ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -202,9 +205,8 @@ const faqItems = [
 
   <CTABox productName="WiFi-babyvakt" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt%2520wifi" description="Stort urval WiFi-babyvakter hos Jollyroom, Owlet, Nanit och eufy." />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fmotorola-vm75-video-babyvakt" text="Se WiFi-babyvakter hos Jollyroom" />
-
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Owlet Cam 2', description: 'WiFi-babyvakt med tydlig HD-bild och enkel app. Bäst i test bland WiFi-babyvakter.', brand: 'Owlet', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 1990, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Fowlet-cam-2-babyvakt-white', seller: 'Jollyroom' }] },
     { name: 'Nanit Pro', description: 'Premiumvalt WiFi-babykamera med AI-sömnanalys och app.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 3490, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit', seller: 'Jollyroom' }] },
     { name: 'eufy SpaceView Pro', description: 'Hybrid WiFi-babyvakt med stor 5-tumsskärm och app. Bra räckvidd och bildkvalitet.', brand: 'Eufy', ratingValue: 4.5, reviewCount: 1, offers: [{ price: 2490, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbabyvakter%2Falecto-dvm-64-babyvakt-vit', seller: 'Jollyroom' }] },

@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 
@@ -113,6 +114,8 @@ const faqItems = [
     En välpassad amnings-BH gör stor skillnad för komforten under amningsperioden. Vi guidar dig genom de viktigaste egenskaperna och rekommenderar bästa modellerna.
   </p>
 
+  <TopPick product={products[0]} description="Carriwell Vadderad Gravid- och Amnings-BH, Svart är vårt bäst i test bland amnings-bh: Vadderad och Nej (sömlös) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, amnings-BH 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -221,8 +224,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fmamma%2Fmammaklader%2Famningsklader%2Famnings-bh%2Fcarriwell-vadderad-gravid-och-amnings-bh-svart"
-  text="Se pris, Carriwell Vadderad Amnings-BH"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

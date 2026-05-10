@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -108,6 +109,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Under de tre första månaderna är bebisens sinnen under intensiv utveckling. Rätt leksaker stimulerar syn, hörsel och det tidiga greppet utan att överbelasta. Här är de bästa leksakerna för nyfödd bebis, med riktiga priser från Jollyroom.
   </p>
+
+  <TopPick product={products[0]} description="Tikiri Teeny Doll Skallra, Blå är vårt bäst i test bland leksaker 0 till 3 månader: 0 till 12 mån och Naturgummi ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, leksaker 0 till 3 månader</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -269,8 +272,4 @@ const faqItems = [
 
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fleksaker%2Fbabyleksaker%2Fskallror%2Fdone-by-deer-handledsskallra-2-pack-dotti-green"
-  text="Se pris, Done By Deer Handledsskallra"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

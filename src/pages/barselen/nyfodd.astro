@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 
@@ -131,6 +132,8 @@ const faqItems = [
     Rätt bärsele för en nyfödd ger stöd till bebisens omogna höfter och ryggrad, och frigör händerna redan från dag ett. Vi har jämfört fem bärselen speciellt lämpade för nyfödda, med fokus på ergonomi, säkerhet och hur enkla de är att använda.
   </p>
 
+  <TopPick product={products[0]} description="BabyBjörn Mini är vårt bäst i test bland nyfödd: 3,5 till 11 kg och 2 (fram inåt/utåt) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bärsele för nyfödda 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -243,8 +246,8 @@ const faqItems = [
   description="Bärsele som fungerar från nyfödd (3,5 kg) utan extrainsats. Ergonomisk M-position."
 />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron" text="Se bästa pris, BabyBjörn Mini" productName="Bäst i test 2026" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'BabyBjörn Mini', description: 'Lättviktsbärsele för nyfödda. Enkel att ta på och av med en hand.', brand: 'BabyBjörn', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 1099, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron', seller: 'Jollyroom' }] },
     { name: 'Ergobaby Embrace', description: 'Mjuk bärsele för nyfödda med inbyggt stöd. Ingen insert behövs.', brand: 'Ergobaby', ratingValue: 4.7, reviewCount: 1, offers: [{ price: 899, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fergobaby-embrace-barsele-pure-black', seller: 'Jollyroom' }] },
     { name: 'Cybex Yema Tie', description: 'Mjuk sjalbärsele för nyfödda. Enkel att knyta och anpassa.', brand: 'Cybex', ratingValue: 4.4, reviewCount: 1, offers: [{ price: 749, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarselar-barsjalar%2Fbarselar%2Fbabybjorn-harmony-barsele-3d-mesh-morkgron', seller: 'Jollyroom' }] },

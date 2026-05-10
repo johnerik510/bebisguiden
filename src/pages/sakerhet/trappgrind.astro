@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
 const breadcrumbs = [
@@ -116,6 +117,8 @@ const faqItems = [
     <p class="text-sm font-semibold text-amber-900 mb-1">Viktigt om trapptoppen</p>
     <p class="text-sm text-amber-800">Vid trapptoppen krävs alltid en <strong>skruvmonterad grind</strong>. Tryckmonterade grindar är inte godkända för trapptopp, de kan ge efter under barnets tryck och orsaka fall.</p>
   </div>
+
+  <TopPick product={products[0]} description="BabyDan Adjust Pro Skruvgrind Baluster Edition, Wood är vårt bäst för trapptoppen bland trappgrind: Skruvmonterad och 74,5 till 114 cm ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, trappgrindar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -237,8 +240,4 @@ const faqItems = [
   ]} />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fbarnsakerhet%2Fbarngrindar-trappgrindar%2Fskruvgrindar%2Fbabydan-adjust-pro-skruvgrind-baluster-edition-wood"
-  text="Se bästa pris, BabyDan Adjust Pro Trappgrind"
-  productName="Bäst för trapptoppen 2026"
-/>
+<StickyTop3Bar products={products} />

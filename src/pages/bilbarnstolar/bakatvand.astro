@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
@@ -97,6 +98,8 @@ const faqItems = [
     Vilken bakåtvänd bilbarnstol är bäst i test 2026? Bakåtvänt åkande är upp till fem gånger säkrare för små barn enligt Folksams krocktester. Vi har testat och jämfört de bästa bakåtvända bilbarnstolarna på den svenska marknaden, från premiumstolar med 360-graders rotation till prisvärda alternativ.
   </p>
 
+  <TopPick product={products[0]} description="Britax Romer Dualfix 5Z i-Size är vårt bäst i test bland bakatatvand: ISOFIX + stödben och 105 cm (ca 4 år) ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
+
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
   <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
@@ -174,8 +177,8 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-5z-bilbarnstol-harbor-blue" text="Se bästa pris, Britax Romer Dualfix 5Z" />
-  <ProductSchema products={[
+  <StickyTop3Bar products={products} />
+<ProductSchema products={[
     { name: 'Britax Romer Dualfix 5Z i-Size', description: 'Bäst i test bakåtvänd bilbarnstol med 360-rotation och topp krocksäkerhet. ISOFIX.', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1, offers: [{ price: 5999, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbritax-romer-dualfix-5z-bilbarnstol-harbor-blue', seller: 'Jollyroom' }] },
     { name: 'Axkid Minikid 4 Pro', description: 'Bakåtvänd bilbarnstol med lång användningstid upp till 7 år. Hög säkerhetsnivå.', brand: 'Axkid', ratingValue: 4.8, reviewCount: 1, offers: [{ price: 5499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Faxkid-minikid-4-pro-bilbarnstol-coastal-storm-black', seller: 'Jollyroom' }] },
     { name: 'Joie i-Spin 360', description: 'Bakåtvänd bilbarnstol med 360-rotation och ISOFIX. Bra pris för funktionaliteten.', brand: 'Joie', ratingValue: 4.6, reviewCount: 1, offers: [{ price: 4499, url: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fjoie-i-spin-360-bilbarnstol-coal', seller: 'Jollyroom' }] },

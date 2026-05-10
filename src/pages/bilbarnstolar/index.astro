@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
@@ -96,6 +97,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-3 max-w-2xl">
     Vi har granskat krocktester från Folksam och ADAC, jämfört funktioner och priser, och rankat de bästa bilbarnstolarna för varje åldersgrupp.
   </p>
+
+  <TopPick product={products[0]} description="Britax Romer Dualfix 5Z i-Size är vårt bäst i test bland bilbarnstolar: ISOFIX + stödben och Bakåtvänd/framåtvänd ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bilbarnstolar 2026</h2>
   <ComparisonTable products={products} featureLabels={featureLabels} />
@@ -228,8 +231,4 @@ const faqItems = [
   ]} />
 </ArticleLayout>
 
-<StickyCTA
-  href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2F1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue"
-  text="Se bästa pris, Britax Römer Dualfix 5Z"
-  productName="Bäst i test 2026"
-/>
+<StickyTop3Bar products={products} />

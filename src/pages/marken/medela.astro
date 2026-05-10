@@ -2,8 +2,9 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
@@ -80,6 +81,8 @@ const faqItems = [
   <p class="text-base text-text-light mb-4 max-w-2xl">
     Medela är världens ledande märke för bröstpumpar och amningsprodukter. Det schweiziska företaget, grundat 1961, är känt för sin 2-Phase Expression-teknologi och används av sjukhus i hela världen. Vi recenserar deras två mest populära hemmodeller för 2026.
   </p>
+
+  <TopPick product={products[0]} description="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump är vårt bäst totalt bland medela: Elektrisk dubbelpump och Ja, kupor döljs i BH ger en stark helhet. Ett tryggt val om du vill minimera risken för felköp." />
 
   <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -159,11 +162,6 @@ const faqItems = [
 
   <FAQ items={faqItems} />
 
-  <StickyCTA
-    href="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fmamma%2Famningsprodukter%2Fbrostpumpar-tillbehor%2Fmedela-swing-maxi-elektrisk-dubbelbrostpump"
-    text="Se pris hos Jollyroom, Medela Freestyle"
-  />
-
-
-  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+  <StickyTop3Bar products={products} />
+<RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
 </ArticleLayout>
