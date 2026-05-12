@@ -10,7 +10,12 @@ export interface AffiliateStore {
   network: 'adtraction' | 'addrevenue' | 'awin' | 'direct';
   baseUrl: string;
   searchUrl?: string;
-  buildUrl: (targetUrl: string) => string;
+  /**
+   * @deprecated Använd aldrig denna funktion. Bevarad endast för bakåtkompatibilitet.
+   * Returnerar alltid undefined så att hallucinerade tracker-URL:er aldrig kan genereras.
+   * Använd `resolveTrackedUrl` från `lib/cta-resolver.ts` istället.
+   */
+  buildUrl: (targetUrl: string) => string | undefined;
 }
 
 export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
@@ -20,7 +25,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'adtraction',
     baseUrl: 'https://www.babyland.se',
     searchUrl: 'https://www.babyland.se/?q={q}',
-    buildUrl: (t) => `https://track.adtraction.com/t/t?a=1066444609&c=2065068845&p=1&s=&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Baby V': {
     name: 'Baby V',
@@ -28,7 +33,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'adtraction',
     baseUrl: 'https://www.babyv.se',
     searchUrl: 'https://www.babyv.se/?q={q}',
-    buildUrl: (t) => `https://track.adtraction.com/t/t?a=1327902112&c=2065068845&p=1&s=&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Jollyroom': {
     name: 'Jollyroom',
@@ -36,7 +41,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'adtraction',
     baseUrl: 'https://www.jollyroom.se',
     searchUrl: 'https://www.jollyroom.se/?q={q}',
-    buildUrl: (t) => `https://track.adtraction.com/t/t?a=1222362815&c=2065068845&p=1&s=&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Polarn O. Pyret': {
     name: 'Polarn O. Pyret',
@@ -44,7 +49,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'adtraction',
     baseUrl: 'https://www.polarnopyret.se',
     searchUrl: 'https://www.polarnopyret.se/?q={q}',
-    buildUrl: (t) => `https://track.adtraction.com/t/t?a=1126522826&c=2065068845&p=1&s=&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Stor och Liten': {
     name: 'Stor och Liten',
@@ -52,7 +57,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'adtraction',
     baseUrl: 'https://www.storochliten.se',
     searchUrl: 'https://www.storochliten.se/?q={q}',
-    buildUrl: (t) => `https://track.adtraction.com/t/t?a=1060728461&c=2065068845&p=1&s=&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Xplora': {
     name: 'Xplora',
@@ -60,7 +65,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'adtraction',
     baseUrl: 'https://www.xplora.com',
     searchUrl: 'https://www.xplora.com/?q={q}',
-    buildUrl: (t) => `https://track.adtraction.com/t/t?a=1954032100&c=2065068845&p=1&s=&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Leksaksaffaren': {
     name: 'Leksaksaffaren',
@@ -68,7 +73,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.leksaksaffaren.com',
     searchUrl: 'https://www.leksaksaffaren.com/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=987009&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Litenleker': {
     name: 'Litenleker',
@@ -76,7 +81,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.litenleker.se',
     searchUrl: 'https://www.litenleker.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=985276&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Min-lilla-sotnos': {
     name: 'Min-lilla-sotnos',
@@ -84,7 +89,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.min-lilla-sotnos.se',
     searchUrl: 'https://www.min-lilla-sotnos.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=986377&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Mickiofsweden': {
     name: 'Mickiofsweden',
@@ -92,7 +97,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.mickiofsweden.com',
     searchUrl: 'https://www.mickiofsweden.com/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=984911&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Reirei': {
     name: 'Reirei',
@@ -100,7 +105,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.reirei.se',
     searchUrl: 'https://www.reirei.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=987575&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Summervilleorganic': {
     name: 'Summervilleorganic',
@@ -108,7 +113,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.summervilleorganic.com',
     searchUrl: 'https://www.summervilleorganic.com/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=985585&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Leksakerplus': {
     name: 'Leksakerplus',
@@ -116,7 +121,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.leksakerplus.se',
     searchUrl: 'https://www.leksakerplus.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=985346&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Najell': {
     name: 'Najell',
@@ -124,7 +129,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.najell.com',
     searchUrl: 'https://www.najell.com/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=984973&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Emmaljunga': {
     name: 'Emmaljunga',
@@ -132,7 +137,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.emmaljunga.com',
     searchUrl: 'https://www.emmaljunga.com/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=986001&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Lealillebror': {
     name: 'Lealillebror',
@@ -140,7 +145,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.lealillebror.se',
     searchUrl: 'https://www.lealillebror.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=985469&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Crescentbarnvagnar': {
     name: 'Crescentbarnvagnar',
@@ -148,7 +153,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.crescentbarnvagnar.se',
     searchUrl: 'https://www.crescentbarnvagnar.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=986149&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Babyonline': {
     name: 'Babyonline',
@@ -156,7 +161,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.babyonline.se',
     searchUrl: 'https://www.babyonline.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=987081&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Inovi': {
     name: 'Inovi',
@@ -164,7 +169,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.inovi.se',
     searchUrl: 'https://www.inovi.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=986153&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Nanobebe': {
     name: 'Nanobebe',
@@ -172,7 +177,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.nanobebe.se',
     searchUrl: 'https://www.nanobebe.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=985384&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Inoki': {
     name: 'Inoki',
@@ -180,7 +185,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.inoki.se',
     searchUrl: 'https://www.inoki.se/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=987691&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
   'Knattis': {
     name: 'Knattis',
@@ -188,7 +193,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     network: 'addrevenue',
     baseUrl: 'https://www.knattis.com',
     searchUrl: 'https://www.knattis.com/?q={q}',
-    buildUrl: (t) => `https://addrevenue.io/t?a=986599&c=3467325&url=${encodeURIComponent(t)}`,
+    buildUrl: () => undefined,
   },
 };
 
@@ -204,15 +209,8 @@ export function getStore(storeName: string): AffiliateStore | undefined {
   return undefined;
 }
 
-export function buildSearchDeeplink(storeName: string, query: string): string | undefined {
-  const store = getStore(storeName);
-  if (!store?.searchUrl) return undefined;
-  const targetUrl = store.searchUrl.replace('{q}', encodeURIComponent(query));
-  return store.buildUrl(targetUrl);
-}
-
-export function buildProductDeeplink(storeName: string, productPageUrl: string): string | undefined {
-  const store = getStore(storeName);
-  if (!store) return undefined;
-  return store.buildUrl(productPageUrl);
-}
+/**
+ * @deprecated Använd resolveTrackedUrl från lib/cta-resolver.ts istället.
+ * Kvar för bakåtkompat, re-exporteras från cta-resolver. Använd inte direkt.
+ */
+export { buildSearchDeeplink, buildProductDeeplink } from '../lib/cta-resolver';
