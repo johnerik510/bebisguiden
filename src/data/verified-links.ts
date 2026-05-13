@@ -11,6 +11,7 @@
  */
 
 export const VERIFIED_LINKS: Record<string, string> = {
-  // Lägg till brands utan feed-täckning här. Format:
-  //   '<store-name>': '<verified-tracker-url-till-startsidan>',
+  // Verifierad 2026-05-13 via Adtraction Create link → Xploras brand-startsida.
+  // Ersätter felaktig hand-konstruerad URL (a=1954032102 var product-feed-ID, ej Create link-ID).
+  'Xplora': 'https://to.xplora.se/t/t?a=1954032101&as=2065068845&t=2&tk=1',
 };
