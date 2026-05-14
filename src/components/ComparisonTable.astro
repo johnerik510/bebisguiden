@@ -1,5 +1,6 @@
 ---
-import { retailerMeta, sortByCommission, track, defaultRetailers, resolveTarget, type Retailer } from '../data/affiliates';
+import { resolveMultiCTA } from '../lib/multi-cta';
+import { retailerMeta, type Retailer } from '../data/affiliates';
 
 interface Product {
  name: string;
@@ -9,8 +10,11 @@ interface Product {
  badge?: string;
  ctaHref?: string;
  features: Record<string, string>;
- /** Valfria extra butiker att visa som jämförelsepris-knappar. Default: alla 5 i provisionsordning. */
+ /** Märke , används för att hitta alla butiker som säljer det via feed. */
+ brand?: string;
+ /** Legacy-prop, ignoreras av multi-CTA men kvar för bakåtkompat. */
  retailers?: Retailer[];
+ /** Legacy-prop, ignoreras av multi-CTA men kvar för bakåtkompat. */
  retailerPaths?: Partial<Record<Retailer, string>>;
 }
 
@@ -19,38 +23,29 @@ interface Props {
  featureLabels: string[];
 }
 
-const { products, featureLabels } = Astro.props;
+const { products: rawProducts, featureLabels } = Astro.props;
 
 function detectRetailer(url: string | undefined): Retailer | undefined {
  if (!url) return undefined;
  for (const key of Object.keys(retailerMeta) as Retailer[]) {
- const meta = retailerMeta[key];
- if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
+  const meta = retailerMeta[key];
+  if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
  }
  return undefined;
 }
 
-// Bygger en deeplink-href om det finns en riktig produkt-URL, annars null.
-// Search-fallback har tagits bort, det är bättre att inte visa CTA än att leda till sökresultat med 0 träffar.
-function buildHref(retailer: Retailer, _productName: string, path?: string): string | null {
- const target = resolveTarget(retailer, path);
- if (!target) return null;
- return track(retailer, target);
-}
-
-function primaryLabelFor(product: Product): string {
- const detected = detectRetailer(product.ctaHref);
- return detected? `Se pris hos ${retailerMeta[detected].name}`: 'Se pris';
-}
-
-function secondaryFor(product: Product): Retailer[] {
- const list = product.retailers && product.retailers.length > 0? product.retailers: defaultRetailers;
- const sorted = sortByCommission(list);
- const detected = detectRetailer(product.ctaHref);
- const filtered = detected? sorted.filter((r) => r!== detected): sorted;
- // Filtrera bort retailers utan resolverbar produkt-URL
- return filtered.filter((r) => resolveTarget(r, product.retailerPaths?.[r])!== null);
-}
+// Multi-CTA per produkt: primary = högst commission, others sorterade efter commission desc
+const products = rawProducts.map((p) => {
+ const detected = detectRetailer(p.ctaHref);
+ const fallbackStore = detected ? retailerMeta[detected].name : undefined;
+ const fallback = p.ctaHref && fallbackStore ? { store: fallbackStore, url: p.ctaHref } : undefined;
+ const multi = resolveMultiCTA(p.name, { brand: p.brand, fallback, max: 4 });
+ return {
+  ...p,
+  primary: multi?.primary,
+  others: multi?.others ?? [],
+ };
+});
 ---
 
 {/* Mobile: stacked product cards */}
@@ -79,39 +74,31 @@ function secondaryFor(product: Product): Retailer[] {
  {featureLabels.map(label => (
  <div class="flex justify-between gap-2 text-sm">
  <dt class="text-text-light">{label}</dt>
- <dd class="font-medium text-text text-right">{p.features[label] || ','}</dd>
+ <dd class="font-medium text-text text-right">{p.features[label] || '-'}</dd>
  </div>
  ))}
  </dl>
- {p.ctaHref && (
- <a href={p.ctaHref} target="_blank" rel="nofollow sponsored noopener noreferrer"
+ {p.primary && (
+ <a href={p.primary.url} target="_blank" rel="nofollow sponsored noopener noreferrer"
  class="flex items-center justify-center gap-1.5 w-full bg-cta text-white font-semibold text-sm py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
- {primaryLabelFor(p)}
+ Se pris hos {p.primary.store}
  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  )}
- {(() => {
- const secs = secondaryFor(p);
- return secs.length > 0? (
- <div class="mt-2.5">
- <p class="text-xs text-text-light mb-1.5">Jämför pris hos:</p>
- <div class="flex flex-wrap gap-1.5">
- {secs.map((r) => {
- const meta = retailerMeta[r];
- const href = buildHref(r, p.name, p.retailerPaths?.[r]);
- if (!href) return null;
- return (
- <a href={href} target="_blank" rel="nofollow sponsored noopener noreferrer"
- class={`${meta.color} text-white text-xs font-semibold px-2.5 py-1 rounded-md transition-colors`}
- aria-label={`Se pris hos ${meta.name}`}>
- {meta.name}
+ {p.others.length > 0 && (
+ <div class="mt-2.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-light">
+ <span class="font-semibold uppercase tracking-wide">Även hos:</span>
+ {p.others.map((o, i) => (
+ <>
+ <a href={o.url} rel="nofollow sponsored noopener noreferrer" target="_blank"
+ class="hover:text-accent-dark underline decoration-dotted underline-offset-4">
+ {o.store}
  </a>
- );
- })}
+ {i < p.others.length - 1 && <span class="text-text-light/50">·</span>}
+ </>
+ ))}
  </div>
- </div>
- ): null;
- })}
+ )}
  </div>
  </div>
  ))}
@@ -139,48 +126,43 @@ function secondaryFor(product: Product): Retailer[] {
  <tbody>
  <tr class="border-t border-border">
  <td class="p-3 font-medium text-text-light">Pris</td>
- {products.map(p => <td class="p-3 text-center font-bold">{p.price || ','}</td>)}
+ {products.map(p => <td class="p-3 text-center font-bold">{p.price || '-'}</td>)}
  </tr>
  <tr class="border-t border-border bg-bg-alt/50">
  <td class="p-3 font-medium text-text-light">Betyg</td>
- {products.map(p => <td class="p-3 text-center font-bold text-star">{p.rating? `${p.rating}/5`: ','}</td>)}
+ {products.map(p => <td class="p-3 text-center font-bold text-star">{p.rating ? `${p.rating}/5` : '-'}</td>)}
  </tr>
  {featureLabels.map((label, i) => (
- <tr class={`border-t border-border ${i % 2 === 0? '': 'bg-bg-alt/50'}`}>
+ <tr class={`border-t border-border ${i % 2 === 0 ? '' : 'bg-bg-alt/50'}`}>
  <td class={`p-3 font-medium text-text-light`}>{label}</td>
- {products.map(p => <td class="p-3 text-center">{p.features[label] || ','}</td>)}
+ {products.map(p => <td class="p-3 text-center">{p.features[label] || '-'}</td>)}
  </tr>
  ))}
  <tr class="border-t border-border">
  <td class="p-3"></td>
  {products.map(p => (
  <td class="p-3 text-center align-top">
- {p.ctaHref && (
- <a href={p.ctaHref} target="_blank" rel="nofollow sponsored noopener noreferrer"
+ {p.primary && (
+ <a href={p.primary.url} target="_blank" rel="nofollow sponsored noopener noreferrer"
  class="inline-flex items-center justify-center gap-1 bg-cta text-white font-bold text-sm px-5 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[48px]">
- {primaryLabelFor(p)}
+ Se pris hos {p.primary.store}
  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  )}
- {(() => {
- const secs = secondaryFor(p);
- return secs.length > 0? (
- <div class="mt-2 flex flex-wrap justify-center gap-1">
- {secs.map((r) => {
- const meta = retailerMeta[r];
- const href = buildHref(r, p.name, p.retailerPaths?.[r]);
- if (!href) return null;
- return (
- <a href={href} target="_blank" rel="nofollow sponsored noopener noreferrer"
- class={`${meta.color} text-white text-[10px] font-semibold px-1.5 py-0.5 rounded transition-colors`}
- aria-label={`Se pris hos ${meta.name}`}>
- {meta.name}
+ {p.others.length > 0 && (
+ <div class="mt-2 text-xs text-text-light leading-relaxed">
+ <span class="font-semibold">Även hos:</span>{' '}
+ {p.others.map((o, i) => (
+ <>
+ <a href={o.url} rel="nofollow sponsored noopener noreferrer" target="_blank"
+ class="hover:text-accent-dark underline decoration-dotted underline-offset-4">
+ {o.store}
  </a>
- );
- })}
+ {i < p.others.length - 1 && <span class="text-text-light/50">{' · '}</span>}
+ </>
+ ))}
  </div>
- ): null;
- })}
+ )}
  </td>
  ))}
  </tr>
