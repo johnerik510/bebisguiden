@@ -3,7 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AffiliateDisclaimer from '../components/AffiliateDisclaimer.astro';
 import AuthorByline from '../components/AuthorByline.astro';
-import { buildArticleSchema, DEFAULT_PUBLISHED, DEFAULT_MODIFIED } from '../utils/schema.js';
+import { buildArticleSchema } from '../utils/schema.js';
 
 interface Props {
  title: string;
@@ -27,18 +27,25 @@ const {
  breadcrumbs,
  updatedDate,
  showDisclaimer = true,
- datePublished = DEFAULT_PUBLISHED,
- dateModified = DEFAULT_MODIFIED,
+ datePublished,
+ dateModified,
  image,
  showAuthor = true,
 } = Astro.props;
+
+// Resolva datum för schema + byline:
+// - datePublished: från explicit prop
+// - dateModified: prefer updatedDate-prop (manuellt curaterad per sida)
+//   över script-tillagd dateModified, fall tillbaka på datePublished
+const resolvedPublished = datePublished;
+const resolvedModified = updatedDate || dateModified || datePublished;
 
 const articleSchema = buildArticleSchema({
  title,
  description,
  image,
- datePublished,
- dateModified,
+ datePublished: resolvedPublished,
+ dateModified: resolvedModified,
  pathname: Astro.url.pathname,
 });
 
@@ -74,13 +81,10 @@ if (section) {
  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
  <Breadcrumbs items={breadcrumbs} />
  <h1 class="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold text-text mt-3 mb-2">{title}</h1>
- {updatedDate && (
- <p class="text-sm text-text-light mb-2">Senast uppdaterad: {updatedDate}</p>
- )}
  {showAuthor && (
  <AuthorByline
- datePublished={datePublished}
- dateModified={dateModified}
+ datePublished={resolvedPublished}
+ dateModified={resolvedModified}
  />
  )}
  {image && (

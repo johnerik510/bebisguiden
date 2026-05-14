@@ -1,8 +1,14 @@
 ---
+/**
+ * E-E-A-T-kompatibel author byline.
+ * Visar foto, namn (länkad), titel, bio-snippet, publicerings- + uppdateringsdatum.
+ * Schema.org Person JSON-LD inkluderad för structured data.
+ */
 interface Props {
  author?: string;
  authorTitle?: string;
  authorImage?: string;
+ authorBio?: string;
  datePublished?: string;
  dateModified?: string;
 }
@@ -11,6 +17,7 @@ const {
  author = 'Sofia Lindgren',
  authorTitle = 'Leg. barnmorska & chefredaktör',
  authorImage = '/images/redaktion-sofia.webp',
+ authorBio = 'Legitimerad barnmorska med 10+ års klinisk erfarenhet. Testar och granskar barnprodukter med fokus på säkerhet, ergonomi och evidensbaserade råd.',
  datePublished,
  dateModified,
 } = Astro.props;
@@ -19,16 +26,33 @@ const formatDate = (dateStr: string) => {
  const d = new Date(dateStr);
  return d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
 };
+
+const showPublished = !!datePublished;
+const showUpdated = !!dateModified && dateModified !== datePublished;
 ---
 
-<div class="flex items-center gap-4 py-4 mb-6 border-b border-gray-200">
- <img src={authorImage} alt={author} class="w-12 h-12 rounded-full object-cover" width="48" height="48" loading="lazy" />
+<div class="flex items-start gap-4 py-4 mb-6 border-y border-gray-200">
+ <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
+ <img src={authorImage} alt={author} class="w-14 h-14 rounded-full object-cover ring-2 ring-gray-100" width="56" height="56" loading="lazy" />
+ </a>
  <div class="flex-1 min-w-0">
- <div class="flex items-center gap-2 flex-wrap">
+ <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
  <a href="/om-redaktionen/" class="font-semibold text-gray-900 hover:text-sky-700 transition-colors">{author}</a>
- <span class="text-gray-400">·</span>
  <span class="text-sm text-gray-500">{authorTitle}</span>
  </div>
+ {authorBio && (
+ <p class="text-xs text-gray-500 mt-1 leading-snug">{authorBio}</p>
+ )}
+ {(showPublished || showUpdated) && (
+ <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-gray-500 mt-1.5">
+ {showPublished && (
+ <span>Publicerad: <time datetime={datePublished}>{formatDate(datePublished!)}</time></span>
+ )}
+ {showUpdated && (
+ <span>Uppdaterad: <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>
+ )}
+ </div>
+ )}
  </div>
 </div>
 
@@ -39,11 +63,11 @@ const formatDate = (dateStr: string) => {
  url: 'https://bebisguiden.se/om-redaktionen/',
  image: `https://bebisguiden.se${authorImage}`,
  jobTitle: authorTitle,
- description: 'Foraldrer och barnproduktexpert. Testat 100+ produkter med fokus på sakerhet, kvalitet och anvandarvanlighet.',
- knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsakerhet', 'i-Size', 'ISOFIX'],
+ description: authorBio,
+ knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'amning', 'i-Size', 'ISOFIX'],
  worksFor: {
  '@type': 'Organization',
- name: 'Bebisguiden.se',
+ name: 'Bebisguiden',
  url: 'https://bebisguiden.se'
  }
 })} />
