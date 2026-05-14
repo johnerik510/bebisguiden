@@ -28,7 +28,7 @@ const FILE_TO_STORE = {
   'xplora': 'Xplora',
   'babysam': 'Babysam',
   'partykungen': 'Partykungen.se',
-  'bookbeat': 'Bookbeat',
+  // bookbeat borttagen 2026-05-14, ej relevant för bebis-niche (80 SEK fast per sälj, böcker)
 };
 
 // 3. Walk feed-matches and aggregate brand → Set<store>
