@@ -111,6 +111,31 @@ export function resolveTrackedUrl(storeName: string, productName?: string): stri
   return undefined;
 }
 
+/**
+ * Brand-fallback: returnera en verifierad feed-URL för EN produkt av samma märke
+ * hos butiken, även om exakt produkt-match saknas. Används för "Även hos"-CTA
+ * där vi vet att butiken säljer märket men inte den exakta SKU:n.
+ * Returnerar entry med högst token-overlap mot produktnamnet (om productHint ges),
+ * annars första entry med matchande brand.
+ */
+export function resolveBrandUrl(storeName: string, brand: string, productHint?: string): string | undefined {
+  const entries = getStoreEntries(storeName);
+  if (entries.length === 0) return undefined;
+  const brandLower = brand.toLowerCase();
+  const brandEntries = entries.filter((e) => (e.brand || '').toLowerCase().trim() === brandLower);
+  if (brandEntries.length === 0) return undefined;
+  if (productHint) {
+    let best: FeedMatch | undefined;
+    let bestScore = -1;
+    for (const e of brandEntries) {
+      const s = tokenOverlap(productHint, e.title);
+      if (s > bestScore) { bestScore = s; best = e; }
+    }
+    return best?.trackedUrl;
+  }
+  return brandEntries[0].trackedUrl;
+}
+
 /** Kompatibilitets-API. */
 export function buildSearchDeeplink(storeName: string, query: string): string | undefined {
   return resolveTrackedUrl(storeName, query);

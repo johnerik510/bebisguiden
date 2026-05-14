@@ -12,7 +12,7 @@
 
 import { BRAND_TO_STORES } from '../data/brand-stores';
 import { getStore } from '../data/affiliate-stores';
-import { resolveTrackedUrl } from './cta-resolver';
+import { resolveTrackedUrl, resolveBrandUrl } from './cta-resolver';
 
 export interface CTAOption {
   store: string;
@@ -71,7 +71,10 @@ export function resolveMultiCTA(
   if (brand) {
     const brandStores = BRAND_TO_STORES[brand] || [];
     for (const storeName of brandStores) {
-      const url = resolveTrackedUrl(storeName, productName);
+      // Försök först exakt produkt-match (token-overlap >= 2).
+      // Fallback: butiken säljer märket men inte exakt samma SKU, returnera närmaste produkt av samma märke.
+      let url = resolveTrackedUrl(storeName, productName);
+      if (!url) url = resolveBrandUrl(storeName, brand, productName);
       tryAdd(storeName, url);
     }
   }
