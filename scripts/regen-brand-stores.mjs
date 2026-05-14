@@ -26,10 +26,9 @@ const FILE_TO_STORE = {
   'polarn_o_pyret': 'Polarn O. Pyret',
   'leksaksaff_ren': 'Leksaksaffaren',
   'xplora': 'Xplora',
-  // Below stores: feed exists but NOT (yet) in affiliate-stores.ts. Skipped by validStores guard.
-  // 'babysam': 'Babysam',
-  // 'partykungen': 'Partykungen.se',
-  // 'bookbeat': 'Bookbeat',
+  'babysam': 'Babysam',
+  'partykungen': 'Partykungen.se',
+  'bookbeat': 'Bookbeat',
 };
 
 // 3. Walk feed-matches and aggregate brand → Set<store>

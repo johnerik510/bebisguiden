@@ -19,6 +19,34 @@ export interface AffiliateStore {
 }
 
 export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
+  // Babysam, Bookbeat, Partykungen.se: feed-data finns (verifierade tracker-URL:er per produkt),
+  // STORE_PATTERNS i lib/cta-resolver.ts matchar dem redan. Commission = 0 tills den verifierats
+  // i Adtractions dashboard, så de hamnar sist i commission-rankning och visas som "Även hos"
+  // men aldrig som primary.
+  'Babysam': {
+    name: 'Babysam',
+    commission: 0,
+    network: 'adtraction',
+    baseUrl: 'https://www.babysam.se',
+    searchUrl: 'https://www.babysam.se/?q={q}',
+    buildUrl: () => undefined,
+  },
+  'Bookbeat': {
+    name: 'Bookbeat',
+    commission: 0,
+    network: 'adtraction',
+    baseUrl: 'https://www.bookbeat.se',
+    searchUrl: 'https://www.bookbeat.se/sok?q={q}',
+    buildUrl: () => undefined,
+  },
+  'Partykungen.se': {
+    name: 'Partykungen.se',
+    commission: 0,
+    network: 'adtraction',
+    baseUrl: 'https://www.partykungen.se',
+    searchUrl: 'https://www.partykungen.se/sok?q={q}',
+    buildUrl: () => undefined,
+  },
   'Babyland': {
     name: 'Babyland',
     commission: 0.05,
