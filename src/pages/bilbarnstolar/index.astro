@@ -238,4 +238,36 @@ export const articleMeta = {
  ]} />
 </ArticleLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Bästa bilbarnstolen 2026",
+  "description": "Rankad lista över de bästa krocktestade bilbarnstolarna 2026",
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "numberOfItems": products.length,
+  "itemListElement": products.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": p.name,
+      "image": `https://bebisguiden.se${p.image}`,
+      "brand": { "@type": "Brand", "name": p.name.split(' ')[0] },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": p.rating,
+        "bestRating": 5,
+        "ratingCount": 1
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "SEK",
+        "availability": "https://schema.org/InStock",
+        "url": p.ctaHref,
+        "seller": { "@type": "Organization", "name": "Jollyroom" }
+      }
+    }
+  }))
+})} />
+
 <StickyTop3Bar products={products} />

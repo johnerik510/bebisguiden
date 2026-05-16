@@ -256,6 +256,37 @@ const faqItems = [
  ]} />
 </ArticleLayout>
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Bästa babyvakterna 2026",
+  "description": "Rankad lista över de bästa babyvakterna testade och jämförda 2026",
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "numberOfItems": products.length,
+  "itemListElement": products.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": p.name,
+      "image": `https://bebisguiden.se${p.image}`,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": p.rating,
+        "bestRating": 5,
+        "ratingCount": 1
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "SEK",
+        "availability": "https://schema.org/InStock",
+        "url": p.ctaHref,
+        "seller": { "@type": "Organization", "name": "Jollyroom" }
+      }
+    }
+  }))
+})} />
+
 <CTABox productName="Babyvakter" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fsok%3Ftext%3Dbabyvakt" description="Stort urval babyvakter, ljud, video och WiFi." />
 
 <StickyTop3Bar products={products} />
