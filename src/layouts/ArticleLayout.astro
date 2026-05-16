@@ -17,6 +17,7 @@ interface Props {
  dateModified?: string;
  image?: string;
  showAuthor?: boolean;
+ relatedTitle?: string;
 }
 
 const {
@@ -31,6 +32,7 @@ const {
  dateModified,
  image,
  showAuthor = true,
+ relatedTitle = 'Relaterade guider',
 } = Astro.props;
 
 // Resolva datum för schema + byline:
@@ -97,7 +99,7 @@ if (section) {
  </div>
  {autoRelated.length > 0 && (
  <aside class="mt-12 pt-8 border-t border-sand-dark">
- <h2 class="font-heading text-xl font-bold text-text mb-4">Relaterade artiklar</h2>
+ <h2 class="font-heading text-xl font-bold text-text mb-4">{relatedTitle}</h2>
  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
  {autoRelated.map((article) => (
  <a href={article.href} class="block p-4 bg-white rounded-lg border border-sand-dark hover:border-primary hover:shadow-md transition-all">
