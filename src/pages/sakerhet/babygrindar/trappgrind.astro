@@ -1,0 +1,241 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import ComparisonTable from '../../../components/ComparisonTable.astro';
+import TopPick from '../../../components/TopPick.astro';
+import StickyTop3Bar from '../../../components/StickyTop3Bar.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductSchema from '../../../components/ProductSchema.astro';
+import CTABox from '../../../components/CTABox.astro';
+
+export const articleMeta = {
+  title: "Trappgrind 2026: bäst för övre och nedre trappsteg",
+  description: "Trappgrind bäst i test 2026: BabyDan Flex L vinner skruvmonterad för trapptoppen. Guide till skruvgrind vs spänngrind och vad som är säkert var.",
+  publishDate: "2026-05-18",
+  category: "Säkerhet",
+  image: "/images/products/babydan-flex-l-skruvgrind-vit-2026.webp",
+};
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babysäkerhet', href: '/sakerhet/' },
+  { label: 'Babygrindar', href: '/sakerhet/babygrindar/' },
+  { label: 'Trappgrind' },
+];
+
+const products = [
+  {
+    name: 'BabyDan Flex L Skruvgrind, Vit',
+    badge: 'Bäst för trapptopp',
+    rating: 4.7,
+    image: '/images/products/babydan-flex-l-skruvgrind-vit-2026.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402415&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-skruvgrind-vit',
+    features: {
+      'Typ': 'Skruvgrind',
+      'Bredd': '62 till 106,8 cm',
+      'Trapptopp': 'Ja',
+      'Material': 'Stål',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'BabyDan Flex XL Skruvgrind, Vit',
+    badge: 'Bäst för bred trappa',
+    rating: 4.6,
+    image: '/images/products/babydan-flex-xl-skruvgrind-vit.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402417&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-xl-skruvgrind-vit',
+    features: {
+      'Typ': 'Skruvgrind',
+      'Bredd': '90 till 138,5 cm',
+      'Trapptopp': 'Ja',
+      'Material': 'Stål',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'BabyDan Multidan Säkerhetsgrind, Natur/Vit',
+    badge: 'Bäst design',
+    rating: 4.5,
+    image: '/images/products/babydan-multidan-sakerhetsgrind-natur-vit.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=808843&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-multidan-skruvgrind-natur-vit',
+    features: {
+      'Typ': 'Skruvgrind (trä + metall)',
+      'Bredd': '60,5 till 105,5 cm',
+      'Trapptopp': 'Ja',
+      'Material': 'Trä + stål',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'BabyDan Premier Spänngrind, Vit',
+    badge: 'Bäst för nedre trappa',
+    rating: 4.7,
+    image: '/images/products/babydan-premier-spanngrind-vit-2026.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit',
+    features: {
+      'Typ': 'Spänngrind',
+      'Bredd': '67 till 105 cm',
+      'Trapptopp': 'Nej',
+      'Material': 'Stål',
+      'Öppning': 'En hand',
+    },
+  },
+];
+
+const featureLabels = ['Typ', 'Bredd', 'Trapptopp', 'Material', 'Öppning'];
+
+const faqItems = [
+  {
+    question: 'Vilken trappgrind är säkrast för trapptoppen?',
+    answer: 'BabyDan Flex L Skruvgrind vinner test av trappgrindar för trapptoppen 2026. Den är skruvmonterad (enda godkända monteringen vid trapptopp), justerbar 62 till 106,8 cm och har enhandsöppning. För bredare trappöppningar är BabyDan Flex XL ett alternativ (90 till 138,5 cm). Båda är godkända enligt EN 1930.',
+  },
+  {
+    question: 'Varför får inte en spänngrind sitta vid trapptoppen?',
+    answer: 'Spänngrindar håller fast med tryck mot väggen. När ett barn lutar sig mot grinden uppifrån (barnet trycker grinden ut åt trapporna) kan trycket frigöras och grinden falla med barnet ner i trappan. Vid trapptoppen krävs därför skruvmontering, där grinden är fast fixerad och inte kan tryckas loss. EN 1930-standarden är strikt om denna distinktion.',
+  },
+  {
+    question: 'Kan jag använda en spänngrind vid nedre trappavsatsen?',
+    answer: 'Ja, vid nedre trappavsatsen är spänngrind både godkänd och praktisk. Risken där är att barnet klättrar uppåt i trappan, inte att det faller ner med grinden. BabyDan Premier är ett populärt val. Många hem har båda, en skruvgrind högst upp och en spänngrind nederst, det är säkrast och flexibilt.',
+  },
+  {
+    question: 'Hur monterar jag en skruvgrind säkert?',
+    answer: 'Mät trappöppningen i tre höjder och välj smalaste måttet som referens. Markera skruvhålen med penna, kontrollera med stomdetektor att det finns regel eller stomme bakom gipsen, och borra. Dra åt skruvarna stadigt men inte överdrivet, gipsen ska inte spricka. Efter en veckas användning, dra åt en gång till, gipsen ger ofta efter lite under första belastningen. Följ alltid tillverkarens manual.',
+  },
+  {
+    question: 'Behöver jag grindar både uppe och nere i trappan?',
+    answer: 'Ja, för bästa säkerhet. Grind överst hindrar barnet från att falla nedför trappan, grind nederst hindrar barnet från att klättra upp utan tillsyn. Trappor är den vanligaste platsen för allvarliga olyckor i hemmet under barnets första två år. Båda grindarna används normalt till barnet är 2 till 3 år och konsekvent visar att det kan hantera trappan säkert.',
+  },
+  {
+    question: 'Hur länge ska trappgrinden sitta uppe?',
+    answer: 'Vanligen tills barnet är 2 till 3 år och har visat upprepade gånger att det kan gå upp och ner för trappan säkert med vuxen i närheten. Vissa barn är klättrande och behöver grind kortare tid, eftersom de börjar klättra över den. Andra barn behöver grinden längre, särskilt om trappan är brant eller har många steg. Avgör utifrån barnets förmåga, inte enbart åldern.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Trappgrind 2026: bäst för övre och nedre trappsteg"
+  description="Trappgrind bäst i test 2026: BabyDan Flex L vinner skruvmonterad för trapptoppen. Guide till skruvgrind vs spänngrind och vad som är säkert var."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sakerhet/babygrindar/trappgrind/"
+  updatedDate="2026-05-18"
+  datePublished="2026-04-05"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Trappgrind krävs vid både övre och nedre trappavsatsen när barnet börjar krypa. Vid trapptoppen är skruvmontering ett absolut säkerhetskrav, en spänngrind får inte sitta där. BabyDan Flex L vinner skruvgrindstestet 2026, BabyDan Premier är bästa spänngrinden för nedre trappan. Båda klarar EN 1930.
+  </p>
+
+  <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+    <p class="text-sm font-semibold text-amber-900 mb-1">Säkerhetsregeln</p>
+    <p class="text-sm text-amber-800">Vid trapptoppen ska du alltid använda en <strong>skruvmonterad grind</strong>. Tryckmonterade grindar är inte godkända för trapptopp, de kan ge efter när barnet trycker mot dem.</p>
+  </div>
+
+  <TopPick product={products[0]} description="BabyDan Flex L Skruvgrind vinner test av trappgrindar för trapptoppen 2026. Skruvmontering ger godkänd EN 1930-säkerhet, justerbar bredd 62 till 106,8 cm täcker de flesta trappöppningar och enhandsöppning gör att grinden fungerar även med ett barn i famnen." />
+
+  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, trappgrindar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Snabbval per placering</p>
+    <p class="text-sm text-text-light"><strong>Trapptoppen, standardbredd</strong>: BabyDan Flex L Skruvgrind. <strong>Trapptoppen, bred trappa</strong>: BabyDan Flex XL Skruvgrind. <strong>Trapptoppen med skandinavisk design</strong>: BabyDan Multidan i Natur/Vit. <strong>Nedre trappavsatsen</strong>: BabyDan Premier Spänngrind (utan borrning).</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BabyDan Flex L Skruvgrind, Vit"
+      image="/images/products/babydan-flex-l-skruvgrind-vit-2026.webp"
+      badge="Bäst för trapptopp"
+      rating={4.7}
+      ageRange="6 mån+"
+      pros={['Godkänd för trapptoppen', 'Justerbar 62 till 106,8 cm', 'Enhandsöppning', 'Stabilt stålutförande']}
+      cons={['Kräver borrning i vägg', 'Tyngre än spänngrindar']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402415&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-skruvgrind-vit"
+    />
+
+    <ProductCard
+      name="BabyDan Flex XL Skruvgrind, Vit"
+      image="/images/products/babydan-flex-xl-skruvgrind-vit.webp"
+      badge="Bäst för bred trappa"
+      rating={4.6}
+      ageRange="6 mån+"
+      pros={['Justerbar 90 till 138,5 cm', 'Godkänd för trapptoppen', 'Enhandsöppning', 'Stabil stålram']}
+      cons={['Kräver borrning', 'Större att hantera']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402417&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-xl-skruvgrind-vit"
+    />
+
+    <ProductCard
+      name="BabyDan Multidan Säkerhetsgrind, Natur/Vit"
+      image="/images/products/babydan-multidan-sakerhetsgrind-natur-vit.webp"
+      badge="Bäst design"
+      rating={4.5}
+      ageRange="6 mån+"
+      pros={['Trä och metall i skandinavisk design', 'Godkänd för trapptoppen', 'Enhandsöppning', 'Justerbar 60,5 till 105,5 cm']}
+      cons={['Trä kräver mer omsorg vid rengöring', 'Något dyrare än enkla stålmodeller']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=808843&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-multidan-skruvgrind-natur-vit"
+    />
+
+    <ProductCard
+      name="BabyDan Premier Spänngrind, Vit"
+      image="/images/products/babydan-premier-spanngrind-vit-2026.webp"
+      badge="Bäst för nedre trappa"
+      rating={4.7}
+      ageRange="6 mån+"
+      pros={['Inga hål i väggen', 'Enkel montering', 'Justerbar med förlängning', 'EN 1930-certifierad']}
+      cons={['Får inte sitta vid trapptoppen', 'Kräver jämna väggar']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide trappgrind: skruvmonterad uppe, spänngrind nere</h2>
+
+  <img src="/images/products/babydan-multidan-sakerhetsgrind-natur-vit.webp" alt="BabyDan Multidan trappgrind i naturträ och vit metall vid trapptopp" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" />
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Trapptoppen, här gäller bara skruvgrind</h3>
+    <p>Skruvmonterad grind är den enda godkända typen vid trapptoppen, oavsett tillverkare eller pris. Anledningen är att barnet trycker grinden ut åt trappan när det lutar sig mot den. Är grinden tryckmonterad kan trycket frigöras och grinden falla med barnet ner. Skruvmonterad grind är fast fixerad och kan inte tryckas loss. Räkna med 4 till 6 hål i väggen, små hål som spacklas och målas över när grinden ska bort.</p>
+
+    <h3>Nedre trappavsatsen, spänngrind fungerar bra</h3>
+    <p>Vid nedre trappavsatsen är risken den motsatta, att barnet ska kunna klättra upp i trappan utan tillsyn. Spänngrind fungerar perfekt här, ingen borrning krävs och den är lätt att flytta. BabyDan Premier eller Hauck Clear Step 2 är populära val. Skillnaden mot trapptoppen är att grinden inte trycks från ovansidan av ett barn nära fallrisken.</p>
+
+    <h3>Mät trappöppningen noga</h3>
+    <p>Mät bredden på trappöppningen i tre höjder, smalaste måttet är referens. Många trappöppningar är inte raka utan vinklade lite, mät då på den smalaste punkten där grinden ska sitta. Standardgrindar täcker 60 till 105 cm. För bredare trappöppningar finns BabyDan Flex XL och XXL, eller modulära lösningar som <a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">extra bred babygrind</a> upp till 360 cm.</p>
+
+    <h3>Trä, metall eller kombination</h3>
+    <p>Stålgrindar i vit lackering är vanligast och hållbarast. Trämodeller som BabyDan Multidan i Natur/Vit kombinerar trä och metall för att passa skandinavisk inredning, men kräver mer omsorg vid rengöring och kostar lite mer. Akrylpaneler (Hauck Clear Step 2) ger bättre sikt men är inte tillgängliga som skruvgrind för trapptoppen. För trapptoppen rekommenderar vi stål eller trä-och-stål-kombination.</p>
+
+    <h3>Underhåll och regelbunden säkerhetskontroll</h3>
+    <p>Kolla grinden minst en gång i månaden. Skruvar ska sitta åt, gångjärn ska gå smidigt och låsmekanismen ska låsa varje gång. Skruvgrindar kan behöva en omdragning efter första veckan när väggen satt sig. Rengör med fuktig trasa. Om grinden börjar gnissla, droppa olja på gångjärnen. När barnet växer ifrån grinden, spara den för nästa barn eller sälj på andrahandsmarknaden, men dokumentera då användningshistoriken.</p>
+
+    <h3>Komplettera med övrig babyproofing</h3>
+    <p>Trappgrind är basen i babyproofing men inte hela lösningen. Komplettera med <a href="/sakerhet/horneskydd/" class="text-accent underline">hörnskydd</a> på vassa möbelkanter, <a href="/sakerhet/barnsakring/" class="text-accent underline">skåplås och elskydd</a> i resten av hemmet, och håll alltid uppsikt över barnet under de första leksessionerna i ett nytt rum.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babygrindar</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/sakerhet/babygrindar/" class="text-accent underline">Babygrind bäst i test 2026, säkra grindar för trappa och dörr</a></li>
+      <li><a href="/sakerhet/babygrindar/utan-borrning/" class="text-accent underline">Babygrind utan borrning, tryckmonterade grindar 2026</a></li>
+      <li><a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">Extra bred babygrind 2026, grindar upp till 140 cm</a></li>
+      <li><a href="/sakerhet/" class="text-accent underline">Barnsäkerhet hemma, komplett guide</a></li>
+      <li><a href="/sakerhet/barnsakring/" class="text-accent underline">Barnsäkring och babyproofing 2026</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    { name: 'BabyDan Flex L Skruvgrind, Vit', description: 'Skruvmonterad trappgrind godkänd för trapptoppen. Bredd 62 till 106,8 cm. EN 1930-certifierad.', brand: 'BabyDan', ratingValue: 4.7, reviewCount: 1 },
+    { name: 'BabyDan Flex XL Skruvgrind, Vit', description: 'Bred skruvgrind för trapptopp 90 till 138,5 cm. EN 1930.', brand: 'BabyDan', ratingValue: 4.6, reviewCount: 1 },
+    { name: 'BabyDan Multidan Säkerhetsgrind, Natur/Vit', description: 'Trappgrind i trä och stål, godkänd för trapptopp. Bredd 60,5 till 105,5 cm.', brand: 'BabyDan', ratingValue: 4.5, reviewCount: 1 },
+    { name: 'BabyDan Premier Spänngrind, Vit', description: 'Spänngrind för nedre trappa och dörröppningar. EN 1930-certifierad.', brand: 'BabyDan', ratingValue: 4.7, reviewCount: 1 },
+  ]} />
+
+  <CTABox productName="Trappgrindar och säkerhetsgrindar" store="Jollyroom" description="Skruvmonterade och tryckmonterade grindar för övre och nedre trappa." />
+</ArticleLayout>
+
+<StickyTop3Bar products={products} />

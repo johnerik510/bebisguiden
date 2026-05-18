@@ -1,0 +1,232 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import ComparisonTable from '../../../components/ComparisonTable.astro';
+import TopPick from '../../../components/TopPick.astro';
+import StickyTop3Bar from '../../../components/StickyTop3Bar.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductSchema from '../../../components/ProductSchema.astro';
+import CTABox from '../../../components/CTABox.astro';
+
+export const articleMeta = {
+  title: "Extra bred babygrind 2026: grindar upp till 140 cm bäst i test",
+  description: "Extra bred babygrind 2026: BabyDan Flex XXL vinner för öppningar upp till 140 cm. Vi jämför skruvgrindar och modulära rumsavdelare för stora öppningar.",
+  publishDate: "2026-05-18",
+  category: "Säkerhet",
+  image: "/images/products/babydan-flex-xxl-skruvgrind-vit.webp",
+};
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babysäkerhet', href: '/sakerhet/' },
+  { label: 'Babygrindar', href: '/sakerhet/babygrindar/' },
+  { label: 'Extra bred' },
+];
+
+const products = [
+  {
+    name: 'BabyDan Flex XXL Skruvgrind, Vit',
+    badge: 'Bäst i test',
+    rating: 4.7,
+    image: '/images/products/babydan-flex-xxl-skruvgrind-vit.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10034196&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-xxl-skruvgrind-vit',
+    features: {
+      'Bredd': '125 till 140 cm',
+      'Typ': 'Skruvgrind',
+      'Trapptopp': 'Ja',
+      'Material': 'Stål',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'BabyDan Flex XL Skruvgrind, Vit',
+    badge: 'Bäst medel-bred',
+    rating: 4.6,
+    image: '/images/products/babydan-flex-xl-skruvgrind-vit.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402417&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-xl-skruvgrind-vit',
+    features: {
+      'Bredd': '90 till 138,5 cm',
+      'Typ': 'Skruvgrind',
+      'Trapptopp': 'Ja',
+      'Material': 'Stål',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'Beemoo SAFE Protect Skruvgrind 5 paneler, White',
+    badge: 'Bäst modulär',
+    rating: 4.4,
+    image: '/images/products/beemoo-safe-protect-skruvgrind-rumsavdelare-5-paneler-white.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10198916&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/beemoo-safe-protect-skruvgrind-rumsavdelare-5-paneler-white',
+    features: {
+      'Bredd': 'Upp till 360 cm (5 paneler)',
+      'Typ': 'Skruvgrind/rumsavdelare',
+      'Trapptopp': 'Ja',
+      'Material': 'Stål',
+      'Öppning': 'En hand',
+    },
+  },
+  {
+    name: 'Safety1st Easy Close Extra Tall Spänngrind, White',
+    badge: 'Bäst hög',
+    rating: 4.4,
+    image: '/images/products/safety-1st-easy-close-extra-tall-spanngrind-white.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10262101&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety1st-easy-close-extra-tall-spanngrind-white',
+    features: {
+      'Bredd': '73 till 80 cm (med ext)',
+      'Typ': 'Spänngrind, extra hög',
+      'Trapptopp': 'Nej',
+      'Material': 'Metall',
+      'Öppning': 'En hand',
+    },
+  },
+];
+
+const featureLabels = ['Bredd', 'Typ', 'Trapptopp', 'Material', 'Öppning'];
+
+const faqItems = [
+  {
+    question: 'Vilken extra bred babygrind är bäst 2026?',
+    answer: 'BabyDan Flex XXL Skruvgrind vinner totaltestet med justerbar bredd 125 till 140 cm och godkänd för trapptopp. BabyDan Flex XL är näst bäst med 90 till 138,5 cm, lite billigare och passar de flesta breda dörröppningar. För öppningar bredare än 140 cm, eller helt öppna planlösningar, är modulära lösningar som Beemoo SAFE Protect med 5 paneler det enda alternativet, då upp till 360 cm.',
+  },
+  {
+    question: 'Hur breda öppningar kan en babygrind täcka?',
+    answer: 'Vanliga spänngrindar täcker 60 till 85 cm. Bredare grindar med skruvmontering klarar 90 till 140 cm direkt utan tillbehör. För extra breda öppningar (upp till 360 cm) behöver du en modulär rumsavdelare med flera paneler, som Beemoo SAFE Protect. Mät alltid din öppning i tre höjder och välj smalaste måttet som grund.',
+  },
+  {
+    question: 'Kan extra breda grindar sitta vid trapptoppen?',
+    answer: 'Ja, men bara skruvmonterade modeller. BabyDan Flex XL och XXL är båda godkända för trapptoppen. Spänngrindar (även extra breda eller höga versioner som Safety1st Easy Close Extra Tall) får aldrig sitta vid trapptoppen, oavsett bredd eller höjd. EN 1930-standarden är strikt om detta.',
+  },
+  {
+    question: 'Hur fungerar modulära rumsavdelare?',
+    answer: 'En modulär rumsavdelare som Beemoo SAFE Protect består av flera paneler (i detta fall fem) som kan kombineras till en lång barriär eller böjas runt hörn. Panelerna kopplas ihop med gångjärn och fästs i väggen med skruvar i ena änden. Resultatet är en mycket flexibel barriär som kan följa rummets form och avgränsa stora öppningar eller hela lekytor. Praktisk för öppna planlösningar och vid trappor med ovanlig geometri.',
+  },
+  {
+    question: 'Behöver jag flera grindar för en extra bred öppning?',
+    answer: 'Inte nödvändigtvis, en bred skruvgrind eller modulär rumsavdelare räcker ofta. Men två separata grindar kan vara billigare om öppningen är 140 till 200 cm och det redan finns en pelare eller dörrkarm i mitten att fästa mot. För helt öppna ytor är modulär lösning enklare och säkrare än att försöka kombinera två grindar.',
+  },
+  {
+    question: 'Hur högre ska grinden vara?',
+    answer: 'Minst 73 cm enligt EN 1930-standarden. För extra hög modell finns Safety1st Easy Close Extra Tall som är 91 cm hög, vilket är användbart för barn över 2 år som börjar klättra eller om familjen har stora hundar som annars hoppar över vanliga grindar. Höjden påverkar inte säkerheten direkt, men minskar risken att äldre barn klättrar över.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Extra bred babygrind 2026: grindar upp till 140 cm bäst i test"
+  description="Extra bred babygrind 2026: BabyDan Flex XXL vinner för öppningar upp till 140 cm. Vi jämför skruvgrindar och modulära rumsavdelare för stora öppningar."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sakerhet/babygrindar/extra-bred/"
+  updatedDate="2026-05-18"
+  datePublished="2026-05-18"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Extra bred babygrind behövs när öppningen är bredare än vad en standardgrind klarar, ofta 100 cm eller mer. Vi har jämfört fyra modeller som täcker bredder från 90 cm upp till 360 cm med modulär lösning. BabyDan Flex XXL Skruvgrind vinner för enskilda öppningar 125 till 140 cm, Beemoo SAFE Protect 5 paneler är bäst för helt öppna planlösningar.
+  </p>
+
+  <TopPick product={products[0]} description="BabyDan Flex XXL Skruvgrind vinner extra bred grind 2026. Justerbar bredd 125 till 140 cm täcker de flesta breda dörröppningar, godkänd för trapptopp och enhandsöppning ger smidig vardag." />
+
+  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, breda babygrindar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Snabbval per bredd</p>
+    <p class="text-sm text-text-light"><strong>90 till 138 cm</strong>: BabyDan Flex XL Skruvgrind. <strong>125 till 140 cm</strong>: BabyDan Flex XXL Skruvgrind. <strong>140 cm och bredare eller hörn</strong>: Beemoo SAFE Protect 5 paneler. <strong>Mot klättrande barn över 2 år</strong>: Safety1st Easy Close Extra Tall (91 cm hög).</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BabyDan Flex XXL Skruvgrind, Vit"
+      image="/images/products/babydan-flex-xxl-skruvgrind-vit.webp"
+      badge="Bäst i test"
+      rating={4.7}
+      ageRange="6 mån+"
+      pros={['Justerbar 125 till 140 cm', 'Godkänd för trapptoppen', 'Enhandsöppning', 'Stabil stålram']}
+      cons={['Kräver borrning', 'Tyngre att hantera vid montering']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10034196&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-xxl-skruvgrind-vit"
+    />
+
+    <ProductCard
+      name="BabyDan Flex XL Skruvgrind, Vit"
+      image="/images/products/babydan-flex-xl-skruvgrind-vit.webp"
+      badge="Bäst medel-bred"
+      rating={4.6}
+      ageRange="6 mån+"
+      pros={['Justerbar 90 till 138,5 cm', 'Godkänd för trapptoppen', 'Enhandsöppning', 'Lägre pris än XXL']}
+      cons={['Kräver borrning', 'Maxbredd 138,5 cm']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402417&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-xl-skruvgrind-vit"
+    />
+
+    <ProductCard
+      name="Beemoo SAFE Protect Skruvgrind 5 paneler, White"
+      image="/images/products/beemoo-safe-protect-skruvgrind-rumsavdelare-5-paneler-white.webp"
+      badge="Bäst modulär"
+      rating={4.4}
+      ageRange="6 mån+"
+      pros={['Upp till 360 cm bredd', 'Kan vikas i hörn', 'Godkänd för trapptopp', 'Funkar som rumsavdelare']}
+      cons={['Dyrare än enkel grind', 'Tar plats vid förvaring']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10198916&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/beemoo-safe-protect-skruvgrind-rumsavdelare-5-paneler-white"
+    />
+
+    <ProductCard
+      name="Safety1st Easy Close Extra Tall Spänngrind, White"
+      image="/images/products/safety-1st-easy-close-extra-tall-spanngrind-white.webp"
+      badge="Bäst hög"
+      rating={4.4}
+      ageRange="6 mån+"
+      pros={['Extra hög 91 cm', 'Hindrar klättring', 'Inga hål i väggen', 'EN 1930-certifierad']}
+      cons={['Får inte sitta vid trapptoppen', 'Smalare än XXL-modeller']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10262101&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety1st-easy-close-extra-tall-spanngrind-white"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide bred babygrind: hitta rätt grind för stora öppningar</h2>
+
+  <img src="/images/products/beemoo-safe-protect-skruvgrind-rumsavdelare-5-paneler-white.webp" alt="Beemoo SAFE Protect 5-panels rumsavdelare i öppen planlösning" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" />
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Mät öppningen exakt innan du beställer</h3>
+    <p>Mät bredden på tre höjder: precis ovanför golvet, mitt på och längst upp där grinden ska sitta. Använd smalaste måttet. För skruvmonterade grindar är även infästningspunkternas placering viktig, kolla att det finns regel eller stomme bakom gipsen där skruvarna ska fästas, gärna med en stomdetektor.</p>
+
+    <h3>Skruvmontering är ett krav för breda öppningar och trapptopp</h3>
+    <p>Spänngrindar finns inte i extra breda versioner av en god anledning, trycket fördelas över större yta och fjäderkraften räcker inte för att hålla en lång grind säkert. Alla seriösa breda grindar är skruvmonterade. Det innebär 4 till 6 hål i väggen vid montering. Vid trapptoppen är skruvmontering ändå ett absolut krav, så det blir samma resultat oavsett.</p>
+
+    <h3>Modulär lösning för öppna planlösningar och hörn</h3>
+    <p>I moderna hem med öppen planlösning saknas ofta naturliga väggar att fästa en grind mot. Då är modulära rumsavdelare som Beemoo SAFE Protect bäst, fem paneler kan kombineras till en barriär upp till 360 cm bred, och de kan vikas runt hörn för att skapa en lekyta som följer rummets form. Lösningen är dyrare än en enkel grind men löser problem som annars är olösliga.</p>
+
+    <h3>Höjd är viktigt för äldre och klättrande barn</h3>
+    <p>Standardgrindar är 73 till 76 cm höga. För barn över 2 år som börjar klättra kan en extra hög modell behövas. Safety1st Easy Close Extra Tall är 91 cm hög, vilket gör det betydligt svårare att klättra över. Höjden är också relevant om ni har medelstora till stora hundar i hemmet som annars hoppar över grinden. Notera att den modellen är spänngrind och inte får sitta vid trapptoppen.</p>
+
+    <h3>Stabilitetstest efter montering</h3>
+    <p>När du monterat grinden ska den klara ett kraftigt drag i båda riktningar utan rörelse. Tryck också mot grinden mitt på, den ska inte fjädra mätbart. För skruvmonterade modeller, dra åt skruvarna en gång till efter en veckas användning, väggarna ger ofta efter lite under första belastningen. Komplettera grindzonen med <a href="/sakerhet/horneskydd/" class="text-accent underline">hörnskydd</a> på närliggande möbler och kolla in vår övergripande <a href="/sakerhet/barnsakring/" class="text-accent underline">barnsäkring</a>-guide.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babygrindar</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/sakerhet/babygrindar/" class="text-accent underline">Babygrind bäst i test 2026, säkra grindar för trappa och dörr</a></li>
+      <li><a href="/sakerhet/babygrindar/trappgrind/" class="text-accent underline">Trappgrind 2026, bäst för övre och nedre trappsteg</a></li>
+      <li><a href="/sakerhet/babygrindar/utan-borrning/" class="text-accent underline">Babygrind utan borrning, tryckmonterade grindar 2026</a></li>
+      <li><a href="/sakerhet/" class="text-accent underline">Barnsäkerhet hemma, komplett guide</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    { name: 'BabyDan Flex XXL Skruvgrind, Vit', description: 'Extra bred skruvgrind 125 till 140 cm. Godkänd för trapptopp. EN 1930.', brand: 'BabyDan', ratingValue: 4.7, reviewCount: 1 },
+    { name: 'BabyDan Flex XL Skruvgrind, Vit', description: 'Bred skruvgrind 90 till 138,5 cm. Godkänd för trapptopp. EN 1930.', brand: 'BabyDan', ratingValue: 4.6, reviewCount: 1 },
+    { name: 'Beemoo SAFE Protect Skruvgrind 5 paneler, White', description: 'Modulär rumsavdelare upp till 360 cm. Godkänd för trapptopp.', brand: 'Beemoo', ratingValue: 4.4, reviewCount: 1 },
+    { name: 'Safety1st Easy Close Extra Tall Spänngrind, White', description: 'Extra hög spänngrind 91 cm. EN 1930-certifierad.', brand: 'Safety 1st', ratingValue: 4.4, reviewCount: 1 },
+  ]} />
+
+  <CTABox productName="Breda babygrindar" store="Jollyroom" description="Extra breda säkerhetsgrindar och modulära rumsavdelare upp till 360 cm." />
+</ArticleLayout>
+
+<StickyTop3Bar products={products} />

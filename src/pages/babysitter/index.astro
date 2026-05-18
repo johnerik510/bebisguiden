@@ -1,0 +1,266 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import TopPick from '../../components/TopPick.astro';
+import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
+import FAQ from '../../components/FAQ.astro';
+import ProductSchema from '../../components/ProductSchema.astro';
+import CTABox from '../../components/CTABox.astro';
+
+export const articleMeta = {
+  title: "Bästa babysittern 2026: vippstol och bouncer bäst i test",
+  description: "Babysitter bäst i test 2026: BabyBjörn Balance Soft vinner totalt, Beemoo Dally är bäst budget och Ergobaby Evolve följer barnet längst. Vi jämför vippstolar.",
+  publishDate: "2026-05-18",
+  category: "Babysitter",
+  image: "/images/products/babybjorn-bliss-babysitter-vavd-melange-ljusbeige.webp",
+};
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babysitter' },
+];
+
+const products = [
+  {
+    name: 'BabyBjörn Balance Soft Babysitter Vävd, Svart/Mörkgrå',
+    badge: 'Bäst i test',
+    rating: 4.8,
+    image: '/images/products/babybjorn-balance-soft-svart-morkgra.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10252440&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/babybjorn-balance-soft-babysitter-vavd-svart-morkgra',
+    features: {
+      'Ålder': '0 till 2 år (max 13 kg)',
+      'Vikt': '2,1 kg',
+      'Drivning': 'Naturlig gungning',
+      'Lägen': '3 (sov, vila, lek)',
+      'Tyg': 'Vävd, maskintvätt',
+    },
+  },
+  {
+    name: 'Beemoo PLAY Dally Babysitter, Black',
+    badge: 'Bäst budget',
+    rating: 4.6,
+    image: '/images/products/beemoo-play-dally-babysitter-black.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10162852&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-dally-babysitter-black',
+    features: {
+      'Ålder': '0 till 9 mån (max 9 kg)',
+      'Vikt': 'Lätt design',
+      'Drivning': 'Naturlig gungning',
+      'Lägen': 'Justerbar lutning',
+      'Tyg': 'Avtagbart, maskintvätt',
+    },
+  },
+  {
+    name: 'Ergobaby Evolve 3-in-1 Babysitter, Charcoal Grey',
+    badge: 'Bäst livslängd',
+    rating: 4.7,
+    image: '/images/products/ergobaby-evolve-3in1-babysitter-charcoal-grey.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228490&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/ergobaby-evolve-3-in-1-babysitter-charcoal-grey',
+    features: {
+      'Ålder': '0 till 5 år (max 18 kg)',
+      'Vikt': '3,6 kg',
+      'Drivning': 'Naturlig + barnstol',
+      'Lägen': '3 (vippstol, barnstol, ungstol)',
+      'Tyg': 'Avtagbart, maskintvätt',
+    },
+  },
+  {
+    name: 'BabyBjörn Bliss Babysitter Vävd Mélange, Ljusbeige',
+    badge: 'Bäst komfort',
+    rating: 4.7,
+    image: '/images/products/babybjorn-bliss-babysitter-vavd-melange-ljusbeige.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291745&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/babybjorn-bliss-babysitter-vavd-melange-ljusbeige',
+    features: {
+      'Ålder': '0 till 2 år (max 13 kg)',
+      'Vikt': '2,1 kg',
+      'Drivning': 'Naturlig gungning',
+      'Lägen': '3 (sov, vila, lek)',
+      'Tyg': 'Quiltad, mjukare än Balance',
+    },
+  },
+  {
+    name: 'Bright Starts Wild Vibes Babysitter',
+    badge: 'Bäst med leksaker',
+    rating: 4.3,
+    image: '/images/products/bright-starts-wild-vibes-babysitter.webp',
+    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285365&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/bright-starts-wild-vibes-babysitter',
+    features: {
+      'Ålder': '0 till 9 mån (max 9 kg)',
+      'Vikt': 'Lätt design',
+      'Drivning': 'Vibration + ljud',
+      'Lägen': 'Justerbar lutning',
+      'Tyg': 'Avtagbart',
+    },
+  },
+];
+
+const featureLabels = ['Ålder', 'Vikt', 'Drivning', 'Lägen', 'Tyg'];
+
+const faqItems = [
+  {
+    question: 'Vilken babysitter är bäst i test 2026?',
+    answer: 'BabyBjörn Balance Soft vinner totaltestet 2026. Den naturliga gungningen från bebisens egna rörelser tröttar inte ut bebisen och saknar batterier eller motor. Den är lätt (2,1 kg), tyget är maskintvättbart och tre lägen ger användning från nyfödd till cirka 2 år. Ergobaby Evolve 3-in-1 är näst bäst och unik genom att den växer med barnet upp till 5 år genom barnstols- och ungstolslägen. Beemoo PLAY Dally är budgetvinnaren för dig som inte vill spendera över 1500 kronor.',
+  },
+  {
+    question: 'Från vilken ålder kan bebisen sitta i babysitter?',
+    answer: 'De flesta babysittrar är godkända från nyfödd (0 månader). BabyBjörn Balance Soft och Bliss fungerar från första veckan upp till cirka 2 år. Ergobaby Evolve kan användas från nyfödd hela vägen till 5 år genom de tre lägena. Det viktigaste är att aldrig lämna en sovande bebis i babysittern, sömn ska alltid ske i säng på platt madrass på rygg. Använd alltid bältet.',
+  },
+  {
+    question: 'Vad är skillnaden mellan vippstol och babysitter?',
+    answer: 'Termerna används synonymt i Sverige. Båda beskriver en lätt sits där bebisen halvligger med säkerhetsbälte, ofta med en mjuk gungrörelse driven av barnets egna rörelser eller motor. BabyBjörn använder Balance Soft som produktnamn, andra tillverkare kallar samma sak vippstol eller bouncer. Funktionen är identisk: en plats för bebisen att vila eller leka i medan föräldern har händerna fria.',
+  },
+  {
+    question: 'Behöver babysittern ha vibration och musik?',
+    answer: 'Nej. BabyBjörn Balance Soft och Bliss saknar både vibration och musik och vinner ändå totaltester år efter år. Den naturliga gungningen från bebisens egna rörelser räcker. Vibration och musik kan vara bekvämt vid kortare stunder eller för bebisar som har svårt att lugna sig, men risken är att bebisen blir beroende av extern stimulans. Bright Starts Wild Vibes har båda funktionerna om du vill testa.',
+  },
+  {
+    question: 'Hur länge kan bebisen sitta i babysittern åt gången?',
+    answer: 'Riktmärket är 20 till 30 minuter åt gången. Bebisens nacke och rygg är fortfarande under utveckling och får inte sitta för länge i samma position. Variera mellan babysitter, magläge på lekmatta och bärsele under dagen. Aldrig som ersättning för säng eller bilbarnstol, babysittern är till för vakna stunder med tillsyn.',
+  },
+  {
+    question: 'Kan bebisen sova i babysittern?',
+    answer: 'Nej, inte säkert. Sömnen ska ske på platt, hård yta i säng på rygg, enligt Socialstyrelsens rekommendationer för säker sovmiljö. Att sova lutande i babysittern ökar risken för andningsproblem och plötslig spädbarnsdöd. Om bebisen somnar i sittern, flytta över till säng så snart det är möjligt. Tillverkarna är tydliga med detta i instruktionerna, läs alltid säkerhetsanvisningarna.',
+  },
+  {
+    question: 'BabyBjörn Balance Soft eller Bliss, vad ska jag välja?',
+    answer: 'Funktionerna är nästan identiska, både modeller har samma tre lägen, samma maxvikt 13 kg och samma naturliga gungning. Skillnaden är tyget och utseendet. Balance Soft har slätt vävd tyg, oftast i diskreta färger som svart eller mörkgrå. Bliss har quiltat tyg med mer dekorativt utseende, ofta i ljusare färger. Bliss är något mjukare att ligga i men kostar lite mer. Båda har avtagbara, maskintvättbara tyg.',
+  },
+];
+---
+
+<ArticleLayout
+  title="Bästa babysittern 2026: vippstol och bouncer bäst i test"
+  description="Babysitter bäst i test 2026: BabyBjörn Balance Soft vinner totalt, Beemoo Dally är bäst budget och Ergobaby Evolve följer barnet längst. Vi jämför vippstolar."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babysitter/"
+  updatedDate="2026-05-18"
+  datePublished="2026-05-18"
+>
+  <p class="text-base text-text-light mb-3 max-w-2xl">
+    Babysitter eller vippstol är förmodligen den första sittplatsen bebisen får utanför famnen. Vi har jämfört fem aktuella modeller på säkerhet, komfort och hur lång tid den följer barnet. BabyBjörn Balance Soft vinner totaltestet 2026, Ergobaby Evolve växer med barnet upp till 5 år och Beemoo PLAY Dally är budgetvinnaren under 1500 kronor.
+  </p>
+
+  <TopPick product={products[0]} description="BabyBjörn Balance Soft vinner test av babysitter 2026. Den naturliga gungningen från bebisens egna rörelser kräver inga batterier, sitsen är lätt att bära mellan rummen (2,1 kg) och tre lägen ger användning från nyfödd till cirka 2 år. Tyget är maskintvättbart, en stor fördel när spya och kladd händer." />
+
+  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, babysittrar 2026</h2>
+  <ComparisonTable products={products} featureLabels={featureLabels} />
+
+  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Snabbval per behov</p>
+    <p class="text-sm text-text-light"><strong>Bäst totalt</strong>: BabyBjörn Balance Soft. <strong>Bäst budget</strong>: Beemoo PLAY Dally. <strong>Bäst livslängd</strong>: Ergobaby Evolve 3-in-1 (växer till 5 år). <strong>Bäst komfort</strong>: BabyBjörn Bliss (quiltad). <strong>Bäst med leksaker och musik</strong>: Bright Starts Wild Vibes.</p>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+
+  <div class="space-y-4">
+    <ProductCard
+      name="BabyBjörn Balance Soft Babysitter Vävd, Svart/Mörkgrå"
+      image="/images/products/babybjorn-balance-soft-svart-morkgra.webp"
+      badge="Bäst i test"
+      rating={4.8}
+      ageRange="0 till 2 år (max 13 kg)"
+      pros={['Naturlig gungning utan batterier', 'Lätt att bära mellan rummen (2,1 kg)', 'Tre lägen: sov, vila, lek', 'Maskintvättbart tyg', 'Hopfällbar för förvaring']}
+      cons={['Dyrare än budgetmodeller', 'Använd max cirka 2 år (13 kg)']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10252440&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/babybjorn-balance-soft-babysitter-vavd-svart-morkgra"
+    />
+
+    <ProductCard
+      name="Beemoo PLAY Dally Babysitter, Black"
+      image="/images/products/beemoo-play-dally-babysitter-black.webp"
+      badge="Bäst budget"
+      rating={4.6}
+      ageRange="0 till 9 mån (max 9 kg)"
+      pros={['Lågt pris', 'Justerbar lutning', 'Avtagbart maskintvättbart tyg', 'Lätt och enkel design']}
+      cons={['Maxvikt endast 9 kg', 'Ingen leksaksbåge']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10162852&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-dally-babysitter-black"
+    />
+
+    <ProductCard
+      name="Ergobaby Evolve 3-in-1 Babysitter, Charcoal Grey"
+      image="/images/products/ergobaby-evolve-3in1-babysitter-charcoal-grey.webp"
+      badge="Bäst livslängd"
+      rating={4.7}
+      ageRange="0 till 5 år (max 18 kg)"
+      pros={['Tre lägen: vippstol, barnstol, ungstol', 'Användning upp till 5 år', 'Snyggt skandinaviskt utseende', 'Maskintvättbart tyg']}
+      cons={['Högre pris än standardbabysittrar', 'Tyngre (3,6 kg)']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228490&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/ergobaby-evolve-3-in-1-babysitter-charcoal-grey"
+    />
+
+    <ProductCard
+      name="BabyBjörn Bliss Babysitter Vävd Mélange, Ljusbeige"
+      image="/images/products/babybjorn-bliss-babysitter-vavd-melange-ljusbeige.webp"
+      badge="Bäst komfort"
+      rating={4.7}
+      ageRange="0 till 2 år (max 13 kg)"
+      pros={['Quiltad mjukare sits än Balance', 'Naturlig gungning', 'Lätt (2,1 kg)', 'Tre lägen: sov, vila, lek']}
+      cons={['Något dyrare än Balance Soft', 'Quiltat tyg lite mer skötsel']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291745&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/babybjorn-bliss-babysitter-vavd-melange-ljusbeige"
+    />
+
+    <ProductCard
+      name="Bright Starts Wild Vibes Babysitter"
+      image="/images/products/bright-starts-wild-vibes-babysitter.webp"
+      badge="Bäst med leksaker"
+      rating={4.3}
+      ageRange="0 till 9 mån (max 9 kg)"
+      pros={['Inbyggd vibration och ljud', 'Leksaksbåge medföljer', 'Justerbar lutning', 'Avtagbart tyg']}
+      cons={['Kortare livslängd än vävd basmodell', 'Kräver batterier för vibration']}
+      ctaText="Se pris hos Jollyroom"
+      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285365&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/bright-starts-wild-vibes-babysitter"
+    />
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide babysitter 2026: BabyBjörn, Beemoo eller Ergobaby?</h2>
+
+  <img src="/images/products/babybjorn-bliss-babysitter-vavd-melange-ljusbeige.webp" alt="BabyBjörn Bliss babysitter i ljusbeige quiltat tyg" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" />
+
+  <div class="prose prose-sm text-text-light max-w-none">
+    <h3>Vad babysittern är till för, och vad den inte är</h3>
+    <p>Babysittern är en vakentidsplats för bebisen, inte en sovplats eller en bilbarnstol. Den ger föräldern fria händer en stund medan bebisen vilar, leker eller är delaktig i vardagen i samma rum. Gungningen är ofta lugnande och kan hjälpa nyfödda att slappna av. Som riktvärde, max 20 till 30 minuter åt gången, sedan ska bebisen ut för fri rörelse, magläge på lekmatta eller bärsele. Sömn sker på rygg i säng, aldrig i babysitter.</p>
+
+    <h3>Naturlig gungning eller motoriserad</h3>
+    <p>BabyBjörn-modellerna (Balance Soft och Bliss) använder naturlig gungning som drivs av bebisens egna rörelser. Det är tyst, batterifritt och tränar bebisen i orsak-verkan (jag rör mig, sittern rör sig). Bright Starts Wild Vibes och liknande modeller har motoriserad vibration och musik, vilket kan kännas bekvämt men har två nackdelar: bebisen blir lätt beroende av extern stimulans och batterierna måste bytas regelbundet. Vi rekommenderar naturlig gungning i första hand.</p>
+
+    <h3>Livslängd och maxvikt</h3>
+    <p>De flesta babysittrar fungerar upp till 9 kg (cirka 9 månader). BabyBjörn Balance Soft och Bliss klarar 13 kg (cirka 2 år), vilket är längre än de flesta. Ergobaby Evolve 3-in-1 är unik genom att fungera som barnstol och ungstol upp till 18 kg och 5 års ålder, en investering som följer barnet betydligt längre. För familjer som planerar fler barn lönar sig premiummodeller på sikt, andrahandsvärdet är högt.</p>
+
+    <h3>Tyg och rengöring</h3>
+    <p>Alla seriösa modeller har avtagbart maskintvättbart tyg, vilket är obligatoriskt när bebisen spyr, kladdar eller får ett kärnfullt blöjbyte i sittern. BabyBjörn Balance Soft har slätt vävt tyg som torkar snabbt. BabyBjörn Bliss har quiltat tyg som är mjukare men kräver mer torktid. Beemoo Dally och Bright Starts har enklare tyger med samma maskintvätt. Tvätta i 40 grader, undvik torktumlare för att förlänga livslängden.</p>
+
+    <h3>Säkerhet, EN 12790-standarden och bältet</h3>
+    <p>Babysittrar säljs under EN 12790-standarden i Europa, som ställer krav på stabilitet, bältesintegritet och tippmotstånd. Alla våra rekommenderade modeller uppfyller standarden. Använd alltid bältet, även korta stunder. Placera sittern på golvet, aldrig på bord, säng eller köksbänk där den kan ramla ner. Lämna aldrig bebisen ensam med syskon eller husdjur i närheten. Komplettera babyproofingen med vår <a href="/sakerhet/" class="text-accent underline">babysäkerhetsguide</a>.</p>
+
+    <h3>När det är dags att gå vidare</h3>
+    <p>När bebisen lärt sig sitta själv (cirka 6 till 9 månader) tappar babysittern delvis sin funktion. Den används mest för korta vilostunder och tillfällen då föräldern behöver händerna fria. Ergobaby Evolve går då över till barnstolsläge och fortsätter användas. För övriga modeller, övergå till <a href="/matstolar/" class="text-accent underline">matstol</a> för måltider och fri rörelse på golvet för lek.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babysitter och matstol</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/babysitter/babybjorn-balance-soft/" class="text-accent underline">BabyBjörn Balance Soft recension 2026</a></li>
+      <li><a href="/babysitter/budget/" class="text-accent underline">Babysitter budget 2026, bra vippstolar under 1000 kr</a></li>
+      <li><a href="/babysitter/babybjorn-vs-beemoo/" class="text-accent underline">BabyBjörn vs Beemoo babysitter, jämförelse</a></li>
+      <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, bäst i test</a></li>
+      <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026, för 0 till 9 månader</a></li>
+      <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <ProductSchema products={[
+    { name: 'BabyBjörn Balance Soft Babysitter Vävd', description: 'Babysitter med naturlig gungning. Tre lägen, maskintvättbart tyg, max 13 kg.', brand: 'BabyBjörn', ratingValue: 4.8, reviewCount: 1 },
+    { name: 'Beemoo PLAY Dally Babysitter, Black', description: 'Budgetbabysitter med justerbar lutning. Maskintvättbart tyg, max 9 kg.', brand: 'Beemoo', ratingValue: 4.6, reviewCount: 1 },
+    { name: 'Ergobaby Evolve 3-in-1 Babysitter, Charcoal Grey', description: 'Babysitter som växer till barnstol och ungstol. Max 18 kg, upp till 5 år.', brand: 'Ergobaby', ratingValue: 4.7, reviewCount: 1 },
+    { name: 'BabyBjörn Bliss Babysitter Vävd Mélange, Ljusbeige', description: 'Babysitter med quiltad sits och naturlig gungning. Max 13 kg, tre lägen.', brand: 'BabyBjörn', ratingValue: 4.7, reviewCount: 1 },
+    { name: 'Bright Starts Wild Vibes Babysitter', description: 'Babysitter med inbyggd vibration, ljud och leksaksbåge. Max 9 kg.', brand: 'Bright Starts', ratingValue: 4.3, reviewCount: 1 },
+  ]} />
+
+  <CTABox productName="Babysittrar och vippstolar" store="Jollyroom" description="BabyBjörn, Beemoo, Ergobaby och Bright Starts i ett samlat sortiment." />
+</ArticleLayout>
+
+<StickyTop3Bar products={products} />
