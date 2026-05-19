@@ -18,6 +18,7 @@ const products = [
  name: 'Pampers Premium Protection Stl 4',
  badge: 'Bäst i test',
  rating: 4.9,
+ price: 159,
  image: '/images/products/pampers-premium-protection.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
  features: {
@@ -31,6 +32,7 @@ const products = [
  name: 'Pampers New Baby Stl 1',
  badge: 'Bäst för nyfödda',
  rating: 4.7,
+ price: 259,
  image: '/images/products/pampers-new-baby-stl1-real.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-new-baby-blojor-stl-1-2-5-kg-44-pack',
  features: {
@@ -44,6 +46,7 @@ const products = [
  name: 'Pampers Baby Dry Night Pants Stl 4',
  badge: 'Bäst för natten',
  rating: 4.6,
+ price: 659,
  image: '/images/products/pampers-baby-dry-night-stl6.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-baby-dry-night-pants-blojor-stl-4-9-15-kg-180-pack',
  features: {
@@ -57,6 +60,7 @@ const products = [
  name: 'Pampers Baby Dry Pants Stl 5',
  badge: 'Bäst byxblöja dag',
  rating: 4.5,
+ price: 329,
  image: '/images/products/pampers-baby-dry-pants-stl5-real.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fpampers-baby-dry-pants-blojor-stl-5-11-17-kg-maxi-86-pack',
  features: {
@@ -71,6 +75,7 @@ const products = [
  image: '/images/products/kit-kin-eco-stl2-real.webp',
  badge: 'Bäst ekologisk',
  rating: 4.4,
+ price: 189,
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fhalsa-hygien%2Fblojor%2Fkit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
  features: {
  'Material': 'Växtbaserat, klorfritt',
@@ -327,9 +332,12 @@ export const articleMeta = {
       "offers": {
         "@type": "Offer",
         "priceCurrency": "SEK",
+        "price": p.price,
         "availability": "https://schema.org/InStock",
         "url": p.ctaHref,
-        "seller": { "@type": "Organization", "name": "Jollyroom" }
+        "seller": { "@type": "Organization", "name": "Jollyroom" },
+        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" } },
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "SE", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
       }
     }
   }))
