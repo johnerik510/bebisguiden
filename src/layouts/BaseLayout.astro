@@ -2,7 +2,6 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
-import CookieConsent from '../components/CookieConsent.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -51,7 +50,7 @@ const ogImageUrl = ogImage.startsWith('http')? ogImage: `https://bebisguiden.se$
  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" /></noscript>
 
  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.webp" />
  <link rel="alternate" type="application/rss+xml" title="Bebisguiden, Guider" href="https://bebisguiden.se/rss.xml" />
 
  <script type="application/ld+json" set:html={JSON.stringify({
@@ -144,7 +143,6 @@ const ogImageUrl = ogImage.startsWith('http')? ogImage: `https://bebisguiden.se$
  <RelatedGuides />
  </main>
  <Footer />
- <CookieConsent />
  <script is:inline>
  document.querySelectorAll('.js-email').forEach(function(el){
  var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),e=u+'@'+d;
