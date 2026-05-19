@@ -9,17 +9,6 @@ export default defineConfig({
   build: { format: 'directory', inlineStylesheets: 'always' },
   vite: {
     plugins: [tailwindcss()],
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              return 'vendor';
-            }
-          },
-        },
-      },
-    },
   },
   integrations: [sitemap()],
 });
