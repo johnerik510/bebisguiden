@@ -124,10 +124,12 @@ const products = rawProducts.map((p) => {
  </tr>
  </thead>
  <tbody>
+ {products.some(p => p.price) && (
  <tr class="border-t border-border">
  <td class="p-3 font-medium text-text-light">Pris</td>
  {products.map(p => <td class="p-3 text-center font-bold">{p.price || '-'}</td>)}
  </tr>
+ )}
  <tr class="border-t border-border bg-bg-alt/50">
  <td class="p-3 font-medium text-text-light">Betyg</td>
  {products.map(p => <td class="p-3 text-center font-bold text-star">{p.rating ? `${p.rating}/5` : '-'}</td>)}
