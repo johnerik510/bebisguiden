@@ -27,6 +27,7 @@ const products = [
  name: 'IKEA Sniglar',
  badge: 'Bäst budget',
  rating: 4.3,
+ price: 329,
  image: '/images/products/ikea-sniglar.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fjly-dream-ella-spjalsang-dropside-vit',
  features: {
@@ -40,6 +41,7 @@ const products = [
  name: 'Stokke Sleepi Säng V3 Natural',
  badge: 'Bäst i test',
  rating: 4.8,
+ price: 6695,
  image: '/images/products/stokke-sleepi-sang-v3-natural.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fstokke-sleepi-sang-v3-natural',
  features: {
@@ -54,6 +56,7 @@ const products = [
  badge: 'Bästa bedside',
  image: '/images/products/joolz-roomie-crib.webp',
  rating: 4.6,
+ price: 799,
  image: '/images/products/joolz-roomie-crib.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fbedside-cribs%2Fjoie-roomie-bedside-crib-gray-flannel',
  features: {
@@ -91,6 +94,7 @@ const products = [
  name: 'Woodies Starlight Spjälsäng Växa',
  badge: 'Bra pris/kvalitet',
  rating: 4.5,
+ price: 4099,
  image: '/images/products/woodies-starlight-spjalsang-vaxa.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-starlight-spjalsang-vaxa-vit',
  features: {
@@ -104,6 +108,7 @@ const products = [
  name: 'Woodies Modern Spjälsäng',
  badge: 'Snyggast budget',
  rating: 4.4,
+ price: 4099,
  image: '/images/products/woodies-modern-spjalsang.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fspjalsangar%2Fwoodies-modern-spjalsang-vit',
  features: {
@@ -393,13 +398,16 @@ const faqItems = [
         "bestRating": 5,
         "ratingCount": 1
       },
-      "offers": {
+      ...(p.ctaHref ? { "offers": {
         "@type": "Offer",
         "priceCurrency": "SEK",
+        "price": p.price,
         "availability": "https://schema.org/InStock",
         "url": p.ctaHref,
-        "seller": { "@type": "Organization", "name": "Jollyroom" }
-      }
+        "seller": { "@type": "Organization", "name": "Jollyroom" },
+        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" } },
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "SE", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
+      } } : {})
     }
   }))
 })} />

@@ -18,6 +18,7 @@ const products = [
  name: 'Britax Romer Dualfix 5Z i-Size',
  badge: 'Bäst i test',
  rating: 4.8,
+ price: 3749,
  image: '/images/products/britax-dualfix-5z.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2F1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue',
  features: {
@@ -32,6 +33,7 @@ const products = [
  name: 'Cybex Sirona T i-Size',
  badge: 'Premiumval',
  rating: 4.7,
+ price: 3995,
  image: '/images/products/cybex-sirona-t.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fcybex-sirona-t-i-size-bilbarnstol-sepia-black',
  features: {
@@ -46,6 +48,7 @@ const products = [
  name: 'BeSafe iZi Modular RF X1 i-Size',
  badge: 'Lång användningstid',
  rating: 4.6,
+ price: 2396,
  image: '/images/products/besafe-izi-modular-rf-x1.webp',
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbilstolar%2Fbilbarnstolar%2Fbakatvanda%2Fbesafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
  features: {
@@ -274,13 +277,16 @@ export const articleMeta = {
         "bestRating": 5,
         "ratingCount": 1
       },
-      "offers": {
+      ...(p.ctaHref ? { "offers": {
         "@type": "Offer",
         "priceCurrency": "SEK",
+        "price": p.price,
         "availability": "https://schema.org/InStock",
         "url": p.ctaHref,
-        "seller": { "@type": "Organization", "name": "Jollyroom" }
-      }
+        "seller": { "@type": "Organization", "name": "Jollyroom" },
+        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" } },
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "SE", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
+      } } : {})
     }
   }))
 })} />
