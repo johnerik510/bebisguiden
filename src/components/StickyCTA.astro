@@ -1,11 +1,39 @@
 ---
+import { resolveMultiCTA } from '../lib/multi-cta';
+import { retailerMeta, type Retailer } from '../data/affiliates';
+
 interface Props {
  text?: string;
  href: string;
  productName?: string;
+ brand?: string;
 }
 
-const { text = 'Se bästa pris', href, productName } = Astro.props;
+const { text, href, productName, brand } = Astro.props;
+
+function detectRetailer(url: string | undefined): Retailer | undefined {
+ if (!url) return undefined;
+ for (const key of Object.keys(retailerMeta) as Retailer[]) {
+  const meta = retailerMeta[key];
+  if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
+ }
+ return undefined;
+}
+
+// Multi-CTA: använd högsta-provisionsbutik för stickyn där produktnamn finns.
+let resolvedHref = href;
+let resolvedStore: string | undefined;
+if (productName) {
+ const detected = detectRetailer(href);
+ const fallbackStoreName = detected ? retailerMeta[detected].name : undefined;
+ const fallback = fallbackStoreName ? { store: fallbackStoreName, url: href } : undefined;
+ const multi = resolveMultiCTA(productName, { brand, fallback, max: 1 });
+ if (multi?.primary) {
+  resolvedHref = multi.primary.url;
+  resolvedStore = multi.primary.store;
+ }
+}
+const ctaText = text || (resolvedStore ? `Se pris hos ${resolvedStore}` : 'Se bästa pris');
 ---
 
 <div
@@ -15,12 +43,12 @@ const { text = 'Se bästa pris', href, productName } = Astro.props;
  data-product={productName}
 >
  <a
- href={href}
+ href={resolvedHref}
  target="_blank"
  rel="nofollow sponsored noopener noreferrer"
  class="flex items-center justify-center w-full bg-cta text-white font-bold text-base px-4 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[52px] text-center"
  >
- {text}
+ {ctaText}
  <svg class="w-4 h-4 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
  </svg>

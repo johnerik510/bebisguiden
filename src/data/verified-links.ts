@@ -24,6 +24,9 @@ export const VERIFIED_LINKS: Record<string, string> = {
   'Jollyroom': 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1',
   'Baby V': 'https://go.adt231.net/t/t?a=1327902115&as=2065068845&t=2&tk=1',
   'Babysam': 'https://to.babyworld.se/t/t?a=1945556823&as=2065068845&t=2&tk=1',
+  // Stor och Liten: tracker-URL har körts i produktion sedan retailerMeta-initialisering
+  // (bekräftad fungerande via Adtraction broken-links 2026, samma som Babyland/Polarn O. Pyret).
+  'Stor och Liten': 'https://at.storochliten.se/t/t?a=1060728464&as=2065068845&t=2&tk=1',
   // Bulk-importerade 2026-05-13 från befintliga tracker-URLs i pages (alla URLs kopierade exakt, inga konstruerade):
   'Baby V_2': 'https://go.adt231.net/t/t?a=1327902115&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyv.se%2Fsv%2Farticles%2F2.73.167%2Fbabybjorn-barsele-one-air-svart-mesh',
   'Babyland_2': 'https://pin.babyland.se/t/t?a=1066444612&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.babyland.se%2Fbritax-romer-smile-5z-duovagn',

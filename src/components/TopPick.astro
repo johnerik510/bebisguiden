@@ -1,4 +1,7 @@
 ---
+import { resolveMultiCTA } from '../lib/multi-cta';
+import { retailerMeta, type Retailer } from '../data/affiliates';
+
 interface Product {
  name: string;
  badge?: string;
@@ -6,6 +9,7 @@ interface Product {
  rating?: number;
  image: string;
  ctaHref?: string;
+ brand?: string;
 }
 
 interface Props {
@@ -40,6 +44,15 @@ function detectStore(href?: string): string {
  return 'butiken';
 }
 
+function detectRetailer(url: string | undefined): Retailer | undefined {
+ if (!url) return undefined;
+ for (const key of Object.keys(retailerMeta) as Retailer[]) {
+  const meta = retailerMeta[key];
+  if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
+ }
+ return undefined;
+}
+
 const {
  product,
  description,
@@ -47,7 +60,18 @@ const {
  microcopy: microcopyProp,
 } = Astro.props;
 
-const store = storeProp || detectStore(product.ctaHref);
+// Multi-CTA: använd högsta-provisionsbutik som primary, fall tillbaka på hardcoded ctaHref.
+const detectedRetailer = detectRetailer(product.ctaHref);
+const fallbackStoreName = detectedRetailer ? retailerMeta[detectedRetailer].name : undefined;
+const fallback = product.ctaHref && fallbackStoreName
+ ? { store: fallbackStoreName, url: product.ctaHref }
+ : undefined;
+const multi = resolveMultiCTA(product.name, { brand: product.brand, fallback, max: 4 });
+const primary = multi?.primary;
+const others = multi?.others ?? [];
+
+const primaryHref = primary?.url || product.ctaHref;
+const store = primary?.store || storeProp || detectStore(product.ctaHref);
 const microcopy = microcopyProp || ['Snabb leverans', 'Fri retur', `I lager hos ${store}`];
 
 const fallbackDescription = product.badge
@@ -76,11 +100,22 @@ const stars = '★'.repeat(fullStars) + '☆'.repeat(Math.max(0, 5 - fullStars))
  {product.price && <span class="font-semibold text-dark">{product.price}</span>}
  </div>
  <p class="text-sm sm:text-base text-text-light mb-4 leading-relaxed">{finalDescription}</p>
- {product.ctaHref && (
- <a href={product.ctaHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold text-base sm:text-lg px-7 py-4 rounded-lg transition-colors min-h-[56px] w-full sm:w-auto shadow-sm hover:shadow-md">
+ {primaryHref && (
+ <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold text-base sm:text-lg px-7 py-4 rounded-lg transition-colors min-h-[56px] w-full sm:w-auto shadow-sm hover:shadow-md">
  Se pris hos {store}
  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
+ )}
+ {others.length > 0 && (
+ <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-light">
+ <span class="font-semibold uppercase tracking-wide">Även hos:</span>
+ {others.map((o, i) => (
+ <>
+ <a href={o.url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="underline decoration-dotted underline-offset-4 hover:text-accent-dark">{o.store}</a>
+ {i < others.length - 1 && <span class="text-text-light/50">·</span>}
+ </>
+ ))}
+ </p>
  )}
  <p class="text-xs text-text-light mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
  {microcopy.map((m) => (

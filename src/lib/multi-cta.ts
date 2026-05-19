@@ -11,7 +11,7 @@
  */
 
 import { BRAND_TO_STORES } from '../data/brand-stores';
-import { getStore } from '../data/affiliate-stores';
+import { getStore, getEffectiveCommission } from '../data/affiliate-stores';
 import { resolveTrackedUrl, resolveBrandUrl } from './cta-resolver';
 
 export interface CTAOption {
@@ -65,7 +65,8 @@ export function resolveMultiCTA(
     const key = store.name.toLowerCase();
     if (seen.has(key)) return;
     seen.add(key);
-    out.push({ store: store.name, url, commission: store.commission });
+    const commission = getEffectiveCommission(store, brand);
+    out.push({ store: store.name, url, commission });
   };
 
   if (brand) {

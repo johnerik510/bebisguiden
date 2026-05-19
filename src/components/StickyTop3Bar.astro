@@ -1,10 +1,14 @@
 ---
+import { resolveMultiCTA } from '../lib/multi-cta';
+import { retailerMeta, type Retailer } from '../data/affiliates';
+
 interface Product {
  name: string;
  badge?: string;
  price?: string;
  image: string;
  ctaHref?: string;
+ brand?: string;
 }
 
 interface Props {
@@ -13,7 +17,27 @@ interface Props {
 }
 
 const { products, max = 3 } = Astro.props;
-const top = products.filter(p => p.ctaHref).slice(0, max);
+
+function detectRetailer(url: string | undefined): Retailer | undefined {
+ if (!url) return undefined;
+ for (const key of Object.keys(retailerMeta) as Retailer[]) {
+  const meta = retailerMeta[key];
+  if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
+ }
+ return undefined;
+}
+
+const top = products
+ .map((p) => {
+  const detected = detectRetailer(p.ctaHref);
+  const fallbackStoreName = detected ? retailerMeta[detected].name : undefined;
+  const fallback = p.ctaHref && fallbackStoreName ? { store: fallbackStoreName, url: p.ctaHref } : undefined;
+  const multi = resolveMultiCTA(p.name, { brand: p.brand, fallback, max: 1 });
+  const href = multi?.primary?.url || p.ctaHref;
+  return { ...p, resolvedHref: href };
+ })
+ .filter((p) => p.resolvedHref)
+ .slice(0, max);
 ---
 
 {top.length > 0 && (
@@ -25,7 +49,7 @@ const top = products.filter(p => p.ctaHref).slice(0, max);
  <div class="flex divide-x divide-border">
  {top.map((p, i) => (
  <a
- href={p.ctaHref}
+ href={p.resolvedHref}
  target="_blank"
  rel="nofollow sponsored noopener noreferrer"
  class:list={[

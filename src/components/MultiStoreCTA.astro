@@ -10,7 +10,7 @@
  * - Övriga butiker rankas efter provision (högst först) via search-deeplink
  * - Duplicates filtreras bort case-insensitive
  */
-import { getStore, buildSearchDeeplink } from '../data/affiliate-stores';
+import { getStore, getEffectiveCommission, buildSearchDeeplink } from '../data/affiliate-stores';
 import { BRAND_TO_STORES } from '../data/brand-stores';
 import { buildSearchQuery, detectBrandFromProductName } from '../lib/affiliate';
 
@@ -58,7 +58,7 @@ const addCTA = (name: string, url: string, isPrimary = false) => {
  // Filtrera bort butiker utan affiliate-tracking
  if (!store || store.network === 'direct') return;
  seen.add(key);
- ctas.push({ name: store.name, url, commission: store.commission, isPrimary });
+ ctas.push({ name: store.name, url, commission: getEffectiveCommission(store, detectedBrand), isPrimary });
 };
 
 // 1) Primär verifierad djuplänk

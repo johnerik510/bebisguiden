@@ -7,6 +7,8 @@
 export interface AffiliateStore {
   name: string;
   commission: number;
+  /** Märkesspecifika provisioner (lowercase brand → rate). Används av getEffectiveCommission. */
+  brandCommissions?: Record<string, number>;
   network: 'adtraction' | 'addrevenue' | 'awin' | 'direct';
   baseUrl: string;
   searchUrl?: string;
@@ -18,8 +20,29 @@ export interface AffiliateStore {
   buildUrl: (targetUrl: string) => string | undefined;
 }
 
+/**
+ * Jollyroom CPO Category 1 (7%) ,  brands enligt Adtraction-dashboarden 2026-05-18.
+ * Resterande brands faller på 5% (Category 2). Lowercase för matchning.
+ */
+const JOLLYROOM_CAT1_BRANDS = [
+  'alice & fox', 'minitude', 'lilou lilou', 'petite déco', 'jly',
+  'cloudberry castle', 'myroom', 'minimys', 'hobie & bear', 'popp',
+  'victory', 'mini speeders', 'jolly', 'woodlii', 'alex garage',
+  'pinepeak', 'fippla', 'emoji', 'viga', 'fantasy playworld',
+  'classic world', 'beemoo', 'moweo', 'north 13.5', 'tiny travel',
+  'nordlys', 'petite chérie', 'petite chérie atelier', 'kid zoo',
+  'bellotte', 'ava', 'nordbjørn', 'tiny treasure', 'little champs',
+  'milki', 'nou', 'luca & lola', 'kuori',
+] as const;
+
+const JOLLYROOM_BRAND_COMMISSIONS: Record<string, number> = Object.fromEntries(
+  JOLLYROOM_CAT1_BRANDS.map((b) => [b, 0.07])
+);
+
 export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
   // Babysam, Partykungen.se: commissions verifierade 2026-05-14 från Adtraction-dashboarden.
+  // Babyland 4%, Baby V 7%, Jollyroom 7%/5% per brand, Stor och Liten 4%, Köpbarnvagn 5%
+  // verifierade 2026-05-18.
   // Bookbeat borttagen 2026-05-14, ej relevant för bebis-niche (80 SEK fast per sälj, böcker).
   'Babysam': {
     name: 'Babysam',
@@ -39,7 +62,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
   },
   'Babyland': {
     name: 'Babyland',
-    commission: 0.05,
+    commission: 0.04,
     network: 'adtraction',
     baseUrl: 'https://www.babyland.se',
     searchUrl: 'https://www.babyland.se/?q={q}',
@@ -47,7 +70,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
   },
   'Baby V': {
     name: 'Baby V',
-    commission: 0.05,
+    commission: 0.07,
     network: 'adtraction',
     baseUrl: 'https://www.babyv.se',
     searchUrl: 'https://www.babyv.se/?q={q}',
@@ -56,6 +79,7 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
   'Jollyroom': {
     name: 'Jollyroom',
     commission: 0.05,
+    brandCommissions: JOLLYROOM_BRAND_COMMISSIONS,
     network: 'adtraction',
     baseUrl: 'https://www.jollyroom.se',
     searchUrl: 'https://www.jollyroom.se/?q={q}',
@@ -71,10 +95,18 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
   },
   'Stor och Liten': {
     name: 'Stor och Liten',
-    commission: 0.05,
+    commission: 0.04,
     network: 'adtraction',
     baseUrl: 'https://www.storochliten.se',
     searchUrl: 'https://www.storochliten.se/?q={q}',
+    buildUrl: () => undefined,
+  },
+  'Köpbarnvagn': {
+    name: 'Köpbarnvagn',
+    commission: 0.05,
+    network: 'adtraction',
+    baseUrl: 'https://www.kopbarnvagn.se',
+    searchUrl: 'https://www.kopbarnvagn.se/?s={q}',
     buildUrl: () => undefined,
   },
   'Xplora': {
@@ -214,6 +246,16 @@ export const AFFILIATE_STORES: Record<string, AffiliateStore> = {
     buildUrl: () => undefined,
   },
 };
+
+/**
+ * Returnerar faktisk provision för (butik, märke). Faller tillbaka på store.commission.
+ * Brand-matchning är case-insensitive.
+ */
+export function getEffectiveCommission(store: AffiliateStore, brand?: string): number {
+  if (!brand || !store.brandCommissions) return store.commission;
+  const rate = store.brandCommissions[brand.toLowerCase().trim()];
+  return rate ?? store.commission;
+}
 
 export function getStore(storeName: string): AffiliateStore | undefined {
   if (!storeName) return undefined;
