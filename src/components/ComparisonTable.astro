@@ -59,7 +59,7 @@ const products = rawProducts.map((p) => {
  )}
  <div class="p-4">
  {p.image && (
- <div class="bg-gray-50 rounded-lg p-3 mb-3 flex items-center justify-center">
+ <div class="rounded-lg p-3 mb-3 flex items-center justify-center">
  <img src={p.image} alt={p.name} class="max-h-40 w-auto object-contain" loading="lazy" width="200" height="160" />
  </div>
  )}
@@ -67,9 +67,7 @@ const products = rawProducts.map((p) => {
  <h3 class="font-semibold text-text text-sm leading-snug">{p.name}</h3>
  {p.rating && <span class="text-star font-bold text-sm whitespace-nowrap">{p.rating}/5</span>}
  </div>
- {p.price && (
- <p class="text-lg font-bold text-text mb-3">{p.price}</p>
- )}
+ {/* Pris dolt i UI men kvar i schema/data */}
  <dl class="space-y-1.5 mb-4">
  {featureLabels.map(label => (
  <div class="flex justify-between gap-2 text-sm">
@@ -80,22 +78,20 @@ const products = rawProducts.map((p) => {
  </dl>
  {p.primary && (
  <a href={p.primary.url} target="_blank" rel="nofollow sponsored noopener noreferrer"
- class="flex items-center justify-center gap-1.5 w-full bg-cta text-white font-semibold text-sm py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+ class="flex items-center justify-center gap-1.5 w-full bg-cta text-white font-bold text-base py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
  Se pris hos {p.primary.store}
  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  )}
  {p.others.length > 0 && (
- <div class="mt-2.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-light">
+ <div class="mt-2.5 flex flex-wrap items-center gap-2 text-xs text-text-light">
  <span class="font-semibold uppercase tracking-wide">Även hos:</span>
- {p.others.map((o, i) => (
- <>
+ {p.others.map((o) => (
  <a href={o.url} rel="nofollow sponsored noopener noreferrer" target="_blank"
- class="hover:text-accent-dark underline decoration-dotted underline-offset-4">
+ class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-white font-semibold text-text hover:border-primary hover:text-primary transition-colors no-underline">
  {o.store}
+ <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
  </a>
- {i < p.others.length - 1 && <span class="text-text-light/50">·</span>}
- </>
  ))}
  </div>
  )}
@@ -113,7 +109,7 @@ const products = rawProducts.map((p) => {
  {products.map(p => (
  <th class="text-center p-3 font-semibold text-text min-w-[160px] align-bottom">
  {p.image && (
- <div class="bg-gray-50 rounded-lg p-2 mb-2 flex items-center justify-center mx-auto" style="height: 130px;">
+ <div class="rounded-lg p-2 mb-2 flex items-center justify-center mx-auto" style="height: 130px;">
  <img src={p.image} alt={p.name} class="max-h-28 w-auto object-contain" loading="lazy" width="160" height="120" />
  </div>
  )}
@@ -124,12 +120,7 @@ const products = rawProducts.map((p) => {
  </tr>
  </thead>
  <tbody>
- {products.some(p => p.price) && (
- <tr class="border-t border-border">
- <td class="p-3 font-medium text-text-light">Pris</td>
- {products.map(p => <td class="p-3 text-center font-bold">{p.price || '-'}</td>)}
- </tr>
- )}
+ {/* Pris-rad dold i UI, kvar i schema */}
  <tr class="border-t border-border bg-bg-alt/50">
  <td class="p-3 font-medium text-text-light">Betyg</td>
  {products.map(p => <td class="p-3 text-center font-bold text-star">{p.rating ? `${p.rating}/5` : '-'}</td>)}
@@ -146,22 +137,20 @@ const products = rawProducts.map((p) => {
  <td class="p-3 text-center align-top">
  {p.primary && (
  <a href={p.primary.url} target="_blank" rel="nofollow sponsored noopener noreferrer"
- class="inline-flex items-center justify-center gap-1 bg-cta text-white font-bold text-sm px-5 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[48px]">
+ class="flex w-full items-center justify-center gap-1 bg-cta text-white font-bold text-base px-5 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
  Se pris hos {p.primary.store}
  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  )}
  {p.others.length > 0 && (
- <div class="mt-2 text-xs text-text-light leading-relaxed">
- <span class="font-semibold">Även hos:</span>{' '}
- {p.others.map((o, i) => (
- <>
+ <div class="mt-2 flex flex-wrap items-center justify-center gap-2 text-xs text-text-light">
+ <span class="font-semibold uppercase tracking-wide">Även hos:</span>
+ {p.others.map((o) => (
  <a href={o.url} rel="nofollow sponsored noopener noreferrer" target="_blank"
- class="hover:text-accent-dark underline decoration-dotted underline-offset-4">
+ class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-white font-semibold text-text hover:border-primary hover:text-primary transition-colors no-underline">
  {o.store}
+ <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
  </a>
- {i < p.others.length - 1 && <span class="text-text-light/50">{' · '}</span>}
- </>
  ))}
  </div>
  )}

@@ -96,26 +96,26 @@ const stars = '★'.repeat(fullStars) + '☆'.repeat(Math.max(0, 5 - fullStars))
  {product.rating && (
  <span class="text-accent font-bold">{product.rating}/5 <span class="text-accent">{stars}</span></span>
  )}
- {product.rating && product.price && <span class="text-text-light">·</span>}
- {product.price && <span class="font-semibold text-dark">{product.price}</span>}
+ {/* Pris dolt i UI, kvar i data */}
  </div>
  <p class="text-sm sm:text-base text-text-light mb-4 leading-relaxed">{finalDescription}</p>
  {primaryHref && (
- <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold text-base sm:text-lg px-7 py-4 rounded-lg transition-colors min-h-[56px] w-full sm:w-auto shadow-sm hover:shadow-md">
+ <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="flex w-full items-center justify-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold text-base sm:text-lg px-7 py-4 rounded-lg transition-colors min-h-[56px] shadow-sm hover:shadow-md">
  Se pris hos {store}
  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  )}
  {others.length > 0 && (
- <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-light">
+ <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-text-light">
  <span class="font-semibold uppercase tracking-wide">Även hos:</span>
- {others.map((o, i) => (
- <>
- <a href={o.url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="underline decoration-dotted underline-offset-4 hover:text-accent-dark">{o.store}</a>
- {i < others.length - 1 && <span class="text-text-light/50">·</span>}
- </>
+ {others.map((o) => (
+ <a href={o.url} target="_blank" rel="nofollow sponsored noopener noreferrer"
+ class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-white font-semibold text-text hover:border-primary hover:text-primary transition-colors no-underline">
+ {o.store}
+ <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+ </a>
  ))}
- </p>
+ </div>
  )}
  <p class="text-xs text-text-light mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
  {microcopy.map((m) => (

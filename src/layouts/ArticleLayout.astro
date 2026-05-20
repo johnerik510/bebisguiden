@@ -42,6 +42,14 @@ const {
  stickyCtaBrand,
 } = Astro.props;
 
+// Lästid: rendera default-sloten, räkna ord, dela på 200 ord/min
+let readingTimeMinutes: number | undefined;
+if (Astro.slots.has('default')) {
+ const slotHtml = await Astro.slots.render('default');
+ const words = slotHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean).length;
+ readingTimeMinutes = Math.max(1, Math.round(words / 200));
+}
+
 // Resolva datum för schema + byline:
 // - datePublished: från explicit prop
 // - dateModified: prefer updatedDate-prop (manuellt curaterad per sida)
@@ -94,6 +102,7 @@ if (section) {
  <AuthorByline
  datePublished={resolvedPublished}
  dateModified={resolvedModified}
+ readingTimeMinutes={readingTimeMinutes}
  />
  )}
  {image && (

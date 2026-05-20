@@ -99,7 +99,7 @@ const primaryLabel = primary ? `Se pris hos ${primary.store}` : (ctaText !== 'Se
  </div>
  </div>
  )}
- {price && <span class="font-bold text-text">{price}</span>}
+ {/* Pris dolt i UI, kvar i schema/data */}
  </div>
  {(pros.length > 0 || cons.length > 0) && (
  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-sm">
@@ -116,7 +116,7 @@ const primaryLabel = primary ? `Se pris hos ${primary.store}` : (ctaText !== 'Se
  </div>
  )}
  {primaryHref && (
- <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="relative inline-flex items-center justify-center mt-4 bg-cta text-white font-bold text-base px-7 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[52px]">
+ <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" class="relative flex w-full items-center justify-center mt-4 bg-cta text-white font-bold text-base px-7 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
  <span class="absolute -top-2 right-3 inline-block bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full shadow-sm">Redaktionens val</span>
  {primaryLabel}
  <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>

@@ -92,7 +92,7 @@ const hasStores = stores.length > 0;
  <div class="not-prose bg-accent/5 border border-accent/20 rounded-xl p-5 my-6" data-product={productName}>
  <div class="mb-4">
  <p class="font-heading font-bold text-dark text-base">{productName}</p>
- {price && <p class="text-sm text-gray mt-0.5">{price}</p>}
+ {/* Pris dolt i UI, kvar i data */}
  {description && <p class="text-sm text-text-light mt-1.5 leading-relaxed">{description}</p>}
  </div>
 
@@ -103,7 +103,7 @@ const hasStores = stores.length > 0;
  rel="nofollow sponsored noopener noreferrer"
  target="_blank"
  class:list={[
- 'no-underline relative inline-flex items-center justify-between gap-2 px-5 py-4 rounded-lg font-bold text-base transition-colors',
+ 'no-underline relative flex w-full items-center justify-between gap-2 px-5 py-4 rounded-lg font-bold text-base transition-colors min-h-[56px]',
  i === 0
 ? 'bg-accent hover:bg-accent-dark!text-white shadow-sm'
 : 'bg-white hover:bg-sand!text-dark border border-sand-dark',

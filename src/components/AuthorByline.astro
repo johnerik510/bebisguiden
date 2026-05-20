@@ -11,6 +11,7 @@ interface Props {
  authorBio?: string;
  datePublished?: string;
  dateModified?: string;
+ readingTimeMinutes?: number;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
  authorBio = 'Legitimerad barnmorska med 10+ års klinisk erfarenhet. Testar och granskar barnprodukter med fokus på säkerhet, ergonomi och evidensbaserade råd.',
  datePublished,
  dateModified,
+ readingTimeMinutes,
 } = Astro.props;
 
 const formatDate = (dateStr: string) => {
@@ -40,16 +42,16 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
  <a href="/om-redaktionen/" class="font-semibold text-gray-900 hover:text-sky-700 transition-colors">{author}</a>
  <span class="text-sm text-gray-500">{authorTitle}</span>
  </div>
- {authorBio && (
- <p class="text-xs text-gray-500 mt-1 leading-snug">{authorBio}</p>
- )}
- {(showPublished || showUpdated) && (
+ {(showPublished || showUpdated || readingTimeMinutes) && (
  <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-gray-500 mt-1.5">
  {showPublished && (
  <span>Publicerad: <time datetime={datePublished}>{formatDate(datePublished!)}</time></span>
  )}
  {showUpdated && (
  <span>Uppdaterad: <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>
+ )}
+ {readingTimeMinutes && (
+ <span>Lästid: {readingTimeMinutes} min</span>
  )}
  </div>
  )}
