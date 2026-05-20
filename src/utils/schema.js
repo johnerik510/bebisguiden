@@ -33,7 +33,8 @@ export function buildArticleSchema({ title, description, image, datePublished, d
     description,
     author: AUTHOR,
     publisher: PUBLISHER,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${pathname}` }
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${pathname}` },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.prose p:first-of-type', '.faq-answer'] }
   };
   if (image) schema.image = `${SITE_URL}${image}`;
   const pub = datePublished || dateModified;
