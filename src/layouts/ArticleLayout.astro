@@ -132,15 +132,66 @@ if (section) {
  )}
  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
  <script>
-  // Injicera data-label på td-element från th i prose-tabeller (används av CSS card-flip på mobil)
-  document.querySelectorAll('article table').forEach((table) => {
-   const headers = Array.from(table.querySelectorAll('thead th')).map((th) => th.textContent?.trim() ?? '');
-   if (!headers.length) return;
-   table.querySelectorAll('tbody tr').forEach((row) => {
-    row.querySelectorAll('td').forEach((td, i) => {
-     if (headers[i]) td.setAttribute('data-label', headers[i]);
-    });
+  function transformProseTablesForMobile() {
+   if (window.innerWidth >= 768) return;
+   document.querySelectorAll('article table:not([data-mobile]):not([data-mobile-simple])').forEach((table) => {
+    const ths = Array.from(table.querySelectorAll('thead th'));
+    // Jämförelsetabell: 3+ kolumner (Egenskap + 2+ produkter)
+    if (ths.length >= 3) {
+     const productNames = ths.slice(1).map((th) => th.textContent?.trim() ?? '');
+     const rows = Array.from(table.querySelectorAll('tbody tr'));
+     const newTbody = document.createElement('tbody');
+     // Produktnamnsrad
+     const namesTr = document.createElement('tr');
+     namesTr.className = 'mp-names';
+     productNames.forEach((name) => {
+      const td = document.createElement('td');
+      td.textContent = name;
+      namesTr.appendChild(td);
+     });
+     newTbody.appendChild(namesTr);
+     // Egenskapsrader
+     rows.forEach((row) => {
+      const cells = Array.from(row.querySelectorAll('td'));
+      if (!cells.length) return;
+      // USP-rad: visa direkt utan feature-label
+      if (row.classList.contains('usp-row')) {
+       const uspTr = document.createElement('tr');
+       uspTr.className = 'mp-values mp-usp';
+       cells.slice(1).forEach((cell) => {
+        const td = document.createElement('td');
+        td.innerHTML = cell.innerHTML;
+        uspTr.appendChild(td);
+       });
+       newTbody.appendChild(uspTr);
+       return;
+      }
+      const labelTr = document.createElement('tr');
+      labelTr.className = 'mp-label';
+      const labelTd = document.createElement('td');
+      labelTd.colSpan = productNames.length;
+      labelTd.textContent = cells[0].textContent?.trim() ?? '';
+      labelTr.appendChild(labelTd);
+      newTbody.appendChild(labelTr);
+      const valuesTr = document.createElement('tr');
+      valuesTr.className = 'mp-values';
+      cells.slice(1).forEach((cell) => {
+       const td = document.createElement('td');
+       td.innerHTML = cell.innerHTML;
+       valuesTr.appendChild(td);
+      });
+      newTbody.appendChild(valuesTr);
+     });
+     table.querySelector('tbody')?.replaceWith(newTbody);
+     const thead = table.querySelector('thead');
+     if (thead) thead.style.display = 'none';
+     table.setAttribute('data-mobile', '1');
+    } else {
+     // Enkel 2-kolumnstabell
+     table.setAttribute('data-mobile-simple', '1');
+    }
    });
-  });
+  }
+  transformProseTablesForMobile();
  </script>
 </BaseLayout>

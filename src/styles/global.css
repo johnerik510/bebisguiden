@@ -80,45 +80,108 @@ article table tr:nth-child(even) td {
   background: var(--color-bg-alt);
 }
 
-/* Prose tables – mobil: card-flip (ingen horisontell scroll) */
+/* Prose tables – mobil: rubrikrad + produkter sida vid sida */
 @media (max-width: 767px) {
-  article table,
-  article table tbody,
-  article table tr,
-  article table td {
+  article table[data-mobile] {
     display: block;
-    width: 100%;
-  }
-  article table thead {
-    display: none;
-  }
-  article table tr {
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
     overflow: hidden;
-    margin-bottom: 0.75rem;
   }
-  article table td {
+  article table[data-mobile] tbody {
+    display: block;
+  }
+  /* Produktnamns-rad högst upp */
+  article table[data-mobile] tr.mp-names {
+    display: flex;
+    background: var(--color-primary);
+  }
+  article table[data-mobile] tr.mp-names td {
+    flex: 1;
+    padding: 0.45rem 0.5rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-align: center;
+    color: white;
+    border: none;
+    background: none;
+    line-height: 1.3;
+  }
+  /* Egenskapsrubrik – full bredd */
+  article table[data-mobile] tr.mp-label {
+    display: block;
+    border-top: 1px solid var(--color-border);
+  }
+  article table[data-mobile] tr.mp-label td {
+    display: block;
+    background: var(--color-bg-alt);
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-light);
+    padding: 0.3rem 0.75rem;
+    border: none;
+  }
+  /* Värden – sida vid sida */
+  article table[data-mobile] tr.mp-values {
+    display: flex;
+    border-top: 1px solid var(--color-border-dark);
+  }
+  article table[data-mobile] tr.mp-values td {
+    flex: 1;
+    text-align: center;
+    padding: 0.45rem 0.4rem;
+    border: none;
+    border-right: 1px solid var(--color-border);
+    font-size: 0.825rem;
+    background: transparent;
+    line-height: 1.35;
+  }
+  article table[data-mobile] tr.mp-values td:last-child {
+    border-right: none;
+  }
+  article table[data-mobile] tr.mp-usp td {
+    background: #f0fdf4;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.72rem;
+    padding: 0.35rem 0.4rem;
+  }
+  article table[data-mobile] tr.mp-usp span {
+    white-space: nowrap;
+    display: inline-block;
+  }
+  /* Enkla tabeller (2 kolumner) – behåll label+värde-layout */
+  article table[data-mobile-simple] {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  article table[data-mobile-simple] thead { display: none; }
+  article table[data-mobile-simple] tbody,
+  article table[data-mobile-simple] tr { display: block; }
+  article table[data-mobile-simple] tr {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.75rem;
-    border: none;
     border-bottom: 1px solid var(--color-border);
-    padding: 0.5rem 0.75rem;
+    padding: 0.45rem 0.75rem;
+    gap: 0.5rem;
+  }
+  article table[data-mobile-simple] tr:last-child { border-bottom: none; }
+  article table[data-mobile-simple] td {
+    border: none;
+    padding: 0;
+    font-size: 0.875rem;
     background: transparent;
   }
-  article table tr:nth-child(even) td {
-    background: transparent;
-  }
-  article table td:last-child {
-    border-bottom: none;
-  }
-  article table td::before {
-    content: attr(data-label);
+  article table[data-mobile-simple] td:first-child {
     font-weight: 600;
     color: var(--color-text-light);
     flex-shrink: 0;
-    min-width: 40%;
+    max-width: 50%;
+  }
+  article table[data-mobile-simple] td:nth-child(even) {
+    background: transparent;
   }
 }

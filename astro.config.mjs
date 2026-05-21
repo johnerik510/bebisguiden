@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://bebisguiden.se',
   output: 'static',
   trailingSlash: 'always',
-  build: { format: 'directory', inlineStylesheets: 'always' },
+  build: { format: 'directory', inlineStylesheets: 'always', concurrency: 1 },
   vite: {
     plugins: [tailwindcss()],
   },
