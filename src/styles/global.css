@@ -56,3 +56,69 @@
   background-color: var(--color-accent);
   color: white;
 }
+
+/* Prose tables – desktop */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 1.5rem 0;
+}
+article table th,
+article table td {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+article table th {
+  background: var(--color-bg-alt);
+  font-weight: 600;
+  color: var(--color-text);
+}
+article table tr:nth-child(even) td {
+  background: var(--color-bg-alt);
+}
+
+/* Prose tables – mobil: card-flip (ingen horisontell scroll) */
+@media (max-width: 767px) {
+  article table,
+  article table tbody,
+  article table tr,
+  article table td {
+    display: block;
+    width: 100%;
+  }
+  article table thead {
+    display: none;
+  }
+  article table tr {
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  article table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+  }
+  article table tr:nth-child(even) td {
+    background: transparent;
+  }
+  article table td:last-child {
+    border-bottom: none;
+  }
+  article table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--color-text-light);
+    flex-shrink: 0;
+    min-width: 40%;
+  }
+}
