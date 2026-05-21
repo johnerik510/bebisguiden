@@ -17,9 +17,9 @@ const jsonLd = {
 ---
 
 <nav aria-label="Brödsmulor" class="text-sm text-text-light">
- <ol class="flex flex-wrap items-center gap-1">
+ <ol class="flex flex-nowrap items-center gap-1 overflow-hidden">
  {items.map((item, i) => (
- <li class="flex items-center gap-1 whitespace-nowrap">
+ <li class:list={["flex items-center gap-1 shrink-0", i === items.length - 1 && "truncate min-w-0 shrink"]}>
  {i > 0 && <span aria-hidden="true">/</span>}
  {item.href? (
  <a href={item.href} class="hover:text-accent transition-colors">{item.label}</a>
