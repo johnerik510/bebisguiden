@@ -3,7 +3,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import TopPick from '../../components/TopPick.astro';
-import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
@@ -97,6 +96,8 @@ export const articleMeta = {
  breadcrumbs={breadcrumbs}
  updatedDate="2026-05-15"
   datePublished="2026-04-08"
+ stickyCtaHref={products[0].ctaHref}
+ stickyCtaProduct={products[0].name}
 >
  <p class="text-base text-text-light mb-4 max-w-2xl">
  Cybex Sirona T i-Size vinner ISOFIX-bilbarnstol 2026 med 360-graders rotation, stödben och i-Size-godkännande (R129). För föräldrar med bil tillverkad 2012 eller senare som vill minska risken för felmontering, ISOFIX sänker den från cirka 60 procent (bälte) till under 5 procent. Britax Römer Dualfix 5Z är bäst i pris/prestanda.
@@ -189,7 +190,6 @@ export const articleMeta = {
 
  <FAQ items={faqItems} />
 
- <StickyTop3Bar products={products} />
 <ProductSchema products={[
  { name: 'Cybex Sirona T i-Size', description: 'ISOFIX-bilbarnstol med 360-rotation och bäst säkerhet i klassen.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1 },
  { name: 'Britax Romer Dualfix 5Z i-Size', description: 'ISOFIX-bilbarnstol med 360-rotation och premium krocksäkerhet.', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1 },

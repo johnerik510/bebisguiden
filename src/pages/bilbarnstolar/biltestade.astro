@@ -3,7 +3,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import TopPick from '../../components/TopPick.astro';
-import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -122,6 +121,8 @@ export const articleMeta = {
  breadcrumbs={breadcrumbs}
  updatedDate="2026-04-14"
   datePublished="2026-03-28"
+ stickyCtaHref={products[0].ctaHref}
+ stickyCtaProduct={products[0].name}
 >
  <p class="text-base text-text-light mb-4 max-w-2xl">
  Att en bilbarnstol är EU-godkänd är ett minimikrav, inte ett kvalitetsmärke. Folksams årliga krocktest och det svenska Plus Test är de strängaste oberoende testerna i Europa. Vi listar enbart stolar som klarat dessa tester och förklarar vad resultaten betyder för ditt barns säkerhet.
@@ -233,7 +234,6 @@ export const articleMeta = {
 
  <FAQ items={faqItems} />
 
- <StickyTop3Bar products={products} />
 <ProductSchema products={[
  { name: 'Axkid Minikid 4', description: 'Bäst i test bakåtvänd bilbarnstol med topp krocksäkerhet och lång användningstid.', brand: 'Axkid', ratingValue: 4.9, reviewCount: 1 },
  { name: 'Cybex Sirona T i-Size', description: 'Biltestestbäst komfort med 360-rotation och LinearSideSleep. ISOFIX-monterad.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1 },

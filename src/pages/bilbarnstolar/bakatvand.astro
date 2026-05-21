@@ -3,7 +3,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import TopPick from '../../components/TopPick.astro';
-import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -107,6 +106,8 @@ export const articleMeta = {
  breadcrumbs={breadcrumbs}
  updatedDate="2026-05-15"
  datePublished="2026-03-26"
+ stickyCtaHref={products[0].ctaHref}
+ stickyCtaProduct={products[0].name}
 >
  <p class="text-base text-text-light mb-4 max-w-2xl">
  Bakåtvänt åkande är fem gånger säkrare än framåtvänt för barn under fyra år, enligt Folksams krocktester. Tre toppstolar jämförda: Britax med 360-rotation för enkel inlastning, Axkids modell för bakåtvänt till sju års ålder och Joie som ger rotation till bäst pris.
@@ -197,7 +198,6 @@ export const articleMeta = {
 
  <FAQ items={faqItems} />
 
- <StickyTop3Bar products={products} />
 <ProductSchema products={[
  { name: 'Britax Romer Dualfix 5Z i-Size', description: 'Bäst i test bakåtvänd bilbarnstol med 360-rotation och topp krocksäkerhet. ISOFIX.', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1 },
  { name: 'Axkid Minikid 4 Pro', description: 'Bakåtvänd bilbarnstol med lång användningstid upp till 7 år. Hög säkerhetsnivå.', brand: 'Axkid', ratingValue: 4.8, reviewCount: 1 },

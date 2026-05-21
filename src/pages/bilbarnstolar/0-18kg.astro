@@ -3,7 +3,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import TopPick from '../../components/TopPick.astro';
-import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 
@@ -97,6 +96,8 @@ export const articleMeta = {
  ]}
  faqItems={faqItems}
   datePublished="2026-03-24"
+ stickyCtaHref={products[0].ctaHref}
+ stickyCtaProduct={products[0].name}
 >
 
 <h2 class="font-heading text-3xl md:text-4xl font-bold mb-3">Bästa bilbarnstolen 0-18 kg 2026</h2>
@@ -196,7 +197,6 @@ export const articleMeta = {
 
 <FAQ items={faqItems} />
 
-<StickyTop3Bar products={products} />
 <ProductSchema products={[
  { name: 'Britax Römer Dualfix 5Z i-Size', description: 'Bakåtvänd bilbarnstol 0 till 18 kg med 360-rotation och ISOFIX. Toppval för nyfödda.', image: 'https://bebisguiden.se/images/products/britax-dualfix-5z.webp', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1 },
  { name: 'BeSafe iZi Modular RF X1 i-Size', description: 'Bakåtvänd bilbarnstol 0 till 18 kg med modulärt system och ISOFIX.', image: 'https://bebisguiden.se/images/products/besafe-izi-modular-rf-x1.webp', brand: 'BeSafe', ratingValue: 4.8, reviewCount: 1 },

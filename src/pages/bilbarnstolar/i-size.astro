@@ -3,7 +3,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import TopPick from '../../components/TopPick.astro';
-import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
@@ -126,6 +125,8 @@ export const articleMeta = {
  breadcrumbs={breadcrumbs}
  updatedDate="2026-05-15"
   datePublished="2026-04-06"
+ stickyCtaHref={products[0].ctaHref}
+ stickyCtaProduct={products[0].name}
 >
  <h2 class="font-heading text-3xl md:text-4xl font-bold mb-3">Bästa i-Size bilbarnstolen 2026 (R129)</h2>
  <p class="text-base text-text-light mb-4 max-w-2xl">
@@ -236,7 +237,6 @@ export const articleMeta = {
 
  <FAQ items={faqItems} />
 
- <StickyTop3Bar products={products} />
 <ProductSchema products={[
  { name: 'Cybex Sirona T i-Size', description: 'i-Size bakåtvänd bilbarnstol med 360-rotation och sidokrocksskydd. ISOFIX.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1 },
  { name: 'Joie i-Spin 360', description: 'i-Size bakåtvänd bilbarnstol med 360-rotation och bra pris.', brand: 'Joie', ratingValue: 4.6, reviewCount: 1 },
