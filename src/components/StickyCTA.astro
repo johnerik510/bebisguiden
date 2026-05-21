@@ -20,7 +20,6 @@ function detectRetailer(url: string | undefined): Retailer | undefined {
  return undefined;
 }
 
-// Multi-CTA: använd högsta-provisionsbutik för stickyn där produktnamn finns.
 let resolvedHref = href;
 let resolvedStore: string | undefined;
 if (productName) {
@@ -33,26 +32,32 @@ if (productName) {
   resolvedStore = multi.primary.store;
  }
 }
-const ctaText = text || (resolvedStore ? `Se pris hos ${resolvedStore}` : 'Se bästa pris');
+const ctaText = text || (resolvedStore ? `Köp hos ${resolvedStore}` : 'Se erbjudande');
 ---
 
 <div
  id="sticky-cta"
- class="fixed left-0 right-0 z-50 bg-white border-t border-border shadow-lg md:hidden translate-y-full transition-transform duration-300"
- style="bottom: 0; padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));"
- data-product={productName}
+ class="not-prose fixed left-0 right-0 z-40 lg:hidden translate-y-full transition-transform duration-300 ease-in-out"
+ style="bottom: 0;"
 >
- <a
- href={resolvedHref}
- target="_blank"
- rel="nofollow sponsored noopener noreferrer"
- class="flex items-center justify-center w-full bg-cta text-white font-bold text-base px-4 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[52px] text-center"
+ <div
+  class="bg-white border-t border-border shadow-2xl px-4"
+  style="padding-top: 0.5rem; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));"
  >
- {ctaText}
- <svg class="w-4 h-4 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
- </svg>
- </a>
+  {productName && (
+   <p class="text-[11px] text-text-light leading-tight mb-1.5 truncate">
+    <span class="font-semibold text-cta uppercase tracking-wide">Bäst i test:</span> {productName}
+   </p>
+  )}
+  <a
+   href={resolvedHref}
+   rel="nofollow sponsored noopener noreferrer"
+   target="_blank"
+   class="block w-full text-center bg-cta hover:bg-cta-dark text-white font-bold text-base px-5 py-3 rounded-lg transition-colors"
+  >
+   {ctaText}
+  </a>
+ </div>
 </div>
 
 <script>
@@ -60,11 +65,23 @@ const ctaText = text || (resolvedStore ? `Se pris hos ${resolvedStore}` : 'Se b�
  if (!bar) throw new Error('sticky-cta missing');
 
  let visible = false;
+
  const show = () => { if (!visible) { visible = true; bar.classList.remove('translate-y-full'); } };
  const hide = () => { if (visible) { visible = false; bar.classList.add('translate-y-full'); } };
 
  window.addEventListener('scroll', () => {
- if (window.scrollY > 400) show();
- else if (window.scrollY < 200) hide();
+  if (window.scrollY > 400) show();
+  else if (window.scrollY < 200) hide();
  }, { passive: true });
+
+ const vv = window.visualViewport;
+ if (vv) {
+  const pin = () => {
+   const gap = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
+   bar.style.bottom = `${gap}px`;
+  };
+  vv.addEventListener('resize', pin, { passive: true });
+  vv.addEventListener('scroll', pin, { passive: true });
+  pin();
+ }
 </script>
