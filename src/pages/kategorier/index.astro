@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const kategorier = [
+ { href: '/bilbarnstolar/', name: 'Bilbarnstolar', img: '/images/cat-bilbarnstol.webp', lede: 'Folksam, ADAC och i-Size R129 — vi rankar bara modeller som klarar krocktest.' },
+ { href: '/barnvagnar/', name: 'Barnvagnar', img: '/images/cat-barnvagn.webp', lede: 'Duovagnar, sittvagnar, jogging och lättvikt — testade under verklig användning.' },
+ { href: '/babyvakter/', name: 'Babyvakter', img: '/images/cat-babyvakt.webp', lede: 'DECT eller WiFi? Vi väger räckvidd, bildkvalitet och integritet.' },
+ { href: '/barselen/', name: 'Bärselen', img: '/images/cat-barsele.webp', lede: 'Ergonomiska höftpositioner testade mot Hip Dysplasia Institutes riktlinjer.' },
+ { href: '/matstolar/', name: 'Matstolar', img: '/images/cat-matstol.webp', lede: 'Tripp Trapp, Antilop och fler — stabilitet, anpassning och långsiktigt värde.' },
+ { href: '/spjalsangar/', name: 'Spjälsängar', img: '/images/cat-spjalsang.webp', lede: 'Säker sovmiljö enligt EN 716 och svensk barnläkarpraxis.' },
+ { href: '/sovsackar/', name: 'Sovsäckar', img: '/images/cat-sovsack.webp', lede: 'Rätt TOG-värde för rätt rumstemperatur — material och tvättbarhet testat.' },
+ { href: '/amning/', name: 'Amning & matning', img: '/images/cat-amning.webp', lede: 'Bröstpumpar, nappflaskor och sterilisatorer jämförda utifrån faktisk användning.' },
+ { href: '/blojor/', name: 'Blöjor', img: '/images/cat-bloja.webp', lede: 'Pampers, Libero, Kit & Kin och fler jämförda på läckageskydd och miljö.' },
+ { href: '/babyklader/', name: 'Babykläder', img: '/images/cat-babyklader.webp', lede: 'GOTS-certifierade bodies, UV-dräkter och vinterfleece testade på passform.' },
+ { href: '/badkar/', name: 'Babybadkar', img: '/images/cat-badkar.webp', lede: 'Stokke Flexi Bath, IKEA LATTSAM och fler testade på stabilitet och hantering.' },
+ { href: '/leksaker/', name: 'Leksaker', img: '/images/cat-leksaker.webp', lede: 'Babygym, skallror och aktivitetscenter testade per åldersintervall 0-12 mån.' },
+ { href: '/sterilisatorer/', name: 'Sterilisatorer', img: '/images/cat-sterilisator.webp', lede: 'Elektrisk ånga, mikrovågsugn eller UV? Steriliseringstid och kapacitet jämförd.' },
+ { href: '/babysitter/', name: 'Babysitter', img: '/images/cat-babysitter.webp', lede: 'BabyBjörn Bliss och Balance Soft testade på ergonomi och lutningsjustering.' },
+ { href: '/lara-ga-stol/', name: 'Lära-gå-stolar', img: '/images/cat-lara-ga-stol.webp', lede: 'Rätt ålder, rätt stöd — vi reder ut vilket gångstöd som faktiskt hjälper.' },
+ { href: '/sakerhet/babygrindar/', name: 'Babygrindar', img: '/images/cat-babygrindar.webp', lede: 'Skruvgrindar för trappor och spänngrindar för dörrar — EN 1930-godkända.' },
+];
+---
+
+<BaseLayout
+ title="Alla kategorier — Bebisguiden 2026"
+ description="Se alla 16 kategorier testade av barnmorska och barnsjuksköterska: barnvagnar, bilbarnstolar, babyvakter, bärselen, blöjor och mer."
+>
+ <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+  <div class="mb-8">
+   <a href="/" class="inline-flex items-center gap-1.5 text-sm text-text-light hover:text-accent transition-colors mb-4">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Tillbaka till startsidan
+   </a>
+   <div class="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-2">Alla granskningsområden</div>
+   <h1 class="font-heading text-3xl sm:text-4xl font-bold text-primary leading-tight">Sexton kategorier, testade av barnmorska och barnsjuksköterska</h1>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+   {kategorier.map((k) => (
+    <article class="flex flex-col rounded-2xl border border-border hover:border-accent hover:shadow-lg transition-all bg-white overflow-hidden">
+     <a href={k.href} tabindex="-1" aria-hidden="true" class="block relative aspect-[16/9] overflow-hidden bg-bg">
+      <img src={k.img} alt={`Testkategori: ${k.name}`} class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+     </a>
+     <div class="flex flex-col flex-1 p-3 sm:p-4">
+      <h2 class="font-heading text-base sm:text-lg font-bold text-primary mb-1 sm:mb-1.5 leading-snug">
+       <a href={k.href} class="hover:text-accent transition-colors">{k.name}</a>
+      </h2>
+      <p class="text-xs text-text-light leading-relaxed line-clamp-2 mb-3 flex-1 hidden sm:block">{k.lede}</p>
+      <a href={k.href} class="group inline-flex items-center justify-center gap-1.5 w-full bg-cta hover:bg-cta-dark text-white font-semibold text-xs sm:text-sm px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-colors shadow-sm mt-auto">
+       <span class="sm:hidden">Se bäst i test</span>
+       <span class="hidden sm:inline">Se bästa {k.name.toLowerCase()}</span>
+       <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+     </div>
+    </article>
+   ))}
+  </div>
+ </div>
+</BaseLayout>
