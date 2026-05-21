@@ -16,18 +16,16 @@ const jsonLd = {
 };
 ---
 
-<nav aria-label="Brödsmulor" class="text-sm text-text-light overflow-hidden">
- <ol class="whitespace-nowrap overflow-hidden text-ellipsis">
+<nav aria-label="Brödsmulor" class="text-sm text-text-light truncate">
  {items.map((item, i) => (
- <li class="inline">
- {i > 0 && <span class="mx-0.5" aria-hidden="true">/</span>}
- {item.href? (
- <a href={item.href} class="hover:text-accent transition-colors">{item.label}</a>
- ): (
- <span aria-current="page">{item.label}</span>
- )}
- </li>
+  <Fragment>
+   {i > 0 && <span class="mx-0.5" aria-hidden="true">/</span>}
+   {item.href? (
+    <a href={item.href} class="hover:text-accent transition-colors">{item.label}</a>
+   ): (
+    <span aria-current="page">{item.label}</span>
+   )}
+  </Fragment>
  ))}
- </ol>
 </nav>
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
