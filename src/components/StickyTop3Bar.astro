@@ -16,7 +16,7 @@ interface Props {
  max?: number;
 }
 
-const { products, max = 3 } = Astro.props;
+const { products } = Astro.props;
 
 function detectRetailer(url: string | undefined): Retailer | undefined {
  if (!url) return undefined;
@@ -27,57 +27,71 @@ function detectRetailer(url: string | undefined): Retailer | undefined {
  return undefined;
 }
 
-const top = products
- .map((p) => {
-  const detected = detectRetailer(p.ctaHref);
-  const fallbackStoreName = detected ? retailerMeta[detected].name : undefined;
-  const fallback = p.ctaHref && fallbackStoreName ? { store: fallbackStoreName, url: p.ctaHref } : undefined;
-  const multi = resolveMultiCTA(p.name, { brand: p.brand, fallback, max: 1 });
-  const href = multi?.primary?.url || p.ctaHref;
-  return { ...p, resolvedHref: href };
- })
- .filter((p) => p.resolvedHref)
- .slice(0, max);
+const primary = products[0];
+let resolvedHref = primary?.ctaHref;
+let resolvedStore: string | undefined;
+
+if (primary?.name) {
+ const detected = detectRetailer(primary.ctaHref);
+ const fallbackStoreName = detected ? retailerMeta[detected].name : undefined;
+ const fallback = fallbackStoreName && primary.ctaHref ? { store: fallbackStoreName, url: primary.ctaHref } : undefined;
+ const multi = resolveMultiCTA(primary.name, { brand: primary.brand, fallback, max: 1 });
+ if (multi?.primary) {
+  resolvedHref = multi.primary.url;
+  resolvedStore = multi.primary.store;
+ }
+}
+
+const ctaText = resolvedStore ? `Köp hos ${resolvedStore}` : 'Se erbjudande';
+const productName = primary?.name;
 ---
 
-{top.length > 0 && (
+{resolvedHref && (
  <div
- id="sticky-top3"
- class="fixed left-0 right-0 bottom-0 z-50 bg-white border-t border-border shadow-[0_-4px_12px_rgba(0,0,0,0.08)] md:hidden translate-y-full transition-transform duration-300"
- style="padding-bottom: env(safe-area-inset-bottom, 0px);"
+  id="sticky-cta"
+  class="not-prose fixed left-0 right-0 z-40 lg:hidden translate-y-full transition-transform duration-300 ease-in-out"
+  style="bottom: 0;"
  >
- <div class="flex divide-x divide-border">
- {top.map((p, i) => (
- <a
- href={p.resolvedHref}
- target="_blank"
- rel="nofollow sponsored noopener noreferrer"
- class:list={[
- 'flex-1 flex flex-col items-center text-center px-2 py-2.5 no-underline transition-colors active:bg-sand/40',
- i === 0? '!text-cta-dark': '!text-dark',
- ]}
- >
- <span class="text-[10px] font-bold uppercase tracking-wide leading-tight mb-1 line-clamp-1 w-full">
- {p.badge || 'Toppval'}
- </span>
- <img src={p.image} alt="" class="w-9 h-9 object-contain mb-1" loading="lazy" />
- <span class="text-[11px] font-semibold leading-tight line-clamp-1 w-full px-1">{p.name.split(' ').slice(0,3).join(' ')}</span>
- {/* Pris dolt i UI, kvar i data */}
- </a>
- ))}
- </div>
+  <div
+   class="bg-white border-t border-border shadow-2xl px-4"
+   style="padding-top: 0.5rem; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));"
+  >
+   {productName && (
+    <p class="text-[11px] text-text-light leading-tight mb-1.5 truncate">
+     <span class="font-semibold text-cta uppercase tracking-wide">Bäst i test:</span> {productName}
+    </p>
+   )}
+   <a
+    href={resolvedHref}
+    rel="nofollow sponsored noopener noreferrer"
+    target="_blank"
+    class="block w-full text-center bg-cta hover:bg-cta-dark text-white font-bold text-base px-5 py-3 rounded-lg transition-colors"
+   >
+    {ctaText}
+   </a>
+  </div>
  </div>
 )}
 
 <script>
- const bar = document.getElementById('sticky-top3');
+ const bar = document.getElementById('sticky-cta');
  if (bar) {
- let visible = false;
- const show = () => { if (!visible) { visible = true; bar.classList.remove('translate-y-full'); } };
- const hide = () => { if (visible) { visible = false; bar.classList.add('translate-y-full'); } };
- window.addEventListener('scroll', () => {
- if (window.scrollY > 500) show();
- else if (window.scrollY < 250) hide();
- }, { passive: true });
+  let visible = false;
+  const show = () => { if (!visible) { visible = true; bar.classList.remove('translate-y-full'); } };
+  const hide = () => { if (visible) { visible = false; bar.classList.add('translate-y-full'); } };
+  window.addEventListener('scroll', () => {
+   if (window.scrollY > 400) show();
+   else if (window.scrollY < 200) hide();
+  }, { passive: true });
+  const vv = window.visualViewport;
+  if (vv) {
+   const pin = () => {
+    const gap = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
+    bar.style.bottom = `${gap}px`;
+   };
+   vv.addEventListener('resize', pin, { passive: true });
+   vv.addEventListener('scroll', pin, { passive: true });
+   pin();
+  }
  }
 </script>
