@@ -137,6 +137,8 @@ export const VERIFIED_LINKS: Record<string, string> = {
   'Jollyroom_186': 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnrummet%2Fbarnsangar-tillbehor%2Fresesangar%2Fbabybjorn-light-resesang-med-overdragslakan-silver',
   'Jollyroom_187': 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fata-dricka%2Fnappflaskor-tillbehor%2Fnappflaskor%2Fphilips-avent-natural-response-nappflaska-260-ml-2-pack',
   'Jollyroom_188': 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbabyprodukter%2Fata-dricka%2Fnappflaskor-tillbehor%2Fnappflaskor%2Fphilips-avent-natural-response-nappflaska-260-ml',
+  // Kategorilank Jollyroom babygym, program 1487384677, 2026-05-22
+  'Jollyroom_cat_babygym': 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym',
   // Tillagda 2026-05-19, produktsidor verifierade pa Jollyroom:
   'Jollyroom_189': 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fbeemoo-maxi-4-duovagn-black-black',
   'Jollyroom_190': 'https://dot.jollyroom.se/t/t?a=1222362818&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.jollyroom.se%2Fbarnvagnar%2Fduovagnar-kombivagnar%2Fduovagnar%2Fbaby-jogger-city-sights-duovagn-commuter',
