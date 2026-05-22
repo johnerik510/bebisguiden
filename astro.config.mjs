@@ -9,6 +9,11 @@ export default defineConfig({
   build: { format: 'directory', inlineStylesheets: 'always', concurrency: 1 },
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      rollupOptions: {
+        output: { hoistTransitiveImports: false },
+      },
+    },
   },
   integrations: [sitemap()],
 });
