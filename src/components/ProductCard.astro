@@ -54,7 +54,7 @@ const primary = multi?.primary;
 const others = multi?.others ?? [];
 
 const primaryHref = primary?.url;
-const primaryLabel = primary ? `Se pris hos ${primary.store}` : (ctaText !== 'Se pris' ? ctaText : 'Se pris');
+const primaryLabel = primary ? `Bra pris hos ${primary.store}` : (ctaText !== 'Se pris' ? ctaText : 'Se pris');
 ---
 
 <div class="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -67,7 +67,7 @@ const primaryLabel = primary ? `Se pris hos ${primary.store}` : (ctaText !== 'Se
  {image && (
  <div class="w-full sm:w-48 md:w-56 flex-shrink-0 bg-gray-50 rounded-xl p-3 flex items-center justify-center">
  {primaryHref ? (
- <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" aria-label={`Se pris på ${name}`} class="block w-full h-full">
+ <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener noreferrer" aria-label={`Bra pris hos ${name}`} class="block w-full h-full">
  <img src={image} alt={name} class="w-full h-auto max-h-52 rounded-lg object-contain" loading="lazy" width="208" height="208" />
  </a>
  ) : (
