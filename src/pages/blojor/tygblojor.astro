@@ -12,13 +12,6 @@ const breadcrumbs = [
  { label: 'Tygblöjor' },
 ];
 
-// Sökbaserad discovery, ärlig vägledning. Inga svenska återförsäljare i vårt
-// affiliatenätverk (Jollyroom/Baby V/Köpbarnvagn/Babyland/Stor&Liten) stockar
-// dessa specialistmärken. Tills tygblöjespecifikt affiliateprogram finns på
-// plats pekar CTA:er till Google Shopping för äkta prisupptäckt.
-const shop = (q: string) =>
- `https://www.google.com/search?tbm=shop&q=${encodeURIComponent(q + ' sverige')}`;
-
 const products = [
  {
  name: 'GroVia Hybrid',
@@ -28,7 +21,6 @@ const products = [
  material: 'Polyester yttertyg',
  washes: 'Obegränsad',
  starter: 'Ja',
- ctaHref: shop('GroVia Hybrid tygblöja'),
  },
  {
  name: 'TotsBots Bamboozle',
@@ -38,7 +30,6 @@ const products = [
  material: 'Bambu',
  washes: 'Obegränsad',
  starter: 'Ja',
- ctaHref: shop('TotsBots Bamboozle'),
  },
  {
  name: 'Thirsties Duo Wrap',
@@ -48,7 +39,6 @@ const products = [
  material: 'Polyester/PUL',
  washes: 'Obegränsad',
  starter: 'Nej',
- ctaHref: shop('Thirsties Duo Wrap'),
  },
  {
  name: 'Bambino Mio miosolo',
@@ -58,7 +48,6 @@ const products = [
  material: 'Mikrofiber/bomull',
  washes: 'Obegränsad',
  starter: 'Ja',
- ctaHref: shop('Bambino Mio miosolo'),
  },
  {
  name: 'Charlie Banana',
@@ -68,7 +57,6 @@ const products = [
  material: 'Fleece + mikrofiber',
  washes: 'Obegränsad',
  starter: 'Ja',
- ctaHref: shop('Charlie Banana tygblöja'),
  },
 ];
 
@@ -180,11 +168,6 @@ export const articleMeta = {
  GroVia Hybrid vinner tygblöjor bäst i test 2026. Vi har jämfört fem av de populäraste systemen på absorption, passform, tvättbarhet och miljöpåverkan. Tygblöjor sparar tusentals kronor per barn jämfört med engångsblöjor och kan dessutom återanvändas till syskon.
  </p>
 
- <div class="bg-sky-50 border border-sky-200 rounded-xl p-4 mt-4 mb-5 text-sm text-text-light">
- <p class="font-semibold text-sky-900 mb-1">Om var du köper</p>
- <p>Tygblöjor är en specialistkategori, de stora svenska barnkedjorna (Jollyroom, Babyland, Baby V, Stor &amp; Liten, Köpbarnvagn) lagerhåller sällan dessa varumärken. Vi skickar dig därför till Google Shopping för aktuell prisjämförelse från Sveriges tygblöjespecialister. Föredrar du engångsblöjor? <a href="/blojor/" class="text-accent underline font-semibold">Se vår test av engångsblöjor</a>, där har vi direktlänkar till aktuella priser.</p>
- </div>
-
  <TopPick product={products[0]} description="GroVia Hybrid är tygblöja bäst i test 2026. Hybridsystemet låter dig välja mellan tyginsats hemma och engångsinsats vid utflykt, vilket gör övergången från engångsblöjor smidig." />
 
  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Tygblöjor jämförelse 2026: system, material, pris</h2>
@@ -230,15 +213,6 @@ export const articleMeta = {
  ))}
  </ul>
  </div>
- <a
- href={p.ctaHref}
- target="_blank"
- rel="nofollow noopener noreferrer"
- class="inline-flex items-center justify-center mt-4 bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]"
- >
- Jämför pris på Google Shopping
- <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
- </a>
  </div>
  </div>
  ))}
