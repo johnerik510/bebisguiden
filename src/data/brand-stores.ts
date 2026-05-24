@@ -184,7 +184,7 @@ export const BRAND_TO_STORES: Record<string, string[]> = {
   "disney princess": ["Jollyroom","Leksaksaffaren"],
   "djeco": ["Babysam","Jollyroom"],
   "dockatot": ["Jollyroom","Reirei"],
-  "doona": ["Babysam","Jollyroom"],
+  "doona": ["Jollyroom"],
   "dr": ["Babysam","Jollyroom"],
   "easygrow": ["Baby V","Babysam"],
   "educa": ["Jollyroom","Leksaksaffaren"],
