@@ -69,7 +69,7 @@ export function resolveMultiCTA(
     out.push({ store: store.name, url, commission });
   };
 
-  // Fallback (explicit ctaHref från sidan) läggs in FÖRST — den är mer auktoritativ
+  // Fallback (explicit ctaHref från sidan) läggs in FÖRST, den är mer auktoritativ
   // än token-matching som inte kan skilja på storlekar (enkelsiffriga tal filtreras bort).
   if (fallback) {
     tryAdd(fallback.store, fallback.url);
