@@ -1,4 +1,6 @@
 ---
+import SearchModal from './SearchModal.astro';
+
 const navItems = [
  {
  label: 'Bilbarnstolar',
@@ -164,12 +166,35 @@ const uspItems = [
  <a href="/guider/bebis-checklista/" class="ml-3 px-4 py-2 text-sm font-semibold bg-accent text-white rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap">
  Bebis-checklista
  </a>
+
+ <!-- Desktop search button -->
+ <button
+ id="search-open-desktop"
+ class="ml-2 p-2.5 rounded-lg hover:bg-gray-100 transition-colors text-gray-500 hover:text-accent flex items-center justify-center"
+ aria-label="Sök"
+ title="Sök (Ctrl+K)"
+ >
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+ <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+ </svg>
+ </button>
  </nav>
 
- <!-- Mobile toggle -->
+ <!-- Mobile: search icon + hamburger (always visible, no menu needed) -->
+ <div class="lg:hidden flex items-center gap-0.5">
+ <button
+ id="search-open-mobile"
+ class="p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-600 hover:text-accent"
+ aria-label="Sök"
+ >
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+ <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+ </svg>
+ </button>
+
  <button
  id="mobile-menu-btn"
- class="lg:hidden p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700"
+ class="p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700"
  aria-label="Öppna meny"
  aria-expanded="false"
  aria-controls="mobile-menu"
@@ -181,6 +206,8 @@ const uspItems = [
  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
  </svg>
  </button>
+ </div>
+
  </div>
  </div>
  </div>
@@ -221,6 +248,8 @@ const uspItems = [
  </nav>
 </header>
 
+<SearchModal />
+
 <script>
  // Mobile menu toggle
  const btn = document.getElementById('mobile-menu-btn');
@@ -229,11 +258,11 @@ const uspItems = [
  const iconClose = document.getElementById('menu-icon-close');
 
  btn?.addEventListener('click', () => {
- const isOpen =!menu?.classList.contains('hidden');
+ const isOpen = !menu?.classList.contains('hidden');
  menu?.classList.toggle('hidden');
- iconOpen?.classList.toggle('hidden',!isOpen);
+ iconOpen?.classList.toggle('hidden', !isOpen);
  iconClose?.classList.toggle('hidden', isOpen);
- btn.setAttribute('aria-expanded', String(isOpen? 'false': 'true'));
+ btn.setAttribute('aria-expanded', String(isOpen ? 'false' : 'true'));
  });
 
  // Mobile accordion
@@ -242,11 +271,21 @@ const uspItems = [
  const section = toggle.closest('.mobile-section');
  const dropdown = section?.querySelector('.mobile-dropdown');
  const chevron = toggle.querySelector('.toggle-chevron');
- const isOpen =!dropdown?.classList.contains('hidden');
+ const isOpen = !dropdown?.classList.contains('hidden');
 
  dropdown?.classList.toggle('hidden', isOpen);
- chevron?.classList.toggle('rotate-180',!isOpen);
+ chevron?.classList.toggle('rotate-180', !isOpen);
  toggle.setAttribute('aria-expanded', String(!isOpen));
  });
  });
+
+ // Search button wiring
+ function openSearch() {
+ if (typeof (window as any).openBebisSearch === 'function') {
+ (window as any).openBebisSearch();
+ }
+ }
+
+ document.getElementById('search-open-desktop')?.addEventListener('click', openSearch);
+ document.getElementById('search-open-mobile')?.addEventListener('click', openSearch);
 </script>
