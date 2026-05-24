@@ -1,52 +1,25 @@
 ---
-import { resolveMultiCTA } from '../lib/multi-cta';
-import { retailerMeta, type Retailer } from '../data/affiliates';
-
 interface Product {
  name: string;
  badge?: string;
  price?: string | number;
  image: string;
  ctaHref?: string;
- brand?: string;
+ ctaText?: string;
 }
 
 interface Props {
  products: Product[];
- max?: number;
 }
 
 const { products } = Astro.props;
-
-function detectRetailer(url: string | undefined): Retailer | undefined {
- if (!url) return undefined;
- for (const key of Object.keys(retailerMeta) as Retailer[]) {
-  const meta = retailerMeta[key];
-  if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
- }
- return undefined;
-}
-
 const primary = products[0];
-let resolvedHref = primary?.ctaHref;
-let resolvedStore: string | undefined;
-
-if (primary?.name) {
- const detected = detectRetailer(primary.ctaHref);
- const fallbackStoreName = detected ? retailerMeta[detected].name : undefined;
- const fallback = fallbackStoreName && primary.ctaHref ? { store: fallbackStoreName, url: primary.ctaHref } : undefined;
- const multi = resolveMultiCTA(primary.name, { brand: primary.brand, fallback, max: 1 });
- if (multi?.primary) {
-  resolvedHref = multi.primary.url;
-  resolvedStore = multi.primary.store;
- }
-}
-
-const ctaText = resolvedStore ? `Köp hos ${resolvedStore}` : 'Se erbjudande';
+const href = primary?.ctaHref;
+const ctaText = primary?.ctaText ?? 'Se erbjudande';
 const productName = primary?.name;
 ---
 
-{resolvedHref && (
+{href && (
  <div
   id="sticky-cta"
   class="not-prose fixed left-0 right-0 z-40 lg:hidden translate-y-full transition-transform duration-300 ease-in-out"
@@ -62,7 +35,7 @@ const productName = primary?.name;
     </p>
    )}
    <a
-    href={resolvedHref}
+    href={href}
     rel="nofollow sponsored noopener noreferrer"
     target="_blank"
     class="block w-full text-center bg-cta hover:bg-cta-dark text-white font-bold text-base px-5 py-3 rounded-lg transition-colors"
