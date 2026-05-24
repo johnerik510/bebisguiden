@@ -23,8 +23,22 @@ interface Props {
 const { product, description, store: storeProp, microcopy: microcopyProp } = Astro.props;
 const additionalCtaHrefs = product.additionalCtaHrefs ?? [];
 
+const TRACKER_TO_STORE: Record<string, string> = {
+  'dot.jollyroom.se': 'Jollyroom',
+  'to.babyworld.se': 'BabySam',
+  'go.adt231.net': 'Baby V',
+  'pin.babyland.se': 'Babyland',
+  'go.adt284.net': 'Proshop',
+  'ion.babysam.se': 'BabySam',
+};
+function storeFromUrl(url: string | undefined): string | undefined {
+  if (!url) return undefined;
+  try { return TRACKER_TO_STORE[new URL(url).hostname]; } catch { return undefined; }
+}
+
 const primaryHref = product.ctaHref;
-const store = product.ctaText ?? storeProp ?? 'butiken';
+const detectedStore = storeFromUrl(product.ctaHref);
+const store = product.ctaText ?? storeProp ?? (detectedStore ? `Bra pris hos ${detectedStore}` : 'butiken');
 const microcopy = microcopyProp || ['Snabb leverans', 'Fri retur', `I lager hos ${store}`];
 
 const fallbackDescription = product.badge
