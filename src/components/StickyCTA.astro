@@ -1,87 +1,63 @@
 ---
-import { resolveMultiCTA } from '../lib/multi-cta';
-import { retailerMeta, type Retailer } from '../data/affiliates';
-
 interface Props {
- text?: string;
- href: string;
- productName?: string;
- brand?: string;
+  text?: string;
+  href: string;
+  productName?: string;
+  /** Legacy-props, ignoreras */
+  brand?: string;
 }
 
-const { text, href, productName, brand } = Astro.props;
-
-function detectRetailer(url: string | undefined): Retailer | undefined {
- if (!url) return undefined;
- for (const key of Object.keys(retailerMeta) as Retailer[]) {
-  const meta = retailerMeta[key];
-  if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
- }
- return undefined;
-}
-
-let resolvedHref = href;
-let resolvedStore: string | undefined;
-if (productName) {
- const detected = detectRetailer(href);
- const fallbackStoreName = detected ? retailerMeta[detected].name : undefined;
- const fallback = fallbackStoreName ? { store: fallbackStoreName, url: href } : undefined;
- const multi = resolveMultiCTA(productName, { brand, fallback, max: 1 });
- if (multi?.primary) {
-  resolvedHref = multi.primary.url;
-  resolvedStore = multi.primary.store;
- }
-}
-const ctaText = text || (resolvedStore ? `Köp hos ${resolvedStore}` : 'Se erbjudande');
+const { text, href, productName } = Astro.props;
+const ctaText = text || 'Se erbjudande';
 ---
 
 <div
- id="sticky-cta"
- class="not-prose fixed left-0 right-0 z-40 lg:hidden translate-y-full transition-transform duration-300 ease-in-out"
- style="bottom: 0;"
+  id="sticky-cta"
+  class="not-prose fixed left-0 right-0 z-40 lg:hidden translate-y-full transition-transform duration-300 ease-in-out"
+  style="bottom: 0;"
 >
- <div
-  class="bg-white border-t border-border shadow-2xl px-4"
-  style="padding-top: 0.5rem; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));"
- >
-  {productName && (
-   <p class="text-[11px] text-text-light leading-tight mb-1.5 truncate">
-    <span class="font-semibold text-cta uppercase tracking-wide">Bäst i test:</span> {productName}
-   </p>
-  )}
-  <a
-   href={resolvedHref}
-   rel="nofollow sponsored noopener noreferrer"
-   target="_blank"
-   class="block w-full text-center bg-cta hover:bg-cta-dark text-white font-bold text-base px-5 py-3 rounded-lg transition-colors"
+  <div
+    class="bg-white border-t border-border shadow-2xl px-4"
+    style="padding-top: 0.5rem; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));"
   >
-   {ctaText}
-  </a>
- </div>
+    {productName && (
+    <p class="text-[11px] text-text-light leading-tight mb-1.5 truncate">
+      <span class="font-semibold text-cta uppercase tracking-wide">Bäst i test:</span> {productName}
+    </p>
+    )}
+    <a
+      href={href}
+      rel="nofollow sponsored noopener noreferrer"
+      target="_blank"
+      class="block w-full text-center bg-cta hover:bg-cta-dark text-white font-bold text-base px-5 py-3 rounded-lg transition-colors"
+    >
+      {ctaText}
+    </a>
+  </div>
 </div>
 
 <script>
- const bar = document.getElementById('sticky-cta');
- if (!bar) throw new Error('sticky-cta missing');
+  const bar = document.getElementById('sticky-cta');
+  if (!bar) throw new Error('sticky-cta missing');
 
- let visible = false;
+  let visible = false;
 
- const show = () => { if (!visible) { visible = true; bar.classList.remove('translate-y-full'); } };
- const hide = () => { if (visible) { visible = false; bar.classList.add('translate-y-full'); } };
+  const show = () => { if (!visible) { visible = true; bar.classList.remove('translate-y-full'); } };
+  const hide = () => { if (visible) { visible = false; bar.classList.add('translate-y-full'); } };
 
- window.addEventListener('scroll', () => {
-  if (window.scrollY > 400) show();
-  else if (window.scrollY < 200) hide();
- }, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) show();
+    else if (window.scrollY < 200) hide();
+  }, { passive: true });
 
- const vv = window.visualViewport;
- if (vv) {
-  const pin = () => {
-   const gap = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
-   bar.style.bottom = `${gap}px`;
-  };
-  vv.addEventListener('resize', pin, { passive: true });
-  vv.addEventListener('scroll', pin, { passive: true });
-  pin();
- }
+  const vv = window.visualViewport;
+  if (vv) {
+    const pin = () => {
+      const gap = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
+      bar.style.bottom = `${gap}px`;
+    };
+    vv.addEventListener('resize', pin, { passive: true });
+    vv.addEventListener('scroll', pin, { passive: true });
+    pin();
+  }
 </script>

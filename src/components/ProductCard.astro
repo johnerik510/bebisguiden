@@ -1,7 +1,4 @@
 ---
-import { resolveMultiCTA } from '../lib/multi-cta';
-import { retailerMeta, type Retailer } from '../data/affiliates';
-
 interface Props {
  name: string;
  image?: string;
@@ -13,48 +10,27 @@ interface Props {
  ctaText?: string;
  ctaHref?: string;
  ageRange?: string;
- /** Märke , används för att hitta alla butiker som säljer det via feed-data. */
+ /** Explicita "Även hos"-länkar, måste komma från feed eller verified-links */
+ additionalCtaHrefs?: { store: string; url: string }[];
+ /** Legacy-props, ignoreras */
  brand?: string;
- /** Legacy-prop, kvar för bakåtkompat men ignoreras av multi-CTA. */
- retailers?: Retailer[];
- /** Legacy-prop, kvar för bakåtkompat men ignoreras av multi-CTA. */
- retailerPaths?: Partial<Record<Retailer, string>>;
 }
 
 const {
  name,
  image,
- price,
  rating,
  badge,
  pros = [],
  cons = [],
- ctaText = 'Se pris',
+ ctaText,
  ctaHref,
  ageRange,
- brand,
+ additionalCtaHrefs = [],
 } = Astro.props;
 
-// Detektera primär retailer från ctaHref-URL för att kunna skicka som fallback till multi-CTA.
-function detectRetailer(url: string | undefined): Retailer | undefined {
- if (!url) return undefined;
- for (const key of Object.keys(retailerMeta) as Retailer[]) {
-  const meta = retailerMeta[key];
-  if (url.includes(meta.domain) || url.includes(meta.trackBase.split('?')[0])) return key;
- }
- return undefined;
-}
-
-const detectedRetailer = detectRetailer(ctaHref);
-const fallbackStore = detectedRetailer ? retailerMeta[detectedRetailer].name : undefined;
-const fallback = ctaHref && fallbackStore ? { store: fallbackStore, url: ctaHref } : undefined;
-
-const multi = resolveMultiCTA(name, { brand, fallback, max: 4 });
-const primary = multi?.primary;
-const others = multi?.others ?? [];
-
-const primaryHref = primary?.url;
-const primaryLabel = primary?.store ?? (ctaText !== 'Se pris' ? ctaText : 'Se pris');
+const primaryHref = ctaHref;
+const primaryLabel = ctaText ?? 'Se pris';
 ---
 
 <div class="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -125,16 +101,12 @@ const primaryLabel = primary?.store ?? (ctaText !== 'Se pris' ? ctaText : 'Se pr
  </a>
  </div>
  )}
- {others.length > 0 && (
+ {additionalCtaHrefs.length > 0 && (
  <div class="flex flex-wrap items-center gap-2 mt-1">
  <span class="text-xs font-semibold text-text-light uppercase tracking-wide">Även hos:</span>
- {others.map((o) => (
- <a
- href={o.url}
- rel="nofollow sponsored noopener noreferrer"
- target="_blank"
- class="inline-flex items-center px-3 py-1.5 rounded-lg border border-border text-xs font-semibold text-text-light hover:border-primary hover:text-primary transition-colors"
- >
+ {additionalCtaHrefs.map((o) => (
+ <a href={o.url} rel="nofollow sponsored noopener noreferrer" target="_blank"
+ class="inline-flex items-center px-3 py-1.5 rounded-lg border border-border text-xs font-semibold text-text-light hover:border-primary hover:text-primary transition-colors">
  {o.store}
  </a>
  ))}

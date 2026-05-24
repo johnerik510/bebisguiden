@@ -270,7 +270,20 @@ export function getStore(storeName: string): AffiliateStore | undefined {
 }
 
 /**
- * @deprecated Använd resolveTrackedUrl från lib/cta-resolver.ts istället.
- * Kvar för bakåtkompat, re-exporteras från cta-resolver. Använd inte direkt.
+ * Bygger en sökresultats-URL för en butik baserat på dess searchUrl-mall.
+ * Returnerar undefined om butiken inte har en searchUrl konfigurerad.
  */
-export { buildSearchDeeplink, buildProductDeeplink } from '../lib/cta-resolver';
+export function buildSearchDeeplink(storeName: string, query: string): string | undefined {
+  const store = getStore(storeName);
+  if (!store?.searchUrl) return undefined;
+  return store.searchUrl.replace('{q}', encodeURIComponent(query));
+}
+
+/**
+ * @deprecated Använd resolveTrackedUrl från lib/cta-resolver.ts istället.
+ */
+export function buildProductDeeplink(storeName: string, productUrl: string): string | undefined {
+  const store = getStore(storeName);
+  if (!store) return undefined;
+  return store.buildUrl(productUrl);
+}
