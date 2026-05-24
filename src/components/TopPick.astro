@@ -38,7 +38,7 @@ function storeFromUrl(url: string | undefined): string | undefined {
 
 const primaryHref = product.ctaHref;
 const detectedStore = storeFromUrl(product.ctaHref);
-const store = product.ctaText ?? storeProp ?? (detectedStore ? `Bra pris hos ${detectedStore}` : 'butiken');
+const store = detectedStore ?? product.ctaText ?? storeProp ?? 'butiken';
 const microcopy = microcopyProp || ['Snabb leverans', 'Fri retur', `I lager hos ${store}`];
 
 const fallbackDescription = product.badge
