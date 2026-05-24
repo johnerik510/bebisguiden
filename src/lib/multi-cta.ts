@@ -69,19 +69,21 @@ export function resolveMultiCTA(
     out.push({ store: store.name, url, commission });
   };
 
+  // Fallback (explicit ctaHref från sidan) läggs in FÖRST — den är mer auktoritativ
+  // än token-matching som inte kan skilja på storlekar (enkelsiffriga tal filtreras bort).
+  if (fallback) {
+    tryAdd(fallback.store, fallback.url);
+  }
+
   if (brand) {
     const brandStores = BRAND_TO_STORES[brand] || [];
     for (const storeName of brandStores) {
-      // Försök först exakt produkt-match (token-overlap >= 2).
-      // Fallback: butiken säljer märket men inte exakt samma SKU, returnera närmaste produkt av samma märke.
+      // Försök exakt produkt-match (token-overlap >= 2), sedan brand-fallback.
+      // Om butiken redan lagts till via explicit fallback ovan hoppas den över.
       let url = resolveTrackedUrl(storeName, productName);
       if (!url) url = resolveBrandUrl(storeName, brand, productName);
       tryAdd(storeName, url);
     }
-  }
-
-  if (fallback) {
-    tryAdd(fallback.store, fallback.url);
   }
 
   if (out.length === 0) return undefined;
