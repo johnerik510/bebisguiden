@@ -1,10 +1,9 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
-import StickyTop3Bar from '../../components/StickyTop3Bar.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
+import TopPick from '../../components/TopPick.astro';
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -168,8 +167,6 @@ export const articleMeta = {
  GroVia Hybrid vinner tygblöjor bäst i test 2026. Vi har jämfört fem av de populäraste systemen på absorption, passform, tvättbarhet och miljöpåverkan. Tygblöjor sparar tusentals kronor per barn jämfört med engångsblöjor och kan dessutom återanvändas till syskon.
  </p>
 
- <TopPick product={products[0]} description="GroVia Hybrid är tygblöja bäst i test 2026. Hybridsystemet låter dig välja mellan tyginsats hemma och engångsinsats vid utflykt, vilket gör övergången från engångsblöjor smidig." />
-
  <h2 class="font-heading text-xl font-bold mt-2 mb-3">Tygblöjor jämförelse 2026: system, material, pris</h2>
  <ComparisonTable products={tableProducts} featureLabels={featureLabels} />
 
@@ -225,6 +222,23 @@ export const articleMeta = {
  Se bästa engångsblöjor 2026
  <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
  </a>
+ </div>
+
+ <div class="mt-8">
+ <h2 class="font-heading text-xl font-bold mb-3">Du behöver också en blöjhink</h2>
+ <p class="text-sm text-text-light mb-4">En blöjhink är extra viktig med tygblöjor — du behöver en säker plats att förvara använda blöjor tills det är dags att tvätta. Tommee Tippee Sangenic XL är det populäraste valet hos svenska familjer.</p>
+ <TopPick
+  product={{
+   name: 'Tommee Tippee Blöjhink Sangenic XL',
+   badge: 'Populärast',
+   rating: 4.6,
+   image: '/images/products/tommee-tippee-blojhink-sangenic-xl-vit.webp',
+   ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10195078&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojhinkar-tillbehor/blojhinkar-refiller/tommee-tippee-blojhink-sangenic-xl-vit',
+   ctaText: 'Jollyroom',
+  }}
+  description="Rymmer fler blöjor än standardmodeller och stänger in lukten effektivt med Sangenic-systemet. Passar både tygblöjor och engångsblöjor."
+  microcopy={['Passar alla blöjtyper', 'Effektiv luktspärr', 'Bra pris hos Jollyroom']}
+ />
  </div>
 
  <section class="mt-10 mb-2">
@@ -287,5 +301,4 @@ export const articleMeta = {
  ratingValue: p.rating,
  reviewCount: 1,
  }))} />
-<StickyTop3Bar products={products} />
 </ArticleLayout>
