@@ -10,7 +10,7 @@ export const AUTHOR = {
   description: 'Legitimerad barnmorska med 10+ års klinisk erfarenhet. Testar och granskar barnprodukter med fokus på säkerhet, ergonomi och evidensbaserade råd.',
   knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'amning', 'spädbarnsvård', 'i-Size', 'ISOFIX'],
   worksFor: { '@type': 'Organization', name: 'Bebisguiden', url: SITE_URL },
-  email: 'elscatalyst@proton.me'
+  email: 'info@bebisguiden.se'
 };
 
 export const PUBLISHER = {
