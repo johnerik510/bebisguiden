@@ -1,0 +1,324 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import FAQ from '../components/FAQ.astro';
+
+const breadcrumbs = [
+ { label: 'Hem', href: '/' },
+ { label: 'Föräldraindex 2026' },
+];
+
+const faqItems = [
+ {
+ question: 'Vad är Bebisguidens föräldraindex?',
+ answer: 'Föräldraindexet är en årlig sammanställning av offentlig svensk myndighetsdata om föräldraskap, bebisars hälsa och familjevardagen. Den första rapporten publiceras våren 2026 och bygger på tre källor: Försäkringskassans VAB-statistik (2024), Socialstyrelsens amningsstatistik (2021, senaste tillgängliga) och Folkhälsomyndighetens vaccinationsdata (2024).',
+ },
+ {
+ question: 'Varför saknas data för vissa län?',
+ answer: 'Socialstyrelsens amningsstatistik från 2021 saknar data för sex län (Södermanland, Blekinge, Örebro, Västmanland, Dalarna och Västernorrland) på grund av byte av journalsystem i barnhälsovården. Försäkringskassan publicerar fullständig länsdata i sin statistikdatabas, men inte alla siffror finns i öppna pressmeddelanden. Fullversionen av indexet, som publiceras hösten 2026, kompletterar luckorna.',
+ },
+ {
+ question: 'Är data jämförbar mellan olika år?',
+ answer: 'VAB-data är från 2024, vaccinationsdata från 2024 och amningsdata från 2021. Det är en känd begränsning som indexet redovisar öppet. Amningsstatistiken är den senaste Socialstyrelsen publicerat. Vi inväntar nästa amningsrapport, som väntas hösten 2026, för uppdatering.',
+ },
+ {
+ question: 'Vad är flockimmunitet?',
+ answer: 'Flockimmunitet innebär att en så stor andel av befolkningen är immun mot en sjukdom att smittspridningen avstannar, vilket skyddar även dem som inte själva kan vaccineras. För mässling ligger gränsen på 95 procent enligt Världshälsoorganisationen.',
+ },
+ {
+ question: 'Vad är skillnaden mellan helamning och delvis amning?',
+ answer: 'Helamning innebär att barnet bara får bröstmjölk: ingen ersättning, ingen mat och inga smakportioner. Delvis amning räknar med att amning kombineras med annat. Socialstyrelsens siffror i den här artikeln avser helamning enligt WHO:s definition från 2004.',
+ },
+ {
+ question: 'Vad betyder VAB?',
+ answer: 'VAB är en förkortning för vård av barn. Den tillfälliga föräldrapenningen från Försäkringskassan kan tas ut när en förälder behöver stanna hemma från jobbet för att vårda ett sjukt barn under 12 år.',
+ },
+ {
+ question: 'Var hittar jag fullständig data per kommun?',
+ answer: 'Bebisguidens fullversion av föräldraindexet, med data per kommun och fler datapunkter (bland annat barnolycksfall och föräldrapenningsuttag), publiceras hösten 2026.',
+ },
+];
+
+export const articleMeta = {
+ title: "Sveriges föräldraskap i siffror: var har bebisar bäst start?",
+ description: "Bebisguidens föräldraindex 2026 sammanställer VAB-, amnings- och vaccinationsdata per län. Stockholm vabbar minst och Jönköping ammar längst.",
+ publishDate: "2026-05-26",
+ category: "Rapport",
+ image: "/images/infografik-vab-2026.webp",
+};
+---
+<ArticleLayout
+ image="/images/infografik-vab-2026.webp"
+ title="Sveriges föräldraskap i siffror: var har bebisar bäst start?"
+ description="Bebisguidens föräldraindex 2026: VAB-, amnings- och vaccinationsdata per län. Stockholm vabbar minst och Jönköping ammar längst i landet."
+ breadcrumbs={breadcrumbs}
+ canonical="https://bebisguiden.se/foraldraindex-2026/"
+ datePublished="2026-05-26"
+ updatedDate="2026-05-26"
+ showDisclaimer={false}
+ relatedArticles={[
+ { title: 'Amningstips för nybörjare', href: '/guider/amning-tips/' },
+ { title: 'Amma eller ge flaska', href: '/guider/amma-eller-flaska/' },
+ { title: 'Bebis feber, när söker du vård?', href: '/guider/bebis-feber/' },
+ { title: 'Bebis förkyld, symtom och vård', href: '/guider/bebis-forkyld/' },
+ { title: 'SIDS-statistik och riskfaktorer', href: '/guider/sids-statistik/' },
+ { title: 'Checklista inför bebis', href: '/guider/bebis-checklista/' },
+ ]}
+ faqItems={faqItems}
+>
+
+<p class="text-lg text-text-light mb-6">
+ Det första året med en nyfödd ser olika ut beroende på var i Sverige du bor. Föräldrar på Gotland tar 37 procent fler VAB-dagar än föräldrar i Stockholm. I Jönköping ammar varannan mamma fortfarande sitt barn vid fyra månader, i Halland gör drygt fyra av tio det. Och i flera svenska kommuner ligger vaccinationstäckningen mot mässling under gränsen för flockimmunitet.
+</p>
+<p class="text-text-light mb-6">
+ Det är några av fynden i Bebisguidens första föräldraindex, en sammanställning av offentlig myndighetsdata från Försäkringskassan, Socialstyrelsen och Folkhälsomyndigheten. Här går vi igenom siffrorna, vad de betyder för dig som förälder och hur du kan tolka skillnaderna mellan länen.
+</p>
+
+<div class="bg-accent/5 border border-accent/20 rounded-xl p-5 mb-8">
+ <p class="text-sm font-semibold text-accent uppercase tracking-wide mb-3">I korthet</p>
+ <ul class="space-y-2 text-text-light text-sm">
+ <li><strong class="text-text">Stockholm vabbar minst:</strong> 4,3 dagar per barn 2024, mot 5,9 på Gotland och i Östergötland.</li>
+ <li><strong class="text-text">Jönköping ammar längst:</strong> 54,6 procent helammar vid fyra månader, mot 44,5 procent i Halland.</li>
+ <li><strong class="text-text">Kronoberg är enda jämställda länet:</strong> männen tar 40,1 procent av VAB-dagarna.</li>
+ <li><strong class="text-text">94 procent vaccinationstäckning mot mässling</strong> på riksnivå, men flera kommuner i Örebro län ligger under flockimmunitetsgränsen på 95 procent.</li>
+ </ul>
+</div>
+
+<nav aria-label="Innehåll" class="bg-bg-alt border border-border rounded-xl p-5 mb-8">
+ <p class="font-heading font-bold text-text mb-3">Innehåll</p>
+ <ul class="space-y-1.5 text-sm">
+ <li><a href="#om-indexet" class="text-accent underline">Vad är Bebisguidens föräldraindex?</a></li>
+ <li><a href="#vab" class="text-accent underline">Stockholm vabbar minst, vad betyder det?</a></li>
+ <li><a href="#jamstalldhet" class="text-accent underline">Kronoberg är Sveriges enda jämställda län</a></li>
+ <li><a href="#amning" class="text-accent underline">Amning: stor variation mellan länen</a></li>
+ <li><a href="#vaccinationer" class="text-accent underline">Vaccinationer: 94 procent, men luckor lokalt</a></li>
+ <li><a href="#for-dig" class="text-accent underline">Vad betyder det för dig som förälder?</a></li>
+ </ul>
+</nav>
+
+<h2 id="om-indexet" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Vad är Bebisguidens föräldraindex?</h2>
+<p class="text-text-light mb-4">
+ Bebisguidens föräldraindex är en årlig sammanställning av offentlig svensk data om föräldraskap, bebisars hälsa och familjevardagen. Syftet är att ge en överblick av hur vardagen ser ut för svenska föräldrar, på riksnivå och uppdelat per län.
+</p>
+<p class="text-text-light mb-4">Den första rapporten, som publiceras våren 2026, bygger på tre datakällor:</p>
+<ol class="list-decimal pl-6 space-y-2 text-text-light mb-4">
+ <li><strong class="text-text">Försäkringskassans VAB-statistik:</strong> antal dagar föräldrar tagit för att vårda sjuka barn 2024.</li>
+ <li><strong class="text-text">Socialstyrelsens amningsstatistik:</strong> andel barn som helammas vid 1 vecka, 4 månader och 6 månader (2021 är senaste tillgängliga data).</li>
+ <li><strong class="text-text">Folkhälsomyndighetens vaccinationsdata:</strong> täckning av MPR och DTP-IPV-Hib-HepB hos 2-åringar 2024.</li>
+</ol>
+<p class="text-text-light mb-4">
+ Indexet rangordnar inte länen som bra eller dåliga. Vi presenterar data så att lokala aktörer, journalister och föräldrar själva kan analysera mönstren.
+</p>
+
+<h2 id="vab" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Stockholm vabbar minst, vad betyder det?</h2>
+<p class="text-text-light mb-4">
+ Föräldrar i Stockholms län tog 4,3 VAB-dagar per barn 0 till 11 år under 2024. Det är lägst i landet. På Gotland och i Östergötland tog föräldrar i snitt 5,9 dagar per barn, 37 procent mer.
+</p>
+
+<table class="w-full text-sm border-collapse mb-2">
+ <thead>
+ <tr class="bg-accent/10">
+ <th class="text-left px-4 py-3 font-semibold text-text">Län</th>
+ <th class="text-left px-4 py-3 font-semibold text-text">VAB-dagar per barn 2024</th>
+ <th class="text-left px-4 py-3 font-semibold text-text">Jämfört med riket</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-gray-100">
+ <tr><td class="px-4 py-3 font-medium">Stockholm</td><td class="px-4 py-3 text-text-light">4,3</td><td class="px-4 py-3 text-safe font-medium">Lägst i landet</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Riket</td><td class="px-4 py-3 text-text-light">5,0</td><td class="px-4 py-3 text-text-light">Genomsnitt</td></tr>
+ <tr><td class="px-4 py-3 font-medium">Gotland</td><td class="px-4 py-3 text-text-light">5,9</td><td class="px-4 py-3 text-accent font-medium">Högst i landet</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Östergötland</td><td class="px-4 py-3 text-text-light">5,9</td><td class="px-4 py-3 text-accent font-medium">Högst i landet</td></tr>
+ </tbody>
+</table>
+<p class="text-xs text-text-light mb-6">Källa: Försäkringskassan, Tema vård av barn, genomsnittligt antal VAB-dagar per barn 0 till 11 år, 2024.</p>
+
+<p class="text-text-light mb-4">
+ Stockholms låga uttag kan tolkas på flera sätt. Större tillgång till barnpassningsalternativ och flexibla arbetsgivare kan bidra. Samtidigt kan ekonomiska barriärer mot att stanna hemma vara starkare i en region med höga boendekostnader. På Gotland och i Östergötland kan högre uttag bero på färre alternativa lösningar för sjuka barn, men också på en kultur där det är mer accepterat att stanna hemma längre.
+</p>
+
+<h3 class="font-heading text-xl font-bold mt-8 mb-3">Riket vabbade 680 000 färre dagar 2024</h3>
+<p class="text-text-light mb-4">
+ Det är inte bara Stockholm som drar ner snittet. På riksnivå sjönk VAB-uttaget med 9 procent under 2024, från 8,0 miljoner dagar 2023 till 7,3 miljoner dagar 2024. Försäkringskassan betalade ut 8,3 miljarder kronor i tillfällig föräldrapenning under året.
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+ <div class="bg-bg-alt border border-border rounded-lg p-4">
+ <p class="text-sm text-text-light mb-1">Största minskningen</p>
+ <p class="font-heading text-lg font-bold text-text">Jönköping, minus 11,5 procent</p>
+ </div>
+ <div class="bg-bg-alt border border-border rounded-lg p-4">
+ <p class="text-sm text-text-light mb-1">Minsta minskningen</p>
+ <p class="font-heading text-lg font-bold text-text">Norrbotten, minus 3 procent</p>
+ </div>
+</div>
+<p class="text-text-light mb-4">
+ Trenden är tydlig: efter pandemiåren 2021 och 2022, då VAB toppade på cirka 10 miljoner dagar per år, har uttaget gradvis återgått till en lägre nivå. Preliminära siffror för 2025 pekar mot 6,5 miljoner dagar. Bakom siffrorna ligger ofta vardagliga <a href="/guider/bebis-forkyld/" class="text-accent underline">förkylningar</a> och <a href="/guider/bebis-feber/" class="text-accent underline">feberperioder</a> i förskolan.
+</p>
+
+<h2 id="jamstalldhet" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Kronoberg är Sveriges enda jämställda län</h2>
+<p class="text-text-light mb-4">
+ När det gäller fördelningen mellan män och kvinnor visar Försäkringskassans data ett mönster som varit stabilt över tid:
+</p>
+<div class="grid grid-cols-2 gap-3 mb-4">
+ <div class="bg-bg-alt border border-border rounded-lg p-4 text-center">
+ <p class="font-heading text-3xl font-bold text-primary">38 %</p>
+ <p class="text-sm text-text-light mt-1">mäns andel av VAB-dagar 2024</p>
+ </div>
+ <div class="bg-bg-alt border border-border rounded-lg p-4 text-center">
+ <p class="font-heading text-3xl font-bold text-primary">62 %</p>
+ <p class="text-sm text-text-light mt-1">kvinnors andel av VAB-dagar 2024</p>
+ </div>
+</div>
+<p class="text-text-light mb-4">
+ På riksnivå är jämställdheten i VAB-uttaget faktiskt på tillbakagång. 2023 låg mäns andel på 38,6 procent, 2024 på 38,0 procent. Bara ett län uppnår 40/60-tröskeln för vad som brukar räknas som jämställt: Kronoberg, där mäns andel är 40,1 procent. I motsatt ände ligger Skåne, där männen står för bara 35,9 procent av VAB-dagarna.
+</p>
+
+<h2 id="amning" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Amning: stor variation mellan länen</h2>
+<p class="text-text-light mb-4">
+ Socialstyrelsen publicerar amningsstatistik årligen. Den senaste tillgängliga rapporten gäller barn födda 2021. Sex län (Södermanland, Blekinge, Örebro, Västmanland, Dalarna och Västernorrland) saknar data för året på grund av byte av journalsystem i barnhälsovården.
+</p>
+
+<figure class="my-6">
+ <img src="/images/infografik-amning-2026.webp" alt="Helamning vid fyra månader per län 2021: topp 5 med Jönköping 54,6 procent och botten 5 med Halland 44,5 procent, enligt Socialstyrelsen." class="w-full rounded-xl border border-border" loading="lazy" width="1920" height="1080" />
+ <figcaption class="text-xs text-text-light mt-2 text-center">Helamning vid fyra månaders ålder per län, 2021. Källa: Socialstyrelsen.</figcaption>
+</figure>
+
+<h3 class="font-heading text-xl font-bold mt-8 mb-3">Helamning vid 4 månader, länsranking</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+ <div>
+ <p class="text-sm font-semibold text-safe mb-2">Topp 5 län, högst andel</p>
+ <table data-mobile-simple class="w-full text-sm border-collapse">
+ <tbody class="divide-y divide-gray-100">
+ <tr><td class="px-4 py-2.5 font-medium">Jönköping</td><td class="px-4 py-2.5 text-right text-safe font-semibold">54,6 %</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-2.5 font-medium">Jämtland</td><td class="px-4 py-2.5 text-right text-text-light">53,0 %</td></tr>
+ <tr><td class="px-4 py-2.5 font-medium">Uppsala</td><td class="px-4 py-2.5 text-right text-text-light">52,9 %</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-2.5 font-medium">Norrbotten</td><td class="px-4 py-2.5 text-right text-text-light">52,7 %</td></tr>
+ <tr><td class="px-4 py-2.5 font-medium">Gotland</td><td class="px-4 py-2.5 text-right text-text-light">52,4 %</td></tr>
+ </tbody>
+ </table>
+ </div>
+ <div>
+ <p class="text-sm font-semibold text-accent mb-2">Botten 5 län, lägst andel</p>
+ <table data-mobile-simple class="w-full text-sm border-collapse">
+ <tbody class="divide-y divide-gray-100">
+ <tr><td class="px-4 py-2.5 font-medium">Halland</td><td class="px-4 py-2.5 text-right text-accent font-semibold">44,5 %</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-2.5 font-medium">Västra Götaland</td><td class="px-4 py-2.5 text-right text-text-light">47,7 %</td></tr>
+ <tr><td class="px-4 py-2.5 font-medium">Östergötland</td><td class="px-4 py-2.5 text-right text-text-light">48,6 %</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-2.5 font-medium">Skåne</td><td class="px-4 py-2.5 text-right text-text-light">48,7 %</td></tr>
+ <tr><td class="px-4 py-2.5 font-medium">Stockholm</td><td class="px-4 py-2.5 text-right text-text-light">49,6 %</td></tr>
+ </tbody>
+ </table>
+ </div>
+</div>
+<p class="text-xs text-text-light mb-6">Källa: Socialstyrelsen, 2021. Riket: 49,9 procent.</p>
+
+<p class="text-text-light mb-4">
+ Skillnaden mellan Jönköping (54,6 procent) och Halland (44,5 procent) är 10 procentenheter. Det är en betydande variation som inte enbart kan förklaras med socioekonomi eller utbildningsnivå. Om du vill läsa mer om hur amningen fungerar i praktiken finns vår <a href="/guider/amning-tips/" class="text-accent underline">guide med amningstips för nybörjare</a> och en genomgång av valet att <a href="/guider/amma-eller-flaska/" class="text-accent underline">amma eller ge flaska</a>.
+</p>
+
+<h3 class="font-heading text-xl font-bold mt-8 mb-3">Vid 1 vecka är Gotland i toppen</h3>
+<p class="text-text-light mb-4">
+ Vid en veckas ålder är andelen helammade barn som högst på Gotland (84 procent). Lägst andel bland de län som redovisat data finns i Norrbotten (67,2 procent). Riksgenomsnittet ligger på 71,8 procent.
+</p>
+
+<h3 class="font-heading text-xl font-bold mt-8 mb-3">Vid 6 månader sjunker andelen kraftigt</h3>
+<p class="text-text-light mb-4">
+ Den största förändringen är att andelen helammade barn sjunker kraftigt mellan 4 och 6 månaders ålder. På riksnivå går siffran från 49,9 procent vid fyra månader till 11,9 procent vid sex månader. Det beror främst på att introduktion av fast föda och smakportioner startar, och WHO:s definition av helamning exkluderar dessa.
+</p>
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+ <p class="text-sm text-amber-900">
+ Vissa län sticker ut markant vid 6 månader: Jönköping (35,9 procent) och Gävleborg (26,1 procent) ligger flera gånger högre än övriga län. Det kan bero på lokala skillnader i hur barnhälsovården registrerar amning. Vi avvaktar Socialstyrelsens nästa rapport innan vi drar för stora växlar på dessa siffror.
+ </p>
+</div>
+
+<h2 id="vaccinationer" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Vaccinationer: 94 procent på riksnivå, men luckor lokalt</h2>
+<p class="text-text-light mb-4">
+ Folkhälsomyndighetens senaste rapport från maj 2025 visar att vaccinationstäckningen för svenska 2-åringar är hög och stabil:
+</p>
+<table class="w-full text-sm border-collapse mb-2">
+ <thead>
+ <tr class="bg-accent/10">
+ <th class="text-left px-4 py-3 font-semibold text-text">Vaccin</th>
+ <th class="text-left px-4 py-3 font-semibold text-text">Täckning 2-åringar 2024</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-gray-100">
+ <tr><td class="px-4 py-3 font-medium">MPR (1 dos)</td><td class="px-4 py-3 text-text-light font-semibold">94 %</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">DTP-IPV-Hib-HepB (3 doser)</td><td class="px-4 py-3 text-text-light">95 %</td></tr>
+ <tr><td class="px-4 py-3 font-medium">Pneumokock (3 doser)</td><td class="px-4 py-3 text-text-light">95 %</td></tr>
+ <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Rotavirus (2 doser)</td><td class="px-4 py-3 text-text-light">87 %</td></tr>
+ </tbody>
+</table>
+<p class="text-xs text-text-light mb-6">Källa: Folkhälsomyndigheten och Läkemedelsverket, Barnvaccinationsprogrammet i Sverige 2024.</p>
+
+<p class="text-text-light mb-4">
+ Folkhälsomyndigheten kommenterar själv siffran. Nationella Vaccinationsregistret, som datan bygger på, underskattar den faktiska täckningen med cirka 3 procentenheter, eftersom barnhälsovårdens egen rapportering visar högre siffror. Den verkliga MPR-täckningen ligger sannolikt runt 97 procent.
+</p>
+
+<h3 class="font-heading text-xl font-bold mt-8 mb-3">Lokala luckor i Örebro län</h3>
+<p class="text-text-light mb-4">
+ Medelvärden döljer lokala variationer. I Örebro län ligger flera kommuner under den gräns på 95 procent som Världshälsoorganisationen anger för flockimmunitet mot mässling:
+</p>
+<ul class="space-y-1.5 text-text-light mb-4">
+ <li class="flex justify-between border-b border-border py-2"><span class="font-medium text-text">Ljusnarsberg</span><span class="text-accent font-semibold">85,7 %</span></li>
+ <li class="flex justify-between border-b border-border py-2"><span class="font-medium text-text">Degerfors</span><span class="text-accent font-semibold">86,5 %</span></li>
+ <li class="flex justify-between border-b border-border py-2"><span class="font-medium text-text">Laxå</span><span class="text-accent font-semibold">88,4 %</span></li>
+ <li class="flex justify-between border-b border-border py-2"><span class="font-medium text-text">Lindesberg</span><span class="text-accent font-semibold">90,7 %</span></li>
+ <li class="flex justify-between border-b border-border py-2"><span class="font-medium text-text">Nora</span><span class="text-accent font-semibold">91,3 %</span></li>
+</ul>
+<p class="text-xs text-text-light mb-4">Källa: Region Örebro län, BHV-aktuellt oktober 2025. Avser MPR-täckning bland 2-åringar 2024.</p>
+<p class="text-text-light mb-4">
+ Mässling är en av de mest smittsamma sjukdomarna vi känner till. När täckningen faller under 95 procent finns inte längre tillräckligt skydd för dem som är för små eller för sjuka för att vaccineras själva, exempelvis spädbarn som ännu är för unga för sin första MPR-dos. I det svenska barnvaccinationsprogrammet ges den vid 18 månaders ålder, även om dosen kan tidigareläggas (från 12 månader i programmet, och från 6 månader inför utlandsresa till områden med mässling).
+</p>
+<p class="text-text-light mb-4">
+ I Stockholms län är genomsnittstäckningen 96 procent, över rikssnittet, men spridningen mellan stadsdelar är upp till 15 procentenheter, enligt Centrum för epidemiologi och samhällsmedicin.
+</p>
+
+<h2 id="for-dig" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Vad betyder det för dig som förälder?</h2>
+<p class="text-text-light mb-4">
+ Bebisguidens redaktion vill understryka att indexet inte ska tolkas som en värdering av enskilda län eller kommuner. Föräldraskap är komplext, och bakom siffrorna ligger lokala förutsättningar, kultur, ekonomi och hur barnhälsovården är organiserad. Det vi däremot kan säga är:
+</p>
+<div class="space-y-4 mb-6">
+ <div class="border-l-4 border-accent pl-4">
+ <p class="font-semibold text-text mb-1">1. Stanna hemma med ditt sjuka barn när det behövs</p>
+ <p class="text-text-light text-sm">VAB är en social förmån utformad för att skydda både barnet och din arbetsplats från smittspridning. Sjunkande VAB-uttag är inte alltid något positivt.</p>
+ </div>
+ <div class="border-l-4 border-accent pl-4">
+ <p class="font-semibold text-text mb-1">2. Amning är inget tävlingsmoment</p>
+ <p class="text-text-light text-sm">Skillnaderna mellan länen visar att även mödrar med samma intentioner får olika utfall beroende på lokala stödstrukturer i barnhälsovården. Om amningen inte fungerar, sök hjälp tidigt från barnmorska eller amningskonsulent.</p>
+ </div>
+ <div class="border-l-4 border-accent pl-4">
+ <p class="font-semibold text-text mb-1">3. Kontrollera vaccinationsprogrammet</p>
+ <p class="text-text-light text-sm">På 1177.se kan du se hela det svenska barnvaccinationsprogrammet och när varje dos ska ges. Om du är osäker på din kommuns lokala täckning, fråga din BVC.</p>
+ </div>
+ <div class="border-l-4 border-accent pl-4">
+ <p class="font-semibold text-text mb-1">4. Lokal data är viktig</p>
+ <p class="text-text-light text-sm">Den nationella siffran 94 procent vaccinationstäckning döljer att vissa kommuner ligger långt under flockimmunitetsgränsen. Ditt val att vaccinera ditt barn bidrar till skydd även för dem som inte kan vaccineras.</p>
+ </div>
+</div>
+
+<FAQ items={faqItems} />
+
+<div class="bg-bg-alt border border-border rounded-xl p-5 mt-10 mb-2">
+ <p class="font-heading font-bold text-text mb-2">För press och redaktioner</p>
+ <p class="text-sm text-text-light">Bebisguidens föräldraindex är fritt att citera med källangivelsen "Bebisguidens föräldraindex 2026". För frågor, intervjuer eller underlag, kontakta redaktionen på <span class="js-email" data-u="info" data-d="bebisguiden.se"></span>.</p>
+</div>
+
+<h2 class="font-heading text-2xl font-bold mt-10 mb-3">Källor</h2>
+<p class="text-sm text-text-light mb-3">
+ Indexet bygger på offentlig myndighetsdata från senast tillgängliga år per källa: VAB-data avser 2024, vaccinationsdata 2024 och amningsdata 2021 (Socialstyrelsens senaste publicerade årgång). Alla siffror är hämtade från primärkällorna nedan.
+</p>
+<ol class="list-decimal pl-6 space-y-1.5 text-sm text-text-light mb-6">
+ <li>Försäkringskassan. VAB-bandet fortsatte minska under 2024, även mäns uttag minskade. Pressmeddelande 2025-01-15. (riksnivå, mäns andel, länsförändringar)</li>
+ <li>Försäkringskassan. Tema VAB, statistik och analys. (genomsnitt dagar per barn och län)</li>
+ <li>Socialstyrelsen. Statistik om amning 2021. Artikelnummer 2023-9-8757, publicerad 2023-09-26. (helamning per län vid 1 vecka, 4 och 6 månader)</li>
+ <li>Folkhälsomyndigheten och Läkemedelsverket. Barnvaccinationsprogrammet i Sverige 2024, årsrapport. Artikelnummer 25126, maj 2025. (nationell vaccinationstäckning, NVR-förbehåll)</li>
+ <li>Folkhälsomyndigheten. Hög täckning i barnvaccinationsprogrammet 2024. Nyhet 2025-05-27.</li>
+ <li>Folkhälsomyndigheten, 1177 och Rikshandboken i barnhälsovård. Det allmänna barnvaccinationsprogrammet. (tidpunkt för MPR-doser)</li>
+ <li>Centrum för epidemiologi och samhällsmedicin, Region Stockholm. CES-rapport 2024:6, Att främja vaccinationer. (täckning och spridning i Stockholms län)</li>
+ <li>Region Örebro län. BHV-aktuellt oktober 2025. (kommunal MPR-täckning bland 2-åringar)</li>
+</ol>
+
+<p class="text-sm text-text-light italic border-t border-border pt-4">
+ Artikeln är en del av Bebisguidens föräldraindex 2026. Den fullständiga rapporten med data per kommun publiceras hösten 2026.
+</p>
+
+</ArticleLayout>
