@@ -155,7 +155,7 @@ export const articleMeta = {
 
 <h2 id="jamstalldhet" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Kronoberg är Sveriges enda jämställda län</h2>
 <p class="text-text-light mb-4">
- När det gäller fördelningen mellan män och kvinnor visar Försäkringskassans data ett mönster som varit stabilt över tid:
+ Fördelningen mellan män och kvinnor har varit stabil över tid, enligt Försäkringskassans data:
 </p>
 <div class="grid grid-cols-2 gap-3 mb-4">
  <div class="bg-bg-alt border border-border rounded-lg p-4 text-center">
@@ -177,8 +177,8 @@ export const articleMeta = {
 </p>
 
 <figure class="my-6">
- <img src="/images/infografik-amning-2026.webp" alt="Helamning vid fyra månader per län 2021: topp 5 med Jönköping 54,6 procent och botten 5 med Halland 44,5 procent, enligt Socialstyrelsen." class="w-full rounded-xl border border-border" loading="lazy" width="1920" height="1080" />
- <figcaption class="text-xs text-text-light mt-2 text-center">Helamning vid fyra månaders ålder per län, 2021. Källa: Socialstyrelsen.</figcaption>
+ <img src="/images/infografik-amning-2026.webp" alt="Helamning vid fyra månader per län 2021: topp 5 med Jönköping 54,6 procent och botten 5 med Halland 44,5 procent, enligt Socialstyrelsen." class="w-full rounded-xl border border-border cursor-zoom-in" loading="lazy" width="1920" height="1080" />
+ <figcaption class="text-xs text-text-light mt-2 text-center">Helamning vid fyra månaders ålder per län, 2021. Källa: Socialstyrelsen. Klicka för att förstora.</figcaption>
 </figure>
 
 <h3 class="font-heading text-xl font-bold mt-8 mb-3">Helamning vid 4 månader, länsranking</h3>
@@ -216,12 +216,12 @@ export const articleMeta = {
 
 <h3 class="font-heading text-xl font-bold mt-8 mb-3">Vid 1 vecka är Gotland i toppen</h3>
 <p class="text-text-light mb-4">
- Vid en veckas ålder är andelen helammade barn som högst på Gotland (84 procent). Lägst andel bland de län som redovisat data finns i Norrbotten (67,2 procent). Riksgenomsnittet ligger på 71,8 procent.
+ Vid en veckas ålder är andelen helammade barn som högst på Gotland (84 procent). Lägst andel bland de län som redovisat data har Norrbotten (67,2 procent). Riksgenomsnittet ligger på 71,8 procent.
 </p>
 
 <h3 class="font-heading text-xl font-bold mt-8 mb-3">Vid 6 månader sjunker andelen kraftigt</h3>
 <p class="text-text-light mb-4">
- Den största förändringen är att andelen helammade barn sjunker kraftigt mellan 4 och 6 månaders ålder. På riksnivå går siffran från 49,9 procent vid fyra månader till 11,9 procent vid sex månader. Det beror främst på att introduktion av fast föda och smakportioner startar, och WHO:s definition av helamning exkluderar dessa.
+ Andelen helammade barn sjunker kraftigt mellan 4 och 6 månaders ålder. På riksnivå går siffran från 49,9 procent vid fyra månader till 11,9 procent vid sex månader. Det beror främst på att barnet då börjar få fast föda och smakportioner, och WHO:s definition av helamning räknar inte med dessa.
 </p>
 <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
  <p class="text-sm text-amber-900">
@@ -274,7 +274,7 @@ export const articleMeta = {
 
 <h2 id="for-dig" class="font-heading text-2xl font-bold mt-10 mb-3 scroll-mt-24">Vad betyder det för dig som förälder?</h2>
 <p class="text-text-light mb-4">
- Bebisguidens redaktion vill understryka att indexet inte ska tolkas som en värdering av enskilda län eller kommuner. Föräldraskap är komplext, och bakom siffrorna ligger lokala förutsättningar, kultur, ekonomi och hur barnhälsovården är organiserad. Det vi däremot kan säga är:
+ Indexet ska inte läsas som en värdering av enskilda län eller kommuner. Föräldraskap är komplext, och bakom siffrorna ligger lokala förutsättningar, kultur, ekonomi och hur barnhälsovården är organiserad. Men några saker kan vi ändå säga:
 </p>
 <div class="space-y-4 mb-6">
  <div class="border-l-4 border-accent pl-4">
@@ -320,5 +320,54 @@ export const articleMeta = {
 <p class="text-sm text-text-light italic border-t border-border pt-4">
  Artikeln är en del av Bebisguidens föräldraindex 2026. Den fullständiga rapporten med data per kommun publiceras hösten 2026.
 </p>
+
+<script is:inline>
+(function () {
+ var imgs = document.querySelectorAll('img[src*="/images/infografik-"]');
+ if (!imgs.length) return;
+ var overlay = null;
+ function onKey(e) { if (e.key === 'Escape') closeLb(); }
+ function closeLb() {
+  if (!overlay) return;
+  document.removeEventListener('keydown', onKey);
+  document.body.style.overflow = '';
+  overlay.remove();
+  overlay = null;
+ }
+ function openLb(src, alt) {
+  overlay = document.createElement('div');
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', alt || 'Förstorad infografik');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.92);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;';
+  var img = document.createElement('img');
+  img.src = src;
+  img.alt = alt || '';
+  img.style.cssText = 'max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.5);';
+  var close = document.createElement('button');
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Stäng');
+  close.innerHTML = '&times;';
+  close.style.cssText = 'position:absolute;top:14px;right:20px;background:none;border:none;color:#fff;font-size:42px;line-height:1;cursor:pointer;';
+  overlay.appendChild(img);
+  overlay.appendChild(close);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  close.focus();
+  overlay.addEventListener('click', closeLb);
+  document.addEventListener('keydown', onKey);
+ }
+ imgs.forEach(function (im) {
+  im.style.cursor = 'zoom-in';
+  im.setAttribute('role', 'button');
+  im.setAttribute('tabindex', '0');
+  im.setAttribute('aria-label', 'Förstora: ' + (im.alt || 'infografik'));
+  im.addEventListener('click', function () { openLb(im.currentSrc || im.src, im.alt); });
+  im.addEventListener('keydown', function (e) {
+   if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(im.currentSrc || im.src, im.alt); }
+  });
+ });
+})();
+</script>
 
 </ArticleLayout>
