@@ -4,16 +4,53 @@ import Footer from '../components/Footer.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 import '../styles/global.css';
 
+interface ArticleMeta {
+  headline?: string;
+  description?: string;
+  datePublished?: string;
+  dateModified?: string;
+  image?: string;
+}
+
 interface Props {
  title: string;
  description: string;
  ogImage?: string;
  canonical?: string;
+ article?: boolean | ArticleMeta;
 }
 
-const { title, description, ogImage = '/og-default.png', canonical } = Astro.props;
+const { title, description, ogImage = '/og-default.png', canonical, article } = Astro.props;
 const canonicalUrl = canonical || Astro.url.href;
 const ogImageUrl = ogImage.startsWith('http')? ogImage: `https://bebisguiden.se${ogImage}`;
+
+const articleMeta: ArticleMeta = typeof article === 'object' && article !== null ? article : {};
+const articleSchema = article ? {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: articleMeta.headline ?? title,
+  description: articleMeta.description ?? description,
+  datePublished: articleMeta.datePublished ?? '2026-01-01',
+  dateModified: articleMeta.dateModified ?? '2026-05-27',
+  image: articleMeta.image
+    ? (articleMeta.image.startsWith('http') ? articleMeta.image : `https://bebisguiden.se${articleMeta.image}`)
+    : `https://bebisguiden.se/og-default.png`,
+  author: {
+    '@type': 'Person',
+    name: 'Sofia Lindgren',
+    url: 'https://bebisguiden.se/om-redaktionen/',
+    jobTitle: 'Leg. barnmorska & chefredaktör',
+    image: 'https://bebisguiden.se/images/redaktion-sofia.webp',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Bebisguiden',
+    url: 'https://bebisguiden.se',
+    logo: { '@type': 'ImageObject', url: 'https://bebisguiden.se/favicon.svg' },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+  inLanguage: 'sv-SE',
+} : null;
 ---
 
 <!DOCTYPE html>
@@ -120,6 +157,8 @@ const ogImageUrl = ogImage.startsWith('http')? ogImage: `https://bebisguiden.se$
  }
  });
  </script>
+
+ {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
 
  <!-- Pages can inject additional head content (e.g. preload hints) -->
  <slot name="head" />
