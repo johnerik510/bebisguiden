@@ -3,7 +3,6 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AffiliateDisclaimer from '../components/AffiliateDisclaimer.astro';
 import AuthorByline from '../components/AuthorByline.astro';
-import StickyCTA from '../components/StickyCTA.astro';
 import { buildArticleSchema } from '../utils/schema.js';
 
 interface Props {
@@ -19,9 +18,6 @@ interface Props {
  image?: string;
  showAuthor?: boolean;
  relatedTitle?: string;
- stickyCtaHref?: string;
- stickyCtaProduct?: string;
- stickyCtaBrand?: string;
 }
 
 const {
@@ -37,9 +33,6 @@ const {
  image,
  showAuthor = true,
  relatedTitle = 'Relaterade guider',
- stickyCtaHref,
- stickyCtaProduct,
- stickyCtaBrand,
 } = Astro.props;
 
 // Lästid: rendera default-sloten, räkna ord, dela på 200 ord/min
@@ -98,13 +91,6 @@ if (section) {
  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
  <Breadcrumbs items={breadcrumbs} />
  <h1 class="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold text-text mt-3 mb-2">{title}</h1>
- {showAuthor && (
- <AuthorByline
- datePublished={resolvedPublished}
- dateModified={resolvedModified}
- readingTimeMinutes={readingTimeMinutes}
- />
- )}
  {image && (
  <div class="mt-4 mb-6 rounded-xl overflow-hidden aspect-[16/9] bg-sand">
  <img src={image} alt={title} class="w-full h-full object-cover" loading="lazy" width="1200" height="675" />
@@ -113,6 +99,13 @@ if (section) {
  <div class="mt-4">
  <slot />
  </div>
+ {showAuthor && (
+ <AuthorByline
+ datePublished={resolvedPublished}
+ dateModified={resolvedModified}
+ readingTimeMinutes={readingTimeMinutes}
+ />
+ )}
  {autoRelated.length > 0 && (
  <aside class="mt-12 pt-8 border-t border-sand-dark">
  <h2 class="font-heading text-xl font-bold text-text mb-4">{relatedTitle}</h2>
@@ -127,9 +120,6 @@ if (section) {
  )}
  {showDisclaimer && <AffiliateDisclaimer />}
  </article>
- {stickyCtaHref && (
- <StickyCTA href={stickyCtaHref} productName={stickyCtaProduct} brand={stickyCtaBrand} />
- )}
  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
  <script>
   function transformProseTablesForMobile() {
