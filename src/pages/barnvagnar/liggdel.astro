@@ -15,11 +15,11 @@ const breadcrumbs = [
 
 const products = [
  {
- name: 'Emmaljunga NXT90',
+ name: 'Emmaljunga NXT De Luxe Liggdel, Crystal Black 3.0',
  badge: 'Bäst i test',
  rating: 4.7,
- image: '/images/products/emmaljunga-sento.webp',
-
+ image: '/images/products/emmaljunga-nxt-de-luxe-liggdel-crystal-black.webp',
+ ctaHref: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=460102&url=https://www.babyland.se/emmaljunga-nxt-de-luxe-liggdel-crystal-black-3-0',
  features: {
  'Liggdelens mått (cm)': '85 x 35 cm',
  'Platt liggläge': 'Ja',
@@ -28,15 +28,15 @@ const products = [
  },
  },
  {
- name: 'iCandy Peach 7',
- image: '/images/products/cybex-mios-duovagn.webp',
+ name: 'Nuna DEMI Liggdel, Caviar',
+ image: '/images/products/nuna-demi-liggdel-caviar.webp',
  badge: 'Elegant val',
  rating: 4.6,
-
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10327908&url=https://www.jollyroom.se/barnvagnar/barnvagnsdelar/liggdelar/liggdelar/nuna-demi-liggdel-caviar',
  features: {
  'Liggdelens mått (cm)': '82 x 34 cm',
  'Platt liggläge': 'Ja',
- 'Vikt (kg)': '12,2 kg',
+ 'Vikt (kg)': '12,0 kg',
  'Modulär': 'Ja',
  },
  },
@@ -67,16 +67,16 @@ const products = [
  },
  },
  {
- name: 'Hauck Pacific 4 Shop',
- image: '/images/products/hauck-pacific-4-shop.webp',
+ name: 'Hauck Walk N Care Liggdel, Dark Olive',
+ image: '/images/products/hauck-walk-n-care-liggdel-dark-olive.webp',
  badge: 'Budgetval',
  rating: 4.1,
-
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246576&url=https://www.jollyroom.se/barnvagnar/barnvagnsdelar/liggdelar/liggdelar/hauck-walk-n-care-liggdel-dark-olive',
  features: {
- 'Liggdelens mått (cm)': '75 x 31 cm',
+ 'Liggdelens mått (cm)': '78 x 32 cm',
  'Platt liggläge': 'Ja',
- 'Vikt (kg)': '12,8 kg',
- 'Modulär': 'Nej',
+ 'Vikt (kg)': '12,0 kg',
+ 'Modulär': 'Ja',
  },
  },
 ];
@@ -135,25 +135,27 @@ export const articleMeta = {
 
  <div class="space-y-4">
  <ProductCard
- name="Emmaljunga SENTO ERGO+"
- image="/images/products/emmaljunga-sento-ergo.webp"
+ name="Emmaljunga NXT De Luxe Liggdel, Crystal Black 3.0"
+ image="/images/products/emmaljunga-nxt-de-luxe-liggdel-crystal-black.webp"
  badge="Bäst i test"
  rating={4.7}
- ageRange="Från födseln till ca 22 kg"
- pros={['ERGO+-liggdel ingår, plan position för nyfödda', 'Fyrhjulsfjädring anpassad för nordiskt klimat', 'God ventilation i liggdelen', '4 års garanti']}
- cons={['Tyngre chassi', 'Större ihopfälld storlek']}
+ ageRange="Från födseln till ca 6 månader"
+ pros={['Plan liggdel för nyfödda', 'Nordisk design och svensk kvalitet', 'God ventilation', 'Passar Emmaljunga NXT-chassi']}
+ cons={['Separat liggdel, chassi köps extra', 'Stor och tung']}
+ ctaText="Bra pris hos Babyland"
+ ctaHref="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=460102&url=https://www.babyland.se/emmaljunga-nxt-de-luxe-liggdel-crystal-black-3-0"
  />
 
  <ProductCard
- name="Cybex Mios Duovagn"
- image="/images/products/cybex-mios-duovagn.webp"
+ name="Nuna DEMI Liggdel, Caviar"
+ image="/images/products/nuna-demi-liggdel-caviar.webp"
  badge="Elegant val"
  rating={4.6}
- ageRange="0 till 4 år"
- pros={['Liggdel ingår i paketet', 'Elegant tysk design med premiumkänsla', 'Lätt att konvertera mellan liggdel och sittdel', 'Chassi, sittdel och liggdel ingår']}
- cons={['Hög prisklass', 'Mindre liggdel än Emmaljunga']}
+ ageRange="Från födseln till ca 6 månader"
+ pros={['Plan liggdel med hög comfort', 'Premium holländsk design', 'Lätt att montera och ta av', 'God ventilation']}
+ cons={['Separat liggdel, chassi köps extra', 'Hög prisklass']}
  ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912966&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-mios-duovagn-leaf-green-matt-black"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10327908&url=https://www.jollyroom.se/barnvagnar/barnvagnsdelar/liggdelar/liggdelar/nuna-demi-liggdel-caviar"
  />
 
  <ProductCard
@@ -181,13 +183,15 @@ export const articleMeta = {
  />
 
  <ProductCard
- name="Hauck Pacific 4 Duovagn"
- image="/images/products/hauck-pacific-4-duovagn.webp"
+ name="Hauck Walk N Care Liggdel, Dark Olive"
+ image="/images/products/hauck-walk-n-care-liggdel-dark-olive.webp"
  badge="Budgetval"
  rating={4.1}
- ageRange="0 till 4 år"
- pros={['Lägst pris med liggdel inkluderat', 'Platt liggläge för nyfödd', 'Vändbar sittdel', 'Komplett paket, inget behöver köpas till']}
- cons={['Inte modulär, kan inte byta till annan liggdel', 'Enklare material och fjädring', 'Minsta liggdelen i testet']}
+ ageRange="Från födseln till ca 6 månader"
+ pros={['Prisvärt budgetalternativ', 'Platt liggläge för nyfödd', 'Passar Hauck Walk N Care-chassi', 'Kompakt storlek']}
+ cons={['Enklare material och fjädring', 'Liten liggdel jämfört med premiumalternativ']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246576&url=https://www.jollyroom.se/barnvagnar/barnvagnsdelar/liggdelar/liggdelar/hauck-walk-n-care-liggdel-dark-olive"
  />
  </div>
 

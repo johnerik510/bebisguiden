@@ -28,11 +28,11 @@ const products = [
  },
  },
  {
- name: 'Chicco Pocket Snack',
+ name: 'Skrållan Bordsstol',
  badge: 'Bäst budgetval',
  rating: 4.5,
- image: '/images/products/chicco-pocket-snack.webp',
-
+ image: '/images/products/skrallan-bordsstol.webp',
+ ctaHref: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1',
  features: {
  'Typ': 'Klämbord på bordet',
  'Ålder': '6 mån, 3 år',
@@ -41,21 +41,21 @@ const products = [
  },
  },
  {
- name: 'Inglesina Fast Table Chair',
+ name: 'Cybex CLICK&FOLD Matstol, All White',
  badge: 'Bäst design',
  rating: 4.5,
- image: '/images/products/inglesina-fast-table-chair.webp',
-
+ image: '/images/products/cybex-clickfold-matstol-all-white.webp',
+ ctaHref: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=617753&url=https://www.babyland.se/cybex-clickfold-matstol-all-white',
  features: {
- 'Typ': 'Bordsklämma',
+ 'Typ': 'Hopfällbar matstol',
  'Ålder': '6 mån, 3 år',
  'Maxvikt': '15 kg',
- 'Bälte': '3-punkts (ingår)',
+ 'Bälte': '5-punkts (ingår)',
  },
  },
  {
  name: 'Joie MimzySnacker',
- image: '/images/products/inglesina-fast-table-chair.webp',
+ image: '/images/products/joie-mimzy-snacker-matstol-portrait.webp',
  badge: 'Liten fotavtryck',
  rating: 4.4,
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait',
@@ -67,16 +67,16 @@ const products = [
  },
  },
  {
- name: 'Summer Infant Pop n Sit',
- image: '/images/products/summer-infant-pop-n-sit.webp',
+ name: 'Beemoo CARE Eat Matstol, Basil Green',
+ image: '/images/products/beemoo-care-eat-matstol-basil-green.webp',
  badge: 'Lättast att packa',
  rating: 4.2,
-
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10280962&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-eat-matstol-basil-green',
  features: {
- 'Typ': 'Uppblåsbar stol',
+ 'Typ': 'Kompakt barnmatstol',
  'Ålder': '6 mån, 3 år',
- 'Maxvikt': '22 kg',
- 'Bälte': '3-punkts (ingår)',
+ 'Maxvikt': '15 kg',
+ 'Bälte': '5-punkts (ingår)',
  },
  },
 ];
@@ -157,30 +157,32 @@ export const articleMeta = {
  />
 
  <ProductCard
- name="Chicco Pocket Snack"
- image="/images/products/chicco-pocket-snack.webp"
+ name="Skrållan Bordsstol"
+ image="/images/products/skrallan-bordsstol.webp"
  badge="Bäst budgetval"
  rating={4.5}
  ageRange="6 mån, 3 år (max 15 kg)"
- pros={['Lågt pris ', 'Fästs på bordet, tar inget golvutrymme', 'Lätt och liten, ryms i handbagage', 'Avtagbar bricka']}
+ pros={['Lågt pris', 'Fästs på bordet, tar inget golvutrymme', 'Lätt och liten, ryms i handbagage', 'Bra alternativ på restaurang']}
  cons={['Kräver stabilt bord', 'Enklare bälte (3-punkts)']}
- rel="sponsored noopener"
+ ctaText="Bra pris hos Babyland"
+ ctaHref="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1"
  />
 
  <ProductCard
- name="Inglesina Fast Table Chair"
- image="/images/products/inglesina-fast-table-chair.webp"
+ name="Cybex CLICK&FOLD Matstol, All White"
+ image="/images/products/cybex-clickfold-matstol-all-white.webp"
  badge="Bäst design"
  rating={4.5}
  ageRange="6 mån, 3 år (max 15 kg)"
- pros={['Elegant design, passar alla bordsmiljöer', 'Stark klämkonstruktion', 'Lätt (ca 1,4 kg)', 'Medföljer bärväska']}
- cons={['Kräver stabilt, tjockt bord', 'Dyrare än Chicco Pocket Snack']}
- rel="sponsored noopener"
+ pros={['Elegant Cybex-design', 'Enkel hopfällningsmekanism', '5-punkts bälte ingår', 'Stabil konstruktion']}
+ cons={['Dyrare än bordsstolar', 'Tar mer plats i bagaget']}
+ ctaText="Bra pris hos Babyland"
+ ctaHref="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=617753&url=https://www.babyland.se/cybex-clickfold-matstol-all-white"
  />
 
  <ProductCard
  name="Joie MimzySnacker"
- image="/images/products/inglesina-fast-table-chair.webp"
+ image="/images/products/joie-mimzy-snacker-matstol-portrait.webp"
  badge="Liten fotavtryck"
  rating={4.4}
  ageRange="6 mån, 3 år (max 15 kg)"
@@ -188,18 +190,18 @@ export const articleMeta = {
  cons={['Inte hopfällbar', 'Tar mer utrymme än bordsklämmare']}
  ctaText="Bra pris hos Jollyroom"
  ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait"
- rel="sponsored noopener"
  />
 
  <ProductCard
- name="Summer Infant Pop n Sit"
- image="/images/products/summer-infant-pop-n-sit.webp"
+ name="Beemoo CARE Eat Matstol, Basil Green"
+ image="/images/products/beemoo-care-eat-matstol-basil-green.webp"
  badge="Lättast att packa"
  rating={4.2}
- ageRange="6 mån, 3 år (max 22 kg)"
- pros={['Lägst pris i testet', 'Uppblåsbar, tar minimalt utrymme i väskan', 'Hög maxvikt (22 kg)', '3-punkts bälte ingår']}
- cons={['Lägre stabilitet än hårda stolar', 'Tar tid att blåsa upp och tömma']}
- rel="sponsored noopener"
+ ageRange="6 mån, 3 år (max 15 kg)"
+ pros={['Kompakt med litet fotavtryck', 'Avtagbar bricka enkel att tvätta', '5-punkts bälte ingår', 'Snygg Basil Green-design']}
+ cons={['Inte hopfällbar', 'Kräver lite golvutrymme']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10280962&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-eat-matstol-basil-green"
  />
  </div>
 
@@ -233,10 +235,10 @@ export const articleMeta = {
  <CTABox productName="Resematstol" store="inoki" description="Barnservis, matstolar och matningstillbehör i silikon." />
  <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
 <ProductSchema products={[
- { name: 'Stokke Clikk', description: 'Kompakt resmatstol med säkerhetsräls och brickplatta. Passar från 6 månader till 3 år.', brand: 'Stokke', ratingValue: 4.7, reviewCount: 1 },
- { name: 'Chicco Pocket Snack', description: 'Hopfällbar boosterstol att fästa på stol. Liten och lätt för resan.', brand: 'Chicco', ratingValue: 4.4, reviewCount: 1 },
- { name: 'Inglesina Fast Table Chair', description: 'Bordsstol som fästs direkt på bordsytan. Elegant design utan behov av stol.', brand: 'Inglesina', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Joie MimzySnacker', description: 'Kompakt boosterstol för resor med liten yta. Lätt att packa.', brand: 'Joie', ratingValue: 4.3, reviewCount: 1 },
- { name: 'Summer Infant Pop n Sit', description: 'Uppblåsbar sittkudde med bricka. Lättast att packa ihop av alla.', brand: 'Summer Infant', ratingValue: 4.2, reviewCount: 1 },
+ { name: 'Stokke Clikk', description: 'Kompakt resmatstol med 5-punkts bälte och diskmaskinssäker bricka. Passar från 6 månader till 3 år.', brand: 'Stokke', ratingValue: 4.7, reviewCount: 1 },
+ { name: 'Skrållan Bordsstol', description: 'Lätt bordsstol som kläms fast på bordet. Perfekt för restaurangbesök och resor.', brand: 'Skrållan', ratingValue: 4.5, reviewCount: 1 },
+ { name: 'Cybex CLICK&FOLD Matstol, All White', description: 'Hopfällbar matstol från Cybex med 5-punkts bälte. Elegant design för resor.', brand: 'Cybex', ratingValue: 4.5, reviewCount: 1 },
+ { name: 'Joie MimzySnacker', description: 'Kompakt matstol med litet fotavtryck och 5-punkts bälte. Tvättbart sittskydd.', brand: 'Joie', ratingValue: 4.4, reviewCount: 1 },
+ { name: 'Beemoo CARE Eat Matstol, Basil Green', description: 'Kompakt barnmatstol med avtagbar bricka och 5-punkts bälte. Snygg Basil Green-design.', brand: 'Beemoo', ratingValue: 4.2, reviewCount: 1 },
  ]} />
 </ArticleLayout>

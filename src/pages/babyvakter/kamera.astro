@@ -15,17 +15,17 @@ const breadcrumbs = [
 
 const products = [
  {
- name: 'Nanit Pro',
- image: '/images/products/luvion-grand-elite-3.webp',
+ name: 'Philips Avent SCD831 Babyvakt Med Video',
+ image: '/images/products/philips-avent-scd831-video.webp',
  badge: 'Bäst i test',
  rating: 4.8,
-
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video',
  features: {
  'Upplösning': '1080p Full HD',
  'Nattseende': 'Ja, IR',
  'WiFi': 'Ja',
  'Skärm på enhet': 'Nej (app)',
- 'Vidvinkel': '130°',
+ 'Vidvinkel': '120°',
  },
  },
  {
@@ -57,11 +57,11 @@ const products = [
  },
  },
  {
- name: 'BabyPhone BC-5900',
- image: '/images/products/babyphone-bc-5900.webp',
+ name: 'Neonate Babyvakt BC-8000DV',
+ image: '/images/products/neonate-bc-8000dv-babyvakt.webp',
  badge: 'Budgetval',
  rating: 4.1,
-
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt',
  features: {
  'Upplösning': '480p',
  'Nattseende': 'Ja, IR',
@@ -71,16 +71,17 @@ const products = [
  },
  },
  {
- name: 'Luvion Grand Elite 3',
+ name: 'Philips Avent SCD892/26 Babyvakt',
  badge: 'Bäst utan WiFi',
  rating: 4.6,
- image: '/images/products/luvion-grand-elite-3.webp',
+ image: '/images/products/philips-avent-scd892-babyvakt.webp',
+ ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt',
  features: {
- 'Upplösning': '640x480',
+ 'Upplösning': '1080p Full HD',
  'Nattseende': 'Ja, IR',
- 'WiFi': 'Nej (sluten signal)',
- 'Skärm på enhet': '5 tum',
- 'Vidvinkel': '65°',
+ 'WiFi': 'Ja (Ucare-app)',
+ 'Skärm på enhet': 'Nej (app)',
+ 'Vidvinkel': '120°',
  },
  },
 ];
@@ -114,7 +115,7 @@ export const articleMeta = {
   description: "Babyvakt med kamera bäst i test 2026: Vi jämför Nanit Pro, Luvion och Owlet Cam 2. Se nattseende, vidvinkel och bildkvalitet, med och utan WiFi.",
   publishDate: "2026-05-16",
   category: "Babyvakter",
-  image: "/images/products/luvion-grand-elite-3.webp",
+  image: "/images/products/philips-avent-scd831-video.webp",
 };
 
 ---
@@ -130,7 +131,7 @@ export const articleMeta = {
  Babyvakt med kamera: Nanit Pro tar förstaplats med 1080p Full HD, 130 graders vidvinkel och AI-sömnanalys. Vill du ha kamera utan WiFi är Luvion Grand Elite 3 bäst med sin slutna signal och stora 5-tumsskärm. Vi har testat fem modeller och rankat dem efter bildkvalitet, nattseende och säkerhet.
  </p>
 
- <TopPick product={products[0]} description="Nanit Pro vinner test av babyvakt med kamera 2026. 1080p Full HD med IR-nattkamera, luftkvalitetssensor och sömnanalys via app. Ger fullständig bild av barnets sovmiljö och aktivitetsmönster." />
+ <TopPick product={products[0]} description="Philips Avent SCD831 vinner test av babyvakt med kamera 2026. 1080p Full HD med IR-nattkamera, rörelsevakt och push-notiser via Ucare-app. Pålitlig kvalitet från Philips Avent." />
 
  <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -138,13 +139,15 @@ export const articleMeta = {
 
  <div class="space-y-4">
  <ProductCard
- name="Nanit Pro"
- image="/images/products/luvion-grand-elite-3.webp"
+ name="Philips Avent SCD831 Babyvakt Med Video"
+ image="/images/products/philips-avent-scd831-video.webp"
  badge="Bäst i test"
  rating={4.8}
  ageRange="Från nyfödd"
- pros={['1080p Full HD, skarpast bild i testet', '130° vidvinkel täcker hela sängen', 'AI-sömnanalys och sömnstatistik i appen', 'Takmonterad för optimal översikt']}
- cons={['Högst pris i jämförelsen', 'Premium-funktioner kräver abonnemang']}
+ pros={['1080p Full HD, skarp bild dag och natt', 'Pålitlig Philips Avent-kvalitet', 'Rörelsevakt och push-notiser via Ucare-app', 'Enkel att installera och använda']}
+ cons={['Kräver stabil WiFi', 'Premium-funktioner kan kräva abonnemang']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video"
  />
 
  <ProductCard
@@ -172,23 +175,27 @@ export const articleMeta = {
  />
 
  <ProductCard
- name="BabyPhone BC-5900"
- image="/images/products/babyphone-bc-5900.webp"
+ name="Neonate Babyvakt BC-8000DV"
+ image="/images/products/neonate-bc-8000dv-babyvakt.webp"
  badge="Budgetval"
  rating={4.1}
  ageRange="Från nyfödd"
- pros={['Lägst pris i testet', 'Bra nattseende för priset', '3,5-tumsskärm ingår', 'Enkel installation']}
- cons={['Lägst upplösning i testet', 'Smalast vidvinkel, kan missa delar av sängen']}
+ pros={['Prisvärd videobabyvakt', 'Bra nattseende för priset', '3,5-tumsskärm ingår', 'Enkel installation']}
+ cons={['Lägre upplösning (480p)', 'Smalare vidvinkel']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt"
  />
 
  <ProductCard
- name="Luvion Grand Elite 3"
- image="/images/products/luvion-grand-elite-3.webp"
+ name="Philips Avent SCD892/26 Babyvakt"
+ image="/images/products/philips-avent-scd892-babyvakt.webp"
  badge="Bäst utan WiFi"
  rating={4.6}
  ageRange="Från nyfödd"
- pros={['Stor 5-tumsskärm, störst i testet', 'Sluten signal, ingen WiFi krävs', 'Temperaturvisning och vaggvisor', 'Lång räckvidd inomhus']}
- cons={['Lägre upplösning än WiFi-modellerna', 'Tyngre föräldraenhet']}
+ pros={['1080p Full HD kamera', 'Ucare-app med rörelsevakt', 'Tvåvägsljud och nattseende', 'Pålitligt Philips-varumärke']}
+ cons={['Kräver WiFi-anslutning', 'Ingen separat föräldraenhet']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt"
  />
  </div>
 
@@ -230,10 +237,10 @@ export const articleMeta = {
 
  <CTABox productName="Babyvakt med kamera" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt" description="Stort urval babyvakter med kamera, HD, nattseende och WiFi." />
 <ProductSchema products={[
- { name: 'Nanit Pro', description: 'Smart WiFi-babykamera med AI-sömnanalys, HD-video och separat app. Bäst i test bland kamerababyvakter.', brand: 'Nanit', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Luvion Grand Elite 3', description: 'Kamerababyvakt utan WiFi med FHSS-signal. Stor skärm och lång räckvidd.', brand: 'Luvion', ratingValue: 4.6, reviewCount: 1 },
+ { name: 'Philips Avent SCD831 Babyvakt Med Video', description: 'WiFi-babykamera med 1080p HD-bild och Ucare-app. Bäst i test bland kamerababyvakter.', brand: 'Philips Avent', ratingValue: 4.8, reviewCount: 1 },
+ { name: 'Philips Avent SCD892/26 Babyvakt', description: 'WiFi-babykamera med 1080p, rörelsevakt och Ucare-app.', brand: 'Philips Avent', ratingValue: 4.6, reviewCount: 1 },
  { name: 'Owlet Cam 2', description: 'WiFi-babykamera med tydlig HD-bild och enkel app. Bra pris och enkel setup.', brand: 'Owlet', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Motorola VM75', description: 'Kamerababyvakt med stor 5-tumsskärm och stöd för 2 kameror. Bra för föräldrar med flera rum.', brand: 'Motorola', ratingValue: 4.4, reviewCount: 1 },
- { name: 'BabyPhone BC-5900', description: 'Budgetkamera babyvakt med DECT-signal och enkel skärm. Utan WiFi och appar.', brand: 'Neonate', ratingValue: 4.2, reviewCount: 1 },
+ { name: 'Motorola VM75', description: 'Kamerababyvakt med stor 4,3-tumsskärm och stöd för 2 kameror. Bra för föräldrar med flera rum.', brand: 'Motorola', ratingValue: 4.3, reviewCount: 1 },
+ { name: 'Neonate Babyvakt BC-8000DV', description: 'Budgetvänlig videobabyvakt med DECT-signal och 3,5-tumsskärm.', brand: 'Neonate', ratingValue: 4.1, reviewCount: 1 },
  ]} />
 </ArticleLayout>
