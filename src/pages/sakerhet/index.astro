@@ -43,27 +43,81 @@ const faqItems = [
  description="Komplett guide till babysäkerhet 2026, från trappgrind och elskydd till bilbarnstol och brandvarnare. Konkreta checklistor och rankade produkter."
  breadcrumbs={breadcrumbs}
  canonical="https://bebisguiden.se/sakerhet/"
- updatedDate="2026-05-23"
+ updatedDate="2026-05-28"
 >
  <h2 class="font-heading text-3xl font-bold mb-3">Babysäkerhet 2026</h2>
- <p class="text-base text-text-light mb-4 max-w-2xl">
- De flesta barnolyckor i hemmet är förebyggbara med rätt utrustning och en systematisk genomgång rum för rum. Den här guiden täcker sovmiljö, bilsäkerhet, babyproofing, kemikalier och brandskydd, plus fem konkreta produkter som löser de vanligaste riskerna. Säkerhetsgrind från Safety 1st och SafeGate, hörnskydd och skåplås från Safety 1st och BabyDan står i centrum.
+ <p class="text-base text-text-light mb-5 max-w-2xl">
+ Tre åtgärder täcker de vanligaste riskerna i hemmet: säkerhetsgrind vid trappor, elskydd i alla uttag och skåplås på kemikalieskåp. Nedan hittar du de bästa produkterna för varje kategori.
  </p>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
- <p class="text-sm font-semibold text-accent-dark mb-1">Kom igång direkt</p>
- <p class="text-sm text-text-light">Börja med de tre viktigaste åtgärderna: sätt upp <strong>säkerhetsgrind vid trappor</strong>, täck <strong>alla eluttag</strong> och lås <strong>skåp med kemikalier</strong>. Resten av guiden hjälper dig att täcka resten systematiskt.</p>
+ <!-- Produkter first, above the fold -->
+ <div class="space-y-4">
+ <ProductCard
+ name="Safety 1st Easy Close Säkerhetsgrind Metall"
+ image="/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp"
+ badge="Bäst spänngrind"
+ rating={4.7}
+ pros={['Öppnas och stängs med en hand', 'Justerbar bredd för de flesta dörröppningar', 'Stark metallkonstruktion', 'Auto-close funktion']}
+ cons={['Passar inte för trapptopp (tryckmonterad)', 'Kräver regelbunden kontroll av montagets fasthet']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
+ />
+
+ <ProductCard
+ name="SafeGate Clear-view Skruvgrind"
+ image="/images/products/safegate-clear-view-skruvgrind.webp"
+ badge="Bäst skruvgrind för trappa"
+ rating={4.7}
+ pros={['Skruvas fast i väggen, trygg för trapptopp', 'Transparent glas ger fri sikt', 'Öppnas med en hand', 'Stark och stabil konstruktion']}
+ cons={['Kräver borrning och skruvning i väggen', 'Dyrare än tryckmonterade alternativ']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277552&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/safe-care-safegate-clear-view-skruvgrind-transparent"
+ />
+
+ <ProductCard
+ name="Safety 1st Hörnskydd Gel 4-Pack"
+ image="/images/products/safety-1st-hornskydd-gel-4-pack.webp"
+ badge="Bäst hörnskydd"
+ rating={4.5}
+ pros={['Genomskinlig gel, syns knappt på möbeln', 'Mjukt och stötdämpande', 'Självhäftande, sitter stabilt', 'Paket om 4 stycken']}
+ cons={['Kan lossna på lackat trä', 'Barn kan peta bort dem vid äldre ålder']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304104&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack"
+ />
+
+ <ProductCard
+ name="Safety 1st Skåplås Multi"
+ image="/images/products/safety-1st-skaplas-6-pack.webp"
+ badge="Bäst skåplås"
+ rating={4.5}
+ pros={['Monteras inuti skåpluckan, osynlig utifrån', 'Enkel tryckmekanism för vuxna', 'Passar de flesta skåpluckor', 'Multi-pack']}
+ cons={['Kräver skruvning', 'Passar inte alla luckor med tunn kant']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304100&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/safety-1st-skaplas-multi-vit"
+ />
+
+ <ProductCard
+ name="BabyDan Dubbelt Skåplås 6-pack"
+ image="/images/products/babydan-dubbelt-skaplas-6pack.webp"
+ badge="Bäst skåplås budget"
+ rating={4.4}
+ pros={['Dubbellåsning för extra säkerhet', 'Passar de flesta skåpdörrar', '6-pack täcker hela köket', 'Enkel installation']}
+ cons={['Syns utifrån på skåpdörren', 'Kräver lite kraft att öppna som vuxen']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914120&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/babydan-dubbelt-skaplas-6-pack"
+ />
  </div>
 
+ <!-- Komplett guide -->
  <!-- Sovmiljö -->
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">1. Säker sovmiljö för bebis: ryggsovning, sovsäck och temperatur</h2>
+ <h2 class="font-heading text-xl font-bold mt-10 mb-3">1. Säker sovmiljö för bebis: ryggsovning, sovpåse och temperatur</h2>
 
  <div class="prose prose-sm text-text-light max-w-none mb-6">
  <p>Sovmiljön är den viktigaste säkerhetsfrågan för nyfödda och bebisar under 12 månader. Plötslig spädbarnsdöd (SIDS) är sällsynt men kan förebyggas med rätt sovmiljö.</p>
  <ul>
  <li><strong>Lägg alltid bebisen på rygg</strong>, aldrig på magen eller sidan under de första 12 månaderna.</li>
  <li><strong>Hårt och plant underlag</strong>, undvik mjuka madrasser, kuddar, sängkläder och bonkbyxor i sängen.</li>
- <li><strong>Sovsäck istället för täcke</strong>, sovsäcken kan inte hamna över bebisens ansikte.</li>
+ <li><strong>Sovpåse istället för täcke</strong>, sovpåsen kan inte hamna över bebisens ansikte.</li>
  <li><strong>Sov i samma rum, inte i samma säng</strong>, eget underlag bredvid föräldrars säng är idealt de första 6 månaderna.</li>
  <li><strong>Temperatur 16 till 20 grader</strong>, bebisen ska inte svettas under natten.</li>
  <li><strong>Inga lösa föremål i sängen</strong>, inga mjukdjur, bolster eller tillbehör.</li>
@@ -175,66 +229,6 @@ const faqItems = [
  </ul>
  </div>
 
- <!-- Säkerhetsprodukter -->
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Rekommenderade säkerhetsprodukter</h2>
-
- <div class="space-y-4">
- <ProductCard
- name="Safety 1st Easy Close Säkerhetsgrind Metall"
- image="/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp"
- badge="Bäst spänngrind"
- rating={4.7}
- pros={['Öppnas och stängs med en hand', 'Justerbar bredd för de flesta dörröppningar', 'Stark metallkonstruktion', 'Auto-close funktion']}
- cons={['Passar inte för trapptopp (tryckmonterad)', 'Kräver regelbunden kontroll av montagets fasthet']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
- />
-
- <ProductCard
- name="SafeGate Clear-view Skruvgrind"
- image="/images/products/safegate-clear-view-skruvgrind.webp"
- badge="Bäst skruvgrind för trappa"
- rating={4.7}
- pros={['Skruvas fast i väggen, trygg för trapptopp', 'Transparent glas ger fri sikt', 'Öppnas med en hand', 'Stark och stabil konstruktion']}
- cons={['Kräver borrning och skruvning i väggen', 'Dyrare än tryckmonterade alternativ']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277552&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/safe-care-safegate-clear-view-skruvgrind-transparent"
- />
-
- <ProductCard
- name="Safety 1st Hörnskydd Gel 4-Pack"
- image="/images/products/safety-1st-hornskydd-gel-4-pack.webp"
- badge="Bäst hörnskydd"
- rating={4.5}
- pros={['Genomskinlig gel, syns knappt på möbeln', 'Mjukt och stötdämpande', 'Självhäftande, sitter stabilt', 'Paket om 4 stycken']}
- cons={['Kan lossna på lackat trä', 'Barn kan peta bort dem vid äldre ålder']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304104&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack"
- />
-
- <ProductCard
- name="Safety 1st Skåplås Multi"
- image="/images/products/safety-1st-skaplas-6-pack.webp"
- badge="Bäst skåplås"
- rating={4.5}
- pros={['Monteras inuti skåpluckan, osynlig utifrån', 'Enkel tryckmekanism för vuxna', 'Passar de flesta skåpluckor', 'Multi-pack']}
- cons={['Kräver skruvning', 'Passar inte alla luckor med tunn kant']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304100&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/safety-1st-skaplas-multi-vit"
- />
-
- <ProductCard
- name="BabyDan Dubbelt Skåplås 6-pack"
- image="/images/products/babydan-dubbelt-skaplas-6pack.webp"
- badge="Bäst skåplås budget"
- rating={4.4}
- pros={['Dubbellåsning för extra säkerhet', 'Passar de flesta skåpdörrar', '6-pack täcker hela köket', 'Enkel installation']}
- cons={['Syns utifrån på skåpdörren', 'Kräver lite kraft att öppna som vuxen']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914120&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/babydan-dubbelt-skaplas-6-pack"
- />
- </div>
-
  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
  <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
  <ul class="space-y-2 text-sm">
@@ -264,6 +258,6 @@ const faqItems = [
 
 <StickyCTA
  href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
- text="Se pris, Babysäkerhetsprodukter"
+ text="Bra pris hos Jollyroom"
  productName="Bäst i test babysäkerhet 2026"
 />

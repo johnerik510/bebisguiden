@@ -8,7 +8,7 @@ export async function GET() {
     { title: 'Bärselen', description: 'Bästa bärselarna och babybärarna 2026. Ringslyngor, strukturerade och elastiska.', url: '/barselen/', category: 'Kategori' },
     { title: 'Matstolar', description: 'Bästa matstolarna för baby och barn 2026. Testade och rankade.', url: '/matstolar/', category: 'Kategori' },
     { title: 'Spjälsängar', description: 'Bästa spjälsängarna 2026. Säkerhet, sömn och komfort i fokus.', url: '/spjalsangar/', category: 'Kategori' },
-    { title: 'Sövsäckar', description: 'Bästa sövsäckarna för baby 2026. Rätt tog-värde och säkra modeller.', url: '/sovsackar/', category: 'Kategori' },
+    { title: 'Sovpåsar', description: 'Bästa sövsäckarna för baby 2026. Rätt tog-värde och säkra modeller.', url: '/sovsackar/', category: 'Kategori' },
     { title: 'Blöjor', description: 'Bästa blöjorna för baby 2026. Engångs och tygblöjor testade.', url: '/blojor/', category: 'Kategori' },
     { title: 'Leksaker', description: 'Bästa babyleksakerna 2026. Åldersanpassade och stimulerande leksaker.', url: '/leksaker/', category: 'Kategori' },
     { title: 'Badkar', description: 'Bästa babybadkaren 2026. Säkra och praktiska modeller testade.', url: '/badkar/', category: 'Kategori' },
