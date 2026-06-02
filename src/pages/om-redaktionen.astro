@@ -9,96 +9,48 @@ const breadcrumbs = [
 
 const personSchema = {
  '@context': 'https://schema.org',
- '@type': 'ItemList',
- name: 'Bebisguiden.se, redaktionen',
- itemListElement: [
- {
- '@type': 'Person',
- name: 'Sofia Lindgren',
+ '@type': 'Organization',
+ name: 'Bebisguidens redaktion',
  url: 'https://bebisguiden.se/om-redaktionen/',
- image: 'https://bebisguiden.se/images/redaktion-sofia.webp',
- jobTitle: 'Leg. barnmorska & chefredaktör',
- knowsAbout: ['amning', 'nyfödda', 'barnhälsa', 'bebissömn', 'spädbarnsutveckling'],
- worksFor: { '@type': 'Organization', name: 'Bebisguiden.se', url: 'https://bebisguiden.se' },
- },
- {
- '@type': 'Person',
- name: 'Anna Bergström',
- url: 'https://bebisguiden.se/om-redaktionen/',
- image: 'https://bebisguiden.se/images/redaktion-anna.webp',
- jobTitle: 'Barnsjuksköterska & produktgranskare',
- knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'barnsäkerhet', 'i-Size', 'ISOFIX'],
- worksFor: { '@type': 'Organization', name: 'Bebisguiden.se', url: 'https://bebisguiden.se' },
- },
- ],
+ description: 'Redaktionen bakom Bebisguiden jämför barnprodukter utifrån oberoende krocktester, säkerhetsstandarder, specifikationer och pris. Vi är en oberoende guide, inte vårdpersonal.',
+ knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'amning', 'i-Size', 'ISOFIX'],
 };
 ---
 
 <BaseLayout
  title="Om redaktionen, Bebisguiden.se"
- description="Möt Sofia Lindgren och Anna Bergström, redaktionen bakom Bebisguiden.se. Leg. barnmorska och barnsjuksköterska med bred erfarenhet av barnprodukter."
+ description="Så arbetar redaktionen bakom Bebisguiden.se: vi jämför barnprodukter utifrån oberoende tester, säkerhetsstandarder, specifikationer och pris, oberoende av provision."
 >
  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
  <Breadcrumbs items={breadcrumbs} />
 
  <h1 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-text mt-3 mb-6">Om redaktionen</h1>
 
- <!-- Sofia -->
- <div class="bg-sky-50 border border-sky-200 rounded-2xl p-6 sm:p-8 mb-6">
- <div class="flex flex-col sm:flex-row items-start gap-6">
- <img
- src="/images/redaktion-sofia.webp"
- alt="Sofia Lindgren"
- class="w-24 h-24 rounded-full object-cover flex-shrink-0"
- width="96"
- height="96"
- loading="eager"
- />
- <div>
- <h2 class="font-heading text-xl font-bold text-gray-900 mb-1">Sofia Lindgren</h2>
- <p class="text-sky-700 font-semibold text-sm mb-3">Leg. barnmorska & chefredaktör</p>
- <p class="text-gray-700 leading-relaxed">
- Sofia är legitimerad barnmorska med 12 års klinisk erfarenhet och chefredaktör för Bebisguiden.se. Hon ansvarar för allt medicinskt och hälsorelaterat innehåll på sajten och granskar att råden om amning, sömnmiljö och bebisens hälsa stämmer med aktuella riktlinjer från Socialstyrelsen och WHO.
- </p>
- </div>
- </div>
- </div>
-
- <!-- Anna -->
  <div class="bg-sky-50 border border-sky-200 rounded-2xl p-6 sm:p-8 mb-8">
- <div class="flex flex-col sm:flex-row items-start gap-6">
- <img
- src="/images/redaktion-anna.webp"
- alt="Anna Bergström"
- class="w-24 h-24 rounded-full object-cover flex-shrink-0"
- width="96"
- height="96"
- loading="lazy"
- />
- <div>
- <h2 class="font-heading text-xl font-bold text-gray-900 mb-1">Anna Bergström</h2>
- <p class="text-sky-700 font-semibold text-sm mb-3">Barnsjuksköterska & produktgranskare</p>
  <p class="text-gray-700 leading-relaxed">
- Anna är specialistutbildad barnsjuksköterska (barn och ungdom) och ansvarar för produktgranskning på Bebisguiden.se. Hon har testat över 100 barnprodukter, med särskilt fokus på bilbarnstolar, barnvagnar och babyvakter, och värderar alltid säkerhet och klinisk relevans framför design och pris.
+ Bebisguiden drivs av en redaktion som specialiserat sig på barnprodukter. Vi köper och labbtestar inte produkterna själva, vår styrka ligger i att samla, granska och väga samman den information som faktiskt går att verifiera: oberoende krocktester, säkerhetsstandarder, tillverkarnas specifikationer och aktuella priser. Målet är att en stressad förälder ska kunna fatta ett tryggt beslut på några minuter.
  </p>
- </div>
- </div>
  </div>
 
  <div class="prose prose-sm text-text-light max-w-none">
- <h2>Vår metodik</h2>
+ <h2>Så jämför vi</h2>
  <p>
- Alla produkter på Bebisguiden.se bedöms enligt fem kriterier: säkerhet, användarvänlighet, komfort, kvalitet och hållbarhet, samt pris och värde. Vi baserar oss på:
+ Alla produkter på Bebisguiden.se bedöms enligt fem kriterier: säkerhet, användarvänlighet, komfort, kvalitet och hållbarhet, samt pris och värde. Bedömningen bygger på:
  </p>
  <ul>
  <li>Oberoende krocktester från Folksam, ADAC och Stiftung Warentest</li>
  <li>Europeiska säkerhetsstandarder (i-Size/R129, ECE R44, EN-standarder)</li>
- <li>Praktisk testning i minst 4 veckor per produkt</li>
- <li>Feedback från svenska familjer som testat produkterna</li>
- <li>Prisjämförelser från ledande svenska återförsäljare</li>
+ <li>Tillverkarnas specifikationer och produktblad</li>
+ <li>Sammanvägda omdömen från svenska familjer som använt produkterna</li>
+ <li>Prisjämförelser från ledande svenska återförsäljare, kontrollerade när sidan uppdateras</li>
  </ul>
  <p>
- Läs mer om våra testkriterier på sidan <a href="/sa-testar-vi/" class="text-sky-700 hover:text-sky-900 underline">Så testar vi</a>.
+ Läs mer om våra bedömningskriterier på sidan <a href="/sa-testar-vi/" class="text-sky-700 hover:text-sky-900 underline">Så jämför vi</a>.
+ </p>
+
+ <h2>Inte vårdpersonal</h2>
+ <p>
+ Bebisguiden är en oberoende produktguide, inte en vårdgivare. Innehållet ersätter inte individuella råd från barnmorska, BVC eller läkare. Har du medicinska frågor om ditt barn, kontakta alltid vården.
  </p>
 
  <h2>Oberoende</h2>

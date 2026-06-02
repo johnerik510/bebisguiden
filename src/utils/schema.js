@@ -2,14 +2,11 @@
 const SITE_URL = 'https://bebisguiden.se';
 
 export const AUTHOR = {
-  '@type': 'Person',
-  name: 'Sofia Lindgren',
+  '@type': 'Organization',
+  name: 'Bebisguidens redaktion',
   url: `${SITE_URL}/om-redaktionen/`,
-  image: `${SITE_URL}/images/redaktion-sofia.webp`,
-  jobTitle: 'Leg. barnmorska & chefredaktör',
-  description: 'Legitimerad barnmorska med 10+ års klinisk erfarenhet. Testar och granskar barnprodukter med fokus på säkerhet, ergonomi och evidensbaserade råd.',
+  description: 'Vi jämför barnprodukter utifrån oberoende krocktester, säkerhetsstandarder, tillverkarnas specifikationer och pris. Bebisguiden är en oberoende guide, inte vårdpersonal.',
   knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'amning', 'spädbarnsvård', 'i-Size', 'ISOFIX'],
-  worksFor: { '@type': 'Organization', name: 'Bebisguiden', url: SITE_URL },
   email: 'info@bebisguiden.se'
 };
 
