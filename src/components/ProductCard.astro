@@ -29,8 +29,29 @@ const {
  additionalCtaHrefs = [],
 } = Astro.props;
 
+const TRACKER_TO_STORE: Record<string, string> = {
+ 'dot.jollyroom.se': 'Jollyroom',
+ 'to.babyworld.se': 'BabySam',
+ 'go.adt231.net': 'Baby V',
+ 'pin.babyland.se': 'Babyland',
+ 'go.adt284.net': 'Proshop',
+ 'ion.babysam.se': 'BabySam',
+ 'to.xplora.se': 'Xplora',
+ 'id.toyspace.se': 'Toyspace',
+ 'to.kopbarnvagn.se': 'Köpbarnvagn',
+ 'at.storochliten.se': 'Stor och Liten',
+ 'pin.polarnopyret.se': 'Polarn O. Pyret',
+};
+function storeFromUrl(url: string | undefined): string | undefined {
+ if (!url) return undefined;
+ try { return TRACKER_TO_STORE[new URL(url).hostname]; } catch { return undefined; }
+}
+
 const primaryHref = ctaHref;
-const primaryLabel = ctaText ?? 'Se pris';
+// Knappen visas under labeln "Bra pris hos:", så texten ska bara vara butiksnamnet.
+// Strippar ev. "Bra pris hos "-prefix från ctaText så det inte dubbleras.
+const cleanedCtaText = ctaText?.replace(/^Bra pris hos\s+/i, '').trim();
+const primaryLabel = storeFromUrl(ctaHref) ?? cleanedCtaText ?? 'butiken';
 ---
 
 <div class="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">

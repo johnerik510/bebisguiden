@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const guider = [
+ { href: '/leksaker/0-3-manader/', name: 'Leksaker 0-3 månader', img: '/images/products/tikiri-teeny-doll-skallra-bla.webp', lede: 'Skallror, kontrastleksaker och grepptränare som stimulerar syn och hörsel hos de allra minsta.' },
+ { href: '/leksaker/3-6-manader/', name: 'Leksaker 3-6 månader', img: '/images/products/skip-hop-treetop-friends-classic-babygym.webp', lede: 'Bitringar, babygym och greppleksaker när bebisen börjar sträcka sig och utforska med munnen.' },
+ { href: '/leksaker/6-12-manader/', name: 'Leksaker 6-12 månader', img: '/images/products/alice-fox-stapeltorn-safari.webp', lede: 'Stapelleksaker, bollar och aktivitetsleksaker för krypning, finmotorik och orsak-verkan.' },
+ { href: '/babygym/', name: 'Babygym', img: '/images/products/lovevery-the-play-gym.webp', lede: 'Lekmattor med hängande leksaker som tränar syn och motorik från nyfödd till cirka 9 månader.' },
+ { href: '/leksaker/aktivitetscenter/', name: 'Aktivitetscenter', img: '/images/products/skip-hop-discoverosity-aktivitetscenter-3in1.webp', lede: 'Ståcenter som låter bebisen leka stående och snurra, för åldern 6 till 12 månader.' },
+ { href: '/leksaker/badleksaker/', name: 'Badleksaker', img: '/images/products/ratt-start-badleksaker-koralldjur-fiskar-7-pack.webp', lede: 'Säkra och roliga leksaker för badkaret, jämförda på material och åldersanpassning.' },
+ { href: '/leksaker/montessori/', name: 'Montessorileksaker', img: '/images/products/brio-30051-bjallerskallra.webp', lede: 'Leksaker i naturmaterial med enkel design som uppmuntrar fri lek och självständigt utforskande.' },
+ { href: '/leksaker/barnklockor/', name: 'Barnklocka med GPS', img: '/images/products/xplora-x6-play.webp', lede: 'GPS-klockor för barn 5 till 12 år med samtal och positionering, för tryggheten när barnet är ute.' },
+];
+
+const faqItems = [
+ {
+ question: 'Vilka leksaker passar för en nyfödd bebis?',
+ answer: 'För de första månaderna är det syn, hörsel och beröring som stimuleras mest. Skallror med tydliga kontrastfärger, mjuka grepleksaker och ett babygym med hängande figurer ger lagom mycket intryck utan att överväldiga. Bebisen ser bäst på cirka 20 till 30 centimeters avstånd den första tiden, så håll leksakerna nära. Se vår guide till leksaker 0 till 3 månader för konkreta rekommendationer.',
+ },
+ {
+ question: 'Hur väljer jag leksaker efter ålder?',
+ answer: 'Matcha leksaken mot var bebisen är i utvecklingen. 0 till 3 månader handlar om syn och hörsel: skallror och babygym. 3 till 6 månader om grepp och munnen: bitringar och greppleksaker. 6 till 12 månader om finmotorik och rörelse: stapelleksaker, bollar och aktivitetscenter. Vi har delat upp guiderna efter just dessa åldersintervall för att göra valet enkelt.',
+ },
+ {
+ question: 'Hur vet jag att en babyleksak är säker?',
+ answer: 'Leta efter CE-märkning och åldersmärkning på förpackningen, och kontrollera att inga smådelar kan lossna och fastna i halsen. Leksaker som bebisen stoppar i munnen ska vara fria från ftalater och tåla rengöring. Undvik långa snören och band. Alla produkter vi rekommenderar uppfyller EU:s leksaksdirektiv, men läs alltid tillverkarens åldersanvisning.',
+ },
+ {
+ question: 'Behöver bebisen många leksaker?',
+ answer: 'Nej. Några få genomtänkta leksaker som passar åldern gör mer nytta än en stor hög. Bebisen leker mer fokuserat med färre val, och du sparar både pengar och plats. Rotera gärna leksakerna: plocka undan några och ta fram dem igen efter ett par veckor, så känns de nya på nytt.',
+ },
+];
+---
+
+<BaseLayout
+ title="Leksaker bebis 2026: bäst i test per ålder | Bebisguiden"
+ description="Bästa leksakerna till bebis 2026, jämförda per ålder 0 till 12 månader: babygym, skallror, stapelleksaker, aktivitetscenter och badleksaker. Säkra val med betyg."
+ canonical="https://bebisguiden.se/leksaker/"
+ article={true}
+>
+ <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+  <nav aria-label="Brödsmulor" class="text-sm text-text-light mb-4">
+   <a href="/" class="hover:text-accent transition-colors">Hem</a>
+   <span class="mx-1.5">/</span>
+   <span class="text-text">Leksaker</span>
+  </nav>
+
+  <div class="mb-8 max-w-2xl">
+   <h1 class="font-heading text-3xl sm:text-4xl font-bold text-primary leading-tight mb-3">Leksaker till bebis 2026, bäst i test per ålder</h1>
+   <p class="text-base sm:text-lg text-text-light leading-relaxed">
+    Rätt leksak möter bebisen där hen är i utvecklingen. Vi har delat upp guiderna efter åldersintervall och leksakstyp så att du snabbt hittar något som faktiskt stimulerar, från de första skallrorna till stapelleksaker och GPS-klockor för de större barnen.
+   </p>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+   {guider.map((g) => (
+    <article class="flex flex-col rounded-2xl border border-border hover:border-accent hover:shadow-lg transition-all bg-white overflow-hidden">
+     <a href={g.href} tabindex="-1" aria-hidden="true" class="block relative aspect-[16/9] overflow-hidden bg-gray-50">
+      <img src={g.img} alt={`Leksaksguide: ${g.name}`} class="absolute inset-0 w-full h-full object-contain p-3 hover:scale-105 transition-transform duration-500" loading="lazy" width="800" height="450" />
+     </a>
+     <div class="flex flex-col flex-1 p-3 sm:p-4">
+      <h2 class="font-heading text-base sm:text-lg font-bold text-primary mb-1 sm:mb-1.5 leading-snug">
+       <a href={g.href} class="hover:text-accent transition-colors">{g.name}</a>
+      </h2>
+      <p class="text-xs text-text-light leading-relaxed line-clamp-2 mb-3 flex-1 hidden sm:block">{g.lede}</p>
+      <a href={g.href} class="group inline-flex items-center justify-center gap-1.5 w-full bg-cta hover:bg-cta-dark text-white font-semibold text-xs sm:text-sm px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-colors shadow-sm mt-auto">
+       <span class="sm:hidden">Se bäst i test</span>
+       <span class="hidden sm:inline">Se {g.name.toLowerCase()}</span>
+       <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+     </div>
+    </article>
+   ))}
+  </div>
+
+  <div class="prose prose-sm text-text-light max-w-none mt-12">
+   <h2 class="font-heading text-xl font-bold text-text">Så väljer du leksaker efter ålder</h2>
+   <p>Bebisens behov ändras snabbt det första året, och leksaken gör mest nytta när den ligger steget före eller precis i nivå med utvecklingen. Här är en kort vägledning per period:</p>
+   <ul>
+    <li><strong>0 till 3 månader:</strong> syn och hörsel utvecklas. Kontrastrika skallror, mjuka grepleksaker och ett <a href="/babygym/" class="text-accent underline">babygym</a> med hängande figurer ger lagom stimulans.</li>
+    <li><strong>3 till 6 månader:</strong> greppet och munnen tar över. Bitringar och greppvänliga leksaker tränar finmotorik och lindrar tandsprickning. Se <a href="/leksaker/3-6-manader/" class="text-accent underline">leksaker 3 till 6 månader</a>.</li>
+    <li><strong>6 till 12 månader:</strong> bebisen kryper, sitter och tränar pincettgrepp. <a href="/leksaker/6-12-manader/" class="text-accent underline">Stapelleksaker och bollar</a> samt ett <a href="/leksaker/aktivitetscenter/" class="text-accent underline">aktivitetscenter</a> passar bra.</li>
+   </ul>
+   <p>Tänk kvalitet före kvantitet. Några få leksaker som passar åldern ger mer fokuserad lek än en stor hög, och du kan rotera dem för att hålla intresset uppe. <a href="/leksaker/montessori/" class="text-accent underline">Montessori-inspirerade leksaker</a> i naturmaterial bygger på just den principen.</p>
+  </div>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+   <h2 class="font-heading text-lg font-bold mb-3">Fler guider för bebis och småbarn</h2>
+   <ul class="space-y-2 text-sm">
+    <li><a href="/babysitter/" class="text-accent underline">Bästa babysittern 2026, vippstolar jämförda</a></li>
+    <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängen 2026, säker sovmiljö</a></li>
+    <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö, så minskar du riskerna</a></li>
+    <li><a href="/kategorier/" class="text-accent underline">Alla kategorier, bäst i test hos Bebisguiden</a></li>
+   </ul>
+  </div>
+
+  <div class="mt-10">
+   <FAQ items={faqItems} />
+  </div>
+
+ </div>
+</BaseLayout>
