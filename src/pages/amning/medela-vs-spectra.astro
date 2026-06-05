@@ -61,7 +61,7 @@ export const articleMeta = {
 
  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse, Medela vs Spectra</h2>
  <div class="mb-8">
- <table class="w-full text-sm border-collapse">
+ <table class="cmp-table table-fixed w-full text-sm border-collapse">
  <thead>
  <tr class="bg-primary text-white">
  <th class="p-3 text-left font-semibold">Egenskap</th>
@@ -198,4 +198,19 @@ export const articleMeta = {
  { name: 'Spectra S1 Plus', description: 'Dubbel elektrisk bröstpump med inbyggt batteri. Tyst motor och ergonomisk design.', brand: 'Spectra', ratingValue: 4.8, reviewCount: 1 },
  { name: 'Medela Freestyle Flex', description: 'Trådlös dubbel bröstpump med app och 2 inbyggda batterier. Portabel och tyst.', brand: 'Medela', ratingValue: 4.7, reviewCount: 1 },
  ]} />
+
+<style>
+  .cmp-table th,
+  .cmp-table td {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 640px) {
+    .cmp-table { font-size: 0.75rem; line-height: 1.25rem; }
+    .cmp-table th,
+    .cmp-table td { padding: 0.4rem 0.45rem; }
+  }
+</style>
+
 </ArticleLayout>

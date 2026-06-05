@@ -149,7 +149,7 @@ export const articleMeta = {
 
 <div class="overflow-x-hidden mb-8">
  <div class="hidden sm:block">
- <table class="w-full text-sm text-text-light border-collapse">
+ <table class="cmp-table table-fixed w-full text-sm text-text-light border-collapse">
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left p-3 font-semibold">Olja</th>
@@ -217,5 +217,20 @@ export const articleMeta = {
 </p>
 
 <FAQ items={faqItems} />
+
+
+<style>
+  .cmp-table th,
+  .cmp-table td {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 640px) {
+    .cmp-table { font-size: 0.75rem; line-height: 1.25rem; }
+    .cmp-table th,
+    .cmp-table td { padding: 0.4rem 0.45rem; }
+  }
+</style>
 
 </ArticleLayout>

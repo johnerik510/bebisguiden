@@ -64,7 +64,7 @@ export const articleMeta = {
 
  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
  <div class="mb-8">
- <table class="w-full text-sm border-collapse">
+ <table class="cmp-table table-fixed w-full text-sm border-collapse">
  <thead>
  <tr class="bg-primary text-white">
  <th class="p-3 text-left font-semibold">Egenskap</th>
@@ -192,4 +192,19 @@ export const articleMeta = {
  { name: 'Stokke Sleepi V3', description: 'Oval spjälsäng som växer med barnet. Omvandlingsbar till juniorsäng och soffa. Premium kvalitet.', brand: 'Stokke', ratingValue: 4.9, reviewCount: 1 },
  { name: 'IKEA Sniglar', description: 'Enkel och prisvärd spjälsäng i massiv bok. Stabil och lätt att rengöra.', brand: 'IKEA', ratingValue: 4.4, reviewCount: 1 },
  ]} />
+
+<style>
+  .cmp-table th,
+  .cmp-table td {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 640px) {
+    .cmp-table { font-size: 0.75rem; line-height: 1.25rem; }
+    .cmp-table th,
+    .cmp-table td { padding: 0.4rem 0.45rem; }
+  }
+</style>
+
 </ArticleLayout>

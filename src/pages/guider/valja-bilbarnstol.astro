@@ -129,7 +129,7 @@ export const articleMeta = {
  Den äldre ECE R44-standarden delar in stolar i viktbaserade grupper. Här är en översikt:
  </p>
  <div class="mb-6">
- <table class="w-full text-sm border-collapse">
+ <table class="cmp-table table-fixed w-full text-sm border-collapse">
  <thead>
  <tr class="bg-bg-alt">
  <th class="text-left p-3 border border-border font-semibold">Grupp</th>
@@ -204,4 +204,19 @@ export const articleMeta = {
 
 
  <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+
+<style>
+  .cmp-table th,
+  .cmp-table td {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 640px) {
+    .cmp-table { font-size: 0.75rem; line-height: 1.25rem; }
+    .cmp-table th,
+    .cmp-table td { padding: 0.4rem 0.45rem; }
+  }
+</style>
+
 </ArticleLayout>

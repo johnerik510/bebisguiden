@@ -122,7 +122,7 @@ export const articleMeta = {
  <figcaption class="text-xs text-text-light mt-2 text-center">VAB-uttag per län, 2024. Källa: Försäkringskassan. Klicka för att förstora.</figcaption>
 </figure>
 
-<table class="w-full text-sm border-collapse mb-2">
+<table class="cmp-table table-fixed w-full text-sm border-collapse mb-2">
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left px-4 py-3 font-semibold text-text">Län</th>
@@ -193,7 +193,7 @@ export const articleMeta = {
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
  <div>
  <p class="text-sm font-semibold text-safe mb-2">Topp 5 län, högst andel</p>
- <table data-mobile-simple class="w-full text-sm border-collapse">
+ <table data-mobile-simple class="cmp-table table-fixed w-full text-sm border-collapse">
  <tbody class="divide-y divide-gray-100">
  <tr><td class="px-4 py-2.5 font-medium">Jönköping</td><td class="px-4 py-2.5 text-right text-safe font-semibold">54,6 %</td></tr>
  <tr class="bg-gray-50"><td class="px-4 py-2.5 font-medium">Jämtland</td><td class="px-4 py-2.5 text-right text-text-light">53,0 %</td></tr>
@@ -205,7 +205,7 @@ export const articleMeta = {
  </div>
  <div>
  <p class="text-sm font-semibold text-accent mb-2">Botten 5 län, lägst andel</p>
- <table data-mobile-simple class="w-full text-sm border-collapse">
+ <table data-mobile-simple class="cmp-table table-fixed w-full text-sm border-collapse">
  <tbody class="divide-y divide-gray-100">
  <tr><td class="px-4 py-2.5 font-medium">Halland</td><td class="px-4 py-2.5 text-right text-accent font-semibold">44,5 %</td></tr>
  <tr class="bg-gray-50"><td class="px-4 py-2.5 font-medium">Västra Götaland</td><td class="px-4 py-2.5 text-right text-text-light">47,7 %</td></tr>
@@ -241,7 +241,7 @@ export const articleMeta = {
 <p class="text-text-light mb-4">
  Folkhälsomyndighetens senaste rapport från maj 2025 visar att vaccinationstäckningen för svenska 2-åringar är hög och stabil:
 </p>
-<table class="w-full text-sm border-collapse mb-2">
+<table class="cmp-table table-fixed w-full text-sm border-collapse mb-2">
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left px-4 py-3 font-semibold text-text">Vaccin</th>
@@ -378,5 +378,20 @@ export const articleMeta = {
  });
 })();
 </script>
+
+
+<style>
+  .cmp-table th,
+  .cmp-table td {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 640px) {
+    .cmp-table { font-size: 0.75rem; line-height: 1.25rem; }
+    .cmp-table th,
+    .cmp-table td { padding: 0.4rem 0.45rem; }
+  }
+</style>
 
 </ArticleLayout>

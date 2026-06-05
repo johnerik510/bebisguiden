@@ -244,7 +244,7 @@ export const articleMeta = {
  <section class="mt-10 mb-2">
  <h2 class="font-heading text-xl font-bold mb-4">Tygblöjor vs engångsblöjor, vad passar dig?</h2>
  <div class="overflow-x-visible">
- <table class="w-full text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+ <table class="cmp-table table-fixed w-full text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
  <thead>
  <tr class="bg-primary text-white">
  <th class="p-3 text-left font-semibold"></th>
@@ -305,4 +305,19 @@ export const articleMeta = {
  ratingValue: p.rating,
  reviewCount: 1,
  }))} />
+
+<style>
+  .cmp-table th,
+  .cmp-table td {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 640px) {
+    .cmp-table { font-size: 0.75rem; line-height: 1.25rem; }
+    .cmp-table th,
+    .cmp-table td { padding: 0.4rem 0.45rem; }
+  }
+</style>
+
 </ArticleLayout>

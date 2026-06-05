@@ -64,7 +64,7 @@ export const articleMeta = {
 
  <h2 class="font-heading text-xl font-bold mt-6 mb-4">Snabbjämförelse</h2>
  <div class="mb-8">
- <table class="w-full text-sm border-collapse">
+ <table class="cmp-table table-fixed w-full text-sm border-collapse">
  <thead>
  <tr class="bg-primary text-white">
  <th class="p-3 text-left font-semibold">Egenskap</th>
@@ -229,4 +229,19 @@ export const articleMeta = {
  { name: 'BABYZEN YOYO 6+', description: 'Ultrakompakt kabinbagage-vagn med premium material och kompakt vikning.', brand: 'BABYZEN', ratingValue: 4.8, reviewCount: 1 },
  { name: 'Bugaboo Butterfly', description: 'Kompakt sittvagn med Bugaboos kvalitet. Enkel vikning och ergonomisk sits.', brand: 'Bugaboo', ratingValue: 4.7, reviewCount: 1 },
  ]} />
+
+<style>
+  .cmp-table th,
+  .cmp-table td {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 640px) {
+    .cmp-table { font-size: 0.75rem; line-height: 1.25rem; }
+    .cmp-table th,
+    .cmp-table td { padding: 0.4rem 0.45rem; }
+  }
+</style>
+
 </ArticleLayout>
