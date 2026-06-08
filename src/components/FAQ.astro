@@ -8,10 +8,6 @@ const { items } = Astro.props;
 const jsonLd = {
  "@context": "https://schema.org",
  "@type": "FAQPage",
- "speakable": {
- "@type": "SpeakableSpecification",
- "cssSelector": ["summary", ".faq-answer"]
- },
  "mainEntity": items.map(item => ({
  "@type": "Question",
  "name": item.question,
