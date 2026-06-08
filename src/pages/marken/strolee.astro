@@ -1,0 +1,193 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+ { label: 'Hem', href: '/' },
+ { label: 'Märken', href: '/marken/' },
+ { label: 'Strolee' },
+];
+
+// Affiliatelänkar: Addrevenue-feed a=988093 (Strolee), godkänd 2026-06-08.
+const CART = 'https://addrevenue.io/t?c=3467325&a=988093&m=SE&u=https%3A%2F%2Fstrolee.se%2Fproducts%2Fstabilitetskopare';
+const ORGANIZER = 'https://addrevenue.io/t?c=3467325&a=988093&m=SE&u=https%3A%2F%2Fstrolee.se%2Fproducts%2Fpersonlig-arrangor';
+const RAIN = 'https://addrevenue.io/t?c=3467325&a=988093&m=SE&u=https%3A%2F%2Fstrolee.se%2Fproducts%2Fregnskydd';
+const CUP = 'https://addrevenue.io/t?c=3467325&a=988093&m=SE&u=https%3A%2F%2Fstrolee.se%2Fproducts%2Fmugghallare';
+const FREEZER = 'https://addrevenue.io/t?c=3467325&a=988093&m=SE&u=https%3A%2F%2Fstrolee.se%2Fproducts%2Fisolerad-fryspase';
+const PET = 'https://addrevenue.io/t?c=3467325&a=988093&m=SE&u=https%3A%2F%2Fstrolee.se%2Fproducts%2Fpet-bassinet';
+
+const faqItems = [
+ {
+ question: 'Är Strolee en barnvagn?',
+ answer: 'Nej. Strolee är en hopfällbar shopping- och utflyktsvagn, inte en barnvagn för att transportera ett spädbarn. Den har ingen sittdel eller liggdel med säkerhetssele och är inte konstruerad eller testad för att bära barn. Tänk på den som en stabil, lättkörd vagn för att frakta varor, packning och utflyktsgrejer, eller som ett gångstöd. Letar du efter en vagn till barnet hittar du våra tester under Barnvagnar.',
+ },
+ {
+ question: 'Vad används Strolee Shoppingvagn till?',
+ answer: 'Den passar för matinköp, marknads- och loppisrundor, picknick och parkutflykter, och som ett rullande stöd för den som vill handla självständigt utan att bära tungt. Den nedre brickan och den stora nätkorgen rymmer flera kassar, och med tillbehören blir den en husdjursvagn eller en kyltransport för matvaror.',
+ },
+ {
+ question: 'Hur fälls Strolee ihop?',
+ answer: 'Vagnen fälls ihop till ett kompakt paket som står upp av sig själv och får plats i en bilbaklucka, garderob eller hall. Trehjulskonstruktionen gör den vändbar på liten yta, och de svängbara framhjulen gör den lätt att styra med en hand.',
+ },
+ {
+ question: 'Vilka färger finns Strolee Shoppingvagn i?',
+ answer: 'Shoppingvagnen finns i svart, grått och grönt. Alla tre har samma konstruktion med läderimiterat handtag, nätkorg och nedre förvaringsbricka, det är bara färgsättningen som skiljer.',
+ },
+ {
+ question: 'Kan Strolee användas som husdjursvagn?',
+ answer: 'Ja. Med tillbehöret Djurkorg eller Nedre Djurkorg blir vagnen en husdjursvagn för mindre hundar och katter. Strolee säljer även färdiga hundpaket där vagn och djurkorg ingår tillsammans till ett lägre samlat pris.',
+ },
+ {
+ question: 'Var köper jag Strolee i Sverige?',
+ answer: 'Strolee säljs direkt via strolee.se med leverans i Sverige. Vagn och tillbehör beställs på samma sajt, och färdiga paket sänker priset om du vill ha både vagn och flera tillbehör.',
+ },
+];
+
+export const articleMeta = {
+  title: "Strolee Shoppingvagn 2026: test, tillbehör och köpråd",
+  description: "Strolee Shoppingvagn i genomgång 2026: hopfällbar trehjulsvagn för shopping, utflykt och husdjur. Se konstruktion, tillbehör, för- och nackdelar och vem den passar.",
+  publishDate: "2026-06-08",
+  category: "Märkesguide",
+  image: "/images/products/strolee-shoppingvagn.webp",
+};
+---
+
+<ArticleLayout
+ title="Strolee Shoppingvagn 2026: genomgång, tillbehör och köpråd"
+ description="Strolee Shoppingvagn i genomgång 2026: hopfällbar trehjulsvagn för shopping, utflykt och husdjur. Konstruktion, tillbehör, för- och nackdelar och vem den passar."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-06-08"
+ datePublished="2026-06-08"
+>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Strolee är en hopfällbar trehjulsvagn byggd för shopping, utflykter och vardagslogistik. Den ser ut som en barnvagn men är det inte: här finns ingen sittdel för barn, utan en stor nätkorg och en nedre bricka för kassar, packning och utflyktsgrejer. Vi går igenom vagnen, tillbehören och vem den faktiskt passar för.
+ </p>
+
+ <div class="bg-primary/5 border border-primary/20 rounded-xl p-4 mb-6 max-w-2xl">
+ <p class="text-sm text-text-light leading-relaxed">
+ <strong class="text-text">Bra att veta:</strong> Strolee är en shopping- och utflyktsvagn, inte en barnvagn. Den är inte konstruerad för att transportera spädbarn. Letar du efter en vagn till barnet, se vår guide till <a href="/barnvagnar/" class="text-accent underline">bästa barnvagnen 2026</a>.
+ </p>
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Strolee Shoppingvagn</h2>
+
+ <div class="space-y-4">
+ <ProductCard
+ name="Strolee Shoppingvagn"
+ image="/images/products/strolee-shoppingvagn.webp"
+ badge="Hopfällbar trehjulsvagn, i svart, grått och grönt"
+ rating={4.3}
+ ctaText="Strolee"
+ ctaHref={CART}
+ pros={['Fälls ihop kompakt och står upp av sig själv', 'Stor nätkorg plus nedre förvaringsbricka', 'Svängbara framhjul, lätt att styra med en hand', 'Integrerad mugghållare ingår']}
+ cons={['Inte en barnvagn, kan inte bära barn', 'Premiumpris för en shoppingvagn', 'Mesh-korgen passar bäst för torra varor utan tillbehör']}
+ />
+ </div>
+
+ <div class="prose prose-sm text-text-light max-w-none mt-6">
+ <p>Konstruktionen är stroller-lik med ett läderimiterat handtag, en rymlig nätkorg upptill och en öppen bricka nedtill för extra kassar. Trehjulsdesignen med svängbara framhjul gör vagnen vändbar på liten yta, och ihopfälld blir den ett kompakt paket som ryms i en baklucka eller hall. Shoppingvagnen finns i tre färger, svart, grått och grönt, med samma konstruktion i alla tre.</p>
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">Tillbehör till Strolee</h2>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Vagnen kan byggas ut efter behov. Här är de tillbehör vi tycker tillför mest, från väderskydd till en korg som gör vagnen till en husdjursvagn.
+ </p>
+
+ <div class="space-y-4">
+ <ProductCard
+ name="Strolee Organizer"
+ image="/images/products/strolee-organizer.webp"
+ ctaText="Strolee"
+ ctaHref={ORGANIZER}
+ pros={['Håller nycklar, telefon och plånbok inom räckhåll', 'Fäster direkt på handtaget']}
+ cons={['Begränsad volym, för det nödvändigaste']}
+ />
+ <ProductCard
+ name="Strolee Regnskydd"
+ image="/images/products/strolee-regnskydd.webp"
+ ctaText="Strolee"
+ ctaHref={RAIN}
+ pros={['Skyddar varorna i korgen vid regn', 'Sitter kvar under färd']}
+ cons={['Bara för korgen, inte hela vagnen']}
+ />
+ <ProductCard
+ name="Strolee Isolerad Frysväska"
+ image="/images/products/strolee-frysvaska.webp"
+ ctaText="Strolee"
+ ctaHref={FREEZER}
+ pros={['Håller kyl- och frysvaror kalla hem från butiken', 'Passar i vagnens korg']}
+ cons={['Tar plats från övriga varor']}
+ />
+ <ProductCard
+ name="Strolee Mugghållare"
+ image="/images/products/strolee-mugghallare.webp"
+ ctaText="Strolee"
+ ctaHref={CUP}
+ pros={['En mugghållare ingår alltid, detta är en extra', 'Kaffe i ena handen, vatten i den andra']}
+ cons={['Max två mugghållare per vagn']}
+ />
+ <ProductCard
+ name="Strolee Djurkorg"
+ image="/images/products/strolee-djurkorg.webp"
+ ctaText="Strolee"
+ ctaHref={PET}
+ pros={['Gör vagnen till en husdjursvagn för mindre hund eller katt', 'Ingår även i Strolees färdiga hundpaket']}
+ cons={['För mindre husdjur, inte stora hundar']}
+ />
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-10 mb-4">För- och nackdelar med Strolee</h2>
+
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+ <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+ <h3 class="font-semibold text-safe-dark mb-2">Fördelar</h3>
+ <ul class="space-y-1.5 text-sm text-text-light">
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Fälls ihop kompakt, ryms i baklucka och hall</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Stor lastvolym mellan korg och nedre bricka</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Lätt att styra med en hand</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Brett tillbehörssortiment, inklusive husdjurskorg</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Tre färgval</li>
+ </ul>
+ </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+ <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+ <ul class="space-y-1.5 text-sm text-text-light">
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Inte en barnvagn, kan inte transportera barn</li>
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Premiumpris jämfört med en enkel dramaten</li>
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tillbehören kostar extra utöver vagnen</li>
+ </ul>
+ </div>
+ </div>
+
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>Vem passar Strolee för?</h3>
+ <p>Strolee passar dig som vill handla och röra dig självständigt utan att bära tungt: den som går till och från matbutiken, gillar marknader och loppisar, eller vill ha en stabil vagn för parkutflykter och picknick. Som småbarnsförälder är den ett extrapar händer för familjens logistik snarare än en vagn till barnet, och med djurkorgen blir den en husdjursvagn. Vill du transportera ett barn ska du i stället välja en riktig barnvagn, se vår <a href="/guider/valja-barnvagn/" class="text-accent underline">guide till att välja barnvagn</a>.</p>
+ </div>
+
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li>
+ <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
+ </li>
+ <li>
+ <a href="/barnvagnar/hopfallbar/" class="text-accent underline">Bästa hopfällbara barnvagnen 2026</a>
+ </li>
+ <li>
+ <a href="/marken/" class="text-accent underline">Alla barnproduktmärken 2026</a>
+ </li>
+ </ul>
+ </div>
+
+ <FAQ items={faqItems} />
+
+ <MultiStoreCTA
+ productName="Strolee Shoppingvagn, köp direkt hos Strolee"
+ brand="strolee"
+ primaryStore="Strolee"
+ primaryUrl={CART}
+ description="Hopfällbar trehjulsvagn för shopping och utflykt, i svart, grått och grönt. Tillbehör och färdiga paket finns hos Strolee."
+/>
+</ArticleLayout>
