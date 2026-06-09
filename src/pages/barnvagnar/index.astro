@@ -7,6 +7,7 @@ import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import CTABox from '../../components/CTABox.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -275,6 +276,28 @@ export const articleMeta = {
  <h3>Garanti och service i Sverige</h3>
  <p>Cybex, Kinderkraft och Beemoo lämnar alla 2 års garanti i Sverige. Köp från en auktoriserad återförsäljare för att garantin ska gälla, och spara kvittot. Vid reklamation kontaktar du återförsäljaren först, inte tillverkaren.</p>
  </div>
+
+ <section aria-label="Fakta om barnvagnssäkerhet" class="mt-8 mb-2">
+   <h2 class="font-heading text-xl font-bold mb-4">Barnvagnssäkerhet: vad myndigheterna kräver</h2>
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+     <StatHighlight
+       figure="EN 1888"
+       source="Konsumentverket"
+       sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+       year="2026"
+     >
+       Europeisk säkerhetsstandard som alla barnvagnar på den svenska marknaden måste uppfylla. Märkningen garanterar krav på stabilitet, bromsar, säkerhetssele och material.
+     </StatHighlight>
+     <StatHighlight
+       figure="600-700 barn/år"
+       source="Konsumentverket (äldre uppgift)"
+       sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+       year="2010"
+     >
+       Uppskattad andel barn som sökte akutvård för skador relaterade till barnvagnar i Sverige. Konsumentverket uppmanar alltid att köpa från auktoriserade återförsäljare och kontrollera CE-märkning.
+     </StatHighlight>
+   </div>
+ </section>
 
  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
  <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>

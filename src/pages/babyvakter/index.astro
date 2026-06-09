@@ -7,6 +7,7 @@ import FAQ from '../../components/FAQ.astro';
 import CTABox from '../../components/CTABox.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -224,6 +225,29 @@ const faqItems = [
  <h3>Batteritid på föräldraenheten</h3>
  <p>Du vill aldrig behöva ladda föräldraenheten mitt i natten. Välj minst 10 timmars batteritid i normalläge, helst med sparläge som ger 20 timmar eller mer. Philips Avent DECT SCD503/26 leder med 24 timmar i sparläge, vilket täcker två hela nätter utan laddning.</p>
  </div>
+
+ <section aria-label="Fakta om sömnsäkerhet och SIDS" class="mt-8 mb-2">
+   <h2 class="font-heading text-xl font-bold mb-4">Säker sovmiljö: fakta om SIDS och spädbarnsövervakning</h2>
+   <p class="text-sm text-text-light mb-4">Babyvakter mäter ljud och rörelser men förebygger inte plötslig spädbarnsdöd (SIDS). Nedan fakta är bakgrundskontext om sömnrisker, inte ett påstående om babyvaktens skyddseffekt.</p>
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+     <StatHighlight
+       figure="Ca 1 av 6 000"
+       source="1177 Vårdguiden"
+       sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+       year="2026"
+     >
+       Andel spädbarn i Sverige som dör av plötslig spädbarnsdöd (SIDS). Vanligast under de sex första levnadsmånaderna. Ryggläge, rökfri miljö och fritt ansikte är de starkaste skyddsfaktorerna enligt 1177.
+     </StatHighlight>
+     <StatHighlight
+       figure="Ryggläge sedan 1992"
+       source="Internetmedicin"
+       sourceUrl="https://www.internetmedicin.se/neonatologi/plotslig-spadbarnsdod-sids-sudden-infant-death-syndrome"
+       year="2026"
+     >
+       Rekommendationen att lägga spädbarn på rygg, som officiellt spreds 1992, ledde till en dramatisk minskning av SIDS-fallen i Sverige. Magläge är den starkaste enskilda riskfaktorn.
+     </StatHighlight>
+   </div>
+ </section>
 
  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
  <h2 class="font-heading text-lg font-bold mb-3">Fördjupning, babyvakter efter typ</h2>

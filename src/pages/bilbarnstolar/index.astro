@@ -6,6 +6,8 @@ import TopPick from '../../components/TopPick.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -311,13 +313,44 @@ export const articleMeta = {
 
  <h3>Lagar och regler: vad Transportstyrelsen kräver</h3>
  <p>Alla barn under 135 cm ska ha ett godkänt skyddssystem i Sverige. Transportstyrelsen sammanfattar gällande krav kring <a href="https://www.transportstyrelsen.se/sv/vagtrafik/Regler/barn-i-bil/" class="text-accent underline" rel="noopener noreferrer">barn i bil och lagreglerade skyddssystem</a>. EU:s ECE R129 (i-Size) ersätter successivt den äldre R44-standarden och ger bättre sidokrocksskydd och obligatorisk bakåtvänd testning upp till 15 månaders alder.</p>
- <p>Rätt använda bilbarnstolar räddar liv:</p>
- <ul>
-   <li><strong>327 barn</strong> i åldern 0 till 9 år skadades allvarligt i svenska trafikolyckor 2022 (Trafikverket).</li>
-   <li><strong>Upp till 70 procent</strong> lägre dödlighet vid frontalkollisioner med korrekt monterade och åldersanpassade barnstolar (ETSC).</li>
-   <li><strong>5 gånger bättre skydd</strong> ger bakåtvänd stol vid frontalkrock jämfört med framåtvänd, då kraften fördelas över hela ryggen.</li>
- </ul>
  </div>
+
+ <section aria-label="Statistik om bilbarnstolar och trafiksäkerhet" class="mt-8 mb-2">
+   <h2 class="font-heading text-xl font-bold mb-4">Bilbarnstolar i siffror: vad forskningen visar</h2>
+   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+     <StatHighlight
+       figure="Upp till 48 %"
+       source="Folksam/Chalmers"
+       sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
+       year="2025"
+     >
+       Av barn 0-3 år som omkom i bilkrockar hade troligen överlevt om de åkt bakåtvända, enligt Folksams analys av 99 barn under tre decennier.
+     </StatHighlight>
+     <StatHighlight
+       figure="5x lägre risk"
+       source="NTF"
+       sourceUrl="https://ntf.se/konsumentupplysning/barn-i-bil/bakatvand-bilbarnstol/"
+       year="2026"
+     >
+       Risken för dödlig skada vid frontalkrock: bakåtvänd kontra framåtvänd bilbarnstol. Kraften fördelas över hela barnets rygg bakåtvänt.
+     </StatHighlight>
+     <StatHighlight
+       figure="ECE R129"
+       source="Folksam"
+       sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
+       year="2025"
+     >
+       Enda standarden som krävs i Sverige. Folksam varnar: stolar från utländska marknadsplatser saknar ofta ECE R129 och är olagliga att använda.
+     </StatHighlight>
+   </div>
+   <ExpertQuote
+     name="Maria Klingegård"
+     role="Trafiksäkerhetsforskare, Folksam"
+     sourceUrl="https://nyheter24.se/nyheter/inrikes/1461091-folksam-halften-av-barnen-hade-overlevt-i-bakatvand-stol"
+   >
+     "Barn är oskyldiga och förlitar sig på att vi vuxna fattar rätt beslut åt dem."
+   </ExpertQuote>
+ </section>
 
  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
  <h2 class="font-heading text-lg font-bold mb-3">Fördjupande guider, bilbarnstolar</h2>

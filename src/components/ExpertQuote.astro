@@ -1,0 +1,28 @@
+---
+/**
+ * ExpertQuote — GEO/AEO-komponent för verifierat expertcitat med källhänvisning.
+ * Princetonfaktorn: citat +28 % AI-citeringsfrekvens.
+ * REGEL: Citatet och personen MÅSTE vara verkliga och verifierbara mot angiven URL.
+ *
+ * Användning:
+ * <ExpertQuote name="Maria Klingegård" role="Trafiksäkerhetsforskare, Folksam" sourceUrl="https://...">
+ *   "Barn är oskyldiga och förlitar sig på att vi vuxna fattar rätt beslut åt dem."
+ * </ExpertQuote>
+ */
+interface Props {
+  name: string;
+  role: string;
+  sourceUrl: string;
+}
+const { name, role, sourceUrl } = Astro.props;
+---
+<blockquote class="border-l-4 border-accent bg-rose-50 rounded-r-xl px-5 py-4 my-2">
+  <p class="text-sm text-text italic leading-relaxed">
+    <slot />
+  </p>
+  <footer class="mt-2 text-xs text-text-light not-italic">
+    <a href={sourceUrl} rel="noopener noreferrer" class="font-semibold text-accent hover:underline" target="_blank">{name}</a>
+    <span class="mx-1">—</span>
+    <span>{role}</span>
+  </footer>
+</blockquote>
