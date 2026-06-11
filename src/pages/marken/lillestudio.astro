@@ -1,0 +1,133 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+ { label: 'Hem', href: '/' },
+ { label: 'Märken', href: '/marken/' },
+ { label: 'Lillestudio' },
+];
+
+// Affiliatelänkar: Addrevenue-feed a=988100 (Lillestudio), godkänd 2026-06-11.
+// Tracker-URL:er hämtade direkt ur produktfeedens <link>-fält, aldrig handbyggda.
+const SHOP = 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2F';
+const highlights = [
+ { name: 'Sol, moln och regnbåge', img: '/images/products/lillestudio-sol-moln-regnbage.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsol-moln-regnbage-barnposter-sot-poster-for-barnrum%3Fvariant%3D54026520166729' },
+ { name: 'Personlig namntavla', img: '/images/products/lillestudio-namnposter-har-bor.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fpersonlig-namnposter-for-barnrum-har-bor%3Fvariant%3D54568529756489' },
+ { name: 'Björn som astronaut', img: '/images/products/lillestudio-bjorn-astronaut.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-rymdbjorn-poster-barnposter-i-dromsk-rymd-stil%3Fvariant%3D54153231925577' },
+];
+
+const faqItems = [
+ {
+ question: 'Vad är Lillestudio?',
+ answer: 'Lillestudio är en svensk webbutik som säljer posters och tavlor till barnrum, med leverans i Sverige via lillestudio.se. Sortimentet är inriktat på barnmotiv i skandinavisk stil, från djur och fordon till rymd, enhörningar och personliga namntavlor.',
+ },
+ {
+ question: 'Vilka storlekar och priser har Lillestudios posters?',
+ answer: 'Varje motiv finns i fyra storlekar: 21x29,7 cm (A4), 30x40 cm, 50x70 cm och 70x100 cm. Oramade posters börjar på 199 kr för den minsta storleken och stiger med formatet. Inramade varianter och de största formaten kostar mer.',
+ },
+ {
+ question: 'Trycks postrarna i Sverige?',
+ answer: 'Lillestudio trycker posters på beställning utan minsta orderkrav, vilket håller nere svinnet. Papperet är ett kraftigt vitt matt papper på 200 gram, och företaget anger FSC-certifierat eller motsvarande material. Ramar är av furu med splittersäkert plexiglas i stället för glas.',
+ },
+ {
+ question: 'Är Lillestudios ramar säkra i ett barnrum?',
+ answer: 'Ramarna levereras med splittersäkert plexiglas i stället för riktigt glas, vilket är tryggare nära ett barn. Vill du hänga en tavla precis ovanför sängen är en oramad poster ändå det säkraste valet, eftersom det helt tar bort risken med en ram som kan lossna.',
+ },
+];
+
+export const articleMeta = {
+  title: "Lillestudio omdöme 2026: svensk webbutik för barntavlor",
+  description: "Lillestudio i genomgång 2026: svensk webbutik för barnposters och tavlor. Sortiment, storlekar, priser, material och vem butiken passar för.",
+  publishDate: "2026-06-11",
+  category: "Märkesguide",
+  image: "/images/products/lillestudio-namnposter-har-bor.webp",
+};
+---
+
+<ArticleLayout
+ title="Lillestudio omdöme 2026: svensk webbutik för barntavlor"
+ description="Lillestudio i genomgång 2026: svensk webbutik för barnposters och tavlor. Sortiment, storlekar, priser, material och vem butiken passar för."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-06-11"
+ datePublished="2026-06-11"
+ image="/images/products/lillestudio-namnposter-har-bor.webp"
+>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Lillestudio är en svensk webbutik som gör en sak: posters och tavlor till barnrum. Sortimentet är stort, motiven hålls i en lugn skandinavisk stil och allt trycks på beställning. Här går vi igenom vad butiken säljer, vilka storlekar och priser som gäller och vem den passar för. Vill du direkt se motiv har vi samlat våra favoriter i guiden till <a href="/barntavlor/" class="text-accent underline">bästa barntavlorna 2026</a>.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Sortiment och stil</h2>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Tyngdpunkten ligger på barnmotiv i dämpade, jordnära färger: djungeldjur som elefant, giraff och apa, fordon som traktor och grävskopa, rymdmotiv, enhörningar, dinosaurier och regnbågar. Utöver de färdiga motiven finns personliga namntavlor där du fyller i barnets namn och födelsedata, vilket gör dem populära som dop- och födelsepresenter. Stilen är genomgående återhållsam, vilket gör att postrarna är lätta att para ihop till en tavelvägg.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">Tre populära motiv</h2>
+ <div class="grid grid-cols-3 gap-3 sm:gap-4">
+ {highlights.map((p) => (
+ <div class="bg-white rounded-xl border border-border shadow-sm overflow-hidden flex flex-col">
+ <a href={p.link} target="_blank" rel="nofollow sponsored noopener noreferrer" aria-label={`${p.name}, barntavla hos Lillestudio`} class="block bg-gray-50 p-3 flex items-center justify-center" style="aspect-ratio: 3/4;">
+ <img src={p.img} alt={`${p.name}, barntavla från Lillestudio`} loading="lazy" width="240" height="320" class="max-h-full w-auto object-contain rounded-md shadow-sm" />
+ </a>
+ <div class="p-2 sm:p-3 flex flex-col flex-1">
+ <h3 class="font-heading text-xs sm:text-sm font-bold text-text leading-snug">{p.name}</h3>
+ <div class="mt-auto pt-2">
+ <a href={p.link} target="_blank" rel="nofollow sponsored noopener noreferrer" data-product={p.name} class="flex w-full items-center justify-center bg-cta text-white font-bold text-xs sm:text-sm px-3 py-2.5 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+ Lillestudio
+ </a>
+ </div>
+ </div>
+ </div>
+ ))}
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-10 mb-3">Storlekar, priser och material</h2>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Varje motiv finns i fyra storlekar: A4 (21x29,7 cm), 30x40 cm, 50x70 cm och 70x100 cm. Oramade posters börjar på 199 kr i minsta formatet, och priset stiger med storleken och om du väljer ram. Papperet är ett matt 200-grams papper och ramarna är av furu med splittersäkert plexiglas. Postrarna trycks på beställning utan minsta orderkrav, vilket både minskar svinn och gör att hela sortimentet alltid är tillgängligt.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">För- och nackdelar</h2>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+ <div class="bg-safe/10 border border-safe/30 rounded-xl p-4">
+ <h3 class="font-semibold text-safe-dark mb-2">Fördelar</h3>
+ <ul class="space-y-1.5 text-sm text-text-light">
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Stort utbud av barnmotiv i samlad stil</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Fyra storlekar till varje motiv, lätt att bygga tavelvägg</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Personliga namntavlor, bra som dop- och födelsepresent</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Prisvärt, oramade posters från 199 kr</li>
+ <li class="flex items-start gap-1.5"><span class="text-safe flex-shrink-0">+</span> Plexiglas i stället för glas i ramarna</li>
+ </ul>
+ </div>
+ <div class="bg-accent/10 border border-accent/30 rounded-xl p-4">
+ <h3 class="font-semibold text-accent-dark mb-2">Nackdelar</h3>
+ <ul class="space-y-1.5 text-sm text-text-light">
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Bara posters och tavlor, inga övriga barnrumsmöbler</li>
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Tryck på beställning kan ge något längre leveranstid</li>
+ <li class="flex items-start gap-1.5"><span class="text-accent-dark flex-shrink-0">-</span> Ram och större format drar snabbt upp priset</li>
+ </ul>
+ </div>
+ </div>
+
+ <div class="prose prose-sm text-text-light max-w-none">
+ <h3>Vem passar Lillestudio för?</h3>
+ <p>Lillestudio passar dig som vill inreda barn- eller babyrummet med tavlor utan att betala designerpriser, och som gillar en lugn skandinavisk stil snarare än starka färger och stora figurer. Den breda storleksfloran gör butiken särskilt smidig om du vill bygga en tavelvägg eller köpa en personlig present. Letar du efter inredning utöver tavlor, som möbler eller textil, behöver du komplettera med en annan butik.</p>
+ </div>
+
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/barntavlor/" class="text-accent underline">Barntavlor och posters till barnrummet 2026</a></li>
+ <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängen 2026</a></li>
+ <li><a href="/marken/" class="text-accent underline">Alla barnproduktmärken 2026</a></li>
+ </ul>
+ </div>
+
+ <FAQ items={faqItems} />
+
+ <div class="mt-8">
+ <a href={SHOP} target="_blank" rel="nofollow sponsored noopener noreferrer" class="flex w-full sm:w-auto sm:inline-flex items-center justify-center bg-cta text-white font-bold text-base px-7 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
+ Bra pris hos Lillestudio
+ <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+ </a>
+ </div>
+</ArticleLayout>

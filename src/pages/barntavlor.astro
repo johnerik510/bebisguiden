@@ -1,0 +1,140 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import FAQ from '../components/FAQ.astro';
+
+const breadcrumbs = [
+ { label: 'Hem', href: '/' },
+ { label: 'Barntavlor' },
+];
+
+// Affiliatelänkar: Addrevenue-feed a=988100 (Lillestudio), godkänd 2026-06-11.
+// Tracker-URL:er hämtade direkt ur produktfeedens <link>-fält, aldrig handbyggda.
+const posters = [
+ { name: 'Sol, moln och regnbåge', theme: 'Regnbåge & moln', img: '/images/products/lillestudio-sol-moln-regnbage.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsol-moln-regnbage-barnposter-sot-poster-for-barnrum%3Fvariant%3D54026520166729' },
+ { name: 'Elefant i djungeln', theme: 'Djur & djungel', img: '/images/products/lillestudio-elefant-djungel.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-elefant-for-barn-djungelposter-i-skandinavisk-stil%3Fvariant%3D54147908337993' },
+ { name: 'Enhörning', theme: 'Enhörning & fantasi', img: '/images/products/lillestudio-enhorning.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fenhorning-poster-barn-magisk-unicorn-i-lugn-skandinavisk-stil%3Fvariant%3D54181666521417' },
+ { name: 'Grön traktor', theme: 'Fordon', img: '/images/products/lillestudio-gron-traktor.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgron-traktor-for-barn-lantlig-poster-i-skandinavisk-stil%3Fvariant%3D54195848610121' },
+ { name: 'Grävskopa', theme: 'Fordon', img: '/images/products/lillestudio-gravskopa.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgravskopa-poster%3Fvariant%3D54414902264137' },
+ { name: 'Enhörning på månen', theme: 'Enhörning & fantasi', img: '/images/products/lillestudio-enhorning-mane.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fenhorning-pa-mane-barnposter-sot-poster-for-barnrum%3Fvariant%3D54027908546889' },
+ { name: 'Björn som astronaut', theme: 'Rymd', img: '/images/products/lillestudio-bjorn-astronaut.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-rymdbjorn-poster-barnposter-i-dromsk-rymd-stil%3Fvariant%3D54153231925577' },
+ { name: 'Brontosaurus', theme: 'Dinosaurier', img: '/images/products/lillestudio-brontosaurus.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fdinosaurieposter-for-barn-sot-brontosaurus-i-skandinavisk-stil%3Fvariant%3D54110805033289' },
+ { name: 'Söt kanin', theme: 'Djur & natur', img: '/images/products/lillestudio-kanin.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-kanin-for-barn-natur-poster-i-mjuk-boho-stil%3Fvariant%3D54148938039625' },
+ { name: 'Personlig namntavla (Här bor)', theme: 'Namntavlor', img: '/images/products/lillestudio-namnposter-har-bor.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fpersonlig-namnposter-for-barnrum-har-bor%3Fvariant%3D54568529756489' },
+ { name: 'Bokstavsposter med djur', theme: 'Lär & alfabet', img: '/images/products/lillestudio-bokstavsposter-djur.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fbokstavsposter-for-barn-alfabet-med-djur-i-mjuk-skandinavisk-stil%3Fvariant%3D54251786830153' },
+ { name: 'Apa i lian', theme: 'Djur & djungel', img: '/images/products/lillestudio-apa-i-lian.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-apa-for-barn-djungelposter-i-skandinavisk-stil%3Fvariant%3D54147866034505' },
+ { name: 'Giraff', theme: 'Djur & djungel', img: '/images/products/lillestudio-giraff.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgiraffposter-for-barn-sot-giraff-i-skandinavisk-stil%3Fvariant%3D54112624050505' },
+];
+
+const faqItems = [
+ {
+ question: 'Vilken storlek på barntavla ska jag välja?',
+ answer: '30x40 cm är den vanligaste storleken för barnrum och fungerar både ensam över byrån och i en tavelvägg. Vill du ha en tydlig blickfångare över sängen eller läshörnan passar 50x70 cm bättre. 21x29,7 cm (A4) är prisvärt för att bygga grupper av flera små motiv. Hos Lillestudio finns alla fyra storlekarna till varje motiv.',
+ },
+ {
+ question: 'Hur högt ska en tavla hänga i barnrummet?',
+ answer: 'Hänga tavlan med mitten ungefär i ögonhöjd för en stående vuxen, runt 145 till 150 cm från golvet. I ett barnrum kan du gå något lägre så att barnet själv ser motivet. Över en byrå eller säng låter du i stället tavlans underkant sitta cirka 20 till 30 cm ovanför möbeln så att de hänger ihop visuellt.',
+ },
+ {
+ question: 'Är det säkert att hänga en tavla över spjälsängen?',
+ answer: 'Hänga aldrig en inramad tavla med glas direkt ovanför där barnet sover. Välj posters utan ram, eller ramar med splittersäkert plexiglas i stället för riktigt glas, och fäst dem ordentligt i väggen utom räckhåll för barnet. Lillestudios ramar levereras med plexiglas, men den tryggaste lösningen över sängen är en oramad poster.',
+ },
+ {
+ question: 'Funkar en barntavla som doppresent eller present till nyfödd?',
+ answer: 'Ja, en poster är en uppskattad och prisvärd present till nyfödd och dop. En personlig namntavla med barnets namn och födelsedata blir ett minne som sitter kvar långt efter babytiden. Oramade posters från 199 kr gör det enkelt att ge en snygg present utan att lägga en förmögenhet.',
+ },
+ {
+ question: 'Vilka motiv passar bäst i ett könsneutralt barnrum?',
+ answer: 'Lugna naturmotiv i dämpade jordnära toner är säkrast om du vill ha könsneutralt. Regnbågar, moln, månen, skogsdjur som kanin och rådjur samt djungeldjur i skandinavisk stil fungerar för alla. Undvik starkt rosa eller blått om du vill kunna återanvända tavlan till syskon oavsett kön.',
+ },
+];
+
+export const articleMeta = {
+  title: "Barntavlor och posters till barnrummet 2026: 13 favoriter",
+  description: "Snygga barntavlor och posters till barnrummet och babyrummet 2026. 13 utvalda motiv, köpguide för storlek, ram och placering, samt tips för doppresent.",
+  publishDate: "2026-06-11",
+  category: "Barnrum",
+  image: "/images/products/lillestudio-sol-moln-regnbage.webp",
+};
+---
+
+<ArticleLayout
+ title="Barntavlor och posters till barnrummet 2026: 13 favoriter"
+ description="Snygga barntavlor och posters till barnrummet och babyrummet 2026. 13 utvalda motiv, köpguide för storlek, ram och placering, samt tips för doppresent."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-06-11"
+ datePublished="2026-06-11"
+ image="/images/products/lillestudio-sol-moln-regnbage.webp"
+>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Rätt tavla gör barnrummet personligt utan att kosta mycket. Vi har plockat 13 favoritmotiv från svenska Lillestudio, från regnbågar och djungeldjur till traktorer och personliga namntavlor, och samlat en köpguide för storlek, ram och placering längre ner. Alla motiv finns i fyra storlekar och börjar på 199 kr.
+ </p>
+
+ <div class="bg-primary/5 border border-primary/20 rounded-xl p-4 mb-6 max-w-2xl">
+ <p class="text-sm text-text-light leading-relaxed">
+ <strong class="text-text">Snabbtips:</strong> 30x40 cm är den storlek som passar flest barnrum. Vill du bygga en tavelvägg, blanda en stor 50x70 med två till tre mindre A4-motiv i samma färgton.
+ </p>
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-4">13 barntavlor vi gillar 2026</h2>
+ <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+ {posters.map((p) => (
+ <div class="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
+ <a href={p.link} target="_blank" rel="nofollow sponsored noopener noreferrer" aria-label={`${p.name}, barntavla hos Lillestudio`} class="block bg-gray-50 p-4 flex items-center justify-center" style="aspect-ratio: 3/4;">
+ <img src={p.img} alt={`${p.name}, barntavla för barnrum från Lillestudio`} loading="lazy" width="300" height="400" class="max-h-full w-auto object-contain rounded-md shadow-sm" />
+ </a>
+ <div class="p-3 sm:p-4 flex flex-col flex-1">
+ <span class="text-[11px] font-semibold text-accent-dark bg-accent/10 px-2 py-0.5 rounded-full self-start mb-1.5">{p.theme}</span>
+ <h3 class="font-heading text-sm sm:text-base font-bold text-text leading-snug">{p.name}</h3>
+ <p class="text-xs text-text-light mt-1">Från {p.from} kr, fyra storlekar</p>
+ <div class="mt-auto pt-3">
+ <span class="block text-[11px] font-semibold text-text-light mb-1">Bra pris hos:</span>
+ <a href={p.link} target="_blank" rel="nofollow sponsored noopener noreferrer" data-product={p.name} class="flex w-full items-center justify-center bg-cta text-white font-bold text-sm px-4 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+ Lillestudio
+ <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+ </a>
+ </div>
+ </div>
+ </div>
+ ))}
+ </div>
+
+ <p class="text-xs text-text-light mt-3 max-w-2xl">Priserna avser minsta storleken (21x29,7 cm) utan ram. Se aktuellt pris per storlek och ramval hos Lillestudio.</p>
+
+ <h2 class="font-heading text-xl font-bold mt-10 mb-3">Vilken storlek på barntavla ska du välja?</h2>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ 30x40 cm är standardstorleken för barnrum och den vi rekommenderar om du bara köper en tavla. Den syns tydligt över en byrå eller skötbord utan att ta över väggen. Behöver du ett tydligt blickfång över sängen, välj 50x70 cm. Vill du gruppera flera motiv är A4 (21x29,7 cm) billigast per tavla. Lillestudio gör samma motiv i alla fyra formaten, så du kan blanda fritt.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Med eller utan ram?</h2>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Oramade posters är billigast och lättast, och de är det säkraste valet nära sängen eftersom det inte finns något glas som kan gå sönder. En ram lyfter däremot intrycket och skyddar papperet mot fingrar och solljus. Lillestudios ramar levereras med splittersäkert plexiglas i stället för riktigt glas, vilket är tryggare i ett barnrum. Köper du flera tavlor till en vägg blir det stramast om alla har samma ramfärg.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Hur högt ska tavlan hänga?</h2>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ Sätt mitten av tavlan ungefär i ögonhöjd, runt 145 till 150 cm från golvet, om den hänger fritt på en vägg. I ett barnrum kan du gå lite lägre så att barnet själv ser motivet. Hänger du tavlan över en möbel ska underkanten sitta cirka 20 till 30 cm ovanför byrån eller sängen, då upplevs tavla och möbel som en enhet. Fäst alltid tavlan ordentligt i väggen, inte bara i en spik, om den sitter där ett barn kan nå.
+ </p>
+
+ <div class="bg-accent/5 border border-accent/20 rounded-xl p-4 my-6 max-w-2xl">
+ <p class="text-sm text-text-light leading-relaxed">
+ <strong class="text-text">Säkerhet över sängen:</strong> hänga aldrig en inramad tavla med tungt glas rakt ovanför där barnet sover. Välj en oramad poster eller en lätt ram med plexiglas, och se till att den sitter utom räckhåll. Läs mer i vår guide till en <a href="/guider/saker-sovmiljo/" class="text-accent underline">säker sovmiljö för bebis</a>.
+ </p>
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Barntavla som doppresent och present till nyfödd</h2>
+ <p class="text-base text-text-light mb-4 max-w-2xl">
+ En poster är en av de mest prisvärda presenterna du kan ge till en nyfödd, och en personlig namntavla med barnets namn och födelsedata blir ett minne som sitter kvar långt efter babytiden. Från 199 kr får du en snygg present utan att lägga en förmögenhet. Letar du efter fler presenttips, titta också på vår guide till <a href="/babyklader/" class="text-accent underline">babykläder</a> och våra <a href="/leksaker/0-3-manader/" class="text-accent underline">leksaker för 0 till 3 månader</a>.
+ </p>
+
+ <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
+ <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider för barnrummet</h2>
+ <ul class="space-y-2 text-sm">
+ <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängen 2026, test och köpguide</a></li>
+ <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis</a></li>
+ <li><a href="/marken/lillestudio/" class="text-accent underline">Lillestudio omdöme: svensk webbutik för barntavlor</a></li>
+ <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsäcken för baby</a></li>
+ </ul>
+ </div>
+
+ <FAQ items={faqItems} />
+</ArticleLayout>
