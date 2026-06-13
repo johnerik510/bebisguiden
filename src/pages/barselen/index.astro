@@ -1,405 +1,575 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
-import StatHighlight from '../../components/StatHighlight.astro';
-import ExpertQuote from '../../components/ExpertQuote.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bärselen' },
+];
+
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
+const products = [
+  {
+    name: 'Ergobaby Omni 360 Bärsele',
+    brand: 'Ergobaby',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['HIPS-certifierad', '4 bärpositioner', 'Från nyfödd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228534&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-black',
+    imageUrl: '/images/products/ergobaby-omni-360.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'HIPS-certifierad bärsele med 4 bärpositioner. Från nyfödd till 20 kg (0-4 år). M-position för korrekt höftutveckling.',
+    features: {
+      'Vikt barn': '3,2 till 20 kg (0 till 4 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': 'Bomull',
+      'Ergonomi': 'HIPS-certifierad',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'BabyBjörn One Air Bärsele 3D Mesh',
+    brand: 'BabyBjörn',
+    rating: 4.7,
+    badge: 'Premiumval',
+    usps: ['Luftigt 3D-mesh', '4 bärpositioner', 'Hip-Healthy-certifierad'],
+    store: 'Baby V',
+    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1098078E1&url=https://www.babyv.se/sv/articles/1.73.16853/babybjorn-barsele-one-air-antracitgraleo-3d-mesh',
+    imageUrl: '/images/products/babybjorn-one-air.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Premium bärsele i luftigt 3D-mesh. Hip-Healthy Institute-certifierad. Från nyfödd till 15 kg (0-3 år). 4 bärpositioner.',
+    features: {
+      'Vikt barn': '3,5 till 15 kg (0 till 3 år)',
+      'Positioner': '4 (fram, rygg, höft, vändbar)',
+      'Material': '3D-mesh',
+      'Ergonomi': 'Hip-Healthy Institute',
+    },
+    alsoAt: [
+      { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=724429&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele-3d-mesh-black' },
+    ],
+  },
+  {
+    name: 'Nuna Cudl Clik Bärsele Caviar',
+    brand: 'Nuna',
+    rating: 4.7,
+    badge: 'Bäst premium',
+    usps: ['Klickas på Nuna-vagn', 'Bred ryggstöd', 'Tvättbar 30 grader'],
+    store: 'Baby V',
+    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1BC17202CVR&url=https://www.babyv.se/sv/articles/1.73.24384/nuna-cudl-clik-barsele-caviar',
+    imageUrl: '/images/products/nuna-cudl-barsele.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Premium bärsele som klickas direkt på Nuna-barnvagnar utan adapter. Ergonomisk sits med bred ryggstöd. Tvättbar vid 30 grader.',
+    features: {
+      'Vikt barn': 'Till 15 kg',
+      'Positioner': '3 (fram, rygg, höft)',
+      'Material': 'Bomull/mesh',
+      'Ergonomi': 'HIPS-certifierad',
+    },
+    alsoAt: [
+      { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326777&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nuna-cudl-click-barsele-caviar' },
+    ],
+  },
+  {
+    name: 'Flybaby Bärsele Black',
+    brand: 'Flybaby',
+    rating: 4.6,
+    badge: 'Bäst ergonomi',
+    usps: ['Hip-seat avlastar', 'Bred M-position', 'Andningsbart material'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10322756&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/flybaby-barsele-black',
+    imageUrl: '/images/products/flybaby-barsele.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Bärsele med hip-seat-design som avlastar höfterna. Bred sits för ergonomisk M-position. Kan bäras framåt och bakåt.',
+    features: {
+      'Vikt barn': 'Till 15 kg',
+      'Positioner': '3 (fram, rygg, höft)',
+      'Material': 'Andningsbart',
+      'Ergonomi': 'Hip-seat M-position',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Nimbel Bärsele All-Black',
+    brand: 'Nimbel',
+    rating: 4.6,
+    badge: 'Bäst för pendlare',
+    usps: ['Kompakt och lätt', 'Snabb på/av', 'Passar under jackan'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326947&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nimbel-barsele-all-black',
+    imageUrl: '/images/products/nimbel-barsele.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Kompakt och lättviktig bärsele i andningsbart mesh. Snabbt att ta på och av, passar utmärkt under jackan för pendlare.',
+    features: {
+      'Vikt barn': 'Till 13 kg',
+      'Positioner': '3 (fram, rygg, höft)',
+      'Material': 'Mesh',
+      'Ergonomi': 'M-position',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Ergobaby Embrace Bärsele',
+    brand: 'Ergobaby',
+    rating: 4.6,
+    badge: 'Bäst för nyfödda',
+    usps: ['Mjukast i testet', 'HIPS-certifierad', 'Korsbara remmar'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228514&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black',
+    imageUrl: '/images/products/ergobaby-embrace-barsele.webp',
+    accentColor: '#4c1d95', bgColor: '#7c3aed',
+    desc: 'Mjuk nyföddbärsele med korsbara axelremmar. HIPS-certifierad. Från nyfödd till 11,3 kg (0-6 månader).',
+    features: {
+      'Vikt barn': '3,2 till 11,3 kg (0 till 6 mån)',
+      'Positioner': '2 (fram, vändbar)',
+      'Material': 'Mjuk bomull',
+      'Ergonomi': 'HIPS-certifierad',
+    },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b9886fb5-f65b-44c5-8b67-1fb2985b9912&url=https://www.babysam.se/baersele-embrace-pure-black-onesize' },
+    ],
+  },
+  {
+    name: 'Najell Easy Volume 2',
+    brand: 'Najell',
+    rating: 4.6,
+    badge: 'Smidig nyföddsele',
+    usps: ['Volymjustering', 'Från nyfödd', 'Ergonomisk M-position'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=7c2c76b7-944e-4b18-9b6c-ddc4440bbb70&url=https://www.babysam.se/najell-easy-vol-2-baersele-honey-beige-onesize',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Najells flagship-bärsele för nyfödda upp till 15 kg. Ergonomisk M-position.',
+    features: {
+      'Vikt barn': 'Nyfödd till 15 kg',
+      'Positioner': 'Fram',
+      'Material': 'Mjukt tyg',
+      'Ergonomi': 'Ergonomisk M-position',
+    },
+    alsoAt: [],
+  },
+];
+
+const specLabels = ['Vikt barn', 'Positioner', 'Material', 'Ergonomi'];
+
+const faqItems = [
+  {
+    question: 'Från vilken ålder fungerar en bärsele?',
+    answer: 'De flesta strukturerade bärselen fungerar från födseln om barnet väger minst 3,2 till 3,5 kg och har fullt huvud- och nackstöd. Ergobaby Omni 360 och BabyBjörn One Air fungerar från nyfödd utan extra inlägg, de har inbyggd nackstödspanel som viks upp för de minsta. Ergobaby Embrace är konstruerad enbart för nyfödda upp till 11,3 kg, mjukare och enklare att ta på men täcker bara de första sex månaderna. Är barnet prematurburet, under 3 kg eller har läkare noterat höftproblem: fråga BVC eller fysioterapeut innan du börjar bära.',
+  },
+  {
+    question: 'Bärsele eller bärsjal, vad är skillnaden?',
+    answer: 'En bärsele har fasta spännen och färdig struktur, två till tre minuter att ta på. En bärsjal är ett långt tygstycke som knyts runt kroppen, mjukare och tätare men kräver inlärning för att lägga rätt. Många börjar med sjal de första månaderna och går över till bärsele när barnet växer och blir tyngre. För pappor som lär sig nytt är bärsele oftast en mer lättanvänd start.',
+  },
+  {
+    question: 'Hur länge kan barnet sitta i bärsele?',
+    answer: 'Maxvikten varierar: Ergobaby Omni 360 klarar till 20 kg (ungefär 4 år), BabyBjörn One Air till 15 kg (ungefär 3 år), Ergobaby Embrace bara till 11,3 kg (ungefär 6 månader). I praktiken slutar de flesta använda bärsele regelbundet runt 18 månader när barnet vill springa själv och bärselen används mest för snabba situationer. Många fortsätter använda bärsele till 3 till 4 år på vandring, vid flygresor och i situationer där barnvagnen är opraktisk. Ergobaby Omni 360 är bäst för lång användningstid.',
+  },
+  {
+    question: 'Vad är M-position och varför är den viktig?',
+    answer: 'M-position innebär att barnets knän hamnar i nivå med eller högre än rumpan, med benen böjda utåt i en M-form. Det är den ergonomiskt korrekta ställningen för höftledsutvecklingen under första levnadsåret. International Hip Dysplasia Institute (IHDI) rekommenderar denna position. Välj alltid en bärsele som är HIPS-certifierad, alla våra toppval är det.',
+  },
+  {
+    question: 'Skadar bärsele bärarens rygg?',
+    answer: 'En väldesignad bärsele med brett midjebälte fördelar 60 till 70 procent av barnets vikt till höfterna istället för axlarna. Det är skonsammare än att hålla barnet på armen. Två tips: dra åt midjebältet hårt så att barnet sitter tätt mot kroppen, ett gungande barn ökar belastningen kraftigt. Justera axelremmarna så att barnet sitter högt nog att du kan kyssa hjässan, då är höjden rätt.',
+  },
+  {
+    question: 'Kan barnet sitta vänt utåt?',
+    answer: 'Ja, men först när barnet kan hålla huvudet stadigt och har god halsstyrka (cirka fem till sex månader). Begränsa utåtvänd tid till tjugo till trettio minuter åt gången, läget är mer stimulerande och kan bli tröttsamt. Ergobaby Omni 360 och BabyBjörn One Air har båda utåtvänt läge med korrekt M-position. Undvik bärselen där benen hänger rakt ner i utåtvänt läge, det är inte ergonomiskt.',
+  },
+];
 
 export const articleMeta = {
   title: "Bästa bärselen 2026: bäst i test av 6 modeller",
   description: "Bärsele bäst i test 2026: Ergobaby Omni 360 vinner. Vi jämför 6 bärselen inkl. Nuna Cudl, Flybaby och Nimbel. HIPS-certifierade modeller rankade.",
   publishDate: "2026-05-22",
+  updatedDate: "2026-06-12",
   category: "Bärselen",
   image: "/images/products/ergobaby-omni-360.webp",
 };
-
-const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Bärselen' },
-];
-
-const products = [
- {
- name: 'Ergobaby Omni 360 Bärsele',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/ergobaby-omni-360.webp',
- ctaText: 'Bra pris hos Jollyroom',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228534&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-black',
- features: {
- 'Vikt barn': '3,2 till 20 kg (0 till 4 år)',
- 'Positioner': '4 (fram, rygg, höft, vändbar)',
- 'Material': 'Bomull',
- 'Ergonomi': 'HIPS-certifierad',
- },
- },
- {
- name: 'BabyBjörn One Air Bärsele 3D Mesh',
- badge: 'Premiumval',
- rating: 4.7,
- image: '/images/products/babybjorn-one-air.webp',
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1098078E1&url=https://www.babyv.se/sv/articles/1.73.16853/babybjorn-barsele-one-air-antracitgraleo-3d-mesh',
- additionalCtaHrefs: [
-   { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=724429&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele-3d-mesh-black' },
- ],
- features: {
- 'Vikt barn': '3,5 till 15 kg (0 till 3 år)',
- 'Positioner': '4 (fram, rygg, höft, vändbar)',
- 'Material': '3D-mesh',
- 'Ergonomi': 'Hip-Healthy Institute',
- },
- },
- {
- name: 'Nuna Cudl Clik Bärsele Caviar',
- badge: 'Bäst premium',
- rating: 4.7,
- image: '/images/products/nuna-cudl-barsele.webp',
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1BC17202CVR&url=https://www.babyv.se/sv/articles/1.73.24384/nuna-cudl-clik-barsele-caviar',
- additionalCtaHrefs: [
-   { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326777&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nuna-cudl-click-barsele-caviar' },
- ],
- features: {
- 'Vikt barn': 'Till 15 kg',
- 'Positioner': '3 (fram, rygg, höft)',
- 'Material': 'Bomull/mesh',
- 'Ergonomi': 'HIPS-certifierad',
- },
- },
- {
- name: 'Flybaby Bärsele Black',
- badge: 'Bäst ergonomi',
- rating: 4.6,
- image: '/images/products/flybaby-barsele.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10322756&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/flybaby-barsele-black',
- features: {
- 'Vikt barn': 'Till 15 kg',
- 'Positioner': '3 (fram, rygg, höft)',
- 'Material': 'Andningsbart',
- 'Ergonomi': 'Hip-seat M-position',
- },
- },
- {
- name: 'Nimbel Bärsele All-Black',
- badge: 'Bäst för pendlare',
- rating: 4.6,
- image: '/images/products/nimbel-barsele.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326947&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nimbel-barsele-all-black',
- features: {
- 'Vikt barn': 'Till 13 kg',
- 'Positioner': '3 (fram, rygg, höft)',
- 'Material': 'Mesh',
- 'Ergonomi': 'M-position',
- },
- },
- {
- name: 'Ergobaby Embrace Bärsele',
- badge: 'Bäst för nyfödda',
- rating: 4.6,
- image: '/images/products/ergobaby-embrace-barsele.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228514&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black',
- additionalCtaHrefs: [
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b9886fb5-f65b-44c5-8b67-1fb2985b9912&url=https://www.babysam.se/baersele-embrace-pure-black-onesize' },
- ],
- features: {
- 'Vikt barn': '3,2 till 11,3 kg (0 till 6 mån)',
- 'Positioner': '2 (fram, vändbar)',
- 'Material': 'Mjuk bomull',
- 'Ergonomi': 'HIPS-certifierad',
- },
- },
-];
-
-const featureLabels = ['Vikt', 'Positioner', 'Material', 'Ergonomi'];
-
-const faqItems = [
- {
- question: 'Från vilken ålder fungerar en bärsele?',
- answer: 'De flesta strukturerade bärselen fungerar från födseln om barnet väger minst 3,2 till 3,5 kg och har fullt huvud- och nackstöd. Ergobaby Omni 360 och BabyBjörn One Air fungerar från nyfödd utan extra inlägg, de har inbyggd nackstödspanel som viks upp för de minsta. Ergobaby Embrace är konstruerad enbart för nyfödda upp till 11,3 kg, mjukare och enklare att ta på men täcker bara de första sex månaderna. Är barnet prematurburet, under 3 kg eller har läkare noterat höftproblem: fråga BVC eller fysioterapeut innan du börjar bära.',
- },
- {
- question: 'Bärsele eller bärsjal, vad är skillnaden?',
- answer: 'En bärsele har fasta spännen och färdig struktur, två till tre minuter att ta på. En bärsjal är ett långt tygstycke som knyts runt kroppen, mjukare och tätare men kräver inlärning för att lägga rätt. Många börjar med sjal de första månaderna och går över till bärsele när barnet växer och blir tyngre. För pappor som lär sig nytt är bärsele oftast en mer lättanvänd start.',
- },
- {
- question: 'Hur länge kan barnet sitta i bärsele?',
- answer: 'Maxvikten varierar: Ergobaby Omni 360 klarar till 20 kg (ungefär 4 år), BabyBjörn One Air till 15 kg (ungefär 3 år), Ergobaby Embrace bara till 11,3 kg (ungefär 6 månader). I praktiken slutar de flesta använda bärsele regelbundet runt 18 månader när barnet vill springa själv och bärselen används mest för snabba situationer. Många fortsätter använda bärsele till 3 till 4 år på vandring, vid flygresor och i situationer där barnvagnen är opraktisk. Ergobaby Omni 360 är bäst för lång användningstid.',
- },
- {
- question: 'Vad är M-position och varför är den viktig?',
- answer: 'M-position innebär att barnets knän hamnar i nivå med eller högre än rumpan, med benen böjda utåt i en M-form. Det är den ergonomiskt korrekta ställningen för höftledsutvecklingen under första levnadsåret. International Hip Dysplasia Institute (IHDI) rekommenderar denna position. Välj alltid en bärsele som är HIPS-certifierad, alla våra toppval är det.',
- },
- {
- question: 'Skadar bärsele bärarens rygg?',
- answer: 'En väldesignad bärsele med brett midjebälte fördelar 60 till 70 procent av barnets vikt till höfterna istället för axlarna. Det är skonsammare än att hålla barnet på armen. Två tips: dra åt midjebältet hårt så att barnet sitter tätt mot kroppen, ett gungande barn ökar belastningen kraftigt. Justera axelremmarna så att barnet sitter högt nog att du kan kyssa hjässan, då är höjden rätt.',
- },
- {
- question: 'Kan barnet sitta vänt utåt?',
- answer: 'Ja, men först när barnet kan hålla huvudet stadigt och har god halsstyrka (cirka fem till sex månader). Begränsa utåtvänd tid till tjugo till trettio minuter åt gången, läget är mer stimulerande och kan bli tröttsamt. Ergobaby Omni 360 och BabyBjörn One Air har båda utåtvänt läge med korrekt M-position. Undvik bärselen där benen hänger rakt ner i utåtvänt läge, det är inte ergonomiskt.',
- },
-];
 ---
 
 <ArticleLayout
- title="Bästa bärselen 2026: bäst i test av 6 modeller"
- description="Bärsele bäst i test 2026: Ergobaby Omni 360 vinner. Vi jämför 6 bärselen inkl. Nuna Cudl, Flybaby och Nimbel. HIPS-certifierade modeller rankade."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/barselen/"
- updatedDate="2026-05-22"
+  title="Bästa bärselen 2026: bäst i test av 6 modeller"
+  description="Bärsele bäst i test 2026: Ergobaby Omni 360 vinner. Vi jämför 6 bärselen inkl. Nuna Cudl, Flybaby och Nimbel. HIPS-certifierade modeller rankade."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barselen/"
+  datePublished="2026-05-22"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Ergobaby Omni 360 vinner bärsele bäst i test 2026. Den håller M-positionen genom hela åldersspannet och har fyra bärpositioner inklusive framåtvänd. Selen justeras för olika kroppsstorlekar och klarar bebis från 3,2 kg upp till 20 kg, alltså hela perioden från nyfödd till cirka fyra år.
-	 </p>
 
- <TopPick product={products[0]} description="Ergobaby Omni 360 vinner 2026 på fyra bärpositioner, M-position genom hela åldersspannet och justerbarhet för olika kroppsstorlekar. Klarar bebis från 3,2 kg upp till 20 kg, vilket täcker hela perioden från nyfödd till cirka fyra år." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-22" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bärselen 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken bärsele är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Ergobaby Omni 360 vinner bärsele bäst i test 2026: den håller M-positionen genom hela åldersspannet, har fyra bärpositioner inklusive framåtvänd och klarar bebis från 3,2 kg upp till 20 kg (nyfödd till cirka fyra år). Premiumval i mesh: BabyBjörn One Air. Bäst för nyfödda: Ergobaby Embrace.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Ergobaby Omni 360</strong> vinner för mångsidighet och ergonomi. <strong><a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> One Air</strong> är premiumvalet i mesh. <strong>Nuna Cudl Clik</strong> klickas direkt på Nuna-vagnar. <strong>Flybaby</strong> är bäst för ergonomi med hip-seat. <strong>Nimbel</strong> är kompaktast för pendlare.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Ergobaby"
+    name="Omni 360 Bärsele"
+    image="/images/products/ergobaby-omni-360.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228534&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-black"
+    store="Jollyroom"
+    description="Vinner 2026 på fyra bärpositioner, M-position genom hela åldersspannet och justerbarhet för olika kroppsstorlekar. Klarar bebis från 3,2 kg upp till 20 kg, vilket täcker hela perioden från nyfödd till cirka fyra år."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">De 6 bästa bärselarna 2026: HIPS-certifierade och bäst i test</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Bärselen 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Ergobaby Omni 360 Bärsele"
- image="/images/products/ergobaby-omni-360.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="0 till 4 år (3,2 till 20 kg)"
- pros={['HIPS-certifierad M-position', '4 bärpositioner inkl. ryggbärning', 'Används från nyfödd utan extra inlägg', 'Justerbara axelband för alla kroppsstorlekar']}
- cons={['Varm i sommarvärme, välj Cool Air-versionen då', 'Tar lite tid att lära sig']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228534&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-black"
- />
+  {/* Vinnar-callout */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Ergobaby Omni 360</strong> vinner för mångsidighet och ergonomi. <strong><a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> One Air</strong> är premiumvalet i mesh. <strong>Nuna Cudl Clik</strong> klickas direkt på Nuna-vagnar. <strong>Flybaby</strong> är bäst för ergonomi med hip-seat. <strong>Nimbel</strong> är kompaktast för pendlare.</p>
+  </div>
 
- <ProductCard
- name="BabyBjörn One Air Bärsele 3D Mesh"
- badge="Premiumval"
- rating={4.7}
- image="/images/products/babybjorn-one-air.webp"
- ageRange="0 till 3 år (3,5 till 15 kg)"
- pros={['Luftigt 3D-mesh, perfekt i värme', 'Enkel att ta på och ta av', 'Hip-Healthy Institute-certifierad', '4 bärpositioner']}
- cons={['Lägre maxvikt (15 kg)', 'Dyrare än Ergobaby Omni 360']}
- ctaText="Bra pris hos Baby-V"
- ctaHref="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1098078E1&url=https://www.babyv.se/sv/articles/1.73.16853/babybjorn-barsele-one-air-antracitgraleo-3d-mesh"
- additionalCtaHrefs={[
-   { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=724429&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele-3d-mesh-black' },
- ]}
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Nuna Cudl Clik Bärsele Caviar"
- image="/images/products/nuna-cudl-barsele.webp"
- badge="Bäst premium"
- rating={4.7}
- ageRange="Nyfödd till ca 15 kg"
- pros={['Klickas direkt på Nuna barnvagnar utan adapter', 'Ergonomisk sits med bred ryggstöd', 'Lätt att ta av/på med en hand', 'Tvättbar vid 30 grader']}
- cons={['Fungerar optimalt med Nuna-system', 'Begränsat bärlägesalternativ', 'Premium-pris']}
- ctaText="Bra pris hos Baby-V"
- ctaHref="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1BC17202CVR&url=https://www.babyv.se/sv/articles/1.73.24384/nuna-cudl-clik-barsele-caviar"
- additionalCtaHrefs={[
-   { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326777&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nuna-cudl-click-barsele-caviar' },
- ]}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Ergobaby Omni 360 Bärsele, bäst i test</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby Omni 360 Bärsele"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/ergobaby-omni-360.webp"
+      imageAlt="Ergobaby Omni 360 bärsele"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228534&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-black"
+      pros={['HIPS-certifierad M-position', '4 bärpositioner inkl. ryggbärning', 'Används från nyfödd utan extra inlägg', 'Justerbara axelband för alla kroppsstorlekar']}
+      cons={['Varm i sommarvärme, välj Cool Air-versionen då', 'Tar lite tid att lära sig']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby Omni 360 vinner bärsele bäst i test 2026. Den är HIPS-certifierad och håller M-positionen genom hela åldersspannet, vilket stödjer höftledens utveckling under det första levnadsåret. Med fyra bärpositioner inklusive ryggbärning fungerar den från nyfödd utan extra inlägg, och de justerbara axelbanden gör att två föräldrar med olika kroppsstorlek kan dela på selen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den blir varm i sommarvärme, så välj Cool Air-versionen om du bär mycket i värmen, och det tar lite tid att lära sig alla inställningar. Men selen klarar bebis från 3,2 kg upp till 20 kg, hela perioden från nyfödd till cirka fyra år, och är svår att slå på mångsidighet och ergonomi.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228534&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-black" />
 
- <ProductCard
- name="Flybaby Bärsele Black"
- image="/images/products/flybaby-barsele.webp"
- badge="Bäst ergonomi"
- rating={4.6}
- ageRange="Nyfödd till ca 15 kg"
- pros={['Hip-seat-design avlastar höfterna', 'Bred sits för ergonomisk M-position', 'Kan bäras framåt och bakåt', 'Andningsbart material']}
- cons={['Hip-seat kan vara klumpigt under jackan', 'Mer skrymmande att packa', 'Inlärningskurva för rätt position']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10322756&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/flybaby-barsele-black"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. BabyBjörn One Air Bärsele 3D Mesh, premiumval</h2>
+    <MoneyProductCard
+      brand="BabyBjörn"
+      name="BabyBjörn One Air Bärsele 3D Mesh"
+      rating={4.7}
+      rank={2}
+      badge="Premiumval"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/babybjorn-one-air.webp"
+      imageAlt="BabyBjörn One Air bärsele 3D mesh"
+      store="Baby V"
+      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1098078E1&url=https://www.babyv.se/sv/articles/1.73.16853/babybjorn-barsele-one-air-antracitgraleo-3d-mesh"
+      alsoAt={[
+        { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=724429&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-one-air-barsele-3d-mesh-black' },
+      ]}
+      pros={['Luftigt 3D-mesh, perfekt i värme', 'Enkel att ta på och ta av', 'Hip-Healthy Institute-certifierad', '4 bärpositioner']}
+      cons={['Lägre maxvikt (15 kg)', 'Dyrare än Ergobaby Omni 360']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BabyBjörn One Air är premiumvalet för dig som bär mycket i värme. Det luftiga 3D-meshet andas bra och gör selen sval även varma dagar, och den är enkel att ta på och av med en hand. Den är Hip-Healthy Institute-certifierad och har fyra bärpositioner, så den följer barnet från nyfödd och uppåt.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Maxvikten på 15 kg är lägre än Omni 360, och den ligger i premiumsegmentet prismässigt. Men för familjen som prioriterar luftighet och en sele som är snabb att hantera är BabyBjörn One Air ett starkt val.
+    </p>
+    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1098078E1&url=https://www.babyv.se/sv/articles/1.73.16853/babybjorn-barsele-one-air-antracitgraleo-3d-mesh" />
 
- <ProductCard
- name="Nimbel Bärsele All-Black"
- image="/images/products/nimbel-barsele.webp"
- badge="Bäst för pendlare"
- rating={4.6}
- ageRange="Nyfödd till ca 13 kg"
- pros={['Kompakt och lättviktig design', 'Snabbt att ta på/av', 'Andningsbart mesh-material', 'Passar bra under jackan']}
- cons={['Nyare märke, färre recensioner', 'Begränsat maxvikt jämfört med helkroppsselar', 'Inte godkänd för nyfödda']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326947&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nimbel-barsele-all-black"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Nuna Cudl Clik Bärsele Caviar, bäst premium</h2>
+    <MoneyProductCard
+      brand="Nuna"
+      name="Nuna Cudl Clik Bärsele Caviar"
+      rating={4.7}
+      rank={3}
+      badge="Bäst premium"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/nuna-cudl-barsele.webp"
+      imageAlt="Nuna Cudl Clik bärsele Caviar"
+      store="Baby V"
+      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1BC17202CVR&url=https://www.babyv.se/sv/articles/1.73.24384/nuna-cudl-clik-barsele-caviar"
+      alsoAt={[
+        { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326777&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nuna-cudl-click-barsele-caviar' },
+      ]}
+      pros={['Klickas direkt på Nuna barnvagnar utan adapter', 'Ergonomisk sits med bred ryggstöd', 'Lätt att ta av/på med en hand', 'Tvättbar vid 30 grader']}
+      cons={['Fungerar optimalt med Nuna-system', 'Begränsat bärlägesalternativ', 'Premium-pris']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Nuna Cudl Clik är premiumvalet för dig som redan har en Nuna-barnvagn. Selen klickas direkt på Nuna-vagnar utan adapter, vilket gör övergången mellan vagn och bärning sömlös. Sitsen är ergonomisk med brett ryggstöd, den är lätt att ta av och på med en hand och kan tvättas vid 30 grader.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Selen fungerar bäst inom Nuna-systemet och har färre bärlägesalternativ än Omni 360, och den ligger i premiumsegmentet prismässigt. Men för Nuna-familjen är integrationen och den enkla hanteringen svår att matcha.
+    </p>
+    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1BC17202CVR&url=https://www.babyv.se/sv/articles/1.73.24384/nuna-cudl-clik-barsele-caviar" />
 
- <ProductCard
- name="Ergobaby Embrace Bärsele"
- image="/images/products/ergobaby-embrace-barsele.webp"
- badge="Bäst för nyfödda"
- rating={4.6}
- ageRange="0 till 6 mån (3,2 till 11,3 kg)"
- pros={['Mjukast i testet, nyfödda älskar närheten', 'HIPS-certifierad M-position', 'Korsbara axelremmar, stödjer ryggen', 'Lägsta priset bland ergonomiska bärselen']}
- cons={['Används bara upp till ca 6 månader (11,3 kg)', 'Färre positioner än Omni 360']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228514&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black"
- additionalCtaHrefs={[
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b9886fb5-f65b-44c5-8b67-1fb2985b9912&url=https://www.babysam.se/baersele-embrace-pure-black-onesize' },
- ]}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Flybaby Bärsele Black, bäst ergonomi</h2>
+    <MoneyProductCard
+      brand="Flybaby"
+      name="Flybaby Bärsele Black"
+      rating={4.6}
+      rank={4}
+      badge="Bäst ergonomi"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/flybaby-barsele.webp"
+      imageAlt="Flybaby bärsele Black"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10322756&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/flybaby-barsele-black"
+      pros={['Hip-seat-design avlastar höfterna', 'Bred sits för ergonomisk M-position', 'Kan bäras framåt och bakåt', 'Andningsbart material']}
+      cons={['Hip-seat kan vara klumpigt under jackan', 'Mer skrymmande att packa', 'Inlärningskurva för rätt position']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Flybaby är valet för dig som vill maximera ergonomin. Hip-seat-designen avlastar höfterna och den breda sitsen tvingar fram en korrekt M-position, vilket gör den skonsam både för barnet och för bäraren under långa pass. Den kan bäras både framåt och bakåt och är gjord i andningsbart material.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Hip-seaten kan kännas klumpig under jackan och selen är mer skrymmande att packa, plus att det finns en viss inlärningskurva för att få positionen rätt. Men för familjen som sätter ergonomin främst levererar Flybaby på just den punkten.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10322756&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/flybaby-barsele-black" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide bärsele 2026: ergonomi, certifiering och material</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Nimbel Bärsele All-Black, bäst för pendlare</h2>
+    <MoneyProductCard
+      brand="Nimbel"
+      name="Nimbel Bärsele All-Black"
+      rating={4.6}
+      rank={5}
+      badge="Bäst för pendlare"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/nimbel-barsele.webp"
+      imageAlt="Nimbel bärsele All-Black"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326947&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nimbel-barsele-all-black"
+      pros={['Kompakt och lättviktig design', 'Snabbt att ta på/av', 'Andningsbart mesh-material', 'Passar bra under jackan']}
+      cons={['Nyare märke, färre recensioner', 'Begränsat maxvikt jämfört med helkroppsselar', 'Inte godkänd för nyfödda']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Nimbel är valet för pendlaren som vill ha en sele som inte tar plats. Den är kompakt och lättviktig, snabb att ta på och av och passar bra under jackan, vilket gör den smidig på buss, tåg och i farten. Mesh-materialet andas och håller dig sval.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nimbel är ett nyare märke med färre recensioner, har lägre maxvikt än helkroppsselarna och är inte godkänd för nyfödda. Men för den som söker en kompakt vardagssele till lite äldre barn fyller den sin funktion väl.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326947&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/nimbel-barsele-all-black" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>HIPS-certifiering: den viktigaste egenskapen i en bärsele</h3>
- <p>Välj en bärsele som är certifierad av <a href="https://hipdysplasia.org/hip-healthy-products/baby-carriers/" target="_blank" rel="noopener nofollow" class="text-accent underline">International Hip Dysplasia Institute (IHDI)</a>. Certifieringen innebär att selen tvingar fram så kallad M-position, och det är den enskilt viktigaste parametern under första levnadsåret eftersom höftleden fortfarande utvecklas. Kort om vad du ska titta efter:</p>
- <ul>
- <li><strong>M-position:</strong> knäna ska sitta i nivå med eller högre än rumpan, så att benen bildar ett M och inte hänger rakt ner.</li>
- <li><strong>Certifierade märken:</strong> Ergobaby, BabyBjörn och Najell är alla IHDI-godkända.</li>
- <li><strong>Undvik:</strong> billiga selar utan certifiering där barnet hänger i grenen med raka ben, det belastar höftleden fel.</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">6. Ergobaby Embrace Bärsele, bäst för nyfödda</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby Embrace Bärsele"
+      rating={4.6}
+      rank={6}
+      badge="Bäst för nyfödda"
+      accentColor="#4c1d95" bgColor="#7c3aed"
+      imageUrl="/images/products/ergobaby-embrace-barsele.webp"
+      imageAlt="Ergobaby Embrace bärsele"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228514&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black"
+      alsoAt={[
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b9886fb5-f65b-44c5-8b67-1fb2985b9912&url=https://www.babysam.se/baersele-embrace-pure-black-onesize' },
+      ]}
+      pros={['Mjukast i testet, nyfödda älskar närheten', 'HIPS-certifierad M-position', 'Korsbara axelremmar, stödjer ryggen', 'Lägsta priset bland ergonomiska bärselen']}
+      cons={['Används bara upp till ca 6 månader (11,3 kg)', 'Färre positioner än Omni 360']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby Embrace är valet för nyföddtiden. Den är mjukast i testet och formar sig efter den lilla kroppen, något nyfödda uppskattar närheten av. Den är HIPS-certifierad med korrekt M-position, har korsbara axelremmar som stödjer ryggen och är det mest prisvärda alternativet bland de ergonomiska bärselarna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Begränsningen är att den bara används upp till cirka sex månader (11,3 kg) och har färre positioner än Omni 360. Men som första sele för nyföddtiden är den mjuk, trygg och svår att slå på pris.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228514&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-embrace-barsele-pure-black" />
 
- <h3>Mjuk sjalbärsele eller strukturerad bärsele: vad passar dig?</h3>
- <p>Valet beror främst på barnets ålder. Många familjer har faktiskt båda, en mjuk för nyföddtiden och en strukturerad för resten:</p>
- <ul>
- <li><strong>0 till 4 månader:</strong> en mjuk sjal eller mjukt strukturerad sele (som Ergobaby Embrace) är skönast, den formar sig efter den lilla kroppen.</li>
- <li><strong>Från ca 4 månader:</strong> en strukturerad sele med spännen blir mer praktisk, snabbare att ta på och bekvämare under långa pass.</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">7. Najell Easy Volume 2, smidig nyföddsele</h2>
+    <MoneyProductCard
+      brand="Najell"
+      name="Najell Easy Volume 2"
+      rating={4.6}
+      rank={7}
+      badge="Smidig nyföddsele"
+      accentColor="#b34558" bgColor="#4a5568"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=7c2c76b7-944e-4b18-9b6c-ddc4440bbb70&url=https://www.babysam.se/najell-easy-vol-2-baersele-honey-beige-onesize"
+      pros={['Volymjustering följer barnet från nyfödd', 'Ergonomisk M-position', 'Enkel att ta på även för nyblivna föräldrar']}
+      cons={['Färre bärpositioner än helkroppsselarna', 'Maxvikt 15 kg, kortare livslängd än Omni 360']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Najell Easy Volume 2 är Najells flagship-bärsele för nyföddtiden och uppåt. Volymjusteringen gör att selen växer med barnet från nyfödd upp till 15 kg, och den ergonomiska M-positionen stödjer höftledens utveckling under det första levnadsåret. Den är enkel att ta på, vilket gör den till en smidig första sele.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den har färre bärpositioner än helkroppsselarna och maxvikten på 15 kg ger kortare livslängd än Omni 360. Men för familjen som vill ha en mjuk, lättanvänd sele med svensk design är den ett bra alternativ.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=7c2c76b7-944e-4b18-9b6c-ddc4440bbb70&url=https://www.babysam.se/najell-easy-vol-2-baersele-honey-beige-onesize" />
 
- <h3>Skona din rygg: midjebälte och axelremmar i bärselen</h3>
- <p>En riktig kvalitetsbärsele avlastar ryggen genom konstruktionen, inte genom att du spänner musklerna. Tre saker avgör hur skön den blir under längre pass:</p>
- <ul>
- <li><strong>Brett midjebälte</strong> som flyttar 60 till 70 procent av barnets vikt från axlarna ner till höfterna.</li>
- <li><strong>Vadderade, justerbara axelremmar</strong> så att två föräldrar med olika kroppsstorlek kan dela på selen utan att ställa om den varje gång.</li>
- <li><strong>Tät passform:</strong> selen ska sitta tätt mot kroppen. Ett barn som gungar löst belastar ryggen mer och blir samtidigt mer otrygg.</li>
- </ul>
+    <p class="text-text-light leading-relaxed mb-8">
+      Sju bärselen granskade, en vinner totalt. Ergobaby Omni 360 tar förstaplatsen på mångsidighet och ergonomi, BabyBjörn One Air är premiumvalet i mesh och Ergobaby Embrace är bäst för nyföddtiden. Vill du fördjupa dig? Läs vår guide till <a href="/guider/valja-barsele/" class="text-accent hover:text-accent-dark underline">välja bärsele</a> eller jämför <a href="/barselen/ergobaby-omni-360-vs-babybjorn-one/" class="text-accent hover:text-accent-dark underline">Ergobaby Omni 360 vs BabyBjörn One Air</a>.
+    </p>
 
- <h3>Material i bärselen: mesh för sommar, bomull för vinter</h3>
- <ul>
- <li><strong>Sommar:</strong> luftigt 3D-mesh är svalast. BabyBjörn One Air är designad för värme och Ergobaby har en Cool Air-variant av Omni. Klä barnet tunnare än vanligt, kroppskontakten värmer snabbt.</li>
- <li><strong>Vinter:</strong> bomullsversioner är mjukare och varmare. Lägg en bärponcho över istället för att stoppa in barnet med tjock vinterjacka, som hindrar M-position.</li>
- </ul>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bärselen 2026" />
 
- <h3>Prova bärselen i butik innan köp om möjligt</h3>
- <p>En bärsele som passar din kropp passar inte alltid din partner. Många babybutiker erbjuder provning med barnet på plats. Är det inte möjligt, välj en modell med generösa justeringsmöjligheter (Ergobaby Omni 360 är en av de mest flexibla) och köp från en butik med fri returrätt på obrukade varor, så att du kan prova hemma och skicka tillbaka om passformen inte stämmer.</p>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide bärsele 2026: ergonomi, certifiering och material</h2>
 
- <section aria-label="Fakta om bärsele och höfthälsa" class="mt-8 mb-2">
-   <h2 class="font-heading text-xl font-bold mb-4">Bärsele och höftutveckling: vad forskningen visar</h2>
-   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-     <StatHighlight
-       figure="~1 000 barn/år"
-       source="NetdoktorPro (klinisk referens)"
-       sourceUrl="https://www.netdoktorpro.se/pediatrik/medicinska-oversikter/hoftledsdysplasihoftinstabilitet-hos-nyfodda/"
-     >
-       Antal barn per år i Sverige som föds med instabila höfter (höftledsdysplasi). Rätt bärposition (M-position) under de första månaderna stödjer höftledens normala utveckling.
-     </StatHighlight>
-     <StatHighlight
-       figure="IHDI-certifiering"
-       source="International Hip Dysplasia Institute"
-       sourceUrl="https://hipdysplasia.org/hip-healthy-products/baby-carriers/"
-       year="2026"
-     >
-       Oberoende certifiering som bekräftar att en bärsele tvingar fram korrekt M-position. Ergobaby, BabyBjörn och Najell är IHDI-godkända modeller som rekommenderas av barnortopeder.
-     </StatHighlight>
-   </div>
-   <ExpertQuote
-     name="International Hip Dysplasia Institute"
-     role="Oberoende medicinsk organisation för höftledsdysplasi"
-     sourceUrl="https://hipdysplasia.org/hip-healthy-products/baby-carriers/"
-   >
-     "Babies should be carried in a position that allows their hips to spread apart with the thighs supported and the hips bent, so the knees are slightly higher than the buttocks."
-   </ExpertQuote>
- </section>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">HIPS-certifiering: den viktigaste egenskapen i en bärsele</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Välj en bärsele som är certifierad av <a href="https://hipdysplasia.org/hip-healthy-products/baby-carriers/" target="_blank" rel="noopener nofollow" class="text-accent underline">International Hip Dysplasia Institute (IHDI)</a>. Certifieringen innebär att selen tvingar fram så kallad M-position, och det är den enskilt viktigaste parametern under första levnadsåret eftersom höftleden fortfarande utvecklas. Titta efter att knäna sitter i nivå med eller högre än rumpan, så att benen bildar ett M och inte hänger rakt ner. Ergobaby, BabyBjörn och Najell är alla IHDI-godkända. Undvik billiga selar utan certifiering där barnet hänger i grenen med raka ben, det belastar höftleden fel.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler guider om bärselen</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/barselen/nyfodd/" class="text-accent underline">Bärsele bäst i test för nyfödda 2026, säker bärning från dag ett</a></li>
- <li><a href="/barselen/ergonomisk/" class="text-accent underline">Bästa ergonomiska bärsele 2026, godkänd av fysioterapeut</a></li>
- <li><a href="/barselen/ergobaby-omni-360-vs-babybjorn-one/" class="text-accent underline">Ergobaby Omni 360 vs BabyBjörn One Air 2026, direktjämförelse</a></li>
- <li><a href="/barselen/babybjorn-mini-vs-one-air/" class="text-accent underline">BabyBjörn Mini vs One Air 2026, nyföddsmodell mot familjebärsele</a></li>
- <li><a href="/barselen/ringslinga/" class="text-accent underline">Ringslinga bärsele 2026, smidig bärning för nyfödda</a></li>
- <li><a href="/barselen/sommar/" class="text-accent underline">Bästa sommarbärsele 2026, lätt och svalkande mesh</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
- <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, Tripp Trapp, Antilop och fler</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Mjuk sjalbärsele eller strukturerad bärsele: vad passar dig?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Valet beror främst på barnets ålder, och många familjer har faktiskt båda, en mjuk för nyföddtiden och en strukturerad för resten. Mellan 0 och 4 månader är en mjuk sjal eller mjukt strukturerad sele (som Ergobaby Embrace) skönast, den formar sig efter den lilla kroppen. Från cirka 4 månader blir en strukturerad sele med spännen mer praktisk, snabbare att ta på och bekvämare under långa pass.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Skona din rygg: midjebälte och axelremmar i bärselen</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En riktig kvalitetsbärsele avlastar ryggen genom konstruktionen, inte genom att du spänner musklerna. Tre saker avgör hur skön den blir under längre pass. Ett brett midjebälte flyttar 60 till 70 procent av barnets vikt från axlarna ner till höfterna. Vadderade, justerbara axelremmar gör att två föräldrar med olika kroppsstorlek kan dela på selen utan att ställa om den varje gång. Och en tät passform: selen ska sitta tätt mot kroppen, ett barn som gungar löst belastar ryggen mer och blir samtidigt mer otrygg.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material i bärselen: mesh för sommar, bomull för vinter</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      På sommaren är luftigt 3D-mesh svalast. BabyBjörn One Air är designad för värme och Ergobaby har en Cool Air-variant av Omni. Klä barnet tunnare än vanligt, kroppskontakten värmer snabbt. På vintern är bomullsversioner mjukare och varmare. Lägg en bärponcho över istället för att stoppa in barnet med tjock vinterjacka, som hindrar M-position.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Ergobaby Omni 360 Bärsele, Luminous Ivory',
- description: 'HIPS-certifierad bärsele med 4 bärpositioner. Från nyfödd till 20 kg (0-4 år). M-position för korrekt höftutveckling.',
- image: 'https://bebisguiden.se/images/products/ergobaby-omni-360.webp',
- brand: 'Ergobaby',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'BabyBjörn One Air Bärsele 3D Mesh, Black',
- description: 'Premium bärsele i luftigt 3D-mesh. Hip-Healthy Institute-certifierad. Från nyfödd till 15 kg (0-3 år). 4 bärpositioner.',
- image: 'https://bebisguiden.se/images/products/babybjorn-one-air.webp',
- brand: 'BabyBjörn',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Nuna Cudl Clik Bärsele Caviar',
- description: 'Premium bärsele som klickas direkt på Nuna-barnvagnar utan adapter. Ergonomisk sits med bred ryggstöd. Tvättbar vid 30 grader.',
- image: 'https://bebisguiden.se/images/products/nuna-cudl-barsele.webp',
- brand: 'Nuna',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Flybaby Bärsele Black',
- description: 'Bärsele med hip-seat-design som avlastar höfterna. Bred sits för ergonomisk M-position. Kan bäras framåt och bakåt.',
- image: 'https://bebisguiden.se/images/products/flybaby-barsele.webp',
- brand: 'Flybaby',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Nimbel Bärsele All-Black',
- description: 'Kompakt och lättviktig bärsele i andningsbart mesh. Snabbt att ta på och av, passar utmärkt under jackan för pendlare.',
- image: 'https://bebisguiden.se/images/products/nimbel-barsele.webp',
- brand: 'Nimbel',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Ergobaby Embrace Bärsele, Pure Black',
- description: 'Mjuk nyföddbärsele med korsbara axelremmar. HIPS-certifierad. Från nyfödd till 11,3 kg (0-6 månader).',
- image: 'https://bebisguiden.se/images/products/ergobaby-embrace-barsele.webp',
- brand: 'Ergobaby',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Prova bärselen i butik innan köp om möjligt</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En bärsele som passar din kropp passar inte alltid din partner. Många babybutiker erbjuder provning med barnet på plats. Är det inte möjligt, välj en modell med generösa justeringsmöjligheter (Ergobaby Omni 360 är en av de mest flexibla) och köp från en butik med fri returrätt på obrukade varor, så att du kan prova hemma och skicka tillbaka om passformen inte stämmer.
+    </p>
 
-<div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/guider/valja-barsele/" class="text-accent underline">Välja bärsele, köpguide för nyblivna föräldrar</a></li>
- <li><a href="/guider/bebis-kolik/" class="text-accent underline">Kolik hos bebis, närhet i bärsele lugnar</a></li>
- <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, allt du behöver</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnarna 2026, jämförelse och test</a></li>
- </ul>
-</div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat sju bärselen utifrån ergonomi (HIPS-certifiering och M-position), bärpositioner (fram, rygg, höft, vändbar), åldersspann och maxvikt, material (mesh respektive bomull) och daglig användbarhet (hur snabbt selen tas på och hur den fördelar vikten). Produkterna är valda bland de mest sålda och eftersökta bärselarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
 
- <MultiStoreCTA
- productName="Najell Easy Volume 2"
- brand="najell"
- primaryStore="Babysam"
- primaryUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=7c2c76b7-944e-4b18-9b6c-ddc4440bbb70&url=https://www.babysam.se/najell-easy-vol-2-baersele-honey-beige-onesize"
- description="Najells flagship-bärsele för nyfödda upp till 15 kg. Ergonomisk M-position."
-/>
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler guider om bärselen</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barselen/nyfodd/" class="text-accent underline">Bärsele bäst i test för nyfödda 2026, säker bärning från dag ett</a></li>
+        <li><a href="/barselen/ergonomisk/" class="text-accent underline">Bästa ergonomiska bärsele 2026, godkänd av fysioterapeut</a></li>
+        <li><a href="/barselen/ergobaby-omni-360-vs-babybjorn-one/" class="text-accent underline">Ergobaby Omni 360 vs BabyBjörn One Air 2026, direktjämförelse</a></li>
+        <li><a href="/barselen/babybjorn-mini-vs-one-air/" class="text-accent underline">BabyBjörn Mini vs One Air 2026, nyföddsmodell mot familjebärsele</a></li>
+        <li><a href="/barselen/ringslinga/" class="text-accent underline">Ringslinga bärsele 2026, smidig bärning för nyfödda</a></li>
+        <li><a href="/barselen/sommar/" class="text-accent underline">Bästa sommarbärsele 2026, lätt och svalkande mesh</a></li>
+        <li><a href="/guider/valja-barsele/" class="text-accent underline">Välja bärsele, köpguide för nyblivna föräldrar</a></li>
+        <li><a href="/guider/bebis-kolik/" class="text-accent underline">Kolik hos bebis, närhet i bärsele lugnar</a></li>
+        <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, allt du behöver</a></li>
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
+        <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, Tripp Trapp, Antilop och fler</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa bärselen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        ...(p.imageUrl ? { "image": `https://bebisguiden.se${p.imageUrl}` } : {}),
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228534&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-360-barsele-black"
+    text="Bra pris hos Jollyroom"
+    productName="Ergobaby Omni 360 Bärsele"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

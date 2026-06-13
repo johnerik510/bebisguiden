@@ -1,202 +1,403 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Barnvagnar', href: '/barnvagnar/' },
- { label: 'Hopfällbar barnvagn' },
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Hopfällbar barnvagn' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade).
 const products = [
- {
- name: 'Baby Jogger City Tour 2 Sulky, Pitch Black',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/baby-jogger-city-tour-2-sulky-pitch-black.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181901&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black',
- features: {
- 'Vikt': '6,5 kg',
- 'Hopfällt': '56 × 46 × 25 cm',
- 'Liggläge': 'Ja',
- 'Fällning': 'En hand',
- 'Passar flyg': 'Handbagage (vissa bolag)',
- },
- },
- {
- name: 'Baby Jogger City Tour 2 Sulky, Shadow Grey',
- badge: 'Populärast',
- rating: 4.7,
- image: '/images/products/baby-jogger-city-tour-2-sulky-shadow-grey.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey',
- features: {
- 'Vikt': '6,5 kg',
- 'Hopfällt': '56 × 46 × 25 cm',
- 'Liggläge': 'Ja',
- 'Fällning': 'En hand',
- 'Passar flyg': 'Handbagage (vissa bolag)',
- },
- },
- {
- name: 'Baby Jogger City Tour 2 Sulky, Carbon',
- badge: 'Snyggast',
- rating: 4.7,
- image: '/images/products/baby-jogger-city-tour-2.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910264&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/baby-jogger-city-tour-2-sulky-inkl-liggdel-everett-green-jet',
- features: {
- 'Vikt': '6,5 kg',
- 'Hopfällt': '56 × 46 × 25 cm',
- 'Liggläge': 'Ja',
- 'Fällning': 'En hand',
- 'Passar flyg': 'Handbagage (vissa bolag)',
- },
- },
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Pitch Black',
+    desc: 'Kompakt hopfällbar sulky 6,5 kg. Hopfällt mått 56 x 46 x 25 cm. En-hands-fällning. Halvliggande ryggstöd. Från 6 månader.',
+    brand: 'Baby Jogger',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Väger 6,5 kg', 'En-hands-fällning', 'Halvliggande ryggstöd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181901&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black',
+    imageUrl: '/images/products/baby-jogger-city-tour-2-sulky-pitch-black.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Vikt': '6,5 kg', 'Hopfällt': '56 x 46 x 25 cm', 'Liggläge': 'Ja', 'Fällning': 'En hand', 'Passar flyg': 'Handbagage (vissa bolag)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Shadow Grey',
+    desc: 'Hopfällbar sulky i neutral grå. 6,5 kg, hopfällt 56 x 46 x 25 cm, en-hands-fällning och UPF 50+ solskydd. Från 6 månader.',
+    brand: 'Baby Jogger',
+    rating: 4.7,
+    badge: 'Populärast',
+    usps: ['Väger 6,5 kg', 'UPF 50+ solskydd', 'Lättkörd i stad'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey',
+    imageUrl: '/images/products/baby-jogger-city-tour-2-sulky-shadow-grey.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Vikt': '6,5 kg', 'Hopfällt': '56 x 46 x 25 cm', 'Liggläge': 'Ja', 'Fällning': 'En hand', 'Passar flyg': 'Handbagage (vissa bolag)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Baby Jogger City Tour 2 Sulky, Carbon',
+    desc: 'Hopfällbar sulky i stilren mörkgrå design som döljer smuts. 6,5 kg, hopfällt 56 x 46 x 25 cm, en-hands-fällning. Från 6 månader.',
+    brand: 'Baby Jogger',
+    rating: 4.7,
+    badge: 'Snyggast',
+    usps: ['Mörkgrå design', 'Döljer smuts', 'Väger 6,5 kg'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910264&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/baby-jogger-city-tour-2-sulky-inkl-liggdel-everett-green-jet',
+    imageUrl: '/images/products/baby-jogger-city-tour-2.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Vikt': '6,5 kg', 'Hopfällt': '56 x 46 x 25 cm', 'Liggläge': 'Ja', 'Fällning': 'En hand', 'Passar flyg': 'Handbagage (vissa bolag)' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Vikt', 'Hopfällt', 'Liggläge', 'Fällning', 'Passar flyg'];
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Vikt', 'Hopfällt', 'Liggläge', 'Fällning', 'Passar flyg'];
 
 const faqItems = [
- {
- question: 'Vad är skillnaden mellan sulky och hopfällbar barnvagn?',
- answer: 'En sulky är en lätt, kompakt sittvagn utan liggdel, barnet sitter upprätt. En hopfällbar barnvagn kan vara en kombivagn eller sittvagn som fälls ihop kompakt. Baby Jogger City Tour 2 är tekniskt sett en sulky men har ett justerbart ryggstöd som kan fällas tillbaka till ett halvliggande läge, vilket gör den mer mångsidig.',
- },
- {
- question: 'Passar Baby Jogger City Tour 2 som handbagage på flyget?',
- answer: 'Baby Jogger City Tour 2 hopfälld mäter 56 × 46 × 25 cm och väger 6,5 kg. Det passar som handbagage på Ryanair (55 × 40 × 20 cm) och SAS (55 × 40 × 23 cm) i teorin, men kontrollera alltid aktuella regler hos ditt flygbolag innan avresa. Ofta kan vagnar checkas in gratis vid gaten.',
- },
- {
- question: 'Från vilken ålder kan barnet sitta i en hopfällbar sittvagn?',
- answer: 'En sittvagn utan liggdel passar barn som kan sitta stabilt på egen hand, vanligtvis från 6 månaders ålder. Baby Jogger City Tour 2 anger från 6 månader. För yngre bebisar behöver du antingen en kombivagn med liggdel eller ett babyskydd som kan kopplas till sulkyn (kompatibilitet varierar efter modell).',
- },
- {
- question: 'Hur tung bör en hopfällbar barnvagn vara?',
- answer: 'En bra hopfällbar barnvagn för stadsmiljö bör väga 5 till 8 kg. Under 6 kg är idealiskt för tunnelbana och kollektivtrafik men kan innebära kompromisser i komfort och hållbarhet. 6 till 8 kg är en bra balans mellan lätthet och funktionalitet. Allt över 9 kg börjar bli tungt att bära i trappor och kollektivtrafik.',
- },
- {
- question: 'Kan man använda en sulky som enda barnvagn?',
- answer: 'Ja, om barnet är 6 månader eller äldre och kan sitta. Många familjer använder en sulky/kompakt sittvagn som enda vagn, speciellt i stadsmiljö. Om du behöver transportera ett yngre barn (0 till 6 månader) behöver du en kompatibel babyskyddslösning eller en kombivagn med liggdel. Baby Jogger City Tour 2 kan kombineras med kompatibla babyskydd via separat adapter.',
- },
+  {
+    question: 'Vad är skillnaden mellan sulky och hopfällbar barnvagn?',
+    answer: 'En sulky är en lätt, kompakt sittvagn utan liggdel, barnet sitter upprätt. En hopfällbar barnvagn kan vara en kombivagn eller sittvagn som fälls ihop kompakt. Baby Jogger City Tour 2 är tekniskt sett en sulky men har ett justerbart ryggstöd som kan fällas tillbaka till ett halvliggande läge, vilket gör den mer mångsidig.',
+  },
+  {
+    question: 'Passar Baby Jogger City Tour 2 som handbagage på flyget?',
+    answer: 'Baby Jogger City Tour 2 hopfälld mäter 56 x 46 x 25 cm och väger 6,5 kg. Det passar som handbagage på Ryanair (55 x 40 x 20 cm) och SAS (55 x 40 x 23 cm) i teorin, men kontrollera alltid aktuella regler hos ditt flygbolag innan avresa. Ofta kan vagnar checkas in gratis vid gaten.',
+  },
+  {
+    question: 'Från vilken ålder kan barnet sitta i en hopfällbar sittvagn?',
+    answer: 'En sittvagn utan liggdel passar barn som kan sitta stabilt på egen hand, vanligtvis från 6 månaders ålder. Baby Jogger City Tour 2 anger från 6 månader. För yngre bebisar behöver du antingen en kombivagn med liggdel eller ett babyskydd som kan kopplas till sulkyn (kompatibilitet varierar efter modell).',
+  },
+  {
+    question: 'Hur tung bör en hopfällbar barnvagn vara?',
+    answer: 'En bra hopfällbar barnvagn för stadsmiljö bör väga 5 till 8 kg. Under 6 kg är idealiskt för tunnelbana och kollektivtrafik men kan innebära kompromisser i komfort och hållbarhet. 6 till 8 kg är en bra balans mellan lätthet och funktionalitet. Allt över 9 kg börjar bli tungt att bära i trappor och kollektivtrafik.',
+  },
+  {
+    question: 'Kan man använda en sulky som enda barnvagn?',
+    answer: 'Ja, om barnet är 6 månader eller äldre och kan sitta. Många familjer använder en sulky/kompakt sittvagn som enda vagn, speciellt i stadsmiljö. Om du behöver transportera ett yngre barn (0 till 6 månader) behöver du en kompatibel babyskyddslösning eller en kombivagn med liggdel. Baby Jogger City Tour 2 kan kombineras med kompatibla babyskydd via separat adapter.',
+  },
 ];
+
 export const articleMeta = {
   title: "Hopfällbar barnvagn 2026: bäst för flyg och kollektivtrafik",
   description: "Baby Jogger City Tour 2 vinner med 6,5 kg vikt och 56 x 46 x 25 cm hopfälld. Vi har jämfört 5 hopfällbara barnvagnar för pendling, flygresor och bilbagage.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Barnvagnar",
   image: "/images/products/baby-jogger-city-tour-2-sulky-pitch-black.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Hopfällbar barnvagn 2026: bäst för flyg och kollektivtrafik"
- description="Baby Jogger City Tour 2 vinner med 6,5 kg vikt och 56 x 46 x 25 cm hopfälld. Vi har jämfört 5 hopfällbara barnvagnar för pendling, flygresor och bilbagage."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/barnvagnar/hopfallbar/"
- updatedDate="2026-05-15"
+  title="Hopfällbar barnvagn 2026: bäst för flyg och kollektivtrafik"
+  description="Baby Jogger City Tour 2 vinner med 6,5 kg vikt och 56 x 46 x 25 cm hopfälld. Vi har jämfört 5 hopfällbara barnvagnar för pendling, flygresor och bilbagage."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/hopfallbar/"
   datePublished="2026-02-16"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <h2 class="font-heading text-3xl md:text-4xl font-bold mb-3">Bästa hopfällbara barnvagnen 2026</h2>
- <p class="text-base text-text-light mb-3 max-w-2xl">
- Baby Jogger City Tour 2 vinner hopfällbar barnvagn bäst i test 2026. Den fälls med en hand på under fem sekunder och blir bara 56 x 46 x 25 cm. Med en vikt på 6,5 kg klarar den overhead-facket på de flesta flygbolag och får plats i ett vanligt bilbagage.
- </p>
 
- <TopPick product={products[0]} description="Baby Jogger City Tour 2 fälls med en hand på under fem sekunder och blir 56 x 46 x 25 cm. Klarar overhead-fack på de flesta flygbolag och får plats i ett vanligt bilbagage. Förstavalet för pendlare och resefamiljer." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-02-16" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, hopfällbara barnvagnar 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken hopfällbar barnvagn är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Baby Jogger City Tour 2 är bäst i test 2026. Den fälls med en hand på under fem sekunder och blir bara 56 x 46 x 25 cm. Med en vikt på 6,5 kg klarar den overhead-facket på de flesta flygbolag och får plats i ett vanligt bilbagage. Förstavalet för pendlare och resefamiljer.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
- <p class="text-sm text-text-light"><strong>Baby Jogger City Tour 2</strong> är bäst i kategorin, lätt (6,5 kg), kompakt hopfällt (56 × 46 × 25 cm), har liggläge och fälls ihop med en hand. Finns i flera färger.</p>
- </div>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Baby Jogger"
+    name="City Tour 2 Sulky, Pitch Black"
+    image="/images/products/baby-jogger-city-tour-2-sulky-pitch-black.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181901&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
+    store="Jollyroom"
+    description="Bäst i test 2026. Fälls med en hand på under fem sekunder och blir 56 x 46 x 25 cm. Klarar overhead-fack på de flesta flygbolag och får plats i ett vanligt bilbagage. Förstavalet för pendlare och resefamiljer."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, hopfällbara barnvagnar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Baby Jogger City Tour 2 Sulky, Pitch Black"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/baby-jogger-city-tour-2-sulky-pitch-black.webp"
- pros={['Väger bara 6,5 kg', 'Kompakt hopfällt (56 × 46 × 25 cm)', 'Fälls med en hand', 'Halvliggande ryggstöd för kortare tupplur']}
- cons={['Ingen fullständig liggdel', 'Passar från 6 månader (inte nyfödd)', 'Lagringsutrymme begränsat']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181901&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Baby Jogger City Tour 2</strong> är bäst i kategorin, lätt (6,5 kg), kompakt hopfällt (56 x 46 x 25 cm), har liggläge och fälls ihop med en hand. Finns i flera färger.</p>
+  </div>
 
- <ProductCard
- name="Baby Jogger City Tour 2 Sulky, Shadow Grey"
- badge="Populärast"
- rating={4.7}
- image="/images/products/baby-jogger-city-tour-2-sulky-shadow-grey.webp"
- pros={['Neutral grå färg som passar de flesta', 'Samma prestanda som Pitch Black', 'Lättkörd på stadens underlag', 'UPF 50+ solskydd']}
- cons={['Samma begränsningar som Pitch Black', 'Grå kan bli smutsig synlig']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Baby Jogger City Tour 2 Sulky, Carbon"
- badge="Snyggast"
- rating={4.7}
- image="/images/products/baby-jogger-city-tour-2.webp"
- pros={['Stilren mörkgrå design', 'Döljer smuts bättre', 'Samma prestanda som övriga färger', 'Modern stadskänsla']}
- cons={['Kan vara svår att skilja från Pitch Black i bild', 'Samma begränsningar som övriga modeller']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Baby Jogger City Tour 2, Pitch Black, bäst i test</h2>
+    <MoneyProductCard
+      brand="Baby Jogger"
+      name="Baby Jogger City Tour 2 Sulky, Pitch Black"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/baby-jogger-city-tour-2-sulky-pitch-black.webp"
+      imageAlt="Baby Jogger City Tour 2 Sulky Pitch Black"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181901&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
+      pros={['Väger bara 6,5 kg', 'Kompakt hopfällt (56 x 46 x 25 cm)', 'Fälls med en hand', 'Halvliggande ryggstöd för kortare tupplur']}
+      cons={['Ingen fullständig liggdel', 'Passar från 6 månader (inte nyfödd)', 'Lagringsutrymme begränsat']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Baby Jogger City Tour 2 i Pitch Black är vår totala vinnare och referensen för hela kategorin. Den väger bara 6,5 kg och fälls ihop med en hand på under fem sekunder, vilket är avgörande när du står med barnet i ena armen vid bussen eller flygutgången. Hopfälld blir den 56 x 46 x 25 cm, kompakt nog att glida ner i ett vanligt bilbagage eller overhead-facket på de flesta flygbolag.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det halvliggande ryggstödet räcker till en kortare tupplur men ersätter inte en fullständig liggdel, vagnen passar från 6 månader och inte för nyfödda. Lagringsutrymmet under sitsen är begränsat. För pendlare och resefamiljer som prioriterar låg vikt och snabb fällning väger de fördelarna tyngre än kompromisserna.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181901&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: vad du ska titta på när du väljer hopfällbar barnvagn</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Baby Jogger City Tour 2, Shadow Grey, populärast</h2>
+    <MoneyProductCard
+      brand="Baby Jogger"
+      name="Baby Jogger City Tour 2 Sulky, Shadow Grey"
+      rating={4.7}
+      rank={2}
+      badge="Populärast"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/baby-jogger-city-tour-2-sulky-shadow-grey.webp"
+      imageAlt="Baby Jogger City Tour 2 Sulky Shadow Grey"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey"
+      pros={['Neutral grå färg som passar de flesta', 'Samma prestanda som Pitch Black', 'Lättkörd på stadens underlag', 'UPF 50+ solskydd']}
+      cons={['Samma begränsningar som Pitch Black', 'Grå kan bli smutsig synlig']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Shadow Grey är samma vagn som vinnaren men i en neutral grå ton som passar de flesta och är den populäraste färgen. Prestandan är identisk med Pitch Black: 6,5 kg, samma kompakta hopfällda mått och samma en-hands-fällning. Den är lättkörd på stadens underlag och har UPF 50+ solskydd i suffletten för soliga promenader.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Begränsningarna är desamma som för Pitch Black: halvliggande ryggstöd istället för full liggdel och från 6 månader. Den ljusare gråa tonen visar smuts något tydligare än de mörkare färgerna. Vill du ha vinnarvagnen i en mer neutral kulör är Shadow Grey det självklara valet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Hopfällbar barnvagn: vikt kontra funktionalitet</h3>
- <p>Lättaste vagnarna (under 5 kg) offrar ofta komfort, däckstorlek och köregenskaper. 6 till 7 kg är ofta den bästa kompromissen för daglig användning i stad. Kom ihåg att det är barnets vikt (10 till 20 kg) som är den reella bördan, en kg skillnad i vagnvikt spelar liten roll i praktiken.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Baby Jogger City Tour 2, Carbon, snyggast</h2>
+    <MoneyProductCard
+      brand="Baby Jogger"
+      name="Baby Jogger City Tour 2 Sulky, Carbon"
+      rating={4.7}
+      rank={3}
+      badge="Snyggast"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/baby-jogger-city-tour-2.webp"
+      imageAlt="Baby Jogger City Tour 2 Sulky Carbon"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey"
+      pros={['Stilren mörkgrå design', 'Döljer smuts bättre', 'Samma prestanda som övriga färger', 'Modern stadskänsla']}
+      cons={['Kan vara svår att skilja från Pitch Black i bild', 'Samma begränsningar som övriga modeller']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Carbon är variantens snyggaste färg med en stilren mörkgrå design och en modern stadskänsla. Den mörka tonen döljer smuts bättre än den ljusare gråa, en praktisk fördel i vardagen med barn. Prestandan är identisk med övriga färger: 6,5 kg, kompakt hopfällning och en-hands-fällning.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      I produktbilder kan Carbon vara svår att skilja från Pitch Black, och den har samma begränsningar som de andra modellerna med halvliggande ryggstöd och åldersgräns från 6 månader. Letar du efter vinnarvagnen i den mest diskreta kulören är Carbon valet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181902&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-shadow-grey" />
 
- <h3>Hopfällt mått, vad passar din bil och flygbolag?</h3>
- <p>Mät bagageutrymmet i din bil och jämför med hopfällt mått. City Tour 2 (56 × 46 × 25 cm) passar i de flesta bagageutrymmen och är ett av marknadens kompaktaste alternativ med liggläge. Kontrollera alltid handbagage-mått mot ditt flygbolag innan du räknar med att ta vagnen som handbagage.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre färgvarianter av samma vinnare. Baby Jogger City Tour 2 tar förstaplatsen på låg vikt, kompakt hopfällning och smidig en-hands-fällning, Pitch Black är vårt totala förstaval, Shadow Grey är den populäraste neutrala kulören och Carbon den snyggaste och mest smutståliga. Vill du jämföra bredare? Läs vår <a href="/barnvagnar/" class="text-accent hover:text-accent-dark underline">test av bästa barnvagnen 2026</a> eller jämför med en ännu <a href="/barnvagnar/latt/" class="text-accent hover:text-accent-dark underline">lätt barnvagn under 7 kg</a>.
+    </p>
 
- <h3>Fällningsteknik</h3>
- <p>En-hands-fällning är praktiskt när du håller barnet i andra handen. City Tour 2 har ett av marknadens smidigaste fällsystem. Testa alltid i butik om möjligt, det som ser enkelt ut i en video kan vara svårare i praktiken.</p>
- </div>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda, hopfällbara barnvagnar 2026" />
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade barnvagnsguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- <li><a href="/barnvagnar/latt/" class="text-accent underline">Lätt barnvagn 2026, under 7 kg</a></li>
- <li><a href="/barnvagnar/kompakt/" class="text-accent underline">Kompakt barnvagn 2026, bäst för stad och smal dörröppning</a></li>
- <li><a href="/marken/strolee/" class="text-accent underline">Strolee shoppingvagn, hopfällbar vagn för shopping och utflykt</a></li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad du ska titta på när du väljer hopfällbar barnvagn</h2>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hopfällbar barnvagn: vikt kontra funktionalitet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Lättaste vagnarna (under 5 kg) offrar ofta komfort, däckstorlek och köregenskaper. 6 till 7 kg är ofta den bästa kompromissen för daglig användning i stad. Kom ihåg att det är barnets vikt (10 till 20 kg) som är den reella bördan, en kg skillnad i vagnvikt spelar liten roll i praktiken.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Baby Jogger City Tour 2 Sulky, Pitch Black',
- description: 'Kompakt hopfällbar sulky 6,5 kg. Hopfällt mått 56 × 46 × 25 cm. En-hands-fällning. Halvliggande ryggstöd. Från 6 månader.',
- image: 'https://bebisguiden.se/images/products/baby-jogger-city-tour-2.webp',
- brand: 'Baby Jogger',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- ]} />
- <MultiStoreCTA
- productName="Hopfällbara barnvagnar"
- brand="ll"
- primaryStore="Crescent Barnvagnar"
- description="Svenska barnvagnar med hög kvalitet och ergonomi."
-/>
- <MultiStoreCTA
- productName="Hopfällbara barnvagnar"
- brand="ll"
- primaryStore="Babyonline"
- description="Stort urval barnvagnar, bärslar och babyutrustning."
-/>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hopfällt mått, vad passar din bil och flygbolag?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Mät bagageutrymmet i din bil och jämför med hopfällt mått. City Tour 2 (56 x 46 x 25 cm) passar i de flesta bagageutrymmen och är ett av marknadens kompaktaste alternativ med liggläge. Kontrollera alltid handbagage-mått mot ditt flygbolag innan du räknar med att ta vagnen som handbagage.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Fällningsteknik</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En-hands-fällning är praktiskt när du håller barnet i andra handen. City Tour 2 har ett av marknadens smidigaste fällsystem. Testa alltid i butik om möjligt, det som ser enkelt ut i en video kan vara svårare i praktiken.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Barnvagnssäkerhet: vad myndigheterna kräver</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Alla barnvagnar på den svenska marknaden måste uppfylla en europeisk säkerhetsstandard. Nedan är de viktigaste fakta från Konsumentverket som alla föräldrar bör känna till innan köp.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="EN 1888"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2026"
+      >
+        Europeisk säkerhetsstandard som alla barnvagnar på den svenska marknaden måste uppfylla. Märkningen ställer krav på stabilitet, bromsar, säkerhetssele och material.
+      </StatHighlight>
+      <StatHighlight
+        figure="600-700 barn/år"
+        source="Konsumentverket (äldre uppgift)"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2010"
+      >
+        Uppskattad andel barn som sökte akutvård för barnvagnsrelaterade skador i Sverige. Konsumentverket uppmanar alltid att köpa från auktoriserade återförsäljare och kontrollera CE-märkning.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+    >
+      "Innan du bestämmer dig för vilken barnvagn du ska köpa, kontrollera att: vagnen är märkt enligt EN 1888, bromsar och låsningar fungerar, vagnen är stabil, olika tillbehör inte påverkar hur stabil vagnen är."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat hopfällbara barnvagnar utifrån fyra kriterier: kompakthet (hopfällt mått, vikt, fällningsteknik), vardagsanvändning för pendling och resor (handbagage, bilbagage, kollektivtrafik), komfort (ryggstöd, körkomfort, solskydd) och säkerhet (EN 1888-certifiering, bromsar, sele). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade barnvagnsguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/barnvagnar/latt/" class="text-accent underline">Lätt barnvagn 2026, under 7 kg</a></li>
+        <li><a href="/barnvagnar/kompakt/" class="text-accent underline">Kompakt barnvagn 2026, bäst för stad och smal dörröppning</a></li>
+        <li><a href="/marken/strolee/" class="text-accent underline">Strolee shoppingvagn, hopfällbar vagn för shopping och utflykt</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa hopfällbara barnvagnen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10181901&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-tour-2-sulky-pitch-black"
+    text="Bra pris hos Jollyroom"
+    productName="Baby Jogger City Tour 2"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

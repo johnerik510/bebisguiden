@@ -1,199 +1,499 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Barnvagnar', href: '/barnvagnar/' },
- { label: 'Joggingvagn' },
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Joggingvagn' },
 ];
 
+
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder/priser oförändrade (verifierade).
 const products = [
- {
- name: 'Thule Urban Glide 3',
- image: '/images/products/thule-urban-glide-3.webp',
- badge: 'Bäst i test',
- rating: 4.9,
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101991&url=https://www.babyv.se/sv/articles/1.69.24596/thule-urban-glide-3-black',
- features: {
- 'Vikt': '14,3 kg',
- 'Max barnvikt': '34 kg',
- 'Hjuldiameter': '16 tum bak',
- 'Bromssystem': 'Fotbroms + handbroms',
- 'Liggläge': 'Ja (från födseln med tillbehör)',
- },
- },
- {
- name: 'Baby Jogger City Mini GT2',
- image: '/images/products/baby-jogger-city-mini-gt2.webp',
- badge: 'Bäst mångsidig',
- rating: 4.7,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10161016&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-mini-gt-2-1-briar-green',
- features: {
- 'Vikt': '12,1 kg',
- 'Max barnvikt': '22 kg',
- 'Hjuldiameter': '12 tum bak',
- 'Bromssystem': 'Fotbroms',
- 'Liggläge': 'Nästan plant (175°)',
- },
- },
- {
- name: 'UPPAbaby RIDGE',
- image: '/images/products/uppababy-ridge-joggingvagn-jake-black.webp',
- badge: 'Premium terrängval',
- rating: 4.7,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10225387&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/uppababy-ridge-joggingvagn-jake-black',
- features: {
- 'Vikt': '14,5 kg',
- 'Max barnvikt': '27 kg',
- 'Hjuldiameter': '16 tum bak',
- 'Bromssystem': 'Fotbroms + handbroms',
- 'Liggläge': 'Ja (medföljer)',
- },
- },
- {
- name: 'Cybex Avi Spin Joggingvagn',
- image: '/images/products/cybex-avi-spin-moon-black.webp',
- badge: 'Duo + joggingvagn',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10264351&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/cybex-avi-spin-joggingvagn-moon-black',
- features: {
- 'Vikt': '14,8 kg',
- 'Max barnvikt': '22 kg',
- 'Hjuldiameter': '16 tum bak',
- 'Bromssystem': 'Fotbroms + handbroms',
- 'Liggläge': 'Ja (med liggdel)',
- },
- },
- {
- name: 'Thule Glide 3',
- image: '/images/products/thule-glide-3-svart.webp',
- badge: 'Ren löparvagn',
- rating: 4.6,
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101970&url=https://www.babyv.se/sv/articles/1.69.24905/thule-glide-3-joggingvagn-svart',
- features: {
- 'Vikt': '13,5 kg',
- 'Max barnvikt': '30 kg',
- 'Hjuldiameter': '16 tum bak',
- 'Bromssystem': 'Fotbroms + handbroms',
- 'Liggläge': 'Nej',
- },
- },
+  {
+    name: 'Thule Urban Glide 3',
+    desc: 'Toppmodell joggingvagn med luftfyllda däck, fjädring och handbroms. 14,3 kg chassi, 16-tums lufthjul bak och maxvikt 34 kg. Kan användas från födseln med bassinet-tillbehör.',
+    brand: 'Thule',
+    rating: 4.9,
+    badge: 'Bäst i test',
+    usps: ['16-tums lufthjul', 'Fot- och handbroms', 'Maxvikt 34 kg'],
+    store: 'Baby V',
+    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101991&url=https://www.babyv.se/sv/articles/1.69.24596/thule-urban-glide-3-black',
+    imageUrl: '/images/products/thule-urban-glide-3.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Vikt': '14,3 kg', 'Max barnvikt': '34 kg', 'Hjuldiameter': '16 tum bak', 'Bromssystem': 'Fotbroms + handbroms', 'Liggläge': 'Ja (från födseln med tillbehör)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Baby Jogger City Mini GT2',
+    desc: 'Mångsidig allterrängvagn med snabb enhandsfällning och bra stötdämpning. 12,1 kg, nästan plant liggläge (175°) och låsbart framhjul. Lättast i testet.',
+    brand: 'Baby Jogger',
+    rating: 4.7,
+    badge: 'Bäst mångsidig',
+    usps: ['Lättast 12,1 kg', 'Enhandsfällning', 'Låsbart framhjul'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10161016&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-mini-gt-2-1-briar-green',
+    imageUrl: '/images/products/baby-jogger-city-mini-gt2.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Vikt': '12,1 kg', 'Max barnvikt': '22 kg', 'Hjuldiameter': '12 tum bak', 'Bromssystem': 'Fotbroms', 'Liggläge': 'Nästan plant (175°)' },
+    alsoAt: [],
+  },
+  {
+    name: 'UPPAbaby RIDGE',
+    desc: 'Premium terrängjoggingvagn med liggdel som medföljer, 16-tums lufthjul och handbroms. 14,5 kg, maxvikt 27 kg. Starkt amerikanskt alternativ för terräng.',
+    brand: 'UPPAbaby',
+    rating: 4.7,
+    badge: 'Premium terrängval',
+    usps: ['Liggdel medföljer', '16-tums lufthjul', 'Fot- och handbroms'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10225387&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/uppababy-ridge-joggingvagn-jake-black',
+    imageUrl: '/images/products/uppababy-ridge-joggingvagn-jake-black.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Vikt': '14,5 kg', 'Max barnvikt': '27 kg', 'Hjuldiameter': '16 tum bak', 'Bromssystem': 'Fotbroms + handbroms', 'Liggläge': 'Ja (medföljer)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Cybex Avi Spin Joggingvagn',
+    desc: 'Flexibel joggingvagn som även fungerar som duovagn. 14,8 kg, 16-tums lufthjul, handbroms och liggdel. För barn upp till 22 kg.',
+    brand: 'Cybex',
+    rating: 4.5,
+    badge: 'Duo + joggingvagn',
+    usps: ['Duo + joggingvagn', '16-tums lufthjul', 'Fot- och handbroms'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10264351&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/cybex-avi-spin-joggingvagn-moon-black',
+    imageUrl: '/images/products/cybex-avi-spin-moon-black.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Vikt': '14,8 kg', 'Max barnvikt': '22 kg', 'Hjuldiameter': '16 tum bak', 'Bromssystem': 'Fotbroms + handbroms', 'Liggläge': 'Ja (med liggdel)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Thule Glide 3',
+    desc: 'Ren löparvagn med fast framhjul, 16-tums lufthjul och handbroms. 13,5 kg, maxvikt 30 kg. Enkel och pålitlig för dig som främst springer.',
+    brand: 'Thule',
+    rating: 4.6,
+    badge: 'Ren löparvagn',
+    usps: ['Fast framhjul', '16-tums lufthjul', 'Maxvikt 30 kg'],
+    store: 'Baby V',
+    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101970&url=https://www.babyv.se/sv/articles/1.69.24905/thule-glide-3-joggingvagn-svart',
+    imageUrl: '/images/products/thule-glide-3-svart.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    features: { 'Vikt': '13,5 kg', 'Max barnvikt': '30 kg', 'Hjuldiameter': '16 tum bak', 'Bromssystem': 'Fotbroms + handbroms', 'Liggläge': 'Nej' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Vikt', 'Max barnvikt', 'Hjuldiameter', 'Bromssystem', 'Liggläge'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Vikt', 'Max barnvikt', 'Hjuldiameter', 'Bromssystem', 'Liggläge'];
 
 const faqItems = [
- {
- question: 'Från vilken ålder kan barnet sitta i joggingvagn?',
- answer: 'De flesta joggingvagnar utan liggdel är avsedda för barn som kan hålla upp huvudet ordentligt, vanligtvis från 6 månader. Thule Urban Glide 3 och BOB Gear Revolution Flex 3.0 kan användas från födseln om man köper ett separat bassinet-tillbehör. Kontrollera alltid tillverkarens rekommendation för just din modell.',
- },
- {
- question: 'Kan man jogga med en vanlig barnvagn?',
- answer: 'Nej, det rekommenderas inte. Vanliga barnvagnar saknar de låsta hjulen, den styvare ramen, handbroms och den stötdämpning som en dedikerad joggingvagn har. Vid löpning skakas barnet mer i en vanlig vagn, och risken för stjälpning är högre. En joggingvagn är konstruerad specifikt för att hålla barnet stabilt och säkert i fart.',
- },
- {
- question: 'Vilken joggingvagn är bäst för terrängkörning?',
- answer: 'Thule Urban Glide 3 och UPPAbaby RIDGE är de bästa alternativen för terräng. Båda har stora 16-tums luftpumpade bakhjul, solid stötdämpning och låsbart framhjul. Thule Urban Glide 3 är populärare i Sverige och har fjädringsarm fram. UPPAbaby RIDGE är ett utmärkt amerikanskt alternativ med liggdel som medföljer.',
- },
- {
- question: 'Är joggingvagnar tunga att bära?',
- answer: 'Joggingvagnar är generellt tyngre än sittvagnar på grund av de robusta hjulen och ramen, vanligtvis 13 till 15 kg. Baby Jogger City Mini GT2 är lättast i vår test på 12,1 kg och har dessutom ett snabbt enkelhands-viklsystem. Om du ofta ska bära vagnen i trappor, välj Baby Jogger City Mini GT2 framför de tyngre terrängmodellerna.',
- },
- {
- question: 'Passar joggingvagnar på kollektivtrafik?',
- answer: 'De flesta joggingvagnar är stora och passar dåligt på kollektivtrafik jämfört med kompakta sittvagnar. Baby Jogger City Mini GT2 är det bästa alternativet om du både vill jogga och åka buss eller tunnelbana, den viks med en hand och är smalare än terrängmodellerna. Thule Urban Glide 3 och UPPAbaby RIDGE är svårare att hantera i trång kollektivtrafik.',
- },
- {
- question: 'Vad är skillnaden på joggingvagn och terrängsportvagn?',
- answer: 'Termerna används ibland synonymt. En joggingvagn är primärt designad för löpning med fast framhjul (eller låsbart sådant). En terrängsportvagn har svängbart framhjul som kan låsas för löpning och är mer mångsidig för promenader i varierande terräng. Baby Jogger City Mini GT2 är en terrängsportvagn, utmärkt i terräng och promenader men också lämplig för lätt joggning.',
- },
+  {
+    question: 'Från vilken ålder kan barnet sitta i joggingvagn?',
+    answer: 'De flesta joggingvagnar utan liggdel är avsedda för barn som kan hålla upp huvudet ordentligt, vanligtvis från 6 månader. Thule Urban Glide 3 och BOB Gear Revolution Flex 3.0 kan användas från födseln om man köper ett separat bassinet-tillbehör. Kontrollera alltid tillverkarens rekommendation för just din modell.',
+  },
+  {
+    question: 'Kan man jogga med en vanlig barnvagn?',
+    answer: 'Nej, det rekommenderas inte. Vanliga barnvagnar saknar de låsta hjulen, den styvare ramen, handbroms och den stötdämpning som en dedikerad joggingvagn har. Vid löpning skakas barnet mer i en vanlig vagn, och risken för stjälpning är högre. En joggingvagn är konstruerad specifikt för att hålla barnet stabilt och säkert i fart.',
+  },
+  {
+    question: 'Vilken joggingvagn är bäst för terrängkörning?',
+    answer: 'Thule Urban Glide 3 och UPPAbaby RIDGE är de bästa alternativen för terräng. Båda har stora 16-tums luftpumpade bakhjul, solid stötdämpning och låsbart framhjul. Thule Urban Glide 3 är populärare i Sverige och har fjädringsarm fram. UPPAbaby RIDGE är ett utmärkt amerikanskt alternativ med liggdel som medföljer.',
+  },
+  {
+    question: 'Är joggingvagnar tunga att bära?',
+    answer: 'Joggingvagnar är generellt tyngre än sittvagnar på grund av de robusta hjulen och ramen, vanligtvis 13 till 15 kg. Baby Jogger City Mini GT2 är lättast i vår test på 12,1 kg och har dessutom ett snabbt enkelhands-viklsystem. Om du ofta ska bära vagnen i trappor, välj Baby Jogger City Mini GT2 framför de tyngre terrängmodellerna.',
+  },
+  {
+    question: 'Passar joggingvagnar på kollektivtrafik?',
+    answer: 'De flesta joggingvagnar är stora och passar dåligt på kollektivtrafik jämfört med kompakta sittvagnar. Baby Jogger City Mini GT2 är det bästa alternativet om du både vill jogga och åka buss eller tunnelbana, den viks med en hand och är smalare än terrängmodellerna. Thule Urban Glide 3 och UPPAbaby RIDGE är svårare att hantera i trång kollektivtrafik.',
+  },
+  {
+    question: 'Vad är skillnaden på joggingvagn och terrängsportvagn?',
+    answer: 'Termerna används ibland synonymt. En joggingvagn är primärt designad för löpning med fast framhjul (eller låsbart sådant). En terrängsportvagn har svängbart framhjul som kan låsas för löpning och är mer mångsidig för promenader i varierande terräng. Baby Jogger City Mini GT2 är en terrängsportvagn, utmärkt i terräng och promenader men också lämplig för lätt joggning.',
+  },
 ];
-export const articleMeta = {
- title: "Bästa joggingvagnen 2026: 5 löparvagnar jämförda",
- description: "Bästa joggingvagnen 2026: Thule Urban Glide 3 vinner med 16-tums lufthjul, handbroms och maxvikt 34 kg. BOB Gear bäst i terräng. Baby Jogger City Mini GT2.",
- publishDate: "2026-05-16",
- category: "Barnvagnar",
- image: "/images/products/thule-urban-glide-3.webp",
-};
 
+export const articleMeta = {
+  title: "Bästa joggingvagnen 2026: 5 löparvagnar jämförda",
+  description: "Bästa joggingvagnen 2026: Thule Urban Glide 3 vinner med 16-tums lufthjul, handbroms och maxvikt 34 kg. BOB Gear bäst i terräng. Baby Jogger City Mini GT2.",
+  publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
+  category: "Barnvagnar",
+  image: "/images/products/thule-urban-glide-3.webp",
+};
 ---
 
 <ArticleLayout
- title="Bästa joggingvagnen 2026: 5 löparvagnar jämförda"
- description="Bästa joggingvagnen 2026: Thule Urban Glide 3 vinner med 16-tums lufthjul, handbroms och maxvikt 34 kg. BOB Gear bäst i terräng. Baby Jogger City Mini GT2."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-15"
- relatedArticles={[
- { title: 'Bästa barnvagnar 2026', href: '/barnvagnar/' },
- { title: 'Bästa lätta barnvagn', href: '/barnvagnar/latt/' },
- { title: 'Sittvagnar 2026', href: '/barnvagnar/sittvagn/' },
- { title: 'Välja barnvagn, guide', href: '/guider/valja-barnvagn/' },
- ]}
- datePublished="2026-02-18"
+  title="Bästa joggingvagnen 2026: 5 löparvagnar jämförda"
+  description="Bästa joggingvagnen 2026: Thule Urban Glide 3 vinner med 16-tums lufthjul, handbroms och maxvikt 34 kg. BOB Gear bäst i terräng. Baby Jogger City Mini GT2."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/joggingvagn/"
+  datePublished="2026-02-18"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
 
-<p class="text-lg leading-relaxed mb-6 text-gray-700">
- Thule Urban Glide 3 vinner 2026 med 16-tums luftpumpade bakhjul, fjädring och kombinerad fot- och handbroms. Maxvikt 34 kg, låsbart framhjul vid löpning och säkerhetslina som standard. Vill du använda vagnen från födseln tillkommer ett bassinet-tillbehör.
-</p>
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-02-18" dateModified="2026-06-12" />
 
-<p class="text-gray-600 leading-relaxed mb-4">
- Fyra krav att bocka av: luftpumpade hjul (inte solida), låsbart framhjul under löpning, handbroms för backar och säkerhetslina runt handleden. Thule Urban Glide 3 uppfyller alla fyra med sina 16-tums lufthjul, fotbroms och handbroms.
-</p>
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken joggingvagn är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Thule Urban Glide 3 är bäst i test 2026: 16-tums luftpumpade bakhjul, fjädring och kombinerad fot- och handbroms ger trygg körning från joggingtakt till terräng. Maxvikt 34 kg och låsbart framhjul vid löpning. Bäst mångsidig: Baby Jogger City Mini GT2. Premium terrängval: UPPAbaby RIDGE.
+    </p>
+  </div>
 
-<p class="text-sm text-gray-500 italic mb-8">Senast uppdaterad: maj 2026, 5 modeller jämförda</p>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Thule"
+    name="Urban Glide 3"
+    image="/images/products/thule-urban-glide-3.webp"
+    trackedUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101991&url=https://www.babyv.se/sv/articles/1.69.24596/thule-urban-glide-3-black"
+    store="Baby V"
+    description="Bäst i test 2026. 14,3 kg chassi med 16-tums lufthjul, fjädringsarm fram och bakåtvänd sittdel ger mjuk körning från joggingtakt till terräng. Fot- och handbroms, låsbart framhjul och maxvikt 34 kg."
+  />
 
-<h2 class="text-2xl font-bold mt-6 mb-4">Topp 5 joggingvagnar 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Joggingvagnar 2026" />
 
-<div class="grid grid-cols-1 gap-6 mb-8">
- {products.map((p) => (
- <ProductCard {...p} />
- ))}
-</div>
+  {/* Vinnaröversikt */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Thule Urban Glide 3</strong> är bäst i test med 16-tums lufthjul, fjädring och kombinerad fot- och handbroms. <strong>Baby Jogger City Mini GT2</strong> är bäst mångsidig och lättast i testet. <strong>UPPAbaby RIDGE</strong> är premium terrängval med liggdel som medföljer.</p>
+  </div>
 
-<TopPick product={products[0]} description="Thule Urban Glide 3 vinner joggingvagnstestet 2026. 14,3 kg chassi med lufthjul, fjädringsarm fram och bakåtvänd sittdel ger mjuk körning från joggingtakt till terräng. Klarar barn upp till 34 kg." />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, joggingvagnar 2026" />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Thule Urban Glide 3, bäst i test 2026</h2>
+    <MoneyProductCard
+      brand="Thule"
+      name="Thule Urban Glide 3"
+      rating={4.9}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/thule-urban-glide-3.webp"
+      imageAlt="Thule Urban Glide 3 joggingvagn"
+      store="Baby V"
+      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101991&url=https://www.babyv.se/sv/articles/1.69.24596/thule-urban-glide-3-black"
+      pros={['16-tums luftpumpade bakhjul för terräng', 'Kombinerad fotbroms och handbroms', 'Låsbart framhjul vid löpning', 'Hög maxvikt på 34 kg']}
+      cons={['Tyngre än mångsidiga vagnar (14,3 kg)', 'Bassinet-tillbehör krävs för nyfödd', 'Stor och otymplig i kollektivtrafik']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Thule Urban Glide 3 är den mest populära joggingvagnen i Sverige 2026 och vår totala vinnare. De 16-tums luftpumpade bakhjulen och fjädringsarmen fram ger en mjuk körning som klarar allt från joggingtakt på asfalt till grusvägar och terräng. Framhjulet låses rakt fram under löpning och låses upp för smidiga svängar på promenaden.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den kombinerade fot- och handbromsen ger kontrollerad bromsning i nedförsbackar, och maxvikten på 34 kg gör att vagnen håller längre än konkurrenterna. Nackdelen är vikten på 14,3 kg och att den är stor i trång kollektivtrafik. Vill du använda vagnen från födseln tillkommer ett bassinet-tillbehör.
+    </p>
+    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101991&url=https://www.babyv.se/sv/articles/1.69.24596/thule-urban-glide-3-black" />
 
-<h2 class="text-2xl font-bold mt-10 mb-4">Köpguide, vad ska du tänka på?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Baby Jogger City Mini GT2, bäst mångsidig</h2>
+    <MoneyProductCard
+      brand="Baby Jogger"
+      name="Baby Jogger City Mini GT2"
+      rating={4.7}
+      rank={2}
+      badge="Bäst mångsidig"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/baby-jogger-city-mini-gt2.webp"
+      imageAlt="Baby Jogger City Mini GT2"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10161016&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-mini-gt-2-1-briar-green"
+      pros={['Lättast i testet på 12,1 kg', 'Snabb enhandsfällning', 'Nästan plant liggläge (175°)', 'Smalare än terrängmodellerna']}
+      cons={['Saknar handbroms', 'Mindre 12-tums bakhjul', 'Lägre maxvikt (22 kg)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Baby Jogger City Mini GT2 är den mest mångsidiga vagnen i testet och det bästa valet om du både vill jogga och pendla. Med 12,1 kg är den lättast av alla fem, och enhandsfällningen är genuint praktisk när du har barnet i ena armen. Liggläget når nästan plant (175°), vilket gör den användbar för yngre barn på promenaden.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den enda tydliga svagheten är att den saknar handbroms, vilket märks i branta nedförsbackar. Bakhjulen är också mindre (12 tum) än de rena joggingvagnarnas 16-tums hjul, och maxvikten stannar på 22 kg. För familjen som vill ha en vagn som klarar terräng, promenad och lätt joggning är City Mini GT2 svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10161016&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/baby-jogger-city-mini-gt-2-1-briar-green" />
 
-<h3 class="text-xl font-semibold mt-6 mb-3">1. Luftpumpade hjul är ett krav</h3>
-<p class="text-gray-700 leading-relaxed mb-4">
- Luftpumpade hjul (pneumatiska) absorberar stötar och ger ett mjukare åk för barnet. Solida hjul ger mer vibrationer och sämre grepp i terräng. Alla joggingvagnar i vår test har luftpumpade hjul, undvik joggingvagnar med solida hjul.
-</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. UPPAbaby RIDGE, premium terrängval</h2>
+    <MoneyProductCard
+      brand="UPPAbaby"
+      name="UPPAbaby RIDGE"
+      rating={4.7}
+      rank={3}
+      badge="Premium terrängval"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/uppababy-ridge-joggingvagn-jake-black.webp"
+      imageAlt="UPPAbaby RIDGE joggingvagn"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10225387&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/uppababy-ridge-joggingvagn-jake-black"
+      pros={['Liggdel medföljer (från födseln)', 'Stora 16-tums luftpumpade bakhjul', 'Kombinerad fot- och handbroms', 'Solid stötdämpning för terräng']}
+      cons={['Tyngst i testet (14,5 kg)', 'Stor i kollektivtrafik', 'Lägre maxvikt än Thule (27 kg)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      UPPAbaby RIDGE är vårt premium terrängval och ett utmärkt amerikanskt alternativ till Thule. Den största fördelen är att liggdelen medföljer, vilket gör vagnen användbar från födseln utan extra tillbehörsköp. De stora 16-tums luftpumpade bakhjulen och den solida stötdämpningen klarar grus, skog och ojämn mark lika bra som Urban Glide 3.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Handbromsen ger trygg bromsning i backar, och det låsbara framhjulet håller vagnen rakt under löpning. Nackdelen är vikten: med 14,5 kg är den tyngst i testet, och maxvikten på 27 kg är något lägre än Thules 34 kg. Men för dig som vill ha en terrängvagn med liggdel redan i grundpaketet är RIDGE ett starkt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10225387&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/uppababy-ridge-joggingvagn-jake-black" />
 
-<h3 class="text-xl font-semibold mt-6 mb-3">2. Låsbart framhjul för löpning</h3>
-<p class="text-gray-700 leading-relaxed mb-4">
- Under löpning ska framhjulet vara låst rakt fram, ett svängbart framhjul kan svänga och destabilisera vagnen i fart. Bra joggingvagnar har ett framhjul som kan låsas för löpning och låsas upp för smidiga promenader och kurser.
-</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Cybex Avi Spin Joggingvagn, duo och joggingvagn</h2>
+    <MoneyProductCard
+      brand="Cybex"
+      name="Cybex Avi Spin Joggingvagn"
+      rating={4.5}
+      rank={4}
+      badge="Duo + joggingvagn"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/cybex-avi-spin-moon-black.webp"
+      imageAlt="Cybex Avi Spin Joggingvagn"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10264351&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/cybex-avi-spin-joggingvagn-moon-black"
+      pros={['Fungerar både som duovagn och joggingvagn', '16-tums luftpumpade bakhjul', 'Kombinerad fot- och handbroms', 'Liggdel ger användning från födseln']}
+      cons={['Tung på 14,8 kg', 'Lägre maxvikt (22 kg)', 'Mångsidighet ger kompromisser i ren löpning']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Cybex Avi Spin är vagnen för dig som vill ha en joggingvagn som också fungerar som vardaglig duovagn. Med liggdel kan den användas från födseln, och de 16-tums luftpumpade bakhjulen och handbromsen gör att den klarar både löpning och terräng. Flexibiliteten är dess största styrka: en vagn som täcker flera behov.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Mångsidigheten kostar något i renodlad löpprestanda jämfört med Thule Urban Glide 3, och med 14,8 kg är den bland de tyngre i testet. Maxvikten stannar på 22 kg. Men för familjen som inte vill ha både en duovagn och en separat joggingvagn löser Avi Spin det med en enda vagn.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10264351&url=https://www.jollyroom.se/barnvagnar/aktivitetsvagnar/joggingvagnar/cybex-avi-spin-joggingvagn-moon-black" />
 
-<h3 class="text-xl font-semibold mt-6 mb-3">3. Handbroms, obligatoriskt för backar</h3>
-<p class="text-gray-700 leading-relaxed mb-4">
- En handbroms (liknande cykelbroms) ger gradvis bromsning i nedförsbackar, kritiskt för säkerhet. Thule Urban Glide 3, UPPAbaby RIDGE, Cybex Avi Spin och Thule Glide 3 har handbroms. Baby Jogger City Mini GT2 saknar handbroms, det är den enda svagheten i en annars utmärkt vagn.
-</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Thule Glide 3, ren löparvagn</h2>
+    <MoneyProductCard
+      brand="Thule"
+      name="Thule Glide 3"
+      rating={4.6}
+      rank={5}
+      badge="Ren löparvagn"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/thule-glide-3-svart.webp"
+      imageAlt="Thule Glide 3 joggingvagn svart"
+      store="Baby V"
+      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101970&url=https://www.babyv.se/sv/articles/1.69.24905/thule-glide-3-joggingvagn-svart"
+      pros={['Fast framhjul för stabil löpning', '16-tums luftpumpade bakhjul', 'Kombinerad fot- och handbroms', 'Lättare än terrängmodellerna (13,5 kg)']}
+      cons={['Inget liggläge', 'Fast framhjul ger sämre manövrering på promenad', 'Maxvikt lägre än Urban Glide 3 (30 kg)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Thule Glide 3 är den renodlade löparvagnen i testet, byggd för dig som främst springer. Det fasta framhjulet ger maximal stabilitet i fart, och de 16-tums luftpumpade bakhjulen dämpar stötar väl på asfalt och grus. Med 13,5 kg är den lättare än Thules egen Urban Glide 3, och handbromsen ger trygg kontroll i backar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det fasta framhjulet betyder samtidigt att den är mindre smidig på vardagspromenaden, där ett svängbart hjul hade varit praktiskt. Den saknar liggläge och passar därför barn som sitter stadigt själva. Maxvikten på 30 kg är lägre än Urban Glide 3:s 34 kg. För den dedikerade löparen som inte behöver en allroundvagn är Glide 3 ett enkelt och pålitligt val.
+    </p>
+    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101970&url=https://www.babyv.se/sv/articles/1.69.24905/thule-glide-3-joggingvagn-svart" />
 
-<h3 class="text-xl font-semibold mt-6 mb-3">4. Säkerhetslina runt handleden</h3>
-<p class="text-gray-700 leading-relaxed mb-4">
- Alla joggingvagnar ska ha en säkerhetslina som kopplas runt jogginghandleden. Om du tappar taget om vagnen ska linan hindra den från att rulla iväg. Kontrollera att linan följer med och att du alltid använder den under löpning.
-</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem joggingvagnar granskade, en vinner totalt. Thule Urban Glide 3 tar förstaplatsen på körkomfort, broms och maxvikt, Baby Jogger City Mini GT2 är den mest mångsidiga och lättaste, UPPAbaby RIDGE är premium terrängval med liggdel, Cybex Avi Spin kombinerar duo och joggingvagn och Thule Glide 3 är den renodlade löparvagnen. Vill du fördjupa dig? Läs vår <a href="/guider/valja-barnvagn/" class="text-accent hover:text-accent-dark underline">kompletta köpguide för barnvagnar</a> eller jämför fler modeller i <a href="/barnvagnar/" class="text-accent hover:text-accent-dark underline">bästa barnvagnar 2026</a>.
+    </p>
 
-<h3 class="text-xl font-semibold mt-6 mb-3">5. Barnets ålder och vikt</h3>
-<p class="text-gray-700 leading-relaxed mb-4">
- Flesta joggingvagnar är godkända från 6 månaders ålder. Thule Urban Glide 3, UPPAbaby RIDGE och Cybex Avi Spin kan användas från födseln med liggdel. Kontrollera maxvikten, Thule Urban Glide 3 klarar 34 kg, UPPAbaby RIDGE 27 kg, Baby Jogger City Mini GT2 max 22 kg.
-</p>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Joggingvagnar 2026" />
 
-<FAQ items={faqItems} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide, vad ska du tänka på?</h2>
 
-<ProductSchema products={[
- { name: 'Thule Urban Glide 3', description: 'Toppmodell joggingvagn med luftfyllda däck, fjädring och handbroms. Bäst i test 2026.', brand: 'Thule', ratingValue: 4.9, reviewCount: 1 },
- { name: 'Baby Jogger City Mini GT2', description: 'Allterrängsjoggingvagn med enkel vikning och bra stötdämpning. Klassiker.', brand: 'Baby Jogger', ratingValue: 4.7, reviewCount: 1 },
- { name: 'UPPAbaby RIDGE', description: 'Premium joggingvagn med liggdel inkluderad, lufthjul och handbroms.', brand: 'UPPAbaby', ratingValue: 4.7, reviewCount: 1 },
- { name: 'Cybex Avi Spin Joggingvagn', description: 'Flexibel joggingvagn som även fungerar som duovagn. Lufthjul och handbroms.', brand: 'Cybex', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Thule Glide 3', description: 'Ren löparvagn med fast framhjul, lufthjul och handbroms. Enkel och pålitlig.', brand: 'Thule', ratingValue: 4.6, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">1. Luftpumpade hjul är ett krav</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Luftpumpade hjul (pneumatiska) absorberar stötar och ger ett mjukare åk för barnet. Solida hjul ger mer vibrationer och sämre grepp i terräng. Alla joggingvagnar i vår test har luftpumpade hjul, undvik joggingvagnar med solida hjul.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">2. Låsbart framhjul för löpning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Under löpning ska framhjulet vara låst rakt fram, ett svängbart framhjul kan svänga och destabilisera vagnen i fart. Bra joggingvagnar har ett framhjul som kan låsas för löpning och låsas upp för smidiga promenader och kurser.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">3. Handbroms, obligatoriskt för backar</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En handbroms (liknande cykelbroms) ger gradvis bromsning i nedförsbackar, kritiskt för säkerhet. Thule Urban Glide 3, UPPAbaby RIDGE, Cybex Avi Spin och Thule Glide 3 har handbroms. Baby Jogger City Mini GT2 saknar handbroms, det är den enda svagheten i en annars utmärkt vagn.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">4. Säkerhetslina runt handleden</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla joggingvagnar ska ha en säkerhetslina som kopplas runt jogginghandleden. Om du tappar taget om vagnen ska linan hindra den från att rulla iväg. Kontrollera att linan följer med och att du alltid använder den under löpning.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">5. Barnets ålder och vikt</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Flesta joggingvagnar är godkända från 6 månaders ålder. Thule Urban Glide 3, UPPAbaby RIDGE och Cybex Avi Spin kan användas från födseln med liggdel. Kontrollera maxvikten, Thule Urban Glide 3 klarar 34 kg, UPPAbaby RIDGE 27 kg, Baby Jogger City Mini GT2 max 22 kg.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Joggingvagnssäkerhet: vad myndigheterna kräver</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Alla barnvagnar på den svenska marknaden måste uppfylla en europeisk säkerhetsstandard. Nedan är de viktigaste fakta från Konsumentverket som alla föräldrar bör känna till innan köp.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="EN 1888"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2026"
+      >
+        Europeisk säkerhetsstandard som alla barnvagnar på den svenska marknaden måste uppfylla. Märkningen ställer krav på stabilitet, bromsar, säkerhetssele och material.
+      </StatHighlight>
+      <StatHighlight
+        figure="600-700 barn/år"
+        source="Konsumentverket (äldre uppgift)"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2010"
+      >
+        Uppskattad andel barn som sökte akutvård för barnvagnsrelaterade skador i Sverige. Konsumentverket uppmanar alltid att köpa från auktoriserade återförsäljare och kontrollera CE-märkning.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+    >
+      "Innan du bestämmer dig för vilken barnvagn du ska köpa, kontrollera att: vagnen är märkt enligt EN 1888, bromsar och låsningar fungerar, vagnen är stabil, olika tillbehör inte påverkar hur stabil vagnen är."
+    </ExpertQuote>
+
+    <p class="text-text-light leading-relaxed mt-5 mb-4">
+      Kontrollera alltid om din modell finns med bland <a href="/guider/aterkallade-barnprodukter/" class="text-accent hover:text-accent-dark underline">återkallade barnprodukter</a> innan köp, särskilt på begagnatmarknaden.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem joggingvagnar utifrån fyra kriterier: körkomfort vid löpning (hjul, fjädring, framhjulslås), säkerhet (handbroms, säkerhetslina, EN 1888-certifiering), vardagsanvändning (vikt, hopfällning, mångsidighet) och pris per användningsår inklusive andrahandsvärde. Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnar 2026, Bugaboo, Nuna och Joolz jämförda</a></li>
+        <li><a href="/barnvagnar/terrangvagn/" class="text-accent underline">Bästa terrängvagn 2026, för grus, skog och ojämn mark</a></li>
+        <li><a href="/barnvagnar/latt/" class="text-accent underline">Bästa lätta barnvagn 2026, under 10 kg</a></li>
+        <li><a href="/barnvagnar/sittvagn/" class="text-accent underline">Bästa sittvagnen 2026, lätta och kompakta</a></li>
+        <li><a href="/guider/valja-barnvagn/" class="text-accent underline">Så väljer du rätt barnvagn, komplett köpguide 2026</a></li>
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa joggingvagnen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=110101991&url=https://www.babyv.se/sv/articles/1.69.24596/thule-urban-glide-3-black"
+    text="Bra pris hos Baby V"
+    productName="Thule Urban Glide 3"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

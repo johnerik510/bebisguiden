@@ -1,204 +1,403 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
- { label: 'Bakåtvänd' },
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Bakåtvänd' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Britax Römer Dualfix 5Z i-Size',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/britax-romer-dualfix-5z-i-size-black.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273025&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-deep-black',
- features: {
- 'Montering': 'ISOFIX + stödben',
- 'Bakåtvänt till': '105 cm (ca 4 år)',
- 'Vikt': '14,8 kg',
- 'Rotation': '360 grader',
- 'Säkerhet': 'i-Size (R129)',
- },
- },
- {
- name: 'Axkid Minikid 4 Pro',
- image: '/images/products/axkid-minikid-4-pro.webp',
- badge: 'Längst bakåtvänt',
- rating: 4.7,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black',
- features: {
- 'Montering': 'Bilbälte',
- 'Bakåtvänt till': '36 kg (ca 7 år)',
- 'Vikt': '12 kg',
- 'Rotation': 'Nej',
- 'Säkerhet': 'R44/04',
- },
- },
- {
- name: 'Joie i-Spin 360',
- image: '/images/products/joie-i-spin-360.webp',
- badge: 'Prisvärt',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal',
- features: {
- 'Montering': 'ISOFIX + stödben',
- 'Bakåtvänt till': '105 cm (ca 4 år)',
- 'Vikt': '13,2 kg',
- 'Rotation': '360 grader',
- 'Säkerhet': 'i-Size (R129)',
- },
- },
+  {
+    name: 'Britax Römer Dualfix 5Z i-Size',
+    brand: 'Britax Römer',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Toppbetyg ADAC + Folksam', '360° rotation', 'ISOFIX + stödben'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273025&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-deep-black',
+    imageUrl: '/images/products/britax-romer-dualfix-5z-i-size-black.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Bäst i test bakåtvänd bilbarnstol med 360-rotation och topp krocksäkerhet. ISOFIX med stödben. För barn 0-4 år (40-105 cm).',
+    features: { 'Montering': 'ISOFIX + stödben', 'Bakåtvänt till': '105 cm (ca 4 år)', 'Vikt': '14,8 kg', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Axkid Minikid 4 Pro',
+    brand: 'Axkid',
+    rating: 4.7,
+    badge: 'Längst bakåtvänt',
+    usps: ['Bakåtvänt till 36 kg', 'Svensktillverkad', 'Passar utan ISOFIX'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black',
+    imageUrl: '/images/products/axkid-minikid-4-pro.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Bakåtvänd bilbarnstol med lång användningstid upp till 7 år (36 kg). Svensk säkerhet, bältesmonterad.',
+    features: { 'Montering': 'Bilbälte', 'Bakåtvänt till': '36 kg (ca 7 år)', 'Vikt': '12 kg', 'Rotation': 'Nej', 'Säkerhet': 'R44/04' },
+    alsoAt: [],
+  },
+  {
+    name: 'Joie i-Spin 360',
+    brand: 'Joie',
+    rating: 4.5,
+    badge: 'Prisvärt',
+    usps: ['Prisvärd i-Size', 'ISOFIX-montering', 'Kompakt design'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal',
+    imageUrl: '/images/products/joie-i-spin-360.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Bakåtvänd bilbarnstol med 360-rotation och ISOFIX. Bra pris för funktionaliteten. För barn 0-4 år (40-105 cm).',
+    features: { 'Montering': 'ISOFIX + stödben', 'Bakåtvänt till': '105 cm (ca 4 år)', 'Vikt': '13,2 kg', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Montering', 'Bakåtvänt till', 'Vikt', 'Rotation', 'Säkerhet'];
+const specLabels = ['Montering', 'Bakåtvänt till', 'Vikt', 'Rotation', 'Säkerhet'];
 
 const faqItems = [
- {
- question: 'Varför är bakåtvänt säkrare än framåtvänt?',
- answer: 'Vid en frontalkrock fördelas krafterna över hela barnets rygg, nacke och huvud när stolen är bakåtvänd. Sitter barnet framåtvänt koncentreras samma krafter mot den svaga nacken. Folksams krocktester visar att bakåtvänt åkande är upp till fem gånger säkrare för barn under fyra år. Ett litet barns huvud väger en stor andel av kroppsvikten och nackmuskulaturen är inte färdigutvecklad förrän vid tre till fyra års ålder.',
- },
- {
- question: 'Hur länge ska barnet åka bakåtvänt?',
- answer: 'Transportstyrelsen och Folksam rekommenderar bakåtvänt till minst fyra års ålder. Många säkerhetsexperter går längre och säger så länge stolen tillåter. Axkid Minikid 4 Pro klarar bakåtvänt åkande till 36 kg, vilket motsvarar ungefär sju års ålder. Det finns inga nackdelar med att vänta längre med att vända stolen framåt.',
- },
- {
- question: 'Kan man montera en bakåtvänd bilbarnstol med ISOFIX?',
- answer: 'Ja, de flesta i-Size-godkända bakåtvända stolar använder ISOFIX plus stödben eller top tether. ISOFIX minskar drastiskt risken för felmontering eftersom stolen klickas fast direkt i bilens chassi. Bilar från 2012 och framåt har ISOFIX som standard. Bältesmonterade stolar som Axkid Minikid 4 Pro fungerar däremot i alla bilar oavsett ISOFIX-fästen.',
- },
- {
- question: 'Vilken bakåtvänd bilbarnstol är bäst i test 2026?',
- answer: 'Britax Römer Dualfix 5Z i-Size är vår vinnare 2026, med toppresultat i ADAC och Folksams krocktester, 360-graders rotation och bakåtvänt åkande till 105 cm (cirka fyra år). För längsta möjliga bakåtvända åkande är Axkid Minikid 4 Pro bäst, den klarar 36 kg.',
- },
- {
- question: 'Går det att vrida en roterande stol framåt ibland?',
- answer: 'Stolar med 360-graders rotation som Britax Dualfix 5Z och Joie i-Spin 360 kan tekniskt vridas framåt. Säkerhetsexperter rekommenderar dock bakåtvänt så länge stolen tillåter. Rotationen är till för att enklare lyfta i och ur barnet, inte för att åka framåtvänt tidigare än nödvändigt.',
- },
- {
- question: 'Vad är skillnaden mellan i-Size (R129) och R44/04?',
- answer: 'i-Size (R129) är den nyare standarden och kräver sidokrocktest, ISOFIX-montering samt bakåtvänt åkande till minst 15 månader. Stolen storleksanpassas efter barnets längd. R44/04 är äldre, klassificerar efter vikt och har inget krav på sidokrocktest. Båda är godkända i Sverige, men i-Size är säkrare. Axkid Minikid 4 Pro är R44/04 men presterar i nivå med många i-Size-stolar i krocktester.',
- },
- {
- question: 'Kan en bakåtvänd bilbarnstol monteras i framsätet?',
- answer: 'Bara om passagerarkrockkudden är avstängd. Annars är det livsfarligt, krockkudden slår mot stolens baksida vid utlösning med stor kraft. I baksätet är det bakåtvända läget alltid säkert. Om bilen saknar avstängbar krockkudde ska barnstolen alltid sitta bak.',
- },
+  {
+    question: 'Varför är bakåtvänt säkrare än framåtvänt?',
+    answer: 'Vid en frontalkrock fördelas krafterna över hela barnets rygg, nacke och huvud när stolen är bakåtvänd. Sitter barnet framåtvänt koncentreras samma krafter mot den svaga nacken. Folksams krocktester visar att bakåtvänt åkande är upp till fem gånger säkrare för barn under fyra år. Ett litet barns huvud väger en stor andel av kroppsvikten och nackmuskulaturen är inte färdigutvecklad förrän vid tre till fyra års ålder.',
+  },
+  {
+    question: 'Hur länge ska barnet åka bakåtvänt?',
+    answer: 'Transportstyrelsen och Folksam rekommenderar bakåtvänt till minst fyra års ålder. Många säkerhetsexperter går längre och säger så länge stolen tillåter. Axkid Minikid 4 Pro klarar bakåtvänt åkande till 36 kg, vilket motsvarar ungefär sju års ålder. Det finns inga nackdelar med att vänta längre med att vända stolen framåt.',
+  },
+  {
+    question: 'Kan man montera en bakåtvänd bilbarnstol med ISOFIX?',
+    answer: 'Ja, de flesta i-Size-godkända bakåtvända stolar använder ISOFIX plus stödben eller top tether. ISOFIX minskar drastiskt risken för felmontering eftersom stolen klickas fast direkt i bilens chassi. Bilar från 2012 och framåt har ISOFIX som standard. Bältesmonterade stolar som Axkid Minikid 4 Pro fungerar däremot i alla bilar oavsett ISOFIX-fästen.',
+  },
+  {
+    question: 'Vilken bakåtvänd bilbarnstol är bäst i test 2026?',
+    answer: 'Britax Römer Dualfix 5Z i-Size är vår vinnare 2026, med toppresultat i ADAC och Folksams krocktester, 360-graders rotation och bakåtvänt åkande till 105 cm (cirka fyra år). För längsta möjliga bakåtvända åkande är Axkid Minikid 4 Pro bäst, den klarar 36 kg.',
+  },
+  {
+    question: 'Går det att vrida en roterande stol framåt ibland?',
+    answer: 'Stolar med 360-graders rotation som Britax Dualfix 5Z och Joie i-Spin 360 kan tekniskt vridas framåt. Säkerhetsexperter rekommenderar dock bakåtvänt så länge stolen tillåter. Rotationen är till för att enklare lyfta i och ur barnet, inte för att åka framåtvänt tidigare än nödvändigt.',
+  },
+  {
+    question: 'Vad är skillnaden mellan i-Size (R129) och R44/04?',
+    answer: 'i-Size (R129) är den nyare standarden och kräver sidokrocktest, ISOFIX-montering samt bakåtvänt åkande till minst 15 månader. Stolen storleksanpassas efter barnets längd. R44/04 är äldre, klassificerar efter vikt och har inget krav på sidokrocktest. Båda är godkända i Sverige, men i-Size är säkrare. Axkid Minikid 4 Pro är R44/04 men presterar i nivå med många i-Size-stolar i krocktester.',
+  },
+  {
+    question: 'Kan en bakåtvänd bilbarnstol monteras i framsätet?',
+    answer: 'Bara om passagerarkrockkudden är avstängd. Annars är det livsfarligt, krockkudden slår mot stolens baksida vid utlösning med stor kraft. I baksätet är det bakåtvända läget alltid säkert. Om bilen saknar avstängbar krockkudde ska barnstolen alltid sitta bak.',
+  },
 ];
-export const articleMeta = {
- title: "Bakåtvänd bilbarnstol bäst i test 2026: Britax vinner",
- description: "Bakåtvänd bilbarnstol bäst i test 2026: Britax Dualfix 5Z vinner med ISOFIX och 360-rotation. Axkid Minikid 4 Pro till 7 år. Joie i-Spin 360 bäst pris.",
- publishDate: "2026-05-16",
- category: "Bilbarnstolar",
- image: "/images/products/britax-romer-dualfix-5z-i-size-black.webp",
-};
 
+export const articleMeta = {
+  title: "Bakåtvänd bilbarnstol bäst i test 2026: Britax vinner",
+  description: "Bakåtvänd bilbarnstol bäst i test 2026: Britax Dualfix 5Z vinner med ISOFIX och 360-rotation. Axkid Minikid 4 Pro till 7 år. Joie i-Spin 360 bäst pris.",
+  publishDate: "2026-03-26",
+  updatedDate: "2026-06-12",
+  category: "Bilbarnstolar",
+  image: "/images/products/britax-romer-dualfix-5z-i-size-black.webp",
+};
 ---
 
 <ArticleLayout
- title="Bakåtvänd bilbarnstol bäst i test 2026: Britax vinner"
- description="Bakåtvänd bilbarnstol bäst i test 2026: Britax Dualfix 5Z vinner med ISOFIX och 360-rotation. Axkid Minikid 4 Pro till 7 år. Joie i-Spin 360 bäst pris."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-06-10"
- datePublished="2026-03-26"
+  title="Bakåtvänd bilbarnstol bäst i test 2026: Britax vinner"
+  description="Bakåtvänd bilbarnstol bäst i test 2026: Britax Dualfix 5Z vinner med ISOFIX och 360-rotation. Axkid Minikid 4 Pro till 7 år. Joie i-Spin 360 bäst pris."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-03-26"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Britax Römer Dualfix 5Z i-Size vinner bakåtvänd bilbarnstol bäst i test 2026. Den monteras med ISOFIX och stödben och roterar 360 grader, vilket gör det enkelt att lyfta i barnet. Bakåtvänt åkande till 105 cm täcker de viktigaste åren, och stolen är godkänd enligt i-Size (R129).
-	 </p>
 
- <TopPick product={products[0]} description="Britax Römer Dualfix 5Z i-Size vinner 2026 på krocktestresultat, ISOFIX med stödben och 360-graders rotation som gör det enkelt att lyfta i barnet. Bakåtvänt åkande till 105 cm täcker de viktigaste åren." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-03-26" dateModified="2026-06-12" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken bakåtvänd bilbarnstol är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Britax Römer Dualfix 5Z i-Size är bäst i test 2026: toppresultat i ADAC och Folksams krocktester, 360-graders rotation och bakåtvänt åkande till 105 cm (ca 4 år) med ISOFIX och stödben. Längst bakåtvänt: Axkid Minikid 4 Pro (36 kg, ca 7 år). Prisvärt: Joie i-Spin 360.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Bästa bakåtvända bilbarnstolarna 2026, rankade</h2>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Britax Römer"
+    name="Dualfix 5Z i-Size"
+    image="/images/products/britax-romer-dualfix-5z-i-size-black.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273025&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-deep-black"
+    store="Jollyroom"
+    description="Vinner bakåtvänd bilbarnstol 2026 på krocktestresultat (ADAC + Folksam), ISOFIX med stödben och 360-graders rotation som gör det enkelt att lyfta i barnet. Bakåtvänt åkande till 105 cm täcker de viktigaste åren."
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Britax Römer Dualfix 5Z i-Size"
- image="/images/products/britax-romer-dualfix-5z-i-size-black.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="0-4 år (40-105 cm)"
- pros={['Toppbetyg i ADAC- och Folksam-krocktester', '360-graders rotation för enkel i- och urlastning', 'ISOFIX-montering med stödben']}
- cons={['Högre vikt (14,8 kg)', 'Tar stor plats i mindre bilar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
- />
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Bakåtvända bilbarnstolar 2026" />
 
- <ProductCard
- name="Axkid Minikid 4 Pro"
- image="/images/products/axkid-minikid-4-pro.webp"
- badge="Längst bakåtvänt"
- rating={4.7}
- ageRange="0-7 år (upp till 36 kg)"
- pros={['Bakåtvänt åkande till 36 kg, längst på marknaden', 'Svensk tillverkare med fokus på säkerhet', 'Passar i de flesta bilar utan ISOFIX']}
- cons={['Ingen rotation, fast bakåtvänt', 'Bältesinstallation kräver noggrannhet']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Joie i-Spin 360"
- image="/images/products/joie-i-spin-360.webp"
- badge="Prisvärt"
- rating={4.5}
- ageRange="0-4 år (40-105 cm)"
- pros={['Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design som passar i mindre bilar']}
- cons={['Något enklare material än premiumstolar', 'Kortare användningstid bakåtvänt än Axkid']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Britax Römer Dualfix 5Z i-Size, bäst i test</h2>
+    <MoneyProductCard
+      brand="Britax Römer"
+      name="Britax Römer Dualfix 5Z i-Size"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/britax-romer-dualfix-5z-i-size-black.webp"
+      imageAlt="Britax Römer Dualfix 5Z i-Size bakåtvänd bilbarnstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+      pros={['Toppbetyg i ADAC- och Folksam-krocktester', '360-graders rotation för enkel i- och urlastning', 'ISOFIX-montering med stödben']}
+      cons={['Högre vikt (14,8 kg)', 'Tar stor plats i mindre bilar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Britax Römer Dualfix 5Z i-Size vinner bakåtvänd bilbarnstol bäst i test 2026. Den monteras med ISOFIX och stödben och roterar 360 grader, vilket gör det enkelt att lyfta i barnet utan att böja ryggen. Bakåtvänt åkande till 105 cm täcker de viktigaste åren, och stolen är godkänd enligt i-Size (R129) med toppbetyg i både ADAC och Folksams krocktester.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är vikten (14,8 kg) och att den tar stor plats i mindre bilar. Men för säkerhet, enkel montering och daglig användbarhet är den svår att slå bland de roterande bakåtvända stolarna.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: så väljer du rätt bakåtvänd bilbarnstol 2026</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Axkid Minikid 4 Pro, längst bakåtvänt</h2>
+    <MoneyProductCard
+      brand="Axkid"
+      name="Axkid Minikid 4 Pro"
+      rating={4.7}
+      rank={2}
+      badge="Längst bakåtvänt"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/axkid-minikid-4-pro.webp"
+      imageAlt="Axkid Minikid 4 Pro bakåtvänd bilbarnstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black"
+      pros={['Bakåtvänt åkande till 36 kg, längst på marknaden', 'Svensk tillverkare med fokus på säkerhet', 'Passar i de flesta bilar utan ISOFIX']}
+      cons={['Ingen rotation, fast bakåtvänt', 'Bältesinstallation kräver noggrannhet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Axkid Minikid 4 Pro är valet för dig som vill maximera tiden barnet åker bakåtvänt. Den klarar bakåtvänd åkning ända till 36 kg, vilket motsvarar ungefär sju års ålder, längst på marknaden. Axkid är en svensk tillverkare som byggt hela varumärket kring den nordiska bakåtvända traditionen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Stolen saknar rotation och är bältesmonterad, vilket kräver noggrann installation varje gång, men gör att den passar i de flesta bilar oavsett ISOFIX-fästen. För familjen som följer rekommendationen att åka bakåtvänt så länge som möjligt är den oslagbar.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Varför bakåtvänt skyddar bättre</h3>
- <p>Ett barn under fyra år har ett huvud som väger en oproportionerligt stor andel av kroppsvikten. Nackmuskulaturen är inte färdigutvecklad förrän vid tre till fyra års ålder. Vid en frontalkrock i 50 km/h motsvarar belastningen på nacken flera hundra kilos drag, en kraft en framåtvänd liten kropp inte är byggd för. Bakåtvänt fördelar samma krock över hela ryggen och nackstödet. Folksams årliga krocktester visar samma sak år efter år: bakåtvänt åkande är fem gånger säkrare för de minsta.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Joie i-Spin 360, prisvärt val</h2>
+    <MoneyProductCard
+      brand="Joie"
+      name="Joie i-Spin 360"
+      rating={4.5}
+      rank={3}
+      badge="Prisvärt"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/joie-i-spin-360.webp"
+      imageAlt="Joie i-Spin 360 bakåtvänd bilbarnstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal"
+      pros={['Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design som passar i mindre bilar']}
+      cons={['Något enklare material än premiumstolar', 'Kortare användningstid bakåtvänt än Axkid']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Joie i-Spin 360 ger dig 360-graders rotation och i-Size-säkerhet till ett märkbart lägre pris än premiumstolarna. ISOFIX-monteringen är enkel och den kompakta designen gör att den passar bra även i mindre bilar, där bredare premiumstolar kan bli trångt.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Materialkänslan är något enklare än hos Britax och den bakåtvända användningstiden är kortare än Axkids (105 cm mot 36 kg). Men för familjen som vill ha rotation och i-Size utan premiumprislapp är Joie i-Spin 360 ett klokt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal" />
 
- <h3>i-Size (R129) eller R44/04?</h3>
- <p>i-Size är den nyare europeiska standarden och bygger på barnets längd istället för vikt. Kraven är hårdare: sidokrocktest är obligatoriskt, bakåtvänt krävs till minst 15 månader och ISOFIX-montering ingår. R44/04 är äldre och klassificerar efter vikt utan obligatoriskt sidokrocktest. Båda är lagliga, men vid nyköp 2026 är i-Size standard. Undantaget är vissa svensktillverkade långbakåtvända stolar som Axkid Minikid 4 Pro, som är R44/04 men presterar lika bra eller bättre i krocktester.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre bakåtvända bilbarnstolar granskade, en vinner totalt. Britax Römer Dualfix 5Z tar förstaplatsen på krocktest och daglig användbarhet, Axkid Minikid 4 Pro vinner på längst bakåtvänd åkning och Joie i-Spin 360 är det prisvärda valet. Vill du jämföra fler modeller? Se vår kompletta <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">test av bästa bilbarnstolen 2026</a> eller läs <a href="/guider/bakatvand-hur-lange/" class="text-accent hover:text-accent-dark underline">hur länge barn ska åka bakåtvänt</a>.
+    </p>
 
- <h3>ISOFIX eller bältesmonterad?</h3>
- <p>ISOFIX klickas fast i två metallfästen direkt i bilens chassi och kombineras oftast med stödben eller top tether. Felmonteringsrisken sjunker drastiskt, vilket är ISOFIX största fördel i praktiken. Bältesmonterade stolar fästs med bilens trepunktsbälte och fungerar i alla bilar oavsett ISOFIX-fästen. De är mer flexibla men kräver noggrann montering varje gång. Axkid Minikid 4 Pro är ett exempel där bältesmontering är medvetet val för att klara lång bakåtvänd livstid.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bakåtvända bilbarnstolar 2026" />
 
- <h3>Hur länge ska barnet åka bakåtvänt?</h3>
- <p>Så länge som möjligt. Folksam och Transportstyrelsen rekommenderar minst fyra år, många barnläkare säger så länge stolen tillåter. Med Axkid Minikid 4 Pro fungerar bakåtvänt åkande till ungefär sju års ålder. Att vrida stolen framåt tidigare har inga säkerhetsfördelar, bara komfortmässiga för barn som vill se ut genom framrutan. Vänta så länge stolen klarar det.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt bakåtvänd bilbarnstol 2026</h2>
 
- <h3>Vad kostar en bra bakåtvänd bilbarnstol?</h3>
- <p>En kvalitetsstol kostar mellan 4 000 och 8 000 kronor 2026. Britax Dualfix 5Z ligger i premiumsegmentet med 360-rotation, Joie i-Spin 360 är ett mer prisvärt alternativ med samma rotationsfunktion. Axkid Minikid 4 Pro är dyrare per inköp men billigare per användningsår eftersom den räcker till sju års ålder. Sparsamhet på bilbarnstol är aldrig rätt ställe, det är en produkt som ska skydda vid en krock.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Varför bakåtvänt skyddar bättre</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ett barn under fyra år har ett huvud som väger en oproportionerligt stor andel av kroppsvikten. Nackmuskulaturen är inte färdigutvecklad förrän vid tre till fyra års ålder. Vid en frontalkrock i 50 km/h motsvarar belastningen på nacken flera hundra kilos drag, en kraft en framåtvänd liten kropp inte är byggd för. Bakåtvänt fördelar samma krock över hela ryggen och nackstödet. Folksams årliga krocktester visar samma sak år efter år: bakåtvänt åkande är fem gånger säkrare för de minsta.
+    </p>
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/bilbarnstolar/isofix/" class="text-accent underline">ISOFIX bilbarnstol, allt du behöver veta 2026</a>
- </li>
- <li>
- <a href="/bilbarnstolar/lag-sverige/" class="text-accent underline">Bilbarnstol lag Sverige 2026, regler, åldrar och böter</a>
- </li>
- <li>
- <a href="/bilbarnstolar/forhandsvisning/" class="text-accent underline">Kommande bilbarnstolar 2026, nya modeller att hålla koll på</a>
- </li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">i-Size (R129) eller R44/04?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      i-Size är den nyare europeiska standarden och bygger på barnets längd istället för vikt. Kraven är hårdare: sidokrocktest är obligatoriskt, bakåtvänt krävs till minst 15 månader och ISOFIX-montering ingår. R44/04 är äldre och klassificerar efter vikt utan obligatoriskt sidokrocktest. Båda är lagliga, men vid nyköp 2026 är i-Size standard. Undantaget är vissa svensktillverkade långbakåtvända stolar som Axkid Minikid 4 Pro, som är R44/04 men presterar lika bra eller bättre i krocktester.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">ISOFIX eller bältesmonterad?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      ISOFIX klickas fast i två metallfästen direkt i bilens chassi och kombineras oftast med stödben eller top tether. Felmonteringsrisken sjunker drastiskt, vilket är ISOFIX största fördel i praktiken. Bältesmonterade stolar fästs med bilens trepunktsbälte och fungerar i alla bilar oavsett ISOFIX-fästen. De är mer flexibla men kräver noggrann montering varje gång. Axkid Minikid 4 Pro är ett exempel där bältesmontering är medvetet val för att klara lång bakåtvänd livstid.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hur länge ska barnet åka bakåtvänt?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Så länge som möjligt. Folksam och Transportstyrelsen rekommenderar minst fyra år, många barnläkare säger så länge stolen tillåter. Med Axkid Minikid 4 Pro fungerar bakåtvänt åkande till ungefär sju års ålder. Att vrida stolen framåt tidigare har inga säkerhetsfördelar, bara komfortmässiga för barn som vill se ut genom framrutan. Vänta så länge stolen klarar det.
+    </p>
 
-<ProductSchema products={[
- { name: 'Britax Römer Dualfix 5Z i-Size', description: 'Bäst i test bakåtvänd bilbarnstol med 360-rotation och topp krocksäkerhet. ISOFIX.', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1 },
- { name: 'Axkid Minikid 4 Pro', description: 'Bakåtvänd bilbarnstol med lång användningstid upp till 7 år. Hög säkerhetsnivå.', brand: 'Axkid', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Joie i-Spin 360', description: 'Bakåtvänd bilbarnstol med 360-rotation och ISOFIX. Bra pris för funktionaliteten.', brand: 'Joie', ratingValue: 4.6, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad kostar en bra bakåtvänd bilbarnstol?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En kvalitetsstol kostar mellan 4 000 och 8 000 kronor 2026. Britax Dualfix 5Z ligger i premiumsegmentet med 360-rotation, Joie i-Spin 360 är ett mer prisvärt alternativ med samma rotationsfunktion. Axkid Minikid 4 Pro är dyrare per inköp men billigare per användningsår eftersom den räcker till sju års ålder. Sparsamhet på bilbarnstol är aldrig rätt ställe, det är en produkt som ska skydda vid en krock.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om bakåtvänt åkande?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Den svenska bakåtvända traditionen bygger på decennier av oberoende krocktestforskning från Folksam och NTF. Nedan är de viktigaste fakta bakom rekommendationen.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Upp till 48 %"
+        source="Folksam/Chalmers"
+        sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
+        year="2025"
+      >
+        Av barn 0-3 år som omkom i bilkrockar hade troligen överlevt om de åkt bakåtvända, enligt Folksams analys av 99 barn under tre decennier.
+      </StatHighlight>
+      <StatHighlight
+        figure="5x lägre risk"
+        source="NTF"
+        sourceUrl="https://ntf.se/konsumentupplysning/barn-i-bil/bakatvand-bilbarnstol/"
+        year="2026"
+      >
+        Risken för dödlig skada vid frontalkrock: bakåtvänd kontra framåtvänd bilbarnstol. Kraften fördelas över hela barnets rygg bakåtvänt.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Folksam"
+      role="Oberoende trafikforskning och krocktester av bilbarnstolar"
+      sourceUrl="https://www.folksam.se/tester-och-goda-rad/vara-tester/bilbarnstolar"
+    >
+      "Vår rekommendation är att välja en bakåtvänd bilbarnstol som är godkänd till barnet är 125 centimeter eller väger 25-36 kilo."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat tre bakåtvända bilbarnstolar utifrån krocktestresultat (Folksam och ADAC), säkerhetsstandard (i-Size/R129 respektive R44/04), bakåtvänd kapacitet (längd och vikt), montering (ISOFIX eller bälte) och daglig användbarhet (rotation, vikt). Produkterna är valda bland de mest sålda och eftersökta bakåtvända modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, komplett test och jämförelse</a></li>
+        <li><a href="/bilbarnstolar/isofix/" class="text-accent underline">ISOFIX bilbarnstol, allt du behöver veta 2026</a></li>
+        <li><a href="/bilbarnstolar/lag-sverige/" class="text-accent underline">Bilbarnstol lag Sverige 2026, regler, åldrar och böter</a></li>
+        <li><a href="/bilbarnstolar/forhandsvisning/" class="text-accent underline">Kommande bilbarnstolar 2026, nya modeller att hålla koll på</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa bakåtvända bilbarnstolen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273025&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-deep-black"
+    text="Bra pris hos Jollyroom"
+    productName="Britax Römer Dualfix 5Z i-Size"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

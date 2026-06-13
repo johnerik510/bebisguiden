@@ -1,297 +1,516 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Barnvagnar', href: '/barnvagnar/' },
- { label: 'Syskonvagn' },
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Syskonvagn' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder/priser oförändrade (verifierade).
 const products = [
- {
- name: 'Bugaboo Donkey 6 Duo',
- image: '/images/products/bugaboo-donkey-6-syskonvagn.webp',
- badge: 'Bäst i test',
- rating: 4.8,
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=832146e2-4378-4bd6-8fa6-643393a567e9&url=https://www.babysam.se/bugaboo-donkey-6-syskonvagn-heritage-black',
- features: {
- 'Typ': 'Bredvid-varandra',
- 'Vikt chassi': '14,5 kg',
- 'Maxbredd': '74 cm',
- 'Maxvikt barn': '22 + 22 kg',
- 'Ihopfalld': '90 x 74 x 34 cm',
- },
- },
- {
- name: 'UPPAbaby Vista V3',
- image: '/images/products/uppababy-vista-v3.webp',
- badge: 'Mest flexibel',
- rating: 4.7,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10270790&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/uppababy-vista-v3-duovagn-jake',
- features: {
- 'Typ': 'Under/över',
- 'Vikt chassi': '12,7 kg',
- 'Maxbredd': '66 cm',
- 'Maxvikt barn': '22 + 22 kg',
- 'Ihopfalld': '91 x 66 x 44 cm',
- },
- },
- {
- name: 'Baby Jogger City Select 2',
- image: '/images/products/baby-jogger-city-select-2.webp',
- badge: 'Prisvärt',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914362&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/baby-jogger-city-select-2-tencel-sys-bla',
- features: {
- 'Typ': 'Modulär',
- 'Vikt chassi': '12,4 kg',
- 'Maxbredd': '65 cm',
- 'Maxvikt barn': '22 + 22 kg',
- 'Ihopfalld': '84 x 65 x 33 cm',
- },
- },
- {
- name: 'Cybex Gazelle S',
- image: '/images/products/cybex-gazelle-s.webp',
- badge: 'Kompakt',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910331&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/tandemvagnar/cybex-gazelle-s-syskonvagn-moblack-black',
- features: {
- 'Typ': 'Under/över',
- 'Vikt chassi': '12,3 kg',
- 'Maxbredd': '62 cm',
- 'Maxvikt barn': '22 + 22 kg',
- 'Ihopfalld': '84 x 62 x 41 cm',
- },
- },
- {
- name: 'Phil & Teds Sport V6',
- image: '/images/products/phil-teds-sport-v6.webp',
- badge: 'Smalast',
- rating: 4.3,
-
- features: {
- 'Typ': 'Inline/tandem',
- 'Vikt chassi': '11,5 kg',
- 'Maxbredd': '58 cm',
- 'Maxvikt barn': '20 + 15 kg',
- 'Ihopfalld': '80 x 58 x 35 cm',
- },
- },
+  {
+    name: 'Bugaboo Donkey 6 Duo',
+    desc: 'Bredvid-varandra-syskonvagn där båda barnen sitter jämsides med lika bra sikt. Chassivikt 14,5 kg, maxbredd 74 cm. Maxvikt 22 + 22 kg per plats. Konverterbar till enkel- eller tvillingvagn.',
+    brand: 'Bugaboo',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Bredvid varandra', 'Konverterbar', 'Överlägsen fjädring'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=832146e2-4378-4bd6-8fa6-643393a567e9&url=https://www.babysam.se/bugaboo-donkey-6-syskonvagn-heritage-black',
+    imageUrl: '/images/products/bugaboo-donkey-6-syskonvagn.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Typ': 'Bredvid-varandra', 'Vikt chassi': '14,5 kg', 'Maxbredd': '74 cm', 'Maxvikt barn': '22 + 22 kg', 'Ihopfälld': '90 x 74 x 34 cm' },
+    alsoAt: [],
+  },
+  {
+    name: 'UPPAbaby Vista V3',
+    desc: 'Konvertibel under/över-syskonvagn som byggs ut från singel till syskonläge med tillbehör. Chassivikt 12,7 kg, maxbredd 66 cm. Maxvikt 22 + 22 kg. Stor varukorg.',
+    brand: 'UPPAbaby',
+    rating: 4.7,
+    badge: 'Mest flexibel',
+    usps: ['Konvertibel', 'Stor varukorg', 'Smal profil'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10270790&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/uppababy-vista-v3-duovagn-jake',
+    imageUrl: '/images/products/uppababy-vista-v3.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Typ': 'Under/över', 'Vikt chassi': '12,7 kg', 'Maxbredd': '66 cm', 'Maxvikt barn': '22 + 22 kg', 'Ihopfälld': '91 x 66 x 44 cm' },
+    alsoAt: [],
+  },
+  {
+    name: 'Baby Jogger City Select 2',
+    desc: 'Modulär syskonvagn med över 20 konfigurationer via tillbehör. Chassivikt 12,4 kg, maxbredd 65 cm. Maxvikt 22 + 22 kg. Kompakt ihopfälld.',
+    brand: 'Baby Jogger',
+    rating: 4.5,
+    badge: 'Prisvärt',
+    usps: ['Över 20 konfigurationer', 'Kompakt ihopfälld', 'Komplett syskonlösning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914362&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/baby-jogger-city-select-2-tencel-sys-bla',
+    imageUrl: '/images/products/baby-jogger-city-select-2.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Typ': 'Modulär', 'Vikt chassi': '12,4 kg', 'Maxbredd': '65 cm', 'Maxvikt barn': '22 + 22 kg', 'Ihopfälld': '84 x 65 x 33 cm' },
+    alsoAt: [],
+  },
+  {
+    name: 'Cybex Gazelle S',
+    desc: 'Kompakt under/över-syskonvagn på bara 62 cm bredd. Chassivikt 12,3 kg. Maxvikt 22 + 22 kg. Bra fjädring på alla underlag och modern design.',
+    brand: 'Cybex',
+    rating: 4.5,
+    badge: 'Kompakt',
+    usps: ['Bara 62 cm bred', 'Bra fjädring', 'Modern design'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910331&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/tandemvagnar/cybex-gazelle-s-syskonvagn-moblack-black',
+    imageUrl: '/images/products/cybex-gazelle-s.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Typ': 'Under/över', 'Vikt chassi': '12,3 kg', 'Maxbredd': '62 cm', 'Maxvikt barn': '22 + 22 kg', 'Ihopfälld': '84 x 62 x 41 cm' },
+    alsoAt: [],
+  },
+  {
+    name: 'Phil & Teds Sport V6',
+    desc: 'Inline/tandem-syskonvagn där barnen sitter efter varandra. Smalast i testet på 58 cm och lättast med 11,5 kg chassi. Maxvikt 20 + 15 kg.',
+    brand: 'Phil & Teds',
+    rating: 4.3,
+    badge: 'Smalast',
+    usps: ['Smalast 58 cm', 'Lättast 11,5 kg', 'Inline-profil'],
+    store: '',
+    affiliateUrl: '',
+    imageUrl: '/images/products/phil-teds-sport-v6.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    features: { 'Typ': 'Inline/tandem', 'Vikt chassi': '11,5 kg', 'Maxbredd': '58 cm', 'Maxvikt barn': '20 + 15 kg', 'Ihopfälld': '80 x 58 x 35 cm' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Typ', 'Vikt chassi', 'Maxbredd', 'Maxvikt barn', 'Ihopfalld'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Typ', 'Vikt chassi', 'Maxbredd', 'Maxvikt barn', 'Ihopfälld'];
 
 const faqItems = [
- {
- question: 'Vilken syskonvagn är bäst i test 2026?',
- answer: 'Bugaboo Donkey 6 Duo vinner syskonvagn bäst i test 2026. Den är bredvid-varandra-modell där båda barnen sitter jämsides med lika bra sikt och komfort. UPPAbaby Vista V3 är mest flexibel (kan konverteras från singel till syskonvagn), Baby Jogger City Select 2 är prisvärd och Cybex Gazelle S är smalast (62 cm). Alla har samma maxvikt 22 + 22 kg.',
- },
- {
- question: 'Vad är en syskonvagn?',
- answer: 'En syskonvagn är en barnvagn byggd för två barn i olika åldrar. Till skillnad från en tvillingvagn (där platserna är identiska) har en syskonvagn vanligtvis en liggdel för baby och en sittdel för det äldre barnet. Det finns tre huvudtyper: bredvid-varandra (Bugaboo Donkey 6), under/över eller tandem (UPPAbaby Vista, Cybex Gazelle) och inline (Phil & Teds Sport).',
- },
- {
- question: 'Från vilken ålder kan man använda en syskonvagn?',
- answer: 'De flesta syskonvagnar kan användas från nyfödd i liggdelen och från cirka 6 månader i sittdelen, när det äldre barnet kan sitta stadigt utan stöd. Kontrollera alltid tillverkarens åldersrekommendation och viktgränser för båda platserna. Bugaboo Donkey 6 och UPPAbaby Vista V3 går upp till 22 kg per plats, vilket räcker till cirka 4 års ålder.',
- },
- {
- question: 'Är syskonvagn säker för nyfödd?',
- answer: 'Ja, samtliga syskonvagnar i vår test är godkända för nyfödd i liggdel (lie-flat) som motsvarar EN 1888-standarden för barnvagnar. För att vara säker som ensam sovplats ska bebisen ligga horisontellt utan kuddar, lösa filtar eller babynest. Använd alltid den medföljande madrassen, inga ersättningar.',
- },
- {
- question: 'Vilken typ är bäst, bredvid eller tandem?',
- answer: 'Bredvid-modeller som Bugaboo Donkey 6 ger båda barnen lika bra sikt och komfort, men är bredare (74 cm). Tandemmodeller som UPPAbaby Vista V3 och Cybex Gazelle S är smalare (62 till 66 cm) och passar bättre i trång stadsmiljö, smala hissar och äldre lägenheter. Valet beror på var du bor och hur du tar dig fram.',
- },
- {
- question: 'Hur bred är en syskonvagn?',
- answer: 'Bredvid-varandra-modeller som Bugaboo Donkey 6 är cirka 74 cm breda, vilket precis ryms genom standarddörrar (80 cm) men är tight. Tandemmodeller är smalare: UPPAbaby Vista V3 mäter 66 cm, Cybex Gazelle S 62 cm och inline-vagnen Phil & Teds Sport V6 bara 58 cm, nästan som en vanlig enkelbarnsvagn.',
- },
- {
- question: 'Kan en syskonvagn användas för bara ett barn?',
- answer: 'Ja, de flesta syskonvagnar kan konverteras till enkelbarnsläge. Bugaboo Donkey 6 har en smal singelkonfiguration. UPPAbaby Vista V3 och Cybex Gazelle S fungerar utmärkt som vanliga duovagnar utan den extra sittdelen. Det gör syskonvagnen till en investering som växer med familjen och inte måste säljas när äldre barn slutar åka.',
- },
- {
- question: 'Hur länge håller en syskonvagn?',
- answer: 'En kvalitetssyskonvagn håller 4 till 6 år vid daglig användning, och betydligt längre om den används till flera barn. Bugaboo, UPPAbaby och Cybex har gott rykte för hållbarhet och bra andrahandsvärde, ofta 50 till 70 procent av nypris efter 2 år. Använd alltid originalreservdelar och underhåll hjul och fjädring regelbundet.',
- },
+  {
+    question: 'Vilken syskonvagn är bäst i test 2026?',
+    answer: 'Bugaboo Donkey 6 Duo vinner syskonvagn bäst i test 2026. Den är bredvid-varandra-modell där båda barnen sitter jämsides med lika bra sikt och komfort. UPPAbaby Vista V3 är mest flexibel (kan konverteras från singel till syskonvagn), Baby Jogger City Select 2 är prisvärd och Cybex Gazelle S är smalast (62 cm). Alla har samma maxvikt 22 + 22 kg.',
+  },
+  {
+    question: 'Vad är en syskonvagn?',
+    answer: 'En syskonvagn är en barnvagn byggd för två barn i olika åldrar. Till skillnad från en tvillingvagn (där platserna är identiska) har en syskonvagn vanligtvis en liggdel för baby och en sittdel för det äldre barnet. Det finns tre huvudtyper: bredvid-varandra (Bugaboo Donkey 6), under/över eller tandem (UPPAbaby Vista, Cybex Gazelle) och inline (Phil & Teds Sport).',
+  },
+  {
+    question: 'Från vilken ålder kan man använda en syskonvagn?',
+    answer: 'De flesta syskonvagnar kan användas från nyfödd i liggdelen och från cirka 6 månader i sittdelen, när det äldre barnet kan sitta stadigt utan stöd. Kontrollera alltid tillverkarens åldersrekommendation och viktgränser för båda platserna. Bugaboo Donkey 6 och UPPAbaby Vista V3 går upp till 22 kg per plats, vilket räcker till cirka 4 års ålder.',
+  },
+  {
+    question: 'Är syskonvagn säker för nyfödd?',
+    answer: 'Ja, samtliga syskonvagnar i vår test är godkända för nyfödd i liggdel (lie-flat) som motsvarar EN 1888-standarden för barnvagnar. För att vara säker som ensam sovplats ska bebisen ligga horisontellt utan kuddar, lösa filtar eller babynest. Använd alltid den medföljande madrassen, inga ersättningar.',
+  },
+  {
+    question: 'Vilken typ är bäst, bredvid eller tandem?',
+    answer: 'Bredvid-modeller som Bugaboo Donkey 6 ger båda barnen lika bra sikt och komfort, men är bredare (74 cm). Tandemmodeller som UPPAbaby Vista V3 och Cybex Gazelle S är smalare (62 till 66 cm) och passar bättre i trång stadsmiljö, smala hissar och äldre lägenheter. Valet beror på var du bor och hur du tar dig fram.',
+  },
+  {
+    question: 'Hur bred är en syskonvagn?',
+    answer: 'Bredvid-varandra-modeller som Bugaboo Donkey 6 är cirka 74 cm breda, vilket precis ryms genom standarddörrar (80 cm) men är tight. Tandemmodeller är smalare: UPPAbaby Vista V3 mäter 66 cm, Cybex Gazelle S 62 cm och inline-vagnen Phil & Teds Sport V6 bara 58 cm, nästan som en vanlig enkelbarnsvagn.',
+  },
+  {
+    question: 'Kan en syskonvagn användas för bara ett barn?',
+    answer: 'Ja, de flesta syskonvagnar kan konverteras till enkelbarnsläge. Bugaboo Donkey 6 har en smal singelkonfiguration. UPPAbaby Vista V3 och Cybex Gazelle S fungerar utmärkt som vanliga duovagnar utan den extra sittdelen. Det gör syskonvagnen till en investering som växer med familjen och inte måste säljas när äldre barn slutar åka.',
+  },
+  {
+    question: 'Hur länge håller en syskonvagn?',
+    answer: 'En kvalitetssyskonvagn håller 4 till 6 år vid daglig användning, och betydligt längre om den används till flera barn. Bugaboo, UPPAbaby och Cybex har gott rykte för hållbarhet och bra andrahandsvärde, ofta 50 till 70 procent av nypris efter 2 år. Använd alltid originalreservdelar och underhåll hjul och fjädring regelbundet.',
+  },
 ];
+
 export const articleMeta = {
   title: "Syskonvagn bäst i test 2026: Bugaboo Donkey 6 vinner",
   description: "Syskonvagn bäst i test 2026: Bugaboo Donkey 6 vinner sida-vid-sida. UPPAbaby Vista V3 bäst konvertibel. 5 syskonvagnar jämförda på bredd och pris.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Barnvagnar",
   image: "/images/products/bugaboo-donkey-6-syskonvagn.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Syskonvagn bäst i test 2026: Bugaboo Donkey 6 vinner"
- description="Syskonvagn bäst i test 2026: Bugaboo Donkey 6 vinner sida-vid-sida. UPPAbaby Vista V3 bäst konvertibel. 5 syskonvagnar jämförda på bredd och pris."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/barnvagnar/syskonvagn/"
- updatedDate="2026-05-28"
+  title="Syskonvagn bäst i test 2026: Bugaboo Donkey 6 vinner"
+  description="Syskonvagn bäst i test 2026: Bugaboo Donkey 6 vinner sida-vid-sida. UPPAbaby Vista V3 bäst konvertibel. 5 syskonvagnar jämförda på bredd och pris."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/syskonvagn/"
   datePublished="2026-03-04"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Bugaboo Donkey 6 vinner syskonvagn bäst i test 2026. Bredvid-varandra-konstruktionen ger båda barnen lika bra sikt, och den smarta zipfunktionen gör vagnen smal när du bara har ett barn med. Fjädringen är överlägsen i klassen. Kontrollera alltid bredden mot dina egna dörröppningar innan köp.
-	 </p>
 
- <TopPick product={products[0]} description="Bugaboo Donkey 6 är syskonvagn bäst i test 2026. Bredvid-varandra-konstruktion ger båda barnen lika bra sikt, smart zipfunktion gör den smal när du bara har ett barn med, och fjädringen är överlägsen i klassen." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-03-04" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-6 mb-3">Vad är en syskonvagn?</h2>
- <div class="prose prose-sm text-text-light max-w-none mb-6">
-  <p>En syskonvagn är en barnvagn med plats för två barn i olika åldrar. Bebisen ligger i liggdelen, storasyskonet sitter i en separat sittdel. Det finns tre grundtyper: <strong>bredvid-varandra</strong> (bägge platser i full bredd, till exempel Bugaboo Donkey 6), <strong>tandem</strong> (platserna placerade under och över varandra, som Cybex Gazelle S) och <strong>inline</strong> (barnen sitter efter varandra, som Phil &amp; Teds Sport). Den viktigaste frågan att besvara innan köp är hur bred vagnen är och om den får plats genom dina dörröppningar, i hissen och i bilen.</p>
-  <p>De flesta syskonvagnar börjar användas när barn nummer två föds och storasyskonet är 1,5 till 3 år. En välvald syskonvagn håller hela perioden tills det äldre barnet slutar åka, ofta vid 3 till 4 års ålder. Se även vår guide om <a href="/guider/valja-syskonvagn/" class="text-accent underline">hur man väljer syskonvagn</a>.</p>
- </div>
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken syskonvagn är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Bugaboo Donkey 6 Duo är bäst i test 2026: bredvid-varandra-konstruktionen ger båda barnen lika bra sikt, och den smarta zipfunktionen gör vagnen smal när du bara har ett barn med. Mest flexibel: UPPAbaby Vista V3. Smalast: Cybex Gazelle S på 62 cm. Kontrollera alltid bredden mot dina egna dörröppningar innan köp.
+    </p>
+  </div>
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Bugaboo"
+    name="Donkey 6 Duo"
+    image="/images/products/bugaboo-donkey-6-syskonvagn.webp"
+    trackedUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=832146e2-4378-4bd6-8fa6-643393a567e9&url=https://www.babysam.se/bugaboo-donkey-6-syskonvagn-heritage-black"
+    store="BabySam"
+    description="Syskonvagn bäst i test 2026. Bredvid-varandra-konstruktionen ger båda barnen lika bra sikt, smart zipfunktion gör den smal när du bara har ett barn med, och fjädringen är överlägsen i klassen."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra 5 bästa syskonvagnar 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Syskonvagnar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Bugaboo Donkey 6 Duo"
- image="/images/products/bugaboo-donkey-6-syskonvagn.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="0-4 år"
- pros={['Båda barnen sitter bredvid varandra med lika bra sikt', 'Konverterbar till enkel- eller tvillingvagn', 'Utmärkt fjädring och körkomfort för två']}
- cons={['Hög prisklass', 'Bredast i testet (74 cm), tight genom dörröppningar']}
- ctaText="Bra pris hos Babysam"
- ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=832146e2-4378-4bd6-8fa6-643393a567e9&url=https://www.babysam.se/bugaboo-donkey-6-syskonvagn-heritage-black"
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Bugaboo Donkey 6 Duo</strong> är bäst i test med bredvid-varandra-konstruktion och smart zipfunktion. <strong>UPPAbaby Vista V3</strong> är mest flexibel med konvertibelt syskonläge. <strong>Cybex Gazelle S</strong> är smalast på 62 cm.</p>
+  </div>
 
- <ProductCard
- name="UPPAbaby Vista V3"
- image="/images/products/uppababy-vista-v3.webp"
- badge="Mest flexibel"
- rating={4.7}
- ageRange="0-4 år"
- pros={['Konverterbar från singelbar till syskonvagn med tillbehör', 'Stor varukorg (13 kg kapacitet)', 'Smal profil, lättare att manövrera i stan']}
- cons={['Undre platsen har begränsad sikt för äldre barn', 'Tillbehor för syskonläge säljs separat']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10270790&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/uppababy-vista-v3-duovagn-jake"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Baby Jogger City Select 2"
- image="/images/products/baby-jogger-city-select-2.webp"
- badge="Prisvärt"
- rating={4.5}
- ageRange="0-4 år"
- pros={['Over 20 konfigurationer med tillbehör', 'Lägre pris för en komplett syskonlösning', 'Kompakt ihopfälld, får plats i de flesta bilar']}
- cons={['Enklare fjädring än premiummodeller', 'Tyngre att manövrera med båda barn']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914362&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/baby-jogger-city-select-2-tencel-sys-bla"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Bugaboo Donkey 6 Duo, bäst i test 2026</h2>
+    <MoneyProductCard
+      brand="Bugaboo"
+      name="Bugaboo Donkey 6 Duo"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/bugaboo-donkey-6-syskonvagn.webp"
+      imageAlt="Bugaboo Donkey 6 syskonvagn"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=832146e2-4378-4bd6-8fa6-643393a567e9&url=https://www.babysam.se/bugaboo-donkey-6-syskonvagn-heritage-black"
+      pros={['Båda barnen sitter bredvid varandra med lika bra sikt', 'Konverterbar till enkel- eller tvillingvagn', 'Utmärkt fjädring och körkomfort för två']}
+      cons={['Hög prisklass', 'Bredast i testet (74 cm), tight genom dörröppningar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bugaboo Donkey 6 Duo är vår totala vinnare bland syskonvagnarna. Bredvid-varandra-konstruktionen gör att båda barnen får exakt lika bra sikt och komfort, något tandem- och inline-modellerna inte klarar. Fjädringen är den bästa i klassen och körkomforten med två barn ombord är märkbart stabilare än hos de billigare modellerna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är bredden på 74 cm, som precis ryms genom en standarddörr (80 cm) men kräver att du mäter dina egna öppningar och hissen först. Den smarta zipfunktionen gör dock vagnen smal när du bara har ett barn med, så bredd-problemet försvinner i singelläge. Den höga prisklassen vägs upp av att den är konverterbar till enkel- eller tvillingvagn och håller högt andrahandsvärde.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=832146e2-4378-4bd6-8fa6-643393a567e9&url=https://www.babysam.se/bugaboo-donkey-6-syskonvagn-heritage-black" />
 
- <ProductCard
- name="Cybex Gazelle S"
- image="/images/products/cybex-gazelle-s.webp"
- badge="Kompakt"
- rating={4.5}
- ageRange="0-4 år"
- pros={['Kompakt trots två platser, bara 62 cm bred', 'Bra fjädring på alla underlag', 'Snygg, modern design']}
- cons={['Undre platsen är mindre rymlig för äldre barn', 'Tyngre att fälla ihop än enkelbarns vagnar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910331&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/tandemvagnar/cybex-gazelle-s-syskonvagn-moblack-black"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. UPPAbaby Vista V3, mest flexibel</h2>
+    <MoneyProductCard
+      brand="UPPAbaby"
+      name="UPPAbaby Vista V3"
+      rating={4.7}
+      rank={2}
+      badge="Mest flexibel"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/uppababy-vista-v3.webp"
+      imageAlt="UPPAbaby Vista V3"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10270790&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/uppababy-vista-v3-duovagn-jake"
+      pros={['Konverterbar från singelbar till syskonvagn med tillbehör', 'Stor varukorg (13 kg kapacitet)', 'Smal profil, lättare att manövrera i stan']}
+      cons={['Undre platsen har begränsad sikt för äldre barn', 'Tillbehör för syskonläge säljs separat']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      UPPAbaby Vista V3 är den mest flexibla vagnen i testet. Du börjar med en singelvagn och bygger ut den till syskonläge när barn nummer två kommer, ett smart sätt att sprida investeringen över tid. Den smala profilen på 66 cm gör den lättare att manövrera i stan än bredvid-modellerna, och varukorgen tar hela 13 kg.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Eftersom den är en under/över-modell får det äldre barnet på den undre platsen begränsad sikt, och tillbehören för syskonläget säljs separat vilket ökar totalkostnaden. För familjen som vill ha en vagn som växer med behoven är Vista V3 ändå svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10270790&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/uppababy-vista-v3-duovagn-jake" />
 
- <ProductCard
- name="Phil & Teds Sport V6"
- image="/images/products/phil-teds-sport-v6.webp"
- badge="Smalast"
- rating={4.3}
- ageRange="0-4 år"
- pros={['Smalast i testet (58 cm), som en vanlig vagn', 'Lägsta priset för en syskonvagn', 'Lättast i testet (11,5 kg chassi)']}
- cons={['Lägre maxvikt för bakre barnet (15 kg)', 'Mindre komfort för det yngre barnet i baksätet']}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Baby Jogger City Select 2, prisvärt</h2>
+    <MoneyProductCard
+      brand="Baby Jogger"
+      name="Baby Jogger City Select 2"
+      rating={4.5}
+      rank={3}
+      badge="Prisvärt"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/baby-jogger-city-select-2.webp"
+      imageAlt="Baby Jogger City Select 2"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914362&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/baby-jogger-city-select-2-tencel-sys-bla"
+      pros={['Över 20 konfigurationer med tillbehör', 'Lägre pris för en komplett syskonlösning', 'Kompakt ihopfälld, får plats i de flesta bilar']}
+      cons={['Enklare fjädring än premiummodeller', 'Tyngre att manövrera med båda barn']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Baby Jogger City Select 2 ger mest komplett syskonlösning för pengarna. Med över 20 konfigurationer via tillbehör kan du anpassa vagnen efter hur barnen växer, från dubbel liggdel till sittdel plus liggdel. Den fälls kompakt och får plats i de flesta bilars bagageutrymme.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du kompromissar på fjädringen, som är enklare än premiummodellernas, och vagnen blir tyngre att manövrera med båda barnen ombord. Men för familjen som vill ha en flexibel syskonvagn utan premiumprislapp är City Select 2 ett tryggt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914362&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/baby-jogger-city-select-2-tencel-sys-bla" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: vad du ska titta på när du väljer syskonvagn</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Cybex Gazelle S, kompakt</h2>
+    <MoneyProductCard
+      brand="Cybex"
+      name="Cybex Gazelle S"
+      rating={4.5}
+      rank={4}
+      badge="Kompakt"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/cybex-gazelle-s.webp"
+      imageAlt="Cybex Gazelle S"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910331&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/tandemvagnar/cybex-gazelle-s-syskonvagn-moblack-black"
+      pros={['Kompakt trots två platser, bara 62 cm bred', 'Bra fjädring på alla underlag', 'Snygg, modern design']}
+      cons={['Undre platsen är mindre rymlig för äldre barn', 'Tyngre att fälla ihop än enkelbarns vagnar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Cybex Gazelle S är testets kompaktaste tandemmodell, bara 62 cm bred trots plats för två barn. Det gör den till ett självklart stadsval för dig som bor i lägenhet med smala hissar eller passerar trånga butiksdörrar dagligen. Fjädringen fungerar bra på alla underlag och designen är modern och stilren.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Som under/över-modell är den undre platsen mindre rymlig för ett större äldre barn, och den är tyngre att fälla ihop än en vanlig enkelbarnsvagn. Men om bredd och stadsmanövrering är dina viktigaste kriterier är Gazelle S svårslagen.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910331&url=https://www.jollyroom.se/barnvagnar/syskonvagnar/tandemvagnar/cybex-gazelle-s-syskonvagn-moblack-black" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Syskonvagn: tre typer att välja mellan</h3>
- <p>Valet av syskonvagn-typ avgör nästan hela upplevelsen. Här är de tre huvudtyperna:</p>
- <ul>
-  <li><strong>Bredvid-varandra:</strong> Båda barnen sitter jämsides med lika bra sikt och komfort. <a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a> Donkey 6 Duo är den mest kända modellen. Bredden är nackdelen, kontrollera alltid att vagnen får plats genom dina dörröppningar (standard 80 cm) och i hissen.</li>
-  <li><strong>Tandem och under/över:</strong> Barnen sitter framför och bakom varandra eller över och under. <a href="/marken/uppababy/" class="text-accent underline">UPPAbaby</a> Vista V3 och <a href="/marken/cybex/" class="text-accent underline">Cybex</a> Gazelle S är populära modeller. Smalare profil men det undre eller bakre barnet får ofta sämre sikt och kontakt med föräldern.</li>
-  <li><strong>Inline:</strong> Barnen sitter efter varandra i en smal profil. Phil &amp; Teds Sport V6 är klassikern. Smalast av alla typer men det yngre barnet sitter dolt bakom det äldre.</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Phil & Teds Sport V6, smalast</h2>
+    <MoneyProductCard
+      brand="Phil & Teds"
+      name="Phil & Teds Sport V6"
+      rating={4.3}
+      rank={5}
+      badge="Smalast"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/phil-teds-sport-v6.webp"
+      imageAlt="Phil & Teds Sport V6"
+      pros={['Smalast i testet (58 cm), som en vanlig vagn', 'Lägsta priset för en syskonvagn', 'Lättast i testet (11,5 kg chassi)']}
+      cons={['Lägre maxvikt för bakre barnet (15 kg)', 'Mindre komfort för det yngre barnet i baksätet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Phil & Teds Sport V6 är den smalaste syskonvagnen i testet, bara 58 cm bred, nästan som en vanlig enkelbarnsvagn. Inline-konstruktionen där barnen sitter efter varandra gör den till det smidigaste valet om du har riktigt trånga passager hemma. Med 11,5 kg chassi är den dessutom lättast i jämförelsen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Begränsningen är maxvikten på bakre platsen, bara 15 kg, vilket gör att vagnen blir oanvändbar för det yngre barnet redan vid 2 till 3 års ålder. Det yngre barnet får också mindre komfort i baksätet bakom det äldre. Den passar bäst som ett smalt, prisvärt alternativ för en kortare period.
+    </p>
 
- <h3>Bredd och manövrerbarhet</h3>
- <ul>
-  <li>Bugaboo Donkey 6: 74 cm bred, passerar standarddörrar (80 cm) med liten marginal.</li>
-  <li>UPPAbaby Vista V3: 66 cm, smalare profil för trånga hissar och lägenheter.</li>
-  <li>Cybex Gazelle S: 62 cm, smalast bland tandemmodellerna i testet.</li>
-  <li>Phil &amp; Teds Sport V6: 58 cm, nästan som en vanlig enkelbarnsvagn.</li>
-  <li>Bor du i hus från 1950-talet eller tidigare: mät alltid ingång, hiss och innerdörrar innan köp.</li>
- </ul>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem syskonvagnar granskade, en vinner totalt. Bugaboo Donkey 6 Duo tar förstaplatsen på sikt, komfort och fjädring, UPPAbaby Vista V3 är den mest flexibla, Baby Jogger City Select 2 ger mest komplett lösning för pengarna, Cybex Gazelle S är den kompaktaste och Phil & Teds Sport V6 är den smalaste. Vill du fördjupa dig? Läs vår <a href="/guider/valja-syskonvagn/" class="text-accent hover:text-accent-dark underline">kompletta köpguide för syskonvagnar</a> eller jämför hela utbudet i <a href="/barnvagnar/" class="text-accent hover:text-accent-dark underline">bästa barnvagnen 2026</a>.
+    </p>
 
- <h3>Konverterbarhet, investera smart</h3>
- <p>Flera syskonvagnar kan användas som enkelbarnsvagn och byggas ut när barn nummer två kommer. UPPAbaby Vista V3, Baby Jogger City Select 2 och Cybex Gazelle S kan alla konverteras med tillbehör. Bugaboo Donkey 6 har en smart zipfunktion som gör den smal i singelläge, en av få modeller där bredvid-modellen inte är ett problem när du bara har ett barn med.</p>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Syskonvagnar 2026" />
 
- <h3>Viktgränser och åldersanpassning</h3>
- <p>Kontrollera alltid maxvikten för båda platserna. De flesta toppmodeller tar 22 kg per barn vilket räcker till cirka 4 år. Phil & Teds Sport V6 tar bara 15 kg på den bakre platsen, vilket betyder att vagnen blir oanvändbar redan vid 2 till 3 års ålder för det yngre barnet. Ett 3-årigt barn väger normalt 14 till 16 kg, så lägre viktgränser kortar livslängden avsevärt.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad du ska titta på när du väljer syskonvagn</h2>
 
- <h3>Bilbarnstols-kompatibilitet</h3>
- <ul>
-  <li>Bugaboo Donkey 6 och UPPAbaby Vista V3 har de bredaste adapter-utbuden.</li>
-  <li>Kompatibla bilbarnstolar inkluderar Maxi-Cosi, Cybex Cloud T och Britax Baby-Safe via adaptrar (köps separat).</li>
-  <li>Kontrollera alltid att din specifika bilbarnstol är listad bland kompatibla modeller innan köp.</li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Syskonvagn: tre typer att välja mellan</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Valet av syskonvagn-typ avgör nästan hela upplevelsen. Det finns tre huvudtyper. <strong>Bredvid-varandra</strong>: båda barnen sitter jämsides med lika bra sikt och komfort, där <a href="/marken/bugaboo/" class="text-accent hover:text-accent-dark underline">Bugaboo</a> Donkey 6 Duo är den mest kända modellen, men bredden är nackdelen så kontrollera alltid att vagnen får plats genom dina dörröppningar (standard 80 cm) och i hissen. <strong>Tandem och under/över</strong>: barnen sitter framför och bakom varandra eller över och under, där <a href="/marken/uppababy/" class="text-accent hover:text-accent-dark underline">UPPAbaby</a> Vista V3 och <a href="/marken/cybex/" class="text-accent hover:text-accent-dark underline">Cybex</a> Gazelle S är populära modeller med smalare profil, men det undre eller bakre barnet får ofta sämre sikt och kontakt med föräldern. <strong>Inline</strong>: barnen sitter efter varandra i en smal profil, där Phil & Teds Sport V6 är klassikern, smalast av alla typer men det yngre barnet sitter dolt bakom det äldre.
+    </p>
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-2">Budget-alternativ: Bumprider istället för syskonvagn</h2>
- <p class="text-text-light text-sm mb-4">Inte redo för en fullständig syskonvagn? En ride-on board är ett billigare alternativ, det äldre barnet (2 till 5 år) åker med på en platta som fästs på din befintliga barnvagn.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bredd och manövrerbarhet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bredden avgör hur vagnen fungerar i din vardag. Bugaboo Donkey 6 är 74 cm bred och passerar standarddörrar (80 cm) med liten marginal. UPPAbaby Vista V3 mäter 66 cm med smalare profil för trånga hissar och lägenheter, Cybex Gazelle S är 62 cm och smalast bland tandemmodellerna, och Phil & Teds Sport V6 är 58 cm, nästan som en vanlig enkelbarnsvagn. Bor du i hus från 1950-talet eller tidigare: mät alltid ingång, hiss och innerdörrar innan köp.
+    </p>
 
- <div class="space-y-4">
- <ProductCard
- name="Bumprider Ride-On Board"
- badge="Budgetalternativ"
- rating={4.5}
- image="/images/products/bumprider-ride-on-board.webp"
- ageRange="2 till 5 år (max 25 kg)"
- pros={['Passar de flesta barnvagnsmärken, universell passform', 'Kostar 1/10 av en syskonvagn', 'Halkfri yta och inbyggd fjädring', 'Snabb montering utan verktyg']}
- cons={['Barnet måste kunna stå, fungerar inte för spädbarn', 'Begränsad komfort för längre promenader', 'Vagnen blir längre och tyngre att manövrera']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=485131&url=https://www.jollyroom.se/barnvagnar/barnvagnstillbehor/stabrador/bumprider-stabrada-med-sits-svart"
- />
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Konverterbarhet, investera smart</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Flera syskonvagnar kan användas som enkelbarnsvagn och byggas ut när barn nummer två kommer. UPPAbaby Vista V3, Baby Jogger City Select 2 och Cybex Gazelle S kan alla konverteras med tillbehör. Bugaboo Donkey 6 har en smart zipfunktion som gör den smal i singelläge, en av få modeller där bredvid-modellen inte är ett problem när du bara har ett barn med.
+    </p>
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a>
- </li>
- <li>
- <a href="/barnvagnar/nyfodda/" class="text-accent underline">Barnvagn till nyfödd 2026, bästa duovagnarna</a>
- </li>
- <li>
- <a href="/guider/valja-syskonvagn/" class="text-accent underline">Hur väljer man syskonvagn?, komplett guide</a>
- </li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Viktgränser och åldersanpassning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kontrollera alltid maxvikten för båda platserna. De flesta toppmodeller tar 22 kg per barn vilket räcker till cirka 4 år. Phil & Teds Sport V6 tar bara 15 kg på den bakre platsen, vilket betyder att vagnen blir oanvändbar redan vid 2 till 3 års ålder för det yngre barnet. Ett 3-årigt barn väger normalt 14 till 16 kg, så lägre viktgränser kortar livslängden avsevärt.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bilbarnstols-kompatibilitet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bugaboo Donkey 6 och UPPAbaby Vista V3 har de bredaste adapter-utbuden. Kompatibla <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">bilbarnstolar</a> inkluderar Maxi-Cosi, Cybex Cloud T och Britax Baby-Safe via adaptrar (köps separat). Kontrollera alltid att din specifika bilbarnstol är listad bland kompatibla modeller innan köp.
+    </p>
 
- <CTABox productName="Syskonvagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
- <CTABox productName="Syskonvagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
-<ProductSchema products={[
- { name: 'Bugaboo Donkey 6', description: 'Bredaste syskonvagnen med plats för två i full bredd sida vid sida.', brand: 'Bugaboo', ratingValue: 4.8, reviewCount: 1 },
- { name: 'UPPAbaby Vista V3', description: 'Expanderbar kombivagn som enkelt byggs ut till syskonvagn med rumble seat.', brand: 'UPPAbaby', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Baby Jogger City Select 2', description: 'Modulär syskonvagn med många konfigurationsmöjligheter och god körbarhet.', brand: 'Baby Jogger', ratingValue: 4.6, reviewCount: 1 },
- ]} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-3">Budget-alternativ: Bumprider istället för syskonvagn</h2>
+    <p class="text-text-light leading-relaxed mb-4">
+      Inte redo för en fullständig syskonvagn? En ride-on board är ett billigare alternativ, det äldre barnet (2 till 5 år) åker med på en platta som fästs på din befintliga barnvagn.
+    </p>
+    <MoneyProductCard
+      brand="Bumprider"
+      name="Bumprider Ride-On Board"
+      rating={4.5}
+      badge="Budgetalternativ"
+      accentColor="#4c1d95" bgColor="#7c3aed"
+      imageUrl="/images/products/bumprider-ride-on-board.webp"
+      imageAlt="Bumprider Ride-On Board"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=485131&url=https://www.jollyroom.se/barnvagnar/barnvagnstillbehor/stabrador/bumprider-stabrada-med-sits-svart"
+      pros={['Passar de flesta barnvagnsmärken, universell passform', 'Kostar 1/10 av en syskonvagn', 'Halkfri yta och inbyggd fjädring', 'Snabb montering utan verktyg']}
+      cons={['Barnet måste kunna stå, fungerar inte för spädbarn', 'Begränsad komfort för längre promenader', 'Vagnen blir längre och tyngre att manövrera']}
+    />
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=485131&url=https://www.jollyroom.se/barnvagnar/barnvagnstillbehor/stabrador/bumprider-stabrada-med-sits-svart" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om barnvagnssäkerhet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Alla barnvagnar på den svenska marknaden måste uppfylla en europeisk säkerhetsstandard. Nedan är de viktigaste fakta från Konsumentverket som alla föräldrar bör känna till innan köp.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="EN 1888"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2026"
+      >
+        Europeisk säkerhetsstandard som alla barnvagnar på den svenska marknaden måste uppfylla. Märkningen ställer krav på stabilitet, bromsar, säkerhetssele och material.
+      </StatHighlight>
+      <StatHighlight
+        figure="600-700 barn/år"
+        source="Konsumentverket (äldre uppgift)"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2010"
+      >
+        Uppskattad andel barn som sökte akutvård för barnvagnsrelaterade skador i Sverige. Konsumentverket uppmanar alltid att köpa från auktoriserade återförsäljare och kontrollera CE-märkning.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+    >
+      "Innan du bestämmer dig för vilken barnvagn du ska köpa, kontrollera att: vagnen är märkt enligt EN 1888, bromsar och låsningar fungerar, vagnen är stabil, olika tillbehör inte påverkar hur stabil vagnen är."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem syskonvagnar utifrån fyra kriterier: körkomfort och fjädring för två barn, bredd och manövrerbarhet i stadsmiljö, konverterbarhet och livslängd samt säkerhet (EN 1888-certifiering, bromsar, sele och viktgränser för båda platserna). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a></li>
+        <li><a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a></li>
+        <li><a href="/barnvagnar/nyfodda/" class="text-accent underline">Barnvagn till nyfödd 2026, bästa duovagnarna</a></li>
+        <li><a href="/guider/valja-syskonvagn/" class="text-accent underline">Hur väljer man syskonvagn?, komplett guide</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa syskonvagnen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=832146e2-4378-4bd6-8fa6-643393a567e9&url=https://www.babysam.se/bugaboo-donkey-6-syskonvagn-heritage-black"
+    text="Bra pris hos BabySam"
+    productName="Bugaboo Donkey 6 Duo"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

@@ -1,236 +1,403 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Amning', href: '/amning/' },
- { label: 'Amnings-BH' },
+  { label: 'Hem', href: '/' },
+  { label: 'Amning', href: '/amning/' },
+  { label: 'Amnings-BH' },
 ];
 
+// No-price-policy. Affiliate-lankar/bilder oforandrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Carriwell Vadderad Gravid- och Amnings-BH, Svart',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/carriwell-vadderad-gravid-och-amnings-bh-svart.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=149231&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-vadderad-gravid-och-amnings-bh-svart',
- features: {
- 'Typ': 'Vadderad',
- 'Bälta': 'Nej (sömlös)',
- 'Material': 'Nylon/elastan',
- 'Öppning': 'Clip (en hand)',
- 'Användning': 'Dag och natt',
- },
- },
- {
- name: 'Carriwell Omlott Gravid- och Amnings-BH Eko, Svart',
- badge: 'Miljövänligt val',
- rating: 4.6,
- image: '/images/products/carriwell-omlott-gravid-och-amnings-bh-eko-svart.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=802754&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-omlott-gravid-och-amnings-bh-eko-svart',
- features: {
- 'Typ': 'Omlott (ej vadderad)',
- 'Bälta': 'Nej (sömlös)',
- 'Material': 'Ekologisk bomull',
- 'Öppning': 'Omlottdesign',
- 'Användning': 'Dag och natt',
- },
- },
- {
- name: 'Medela Comfy Amnings-BH, Svart',
- badge: 'Bäst för nätterna',
- rating: 4.6,
- image: '/images/products/abecita-amningsbh.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10227434&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/medela-keep-cool-amnings-bh-svart',
- additionalCtaHrefs: [
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=460845&url=https://www.babyland.se/medela-comfy-amnings-bh-svart' },
- ],
- features: {
- 'Typ': 'Sömlös mjuk',
- 'Bälta': 'Nej',
- 'Material': 'Polyamid/elastan',
- 'Öppning': 'Clip',
- 'Användning': 'Dag och natt',
- },
- },
- {
- name: 'Abecita Amnings-BH Leonarda, Svart',
- badge: 'Bäst med bygel',
- rating: 4.5,
- image: '/images/products/abecita-amningsbh.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=566951&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/abecita-amnings-bh-mama-soft-svart',
- features: {
- 'Typ': 'Med bygel',
- 'Bälta': 'Ja',
- 'Material': 'Polyester/polyamid',
- 'Öppning': 'Clip (en hand)',
- 'Användning': 'Dag',
- },
- },
+  {
+    name: 'Carriwell Vadderad Gravid- och Amnings-BH, Svart',
+    brand: 'Carriwell',
+    rating: 4.8,
+    badge: 'Bast i test',
+    usps: ['Somlös design', 'Clip-oppning en hand', 'Dag och natt'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=149231&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-vadderad-gravid-och-amnings-bh-svart',
+    imageUrl: '/images/products/carriwell-vadderad-gravid-och-amnings-bh-svart.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Sömlös vadderad amnings-BH utan bygel. Clip-öppning med en hand. Passar under graviditet och amning.',
+    features: { 'Typ': 'Vadderad', 'Bälta': 'Nej (sömlös)', 'Material': 'Nylon/elastan', 'Öppning': 'Clip (en hand)', 'Användning': 'Dag och natt' },
+    alsoAt: [],
+  },
+  {
+    name: 'Carriwell Omlott Gravid- och Amnings-BH Eko, Svart',
+    brand: 'Carriwell',
+    rating: 4.6,
+    badge: 'Miljövänligt val',
+    usps: ['Ekologisk bomull', 'Omlottdesign', 'Dag och natt'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=802754&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-omlott-gravid-och-amnings-bh-eko-svart',
+    imageUrl: '/images/products/carriwell-omlott-gravid-och-amnings-bh-eko-svart.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Amnings-BH i ekologisk bomull utan bygel. Omlottdesign för enkel öppning. Mjuk och luftig.',
+    features: { 'Typ': 'Omlott (ej vadderad)', 'Bälta': 'Nej (sömlös)', 'Material': 'Ekologisk bomull', 'Öppning': 'Omlottdesign', 'Användning': 'Dag och natt' },
+    alsoAt: [],
+  },
+  {
+    name: 'Medela Comfy Amnings-BH, Svart',
+    brand: 'Medela',
+    rating: 4.6,
+    badge: 'Bäst för nätterna',
+    usps: ['Extremt mjuk och sömlös', 'Perfekt nattamning', 'Clip-öppning en hand'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10227434&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/medela-keep-cool-amnings-bh-svart',
+    imageUrl: '/images/products/abecita-amningsbh.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Sömlös mjuk amnings-BH för dag och natt. Clip-öppning. Känt amningsbrand.',
+    features: { 'Typ': 'Sömlös mjuk', 'Bälta': 'Nej', 'Material': 'Polyamid/elastan', 'Öppning': 'Clip', 'Användning': 'Dag och natt' },
+    alsoAt: [
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=460845&url=https://www.babyland.se/medela-comfy-amnings-bh-svart' },
+    ],
+  },
+  {
+    name: 'Abecita Amnings-BH Leonarda, Svart',
+    brand: 'Abecita',
+    rating: 4.5,
+    badge: 'Bäst med bygel',
+    usps: ['Välformad med bygel', 'Clip-öppning en hand', 'Daganvändning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=566951&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/abecita-amnings-bh-mama-soft-svart',
+    imageUrl: '/images/products/abecita-amningsbh.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Amnings-BH med bygel för bättre lyft. Clip-öppning med en hand. Bra för större bröststorlek.',
+    features: { 'Typ': 'Med bygel', 'Bälta': 'Ja', 'Material': 'Polyester/polyamid', 'Öppning': 'Clip (en hand)', 'Användning': 'Dag' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Typ', 'Bälta', 'Material', 'Öppning', 'Användning'];
+const specLabels = ['Typ', 'Bälta', 'Material', 'Öppning', 'Användning'];
 
 const faqItems = [
- {
- question: 'När i graviditeten ska man köpa amnings-BH?',
- answer: 'Vecka 36 till 38 är en bra tidpunkt. Då har brösten växt klart inför förlossningen men inte hunnit svullna av mjölkproduktionen, vilket gör storleken stabil nog att handla på. Köp två till tre stycken sömlösa amnings-BH:ar utan bygel som du kan använda direkt på BB och hemma de första veckorna.',
- },
- {
- question: 'Vilken storlek ska jag välja?',
- answer: 'Mät bandet rakt under brösten och kupan över den bredaste delen av bystet. Räkna med att kupan växer en till två storlekar när mjölken rinner till runt dag tre till fem. Välj en modell med flera hakrader och stretch i kupan så att den följer förändringarna. Carriwell och Medela har generösa storleksguider på sina webbplatser och båda märkena passar de flesta nordiska kroppar.',
- },
- {
- question: 'Bygel eller utan bygel under amning?',
- answer: 'De första tre till sex månaderna ska du använda BH utan bygel, även dagtid. En felsittande bygel pressar mot mjölkgångarna och kan orsaka igentäppning eller mjölkstockning. När produktionen stabiliserats och du är säker på din storlek går det bra att bära bygel-BH dagtid om passformen är korrekt. Nattetid använder du alltid en sömlös och mjuk modell.',
- },
- {
- question: 'Hur många amnings-BH:ar behöver man?',
- answer: 'Tre till fyra stycken är ett minimum. Under amningsperioden läcker många dagligen och behöver byta innan tvätten är klar. Materialet sliter snabbare än vanliga BH:ar eftersom de tvättas i 40 till 60 grader. Köp två till tre i din primära storlek plus en eller två som är något större för perioder med rik mjölkproduktion.',
- },
- {
- question: 'Kan jag använda en vanlig sport-BH när jag ammar?',
- answer: 'Nej. Vanliga sport-BH:ar saknar amningsöppning och sitter komprimerande över bröstvävnaden, vilket ökar risken för mjölkstockning. Vill du träna under amningstiden finns specifika sport-amnings-BH:ar från Carriwell och Anita med både stöd och clip-öppning. Dessa är konstruerade för att inte trycka mot mjölkgångarna.',
- },
- {
- question: 'Hur tvättar jag en amnings-BH utan att den tappar passformen?',
- answer: 'Tvätta i tvättpåse på 40 grader med skonsamt program. Hoppa över torktumlaren eftersom värmen sliter på elastanen och clip-öppningarna. Lufttorka liggande så att kupan behåller sin form. Använd inte sköljmedel, det förstör materialets fuktabsorption och kan irritera bröstvårtorna när du ammar.',
- },
+  {
+    question: 'När i graviditeten ska man köpa amnings-BH?',
+    answer: 'Vecka 36 till 38 är en bra tidpunkt. Då har brösten växt klart inför förlossningen men inte hunnit svullna av mjölkproduktionen, vilket gör storleken stabil nog att handla på. Köp två till tre stycken sömlösa amnings-BH:ar utan bygel som du kan använda direkt på BB och hemma de första veckorna.',
+  },
+  {
+    question: 'Vilken storlek ska jag välja?',
+    answer: 'Mät bandet rakt under brösten och kupan över den bredaste delen av bystet. Räkna med att kupan växer en till två storlekar när mjölken rinner till runt dag tre till fem. Välj en modell med flera hakrader och stretch i kupan så att den följer förändringarna. Carriwell och Medela har generösa storleksguider på sina webbplatser och båda märkena passar de flesta nordiska kroppar.',
+  },
+  {
+    question: 'Bygel eller utan bygel under amning?',
+    answer: 'De första tre till sex månaderna ska du använda BH utan bygel, även dagtid. En felsittande bygel pressar mot mjölkgångarna och kan orsaka igentäppning eller mjölkstockning. När produktionen stabiliserats och du är säker på din storlek går det bra att bära bygel-BH dagtid om passformen är korrekt. Nattetid använder du alltid en sömlös och mjuk modell.',
+  },
+  {
+    question: 'Hur många amnings-BH:ar behöver man?',
+    answer: 'Tre till fyra stycken är ett minimum. Under amningsperioden läcker många dagligen och behöver byta innan tvätten är klar. Materialet sliter snabbare än vanliga BH:ar eftersom de tvättas i 40 till 60 grader. Köp två till tre i din primära storlek plus en eller två som är något större för perioder med rik mjölkproduktion.',
+  },
+  {
+    question: 'Kan jag använda en vanlig sport-BH när jag ammar?',
+    answer: 'Nej. Vanliga sport-BH:ar saknar amningsöppning och sitter komprimerande över bröstvävnaden, vilket ökar risken för mjölkstockning. Vill du träna under amningstiden finns specifika sport-amnings-BH:ar från Carriwell och Anita med både stöd och clip-öppning. Dessa är konstruerade för att inte trycka mot mjölkgångarna.',
+  },
+  {
+    question: 'Hur tvättar jag en amnings-BH utan att den tappar passformen?',
+    answer: 'Tvätta i tvättpåse på 40 grader med skonsamt program. Hoppa över torktumlaren eftersom värmen sliter på elastanen och clip-öppningarna. Lufttorka liggande så att kupan behåller sin form. Använd inte sköljmedel, det förstör materialets fuktabsorption och kan irritera bröstvårtorna när du ammar.',
+  },
 ];
+
 export const articleMeta = {
   title: "Amnings-BH bäst i test 2026: sömlösa och med bygel",
   description: "Amnings-BH bäst i test 2026: 4 modeller jämförda, sömlösa, vadderade och med bygel. Hur du väljer rätt storlek och när bygel-BH är okej att bära under amning.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
   category: "Amning",
   image: "/images/products/carriwell-vadderad-gravid-och-amnings-bh-svart.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Amnings-BH bäst i test 2026: 4 modeller jämförda"
- description="Vi har jämfört de bästa amnings-BH:arna 2026, sömlösa, vadderade och med bygel. Se vilken som vinner och hur du hittar rätt storlek under amning."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/amning/amningsbh/"
- updatedDate="2026-05-14"
-  datePublished="2026-01-15"
+  title="Amnings-BH bäst i test 2026: sömlösa och med bygel"
+  description="Amnings-BH bäst i test 2026: 4 modeller jämförda, sömlösa, vadderade och med bygel. Hur du väljer rätt storlek och när bygel-BH är okej att bära under amning."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/amning/amningsbh/"
+  datePublished="2026-05-16"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
- Carriwell Vadderad Gravid- och Amnings-BH vinner amnings-BH bäst i test 2026. Den sömlösa konstruktionen utan bygel sitter skönt dygnet runt, och clip-öppningen klarar du med en hand medan du håller bebisen. Passformen följer med när bröststorleken ändras under graviditet och hela amningsperioden.
- </p>
 
- <TopPick product={products[0]} description="Carriwell Vadderad Gravid- och Amnings-BH är vår vinnare. Sömlös konstruktion utan bygel, clip-öppning som du klarar med en hand och passform som följer med både under graviditet och hela amningsperioden." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, amnings-BH 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken amnings-BH är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Carriwell Vadderad Gravid- och Amnings-BH vinner 2026: sömlös konstruktion utan bygel, clip-öppning med en hand och passform som följer med under hela graviditeten och amningsperioden. Bäst för nätterna: Medela Comfy. Bäst med bygel: Abecita Leonarda.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
- <p class="text-sm text-text-light"><strong>Carriwell Vadderad BH</strong> är bäst för heldagsbärning, sömlös, bekväm och utan bygel. <strong>Carriwell Eko Omlott</strong> är bäst för miljömedvetna. <strong><a href="/marken/medela/" class="text-accent underline">Medela</a> Comfy</strong> är bäst för nätterna.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Carriwell"
+    name="Vadderad Gravid- och Amnings-BH, Svart"
+    image="/images/products/carriwell-vadderad-gravid-och-amnings-bh-svart.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=149231&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-vadderad-gravid-och-amnings-bh-svart"
+    store="Jollyroom"
+    description="Vinnare amnings-BH bäst i test 2026. Sömlös konstruktion utan bygel som sitter skönt dygnet runt, clip-öppning du klarar med en hand medan du håller bebisen, och passform som följer med när bröststorleken ändras under graviditet och hela amningsperioden."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, amnings-BH 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Carriwell Vadderad Gravid- och Amnings-BH, Svart"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/carriwell-vadderad-gravid-och-amnings-bh-svart.webp"
- pros={['Sömlös design, inga sömmar mot huden', 'Clip-öppning med en hand', 'Passar under graviditet och amning', 'Diskret under kläder']}
- cons={['Ger inte lika mycket lyft som bygel-BH', 'Storleksanpassning kan behövas', 'Begränsade färgval']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=149231&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-vadderad-gravid-och-amnings-bh-svart"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Carriwell Omlott Gravid- och Amnings-BH Eko, Svart"
- badge="Miljövänligt val"
- rating={4.6}
- image="/images/products/carriwell-omlott-gravid-och-amnings-bh-eko-svart.webp"
- pros={['Ekologisk bomull, skonsamt mot huden', 'Lägst pris', 'Omlottdesign, enkel och snabb öppning', 'Mjuk och luftig']}
- cons={['Ingen vaddning', 'Omlottdesign kan ge synliga konturer', 'Mindre stöd än vadderade modeller']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=802754&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-omlott-gravid-och-amnings-bh-eko-svart"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Carriwell Vadderad Gravid- och Amnings-BH, bäst i test</h2>
+    <MoneyProductCard
+      brand="Carriwell"
+      name="Carriwell Vadderad Gravid- och Amnings-BH, Svart"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/carriwell-vadderad-gravid-och-amnings-bh-svart.webp"
+      imageAlt="Carriwell Vadderad Gravid- och Amnings-BH svart"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=149231&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-vadderad-gravid-och-amnings-bh-svart"
+      pros={['Sömlös design, inga sömmar mot huden', 'Clip-öppning med en hand', 'Passar under graviditet och amning', 'Diskret under kläder']}
+      cons={['Ger inte lika mycket lyft som bygel-BH', 'Storleksanpassning kan behövas', 'Begränsade färgval']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Carriwell Vadderad Gravid- och Amnings-BH vinner amnings-BH bäst i test 2026. Den sömlösa konstruktionen utan bygel sitter skönt dygnet runt, och clip-öppningen klarar du med en hand medan du håller bebisen. Passformen följer med när bröststorleken ändras under graviditet och hela amningsperioden.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nylon/elastan-materialet håller formen bra och är diskret under kläder. Nackdelen är att den ger mindre lyft än en bygel-BH och att färgvalet är begränsat. Men för heldagsbärning från graviditet till avslutad amning är det svårt att hitta ett bättre alternativ.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=149231&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-vadderad-gravid-och-amnings-bh-svart" />
 
- <ProductCard
- name="Medela Comfy Amnings-BH, Svart"
- badge="Bäst för nätterna"
- rating={4.6}
- image="/images/products/abecita-amningsbh.webp"
- pros={['Extremt mjuk och sömlös', 'Perfekt för nattamning', 'Clip-öppning med en hand', 'Känt amningsbrand']}
- cons={['Begränsat stöd under dagen', 'Sitter löst för de med större bröst', 'Inte alltid diskret under tunna toppar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10227434&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/medela-keep-cool-amnings-bh-svart"
- additionalCtaHrefs={[
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=460845&url=https://www.babyland.se/medela-comfy-amnings-bh-svart' },
- ]}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Carriwell Omlott Gravid- och Amnings-BH Eko, miljövänligt val</h2>
+    <MoneyProductCard
+      brand="Carriwell"
+      name="Carriwell Omlott Gravid- och Amnings-BH Eko, Svart"
+      rating={4.6}
+      rank={2}
+      badge="Miljövänligt val"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/carriwell-omlott-gravid-och-amnings-bh-eko-svart.webp"
+      imageAlt="Carriwell Omlott Gravid- och Amnings-BH Eko svart"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=802754&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-omlott-gravid-och-amnings-bh-eko-svart"
+      pros={['Ekologisk bomull, skonsamt mot huden', 'Lägst pris', 'Omlottdesign, enkel och snabb öppning', 'Mjuk och luftig']}
+      cons={['Ingen vaddning', 'Omlottdesign kan ge synliga konturer', 'Mindre stöd än vadderade modeller']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Carriwell Omlott Eko är valet för dig som prioriterar miljö och hudvänlighet. Ekologisk bomull är skönare mot känslig hud och omlottdesignen ger en ännu snabbare öppning än clip, utan att trycka mot mjölkgångarna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att bomull förlorar elasticitet snabbare än syntetmaterial och att omlottdesignen kan ge synliga konturer under tunna kläder. För den miljömedvetna mamman som vill ha en mjuk och luftig modell är detta ändå ett av de bästa valen på marknaden.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=802754&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-omlott-gravid-och-amnings-bh-eko-svart" />
 
- <ProductCard
- name="Abecita Amnings-BH Leonarda, Svart"
- badge="Bäst med bygel"
- rating={4.5}
- image="/images/products/abecita-amningsbh.webp"
- pros={['Välformad med bygel för bättre lyft', 'Bra för de med större bröststorlek', 'Diskret och snygg design', 'Clip-öppning med en hand']}
- cons={['Bygel rekommenderas ej nattetid', 'Högre pris', 'Kräver rätt passform för bygel']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=566951&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/abecita-amnings-bh-mama-soft-svart"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Medela Comfy Amnings-BH, bäst för nätterna</h2>
+    <MoneyProductCard
+      brand="Medela"
+      name="Medela Comfy Amnings-BH, Svart"
+      rating={4.6}
+      rank={3}
+      badge="Bäst för nätterna"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/abecita-amningsbh.webp"
+      imageAlt="Medela Comfy Amnings-BH svart"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10227434&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/medela-keep-cool-amnings-bh-svart"
+      alsoAt={[
+        { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=460845&url=https://www.babyland.se/medela-comfy-amnings-bh-svart' },
+      ]}
+      pros={['Extremt mjuk och sömlös', 'Perfekt för nattamning', 'Clip-öppning med en hand', 'Känt amningsbrand']}
+      cons={['Begränsat stöd under dagen', 'Sitter löst för de med större bröst', 'Inte alltid diskret under tunna toppar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Medela Comfy Amnings-BH är konstruerad för komfort dygnet runt men utmärker sig verkligen nattetid. Den extremt mjuka polyamid/elastan-kombon gör att du knappt märker att du har den på, och clip-öppningen fungerar lika smidigt i mörkret som på dagen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      För de med större bröst kan stödet uppfattas som begränsat under dagtid, men för nattamning och sovande stunder är det svårt att hitta ett bekvämare alternativ. Medela som märke är välkänt inom amning, vilket också återspeglas i clip-mekanismens kvalitet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10227434&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/medela-keep-cool-amnings-bh-svart" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: vad du ska titta på när du väljer amnings-BH</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Abecita Amnings-BH Leonarda, bäst med bygel</h2>
+    <MoneyProductCard
+      brand="Abecita"
+      name="Abecita Amnings-BH Leonarda, Svart"
+      rating={4.5}
+      rank={4}
+      badge="Bäst med bygel"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/abecita-amningsbh.webp"
+      imageAlt="Abecita Amnings-BH Leonarda svart"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=566951&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/abecita-amnings-bh-mama-soft-svart"
+      pros={['Välformad med bygel för bättre lyft', 'Bra för de med större bröststorlek', 'Diskret och snygg design', 'Clip-öppning med en hand']}
+      cons={['Bygel rekommenderas ej nattetid', 'Högre pris', 'Kräver rätt passform för bygel']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Abecita Amnings-BH Leonarda är valet för dig som inte vill ge upp formen och lyftet under amningsperioden. Bygeln ger ett stöd och en silhuett som sömlösa modeller inte kan matcha, och clip-öppningen fungerar smidigt med en hand.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Viktigt: bygel-BH rekommenderas inte under de första tre till sex månaderna av amningen, och nattetid ska du alltid välja en sömlös modell. När amningen är inarbetad och du vet din stabila storlek är Abecita Leonarda ett utmärkt val för dagtid.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=566951&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/abecita-amnings-bh-mama-soft-svart" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Mät innan du köper, inte efter</h3>
- <p>Det vanligaste felköpet är att gissa storleken utifrån vanlig BH-storlek. Brösten ökar typiskt en till två kupstorlekar under sista månaderna av graviditeten, och växer ytterligare när mjölken rinner till runt dag tre. Mät bandet rakt under bystet och kupan över bredaste punkten, två gånger med en veckas mellanrum. Välj sedan en BH med haksystem som tillåter justering åt båda håll.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra amnings-BH:ar granskade: Carriwell Vadderad vinner på daglig komfort, Carriwell Eko Omlott på miljö och pris, Medela Comfy på nattkomfort och Abecita Leonarda för dig som vill ha bygel. Se även vår kompletta <a href="/amning/" class="text-accent hover:text-accent-dark underline">amningsguide</a>, <a href="/amning/elektrisk-brostpump/" class="text-accent hover:text-accent-dark underline">bästa elektriska bröstpump 2026</a> och <a href="/amning/brostpump/" class="text-accent hover:text-accent-dark underline">bästa bröstpump 2026</a>.
+    </p>
 
- <h3>Sömlös eller med bygel</h3>
- <p>För de första månaderna är en sömlös modell utan bygel det säkra valet. En bygel som ligger fel pressar mjölkgångarna och kan utlösa mjölkstockning eller mastit, ett verkligt problem som flera tusen svenska kvinnor söker vård för varje år. Carriwell Vadderad och Medela Comfy är konstruerade just för denna fas. När amningen är inarbetad efter tre till sex månader kan du gå över till en välpassad bygel-BH dagtid, men behåll en sömlös för natten.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda, amnings-BH 2026" />
 
- <h3>Clip-öppning som funkar med en hand</h3>
- <p>Du kommer att öppna amnings-BH:n flera tusen gånger under amningsperioden, ofta med en hungrig bebis i den fria armen. Provtryck clip-mekanismen i butiken och välj en modell där du kan öppna och stänga utan att titta. Carriwells clip och Medelas clip lyfts ofta fram som de smidigaste i användaromdömen. Omlottmodeller går ännu snabbare men har inget stöd för läckskydd.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad du ska titta på när du väljer amnings-BH</h2>
 
- <h3>Material och tvättålighet</h3>
- <p>En amnings-BH tvättas i snitt två till tre gånger i veckan under hela amningsperioden. Polyamid med elastan håller formen bäst. Ekologisk bomull är skönare mot huden men förlorar elasticitet snabbare och slits ut efter cirka åtta månader. Räkna med att byta ut två av tre BH:ar vid sex månader om du ammar fulltid.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Mät innan du köper, inte efter</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det vanligaste felköpet är att gissa storleken utifrån vanlig BH-storlek. Brösten ökar typiskt en till två kupstorlekar under sista månaderna av graviditeten, och växer ytterligare när mjölken rinner till runt dag tre. Mät bandet rakt under bystet och kupan över bredaste punkten, två gånger med en veckas mellanrum. Välj sedan en BH med haksystem som tillåter justering åt båda håll.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade amningsprodukter</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/amning/" class="text-accent underline">Amning, komplett guide</a></li>
- <li><a href="/amning/elektrisk-brostpump/" class="text-accent underline">Bästa elektriska bröstpump 2026</a></li>
- <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpump 2026, manuell och elektrisk</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Sömlös eller med bygel</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      För de första månaderna är en sömlös modell utan bygel det säkra valet. En bygel som ligger fel pressar mjölkgångarna och kan utlösa mjölkstockning eller mastit, ett verkligt problem som flera tusen svenska kvinnor söker vård för varje år. Carriwell Vadderad och Medela Comfy är konstruerade just för denna fas. När amningen är inarbetad efter tre till sex månader kan du gå över till en välpassad bygel-BH dagtid, men behåll en sömlös för natten.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Clip-öppning som funkar med en hand</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du kommer att öppna amnings-BH:n flera tusen gånger under amningsperioden, ofta med en hungrig bebis i den fria armen. Provtryck clip-mekanismen i butiken och välj en modell där du kan öppna och stänga utan att titta. Carriwells clip och Medelas clip lyfts ofta fram som de smidigaste i användaromdömen. Omlottmodeller går ännu snabbare men har inget stöd för läckskydd.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Carriwell Vadderad Gravid- och Amnings-BH, Svart',
- description: 'Sömlös vadderad amnings-BH utan bygel. Clip-öppning med en hand. Passar under graviditet och amning.',
- image: 'https://bebisguiden.se/images/products/carriwell-amningsbh.webp',
- brand: 'Carriwell',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Carriwell Omlott Gravid- och Amnings-BH Eko, Svart',
- description: 'Amnings-BH i ekologisk bomull utan bygel. Omlottdesign för enkel öppning. Mjuk och luftig.',
- image: 'https://bebisguiden.se/images/products/carriwell-amningsbh.webp',
- brand: 'Carriwell',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
- <CTABox productName="Amnings-BH och amningsprodukter" store="Nanobebe" description="Premium nappflaskor och amningsprodukter." />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material och tvättålighet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En amnings-BH tvättas i snitt två till tre gånger i veckan under hela amningsperioden. Polyamid med elastan håller formen bäst. Ekologisk bomull är skönare mot huden men förlorar elasticitet snabbare och slits ut efter cirka åtta månader. Räkna med att byta ut två av tre BH:ar vid sex månader om du ammar fulltid.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har jämfört fyra amnings-BH:ar utifrån konstruktion (sömlös, omlott, bygel), material och tvättålighet, clip-mekanism och enkelhand-öppning, passform under graviditet och amning samt daglig och nattlig komfort. Produkterna är valda bland de mest sålda och eftersökta amnings-BH:arna på den svenska marknaden. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade amningsprodukter</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/amning/" class="text-accent underline">Amning, komplett guide</a></li>
+        <li><a href="/amning/elektrisk-brostpump/" class="text-accent underline">Bästa elektriska bröstpump 2026</a></li>
+        <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpump 2026, manuell och elektrisk</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa amnings-BH 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=149231&url=https://www.jollyroom.se/mamma/mammaklader/amningsklader/amnings-bh/carriwell-vadderad-gravid-och-amnings-bh-svart"
+    text="Bra pris hos Jollyroom"
+    productName="Carriwell Vadderad Amnings-BH"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

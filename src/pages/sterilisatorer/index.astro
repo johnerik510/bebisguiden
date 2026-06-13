@@ -1,257 +1,449 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Sterilisatorer', href: '/sterilisatorer/' },
+  { label: 'Hem', href: '/' },
+  { label: 'Sterilisatorer', href: '/sterilisatorer/' },
 ];
 
+// No-price-policy. Affiliate-lankar/bilder oforandrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Baby Brezza Sterilizer Dryer Advanced White',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/baby-brezza-sterilizer-dryer.webp',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=bb24c729-4c6e-4775-8129-33cb1d2a8013&url=https://www.babysam.se/baby-brezza-sterilizer-dryer-advanced-white-onesize',
- additionalCtaHrefs: [
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=534918&url=https://www.babyland.se/baby-brezza-sterilizer-dryer-advanced' },
- ],
- pros: ['Steriliserar OCH torkar i ett', 'Snabbt (8 minuter)', 'Rymmer 6 flaskor + tillbehör', 'Passar alla flaskstorlekar och märken'],
- cons: ['Högt pris vs grundläggande sterilisatorer', 'Tar plats i köket', 'Torkfunktionen behöver rengöras regelbundet'],
- features: {
- 'Metod': 'Ånga + inbyggd tork',
- 'Kapacitet': '6 flaskor',
- 'Tid': '8 min sterilisering',
- 'Steril i': '24 timmar',
- 'Certifiering': 'CE-godkänd',
- },
- },
- {
- name: 'Philips Avent Elektrisk Sterilisator',
- badge: 'Bäst elektrisk ångsterilisator',
- rating: 4.7,
- image: '/images/products/philips-avent-elektrisk-sterilisator.webp',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=717a28d3-572c-4e27-b1cd-4fe88a68c948&url=https://www.babysam.se/elektrisk-sterilisator-onesize',
- pros: ['Steriliserar på 6 minuter med ånga', 'Passar 6 nappflaskor + nappar', 'Sterilt i 24 timmar med stängt lock', 'Universell passform för alla flaskmärken'],
- cons: ['Tar plats på köksbänken', 'Kabel relativt kort'],
- features: {
- 'Metod': 'Ånga (elektrisk)',
- 'Kapacitet': '6 flaskor',
- 'Tid': '6 min',
- 'Steril i': '24 timmar',
- 'Certifiering': 'CE-godkänd',
- },
- },
- {
- name: 'MAM 6-i-1 Sterilisator och Flaskvärmare',
- badge: 'Bäst kombo sterilisator och värmare',
- rating: 4.6,
- image: '/images/products/mam-6-i-1-sterilisator.webp',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=95725e67-8c06-4a8f-ad60-f30b9df12eb4&url=https://www.babysam.se/6-i-1-sterilisator-och-flaskvaermare-onesize',
- pros: ['6 funktioner i ett: sterilisator, tork, värmare m.fl.', 'Perfekt för MAM-flaskor och nappar', 'Spar utrymme med kombinationslösning', 'Steriliserar på 6 minuter'],
- cons: ['Högt pris för kombinationen', 'Tar plats på bänken'],
- features: {
- 'Metod': 'Ånga (elektrisk)',
- 'Kapacitet': '6 flaskor',
- 'Tid': '8 min',
- 'Steril i': '24 timmar',
- 'Certifiering': 'CE-godkänd',
- },
- },
- {
- name: 'Philips Avent Sterilisator till Mikrovågsugn',
- badge: 'Bäst för resan',
- rating: 4.5,
- image: '/images/products/philips-avent-sterilisator-micro.webp',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=81ecddb4-af6d-4da0-801c-a6dad00469ff&url=https://www.babysam.se/sterilisator-till-mikrovaagsugn-onesize',
- pros: ['Ingen el behövs, används i mikrovågsugn', 'Kompakt och perfekt för semesterresor', 'Steriliserar på 2 minuter', 'Lågt inköpspris'],
- cons: ['Kräver tillgång till mikrovågsugn', 'Kapacitet 4 flaskor', 'Steril i endast 6 timmar'],
- features: {
- 'Metod': 'Mikrovågsånga',
- 'Kapacitet': '4 flaskor',
- 'Tid': '2 min (i mikron)',
- 'Steril i': '6 timmar',
- 'Certifiering': 'CE-godkänd',
- },
- },
+  {
+    name: 'Baby Brezza Sterilizer Dryer Advanced White',
+    brand: 'Baby Brezza',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Steriliserar och torkar i ett', 'Passar alla märken', '8 min cykeltid'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=bb24c729-4c6e-4775-8129-33cb1d2a8013&url=https://www.babysam.se/baby-brezza-sterilizer-dryer-advanced-white-onesize',
+    imageUrl: '/images/products/baby-brezza-sterilizer-dryer.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Elektrisk sterilisator med inbyggd tork. Steriliserar och torkar 6 flaskor på 8 minuter. Passar alla flaskmärken.',
+    features: {
+      'Metod': 'Ånga + inbyggd tork',
+      'Kapacitet': '6 flaskor',
+      'Tid': '8 min sterilisering',
+      'Steril i': '24 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+    alsoAt: [
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=534918&url=https://www.babyland.se/baby-brezza-sterilizer-dryer-advanced' },
+    ],
+  },
+  {
+    name: 'Philips Avent Elektrisk Sterilisator',
+    brand: 'Philips',
+    rating: 4.7,
+    badge: 'Bäst elektrisk ångsterilisator',
+    usps: ['6 min sterilisering', 'Sterilt i 24 h', 'Universell passform'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=717a28d3-572c-4e27-b1cd-4fe88a68c948&url=https://www.babysam.se/elektrisk-sterilisator-onesize',
+    imageUrl: '/images/products/philips-avent-elektrisk-sterilisator.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Elektrisk ångsterilisator som steriliserar på 6 minuter. Kapacitet 6 flaskor. Behåller sterilitet i 24 timmar.',
+    features: {
+      'Metod': 'Ånga (elektrisk)',
+      'Kapacitet': '6 flaskor',
+      'Tid': '6 min',
+      'Steril i': '24 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'MAM 6-i-1 Sterilisator och Flaskvärmare',
+    brand: 'MAM',
+    rating: 4.6,
+    badge: 'Bäst kombo sterilisator och värmare',
+    usps: ['6 funktioner i ett', 'Optimalt för MAM', 'Sparar utrymme'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=95725e67-8c06-4a8f-ad60-f30b9df12eb4&url=https://www.babysam.se/6-i-1-sterilisator-och-flaskvaermare-onesize',
+    imageUrl: '/images/products/mam-6-i-1-sterilisator.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: '6 funktioner i ett: sterilisator, tork och flaskvärmare. Passar MAM-flaskor och nappar optimalt.',
+    features: {
+      'Metod': 'Ånga (elektrisk)',
+      'Kapacitet': '6 flaskor',
+      'Tid': '8 min',
+      'Steril i': '24 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent Sterilisator till Mikrovågsugn',
+    brand: 'Philips',
+    rating: 4.5,
+    badge: 'Bäst för resan',
+    usps: ['Ingen el behövs', '2 min i mikron', 'Kompakt och lättburen'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=81ecddb4-af6d-4da0-801c-a6dad00469ff&url=https://www.babysam.se/sterilisator-till-mikrovaagsugn-onesize',
+    imageUrl: '/images/products/philips-avent-sterilisator-micro.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Kompakt sterilisator för mikrovågsugn. Perfekt för resor. Steriliserar på 2 minuter. Kapacitet 4 flaskor.',
+    features: {
+      'Metod': 'Mikrovågsånga',
+      'Kapacitet': '4 flaskor',
+      'Tid': '2 min (i mikron)',
+      'Steril i': '6 timmar',
+      'Certifiering': 'CE-godkänd',
+    },
+    alsoAt: [],
+  },
 ];
 
 const featureLabels = ['Metod', 'Kapacitet', 'Tid', 'Steril i', 'Certifiering'];
 
 const faqItems = [
- {
- question: 'Måste man sterilisera nappflaskor?',
- answer: '1177 rekommenderar sterilisering av nappflaskor, nappar och bröstpumpsdelar för nyfödda och barn under fyra månader. Anledningen är att immunförsvaret fortfarande är omoget och bakterier som annars är ofarliga kan orsaka magsjuka eller infektioner. Efter fyra månader räcker diskning i diskmaskin på minst 60 grader för friska barn.',
- },
- {
- question: 'Vilken steriliseringsmetod är effektivast?',
- answer: 'Elektrisk ångsterilisering är den vanligaste metoden hemma, dödar 99,9 procent av bakterier och virus på sex till tio minuter och kräver bara vatten och el. Mikrovågssterilisering är snabbast (två minuter) och perfekt för resor. Kokning i tio minuter fungerar men sliter på plast och tar tid. Kalla tabletter (Milton) är ett kemiskt alternativ utan el men kräver femton till trettio minuters blötläggning.',
- },
- {
- question: 'Hur länge är flaskorna sterila efteråt?',
- answer: 'Med stängt lock i en elektrisk sterilisator håller sig flaskorna sterila i upp till 24 timmar. Mikrovågssterilisatorer ger vanligtvis sex timmar. Så fort du öppnar locket exponeras innehållet för luftburna mikrober och sterililiteten försvinner snabbt. Använd alltid steril pincett vid plockning, händerna är full av bakterier även efter handtvätt.',
- },
- {
- question: 'Måste man sterilisera nappar och bröstpumpsdelar?',
- answer: 'Ja, samma regel gäller. Nappar bör steriliseras för nyfödda och barn under fyra månader, och bröstpumpsdelar som kommer i kontakt med mjölken (trattar, ventiler, membran) bör steriliseras efter varje pumpning. De flesta elektriska sterilisatorer har plats för nappar och pumpdelar i toppdelen.',
- },
- {
- question: 'Tål alla nappflaskor sterilisering?',
- answer: 'De allra flesta nappflaskor av BPA-fri polypropen (PP) och glas tål ångsterilisering. Kontrollera tillverkarens symbol för steriliseringsbarhet. Glasflaskor tål generellt alla metoder. Vissa silikondetaljer kan kräva lägre temperatur, läs anvisningarna. Undvik att sterilisera flaskor med synliga sprickor eller missfärgningar.',
- },
- {
- question: 'Hur rengör och avkalkar man en sterilisator?',
- answer: 'Avkalka sterilisatorn varannan till var tredje vecka i hårdvattenområden, var sjätte vecka i mjukvattenområden. Fyll med en del vit ättika och en del kallt vatten, kör en steriliseringscykel utan flaskor och skölj noggrant två gånger. Kalkavlagringar minskar ångproduktionen och förkortar sterilisatorns livslängd. Torka av utsidan med fuktig trasa efter varje användning.',
- },
- {
- question: 'Är UV-sterilisator bättre än ångsterilisator?',
- answer: 'UV-sterilisatorer (som Beemoo CARE 3-in-1) torkar samtidigt och är tysta, men ångsterilisering är fortfarande den metod som rekommenderas av barnläkare i Sverige eftersom värmen når in i alla skrymslen. UV fungerar bara där ljuset träffar ytan direkt. För nappflaskor med smal hals är ånga säkrare. UV är ett bra komplement för nappar och leksaker.',
- },
+  {
+    question: 'Måste man sterilisera nappflaskor?',
+    answer: '1177 rekommenderar sterilisering av nappflaskor, nappar och bröstpumpsdelar för nyfödda och barn under fyra månader. Anledningen är att immunförsvaret fortfarande är omoget och bakterier som annars är ofarliga kan orsaka magsjuka eller infektioner. Efter fyra månader räcker diskning i diskmaskin på minst 60 grader för friska barn.',
+  },
+  {
+    question: 'Vilken steriliseringsmetod är effektivast?',
+    answer: 'Elektrisk ångsterilisering är den vanligaste metoden hemma, dödar 99,9 procent av bakterier och virus på sex till tio minuter och kräver bara vatten och el. Mikrovågssterilisering är snabbast (två minuter) och perfekt för resor. Kokning i tio minuter fungerar men sliter på plast och tar tid. Kalla tabletter (Milton) är ett kemiskt alternativ utan el men kräver femton till trettio minuters blötläggning.',
+  },
+  {
+    question: 'Hur länge är flaskorna sterila efteråt?',
+    answer: 'Med stängt lock i en elektrisk sterilisator håller sig flaskorna sterila i upp till 24 timmar. Mikrovågssterilisatorer ger vanligtvis sex timmar. Så fort du öppnar locket exponeras innehållet för luftburna mikrober och sterililiteten försvinner snabbt. Använd alltid steril pincett vid plockning, händerna är full av bakterier även efter handtvätt.',
+  },
+  {
+    question: 'Måste man sterilisera nappar och bröstpumpsdelar?',
+    answer: 'Ja, samma regel gäller. Nappar bör steriliseras för nyfödda och barn under fyra månader, och bröstpumpsdelar som kommer i kontakt med mjölken (trattar, ventiler, membran) bör steriliseras efter varje pumpning. De flesta elektriska sterilisatorer har plats för nappar och pumpdelar i toppdelen.',
+  },
+  {
+    question: 'Tål alla nappflaskor sterilisering?',
+    answer: 'De allra flesta nappflaskor av BPA-fri polypropen (PP) och glas tål ångsterilisering. Kontrollera tillverkarens symbol för steriliseringsbarhet. Glasflaskor tål generellt alla metoder. Vissa silikondetaljer kan kräva lägre temperatur, läs anvisningarna. Undvik att sterilisera flaskor med synliga sprickor eller missfärgningar.',
+  },
+  {
+    question: 'Hur rengör och avkalkar man en sterilisator?',
+    answer: 'Avkalka sterilisatorn varannan till var tredje vecka i hårdvattenområden, var sjätte vecka i mjukvattenområden. Fyll med en del vit ättika och en del kallt vatten, kör en steriliseringscykel utan flaskor och skölj noggrant två gånger. Kalkavlagringar minskar ångproduktionen och förkortar sterilisatorns livslängd. Torka av utsidan med fuktig trasa efter varje användning.',
+  },
+  {
+    question: 'Är UV-sterilisator bättre än ångsterilisator?',
+    answer: 'UV-sterilisatorer (som Beemoo CARE 3-in-1) torkar samtidigt och är tysta, men ångsterilisering är fortfarande den metod som rekommenderas av barnläkare i Sverige eftersom värmen når in i alla skrymslen. UV fungerar bara där ljuset träffar ytan direkt. För nappflaskor med smal hals är ånga säkrare. UV är ett bra komplement för nappar och leksaker.',
+  },
 ];
+
+export const articleMeta = {
+  title: "Bästa sterilisator baby 2026: Baby Brezza och Philips Avent",
+  description: "Bäst i test sterilisator 2026: Baby Brezza Advanced vinner. Philips Avent elektrisk och MAM 6-i-1 jämförda. Elektrisk vs mikrovåg.",
+  publishDate: "2026-03-29",
+  updatedDate: "2026-06-13",
+  category: "Amning",
+  image: "/images/products/baby-brezza-sterilizer-dryer.webp",
+};
 ---
 
 <ArticleLayout
- title="Bästa sterilisator baby 2026: Baby Brezza och Philips Avent"
- description="Bäst i test sterilisator 2026: Baby Brezza Advanced vinner. Philips Avent elektrisk och MAM 6-i-1 jämförda. Elektrisk vs mikrovåg."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-22"
- relatedArticles={[
- { title: 'Bästa nappflaskor 2026', href: '/amning/nappflaska/' },
- { title: 'Bästa bröstpumpar 2026', href: '/brostpumpar/' },
- { title: 'Amning och matning, guide', href: '/amning/' },
- { title: 'Bästa spjälsängar 2026', href: '/spjalsangar/' },
- ]}
+  title="Bästa sterilisator baby 2026: Baby Brezza och Philips Avent"
+  description="Bäst i test sterilisator 2026: Baby Brezza Advanced vinner. Philips Avent elektrisk och MAM 6-i-1 jämförda. Elektrisk vs mikrovåg."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sterilisatorer/"
+  datePublished="2026-03-29"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-lg text-text-light leading-relaxed mb-4">
- Baby Brezza Sterilizer Dryer Advanced vinner sterilisator bäst i test 2026. Den både steriliserar och torkar i ett: ångan steriliserar på 8 minuter och inbyggd varmluft torkar sedan flaskorna klara att använda direkt. Den rymmer 6 flaskor, passar alla flaskmärken och håller innehållet sterilt i 24 timmar.
- </p>
 
- <TopPick product={products[0]} description="Baby Brezza Sterilizer Dryer Advanced vinner 2026 på kombinationen sterilisering och torkning i ett. Ångan steriliserar på 8 minuter, sedan torkar inbyggd varmluft flaskorna klara att användas direkt. Passar alla flaskmärken och sparar ett extra steg i den dagliga rutinen." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-03-29" dateModified="2026-06-13" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, sterilisatorer baby 2026" />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken sterilisator är bäst för baby 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Baby Brezza Sterilizer Dryer Advanced är bäst i test 2026: steriliserar och torkar 6 flaskor på 8 minuter, passar alla flaskmärken och håller sterilt i 24 timmar. Bäst elektrisk ångsterilisator utan tork: Philips Avent (6 min, 24 h). Bäst kombination: MAM 6-i-1. Bäst för resor: Philips Avent Mikrovåg (2 min).
+    </p>
+  </div>
 
- <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">De 4 bästa sterilisatorerna 2026: Baby Brezza, Philips Avent och MAM</h2>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Baby Brezza"
+    name="Sterilizer Dryer Advanced White"
+    image="/images/products/baby-brezza-sterilizer-dryer.webp"
+    trackedUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=bb24c729-4c6e-4775-8129-33cb1d2a8013&url=https://www.babysam.se/baby-brezza-sterilizer-dryer-advanced-white-onesize"
+    store="BabySam"
+    alsoAt={[
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=534918&url=https://www.babyland.se/baby-brezza-sterilizer-dryer-advanced' },
+    ]}
+    description="Vinner sterilisator bäst i test 2026 på kombinationen sterilisering och torkning i ett. Ångan steriliserar på 8 minuter, sedan torkar inbyggd varmluft flaskorna klara att användas direkt. Passar alla flaskmärken och sparar ett extra steg i den dagliga rutinen."
+  />
 
- <h3 class="font-heading text-xl font-bold text-text mt-6 mb-4">1. Baby Brezza Sterilizer Dryer Advanced, Bäst i test</h3>
- <ProductCard
- name="Baby Brezza Sterilizer Dryer Advanced White"
- image="/images/products/baby-brezza-sterilizer-dryer.webp"
- badge="Bäst i test 2026"
- rating={4.8}
- ctaText="Bra pris hos BabySam"
- ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=bb24c729-4c6e-4775-8129-33cb1d2a8013&url=https://www.babysam.se/baby-brezza-sterilizer-dryer-advanced-white-onesize"
- additionalCtaHrefs={[
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=534918&url=https://www.babyland.se/baby-brezza-sterilizer-dryer-advanced' },
- ]}
- pros={['Steriliserar OCH torkar i ett', 'Snabbt (8 minuter)', 'Rymmer 6 flaskor + tillbehör', 'Passar alla flaskstorlekar och märken']}
- cons={['Högt pris vs grundläggande sterilisatorer', 'Tar plats i köket', 'Torkfunktionen behöver rengöras regelbundet']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- Baby Brezza Sterilizer Dryer Advanced vinner 2026 tack vare att den kombinerar ångsterilisering och torkning i en enhet. Flaskorna steriliseras på 8 minuter och torkas sedan med varmluft. Passar alla flaskmärken, det flexiblaste valet för familjer som blandar märken.
- </p>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, sterilisatorer baby 2026" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">2. Philips Avent Elektrisk Sterilisator, Bäst elektrisk ångsterilisator</h3>
- <ProductCard
- name="Philips Avent Elektrisk Sterilisator"
- image="/images/products/philips-avent-elektrisk-sterilisator.webp"
- badge="Bäst elektrisk ångsterilisator"
- rating={4.7}
- ctaText="Bra pris hos BabySam"
- ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=717a28d3-572c-4e27-b1cd-4fe88a68c948&url=https://www.babysam.se/elektrisk-sterilisator-onesize"
- pros={['Steriliserar på 6 minuter med ånga', 'Passar 6 nappflaskor + nappar', 'Sterilt i 24 timmar med stängt lock', 'Universell passform för alla flaskmärken']}
- cons={['Tar plats på köksbänken', 'Kabel relativt kort']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- Philips Avent elektriska sterilisator steriliserar 6 flaskor på 6 minuter. Steriliserade föremål förblir sterila i upp till 24 timmar med stängt lock, vilket gör att du kan sterilisera på kvällen och använda flaskorna hela nästa dag.
- </p>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">3. MAM 6-i-1 Sterilisator och Flaskvärmare, Bäst kombination</h3>
- <ProductCard
- name="MAM 6-i-1 Sterilisator och Flaskvärmare"
- image="/images/products/mam-6-i-1-sterilisator.webp"
- badge="Bäst kombo sterilisator och värmare"
- rating={4.6}
- ctaText="Bra pris hos BabySam"
- ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=95725e67-8c06-4a8f-ad60-f30b9df12eb4&url=https://www.babysam.se/6-i-1-sterilisator-och-flaskvaermare-onesize"
- pros={['6 funktioner i ett: sterilisator, tork, värmare m.fl.', 'Perfekt för MAM-flaskor och nappar', 'Spar utrymme med kombinationslösning', 'Steriliserar på 6 minuter']}
- cons={['Högt pris för kombinationen', 'Tar plats på bänken']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- MAM 6-i-1 kombinerar sterilisator och flaskvärmare i ett. Passar MAM-flaskor och nappar optimalt men fungerar med de flesta märken. Praktiskt för familjer som vill ha så få köksprylar som möjligt.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Baby Brezza Sterilizer Dryer Advanced, bäst i test</h2>
+    <MoneyProductCard
+      brand="Baby Brezza"
+      name="Baby Brezza Sterilizer Dryer Advanced White"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/baby-brezza-sterilizer-dryer.webp"
+      imageAlt="Baby Brezza Sterilizer Dryer Advanced White sterilisator"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=bb24c729-4c6e-4775-8129-33cb1d2a8013&url=https://www.babysam.se/baby-brezza-sterilizer-dryer-advanced-white-onesize"
+      alsoAt={[
+        { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=534918&url=https://www.babyland.se/baby-brezza-sterilizer-dryer-advanced' },
+      ]}
+      pros={['Steriliserar OCH torkar i ett', 'Snabbt (8 minuter)', 'Rymmer 6 flaskor + tillbehör', 'Passar alla flaskstorlekar och märken']}
+      cons={['Högt pris vs grundläggande sterilisatorer', 'Tar plats i köket', 'Torkfunktionen behöver rengöras regelbundet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Baby Brezza Sterilizer Dryer Advanced vinner 2026 tack vare att den kombinerar ångsterilisering och torkning i en enhet. Flaskorna steriliseras på 8 minuter och torkas sedan med varmluft. Passar alla flaskmärken, det flexiblaste valet för familjer som blandar märken.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är priset i premiumsegmentet och att den tar plats på köksbänken. Torkfunktionen behöver också rengöras regelbundet för att fungera optimalt. Men för den som vill ha ett steg färre i den dagliga rutinen är den svår att slå.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=bb24c729-4c6e-4775-8129-33cb1d2a8013&url=https://www.babysam.se/baby-brezza-sterilizer-dryer-advanced-white-onesize" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">4. Philips Avent Sterilisator till Mikrovågsugn, Bäst för resan</h3>
- <ProductCard
- name="Philips Avent Sterilisator till Mikrovågsugn"
- image="/images/products/philips-avent-sterilisator-micro.webp"
- badge="Bäst för resan"
- rating={4.5}
- ctaText="Bra pris hos BabySam"
- ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=81ecddb4-af6d-4da0-801c-a6dad00469ff&url=https://www.babysam.se/sterilisator-till-mikrovaagsugn-onesize"
- pros={['Ingen el behövs, används i mikrovågsugn', 'Kompakt och perfekt för semesterresor', 'Steriliserar på 2 minuter', 'Lägst pris på listan']}
- cons={['Kräver tillgång till mikrovågsugn', 'Steril i 6 timmar (kortare än elektrisk)', 'Kapacitet 4 flaskor']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- Philips Avent mikrovågssterilisatorn är det bästa alternativet för resor. Kompakt, ingen elledning och steriliserar på bara 2 minuter om hotellet eller stugan har en mikrovågsugn. Som hemmasterilisator rekommenderas elektrisk modell, men som resetillbehör är detta svårslagen.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Philips Avent Elektrisk Sterilisator, bäst elektrisk ångsterilisator</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent Elektrisk Sterilisator"
+      rating={4.7}
+      rank={2}
+      badge="Bäst elektrisk ångsterilisator"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/philips-avent-elektrisk-sterilisator.webp"
+      imageAlt="Philips Avent Elektrisk Sterilisator"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=717a28d3-572c-4e27-b1cd-4fe88a68c948&url=https://www.babysam.se/elektrisk-sterilisator-onesize"
+      pros={['Steriliserar på 6 minuter med ånga', 'Passar 6 nappflaskor + nappar', 'Sterilt i 24 timmar med stängt lock', 'Universell passform för alla flaskmärken']}
+      cons={['Tar plats på köksbänken', 'Kabel relativt kort']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent elektriska sterilisator steriliserar 6 flaskor på 6 minuter. Steriliserade föremål förblir sterila i upp till 24 timmar med stängt lock, vilket gör att du kan sterilisera på kvällen och använda flaskorna hela nästa dag.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Universell passform innebär att den fungerar med i stort sett alla flaskmärken. Kabeln är något kort, men det är en mindre nackdel mot bakgrunden av hur välbeprövad och pålitlig den är som ren ångsterilisator utan tork.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=717a28d3-572c-4e27-b1cd-4fe88a68c948&url=https://www.babysam.se/elektrisk-sterilisator-onesize" />
 
- <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide flasksterilisatorer 2026: elektrisk, mikrovågs eller UV?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. MAM 6-i-1 Sterilisator och Flaskvärmare, bäst kombination</h2>
+    <MoneyProductCard
+      brand="MAM"
+      name="MAM 6-i-1 Sterilisator och Flaskvärmare"
+      rating={4.6}
+      rank={3}
+      badge="Bäst kombo sterilisator och värmare"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/mam-6-i-1-sterilisator.webp"
+      imageAlt="MAM 6-i-1 Sterilisator och Flaskvärmare"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=95725e67-8c06-4a8f-ad60-f30b9df12eb4&url=https://www.babysam.se/6-i-1-sterilisator-och-flaskvaermare-onesize"
+      pros={['6 funktioner i ett: sterilisator, tork, värmare m.fl.', 'Perfekt för MAM-flaskor och nappar', 'Spar utrymme med kombinationslösning', 'Steriliserar på 6 minuter']}
+      cons={['Högt pris för kombinationen', 'Tar plats på bänken']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      MAM 6-i-1 kombinerar sterilisator och flaskvärmare i ett. Passar MAM-flaskor och nappar optimalt men fungerar med de flesta märken. Praktiskt för familjer som vill ha så få köksprylar som möjligt.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sex funktioner i ett gör den till den mest mångsidiga enheten på listan. Priset ligger i premiumsegmentet, men räknar man in att man slipper köpa separat flaskvärmare kan det vara värt investeringen.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=95725e67-8c06-4a8f-ad60-f30b9df12eb4&url=https://www.babysam.se/6-i-1-sterilisator-och-flaskvaermare-onesize" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Elektrisk ångsterilisator: standardvalet för daglig flaskmatning</h3>
- <p class="text-text-light leading-relaxed mb-4">
- Elektrisk ångsterilisering är det vanligaste och mest praktiska valet för daglig användning. Cykeln tar sex till tio minuter, kräver bara en deciliter vatten och behåller sterilitet i upp till 24 timmar med stängt lock. Värmen når in i nappars och flaskors alla skrymslen, vilket är en fördel mot UV som bara fungerar där ljuset träffar direkt. För familjer som flaskmatar eller pumpar regelbundet är detta valet.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Philips Avent Sterilisator till Mikrovågsugn, bäst för resan</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent Sterilisator till Mikrovågsugn"
+      rating={4.5}
+      rank={4}
+      badge="Bäst för resan"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/philips-avent-sterilisator-micro.webp"
+      imageAlt="Philips Avent Sterilisator till Mikrovågsugn"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=81ecddb4-af6d-4da0-801c-a6dad00469ff&url=https://www.babysam.se/sterilisator-till-mikrovaagsugn-onesize"
+      pros={['Ingen el behövs, används i mikrovågsugn', 'Kompakt och perfekt för semesterresor', 'Steriliserar på 2 minuter', 'Lågt inköpspris']}
+      cons={['Kräver tillgång till mikrovågsugn', 'Kapacitet 4 flaskor', 'Steril i endast 6 timmar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent mikrovågssterilisatorn är det bästa alternativet för resor. Kompakt, ingen elledning och steriliserar på bara 2 minuter om hotellet eller stugan har en mikrovågsugn. Som hemmasterilisator rekommenderas elektrisk modell, men som resetillbehör är detta svårslagen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sterilitetstiden är kortare (6 timmar mot 24 för elektriska) och kapaciteten är 4 flaskor mot 6, men för reseändamål väger kompaktheten och enkelheten tyngre.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=81ecddb4-af6d-4da0-801c-a6dad00469ff&url=https://www.babysam.se/sterilisator-till-mikrovaagsugn-onesize" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Sterilisatorkapacitet: räkna efter dina pump- och flaskvanor</h3>
- <p class="text-text-light leading-relaxed mb-4">
- Sex flaskors kapacitet räcker för de flesta familjer som kombinerar amning och flaska. Uteslutande flaskmatar du, eller har du tvillingar, välj en modell med stor kapacitet och gärna inbyggd tork som Chicco-modellen, då slipper du extra avtorkning. Tänk på att kapaciteten inkluderar både flaskor och delar (lock, sugnipplar, ringar) som sterilisas samtidigt.
- </p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra sterilisatorer granskade, en vinner totalt. Baby Brezza tar förstaplatsen på kombinationen sterilisering och torkning, Philips Avent elektrisk är den renodlade ångsterilisatorn, MAM 6-i-1 ger flest funktioner och Philips Avent Mikrovåg är resetillbehöret. Vill du jämföra nappflaskor som behöver steriliseras? Se vår guide <a href="/amning/nappflaska/" class="text-accent hover:text-accent-dark underline">bästa nappflaskorna 2026</a>.
+    </p>
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Märkesanpassad sterilisator eller universell: Philips Avent vs Tommee Tippee</h3>
- <p class="text-text-light leading-relaxed mb-4">
- Tommee Tippee och NUKs sterilisatorer är designade för att deras egna flaskor ska stå stabilt och ångcirkulationen ska nå optimalt. Använder du genomgående ett märke är märkesspecifik sterilisator det enklaste valet. Blandar du flaskor från olika tillverkare (Philips Avent, Lansinoh, Spectra, IKEA) är en universell modell som Philips Avent 3-i-1 mer flexibel. Mät djupet på din största flaska innan köp.
- </p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={featureLabels} title="Specifikationer jämförda, sterilisatorer baby 2026" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Sterilisator hemma kontra resa: mikrovåg, el och kalla tabletter</h3>
- <p class="text-text-light leading-relaxed mb-4">
- Vid resor är en mikrovågssterilisator som Philips Avent perfekt, den är lätt, kompakt och steriliserar på två minuter om hotellet eller stugan har en mikrovågsugn. Kall tabletter (Milton) är ett kemiskt alternativ utan el men kräver femton till trettio minuters blötläggning. Många familjer kompletterar med en kompakt resemodell utöver hemmamaskinen.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide flasksterilisatorer 2026: elektrisk, mikrovågs eller UV?</h2>
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hur länge ska man sterilisera nappflaskor? 1177:s rekommendation</h3>
- <p class="text-text-light leading-relaxed mb-4">
- 1177 rekommenderar sterilisering för nyfödda och barn under fyra månader, eftersom immunförsvaret fortfarande är omoget. Efter fyra månader räcker diskmaskin på minst 60 grader för friska barn. Premiumsterilisatorer har dock kvar sitt värde som förvaringsbox och uppvärmningsplatta även efter den åldern.
- </p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Elektrisk ångsterilisator: standardvalet för daglig flaskmatning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Elektrisk ångsterilisering är det vanligaste och mest praktiska valet för daglig användning. Cykeln tar sex till tio minuter, kräver bara en deciliter vatten och behåller sterilitet i upp till 24 timmar med stängt lock. Värmen når in i nappars och flaskors alla skrymslen, vilket är en fördel mot UV som bara fungerar där ljuset träffar direkt. För familjer som flaskmatar eller pumpar regelbundet är detta valet.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border mb-6">
- <h2 class="font-heading text-lg font-bold mb-3">Jämförelser sterilisatorer</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/sterilisatorer/philips-avent-vs-tommee-tippee/" class="text-accent underline">Philips Avent vs Tommee Tippee 2026, vilken sterilisator ska du välja?</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Sterilisatorkapacitet: räkna efter dina pump- och flaskvanor</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sex flaskors kapacitet räcker för de flesta familjer som kombinerar amning och flaska. Uteslutande flaskmatar du, eller har du tvillingar, välj en modell med stor kapacitet och gärna inbyggd tork som Chicco-modellen, då slipper du extra avtorkning. Tänk på att kapaciteten inkluderar både flaskor och delar (lock, sugnipplar, ringar) som sterilisas samtidigt.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Märkesanpassad sterilisator eller universell: Philips Avent vs Tommee Tippee</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Tommee Tippee och NUKs sterilisatorer är designade för att deras egna flaskor ska stå stabilt och ångcirkulationen ska nå optimalt. Använder du genomgående ett märke är märkesspecifik sterilisator det enklaste valet. Blandar du flaskor från olika tillverkare (Philips Avent, Lansinoh, Spectra, IKEA) är en universell modell som Philips Avent 3-i-1 mer flexibel. Mät djupet på din största flaska innan köp.
+    </p>
 
- <FAQ items={faqItems} title="Vanliga frågor om sterilisatorer" />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Sterilisator hemma kontra resa: mikrovåg, el och kalla tabletter</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Vid resor är en mikrovågssterilisator som Philips Avent perfekt, den är lätt, kompakt och steriliserar på två minuter om hotellet eller stugan har en mikrovågsugn. Kall tabletter (Milton) är ett kemiskt alternativ utan el men kräver femton till trettio minuters blötläggning. Många familjer kompletterar med en kompakt resemodell utöver hemmamaskinen.
+    </p>
 
- <div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/amning/" class="text-accent underline">Bästa amningsprodukterna 2026</a></li>
- <li><a href="/amning/nappflaska/" class="text-accent underline">Bästa nappflaskorna, som behöver steriliseras</a></li>
- <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpumparna 2026</a></li>
- <li><a href="/guider/amma-eller-flaska/" class="text-accent underline">Amma eller flaska, for- och nackdelar</a></li>
- </ul>
- </div>
-<ProductSchema products={[
- { name: 'Baby Brezza Sterilizer Dryer Advanced White', description: 'Elektrisk sterilisator med inbyggd tork. Steriliserar och torkar 6 flaskor på 8 minuter. Passar alla flaskmärken.', image: 'https://bebisguiden.se/images/products/baby-brezza-sterilizer-dryer.webp', brand: 'Baby Brezza', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Philips Avent Elektrisk Sterilisator', description: 'Elektrisk ångsterilisator som steriliserar på 6 minuter. Kapacitet 6 flaskor. Behåller sterilitet i 24 timmar.', image: 'https://bebisguiden.se/images/products/philips-avent-elektrisk-sterilisator.webp', brand: 'Philips', ratingValue: 4.7, reviewCount: 1 },
- { name: 'MAM 6-i-1 Sterilisator och Flaskvärmare', description: '6 funktioner i ett: sterilisator, tork och flaskvärmare. Passar MAM-flaskor och nappar optimalt.', image: 'https://bebisguiden.se/images/products/mam-6-i-1-sterilisator.webp', brand: 'MAM', ratingValue: 4.6, reviewCount: 1 },
- { name: 'Philips Avent Sterilisator till Mikrovågsugn', description: 'Kompakt sterilisator för mikrovågsugn. Perfekt för resor. Steriliserar på 2 minuter. Kapacitet 4 flaskor.', image: 'https://bebisguiden.se/images/products/philips-avent-sterilisator-micro.webp', brand: 'Philips', ratingValue: 4.5, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hur länge ska man sterilisera nappflaskor? 1177:s rekommendation</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      1177 rekommenderar sterilisering för nyfödda och barn under fyra månader, eftersom immunförsvaret fortfarande är omoget. Efter fyra månader räcker diskmaskin på minst 60 grader för friska barn. Premiumsterilisatorer har dock kvar sitt värde som förvaringsbox och uppvärmningsplatta även efter den åldern.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra sterilisatorer utifrån steriliseringsmetod (ånga elektrisk, ånga mikrovåg), kapacitet, cykeltid, sterilitetsbevarande tid och daglig användbarhet. Produkterna är valda bland de mest sålda och eftersökta sterilisatorerna i Sverige för baby. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border mb-6 not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Jämförelser sterilisatorer</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/sterilisatorer/philips-avent-vs-tommee-tippee/" class="text-accent underline">Philips Avent vs Tommee Tippee 2026, vilken sterilisator ska du välja?</a></li>
+      </ul>
+    </div>
+
+    <RetailerCTAs />
+
+    <FAQ items={faqItems} title="Vanliga frågor om sterilisatorer" />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/amning/" class="text-accent underline">Bästa amningsprodukterna 2026</a></li>
+        <li><a href="/amning/nappflaska/" class="text-accent underline">Bästa nappflaskorna, som behöver steriliseras</a></li>
+        <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpumparna 2026</a></li>
+        <li><a href="/guider/amma-eller-flaska/" class="text-accent underline">Amma eller flaska, for- och nackdelar</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa sterilisatorn för baby 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=bb24c729-4c6e-4775-8129-33cb1d2a8013&url=https://www.babysam.se/baby-brezza-sterilizer-dryer-advanced-white-onesize"
+    text="Bra pris hos BabySam"
+    productName="Baby Brezza Sterilizer Dryer Advanced White"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose pa denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

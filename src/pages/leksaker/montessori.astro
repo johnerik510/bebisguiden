@@ -1,245 +1,398 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Leksaker', href: '/leksaker/' },
- { label: 'Montessorileksaker bebis' },
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker', href: '/leksaker/' },
+  { label: 'Montessorileksaker bebis' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Alice & Fox Stapeltorn Safari',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/alice-fox-stapeltorn-safari.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10293420&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari',
- features: {
- 'Lämplig ålder': '6 till 36 mån',
- 'Material': 'Trä',
- 'Montessori-princip': 'Storleksordning',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'BRIO 30051 Bjällerskallra',
- badge: 'Bäst för nyfödda',
- rating: 4.6,
- image: '/images/products/brio-30051-bjallerskallra.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra',
- features: {
- 'Lämplig ålder': '0 till 12 mån',
- 'Material': 'Trä',
- 'Montessori-princip': 'Naturmaterial + enkelhet',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'PolarB Stapelklossar Djur',
- badge: 'Bäst budget',
- rating: 4.6,
- image: '/images/products/polarb-stapelklossar-djur.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245005&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-regnbage',
- features: {
- 'Lämplig ålder': '6 mån+',
- 'Material': 'Trä',
- 'Montessori-princip': 'Fri utforskning',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'Little Dutch Fairy Garden Stapelklossar',
- badge: 'Bäst design',
- rating: 4.7,
- image: '/images/products/little-dutch-fairy-garden-stapelklossar.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277676&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar',
- features: {
- 'Lämplig ålder': '6 mån+',
- 'Material': 'Trä',
- 'Montessori-princip': 'Sensorisk utforskning',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
+  {
+    name: 'Alice & Fox Stapeltorn Safari',
+    brand: 'Alice & Fox',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Tränar storleksuppfattning och finmotorik', 'FSC-certifierat trä, säker vattenbaserad lack', 'Passar 6 till 36 månader'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10293420&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari',
+    imageUrl: '/images/products/alice-fox-stapeltorn-safari.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Montessori-inspirerat stapeltorn i FSC-certifierat trä med safari-motiv. Tränar storleksuppfattning och finmotorik. Lämplig 6 till 36 månader.',
+    features: { 'Lämplig ålder': '6 till 36 mån', 'Material': 'Trä', 'Montessori-princip': 'Storleksordning', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'BRIO 30051 Bjällerskallra',
+    brand: 'BRIO',
+    rating: 4.6,
+    badge: 'Bäst för nyfödda',
+    usps: ['Klassisk träleksak, rent montessori-material', 'Enkelt klart ljud utan elektronik', 'BRIO, välkänt kvalitetsmärke sedan 1884'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra',
+    imageUrl: '/images/products/brio-30051-bjallerskallra.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Klassisk skallra i trä från BRIO. Enkelt naturmaterial utan elektronik. Lämplig från födseln till 12 månader.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Trä', 'Montessori-princip': 'Naturmaterial + enkelhet', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'PolarB Stapelklossar Djur',
+    brand: 'PolarB',
+    rating: 4.6,
+    badge: 'Bäst budget',
+    usps: ['Lågt pris, bra ingång till montessori', 'Trä med naturliga färger', 'Djurmotiv stimulerar igenkänning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245005&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-regnbage',
+    imageUrl: '/images/products/polarb-stapelklossar-djur.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Stapelklossar i trä med djurmotiv. Montessori-vänlig design för fri utforskning. Lämplig från 6 månader.',
+    features: { 'Lämplig ålder': '6 mån+', 'Material': 'Trä', 'Montessori-princip': 'Fri utforskning', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Little Dutch Fairy Garden Stapelklossar',
+    brand: 'Little Dutch',
+    rating: 4.7,
+    badge: 'Bäst design',
+    usps: ['Vacker Fairy Garden-illustration', 'Little Dutch, certifierat säkert', 'Trä med säker ytbehandling'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277676&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar',
+    imageUrl: '/images/products/little-dutch-fairy-garden-stapelklossar.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Stapelklossar i trä med Fairy Garden-design från Little Dutch. Säker ytbehandling. Lämplig från 6 månader.',
+    features: { 'Lämplig ålder': '6 mån+', 'Material': 'Trä', 'Montessori-princip': 'Sensorisk utforskning', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Lämplig ålder', 'Material', 'Montessori-princip', 'Säkerhetsgodkänd'];
+const specLabels = ['Lämplig ålder', 'Material', 'Montessori-princip', 'Säkerhetsgodkänd'];
 
 const faqItems = [
- {
- question: 'Vad är en montessorileksak för bebis?',
- answer: 'En montessorileksak är utformad enligt Maria Montessoris pedagogik: enkelt material, naturliga råvaror (trä, tyg, naturgummi), en tydlig funktion och fritt utforskande utan "rätt svar". Leksaken ska inte göra jobbet åt bebisen, den ska ge bebisen möjlighet att hitta lösningen själv. Ett stapeltorn är ett bra exempel: bebisen lär sig storleksordning genom att göra fel och korrigera.',
- },
- {
- question: 'Från vilken ålder passar montessorileksaker?',
- answer: 'Montessori-inspirerade leksaker passar från födseln. För nyfödda (0 till 3 mån) handlar det om enkla, naturliga skallror som stimulerar syn och hörsel utan överbelastning. Från 6 månader passar stapeltorn och formsorterare. Från 9 till 12 månader kan bebisen börja med enkla plocklådor och leksaker med ett tydligt mål.',
- },
- {
- question: 'Vad skiljer montessorileksaker från vanliga leksaker?',
- answer: 'Vanliga leksaker är ofta elektroniska, färgglada och gör saker "av sig själva" (musik startar, lampor blinkar). Montessorileksaker är tysta, gjorda av naturmaterial och kräver att barnet gör något för att leksaken ska reagera. Forskning antyder att öppen lek med enkla material stimulerar kreativitet och problemlösning mer effektivt än passiv underhållning.',
- },
- {
- question: 'Måste leksaken märkas som "montessori" för att följa filosofin?',
- answer: 'Nej. Många leksaker som inte marknadsförs som montessori följer ändå principerna. BRIO Bjällerskallran är ett klassiskt exempel: enkelt trämaterial, ett tydligt ljud, ingen elektronik. Det viktiga är att leksaken är av naturmaterial, har en tydlig funktion och ger bebisen utrymme att utforska fritt.',
- },
- {
- question: 'Hur många leksaker behöver bebisen ha?',
- answer: 'Montessoripedagogiken rekommenderar ett begränsat utbud, ca 3 till 6 leksaker tillgängliga åt gången. Rotera leksaker var 2 till 3:e vecka för att hålla intresset uppe. Överstimulering med för många leksaker kan faktiskt minska bebisens förmåga att koncentrera sig på en sak. Färre och bättre är alltid bättre än fler och sämre.',
- },
+  {
+    question: 'Vad är en montessorileksak för bebis?',
+    answer: 'En montessorileksak är utformad enligt Maria Montessoris pedagogik: enkelt material, naturliga råvaror (trä, tyg, naturgummi), en tydlig funktion och fritt utforskande utan "rätt svar". Leksaken ska inte göra jobbet åt bebisen, den ska ge bebisen möjlighet att hitta lösningen själv. Ett stapeltorn är ett bra exempel: bebisen lär sig storleksordning genom att göra fel och korrigera.',
+  },
+  {
+    question: 'Från vilken ålder passar montessorileksaker?',
+    answer: 'Montessori-inspirerade leksaker passar från födseln. För nyfödda (0 till 3 mån) handlar det om enkla, naturliga skallror som stimulerar syn och hörsel utan överbelastning. Från 6 månader passar stapeltorn och formsorterare. Från 9 till 12 månader kan bebisen börja med enkla plocklådor och leksaker med ett tydligt mål.',
+  },
+  {
+    question: 'Vad skiljer montessorileksaker från vanliga leksaker?',
+    answer: 'Vanliga leksaker är ofta elektroniska, färgglada och gör saker "av sig själva" (musik startar, lampor blinkar). Montessorileksaker är tysta, gjorda av naturmaterial och kräver att barnet gör något för att leksaken ska reagera. Forskning antyder att öppen lek med enkla material stimulerar kreativitet och problemlösning mer effektivt än passiv underhållning.',
+  },
+  {
+    question: 'Måste leksaken märkas som "montessori" för att följa filosofin?',
+    answer: 'Nej. Många leksaker som inte marknadsförs som montessori följer ändå principerna. BRIO Bjällerskallran är ett klassiskt exempel: enkelt trämaterial, ett tydligt ljud, ingen elektronik. Det viktiga är att leksaken är av naturmaterial, har en tydlig funktion och ger bebisen utrymme att utforska fritt.',
+  },
+  {
+    question: 'Hur många leksaker behöver bebisen ha?',
+    answer: 'Montessoripedagogiken rekommenderar ett begränsat utbud, ca 3 till 6 leksaker tillgängliga åt gången. Rotera leksaker var 2 till 3:e vecka för att hålla intresset uppe. Överstimulering med för många leksaker kan faktiskt minska bebisens förmåga att koncentrera sig på en sak. Färre och bättre är alltid bättre än fler och sämre.',
+  },
 ];
+
 export const articleMeta = {
   title: "Montessorileksaker bebis 2026: bäst för fri lek",
   description: "Montessorileksaker bebis 2026: naturmaterial, enkel design och fri utforskning. Vi rankar de bästa Montessori-inspirerade leksakerna för 0 till 12 månader med.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
   category: "Leksaker",
   image: "/images/products/brio-30051-bjallerskallra.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Montessorileksaker bebis 2026: bäst för fri lek"
- description="Bästa montessorileksaker för bebis 2026. Naturmaterial, enkel design och fri utforskning, vi rankar toppvalen med priser från Jollyroom."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/leksaker/montessori/"
- updatedDate="2026-04-14"
-  datePublished="2026-05-12"
+  title="Montessorileksaker bebis 2026: bäst för fri lek"
+  description="Bästa montessorileksaker för bebis 2026. Naturmaterial, enkel design och fri utforskning, vi rankar toppvalen med priser från Jollyroom."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/leksaker/montessori/"
+  datePublished="2026-05-16"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Alice & Fox Stapeltorn Safari vinner montessorileksak bäst i test 2026. Storlekssorteringen av ringarna tränar logik och finmotorik enligt Montessoriprincipen om egenstyrt lärande. Det FSC-certifierade träet saknar giftig yta och tornet håller från 6 till 36 månader.
-	 </p>
 
- <TopPick product={products[0]} description="Alice & Fox Stapeltorn Safari vinner test av montessorileksaker 2026. Storlekssortering av ringarna tränar logik och finmotorik enligt Montessoriprincipen om egenstyrt lärande, FSC-certifierat trä utan giftig yta och håller för 6 månader till 36 månader." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, montessorileksaker bebis 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken montessorileksak är bäst för bebis 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Alice & Fox Stapeltorn Safari är bäst i test 2026: FSC-certifierat trä, tränar storleksuppfattning och finmotorik enligt montessoriprincipen om egenstyrt lärande. Passar 6 till 36 månader. För nyfödda (0+) är BRIO 30051 Bjällerskallra bästa valet, enkel träleksak utan elektronik.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val</p>
- <p class="text-sm text-text-light"><strong>Alice & Fox Stapeltorn Safari</strong> är den mest kompletta montessori-leksaken för bebis 6 mån+. <strong>BRIO Bjällerskallran</strong> är den bästa montessori-skallran för nyfödda, enkelt trä, klart ljud, inga tillsatser.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Alice & Fox"
+    name="Stapeltorn Safari"
+    image="/images/products/alice-fox-stapeltorn-safari.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10293420&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari"
+    store="Jollyroom"
+    description="Vinner montessorileksak bäst i test 2026. Storlekssorteringen av ringarna tränar logik och finmotorik enligt montessoriprincipen om egenstyrt lärande. Det FSC-certifierade träet saknar giftig yta och tornet håller från 6 till 36 månader."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Montessoriprincipen, kort förklaring</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Montessorileksaker bebis 2026" />
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>Maria Montessori (1870 till 1952) var en italiensk pedagog och läkare som observerade att barn lär sig bäst i sin egen takt, med händerna och i en förberedd miljö. Montessoripedagogiken bygger på att:</p>
- <ul>
- <li><strong>Barnet leder leken</strong>, vuxna följer och stödjer, inte styr</li>
- <li><strong>Naturmaterial</strong>, trä, sten, tyg, metall i stället för plast med lampor</li>
- <li><strong>Enkel design</strong>, en funktion per leksak, inget som distraherar</li>
- <li><strong>Begränsat utbud</strong>, färre leksaker, djupare utforskning</li>
- <li><strong>Fel är lärande</strong>, leksaken "rättar" sig själv (staplar faller, former passar inte)</li>
- </ul>
- <p>Forskning från University of Toledo (2017) visade att barn med klassiska öppna leksaker visade rikare och mer varierat lekbeteende jämfört med barn med elektroniska leksaker.</p>
- </div>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval, montessorileksaker bebis</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Alice & Fox Stapeltorn Safari, bäst i test</h2>
+    <MoneyProductCard
+      brand="Alice & Fox"
+      name="Alice & Fox Stapeltorn Safari"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/alice-fox-stapeltorn-safari.webp"
+      imageAlt="Alice & Fox Stapeltorn Safari montessorileksak i trä"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10293420&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari"
+      pros={['Naturträ med säker vattenbaserad lackering', 'Tränar storleksuppfattning och finmotorik', 'Öppen lek, inget "rätt svar"', 'Roterbar, kan anpassas']}
+      cons={['Passar bäst från 6 till 8 månader, utmanande för yngre', 'Medelstort pris']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Alice & Fox Stapeltorn Safari vinner montessorileksak bäst i test 2026. Storlekssorteringen av ringarna tränar logik och finmotorik direkt, utan elektronik som tar över lärandet. FSC-certifierat trä med vattenbaserad lack gör det tryggt att ha i bebisens mun, och tornet är roterbart vilket ger variation i leken från 6 månader upp till 36 månader.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att det kan vara utmanande för bebisar under 6 månader som ännu inte har finmotoriken på plats. Men bland stapeltorn för montessori-lek är det det mest kompletta valet i Sverige just nu.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10293420&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari" />
 
- <div class="space-y-4">
- <ProductCard
- name="Alice & Fox Stapeltorn Safari"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/alice-fox-stapeltorn-safari.webp"
- ageRange="6 till 36 månader"
- pros={['Naturträ med säker vattenbaserad lackering', 'Tränar storleksuppfattning och finmotorik', 'Öppen lek, inget "rätt svar"', 'Roterbar, kan anpassas']}
- cons={['Passar bäst från 6 till 8 månader, utmanande för yngre', 'Medelstort pris']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10293420&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. BRIO 30051 Bjällerskallra, bäst för nyfödda</h2>
+    <MoneyProductCard
+      brand="BRIO"
+      name="BRIO 30051 Bjällerskallra"
+      rating={4.6}
+      rank={2}
+      badge="Bäst för nyfödda"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/brio-30051-bjallerskallra.webp"
+      imageAlt="BRIO 30051 Bjällerskallra i trä för nyfödda"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra"
+      pros={['Klassisk träleksak, rent montessori-material', 'Enkelt klart ljud utan elektronik', 'BRIO, välkänt kvalitetsmärke sedan 1884', 'Hållbar och tidlös']}
+      cons={['Ingen visuell stimulans utöver formen', 'Enkel funktion']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BRIO 30051 Bjällerskallran är den bästa montessori-inspirerade leksaken för nyfödda 0 till 12 månader. Enkelt trä, ett klart ljud och inga distraktioner. Bebisen håller, skakar och hör direkt kopplingen mellan handling och ljud, precis som montessoripedagogiken förespråkar. BRIO har tillverkat leksaker i Sverige sedan 1884 och kvaliteten syns i materialet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      För en nyfödds behov av sensorisk stimulans utan överstimulering är det svårt att hitta ett bättre val till det priset.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra" />
 
- <ProductCard
- name="BRIO 30051 Bjällerskallra"
- badge="Bäst för nyfödda"
- rating={4.6}
- image="/images/products/brio-30051-bjallerskallra.webp"
- ageRange="0 till 12 månader"
- pros={['Klassisk träleksak, rent montessori-material', 'Enkelt klart ljud utan elektronik', 'BRIO, välkänt kvalitetsmärke sedan 1884', 'Hållbar och tidlös']}
- cons={['Ingen visuell stimulans utöver formen', 'Enkel funktion']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. PolarB Stapelklossar Djur, bäst budget</h2>
+    <MoneyProductCard
+      brand="PolarB"
+      name="PolarB Stapelklossar Djur"
+      rating={4.6}
+      rank={3}
+      badge="Bäst budget"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/polarb-stapelklossar-djur.webp"
+      imageAlt="PolarB Stapelklossar Djur i trä"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245005&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-regnbage"
+      pros={['Lågt pris, bra ingång till montessori', 'Trä med naturliga färger', 'Djurmotiv stimulerar igenkänning']}
+      cons={['Enklare design', 'Färger kan blekna med tid och tvätt']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      PolarB Stapelklossar Djur är det prisvärda alternativet för familjen som vill prova montessori-lek utan att investera stort. Trä med naturliga färger och djurmotiv som bebisen kan börja känna igen från 6 månader. Fri utforskning utan "rätt svar" är samma princip som de dyrare alternativen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Designen är enklare och färgerna kan blekna med intensiv användning, men för ett budgetvänligt förstaintroduktion till montessori-leksaker fyller det sin funktion väl.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245005&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-regnbage" />
 
- <ProductCard
- name="PolarB Stapelklossar Djur"
- badge="Bäst budget"
- rating={4.6}
- image="/images/products/polarb-stapelklossar-djur.webp"
- ageRange="6 månader och uppåt"
- pros={['Lågt pris, bra ingång till montessori', 'Trä med naturliga färger', 'Djurmotiv stimulerar igenkänning']}
- cons={['Enklare design', 'Färger kan blekna med tid och tvätt']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245005&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/polarb-stapelklossar-regnbage"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Little Dutch Fairy Garden Stapelklossar, bäst design</h2>
+    <MoneyProductCard
+      brand="Little Dutch"
+      name="Little Dutch Fairy Garden Stapelklossar"
+      rating={4.7}
+      rank={4}
+      badge="Bäst design"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/little-dutch-fairy-garden-stapelklossar.webp"
+      imageAlt="Little Dutch Fairy Garden Stapelklossar i trä"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277676&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar"
+      pros={['Vacker Fairy Garden-illustration', 'Little Dutch, certifierat säkert', 'Trä med säker ytbehandling', 'Bra pris']}
+      cons={['Rundade former kan rulla iväg under lek', 'Passar bäst 8 mån+']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Little Dutch Fairy Garden Stapelklossar kombinerar montessori-principen om sensorisk utforskning med en vacker illustration som många föräldrar uppskattar estetiskt. Little Dutch är ett holländskt märke känt för certifierad säkerhet och hög ytbehandlingskvalitet i trä.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      De rundade formerna kan rulla iväg på hårda golv vilket kan frustrera yngre bebisar. Passar bäst från 8 månader när finmotoriken är lite mer utvecklad.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277676&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar" />
 
- <ProductCard
- name="Little Dutch Fairy Garden Stapelklossar"
- badge="Bäst design"
- rating={4.7}
- image="/images/products/little-dutch-fairy-garden-stapelklossar.webp"
- ageRange="6 månader och uppåt"
- pros={['Vacker Fairy Garden-illustration', 'Little Dutch, certifierat säkert', 'Trä med säker ytbehandling', 'Bra pris']}
- cons={['Rundade former kan rulla iväg under lek', 'Passar bäst 8 mån+']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277676&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar"
- />
- </div>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra montessorileksaker granskade, en vinner totalt. Alice & Fox Stapeltorn Safari tar förstaplatsen på allsidig montessori-lek, BRIO Bjällerskallran är bäst för nyfödda, PolarB är det prisvärda valet och Little Dutch Fairy Garden bäst på design. Vill du jämföra fler leksaker? Se vår guide till <a href="/leksaker/0-3-manader/" class="text-accent hover:text-accent-dark underline">bästa leksaker bebis 0 till 3 månader</a> eller <a href="/leksaker/6-12-manader/" class="text-accent hover:text-accent-dark underline">bästa leksaker bebis 6 till 12 månader</a>.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler leksaksguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/leksaker/0-3-manader/" class="text-accent underline">Bästa leksaker bebis 0 till 3 månader 2026</a></li>
- <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker bebis 6 till 12 månader 2026</a></li>
- <li><a href="/leksaker/badleksaker/" class="text-accent underline">Bästa badleksaker bebis 2026</a></li>
- <li><a href="/leksaker/" class="text-accent underline">Alla babyleksaker, översikt</a></li>
- </ul>
- </div>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Montessorileksaker bebis 2026" />
 
- <FAQ items={faqItems} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt montessorileksak för bebis 2026</h2>
 
- <ProductSchema products={[
- {
- name: 'Alice & Fox Stapeltorn Safari',
- description: 'Montessori-inspirerat stapeltorn i trä med safari-motiv. Tränar storleksuppfattning och finmotorik. Lämplig 6 till 36 månader.',
- image: 'https://bebisguiden.se/images/products/alice-fox-stapeltorn-safari.webp',
- brand: 'Alice & Fox',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'BRIO 30051 Bjällerskallra',
- description: 'Klassisk skallra i trä. Enkelt naturmaterial utan elektronik. Lämplig från födseln.',
- image: 'https://bebisguiden.se/images/products/brio-bjallerskallra.webp',
- brand: 'BRIO',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'PolarB Stapelklossar Djur',
- description: 'Stapelklossar i trä med djurmotiv. Montessori-vänlig design. Lämplig från 6 månader.',
- image: 'https://bebisguiden.se/images/products/polarb-stapelklossar-djur.webp',
- brand: 'PolarB',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Little Dutch Fairy Garden Stapelklossar',
- description: 'Stapelklossar i trä med Fairy Garden-design från Little Dutch. Säker ytbehandling. Lämplig från 6 månader.',
- image: 'https://bebisguiden.se/images/products/little-dutch-fairy-garden-stapelklossar.webp',
- brand: 'Little Dutch',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Montessoriprincipen, kort förklaring</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Maria Montessori (1870 till 1952) var en italiensk pedagog och läkare som observerade att barn lär sig bäst i sin egen takt, med händerna och i en förberedd miljö. Montessoripedagogiken bygger på att barnet leder leken och vuxna följer och stödjer utan att styra. Naturmaterial som trä, sten och tyg föredras framför plast med lampor. Enkel design med en funktion per leksak utan distraktioner. Begränsat utbud med färre leksaker för djupare utforskning. Fel är lärande, leksaken "rättar" sig själv (staplar faller, former passar inte).
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Forskning från University of Toledo (2017) visade att barn med klassiska öppna leksaker visade rikare och mer varierat lekbeteende jämfört med barn med elektroniska leksaker.
+    </p>
 
- <CTABox productName="Montessorileksaker bebis" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277676&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/little-dutch-fairy-garden-stapelklossar" description="Träleksaker och naturmaterial för fri och pedagogisk lek." />
- <CTABox productName="Montessorileksaker" store="Micki" description="Klassiska svenska leksaker för de yngsta." />
- <CTABox productName="Montessorileksaker" store="Litenleker" description="Stort sortiment babyleksaker och pedagogiska leksaker." />
-<CTABox productName="Montessorileksaker" store="Toyspace" affiliateUrl="https://id.toyspace.se/t/t?a=1984734030&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.toyspace.se%2Fbabyleksaker" description="Skandinaviens största leksaksbutik, träleksaker och pedagogiska leksaker." />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Rätt ålder, rätt leksak</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Montessori-inspirerade leksaker passar från födseln, men välj efter bebisnivå. För nyfödda (0 till 3 mån) handlar det om enkla, naturliga skallror som BRIO Bjällerskallran, som stimulerar syn och hörsel utan överbelastning. Från 6 månader passar stapeltorn som Alice & Fox och PolarB när finmotoriken börjar utvecklas. Från 9 till 12 månader kan bebisen börja med enkla plocklådor och leksaker med ett tydligt mål.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material att välja och undvika</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Välj trä, tyg och naturgummi. Undvik plast med lampor, ljud och automatiska rörelser. FSC-certifierat trä garanterar att råvaran kommer från hållbart brukade skogar. Vattenbaserade lackeringar är säkrare än lösningsmedelsbaserade om bebisen stoppar leksaken i munnen, vilket sker ofta under 12 månader. Kontrollera alltid CE-märkning och att leksaken uppfyller EU:s leksakssäkerhetsdirektiv.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hur många leksaker behövs?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Montessoripedagogiken rekommenderar ett begränsat utbud, ca 3 till 6 leksaker tillgängliga åt gången. Rotera leksaker var 2 till 3:e vecka för att hålla intresset uppe. Överstimulering med för många leksaker kan faktiskt minska bebisens förmåga att koncentrera sig på en sak. Färre och bättre är alltid bättre än fler och sämre.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra montessori-inspirerade leksaker för bebis utifrån material (naturmaterial, FSC-certifiering, säker ytbehandling), montessoriprincip (storleksordning, fri utforskning, naturmaterial), lämplig ålder, säkerhetsgodkännande (CE-märkning, EU-leksaksdirektiv) och daglig användbarhet. Produkterna är valda bland de mest sålda och eftersökta montessorileksakerna för bebis i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler leksaksguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/leksaker/0-3-manader/" class="text-accent underline">Bästa leksaker bebis 0 till 3 månader 2026</a></li>
+        <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker bebis 6 till 12 månader 2026</a></li>
+        <li><a href="/leksaker/badleksaker/" class="text-accent underline">Bästa badleksaker bebis 2026</a></li>
+        <li><a href="/leksaker/" class="text-accent underline">Alla babyleksaker, översikt</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa montessorileksaker bebis 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10293420&url=https://www.jollyroom.se/leksaker/babyleksaker/stapelbara-klossar/alice-fox-stapeltorn-safari"
+    text="Bra pris hos Jollyroom"
+    productName="Alice & Fox Stapeltorn Safari"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

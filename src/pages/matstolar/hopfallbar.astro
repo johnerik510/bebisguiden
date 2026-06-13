@@ -1,230 +1,442 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
-import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
-const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Matstolar', href: '/matstolar/' },
- { label: 'Hopfällbar' },
-];
-
-const products = [
- {
- name: 'Joie Mimzy Snacker Matstol, Portrait',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/joie-mimzy-snacker-matstol-portrait.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait',
- features: {
- 'Vikt': '4,0 kg',
- 'Hopfällt mått': 'Kompakt',
- 'Ålder': '6 mån, 3 år',
- 'Bältessystem': '5-punkts',
- 'Bricka': 'Ja, avtagbar',
- },
- },
- {
- name: 'Cybex Click & Fold 3in1 Matstol, All White',
- badge: 'Mest mångsidig',
- rating: 4.6,
- image: '/images/products/cybex-click-fold-3in1-matstol-all-white.webp',
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1524000809&url=https://www.babyv.se/sv/articles/1.107.23772/cybex-click-fold-3in1-matstolbabysetbricka-all-white',
- features: {
- 'Vikt': '8,0 kg',
- 'Hopfällt mått': 'Kompakt',
- 'Ålder': '0 till 3 år',
- 'Bältessystem': '5-punkts',
- 'Bricka': 'Ja, avtagbar',
- },
- },
- {
- name: 'Beemoo CARE Harmony Barnmatstol, White/Wood',
- badge: 'Lättast att rengöra',
- rating: 4.7,
- image: '/images/products/beemoo-care-harmony-barnmatstol-white-wood.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10263601&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-harmony-barnmatstol-white-wood',
- features: {
- 'Vikt': '5,0 kg',
- 'Hopfällt mått': 'Smalt djup',
- 'Ålder': '6 mån, 3 år',
- 'Bältessystem': '5-punkts',
- 'Bricka': 'Ja, avtagbar',
- },
- },
- {
- name: 'Skrållan Bordsstol',
- badge: 'Bäst för resor',
- rating: 4.4,
- image: '/images/products/skrallan-bordsstol.webp',
- ctaHref: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1',
- features: {
- 'Vikt': '2,0 kg',
- 'Hopfällt mått': 'Kompakt',
- 'Ålder': '6 mån, 15 kg',
- 'Bältessystem': '3-punkts',
- 'Bricka': 'Nej (klämmer fast vid bord)',
- },
- },
-];
-
-const featureLabels = ['Vikt', 'Hopfällt mått', 'Ålder', 'Bältessystem', 'Bricka'];
-
-const faqItems = [
- {
- question: 'Vad skiljer en hopfällbar matstol från en vanlig?',
- answer: 'En hopfällbar matstol kan viks ihop till ett kompakt paket, perfekt för resor, restaurangbesök eller om du bor i en liten lägenhet med begränsat förvaringsutrymme. De är generellt lättare (4 till 6 kg) men lite sämre på ergonomi och stabilitet jämfört med en fast matstol som Tripp Trapp. Perfekt som andrastol eller om du reser ofta.',
- },
- {
- question: 'Är hopfällbara matstolar lika säkra som vanliga?',
- answer: 'Ja, om de uppfyller EU-standarden EN 14988 är de lika säkra. Kontrollera alltid att stolen har 5-punkts bälte för de minsta barnen och att lås och spärrar fungerar korrekt varje gång du fäller upp stolen. Låt aldrig ett barn sitta i stolen utan att bältet är fastspänt.',
- },
- {
- question: 'Vilken hopfällbar matstol är bäst för resor med flyg?',
- answer: 'Inglesina Fast Table Chair är det kompaktaste och lättaste alternativet (1,9 kg, 35x33x8 cm hopfällt) och passar i handbagage. Den klämmer fast direkt vid ett bord utan egna benstöd. För längre vistelser med mer stabilitet är Joie Mimzy Snacker (4 kg) bäst, lätt nog att ta med men stabilare än bordsstolar.',
- },
- {
- question: 'Kan jag använda en hopfällbar matstol som primär matstol?',
- answer: 'Det fungerar men är inte optimalt för daglig användning. Hopfällbara matstolar har sämre ergonomi och justering jämfört med fasta alternativ. För de flesta barn rekommenderar vi en fast matstol (som Tripp Trapp eller Antilop) som primär stol och en hopfällbar som komplement för resor och restauranger.',
- },
- {
- question: 'Hur länge kan man använda en hopfällbar matstol?',
- answer: 'De flesta hopfällbara matstolar passar från 6 månaders ålder upp till ca 3 år eller 15 kg. Inglesina Fast Table Chair passar barn upp till 15 kg. Chicco och Joie passar till 3 år. Kontrollera alltid tillverkarens viktgräns, en för tung bebis i en hopfällbar stol är en säkerhetsrisk.',
- },
-];
 export const articleMeta = {
   title: "Hopfällbar matstol 2026: lätta och smidiga jämförda",
   description: "Hopfällbar matstol 2026: Chicco, Joie Mimzy och Inglesina jämförda på vikt, hopfällt mått, säkerhetsbälte och passform. Bäst för resor, semester och trångare hem.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Matstolar",
   image: "/images/products/joie-mimzy-snacker-matstol-portrait.webp",
 };
 
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Matstolar', href: '/matstolar/' },
+  { label: 'Hopfällbar' },
+];
+
+// Money page-mallens datamodell: rankade #1..#4 efter popularitet sedan provision.
+const products = [
+  {
+    name: 'Joie Mimzy Snacker Matstol, Portrait',
+    desc: 'Lätt och stabil hopfällbar matstol med 5-punktsbälte och avtagbar diskmaskinssäker bricka. För barn 6 månader till 3 år. Enkel att ta med på restaurang och semesterresa.',
+    brand: 'Joie',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Endast 4 kg', '5-punktsbälte ingår', 'Diskmaskinssäker bricka'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait',
+    imageUrl: '/images/products/joie-mimzy-snacker-matstol-portrait.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Vikt': '4,0 kg', 'Hopfällt mått': 'Kompakt', 'Ålder': '6 mån, 3 år', 'Bältessystem': '5-punkts', 'Bricka': 'Ja, avtagbar' },
+    alsoAt: [],
+  },
+  {
+    name: 'Cybex Click & Fold 3in1 Matstol, All White',
+    desc: 'Mångsidig 3-i-1 matstol med babyset och bricka som fungerar från födseln till 3 år. Hopfällbar med 5-punktsbälte och Cybex-design.',
+    brand: 'Cybex',
+    rating: 4.6,
+    badge: 'Mest mångsidig',
+    usps: ['3-i-1 från födseln', '5-punktsbälte ingår', 'Cybex-kvalitet'],
+    store: 'Baby V',
+    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1524000809&url=https://www.babyv.se/sv/articles/1.107.23772/cybex-click-fold-3in1-matstolbabysetbricka-all-white',
+    imageUrl: '/images/products/cybex-click-fold-3in1-matstol-all-white.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Vikt': '8,0 kg', 'Hopfällt mått': 'Kompakt', 'Ålder': '0 till 3 år', 'Bältessystem': '5-punkts', 'Bricka': 'Ja, avtagbar' },
+    alsoAt: [],
+  },
+  {
+    name: 'Beemoo CARE Harmony Barnmatstol, White/Wood',
+    desc: 'Hopfällbar matstol med avtagbar tvättbar sittdyna och 5-punktsbälte. Skandinavisk design i White/Wood med justerbara fotpinnar. För barn 6 månader till 3 år.',
+    brand: 'Beemoo',
+    rating: 4.7,
+    badge: 'Lättast att rengöra',
+    usps: ['Tvättbar sittdyna', '5-punktsbälte ingår', 'Justerbara fotpinnar'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10263601&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-harmony-barnmatstol-white-wood',
+    imageUrl: '/images/products/beemoo-care-harmony-barnmatstol-white-wood.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Vikt': '5,0 kg', 'Hopfällt mått': 'Smalt djup', 'Ålder': '6 mån, 3 år', 'Bältessystem': '5-punkts', 'Bricka': 'Ja, avtagbar' },
+    alsoAt: [],
+  },
+  {
+    name: 'Skrållan Bordsstol',
+    desc: 'Ultralätt bordsstol som klämmer fast direkt vid ett bord utan eget benstöd. Endast 2 kg, passar de flesta bord. För barn 6 månader till 15 kg.',
+    brand: 'Skrållan',
+    rating: 4.4,
+    badge: 'Bäst för resor',
+    usps: ['Endast 2 kg', 'Kräver inget benstöd', 'Får plats i väskan'],
+    store: 'Babyland',
+    affiliateUrl: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1',
+    imageUrl: '/images/products/skrallan-bordsstol.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Vikt': '2,0 kg', 'Hopfällt mått': 'Kompakt', 'Ålder': '6 mån, 15 kg', 'Bältessystem': '3-punkts', 'Bricka': 'Nej (klämmer fast vid bord)' },
+    alsoAt: [],
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Vad skiljer en hopfällbar matstol från en vanlig?',
+    answer: 'En hopfällbar matstol kan viks ihop till ett kompakt paket, perfekt för resor, restaurangbesök eller om du bor i en liten lägenhet med begränsat förvaringsutrymme. De är generellt lättare (4 till 6 kg) men lite sämre på ergonomi och stabilitet jämfört med en fast matstol som Tripp Trapp. Perfekt som andrastol eller om du reser ofta.',
+  },
+  {
+    question: 'Är hopfällbara matstolar lika säkra som vanliga?',
+    answer: 'Ja, om de uppfyller EU-standarden EN 14988 är de lika säkra. Kontrollera alltid att stolen har 5-punkts bälte för de minsta barnen och att lås och spärrar fungerar korrekt varje gång du fäller upp stolen. Låt aldrig ett barn sitta i stolen utan att bältet är fastspänt.',
+  },
+  {
+    question: 'Vilken hopfällbar matstol är bäst för resor med flyg?',
+    answer: 'Skrållan Bordsstol är det kompaktaste och lättaste alternativet (2 kg) och passar i handbagage. Den klämmer fast direkt vid ett bord utan egna benstöd. För längre vistelser med mer stabilitet är Joie Mimzy Snacker (4 kg) bäst, lätt nog att ta med men stabilare än bordsstolar.',
+  },
+  {
+    question: 'Kan jag använda en hopfällbar matstol som primär matstol?',
+    answer: 'Det fungerar men är inte optimalt för daglig användning. Hopfällbara matstolar har sämre ergonomi och justering jämfört med fasta alternativ. För de flesta barn rekommenderar vi en fast matstol (som Tripp Trapp eller Antilop) som primär stol och en hopfällbar som komplement för resor och restauranger.',
+  },
+  {
+    question: 'Hur länge kan man använda en hopfällbar matstol?',
+    answer: 'De flesta hopfällbara matstolar passar från 6 månaders ålder upp till ca 3 år eller 15 kg. Skrållan Bordsstol passar barn upp till 15 kg. Cybex och Joie passar till 3 år. Kontrollera alltid tillverkarens viktgräns, en för tung bebis i en hopfällbar stol är en säkerhetsrisk.',
+  },
+];
 ---
 
 <ArticleLayout
- title="Hopfällbar matstol 2026: bäst för resande"
- description="Bästa hopfällbara matstolen 2026: Vi jämför Chicco, Joie Mimzy och Inglesina. Se vikt, hopfällt mått och säkerhet, hitta den bästa resmätstolen."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/matstolar/hopfallbar/"
- updatedDate="2026-04-14"
+  title="Hopfällbar matstol 2026: bäst för resande"
+  description="Bästa hopfällbara matstolen 2026: Vi jämför Chicco, Joie Mimzy och Inglesina. Se vikt, hopfällt mått och säkerhet, hitta den bästa resmätstolen."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/matstolar/hopfallbar/"
   datePublished="2026-04-05"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Joie Mimzy Snacker vinner hopfällbar matstol bäst i test 2026. Den är lätt och fälls kompakt, vilket gör den enkel att ta med på restaurang och semesterresa. Stolen har 5-punktsbälte och en avtagbar bricka som tål diskmaskinen.
-	 </p>
 
- <TopPick product={products[0]} description="Joie Mimzy Snacker vinner test av hopfällbara matstolar 2026. Lätt och kompakt med 5-punkts bälte och avtagbar diskmaskinssäker bricka. Enkel att ta med på restaurang och semesterresa." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-04-05" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, hopfällbara matstolar 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken hopfällbar matstol är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Joie Mimzy Snacker är bäst i test 2026: lätt (4 kg) och fälls kompakt, med 5-punktsbälte och avtagbar diskmaskinssäker bricka. Enkel att ta med på restaurang och semesterresa. För flygresor: Skrållan Bordsstol väger bara 2 kg och klämmer fast direkt vid bordet.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Joie Mimzy Snacker</strong> vinner för bäst stabilitet och komfort bland hopfällbara matstolar. <strong>Skrållan Bordsstol</strong> är bäst för flygresor och ultralätt packning.</p>
- </div>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Joie"
+    name="Mimzy Snacker Matstol, Portrait"
+    image="/images/products/joie-mimzy-snacker-matstol-portrait.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait"
+    store="Jollyroom"
+    description="Bäst i test 2026. Lätt och stabil hopfällbar matstol med 5-punktsbälte och avtagbar diskmaskinssäker bricka. Enkel att ta med på restaurang och semesterresa, för barn 6 månader till 3 år."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval, hopfällbara matstolar 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Hopfällbara matstolar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Joie Mimzy Snacker Matstol, Portrait"
- image="/images/products/joie-mimzy-snacker-matstol-portrait.webp"
- badge="Bäst i test"
- rating={4.8}
- pros={['Lätt och enkel att ta med, 4 kg', 'Stabil på de flesta underlag', '5-punkts bälte ingår', 'Avtagbar och diskmaskinssäker bricka']}
- cons={['Inte ultralätt för flygresor', 'Kräver plant underlag']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait"
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Joie Mimzy Snacker</strong> vinner för bäst stabilitet och komfort bland hopfällbara matstolar. <strong>Skrållan Bordsstol</strong> är bäst för flygresor och ultralätt packning.</p>
+  </div>
 
- <ProductCard
- name="Cybex Click & Fold 3in1 Matstol, All White"
- image="/images/products/cybex-click-fold-3in1-matstol-all-white.webp"
- badge="Mest mångsidig"
- rating={4.6}
- pros={['3-i-1: matstol, babyset och bricka', 'Fungerar från födseln', '5-punkts bälte', 'Cybex-kvalitet och design']}
- cons={['Tyngre än rena resematstolar', 'Högre pris']}
- ctaText="Bra pris hos Baby-V"
- ctaHref="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1524000809&url=https://www.babyv.se/sv/articles/1.107.23772/cybex-click-fold-3in1-matstolbabysetbricka-all-white"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Beemoo CARE Harmony Barnmatstol, White/Wood"
- image="/images/products/beemoo-care-harmony-barnmatstol-white-wood.webp"
- badge="Lättast att rengöra"
- rating={4.7}
- pros={['Avtagbar sittdyna enkel att tvätta', '5-punkts bälte', 'Skandinavisk design, White/Wood', 'Justerbara fotpinnar']}
- cons={['Inte ultralätt för resor', 'Kräver lite plats uppfälld']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10263601&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-harmony-barnmatstol-white-wood"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Joie Mimzy Snacker Matstol, bäst i test 2026</h2>
+    <MoneyProductCard
+      brand="Joie"
+      name="Joie Mimzy Snacker Matstol, Portrait"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/joie-mimzy-snacker-matstol-portrait.webp"
+      imageAlt="Joie Mimzy Snacker Matstol, Portrait"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait"
+      pros={['Lätt och enkel att ta med, 4 kg', 'Stabil på de flesta underlag', '5-punkts bälte ingår', 'Avtagbar och diskmaskinssäker bricka']}
+      cons={['Inte ultralätt för flygresor', 'Kräver plant underlag']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Joie Mimzy Snacker väger bara 4 kg och fälls ihop till ett kompakt paket, vilket gör den enkel att lyfta in i bilen för restaurangbesök eller ta med på semesterresan. Trots den låga vikten står stolen stabilt på de flesta underlag, och 5-punktsbältet ingår från start så att även de minsta barnen sitter säkert. Den avtagbara brickan tål diskmaskinen, vilket sparar tid efter varje måltid.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen: stolen är inte ultralätt för flygresor på samma sätt som en ren bordsstol, och den behöver ett plant underlag för att stå stadigt. För familjer som vill ha en lätt men stabil resmätstol som fungerar både hemma och på resa är Joie Mimzy Snacker det mest kompletta valet i testet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait" />
 
- <ProductCard
- name="Skrållan Bordsstol"
- image="/images/products/skrallan-bordsstol.webp"
- badge="Bäst för resor"
- rating={4.4}
- pros={['Ultralätt bordsstol för resor', 'Kräver inget eget benstöd', 'Lätt att ta med i väskan', 'Passar de flesta bord']}
- cons={['Kräver ett fast bord att fästa vid', '3-punkts bälte', 'Sämre stabilitet om bordet är smalt']}
- ctaText="Bra pris hos Babyland"
- ctaHref="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Cybex Click & Fold 3in1 Matstol, mest mångsidig</h2>
+    <MoneyProductCard
+      brand="Cybex"
+      name="Cybex Click & Fold 3in1 Matstol, All White"
+      rating={4.6}
+      rank={2}
+      badge="Mest mångsidig"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/cybex-click-fold-3in1-matstol-all-white.webp"
+      imageAlt="Cybex Click & Fold 3in1 Matstol, All White"
+      store="Baby V"
+      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1524000809&url=https://www.babyv.se/sv/articles/1.107.23772/cybex-click-fold-3in1-matstolbabysetbricka-all-white"
+      pros={['3-i-1: matstol, babyset och bricka', 'Fungerar från födseln', '5-punkts bälte', 'Cybex-kvalitet och design']}
+      cons={['Tyngre än rena resematstolar', 'Högre pris']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Cybex Click & Fold är den mest mångsidiga stolen i testet. 3-i-1-systemet betyder att den fungerar som babyset från födseln, som full matstol med bricka när barnet blir större och fälls ihop kompakt för förvaring. 5-punktsbältet håller barnet säkert i alla lägen, och materialvalet håller den Cybex-kvalitet och design som märket är känt för.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att stolen väger 8 kg och därför är tyngre än de rena resematstolarna, och att priset ligger i den högre delen av segmentet. För familjer som vill ha en stol som täcker hela perioden från nyfödd till 3 år och samtidigt går att fälla ihop är Cybex Click & Fold ett starkt val.
+    </p>
+    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1524000809&url=https://www.babyv.se/sv/articles/1.107.23772/cybex-click-fold-3in1-matstolbabysetbricka-all-white" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Hopfällbar matstol</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Beemoo CARE Harmony Barnmatstol, lättast att rengöra</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo CARE Harmony Barnmatstol, White/Wood"
+      rating={4.7}
+      rank={3}
+      badge="Lättast att rengöra"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/beemoo-care-harmony-barnmatstol-white-wood.webp"
+      imageAlt="Beemoo CARE Harmony Barnmatstol, White/Wood"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10263601&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-harmony-barnmatstol-white-wood"
+      pros={['Avtagbar sittdyna enkel att tvätta', '5-punkts bälte', 'Skandinavisk design, White/Wood', 'Justerbara fotpinnar']}
+      cons={['Inte ultralätt för resor', 'Kräver lite plats uppfälld']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo CARE Harmony är den enklaste stolen att hålla ren. Sittdynan är avtagbar och kan tvättas direkt, vilket gör skillnad efter en måltid med klet och spill. 5-punktsbältet ingår för säkerheten, och de justerbara fotpinnarna ser till att barnet får stöd under fötterna oavsett ålder. Den skandinaviska White/Wood-designen passar in i de flesta hem.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att stolen inte är ultralätt på samma sätt som en ren resematstol, och att den kräver lite mer plats när den är uppfälld. För familjer som prioriterar enkel rengöring i vardagen och en stol som ändå går att fälla ihop är Beemoo CARE Harmony ett bra val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10263601&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-harmony-barnmatstol-white-wood" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>1. Fristående stol eller bordsstol?</h3>
- <p>Fristående hopfällbara matstolar (Chicco, <a href="/marken/joie/" class="text-accent underline">Joie</a>, Badabulle) har egna ben och fungerar överallt, på restaurang, hos morföräldrar och hemma. Bordsstolar som Inglesina Fast Table Chair kräver ett fast bord att fästa vid men väger hälften och tar minimalt med plats. Välj bordsstol för flygresor, fristående för längre vistelser.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Skrållan Bordsstol, bäst för resor</h2>
+    <MoneyProductCard
+      brand="Skrållan"
+      name="Skrållan Bordsstol"
+      rating={4.4}
+      rank={4}
+      badge="Bäst för resor"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/skrallan-bordsstol.webp"
+      imageAlt="Skrållan Bordsstol"
+      store="Babyland"
+      buyUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1"
+      pros={['Ultralätt bordsstol för resor', 'Kräver inget eget benstöd', 'Lätt att ta med i väskan', 'Passar de flesta bord']}
+      cons={['Kräver ett fast bord att fästa vid', '3-punkts bälte', 'Sämre stabilitet om bordet är smalt']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Skrållan Bordsstol är testets resespecialist. Den väger bara 2 kg och klämmer fast direkt vid ett bord utan egna benstöd, vilket gör att den får plats i väskan och passar i handbagage på flyget. Trots den minimala storleken klarar den de flesta bord och håller barnet på rätt höjd vid familjebordet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att stolen kräver ett fast bord att fästa vid och därför inte är fristående, att den har 3-punktsbälte i stället för 5-punkt, och att stabiliteten minskar om bordsskivan är smal. För föräldrar som reser mycket och vill ha lättast tänkbara packning är Skrållan Bordsstol det självklara valet.
+    </p>
+    <MoneyCTABox store="Babyland" affiliateUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1" />
 
- <h3>2. Vikt och hopfällt mått avgör</h3>
- <p>Ska du ta med stolen på flyg? Inglesina ryms i handbagage. Ska du bara ha den i bilen för restaurangbesök? Joie Mimzy och Chicco 360 är praktiska och lätta nog att bära. Undvik matstolar tyngre än 6 kg om du planerar att bära dem ofta.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra hopfällbara matstolar granskade, en vinner totalt. Joie Mimzy Snacker tar förstaplatsen för bästa balans mellan låg vikt, stabilitet och säkerhet. Cybex Click & Fold vinner på mångsidighet med sitt 3-i-1-system från födseln, och Beemoo CARE Harmony är enklast att rengöra i vardagen. Skrållan Bordsstol är oslagbar för flygresor och ultralätt packning. Vill du fördjupa dig? Läs vår <a href="/matstolar/" class="text-accent hover:text-accent-dark underline">jämförelse av alla matstolar 2026</a>, <a href="/matstolar/resestol/" class="text-accent hover:text-accent-dark underline">guiden om bästa resematstolen</a> eller <a href="/guider/valja-matstol/" class="text-accent hover:text-accent-dark underline">guiden om att välja matstol</a>.
+    </p>
 
- <h3>3. Säkerhet, kontrollera bältessystemet</h3>
- <p>Välj 5-punkts bälte för barn under 18 månader, det ger bäst fixering. Bordsstolar med 3-punkts bälte är okej för äldre barn men gör ett noggrant val för de yngsta. Kontrollera alltid att bältet är fastspänt och att stolen är korrekt monterad varje gång du använder den.</p>
- </div>
+    <MoneySpecTable products={products} featureLabels={['Vikt', 'Hopfällt mått', 'Ålder', 'Bältessystem', 'Bricka']} title="Specifikationer jämförda - Hopfällbara matstolar 2026" />
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler matstolsguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/matstolar/" class="text-accent underline">Bästa matstol 2026, alla modeller jämförda</a></li>
- <li><a href="/matstolar/boosterkudde/" class="text-accent underline">Bästa boosterkudde och sittförhöjare 2026</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026</a></li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide hopfällbar matstol 2026: vikt, fästsätt och säkerhet</h2>
+    <p class="text-text-light leading-relaxed mb-4">
+      Rätt hopfällbar matstol väljs utifrån hur du tänker använda den: fristående stol eller bordsstol, hur lätt den behöver vara och vilket säkerhetsbälte barnet behöver i sin ålder. Allt annat, design, färg, tillbehör, är sekundärt.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Fristående stol eller bordsstol?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Fristående hopfällbara matstolar (Cybex, <a href="/marken/joie/" class="text-accent hover:text-accent-dark underline">Joie</a>, Beemoo) har egna ben och fungerar överallt, på restaurang, hos morföräldrar och hemma. Bordsstolar som Skrållan Bordsstol kräver ett fast bord att fästa vid men väger hälften och tar minimalt med plats. Välj bordsstol för flygresor, fristående för längre vistelser.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Joie Mimzy Snacker Matstol, Portrait',
- description: 'Hopfällbar matstol med 5-punkts bälte och diskmaskinssäker bricka. Lätt och kompakt, passar barn 6 månader till 3 år.',
- image: 'https://bebisguiden.se/images/products/joie-mimzy-snacker-matstol-portrait.webp',
- brand: 'Joie',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Cybex Click & Fold 3in1 Matstol, All White',
- description: 'Mångsidig 3-i-1 matstol med babyset och bricka. Passar från födseln till 3 år.',
- image: 'https://bebisguiden.se/images/products/cybex-click-fold-3in1-matstol-all-white.webp',
- brand: 'Cybex',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vikt och hopfällt mått avgör</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ska du ta med stolen på flyg? Skrållan Bordsstol ryms i handbagage. Ska du bara ha den i bilen för restaurangbesök? Joie Mimzy och Cybex Click & Fold är praktiska och lätta nog att bära. Undvik matstolar tyngre än 6 kg om du planerar att bära dem ofta.
+    </p>
 
- <MultiStoreCTA
- productName="Hopfällbar matstol"
- brand="ll"
- primaryStore="inoki"
- description="Barnservis, matstolar och matningstillbehör i silikon."
-/>
- <CTABox productName="Barnserviser" store="Leas Lillebror" description="Färgglatt och roligt porslin och servis för barn." />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet, kontrollera bältessystemet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Välj 5-punkts bälte för barn under 18 månader, det ger bäst fixering. Bordsstolar med 3-punkts bälte är okej för äldre barn men gör ett noggrant val för de yngsta. Kontrollera alltid att bältet är fastspänt och att stolen är korrekt monterad varje gång du använder den.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om matstolssäkerhet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Matstolssäkerhet styrs av EU-standarden EN 14988 och rekommendationer från Konsumentverket. Nedan är de viktigaste fakta som alla föräldrar bör känna till.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Grenrem"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnstol-konsument/"
+        year="2026"
+      >
+        Höga barnstolar ska enligt Konsumentverket ha en fast grenrem monterad mellan båge och sits, så att barnet inte kan glida ur stolen under bågen och bli hängande i huvudet. Saknas fast grenrem uppfyller stolen inte säkerhetskraven.
+      </StatHighlight>
+      <StatHighlight
+        figure="Stabilitet"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnstol-konsument/"
+        year="2026"
+      >
+        Välj en matstol som är stabil och som barnet inte kan klättra ur själv. Barnet ska inte kunna resa sig upp i stolen, och du ska alltid ha uppsikt över barnet när det sitter i stolen.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnstol-konsument/"
+    >
+      "Finns det ett bälte eller en sele på stolen är det viktigt att använda det."
+    </ExpertQuote>
+
+    <p class="text-text-light leading-relaxed mt-5 mb-4">
+      Mer om säkerhet och regler finns i vår <a href="/guider/valja-matstol/" class="text-accent hover:text-accent-dark underline">guide om att välja matstol</a> och i <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">jämförelsen av bilbarnstolar</a> för säkerhet i bilen.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra hopfällbara matstolar utifrån fyra kriterier: säkerhet (EN 14988-certifiering, bältestyp), vikt och hopfällt mått (hur lätt stolen är att bära och packa), rengöring (avtagbara delar, diskmaskinssäkerhet) och stabilitet i uppfällt läge. Produkterna är valda bland de mest sålda och eftersökta resmätstolarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler matstolsguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/matstolar/" class="text-accent underline">Bästa matstol 2026, alla modeller jämförda</a></li>
+        <li><a href="/matstolar/resestol/" class="text-accent underline">Bästa resematstolen 2026, kompakt och resevänlig</a></li>
+        <li><a href="/matstolar/boosterkudde/" class="text-accent underline">Bästa boosterkudde och sittförhöjare 2026</a></li>
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa hopfällbara matstolen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait"
+    text="Bra pris hos Jollyroom"
+    productName="Joie Mimzy Snacker Matstol, Portrait"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      // Lästid: räkna ord i .mp-prose, dela på 200 ord/min, fyll bylinens span.
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

@@ -1,273 +1,431 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Leksaker', href: '/leksaker/' },
- { label: 'Leksaker 0 till 3 månader' },
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker', href: '/leksaker/' },
+  { label: 'Leksaker 0 till 3 månader' },
 ];
 
+// No-price-policy. Affiliate-URLs oförändrade (verifierade, NOLLTOLERANS).
+// Tikiri Teeny Doll Skallra, Blå = showcase (ingen ctaHref i prod), renderar utan CTA.
 const products = [
- {
- name: 'Tikiri Teeny Doll Skallra, Blå',
- badge: 'Bäst i test',
- rating: 4.7,
- image: '/images/products/tikiri-teeny-doll-skallra-bla.webp',
-
- features: {
- 'Lämplig ålder': '0 till 12 mån',
- 'Material': 'Naturgummi',
- 'Stimulerar': 'Grepp + syn',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'BRIO 30051 Bjällerskallra',
- badge: 'Klassiker',
- rating: 4.6,
- image: '/images/products/brio-30051-bjallerskallra.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra',
- features: {
- 'Lämplig ålder': '0 till 12 mån',
- 'Material': 'Trä',
- 'Stimulerar': 'Hörsel + grepp',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'Mumin Lilla My Skallra, Röd',
- badge: 'Populär',
- rating: 4.5,
- image: '/images/products/mumin-lilla-my-skallra-rod.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10308565&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/mumin-lilla-my-skallra-rod',
- features: {
- 'Lämplig ålder': '0 till 12 mån',
- 'Material': 'Plast',
- 'Stimulerar': 'Hörsel + syn',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'Done By Deer Handledsskallra 2-pack, Dotti Green',
- badge: 'Bäst budgetvärde',
- rating: 4.8,
- image: '/images/products/done-by-deer-handledsskallra-2-pack-dotti-green.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green',
- features: {
- 'Lämplig ålder': '0 till 6 mån',
- 'Material': 'Textil + plast',
- 'Stimulerar': 'Grepp + hörsel',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
+  {
+    name: 'Tikiri Teeny Doll Skallra, Blå',
+    brand: 'Tikiri',
+    rating: 4.7,
+    badge: 'Bäst i test',
+    usps: ['Naturgummi utan BPA, PVC, ftalater', 'Säker i munnen', 'Stimulerar grepp och hörsel'],
+    store: null,
+    affiliateUrl: null,
+    imageUrl: '/images/products/tikiri-teeny-doll-skallra-bla.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Skallra och bettleksak i naturgummi. Fri från BPA, PVC och ftalater. Lämplig för bebis från födseln.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Naturgummi', 'Stimulerar': 'Grepp + syn', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Tikiri Krokodil Bitring',
+    brand: 'Tikiri',
+    rating: 4.7,
+    badge: 'Bäst material',
+    usps: ['Naturgummi fritt från BPA, PVC och ftalater', 'Bettleksak och skallra i ett', 'Säker i munnen'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10061123&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/tikiri-krokodil-bitring',
+    imageUrl: '/images/products/tikiri-krokodil-bitring.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Bettleksak och skallra i ett, tillverkad av naturgummi fritt från BPA, PVC och ftalater. Mjuk form, säker i munnen. Lämplig från födseln.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Naturgummi', 'Stimulerar': 'Grepp + bett', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'BRIO 30051 Bjällerskallra',
+    brand: 'BRIO',
+    rating: 4.6,
+    badge: 'Klassiker',
+    usps: ['Klassisk träleksak', 'Klart bjällrande ljud', 'Hållbar och lätt att rengöra'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra',
+    imageUrl: '/images/products/brio-30051-bjallerskallra.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Klassisk skallra i trä med bjällrande ljud. Stimulerar hörsel och grepp. Lämplig från födseln.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Trä', 'Stimulerar': 'Hörsel + grepp', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Mumin Lilla My Skallra, Röd',
+    brand: 'Mumin',
+    rating: 4.5,
+    badge: 'Populär',
+    usps: ['Igenkännbar Mumin-design', 'Röd färg syns tydligt för bebis', 'Lätt att greppa'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10308565&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/mumin-lilla-my-skallra-rod',
+    imageUrl: '/images/products/mumin-lilla-my-skallra-rod.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Skallra med Lilla My-motiv i röd färg. Lätt att greppa för bebis. Lämplig från födseln.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Plast', 'Stimulerar': 'Hörsel + syn', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Done By Deer Handledsskallra 2-pack, Dotti Green',
+    brand: 'Done By Deer',
+    rating: 4.8,
+    badge: 'Bäst budgetvärde',
+    usps: ['Sitter runt handleden, perfekt från dag ett', '2-pack, ett exemplar per hand', 'Mjuk textil mot huden'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green',
+    imageUrl: '/images/products/done-by-deer-handledsskallra-2-pack-dotti-green.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Handledsskallra i 2-pack. Sitter runt bebisens handled. Mjuk textil. Lämplig 0 till 6 månader.',
+    features: { 'Lämplig ålder': '0 till 6 mån', 'Material': 'Textil + plast', 'Stimulerar': 'Grepp + hörsel', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [
+      { store: 'Toyspace', url: 'https://id.toyspace.se/t/t?a=1984734030&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.toyspace.se%2Fbabyleksaker' },
+    ],
+  },
 ];
 
-const featureLabels = ['Lämplig ålder', 'Material', 'Stimulerar', 'Säkerhetsgodkänd'];
+const specLabels = ['Lämplig ålder', 'Material', 'Stimulerar', 'Säkerhetsgodkänd'];
 
 const faqItems = [
- {
- question: 'Vilka leksaker passar en nyfödd 0 till 3 månader?',
- answer: 'Nyfödda ser bäst på ca 20 till 30 cm avstånd och uppfattar höga kontraster bäst, svart, vitt och rött. Välj enkla skallror med tunt handtag, mjuka handledsskallror och babygym med hängande figurer. Undvik leksaker med för många funktioner, en enkel skallra som BRIO Bjällerskallran räcker långt i det här åldersspannet.',
- },
- {
- question: 'Från vilken ålder kan en bebis hålla i en skallra?',
- answer: 'De flesta bebisar börjar greppa föremål aktivt runt 3 till 4 månaders ålder, men reflexgreppet finns från födseln. Lägg gärna skallran i bebisens hand redan från 1 till 2 månaders ålder, det stimulerar greppintresset. Done By Deer handledsskallror är designade för att sitta runt handleden, vilket gör dem perfekta från dag ett.',
- },
- {
- question: 'Är naturgummileksaker säkra för bebis?',
- answer: 'Ja, om de är tillverkade av certifierat naturligt gummi utan tillsatser. Tikiri Teeny Doll Skallran är fri från BPA, PVC och ftalater. Undvik att blötlägga naturgummileksaker, torka av med fuktig trasa. Om leksaken börjar lukta konstigt eller spricker, byt ut den.',
- },
- {
- question: 'Hur stimulerar jag en bebis syn under 0 till 3 månader?',
- answer: 'Bebisens syn är outvecklad de första månaderna. Placera leksaker i kontrastfärger (svart/vitt, rött/vitt) inom 25 cm avstånd. Hängande leksaker i ett babygym rör sig och fångar uppmärksamheten. Ansikten är den starkaste visuella stimulansen, håll ditt ansikte nära bebisens när du pratar och sjunger.',
- },
- {
- question: 'Hur rengör man babyleksaker på ett säkert sätt?',
- answer: 'Plastaleksaker torkas av med fuktig trasa och milt diskmedel. Naturgummileksaker (som Tikiri) torkas av, blötlägg aldrig. Träskallror (som BRIO) torkas lätt fuktiga och får inte doppas. Textilhandledsskallror kan ofta maskintvättas på 30 till 40 grader, kontrollera skötselråden. Rengör leksaker regelbundet eftersom bebisar stoppar dem i munnen.',
- },
+  {
+    question: 'Vilka leksaker passar en nyfödd 0 till 3 månader?',
+    answer: 'Nyfödda ser bäst på ca 20 till 30 cm avstånd och uppfattar höga kontraster bäst, svart, vitt och rött. Välj enkla skallror med tunt handtag, mjuka handledsskallror och babygym med hängande figurer. Undvik leksaker med för många funktioner, en enkel skallra som BRIO Bjällerskallran räcker långt i det här åldersspannet.',
+  },
+  {
+    question: 'Från vilken ålder kan en bebis hålla i en skallra?',
+    answer: 'De flesta bebisar börjar greppa föremål aktivt runt 3 till 4 månaders ålder, men reflexgreppet finns från födseln. Lägg gärna skallran i bebisens hand redan från 1 till 2 månaders ålder, det stimulerar greppintresset. Done By Deer handledsskallror är designade för att sitta runt handleden, vilket gör dem perfekta från dag ett.',
+  },
+  {
+    question: 'Är naturgummileksaker säkra för bebis?',
+    answer: 'Ja, om de är tillverkade av certifierat naturligt gummi utan tillsatser. Tikiri Teeny Doll Skallran är fri från BPA, PVC och ftalater. Undvik att blötlägga naturgummileksaker, torka av med fuktig trasa. Om leksaken börjar lukta konstigt eller spricker, byt ut den.',
+  },
+  {
+    question: 'Hur stimulerar jag en bebis syn under 0 till 3 månader?',
+    answer: 'Bebisens syn är outvecklad de första månaderna. Placera leksaker i kontrastfärger (svart/vitt, rött/vitt) inom 25 cm avstånd. Hängande leksaker i ett babygym rör sig och fångar uppmärksamheten. Ansikten är den starkaste visuella stimulansen, håll ditt ansikte nära bebisens när du pratar och sjunger.',
+  },
+  {
+    question: 'Hur rengör man babyleksaker på ett säkert sätt?',
+    answer: 'Plastaleksaker torkas av med fuktig trasa och milt diskmedel. Naturgummileksaker (som Tikiri) torkas av, blötlägg aldrig. Träskallror (som BRIO) torkas lätt fuktiga och får inte doppas. Textilhandledsskallror kan ofta maskintvättas på 30 till 40 grader, kontrollera skötselråden. Rengör leksaker regelbundet eftersom bebisar stoppar dem i munnen.',
+  },
 ];
+
 export const articleMeta = {
   title: "Leksaker bebis 0-3 månader 2026: bäst i test",
   description: "Leksaker bebis 0 till 3 månader 2026: bästa skallrorna, grepleksakerna och babygymmen för de minsta. Vad stimulerar syn och motorik bäst? Priser från Jollyroom.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
   category: "Leksaker",
   image: "/images/products/tikiri-teeny-doll-skallra-bla.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bästa leksaker bebis 0 till 3 månader 2026: test"
- description="Vilka leksaker passar en nyfödd? Vi jämför och rankar bästa leksaker för bebis 0 till 3 månader, skallror, grepp-leksaker och babygym."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/leksaker/0-3-manader/"
- updatedDate="2026-04-14"
-  datePublished="2026-04-30"
+  title="Leksaker bebis 0-3 månader 2026: bäst i test"
+  description="Leksaker bebis 0 till 3 månader 2026: bästa skallrorna, grepleksakerna och babygymmen för de minsta. Vad stimulerar syn och motorik bäst? Priser från Jollyroom."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-05-16"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Tikiri Teeny Doll Skallra vinner leksak för 0 till 3 månader bäst i test 2026. Naturgummit är fritt från BPA, PVC och ftalater, vilket är tryggt för bebis som suger på leksaken. Skallraljudet stimulerar hörseln och den mjuka texturen tränar grepp och finmotorik.
-	 </p>
 
- <TopPick product={products[0]} description="Tikiri Teeny Doll Skallra vinner test av leksaker för 0 till 3 månader 2026. Naturgummi utan BPA, PVC och ftalater är tryggt för bebis som suger på leksaken, skallraljudet stimulerar hörseln och den mjuka texturen tränar grepp och finmotorik." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, leksaker 0 till 3 månader</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilka leksaker passar bebis 0 till 3 månader 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Done By Deer Handledsskallra 2-pack rankas högst, den sitter runt handleden och stimulerar från dag ett. Tikiri Teeny Doll Skallra vinner på säkerhetsmaterial i naturgummi. BRIO Bjällerskallran är klassikern i trä. Tikiri Krokodil Bitring ger bett och skallra i ett.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val</p>
- <p class="text-sm text-text-light"><strong>Done By Deer Handledsskallra</strong> är bäst för de allra yngsta, sitter runt handleden och stimulerar från dag ett. <strong>BRIO Bjällerskallran</strong> är en klassiker i trä som håller i generationer. <strong>Tikiri Teeny Doll</strong> vinner på säkerhetsmaterial i naturgummi.</p>
- </div>
+  {/* 3. Featured product (#1 med CTA, Tikiri Krokodil Bitring används som featured eftersom Tikiri Teeny är showcase utan URL) */}
+  <MoneyFeaturedProduct
+    brand="Done By Deer"
+    name="Handledsskallra 2-pack, Dotti Green"
+    image="/images/products/done-by-deer-handledsskallra-2-pack-dotti-green.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green"
+    store="Jollyroom"
+    description="Bäst budgetvärde för de allra yngsta. Sitter runt handleden och stimulerar redan från dag ett utan att bebisen behöver kunna greppa aktivt. 2-pack ger ett exemplar per hand. Mjuk textil mot huden, skandinavisk design."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval för 0 till 3 månader</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Leksaker 0 till 3 månader 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Tikiri Krokodil Bitring"
- badge="Bäst i test"
- rating={4.7}
- image="/images/products/tikiri-krokodil-bitring.webp"
- ageRange="0 till 12 månader"
- pros={['Naturgummi fritt från BPA, PVC och ftalater', 'Mjuk form, säker i munnen', 'Bettleksak och leksak i ett', 'Lågt pris']}
- cons={['Ska inte blötläggas', 'Kontrollera att inga delar lossnar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10061123&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/tikiri-krokodil-bitring"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="BRIO 30051 Bjällerskallra"
- badge="Klassiker"
- rating={4.6}
- image="/images/products/brio-30051-bjallerskallra.webp"
- ageRange="0 till 12 månader"
- pros={['Klassisk träleksak med tidlös design', 'Klart bjällrande ljud stimulerar hörseln', 'Hållbar och lätt att rengöra', 'Certifierat säker för bebis']}
- cons={['Hårdare material, inte för munträning som gummi', 'Inga visuella kontraster']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Tikiri Teeny Doll Skallra, Blå, bäst i test</h2>
+    <MoneyProductCard
+      brand="Tikiri"
+      name="Tikiri Teeny Doll Skallra, Blå"
+      rating={4.7}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/tikiri-teeny-doll-skallra-bla.webp"
+      imageAlt="Tikiri Teeny Doll Skallra, Blå"
+      pros={['Naturgummi utan BPA, PVC och ftalater', 'Säker i munnen, bra som bettleksak', 'Stimulerar grepp och hörsel']}
+      cons={['Ska inte blötläggas', 'Begränsat utbud av färger']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Tikiri Teeny Doll Skallra vinner test av leksaker för 0 till 3 månader 2026 på säkerhetsmaterialet. Naturgummit är fritt från BPA, PVC och ftalater, vilket är särskilt viktigt för en produkt som bebisen stoppar i munnen. Skallraljudet stimulerar hörseln och den mjuka texturen tränar grepp och finmotorik.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att naturgummileksaker inte ska blötläggas, bara torkas av med en fuktig trasa. Kontrollera regelbundet att inga delar spricker eller lossnar.
+    </p>
 
- <ProductCard
- name="Mumin Lilla My Skallra, Röd"
- badge="Populär"
- rating={4.5}
- image="/images/products/mumin-lilla-my-skallra-rod.webp"
- ageRange="0 till 12 månader"
- pros={['Igenkännbar Mumin-design', 'Lätt att greppa', 'Röd färg syns tydligt för bebis', 'Lågt pris']}
- cons={['Plast, inte ekologiskt material', 'Enkel funktion']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10308565&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/mumin-lilla-my-skallra-rod"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Tikiri Krokodil Bitring, bäst material</h2>
+    <MoneyProductCard
+      brand="Tikiri"
+      name="Tikiri Krokodil Bitring"
+      rating={4.7}
+      rank={2}
+      badge="Bäst material"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/tikiri-krokodil-bitring.webp"
+      imageAlt="Tikiri Krokodil Bitring"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10061123&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/tikiri-krokodil-bitring"
+      pros={['Naturgummi fritt från BPA, PVC och ftalater', 'Bettleksak och leksak i ett', 'Mjuk form, säker i munnen']}
+      cons={['Ska inte blötläggas', 'Kontrollera att inga delar lossnar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Tikiri Krokodil Bitring kombinerar skallra och bettleksak i ett, tillverkad av naturgummi utan skadliga ämnen. Den mjuka formen är lätt att hålla i för en liten hand och trygg att bita på när tänderna börjar komma. Precis som Teeny Doll Skallran är materialet certifierat fritt från BPA, PVC och ftalater.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Torka av med fuktig trasa, blötlägg aldrig. Byt ut om leksaken börjar spricker eller luktar konstigt.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10061123&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/tikiri-krokodil-bitring" />
 
- <ProductCard
- name="Done By Deer Handledsskallra 2-pack, Dotti Green"
- badge="Bäst budgetvärde"
- rating={4.8}
- image="/images/products/done-by-deer-handledsskallra-2-pack-dotti-green.webp"
- ageRange="0 till 6 månader"
- pros={['Sitter runt handleden, perfekt från dag ett', '2-pack ger ett exemplar på varje hand', 'Mjuk textil mot huden', 'Skandinavisk design']}
- cons={['Passar bäst 0 till 6 månader', 'Kan behöva handtvätt']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. BRIO 30051 Bjällerskallra, klassiker</h2>
+    <MoneyProductCard
+      brand="BRIO"
+      name="BRIO 30051 Bjällerskallra"
+      rating={4.6}
+      rank={3}
+      badge="Klassiker"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/brio-30051-bjallerskallra.webp"
+      imageAlt="BRIO 30051 Bjällerskallra"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra"
+      pros={['Klassisk träleksak med tidlös design', 'Klart bjällrande ljud stimulerar hörseln', 'Hållbar och lätt att rengöra', 'Certifierat säker för bebis']}
+      cons={['Hårdare material, inte för munträning som gummi', 'Inga visuella kontraster']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BRIO Bjällerskallran är en klassiker som funnits i generationer. Det klara bjällrande ljudet stimulerar hörseln på ett naturligt och inte överväldigande sätt. Träet är certifierat säkert och leksaken håller länge, den klarar de hanteringsbevis en bebis utsätter den för.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Välj BRIO om du vill ha en hållbar träklassiker med rent ljudstimulus. Byt till Tikiri om du söker något att bita på.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=883056&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/brio-30051-bjallerskallra" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Vad stimulerar bebis 0 till 3 månader?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Mumin Lilla My Skallra, Röd, populär</h2>
+    <MoneyProductCard
+      brand="Mumin"
+      name="Mumin Lilla My Skallra, Röd"
+      rating={4.5}
+      rank={4}
+      badge="Populär"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/mumin-lilla-my-skallra-rod.webp"
+      imageAlt="Mumin Lilla My Skallra, Röd"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10308565&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/mumin-lilla-my-skallra-rod"
+      pros={['Igenkännbar Mumin-design', 'Lätt att greppa', 'Röd färg syns tydligt för bebis']}
+      cons={['Plast, inte ekologiskt material', 'Enkel funktion']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Mumin Lilla My Skallran kombinerar igenkänning med praktisk funktion. Den röda färgen syns tydligt för en bebis vars syn fortfarande är under utveckling, och formen är enkel att greppa. Muminkaraktärerna är välkända i svenska hem och är ofta en omtyckt gåva.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Materialet är plast, vilket inte är lika ekologiskt som trä eller naturgummi, men det gör leksaken lätt och lätt att rengöra med fuktig trasa.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10308565&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/mumin-lilla-my-skallra-rod" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Syn, kontraster och rörelse</h3>
- <p>Nyfödda ser tydligast på ca 20 till 30 cm avstånd och reagerar starkast på höga kontraster. Svart/vitt och rött/vitt är de färger som fångar uppmärksamheten bäst. Välj leksaker med klara färger och enkla mönster snarare än pastelliga nyanser.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Done By Deer Handledsskallra 2-pack, bäst budgetvärde</h2>
+    <MoneyProductCard
+      brand="Done By Deer"
+      name="Done By Deer Handledsskallra 2-pack, Dotti Green"
+      rating={4.8}
+      rank={5}
+      badge="Bäst budgetvärde"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/done-by-deer-handledsskallra-2-pack-dotti-green.webp"
+      imageAlt="Done By Deer Handledsskallra 2-pack, Dotti Green"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green"
+      pros={['Sitter runt handleden, perfekt från dag ett', '2-pack ger ett exemplar på varje hand', 'Mjuk textil mot huden', 'Skandinavisk design']}
+      cons={['Passar bäst 0 till 6 månader', 'Kan behöva handtvätt']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Done By Deer Handledsskallra löser ett klassiskt problem: bebisen kan inte greppa aktivt de första månaderna men vill ändå stimuleras. Skallran sitter runt handleden och rör sig varje gång bebisen rör armen, utan att bebisen aktivt behöver hålla i något. 2-packet ger ett exemplar per hand.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den mjuka textilen är skonsam mot nyfödd hud och designen är minimalistisk skandinavisk. Passar bäst de första sex månaderna, men ger en flygande start på stimulering från dag ett.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green" />
 
- <h3>Hörsel, ljud och röst</h3>
- <p>Bebisen känner igen mammas röst från födseln och reagerar på plötsliga ljud. Skallror med mjukt, klart ljud, som BRIO Bjällerskallran, stimulerar hörseln utan att skrämma. Undvik elektroniska leksaker med höga volymtoppar under de första månaderna.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem leksaker granskade för 0 till 3 månader. Done By Deer Handledsskallra passar bäst från dag ett, Tikiri-produkterna vinner på säkerhetsmaterial, BRIO är klassikern och Mumin-skallran är omtyckta gåvan. Vill du se fler alternativ? Läs <a href="/leksaker/3-6-manader/" class="text-accent hover:text-accent-dark underline">bästa leksaker bebis 3 till 6 månader 2026</a> eller gå till vår <a href="/leksaker/" class="text-accent hover:text-accent-dark underline">kompletta leksaksoversikt för bebis 2026</a>.
+    </p>
 
- <h3>Grepp, reflex till avsiktligt grepp</h3>
- <p>Det tidiga palmargreppet är en reflexrörelse, inte ett medvetet grepp. Lägg en skallra i bebisens hand för att stimulera känseln och greppintresset. Done By Deer handledsskallra är designad att sitta runt handleden, bebisen behöver inte kunna greppa den aktivt.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Leksaker 0 till 3 månader 2026" />
 
- <h3>Säkerhet, alltid överst</h3>
- <ul class="list-disc list-inside space-y-1">
-   <li>Kontrollera CE-märkning innan köp, det är det grundläggande EU-kravet för leksakssäkerhet.</li>
-   <li>Inga lösa delar som kan ryckas loss, bebisen stoppar allt i munnen och kvävningsrisken är hög i det här åldersspannet.</li>
-   <li>Material fritt från BPA, PVC och ftalater, naturgummi och certifierat trä är de tryggaste valen för produkter som hamnar i munnen.</li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad stimulerar bebis 0 till 3 månader?</h2>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler leksaksguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/leksaker/3-6-manader/" class="text-accent underline">Bästa leksaker bebis 3 till 6 månader 2026</a></li>
- <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker bebis 6 till 12 månader 2026</a></li>
- <li><a href="/leksaker/" class="text-accent underline">Bästa leksaker bebis 2026, översikt</a></li>
- <li><a href="/leksaker/montessori/" class="text-accent underline">Montessorileksaker bebis 2026</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Syn, kontraster och rörelse</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nyfödda ser tydligast på ca 20 till 30 cm avstånd och reagerar starkast på höga kontraster. Svart/vitt och rött/vitt är de färger som fångar uppmärksamheten bäst. Välj leksaker med klara färger och enkla mönster snarare än pastelliga nyanser. Mumin Lilla My Skallran i rött är ett bra exempel på en leksak som syns tydligt för en bebis vars syn fortfarande är under utveckling.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hörsel, ljud och röst</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bebisen känner igen mammas röst från födseln och reagerar på plötsliga ljud. Skallror med mjukt, klart ljud, som BRIO Bjällerskallran, stimulerar hörseln utan att skrämma. Undvik elektroniska leksaker med höga volymtoppar under de första månaderna. Enkelt och naturligt ljud är bättre än komplexa melodier i det här åldersspannet.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Tikiri Teeny Doll Skallra, Blå',
- description: 'Skallra och bettleksak i naturgummi. Fri från BPA, PVC och ftalater. Lämplig för bebis från födseln.',
- image: 'https://bebisguiden.se/images/products/tikiri-teeny-doll-skallra.webp',
- brand: 'Tikiri',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'BRIO 30051 Bjällerskallra',
- description: 'Klassisk skallra i trä med bjällrande ljud. Stimulerar hörsel och grepp. Lämplig från födseln.',
- image: 'https://bebisguiden.se/images/products/brio-bjallerskallra.webp',
- brand: 'BRIO',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Mumin Lilla My Skallra, Röd',
- description: 'Skallra med Lilla My-motiv i röd färg. Lätt att greppa för bebis. Lämplig från födseln.',
- image: 'https://bebisguiden.se/images/products/mumin-lilla-my-skallra.webp',
- brand: 'Mumin',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'Done By Deer Handledsskallra 2-pack, Dotti Green',
- description: 'Handledsskallra i 2-pack. Sitter runt bebisens handled. Mjuk textil. Lämplig 0 till 6 månader.',
- image: 'https://bebisguiden.se/images/products/done-by-deer-handledsskallra.webp',
- brand: 'Done By Deer',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Grepp: från reflex till avsiktligt grepp</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det tidiga palmargreppet är en reflexrörelse, inte ett medvetet grepp. Lägg en skallra i bebisens hand för att stimulera känseln och greppintresset. Done By Deer handledsskallra är designad att sitta runt handleden, bebisen behöver inte kunna greppa den aktivt. Det är den smartaste lösningen för de allra yngsta.
+    </p>
 
- <MultiStoreCTA
- productName="Leksaker 0 till 3 månader"
- brand="ll"
- primaryStore="Jollyroom"
- primaryUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green"
- description="Stort sortiment skallror och babyleksaker för de minsta."
-/>
- <MultiStoreCTA
- productName="Leksaker 0 till 3 månader"
- brand="ll"
- primaryStore="Micki"
- description="Klassiska svenska leksaker för de yngsta."
-/>
- <MultiStoreCTA
- productName="Leksaker 0 till 3 månader"
- brand="ll"
- primaryStore="Litenleker"
- description="Stort sortiment babyleksaker och pedagogiska leksaker."
-/>
-<MultiStoreCTA
- productName="Leksaker 0 till 3 månader"
- brand="ll"
- primaryStore="Toyspace"
- primaryUrl="https://id.toyspace.se/t/t?a=1984734030&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.toyspace.se%2Fbabyleksaker"
- description="Skandinaviens största leksaksbutik, babyleksaker och skallror."
-/>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet: vad som gäller för 0 till 3 månader</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bebisen stoppar allt i munnen. Välj material fritt från BPA, PVC och ftalater, naturgummi och certifierat trä är de tryggaste valen. Kontrollera CE-märkning innan köp. Inga lösa delar som kan ryckas loss, kvävningsrisken är hög i det här åldersspannet. Rengör leksaker regelbundet.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat leksaker för 0 till 3 månader utifrån säkerhetsmaterial (BPA, PVC, ftalater), ålderslämplighet, stimulansvärde (syn, hörsel, grepp), praktisk funktion och popularitet i Sverige. Produkterna är valda bland de mest sålda och eftersökta babyleksakerna hos svenska nätbutiker. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler leksaksguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/leksaker/3-6-manader/" class="text-accent underline">Bästa leksaker bebis 3 till 6 månader 2026</a></li>
+        <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker bebis 6 till 12 månader 2026</a></li>
+        <li><a href="/leksaker/" class="text-accent underline">Bästa leksaker bebis 2026, oversikt</a></li>
+        <li><a href="/leksaker/montessori/" class="text-accent underline">Montessorileksaker bebis 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa leksaker bebis 0 till 3 månader 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) - Done By Deer har högst rating (4.8) och är vinnaren med CTA */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10278920&url=https://www.jollyroom.se/leksaker/babyleksaker/skallror/done-by-deer-handledsskallra-2-pack-dotti-green"
+    text="Bra pris hos Jollyroom"
+    productName="Done By Deer Handledsskallra 2-pack"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

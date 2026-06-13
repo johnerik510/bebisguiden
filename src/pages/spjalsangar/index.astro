@@ -1,351 +1,488 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar' },
+];
+
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
+const products = [
+  {
+    name: 'Bellamy Nomi Spjälsäng 3-i-1',
+    brand: 'Bellamy',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Växer i 3 steg', 'Standardmått 70x140', 'Skandinavisk design'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912030&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-nomi-spjalsang-3-i-1-vit',
+    imageUrl: '/images/products/bellamy-nomi-spjalsang.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Spjälsäng i trä som konverteras till juniorsäng i 3 steg. Standardmått 70x140 cm. Passar 0 till 6 år.',
+    features: { 'Typ': 'Växer till juniorsäng', 'Mått': '70x140 cm', 'Material': 'Trä', 'Åldersgrupp': '0 till 6 år' },
+    alsoAt: [],
+  },
+  {
+    name: 'Beemoo CARE Nordic Spjälsäng',
+    brand: 'Beemoo',
+    rating: 4.5,
+    badge: 'Bäst budget',
+    usps: ['Prisvärd', 'Standardmått 70x140', 'Enkel montering'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291648&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/beemoo-care-nordic-spjalsang-vit',
+    imageUrl: '/images/products/beemoo-care-nordic-spjalsang.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Prisvärd standardspjälsäng 70x140 cm. Passar alla standardmadrasser. Passar 0 till 3 år.',
+    features: { 'Typ': 'Standard spjälsäng', 'Mått': '70x140 cm', 'Material': 'Trä/metall', 'Åldersgrupp': '0 till 3 år' },
+    alsoAt: [],
+  },
+  {
+    name: 'Stokke Sleepi Mini V3 Spjälsäng',
+    brand: 'Stokke',
+    rating: 4.8,
+    badge: 'Bäst premium',
+    usps: ['Oval design', 'Massiv bok', 'Högt andrahandsvärde'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10224827&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-mini-v3-spjalsang-white',
+    imageUrl: '/images/products/stokke-sleepi-mini-v3.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Oval spjälsäng i massiv bok. Kan byggas ut till full Sleepi-säng. Passar 0 till 9 månader som mini.',
+    features: { 'Typ': 'Oval mini spjälsäng', 'Mått': 'Oval 73x50 cm', 'Material': 'Bok', 'Åldersgrupp': '0 till 9 mån' },
+    alsoAt: [],
+  },
+  {
+    name: 'Bellamy UP Spjälsäng 5-i-1',
+    brand: 'Bellamy',
+    rating: 4.7,
+    badge: 'Bäst växasäng',
+    usps: ['Växer i 5 steg', 'Räcker till 18 år', 'Reglerbar sängbotten'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912033&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-up-spjalsang-5-i-1-vit-del-1_1',
+    imageUrl: '/images/products/bellamy-up-spjalsang.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Växasäng i 5 steg från spjälsäng till ungdomssäng 90x200 cm. Passar 0 till 18 år.',
+    features: { 'Typ': 'Växer till ungdomssäng', 'Mått': '90x200 cm (max)', 'Material': 'Trä', 'Åldersgrupp': '0 till 18 år' },
+    alsoAt: [],
+  },
+  {
+    name: 'Beemoo CARE Calm Bedside Crib',
+    brand: 'Beemoo',
+    rating: 4.6,
+    badge: 'Bäst bedside crib',
+    usps: ['Intill föräldrasängen', 'Justerbar höjd', 'Prisvärd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273002&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/bedside-cribs/beemoo-care-calm-bedside-crib-nature-white',
+    imageUrl: '/images/products/beemoo-care-calm-bedside-crib.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Bedside crib med justerbar höjd för att matcha föräldrasängen. Bebisen sover nära men i eget utrymme. Passar 0 till 6 månader.',
+    features: { 'Typ': 'Bedside crib', 'Mått': 'Standard', 'Material': 'Trä/tyg', 'Åldersgrupp': '0 till 6 mån' },
+    alsoAt: [],
+  },
+];
+
+const specLabels = ['Typ', 'Mått', 'Material', 'Åldersgrupp'];
+
+const faqItems = [
+  {
+    question: 'Vilken storlek spjälsäng ska jag välja?',
+    answer: 'Standardmåttet 70 x 140 centimeter är det kloka valet för de flesta. Det passar madrasser från praktiskt taget alla märken och sängkläder finns i alla butiker. Det mindre formatet 60 x 120 centimeter sparar 20 centimeter i ett trångt barnrum men kräver specialmadrass och är svårare att hitta sängkläder till. Stokke Sleepi Mini V3 har ett unikt ovalt format, den kräver märkets egna madrasser men kan byggas ut till en full Sleepi-säng som håller länge.',
+  },
+  {
+    question: 'Spjälsäng eller bedside crib?',
+    answer: 'En spjälsäng som Bellamy Nomi är fristående med fyra sidor och används från födseln till 3 år eller längre. En bedside crib som Beemoo CARE Calm monteras intill föräldrasängen med ena sidan öppen, barnet sover på sin egen säkra yta men inom armlängd. Socialstyrelsen och WHO rekommenderar att bebisen sover i eget sovutrymme men i samma rum som föräldrarna de första sex månaderna, en bedside crib uppfyller båda kraven. Nackdelen: bedside cribs används bara 0 till 6 månader, sedan behövs en vanlig spjälsäng ändå.',
+  },
+  {
+    question: 'Hur länge kan barnet sova i spjälsäng?',
+    answer: 'Standardsängar (70 x 140 centimeter) räcker tills barnet är cirka 3 till 4 år gammalt, beroende på längd. Bellamy Nomi konverteras till juniorsäng och passar till 6 år. Bellamy UP 5-i-1 är den yttersta varianten och räcker till 18 år. Tecken på att det är dags att byta till juniorsäng är när barnet kan klättra ur på egen hand eller når över räcket.',
+  },
+  {
+    question: 'Vilka säkerhetskrav ska sängen uppfylla?',
+    answer: 'EU-standarden EN 716 styr spjälsängar och kräver bland annat att avståndet mellan spjälorna är 4,5 till 6,5 centimeter så att barnets huvud inte fastnar. Madrassen ska passa tätt utan glapp, och inga lösa täcken, kuddar eller mjuka tillbehör får ligga i sängen för barn under 12 månader. Köp alltid CE-märkta sängar och kontrollera om modellen har återkallats av tillverkaren.',
+  },
+  {
+    question: 'Är det värt att betala mer för en växasäng?',
+    answer: 'Det beror på hur länge du vill använda den och om du planerar fler barn. Beemoo CARE Nordic uppfyller alla säkerhetskrav i EN 716 och är utmärkt om du vill minimera startkostnaden. Bellamy Nomi 3-i-1 kostar mer men täcker 0 till 6 år, räknat per år är den konkurrenskraftig. Bellamy UP 5-i-1 är den ultimata investeringen som räcker till tonåren och aldrig behöver bytas ut. Välj växasäng om du har mer än ett barn, standardsäng annars.',
+  },
+  {
+    question: 'Kan jag köpa begagnad spjälsäng?',
+    answer: 'Ja, om du är noggrann. Kontrollera att modellen uppfyller EN 716 (gäller alla sängar sålda i Sverige efter 2012), att inga spjälor är skadade eller saknas och att monteringen är komplett. Köp alltid ny madrass eftersom begagnade madrasser kan innehålla bakterier, mögelsporer eller skadliga ämnen. Undvik sängar som är äldre än tio år, säkerhetsstandarderna har skärpts.',
+  },
+];
 
 export const articleMeta = {
   title: "Bästa spjälsängen 2026: Bellamy, Beemoo och Stokke jämförda",
   description: "Spjälsäng bäst i test 2026: Bellamy Nomi vinner. Vi jämför 5 modeller hos Jollyroom på säkerhet, växfunktion och pris. EN 716-krav förklarade.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Spjälsängar",
   image: "/images/products/bellamy-nomi-spjalsang.webp",
 };
-
-const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Spjälsängar' },
-];
-
-const products = [
- {
- name: 'Bellamy Nomi Spjälsäng 3-i-1',
- badge: 'Bäst i test',
- rating: 4.8,
- price: 7495,
- image: '/images/products/bellamy-nomi-spjalsang.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912030&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-nomi-spjalsang-3-i-1-vit',
- features: {
- 'Typ': 'Växer till juniorsäng',
- 'Mått': '70x140 cm',
- 'Material': 'Trä',
- 'Åldersgrupp': '0 till 6 år',
- },
- },
- {
- name: 'Beemoo CARE Nordic Spjälsäng',
- badge: 'Bäst budget',
- rating: 4.5,
- price: 1899,
- image: '/images/products/beemoo-care-nordic-spjalsang.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291648&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/beemoo-care-nordic-spjalsang-vit',
- features: {
- 'Typ': 'Standard spjälsäng',
- 'Mått': '70x140 cm',
- 'Material': 'Trä/metall',
- 'Åldersgrupp': '0 till 3 år',
- },
- },
- {
- name: 'Stokke Sleepi Mini V3 Spjälsäng',
- badge: 'Bäst premium',
- rating: 4.8,
- price: 3499,
- image: '/images/products/stokke-sleepi-mini-v3.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10224827&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-mini-v3-spjalsang-white',
- features: {
- 'Typ': 'Oval mini spjälsäng',
- 'Mått': 'Oval 73x50 cm',
- 'Material': 'Bok',
- 'Åldersgrupp': '0 till 9 mån',
- },
- },
- {
- name: 'Bellamy UP Spjälsäng 5-i-1',
- badge: 'Bäst växasäng',
- rating: 4.7,
- price: 8999,
- image: '/images/products/bellamy-up-spjalsang.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912033&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-up-spjalsang-5-i-1-vit-del-1_1',
- features: {
- 'Typ': 'Växer till ungdomssäng',
- 'Mått': '90x200 cm (max)',
- 'Material': 'Trä',
- 'Åldersgrupp': '0 till 18 år',
- },
- },
- {
- name: 'Beemoo CARE Calm Bedside Crib',
- badge: 'Bäst bedside crib',
- rating: 4.6,
- price: 1799,
- image: '/images/products/beemoo-care-calm-bedside-crib.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273002&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/bedside-cribs/beemoo-care-calm-bedside-crib-nature-white',
- features: {
- 'Typ': 'Bedside crib',
- 'Mått': 'Standard',
- 'Material': 'Trä/tyg',
- 'Åldersgrupp': '0 till 6 mån',
- },
- },
-];
-
-const featureLabels = ['Typ', 'Mått', 'Material', 'Åldersgrupp'];
-
-const faqItems = [
- {
- question: 'Vilken storlek spjälsäng ska jag välja?',
- answer: 'Standardmåttet 70 x 140 centimeter är det kloka valet för de flesta. Det passar madrasser från praktiskt taget alla märken och sängkläder finns i alla butiker. Det mindre formatet 60 x 120 centimeter sparar 20 centimeter i ett trångt barnrum men kräver specialmadrass och är svårare att hitta sängkläder till. Stokke Sleepi Mini V3 har ett unikt ovalt format, den kräver märkets egna madrasser men kan byggas ut till en full Sleepi-säng som håller länge.',
- },
- {
- question: 'Spjälsäng eller bedside crib?',
- answer: 'En spjälsäng som Bellamy Nomi är fristående med fyra sidor och används från födseln till 3 år eller längre. En bedside crib som Beemoo CARE Calm monteras intill föräldrasängen med ena sidan öppen, barnet sover på sin egen säkra yta men inom armlängd. Socialstyrelsen och WHO rekommenderar att bebisen sover i eget sovutrymme men i samma rum som föräldrarna de första sex månaderna, en bedside crib uppfyller båda kraven. Nackdelen: bedside cribs används bara 0 till 6 månader, sedan behövs en vanlig spjälsäng ändå.',
- },
- {
- question: 'Hur länge kan barnet sova i spjälsäng?',
- answer: 'Standardsängar (70 x 140 centimeter) räcker tills barnet är cirka 3 till 4 år gammalt, beroende på längd. Bellamy Nomi konverteras till juniorsäng och passar till 6 år. Bellamy UP 5-i-1 är den yttersta varianten och räcker till 18 år. Tecken på att det är dags att byta till juniorsäng är när barnet kan klättra ur på egen hand eller når över räcket.',
- },
- {
- question: 'Vilka säkerhetskrav ska sängen uppfylla?',
- answer: 'EU-standarden EN 716 styr spjälsängar och kräver bland annat att avståndet mellan spjälorna är 4,5 till 6,5 centimeter så att barnets huvud inte fastnar. Madrassen ska passa tätt utan glapp, och inga lösa täcken, kuddar eller mjuka tillbehör får ligga i sängen för barn under 12 månader. Köp alltid CE-märkta sängar och kontrollera om modellen har återkallats av tillverkaren.',
- },
- {
- question: 'Är det värt att betala mer för en växasäng?',
- answer: 'Det beror på hur länge du vill använda den och om du planerar fler barn. Beemoo CARE Nordic uppfyller alla säkerhetskrav i EN 716 och är utmärkt om du vill minimera startkostnaden. Bellamy Nomi 3-i-1 kostar mer men täcker 0 till 6 år, räknat per år är den konkurrenskraftig. Bellamy UP 5-i-1 är den ultimata investeringen som räcker till tonåren och aldrig behöver bytas ut. Välj växasäng om du har mer än ett barn, standardsäng annars.',
- },
- {
- question: 'Kan jag köpa begagnad spjälsäng?',
- answer: 'Ja, om du är noggrann. Kontrollera att modellen uppfyller EN 716 (gäller alla sängar sålda i Sverige efter 2012), att inga spjälor är skadade eller saknas och att monteringen är komplett. Köp alltid ny madrass eftersom begagnade madrasser kan innehålla bakterier, mögelsporer eller skadliga ämnen. Undvik sängar som är äldre än tio år, säkerhetsstandarderna har skärpts.',
- },
-];
 ---
 
 <ArticleLayout
- title="Bästa spjälsängen 2026: Bellamy, Beemoo och Stokke jämförda"
- description="Spjälsäng bäst i test 2026: Bellamy Nomi vinner. Vi jämför 5 modeller hos Jollyroom på säkerhet, växfunktion och pris. EN 716-krav förklarade."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/spjalsangar/"
- updatedDate="2026-05-22"
+  title="Bästa spjälsängen 2026: Bellamy, Beemoo och Stokke jämförda"
+  description="Spjälsäng bäst i test 2026: Bellamy Nomi vinner. Vi jämför 5 modeller hos Jollyroom på säkerhet, växfunktion och pris. EN 716-krav förklarade."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/spjalsangar/"
+  datePublished="2026-05-16"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
- Bellamy Nomi 3-i-1 vinner spjälsäng bäst i test 2026. Den växer från spjälsäng till juniorsäng i tre steg, håller från födseln till 6 år och har en tidlös skandinavisk design. Standardmåttet 70x140 cm gör att madrasser och sängkläder passar från alla märken.
- </p>
 
- <TopPick product={products[0]} description="Bellamy Nomi 3-i-1 vinner spjälsäng bäst i test 2026. Konverteras från spjälsäng till juniorsäng i tre steg, håller 0 till 6 år och har snygg skandinavisk design som passar i ett äldre barns rum. Bäst pris-per-användningsår i mellanprisklassen." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell: spjälsängar 2026, alla modeller</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken spjälsäng är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Bellamy Nomi 3-i-1 är bäst i test 2026: växer från spjälsäng till juniorsäng i tre steg, håller från födseln till 6 år och har standardmåttet 70x140 cm. Bäst budget: Beemoo CARE Nordic. Bäst premium: Stokke Sleepi Mini V3. Bäst växasäng: Bellamy UP 5-i-1. Bäst bedside crib: Beemoo CARE Calm.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Bellamy Nomi 3-i-1</strong> är bäst totalt, växer från spjälsäng till juniorsäng. <strong>Beemoo CARE Nordic</strong> är bäst budget under 2 000 kr. <strong>Bellamy UP 5-i-1</strong> är bäst för den som vill ha en säng som räcker till tonåren.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Bellamy"
+    name="Nomi Spjälsäng 3-i-1"
+    image="/images/products/bellamy-nomi-spjalsang.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912030&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-nomi-spjalsang-3-i-1-vit"
+    store="Jollyroom"
+    description="Vinner spjälsäng bäst i test 2026. Konverteras från spjälsäng till juniorsäng i tre steg, håller 0 till 6 år och har en tidlös skandinavisk design. Standardmåttet 70x140 cm gör att madrasser och sängkläder passar från alla märken."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">De 5 bästa spjälsängarna 2026: bäst i test</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Spjälsängar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Bellamy Nomi Spjälsäng 3-i-1"
- image="/images/products/bellamy-nomi-spjalsang.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="0 till 6 år"
- pros={['Konverteras till juniorsäng i 3 steg', 'Standardmått 70x140 cm', 'Regulerbar sängbotten i flera höjdlägen', 'Skandinavisk design']}
- cons={['Kräver separat madrass', 'Dyrare än ren standardsäng']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912030&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-nomi-spjalsang-3-i-1-vit"
- />
+  {/* Vinnar-callout */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Bellamy Nomi 3-i-1</strong> är bäst totalt, växer från spjälsäng till juniorsäng. <strong>Beemoo CARE Nordic</strong> är bäst budget. <strong>Bellamy UP 5-i-1</strong> är bäst för den som vill ha en säng som räcker till tonåren.</p>
+  </div>
 
- <ProductCard
- name="Beemoo CARE Nordic Spjälsäng"
- image="/images/products/beemoo-care-nordic-spjalsang.webp"
- badge="Bäst budget"
- rating={4.5}
- ageRange="0 till 3 år"
- pros={['Under 2 000 kr', 'Standardmått 70x140 cm', 'Enkel montering', 'Passar alla standardmadrasser']}
- cons={['Standard funktion utan konvertering', 'Kortare livslängd än växasängar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291648&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/beemoo-care-nordic-spjalsang-vit"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Stokke Sleepi Mini V3 Spjälsäng"
- image="/images/products/stokke-sleepi-mini-v3.webp"
- badge="Bäst premium"
- rating={4.8}
- ageRange="0 till 9 mån"
- pros={['Oval design eliminerar skarpa hörn', 'Tidlös skandinavisk design i massiv bok', 'Kan byggas ut till hel Sleepi-säng', 'Högt andrahandsvärde']}
- cons={['Kräver märkets egna madrasser', 'Bara för de allra minsta som mini-säng']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10224827&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-mini-v3-spjalsang-white"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Bellamy Nomi Spjälsäng 3-i-1, bäst i test</h2>
+    <MoneyProductCard
+      brand="Bellamy"
+      name="Bellamy Nomi Spjälsäng 3-i-1"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/bellamy-nomi-spjalsang.webp"
+      imageAlt="Bellamy Nomi Spjälsäng 3-i-1"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912030&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-nomi-spjalsang-3-i-1-vit"
+      pros={['Konverteras till juniorsäng i 3 steg', 'Standardmått 70x140 cm', 'Reglerbar sängbotten i flera höjdlägen', 'Skandinavisk design']}
+      cons={['Kräver separat madrass', 'Dyrare än ren standardsäng']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bellamy Nomi 3-i-1 vinner spjälsäng bäst i test 2026. Den växer från spjälsäng till juniorsäng i tre steg och håller från födseln till 6 år, med en reglerbar sängbotten i flera höjdlägen så att du slipper böja ryggen för djupt när bebisen är liten. Standardmåttet 70x140 cm gör att madrasser och sängkläder passar från alla märken.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den kräver en separat madrass och kostar mer än en ren standardsäng. Men räknat per användningsår, från nyfödd till sexåring, är den konkurrenskraftig, och den tidlösa skandinaviska designen passar lika bra i ett äldre barns rum.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912030&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-nomi-spjalsang-3-i-1-vit" />
 
- <ProductCard
- name="Bellamy UP Spjälsäng 5-i-1"
- image="/images/products/bellamy-up-spjalsang.webp"
- badge="Bäst växasäng"
- rating={4.7}
- ageRange="0 till 18 år"
- pros={['Växer i 5 steg upp till ungdomssäng 90x200', 'Bäst pris-per-användningsår', 'Regulerbar sängbotten', 'Behöver aldrig bytas ut']}
- cons={['Högt initialpris', 'Tar mer plats i slutformat']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912033&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-up-spjalsang-5-i-1-vit-del-1_1"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Beemoo CARE Nordic Spjälsäng, bäst budget</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo CARE Nordic Spjälsäng"
+      rating={4.5}
+      rank={2}
+      badge="Bäst budget"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/beemoo-care-nordic-spjalsang.webp"
+      imageAlt="Beemoo CARE Nordic Spjälsäng"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291648&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/beemoo-care-nordic-spjalsang-vit"
+      pros={['Prisvärd', 'Standardmått 70x140 cm', 'Enkel montering', 'Passar alla standardmadrasser']}
+      cons={['Standard funktion utan konvertering', 'Kortare livslängd än växasängar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo CARE Nordic är valet för dig som vill minimera startkostnaden utan att tumma på säkerheten. Den uppfyller alla krav i EN 716, har standardmåttet 70x140 cm och passar alla standardmadrasser, så du slipper jaga specialtillbehör. Monteringen är enkel.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det är en ren standardsäng utan konverteringsfunktion, vilket ger kortare livslängd än en växasäng. Men för familjen som vill ha en trygg och korrekt säng till lägsta möjliga insats är den genuint bra.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291648&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/beemoo-care-nordic-spjalsang-vit" />
 
- <ProductCard
- name="Beemoo CARE Calm Bedside Crib"
- image="/images/products/beemoo-care-calm-bedside-crib.webp"
- badge="Bäst bedside crib"
- rating={4.6}
- ageRange="0 till 6 mån"
- pros={['Monteras intill föräldrasängen', 'Bebisen sover nära men i eget sovutrymme', 'Justerbar höjd för att matcha föräldrasängen', 'Prisvärd jämfört med konkurrenter']}
- cons={['Används bara de första 6 månaderna', 'Kräver sedan en vanlig spjälsäng']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273002&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/bedside-cribs/beemoo-care-calm-bedside-crib-nature-white"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Stokke Sleepi Mini V3 Spjälsäng, bäst premium</h2>
+    <MoneyProductCard
+      brand="Stokke"
+      name="Stokke Sleepi Mini V3 Spjälsäng"
+      rating={4.8}
+      rank={3}
+      badge="Bäst premium"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/stokke-sleepi-mini-v3.webp"
+      imageAlt="Stokke Sleepi Mini V3 Spjälsäng"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10224827&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-mini-v3-spjalsang-white"
+      pros={['Oval design eliminerar skarpa hörn', 'Tidlös skandinavisk design i massiv bok', 'Kan byggas ut till hel Sleepi-säng', 'Högt andrahandsvärde']}
+      cons={['Kräver märkets egna madrasser', 'Bara för de allra minsta som mini-säng']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Stokke Sleepi Mini V3 är premiumvalet. Den ovala designen i massiv bok eliminerar skarpa hörn och ger ett rum av lugn, och den kan byggas ut till en hel Sleepi-säng som följer barnet vidare. Andrahandsvärdet är högt, vilket sänker den verkliga kostnaden om du säljer vidare.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det ovala formatet kräver Stokkes egna madrasser, och som mini-säng passar den bara de allra minsta. För familjen som prioriterar design, material och möjligheten att bygga ut sängen är den dock svår att matcha.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10224827&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/stokke-sleepi-mini-v3-spjalsang-white" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide, så väljer du rätt spjälsäng</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Bellamy UP Spjälsäng 5-i-1, bäst växasäng</h2>
+    <MoneyProductCard
+      brand="Bellamy"
+      name="Bellamy UP Spjälsäng 5-i-1"
+      rating={4.7}
+      rank={4}
+      badge="Bäst växasäng"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/bellamy-up-spjalsang.webp"
+      imageAlt="Bellamy UP Spjälsäng 5-i-1"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912033&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-up-spjalsang-5-i-1-vit-del-1_1"
+      pros={['Växer i 5 steg upp till ungdomssäng 90x200', 'Bäst pris-per-användningsår', 'Reglerbar sängbotten', 'Behöver aldrig bytas ut']}
+      cons={['Högt initialpris', 'Tar mer plats i slutformat']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bellamy UP 5-i-1 är den ultimata investeringen. Den växer i fem steg från spjälsäng hela vägen till en ungdomssäng på 90x200 cm och räcker till 18 år, så du behöver aldrig köpa en ny säng. Den reglerbara sängbotten fungerar precis som på Nomi för de tidiga åren.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Initialpriset är högt och i slutformatet tar den mer plats. Men räknat per användningsår är den oslagbar, särskilt om du har fler än ett barn eller vill undvika att köpa om sängen flera gånger.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912033&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-up-spjalsang-5-i-1-vit-del-1_1" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Standardsäng, bedside crib eller växasäng</h3>
- <p>Tre kategorier täcker behovet:</p>
- <ul>
- <li><strong>Standard spjälsäng 70 x 140 cm</strong>: det breda valet, passar 0 till 3 år och har störst utbud av madrasser och sängkläder</li>
- <li><strong>Bedside crib</strong>, som Beemoo CARE Calm: används de första sex månaderna intill föräldrasängen och blir därefter överflödig</li>
- <li><strong>Växasäng</strong>, som Bellamy Nomi 3-i-1 eller Bellamy UP 5-i-1: en investering som följer barnet upp till 6 till 18 år beroende på modell</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Beemoo CARE Calm Bedside Crib, bäst bedside crib</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo CARE Calm Bedside Crib"
+      rating={4.6}
+      rank={5}
+      badge="Bäst bedside crib"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/beemoo-care-calm-bedside-crib.webp"
+      imageAlt="Beemoo CARE Calm Bedside Crib"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273002&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/bedside-cribs/beemoo-care-calm-bedside-crib-nature-white"
+      pros={['Monteras intill föräldrasängen', 'Bebisen sover nära men i eget sovutrymme', 'Justerbar höjd för att matcha föräldrasängen', 'Prisvärd jämfört med konkurrenter']}
+      cons={['Används bara de första 6 månaderna', 'Kräver sedan en vanlig spjälsäng']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo CARE Calm är vårt val för dig som vill ha bebisen nära de första månaderna. Den monteras intill föräldrasängen med ena sidan öppen, så att barnet sover på sin egen säkra yta men inom armlängd. Den justerbara höjden gör att du kan matcha föräldrasängen exakt, och priset är lågt jämfört med konkurrenterna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Begränsningen är att en bedside crib bara används de första sex månaderna, sedan behövs en vanlig spjälsäng ändå. Men för den trygga närheten under nyföddperioden är den ett klokt komplement.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273002&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/bedside-cribs/beemoo-care-calm-bedside-crib-nature-white" />
 
- <h3>Säkerhetskontroll inför köp</h3>
- <p>Alla spjälsängar sålda i Sverige ska uppfylla EU-standarden EN 716. Mätstickor som du kan kontrollera själv: spjälavståndet ska vara 4,5 till 6,5 centimeter, sänghöjden från golv till räcke ska vara minst 60 centimeter när bottenplattan är i lägsta läget, och inga delar får sticka ut mer än 3 millimeter där bebisen kan fastna. Sök modellnamnet i Konsumentverkets återkallelseregister innan du köper.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem spjälsängar granskade, en vinner totalt. Bellamy Nomi 3-i-1 tar förstaplatsen på växfunktion och pris-per-år, Beemoo CARE Nordic vinner budgetklassen, Stokke Sleepi Mini V3 är premiumvalet och Bellamy UP 5-i-1 räcker till tonåren. Vill du sova nära bebisen? Se vår guide till <a href="/spjalsangar/bedside-crib/" class="text-accent hover:text-accent-dark underline">bästa bedside crib 2026</a> eller läs om en <a href="/guider/saker-sovmiljo/" class="text-accent hover:text-accent-dark underline">säker sovmiljö för bebis</a>.
+    </p>
 
- <h3>Madrass är lika viktigt som sängen</h3>
- <p>En säker madrass ska vara fast (du kan inte trycka ner mer än 2 centimeter), passa tätt utan glapp större än 2 centimeter mot kanten och vara minst 8 centimeter tjock. Andningsbart material som kokos, latex eller högdensitets-PU är bättre än billiga skumvarianter. Köp alltid ny madrass om du köper en begagnad säng, även om den ser bra ut, bakterier och mögelsporer hänger kvar.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Spjälsängar 2026" />
 
- <h3>Budget mot premium, vad betalar du för</h3>
- <ul>
- <li><strong>Beemoo CARE Nordic</strong>: uppfyller alla säkerhetskrav till under 2 000 kr, genuint bra val om du vill minimera kostnaden</li>
- <li><strong>Bellamy Nomi 3-i-1</strong>: motiveras av växfunktionen till juniorsäng, räknat per användningsår billigare än en standardsäng du köper om</li>
- <li><strong>Bellamy UP 5-i-1</strong>: den ultimata investeringen om du aldrig vill köpa en ny säng, räcker till tonåren</li>
- <li><strong>Stokke Sleepi Mini V3</strong>: bäst för dem som prioriterar oval design och högt andrahandsvärde</li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt spjälsäng 2026</h2>
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Underkategorier, spjälsängar</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside crib 2026, sova nära bebis utan att dela säng</a></li>
- <li><a href="/spjalsangar/resesang/" class="text-accent underline">Bästa resesäng barn 2026, vikbar och resevänlig</a></li>
- <li><a href="/spjalsangar/stokke-sleepi-vs-ikea-sniglar/" class="text-accent underline">Stokke Sleepi vs IKEA Sniglar 2026, premium vs budget jämförd</a></li>
- <li><a href="/spjalsangar/ekologisk/" class="text-accent underline">Bästa ekologiska spjälsängen 2026, GOTS-certifierat trä</a></li>
- <li><a href="/spjalsangar/omvandlingsbar/" class="text-accent underline">Omvandlingsbar spjälsäng 2026, växer med barnet till juniorsäng</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Standardsäng, bedside crib eller växasäng</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Tre kategorier täcker behovet. En standard spjälsäng 70x140 cm är det breda valet, passar 0 till 3 år och har störst utbud av madrasser och sängkläder. En bedside crib som Beemoo CARE Calm används de första sex månaderna intill föräldrasängen och blir därefter överflödig. En växasäng som Bellamy Nomi 3-i-1 eller Bellamy UP 5-i-1 är en investering som följer barnet upp till 6 till 18 år beroende på modell.
+    </p>
 
- <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
- <li><a href="/barntavlor/" class="text-accent underline">Barntavlor och posters till barnrummet 2026</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhetskontroll inför köp</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla spjälsängar sålda i Sverige ska uppfylla EU-standarden EN 716. Mätstickor som du kan kontrollera själv: spjälavståndet ska vara 4,5 till 6,5 centimeter, sänghöjden från golv till räcke ska vara minst 60 centimeter när bottenplattan är i lägsta läget, och inga delar får sticka ut mer än 3 millimeter där bebisen kan fastna. Sök modellnamnet i Konsumentverkets återkallelseregister innan du köper.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Madrass är lika viktigt som sängen</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En säker madrass ska vara fast (du kan inte trycka ner mer än 2 centimeter), passa tätt utan glapp större än 2 centimeter mot kanten och vara minst 8 centimeter tjock. Andningsbart material som kokos, latex eller högdensitets-PU är bättre än billiga skumvarianter. Köp alltid ny madrass om du köper en begagnad säng, även om den ser bra ut, bakterier och mögelsporer hänger kvar.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Budget mot premium, vad betalar du för</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Beemoo CARE Nordic uppfyller alla säkerhetskrav till en låg insats, ett genuint bra val om du vill minimera kostnaden. Bellamy Nomi 3-i-1 motiveras av växfunktionen till juniorsäng, räknat per användningsår billigare än en standardsäng du köper om. Bellamy UP 5-i-1 är den ultimata investeringen om du aldrig vill köpa en ny säng, räcker till tonåren. Stokke Sleepi Mini V3 är bäst för dem som prioriterar oval design och högt andrahandsvärde. En kvalitetsspjälsäng kostar normalt mellan 1 800 och 9 000 kronor 2026 beroende på modell och växfunktion.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Bellamy Nomi Spjälsäng 3-i-1',
- description: 'Spjälsäng i trä som konverteras till juniorsäng i 3 steg. Standardmått 70x140 cm. Passar 0 till 6 år.',
- image: 'https://bebisguiden.se/images/products/bellamy-nomi-spjalsang.webp',
- brand: 'Bellamy',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Beemoo CARE Nordic Spjälsäng',
- description: 'Prisvärd standardspjälsäng 70x140 cm. Passar alla standardmadrasser. Passar 0 till 3 år.',
- image: 'https://bebisguiden.se/images/products/beemoo-care-nordic-spjalsang.webp',
- brand: 'Beemoo',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'Stokke Sleepi Mini V3 Spjälsäng',
- description: 'Oval spjälsäng i massiv bok. Kan byggas ut till full Sleepi-säng. Passar 0 till 9 månader som mini.',
- image: 'https://bebisguiden.se/images/products/stokke-sleepi-mini-v3.webp',
- brand: 'Stokke',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Bellamy UP Spjälsäng 5-i-1',
- description: 'Växasäng i 5 steg från spjälsäng till ungdomssäng 90x200 cm. Passar 0 till 18 år.',
- image: 'https://bebisguiden.se/images/products/bellamy-up-spjalsang.webp',
- brand: 'Bellamy',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Beemoo CARE Calm Bedside Crib',
- description: 'Bedside crib med justerbar höjd för att matcha föräldrasängen. Bebisen sover nära men i eget utrymme. Passar 0 till 6 månader.',
- image: 'https://bebisguiden.se/images/products/beemoo-care-calm-bedside-crib.webp',
- brand: 'Beemoo',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om spjälsängssäkerhet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Spjälsängssäkerhet styrs av tydliga krav från Konsumentverket. Nedan är de viktigaste fakta varje förälder bör känna till.
+    </p>
 
-<div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Saker sovmiljo för bebis, rekommendationer</a></li>
- <li><a href="/guider/bebis-sovschema/" class="text-accent underline">Bebisens sovschema, aldersanpassat</a></li>
- <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside cribs 2026</a></li>
- <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsackarna för bebis</a></li>
- </ul>
-</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Max 25 mm"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsang-konsument/"
+        year="2026"
+      >
+        Sängbotten ska ha högst 25 millimeter mellan ribborna och sängsidan högst 65 millimeter mellan spjälorna, så att barnet inte fastnar. Sängen ska vara stabil och klara av att barn försöker klättra och skaka på den.
+      </StatHighlight>
+      <StatHighlight
+        figure="Fast madrass"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsang-konsument/"
+        year="2026"
+      >
+        Madrassen ska vara fast och täcka hela sängbotten, och sängen ska ha en plan sovyta. Sängen ska inte ha lösa, saknade eller skadade spjälor och delar.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsang-konsument/"
+    >
+      "Sängen ska ha högst 65 millimeter mellan spjälorna i sängsidan och högst 25 millimeter mellan ribborna i sängbotten."
+    </ExpertQuote>
 
- <CTABox productName="Spjälsängar" store="Babyonline" description="Stort urval spjälsängar och sovpåsar." />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem spjälsängar utifrån säkerhetsstandard (EN 716), växfunktion (antal steg och hur länge sängen räcker), mått och madrasskompatibilitet, material och daglig användbarhet (reglerbar sängbotten, montering). Produkterna är valda bland de mest sålda och eftersökta spjälsängarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Underkategorier, spjälsängar</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside crib 2026, sova nära bebis utan att dela säng</a></li>
+        <li><a href="/spjalsangar/resesang/" class="text-accent underline">Bästa resesäng barn 2026, vikbar och resevänlig</a></li>
+        <li><a href="/spjalsangar/stokke-sleepi-vs-ikea-sniglar/" class="text-accent underline">Stokke Sleepi vs IKEA Sniglar 2026, premium vs budget jämförd</a></li>
+        <li><a href="/spjalsangar/ekologisk/" class="text-accent underline">Bästa ekologiska spjälsängen 2026, GOTS-certifierat trä</a></li>
+        <li><a href="/spjalsangar/omvandlingsbar/" class="text-accent underline">Omvandlingsbar spjälsäng 2026, växer med barnet till juniorsäng</a></li>
+      </ul>
+    </div>
+
+    <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
+        <li><a href="/barntavlor/" class="text-accent underline">Barntavlor och posters till barnrummet 2026</a></li>
+        <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, rekommendationer</a></li>
+        <li><a href="/guider/bebis-sovschema/" class="text-accent underline">Bebisens sovschema, åldersanpassat</a></li>
+        <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsäckarna för bebis</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa spjälsängarna 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912030&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/spjalsangar/bellamy-nomi-spjalsang-3-i-1-vit"
+    text="Bra pris hos Jollyroom"
+    productName="Bellamy Nomi Spjälsäng 3-i-1"
+  />
+
 </ArticleLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Bästa spjälsängarna 2026",
-  "description": "Rankad lista över de bästa spjälsängarna jämförda och jämförda 2026",
-  "itemListOrder": "https://schema.org/ItemListOrderDescending",
-  "numberOfItems": products.length,
-  "itemListElement": products.map((p, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "item": {
-      "@type": "Product",
-      "name": p.name,
-      "image": `https://bebisguiden.se${p.image}`,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": p.rating,
-        "bestRating": 5,
-        "ratingCount": 1
-      },
-      ...(p.ctaHref ? { "offers": {
-        "@type": "Offer",
-        "priceCurrency": "SEK",
-        "price": p.price,
-        "availability": "https://schema.org/InStock",
-        "url": p.ctaHref,
-        "seller": { "@type": "Organization", "name": "Jollyroom" },
-        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" } },
-        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "SE", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
-      } } : {})
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     }
-  }))
-})} />
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

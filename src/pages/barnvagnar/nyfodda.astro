@@ -1,221 +1,465 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Barnvagnar', href: '/barnvagnar/' },
- { label: 'Barnvagn till nyfödd' },
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Barnvagn till nyfödd' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade).
 const products = [
- {
- name: 'Emmaljunga Sento duovagn Ergo+ 2026',
- image: '/images/products/emmaljunga-sento-duovagn-ergo-2026.webp',
- badge: 'Bäst i test',
- rating: 4.8,
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=PEmljsentourbandergo&url=https://www.babyv.se/sv/articles/1.58.23035/emmaljunga-sento-duovagn-ergo-2026',
- features: {
- 'Liggdel': 'Ja, medföljer',
- 'Vikt chassi': '13,0 kg',
- 'Tillverkning': 'Sverige',
- 'Fjädring': 'Fjäderfjädring',
- },
- },
- {
- name: 'Bugaboo Fox 5',
- badge: 'Premiumval',
- rating: 4.8,
- image: '/images/products/bugaboo-fox-5.webp',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize',
- features: {
- 'Liggdel': 'Ja, medföljer',
- 'Vikt chassi': '12,4 kg',
- 'Tillverkning': 'Nederländerna',
- 'Fjädring': 'Fullfjädrad',
- },
- },
- {
- name: 'Joolz Day5 duovagn, Sage Green',
- image: '/images/products/joolz-day5-duovagn-sage-green.webp',
- badge: 'Bäst mellanpris',
- rating: 4.6,
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1540000&url=https://www.babyv.se/sv/articles/1.58.21368/joolz-day5-duovagn-sage-green',
- features: {
- 'Liggdel': 'Ja, medföljer',
- 'Vikt chassi': '11,0 kg',
- 'Tillverkning': 'Nederländerna',
- 'Fjädring': 'Fullfjädrad',
- },
- },
- {
- name: 'Britax Römer RIO Sittvagn, Carbon Black',
- image: '/images/products/britax-romer-rio-sittvagn-carbon-black.webp',
- badge: 'Budgetval',
- rating: 4.4,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10302682&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/britax-romer-rio-sittvagn-carbon-black',
- features: {
- 'Liggdel': 'Nej (sittvagn)',
- 'Vikt chassi': '12,0 kg',
- 'Tillverkning': 'Polen',
- 'Fjädring': 'Fjäderfjädring',
- },
- },
+  {
+    name: 'Emmaljunga Sento duovagn Ergo+ 2026',
+    desc: 'Svensktillverkad duovagn med ERGO+-liggdel och fyrhjulsfjädring byggd för nordiskt klimat. Chassivikt 13,0 kg. Liggdel ingår. För barn från födseln till ca 22 kg.',
+    brand: 'Emmaljunga',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Liggdel ingår', 'Fyrhjulsfjädring', '4 års garanti'],
+    store: 'Baby V',
+    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=PEmljsentourbandergo&url=https://www.babyv.se/sv/articles/1.58.23035/emmaljunga-sento-duovagn-ergo-2026',
+    imageUrl: '/images/products/emmaljunga-sento-duovagn-ergo-2026.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Liggdel': 'Ja, medföljer', 'Vikt chassi': '13,0 kg', 'Tillverkning': 'Sverige', 'Fjädring': 'Fjäderfjädring' },
+    alsoAt: [],
+  },
+  {
+    name: 'Bugaboo Fox 5',
+    desc: 'Premiumduovagn med fullfjädring på alla fyra hjul och plan liggdel med utmärkt ventilation. Chassivikt 12,4 kg. Vändbar sittdel. För barn 0 till 4 år.',
+    brand: 'Bugaboo',
+    rating: 4.8,
+    badge: 'Premiumval',
+    usps: ['Fullfjädrad', 'En-handsfällning', 'Vändbar sittdel'],
+    store: 'Köpbarnvagn',
+    affiliateUrl: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html',
+    imageUrl: '/images/products/bugaboo-fox-5.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Liggdel': 'Ja, medföljer', 'Vikt chassi': '12,4 kg', 'Tillverkning': 'Nederländerna', 'Fjädring': 'Fullfjädrad' },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize' },
+    ],
+  },
+  {
+    name: 'Joolz Day5',
+    desc: 'Holländsk designduovagn med lätt chassi, plan liggdel med god ventilation och kompakt ihopfällning. Chassivikt 11,0 kg. För barn 0 till 4 år.',
+    brand: 'Joolz',
+    rating: 4.6,
+    badge: 'Bäst mellanpris',
+    usps: ['Lätt chassi', 'God ventilation', 'Kompakt ihopfälld'],
+    store: 'Babyland',
+    affiliateUrl: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=552276&url=https://www.babyland.se/joolz-day5-duovagn-forest-green',
+    imageUrl: '/images/products/joolz-day5.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Liggdel': 'Ja, medföljer', 'Vikt chassi': '11,0 kg', 'Tillverkning': 'Nederländerna', 'Fjädring': 'Fullfjädrad' },
+    alsoAt: [
+      { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1540000&url=https://www.babyv.se/sv/articles/1.58.21368/joolz-day5-duovagn-sage-green' },
+    ],
+  },
+  {
+    name: 'Britax Römer RIO Sittvagn, Carbon Black',
+    desc: 'Prisvärd sittvagn från Britax med vändbar sittdel, kompatibel med Britax bilbarnstolar. Chassivikt 12,0 kg. Liggdel köps separat. För barn 0 till 4 år.',
+    brand: 'Britax',
+    rating: 4.4,
+    badge: 'Budgetval',
+    usps: ['Prisvärt Britax', 'Britax-kompatibel', 'Stabil körning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10302682&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/britax-romer-rio-sittvagn-carbon-black',
+    imageUrl: '/images/products/britax-romer-rio-sittvagn-carbon-black.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Liggdel': 'Nej (sittvagn)', 'Vikt chassi': '12,0 kg', 'Tillverkning': 'Polen', 'Fjädring': 'Fjäderfjädring' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Liggdel', 'Vikt chassi', 'Tillverkning', 'Fjädring'];
+// Spec-tabellens features = de fyra grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Liggdel', 'Vikt chassi', 'Tillverkning', 'Fjädring'];
 
 const faqItems = [
- {
- question: 'Vad ska man tänka på vid barnvagn till nyfödd?',
- answer: 'Fyra saker är avgörande. Liggdelens planlighet: den ska ligga i 0 till 10 graders vinkel, nyfödds ryggrad och luftvägar kräver ett plant läge. Ventilation: liggdelen ska ha genomluft för att förhindra överhettning, Emmaljunga och Bugaboo är kända för sin genomtänkta ventilation. Fjädring: fullfjädring som på Bugaboo Fox 5 ger jämnare körning och bättre sömnkvalitet. Väderinstallation: regnskydd och vindskydd är nödvändiga i Sverige, kontrollera att de ryms i paketet eller tillkommer billigt.',
- },
- {
- question: 'Hur länge kan en nyfödd ligga i liggdelen?',
- answer: 'En nyfödd bör inte sitta för länge i halvliggande position. Liggdelen används från födseln till ca 6 månader, eller tills barnet kan sitta själv. Då byter man till sittdelen. Barnets ryggradsutveckling gynnas av det plana läget under de första månaderna. Kontrollera alltid att liggdelen är helt plan, en kurva på mer än 30 grader är inte rekommenderad för nyfödda.',
- },
- {
- question: 'Emmaljunga eller Bugaboo till nyfödd?',
- answer: 'Emmaljunga NXT60 är bäst för svenska förhållanden: tillverkad i Markaryd, Sverige, med suprem-fjädring och 4 års garanti. Den klarar snö, grus och ojämna trottoarer utmärkt och priset är lägre. Bugaboo Fox 5 är premiumvalet med smidigare hantering, ett-handsfällning, fullfjädring och bättre reseanpassning. Enkelt svar: bor du i Norrland eller promenerar regelbundet på oasfalterat underlag, välj Emmaljunga. Bor du i Stockholm eller Göteborg och åker ofta kollektivt eller reser med flyg, välj Bugaboo.',
- },
- {
- question: 'Kan man använda barnvagn direkt från födseln?',
- answer: 'Ja, men bara om vagnen har en godkänd liggdel som ligger helt plant (0 till 10 grader). En sittvagn (sulky) passar inte till nyfödda. Alternativt kan man använda en duovagn i kombination med ett bilbarnstolsadapter, barnet sover i bilbarnstolen (bakåtvänd) som klickas på chassit. Kontrollera alltid vagntillverkarens åldersgräns.',
- },
- {
- question: 'Vad är skillnaden på duovagn och liggvagn?',
- answer: 'En liggvagn (pram) är en klassisk vagn med fast korg, barnet ligger helt plant i en stor korg. En duovagn har utbytbara delar: liggdel för nyfödda och sittdel för äldre barn. Duovagnen är mer flexibel och används längre (0 till 4 år). Liggvagnar är mer traditionella och används mest de första 6 månaderna. De flesta köper duovagn idag.',
- },
- {
- question: 'Vilket tillbehör behöver man till barnvagn för nyfödd?',
- answer: 'Nödvändiga tillbehör: regnskydd (ingår ofta), vindskydd/fotmuff för kallare dagar, och madrass till liggdelen (kontrollera att den är andningsbar och testad för SIDS-prevention). Bra att ha: solskydd/sol-parasoll, vagnväska. Undvika: lösa filtar och kuddar i liggdelen, de ökar SIDS-risken. Använd istället sovpåse anpassad för barnvagn.',
- },
+  {
+    question: 'Vad ska man tänka på vid barnvagn till nyfödd?',
+    answer: 'Fyra saker är avgörande. Liggdelens planlighet: den ska ligga i 0 till 10 graders vinkel, nyfödds ryggrad och luftvägar kräver ett plant läge. Ventilation: liggdelen ska ha genomluft för att förhindra överhettning, Emmaljunga och Bugaboo är kända för sin genomtänkta ventilation. Fjädring: fullfjädring som på Bugaboo Fox 5 ger jämnare körning och bättre sömnkvalitet. Väderinstallation: regnskydd och vindskydd är nödvändiga i Sverige, kontrollera att de ryms i paketet eller tillkommer billigt.',
+  },
+  {
+    question: 'Hur länge kan en nyfödd ligga i liggdelen?',
+    answer: 'En nyfödd bör inte sitta för länge i halvliggande position. Liggdelen används från födseln till ca 6 månader, eller tills barnet kan sitta själv. Då byter man till sittdelen. Barnets ryggradsutveckling gynnas av det plana läget under de första månaderna. Kontrollera alltid att liggdelen är helt plan, en kurva på mer än 30 grader är inte rekommenderad för nyfödda.',
+  },
+  {
+    question: 'Emmaljunga eller Bugaboo till nyfödd?',
+    answer: 'Emmaljunga NXT60 är bäst för svenska förhållanden: tillverkad i Markaryd, Sverige, med suprem-fjädring och 4 års garanti. Den klarar snö, grus och ojämna trottoarer utmärkt och priset är lägre. Bugaboo Fox 5 är premiumvalet med smidigare hantering, ett-handsfällning, fullfjädring och bättre reseanpassning. Enkelt svar: bor du i Norrland eller promenerar regelbundet på oasfalterat underlag, välj Emmaljunga. Bor du i Stockholm eller Göteborg och åker ofta kollektivt eller reser med flyg, välj Bugaboo.',
+  },
+  {
+    question: 'Kan man använda barnvagn direkt från födseln?',
+    answer: 'Ja, men bara om vagnen har en godkänd liggdel som ligger helt plant (0 till 10 grader). En sittvagn (sulky) passar inte till nyfödda. Alternativt kan man använda en duovagn i kombination med ett bilbarnstolsadapter, barnet sover i bilbarnstolen (bakåtvänd) som klickas på chassit. Kontrollera alltid vagntillverkarens åldersgräns.',
+  },
+  {
+    question: 'Vad är skillnaden på duovagn och liggvagn?',
+    answer: 'En liggvagn (pram) är en klassisk vagn med fast korg, barnet ligger helt plant i en stor korg. En duovagn har utbytbara delar: liggdel för nyfödda och sittdel för äldre barn. Duovagnen är mer flexibel och används längre (0 till 4 år). Liggvagnar är mer traditionella och används mest de första 6 månaderna. De flesta köper duovagn idag.',
+  },
+  {
+    question: 'Vilket tillbehör behöver man till barnvagn för nyfödd?',
+    answer: 'Nödvändiga tillbehör: regnskydd (ingår ofta), vindskydd/fotmuff för kallare dagar, och madrass till liggdelen (kontrollera att den är andningsbar och testad för SIDS-prevention). Bra att ha: solskydd/sol-parasoll, vagnväska. Undvika: lösa filtar och kuddar i liggdelen, de ökar SIDS-risken. Använd istället sovpåse anpassad för barnvagn.',
+  },
 ];
+
 export const articleMeta = {
   title: "Barnvagn till nyfödd 2026: bästa modellen 0-6 månader",
   description: "Emmaljunga NXT60 vinner som barnvagn för nyfödd: plan liggdel ingår, suprem-fjädring och svensk kvalitet. Vi har jämfört 5 toppmodeller för spädbarn.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Barnvagnar",
   image: "/images/products/emmaljunga-sento.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Barnvagn till nyfödd 2026: bästa modellen 0-6 månader"
- description="Emmaljunga NXT60 vinner som barnvagn för nyfödd: plan liggdel ingår, suprem-fjädring och svensk kvalitet. Vi har jämfört 5 toppmodeller för spädbarn."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/barnvagnar/nyfodda/"
- updatedDate="2026-05-15"
+  title="Barnvagn till nyfödd 2026: bästa modellen 0-6 månader"
+  description="Emmaljunga NXT60 vinner som barnvagn för nyfödd: plan liggdel ingår, suprem-fjädring och svensk kvalitet. Vi har jämfört 5 toppmodeller för spädbarn."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/nyfodda/"
   datePublished="2026-02-28"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <h2 class="font-heading text-3xl md:text-4xl font-bold mb-3">Bästa barnvagnen till nyfödd 2026</h2>
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Emmaljunga Sento ERGO+ vinner barnvagn till nyfödd bäst i test 2026. Liggdelen ingår direkt, så ingen extra investering krävs, och den plana liggytan är ett krav för nyföddas ryggrad de första sex månaderna. Suprem-fjädringen tar trottoarkanter mjukt och chassivikten på 13,0 kg är hanterbar i trappan.
-	 </p>
 
- <TopPick product={products[0]} description="Emmaljunga NXT60 levereras med liggdel direkt, ingen extra investering krävs. Suprem-fjädring tar trottoarkanter mjukt och 12,4 kg chassivikt är hanterbart i trappan. Det säkraste valet från BB-hemkomst till sex månader." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-02-28" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, barnvagnar för nyfödda 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken barnvagn är bäst till nyfödd 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Emmaljunga Sento duovagn Ergo+ är bäst i test 2026: liggdelen ingår direkt och den plana liggytan är ett krav för nyföddas ryggrad de första sex månaderna. Fyrhjulsfjädringen tar trottoarkanter mjukt. Premiumval: Bugaboo Fox 5. Bäst mellanpris: Joolz Day5.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026, till nyfödd</p>
- <p class="text-sm text-text-light"><strong><a href="/marken/emmaljunga/" class="text-accent underline">Emmaljunga</a> NXT60</strong> är bäst för nordiskt klimat och pris/kvalitet. <strong><a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a> Fox 5</strong> är premiumvalet med bäst hantering. <strong>Joolz Day+</strong> är bästa mellanprisvalet. Alla tre har plan liggdel från födseln.</p>
- </div>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Emmaljunga"
+    name="Sento duovagn Ergo+ 2026"
+    image="/images/products/emmaljunga-sento-duovagn-ergo-2026.webp"
+    trackedUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=PEmljsentourbandergo&url=https://www.babyv.se/sv/articles/1.58.23035/emmaljunga-sento-duovagn-ergo-2026"
+    store="Baby V"
+    description="Bäst i test 2026 till nyfödd. Liggdelen ingår direkt, ingen extra investering krävs, och den plana liggytan är ett krav för nyföddas ryggrad de första sex månaderna. Fyrhjulsfjädringen tar trottoarkanter mjukt och chassivikten på 13,0 kg är hanterbar i trappan."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval till nyfödd 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, barnvagnar för nyfödda 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Emmaljunga Sento duovagn Ergo+ 2026"
- image="/images/products/emmaljunga-sento-duovagn-ergo-2026.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="Från födseln till ca 22 kg"
- pros={['Fyrhjulsfjädring, byggt för nordiskt klimat', 'ERGO+-liggdel med god ventilation ingår', 'Klarar snö, grus och ojämn mark', '4 års garanti, bäst i klassen']}
- cons={['Högre pris än mellansegmentet', 'Tyngre chassi', 'Mer voluminös ihopfälld']}
- ctaText="Bra pris hos Baby-V"
- ctaHref="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=PEmljsentourbandergo&url=https://www.babyv.se/sv/articles/1.58.23035/emmaljunga-sento-duovagn-ergo-2026"
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026, till nyfödd</p>
+    <p class="text-sm text-text-light"><strong><a href="/marken/emmaljunga/" class="text-accent underline">Emmaljunga</a> NXT60</strong> är bäst för nordiskt klimat och pris/kvalitet. <strong><a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a> Fox 5</strong> är premiumvalet med bäst hantering. <strong>Joolz Day+</strong> är bästa mellanprisvalet. Alla tre har plan liggdel från födseln.</p>
+  </div>
 
- <ProductCard
- name="Bugaboo Fox 5"
- image="/images/products/bugaboo-fox-5.webp"
- badge="Premiumval"
- rating={4.8}
- ageRange="0 till 4 år"
- pros={['Smidigast att manövrera med en hand', 'Fullfjädring på alla fyra hjulen', 'Plan liggdel med utmärkt ventilation', 'Kan vändas mot eller från föräldrar']}
- cons={['Hög prisklass', 'Tung chassi (12,4 kg)', 'Tillbehör och liggdel säljs separat']}
- ctaText="Bra pris hos Köpbarnvagn"
- ctaHref="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Joolz Day5"
- image="/images/products/joolz-day5.webp"
- badge="Bäst mellanpris"
- rating={4.6}
- ageRange="0 till 4 år"
- pros={['Lätt chassi, smidig att hantera', 'Plan liggdel med god ventilation', 'Kompakt ihopfälld', 'Prisbelönt holländsk design med fokus på hållbarhet']}
- cons={['Inte lika tålig som Emmaljunga i svenska vintrar', 'Färre justeringsmöjligheter än Bugaboo', 'Begränsad tillgång till reservdelar']}
- ctaText="Bra pris hos Babyland"
- ctaHref="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=552276&url=https://www.babyland.se/joolz-day5-duovagn-forest-green"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Emmaljunga Sento Ergo+, bäst i test 2026</h2>
+    <MoneyProductCard
+      brand="Emmaljunga"
+      name="Emmaljunga Sento duovagn Ergo+ 2026"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/emmaljunga-sento-duovagn-ergo-2026.webp"
+      imageAlt="Emmaljunga Sento duovagn Ergo+ 2026"
+      store="Baby V"
+      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=PEmljsentourbandergo&url=https://www.babyv.se/sv/articles/1.58.23035/emmaljunga-sento-duovagn-ergo-2026"
+      pros={['Fyrhjulsfjädring, byggt för nordiskt klimat', 'ERGO+-liggdel med god ventilation ingår', 'Klarar snö, grus och ojämn mark', '4 års garanti, bäst i klassen']}
+      cons={['Högre pris än mellansegmentet', 'Tyngre chassi', 'Mer voluminös ihopfälld']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Emmaljunga Sento Ergo+ är vår vinnare till nyfödd och det säkraste valet från BB-hemkomst till sex månader. Liggdelen ingår direkt, så du slipper en extra investering, och ERGO+-liggdelens plana liggyta uppfyller kravet på nyföddas ryggrad de första månaderna. Ventilationen är genomtänkt och anpassad för nordiska förhållanden.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Fyrhjulsfjädringen tar trottoarkanter, grus och snö mjukt, vilket märks tydligt i körkomforten på svenska gator. Nackdelarna är ett högre pris än mellansegmentet, ett tyngre chassi på 13,0 kg och att den är mer voluminös ihopfälld. Men med 4 års garanti och svensk tillverkning är totalkostnaden över flera år rimlig.
+    </p>
+    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=PEmljsentourbandergo&url=https://www.babyv.se/sv/articles/1.58.23035/emmaljunga-sento-duovagn-ergo-2026" />
 
- <ProductCard
- name="Britax Römer RIO Sittvagn, Carbon Black"
- image="/images/products/britax-romer-rio-sittvagn-carbon-black.webp"
- badge="Budgetval"
- rating={4.4}
- ageRange="0 till 4 år"
- pros={['Prisvärt Britax-alternativ', 'Enkel att montera och använda', 'Kompatibel med Britax bilbarnstolar', 'Stabil körning']}
- cons={['Sittvagn, liggdel köps separat', 'Enklare fjädring jämfört med premium', 'Design och materialkvalitet märks av prisnivån']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10302682&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/britax-romer-rio-sittvagn-carbon-black"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Bugaboo Fox 5, premiumvalet</h2>
+    <MoneyProductCard
+      brand="Bugaboo"
+      name="Bugaboo Fox 5"
+      rating={4.8}
+      rank={2}
+      badge="Premiumval"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/bugaboo-fox-5.webp"
+      imageAlt="Bugaboo Fox 5"
+      store="Köpbarnvagn"
+      buyUrl="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html"
+      alsoAt={[{ store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize' }]}
+      pros={['Smidigast att manövrera med en hand', 'Fullfjädring på alla fyra hjulen', 'Plan liggdel med utmärkt ventilation', 'Kan vändas mot eller från föräldrar']}
+      cons={['Hög prisklass', 'Tung chassi (12,4 kg)', 'Tillbehör och liggdel säljs separat']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bugaboo Fox 5 är premiumvalet för dig som prioriterar hantering och smidighet. Den är smidigast i testet att manövrera med en hand och fälls ihop snabbt, vilket gör skillnad i kollektivtrafik och vid resor. Fullfjädringen på alla fyra hjul ger den jämnaste körningen och en plan liggdel med utmärkt ventilation som passar nyfödda.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sittdelen kan vändas mot eller från föräldrar, vilket många uppskattar de första månaderna. Nackdelarna är den höga prisklassen, ett tungt chassi på 12,4 kg och att tillbehör och liggdel säljs separat. Bor du i stad och reser ofta är Fox 5 ändå svår att slå på smidighet.
+    </p>
+    <MoneyCTABox store="Köpbarnvagn" affiliateUrl="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: vad du ska titta på när du väljer barnvagn till nyfödd</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Joolz Day5, bäst mellanpris</h2>
+    <MoneyProductCard
+      brand="Joolz"
+      name="Joolz Day5"
+      rating={4.6}
+      rank={3}
+      badge="Bäst mellanpris"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/joolz-day5.webp"
+      imageAlt="Joolz Day5"
+      store="Babyland"
+      buyUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=552276&url=https://www.babyland.se/joolz-day5-duovagn-forest-green"
+      alsoAt={[{ store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1540000&url=https://www.babyv.se/sv/articles/1.58.21368/joolz-day5-duovagn-sage-green' }]}
+      pros={['Lätt chassi, smidig att hantera', 'Plan liggdel med god ventilation', 'Kompakt ihopfälld', 'Prisbelönt holländsk design med fokus på hållbarhet']}
+      cons={['Inte lika tålig som Emmaljunga i svenska vintrar', 'Färre justeringsmöjligheter än Bugaboo', 'Begränsad tillgång till reservdelar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Joolz Day5 är bästa mellanprisvalet och vagnen för dig som vill ha holländsk design utan premiumvagnens prislapp. Det lätta chassit på 11,0 kg gör den smidig att hantera, och den plana liggdelen med god ventilation passar nyfödda. Ihopfälld är den kompakt, vilket underlättar förvaring i hall och bil.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Joolz är prisbelönt för sin design och har ett tydligt hållbarhetsfokus. Nackdelarna är att den inte är lika tålig som Emmaljunga i svenska vintrar, har färre justeringsmöjligheter än Bugaboo och begränsad tillgång till reservdelar. För familjen som värderar design och vill hålla budgeten är Day5 ändå ett starkt val.
+    </p>
+    <MoneyCTABox store="Babyland" affiliateUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=552276&url=https://www.babyland.se/joolz-day5-duovagn-forest-green" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Liggdelens planlighet: det viktigaste kriteriet för nyfödd</h3>
- <p>En nyfödds ryggrad är inte färdigutvecklad och ska ligga plant de första månaderna. Luftvägarna hos en nyfödd är även känsliga, en halvliggande position kan orsaka haka-mot-bröst-kompression som försvårar andningen. Välj alltid en liggdel som är certifierad för nyfödda och som ligger i 0 till 10 graders vinkel. Kontrollera att madrassen är fastspänd och andningsbar.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Britax Römer RIO Sittvagn, budgetvalet</h2>
+    <MoneyProductCard
+      brand="Britax"
+      name="Britax Römer RIO Sittvagn, Carbon Black"
+      rating={4.4}
+      rank={4}
+      badge="Budgetval"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/britax-romer-rio-sittvagn-carbon-black.webp"
+      imageAlt="Britax Römer RIO Sittvagn, Carbon Black"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10302682&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/britax-romer-rio-sittvagn-carbon-black"
+      pros={['Prisvärt Britax-alternativ', 'Enkel att montera och använda', 'Kompatibel med Britax bilbarnstolar', 'Stabil körning']}
+      cons={['Sittvagn, liggdel köps separat', 'Enklare fjädring jämfört med premium', 'Design och materialkvalitet märks av prisnivån']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Britax Römer RIO är budgetvalet för familjen som vill hålla nere kostnaden. Det är ett prisvärt Britax-alternativ som är enkelt att montera och använda, och den stabila körningen gör vardagen smidig. Som sittvagn är den kompatibel med Britax bilbarnstolar för ett travel system.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Tänk på att RIO är en sittvagn, så liggdel köps separat om du behöver den från födseln. Fjädringen är enklare jämfört med premiumvagnarna, och design och materialkvalitet märks av prisnivån. Men som första vagn eller andravagn levererar den mycket funktion för pengarna.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10302682&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/britax-romer-rio-sittvagn-carbon-black" />
 
- <h3>2. Ventilation i liggdelen</h3>
- <p>En god liggdel har ventilation på sidorna eller i botten för att förhindra överhettning. Emmaljunga är känd för sin genomtänkta ventilation anpassad för nordiska förhållanden. Bugaboo Fox 5 har ett ventilationsnät i botten. Undvik liggdelar med stoppat tyg utan ventilationslösning, det ökar risken för överhettning.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra barnvagnar för nyfödda granskade, en vinner totalt. Emmaljunga Sento Ergo+ tar förstaplatsen på liggdel, fjädring och svensk kvalitet, Bugaboo Fox 5 är premiumvalet med bäst hantering, Joolz Day5 vinner på design och mellanpris och Britax Römer RIO är budgetvinnaren. Vill du fördjupa dig? Läs vår <a href="/guider/valja-barnvagn/" class="text-accent hover:text-accent-dark underline">kompletta köpguide för barnvagnar</a> eller jämför alla typer i <a href="/barnvagnar/" class="text-accent hover:text-accent-dark underline">bästa barnvagnen 2026</a>.
+    </p>
 
- <h3>3. Fjädring, viktigare för nyfödd än för äldre barn</h3>
- <p>Nyfödda är känsligare för vibrationer och stötar. En vagn med god fjädring ger en jämnare körupplevelse och bättre sömnkvalitet för barnet. Fullfjädrade chassin (Bugaboo Fox 5) ger bäst dämpning. Emmaljunga NXT-serien har fjäderfjädring som fungerar väl i svenska förhållanden med kullerstenar och snö.</p>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda, barnvagnar för nyfödda 2026" />
 
- <h3>4. Bytbarhet, liggdel till sittdel</h3>
- <p>Välj en duovagn där du enkelt kan byta liggdel mot sittdel när barnet är ca 6 månader. De bästa vagnarna tar under 30 sekunder att byta delar. Kontrollera att sittdelen har fullt ryggstöd och att övergången är smidig.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad du ska titta på när du väljer barnvagn till nyfödd</h2>
 
- <h3>5. Travel system, barnvagn + bilbarnstol</h3>
- <p>Många familjer väljer ett travel system där bilbarnstolen klickar direkt på barnvagnschassit. Barnet behöver då inte väckas när ni byter från bil till vagn. <a href="/marken/britax/" class="text-accent underline">Britax</a> Go Next 2 passar med Britax bilbarnstolar. Bugaboo Fox 5 passar med flera märken via adaptrar. Kontrollera kompatibilitet innan köp.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Liggdelens planlighet: det viktigaste kriteriet för nyfödd</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En nyfödds ryggrad är inte färdigutvecklad och ska ligga plant de första månaderna. Luftvägarna hos en nyfödd är även känsliga, en halvliggande position kan orsaka haka-mot-bröst-kompression som försvårar andningen. Välj alltid en liggdel som är certifierad för nyfödda och som ligger i 0 till 10 graders vinkel. Kontrollera att madrassen är fastspänd och andningsbar.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, alla typer jämförda</a></li>
- <li><a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a></li>
- <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
- <li><a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Ventilation i liggdelen</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En god liggdel har ventilation på sidorna eller i botten för att förhindra överhettning. Emmaljunga är känd för sin genomtänkta ventilation anpassad för nordiska förhållanden. Bugaboo Fox 5 har ett ventilationsnät i botten. Undvik liggdelar med stoppat tyg utan ventilationslösning, det ökar risken för överhettning.
+    </p>
 
- <FAQ items={faqItems} />
- <ProductSchema products={[
- { name: 'Emmaljunga NXT60', description: 'Klassisk svensk kombivagn med djup liggdel för nyfödda. Robust kvalitet.', brand: 'Emmaljunga', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Bugaboo Fox 5', description: 'Premiumbarnvagn med bäst fjädring och den djupaste liggdelen på marknaden.', brand: 'Bugaboo', ratingValue: 4.9, reviewCount: 1 },
- { name: 'Joolz Day+', description: 'Holländsk kombivagn med hög sits och bred liggdel. Bra för nyfödda.', brand: 'Joolz', ratingValue: 4.7, reviewCount: 1 },
- ]} />
- <CTABox productName="Barnvagnar för nyfödda" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
- <CTABox productName="Barnvagnar för nyfödda" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Fjädring, viktigare för nyfödd än för äldre barn</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nyfödda är känsligare för vibrationer och stötar. En vagn med god fjädring ger en jämnare körupplevelse och bättre sömnkvalitet för barnet. Fullfjädrade chassin (Bugaboo Fox 5) ger bäst dämpning. Emmaljunga NXT-serien har fjäderfjädring som fungerar väl i svenska förhållanden med kullerstenar och snö.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bytbarhet, liggdel till sittdel</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Välj en duovagn där du enkelt kan byta liggdel mot sittdel när barnet är ca 6 månader. De bästa vagnarna tar under 30 sekunder att byta delar. Kontrollera att sittdelen har fullt ryggstöd och att övergången är smidig.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Travel system, barnvagn + bilbarnstol</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Många familjer väljer ett travel system där bilbarnstolen klickar direkt på barnvagnschassit. Barnet behöver då inte väckas när ni byter från bil till vagn. <a href="/marken/britax/" class="text-accent hover:text-accent-dark underline">Britax</a> Go Next 2 passar med Britax bilbarnstolar. Bugaboo Fox 5 passar med flera märken via adaptrar. Kontrollera kompatibilitet innan köp.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Barnvagnssäkerhet: vad myndigheterna kräver</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Alla barnvagnar på den svenska marknaden måste uppfylla en europeisk säkerhetsstandard. Nedan är de viktigaste fakta från Konsumentverket som alla föräldrar bör känna till innan köp.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="EN 1888"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2026"
+      >
+        Europeisk säkerhetsstandard som alla barnvagnar på den svenska marknaden måste uppfylla. Märkningen ställer krav på stabilitet, bromsar, säkerhetssele och material.
+      </StatHighlight>
+      <StatHighlight
+        figure="600-700 barn/år"
+        source="Konsumentverket (äldre uppgift)"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2010"
+      >
+        Uppskattad andel barn som sökte akutvård för barnvagnsrelaterade skador i Sverige. Konsumentverket uppmanar alltid att köpa från auktoriserade återförsäljare och kontrollera CE-märkning.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+    >
+      "Innan du bestämmer dig för vilken barnvagn du ska köpa, kontrollera att: vagnen är märkt enligt EN 1888, bromsar och låsningar fungerar, vagnen är stabil, olika tillbehör inte påverkar hur stabil vagnen är."
+    </ExpertQuote>
+
+    <p class="text-text-light leading-relaxed mt-5 mb-4">
+      Kontrollera alltid om din modell finns med bland <a href="/guider/aterkallade-barnprodukter/" class="text-accent hover:text-accent-dark underline">återkallade barnprodukter</a> innan köp, särskilt på begagnatmarknaden.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra barnvagnar för nyfödda utifrån fyra kriterier: liggdelens planlighet och ventilation (krav för spädbarn), körkomfort (fjädring, hjul, manövrering), vardagsanvändning (vikt, hopfällning, förvaring) och säkerhet (EN 1888-certifiering, bromsar, sele). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, alla typer jämförda</a></li>
+        <li><a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a></li>
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
+        <li><a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa barnvagnen till nyfödd 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=PEmljsentourbandergo&url=https://www.babyv.se/sv/articles/1.58.23035/emmaljunga-sento-duovagn-ergo-2026"
+    text="Bra pris hos Baby V"
+    productName="Emmaljunga Sento Ergo+"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

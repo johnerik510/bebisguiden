@@ -1,257 +1,563 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babysäkerhet' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babysäkerhet' },
 ];
 
-const faqItems = [
- {
- question: 'När ska man börja babyproofa hemmet?',
- answer: 'Senast när bebisen börjar krypa, vilket sker mellan 6 och 9 månaders ålder. Många föräldrar startar redan vid 3 till 4 månader för att hinna installera allt utan stress. Prioritera i ordning: trappgrindar, elskydd och kemikalielås. Resten kan följa successivt när bebisen blir rörlig.',
- },
- {
- question: 'Vilken säkerhetsutrustning är viktigast?',
- answer: 'Fem produkter täcker över 90 procent av riskerna i hemmet. En skruvmonterad säkerhetsgrind vid trapptoppen (SafeGate Clear-view för trapptoppen, Safety 1st Easy Close för dörröppningar). Skåplås på alla skåp med kemikalier eller läkemedel (Safety 1st Skåplås Multi eller BabyDan Dubbelt Skåplås). Hörnskydd på vassa möbelkanter (Safety 1st Hörnskydd Gel). Brandvarnare i varje rum, särskilt sovrum.',
- },
- {
- question: 'Hur länge ska barnet sitta bakåtvänt i bilen?',
- answer: 'Så länge som möjligt, minst tills barnet väger 9 kilo och helst tills det når vikt- eller längdgränsen för bakåtvänd position (ofta 18 till 25 kilo beroende på modell). Bakåtvänd placering minskar risken för allvarliga skador vid frontalkrockar med upp till 90 procent enligt VTI:s studier. Vänd aldrig framåt enbart för att barnet "ser stort ut", följ tillverkarens viktgränser.',
- },
- {
- question: 'Vilken temperatur ska badvattnet ha?',
- answer: '37 till 38 grader Celsius, kroppstempererat. Testa alltid med insidan av handleden eller armbågen, inte fingrarna som har mindre känslig hud. En badtermometer ger exakt mätning och kostar runt 100 kronor. Bebisens hud är cirka 30 procent tunnare än vuxnas och brännskador kan uppstå på sekunder vid 50 grader och högre.',
- },
- {
- question: 'Hur kontrollerar jag att en leksak är säker?',
- answer: 'Kontrollera CE-märkning enligt EN 71, åldersrekommendationen (0+ eller 3+) och eventuell kvävningsvarning. CE-märket ska vara präglat eller tryckt direkt på leksaken eller permanent förpackningen, inte på en lös etikett. Köp från etablerade butiker eller märken, billiga kopior från marknadsplatser saknar ofta giltig CE-certifiering trots att märket finns på förpackningen.',
- },
- {
- question: 'Hur förvarar jag kemikalier och läkemedel säkert?',
- answer: 'Alltid i originalbehållare, aldrig omhällda i läskflaskor eller liknande, det är den vanligaste orsaken till allvarliga förgiftningar. Förvara i låst skåp högt upp, utom synhåll och räckhåll. Köp barnsäkra förpackningar när det är möjligt. Spara Giftinformationscentralens nummer i mobilen: 010-456 67 00, öppet dygnet runt vid akut förgiftning.',
- },
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
+const products = [
+  {
+    name: 'Safety 1st Easy Close Säkerhetsgrind Metall',
+    brand: 'Safety 1st',
+    rating: 4.7,
+    badge: 'Bäst spänngrind',
+    usps: ['Öppnas med en hand', 'Justerbar bredd', 'Auto-close'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white',
+    imageUrl: '/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Tryckmonterad säkerhetsgrind i metall för dörröppningar. Öppnas och stängs med en hand, auto-close funktion.',
+    features: { 'Typ': 'Spänngrind (tryck)', 'Montering': 'Tryckmonterad', 'Trapptopp': 'Nej', 'Enhandsöppning': 'Ja', 'Material': 'Metall' },
+    alsoAt: [],
+  },
+  {
+    name: 'SafeGate Clear-view Skruvgrind',
+    brand: 'SafeGate',
+    rating: 4.7,
+    badge: 'Bäst skruvgrind för trappa',
+    usps: ['Trygg för trapptopp', 'Fri sikt genom glas', 'Stabil konstruktion'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277552&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/safe-care-safegate-clear-view-skruvgrind-transparent',
+    imageUrl: '/images/products/safegate-clear-view-skruvgrind.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Skruvmonterad säkerhetsgrind med transparent glas, passar för trapptopp. Öppnas med en hand.',
+    features: { 'Typ': 'Skruvgrind', 'Montering': 'Skruvmonterad', 'Trapptopp': 'Ja', 'Enhandsöppning': 'Ja', 'Material': 'Glas och metall' },
+    alsoAt: [],
+  },
+  {
+    name: 'Safety 1st Hörnskydd Gel 4-Pack',
+    brand: 'Safety 1st',
+    rating: 4.5,
+    badge: 'Bäst hörnskydd',
+    usps: ['Syns knappt', 'Stötdämpande', 'Självhäftande'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304104&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack',
+    imageUrl: '/images/products/safety-1st-hornskydd-gel-4-pack.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Genomskinliga hörnskydd i gel för skarpa möbelkanter. Självhäftande och stötdämpande.',
+    features: { 'Typ': 'Hörnskydd', 'Montering': 'Självhäftande', 'Trapptopp': 'Nej', 'Enhandsöppning': 'Ej tillämpligt', 'Material': 'Gel' },
+    alsoAt: [],
+  },
+  {
+    name: 'Safety 1st Skåplås Multi',
+    brand: 'Safety 1st',
+    rating: 4.5,
+    badge: 'Bäst skåplås',
+    usps: ['Osynlig utifrån', 'Enkel för vuxna', 'Passar de flesta luckor'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304100&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/safety-1st-skaplas-multi-vit',
+    imageUrl: '/images/products/safety-1st-skaplas-6-pack.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Osynliga skåplås som monteras inuti skåpluckan. Enkel tryckmekanism för vuxna.',
+    features: { 'Typ': 'Skåplås', 'Montering': 'Skruvas inuti', 'Trapptopp': 'Ej tillämpligt', 'Enhandsöppning': 'Ja för vuxna', 'Material': 'Plast' },
+    alsoAt: [],
+  },
+  {
+    name: 'BabyDan Dubbelt Skåplås 6-pack',
+    brand: 'BabyDan',
+    rating: 4.4,
+    badge: 'Bäst skåplås budget',
+    usps: ['Dubbellåsning', '6-pack', 'Enkel installation'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914120&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/babydan-dubbelt-skaplas-6-pack',
+    imageUrl: '/images/products/babydan-dubbelt-skaplas-6pack.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Dubbellåsning för extra säkerhet på skåpdörrar. 6-pack för att täcka hela köket.',
+    features: { 'Typ': 'Skåplås', 'Montering': 'Självhäftande', 'Trapptopp': 'Ej tillämpligt', 'Enhandsöppning': 'Kräver kraft', 'Material': 'Plast' },
+    alsoAt: [],
+  },
 ];
+
+const specLabels = ['Typ', 'Montering', 'Trapptopp', 'Enhandsöppning', 'Material'];
+
+const faqItems = [
+  {
+    question: 'När ska man börja babyproofa hemmet?',
+    answer: 'Senast när bebisen börjar krypa, vilket sker mellan 6 och 9 månaders ålder. Många föräldrar startar redan vid 3 till 4 månader för att hinna installera allt utan stress. Prioritera i ordning: trappgrindar, elskydd och kemikalielås. Resten kan följa successivt när bebisen blir rörlig.',
+  },
+  {
+    question: 'Vilken säkerhetsutrustning är viktigast?',
+    answer: 'Fem produkter täcker över 90 procent av riskerna i hemmet. En skruvmonterad säkerhetsgrind vid trapptoppen (SafeGate Clear-view för trapptoppen, Safety 1st Easy Close för dörröppningar). Skåplås på alla skåp med kemikalier eller läkemedel (Safety 1st Skåplås Multi eller BabyDan Dubbelt Skåplås). Hörnskydd på vassa möbelkanter (Safety 1st Hörnskydd Gel). Brandvarnare i varje rum, särskilt sovrum.',
+  },
+  {
+    question: 'Hur länge ska barnet sitta bakåtvänt i bilen?',
+    answer: 'Så länge som möjligt, minst tills barnet väger 9 kilo och helst tills det når vikt- eller längdgränsen för bakåtvänd position (ofta 18 till 25 kilo beroende på modell). Bakåtvänd placering minskar risken för allvarliga skador vid frontalkrockar med upp till 90 procent enligt VTI:s studier. Vänd aldrig framåt enbart för att barnet "ser stort ut", följ tillverkarens viktgränser.',
+  },
+  {
+    question: 'Vilken temperatur ska badvattnet ha?',
+    answer: '37 till 38 grader Celsius, kroppstempererat. Testa alltid med insidan av handleden eller armbågen, inte fingrarna som har mindre känslig hud. En badtermometer ger exakt mätning och kostar runt 100 kronor. Bebisens hud är cirka 30 procent tunnare än vuxnas och brännskador kan uppstå på sekunder vid 50 grader och högre.',
+  },
+  {
+    question: 'Hur kontrollerar jag att en leksak är säker?',
+    answer: 'Kontrollera CE-märkning enligt EN 71, åldersrekommendationen (0+ eller 3+) och eventuell kvävningsvarning. CE-märket ska vara präglat eller tryckt direkt på leksaken eller permanent förpackningen, inte på en lös etikett. Köp från etablerade butiker eller märken, billiga kopior från marknadsplatser saknar ofta giltig CE-certifiering trots att märket finns på förpackningen.',
+  },
+  {
+    question: 'Hur förvarar jag kemikalier och läkemedel säkert?',
+    answer: 'Alltid i originalbehållare, aldrig omhällda i läskflaskor eller liknande, det är den vanligaste orsaken till allvarliga förgiftningar. Förvara i låst skåp högt upp, utom synhåll och räckhåll. Köp barnsäkra förpackningar när det är möjligt. Spara Giftinformationscentralens nummer i mobilen: 010-456 67 00, öppet dygnet runt vid akut förgiftning.',
+  },
+];
+
+export const articleMeta = {
+  title: "Babysäkerhet 2026: 5 produkter och komplett checklista",
+  description: "Komplett guide till babysäkerhet 2026, från trappgrind och elskydd till bilbarnstol och brandvarnare. Konkreta checklistor och rankade produkter.",
+  publishDate: "2026-05-28",
+  updatedDate: "2026-06-12",
+  category: "Babysäkerhet",
+  image: "/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp",
+};
 ---
 
 <ArticleLayout
- title="Babysäkerhet 2026: 5 produkter och komplett checklista"
- description="Komplett guide till babysäkerhet 2026, från trappgrind och elskydd till bilbarnstol och brandvarnare. Konkreta checklistor och rankade produkter."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/sakerhet/"
- updatedDate="2026-05-28"
+  title="Babysäkerhet 2026: 5 produkter och komplett checklista"
+  description="Komplett guide till babysäkerhet 2026, från trappgrind och elskydd till bilbarnstol och brandvarnare. Konkreta checklistor och rankade produkter."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sakerhet/"
+  datePublished="2026-05-28"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-5 max-w-2xl">
- Tre åtgärder täcker de vanligaste riskerna i hemmet: säkerhetsgrind vid trappor, elskydd i alla uttag och skåplås på kemikalieskåp. Nedan hittar du de bästa produkterna för varje kategori.
- </p>
 
- <!-- Produkter first, above the fold -->
- <div class="space-y-4">
- <ProductCard
- name="Safety 1st Easy Close Säkerhetsgrind Metall"
- image="/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp"
- badge="Bäst spänngrind"
- rating={4.7}
- pros={['Öppnas och stängs med en hand', 'Justerbar bredd för de flesta dörröppningar', 'Stark metallkonstruktion', 'Auto-close funktion']}
- cons={['Passar inte för trapptopp (tryckmonterad)', 'Kräver regelbunden kontroll av montagets fasthet']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
- />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-28" dateModified="2026-06-12" />
 
- <ProductCard
- name="SafeGate Clear-view Skruvgrind"
- image="/images/products/safegate-clear-view-skruvgrind.webp"
- badge="Bäst skruvgrind för trappa"
- rating={4.7}
- pros={['Skruvas fast i väggen, trygg för trapptopp', 'Transparent glas ger fri sikt', 'Öppnas med en hand', 'Stark och stabil konstruktion']}
- cons={['Kräver borrning och skruvning i väggen', 'Dyrare än tryckmonterade alternativ']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277552&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/safe-care-safegate-clear-view-skruvgrind-transparent"
- />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: vilka produkter behövs för babysäkerhet 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Tre åtgärder täcker de vanligaste riskerna i hemmet: säkerhetsgrind vid trappor, elskydd i alla uttag och skåplås på kemikalieskåp. Fem produkter täcker över 90 procent av riskerna: säkerhetsgrind (Safety 1st Easy Close för dörrar, SafeGate Clear-view för trapptopp), hörnskydd (Safety 1st Hörnskydd Gel) och skåplås (Safety 1st Skåplås Multi eller BabyDan Dubbelt Skåplås).
+    </p>
+  </div>
 
- <ProductCard
- name="Safety 1st Hörnskydd Gel 4-Pack"
- image="/images/products/safety-1st-hornskydd-gel-4-pack.webp"
- badge="Bäst hörnskydd"
- rating={4.5}
- pros={['Genomskinlig gel, syns knappt på möbeln', 'Mjukt och stötdämpande', 'Självhäftande, sitter stabilt', 'Paket om 4 stycken']}
- cons={['Kan lossna på lackat trä', 'Barn kan peta bort dem vid äldre ålder']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304104&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack"
- />
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Safety 1st"
+    name="Easy Close Säkerhetsgrind Metall"
+    image="/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp"
+    imageAlt="Safety 1st Easy Close säkerhetsgrind i metall"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
+    store="Jollyroom"
+    badge="Bäst spänngrind"
+    description="Säkerhetsgrinden är den första produkten de flesta föräldrar behöver när bebisen blir rörlig. Easy Close öppnas och stängs med en hand, har justerbar bredd för de flesta dörröppningar och auto-close funktion. Tryckmonterad och perfekt för dörröppningar mellan rum."
+  />
 
- <ProductCard
- name="Safety 1st Skåplås Multi"
- image="/images/products/safety-1st-skaplas-6-pack.webp"
- badge="Bäst skåplås"
- rating={4.5}
- pros={['Monteras inuti skåpluckan, osynlig utifrån', 'Enkel tryckmekanism för vuxna', 'Passar de flesta skåpluckor', 'Multi-pack']}
- cons={['Kräver skruvning', 'Passar inte alla luckor med tunn kant']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304100&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/safety-1st-skaplas-multi-vit"
- />
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Säkerhetsprodukter för bebis 2026" />
 
- <ProductCard
- name="BabyDan Dubbelt Skåplås 6-pack"
- image="/images/products/babydan-dubbelt-skaplas-6pack.webp"
- badge="Bäst skåplås budget"
- rating={4.4}
- pros={['Dubbellåsning för extra säkerhet', 'Passar de flesta skåpdörrar', '6-pack täcker hela köket', 'Enkel installation']}
- cons={['Syns utifrån på skåpdörren', 'Kräver lite kraft att öppna som vuxen']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914120&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/babydan-dubbelt-skaplas-6-pack"
- />
- </div>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <!-- Komplett guide -->
- <!-- Sovmiljö -->
- <h2 class="font-heading text-xl font-bold mt-10 mb-3">1. Säker sovmiljö för bebis: ryggsovning, sovpåse och temperatur</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Safety 1st Easy Close Säkerhetsgrind Metall, bäst spänngrind</h2>
+    <MoneyProductCard
+      brand="Safety 1st"
+      name="Safety 1st Easy Close Säkerhetsgrind Metall"
+      rating={4.7}
+      rank={1}
+      badge="Bäst spänngrind"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp"
+      imageAlt="Safety 1st Easy Close säkerhetsgrind i metall"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
+      pros={['Öppnas och stängs med en hand', 'Justerbar bredd för de flesta dörröppningar', 'Stark metallkonstruktion', 'Auto-close funktion']}
+      cons={['Passar inte för trapptopp (tryckmonterad)', 'Kräver regelbunden kontroll av montagets fasthet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Safety 1st Easy Close är spänngrinden vi rekommenderar för dörröppningar mellan rum. Den öppnas och stängs med en hand, vilket gör skillnad i vardagen när du bär barnet på armen, och har en auto-close funktion som ser till att grinden faktiskt stängs efter dig. Den justerbara bredden passar de flesta standardöppningar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Eftersom den är tryckmonterad passar den inte för trapptoppen, där en skruvmonterad grind alltid ska användas. Montaget behöver kontrolleras regelbundet så att spänningen sitter, men för dörröppningar är metallkonstruktionen stark och enkel att leva med.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white" />
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>Sovmiljön är den viktigaste säkerhetsfrågan för nyfödda och bebisar under 12 månader. Plötslig spädbarnsdöd (SIDS) är sällsynt men kan förebyggas med rätt sovmiljö.</p>
- <ul>
- <li><strong>Lägg alltid bebisen på rygg</strong>, aldrig på magen eller sidan under de första 12 månaderna.</li>
- <li><strong>Hårt och plant underlag</strong>, undvik mjuka madrasser, kuddar, sängkläder och bonkbyxor i sängen.</li>
- <li><strong>Sovpåse istället för täcke</strong>, sovpåsen kan inte hamna över bebisens ansikte.</li>
- <li><strong>Sov i samma rum, inte i samma säng</strong>, eget underlag bredvid föräldrars säng är idealt de första 6 månaderna.</li>
- <li><strong>Temperatur 16 till 20 grader</strong>, bebisen ska inte svettas under natten.</li>
- <li><strong>Inga lösa föremål i sängen</strong>, inga mjukdjur, bolster eller tillbehör.</li>
- </ul>
- <p>Läs vår fördjupade guide: <a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, komplett guide</a>.</p>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. SafeGate Clear-view Skruvgrind, bäst för trappa</h2>
+    <MoneyProductCard
+      brand="SafeGate"
+      name="SafeGate Clear-view Skruvgrind"
+      rating={4.7}
+      rank={2}
+      badge="Bäst skruvgrind för trappa"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/safegate-clear-view-skruvgrind.webp"
+      imageAlt="SafeGate Clear-view skruvgrind med transparent glas"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277552&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/safe-care-safegate-clear-view-skruvgrind-transparent"
+      pros={['Skruvas fast i väggen, trygg för trapptopp', 'Transparent glas ger fri sikt', 'Öppnas med en hand', 'Stark och stabil konstruktion']}
+      cons={['Kräver borrning och skruvning i väggen', 'Dyrare än tryckmonterade alternativ']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      SafeGate Clear-view är den grind vi rekommenderar för trapptoppen, där en tryckmonterad grind aldrig hör hemma. Den skruvas fast direkt i väggen och sitter därför stabilt även om barnet hänger och drar i den. Det transparenta glaset ger fri sikt mellan våningarna, vilket både ser stilrent ut och gör att du kan se barnet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att den kräver borrning och skruvning i väggen och är dyrare än tryckmonterade alternativ. Men vid trapptoppen är skruvmontering inte förhandlingsbart, det är den enda säkra lösningen, och då är Clear-view ett av de stabilaste valen.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10277552&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/safe-care-safegate-clear-view-skruvgrind-transparent" />
 
- <!-- Bilsäkerhet -->
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">2. Bilbarnstol och bilsäkerhet: bakåtvänd och korrekt installerad</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Safety 1st Hörnskydd Gel 4-Pack, bäst hörnskydd</h2>
+    <MoneyProductCard
+      brand="Safety 1st"
+      name="Safety 1st Hörnskydd Gel 4-Pack"
+      rating={4.5}
+      rank={3}
+      badge="Bäst hörnskydd"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/safety-1st-hornskydd-gel-4-pack.webp"
+      imageAlt="Safety 1st genomskinliga hörnskydd i gel"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304104&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack"
+      pros={['Genomskinlig gel, syns knappt på möbeln', 'Mjukt och stötdämpande', 'Självhäftande, sitter stabilt', 'Paket om 4 stycken']}
+      cons={['Kan lossna på lackat trä', 'Barn kan peta bort dem vid äldre ålder']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Safety 1st Hörnskydd Gel skyddar de vassa kanterna på soffbord, TV-bänkar och bord när barnet börjar gå och ramla. Gelen är genomskinlig och syns knappt på möbeln, vilket gör att du slipper de klumpiga skumgummibitarna som annars dominerar inredningen. Materialet är mjukt och stötdämpande där det behövs mest.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Skydden är självhäftande och sitter stabilt på de flesta ytor, men kan lossna på lackat trä och äldre barn kan peta bort dem. Paketet om fyra räcker till de mest utsatta hörnen i ett vardagsrum. Komplettera med väggförankring av tunga möbler för fullt skydd.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304104&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/hornskydd/safety-1st-hornskydd-gel-4-pack" />
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>Bilbarnstolen är en av de viktigaste säkerhetsprodukterna du köper. En korrekt installerad och anpassad bilbarnstol räddar liv vid olyckor.</p>
- <ul>
- <li><strong>Bakåtvänd så länge som möjligt</strong>, minst tills barnet väger 9 kg, helst tills vikts- eller höjdgräns nås.</li>
- <li><strong>Rätt grupp för vikt och ålder</strong>, läs specifikationerna noga och följ tillverkarens gränsvärden.</li>
- <li><strong>Korrekt installation</strong>, Isofix eller säkerhetsbälte, alltid enligt manual. Be butiken demonstrera om du är osäker.</li>
- <li><strong>Aldrig begagnad utan komplett historik</strong>, en krockskadd stol ser hel ut men skyddar inte.</li>
- <li><strong>Bältets passform</strong>, bältet ska ligga plant mot kroppen, inga tjocka ytterkläder under bältet.</li>
- </ul>
- <p>Se vår jämförelse: <a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, test och jämförelse</a>. Läs även: <a href="/guider/bakatvand-hur-lange/" class="text-accent underline">Hur länge ska barnet sitta bakåtvänt?</a></p>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Safety 1st Skåplås Multi, bäst skåplås</h2>
+    <MoneyProductCard
+      brand="Safety 1st"
+      name="Safety 1st Skåplås Multi"
+      rating={4.5}
+      rank={4}
+      badge="Bäst skåplås"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/safety-1st-skaplas-6-pack.webp"
+      imageAlt="Safety 1st Skåplås Multi osynligt skåplås"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304100&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/safety-1st-skaplas-multi-vit"
+      pros={['Monteras inuti skåpluckan, osynlig utifrån', 'Enkel tryckmekanism för vuxna', 'Passar de flesta skåpluckor', 'Multi-pack']}
+      cons={['Kräver skruvning', 'Passar inte alla luckor med tunn kant']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Safety 1st Skåplås Multi är vårt förstaval för skåp med kemikalier, läkemedel eller knivar. Eftersom låset monteras inuti skåpluckan syns det inte utifrån, vilket ger ett rent intryck i köket samtidigt som barnet inte ens märker att låset finns. Tryckmekanismen är enkel för vuxna men för knepig för små barnhänder.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det passar de flesta skåpluckor och kommer i multi-pack så att du täcker hela köket i ett köp. Nackdelen är att det kräver skruvning vid montering och inte passar luckor med alltför tunn kant. Skåplås på undre skåp med farligt innehåll är en av de viktigaste babyproofing-åtgärderna.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10304100&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/safety-1st-skaplas-multi-vit" />
 
- <!-- Hemmet -->
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">3. Babyproofing hemmet: säkerhetsgrind, elskydd och skåplås</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. BabyDan Dubbelt Skåplås 6-pack, bäst budget</h2>
+    <MoneyProductCard
+      brand="BabyDan"
+      name="BabyDan Dubbelt Skåplås 6-pack"
+      rating={4.4}
+      rank={5}
+      badge="Bäst skåplås budget"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/babydan-dubbelt-skaplas-6pack.webp"
+      imageAlt="BabyDan dubbelt skåplås 6-pack"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914120&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/babydan-dubbelt-skaplas-6-pack"
+      pros={['Dubbellåsning för extra säkerhet', 'Passar de flesta skåpdörrar', '6-pack täcker hela köket', 'Enkel installation']}
+      cons={['Syns utifrån på skåpdörren', 'Kräver lite kraft att öppna som vuxen']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BabyDan Dubbelt Skåplås är budgetvalet för dig som vill säkra hela köket utan att skruva. Dubbellåsningen ger extra säkerhet och de självhäftande skydden installeras snabbt utan verktyg. Sex-packet räcker till de flesta kök, vilket gör det till ett kostnadseffektivt sätt att täcka alla undre skåp på en gång.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Skillnaden mot Safety 1st Skåplås Multi är att BabyDan syns utifrån på skåpdörren och kräver lite mer kraft att öppna som vuxen. För den som prioriterar enkel installation och pris framför ett osynligt utseende är dubbellåsningen däremot ett tryggt och prisvärt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914120&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/hemsakerhet/lad-skapskydd/babydan-dubbelt-skaplas-6-pack" />
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>När bebisen börjar krypa och resa sig ökar risken för olyckor i hemmet drastiskt. Gå igenom varje rum systematiskt.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem säkerhetsprodukter täcker tillsammans över 90 procent av riskerna i hemmet. Safety 1st Easy Close och SafeGate Clear-view löser grindar för dörrar respektive trapptopp, Safety 1st Hörnskydd Gel skyddar vassa kanter och Safety 1st Skåplås Multi och BabyDan Dubbelt Skåplås håller kemikalier och knivar utom räckhåll. Komplettera med <a href="/sakerhet/barnsakring/" class="text-accent hover:text-accent-dark underline">barnsäkring hemma</a> och en <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">bakåtvänd bilbarnstol</a>.
+    </p>
 
- <h3>Trappor och dörrar: säkerhetsgrind och dörrspärr</h3>
- <ul>
- <li><strong>Säkerhetsgrind</strong> vid toppen och botten av alla trappor, grind överst ska monteras i väggen, aldrig tryckmonteras.</li>
- <li>Dörrspärrar på dörrar till farliga utrymmen (tvättstuga, badrum, garage).</li>
- </ul>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Säkerhetsprodukter för bebis 2026" />
 
- <h3>Eluttag och kablar: elskydd med vridmekanism minskar elolycksrisk</h3>
- <ul>
- <li><strong>Elskydd</strong> i alla eluttag som inte används, välj barnlåsade uttag med vridmekanism.</li>
- <li>Kablar från golvlampor och laddare ska döljas eller fästas, kvävnings- och strypningsrisk.</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Komplett checklista: babysäkerhet rum för rum 2026</h2>
 
- <h3>Möbler och skarpa hörn: hörnskydd och väggförankring</h3>
- <ul>
- <li><strong>Hörnskydd</strong> på alla skarpa kanter på soffbord, TV-bänkar och bord.</li>
- <li><strong>Förankra tunga möbler</strong> i väggen, hyllor, bokhyllor och TV-skåp kan välta om barnet klättrar på dem.</li>
- <li>Sätt en halkfri matta under mattor som kan glida.</li>
- </ul>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">1. Säker sovmiljö för bebis: ryggsovning, sovpåse och temperatur</h3>
+    <div class="prose prose-sm text-text-light max-w-none mb-6">
+      <p>Sovmiljön är den viktigaste säkerhetsfrågan för nyfödda och bebisar under 12 månader. Plötslig spädbarnsdöd (SIDS) är sällsynt men kan förebyggas med rätt sovmiljö.</p>
+      <ul>
+        <li><strong>Lägg alltid bebisen på rygg</strong>, aldrig på magen eller sidan under de första 12 månaderna.</li>
+        <li><strong>Hårt och plant underlag</strong>, undvik mjuka madrasser, kuddar, sängkläder och bonkbyxor i sängen.</li>
+        <li><strong>Sovpåse istället för täcke</strong>, sovpåsen kan inte hamna över bebisens ansikte.</li>
+        <li><strong>Sov i samma rum, inte i samma säng</strong>, eget underlag bredvid föräldrars säng är idealt de första 6 månaderna.</li>
+        <li><strong>Temperatur 16 till 20 grader</strong>, bebisen ska inte svettas under natten.</li>
+        <li><strong>Inga lösa föremål i sängen</strong>, inga mjukdjur, bolster eller tillbehör.</li>
+      </ul>
+      <p>Läs vår fördjupade guide: <a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, komplett guide</a>.</p>
+    </div>
 
- <h3>Skåp och lådor: skåplås mot kemikalier och knivar</h3>
- <ul>
- <li><strong>Skåplås</strong> på alla undre skåp med farligt innehåll (diskmedel, knivlåda, läkemedel).</li>
- <li>Lådbroms på lådor med skarpa föremål.</li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">2. Bilbarnstol och bilsäkerhet: bakåtvänd och korrekt installerad</h3>
+    <div class="prose prose-sm text-text-light max-w-none mb-6">
+      <p>Bilbarnstolen är en av de viktigaste säkerhetsprodukterna du köper. En korrekt installerad och anpassad bilbarnstol räddar liv vid olyckor.</p>
+      <ul>
+        <li><strong>Bakåtvänd så länge som möjligt</strong>, minst tills barnet väger 9 kg, helst tills vikts- eller höjdgräns nås.</li>
+        <li><strong>Rätt grupp för vikt och ålder</strong>, läs specifikationerna noga och följ tillverkarens gränsvärden.</li>
+        <li><strong>Korrekt installation</strong>, Isofix eller säkerhetsbälte, alltid enligt manual. Be butiken demonstrera om du är osäker.</li>
+        <li><strong>Aldrig begagnad utan komplett historik</strong>, en krockskadd stol ser hel ut men skyddar inte.</li>
+        <li><strong>Bältets passform</strong>, bältet ska ligga plant mot kroppen, inga tjocka ytterkläder under bältet.</li>
+      </ul>
+      <p>Se vår jämförelse: <a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, test och jämförelse</a>. Läs även: <a href="/guider/bakatvand-hur-lange/" class="text-accent underline">Hur länge ska barnet sitta bakåtvänt?</a></p>
+    </div>
 
- <!-- Badrum -->
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">4. Babysäkerhet i badrummet: drunkningsrisk och brännskador</h2>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">3. Babyproofing hemmet: säkerhetsgrind, elskydd och skåplås</h3>
+    <div class="prose prose-sm text-text-light max-w-none mb-6">
+      <p>När bebisen börjar krypa och resa sig ökar risken för olyckor i hemmet drastiskt. Gå igenom varje rum systematiskt.</p>
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>Badrummet är ett av de farligaste rummen i hemmet för bebisar och småbarn. Drunknings- och brännskaderisk är de två största farorna.</p>
- <ul>
- <li><strong>Lämna aldrig bebisen ensam vid vatten</strong>, ett barn kan drunkna i några centimeter vatten på under 30 sekunder.</li>
- <li><strong>Töm badkaret direkt</strong> efter bad, täm aldrig vattnet med bebisen i rummet.</li>
- <li><strong>Badvattnet 37 till 38 grader</strong>, testa med armbågen, använd gärna termometer.</li>
- <li>Sänk varmvattenberedarens temperatur till max 48 till 50 grader för att minska brännskaderisk.</li>
- <li><strong>Halkskydd i badkaret</strong>, använd halkfri badbotten eller halkskyddsmatta.</li>
- <li>Förvara alla läkemedel och kemikalier i låst skåp.</li>
- </ul>
- </div>
+      <h4 class="font-bold">Trappor och dörrar: säkerhetsgrind och dörrspärr</h4>
+      <ul>
+        <li><strong>Säkerhetsgrind</strong> vid toppen och botten av alla trappor, grind överst ska monteras i väggen, aldrig tryckmonteras.</li>
+        <li>Dörrspärrar på dörrar till farliga utrymmen (tvättstuga, badrum, garage).</li>
+      </ul>
 
- <!-- Leksaker -->
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">5. Säkra leksaker för bebis: CE-märkning och kvävningsrisk</h2>
+      <h4 class="font-bold">Eluttag och kablar: elskydd med vridmekanism minskar elolycksrisk</h4>
+      <ul>
+        <li><strong>Elskydd</strong> i alla eluttag som inte används, välj barnlåsade uttag med vridmekanism.</li>
+        <li>Kablar från golvlampor och laddare ska döljas eller fästas, kvävnings- och strypningsrisk.</li>
+      </ul>
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>Leksaker orsakar tusentals barnolyckor varje år, de flesta på grund av kvävningsrisk från lösa delar.</p>
- <ul>
- <li><strong>Åldersrekommendation</strong>, följ alltid märkningen. "0+" och "3+" är inte bara försiktighetsåtgärder, de är baserade på verkliga riskanalyser.</li>
- <li><strong>CE-märkning</strong>, kontrollera alltid att leksaken är CE-märkt. Billiga kopior online saknar ofta korrekt märkning.</li>
- <li><strong>Kvävningsrisk</strong>, leksaker och delar mindre än 3,5 cm i diameter är kvävningsrisk för barn under 3 år. Tumregel: om föremålet ryms i ett toarullerör är det farligt.</li>
- <li><strong>Mjuka leksaker för nyfödda</strong>, välj mjukdjur utan lösa delar som ögon, knappar eller band.</li>
- <li><strong>Kontrollera regelbundet</strong>, undersök leksaker för sprickor, lösa delar och slitage. Kassera skadade leksaker direkt.</li>
- </ul>
- </div>
+      <h4 class="font-bold">Möbler och skarpa hörn: hörnskydd och väggförankring</h4>
+      <ul>
+        <li><strong>Hörnskydd</strong> på alla skarpa kanter på soffbord, TV-bänkar och bord.</li>
+        <li><strong>Förankra tunga möbler</strong> i väggen, hyllor, bokhyllor och TV-skåp kan välta om barnet klättrar på dem.</li>
+        <li>Sätt en halkfri matta under mattor som kan glida.</li>
+      </ul>
 
- <!-- Förgiftning -->
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">6. Förgiftningsrisk hos bebis: kemikalier, läkemedel och växter</h2>
+      <h4 class="font-bold">Skåp och lådor: skåplås mot kemikalier och knivar</h4>
+      <ul>
+        <li><strong>Skåplås</strong> på alla undre skåp med farligt innehåll (diskmedel, knivlåda, läkemedel).</li>
+        <li>Lådbroms på lådor med skarpa föremål.</li>
+      </ul>
+    </div>
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>Förgiftning är en av de vanligaste olycksfallsorsakerna hos barn 1 till 4 år. De flesta förgiftningar sker hemma och är förebyggbara.</p>
- <ul>
- <li><strong>Förvara ALLTID i originalbehållare</strong>, töm aldrig om kemikalier i läskflaskor eller andra behållare.</li>
- <li><strong>Låst skåp högt upp</strong>, kemikalier och läkemedel ska förvaras utom synhåll och räckhåll, gärna i låst skåp.</li>
- <li><strong>Barnlåsade förpackningar</strong>, köp alltid läkemedel med barnlåsad kork.</li>
- <li><strong>Växter</strong>, många krukväxter är giftiga. Kontrollera alla växter i hemmet mot Giftinformationscentralens lista.</li>
- <li><strong>Spara numret:</strong> Giftinformationscentralen: <strong>010-456 67 00</strong> (dygnet runt).</li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">4. Babysäkerhet i badrummet: drunkningsrisk och brännskador</h3>
+    <div class="prose prose-sm text-text-light max-w-none mb-6">
+      <p>Badrummet är ett av de farligaste rummen i hemmet för bebisar och småbarn. Drunknings- och brännskaderisk är de två största farorna.</p>
+      <ul>
+        <li><strong>Lämna aldrig bebisen ensam vid vatten</strong>, ett barn kan drunkna i några centimeter vatten på under 30 sekunder.</li>
+        <li><strong>Töm badkaret direkt</strong> efter bad, töm aldrig vattnet med bebisen i rummet.</li>
+        <li><strong>Badvattnet 37 till 38 grader</strong>, testa med armbågen, använd gärna termometer.</li>
+        <li>Sänk varmvattenberedarens temperatur till max 48 till 50 grader för att minska brännskaderisk.</li>
+        <li><strong>Halkskydd i badkaret</strong>, använd halkfri badbotten eller halkskyddsmatta.</li>
+        <li>Förvara alla läkemedel och kemikalier i låst skåp.</li>
+      </ul>
+    </div>
 
- <!-- Brand -->
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">7. Brandsäkerhet med bebis i hemmet: brandvarnare och utrymningsplan</h2>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">5. Säkra leksaker för bebis: CE-märkning och kvävningsrisk</h3>
+    <div class="prose prose-sm text-text-light max-w-none mb-6">
+      <p>Leksaker orsakar tusentals barnolyckor varje år, de flesta på grund av kvävningsrisk från lösa delar.</p>
+      <ul>
+        <li><strong>Åldersrekommendation</strong>, följ alltid märkningen. "0+" och "3+" är inte bara försiktighetsåtgärder, de är baserade på verkliga riskanalyser.</li>
+        <li><strong>CE-märkning</strong>, kontrollera alltid att leksaken är CE-märkt. Billiga kopior online saknar ofta korrekt märkning.</li>
+        <li><strong>Kvävningsrisk</strong>, leksaker och delar mindre än 3,5 cm i diameter är kvävningsrisk för barn under 3 år. Tumregel: om föremålet ryms i ett toarullerör är det farligt.</li>
+        <li><strong>Mjuka leksaker för nyfödda</strong>, välj mjukdjur utan lösa delar som ögon, knappar eller band.</li>
+        <li><strong>Kontrollera regelbundet</strong>, undersök leksaker för sprickor, lösa delar och slitage. Kassera skadade leksaker direkt.</li>
+      </ul>
+    </div>
 
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>En fungerande brandvarnare är livsavgörande. Barn sover djupare och vaknar inte alltid vid brandlarmsljud.</p>
- <ul>
- <li><strong>Rökdetektor i varje rum</strong>, minst en per våningsplan, alltid i sovrummen och hallen.</li>
- <li><strong>Testa månatligen</strong>, tryck testknappen varje månad. Byt batteri varje år, oavsett om varningslampan fortfarande lyser.</li>
- <li><strong>Utrymningsplan</strong>, gå igenom med familjen var utgångarna är och var ni ska samlas utanför huset.</li>
- <li>Förvara tändstickor och tändare utom räckhåll, låst skåp rekommenderas.</li>
- <li><strong>Brandsläckare</strong>, ha en hemma, lär dig hur den används. Placera den tillgängligt i köket.</li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">6. Förgiftningsrisk hos bebis: kemikalier, läkemedel och växter</h3>
+    <div class="prose prose-sm text-text-light max-w-none mb-6">
+      <p>Förgiftning är en av de vanligaste olycksfallsorsakerna hos barn 1 till 4 år. De flesta förgiftningar sker hemma och är förebyggbara.</p>
+      <ul>
+        <li><strong>Förvara ALLTID i originalbehållare</strong>, töm aldrig om kemikalier i läskflaskor eller andra behållare.</li>
+        <li><strong>Låst skåp högt upp</strong>, kemikalier och läkemedel ska förvaras utom synhåll och räckhåll, gärna i låst skåp.</li>
+        <li><strong>Barnlåsade förpackningar</strong>, köp alltid läkemedel med barnlåsad kork.</li>
+        <li><strong>Växter</strong>, många krukväxter är giftiga. Kontrollera alla växter i hemmet mot Giftinformationscentralens lista.</li>
+        <li><strong>Spara numret:</strong> Giftinformationscentralen: <strong>010-456 67 00</strong> (dygnet runt).</li>
+      </ul>
+    </div>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/sakerhet/babygrindar/" class="text-accent underline">Babygrind bäst i test 2026, säkra grindar för trappa och dörr</a></li>
- <li><a href="/sakerhet/babygrindar/trappgrind/" class="text-accent underline">Trappgrind 2026, bäst för övre och nedre trappsteg</a></li>
- <li><a href="/sakerhet/babygrindar/utan-borrning/" class="text-accent underline">Babygrind utan borrning, tryckmonterade grindar 2026</a></li>
- <li><a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">Extra bred babygrind 2026, grindar upp till 140 cm</a></li>
- <li><a href="/sakerhet/badtermometer/" class="text-accent underline">Bästa badtermometern bebis 2026, säker badtemperatur</a></li>
- <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, komplett guide</a></li>
- <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, test och jämförelse</a></li>
- <li><a href="/guider/bakatvand-hur-lange/" class="text-accent underline">Hur länge ska barnet sitta bakåtvänt?</a></li>
- <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
- <li><a href="/sakerhet/barnsakring/" class="text-accent underline">Barnsäkring hemma 2026, guide för babyproofing</a></li>
- <li><a href="/sakerhet/horneskydd/" class="text-accent underline">Bästa hörnskydd bebis 2026, skydda skarpa kanter</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">7. Brandsäkerhet med bebis i hemmet: brandvarnare och utrymningsplan</h3>
+    <div class="prose prose-sm text-text-light max-w-none mb-6">
+      <p>En fungerande brandvarnare är livsavgörande. Barn sover djupare och vaknar inte alltid vid brandlarmsljud.</p>
+      <ul>
+        <li><strong>Rökdetektor i varje rum</strong>, minst en per våningsplan, alltid i sovrummen och hallen.</li>
+        <li><strong>Testa månatligen</strong>, tryck testknappen varje månad. Byt batteri varje år, oavsett om varningslampan fortfarande lyser.</li>
+        <li><strong>Utrymningsplan</strong>, gå igenom med familjen var utgångarna är och var ni ska samlas utanför huset.</li>
+        <li>Förvara tändstickor och tändare utom räckhåll, låst skåp rekommenderas.</li>
+        <li><strong>Brandsläckare</strong>, ha en hemma, lär dig hur den används. Placera den tillgängligt i köket.</li>
+      </ul>
+    </div>
 
- <FAQ items={faqItems} />
- <ProductSchema products={[
- { name: 'Safety 1st Easy Close Säkerhetsgrind Metall', description: 'Tryckmonterad säkerhetsgrind i metall för dörröppningar. Öppnas och stängs med en hand, auto-close funktion.', brand: 'Safety 1st', ratingValue: 4.7, reviewCount: 1 },
- { name: 'SafeGate Clear-view Skruvgrind', description: 'Skruvmonterad säkerhetsgrind med transparent glas, passar för trapptopp. Öppnas med en hand.', brand: 'SafeGate', ratingValue: 4.7, reviewCount: 1 },
- { name: 'Safety 1st Hörnskydd Gel 4-Pack', description: 'Genomskinliga hörnskydd i gel för skarpa möbelkanter. Självhäftande och stötdämpande.', brand: 'Safety 1st', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Safety 1st Skåplås Multi', description: 'Osynliga skåplås som monteras inuti skåpluckan. Enkel tryckmekanism för vuxna.', brand: 'Safety 1st', ratingValue: 4.5, reviewCount: 1 },
- { name: 'BabyDan Dubbelt Skåplås 6-pack', description: 'Dubbellåsning för extra säkerhet på skåpdörrar. 6-pack för att täcka hela köket.', brand: 'BabyDan', ratingValue: 4.4, reviewCount: 1 },
- ]} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om barnsäkerhet i hemmet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Barnsäkerhet i hemmet bygger på uppsikt kombinerat med att avlägsna risker, enligt Konsumentverket.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Uppsikt"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsakerhet-sa-har-kan-du-barnsakra/"
+        year="2026"
+      >
+        Barn är nyfikna och utforskar sin omgivning, men de förstår inte alltid vilka risker som finns. Därför är det viktigt att du som vuxen håller barnet under uppsikt och gör hemmet barnsäkert.
+      </StatHighlight>
+      <StatHighlight
+        figure="Säkra rummen"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsakerhet-sa-har-kan-du-barnsakra/"
+        year="2026"
+      >
+        Tänk extra på att barnsäkra sovmiljön, köket, balkonger, fönster och dörrar. Använd barnprodukter anpassade för barnets ålder och förmågor.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsakerhet-sa-har-kan-du-barnsakra/"
+    >
+      "Det är viktigt att du som vuxen håller barnet under uppsikt och gör hemmet barnsäkert."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem säkerhetsprodukter utifrån skyddsfunktion (grind, hörnskydd, skåplås), monteringssätt (tryck, skruv eller självhäftande), användbarhet i vardagen (enhandsöppning, synlighet) och hur väl de täcker de vanligaste riskerna i hemmet. Produkterna är valda bland de mest sålda och eftersökta säkerhetsprodukterna för bebis i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/sakerhet/babygrindar/" class="text-accent underline">Babygrind bäst i test 2026, säkra grindar för trappa och dörr</a></li>
+        <li><a href="/sakerhet/babygrindar/trappgrind/" class="text-accent underline">Trappgrind 2026, bäst för övre och nedre trappsteg</a></li>
+        <li><a href="/sakerhet/babygrindar/utan-borrning/" class="text-accent underline">Babygrind utan borrning, tryckmonterade grindar 2026</a></li>
+        <li><a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">Extra bred babygrind 2026, grindar upp till 140 cm</a></li>
+        <li><a href="/sakerhet/badtermometer/" class="text-accent underline">Bästa badtermometern bebis 2026, säker badtemperatur</a></li>
+        <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, komplett guide</a></li>
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, test och jämförelse</a></li>
+        <li><a href="/guider/bakatvand-hur-lange/" class="text-accent underline">Hur länge ska barnet sitta bakåtvänt?</a></li>
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
+        <li><a href="/sakerhet/barnsakring/" class="text-accent underline">Barnsäkring hemma 2026, guide för babyproofing</a></li>
+        <li><a href="/sakerhet/horneskydd/" class="text-accent underline">Bästa hörnskydd bebis 2026, skydda skarpa kanter</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa säkerhetsprodukterna för bebis 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
+    text="Bra pris hos Jollyroom"
+    productName="Safety 1st Easy Close Säkerhetsgrind Metall"
+  />
+
 </ArticleLayout>
 
-
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

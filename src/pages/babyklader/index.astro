@@ -1,292 +1,475 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babykläder', href: '/babyklader/' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babykläder', href: '/babyklader/' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Body randig, Polarn O. Pyret',
- badge: 'Bäst totalt',
- rating: 4.8,
- ctaHref: 'https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858237310&url=https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019?size=5638334504',
- image: '/images/products/body-randig-polarn-o-pyret-v2.webp',
- pros: ['100% ekologisk bomull, GOTS-certifierad', 'Klassisk randig design sedan 1976', 'Mjuka platta sömmar, inget som skaver', 'Tillverkad i Europa'],
- cons: ['Dyrare per plagg än lågprisalternativ', 'Populära storlekar kan sälja slut'],
- features: {
- 'Material': 'Ekologisk bomull',
- 'Certifiering': 'GOTS',
- 'Storlek': '50 till 86 cm',
- 'Kläddelar': 'Body',
- 'Stängning': 'Tryckknappar',
- },
- },
- {
- name: 'Trikåoverall randig, Polarn O. Pyret',
- badge: 'Bäst overall',
- rating: 4.7,
- ctaHref: 'https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858238706&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/trikaoverall-randig-beige-60603336-2013?size=5638334793',
- image: '/images/products/trikaoverall-randig-polarn-o-pyret-v2.webp',
- pros: ['Klassisk randig, hållbar design som håller', 'Stretch för rörelsefrihet', 'GOTS-certifierad ekologisk bomull', 'Stl 44 till 92, används länge'],
- cons: ['Inte för kalla dagar utan ytterplagg', 'Kräver skonsam tvätt'],
- features: {
- 'Material': 'Ekologisk bomull',
- 'Certifiering': 'GOTS',
- 'Storlek': '44 till 92 cm',
- 'Kläddelar': 'Overall/sparkdräkt',
- 'Stängning': 'Tryckknappar',
- },
- },
- {
- name: 'Overall grå melange, Polarn O. Pyret',
- badge: 'Prisvärd klassiker',
- rating: 4.6,
- ctaHref: 'https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858050933&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/overall-gramelange-60600580-186?size=5638187123',
- image: '/images/products/overall-gra-melange-polarn-o-pyret-v2.webp',
- pros: ['Klassiker sedan 1976, beprövad kvalitet', 'Tidlös grå melange, matchar allt', 'Stl 44 till 92, följer barnet länge', 'GOTS-certifierad ekologisk bomull'],
- cons: ['Enklare modell utan extra stretch', 'Grå kan visa fläckar vid lek'],
- features: {
- 'Material': 'Ekologisk bomull',
- 'Certifiering': 'GOTS',
- 'Storlek': '44 till 92 cm',
- 'Kläddelar': 'Overall/sparkdräkt',
- 'Stängning': 'Tryckknappar',
- },
- },
- {
- name: 'Swim Essentials UV-Dräkt Catch Of The Day 74-80',
- badge: 'Bäst för sommaren',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328486&url=https://www.jollyroom.se/barnklader/uv-bad/uv-klader/uv-drakter/swim-essentials-uv-drakt-catch-of-the-day',
- image: '/images/products/swim-essentials-uv-drakt-74-80-v2.webp',
- pros: ['UPF 50+ solskydd', 'Snabbtorkande material', 'Lång ärm och benbyxor för maximalt skydd', 'Passar för badstrand och pool'],
- cons: ['Används bara på sommaren', 'Ej lämplig vid kyla'],
- features: {
- 'Material': 'Polyester (UV-skydd)',
- 'Certifiering': 'UPF 50+',
- 'Storlek': '74-80 cm (6 till 12 mån)',
- 'Kläddelar': 'UV-dräkt, helkropp',
- 'Stängning': 'Tryckknappar',
- },
- },
- {
- name: 'Voksi Fleeceoverall Merinoull Blue Bell 50-56',
- badge: 'Bäst för vintern',
- rating: 4.4,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10314373&url=https://www.jollyroom.se/barnklader/fleeceklader/fleeceoveraller/voksi-fleeceoverall-merinoull-blue-bell',
- image: '/images/products/voksi-fleeceoverall-merinoull-blue-bell-v2.webp',
- pros: ['Varm fleece, perfekt för kalla dagar', 'Tumvantar och fötter inbyggda', 'Lätt att ta av/på med full dragkedja', 'Tvättbar och slitstark'],
- cons: ['För varm som innekläder', 'Kräver skonsam tvätt vid 30 grader'],
- features: {
- 'Material': 'Merinoull/fleece',
- 'Certifiering': 'Naturlig merinoull',
- 'Storlek': '50-56 cm (0 till 3 mån)',
- 'Kläddelar': 'Heldräkt med vantar',
- 'Stängning': 'Dragkedja',
- },
- },
+  {
+    name: 'Body randig, Polarn O. Pyret',
+    brand: 'Polarn O. Pyret',
+    rating: 4.8,
+    badge: 'Bäst totalt',
+    usps: ['GOTS-certifierad', 'Klassisk randig design', 'Platta mjuka sömmar'],
+    store: 'Polarn O. Pyret',
+    affiliateUrl: 'https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858237310&url=https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019?size=5638334504',
+    imageUrl: '/images/products/body-randig-polarn-o-pyret-v2.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'GOTS-certifierad ekologisk bomull. Klassisk randig design sedan 1976 med mjuka platta sömmar.',
+    features: {
+      'Material': 'Ekologisk bomull',
+      'Certifiering': 'GOTS',
+      'Storlek': '50 till 86 cm',
+      'Kläddelar': 'Body',
+      'Stängning': 'Tryckknappar',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Trikåoverall randig, Polarn O. Pyret',
+    brand: 'Polarn O. Pyret',
+    rating: 4.7,
+    badge: 'Bäst overall',
+    usps: ['Stretch, rörelsefrihet', 'GOTS-certifierad', 'Stl 44 till 92'],
+    store: 'Polarn O. Pyret',
+    affiliateUrl: 'https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858238706&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/trikaoverall-randig-beige-60603336-2013?size=5638334793',
+    imageUrl: '/images/products/trikaoverall-randig-polarn-o-pyret-v2.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Klassisk randig trikåoverall i GOTS-certifierad ekologisk bomull. Stl 44 till 92.',
+    features: {
+      'Material': 'Ekologisk bomull',
+      'Certifiering': 'GOTS',
+      'Storlek': '44 till 92 cm',
+      'Kläddelar': 'Overall/sparkdräkt',
+      'Stängning': 'Tryckknappar',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Overall grå melange, Polarn O. Pyret',
+    brand: 'Polarn O. Pyret',
+    rating: 4.6,
+    badge: 'Prisvärd klassiker',
+    usps: ['Tidlös grå melange', 'Beprövad kvalitet', 'Stl 44 till 92'],
+    store: 'Polarn O. Pyret',
+    affiliateUrl: 'https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858050933&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/overall-gramelange-60600580-186?size=5638187123',
+    imageUrl: '/images/products/overall-gra-melange-polarn-o-pyret-v2.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Tidlös overall i grå melange, GOTS-certifierad ekologisk bomull. Klassiker sedan 1976. Stl 44 till 92.',
+    features: {
+      'Material': 'Ekologisk bomull',
+      'Certifiering': 'GOTS',
+      'Storlek': '44 till 92 cm',
+      'Kläddelar': 'Overall/sparkdräkt',
+      'Stängning': 'Tryckknappar',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Swim Essentials UV-Dräkt Catch Of The Day 74-80',
+    brand: 'Swim Essentials',
+    rating: 4.5,
+    badge: 'Bäst för sommaren',
+    usps: ['UPF 50+ solskydd', 'Snabbtorkande', 'Heltäckande skydd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328486&url=https://www.jollyroom.se/barnklader/uv-bad/uv-klader/uv-drakter/swim-essentials-uv-drakt-catch-of-the-day',
+    imageUrl: '/images/products/swim-essentials-uv-drakt-74-80-v2.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'UV-dräkt med UPF 50+ som blockerar 98% av UV-strålning. Lång ärm och benbyxor för heltäckande skydd.',
+    features: {
+      'Material': 'Polyester (UV-skydd)',
+      'Certifiering': 'UPF 50+',
+      'Storlek': '74-80 cm (6 till 12 mån)',
+      'Kläddelar': 'UV-dräkt, helkropp',
+      'Stängning': 'Tryckknappar',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Voksi Fleeceoverall Merinoull Blue Bell 50-56',
+    brand: 'Voksi',
+    rating: 4.4,
+    badge: 'Bäst för vintern',
+    usps: ['Varm merinoull', 'Inbyggda tumvantar', 'Full dragkedja'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10314373&url=https://www.jollyroom.se/barnklader/fleeceklader/fleeceoveraller/voksi-fleeceoverall-merinoull-blue-bell',
+    imageUrl: '/images/products/voksi-fleeceoverall-merinoull-blue-bell-v2.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Varm fleeceoverall i merinoull med inbyggda tumvantar och fötter. Full dragkedja. Stl 50-56.',
+    features: {
+      'Material': 'Merinoull/fleece',
+      'Certifiering': 'Naturlig merinoull',
+      'Storlek': '50-56 cm (0 till 3 mån)',
+      'Kläddelar': 'Heldräkt med vantar',
+      'Stängning': 'Dragkedja',
+    },
+    alsoAt: [],
+  },
 ];
 
 const featureLabels = ['Material', 'Certifiering', 'Storlek', 'Kläddelar', 'Stängning'];
 
 const faqItems = [
- {
- question: 'Vilken storlek passar en nyfödd?',
- answer: 'De flesta nyfödda startar i storlek 50 (upp till cirka 3 kilo) eller 56 (3 till 4,5 kilo). Storlek 50 till 56 används i snitt bara 6 till 8 veckor, så köp få plagg i minsta storleken och fler i storlek 62 till 68 som håller längre. Kontrollera alltid tillverkarens vikttabell snarare än åldersguiden, märken skiljer sig märkbart.',
- },
- {
- question: 'Vilka material är bäst mot bebisens hud?',
- answer: 'Ekologisk bomull med GOTS-certifiering är förstahandsvalet för vardagskläder, mjuk, andningsbar och fri från skadliga kemikalier. Bambuviskos är extra mjuk och fuktabsorberande men dyrare och tar längre att torka. Fleece och ull passar för vinterytterkläder. Undvik polyester direkt mot huden på nyfödda, den andas sämre och kan irritera känslig hud.',
- },
- {
- question: 'Vad är skillnaden mellan OEKO-TEX och GOTS?',
- answer: 'OEKO-TEX Standard 100 är en miniminivå som garanterar att den färdiga textilen inte innehåller skadliga ämnen över gränsvärden. GOTS (Global Organic Textile Standard) går ett steg längre och certifierar hela produktionskedjan från fält till färdig produkt, med krav på ekologisk odling, kemikalierestriktioner och sociala arbetsförhållanden. För babykläder är GOTS en starkare garanti, OEKO-TEX är acceptabelt om GOTS inte finns.',
- },
- {
- question: 'Hur många plagg behöver en nyfödd?',
- answer: 'En praktisk basgarderob: 5 till 7 kortärmade bodys, 3 till 5 sparkdräkter, 2 till 3 byxor, 2 till 3 mössor och par strumpor, plus 1 till 2 varmare plagg eller ytterkläder beroende på säsong. Räkna med tvätt två till tre gånger i veckan på grund av kräkningar och blöjläckor. Investera mer i storlek 62 till 68 som används i 2 till 3 månader än i 50 till 56 som passar i 6 veckor.',
- },
- {
- question: 'Ska jag tvätta nya babykläder innan användning?',
- answer: 'Ja, alltid. Nya plagg kan innehålla formaldehyd från impregneringar och andra rester från tillverkning och frakt. Första tvätten görs på 60 grader om plagget tål det, annars 40. Använd parfymfritt tvättmedel, hoppa över sköljmedel de första månaderna. Bebisens hud är känsligare och doftämnen är en vanlig orsak till utslag som föräldrar tror är allergi.',
- },
- {
- question: 'Hur klär jag bebisen rätt för svenska temperaturer?',
- answer: 'Inomhus vid 20 grader räcker tunn body plus sparkdräkt. Känn på nacken, inte händerna, för att kontrollera värmen. Utomhus i sommarvärme behövs UV-skyddande dräkt med UPF 50+ plus solhatt med nackskydd. Höst och vinter klär du i lager: body, tjockare sparkdräkt och fleece eller vinterdräkt ytterst. Tumregeln är ett lager mer än vad du själv har på dig, eftersom bebisen inte rör sig lika mycket.',
- },
+  {
+    question: 'Vilken storlek passar en nyfödd?',
+    answer: 'De flesta nyfödda startar i storlek 50 (upp till cirka 3 kilo) eller 56 (3 till 4,5 kilo). Storlek 50 till 56 används i snitt bara 6 till 8 veckor, så köp få plagg i minsta storleken och fler i storlek 62 till 68 som håller längre. Kontrollera alltid tillverkarens vikttabell snarare än åldersguiden, märken skiljer sig märkbart.',
+  },
+  {
+    question: 'Vilka material är bäst mot bebisens hud?',
+    answer: 'Ekologisk bomull med GOTS-certifiering är förstahandsvalet för vardagskläder, mjuk, andningsbar och fri från skadliga kemikalier. Bambuviskos är extra mjuk och fuktabsorberande men dyrare och tar längre att torka. Fleece och ull passar för vinterytterkläder. Undvik polyester direkt mot huden på nyfödda, den andas sämre och kan irritera känslig hud.',
+  },
+  {
+    question: 'Vad är skillnaden mellan OEKO-TEX och GOTS?',
+    answer: 'OEKO-TEX Standard 100 är en miniminivå som garanterar att den färdiga textilen inte innehåller skadliga ämnen över gränsvärden. GOTS (Global Organic Textile Standard) går ett steg längre och certifierar hela produktionskedjan från fält till färdig produkt, med krav på ekologisk odling, kemikalierestriktioner och sociala arbetsförhållanden. För babykläder är GOTS en starkare garanti, OEKO-TEX är acceptabelt om GOTS inte finns.',
+  },
+  {
+    question: 'Hur många plagg behöver en nyfödd?',
+    answer: 'En praktisk basgarderob: 5 till 7 kortärmade bodys, 3 till 5 sparkdräkter, 2 till 3 byxor, 2 till 3 mössor och par strumpor, plus 1 till 2 varmare plagg eller ytterkläder beroende på säsong. Räkna med tvätt två till tre gånger i veckan på grund av kräkningar och blöjläckor. Investera mer i storlek 62 till 68 som används i 2 till 3 månader än i 50 till 56 som passar i 6 veckor.',
+  },
+  {
+    question: 'Ska jag tvätta nya babykläder innan användning?',
+    answer: 'Ja, alltid. Nya plagg kan innehålla formaldehyd från impregneringar och andra rester från tillverkning och frakt. Första tvätten görs på 60 grader om plagget tål det, annars 40. Använd parfymfritt tvättmedel, hoppa över sköljmedel de första månaderna. Bebisens hud är känsligare och doftämnen är en vanlig orsak till utslag som föräldrar tror är allergi.',
+  },
+  {
+    question: 'Hur klär jag bebisen rätt för svenska temperaturer?',
+    answer: 'Inomhus vid 20 grader räcker tunn body plus sparkdräkt. Känn på nacken, inte händerna, för att kontrollera värmen. Utomhus i sommarvärme behövs UV-skyddande dräkt med UPF 50+ plus solhatt med nackskydd. Höst och vinter klär du i lager: body, tjockare sparkdräkt och fleece eller vinterdräkt ytterst. Tumregeln är ett lager mer än vad du själv har på dig, eftersom bebisen inte rör sig lika mycket.',
+  },
 ];
+
+export const articleMeta = {
+  title: "Bästa babykläder 2026: 5 plagg till nyfödd-garderoben",
+  description: "Vi har jämfört de bästa babykläderna 2026, från GOTS-certifierad body till UV-dräkt och vinterfleece. Se basgarderoben för nyfödd och rätt storleksguide.",
+  publishDate: "2026-03-29",
+  updatedDate: "2026-06-13",
+  category: "Babykläder",
+  image: "/images/products/body-randig-polarn-o-pyret-v2.webp",
+};
 ---
 
 <ArticleLayout
- title="Bästa babykläder 2026: 5 plagg till nyfödd-garderoben"
- description="Vi har jämfört de bästa babykläderna 2026, från GOTS-certifierad body till UV-dräkt och vinterfleece. Se basgarderoben för nyfödd och rätt storleksguide."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-23"
- relatedArticles={[
- { title: 'Bästa sovpåsar baby 2026', href: '/sovsackar/' },
- { title: 'Bästa spjälsängar 2026', href: '/spjalsangar/' },
- { title: 'Bästa babyvakter 2026', href: '/babyvakter/' },
- { title: 'Babysäkerhet, komplett guide', href: '/sakerhet/' },
- { title: 'Bästa body bebis 2026', href: '/babyklader/body/' },
- ]}
+  title="Bästa babykläder 2026: 5 plagg till nyfödd-garderoben"
+  description="Vi har jämfört de bästa babykläderna 2026, från GOTS-certifierad body till UV-dräkt och vinterfleece. Se basgarderoben för nyfödd och rätt storleksguide."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyklader/"
+  datePublished="2026-03-29"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-lg text-text-light leading-relaxed mb-4">
-	 Body randig från Polarn O. Pyret vinner basgarderob till nyfödd 2026. Den är sydd i GOTS-certifierad ekologisk bomull med platta sömmar som inte skaver mot huden. Designen har hållit sedan 1976 och tål 60-gradig tvätt gång på gång.
-	 </p>
 
- <TopPick product={products[0]} description="Polarn O. Pyrets randiga body är den mest beprövade vardagstextilen för svenska bebisar. GOTS-certifierad ekologisk bomull, platta sömmar som inte skaver och en design som hållit sedan 1976." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-03-29" dateModified="2026-06-13" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, babykläder 2026" />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilka babykläder är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Body randig från Polarn O. Pyret vinner basgarderob till nyfödd 2026. Den är sydd i GOTS-certifierad ekologisk bomull med platta sömmar som inte skaver mot huden. Designen har hållit sedan 1976 och tål 60-gradig tvätt gång på gång.
+    </p>
+  </div>
 
- <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">De 5 bästa babykläderna 2026: bäst i test</h2>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Polarn O. Pyret"
+    name="Body randig"
+    image="/images/products/body-randig-polarn-o-pyret-v2.webp"
+    trackedUrl="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858237310&url=https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019?size=5638334504"
+    store="Polarn O. Pyret"
+    description="Polarn O. Pyrets randiga body är den mest beprövade vardagstextilen för svenska bebisar. GOTS-certifierad ekologisk bomull, platta sömmar som inte skaver och en design som hållit sedan 1976."
+  />
 
- <h3 class="font-heading text-xl font-bold text-text mt-6 mb-4">1. Body randig, Polarn O. Pyret</h3>
- <ProductCard
- name="Body randig, Polarn O. Pyret"
- badge="Bäst totalt 2026"
- rating={4.8}
- ctaText="Bra pris hos Polarn O. Pyret"
- ctaHref="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858237310&url=https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019?size=5638334504"
- image="/images/products/body-randig-polarn-o-pyret-v2.webp"
- pros={['100% ekologisk bomull, GOTS-certifierad', 'Klassisk randig design sedan 1976', 'Mjuka platta sömmar, inget som skaver', 'Tillverkad i Europa']}
- cons={['Dyrare per plagg än lågprisalternativ', 'Populära storlekar kan sälja slut']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-2">
- Polarn O. Pyrets randiga body är ett av de mest ikoniska babyplaggen i Sverige, designen är i princip oförändrad sedan 1976 och det är ingen slump. GOTS-certifierad ekologisk bomull, mjuka platta sömmar och tryckknappar som gör blöjbyten enkla.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Bodyn finns i storlek 50 till 86 och passar därmed under en stor del av det första levnadsåret. Hållbar konstruktion gör att den klarar många tvättar utan att tappa form eller mjukhet.
- </p>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, babykläder 2026" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">2. Trikåoverall randig, Polarn O. Pyret</h3>
- <ProductCard
- name="Trikåoverall randig, Polarn O. Pyret"
- badge="Bäst overall"
- rating={4.7}
- ctaText="Bra pris hos Polarn O. Pyret"
- ctaHref="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858238706&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/trikaoverall-randig-beige-60603336-2013?size=5638334793"
- image="/images/products/trikaoverall-randig-polarn-o-pyret-v2.webp"
- pros={['Klassisk randig design, tidlös och slitstark', 'Stretch för rörelsefrihet', 'GOTS-certifierad ekologisk bomull', 'Stl 44 till 92, används länge']}
- cons={['Inte för kalla dagar utan ytterplagg', 'Kräver skonsam tvätt']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-2">
- Trikåoverallen är en av Polarn O. Pyrets mest sålda produkter. Stretch-materialet ger rörelsefrihet och GOTS-certifieringen bekräftar att hela produktionskedjan håller hög ekologisk standard.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Storleksintervallet 44 till 92 innebär att samma modell passar från nyfödd till nästan 2 år, ett av de bästa argumenten för prisnivån.
- </p>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">3. Overall grå melange, Polarn O. Pyret</h3>
- <ProductCard
- name="Overall grå melange, Polarn O. Pyret"
- badge="Prisvärd klassiker"
- rating={4.6}
- ctaText="Bra pris hos Polarn O. Pyret"
- ctaHref="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858050933&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/overall-gramelange-60600580-186?size=5638187123"
- image="/images/products/overall-gra-melange-polarn-o-pyret-v2.webp"
- pros={['Klassiker sedan 1976, beprövad kvalitet', 'Tidlös grå melange, matchar allt', 'Stl 44 till 92, följer barnet länge', 'GOTS-certifierad ekologisk bomull']}
- cons={['Enklare modell utan extra stretch', 'Grå kan visa fläckar vid lek']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-2">
- Den klassiska overallen i grå melange är Polarn O. Pyrets mest beprövade modell. Tidlös färg och enkel konstruktion som håller tvätt efter tvätt.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Enkel konstruktion som håller tvätt efter tvätt, ett prisvärt val av den klassiska Polarn O. Pyret-kvaliteten.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Body randig, Polarn O. Pyret, bäst totalt</h2>
+    <MoneyProductCard
+      brand="Polarn O. Pyret"
+      name="Body randig, Polarn O. Pyret"
+      rating={4.8}
+      rank={1}
+      badge="Bäst totalt"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/body-randig-polarn-o-pyret-v2.webp"
+      imageAlt="Body randig Polarn O. Pyret ekologisk bomull"
+      store="Polarn O. Pyret"
+      buyUrl="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858237310&url=https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019?size=5638334504"
+      pros={['100% ekologisk bomull, GOTS-certifierad', 'Klassisk randig design sedan 1976', 'Mjuka platta sömmar, inget som skaver', 'Tillverkad i Europa']}
+      cons={['Dyrare per plagg än lågprisalternativ', 'Populära storlekar kan sälja slut']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Polarn O. Pyrets randiga body är ett av de mest ikoniska babyplaggen i Sverige, designen är i princip oförändrad sedan 1976 och det är ingen slump. GOTS-certifierad ekologisk bomull, mjuka platta sömmar och tryckknappar som gör blöjbyten enkla.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bodyn finns i storlek 50 till 86 och passar därmed under en stor del av det första levnadsåret. Hållbar konstruktion gör att den klarar många tvättar utan att tappa form eller mjukhet.
+    </p>
+    <MoneyCTABox store="Polarn O. Pyret" affiliateUrl="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858237310&url=https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019?size=5638334504" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">4. Swim Essentials UV-Dräkt, bäst för sommaren</h3>
- <ProductCard
- name="Swim Essentials UV-Dräkt Catch Of The Day"
- badge="Solskydd UPF 50+"
- rating={4.5}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328486&url=https://www.jollyroom.se/barnklader/uv-bad/uv-klader/uv-drakter/swim-essentials-uv-drakt-catch-of-the-day"
- image="/images/products/swim-essentials-uv-drakt-74-80-v2.webp"
- pros={['UPF 50+, blockerar 98% av UV-strålning', 'Snabbtorkande, bra vid vattenlek', 'Lång ärm och benbyxor för heltäckande skydd', 'Bättre än solkräm under 6 månaders ålder']}
- cons={['Säsongsprodukt', 'Ej för kalla dagar']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-2">
- UV-skyddande kläder är det bästa skyddet för bebisar under 6 månader, Folkhälsomyndigheten och 1177 rekommenderar att undvika direkt solljus och solkräm för de allra minsta. UV-dräkt med UPF 50+ blockerar 98% av UV-strålning och är ett säkrare alternativ.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Komplettera alltid med en separat solhatt med nackskydd. Swim Essentials UV-Dräkt Catch Of The Day har lång ärm och benbyxor för heltäckande skydd.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Trikåoverall randig, Polarn O. Pyret, bäst overall</h2>
+    <MoneyProductCard
+      brand="Polarn O. Pyret"
+      name="Trikåoverall randig, Polarn O. Pyret"
+      rating={4.7}
+      rank={2}
+      badge="Bäst overall"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/trikaoverall-randig-polarn-o-pyret-v2.webp"
+      imageAlt="Trikåoverall randig Polarn O. Pyret GOTS ekologisk bomull"
+      store="Polarn O. Pyret"
+      buyUrl="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858238706&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/trikaoverall-randig-beige-60603336-2013?size=5638334793"
+      pros={['Klassisk randig design, tidlös och slitstark', 'Stretch för rörelsefrihet', 'GOTS-certifierad ekologisk bomull', 'Stl 44 till 92, används länge']}
+      cons={['Inte för kalla dagar utan ytterplagg', 'Kräver skonsam tvätt']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Trikåoverallen är en av Polarn O. Pyrets mest sålda produkter. Stretch-materialet ger rörelsefrihet och GOTS-certifieringen bekräftar att hela produktionskedjan håller hög ekologisk standard.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Storleksintervallet 44 till 92 innebär att samma modell passar från nyfödd till nästan 2 år, ett av de bästa argumenten för prisnivån.
+    </p>
+    <MoneyCTABox store="Polarn O. Pyret" affiliateUrl="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858238706&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/trikaoverall-randig-beige-60603336-2013?size=5638334793" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">5. Voksi Fleeceoverall Merinoull, bäst för vintern</h3>
- <ProductCard
- name="Voksi Fleeceoverall Merinoull Blue Bell"
- badge="Bäst för svenska vintrar"
- rating={4.4}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10314373&url=https://www.jollyroom.se/barnklader/fleeceklader/fleeceoveraller/voksi-fleeceoverall-merinoull-blue-bell"
- image="/images/products/voksi-fleeceoverall-merinoull-blue-bell-v2.webp"
- pros={['Varm och lätt fleece', 'Inbyggda tumvantar och fötter', 'Full dragkedja, enkelt att ta av/på', 'Hållbart och tvättbart material']}
- cons={['För varm inomhus', 'Fleece kan "pilla" efter många tvättar']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-2">
- Voksi Fleeceoverall i merinoull är ett måste för svenska vintrar med barnvagnspromenader i kyla. Merinoull reglerar temperaturen naturligt, håller värmen även vid fukt och luktar mindre än syntetiskt fleece.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Integrerade fötter eliminerar problemet med strumpor som trillar av. Använd som mellanskikt under ytterplagg vid extrem kyla, eller direkt i barnvagnen vid normala minusgrader.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Overall grå melange, Polarn O. Pyret, prisvärd klassiker</h2>
+    <MoneyProductCard
+      brand="Polarn O. Pyret"
+      name="Overall grå melange, Polarn O. Pyret"
+      rating={4.6}
+      rank={3}
+      badge="Prisvärd klassiker"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/overall-gra-melange-polarn-o-pyret-v2.webp"
+      imageAlt="Overall grå melange Polarn O. Pyret ekologisk bomull"
+      store="Polarn O. Pyret"
+      buyUrl="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858050933&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/overall-gramelange-60600580-186?size=5638187123"
+      pros={['Klassiker sedan 1976, beprövad kvalitet', 'Tidlös grå melange, matchar allt', 'Stl 44 till 92, följer barnet länge', 'GOTS-certifierad ekologisk bomull']}
+      cons={['Enklare modell utan extra stretch', 'Grå kan visa fläckar vid lek']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Den klassiska overallen i grå melange är Polarn O. Pyrets mest beprövade modell. Tidlös färg och enkel konstruktion som håller tvätt efter tvätt.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Enkel konstruktion som håller tvätt efter tvätt, ett prisvärt val av den klassiska Polarn O. Pyret-kvaliteten.
+    </p>
+    <MoneyCTABox store="Polarn O. Pyret" affiliateUrl="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858050933&url=https://www.polarnopyret.se/barnklader/klader/sparkdrakt-overall/overall-gramelange-60600580-186?size=5638187123" />
 
- <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide babykläder 2026: rätt garderob för nyfödda</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Swim Essentials UV-Dräkt Catch Of The Day, bäst för sommaren</h2>
+    <MoneyProductCard
+      brand="Swim Essentials"
+      name="Swim Essentials UV-Dräkt Catch Of The Day 74-80"
+      rating={4.5}
+      rank={4}
+      badge="Bäst för sommaren"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/swim-essentials-uv-drakt-74-80-v2.webp"
+      imageAlt="Swim Essentials UV-Dräkt Catch Of The Day solskydd bebis"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328486&url=https://www.jollyroom.se/barnklader/uv-bad/uv-klader/uv-drakter/swim-essentials-uv-drakt-catch-of-the-day"
+      pros={['UPF 50+, blockerar 98% av UV-strålning', 'Snabbtorkande, bra vid vattenlek', 'Lång ärm och benbyxor för heltäckande skydd', 'Bättre än solkräm under 6 månaders ålder']}
+      cons={['Säsongsprodukt', 'Ej för kalla dagar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      UV-skyddande kläder är det bästa skyddet för bebisar under 6 månader, Folkhälsomyndigheten och 1177 rekommenderar att undvika direkt solljus och solkräm för de allra minsta. UV-dräkt med UPF 50+ blockerar 98% av UV-strålning och är ett säkrare alternativ.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Komplettera alltid med en separat solhatt med nackskydd. Swim Essentials UV-Dräkt Catch Of The Day har lång ärm och benbyxor för heltäckande skydd.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328486&url=https://www.jollyroom.se/barnklader/uv-bad/uv-klader/uv-drakter/swim-essentials-uv-drakt-catch-of-the-day" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Basgarderob för bebis 0 till 6 månader: rätt antal plagg</h3>
- <p class="text-text-light leading-relaxed mb-4">
- Köp inte för mycket i de minsta storlekarna, nyfödda växer snabbt och kläder i storlek 50 till 56 används bara 4 till 8 veckor. En praktisk basgarderob:
- </p>
- <ul class="list-disc list-inside space-y-1 text-text-light mb-4">
- <li>5 till 7 kortärmade bodys (storl. 56 till 62)</li>
- <li>3 till 5 sparkdräkter (storl. 56 till 68)</li>
- <li>2 till 3 varmare plagg (fleece/tjockare sparkdräkt)</li>
- <li>2 till 3 mössor + par strumpor/tofflor</li>
- <li>1 ytterplagg/vinterdräkt efter säsong</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Voksi Fleeceoverall Merinoull Blue Bell, bäst för vintern</h2>
+    <MoneyProductCard
+      brand="Voksi"
+      name="Voksi Fleeceoverall Merinoull Blue Bell 50-56"
+      rating={4.4}
+      rank={5}
+      badge="Bäst för vintern"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/voksi-fleeceoverall-merinoull-blue-bell-v2.webp"
+      imageAlt="Voksi Fleeceoverall Merinoull Blue Bell vinterkläder bebis"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10314373&url=https://www.jollyroom.se/barnklader/fleeceklader/fleeceoveraller/voksi-fleeceoverall-merinoull-blue-bell"
+      pros={['Varm och lätt fleece', 'Inbyggda tumvantar och fötter', 'Full dragkedja, enkelt att ta av/på', 'Hållbart och tvättbart material']}
+      cons={['För varm inomhus', 'Fleece kan "pilla" efter många tvättar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Voksi Fleeceoverall i merinoull är ett måste för svenska vintrar med barnvagnspromenader i kyla. Merinoull reglerar temperaturen naturligt, håller värmen även vid fukt och luktar mindre än syntetiskt fleece.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Integrerade fötter eliminerar problemet med strumpor som trillar av. Använd som mellanskikt under ytterplagg vid extrem kyla, eller direkt i barnvagnen vid normala minusgrader.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10314373&url=https://www.jollyroom.se/barnklader/fleeceklader/fleeceoveraller/voksi-fleeceoverall-merinoull-blue-bell" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material i babykläder: vad du ska välja och undvika</h3>
- <p class="text-text-light leading-relaxed mb-4">
- Välj: ekologisk bomull (GOTS), bambu, modal, frotté för vardagskläder. Fleece och ull för vinterytterkläder.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Undvik mot huden: polyester och konstfibrer som andas sämre, kan orsaka värme och hudirritation. Välj OEKO-TEX som miniminivå och GOTS som premiumcertifiering.
- </p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem babykläder granskade för den svenska vardagen. Polarn O. Pyret dominerar vardagskläderna med GOTS-certifierad ekologisk bomull. För sommaren skyddar Swim Essentials UV-dräkt och för svenska vintrar är Voksi Fleeceoverall i merinoull ett tryggt val. Se också vår guide om <a href="/babyklader/body/" class="text-accent hover:text-accent-dark underline">bästa babybody 2026</a> och <a href="/sovsackar/" class="text-accent hover:text-accent-dark underline">bästa sovpåsar för bebis 2026</a>.
+    </p>
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bästa babyklädesmärken i Sverige 2026</h3>
- <p class="text-text-light leading-relaxed mb-4">
- Populära märken med bra kvalitet och certifieringar: Lindex Baby, H&M Baby (Conscious-linjen), Name It, Joha (ull/ekologisk bomull), Polarn O. Pyret, Mini Rodini och Smallstuff. Reirei är en av de vanligaste nätbutikerna med brett utbud av ekologiska babykläder.
- </p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={featureLabels} title="Specifikationer jämförda, babykläder 2026" />
 
- <RetailerCTAs />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide babykläder 2026: rätt garderob för nyfödda</h2>
 
- <FAQ items={faqItems} title="Vanliga frågor om babykläder" />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Basgarderob för bebis 0 till 6 månader: rätt antal plagg</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Köp inte för mycket i de minsta storlekarna, nyfödda växer snabbt och kläder i storlek 50 till 56 används bara 4 till 8 veckor. En praktisk basgarderob:
+    </p>
+    <ul class="list-disc list-inside space-y-1 text-text-light mb-4">
+      <li>5 till 7 kortärmade bodys (storl. 56 till 62)</li>
+      <li>3 till 5 sparkdräkter (storl. 56 till 68)</li>
+      <li>2 till 3 varmare plagg (fleece/tjockare sparkdräkt)</li>
+      <li>2 till 3 mössor + par strumpor/tofflor</li>
+      <li>1 ytterplagg/vinterdräkt efter säsong</li>
+    </ul>
 
- <div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/guider/bebis-utslag/" class="text-accent underline">Utslag hos bebis, välja rätt material</a></li>
- <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, kläder och storlekar</a></li>
- <li><a href="/babyklader/namnlappar/" class="text-accent underline">Bästa namnlapparna 2026, stryk-på och silikon jämförda</a></li>
- <li><a href="/babyklader/body/" class="text-accent underline">Bästa babybody 2026, ekologisk bomull och snäpplösning granskad</a></li>
- <li><a href="/sovsackar/" class="text-accent underline">Bästa sovpåsarna för bebis 2026</a></li>
- <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö, material som andas</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material i babykläder: vad du ska välja och undvika</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Välj: ekologisk bomull (GOTS), bambu, modal, frotté för vardagskläder. Fleece och ull för vinterytterkläder.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Undvik mot huden: polyester och konstfibrer som andas sämre, kan orsaka värme och hudirritation. Välj OEKO-TEX som miniminivå och GOTS som premiumcertifiering.
+    </p>
 
- <CTABox productName="Babykläder" store="Polarn O. Pyret" description="Ekologiska babykläder i GOTS-certifierad bomull sedan 1976." />
- <CTABox productName="Babykläder" store="Knattis" description="Babykläder och barnkläder för alla åldrar." />
- <CTABox productName="Namnlappar" store="Namnlappskungen" description="Personliga namnlappar till förskolan och skolan." />
-<ProductSchema products={[
- { name: 'Body randig, Polarn O. Pyret', description: 'GOTS-certifierad ekologisk bomull. Klassisk randig design sedan 1976 med mjuka platta sömmar.', image: 'https://bebisguiden.se/images/products/polarnopyret-body-randig.webp', brand: 'Polarn O. Pyret', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Trikåoverall randig, Polarn O. Pyret', description: 'Klassisk randig trikåoverall i GOTS-certifierad ekologisk bomull. Stl 44 till 92.', image: 'https://bebisguiden.se/images/products/polarnopyret-trikaoverall-randig.webp', brand: 'Polarn O. Pyret', ratingValue: 4.7, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bästa babyklädesmärken i Sverige 2026</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Populära märken med bra kvalitet och certifieringar: Lindex Baby, H&M Baby (Conscious-linjen), Name It, Joha (ull/ekologisk bomull), Polarn O. Pyret, Mini Rodini och Smallstuff. Reirei är en av de vanligaste nätbutikerna med brett utbud av ekologiska babykläder.
+    </p>
+
+    <RetailerCTAs />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem babykläder utifrån material och certifieringar (GOTS, OEKO-TEX, UPF 50+), storlekar och användningstid, stängningslösning och praktisk hantering, lämplighet för svenska temperaturer och årstider samt tillgänglighet i svenska butiker. Produkterna är valda bland de mest sålda och eftersökta babykläderna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} title="Vanliga frågor om babykläder" />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/guider/bebis-utslag/" class="text-accent underline">Utslag hos bebis, välja rätt material</a></li>
+        <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, kläder och storlekar</a></li>
+        <li><a href="/babyklader/namnlappar/" class="text-accent underline">Bästa namnlapparna 2026, stryk-på och silikon jämförda</a></li>
+        <li><a href="/babyklader/body/" class="text-accent underline">Bästa babybody 2026, ekologisk bomull och snäpplösning granskad</a></li>
+        <li><a href="/sovsackar/" class="text-accent underline">Bästa sovpåsarna för bebis 2026</a></li>
+        <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö, material som andas</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa babykläder 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://pin.polarnopyret.se/t/t?a=1487384625&as=2065068845&t=2&tk=1&cupa_sku=7325858237310&url=https://www.polarnopyret.se/barnklader/klader/bodys/body-randig-ljusgron-60603309-9019?size=5638334504"
+    text="Bra pris hos Polarn O. Pyret"
+    productName="Body randig, Polarn O. Pyret"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

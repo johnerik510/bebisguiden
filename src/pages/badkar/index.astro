@@ -1,317 +1,503 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Badkar bebis' },
+  { label: 'Hem', href: '/' },
+  { label: 'Badkar bebis' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Stokke Flexi Bath Badbalja XL',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/stokke-flexi-bath-xl-sandy-beige.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10260960&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/stokke-flexi-bath-badbalja-xl-sandy-beige',
- additionalCtaHrefs: [
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=412d7381-d717-4a61-a8e2-c69b558d2ec8&url=https://www.babysam.se/stokke-flexi-bath-xl-badbalja-sandy-beige-onesize' },
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=568006&url=https://www.babyland.se/stokke-flexi-bath-xl-med-varmekanslig-propp-sandy-beige' },
- ],
- features: {
- 'Hopfällbart': 'Ja',
- 'Termometer': 'Nej (köps separat)',
- 'Badstöd inkl.': 'Nej (köps separat)',
- 'Lämplig ålder': '0 till 4 år',
- },
- },
- {
- name: 'Beemoo CARE Assist Hopfällbar Badbalja',
- badge: 'Bäst hopfällbar budget',
- rating: 4.6,
- image: '/images/products/beemoo-care-assist-hopfallbar-badbalja.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10294840&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/beemoo-care-assist-hopfallbar-badbalja-deep-grey',
- features: {
- 'Hopfällbart': 'Ja',
- 'Termometer': 'Nej',
- 'Badstöd inkl.': 'Nej',
- 'Lämplig ålder': '0 till 3 år',
- },
- },
- {
- name: 'Hauck Wash N Fold Badbalja L',
- badge: 'Bäst för resor',
- rating: 4.5,
- image: '/images/products/hauck-wash-n-fold-badbalja.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285416&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/hauck-wash-n-fold-badbalja-l-white-stone',
- features: {
- 'Hopfällbart': 'Ja',
- 'Termometer': 'Nej',
- 'Badstöd inkl.': 'Nej',
- 'Lämplig ålder': '0 till 2 år',
- },
- },
- {
- name: 'Bebeconfort Swivel Badstol',
- badge: 'Bäst badstol',
- rating: 4.6,
- image: '/images/products/bebeconfort-swivel-badstol.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272919&url=https://www.jollyroom.se/babyprodukter/badrummet/badstolar/bebeconfort-swivel-badstol-beige',
- features: {
- 'Hopfällbart': 'Nej',
- 'Termometer': 'Nej',
- 'Badstöd inkl.': 'Ja (badstol ingår)',
- 'Lämplig ålder': '0 till 9 mån',
- },
- },
- {
- name: 'BabyDan Safe & Comfy Badstöd',
- badge: 'Bäst badstöd',
- rating: 4.5,
- image: '/images/products/babydan-safe-comfy-badstod.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285224&url=https://www.jollyroom.se/babyprodukter/badrummet/badstod/babydan-safe-comfy-badstod',
- additionalCtaHrefs: [
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=618ee8ee-3660-4731-9381-6502bc6d4854&url=https://www.babysam.se/babydan-badstol-safe-comfy-onesize' },
- ],
- features: {
- 'Hopfällbart': 'Nej',
- 'Termometer': 'Nej',
- 'Badstöd inkl.': 'Ja (badstöd)',
- 'Lämplig ålder': '0 till 6 mån',
- },
- },
+  {
+    name: 'Stokke Flexi Bath Badbalja XL',
+    brand: 'Stokke',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Hopfällbart för resor', 'Passar 0 till 4 år', 'Lätt att rengöra'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10260960&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/stokke-flexi-bath-badbalja-xl-sandy-beige',
+    imageUrl: '/images/products/stokke-flexi-bath-xl-sandy-beige.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Hopfällbart XL-babybadkar som passar från nyfödd till 4 år. Tar minimal plats vikt och är lätt att ta med på resor. Stabilt och lätt att hålla rent.',
+    features: { 'Hopfällbart': 'Ja', 'Termometer': 'Nej (köps separat)', 'Badstöd inkl.': 'Nej (köps separat)', 'Lämplig ålder': '0 till 4 år' },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=412d7381-d717-4a61-a8e2-c69b558d2ec8&url=https://www.babysam.se/stokke-flexi-bath-xl-badbalja-sandy-beige-onesize' },
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=568006&url=https://www.babyland.se/stokke-flexi-bath-xl-med-varmekanslig-propp-sandy-beige' },
+    ],
+  },
+  {
+    name: 'Beemoo CARE Assist Hopfällbar Badbalja',
+    brand: 'Beemoo',
+    rating: 4.6,
+    badge: 'Bäst hopfällbar budget',
+    usps: ['Prisvärt alternativ', 'Tar minimal plats', 'Enkel att rengöra'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10294840&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/beemoo-care-assist-hopfallbar-badbalja-deep-grey',
+    imageUrl: '/images/products/beemoo-care-assist-hopfallbar-badbalja.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Prisvärdig hopfällbar badbalja för bebis 0 till 3 år. Kompakt förvaring och enkel att rengöra.',
+    features: { 'Hopfällbart': 'Ja', 'Termometer': 'Nej', 'Badstöd inkl.': 'Nej', 'Lämplig ålder': '0 till 3 år' },
+    alsoAt: [],
+  },
+  {
+    name: 'Hauck Wash N Fold Badbalja L',
+    brand: 'Hauck',
+    rating: 4.5,
+    badge: 'Bäst för resor',
+    usps: ['Viks ihop platt', 'Kompakt och lättpackad', 'Stor kapacitet'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285416&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/hauck-wash-n-fold-badbalja-l-white-stone',
+    imageUrl: '/images/products/hauck-wash-n-fold-badbalja.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Hopfällbar badbalja i L-storlek, perfekt för resor och förvaring. Passar bebis 0 till 2 år.',
+    features: { 'Hopfällbart': 'Ja', 'Termometer': 'Nej', 'Badstöd inkl.': 'Nej', 'Lämplig ålder': '0 till 2 år' },
+    alsoAt: [],
+  },
+  {
+    name: 'Bebeconfort Swivel Badstol',
+    brand: 'Bebeconfort',
+    rating: 4.6,
+    badge: 'Bäst badstol',
+    usps: ['360-graders rotation', 'Frigör båda händerna', 'Ergonomiskt stöd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272919&url=https://www.jollyroom.se/babyprodukter/badrummet/badstolar/bebeconfort-swivel-badstol-beige',
+    imageUrl: '/images/products/bebeconfort-swivel-badstol.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Svängbar 360-graders badstol för bebis 0 till 9 månader. Frigör båda händerna och passar i befintligt badkar.',
+    features: { 'Hopfällbart': 'Nej', 'Termometer': 'Nej', 'Badstöd inkl.': 'Ja (badstol ingår)', 'Lämplig ålder': '0 till 9 mån' },
+    alsoAt: [],
+  },
+  {
+    name: 'BabyDan Safe & Comfy Badstöd',
+    brand: 'BabyDan',
+    rating: 4.5,
+    badge: 'Bäst badstöd',
+    usps: ['Mjukt mot babyhud', 'Ergonomisk lutning', 'Passar de flesta badkar'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285224&url=https://www.jollyroom.se/babyprodukter/badrummet/badstod/babydan-safe-comfy-badstod',
+    imageUrl: '/images/products/babydan-safe-comfy-badstod.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Mjukt och ergonomiskt badstöd för nyfödda 0 till 6 månader. Passar i de flesta babybadkar.',
+    features: { 'Hopfällbart': 'Nej', 'Termometer': 'Nej', 'Badstöd inkl.': 'Ja (badstöd)', 'Lämplig ålder': '0 till 6 mån' },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=618ee8ee-3660-4731-9381-6502bc6d4854&url=https://www.babysam.se/babydan-badstol-safe-comfy-onesize' },
+    ],
+  },
 ];
 
-const featureLabels = ['Hopfällbart', 'Termometer', 'Badstöd inkl.', 'Lämplig ålder'];
+const specLabels = ['Hopfällbart', 'Termometer', 'Badstöd inkl.', 'Lämplig ålder'];
 
 const faqItems = [
- {
- question: 'Vilket babybadkar passar nyfödda bäst?',
- answer: 'För de allra första månaderna rekommenderar vi BabyDan Safe & Comfy Badstöd eller Bebeconfort Swivel Badstol i det vanliga badkaret. Båda håller den nyfödda säkert lutad så att huvudet är ovanför vattnet och båda dina händer är fria att tvätta. Stokke Flexi Bath XL och Beemoo CARE Assist Hopfällbar Badbalja behöver kompletteras med ett separat badstöd för bebisar under fyra månader.',
- },
- {
- question: 'Vilken vattentemperatur ska babybadet ha?',
- answer: '37 till 38 grader Celsius är rätt, alltså ungefär samma som kroppstemperatur. Testa alltid med insidan av armbågen eller handleden, aldrig med handflatan, som är mindre känslig. Saknar badkaret inbyggd termometer, köp en separat plast- eller anktermometer för några tior. Fyll alltid på det kalla vattnet sist så att bebisen inte riskerar hamna i för hett vatten.',
- },
- {
- question: 'Hur länge används ett babybadkar?',
- answer: 'De flesta babybadkar räcker till barnet är cirka två till tre år (max 13 till 15 kg). Stokke Flexi Bath XL klarar längre, upp till fyra års ålder. Hauck Wash N Fold håller till cirka 2 år. Räkna med tolv till 24 månaders användning för ett standardbadkar. Badstolar och badstöd används bara de första 6 till 9 månaderna.',
- },
- {
- question: 'Är ett hopfällbart badkar värt det?',
- answer: 'Ja om du bor litet, reser ofta eller delar boende med farföräldrar och behöver kunna ta med badkaret. Stokke Flexi Bath XL och Hauck Wash N Fold viker ihop till några centimeter tjocklek. Beemoo CARE Assist är ett prisvärdigt hopfällbart alternativ. Nackdelen är att vikfunktionen kan kännas klumpig första gångerna. Bor du i hus med eget badrum är ett fast badkar enklare i längden.',
- },
- {
- question: 'Måste man köpa ett separat babybadkar?',
- answer: 'Det är inget krav, men under de första månaderna är det starkt rekommenderat. En nyfödd behöver konstant stöd i vatten och ett anpassat babybadkar ger rätt djup, storlek och temperaturhållning. Alternativet är ett badstöd som BabyDan Safe & Comfy i det vanliga familjebadkaret, då sparar du både plats och pengar. Diskbänken är inte idealiskt eftersom det belastar bärarens rygg och armar.',
- },
- {
- question: 'Hur rengörs och underhålls ett babybadkar?',
- answer: 'Skölj badkaret med varmt vatten direkt efter användning så att hud- och tvålrester inte hinner torka. En gång i veckan torkas det rent med mild diskmedelslösning. Låt torka stående på ena sidan, fukt kvar i vecken är vanligaste orsaken till mögel. Hopfällbara modeller som Stokke Flexi Bath och Beemoo CARE Assist behöver extra noga torkning i vikningarna. Undvik starka rengöringsmedel som lämnar rester.',
- },
- {
- question: 'Badstol eller badstöd, vad är skillnaden?',
- answer: 'Ett badstöd som BabyDan Safe & Comfy är en fast stödbåge som bebisen vilar mot utan att sätta sig upp. Passar de allra minsta 0 till 6 månader. En badstol som Bebeconfort Swivel är ett sittande stöd med 360-graders rotation, bra för bebisen som börjar ha lite mer kontroll över sin kropp. Badstolen passar längre upp mot 9 månader. Välj badstöd för nyfödda och badstol från cirka 3 till 4 månader.',
- },
+  {
+    question: 'Vilket babybadkar passar nyfödda bäst?',
+    answer: 'För de allra första månaderna rekommenderar vi BabyDan Safe & Comfy Badstöd eller Bebeconfort Swivel Badstol i det vanliga badkaret. Båda håller den nyfödda säkert lutad så att huvudet är ovanför vattnet och båda dina händer är fria att tvätta. Stokke Flexi Bath XL och Beemoo CARE Assist Hopfällbar Badbalja behöver kompletteras med ett separat badstöd för bebisar under fyra månader.',
+  },
+  {
+    question: 'Vilken vattentemperatur ska babybadet ha?',
+    answer: '37 till 38 grader Celsius är rätt, alltså ungefär samma som kroppstemperatur. Testa alltid med insidan av armbågen eller handleden, aldrig med handflatan, som är mindre känslig. Saknar badkaret inbyggd termometer, köp en separat plast- eller anktermometer för några tior. Fyll alltid på det kalla vattnet sist så att bebisen inte riskerar hamna i för hett vatten.',
+  },
+  {
+    question: 'Hur länge används ett babybadkar?',
+    answer: 'De flesta babybadkar räcker till barnet är cirka två till tre år (max 13 till 15 kg). Stokke Flexi Bath XL klarar längre, upp till fyra års ålder. Hauck Wash N Fold håller till cirka 2 år. Räkna med tolv till 24 månaders användning för ett standardbadkar. Badstolar och badstöd används bara de första 6 till 9 månaderna.',
+  },
+  {
+    question: 'Är ett hopfällbart badkar värt det?',
+    answer: 'Ja om du bor litet, reser ofta eller delar boende med farföräldrar och behöver kunna ta med badkaret. Stokke Flexi Bath XL och Hauck Wash N Fold viker ihop till några centimeter tjocklek. Beemoo CARE Assist är ett prisvärdigt hopfällbart alternativ. Nackdelen är att vikfunktionen kan kännas klumpig första gångerna. Bor du i hus med eget badrum är ett fast badkar enklare i längden.',
+  },
+  {
+    question: 'Måste man köpa ett separat babybadkar?',
+    answer: 'Det är inget krav, men under de första månaderna är det starkt rekommenderat. En nyfödd behöver konstant stöd i vatten och ett anpassat babybadkar ger rätt djup, storlek och temperaturhållning. Alternativet är ett badstöd som BabyDan Safe & Comfy i det vanliga familjebadkaret, då sparar du både plats och pengar. Diskbänken är inte idealiskt eftersom det belastar bärarens rygg och armar.',
+  },
+  {
+    question: 'Hur rengörs och underhålls ett babybadkar?',
+    answer: 'Skölj badkaret med varmt vatten direkt efter användning så att hud- och tvålrester inte hinner torka. En gång i veckan torkas det rent med mild diskmedelslösning. Låt torka stående på ena sidan, fukt kvar i vecken är vanligaste orsaken till mögel. Hopfällbara modeller som Stokke Flexi Bath och Beemoo CARE Assist behöver extra noga torkning i vikningarna. Undvik starka rengöringsmedel som lämnar rester.',
+  },
+  {
+    question: 'Badstol eller badstöd, vad är skillnaden?',
+    answer: 'Ett badstöd som BabyDan Safe & Comfy är en fast stödbåge som bebisen vilar mot utan att sätta sig upp. Passar de allra minsta 0 till 6 månader. En badstol som Bebeconfort Swivel är ett sittande stöd med 360-graders rotation, bra för bebisen som börjar ha lite mer kontroll över sin kropp. Badstolen passar längre upp mot 9 månader. Välj badstöd för nyfödda och badstol från cirka 3 till 4 månader.',
+  },
 ];
+
+export const articleMeta = {
+  title: "Bästa babybadkar 2026: Stokke, Beemoo och Hauck jämförda",
+  description: "Bäst i test babybadkar 2026: Stokke Flexi Bath XL vinner, tätt följd av Beemoo CARE Assist och Hauck Wash N Fold. Hopfällbart, badstol och badstöd jämfört.",
+  publishDate: "2026-05-22",
+  updatedDate: "2026-06-12",
+  category: "Badkar",
+  image: "/images/products/stokke-flexi-bath-xl-sandy-beige.webp",
+};
 ---
 
 <ArticleLayout
- title="Bästa babybadkar 2026: Stokke, Beemoo och Hauck jämförda"
- description="Bäst i test babybadkar 2026: Stokke Flexi Bath XL vinner, tätt följd av Beemoo CARE Assist och Hauck Wash N Fold. Hopfällbart, badstol och badstöd jämfört."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/badkar/"
- updatedDate="2026-05-22"
+  title="Bästa babybadkar 2026: Stokke, Beemoo och Hauck jämförda"
+  description="Bäst i test babybadkar 2026: Stokke Flexi Bath XL vinner, tätt följd av Beemoo CARE Assist och Hauck Wash N Fold. Hopfällbart, badstol och badstöd jämfört."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/badkar/"
+  datePublished="2026-05-22"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Stokke Flexi Bath XL vinner babybadkar bäst i test 2026. Den hopfällbara baljan tar minimal plats i kapprum eller bagage och håller stabilt grepp om vattnet även vid större belastning. Med en livslängd på 0 till 4 år räcker den genom hela småbarnstiden. Newborn Support och termometer köps separat.
-	 </p>
 
- <TopPick product={products[0]} description="Stokke Flexi Bath XL vinner 2026 på livslängd (0 till 4 år), hopfällbarhet och rengöringsbarhet. Tar minimal plats i kapprum eller bagage och behåller stabilt grepp om vatten även vid större belastning. Newborn Support och termometer köps separat." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-22" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, babybadkar 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilket babybadkar är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Stokke Flexi Bath XL vinner babybadkar bäst i test 2026: hopfällbar balja som tar minimal plats, stabilt grepp om vattnet och en livslängd på 0 till 4 år. Bäst hopfällbar budget: Beemoo CARE Assist. Bäst för resor: Hauck Wash N Fold. Bäst badstol: Bebeconfort Swivel. Newborn Support och termometer köps separat.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Stokke Flexi Bath XL</strong> vinner för resvänlighet och hållbarhet. <strong>Beemoo CARE Assist</strong> är bäst hopfällbar budget. <strong>Bebeconfort Swivel</strong> är bäst badstol.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Stokke"
+    name="Flexi Bath Badbalja XL"
+    image="/images/products/stokke-flexi-bath-xl-sandy-beige.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10260960&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/stokke-flexi-bath-badbalja-xl-sandy-beige"
+    store="Jollyroom"
+    alsoAt={[
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=412d7381-d717-4a61-a8e2-c69b558d2ec8&url=https://www.babysam.se/stokke-flexi-bath-xl-badbalja-sandy-beige-onesize' },
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=568006&url=https://www.babyland.se/stokke-flexi-bath-xl-med-varmekanslig-propp-sandy-beige' },
+    ]}
+    description="Vinner babybadkar 2026 på livslängd (0 till 4 år), hopfällbarhet och rengöringsbarhet. Tar minimal plats i kapprum eller bagage och behåller stabilt grepp om vattnet även vid större belastning. Newborn Support och termometer köps separat."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">De 5 bästa babybadkaren 2026: bäst i test</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Babybadkar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Stokke Flexi Bath Badbalja XL"
- image="/images/products/stokke-flexi-bath-xl-sandy-beige.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="0 till 4 år"
- pros={['Hopfällbart, perfekt för resor', 'XL-storlek passar barn upp till 4 år', 'Stabil och lätt att hålla rent', 'Tidlös design']}
- cons={['Badstöd och termometer kostar extra', 'Dyrare än de flesta alternativ']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10260960&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/stokke-flexi-bath-badbalja-xl-sandy-beige"
- additionalCtaHrefs={[
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=412d7381-d717-4a61-a8e2-c69b558d2ec8&url=https://www.babysam.se/stokke-flexi-bath-xl-badbalja-sandy-beige-onesize' },
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=568006&url=https://www.babyland.se/stokke-flexi-bath-xl-med-varmekanslig-propp-sandy-beige' },
- ]}
- />
+  {/* Vinnar-callout */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Stokke Flexi Bath XL</strong> vinner för resvänlighet och hållbarhet. <strong>Beemoo CARE Assist</strong> är bäst hopfällbar budget. <strong>Bebeconfort Swivel</strong> är bäst badstol.</p>
+  </div>
 
- <ProductCard
- name="Beemoo CARE Assist Hopfällbar Badbalja"
- image="/images/products/beemoo-care-assist-hopfallbar-badbalja.webp"
- badge="Bäst hopfällbar budget"
- rating={4.6}
- ageRange="0 till 3 år"
- pros={['Hopfällbar, tar minimal plats', 'Prisvärdig jämfört med Stokke', 'Enkel att rengöra', 'Stabil och robust']}
- cons={['Inget badstöd inkluderat', 'Ingen inbyggd termometer']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10294840&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/beemoo-care-assist-hopfallbar-badbalja-deep-grey"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Hauck Wash N Fold Badbalja L"
- image="/images/products/hauck-wash-n-fold-badbalja.webp"
- badge="Bäst för resor"
- rating={4.5}
- ageRange="0 till 2 år"
- pros={['Viks ihop för transport och förvaring', 'Kompakt och lättpackad', 'Stor kapacitet trots litet format', 'Stabil vid användning']}
- cons={['Kortare livslängd upp till 2 år', 'Inget badstöd eller termometer']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285416&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/hauck-wash-n-fold-badbalja-l-white-stone"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Stokke Flexi Bath Badbalja XL, bäst i test</h2>
+    <MoneyProductCard
+      brand="Stokke"
+      name="Stokke Flexi Bath Badbalja XL"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/stokke-flexi-bath-xl-sandy-beige.webp"
+      imageAlt="Stokke Flexi Bath Badbalja XL hopfällbart babybadkar"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10260960&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/stokke-flexi-bath-badbalja-xl-sandy-beige"
+      alsoAt={[
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=412d7381-d717-4a61-a8e2-c69b558d2ec8&url=https://www.babysam.se/stokke-flexi-bath-xl-badbalja-sandy-beige-onesize' },
+        { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=568006&url=https://www.babyland.se/stokke-flexi-bath-xl-med-varmekanslig-propp-sandy-beige' },
+      ]}
+      pros={['Hopfällbart, perfekt för resor', 'XL-storlek passar barn upp till 4 år', 'Stabil och lätt att hålla rent', 'Tidlös design']}
+      cons={['Badstöd och termometer kostar extra', 'Ligger i premiumsegmentet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Stokke Flexi Bath XL vinner babybadkar bäst i test 2026. Den hopfällbara baljan viks ihop till några centimeter tjocklek och tar minimal plats i kapprum eller bagage, samtidigt som den behåller stabilt grepp om vattnet även vid större belastning. XL-storleken ger en livslängd på 0 till 4 år, så den räcker genom hela småbarnstiden.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Newborn Support och termometer köps separat, och stolen ligger i premiumsegmentet. Men för resvänlighet, hållbarhet och hur lätt den är att hålla ren är den svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10260960&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/stokke-flexi-bath-badbalja-xl-sandy-beige" />
 
- <ProductCard
- name="Bebeconfort Swivel Badstol"
- image="/images/products/bebeconfort-swivel-badstol.webp"
- badge="Bäst badstol"
- rating={4.6}
- ageRange="0 till 9 mån"
- pros={['Svängbar 360-graders rotation', 'Frigör båda händerna under bad', 'Ergonomiskt stöd för bebisens rygg och huvud', 'Passar i befintligt badkar']}
- cons={['Enbart för de allra minsta (0 till 9 mån)', 'Kräver befintligt badkar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272919&url=https://www.jollyroom.se/babyprodukter/badrummet/badstolar/bebeconfort-swivel-badstol-beige"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Beemoo CARE Assist Hopfällbar Badbalja, bäst hopfällbar budget</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo CARE Assist Hopfällbar Badbalja"
+      rating={4.6}
+      rank={2}
+      badge="Bäst hopfällbar budget"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/beemoo-care-assist-hopfallbar-badbalja.webp"
+      imageAlt="Beemoo CARE Assist Hopfällbar Badbalja"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10294840&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/beemoo-care-assist-hopfallbar-badbalja-deep-grey"
+      pros={['Hopfällbar, tar minimal plats', 'Prisvärdig jämfört med Stokke', 'Enkel att rengöra', 'Stabil och robust']}
+      cons={['Inget badstöd inkluderat', 'Ingen inbyggd termometer']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo CARE Assist är valet för dig som vill ha ett hopfällbart babybadkar utan premiumprislapp. Den viks ihop och tar minimal plats, är stabil och robust i användning och enkel att rengöra. För bebis 0 till 3 år täcker den de viktigaste åren.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den saknar både badstöd och inbyggd termometer, så de första månaderna behöver du komplettera med ett separat stöd. Men för familjen som vill ha hopfällbarheten till ett lägre pris är den ett utmärkt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10294840&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/beemoo-care-assist-hopfallbar-badbalja-deep-grey" />
 
- <ProductCard
- name="BabyDan Safe & Comfy Badstöd"
- image="/images/products/babydan-safe-comfy-badstod.webp"
- badge="Bäst badstöd"
- rating={4.5}
- ageRange="0 till 6 mån"
- pros={['Mjukt och skonsamt mot känslig babyhud', 'Ergonomisk lutningsvinkel', 'Passar i de flesta badkar och badkarsmodeller', 'Enkel att rengöra']}
- cons={['Enbart för nyfödda (0 till 6 mån)', 'Ingen rotation som Bebeconfort']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285224&url=https://www.jollyroom.se/babyprodukter/badrummet/badstod/babydan-safe-comfy-badstod"
- additionalCtaHrefs={[
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=618ee8ee-3660-4731-9381-6502bc6d4854&url=https://www.babysam.se/babydan-badstol-safe-comfy-onesize' },
- ]}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Hauck Wash N Fold Badbalja L, bäst för resor</h2>
+    <MoneyProductCard
+      brand="Hauck"
+      name="Hauck Wash N Fold Badbalja L"
+      rating={4.5}
+      rank={3}
+      badge="Bäst för resor"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/hauck-wash-n-fold-badbalja.webp"
+      imageAlt="Hauck Wash N Fold Badbalja L hopfällbar"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285416&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/hauck-wash-n-fold-badbalja-l-white-stone"
+      pros={['Viks ihop för transport och förvaring', 'Kompakt och lättpackad', 'Stor kapacitet trots litet format', 'Stabil vid användning']}
+      cons={['Kortare livslängd upp till 2 år', 'Inget badstöd eller termometer']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Hauck Wash N Fold är gjord för dig som reser eller har ont om förvaringsutrymme. Den viks ihop för transport och förvaring, är kompakt och lättpackad och har stor kapacitet trots det lilla formatet. Den står stabilt under användning.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Livslängden är kortare, upp till cirka 2 år, och varken badstöd eller termometer ingår. Men för resvänlighet och liten förvaring är den ett smidigt alternativ till de större baljorna.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285416&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/hauck-wash-n-fold-badbalja-l-white-stone" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide babybadkar 2026: vad du ska tänka på</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Bebeconfort Swivel Badstol, bäst badstol</h2>
+    <MoneyProductCard
+      brand="Bebeconfort"
+      name="Bebeconfort Swivel Badstol"
+      rating={4.6}
+      rank={4}
+      badge="Bäst badstol"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/bebeconfort-swivel-badstol.webp"
+      imageAlt="Bebeconfort Swivel Badstol med 360-graders rotation"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272919&url=https://www.jollyroom.se/babyprodukter/badrummet/badstolar/bebeconfort-swivel-badstol-beige"
+      pros={['Svängbar 360-graders rotation', 'Frigör båda händerna under bad', 'Ergonomiskt stöd för bebisens rygg och huvud', 'Passar i befintligt badkar']}
+      cons={['Enbart för de allra minsta (0 till 9 mån)', 'Kräver befintligt badkar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bebeconfort Swivel är vår bästa badstol. Den svängbara 360-graders rotationen gör det enkelt att vända bebisen, och det ergonomiska stödet håller rygg och huvud rätt så att båda dina händer frigörs under badet. Den passar i ett befintligt badkar utan extra balja.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den är enbart för de allra minsta, 0 till 9 månader, och kräver att du redan har ett badkar. Men som komplement de första månaderna är rotationen och stödet svårslaget.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272919&url=https://www.jollyroom.se/babyprodukter/badrummet/badstolar/bebeconfort-swivel-badstol-beige" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Räkna ut hur länge babybadkaret ska räcka</h3>
- <p>Vill du köpa ett badkar och vara klar i flera år, välj Stokke Flexi Bath XL som klarar 0 till 4 år. Räcker det med ett kompakt hopfällbart alternativ de första åren är Beemoo CARE Assist ett utmärkt val till ett lägre pris. Tvillingfamiljer eller de som planerar fler barn vinner snabbt på ett kvalitetsalternativ som Stokke. Badstolar och badstöd är komplement för de första månaderna, inte ersättningar för ett babybadkar.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. BabyDan Safe & Comfy Badstöd, bäst badstöd</h2>
+    <MoneyProductCard
+      brand="BabyDan"
+      name="BabyDan Safe & Comfy Badstöd"
+      rating={4.5}
+      rank={5}
+      badge="Bäst badstöd"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/babydan-safe-comfy-badstod.webp"
+      imageAlt="BabyDan Safe & Comfy Badstöd för nyfödda"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285224&url=https://www.jollyroom.se/babyprodukter/badrummet/badstod/babydan-safe-comfy-badstod"
+      alsoAt={[
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=618ee8ee-3660-4731-9381-6502bc6d4854&url=https://www.babysam.se/babydan-badstol-safe-comfy-onesize' },
+      ]}
+      pros={['Mjukt och skonsamt mot känslig babyhud', 'Ergonomisk lutningsvinkel', 'Passar i de flesta badkar och badkarsmodeller', 'Enkel att rengöra']}
+      cons={['Enbart för nyfödda (0 till 6 mån)', 'Ingen rotation som Bebeconfort']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BabyDan Safe & Comfy är vårt bästa rena badstöd. Det mjuka materialet är skonsamt mot känslig babyhud och den ergonomiska lutningsvinkeln håller den nyfödda säkert lutad. Det passar i de flesta badkar och badkarsmodeller och är enkelt att rengöra.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det är enbart för nyfödda, 0 till 6 månader, och saknar den rotation som Bebeconfort har. Men för de första månaderna när bebisen behöver konstant stöd är det ett tryggt och prisvärt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285224&url=https://www.jollyroom.se/babyprodukter/badrummet/badstod/babydan-safe-comfy-badstod" />
 
- <h3>Termometer i babybadkaret: inbyggd eller separat?</h3>
- <p>Rätt vattentemperatur är 37 till 38 grader. För varmt vatten kan brännskada den känsliga babyhuden, för kallt vatten gör att bebisen fryser snabbt. Saknar badkaret inbyggd termometer, köp en separat plast- eller anktermometer för några tior. Att gissa med armbågen funkar men är inte lika tillförlitligt över tid.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem babybadkar och badstöd granskade, en vinner totalt. Stokke Flexi Bath XL tar förstaplatsen på resvänlighet och livslängd, Beemoo CARE Assist är bäst hopfällbar budget och Bebeconfort Swivel vinner bland badstolarna. Vill du jämföra modeller mot varandra? Se vår <a href="/badkar/stokke-flexi-bath-vs-ikea-lattsam/" class="text-accent hover:text-accent-dark underline">jämförelse av Stokke Flexi Bath vs IKEA LATTSAM</a> eller läs om <a href="/guider/saker-sovmiljo/" class="text-accent hover:text-accent-dark underline">säker sovmiljö</a>.
+    </p>
 
- <h3>Badstöd i babybadkaret frigör båda händerna</h3>
- <p>Nyfödda behöver konstant stöd i vatten under första halvåret. Ett badstöd frigör båda dina händer att tvätta ordentligt. BabyDan Safe & Comfy Badstöd är ett rent badstöd som passar i ett befintligt badkar. Bebeconfort Swivel Badstol är ett uppgraderat alternativ med 360-graders rotation. Med Stokke Flexi Bath XL och Beemoo CARE Assist behöver du köpa till stöd separat eller hålla bebisen med en hand de första månaderna.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Babybadkar 2026" />
 
- <h3>Hopfällbart eller fast?</h3>
- <ul>
- <li><strong>Hopfällbara modeller:</strong> Stokke Flexi Bath XL, Beemoo CARE Assist och Hauck Wash N Fold viks ihop till bara några centimeter tjocklek. Perfekt för litet badrum, lägenhet eller om badkaret ska följa med till farmor och farfar regelbundet.</li>
- <li><strong>Fasta modeller:</strong> Bebeconfort Swivel och BabyDan-badstödet är fasta men kompakta. Tänk över förvaringsutrymmet innan du väljer.</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide babybadkar 2026: vad du ska tänka på</h2>
 
- <h3>Säkerhet vid bebisbad: regler du aldrig ska missa</h3>
- <ul>
- <li>Lämna aldrig en bebis ensam i vatten, inte ens i några sekunder. En bebis kan drunkna i 2,5 cm vatten.</li>
- <li>Kontrollera att botten är halksäker.</li>
- <li>Stäng dörren om hund eller äldre syskon finns hemma.</li>
- <li>Ha allt du behöver (handduk, kläder, blöja) inom räckhåll innan barnet sänks ner i vattnet.</li>
- <li>Håll badet kort de första månaderna, fem till tio minuter räcker.</li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Räkna ut hur länge babybadkaret ska räcka</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Vill du köpa ett badkar och vara klar i flera år, välj Stokke Flexi Bath XL som klarar 0 till 4 år. Räcker det med ett kompakt hopfällbart alternativ de första åren är Beemoo CARE Assist ett utmärkt val till ett lägre pris. Tvillingfamiljer eller de som planerar fler barn vinner snabbt på ett kvalitetsalternativ som Stokke. Badstolar och badstöd är komplement för de första månaderna, inte ersättningar för ett babybadkar.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Jämförelser babybadkar</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/badkar/stokke-flexi-bath-vs-ikea-lattsam/" class="text-accent underline">Stokke Flexi Bath vs IKEA LATTSAM 2026, vilket babybadkar ska du välja?</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Termometer i babybadkaret: inbyggd eller separat?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Rätt vattentemperatur är 37 till 38 grader. För varmt vatten kan brännskada den känsliga babyhuden, för kallt vatten gör att bebisen fryser snabbt. Saknar badkaret inbyggd termometer, köp en separat plast- eller anktermometer för några tior. Att gissa med armbågen funkar men är inte lika tillförlitligt över tid.
+    </p>
 
- <div class="mt-4 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/blojor/" class="text-accent underline">Bästa blöjor 2026, engångsblöjor jämförda och rankade</a></li>
- <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Badstöd i babybadkaret frigör båda händerna</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nyfödda behöver konstant stöd i vatten under första halvåret. Ett badstöd frigör båda dina händer att tvätta ordentligt. BabyDan Safe & Comfy Badstöd är ett rent badstöd som passar i ett befintligt badkar. Bebeconfort Swivel Badstol är ett uppgraderat alternativ med 360-graders rotation. Med Stokke Flexi Bath XL och Beemoo CARE Assist behöver du köpa till stöd separat eller hålla bebisen med en hand de första månaderna.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hopfällbart eller fast?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Hopfällbara modeller som Stokke Flexi Bath XL, Beemoo CARE Assist och Hauck Wash N Fold viks ihop till bara några centimeter tjocklek. Perfekt för litet badrum, lägenhet eller om badkaret ska följa med till farmor och farfar regelbundet. Fasta modeller som Bebeconfort Swivel och BabyDan-badstödet är fasta men kompakta. Tänk över förvaringsutrymmet innan du väljer.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet vid bebisbad: regler du aldrig ska missa</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Lämna aldrig en bebis ensam i vatten, inte ens i några sekunder. En bebis kan drunkna i 2,5 cm vatten. Kontrollera att botten är halksäker och stäng dörren om hund eller äldre syskon finns hemma. Ha allt du behöver (handduk, kläder, blöja) inom räckhåll innan barnet sänks ner i vattnet, och håll badet kort de första månaderna, fem till tio minuter räcker.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Stokke Flexi Bath Badbalja XL',
- description: 'Hopfällbart XL-babybadkar som passar från nyfödd till 4 år. Tar minimal plats vikt och är lätt att ta med på resor. Stabilt och lätt att hålla rent.',
- image: 'https://bebisguiden.se/images/products/stokke-flexi-bath-xl-sandy-beige.webp',
- brand: 'Stokke',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Beemoo CARE Assist Hopfällbar Badbalja',
- description: 'Prisvärdig hopfällbar badbalja för bebis 0 till 3 år. Kompakt förvaring och enkel att rengöra.',
- image: 'https://bebisguiden.se/images/products/beemoo-care-assist-hopfallbar-badbalja.webp',
- brand: 'Beemoo',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Hauck Wash N Fold Badbalja L',
- description: 'Hopfällbar badbalja i L-storlek, perfekt för resor och förvaring. Passar bebis 0 till 2 år.',
- image: 'https://bebisguiden.se/images/products/hauck-wash-n-fold-badbalja.webp',
- brand: 'Hauck',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'Bebeconfort Swivel Badstol',
- description: 'Svängbar 360-graders badstol för bebis 0 till 9 månader. Frigör båda händerna och passar i befintligt badkar.',
- image: 'https://bebisguiden.se/images/products/bebeconfort-swivel-badstol.webp',
- brand: 'Bebeconfort',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'BabyDan Safe & Comfy Badstöd',
- description: 'Mjukt och ergonomiskt badstöd för nyfödda 0 till 6 månader. Passar i de flesta babybadkar.',
- image: 'https://bebisguiden.se/images/products/babydan-safe-comfy-badstod.webp',
- brand: 'BabyDan',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- ]} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om badsäkerhet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Badsäkerhet handlar om ständig uppsikt. Nedan är Konsumentverkets viktigaste råd vid bad och vatten.
+    </p>
 
-<div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/guider/bebis-utslag/" class="text-accent underline">Utslag hos bebis, hudvård vid bad</a></li>
- <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, allt du behöver</a></li>
- <li><a href="/babyklader/" class="text-accent underline">Bästa babykläder 2026, mjuka material</a></li>
- <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö, badruten för bättre sömn</a></li>
- </ul>
-</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Alltid intill"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsakerhet-sa-har-kan-du-barnsakra/"
+        year="2026"
+      >
+        Var alltid intill barnet vid bad och vatten. Lämna aldrig ett litet barn ensamt i badet, inte ens för en kort stund.
+      </StatHighlight>
+      <StatHighlight
+        figure="Uppsikt"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsakerhet-sa-har-kan-du-barnsakra/"
+        year="2026"
+      >
+        Barn är nyfikna och utforskar sin omgivning, men de förstår inte alltid vilka risker som finns. Därför är det viktigt att du som vuxen håller barnet under uppsikt.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsakerhet-sa-har-kan-du-barnsakra/"
+    >
+      "Var alltid intill barnet vid bad och vatten."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem babybadkar och badstöd utifrån livslängd (lämplig ålder), hopfällbarhet och förvaring, säkerhet och stöd för bebisen, rengöringsbarhet och daglig användbarhet. Produkterna är valda bland de mest sålda och eftersökta badbaljorna, badstolarna och badstöden i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/badkar/stokke-flexi-bath-vs-ikea-lattsam/" class="text-accent underline">Stokke Flexi Bath vs IKEA LATTSAM 2026, vilket babybadkar ska du välja?</a></li>
+        <li><a href="/blojor/" class="text-accent underline">Bästa blöjor 2026, engångsblöjor jämförda och rankade</a></li>
+        <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/guider/bebis-utslag/" class="text-accent underline">Utslag hos bebis, hudvård vid bad</a></li>
+        <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, allt du behöver</a></li>
+        <li><a href="/babyklader/" class="text-accent underline">Bästa babykläder 2026, mjuka material</a></li>
+        <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö, badruten för bättre sömn</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa babybadkaret 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10260960&url=https://www.jollyroom.se/babyprodukter/badrummet/badbaljor/stokke-flexi-bath-badbalja-xl-sandy-beige"
+    text="Bra pris hos Jollyroom"
+    productName="Stokke Flexi Bath Badbalja XL"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

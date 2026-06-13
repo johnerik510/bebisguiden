@@ -1,19 +1,15 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import ComparisonTable from '../../../components/ComparisonTable.astro';
-import TopPick from '../../../components/TopPick.astro';
+import MoneyByline from '../../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../../components/MoneyCTABox.astro';
 import FAQ from '../../../components/FAQ.astro';
-import ProductSchema from '../../../components/ProductSchema.astro';
-import CTABox from '../../../components/CTABox.astro';
-
-export const articleMeta = {
-  title: "Bästa babygrind 2026: BabyDan Premier vinner testet",
-  description: "Babygrind bäst i test 2026: BabyDan Premier vinner spänngrind, BabyDan Flex L vinner skruvgrind. Vi jämför säkerhet, bredd och montering.",
-  publishDate: "2026-05-18",
-  category: "Säkerhet",
-  image: "/images/products/babydan-premier-spanngrind-vit-2026.webp",
-};
+import StickyCTA from '../../../components/StickyCTA.astro';
+import StatHighlight from '../../../components/StatHighlight.astro';
+import ExpertQuote from '../../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -21,13 +17,19 @@ const breadcrumbs = [
   { label: 'Babygrindar' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
   {
     name: 'BabyDan Premier Spänngrind, Vit',
-    badge: 'Bäst i test',
+    brand: 'BabyDan',
     rating: 4.7,
-    image: '/images/products/babydan-premier-spanngrind-vit-2026.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit',
+    badge: 'Bäst i test',
+    usps: ['Utan borrning', 'Justerbar bredd', 'Enhandsöppning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit',
+    imageUrl: '/images/products/babydan-premier-spanngrind-vit-2026.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Spänngrind utan borrning för dörröppningar och nedre trappa. Justerbar 67 till 105 cm med förlängning. EN 1930.',
     features: {
       'Typ': 'Spänngrind (utan borrning)',
       'Bredd': '67 till 105 cm',
@@ -35,13 +37,19 @@ const products = [
       'Material': 'Stål',
       'Öppning': 'En hand',
     },
+    alsoAt: [],
   },
   {
     name: 'BabyDan Flex L Skruvgrind, Vit',
-    badge: 'Bäst för trapptopp',
+    brand: 'BabyDan',
     rating: 4.7,
-    image: '/images/products/babydan-flex-l-skruvgrind-vit-2026.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402415&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-skruvgrind-vit',
+    badge: 'Bäst för trapptopp',
+    usps: ['Godkänd för trapptopp', 'Bred öppning', 'Stabilt stål'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402415&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-skruvgrind-vit',
+    imageUrl: '/images/products/babydan-flex-l-skruvgrind-vit-2026.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Skruvmonterad babygrind godkänd för trapptoppen. Bredd 62 till 106,8 cm. EN 1930-certifierad.',
     features: {
       'Typ': 'Skruvgrind (väggmonterad)',
       'Bredd': '62 till 106,8 cm',
@@ -49,13 +57,19 @@ const products = [
       'Material': 'Stål',
       'Öppning': 'En hand',
     },
+    alsoAt: [],
   },
   {
     name: 'Safety 1st Easy Close Säkerhetsgrind Metall, White',
-    badge: 'Bäst budget',
+    brand: 'Safety 1st',
     rating: 4.5,
-    image: '/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white',
+    badge: 'Bäst budget',
+    usps: ['Lågt pris', 'Stabil metall', 'Montering utan verktyg'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white',
+    imageUrl: '/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Tryckmonterad babygrind i metall för dörröppningar. EN 1930-certifierad. Enkel montering utan verktyg.',
     features: {
       'Typ': 'Spänngrind (utan borrning)',
       'Bredd': '73 till 80 cm',
@@ -63,13 +77,19 @@ const products = [
       'Material': 'Metall',
       'Öppning': 'En hand',
     },
+    alsoAt: [],
   },
   {
     name: 'Hauck Clear Step 2 Spänngrind, White',
-    badge: 'Bäst sikt',
+    brand: 'Hauck',
     rating: 4.5,
-    image: '/images/products/hauck-clear-step-2-spanngrind-white.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10262562&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/hauck-clear-step-2-spanngrind-white',
+    badge: 'Bäst sikt',
+    usps: ['Genomskinlig akryl', 'Ren sikt', 'Enhandsöppning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10262562&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/hauck-clear-step-2-spanngrind-white',
+    imageUrl: '/images/products/hauck-clear-step-2-spanngrind-white.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Spänngrind med genomskinlig akryl för bättre sikt. EN 1930-certifierad.',
     features: {
       'Typ': 'Spänngrind (utan borrning)',
       'Bredd': '75 till 80 cm',
@@ -77,13 +97,19 @@ const products = [
       'Material': 'Metall + akryl',
       'Öppning': 'En hand',
     },
+    alsoAt: [],
   },
   {
     name: 'Beemoo SAFE Flat Step Spänngrind, White',
-    badge: 'Bäst snubbelfri',
+    brand: 'Beemoo',
     rating: 4.4,
-    image: '/images/products/beemoo-safe-flat-step-spanngrind-white.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10198922&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/beemoo-safe-flat-step-spanngrind-white',
+    badge: 'Bäst snubbelfri',
+    usps: ['Plant nedersta steg', 'Stabil stålram', 'EN 1930'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10198922&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/beemoo-safe-flat-step-spanngrind-white',
+    imageUrl: '/images/products/beemoo-safe-flat-step-spanngrind-white.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Spänngrind med plant nedersta steg, ingen snubbelrisk. EN 1930-certifierad.',
     features: {
       'Typ': 'Spänngrind (utan borrning)',
       'Bredd': '75 till 82 cm',
@@ -91,10 +117,11 @@ const products = [
       'Material': 'Stål',
       'Öppning': 'En hand',
     },
+    alsoAt: [],
   },
 ];
 
-const featureLabels = ['Typ', 'Bredd', 'Höjd', 'Material', 'Öppning'];
+const specLabels = ['Typ', 'Bredd', 'Höjd', 'Material', 'Öppning'];
 
 const faqItems = [
   {
@@ -126,6 +153,15 @@ const faqItems = [
     answer: 'Ja, i dörröppningar och vid nedre trappan fungerar spänngrindar utmärkt och kräver inga hål. BabyDan Premier, Safety 1st Easy Close och Hauck Clear Step 2 är populära alternativ. Vid trapptoppen är det däremot tvärtom, där är skruvgrind enda godkända alternativet. Hyresgäster som vill undvika hål kan välja en skruvgrind med små monteringsskruvar och spackla igen vid utflytt.',
   },
 ];
+
+export const articleMeta = {
+  title: "Bästa babygrind 2026: BabyDan Premier vinner testet",
+  description: "Babygrind bäst i test 2026: BabyDan Premier vinner spänngrind, BabyDan Flex L vinner skruvgrind. Vi jämför säkerhet, bredd och montering.",
+  publishDate: "2026-05-18",
+  updatedDate: "2026-06-12",
+  category: "Säkerhet",
+  image: "/images/products/babydan-premier-spanngrind-vit-2026.webp",
+};
 ---
 
 <ArticleLayout
@@ -133,147 +169,359 @@ const faqItems = [
   description="Babygrind bäst i test 2026: BabyDan Premier vinner spänngrind, BabyDan Flex L vinner skruvgrind för trapptoppen. Vi jämför säkerhet, bredd och montering."
   breadcrumbs={breadcrumbs}
   canonical="https://bebisguiden.se/sakerhet/babygrindar/"
-  updatedDate="2026-05-18"
   datePublished="2026-05-18"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-	 BabyDan Premier Spänngrind vinner babygrind bäst i test 2026. Den monteras utan borrning och har justerbar bredd 67 till 105 cm med förlängning. Den stabila stålgrinden öppnas med en hand, vilket fungerar även med en arm full av tvätt eller bebis i famnen.
-	 </p>
 
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-18" dateModified="2026-06-12" />
+
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken babygrind är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      BabyDan Premier Spänngrind är bäst i test 2026: monteras utan borrning, justerbar bredd 67 till 105 cm med förlängning, stabil stålgrind med enhandsöppning och EN 1930-certifiering. Bäst för trapptoppen: BabyDan Flex L Skruvgrind. Budgetvinnare: Safety 1st Easy Close.
+    </p>
+  </div>
+
+  {/* Säkerhetsnot: trapptoppen */}
   <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
     <p class="text-sm font-semibold text-amber-900 mb-1">Viktigt om trapptoppen</p>
     <p class="text-sm text-amber-800">Vid trapptoppen krävs alltid en <strong>skruvmonterad grind</strong>. Tryckmonterade spänngrindar är inte godkända för trapptopp, de kan ge efter när barnet lutar sig mot dem och orsaka fall.</p>
   </div>
 
-  <TopPick product={products[0]} description="BabyDan Premier Spänngrind vinner test av spänngrindar 2026. Enkel installation utan borrning, justerbar bredd 67 till 105 cm med förlängning och stabilt stålutförande. Enhandsöppning gör att den fungerar även med tvättkorg eller bebis i famnen." />
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="BabyDan"
+    name="Premier Spänngrind, Vit"
+    image="/images/products/babydan-premier-spanngrind-vit-2026.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit"
+    store="Jollyroom"
+    description="Vinner test av spänngrindar 2026: enkel installation utan borrning, justerbar bredd 67 till 105 cm med förlängning och stabilt stålutförande. Enhandsöppning gör att den fungerar även med tvättkorg eller bebis i famnen."
+  />
 
-  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, babygrindar 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Babygrindar 2026" />
 
-  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+  {/* Vinnar-callout */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
     <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
     <p class="text-sm text-text-light"><strong>BabyDan Premier</strong> vinner totalt bland spänngrindar. <strong>BabyDan Flex L</strong> är säkrast för trapptoppen. <strong>Safety 1st Easy Close</strong> är budgetvinnaren under 500 kronor.</p>
   </div>
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
-  <div class="space-y-4">
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. BabyDan Premier Spänngrind, bäst i test</h2>
+    <MoneyProductCard
+      brand="BabyDan"
       name="BabyDan Premier Spänngrind, Vit"
-      image="/images/products/babydan-premier-spanngrind-vit-2026.webp"
-      badge="Bäst i test"
       rating={4.7}
-      ageRange="6 mån+"
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/babydan-premier-spanngrind-vit-2026.webp"
+      imageAlt="BabyDan Premier spänngrind i vit för babysäkerhet"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit"
       pros={['Inga hål i väggen', 'Justerbar bredd med förlängning', 'Enhandsöppning', 'EN 1930-certifierad']}
       cons={['Får inte sitta vid trapptoppen', 'Kräver jämna väggar för bäst grepp']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BabyDan Premier Spänngrind vinner babygrind bäst i test 2026. Den monteras med fjädertryck mot väggen utan borrning och passar dörröppningar och nedre trappavsatsen. Med medföljande förlängning täcker den 67 till 105 cm, och den stabila stålramen är EN 1930-certifierad.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Enhandsöppningen är det som gör den till vardagsvinnare, du öppnar den med en arm full av tvätt eller bebis i famnen. Nackdelen är att den inte får sitta vid trapptoppen och att den kräver jämna väggar för bäst grepp.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. BabyDan Flex L Skruvgrind, bäst för trapptopp</h2>
+    <MoneyProductCard
+      brand="BabyDan"
       name="BabyDan Flex L Skruvgrind, Vit"
-      image="/images/products/babydan-flex-l-skruvgrind-vit-2026.webp"
-      badge="Bäst för trapptopp"
       rating={4.7}
-      ageRange="6 mån+"
+      rank={2}
+      badge="Bäst för trapptopp"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/babydan-flex-l-skruvgrind-vit-2026.webp"
+      imageAlt="BabyDan Flex L skruvgrind monterad i trappöppning"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402415&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-skruvgrind-vit"
       pros={['Godkänd för trapptoppen', 'Bred öppning 62 till 106,8 cm', 'Enhandsöppning', 'Stabilt stålutförande']}
       cons={['Kräver borrning i vägg', 'Tyngre än spänngrindar']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402415&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-skruvgrind-vit"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BabyDan Flex L Skruvgrind är valet för trapptoppen, där en skruvmonterad grind är ett absolut säkerhetskrav. Den borras fast i väggen och kan inte tryckas loss av ett barn som lutar sig mot den. Den breda öppningen 62 till 106,8 cm täcker de flesta trappavsatser.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Stålutförandet är stabilt och enhandsöppningen gör daglig passage smidig. Nackdelarna är att den kräver borrning i väggen och att den väger mer än en spänngrind, men vid trapptoppen finns inget alternativ.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=402415&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/skruvgrindar/babydan-flex-l-skruvgrind-vit" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Safety 1st Easy Close, bäst budget</h2>
+    <MoneyProductCard
+      brand="Safety 1st"
       name="Safety 1st Easy Close Säkerhetsgrind Metall, White"
-      image="/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp"
-      badge="Bäst budget"
       rating={4.5}
-      ageRange="6 mån+"
+      rank={3}
+      badge="Bäst budget"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/safety-1st-easy-close-sakerhetsgrind-metall-white.webp"
+      imageAlt="Safety 1st Easy Close säkerhetsgrind i metall vit"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
       pros={['Lågt pris', 'Stabil metallkonstruktion', 'Enkel montering utan verktyg', 'CE-certifierad']}
       cons={['Smalare justeringsintervall', 'Får inte sitta vid trapptoppen']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Safety 1st Easy Close är budgetvinnaren för dig som behöver en grind i hallen eller vid nedre trappavsatsen utan att betala premiumpris. Den tryckmonteras utan verktyg och har en stabil metallkonstruktion trots det låga priset.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Justeringsintervallet 73 till 80 cm är smalare än hos de bredare modellerna, så mät din öppning först. Som spänngrind får den heller inte sitta vid trapptoppen. För dörröppningar och nedre trappan är den ett prisvärt och CE-certifierat val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10068324&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/safety-1st-easy-close-metal-spanngrind-white" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Hauck Clear Step 2 Spänngrind, bäst sikt</h2>
+    <MoneyProductCard
+      brand="Hauck"
       name="Hauck Clear Step 2 Spänngrind, White"
-      image="/images/products/hauck-clear-step-2-spanngrind-white.webp"
-      badge="Bäst sikt"
       rating={4.5}
-      ageRange="6 mån+"
+      rank={4}
+      badge="Bäst sikt"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/hauck-clear-step-2-spanngrind-white.webp"
+      imageAlt="Hauck Clear Step 2 spänngrind med genomskinlig akryl"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10262562&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/hauck-clear-step-2-spanngrind-white"
       pros={['Genomskinlig akryl, ren sikt', 'Smälter in i moderna hem', 'Enhandsöppning', 'EN 1930-certifierad']}
       cons={['Akryl kräver mjuk rengöring', 'Något dyrare än standardgrindar']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10262562&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/hauck-clear-step-2-spanngrind-white"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Hauck Clear Step 2 sticker ut med en genomskinlig akrylpanel som ger ren sikt genom grinden. Den smälter in i moderna hem där en traditionell spjälgrind kan kännas klumpig, och du ser barnet tydligt även med grinden stängd.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Enhandsöppningen och EN 1930-certifieringen finns på plats. Akrylen kräver mjuk rengöring för att inte repas, och grinden är något dyrare än standardmodeller. För den som värderar sikt och design är den ett tydligt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10262562&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/hauck-clear-step-2-spanngrind-white" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Beemoo SAFE Flat Step, bäst snubbelfri</h2>
+    <MoneyProductCard
+      brand="Beemoo"
       name="Beemoo SAFE Flat Step Spänngrind, White"
-      image="/images/products/beemoo-safe-flat-step-spanngrind-white.webp"
-      badge="Bäst snubbelfri"
       rating={4.4}
-      ageRange="6 mån+"
+      rank={5}
+      badge="Bäst snubbelfri"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/beemoo-safe-flat-step-spanngrind-white.webp"
+      imageAlt="Beemoo SAFE Flat Step spänngrind med plant nedersta steg"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10198922&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/beemoo-safe-flat-step-spanngrind-white"
       pros={['Plant nedersta steg, snubbelfri passage', 'Stabil stålram', 'Justerbar 75 till 82 cm', 'EN 1930-certifierad']}
       cons={['Smalare öppningsintervall standard', 'Får inte sitta vid trapptoppen']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10198922&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/beemoo-safe-flat-step-spanngrind-white"
     />
-  </div>
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo SAFE Flat Step löser ett vanligt problem med spänngrindar: tröskeln längst ned som man snubblar på. Det nedersta steget är plant, vilket ger en snubbelfri passage som är skön i en korridor du går igenom många gånger om dagen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Stålramen är stabil och grinden är EN 1930-certifierad. Standardintervallet 75 till 82 cm är något smalare, så mät din öppning. Som spänngrind får den inte sitta vid trapptoppen, men i hallen och mellan rum är den ett genomtänkt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10198922&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/beemoo-safe-flat-step-spanngrind-white" />
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide babygrind 2026: så väljer du rätt grind</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem babygrindar granskade, en vinner totalt. BabyDan Premier tar förstaplatsen bland spänngrindar, BabyDan Flex L är säkrast för trapptoppen och Safety 1st Easy Close är budgetvinnaren. Vill du läsa mer? Se vår guide till <a href="/sakerhet/babygrindar/trappgrind/" class="text-accent hover:text-accent-dark underline">trappgrind för övre och nedre trappsteg</a> eller <a href="/sakerhet/babygrindar/utan-borrning/" class="text-accent hover:text-accent-dark underline">babygrind utan borrning</a>.
+    </p>
 
-  <img src="/images/products/babydan-flex-l-skruvgrind-vit-2026.webp" alt="BabyDan Flex L skruvgrind monterad i trappöppning" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" width="2744" height="3659" />
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Babygrindar 2026" />
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Spänngrind eller skruvgrind, vilken passar din situation?</h3>
-    <p>Den första frågan är var grinden ska sitta. Vid trapptoppen är svaret alltid skruvgrind, det är en absolut säkerhetsregel som inte går att förhandla bort. Vid dörröppningar, mellan rum och vid nedre trappavsatsen fungerar spänngrindar utmärkt och har fördelen att de inte lämnar hål. Många familjer har två eller tre grindar i hemmet, en skruvgrind överst i trappan och spänngrindar nedanför och i hallen. Räkna med 400 till 1500 kronor per grind beroende på modell och bredd.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide babygrind 2026: så väljer du rätt grind</h2>
 
-    <h3>Bredd och justering, mät innan du beställer</h3>
-    <p>Mät öppningen på tre höjder: precis ovanför golvet, mitt på och längst upp där grinden ska sitta. Använd det smalaste måttet som riktvärde. Standardgrindar täcker 60 till 85 cm, men många modeller går bredare med separata förlängningar (BabyDan säljer förlängningar i 7, 14 och 28 cm). För <a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">extra breda öppningar</a> upp till 140 cm finns BabyDan Flex XL och XXL Skruvgrind. Är öppningen ovanligt bred är en modulär lösning som Beemoo SAFE Protect Skruvgrind/Rumsavdelare med fem paneler ofta bäst.</p>
+    <img src="/images/products/babydan-flex-l-skruvgrind-vit-2026.webp" alt="BabyDan Flex L skruvgrind monterad i trappöppning" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" width="2744" height="3659" />
 
-    <h3>Enhandsöppning, en funktion som blir kritisk i vardagen</h3>
-    <p>Grinden öppnas och stängs flera tiotals gånger om dagen, ofta med en arm full av barnet, tvätten eller matkassen. Modeller med enhandsöppning sparar tid och frustration. De flesta moderna grindar har detta, men billiga alternativ utan kan kräva två händer och risken är att grinden lämnas öppen i stress. Testa öppningsmekanismen i butiken eller titta på recensioner som specifikt nämner enhandsöppning.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Spänngrind eller skruvgrind, vilken passar din situation?</h3>
+    <p class="text-text-light leading-relaxed mb-4">Den första frågan är var grinden ska sitta. Vid trapptoppen är svaret alltid skruvgrind, det är en absolut säkerhetsregel som inte går att förhandla bort. Vid dörröppningar, mellan rum och vid nedre trappavsatsen fungerar spänngrindar utmärkt och har fördelen att de inte lämnar hål. Många familjer har två eller tre grindar i hemmet, en skruvgrind överst i trappan och spänngrindar nedanför och i hallen. Räkna med 400 till 1500 kronor per grind beroende på modell och bredd.</p>
 
-    <h3>Säkerhet och EN 1930, vad standarden faktiskt kräver</h3>
-    <p>EN 1930 är EU-standarden för säkerhetsgrindar. CE-märket ska finnas synligt på produkten. Standarden är ett golv för säkerhet, alla grindar i den här jämförelsen klarar den. Komplettera grinden med <a href="/sakerhet/horneskydd/" class="text-accent underline">hörnskydd</a> på närliggande möbler och <a href="/sakerhet/barnsakring/" class="text-accent underline">barnsäkring</a> i resten av hemmet. Standarden ställer krav på:</p>
-    <ul>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bredd och justering, mät innan du beställer</h3>
+    <p class="text-text-light leading-relaxed mb-4">Mät öppningen på tre höjder: precis ovanför golvet, mitt på och längst upp där grinden ska sitta. Använd det smalaste måttet som riktvärde. Standardgrindar täcker 60 till 85 cm, men många modeller går bredare med separata förlängningar (BabyDan säljer förlängningar i 7, 14 och 28 cm). För <a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">extra breda öppningar</a> upp till 140 cm finns BabyDan Flex XL och XXL Skruvgrind. Är öppningen ovanligt bred är en modulär lösning som Beemoo SAFE Protect Skruvgrind/Rumsavdelare med fem paneler ofta bäst.</p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Enhandsöppning, en funktion som blir kritisk i vardagen</h3>
+    <p class="text-text-light leading-relaxed mb-4">Grinden öppnas och stängs flera tiotals gånger om dagen, ofta med en arm full av barnet, tvätten eller matkassen. Modeller med enhandsöppning sparar tid och frustration. De flesta moderna grindar har detta, men billiga alternativ utan kan kräva två händer och risken är att grinden lämnas öppen i stress. Testa öppningsmekanismen i butiken eller titta på recensioner som specifikt nämner enhandsöppning.</p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet och EN 1930, vad standarden faktiskt kräver</h3>
+    <p class="text-text-light leading-relaxed mb-4">EN 1930 är EU-standarden för säkerhetsgrindar. CE-märket ska finnas synligt på produkten. Standarden är ett golv för säkerhet, alla grindar i den här jämförelsen klarar den. Komplettera grinden med <a href="/sakerhet/horneskydd/" class="text-accent underline">hörnskydd</a> på närliggande möbler och <a href="/sakerhet/barnsakring/" class="text-accent underline">barnsäkring</a> i resten av hemmet. Standarden ställer krav på:</p>
+    <ul class="text-text-light leading-relaxed mb-4 list-disc pl-5 space-y-1">
       <li><strong>Höjd</strong>: minst 65 cm över golv, helst 73 cm eller mer</li>
       <li><strong>Spjälavstånd</strong>: under 6,5 cm så att barnet inte kan fastna med huvudet</li>
       <li><strong>Tryckmotstånd</strong>: minst 75 N mot grinden</li>
       <li><strong>Bältesintegritet</strong>: låsmekanismen ska hålla vid normalt tryck och hantering</li>
     </ul>
 
-    <h3>Trä, metall eller plast, materialval för olika hem</h3>
-    <ul>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Trä, metall eller plast, materialval för olika hem</h3>
+    <ul class="text-text-light leading-relaxed mb-4 list-disc pl-5 space-y-1">
       <li><strong>Metall (stål eller aluminium)</strong> ger bäst stabilitet och håller längst. De flesta moderna grindar är stålgrindar i vit lackering. Svart och grå finns hos BabyDan och Hauck.</li>
       <li><strong>Trä</strong>, som BabyDan Multidan Säkerhetsgrind i Natur/Vit, smälter in bättre i hem med skandinavisk design men kan väga mer och kräver mer omsorg vid rengöring.</li>
       <li><strong>Plast</strong> finns främst på budgetmodeller och rekommenderas inte vid trapptoppen oavsett pris.</li>
     </ul>
 
-    <h3>När det är dags att ta bort grinden</h3>
-    <p>Barn på 2 till 3 år förstår oftast trappans risk och kan navigera den säkert under övervakning. Vissa barn klättrar redan vid 18 månader, andra behöver grind till 3,5 års ålder. Avgör utifrån barnet, inte enbart åldern. När grinden tas bort kan spänngrindar gömmas i förråd för nästa barn eller säljas på andrahandsmarknaden. Skruvgrindar lämnar små hål som spacklas och målas över.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">När det är dags att ta bort grinden</h3>
+    <p class="text-text-light leading-relaxed mb-4">Barn på 2 till 3 år förstår oftast trappans risk och kan navigera den säkert under övervakning. Vissa barn klättrar redan vid 18 månader, andra behöver grind till 3,5 års ålder. Avgör utifrån barnet, inte enbart åldern. När grinden tas bort kan spänngrindar gömmas i förråd för nästa barn eller säljas på andrahandsmarknaden. Skruvgrindar lämnar små hål som spacklas och målas över.</p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om barngrindssäkerhet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Barngrindssäkerhet bygger på korrekt montering och konstruktion enligt Konsumentverket. Nedan är de viktigaste råden.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Montering"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barngrind-konsument/"
+        year="2026"
+      >
+        Tänk igenom hur du ska montera fast grinden i ditt hem. Felaktig montering kan leda till att grinden inte fungerar som den ska eller att barnet kan ta sig över eller under och skada sig.
+      </StatHighlight>
+      <StatHighlight
+        figure="Båda planen"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barngrind-konsument/"
+        year="2026"
+      >
+        Många använder barngrindar för att skydda barn från att nå farliga platser i hemmet, till exempel en trappa. Finns det trappor hemma är det bra att montera en barngrind på båda våningsplanen.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barngrind-konsument/"
+    >
+      "Barn ska inte kunna komma under, över eller igenom grinden på något sätt när den är stängd."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem babygrindar utifrån säkerhetsstandard (EN 1930), monteringstyp (spänngrind eller skruvgrind), bredd och justeringsintervall, material och daglig användbarhet (enhandsöppning, snubbelfri passage). Produkterna är valda bland de mest sålda och eftersökta grindarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babygrindar</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/sakerhet/babygrindar/trappgrind/" class="text-accent underline">Trappgrind 2026, bäst för övre och nedre trappsteg</a></li>
+        <li><a href="/sakerhet/babygrindar/utan-borrning/" class="text-accent underline">Babygrind utan borrning, tryckmonterade grindar 2026</a></li>
+        <li><a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">Extra bred babygrind 2026, grindar upp till 140 cm</a></li>
+        <li><a href="/sakerhet/" class="text-accent underline">Barnsäkerhet hemma, komplett guide</a></li>
+        <li><a href="/sakerhet/barnsakring/" class="text-accent underline">Barnsäkring och babyproofing 2026</a></li>
+        <li><a href="/sakerhet/horneskydd/" class="text-accent underline">Hörnskydd bebis 2026, skydda skarpa kanter</a></li>
+      </ul>
+    </div>
+
   </div>
 
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babygrindar</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/sakerhet/babygrindar/trappgrind/" class="text-accent underline">Trappgrind 2026, bäst för övre och nedre trappsteg</a></li>
-      <li><a href="/sakerhet/babygrindar/utan-borrning/" class="text-accent underline">Babygrind utan borrning, tryckmonterade grindar 2026</a></li>
-      <li><a href="/sakerhet/babygrindar/extra-bred/" class="text-accent underline">Extra bred babygrind 2026, grindar upp till 140 cm</a></li>
-      <li><a href="/sakerhet/" class="text-accent underline">Barnsäkerhet hemma, komplett guide</a></li>
-      <li><a href="/sakerhet/barnsakring/" class="text-accent underline">Barnsäkring och babyproofing 2026</a></li>
-      <li><a href="/sakerhet/horneskydd/" class="text-accent underline">Hörnskydd bebis 2026, skydda skarpa kanter</a></li>
-    </ul>
-  </div>
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa babygrind 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
 
-  <FAQ items={faqItems} />
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=868111&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-vit"
+    text="Bra pris hos Jollyroom"
+    productName="BabyDan Premier Spänngrind, Vit"
+  />
 
-  <ProductSchema products={[
-    { name: 'BabyDan Premier Spänngrind, Vit', description: 'Spänngrind utan borrning för dörröppningar och nedre trappa. Justerbar 67 till 105 cm med förlängning. EN 1930.', brand: 'BabyDan', ratingValue: 4.7, reviewCount: 1 },
-    { name: 'BabyDan Flex L Skruvgrind, Vit', description: 'Skruvmonterad babygrind godkänd för trapptoppen. Bredd 62 till 106,8 cm. EN 1930-certifierad.', brand: 'BabyDan', ratingValue: 4.7, reviewCount: 1 },
-    { name: 'Safety 1st Easy Close Säkerhetsgrind Metall, White', description: 'Tryckmonterad babygrind i metall för dörröppningar. EN 1930-certifierad. Enkel montering utan verktyg.', brand: 'Safety 1st', ratingValue: 4.5, reviewCount: 1 },
-    { name: 'Hauck Clear Step 2 Spänngrind, White', description: 'Spänngrind med genomskinlig akryl för bättre sikt. EN 1930-certifierad.', brand: 'Hauck', ratingValue: 4.5, reviewCount: 1 },
-    { name: 'Beemoo SAFE Flat Step Spänngrind, White', description: 'Spänngrind med plant nedersta steg, ingen snubbelrisk. EN 1930-certifierad.', brand: 'Beemoo', ratingValue: 4.4, reviewCount: 1 },
-  ]} />
-
-  <CTABox productName="Babygrindar och säkerhetsgrindar" store="Jollyroom" description="Komplett sortiment av spänngrindar och skruvgrindar från BabyDan, Safety 1st, Hauck och Beemoo." />
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

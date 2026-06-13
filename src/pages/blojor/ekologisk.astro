@@ -1,224 +1,402 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Blöjor', href: '/blojor/' },
- { label: 'Ekologisk' },
+  { label: 'Hem', href: '/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Ekologisk' },
 ];
 
+// No-price-policy. Affiliate-länk verifierad mot feed (cupa_sku=10297896). Showcase-produkter utan buyUrl renderar rent utan CTA.
 const products = [
- {
- name: 'Kit & Kin Eco Blöjor Stl 2 4-8 kg 38-pack',
- badge: 'Vårt köpval',
- rating: 4.6,
- image: '/images/products/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
- features: {
- 'Certifiering': 'EU Ecolabel',
- 'Klorvit': 'Nej',
- 'Parfym/latex': 'Nej',
- 'Navelurringning': 'Ja (stl 1 till 2)',
- 'Pris/st': '',
- },
- },
- {
- name: 'Naty Eco Blöjor Stl 2 3-6 kg 33-pack',
- badge: 'Bäst miljöprestanda',
- rating: 4.8,
- image: '/images/products/naty-eco-stl2.webp',
- ctaHref: '',
- features: {
- 'Certifiering': 'EU Ecolabel, FSC',
- 'Klorvit': 'Nej',
- 'Parfym/latex': 'Nej',
- 'Navelurringning': 'Ja (stl 1 till 2)',
- 'Pris/st': '',
- },
- },
- {
- name: 'Bambo Nature Eco Blöjor Stl 3 4-8 kg 52-pack',
- badge: 'Bäst absorberande',
- rating: 4.7,
- image: '/images/products/bambo-nature-stl3.webp',
- ctaHref: '',
- features: {
- 'Certifiering': 'Nordic Swan, FSC',
- 'Klorvit': 'Nej',
- 'Parfym/latex': 'Nej',
- 'Navelurringning': 'Ja (stl 1 till 2)',
- 'Pris/st': '',
- },
- },
- {
- name: 'Muumi Baby Eco Blöjor Stl 3 5-9 kg 54-pack',
- badge: 'Nordisk favorit',
- rating: 4.6,
- image: '/images/products/muumi-baby-eco-blojor-stl-3-5-9-kg-54-pack.webp',
- ctaHref: '',
- features: {
- 'Certifiering': 'Nordic Swan',
- 'Klorvit': 'Nej',
- 'Parfym/latex': 'Nej',
- 'Navelurringning': 'Ja (stl 1 till 2)',
- 'Pris/st': '',
- },
- },
+  {
+    name: 'Kit & Kin Eco Blöjor Stl 2 4-8 kg 38-pack',
+    brand: 'Kit & Kin',
+    rating: 4.6,
+    badge: 'Vårt köpval',
+    usps: ['EU Ecolabel-certifierad', 'Fri från klor, parfym och latex', 'Navelurringning stl 1-2'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
+    imageUrl: '/images/products/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Ekologisk blöja med EU Ecolabel. Fri från klor, parfym och latex. Navelurringning i stl 1 och 2. Bra balans mellan miljöprestanda och pris.',
+    features: { 'Certifiering': 'EU Ecolabel', 'Klorvit': 'Nej', 'Parfym/latex': 'Nej', 'Navelurringning': 'Ja (stl 1-2)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Naty Eco Blöjor Stl 2 3-6 kg 33-pack',
+    brand: 'Naty',
+    rating: 4.8,
+    badge: 'Bäst miljöprestanda',
+    usps: ['EU Ecolabel och FSC', 'Biologiskt nedbrytbar yttre yta', 'Mjuk yta av majsstärkelse'],
+    store: '',
+    affiliateUrl: '',
+    imageUrl: '/images/products/naty-eco-stl2.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Ekologisk blöja med EU Ecolabel och FSC-certifiering. Biologiskt nedbrytbar yttre yta av majsstärkelse. Fri från klor, parfym och latex.',
+    features: { 'Certifiering': 'EU Ecolabel, FSC', 'Klorvit': 'Nej', 'Parfym/latex': 'Nej', 'Navelurringning': 'Ja (stl 1-2)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Bambo Nature Eco Blöjor Stl 3 4-8 kg 52-pack',
+    brand: 'Bambo Nature',
+    rating: 4.7,
+    badge: 'Bäst absorberande',
+    usps: ['Nordic Swan, strängaste nordiska cert.', 'Utmärkt absorptionsförmåga', 'Fri från allergena ämnen'],
+    store: '',
+    affiliateUrl: '',
+    imageUrl: '/images/products/bambo-nature-stl3.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Ekologisk blöja med Nordic Swan-certifiering. Utmärkt absorptionsförmåga och fri från allergena ämnen. Mjuk inre yta i bomullskänsligt material.',
+    features: { 'Certifiering': 'Nordic Swan, FSC', 'Klorvit': 'Nej', 'Parfym/latex': 'Nej', 'Navelurringning': 'Ja (stl 1-2)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Muumi Baby Eco Blöjor Stl 3 5-9 kg 54-pack',
+    brand: 'Muumi Baby',
+    rating: 4.6,
+    badge: 'Nordisk favorit',
+    usps: ['Nordic Swan-certifierad', 'Finsk design med hög kvalitet', 'Bäst pris bland Nordic Swan-blöjor'],
+    store: '',
+    affiliateUrl: '',
+    imageUrl: '/images/products/muumi-baby-eco-blojor-stl-3-5-9-kg-54-pack.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Finsk ekologisk blöja med Nordic Swan-certifiering. Mjukt hudvänligt material och bäst pris per blöja bland Nordic Swan-alternativ.',
+    features: { 'Certifiering': 'Nordic Swan', 'Klorvit': 'Nej', 'Parfym/latex': 'Nej', 'Navelurringning': 'Ja (stl 1-2)' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Certifiering', 'Klorvit', 'Parfym/latex', 'Navelurringning', 'Pris/st'];
+const specLabels = ['Certifiering', 'Klorvit', 'Parfym/latex', 'Navelurringning'];
 
 const faqItems = [
- {
- question: 'Är ekologiska blöjor bättre för bebisens hud?',
- answer: 'Ekologiska blöjor som Naty och Bambo Nature är fria från klor, parfym, latex och skadliga kemikalier. Det kan vara fördelaktigt för känslig hud eller vid blöjeksem. Studier visar ingen statistisk skillnad i blöjeksem hos friska bebisar, men föräldrar med barn som har känslig hud rapporterar ofta positiva erfarenheter av ekologiska alternativ.',
- },
- {
- question: 'Vilka certifieringar ska jag leta efter?',
- answer: 'Nordic Swan Ecolabel är den strängaste nordiska miljömärkningen, Bambo Nature och Muumi Baby har denna. EU Ecolabel är en europeisk standard som Naty och Kit & Kin uppfyller. FSC-certifiering garanterar att träfibrerna kommer från ansvarsfullt skogsbruk. Undvik blöjor utan miljöcertifiering om du väljer ekologiskt, det är annars svårt att verifiera påståendena.',
- },
- {
- question: 'Är ekologiska blöjor lika bra på att absorbera?',
- answer: 'Moderna ekologiska blöjor som Bambo Nature och Muumi Baby presterar i nivå med konventionella premiumblöjor. De har lika bra eller bättre absorptionsförmåga än genomsnittliga konventionella blöjor. Äldre generationer ekologiska blöjor var tunnare och läckte lättare, men detta är inte längre ett problem hos ledande märken.',
- },
- {
- question: 'Hur mycket dyrare är ekologiska blöjor?',
- answer: 'Ekologiska blöjor kostar ungefär 30 till 60% mer per blöja än konventionella alternativ. Räknat på ca 2 500 blöjor det första levnadsåret blir det en betydande merkostnad. Prisskillnaden minskar när du köper storpack och under kampanjer. Många familjer väljer ekologiska blöjor som ett kompromiss med miljön och accepterar den högre kostnaden.',
- },
- {
- question: 'Är ekologiska blöjor bättre för miljön?',
- answer: 'Ekologiska blöjor har lägre miljöpåverkan per blöja jämfört med konventionella: de kräver färre kemikalier vid tillverkning och innehåller certifierade råmaterial. Dock är alla engångsblöjor miljömässigt belastande. Om miljöpåverkan är din huvudsakliga prioritet är tygblöjor det bästa alternativet, men ekologiska engångsblöjor är ett klart bättre alternativ än konventionella.',
- },
+  {
+    question: 'Är ekologiska blöjor bättre för bebisens hud?',
+    answer: 'Ekologiska blöjor som Naty och Bambo Nature är fria från klor, parfym, latex och skadliga kemikalier. Det kan vara fördelaktigt för känslig hud eller vid blöjeksem. Studier visar ingen statistisk skillnad i blöjeksem hos friska bebisar, men föräldrar med barn som har känslig hud rapporterar ofta positiva erfarenheter av ekologiska alternativ.',
+  },
+  {
+    question: 'Vilka certifieringar ska jag leta efter?',
+    answer: 'Nordic Swan Ecolabel är den strängaste nordiska miljömärkningen, Bambo Nature och Muumi Baby har denna. EU Ecolabel är en europeisk standard som Naty och Kit & Kin uppfyller. FSC-certifiering garanterar att träfibrerna kommer från ansvarsfullt skogsbruk. Undvik blöjor utan miljöcertifiering om du väljer ekologiskt, det är annars svårt att verifiera påståendena.',
+  },
+  {
+    question: 'Är ekologiska blöjor lika bra på att absorbera?',
+    answer: 'Moderna ekologiska blöjor som Bambo Nature och Muumi Baby presterar i nivå med konventionella premiumblöjor. De har lika bra eller bättre absorptionsförmåga än genomsnittliga konventionella blöjor. Äldre generationer ekologiska blöjor var tunnare och läckte lättare, men detta är inte längre ett problem hos ledande märken.',
+  },
+  {
+    question: 'Hur mycket dyrare är ekologiska blöjor?',
+    answer: 'Ekologiska blöjor kostar ungefär 30 till 60% mer per blöja än konventionella alternativ. Räknat på ca 2 500 blöjor det första levnadsåret blir det en betydande merkostnad. Prisskillnaden minskar när du köper storpack och under kampanjer. Många familjer väljer ekologiska blöjor som ett kompromiss med miljön och accepterar den högre kostnaden.',
+  },
+  {
+    question: 'Är ekologiska blöjor bättre för miljön?',
+    answer: 'Ekologiska blöjor har lägre miljöpåverkan per blöja jämfört med konventionella: de kräver färre kemikalier vid tillverkning och innehåller certifierade råmaterial. Dock är alla engångsblöjor miljömässigt belastande. Om miljöpåverkan är din huvudsakliga prioritet är tygblöjor det bästa alternativet, men ekologiska engångsblöjor är ett klart bättre alternativ än konventionella.',
+  },
 ];
+
 export const articleMeta = {
   title: "Ekologisk blöja bäst i test 2026: 4 eko-märken jämförda",
   description: "Ekologiska blöjor 2026: Kit & Kin Eco är vårt köpval. Naty bäst miljöprestanda, Bambo Nature bäst absorption, Muumi Baby Nordic Swan. 4 hudvänliga eko-blöjor jämförda.",
   publishDate: "2026-05-26",
+  updatedDate: "2026-06-13",
   category: "Blöjor",
   image: "/images/products/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Ekologiska blöjor bäst i test 2026: 4 hudvänliga märken"
- description="Ekologiska blöjor bäst i test 2026: Naty Eco vinner med EU Ecolabel och FSC. Bambo Nature bäst absorption. 4 eko-blöjor jämförda."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/blojor/ekologisk/"
- updatedDate="2026-05-15"
-  datePublished="2026-04-20"
+  title="Ekologisk blöja bäst i test 2026: 4 eko-märken jämförda"
+  description="Ekologiska blöjor 2026: Kit & Kin Eco är vårt köpval. Naty bäst miljöprestanda, Bambo Nature bäst absorption, Muumi Baby Nordic Swan. 4 hudvänliga eko-blöjor jämförda."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-05-26"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Kit & Kin Eco är den ekologiska blöja vi rekommenderar och kan leverera direkt: EU Ecolabel-certifierad, fri från klor, parfym och latex till ett rimligt pris. Vi jämför den med tre starka eko-märken: Naty (bäst miljöprestanda), Bambo Nature (bäst absorption) och Muumi Baby (Nordic Swan).
-	 </p>
 
- <TopPick product={products[0]} description="Kit & Kin Eco är vårt köpval bland ekologiska blöjor 2026. EU Ecolabel-certifierad, fri från klor, parfym och latex, och tillgänglig direkt hos vår partner. Bra balans mellan miljöprestanda och pris." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-26" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, ekologiska blöjor 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken ekologisk blöja är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Kit & Kin Eco är vårt köpval bland ekologiska blöjor: EU Ecolabel-certifierad, fri från klor, parfym och latex. Naty Eco har bäst miljöprestanda (EU Ecolabel och FSC), Bambo Nature är bäst absorberande (Nordic Swan) och Muumi Baby är det prisvärda Nordic Swan-alternativet.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Kit & Kin Eco</strong> är vårt köpval, den eko-blöja vi kan leverera direkt. <strong>Naty Eco</strong> har bäst miljöprestanda, <strong>Bambo Nature</strong> bäst absorptionsförmåga och <strong>Muumi Baby</strong> Nordic Swan-märkning.</p>
- </div>
+  {/* 3. Featured product (#1 med affiliate) */}
+  <MoneyFeaturedProduct
+    brand="Kit & Kin"
+    name="Eco Blöjor Stl 2 4-8 kg 38-pack"
+    image="/images/products/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
+    store="Jollyroom"
+    description="Vårt köpval bland ekologiska blöjor 2026. EU Ecolabel-certifierad och fri från klor, parfym och latex. Navelurringning i stl 1 och 2. Bra balans mellan miljöprestanda och pris, och den eko-blöja vi kan leverera direkt via affiliate."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval, ekologiska blöjor 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, ekologiska blöjor 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Kit & Kin Eco Blöjor Stl 2 4-8 kg 38-pack"
- badge="Vårt köpval"
- rating={4.6}
- image="/images/products/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack.webp"
- pros={['EU Ecolabel-certifierad', 'Fri från klor, parfym och latex', 'Bra passform för stl 2 till 3', 'Den ekologiska blöja vi kan leverera direkt']}
- cons={['Något sämre absorption än Bambo Nature', 'Tunnare material än premium-eco']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Naty Eco Blöjor Stl 2 3-6 kg 33-pack"
- badge="Bäst miljöprestanda"
- rating={4.8}
- image="/images/products/naty-eco-stl2.webp"
- pros={['EU Ecolabel- och FSC-certifierad', 'Fri från klor, parfym och latex', 'Mjuk yta av majsstärkelse', 'Biologiskt nedbrytbar yttre yta']}
- cons={['Dyrare per blöja än konventionella', 'Något tunnare passform vid stl 1']}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Kit & Kin Eco Blöjor, vårt köpval</h2>
+    <MoneyProductCard
+      brand="Kit & Kin"
+      name="Kit & Kin Eco Blöjor Stl 2 4-8 kg 38-pack"
+      rating={4.6}
+      rank={1}
+      badge="Vårt köpval"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack.webp"
+      imageAlt="Kit & Kin Eco Blöjor Stl 2"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
+      pros={['EU Ecolabel-certifierad', 'Fri från klor, parfym och latex', 'Bra passform för stl 2 till 3', 'Den ekologiska blöja vi kan leverera direkt']}
+      cons={['Något sämre absorption än Bambo Nature', 'Tunnare material än premium-eco']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Kit & Kin Eco är den ekologiska blöja vi rekommenderar och kan leverera direkt: EU Ecolabel-certifierad och fri från klor, parfym och latex. Passformen är bra för stl 2 till 3 och navelurringningen i de minsta storlekarna gör den lämplig från nyfödda.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Absorptionen är något under Bambo Nature, och materialet är tunnare än de dyraste eko-alternativen. Men för familjen som vill ha ett verifierat ekologiskt val med rimlig prissättning och direkt tillgänglighet är Kit & Kin Eco ett klokt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack" />
 
- <ProductCard
- name="Bambo Nature Eco Blöjor Stl 3 4-8 kg 52-pack"
- badge="Bäst absorberande"
- rating={4.7}
- image="/images/products/bambo-nature-stl3.webp"
- pros={['Nordic Swan, strängaste nordiska certifieringen', 'Utmärkt absorptionsförmåga', 'Fri från allergena ämnen', 'Mjuk inre yta i bomullskänsligt material']}
- cons={['Högst pris per blöja bland jämförda', 'Svårare att hitta i fysiska butiker']}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Naty Eco Blöjor, bäst miljöprestanda</h2>
+    <MoneyProductCard
+      brand="Naty"
+      name="Naty Eco Blöjor Stl 2 3-6 kg 33-pack"
+      rating={4.8}
+      rank={2}
+      badge="Bäst miljöprestanda"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/naty-eco-stl2.webp"
+      imageAlt="Naty Eco Blöjor Stl 2"
+      pros={['EU Ecolabel- och FSC-certifierad', 'Fri från klor, parfym och latex', 'Mjuk yta av majsstärkelse', 'Biologiskt nedbrytbar yttre yta']}
+      cons={['Dyrare per blöja än konventionella', 'Något tunnare passform vid stl 1']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Naty Eco kombinerar EU Ecolabel med FSC-certifiering, vilket ger den bästa råvaruspårbarheten av alla blöjorna vi jämfört. Den yttre ytan är biologiskt nedbrytbar och innanmaterialet är mjukt av majsstärkelse utan allergena tillsatser.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Passformen i stl 1 kan vara något tunn, och priset per blöja är högre än konventionella alternativ. Men för miljömedvetna föräldrar som vill ha starkast möjliga certifieringskombination är Naty Eco det tydliga valet.
+    </p>
 
- <ProductCard
- name="Muumi Baby Eco Blöjor Stl 3 5-9 kg 54-pack"
- badge="Nordisk favorit"
- rating={4.6}
- image="/images/products/muumi-baby-eco-blojor-stl-3-5-9-kg-54-pack.webp"
- pros={['Nordic Swan-certifierad', 'Finsk design med hög kvalitet', 'Bäst pris per blöja bland Nordic Swan-blöjor', 'Mjukt och hudvänligt material']}
- cons={['Inte lika lätt att hitta i butik', 'Certifieringen är nordisk, inte global']}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Bambo Nature Eco Blöjor, bäst absorberande</h2>
+    <MoneyProductCard
+      brand="Bambo Nature"
+      name="Bambo Nature Eco Blöjor Stl 3 4-8 kg 52-pack"
+      rating={4.7}
+      rank={3}
+      badge="Bäst absorberande"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/bambo-nature-stl3.webp"
+      imageAlt="Bambo Nature Eco Blöjor Stl 3"
+      pros={['Nordic Swan, strängaste nordiska certifieringen', 'Utmärkt absorptionsförmåga', 'Fri från allergena ämnen', 'Mjuk inre yta i bomullskänsligt material']}
+      cons={['Högst pris per blöja bland jämförda', 'Svårare att hitta i fysiska butiker']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bambo Nature bär Nordic Swan-märket, den strängaste nordiska miljöcertifieringen för blöjor. Absorptionsförmågan är den bästa i jämförelsen och materialet är fritt från allergena ämnen med en mjuk bomullskänslig inre yta.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Priset per blöja är det högsta bland de fyra märkena och distributionen i fysiska butiker är begränsad. Men för föräldrar som prioriterar absorptionskapacitet och Nordic Swan-godkänd miljöprestanda är Bambo Nature svår att slå.
+    </p>
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vad betyder certifieringarna?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Muumi Baby Eco Blöjor, nordisk favorit</h2>
+    <MoneyProductCard
+      brand="Muumi Baby"
+      name="Muumi Baby Eco Blöjor Stl 3 5-9 kg 54-pack"
+      rating={4.6}
+      rank={4}
+      badge="Nordisk favorit"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/muumi-baby-eco-blojor-stl-3-5-9-kg-54-pack.webp"
+      imageAlt="Muumi Baby Eco Blöjor Stl 3"
+      pros={['Nordic Swan-certifierad', 'Finsk design med hög kvalitet', 'Bäst pris per blöja bland Nordic Swan-blöjor', 'Mjukt och hudvänligt material']}
+      cons={['Inte lika lätt att hitta i butik', 'Certifieringen är nordisk, inte global']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Muumi Baby är den finska konkurrenten med Nordic Swan-certifiering och bäst pris per blöja i den certifieringsklassen. Materialet är mjukt och hudvänligt, och storleken 54-pack ger bra ekonomi per blöja.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Distributionen är begränsad i fysiska butiker, och certifieringen täcker norden men inte globala marknader. För familjen som vill ha Nordic Swan-godkänd kvalitet till lägsta möjliga pris är Muumi Baby det naturliga valet.
+    </p>
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Nordic Swan Ecolabel</h3>
- <p>Den nordiska miljömärkningen är en av de strängaste i Europa. För blöjor innebär Nordic Swan-certifiering krav på begränsad kemikalieanvändning vid tillverkning, ansvarsfull råvaruhantering och minskad klimatpåverkan. Bambo Nature och Muumi Baby uppfyller dessa krav.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra ekologiska blöjor granskade, alla med certifierad miljöprestanda. Kit & Kin Eco är vårt köpval för direkt tillgänglighet, Naty Eco leder på miljöcertifiering, Bambo Nature på absorption och Muumi Baby på pris bland Nordic Swan-alternativ. Vill du jämföra fler märken? Se vår kompletta <a href="/blojor/" class="text-accent hover:text-accent-dark underline">guide till bästa blöja 2026</a> eller läs om <a href="/blojor/newborn/" class="text-accent hover:text-accent-dark underline">bästa newborn-blöja för nyfödda</a>.
+    </p>
 
- <h3>EU Ecolabel</h3>
- <p>Europeisk miljömärkning med krav på miljöprestanda och begränsad kemikalieanvändning. Något mindre strikt än Nordic Swan men ändå ett solidt miljöcertifikat. Naty och Kit & Kin har EU Ecolabel.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda, ekologiska blöjor 2026" />
 
- <h3>FSC-certifiering</h3>
- <p>Forest Stewardship Council garanterar att träfibrer i blöjan kommer från ansvarsfullt skogsbruk. FSC är ett tillägg till miljömärkning, inte ett substitut. Naty kombinerar EU Ecolabel med FSC för bäst råvaruspårbarhet.</p>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad betyder certifieringarna?</h2>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler blöjguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/blojor/" class="text-accent underline">Bästa blöja 2026, alla märken jämförda</a></li>
- <li><a href="/blojor/newborn/" class="text-accent underline">Bästa newborn-blöja 2026, för nyfödda</a></li>
- <li><a href="/blojor/natt/" class="text-accent underline">Bästa nattblöja 2026, extra absorberande</a></li>
- <li><a href="/blojor/storlek-guide/" class="text-accent underline">Blöjstorlek guide, vilken storlek passar?</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Nordic Swan Ecolabel</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den nordiska miljömärkningen är en av de strängaste i Europa. För blöjor innebär Nordic Swan-certifiering krav på begränsad kemikalieanvändning vid tillverkning, ansvarsfull råvaruhantering och minskad klimatpåverkan. Bambo Nature och Muumi Baby uppfyller dessa krav.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">EU Ecolabel</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Europeisk miljömärkning med krav på miljöprestanda och begränsad kemikalieanvändning. Något mindre strikt än Nordic Swan men ändå ett solidt miljöcertifikat. Naty och Kit & Kin har EU Ecolabel.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Kit & Kin Eco Blöjor Stl 2 4-8 kg 38-pack',
- description: 'Ekologisk blöja med EU Ecolabel-certifiering. Fri från klor, parfym och latex. Tillgänglig direkt hos vår partner.',
- image: 'https://bebisguiden.se/images/products/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack.webp',
- brand: 'Kit & Kin',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Bambo Nature Eco Blöjor Stl 3 4-8 kg 52-pack',
- description: 'Ekologisk blöja med Nordic Swan-certifiering. Utmärkt absorptionsförmåga och fri från allergena ämnen.',
- image: 'https://bebisguiden.se/images/products/bambo-nature-stl3.webp',
- brand: 'Bambo Nature',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Muumi Baby Eco Blöjor Stl 3 5-9 kg 54-pack',
- description: 'Finsk ekologisk blöja med Nordic Swan-certifiering. Mjukt hudvänligt material och bra pris per blöja.',
- image: 'https://bebisguiden.se/images/products/muumi-baby-stl3.webp',
- brand: 'Muumi Baby',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">FSC-certifiering</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Forest Stewardship Council garanterar att träfibrer i blöjan kommer från ansvarsfullt skogsbruk. FSC är ett tillägg till miljömärkning, inte ett substitut. Naty kombinerar EU Ecolabel med FSC för bäst råvaruspårbarhet.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du ekologisk blöja 2026</h2>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vilken certifiering väger tyngst?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nordic Swan är den strängaste nordiska standarden och ger starkast miljögaranti. EU Ecolabel är något bredare och mer tillgänglig. FSC-tillägget stärker spårbarheten på råvarusidan. En blöja med Nordic Swan plus FSC, som Bambo Nature med Nordic Swan och Naty med EU Ecolabel och FSC, ger störst säkerhet för att miljöpåståendena stämmer.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Känslig hud och blöjeksem</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ekologiska blöjor är fria från klor, parfym och latex, tre vanliga irritanter vid blöjeksem. Studier visar ingen statistisk skillnad i eksem hos friska bebisar, men barn med känslig hud svarar ofta bättre på klorfrira alternativ. Om barnet ofta får blöjeksem är ett byte till ekologisk blöja ett rimligt första steg innan hudläkarbesök.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Absorptionsförmåga kontra miljöprofil</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Äldre generationer ekologiska blöjor var kända för sämre absorption. Det gäller inte längre för ledande märken. Bambo Nature presterar i nivå med konventionella premiumblöjor och Muumi Baby ligger nära. Kit & Kin Eco och Naty Eco är något under toppnivå i absorption men fullt godtagbara för normalt bruk.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Kostnad per blöja</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ekologiska blöjor kostar 30 till 60% mer per blöja än konventionella. Räknat på ungefär 2 500 blöjor det första levnadsåret är merkostnaden märkbar. Storpack och kampanjer minskar skillnaden. Muumi Baby ger bäst pris per blöja bland Nordic Swan-alternativen och är därför ett naturligt val för familjer som vill begränsa merkostnaden.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har jämfört fyra ekologiska blöjmärken utifrån miljöcertifiering (Nordic Swan, EU Ecolabel, FSC), innehåll (klor, parfym, latex), absorptionsförmåga, passform och pris per blöja. Produkterna är valda bland de mest sökta och köpta ekologiska blöjmärkena i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler blöjguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/blojor/" class="text-accent underline">Bästa blöja 2026, alla märken jämförda</a></li>
+        <li><a href="/blojor/newborn/" class="text-accent underline">Bästa newborn-blöja 2026, för nyfödda</a></li>
+        <li><a href="/blojor/natt/" class="text-accent underline">Bästa nattblöja 2026, extra absorberande</a></li>
+        <li><a href="/blojor/storlek-guide/" class="text-accent underline">Blöjstorlek guide, vilken storlek passar?</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa ekologiska blöjan 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) - bara #1 som har affiliate */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
+    text="Bra pris hos Jollyroom"
+    productName="Kit & Kin Eco Blöjor"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

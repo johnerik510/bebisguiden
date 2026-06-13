@@ -1,210 +1,400 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Sovsackar', href: '/sovsackar/' },
- { label: 'Sommarsovsack bebis' },
+  { label: 'Hem', href: '/' },
+  { label: 'Sovsackar', href: '/sovsackar/' },
+  { label: 'Sommarsovsack bebis' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/ergobaby-sovpase-tog1.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant',
- features: {
- 'TOG': '1.0',
- 'Ålder': '6 till 18 månader',
- 'Material': 'Polyester',
- 'Öppning': 'Tvåvägsdragkedja',
- 'Tvätt': '40°C maskin',
- },
- },
- {
- name: 'Ergobaby On The Move Sovpåse 6-18 Mån TOG 1.0, Sheep',
- badge: 'Populärast',
- rating: 4.7,
- image: '/images/products/ergobaby-sovpase-tog1.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228537&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-1-0-sheep',
- features: {
- 'TOG': '1.0',
- 'Ålder': '6 till 18 månader',
- 'Material': 'Polyester',
- 'Öppning': 'Tvåvägsdragkedja',
- 'Tvätt': '40°C maskin',
- },
- },
- {
- name: 'Jollein Sovpåse med Avtagbar Ärm 90 cm, Roarsome',
- badge: 'Snyggast design',
- rating: 4.6,
- image: '/images/products/jollein-sovpase-roarsome.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome',
- features: {
- 'TOG': '1.0',
- 'Ålder': '0 till 36 månader',
- 'Material': 'Bomull',
- 'Öppning': 'Tvåvägsdragkedja',
- 'Tvätt': '40°C maskin',
- },
- },
+  {
+    name: 'Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant',
+    brand: 'Ergobaby',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Tvåvägsdragkedja', 'Mjukt material', 'Passar 6 till 18 mån'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant',
+    imageUrl: '/images/products/ergobaby-sovpase-tog1.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Sommarsovpåse för bebis 6 till 18 månader med TOG 1.0. Tvåvägsdragkedja för enkel blöjbyte. Mjukt polyestermaterial.',
+    features: { 'TOG': '1.0', 'Ålder': '6 till 18 månader', 'Material': 'Polyester', 'Öppning': 'Tvåvägsdragkedja', 'Tvätt': '40°C maskin' },
+    alsoAt: [],
+  },
+  {
+    name: 'Ergobaby On The Move Sovpåse 6-18 Mån TOG 1.0, Sheep',
+    brand: 'Ergobaby',
+    rating: 4.7,
+    badge: 'Populärast',
+    usps: ['Lekfull fårdesign', 'Vältestad kvalitet', 'Enkel blöjbyte'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228537&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-1-0-sheep',
+    imageUrl: '/images/products/ergobaby-sovpase-tog1.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Sommarsovpåse för bebis 6 till 18 månader med TOG 1.0 i fårdesign. Tvåvägsdragkedja för enkel blöjbyte.',
+    features: { 'TOG': '1.0', 'Ålder': '6 till 18 månader', 'Material': 'Polyester', 'Öppning': 'Tvåvägsdragkedja', 'Tvätt': '40°C maskin' },
+    alsoAt: [],
+  },
+  {
+    name: 'Jollein Sovpåse med Avtagbar Ärm 90 cm, Roarsome',
+    brand: 'Jollein',
+    rating: 4.6,
+    badge: 'Snyggast design',
+    usps: ['Avtagbara ärmar', 'Mjuk bomull', 'Passar 0 till 36 mån'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome',
+    imageUrl: '/images/products/jollein-sovpase-roarsome.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Sovpåse med avtagbar ärm för bebis 0 till 36 månader. Mjuk bomull, anpassa efter temperatur. Tvåvägsdragkedja.',
+    features: { 'TOG': '1.0', 'Ålder': '0 till 36 månader', 'Material': 'Bomull', 'Öppning': 'Tvåvägsdragkedja', 'Tvätt': '40°C maskin' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['TOG', 'Ålder', 'Material', 'Öppning', 'Tvätt'];
+const specLabels = ['TOG', 'Ålder', 'Material', 'Öppning', 'Tvätt'];
 
 const faqItems = [
- {
- question: 'Vad betyder TOG och vilket TOG-värde ska man välja på sommaren?',
- answer: 'TOG är ett mått på värmemotståndet i en sovpåse, ju högre TOG, desto varmare sovpåse. På sommaren när rumstemperaturen är 22 till 25°C rekommenderas TOG 0.5 till 1.0. TOG 1.0 är ett mångsidigt val som fungerar vid rumstemperaturer från 18°C upp till 24°C med anpassade kläder. Undvik TOG 2.5 på sommaren, bebisen riskerar att bli för varm.',
- },
- {
- question: 'Vilken rumstemperatur är säker för bebisen på natten?',
- answer: 'Den ideala sovrumstemperaturen för en bebis är 16 till 20°C. Varmare än 20°C ökar risken för överhettning, vilket är kopplat till plötslig spädbarnsdöd (SIDS). Undvik att klä bebisen för varmt, det är viktigare att sovrummet är svalt än att lägga på mer kläder. Kontrollera alltid om bebisens nacke eller bröst känns svettigt, det är ett tecken på att bebisen är för varm.',
- },
- {
- question: 'Vad ska bebisen ha på sig under sovpåsen på sommaren?',
- answer: 'Vid 22 till 24°C rumstemperatur: enkel kortärmad body under TOG 1.0 sovpåse. Vid 24 till 26°C: bara blöja och sovpåse, eller välj TOG 0.5. Vid 20 till 22°C: långärmad body eller tunn pyjamas under TOG 1.0. Kom ihåg att sovpåsen ersätter täcket, ingen extra filt behövs.',
- },
- {
- question: 'Från vilken ålder kan bebisen använda sovpåse?',
- answer: 'Sovpåsar är säkra att använda från födseln om storleken är rätt. Nyfödda (0 till 3 månader) behöver en sovpåse i storlek 50 till 56 cm eller 0 till 3 månader. Det är viktigt att sovpåsen inte är för stor, bebisens huvud ska inte kunna glida in i sovpåsen. Välj alltid en sovpåse med passande storleksgräns och kontrollera att halsöppningen är anpassad till bebisens storlek.',
- },
- {
- question: 'Kan man använda sovpåse och filt samtidigt?',
- answer: 'Nej, en sovpåse ersätter täcket och ingen extra filt ska användas. Lösa filtar och kuddar i spjälsängen utgör kvävningsrisk och bör undvikas tills barnet är minst 12 månader gammalt. Sovpåsen hålls på plats och kan inte täcka bebisens ansikte på samma sätt som en lös filt.',
- },
+  {
+    question: 'Vad betyder TOG och vilket TOG-värde ska man välja på sommaren?',
+    answer: 'TOG är ett mått på värmemotståndet i en sovpåse, ju högre TOG, desto varmare sovpåse. På sommaren när rumstemperaturen är 22 till 25°C rekommenderas TOG 0.5 till 1.0. TOG 1.0 är ett mångsidigt val som fungerar vid rumstemperaturer från 18°C upp till 24°C med anpassade kläder. Undvik TOG 2.5 på sommaren, bebisen riskerar att bli för varm.',
+  },
+  {
+    question: 'Vilken rumstemperatur är säker för bebisen på natten?',
+    answer: 'Den ideala sovrumstemperaturen för en bebis är 16 till 20°C. Varmare än 20°C ökar risken för överhettning, vilket är kopplat till plötslig spädbarnsdöd (SIDS). Undvik att klä bebisen för varmt, det är viktigare att sovrummet är svalt än att lägga på mer kläder. Kontrollera alltid om bebisens nacke eller bröst känns svettigt, det är ett tecken på att bebisen är för varm.',
+  },
+  {
+    question: 'Vad ska bebisen ha på sig under sovpåsen på sommaren?',
+    answer: 'Vid 22 till 24°C rumstemperatur: enkel kortärmad body under TOG 1.0 sovpåse. Vid 24 till 26°C: bara blöja och sovpåse, eller välj TOG 0.5. Vid 20 till 22°C: långärmad body eller tunn pyjamas under TOG 1.0. Kom ihåg att sovpåsen ersätter täcket, ingen extra filt behövs.',
+  },
+  {
+    question: 'Från vilken ålder kan bebisen använda sovpåse?',
+    answer: 'Sovpåsar är säkra att använda från födseln om storleken är rätt. Nyfödda (0 till 3 månader) behöver en sovpåse i storlek 50 till 56 cm eller 0 till 3 månader. Det är viktigt att sovpåsen inte är för stor, bebisens huvud ska inte kunna glida in i sovpåsen. Välj alltid en sovpåse med passande storleksgräns och kontrollera att halsöppningen är anpassad till bebisens storlek.',
+  },
+  {
+    question: 'Kan man använda sovpåse och filt samtidigt?',
+    answer: 'Nej, en sovpåse ersätter täcket och ingen extra filt ska användas. Lösa filtar och kuddar i spjälsängen utgör kvävningsrisk och bör undvikas tills barnet är minst 12 månader gammalt. Sovpåsen hålls på plats och kan inte täcka bebisens ansikte på samma sätt som en lös filt.',
+  },
 ];
+
 export const articleMeta = {
   title: "Sovpåse sommar bebis 2026: TOG 0.5 till 1 guide",
   description: "Sovpåse bebis sommar 2026: TOG 0.5 för varmare nätter, TOG 1 för normala sommarnätter. Vi jämför bästa sommarmodellerna och förklarar hur du väljer rätt material.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Sovpåsar",
   image: "/images/products/ergobaby-sovpase-tog1.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Sovpåse bebis sommar 2026: rätt TOG-värde och material"
- description="Sovpåse med TOG 0.5 till 1 är perfekt för varma sommarnätter. Vi rekommenderar bästa sommarsovpåsar för bebis och förklarar TOG-systemet."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/sovsackar/sommar/"
- updatedDate="2026-04-14"
+  title="Sovpåse bebis sommar 2026: rätt TOG-värde och material"
+  description="Sovpåse med TOG 0.5 till 1 är perfekt för varma sommarnätter. Vi rekommenderar bästa sommarsovpåsar för bebis och förklarar TOG-systemet."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sovsackar/sommar/"
   datePublished="2026-04-05"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Ergobaby On The Move Sovpåse TOG 1 vinner sommarsovpåse bäst i test 2026. TOG 1 är rätt värme för sommarnätter upp till 22 grader. Tvåvägszippen öppnar nerifrån för snabba nattblöjbyten utan att väcka bebisen, och polyestermaterialet torkar snabbt efter tvätt.
-	 </p>
 
- <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
- <p class="text-sm font-semibold text-blue-900 mb-1">TOG-guide för sommaren</p>
- <div class="text-sm text-blue-800 space-y-1">
- <p><strong>26°C+ i rummet:</strong> TOG 0.5 + bara blöja</p>
- <p><strong>24 till 26°C:</strong> TOG 0.5 till 1.0 + kortärmad body</p>
- <p><strong>22 till 24°C:</strong> TOG 1.0 + kortärmad body</p>
- <p><strong>20 till 22°C:</strong> TOG 1.0 + långärmad body</p>
- <p><strong>Under 20°C:</strong> Byt till vintersovpåse TOG 2.5</p>
- </div>
- </div>
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-04-05" dateModified="2026-06-12" />
 
- <TopPick product={products[0]} description="Ergobaby On The Move Sovpåse TOG 1 vinner test av sommarsovpåsar 2026. TOG 1 är rätt värme för sommarnätter upp till 22 grader, tvåvägszippen öppnar nerifrån för snabba nattblöjbyten utan att väcka bebisen och polyestermaterialet torkar snabbt efter tvätt." />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken sommarsovpåse för bebis är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Ergobaby On The Move Sovpåse TOG 1 vinner sommarsovpåse bäst i test 2026. TOG 1 är rätt värme för sommarnätter upp till 22 grader, tvåvägszippen öppnar nerifrån för snabba nattblöjbyten utan att väcka bebisen och polyestermaterialet torkar snabbt efter tvätt. Populärast: Ergobaby Sheep. Snyggast design: Jollein Roarsome med avtagbar ärm.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, sommarsovpåsar bebis 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Ergobaby"
+    name="On The Move Sovpåse TOG 1, Elephant"
+    image="/images/products/ergobaby-sovpase-tog1.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant"
+    store="Jollyroom"
+    description="Vinner sommarsovpåse 2026 med TOG 1, rätt värme för sommarnätter upp till 22 grader. Tvåvägszippen öppnar nerifrån för snabba nattblöjbyten utan att väcka bebisen och det mjuka polyestermaterialet torkar snabbt efter tvätt. Passar 6 till 18 månader."
+  />
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
- <p class="text-sm text-text-light"><strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> On The Move TOG 1.0</strong> är bäst för de flesta, välbyggd, enkel att öppna för blöjbyte och finns i flera designer.</p>
- </div>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Sommarsovpåsar bebis 2026" />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval, sommarsovpåsar 2026</h2>
+  {/* Vinnar-callout */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> On The Move TOG 1.0</strong> är bäst för de flesta, välbyggd, enkel att öppna för blöjbyte och finns i flera designer.</p>
+  </div>
 
- <div class="space-y-4">
- <ProductCard
- name="Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant"
- image="/images/products/ergobaby-sovpase-tog1.webp"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/ergobaby-sovpase-tog1.webp"
- pros={['Tvåvägsdragkedja, enkel blöjbyte', 'Mjukt och hudvänligt material', 'Anpassad rörelsefrihet för benen', 'Passar 6 till 18 månader']}
- cons={['Passar bara från 6 månader', 'Begränsad storleksmöjlighet', 'Polyestermaterial, inte ekologiskt']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Ergobaby On The Move Sovpåse 6-18M TOG 1.0, Sheep"
- image="/images/products/ergobaby-sovpase-tog1.webp"
- badge="Populärast"
- rating={4.7}
- image="/images/products/ergobaby-sovpase-tog1.webp"
- pros={['Lekfull fårdesign', 'Samma kvalitet som Elephant-versionen', 'Populär och vältestad', 'Enkel blöjbyte via tvåvägsdragkedja']}
- cons={['Samma begränsningar som Elephant-versionen', 'Passar bara från 6 månader']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Ergobaby On The Move TOG 1, Elephant, bäst i test</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/ergobaby-sovpase-tog1.webp"
+      imageAlt="Ergobaby On The Move sommarsovpåse TOG 1 Elephant"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant"
+      pros={['Tvåvägsdragkedja, enkel blöjbyte', 'Mjukt och hudvänligt material', 'Anpassad rörelsefrihet för benen', 'Passar 6 till 18 månader']}
+      cons={['Passar bara från 6 månader', 'Begränsad storleksmöjlighet', 'Polyestermaterial, inte ekologiskt']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby On The Move TOG 1 vinner sommarsovpåse bäst i test 2026. TOG 1 är rätt värme för sommarnätter upp till 22 grader, och tvåvägsdragkedjan öppnar nerifrån så du snabbt kan byta nattblöja utan att väcka bebisen. Det mjuka materialet är hudvänligt och ger benen rörelsefrihet, vilket bidrar till säker sömn.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att modellen passar först från 6 månader och har en begränsad storleksspann. Polyestermaterialet är inte ekologiskt, men torkar snabbt efter tvätt. För de flesta familjer är den enkel att leva med och svår att slå på sommaren.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant" />
 
- <ProductCard
- name="Jollein Sovpåse med Avtagbar Ärm 90 cm, Roarsome"
- badge="Snyggast design"
- rating={4.6}
- image="/images/products/jollein-sovpase-roarsome.webp"
- pros={['Avtagbara ärmar, anpassa efter temperatur', 'Populärast av alla märken i Sverige', 'Mjuk bomull med söta mönster', 'Lång livslängd, passar 0 till 36 månader']}
- cons={['TOG 1.0 passar inte kalla vintrar', 'Lite dyrare i premiumsegmentet']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Ergobaby On The Move TOG 1.0, Sheep, populärast</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby On The Move Sovpåse 6-18M TOG 1.0, Sheep"
+      rating={4.7}
+      rank={2}
+      badge="Populärast"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/ergobaby-sovpase-tog1.webp"
+      imageAlt="Ergobaby On The Move sommarsovpåse TOG 1.0 Sheep"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
+      pros={['Lekfull fårdesign', 'Samma kvalitet som Elephant-versionen', 'Populär och vältestad', 'Enkel blöjbyte via tvåvägsdragkedja']}
+      cons={['Samma begränsningar som Elephant-versionen', 'Passar bara från 6 månader']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby Sheep är samma sovpåse som vinnaren men i en lekfull fårdesign, och är den populäraste varianten. Du får exakt samma TOG 1-värme, samma tvåvägsdragkedja för enkel blöjbyte och samma vältestade kvalitet. Valet mellan Elephant och Sheep handlar bara om vilket mönster du föredrar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Begränsningarna är desamma som för Elephant-versionen: den passar först från 6 månader och har en begränsad storleksspann. Söker du en beprövad sommarsovpåse med söt design är Sheep ett tryggt köp.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Förstå TOG-systemet</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Jollein Sovpåse med avtagbar ärm, snyggast design</h2>
+    <MoneyProductCard
+      brand="Jollein"
+      name="Jollein Sovpåse med Avtagbar Ärm 90 cm, Roarsome"
+      rating={4.6}
+      rank={3}
+      badge="Snyggast design"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/jollein-sovpase-roarsome.webp"
+      imageAlt="Jollein sovpåse med avtagbar ärm Roarsome"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome"
+      pros={['Avtagbara ärmar, anpassa efter temperatur', 'Populärast av alla märken i Sverige', 'Mjuk bomull med söta mönster', 'Lång livslängd, passar 0 till 36 månader']}
+      cons={['TOG 1.0 passar inte kalla vintrar', 'Lite dyrare i premiumsegmentet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Jollein Roarsome ger dig avtagbara ärmar, vilket gör att du kan anpassa sovpåsen efter temperaturen från sval kväll till varm sommarnatt. Den mjuka bomullen med söta mönster känns lyxig, och med en storleksspann från 0 till 36 månader räcker den i flera år. Jollein är dessutom ett av de mest populära märkena i Sverige.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      TOG 1.0 räcker inte för kalla vintrar, då behöver du en varmare modell. Den ligger också i premiumsegmentet prismässigt. Men för familjen som vill ha flexibilitet och design i en och samma sovpåse är Roarsome det snyggaste valet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <p>TOG (Thermal Overall Grade) är ett standardiserat mått på värmemotståndet i textilier. Systemet är enkelt:</p>
- <ul>
- <li><strong>TOG 0.5:</strong> Sommar, varm bostad (24°C+)</li>
- <li><strong>TOG 1.0:</strong> Sommar/tidig höst, normal bostad (20 till 24°C)</li>
- <li><strong>TOG 2.5:</strong> Höst och vinter, sval bostad (16 till 20°C)</li>
- <li><strong>TOG 3.5:</strong> Kall vinter, kyligt sovrum (under 16°C)</li>
- </ul>
- <p>Kläderna bebisen har på sig under sovpåsen påverkar den effektiva värmen. En kortärmad body under TOG 1.0 ger ungefär samma värme som en långärmad body under TOG 0.5.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre sommarsovpåsar granskade, en vinner totalt. Ergobaby On The Move TOG 1 tar förstaplatsen på värme, enkel blöjbyte och daglig användbarhet, fårdesignen Sheep är den populäraste varianten och Jollein Roarsome är det snyggaste valet med avtagbar ärm. Vill du jämföra fler modeller? Se vår kompletta <a href="/sovsackar/" class="text-accent hover:text-accent-dark underline">guide till sovpåsar för bebis 2026</a> eller läs om <a href="/sovsackar/vinter/" class="text-accent hover:text-accent-dark underline">vintersovpåse bebis med TOG 2.5 och 3.5</a>.
+    </p>
 
- <h3>Säkerhet är viktigast</h3>
- <p>Överhettning är kopplat till ökad risk för plötslig spädbarnsdöd (SIDS). Välj alltid hellre ett lägre TOG-värde och lägg på mer kläder vid behov, snarare än att ta i med ett högt TOG-värde. Känn på bebisens nacke och bröst, de ska vara svalt varma, aldrig svettiga.</p>
- </div>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Sommarsovpåsar bebis 2026" />
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade sovprodukter</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/sovsackar/" class="text-accent underline">Alla sovpåsar för bebis 2026</a></li>
- <li><a href="/sovsackar/vinter/" class="text-accent underline">Vintersovpåse bebis 2026, TOG 2.5 och 3.5</a></li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt sommarsovpåse 2026</h2>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Förstå TOG-systemet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      TOG (Thermal Overall Grade) är ett standardiserat mått på värmemotståndet i textilier. Systemet är enkelt: TOG 0.5 passar sommar och varm bostad (24°C+), TOG 1.0 passar sommar och tidig höst i en normal bostad (20 till 24°C), TOG 2.5 passar höst och vinter i en sval bostad (16 till 20°C) och TOG 3.5 passar kall vinter med ett kyligt sovrum (under 16°C). Kläderna bebisen har på sig under sovpåsen påverkar den effektiva värmen. En kortärmad body under TOG 1.0 ger ungefär samma värme som en långärmad body under TOG 0.5.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Ergobaby On The Move Sovpåse 6-18 M TOG 1, Elephant',
- description: 'Sommarsovpåse för bebis 6 till 18 månader med TOG 1.0. Tvåvägsdragkedja för enkel blöjbyte. Mjukt polyestermaterial.',
- image: 'https://bebisguiden.se/images/products/ergobaby-sovpase-tog1.webp',
- brand: 'Ergobaby',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Ergobaby On The Move Sovpåse 6-18M TOG 1.0, Sheep',
- description: 'Sommarsovpåse för bebis 6 till 18 månader med TOG 1.0 i fårdesign. Tvåvägsdragkedja för enkel blöjbyte.',
- image: 'https://bebisguiden.se/images/products/ergobaby-sovpase-tog1.webp',
- brand: 'Ergobaby',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet är viktigast</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Överhettning är kopplat till ökad risk för plötslig spädbarnsdöd (SIDS). Välj alltid hellre ett lägre TOG-värde och lägg på mer kläder vid behov, snarare än att ta i med ett högt TOG-värde. Känn på bebisens nacke och bröst, de ska vara svalt varma, aldrig svettiga. Den ideala sovrumstemperaturen för en bebis är 16 till 20°C.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material: polyester eller bomull?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Polyester, som i Ergobaby On The Move, torkar snabbt efter tvätt och tål många maskintvättar, vilket är praktiskt på sommaren när nattblöjor läcker oftare. Bomull, som i Jollein Roarsome, andas naturligt och känns mjukare mot huden, men torkar långsammare. Båda materialen tvättas i 40°C. Välj utifrån vad du värdesätter mest: snabbtorkande praktiskhet eller naturligt material mot huden.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Rätt storlek och säker passform</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En sovpåse ska aldrig vara för stor. Bebisens huvud ska inte kunna glida in i sovpåsen, så kontrollera att halsöppningen är anpassad till bebisens storlek. Nyfödda (0 till 3 månader) behöver storlek 50 till 56 cm. Modeller med avtagbar ärm, som Jollein Roarsome, ger extra flexibilitet eftersom du kan anpassa värmen efter natten. Sovpåsen ersätter täcket, så ingen extra filt behövs.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad kostar en bra sommarsovpåse?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En kvalitetssovpåse för sommaren kostar oftast mellan 250 och 600 kronor 2026. Ergobaby ligger i mellansegmentet med beprövad kvalitet, medan Jollein ligger något högre i premiumsegmentet med avtagbar ärm och bomull. En sovpåse med stor storleksspann, som Jolleins 0 till 36 månader, blir billigare per användningsår eftersom den räcker längre.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om säker sömn?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Sovsäcken håller barnet lagom varmt utan lösa filtar som kan hamna över ansiktet. Nedan är de viktigaste råden för säker sömn från 1177.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Lagom varm"
+        source="1177"
+        sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+        year="2026"
+      >
+        Barnet ska vara lagom varm, inte för varm. Risken för plötslig spädbarnsdöd ökar om barnet blir för varm.
+      </StatHighlight>
+      <StatHighlight
+        figure="Fritt ansikte"
+        source="1177"
+        sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+        year="2026"
+      >
+        Genom att hålla barnets ansikte fritt från täcken eller andra sängkläder när hen sover minskar risken. Risken minskar också om barnet kan röra armar och ben när hen sover.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="1177"
+      role="Sveriges nationella hälso- och sjukvårdsupplysning"
+      sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+    >
+      "Se till att barnets ansikte är fritt, att barnet är lagom varm och kan röra sig när hen sover."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat tre sommarsovpåsar utifrån TOG-värde och passande temperaturspann, material (polyester eller bomull), öppningslösning (tvåvägsdragkedja för enkel blöjbyte), storleksspann och daglig användbarhet. Produkterna är valda bland de mest sålda och eftersökta sommarsovpåsarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade sovprodukter</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/sovsackar/" class="text-accent underline">Alla sovpåsar för bebis 2026</a></li>
+        <li><a href="/sovsackar/vinter/" class="text-accent underline">Vintersovpåse bebis 2026, TOG 2.5 och 3.5</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa sommarsovpåsen för bebis 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant"
+    text="Bra pris hos Jollyroom"
+    productName="Ergobaby On The Move Sovpåse TOG 1, Elephant"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

@@ -1,473 +1,591 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Bilbarnstolar' },
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Britax Römer Dualfix 5Z i-Size',
- badge: 'Bäst i test',
- rating: 4.8,
- price: 3749,
- image: '/images/products/britax-dualfix-5z-black.webp',
- ctaText: 'Bra pris hos Jollyroom',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue',
- additionalCtaHrefs: [
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=12000040863&url=https://www.babyv.se/sv/articles/1.64.23403/britax-romer-dualfix-5z-i-size-night-blue' },
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=5009192d-2297-457a-85df-8e530f29c75f&url=https://www.babysam.se/britax-roemer-dualfix-5z-style-bilbarnstol-night-blue-onesize' },
- ],
- features: {
- 'Montering': 'ISOFIX + stödben',
- 'Riktning': 'Bakåtvänd/framåtvänd',
- 'Vikt': '14,8 kg',
- 'Ålder': '0 till 4 år (40 till 105 cm)',
- 'Krocktest': 'Bra (ADAC 2024)',
- },
- },
- {
- name: 'Maxi-Cosi Pebble 360 Pro 2 Babyskydd',
- badge: 'Populärast babyskydd',
- rating: 4.6,
- price: 3295,
- image: '/images/products/maxi-cosi-pebble-360-pro-2.webp',
- ctaText: 'Bra pris hos BabySam',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=a8640b22-66ce-4004-9996-21f7c39bb0ef&url=https://www.babysam.se/maxi-cosi-pebble-360-pro-2-babyskydd-twillic-black-onesize',
- additionalCtaHrefs: [
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=18052390110&url=https://www.babyv.se/sv/articles/1.61.22564/maxi-cosi-pebble-360-pro-2' },
- ],
- features: {
- 'Montering': 'ISOFIX-bas krävs',
- 'Riktning': 'Bakåtvänd, 360° rotation',
- 'Vikt': '5,5 kg (utan bas)',
- 'Ålder': '0 till 18 mån (40-87 cm)',
- 'Krocktest': 'ADAC 2024: Bra',
- },
- },
- {
- name: 'Axkid One 3 Bilbarnstol Coastal Storm Black',
- badge: 'Bäst bakåtvänd till skolålder',
- rating: 4.7,
- price: 5995,
- image: '/images/products/axkid-one-3-bilbarnstol.webp',
- ctaText: 'Bra pris hos BabySam',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0f8ea995-74e0-443c-a000-c3870e3bc4b3&url=https://www.babysam.se/axkid-one-3-bilbarnstol-coastal-storm-black-onesize',
- features: {
- 'Montering': 'ISOFIX + stödben',
- 'Riktning': 'Bakåtvänd till 25 kg',
- 'Vikt': '16 kg',
- 'Ålder': '0 till 7 år (40-125 cm)',
- 'Krocktest': 'Bra (ADAC 2023)',
- },
- },
- {
- name: 'Cybex Sirona T i-Size',
- badge: 'Premiumval',
- rating: 4.7,
- price: 3995,
- image: '/images/products/cybex-sirona-t.webp',
- ctaText: 'Bra pris hos Jollyroom',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
- additionalCtaHrefs: [
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=19a0cd15-f6bf-4df0-a1aa-011dd1456e1d&url=https://www.babysam.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black-plus-onesize' },
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1523000375&url=https://www.babyv.se/sv/articles/1.64.20285/cybex-sirona-t-i-size-sepia-black' },
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=526452&url=https://www.babyland.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black' },
- ],
- features: {
- 'Montering': 'ISOFIX + stödben',
- 'Riktning': 'Bakåtvänd/framåtvänd',
- 'Vikt': '15,2 kg',
- 'Ålder': '0 till 4 år (45 till 105 cm)',
- 'Krocktest': 'Bra (ADAC 2024)',
- },
- },
- {
- name: 'Doona i Babyskydd Desert Green',
- badge: 'Bäst 2-i-1 babyskydd/barnvagn',
- rating: 4.5,
- price: 5095,
- image: '/images/products/doona-i-babyskydd.webp',
- ctaText: 'Bra pris hos Jollyroom',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10253472&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/doona-i-babyskydd-desert-green',
- features: {
- 'Montering': 'ISOFIX + bälte',
- 'Riktning': 'Bakåtvänd',
- 'Vikt': '7,5 kg',
- 'Ålder': '0 till 13 mån (40-85 cm)',
- 'Krocktest': 'Godkänd',
- },
- },
- {
- name: 'BeSafe iZi Modular RF X1 i-Size',
- badge: 'Lång användningstid',
- rating: 4.6,
- price: 2396,
- image: '/images/products/besafe-izi-modular-rf-x1.webp',
- ctaText: 'Bra pris hos Jollyroom',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
- additionalCtaHrefs: [
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0154f67e-cb5c-48ff-aaa7-29940fdf039f&url=https://www.babysam.se/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab-onesize' },
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=111008692BlackCabFStd&url=https://www.babyv.se/sv/articles/1.64.22236/besafe-izi-modular-rf-x1-i-size-fresh-black-cab' },
- ],
- features: {
- 'Montering': 'ISOFIX + stödben',
- 'Riktning': 'Bakåtvänd/framåtvänd',
- 'Vikt': '12,5 kg',
- 'Ålder': '0 till 4 år',
- 'Krocktest': 'Bra',
- },
- },
+  {
+    name: 'Britax Römer Dualfix 5Z i-Size',
+    brand: 'Britax Römer',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Toppbetyg ADAC-krocktest', '360° rotation', 'Bakåtvänt till 105 cm'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue',
+    imageUrl: '/images/products/britax-dualfix-5z-black.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Bakåtvänd bilbarnstol med 360-graders rotation, ISOFIX och stödben. Godkänd i ADAC-krocktest 2024. För barn 0-4 år (40-105 cm).',
+    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '14,8 kg', 'Ålder': '0 till 4 år (40 till 105 cm)', 'Krocktest': 'Bra (ADAC 2024)' },
+    alsoAt: [
+      { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=12000040863&url=https://www.babyv.se/sv/articles/1.64.23403/britax-romer-dualfix-5z-i-size-night-blue' },
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=5009192d-2297-457a-85df-8e530f29c75f&url=https://www.babysam.se/britax-roemer-dualfix-5z-style-bilbarnstol-night-blue-onesize' },
+    ],
+  },
+  {
+    name: 'Maxi-Cosi Pebble 360 Pro 2 Babyskydd',
+    brand: 'Maxi-Cosi',
+    rating: 4.6,
+    badge: 'Populärast babyskydd',
+    usps: ['Mest sålda babyskyddet', '360° rotation', 'Bred vagn-kompatibilitet'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=a8640b22-66ce-4004-9996-21f7c39bb0ef&url=https://www.babysam.se/maxi-cosi-pebble-360-pro-2-babyskydd-twillic-black-onesize',
+    imageUrl: '/images/products/maxi-cosi-pebble-360-pro-2.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Populärast babyskydd i Sverige. 360° rotation, ISOFIX-bas och bred kompatibilitet med barnvagnar. För barn 0-18 mån (40-87 cm).',
+    features: { 'Montering': 'ISOFIX-bas krävs', 'Riktning': 'Bakåtvänd, 360° rotation', 'Vikt': '5,5 kg (utan bas)', 'Ålder': '0 till 18 mån (40-87 cm)', 'Krocktest': 'ADAC 2024: Bra' },
+    alsoAt: [
+      { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=18052390110&url=https://www.babyv.se/sv/articles/1.61.22564/maxi-cosi-pebble-360-pro-2' },
+    ],
+  },
+  {
+    name: 'Axkid One 3 Bilbarnstol Coastal Storm Black',
+    brand: 'Axkid',
+    rating: 4.7,
+    badge: 'Bäst bakåtvänd till skolålder',
+    usps: ['Bakåtvänt till 25 kg', 'Svensktillverkad', 'Högt ADAC-betyg'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0f8ea995-74e0-443c-a000-c3870e3bc4b3&url=https://www.babysam.se/axkid-one-3-bilbarnstol-coastal-storm-black-onesize',
+    imageUrl: '/images/products/axkid-one-3-bilbarnstol.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Bakåtvänd bilbarnstol till 25 kg och 125 cm. Bäst för lång bakåtvänd åkning upp till skolålder. ISOFIX med stödben. För barn 0-7 år (40-125 cm).',
+    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd till 25 kg', 'Vikt': '16 kg', 'Ålder': '0 till 7 år (40-125 cm)', 'Krocktest': 'Bra (ADAC 2023)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Cybex Sirona T i-Size',
+    brand: 'Cybex',
+    rating: 4.7,
+    badge: 'Premiumval',
+    usps: ['Linear sidoskydd', 'Magnetiskt bälteslås', 'Premiumkomfort'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
+    imageUrl: '/images/products/cybex-sirona-t.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Premium bakåtvänd bilbarnstol med Linear Side-impact Protection och magnetiskt bälteslås. ISOFIX-montering. För barn 0-4 år (45-105 cm).',
+    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '15,2 kg', 'Ålder': '0 till 4 år (45 till 105 cm)', 'Krocktest': 'Bra (ADAC 2024)' },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=19a0cd15-f6bf-4df0-a1aa-011dd1456e1d&url=https://www.babysam.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black-plus-onesize' },
+      { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1523000375&url=https://www.babyv.se/sv/articles/1.64.20285/cybex-sirona-t-i-size-sepia-black' },
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=526452&url=https://www.babyland.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black' },
+    ],
+  },
+  {
+    name: 'Doona i Babyskydd Desert Green',
+    brand: 'Doona',
+    rating: 4.5,
+    badge: 'Bäst 2-i-1 babyskydd/barnvagn',
+    usps: ['2-i-1 bil + vagn', 'Ingen adapter behövs', 'Kompakt portabel'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10253472&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/doona-i-babyskydd-desert-green',
+    imageUrl: '/images/products/doona-i-babyskydd.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: '2-i-1 babyskydd som omvandlas till barnvagn. ISOFIX och bältesmontering. Kompakt och portabel. För barn 0-13 mån (40-85 cm).',
+    features: { 'Montering': 'ISOFIX + bälte', 'Riktning': 'Bakåtvänd', 'Vikt': '7,5 kg', 'Ålder': '0 till 13 mån (40-85 cm)', 'Krocktest': 'Godkänd' },
+    alsoAt: [],
+  },
+  {
+    name: 'BeSafe iZi Modular RF X1 i-Size',
+    brand: 'BeSafe',
+    rating: 4.6,
+    badge: 'Lång användningstid',
+    usps: ['Modulärt system', 'Bakåtvänt till 4 år', 'Skandinavisk säkerhet'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
+    imageUrl: '/images/products/besafe-izi-modular-rf-x1.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Bakåtvänd bilbarnstol med modulärt system och ISOFIX-montering. Skandinavisk säkerhet. För barn 0-4 år.',
+    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '12,5 kg', 'Ålder': '0 till 4 år', 'Krocktest': 'Bra' },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0154f67e-cb5c-48ff-aaa7-29940fdf039f&url=https://www.babysam.se/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab-onesize' },
+      { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=111008692BlackCabFStd&url=https://www.babyv.se/sv/articles/1.64.22236/besafe-izi-modular-rf-x1-i-size-fresh-black-cab' },
+    ],
+  },
 ];
 
-const featureLabels = ['Montering', 'Riktning', 'Vikt', 'Ålder', 'Krocktest'];
+const specLabels = ['Montering', 'Riktning', 'Vikt', 'Ålder', 'Krocktest'];
 
 const faqItems = [
- {
- question: 'Hur länge ska barn åka bakåtvänt?',
- answer: 'Barn ska åka bakåtvänt till minst 4 år eller upp till stolens maximala längd (oftast 105 cm), beroende på vad som inträffar senare. Bakåtvänd åkning är upp till fem gånger säkrare än framåtvänd vid frontalkrocka, eftersom belastningen fördelas över hela ryggens yta istället för att koncentreras till bältesfästena. Britax Römer Dualfix 5Z och Cybex Sirona T klarar bakåtvänt till 105 cm, BeSafe iZi Modular RF X1 täcker hela spann från nyfödd till 4 år i samma stol.',
- },
- {
- question: 'Vad är ISOFIX och behövs det?',
- answer: 'ISOFIX är ett standardiserat fastsystem där bilbarnstolen låses fast direkt i bilens chassi via två stålöglor, utan beroende av bältet för förankringen. Det ger upp till tre gånger snabbare korrekt montering jämfört med bältesmontering och eliminerar risken för felmontering som är den vanligaste orsaken till att bilbarnstolen inte ger fullt skydd. Alla tre stolar i vår jämförelse (Britax Dualfix 5Z, Cybex Sirona T, BeSafe iZi Modular RF X1) använder ISOFIX med stödben. De flesta bilar tillverkade från 2012 och framåt har ISOFIX som standard, kontrollera i bilens handbok.',
- },
- {
- question: 'Vad betyder i-Size (R129)?',
- answer: 'i-Size (R129) är den senaste europeiska säkerhetsstandarden för bilbarnstolar och är strängare än den äldre R44-standarden på tre viktiga punkter: den kräver obligatorisk sidokrocktestning (inte bara frontal- och bakifrån), barnet ska åka bakåtvänt till minst 15 månader, och stolen certifieras efter barnets längd i centimeter istället för vikt i kilogram, vilket ger en mer exakt passform. Alla tre stolar vi rekommenderar (Britax Dualfix 5Z, Cybex Sirona T, BeSafe iZi Modular RF X1) är i-Size-certifierade.',
- },
- {
- question: 'Vad kostar en bra bilbarnstol?',
- answer: 'Prisvärda i-Size-stolar med bra krocktest börjar runt 3 000 kr. Premiummodeller med 360-graders rotation, magnetiska bälteslås och avancerat sidoskydd kostar 5 000 till 9 000 kr. Spara hellre på textiltillbehör än på själva stolen, säkerhetsskillnaderna i krocktester är reella.',
- },
- {
- question: 'Kan jag köpa en begagnad bilbarnstol?',
- answer: 'Nej, undvik alltid begagnade bilbarnstolar om du inte känner ägaren personligen. Du vet inte om stolen varit med i en krock, om alla delar finns kvar, eller om certifieringen löpt ut. En osynlig spricka i plasthöljet räcker för att skyddet ska försvinna vid kollision.',
- },
- {
- question: 'När får man vända bilbarnstolen framåt?',
- answer: 'Bilbarnstolen ska vara bakåtvänd så länge som möjligt, helst till 4 år eller upp till 105 cm. Transportstyrelsen och svenska barnsjukvården rekommenderar minst 4 år bakåtvänt. Många moderna i-Size-stolar tillåter bakåtvänt till 18 kg eller 105 cm, vilket räcker till barnet är runt 4 år.',
- },
- {
- question: 'Vilken bilbarnstol är säkrast i krocktest?',
- answer: 'Britax Römer Dualfix 5Z och Cybex Sirona T fick båda högsta betyg i ADAC 2024. Britax Römer har bredare sidoskydd och längre bakåtvänt åkande, Cybex har magnetiskt bälteslås som gör det enklare att spänna fast barnet. Båda är bland de säkraste roterande stolarna på den svenska marknaden 2026.',
- },
- {
- question: 'Hur länge räcker en bilbarnstol?',
- answer: 'En modern i-Size-stol som Britax Dualfix 5Z eller Cybex Sirona T täcker nyfödd till ca 105 cm (ca 4 år) i ett system. Nästa steg är en bältesförstärkare med ryggstöd från 100 till 105 cm och upp till 150 cm, vilket räcker till ca 10 till 12 år. Planerar du fler barn är det ekonomiskt att välja en stol med bred kapacitet. Byt alltid ut stolen om den har varit med i en krock, oavsett hur liten.',
- },
- {
- question: 'Passar alla bilbarnstolar i alla bilar?',
- answer: 'Nej, kontrollera alltid kompatibilitet innan köp. Kontrollera bilens handbok för ISOFIX-godkänd stol. Roterande 360-gradersstolar är bredare och kan krocka med framdörr eller mittkonsol. Många återförsäljare erbjuder provinstallation, utnyttja det. Britax och Cybex har online-verktyg där du söker på bilmodell och ser kompatibilitet. Kontrollera alltid att ISOFIX-hakarna sitter i ordentligt och att stödbenet är korrekt monterat.',
- },
- {
- question: 'Vad är skillnaden på bilbarnstol för nyfödda och äldre barn?',
- answer: 'Nyfödda behöver ett system med newborn-insert och nackkudde som håller det lilla huvudet på plats. Modern standard är ett allt-i-ett-system som täcker hela spannet från nyfödd (ca 40 cm) till 105 cm bakåtvänt utan att byta stol. Undvik gamla modeller (R44) som bara tar 0 till 13 kg framåtvänt. Bakåtvänd åkning är upp till fem gånger säkrare vid frontalkrocka och ska hållas till minst 4 år.',
- },
+  {
+    question: 'Hur länge ska barn åka bakåtvänt?',
+    answer: 'Barn ska åka bakåtvänt till minst 4 år eller upp till stolens maximala längd (oftast 105 cm), beroende på vad som inträffar senare. Bakåtvänd åkning är upp till fem gånger säkrare än framåtvänd vid frontalkrocka, eftersom belastningen fördelas över hela ryggens yta istället för att koncentreras till bältesfästena. Britax Römer Dualfix 5Z och Cybex Sirona T klarar bakåtvänt till 105 cm, BeSafe iZi Modular RF X1 täcker hela spann från nyfödd till 4 år i samma stol.',
+  },
+  {
+    question: 'Vad är ISOFIX och behövs det?',
+    answer: 'ISOFIX är ett standardiserat fastsystem där bilbarnstolen låses fast direkt i bilens chassi via två stålöglor, utan beroende av bältet för förankringen. Det ger upp till tre gånger snabbare korrekt montering jämfört med bältesmontering och eliminerar risken för felmontering som är den vanligaste orsaken till att bilbarnstolen inte ger fullt skydd. Alla tre stolar i vår jämförelse (Britax Dualfix 5Z, Cybex Sirona T, BeSafe iZi Modular RF X1) använder ISOFIX med stödben. De flesta bilar tillverkade från 2012 och framåt har ISOFIX som standard, kontrollera i bilens handbok.',
+  },
+  {
+    question: 'Vad betyder i-Size (R129)?',
+    answer: 'i-Size (R129) är den senaste europeiska säkerhetsstandarden för bilbarnstolar och är strängare än den äldre R44-standarden på tre viktiga punkter: den kräver obligatorisk sidokrocktestning (inte bara frontal- och bakifrån), barnet ska åka bakåtvänt till minst 15 månader, och stolen certifieras efter barnets längd i centimeter istället för vikt i kilogram, vilket ger en mer exakt passform. Alla tre stolar vi rekommenderar (Britax Dualfix 5Z, Cybex Sirona T, BeSafe iZi Modular RF X1) är i-Size-certifierade.',
+  },
+  {
+    question: 'Vad kostar en bra bilbarnstol?',
+    answer: 'Prisvärda i-Size-stolar med bra krocktest börjar runt 3 000 kr. Premiummodeller med 360-graders rotation, magnetiska bälteslås och avancerat sidoskydd kostar 5 000 till 9 000 kr. Spara hellre på textiltillbehör än på själva stolen, säkerhetsskillnaderna i krocktester är reella.',
+  },
+  {
+    question: 'Kan jag köpa en begagnad bilbarnstol?',
+    answer: 'Nej, undvik alltid begagnade bilbarnstolar om du inte känner ägaren personligen. Du vet inte om stolen varit med i en krock, om alla delar finns kvar, eller om certifieringen löpt ut. En osynlig spricka i plasthöljet räcker för att skyddet ska försvinna vid kollision.',
+  },
+  {
+    question: 'När får man vända bilbarnstolen framåt?',
+    answer: 'Bilbarnstolen ska vara bakåtvänd så länge som möjligt, helst till 4 år eller upp till 105 cm. Transportstyrelsen och svenska barnsjukvården rekommenderar minst 4 år bakåtvänt. Många moderna i-Size-stolar tillåter bakåtvänt till 18 kg eller 105 cm, vilket räcker till barnet är runt 4 år.',
+  },
+  {
+    question: 'Vilken bilbarnstol är säkrast i krocktest?',
+    answer: 'Britax Römer Dualfix 5Z och Cybex Sirona T fick båda högsta betyg i ADAC 2024. Britax Römer har bredare sidoskydd och längre bakåtvänt åkande, Cybex har magnetiskt bälteslås som gör det enklare att spänna fast barnet. Båda är bland de säkraste roterande stolarna på den svenska marknaden 2026.',
+  },
+  {
+    question: 'Hur länge räcker en bilbarnstol?',
+    answer: 'En modern i-Size-stol som Britax Dualfix 5Z eller Cybex Sirona T täcker nyfödd till ca 105 cm (ca 4 år) i ett system. Nästa steg är en bältesförstärkare med ryggstöd från 100 till 105 cm och upp till 150 cm, vilket räcker till ca 10 till 12 år. Planerar du fler barn är det ekonomiskt att välja en stol med bred kapacitet. Byt alltid ut stolen om den har varit med i en krock, oavsett hur liten.',
+  },
+  {
+    question: 'Passar alla bilbarnstolar i alla bilar?',
+    answer: 'Nej, kontrollera alltid kompatibilitet innan köp. Kontrollera bilens handbok för ISOFIX-godkänd stol. Roterande 360-gradersstolar är bredare och kan krocka med framdörr eller mittkonsol. Många återförsäljare erbjuder provinstallation, utnyttja det. Britax och Cybex har online-verktyg där du söker på bilmodell och ser kompatibilitet. Kontrollera alltid att ISOFIX-hakarna sitter i ordentligt och att stödbenet är korrekt monterat.',
+  },
+  {
+    question: 'Vad är skillnaden på bilbarnstol för nyfödda och äldre barn?',
+    answer: 'Nyfödda behöver ett system med newborn-insert och nackkudde som håller det lilla huvudet på plats. Modern standard är ett allt-i-ett-system som täcker hela spannet från nyfödd (ca 40 cm) till 105 cm bakåtvänt utan att byta stol. Undvik gamla modeller (R44) som bara tar 0 till 13 kg framåtvänt. Bakåtvänd åkning är upp till fem gånger säkrare vid frontalkrocka och ska hållas till minst 4 år.',
+  },
 ];
 
 export const articleMeta = {
- title: "Bästa bilbarnstolen 2026: 6 modeller jämförda och rankade",
- description: "Bästa bilbarnstolen 2026. Britax Römer Dualfix 5Z bäst i test. Maxi-Cosi Pebble 360 Pro 2 populärast, Axkid One 3 bäst bakåtvänd. Doona i unik 2-i-1. Jämförelse och köpguide.",
- publishDate: "2026-05-16",
- category: "Bilbarnstolar",
- image: "/images/products/britax-dualfix-5z-black.webp",
+  title: "Bästa bilbarnstolen 2026: 6 modeller jämförda och rankade",
+  description: "Bästa bilbarnstolen 2026. Britax Römer Dualfix 5Z bäst i test. Maxi-Cosi Pebble 360 Pro 2 populärast, Axkid One 3 bäst bakåtvänd. Doona i unik 2-i-1. Jämförelse och köpguide.",
+  publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
+  category: "Bilbarnstolar",
+  image: "/images/products/britax-dualfix-5z-black.webp",
 };
 ---
 
 <ArticleLayout
- title="Bästa bilbarnstolen 2026: 6 modeller jämförda och rankade"
- description="Bästa bilbarnstolen 2026: Britax Römer Dualfix 5Z bäst i test. Axkid One 3 bäst bakåtvänd. Maxi-Cosi Pebble 360 Pro 2 populärast. Jämförelse och köpguide."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/bilbarnstolar/"
- updatedDate="2026-05-22"
+  title="Bästa bilbarnstolen 2026: 6 modeller jämförda och rankade"
+  description="Bästa bilbarnstolen 2026: Britax Römer Dualfix 5Z bäst i test. Axkid One 3 bäst bakåtvänd. Maxi-Cosi Pebble 360 Pro 2 populärast. Jämförelse och köpguide."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/bilbarnstolar/"
+  datePublished="2026-05-16"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
- Britax Römer Dualfix 5Z i-Size vinner bilbarnstol bäst i test 2026 med toppbetyg i ADAC-krocktestet. Den roterar 360 grader, vilket gör det enkelt att lyfta i barnet, och åker bakåtvänt till 105 cm. Spannet 0 till 4 år gör den till en av Sveriges säkraste roterande bilbarnstolar.
- </p>
 
- <TopPick product={products[0]} description="Britax Römer Dualfix 5Z i-Size är vårt bästa val 2026. Toppbetyg i ADAC-krocktest, 360-graders rotation och bakåtvänt till 105 cm gör den till en av Sveriges säkraste roterande bilbarnstolar för 0 till 4 år." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bilbarnstolar 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken bilbarnstol är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Britax Römer Dualfix 5Z i-Size är bäst i test 2026: toppbetyg i ADAC-krocktest, 360-graders rotation som gör det enkelt att lyfta i barnet, och bakåtvänt till 105 cm (0-4 år). Bäst bakåtvänd till skolålder: Axkid One 3 (25 kg). Populärast babyskydd: Maxi-Cosi Pebble 360 Pro 2.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong><a href="/marken/britax/" class="text-accent underline">Britax</a> Römer Dualfix 5Z</strong> är bäst för säkerhet och funktion. <strong>Maxi-Cosi Pebble 360 Pro 2</strong> är populärast babyskydd. <strong>Axkid One 3</strong> är bäst bakåtvänd till skolålder. <strong>Doona i</strong> är bäst 2-i-1. <strong><a href="/marken/cybex/" class="text-accent underline">Cybex</a> Sirona T</strong> är bäst premium. <strong><a href="/marken/besafe/" class="text-accent underline">BeSafe</a> iZi Modular RF X1</strong> är bäst för lång användningstid.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Britax Römer"
+    name="Dualfix 5Z i-Size"
+    image="/images/products/britax-dualfix-5z-black.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue"
+    store="Jollyroom"
+    description="Bäst i test 2026 med toppbetyg i ADAC-krocktestet. Roterar 360 grader för enkel in- och urlyftning och åker bakåtvänt till 105 cm. En av Sveriges säkraste roterande bilbarnstolar för 0 till 4 år."
+    alsoAt={[
+      { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=12000040863&url=https://www.babyv.se/sv/articles/1.64.23403/britax-romer-dualfix-5z-i-size-night-blue' },
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=5009192d-2297-457a-85df-8e530f29c75f&url=https://www.babysam.se/britax-roemer-dualfix-5z-style-bilbarnstol-night-blue-onesize' },
+    ]}
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Bilbarnstolar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Britax Römer Dualfix 5Z i-Size"
- image="/images/products/britax-dualfix-5z-black.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="0 till 4 år (40 till 105 cm)"
- pros={['Toppbetyg i ADAC-krocktest', '360-graders rotation för enkel in/urklättring', 'Enkel ISOFIX-montering', 'Bakåtvänt till 105 cm']}
- cons={['Tung (14,8 kg)', 'Tar stor plats i bilen', 'Högre prisklass']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue"
- additionalCtaHrefs={[
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=12000040863&url=https://www.babyv.se/sv/articles/1.64.23403/britax-romer-dualfix-5z-i-size-night-blue' },
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=5009192d-2297-457a-85df-8e530f29c75f&url=https://www.babysam.se/britax-roemer-dualfix-5z-style-bilbarnstol-night-blue-onesize' },
- ]}
- />
+  {/* Vinnaröversikt (bevarad från prod, med märkeslänkar) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong><a href="/marken/britax/" class="text-accent underline">Britax</a> Römer Dualfix 5Z</strong> är bäst för säkerhet och funktion. <strong>Maxi-Cosi Pebble 360 Pro 2</strong> är populärast babyskydd. <strong>Axkid One 3</strong> är bäst bakåtvänd till skolålder. <strong>Doona i</strong> är bäst 2-i-1. <strong><a href="/marken/cybex/" class="text-accent underline">Cybex</a> Sirona T</strong> är bäst premium. <strong><a href="/marken/besafe/" class="text-accent underline">BeSafe</a> iZi Modular RF X1</strong> är bäst för lång användningstid.</p>
+  </div>
 
- <ProductCard
- name="Maxi-Cosi Pebble 360 Pro 2 Babyskydd"
- image="/images/products/maxi-cosi-pebble-360-pro-2.webp"
- badge="Populärast babyskydd"
- rating={4.6}
- ageRange="0 till 18 mån (40-87 cm)"
- pros={['Mest sålda babyskyddet i Sverige', '360° rotation gör in/urstigning enkel', 'Bred kompatibilitet med barnvagnar (Maxi-Cosi, Joolz, Cybex)', 'Mjukt tyg med minnesskum']}
- cons={['Kräver separat ISOFIX-bas (extra kostnad)', 'Lite tyngre utan bas', 'Bör uppgraderas till nästa stol vid 87 cm']}
- ctaText="Bra pris hos BabySam"
- ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=a8640b22-66ce-4004-9996-21f7c39bb0ef&url=https://www.babysam.se/maxi-cosi-pebble-360-pro-2-babyskydd-twillic-black-onesize"
- additionalCtaHrefs={[
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=18052390110&url=https://www.babyv.se/sv/articles/1.61.22564/maxi-cosi-pebble-360-pro-2' },
- ]}
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Axkid One 3 Bilbarnstol Coastal Storm Black"
- image="/images/products/axkid-one-3-bilbarnstol.webp"
- badge="Bäst bakåtvänd till skolålder"
- rating={4.7}
- ageRange="0 till 7 år (40-125 cm)"
- pros={['Bakåtvänd till 25 kg och 125 cm', 'Bäst i kategorin för lång bakåtvänd åkning', 'Tillverkat i Sverige, fokus på säkerhet', 'Högt betyg i ADAC-krocktester']}
- cons={['Dyrt (5 995 kr)', 'Tung stol (16 kg)', 'Kan ta plats i bilen']}
- ctaText="Bra pris hos BabySam"
- ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0f8ea995-74e0-443c-a000-c3870e3bc4b3&url=https://www.babysam.se/axkid-one-3-bilbarnstol-coastal-storm-black-onesize"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Britax Römer Dualfix 5Z i-Size, bäst i test 2026</h2>
+    <MoneyProductCard
+      brand="Britax Römer"
+      name="Britax Römer Dualfix 5Z i-Size"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/britax-dualfix-5z-black.webp"
+      imageAlt="Britax Römer Dualfix 5Z i-Size bilbarnstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue"
+      alsoAt={[
+        { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=12000040863&url=https://www.babyv.se/sv/articles/1.64.23403/britax-romer-dualfix-5z-i-size-night-blue' },
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=5009192d-2297-457a-85df-8e530f29c75f&url=https://www.babysam.se/britax-roemer-dualfix-5z-style-bilbarnstol-night-blue-onesize' },
+      ]}
+      pros={['Toppbetyg i ADAC-krocktest', '360-graders rotation för enkel in/urklättring', 'Enkel ISOFIX-montering', 'Bakåtvänt till 105 cm']}
+      cons={['Tung (14,8 kg)', 'Tar stor plats i bilen', 'Högre prisklass']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Britax Römer Dualfix 5Z i-Size vinner bilbarnstol bäst i test 2026 med toppbetyg i ADAC-krocktestet. Den roterar 360 grader, vilket gör det enkelt att lyfta i barnet utan att böja ryggen, och åker bakåtvänt till 105 cm. Spannet 0 till 4 år gör den till en av Sveriges säkraste roterande bilbarnstolar och den enda stolen de flesta familjer behöver de första åren.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är vikten (14,8 kg) och att den tar stor plats i baksätet, vilket märks i mindre bilar. Den ligger också i en högre prisklass. Men för säkerhet, enkel montering och daglig användbarhet är den svår att slå. ISOFIX med stödben gör monteringen snabb och felsäker.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue" />
 
- <ProductCard
- name="Cybex Sirona T i-Size"
- image="/images/products/cybex-sirona-t.webp"
- badge="Premiumval"
- rating={4.7}
- ageRange="0 till 4 år (45 till 105 cm)"
- pros={['Utmärkt sidoskydd (Linear Side-impact Protection)', 'Mjuk textil och premiumkomfort', 'Magnetiskt bälteslås', 'Stilren design']}
- cons={['Hög prisklass', 'Kortare användningstid (45 till 105 cm)', 'Tung (15,2 kg)']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
- additionalCtaHrefs={[
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=19a0cd15-f6bf-4df0-a1aa-011dd1456e1d&url=https://www.babysam.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black-plus-onesize' },
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1523000375&url=https://www.babyv.se/sv/articles/1.64.20285/cybex-sirona-t-i-size-sepia-black' },
-   { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=526452&url=https://www.babyland.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black' },
- ]}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Maxi-Cosi Pebble 360 Pro 2, populärast babyskydd</h2>
+    <MoneyProductCard
+      brand="Maxi-Cosi"
+      name="Maxi-Cosi Pebble 360 Pro 2 Babyskydd"
+      rating={4.6}
+      rank={2}
+      badge="Populärast babyskydd"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/maxi-cosi-pebble-360-pro-2.webp"
+      imageAlt="Maxi-Cosi Pebble 360 Pro 2 Babyskydd"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=a8640b22-66ce-4004-9996-21f7c39bb0ef&url=https://www.babysam.se/maxi-cosi-pebble-360-pro-2-babyskydd-twillic-black-onesize"
+      alsoAt={[
+        { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=18052390110&url=https://www.babyv.se/sv/articles/1.61.22564/maxi-cosi-pebble-360-pro-2' },
+      ]}
+      pros={['Mest sålda babyskyddet i Sverige', '360° rotation gör in/urstigning enkel', 'Bred kompatibilitet med barnvagnar (Maxi-Cosi, Joolz, Cybex)', 'Mjukt tyg med minnesskum']}
+      cons={['Kräver separat ISOFIX-bas (extra kostnad)', 'Lite tyngre utan bas', 'Bör uppgraderas till nästa stol vid 87 cm']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Maxi-Cosi Pebble 360 Pro 2 är det mest sålda babyskyddet i Sverige, och med rätta. 360-graders rotation på basen gör att du kan vrida babyskyddet mot dörren, spänna fast barnet bekvämt och sedan vrida tillbaka. Det klickar dessutom direkt på de flesta moderna barnvagnar (Maxi-Cosi, Joolz, Cybex) för ett smidigt travelsystem.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Babyskyddet kräver en separat ISOFIX-bas och bör bytas till nästa stol när barnet når 87 cm, vilket sker runt 18 månader. Som första stol för nyfödda är det ett tryggt och praktiskt val med högt ADAC-betyg.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=a8640b22-66ce-4004-9996-21f7c39bb0ef&url=https://www.babysam.se/maxi-cosi-pebble-360-pro-2-babyskydd-twillic-black-onesize" />
 
- <ProductCard
- name="Doona i Babyskydd Desert Green"
- image="/images/products/doona-i-babyskydd.webp"
- badge="Bäst 2-i-1 babyskydd/barnvagn"
- rating={4.5}
- ageRange="0 till 13 mån (40-85 cm)"
- pros={['2-i-1: babyskydd som omvandlas till barnvagn', 'Inget behov av adapter vid övergång bil till vagn', 'Kompakt och portabel', 'Godkänd ISOFIX och bältesmontering']}
- cons={['Väger mer än renodlade babyskydd', 'Hjulen är enklare än en "riktig" barnvagn', 'Högt pris för vad det är']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10253472&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/doona-i-babyskydd-desert-green"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Axkid One 3, bäst bakåtvänd till skolålder</h2>
+    <MoneyProductCard
+      brand="Axkid"
+      name="Axkid One 3 Bilbarnstol Coastal Storm Black"
+      rating={4.7}
+      rank={3}
+      badge="Bäst bakåtvänd till skolålder"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/axkid-one-3-bilbarnstol.webp"
+      imageAlt="Axkid One 3 Bilbarnstol Coastal Storm Black"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0f8ea995-74e0-443c-a000-c3870e3bc4b3&url=https://www.babysam.se/axkid-one-3-bilbarnstol-coastal-storm-black-onesize"
+      pros={['Bakåtvänd till 25 kg och 125 cm', 'Bäst i kategorin för lång bakåtvänd åkning', 'Tillverkat i Sverige, fokus på säkerhet', 'Högt betyg i ADAC-krocktester']}
+      cons={['Dyrare premiumsegment', 'Tung stol (16 kg)', 'Kan ta plats i bilen']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Axkid One 3 är valet för dig som vill maximera tiden barnet åker bakåtvänt. Den klarar bakåtvänd åkning ända till 25 kg och 125 cm, vilket räcker till barnet är runt 6 till 7 år, längre än någon annan stol i testet. Axkid tillverkar i Sverige med säkerhet som hela affärsidén, och stolen har högt betyg i ADAC-krocktester.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den är dyrare och tung (16 kg), och tar plats i bilen. Men för svenska föräldrar som följer rekommendationen att åka bakåtvänt så länge som möjligt är Axkid One 3 den mest kompromisslösa stolen på marknaden.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0f8ea995-74e0-443c-a000-c3870e3bc4b3&url=https://www.babysam.se/axkid-one-3-bilbarnstol-coastal-storm-black-onesize" />
 
- <ProductCard
- name="BeSafe iZi Modular RF X1 i-Size"
- image="/images/products/besafe-izi-modular-rf-x1.webp"
- badge="Lång användningstid"
- rating={4.6}
- ageRange="0 till 4 år (61 till 105 cm)"
- pros={['Modulärt system', 'Bakåtvänd till 4 år', 'ISOFIX-montering', 'Skandinavisk säkerhet']}
- cons={['Högt pris', 'Kräver separat bas för nyfödda', 'Tung att bära utan bas']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
- additionalCtaHrefs={[
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0154f67e-cb5c-48ff-aaa7-29940fdf039f&url=https://www.babysam.se/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab-onesize' },
-   { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=111008692BlackCabFStd&url=https://www.babyv.se/sv/articles/1.64.22236/besafe-izi-modular-rf-x1-i-size-fresh-black-cab' },
- ]}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Cybex Sirona T i-Size, premiumvalet</h2>
+    <MoneyProductCard
+      brand="Cybex"
+      name="Cybex Sirona T i-Size"
+      rating={4.7}
+      rank={4}
+      badge="Premiumval"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/cybex-sirona-t.webp"
+      imageAlt="Cybex Sirona T i-Size bilbarnstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
+      alsoAt={[
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=19a0cd15-f6bf-4df0-a1aa-011dd1456e1d&url=https://www.babysam.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black-plus-onesize' },
+        { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1523000375&url=https://www.babyv.se/sv/articles/1.64.20285/cybex-sirona-t-i-size-sepia-black' },
+        { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=526452&url=https://www.babyland.se/cybex-sirona-t-i-size-bilbarnstol-sepia-black' },
+      ]}
+      pros={['Utmärkt sidoskydd (Linear Side-impact Protection)', 'Mjuk textil och premiumkomfort', 'Magnetiskt bälteslås', 'Stilren design']}
+      cons={['Hög prisklass', 'Kortare användningstid (45 till 105 cm)', 'Tung (15,2 kg)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Cybex Sirona T i-Size är premiumvalet. Linear Side-impact Protection (LSP) ger utmärkt sidokrocksskydd som justeras efter avståndet till bildörren, och det magnetiska bälteslåset gör det märkbart enklare att spänna fast ett spjärnande barn. Materialkänslan och designen är genomgående premium.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den ligger i hög prisklass och har något kortare bakåtvänd användningstid (45 till 105 cm) än Axkid. Men för familjen som vill ha bästa möjliga sidoskydd och komfort i ett snyggt paket, med samma toppbetyg i ADAC 2024 som vår vinnare, är Cybex Sirona T ett utmärkt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide bilbarnstol 2026: i-Size, ISOFIX och krocktester</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Doona i, bäst 2-i-1 babyskydd och barnvagn</h2>
+    <MoneyProductCard
+      brand="Doona"
+      name="Doona i Babyskydd Desert Green"
+      rating={4.5}
+      rank={5}
+      badge="Bäst 2-i-1 babyskydd/barnvagn"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/doona-i-babyskydd.webp"
+      imageAlt="Doona i Babyskydd Desert Green"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10253472&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/doona-i-babyskydd-desert-green"
+      pros={['2-i-1: babyskydd som omvandlas till barnvagn', 'Inget behov av adapter vid övergång bil till vagn', 'Kompakt och portabel', 'Godkänd ISOFIX och bältesmontering']}
+      cons={['Väger mer än renodlade babyskydd', 'Hjulen är enklare än en "riktig" barnvagn', 'Högt pris för vad det är']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Doona i är den smartaste lösningen för stadsföräldrar som åker mycket bil och kollektivt. Babyskyddet har inbyggda hjul som fälls ut på sekunder, så du lyfter barnet ur bilen och rullar iväg utan att flytta över till en barnvagn eller använda adapter. Perfekt för taxi, korta ärenden och resor.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den väger mer än ett renodlat babyskydd och hjulen ersätter inte en fullstor barnvagn för långa promenader. Priset är högt för en stol med begränsad användningstid (0 till 13 mån). Men för rätt familj är bekvämligheten svår att överträffa.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10253472&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/doona-i-babyskydd-desert-green" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Bilbarnstol och barnets längd: välj efter cm, inte ålder</h3>
- <p>Moderna i-Size-stolar (R129) certifieras efter barnets längd, inte vikt. Kontrollera alltid att barnet ryms inom stolens längdintervall. En stol som barnet växt ur tappar sin skyddsförmåga, så byt i god tid innan huvudet sticker upp över stolens ryggstöd.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">6. BeSafe iZi Modular RF X1 i-Size, lång användningstid</h2>
+    <MoneyProductCard
+      brand="BeSafe"
+      name="BeSafe iZi Modular RF X1 i-Size"
+      rating={4.6}
+      rank={6}
+      badge="Lång användningstid"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/besafe-izi-modular-rf-x1.webp"
+      imageAlt="BeSafe iZi Modular RF X1 i-Size bilbarnstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
+      alsoAt={[
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0154f67e-cb5c-48ff-aaa7-29940fdf039f&url=https://www.babysam.se/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab-onesize' },
+        { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=111008692BlackCabFStd&url=https://www.babyv.se/sv/articles/1.64.22236/besafe-izi-modular-rf-x1-i-size-fresh-black-cab' },
+      ]}
+      pros={['Modulärt system', 'Bakåtvänd till 4 år', 'ISOFIX-montering', 'Skandinavisk säkerhet']}
+      cons={['Högre prisklass', 'Kräver separat bas för nyfödda', 'Tung att bära utan bas']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BeSafe iZi Modular RF X1 är en modulär bakåtvänd stol med skandinavisk säkerhetsprofil. Det modulära systemet innebär att samma stol följer barnet från nyfödd (med bas) till 4 år bakåtvänt, vilket ger lång användningstid och bra totalekonomi. BeSafe är ett av varumärkena som drivit den svenska bakåtvända traditionen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den ligger i en högre prisklass, kräver en separat bas för de minsta och är tung att bära utan basen. Men för familjen som vill ha en trygg, långlivad bakåtvänd stol från ett märke med starkt säkerhetsrykte är den ett solitt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab" />
 
- <h3>Bakåtvänd bilbarnstol: upp till 5 gånger säkrare vid frontalkrock</h3>
- <p>Bakåtvänt åkande är upp till fem gånger säkrare vid frontalkrockar enligt svensk och tysk krocktestforskning. Vi rekommenderar bakåtvänt till minst 4 år. Välj en stol med bakåtvänd kapacitet till minst 105 cm. Läs vår guide om <a href="/guider/bakatvand-hur-lange/" class="text-accent underline">hur länge barn ska åka bakåtvänt</a> för detaljerade råd kring längd och vikt.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Sex bilbarnstolar granskade, en vinner totalt. Britax Römer Dualfix 5Z tar förstaplatsen på säkerhet och daglig användbarhet, Axkid One 3 vinner på längst bakåtvänd åkning, Cybex Sirona T på sidoskydd och komfort, Maxi-Cosi Pebble 360 Pro 2 är det populäraste babyskyddet och Doona i den smartaste 2-i-1-lösningen. Vill du fördjupa dig? Läs vår <a href="/guider/valja-bilbarnstol/" class="text-accent hover:text-accent-dark underline">kompletta köpguide för bilbarnstolar</a> eller jämför de roterande premiumstolarna i <a href="/bilbarnstolar/britax-dualfix-5z-vs-cybex-sirona-t/" class="text-accent hover:text-accent-dark underline">Britax Dualfix 5Z vs Cybex Sirona T</a>.
+    </p>
 
- <h3>ISOFIX i bilbarnstol: kontrollera bilens fästen innan köp</h3>
- <p>Kontrollera att din bil har ISOFIX-fästen innan du köper. De flesta bilar tillverkade från 2012 och framåt har det som standard, men placeringen varierar mellan fram- och baksäte. Slå upp ISOFIX-positionerna i bilens handbok och kontrollera att stolens stödben får plats utan att blockera fotutrymme.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bilbarnstolar 2026" />
 
- <h3>Krocktestresultat (Folksam, ADAC) slår alltid komfortfunktioner</h3>
- <p>Folksam och ADAC genomför oberoende krocktester varje år, och våra betyg utgår från deras data. En stol med starkt krocktestbetyg slår alltid en med snyggare textil och fler funktioner. Se alltid det senaste testet, modeller revideras och nya varianter kommer löpande. Vill du fördjupa dig i alla standarder, från i-Size till Plus Test, läs vår <a href="/guider/valja-bilbarnstol/" class="text-accent underline">kompletta köpguide för bilbarnstolar</a>.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide bilbarnstol 2026: i-Size, ISOFIX och krocktester</h2>
 
- <h3>Lagar och regler: vad Transportstyrelsen kräver</h3>
- <p>Alla barn under 135 cm ska ha ett godkänt skyddssystem i Sverige. Transportstyrelsen sammanfattar gällande krav kring <a href="https://www.transportstyrelsen.se/sv/vagtrafik/Regler/barn-i-bil/" class="text-accent underline" rel="noopener noreferrer">barn i bil och lagreglerade skyddssystem</a>. EU:s ECE R129 (i-Size) ersätter successivt den äldre R44-standarden och ger bättre sidokrocksskydd och obligatorisk bakåtvänd testning upp till 15 månaders alder.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bilbarnstol och barnets längd: välj efter cm, inte ålder</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Moderna i-Size-stolar (R129) certifieras efter barnets längd, inte vikt. Kontrollera alltid att barnet ryms inom stolens längdintervall. En stol som barnet växt ur tappar sin skyddsförmåga, så byt i god tid innan huvudet sticker upp över stolens ryggstöd.
+    </p>
 
- <section aria-label="Statistik om bilbarnstolar och trafiksäkerhet" class="mt-8 mb-2">
-   <h2 class="font-heading text-xl font-bold mb-4">Bilbarnstolar i siffror: vad forskningen visar</h2>
-   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
-     <StatHighlight
-       figure="Upp till 48 %"
-       source="Folksam/Chalmers"
-       sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
-       year="2025"
-     >
-       Av barn 0-3 år som omkom i bilkrockar hade troligen överlevt om de åkt bakåtvända, enligt Folksams analys av 99 barn under tre decennier.
-     </StatHighlight>
-     <StatHighlight
-       figure="5x lägre risk"
-       source="NTF"
-       sourceUrl="https://ntf.se/konsumentupplysning/barn-i-bil/bakatvand-bilbarnstol/"
-       year="2026"
-     >
-       Risken för dödlig skada vid frontalkrock: bakåtvänd kontra framåtvänd bilbarnstol. Kraften fördelas över hela barnets rygg bakåtvänt.
-     </StatHighlight>
-     <StatHighlight
-       figure="ECE R129"
-       source="Folksam"
-       sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
-       year="2025"
-     >
-       Enda standarden som krävs i Sverige. Folksam varnar: stolar från utländska marknadsplatser saknar ofta ECE R129 och är olagliga att använda.
-     </StatHighlight>
-   </div>
-   <ExpertQuote
-     name="Maria Klingegård"
-     role="Trafiksäkerhetsforskare, Folksam"
-     sourceUrl="https://nyheter24.se/nyheter/inrikes/1461091-folksam-halften-av-barnen-hade-overlevt-i-bakatvand-stol"
-   >
-     "Barn är oskyldiga och förlitar sig på att vi vuxna fattar rätt beslut åt dem."
-   </ExpertQuote>
- </section>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bakåtvänd bilbarnstol: upp till 5 gånger säkrare vid frontalkrock</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bakåtvänt åkande är upp till fem gånger säkrare vid frontalkrockar enligt svensk och tysk krocktestforskning. Vi rekommenderar bakåtvänt till minst 4 år. Välj en stol med bakåtvänd kapacitet till minst 105 cm. Läs vår guide om <a href="/guider/bakatvand-hur-lange/" class="text-accent hover:text-accent-dark underline">hur länge barn ska åka bakåtvänt</a> för detaljerade råd kring längd och vikt.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fördjupande guider, bilbarnstolar</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bästa bakåtvända bilbarnstolen 2026, test och jämförelse</a></li>
- <li><a href="/bilbarnstolar/framatvand/" class="text-accent underline">Bästa framåtvända bilbarnstolen 2026, Cybex Anoris T, Britax Kidfix och fler</a></li>
- <li><a href="/bilbarnstolar/isofix/" class="text-accent underline">ISOFIX bilbarnstol, allt du behöver veta 2026</a></li>
- <li><a href="/bilbarnstolar/i-size/" class="text-accent underline">Bästa i-Size bilbarnstol 2026, säkrast enligt EU-standard</a></li>
- <li><a href="/bilbarnstolar/lag-sverige/" class="text-accent underline">Bilbarnstol lag Sverige 2026, regler, åldrar och böter</a></li>
- <li><a href="/bilbarnstolar/biltestade/" class="text-accent underline">Biltestade bilbarnstolar 2026, Folksam och Plus Test</a></li>
- <li><a href="/bilbarnstolar/budget/" class="text-accent underline">Bilbarnstol budget 2026, säkra alternativ under 3 000 kr</a></li>
- <li><a href="/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/" class="text-accent underline">Cybex Cloud T vs Britax Baby-Safe iSense, babysits jämförelse 2026</a></li>
- <li><a href="/bilbarnstolar/maxi-cosi-pebble-360-vs-cybex-cloud-t/" class="text-accent underline">Maxi-Cosi Pebble 360 Pro vs Cybex Cloud T 2026, vilken roterande babysits vinner?</a></li>
- <li><a href="/bilbarnstolar/britax-dualfix-5z-vs-cybex-sirona-t/" class="text-accent underline">Britax Römer Dualfix 5Z vs Cybex Sirona T 2026, roterande bilbarnstol jämförelse</a></li>
- <li><a href="/bilbarnstolar/joie-i-spin-xl-vs-britax-dualfix-5z/" class="text-accent underline">Joie i-Spin XL vs Britax Dualfix 5Z 2026, prisvärda alternativ jämförda</a></li>
- <li><a href="/bilbarnstolar/resesat/" class="text-accent underline">Resesäte bil 2026, bästa bilbarnstolen för hyrbil och flyg</a></li>
- <li><a href="/bilbarnstolar/forhandsvisning/" class="text-accent underline">Kommande bilbarnstolar 2026, nya modeller att hålla koll på</a></li>
- <li><a href="/guider/valja-bilbarnstol/" class="text-accent underline">Så väljer du rätt bilbarnstol, komplett köpguide 2026</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">ISOFIX i bilbarnstol: kontrollera bilens fästen innan köp</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kontrollera att din bil har ISOFIX-fästen innan du köper. De flesta bilar tillverkade från 2012 och framåt har det som standard, men placeringen varierar mellan fram- och baksäte. Slå upp ISOFIX-positionerna i bilens handbok och kontrollera att stolens stödben får plats utan att blockera fotutrymme.
+    </p>
 
- <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade produktkategorier</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
- <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Krocktestresultat (Folksam, ADAC) slår alltid komfortfunktioner</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Folksam och ADAC genomför oberoende krocktester varje år, och våra betyg utgår från deras data. En stol med starkt krocktestbetyg slår alltid en med snyggare textil och fler funktioner. Se alltid det senaste testet, modeller revideras och nya varianter kommer löpande. Vill du fördjupa dig i alla standarder, från i-Size till Plus Test, läs vår <a href="/guider/valja-bilbarnstol/" class="text-accent hover:text-accent-dark underline">kompletta köpguide för bilbarnstolar</a>.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Lagar och regler: vad Transportstyrelsen kräver</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla barn under 135 cm ska ha ett godkänt skyddssystem i Sverige. Transportstyrelsen sammanfattar gällande krav kring <a href="https://www.transportstyrelsen.se/sv/vagtrafik/Regler/barn-i-bil/" class="text-accent hover:text-accent-dark underline" rel="noopener noreferrer" target="_blank">barn i bil och lagreglerade skyddssystem</a>. EU:s ECE R129 (i-Size) ersätter successivt den äldre R44-standarden och ger bättre sidokrocksskydd och obligatorisk bakåtvänd testning upp till 15 månaders ålder.
+    </p>
 
- <FAQ items={faqItems} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Bilbarnstolar i siffror: vad forskningen visar</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Bilbarnstolssäkerhet i Sverige bygger på decennier av oberoende krocktestforskning från Folksam och NTF. Nedan är de viktigaste fakta som varje förälder bör känna till.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Britax Römer Dualfix 5Z i-Size',
- description: 'Bakåtvänd bilbarnstol med 360-graders rotation, ISOFIX och stödben. Godkänd i ADAC-krocktest 2024. För barn 0-4 år (40-105 cm).',
- image: 'https://bebisguiden.se/images/products/britax-dualfix-5z-black.webp',
- brand: 'Britax Römer',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Maxi-Cosi Pebble 360 Pro 2 Babyskydd',
- description: 'Populärast babyskydd i Sverige. 360° rotation, ISOFIX-bas och bred kompatibilitet med barnvagnar. För barn 0-18 mån (40-87 cm).',
- image: 'https://bebisguiden.se/images/products/maxi-cosi-pebble-360-pro-2.webp',
- brand: 'Maxi-Cosi',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Axkid One 3 Bilbarnstol Coastal Storm Black',
- description: 'Bakåtvänd bilbarnstol till 25 kg och 125 cm. Bäst för lång bakåtvänd åkning upp till skolålder. ISOFIX med stödben. För barn 0-7 år (40-125 cm).',
- image: 'https://bebisguiden.se/images/products/axkid-one-3-bilbarnstol.webp',
- brand: 'Axkid',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Cybex Sirona T i-Size',
- description: 'Premium bakåtvänd bilbarnstol med Linear Side-impact Protection och magnetiskt bälteslås. ISOFIX-montering. För barn 0-4 år (45-105 cm).',
- image: 'https://bebisguiden.se/images/products/cybex-sirona-t.webp',
- brand: 'Cybex',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Doona i Babyskydd Desert Green',
- description: '2-i-1 babyskydd som omvandlas till barnvagn. ISOFIX och bältesmontering. Kompakt och portabel. För barn 0-13 mån (40-85 cm).',
- image: 'https://bebisguiden.se/images/products/doona-i-babyskydd.webp',
- brand: 'Doona',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'BeSafe iZi Modular RF X1 i-Size',
- description: 'Bakåtvänd bilbarnstol med modulärt system och ISOFIX-montering. Skandinavisk säkerhet. För barn 0-4 år.',
- image: 'https://bebisguiden.se/images/products/besafe-izi-modular-rf-x1.webp',
- brand: 'BeSafe',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+      <StatHighlight
+        figure="Upp till 48 %"
+        source="Folksam/Chalmers"
+        sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
+        year="2025"
+      >
+        Av barn 0-3 år som omkom i bilkrockar hade troligen överlevt om de åkt bakåtvända, enligt Folksams analys av 99 barn under tre decennier.
+      </StatHighlight>
+      <StatHighlight
+        figure="5x lägre risk"
+        source="NTF"
+        sourceUrl="https://ntf.se/konsumentupplysning/barn-i-bil/bakatvand-bilbarnstol/"
+        year="2026"
+      >
+        Risken för dödlig skada vid frontalkrock: bakåtvänd kontra framåtvänd bilbarnstol. Kraften fördelas över hela barnets rygg bakåtvänt.
+      </StatHighlight>
+      <StatHighlight
+        figure="ECE R129"
+        source="Folksam"
+        sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
+        year="2025"
+      >
+        Enda standarden som krävs i Sverige. Folksam varnar: stolar från utländska marknadsplatser saknar ofta ECE R129 och är olagliga att använda.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Folksam"
+      role="Oberoende trafikforskning och krocktester av bilbarnstolar"
+      sourceUrl="https://www.folksam.se/tester-och-goda-rad/vara-tester/bilbarnstolar"
+    >
+      "Vår rekommendation är att välja en bakåtvänd bilbarnstol som är godkänd till barnet är 125 centimeter eller väger 25-36 kilo."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat sex bilbarnstolar utifrån fyra kriterier: krocktestresultat (Folksam och ADAC), säkerhetsstandard (i-Size/R129, bakåtvänd kapacitet), montering (ISOFIX, stödben, risk för felmontering) och daglig användbarhet (vikt, rotation, längd på användningstid). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fördjupande guider, bilbarnstolar</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bästa bakåtvända bilbarnstolen 2026, test och jämförelse</a></li>
+        <li><a href="/bilbarnstolar/framatvand/" class="text-accent underline">Bästa framåtvända bilbarnstolen 2026, Cybex Anoris T, Britax Kidfix och fler</a></li>
+        <li><a href="/bilbarnstolar/isofix/" class="text-accent underline">ISOFIX bilbarnstol, allt du behöver veta 2026</a></li>
+        <li><a href="/bilbarnstolar/i-size/" class="text-accent underline">Bästa i-Size bilbarnstol 2026, säkrast enligt EU-standard</a></li>
+        <li><a href="/bilbarnstolar/lag-sverige/" class="text-accent underline">Bilbarnstol lag Sverige 2026, regler, åldrar och böter</a></li>
+        <li><a href="/bilbarnstolar/biltestade/" class="text-accent underline">Biltestade bilbarnstolar 2026, Folksam och Plus Test</a></li>
+        <li><a href="/bilbarnstolar/budget/" class="text-accent underline">Bilbarnstol budget 2026, säkra alternativ under 3 000 kr</a></li>
+        <li><a href="/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/" class="text-accent underline">Cybex Cloud T vs Britax Baby-Safe iSense, babysits jämförelse 2026</a></li>
+        <li><a href="/bilbarnstolar/maxi-cosi-pebble-360-vs-cybex-cloud-t/" class="text-accent underline">Maxi-Cosi Pebble 360 Pro vs Cybex Cloud T 2026, vilken roterande babysits vinner?</a></li>
+        <li><a href="/bilbarnstolar/britax-dualfix-5z-vs-cybex-sirona-t/" class="text-accent underline">Britax Römer Dualfix 5Z vs Cybex Sirona T 2026, roterande bilbarnstol jämförelse</a></li>
+        <li><a href="/bilbarnstolar/joie-i-spin-xl-vs-britax-dualfix-5z/" class="text-accent underline">Joie i-Spin XL vs Britax Dualfix 5Z 2026, prisvärda alternativ jämförda</a></li>
+        <li><a href="/bilbarnstolar/resesat/" class="text-accent underline">Resesäte bil 2026, bästa bilbarnstolen för hyrbil och flyg</a></li>
+        <li><a href="/bilbarnstolar/forhandsvisning/" class="text-accent underline">Kommande bilbarnstolar 2026, nya modeller att hålla koll på</a></li>
+        <li><a href="/guider/valja-bilbarnstol/" class="text-accent underline">Så väljer du rätt bilbarnstol, komplett köpguide 2026</a></li>
+      </ul>
+    </div>
+
+    <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade produktkategorier</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa bilbarnstolen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue"
+    text="Bra pris hos Jollyroom"
+    productName="Britax Römer Dualfix 5Z i-Size"
+  />
+
 </ArticleLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Bästa bilbarnstolen 2026",
-  "description": "Rankad lista över de bästa krocktestade bilbarnstolarna 2026",
-  "itemListOrder": "https://schema.org/ItemListOrderDescending",
-  "numberOfItems": products.length,
-  "itemListElement": products.map((p, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "item": {
-      "@type": "Product",
-      "name": p.name,
-      "image": `https://bebisguiden.se${p.image}`,
-      "brand": { "@type": "Brand", "name": p.name.split(' ')[0] },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": p.rating,
-        "bestRating": 5,
-        "ratingCount": 1
-      },
-      ...(p.ctaHref ? { "offers": {
-        "@type": "Offer",
-        "priceCurrency": "SEK",
-        "price": p.price,
-        "availability": "https://schema.org/InStock",
-        "url": p.ctaHref,
-        "seller": { "@type": "Organization", "name": "Jollyroom" },
-        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" } },
-        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "SE", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
-      } } : {})
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     }
-  }))
-})} />
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

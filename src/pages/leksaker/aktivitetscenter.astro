@@ -1,16 +1,19 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 export const articleMeta = {
   title: "Bästa aktivitetscentret 2026: Skip Hop, Tiny Love och Beemoo",
   description: "Aktivitetscenter bäst i test 2026: Skip Hop Discoverosity vinner totalt, Tiny Love Here I Grow är prisvärt. Vi jämför 5 modeller för bebis 6 till 12 mån.",
   publishDate: "2026-05-18",
+  updatedDate: "2026-06-13",
   category: "Leksaker",
   image: "/images/products/skip-hop-discoverosity-aktivitetscenter-3in1.webp",
 };
@@ -21,89 +24,90 @@ const breadcrumbs = [
   { label: 'Aktivitetscenter' },
 ];
 
+// No-price-policy. Affiliate-lankar/bilder overifierade (NOLLTOLERANS).
 const products = [
   {
     name: 'Skip Hop Discoverosity Aktivitetscenter 3-in-1',
-    badge: 'Bäst i test',
+    brand: 'Skip Hop',
     rating: 4.7,
-    image: '/images/products/skip-hop-discoverosity-aktivitetscenter-3in1.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1',
-    features: {
-      'Ålder': '6 mån+',
-      'Funktion': '3-in-1 (stationärt, lekbord, rocker)',
-      'Höjdjustering': 'Ja',
-      'Leksaker': 'Många, modulära',
-      'Material': 'Plast och textil',
-    },
+    badge: 'Bäst i test',
+    usps: ['Tre lägen: stationärt, lekbord, rocker', 'Modulära leksaker som kan bytas ut', 'Höjdjusterbar'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1',
+    imageUrl: '/images/products/skip-hop-discoverosity-aktivitetscenter-3in1.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Aktivitetscenter med tre lägen och modulära leksaker som kan bytas ut. Höjdjusterbar. Bäst i test 2026.',
+    features: { 'Ålder': '6 mån+', 'Funktion': '3-in-1 (stationärt, lekbord, rocker)', 'Höjdjustering': 'Ja', 'Leksaker': 'Många, modulära', 'Material': 'Plast och textil' },
+    alsoAt: [],
   },
   {
     name: 'Tiny Love 5-in-1 Here I Grow Meadow Days Aktivitetscenter',
-    badge: 'Bäst flexibilitet',
+    brand: 'Tiny Love',
     rating: 4.6,
-    image: '/images/products/tiny-love-here-i-grow-meadow-days-aktivitetscenter.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10279491&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/tiny-love-5-in-1-here-i-grow-meadow-days-aktivitetscenter',
-    features: {
-      'Ålder': '4 mån+',
-      'Funktion': '5-in-1 (växer 3 år)',
-      'Höjdjustering': 'Ja',
-      'Leksaker': '17+ aktiviteter',
-      'Material': 'Plast och textil',
-    },
+    badge: 'Bäst flexibilitet',
+    usps: ['Fem lägen som följer barnet till 3 år', '17 aktiviteter inbyggda', 'Från 4 månader'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10279491&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/tiny-love-5-in-1-here-i-grow-meadow-days-aktivitetscenter',
+    imageUrl: '/images/products/tiny-love-here-i-grow-meadow-days-aktivitetscenter.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Aktivitetscenter som följer barnet i 5 lägen upp till 3 år med 17 aktiviteter. Godkänd från 4 månader.',
+    features: { 'Ålder': '4 mån+', 'Funktion': '5-in-1 (växer 3 år)', 'Höjdjustering': 'Ja', 'Leksaker': '17+ aktiviteter', 'Material': 'Plast och textil' },
+    alsoAt: [],
   },
   {
     name: 'Skip Hop Explore & More Aktivitetscenter',
-    badge: 'Bäst klassiker',
+    brand: 'Skip Hop',
     rating: 4.6,
-    image: '/images/products/skip-hop-aktivitetscenter-explore-more.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=687232&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-explore-more-aktivitetscenter',
-    features: {
-      'Ålder': '4 mån+',
-      'Funktion': 'Stationärt + lekbord',
-      'Höjdjustering': 'Ja',
-      'Leksaker': 'Många, utbytbara',
-      'Material': 'Plast och textil',
-    },
+    badge: 'Bäst klassiker',
+    usps: ['Klassisk Skip Hop-kvalitet', 'Många utbytbara leksaker', 'Höjdjusterbar'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=687232&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-explore-more-aktivitetscenter',
+    imageUrl: '/images/products/skip-hop-aktivitetscenter-explore-more.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Klassiskt aktivitetscenter med många utbytbara leksaker och lekbordsläge. Skip Hop-kvalitet.',
+    features: { 'Ålder': '4 mån+', 'Funktion': 'Stationärt + lekbord', 'Höjdjustering': 'Ja', 'Leksaker': 'Många, utbytbara', 'Material': 'Plast och textil' },
+    alsoAt: [],
   },
   {
     name: 'Beemoo PLAY Explore 3-in-1 Aktivitetscenter, Sage Green',
-    badge: 'Bäst budget',
+    brand: 'Beemoo',
     rating: 4.4,
-    image: '/images/products/beemoo-play-explore-3in1-aktivitetscenter-sage-green.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276473&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/beemoo-play-explore-3-in-1-aktivitetscenter-sage-green',
-    features: {
-      'Ålder': '4 mån+',
-      'Funktion': '3-in-1',
-      'Höjdjustering': 'Ja',
-      'Leksaker': 'Standard',
-      'Material': 'Plast och textil',
-    },
+    badge: 'Bäst budget',
+    usps: ['Lägsta pris i jämförelsen', 'Tre lägen', 'Diskret sage green-färg'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276473&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/beemoo-play-explore-3-in-1-aktivitetscenter-sage-green',
+    imageUrl: '/images/products/beemoo-play-explore-3in1-aktivitetscenter-sage-green.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Prisvärt aktivitetscenter med tre lägen och höjdjustering. Diskret sage green-färg.',
+    features: { 'Ålder': '4 mån+', 'Funktion': '3-in-1', 'Höjdjustering': 'Ja', 'Leksaker': 'Standard', 'Material': 'Plast och textil' },
+    alsoAt: [],
   },
   {
     name: 'Cloudberry Castle Aktivitetscenter 3-i-1, Green/Grey',
-    badge: 'Bäst nordisk design',
+    brand: 'Cloudberry Castle',
     rating: 4.3,
-    image: '/images/products/cloudberry-castle-aktivitetscenter-3i1-green-grey.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10295135&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/cloudberry-castle-aktivitetscenter-3-i-1-green-grey',
-    features: {
-      'Ålder': '4 mån+',
-      'Funktion': '3-in-1',
-      'Höjdjustering': 'Ja',
-      'Leksaker': 'Diskret design',
-      'Material': 'Plast och textil',
-    },
+    badge: 'Bäst nordisk design',
+    usps: ['Skandinavisk diskret design', 'Tre lägen', 'Höjdjusterbar'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10295135&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/cloudberry-castle-aktivitetscenter-3-i-1-green-grey',
+    imageUrl: '/images/products/cloudberry-castle-aktivitetscenter-3i1-green-grey.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Aktivitetscenter med skandinavisk design och tre lägen. Diskret utseende som passar nordiska hem.',
+    features: { 'Ålder': '4 mån+', 'Funktion': '3-in-1', 'Höjdjustering': 'Ja', 'Leksaker': 'Diskret design', 'Material': 'Plast och textil' },
+    alsoAt: [],
   },
 ];
 
-const featureLabels = ['Ålder', 'Funktion', 'Höjdjustering', 'Leksaker', 'Material'];
+const specLabels = ['Ålder', 'Funktion', 'Höjdjustering', 'Leksaker', 'Material'];
 
 const faqItems = [
   {
     question: 'Vilket aktivitetscenter är bäst i test 2026?',
-    answer: 'Skip Hop Discoverosity 3-in-1 vinner totaltestet 2026. Många modulära leksaker som kan bytas ut, höjdjusterbar och tre lägen som följer bebisen från sittande till lekbordsläge när hon eller han kan stå. Tiny Love Here I Grow är bäst för flexibilitet med fem lägen som växer hela 3 år. Beemoo PLAY Explore är budgetvinnaren under 1100 kr.',
+    answer: 'Skip Hop Discoverosity 3-in-1 vinner totaltestet 2026. Många modulära leksaker som kan bytas ut, höjdjusterbar och tre lägen som följer bebisen från sittande till lekbordsläge när hon eller han kan stå. Tiny Love Here I Grow är bäst för flexibilitet med fem lägen som växer hela 3 år. Beemoo PLAY Explore är budgetvinnaren.',
   },
   {
     question: 'Från vilken ålder kan bebisen använda aktivitetscenter?',
-    answer: 'Från cirka 4 till 6 månader beroende på modell, när bebisen kan sitta stadigt med stöd. Tiny Love Here I Grow är godkänd från 4 månader. Skip Hop Discoverosity rekommenderas från 6 månader. Det viktigaste är att bebisens fötter ska nå underlaget platt och att huvud- och bålkontrollen är tillräcklig. Använd inte innan bebisen sitter själv med stöd.',
+    answer: 'Från cirka 4 till 6 månader beroende på modell, när bebisen kan sitta stadigt med stöd. Tiny Love Here I Grow är godkänd från 4 månader. Skip Hop Discoverosity rekommenderas från 6 månader. Det viktigaste är att bebisens fötter ska nå underlaget platt och att huvud- och bålkontrollen är tillräcklig. Använd inte innan bebisen sitter med stöd.',
   },
   {
     question: 'Hur länge åt gången är det bra att sitta i aktivitetscenter?',
@@ -111,7 +115,7 @@ const faqItems = [
   },
   {
     question: 'Vad är skillnaden mellan aktivitetscenter, exersaucer och babygym?',
-    answer: 'Babygym används från nyfödd och är en bage med leksaker som hänger ner mot ett liggande barn. Aktivitetscenter (också kallad exersaucer) är en stående sits med leksaker runt om för bebisar som börjar sitta (4 till 6 månader+). Många moderna aktivitetscentra har funktioner som lekbord när bebisen blir större. Se vår guide om <a href="/leksaker/babygym/">babygym 2026</a> för det yngre alternativet.',
+    answer: 'Babygym används från nyfödd och är en bage med leksaker som hänger ner mot ett liggande barn. Aktivitetscenter (också kallad exersaucer) är en stående sits med leksaker runt om för bebisar som börjar sitta (4 till 6 månader+). Många moderna aktivitetscentra har funktioner som lekbord när bebisen blir större. Se vår guide om <a href="/leksaker/babygym/" class="text-accent hover:text-accent-dark underline">babygym 2026</a> för det yngre alternativet.',
   },
   {
     question: 'Är aktivitetscenter bra för bebisens utveckling?',
@@ -128,140 +132,322 @@ const faqItems = [
   title="Bästa aktivitetscentret 2026: Skip Hop, Tiny Love och Beemoo"
   description="Aktivitetscenter bäst i test 2026: Skip Hop Discoverosity vinner totalt, Tiny Love Here I Grow är prisvärt. Vi jämför 5 modeller för bebis 6 till 12 mån."
   breadcrumbs={breadcrumbs}
-  canonical="https://bebisguiden.se/leksaker/aktivitetscenter/"
-  updatedDate="2026-05-18"
   datePublished="2026-05-18"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Skip Hop Discoverosity Aktivitetscenter 3-in-1 vinner aktivitetscenter bäst i test 2026. Tre lägen, stationärt aktivitetscenter, lekbord och rocker, gör att produkten följer barnet från 6 till cirka 24 månader. De många modulära leksakerna går att byta ut för att hålla intresset uppe.
-	 </p>
 
-  <TopPick product={products[0]} description="Skip Hop Discoverosity Aktivitetscenter 3-in-1 vinner test 2026. Tre lägen, stationärt aktivitetscenter, lekbord och rocker, gör att produkten följer barnet från 6 månader till cirka 24 månader. Många modulära leksaker som kan bytas ut för att hålla intresset uppe." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-18" dateModified="2026-06-13" />
 
-  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, aktivitetscentra 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
-
-  <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
-    <p class="text-sm font-semibold text-accent-dark mb-1">Snabbval per behov</p>
-    <p class="text-sm text-text-light"><strong>Bäst totalt</strong>: Skip Hop Discoverosity 3-in-1. <strong>Bäst livslängd</strong>: Tiny Love Here I Grow (5 lägen, upp till 3 år). <strong>Bäst klassiker</strong>: Skip Hop Explore & More. <strong>Bäst budget</strong>: Beemoo PLAY Explore (under 1100 kr). <strong>Bäst skandinavisk design</strong>: Cloudberry Castle Green/Grey.</p>
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilket aktivitetscenter är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Skip Hop Discoverosity 3-in-1 är bäst i test 2026: tre lägen, modulära leksaker som byts ut och hög materialkvalitet. Longest livslängd: Tiny Love Here I Grow (5 lägen, upp till 3 år). Bäst klassiker: Skip Hop Explore &amp; More. Bäst budget: Beemoo PLAY Explore. Bäst nordisk design: Cloudberry Castle Green/Grey.
+    </p>
   </div>
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Skip Hop"
+    name="Discoverosity Aktivitetscenter 3-in-1"
+    image="/images/products/skip-hop-discoverosity-aktivitetscenter-3in1.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1"
+    store="Jollyroom"
+    description="Vinner aktivitetscenter bäst i test 2026. Tre lägen (stationärt, lekbord, rocker), modulära leksaker som kan bytas ut för att hålla intresset uppe och höjdjustering som följer bebisen från 6 månader till cirka 24 månader."
+  />
 
-  <div class="space-y-4">
-    <ProductCard
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, aktivitetscentra 2026" />
+
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Skip Hop Discoverosity 3-in-1, bäst i test</h2>
+    <MoneyProductCard
+      brand="Skip Hop"
       name="Skip Hop Discoverosity Aktivitetscenter 3-in-1"
-      image="/images/products/skip-hop-discoverosity-aktivitetscenter-3in1.webp"
-      badge="Bäst i test"
       rating={4.7}
-      ageRange="6 mån+"
-      pros={['Tre lägen: stationärt, lekbord, rocker', 'Modulära leksaker som kan bytas ut', 'Höjdjusterbar', 'Höjd kvalitet på material och leksaker']}
-      cons={['Högt pris i kategorin', 'Plats krävs för förvaring']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1"
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/skip-hop-discoverosity-aktivitetscenter-3in1.webp"
+      imageAlt="Skip Hop Discoverosity Aktivitetscenter 3-in-1"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1"
+      pros={['Tre lägen: stationärt, lekbord, rocker', 'Modulära leksaker som kan bytas ut', 'Höjdjusterbar med god kvalitet på material och leksaker']}
+      cons={['Högt pris i kategorin', 'Tar plats, inte vikbart']}
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Skip Hop Discoverosity Aktivitetscenter 3-in-1 vinner aktivitetscenter bäst i test 2026. Det omvandlas mellan tre lägen, stationärt aktivitetscenter, lekbord och rocker, vilket gör att produkten följer barnet från 6 månader till cirka 24 månader. De många modulära leksakerna går att byta ut för att hålla intresset uppe längre, något som stationära modeller saknar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är priset, som ligger i det övre segmentet, och att det tar plats i hemmet. Men för familjen som vill ha ett aktivitetscenter som verkligen räcker länge och håller bebisen stimulerad är Discoverosity det starkaste valet på marknaden 2026.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Tiny Love Here I Grow, bäst flexibilitet</h2>
+    <MoneyProductCard
+      brand="Tiny Love"
       name="Tiny Love 5-in-1 Here I Grow Meadow Days Aktivitetscenter"
-      image="/images/products/tiny-love-here-i-grow-meadow-days-aktivitetscenter.webp"
+      rating={4.6}
+      rank={2}
       badge="Bäst flexibilitet"
-      rating={4.6}
-      ageRange="4 mån+"
-      pros={['Fem lägen som följer barnet till 3 år', '17 aktiviteter inbyggda', 'Höjdjusterbar', 'Från 4 månader, tidigare än de flesta']}
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/tiny-love-here-i-grow-meadow-days-aktivitetscenter.webp"
+      imageAlt="Tiny Love 5-in-1 Here I Grow Meadow Days Aktivitetscenter"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10279491&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/tiny-love-5-in-1-here-i-grow-meadow-days-aktivitetscenter"
+      pros={['Fem lägen som följer barnet till 3 år', '17 aktiviteter inbyggda', 'Godkänd från 4 månader, tidigare än de flesta']}
       cons={['Tar mest plats av modellerna', 'Många smådelar att hålla rena']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10279491&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/tiny-love-5-in-1-here-i-grow-meadow-days-aktivitetscenter"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Tiny Love Here I Grow är det mest flexibla aktivitetscentret i testet med fem lägen som täcker hela 3 år av barnets utveckling. Med 17 inbyggda aktiviteter av varierande typ och godkänd användning från 4 månader är det ett av de aktivitetscenter som ger mest för pengarna räknat per användningsdag.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det tar mer plats än övriga modeller och har många smådelar som behöver rengöras regelbundet. Men för familjen som vill ha ett aktivitetscenter som följer barnet riktigt länge utan att behöva köpa nytt är Here I Grow svårt att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10279491&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/tiny-love-5-in-1-here-i-grow-meadow-days-aktivitetscenter" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Skip Hop Explore &amp; More, bäst klassiker</h2>
+    <MoneyProductCard
+      brand="Skip Hop"
       name="Skip Hop Explore & More Aktivitetscenter"
-      image="/images/products/skip-hop-aktivitetscenter-explore-more.webp"
-      badge="Bäst klassiker"
       rating={4.6}
-      ageRange="4 mån+"
-      pros={['Klassisk Skip Hop-kvalitet', 'Många utbytbara leksaker', 'Höjdjusterbar', 'Lekbordsläge när bebisen blir större']}
+      rank={3}
+      badge="Bäst klassiker"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/skip-hop-aktivitetscenter-explore-more.webp"
+      imageAlt="Skip Hop Explore & More Aktivitetscenter"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=687232&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-explore-more-aktivitetscenter"
+      pros={['Klassisk Skip Hop-kvalitet', 'Många utbytbara leksaker', 'Höjdjusterbar med lekbordsläge']}
       cons={['Inte 3-in-1 som Discoverosity', 'Mindre modulär än nyare modellen']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=687232&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-explore-more-aktivitetscenter"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Skip Hop Explore &amp; More är den beprövade klassikern i sortimentet. Samma höga materialkvalitet och design som märket är känt för, med många utbytbara leksaker och höjdjustering som följer bebisen. Lekbordsläget gör att det fungerar även när barnet kan stå.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det är inte ett renodlat 3-in-1 som Discoverosity och är något mindre modulärt, men för familjen som uppskattar den beprövade Skip Hop-kvaliteten och vill ha ett pålitligt aktivitetscenter utan de nyaste funktionerna är Explore &amp; More ett tryggt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=687232&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-explore-more-aktivitetscenter" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Beemoo PLAY Explore 3-in-1, bäst budget</h2>
+    <MoneyProductCard
+      brand="Beemoo"
       name="Beemoo PLAY Explore 3-in-1 Aktivitetscenter, Sage Green"
-      image="/images/products/beemoo-play-explore-3in1-aktivitetscenter-sage-green.webp"
-      badge="Bäst budget"
       rating={4.4}
-      ageRange="4 mån+"
-      pros={['Lägsta pris i jämförelsen', 'Tre lägen', 'Höjdjusterbar', 'Diskret sage green-färg']}
-      cons={['Färre leksaker än premium-modeller', 'Enklare material']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276473&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/beemoo-play-explore-3-in-1-aktivitetscenter-sage-green"
+      rank={4}
+      badge="Bäst budget"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/beemoo-play-explore-3in1-aktivitetscenter-sage-green.webp"
+      imageAlt="Beemoo PLAY Explore 3-in-1 Aktivitetscenter Sage Green"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276473&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/beemoo-play-explore-3-in-1-aktivitetscenter-sage-green"
+      pros={['Lägsta pris i jämförelsen', 'Tre lägen som stationärt, lekbord och rocker', 'Diskret sage green-färg som passar nordisk heminredning']}
+      cons={['Färre leksaker än premiummodellerna', 'Enklare material']}
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo PLAY Explore 3-in-1 är budgetvinnaren i testet. Det har tre lägen precis som premiummodellerna, en höjdjustering som följer bebisen och en diskret sage green-färg som smälter in i de flesta hem. Till ett märkbart lägre pris än de övriga modellerna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Leksaksutbudet är enklare och materialet känns inte lika genomarbetat som hos Skip Hop eller Tiny Love. Men för familjen som vill ha ett aktivitetscenter med flera lägen utan att betala premiumpriser är Beemoo PLAY Explore ett hederligt alternativ.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276473&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/beemoo-play-explore-3-in-1-aktivitetscenter-sage-green" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Cloudberry Castle 3-i-1, bäst nordisk design</h2>
+    <MoneyProductCard
+      brand="Cloudberry Castle"
       name="Cloudberry Castle Aktivitetscenter 3-i-1, Green/Grey"
-      image="/images/products/cloudberry-castle-aktivitetscenter-3i1-green-grey.webp"
-      badge="Bäst nordisk design"
       rating={4.3}
-      ageRange="4 mån+"
-      pros={['Skandinavisk diskret design', 'Tre lägen', 'Höjdjusterbar', 'Lägsta nypris']}
+      rank={5}
+      badge="Bäst nordisk design"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/cloudberry-castle-aktivitetscenter-3i1-green-grey.webp"
+      imageAlt="Cloudberry Castle Aktivitetscenter 3-i-1 Green/Grey"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10295135&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/cloudberry-castle-aktivitetscenter-3-i-1-green-grey"
+      pros={['Skandinavisk diskret design i green/grey', 'Tre lägen', 'Höjdjusterbar']}
       cons={['Mindre leksaksutbud än Skip Hop', 'Tunnare textil i sitsen']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10295135&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/cloudberry-castle-aktivitetscenter-3-i-1-green-grey"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Cloudberry Castle är det nordiska designvalet i testet. Den dämpade green/grey-paletten och den diskreta utformningen gör att aktivitetscentret inte sticker ut som en stor plastkloss i vardagsrummet, något som inte alla premiummodeller kan säga om sig.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Leksaksutbudet är mer begränsat än hos Skip Hop och textilen i sitsen är tunnare, men tre lägen och höjdjustering finns på plats. För familjen som sätter designen högt och inte vill kompromissa med heminredningen är Cloudberry Castle det självklara valet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10295135&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/cloudberry-castle-aktivitetscenter-3-i-1-green-grey" />
+
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem aktivitetscentra granskade, ett vinner totalt. Skip Hop Discoverosity tar förstaplatsen på flexibilitet och leksaksutbud, Tiny Love Here I Grow vinner på längst livslängd och Beemoo PLAY Explore är det prisvärda valet. Vill du jämföra fler babyleksaker? Se vår guide om <a href="/leksaker/babygym/" class="text-accent hover:text-accent-dark underline">bästa babygym 2026</a> eller <a href="/leksaker/6-12-manader/" class="text-accent hover:text-accent-dark underline">bästa leksaker 6 till 12 månader</a>.
+    </p>
+
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda, aktivitetscentra 2026" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: hitta rätt aktivitetscenter 2026</h2>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad är ett aktivitetscenter och vad är det till för?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ett aktivitetscenter är en stående sits där bebisen står upprätt med stöd och har leksaker runt sig på en hel cirkel eller fyrkant. Sitsen roterar oftast så bebisen kan vrida sig mot olika leksaker. Det är ett bra alternativ till lekstund i armarna när föräldern behöver händerna fria och stimulerar finmotorik och social interaktion med leksakerna. Det skiljer sig från <a href="/lara-ga-stol/" class="text-accent hover:text-accent-dark underline">lära-gå-stol</a> som har hjul och låter barnet röra sig genom rummet.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">3-in-1 eller stationärt aktivitetscenter</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Stationära modeller är enklare och billigare: en fast sits med leksaker runt om. De passar om du vill ha ett prisvärt alternativ under en kortare period eller har begränsat utrymme hemma. Modeller med flera lägen, som Skip Hop Discoverosity (3-in-1) och Tiny Love Here I Grow (5-in-1), konverteras till lekbord eller rocker och följer barnet längre. Fördelen är längre livslängd och att en produkt täcker flera åldrar. Nackdelen är högre pris och att de tar mer plats. För familjer som planerar fler barn lönar sig flerinlägen-modellerna ofta.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Plats i hemmet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Aktivitetscentra tar plats, räkna med cirka 80 till 100 cm i diameter. De är inte vikbara och blir därför permanenta möbler under användningsperioden, vanligen 6 till 18 månader. Planera plats i vardagsrummet eller köket där bebisen ofta är. Tiny Love Here I Grow är störst av modellerna i jämförelsen, Beemoo PLAY Explore är minst.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Leksaker och stimulans</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Leksaksutbudet skiljer sig mellan modeller. Skip Hop Discoverosity och Tiny Love Here I Grow har många leksaker med olika texturer, ljud, ljus och funktioner. Beemoo PLAY Explore och Cloudberry Castle har enklare uppsättning. Bebisen blir lätt uttråkad om leksakerna är för få eller för repetitiva. Modulära leksaker, som Skip Hop Discoverosity har, kan bytas ut och håller intresset uppe längre.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Höjdjustering följer bebisen</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bebisar växer snabbt mellan 6 och 18 månader. Alla rekommenderade modeller i testet är höjdjusterbara med flera lägen. Justera så att bebisens fötter står platt på underlaget utan att höften lyfts. Kolla varannan månad och justera vid behov, annars sitter bebisen fel och belastas onödigt.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet och CE-märkning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla aktivitetscentra som säljs i EU är CE-märkta enligt EN 71-standarden för leksakssäkerhet. Använd alltid på platt golv, lämna aldrig bebisen utan tillsyn och kontrollera att leksakerna inte har lossnade smådelar som kan vara kvävningsrisk. Komplettera babyproofingen med vår <a href="/sakerhet/" class="text-accent hover:text-accent-dark underline">babysäkerhetsguide</a>.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Tidsbegränsning, lika viktigt som för lära-gå-stol</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Max 15 till 20 minuter åt gången, max 2 till 3 gånger per dag. Bebisen behöver tid på golvet för att träna egna muskler utan stöd. Aktivitetscenter ska aldrig ersätta krypning, rullning och fri rörelse. Det är ett komplement, inte en barnvakt.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem aktivitetscentra utifrån antal lägen och flexibilitet, leksaksutbud och stimulansnivå, höjdjusterbarhet, materialkvalitet och användarvänlighet samt hur länge produkten fungerar under barnets utveckling. Modellerna är valda bland de mest sålda och eftersökta aktivitetscentra i Sverige 2026. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler guider om leksaker och utveckling</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026, för 0 till 9 månader</a></li>
+        <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker 6 till 12 månader</a></li>
+        <li><a href="/leksaker/3-6-manader/" class="text-accent underline">Bästa leksaker 3 till 6 månader</a></li>
+        <li><a href="/lara-ga-stol/" class="text-accent underline">Bästa lära-gå-stolen 2026</a></li>
+        <li><a href="/lara-ga-stol/fran-vilken-alder/" class="text-accent underline">Lära-gå-stol: från vilken ålder är den lämplig?</a></li>
+        <li><a href="/babysitter/" class="text-accent underline">Bästa babysittern 2026</a></li>
+        <li><a href="/sakerhet/" class="text-accent underline">Babysäkerhet, komplett guide</a></li>
+      </ul>
+    </div>
+
   </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide aktivitetscenter: hitta rätt modell för ditt hem</h2>
+  {/* 6. ItemList JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa aktivitetscentret 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
 
-  <img src="/images/products/tiny-love-here-i-grow-meadow-days-aktivitetscenter.webp" alt="Tiny Love Here I Grow Meadow Days aktivitetscenter" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" width="700" height="934" />
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1"
+    text="Bra pris hos Jollyroom"
+    productName="Skip Hop Discoverosity Aktivitetscenter 3-in-1"
+  />
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Vad är ett aktivitetscenter och vad är det till för?</h3>
-    <p>Ett aktivitetscenter är en stående sits där bebisen står upprätt med stöd och har leksaker runt sig på en hel cirkel eller fyrkant. Sitsen roterar oftast så bebisen kan vrida sig mot olika leksaker. Det är ett bra alternativ till lekstund i armarna när föräldern behöver händerna fria, och stimulerar finmotorik och social interaktion med leksakerna. Skiljer sig från <a href="/lara-ga-stol/" class="text-accent underline">lära-gå-stol</a> som har hjul och låter barnet röra sig genom rummet.</p>
-
-    <h3>3-in-1 eller stationärt</h3>
-    <ul class="list-disc list-inside space-y-1">
-      <li><strong>Stationärt</strong> är enklare och billigare: en fast sits med leksaker runt om. Passar om du vill ha ett prisvärt alternativ under en kortare period eller har begränsat utrymme hemma.</li>
-      <li><strong>3-in-1 eller 5-in-1</strong> (som Skip Hop Discoverosity och Tiny Love Here I Grow) konverteras till lekbord eller rocker och följer barnet längre. Fördelen är längre livslängd, en produkt täcker flera åldrar. Nackdelen är högre pris och att de tar mer plats. För familjer som planerar fler barn lönar sig 3-in-1 ofta.</li>
-    </ul>
-
-    <h3>Plats i hemmet</h3>
-    <p>Aktivitetscentra tar plats, räkna med cirka 80 till 100 cm i diameter. De är inte vikbara och blir därför permanenta möbler under användningsperioden (vanligen 6 till 18 månader). Planera plats i vardagsrummet eller köket där bebisen ofta är. Tiny Love Here I Grow är störst, Beemoo PLAY Explore är minst i jämförelsen.</p>
-
-    <h3>Leksaker och stimulans</h3>
-    <p>Leksaksutbudet skiljer sig mellan modeller. Skip Hop Discoverosity och Tiny Love Here I Grow har många leksaker med olika texturer, ljud, ljus och funktioner. Beemoo PLAY Explore och Cloudberry Castle har enklare uppsättning. Bebisen blir lätt uttråkad om leksakerna är för få eller för repetitiva, modulära leksaker (som Skip Hop Discoverosity har) kan bytas ut och hålla intresset uppe längre.</p>
-
-    <h3>Höjdjustering följer bebisen</h3>
-    <p>Bebisar växer snabbt mellan 6 och 18 månader. Alla våra rekommenderade modeller är höjdjusterbara med flera lägen. Justera så att bebisens fötter står platt på underlaget utan att höften lyfts. Kolla varannan månad och justera vid behov.</p>
-
-    <h3>Säkerhet och CE-märkning</h3>
-    <p>Alla aktivitetscentra som säljs i EU är CE-märkta enligt EN 71-standarden för leksakssäkerhet. Använd alltid på platt golv, lämna aldrig bebisen utan tillsyn, och kontrollera att leksakerna inte har lossnade smådelar som kan vara kvävningsrisk. Komplettera babyproofingen med vår <a href="/sakerhet/" class="text-accent underline">babysäkerhetsguide</a>.</p>
-
-    <h3>Tidsbegränsning, lika viktigt som för lära-gå-stol</h3>
-    <p>Max 15 till 20 minuter åt gången, max 2 till 3 gånger per dag. Bebisen behöver tid på golvet för att träna sina egna muskler utan stöd. Aktivitetscenter ska aldrig ersätta krypning, rullning och fri rörelse.</p>
-  </div>
-
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om leksaker och utveckling</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026, för 0 till 9 månader</a></li>
-      <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker 6 till 12 månader</a></li>
-      <li><a href="/leksaker/3-6-manader/" class="text-accent underline">Bästa leksaker 3 till 6 månader</a></li>
-      <li><a href="/lara-ga-stol/" class="text-accent underline">Bästa lära-gå-stolen 2026</a></li>
-      <li><a href="/lara-ga-stol/fran-vilken-alder/" class="text-accent underline">Lära-gå-stol: från vilken ålder är den lämplig?</a></li>
-      <li><a href="/babysitter/" class="text-accent underline">Bästa babysittern 2026</a></li>
-      <li><a href="/sakerhet/" class="text-accent underline">Babysäkerhet, komplett guide</a></li>
-    </ul>
-  </div>
-
-  <FAQ items={faqItems} />
-
-  <ProductSchema products={[
-    { name: 'Skip Hop Discoverosity Aktivitetscenter 3-in-1', description: 'Aktivitetscenter med tre lägen och modulära leksaker. Höjdjusterbar.', brand: 'Skip Hop', ratingValue: 4.7, reviewCount: 1 },
-    { name: 'Tiny Love 5-in-1 Here I Grow Meadow Days Aktivitetscenter', description: 'Aktivitetscenter som följer barnet i 5 lägen upp till 3 år.', brand: 'Tiny Love', ratingValue: 4.6, reviewCount: 1 },
-    { name: 'Skip Hop Explore & More Aktivitetscenter', description: 'Klassiskt aktivitetscenter med många utbytbara leksaker.', brand: 'Skip Hop', ratingValue: 4.6, reviewCount: 1 },
-    { name: 'Beemoo PLAY Explore 3-in-1 Aktivitetscenter, Sage Green', description: 'Prisvärt aktivitetscenter med tre lägen och höjdjustering.', brand: 'Beemoo', ratingValue: 4.4, reviewCount: 1 },
-    { name: 'Cloudberry Castle Aktivitetscenter 3-i-1, Green/Grey', description: 'Aktivitetscenter med skandinavisk design och tre lägen.', brand: 'Cloudberry Castle', ratingValue: 4.3, reviewCount: 1 },
-  ]} />
-
-  <CTABox productName="Aktivitetscentra för bebis" store="Jollyroom" description="Skip Hop, Tiny Love, Beemoo och Cloudberry Castle i ett sortiment." />
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose pa denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

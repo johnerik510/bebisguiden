@@ -1,237 +1,407 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Amning', href: '/amning/' },
- { label: 'Elektrisk bröstpump' },
+  { label: 'Hem', href: '/' },
+  { label: 'Amning', href: '/amning/' },
+  { label: 'Elektrisk bröstpump' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump',
- features: {
- 'Typ': 'Elektrisk dubbel',
- 'Handfri': 'Ja, i BH',
- 'Vikt': '0,3 kg',
- 'Laddning': 'USB-C',
- 'Batteri': 'Inbyggt',
- },
- },
- {
- name: 'Medela Swing Maxi Flex Elektrisk Dubbelbröstpump',
- badge: 'Bäst dubbelpump',
- rating: 4.7,
- image: '/images/products/medela-swing-maxi-flex.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump',
- features: {
- 'Typ': 'Elektrisk dubbel',
- 'Handfri': 'Nej',
- 'Vikt': '0,9 kg',
- 'Laddning': 'Nätadapter',
- 'Batteri': 'Inbyggt',
- },
- },
- {
- name: 'Medela Swing Flex Elektrisk Bröstpump',
- badge: 'Bäst enkelpump',
- rating: 4.6,
- image: '/images/products/medela-swing-flex.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291657&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/1871549_medela-swing-flex-elektrisk-brostpump',
- features: {
- 'Typ': 'Elektrisk enkel',
- 'Handfri': 'Nej',
- 'Vikt': '0,5 kg',
- 'Laddning': 'Nätadapter',
- 'Batteri': 'Inbyggt',
- },
- },
- {
- name: 'Philips Avent Natural Motion Elektrisk Bröstpump',
- badge: 'Naturlig känsla',
- rating: 4.5,
- image: '/images/products/philips-avent-natural-motion-elektrisk-brostpump.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250953&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-natural-motion-brostpump-elektrisk',
- features: {
- 'Typ': 'Elektrisk enkel',
- 'Handfri': 'Nej',
- 'Vikt': '0,6 kg',
- 'Laddning': 'Nätadapter',
- 'Batteri': 'AA-batterier',
- },
- },
+  {
+    name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
+    brand: 'Medela',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Helt handfri i BH:n', 'USB-C laddning', '2-fas-teknologi'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump',
+    imageUrl: '/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Handfri elektrisk dubbelbröstpump från Medela. Sitter i BH:n utan slangar. USB-C laddning. 2-fas-teknologi. 0,3 kg.',
+    features: { 'Typ': 'Elektrisk dubbel', 'Handfri': 'Ja, i BH', 'Vikt': '0,3 kg', 'Laddning': 'USB-C', 'Batteri': 'Inbyggt' },
+    alsoAt: [],
+  },
+  {
+    name: 'Medela Swing Maxi Flex Elektrisk Dubbelbröstpump',
+    brand: 'Medela',
+    rating: 4.7,
+    badge: 'Bäst dubbelpump',
+    usps: ['Pumpar båda brösten', 'Halverar pumptiden', '2-fas-teknologi'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump',
+    imageUrl: '/images/products/medela-swing-maxi-flex.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Elektrisk dubbelbröstpump från Medela med 2-fas-teknologi. Pumpar båda brösten samtidigt. Halverar pumptiden. Inbyggt batteri.',
+    features: { 'Typ': 'Elektrisk dubbel', 'Handfri': 'Nej', 'Vikt': '0,9 kg', 'Laddning': 'Nätadapter', 'Batteri': 'Inbyggt' },
+    alsoAt: [],
+  },
+  {
+    name: 'Medela Swing Flex Elektrisk Bröstpump',
+    brand: 'Medela',
+    rating: 4.6,
+    badge: 'Bäst enkelpump',
+    usps: ['Prisvärd enkelpump', 'PersonalFit Flex trattar', 'Lätt och kompakt'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291657&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/1871549_medela-swing-flex-elektrisk-brostpump',
+    imageUrl: '/images/products/medela-swing-flex.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Elektrisk enkelbröstpump från Medela med PersonalFit Flex trattar och inbyggt batteri. Lätt och kompakt för enstaka pumpning.',
+    features: { 'Typ': 'Elektrisk enkel', 'Handfri': 'Nej', 'Vikt': '0,5 kg', 'Laddning': 'Nätadapter', 'Batteri': 'Inbyggt' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent Natural Motion Elektrisk Bröstpump',
+    brand: 'Philips Avent',
+    rating: 4.5,
+    badge: 'Naturlig känsla',
+    usps: ['Natural Motion-teknologi', 'Mjuka brösttrattar', 'Tyst motor'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250953&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-natural-motion-brostpump-elektrisk',
+    imageUrl: '/images/products/philips-avent-natural-motion-elektrisk-brostpump.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Elektrisk enkelbröstpump från Philips Avent med Natural Motion-teknologi som efterliknar barnets naturliga sugmönster. Tyst motor.',
+    features: { 'Typ': 'Elektrisk enkel', 'Handfri': 'Nej', 'Vikt': '0,6 kg', 'Laddning': 'Nätadapter', 'Batteri': 'AA-batterier' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Typ', 'Handfri', 'Vikt', 'Laddning', 'Batteri'];
+const specLabels = ['Typ', 'Handfri', 'Vikt', 'Laddning', 'Batteri'];
 
 const faqItems = [
- {
- question: 'Vilken bröstpump är bäst i test 2026?',
- answer: 'Medela Freestyle Hands-free vinner bröstpump bäst i test 2026 tack vare handfri pumpning direkt i BH:n, USB-C laddning och 2-fas-teknologi som efterliknar barnets naturliga sugmönster. Vill du pumpa hemma med slang är Medela Swing Maxi Flex bäst dubbelpump. För enstaka pumpning är Medela Swing Flex billigast och fullt tillräcklig.',
- },
- {
- question: 'Vad är skillnaden mellan enkel- och dubbelpump?',
- answer: 'En enkelpump pumpar ett bröst i taget och tar ungefär dubbelt så lång tid, men kostar ofta hälften. En dubbelpump pumpar båda brösten samtidigt och kortar ner pumptiden från 20 till 30 minuter till 10 till 15 minuter. Pumpar du mer än en gång per dag är dubbelpump nästan alltid värt investeringen. Vid enstaka tillfällen räcker enkelpump.',
- },
- {
- question: 'Är handfri bröstpump värd det extra priset?',
- answer: 'En handfri pump som <a href="/marken/medela/" class="text-accent underline">Medela</a> Freestyle Hands-free sitter inuti BH:n utan synliga slangar och låter dig pumpa medan du jobbar, kör bil, lagar mat eller tar hand om äldre barn. För mammor som återgår till arbete eller pumpar dagligen är handfri-funktionen i särklass den största vardagsförbättringen jämfört med traditionella pumpar.',
- },
- {
- question: 'Hur länge tar det innan bröstpumpen ökar mjölkproduktionen?',
- answer: 'Bröstpumpning stimulerar mjölkproduktionen på samma sätt som barnets sugning. Vid regelbunden pumpning syns ökad produktion ofta redan efter 3 till 5 dagar. Pumpa 8 till 12 gånger per dygn de första veckorna om du etablerar produktion. Vid problem: kontakta en amningsrådgivare eller barnmorska.',
- },
- {
- question: 'Är det säkert att dela bröstpump med någon annan?',
- answer: 'Nej, motorenheten på en personlig bröstpump bör aldrig delas. Mikroskopiska mjölkpartiklar kan tränga in i motorhuset och går inte att rengöra bort, vilket innebär en hygienrisk. Trattar, slangar och behållare kan däremot bytas ut och köpas separat. Sjukhusgrade-pumpar (multi-user) är konstruerade för delning och har stängda system.',
- },
- {
- question: 'Hur länge håller en elektrisk bröstpump?',
- answer: 'En välskött elektrisk bröstpump håller 1 till 3 år vid regelbunden användning. Medela och Philips Avent har gott rykte för hållbarhet. Byt slitdelar som membran, ventiler och trattar enligt tillverkarens schema, ofta var 3:e månad vid daglig pumpning. Slitna delar minskar sugkraften märkbart.',
- },
- {
- question: 'Vilken trattstorlek ska jag välja?',
- answer: 'Fel trattstorlek är den vanligaste orsaken till att pumpning gör ont eller ger låg mjölkmängd. Mät diametern på din bröstvårta (inte vårtgården) och välj en tratt som är 1 till 3 mm större. Medela och Philips Avent erbjuder trattar i flera storlekar, vanligtvis 21, 24, 27 och 30 mm. Standardtratten 24 mm passar inte alla.',
- },
+  {
+    question: 'Vilken bröstpump är bäst i test 2026?',
+    answer: 'Medela Freestyle Hands-free vinner bröstpump bäst i test 2026 tack vare handfri pumpning direkt i BH:n, USB-C laddning och 2-fas-teknologi som efterliknar barnets naturliga sugmönster. Vill du pumpa hemma med slang är Medela Swing Maxi Flex bäst dubbelpump. För enstaka pumpning är Medela Swing Flex billigast och fullt tillräcklig.',
+  },
+  {
+    question: 'Vad är skillnaden mellan enkel- och dubbelpump?',
+    answer: 'En enkelpump pumpar ett bröst i taget och tar ungefär dubbelt så lång tid, men kostar ofta hälften. En dubbelpump pumpar båda brösten samtidigt och kortar ner pumptiden från 20 till 30 minuter till 10 till 15 minuter. Pumpar du mer än en gång per dag är dubbelpump nästan alltid värt investeringen. Vid enstaka tillfällen räcker enkelpump.',
+  },
+  {
+    question: 'Är handfri bröstpump värd det extra priset?',
+    answer: 'En handfri pump som Medela Freestyle Hands-free sitter inuti BH:n utan synliga slangar och låter dig pumpa medan du jobbar, kör bil, lagar mat eller tar hand om äldre barn. För mammor som återgår till arbete eller pumpar dagligen är handfri-funktionen i särklass den största vardagsförbättringen jämfört med traditionella pumpar.',
+  },
+  {
+    question: 'Hur länge tar det innan bröstpumpen ökar mjölkproduktionen?',
+    answer: 'Bröstpumpning stimulerar mjölkproduktionen på samma sätt som barnets sugning. Vid regelbunden pumpning syns ökad produktion ofta redan efter 3 till 5 dagar. Pumpa 8 till 12 gånger per dygn de första veckorna om du etablerar produktion. Vid problem: kontakta en amningsrådgivare eller barnmorska.',
+  },
+  {
+    question: 'Är det säkert att dela bröstpump med någon annan?',
+    answer: 'Nej, motorenheten på en personlig bröstpump bör aldrig delas. Mikroskopiska mjölkpartiklar kan tränga in i motorhuset och går inte att rengöra bort, vilket innebär en hygienrisk. Trattar, slangar och behållare kan däremot bytas ut och köpas separat. Sjukhusgrade-pumpar (multi-user) är konstruerade för delning och har stängda system.',
+  },
+  {
+    question: 'Hur länge håller en elektrisk bröstpump?',
+    answer: 'En välskött elektrisk bröstpump håller 1 till 3 år vid regelbunden användning. Medela och Philips Avent har gott rykte för hållbarhet. Byt slitdelar som membran, ventiler och trattar enligt tillverkarens schema, ofta var 3:e månad vid daglig pumpning. Slitna delar minskar sugkraften märkbart.',
+  },
+  {
+    question: 'Vilken trattstorlek ska jag välja?',
+    answer: 'Fel trattstorlek är den vanligaste orsaken till att pumpning gör ont eller ger låg mjölkmängd. Mät diametern på din bröstvårta (inte vårtgården) och välj en tratt som är 1 till 3 mm större. Medela och Philips Avent erbjuder trattar i flera storlekar, vanligtvis 21, 24, 27 och 30 mm. Standardtratten 24 mm passar inte alla.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bröstpump bäst i test 2026: 4 elektriska jämförda",
   description: "Bröstpump bäst i test 2026: Medela Freestyle Hands-free vinner. Handfri, i BH och USB-C. Vi jämför 4 elektriska pumpar på sugkraft och batteri.",
   publishDate: "2026-04-17",
+  updatedDate: "2026-06-13",
   category: "Amning",
   image: "/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bröstpump bäst i test 2026: 4 elektriska jämförda"
- description="Bröstpump bäst i test 2026: Medela Freestyle Hands-free vinner. Handfri, i BH och USB-C. Vi jämför 4 elektriska pumpar på sugkraft och batteri."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/amning/elektrisk-brostpump/"
- updatedDate="2026-06-10"
+  title="Bröstpump bäst i test 2026: 4 elektriska jämförda"
+  description="Bröstpump bäst i test 2026: Medela Freestyle Hands-free vinner. Handfri, i BH och USB-C. Vi jämför 4 elektriska pumpar på sugkraft och batteri."
+  breadcrumbs={breadcrumbs}
   datePublished="2026-04-17"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
- Medela Freestyle Hands-free vinner bröstpump bäst i test 2026. Den är helt handfri och sitter direkt i BH:n, så du kan pumpa medan du jobbar eller är på språng. Dubbelpumpen väger bara 0,3 kg, laddas via USB-C och bygger på Medelas 2-fas-teknologi för effektiv pumpning.
- </p>
 
- <TopPick product={products[0]} description="Medela Freestyle Hands-free är bröstpump bäst i test 2026. Helt handfri, sitter direkt i BH:n, 2-fas-teknologi och USB-C laddning. Det självklara valet om du vill pumpa på språng eller jobba samtidigt." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-04-17" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Bröstpump jämförelse 2026: sugkraft, vikt, laddning</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken elektrisk bröstpump är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Medela Freestyle Hands-free är bäst i test 2026: helt handfri, sitter direkt i BH:n, USB-C laddning och 2-fas-teknologi som efterliknar barnets sugmönster. Bäst dubbelpump för hemmet: Medela Swing Maxi Flex. Bäst prisvärd enkelpump: Medela Swing Flex.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
- <p class="text-sm text-text-light"><strong>Medela Freestyle Hands-free</strong> är bäst för mammor som pumpar på språng eller vill ha händerna fria. <strong>Medela Swing Maxi Flex</strong> är bäst dubbelpump för hemmet. <strong>Medela Swing Flex</strong> är bäst enkelpump för enstaka tillfällen.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Medela"
+    name="Freestyle Hands-free Elektrisk Dubbelbröstpump"
+    image="/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+    store="Jollyroom"
+    description="Vinnare bröstpump bäst i test 2026. Sitter direkt i BH:n utan synliga slangar, laddar via USB-C och använder 2-fas-teknologi som efterliknar barnets naturliga sugmönster. Väger bara 0,3 kg och låter dig pumpa helt fritt."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Elektriska bröstpumpar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp"
- pros={['Helt handfri, sitter i BH:n', 'Kompakt och tyst', 'USB-C laddning', '2-fas-teknologi som efterliknar barnets sugning']}
- cons={['Högt pris', 'Kräver anpassad amnings-BH', 'Kortare batteritid jämfört med nätdriven pump']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Medela Swing Maxi Flex Elektrisk Dubbelbröstpump"
- badge="Bäst dubbelpump"
- rating={4.7}
- image="/images/products/medela-swing-maxi-flex.webp"
- pros={['Pumpar båda brösten simultaneously', 'Halverar pumptiden', 'Inbyggt batteri', '2-fas-teknologi']}
- cons={['Inte handfri', 'Kräver slangar och hållare', 'Tyngre än handfria alternativ']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Medela Freestyle Hands-free, bäst i test</h2>
+    <MoneyProductCard
+      brand="Medela"
+      name="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp"
+      imageAlt="Medela Freestyle Hands-free elektrisk dubbelbröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+      pros={['Helt handfri, sitter i BH:n utan synliga slangar', 'USB-C laddning och kompakt design (0,3 kg)', '2-fas-teknologi som efterliknar barnets naturliga sugmönster']}
+      cons={['Kräver anpassad amnings-BH', 'Kortare batteritid jämfört med nätdriven pump']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Medela Freestyle Hands-free vinner bröstpump bäst i test 2026. Den sitter direkt i BH:n utan synliga slangar och låter dig pumpa medan du jobbar, lagar mat eller tar hand om äldre barn. Dubbelpumpen väger bara 0,3 kg, laddar via USB-C och använder Medelas 2-fas-teknologi som är uppbyggd kring barnets naturliga sugmönster med stimuleringsfas följt av uttryckningsfas.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att den kräver en anpassad amnings-BH med hål och att batteritiden är kortare än hos nätdrivna pumpar. Men för mammor som vill kunna röra sig fritt under pumpningen är den helt överlägsen i sin kategori.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump" />
 
- <ProductCard
- name="Medela Swing Flex Elektrisk Bröstpump"
- badge="Bäst enkelpump"
- rating={4.6}
- image="/images/products/medela-swing-flex.webp"
- pros={['Prisvärd', 'Lätt och kompakt', 'PersonalFit Flex trattar', 'Inbyggt batteri']}
- cons={['Pumpar ett bröst i taget', 'Dubblar pumptiden vs. dubbelpump', 'Inte handfri']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291657&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/1871549_medela-swing-flex-elektrisk-brostpump"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Medela Swing Maxi Flex, bäst dubbelpump</h2>
+    <MoneyProductCard
+      brand="Medela"
+      name="Medela Swing Maxi Flex Elektrisk Dubbelbröstpump"
+      rating={4.7}
+      rank={2}
+      badge="Bäst dubbelpump"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/medela-swing-maxi-flex.webp"
+      imageAlt="Medela Swing Maxi Flex elektrisk dubbelbröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump"
+      pros={['Pumpar båda brösten samtidigt, halverar pumptiden', '2-fas-teknologi med stimulerings- och uttryckningsfas', 'Inbyggt batteri, fungerar utan nätuttag']}
+      cons={['Inte handfri, kräver slangar och hållare', 'Tyngre än de handfria alternativen (0,9 kg)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Medela Swing Maxi Flex är standardvalet för daglig pumpning hemma. Dubbelpumpen halverar pumptiden från 25 till 30 minuter till 12 till 15 minuter, vilket gör enorm skillnad om du pumpar flera gånger per dag. Den stimulerar dessutom hormonet prolaktin starkare vid simultan pumpning, vilket hjälper produktionen att hålla sig uppe vid deltidsamning.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Stolen saknar handfri-funktion och kräver slangar och ett hållarsystem. Men för hemmabruk där du ändå sitter still under pumpningen är det sällan ett problem. Inbyggt batteri gör att du inte är bunden till ett nätuttag.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump" />
 
- <ProductCard
- name="Philips Avent Natural Motion Elektrisk Bröstpump"
- badge="Naturlig känsla"
- rating={4.5}
- image="/images/products/philips-avent-natural-motion-elektrisk-brostpump.webp"
- pros={['Natural Motion-teknologi efterliknar barnets sugning', 'Mjuka brösttrattar', 'Kompatibel med Avent-flaskor', 'Tyst motor']}
- cons={['Enkelpump, pumpar ett bröst i taget', 'AA-batterier (inte inbyggt batteri)', 'Fler delar att rengöra']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250953&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-natural-motion-brostpump-elektrisk"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Medela Swing Flex, bäst enkelpump</h2>
+    <MoneyProductCard
+      brand="Medela"
+      name="Medela Swing Flex Elektrisk Bröstpump"
+      rating={4.6}
+      rank={3}
+      badge="Bäst enkelpump"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/medela-swing-flex.webp"
+      imageAlt="Medela Swing Flex elektrisk bröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291657&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/1871549_medela-swing-flex-elektrisk-brostpump"
+      pros={['Prisvärd elektrisk enkelpump', 'PersonalFit Flex trattar i flera storlekar', 'Lätt och kompakt, enkel att ta med']}
+      cons={['Pumpar ett bröst i taget, dubblar pumptiden', 'Inte handfri']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Medela Swing Flex är rätt val för mammor som pumpar sporadiskt, några gånger i veckan eller vid enstaka tillfällen. Den kostar märkbart mindre än dubbelpumparna och är lättare att bära med. PersonalFit Flex-trattarna finns i flera storlekar och är utformade för att forma sig efter bröstvårtan.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Enkelpumpen tar ungefär dubbelt så lång tid som en dubbelpump, vilket märks om du pumpar dagligen. Vid frekvent pumpning bör du uppgradera till Swing Maxi Flex. Men för deltidsamning och enstaka tillfällen är Swing Flex ett smart och prisvärt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291657&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/1871549_medela-swing-flex-elektrisk-brostpump" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: elektrisk bröstpump, enkel, dubbel eller handfri?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Philips Avent Natural Motion, naturlig känsla</h2>
+    <MoneyProductCard
+      brand="Philips Avent"
+      name="Philips Avent Natural Motion Elektrisk Bröstpump"
+      rating={4.5}
+      rank={4}
+      badge="Naturlig känsla"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/philips-avent-natural-motion-elektrisk-brostpump.webp"
+      imageAlt="Philips Avent Natural Motion elektrisk bröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250953&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-natural-motion-brostpump-elektrisk"
+      pros={['Natural Motion-teknologi efterliknar barnets sugmönster', 'Mjuka brösttrattar i silikon för komfortabel pumpning', 'Tyst motor, diskret att använda']}
+      cons={['Enkelpump, pumpar ett bröst i taget', 'AA-batterier istället för inbyggt batteri']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent Natural Motion är alternativet för dig som vill ha en annan tillverkare än Medela. Natural Motion-teknologin efterliknar barnets naturliga sugmönster med mjuka, böjliga brösttrattar i silikon som är utformade för att ge en bekväm pumpupplevelse. Motorn är tyst och diskret.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelarna är att det är en enkelpump och att den drivs av AA-batterier istället för ett inbyggt laddningsbart batteri. Det innebär extra kostnader och att du alltid behöver ha batterier tillgängliga. Avent-flaskor och tillbehör är kompatibla direkt, vilket är en fördel om du redan använder Avent-systemet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250953&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-natural-motion-brostpump-elektrisk" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Enkelpump för enstaka pumpning</h3>
- <p>Pumpar du några gånger i veckan räcker en enkelpump som Medela Swing Flex eller Philips Avent Natural Motion. Den är billigare, lättare i väskan och har färre delar att diska. För deltidsamning eller pumpning vid sporadiska tillfällen är detta det smartaste valet.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra elektriska bröstpumpar granskade. Medela Freestyle Hands-free vinner på handfri frihet och portabilitet, Swing Maxi Flex tar förstaplatsen för daglig hemmabruk, Swing Flex är det prisvärda valet och Philips Avent Natural Motion är Medela-alternativet med mjuk känsla. Vill du jämföra fler alternativ? Se vår kompletta guide om <a href="/amning/brostpump/" class="text-accent hover:text-accent-dark underline">bästa bröstpump 2026, manuell och elektrisk jämförd</a> eller läs mer om <a href="/amning/" class="text-accent hover:text-accent-dark underline">amning, komplett guide för nyblivna mammor</a>.
+    </p>
 
- <h3>Dubbelpump för daglig pumpning</h3>
- <p>Pumpar du dagligen, jobbar deltid eller bygger upp produktionen är en dubbelpump nästan ett måste. Den halverar pumptiden från 30 till 15 minuter och stimulerar dessutom hormonet prolaktin starkare, vilket håller produktionen uppe. Medela Swing Maxi Flex är standardvalet för hemmabruk i Sverige.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Elektriska bröstpumpar 2026" />
 
- <h3>Handfri pump för aktiva mammor</h3>
- <p>En handfri pump sitter i BH:n utan synliga slangar och låter dig fortsätta vardagen. Du kan svara mail, hänga tvätt eller leka med storasyskonet medan du pumpar. Medela Freestyle Hands-free är marknadsledande och godkänd enligt MDR (Medical Device Regulation) som klass IIa medicinteknisk produkt.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: elektrisk bröstpump, enkel, dubbel eller handfri?</h2>
 
- <h3>Trattstorlek påverkar både komfort och mängd</h3>
- <p>Mät bröstvårtans diameter (inte vårtgården) och välj en tratt som är 1 till 3 mm större. För liten tratt skaver, för stor ger lågt sug. Medela och Philips Avent säljer trattar i storlekarna 21, 24, 27 och 30 mm. Standardstorleken 24 mm passar bara en minoritet, många mammor behöver byta direkt vid köp.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Enkelpump för enstaka pumpning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Pumpar du några gånger i veckan räcker en enkelpump som Medela Swing Flex eller Philips Avent Natural Motion. Den är billigare, lättare i väskan och har färre delar att diska. För deltidsamning eller pumpning vid sporadiska tillfällen är detta det smartaste valet ekonomiskt och praktiskt.
+    </p>
 
- <h3>Sjukhusgrade vs personlig pump</h3>
- <p>Sjukhusgrade-pumpar (multi-user) som Medela Symphony hyrs ut av apotek och BB-avdelningar för mammor med produktionsproblem eller för tidigt födda barn. Personliga pumpar (single-user) som modellerna i denna test är konstruerade för en användare och kan inte säkert delas. Behöver du extra stark sugkraft de första veckorna: hyr sjukhusgrade.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Dubbelpump för daglig pumpning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Pumpar du dagligen, jobbar deltid eller bygger upp produktionen är en dubbelpump nästan ett måste. Den halverar pumptiden från 25 till 30 minuter till 12 till 15 minuter och stimulerar hormonet prolaktin starkare, vilket håller produktionen uppe. Medela Swing Maxi Flex är standardvalet för hemmabruk i Sverige.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade amningsguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/amning/" class="text-accent underline">Amning, komplett guide för nyblivna mammor</a></li>
- <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpump 2026, manuell och elektrisk jämförd</a></li>
- <li><a href="/amning/amningsbh/" class="text-accent underline">Bästa amnings-BH 2026, komfort och funktion</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Handfri pump för aktiva mammor</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En handfri pump sitter i BH:n utan synliga slangar och låter dig fortsätta vardagen. Du kan svara mail, hänga tvätt eller leka med storasyskonet medan du pumpar. Medela Freestyle Hands-free är marknadsledande i kategorin och godkänd som medicinteknisk produkt klass IIa.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Trattstorlek påverkar komfort och mängd</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Mät bröstvårtans diameter (inte vårtgården) och välj en tratt som är 1 till 3 mm större. För liten tratt skaver, för stor ger lågt sug. Medela och Philips Avent säljer trattar i storlekarna 21, 24, 27 och 30 mm. Standardstorleken 24 mm passar inte alla, kontrollera alltid din storlek innan du börjar pumpa.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
- description: 'Handfri elektrisk dubbelbröstpump från Medela. Sitter i BH:n utan slangar. USB-C laddning. 2-fas-teknologi. 0,3 kg.',
- image: 'https://bebisguiden.se/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp',
- brand: 'Medela',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Medela Swing Maxi Flex Elektrisk Dubbelbröstpump',
- description: 'Elektrisk dubbelbröstpump från Medela med 2-fas-teknologi. Pumpar båda brösten simultaneously. Inbyggt batteri.',
- image: 'https://bebisguiden.se/images/products/medela-swing-maxi-flex.webp',
- brand: 'Medela',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- ]} />
- <CTABox productName="Elektrisk bröstpump och amningsprodukter" store="Nanobebe" description="Premium nappflaskor och amningsprodukter." />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Sjukhusgrade kontra personlig pump</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sjukhusgrade-pumpar (multi-user) som Medela Symphony hyrs ut av apotek och BB-avdelningar för mammor med produktionsproblem eller för tidigt födda barn. Personliga pumpar som de i den här testet är konstruerade för en användare och kan inte delas utan hygienrisk. Behöver du extra stark sugkraft de första veckorna: hyr en sjukhusgrade vid sidan av.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra elektriska bröstpumpar utifrån pumpningstyp (enkel eller dubbel), handfri-funktion, vikt, laddningsmetod och batterikapacitet. Produkterna är valda bland de mest sålda och eftersökta elektriska bröstpumparna i Sverige. Ingen tillverkare har betalat för placering i listan. Vi rekommenderar alltid att du pratar med en barnmorska eller amningsrådgivare om du har specifika frågor om din amning.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade amningsguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/amning/" class="text-accent underline">Amning, komplett guide för nyblivna mammor</a></li>
+        <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpump 2026, manuell och elektrisk jämförd</a></li>
+        <li><a href="/amning/amningsbh/" class="text-accent underline">Bästa amnings-BH 2026, komfort och funktion</a></li>
+        <li><a href="/marken/medela/" class="text-accent underline">Medela bröstpumpar och amningsprodukter, komplett guide</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa elektriska bröstpumpen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+    text="Bra pris hos Jollyroom"
+    productName="Medela Freestyle Hands-free"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

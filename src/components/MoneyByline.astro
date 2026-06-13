@@ -1,0 +1,57 @@
+---
+/**
+ * Slim enradig redaktions-byline för money pages (money page-mallen).
+ * Trogen port av tillskottsguidens AuthorByline: liten ikon + redaktionsnamn ·
+ * datum · uppdaterad · lästid på en rad. Lästiden fylls av sidans TOC-script
+ * (#article-reading-time). Tematiserad till bebisguiden.
+ */
+interface Props {
+  author?: string;
+  authorTitle?: string;
+  authorBio?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const {
+  author = 'Bebisguidens redaktion',
+  authorBio = 'Vi jämför barnprodukter utifrån oberoende krocktester, säkerhetsstandarder, specifikationer och pris. Bebisguiden är en oberoende guide, inte vårdpersonal.',
+  datePublished,
+  dateModified,
+} = Astro.props;
+
+const formatDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
+};
+
+const showPublished = !!datePublished;
+const showUpdated = !!dateModified && dateModified !== datePublished;
+---
+
+<div class="flex items-center gap-2.5 py-2 mb-3 border-b border-gray-200">
+  <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
+    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-700" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-[18px] h-[18px]"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9.75h6M9 12h6m-6 2.25h3"/></svg>
+    </span>
+  </a>
+  <div class="flex flex-wrap items-center gap-x-1.5 gap-y-0 text-xs text-gray-500 min-w-0">
+    <a href="/om-redaktionen/" class="font-semibold text-gray-800 hover:text-sky-700 transition-colors whitespace-nowrap">{author}</a>
+    {showPublished && (<><span class="text-gray-300">·</span><time datetime={datePublished}>{formatDate(datePublished!)}</time></>)}
+    {showUpdated && (<><span class="text-gray-300">·</span><span>Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span></>)}
+    <span class="text-gray-300">·</span>
+    <span class="inline-flex items-center gap-1 whitespace-nowrap">
+      <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>
+    </span>
+  </div>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: author,
+  url: 'https://bebisguiden.se/om-redaktionen/',
+  description: authorBio,
+  knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'matstolar', 'barnsäkerhet', 'amning', 'EN 14988', 'i-Size']
+})} />

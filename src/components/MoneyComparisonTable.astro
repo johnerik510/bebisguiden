@@ -1,0 +1,140 @@
+---
+/**
+ * Scan-and-click jämförelsetabell för money pages.
+ * Trogen port av tillskottsguidens ComparisonTable (money page-mallen),
+ * tematiserad till bebisguiden, utan resolveMultiCTA: butik + URL skickas in.
+ * Mobil: rank + namn i full bredd, sedan bild + 5-stjärnig rating + USP-chips + fullbredds-CTA.
+ * Desktop: kompakt enradslayout.
+ */
+interface Product {
+  name: string;
+  brand: string;
+  rating: number;
+  highlight?: string;
+  usps?: string[];
+  store?: string;
+  affiliateUrl?: string;
+  imageUrl?: string;
+}
+
+interface Props {
+  products: Product[];
+  title?: string;
+}
+
+const { products: rawProducts, title = 'Jämförelsetabell' } = Astro.props;
+const STAR = 'M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z';
+
+const products = rawProducts.map((p) => {
+  const chips = (p.usps && p.usps.length ? p.usps : (p.highlight ? [p.highlight] : [])).slice(0, 3);
+  return { ...p, chips };
+});
+---
+
+<div class="not-prose my-4">
+  <h2 class="font-heading text-xl font-bold text-primary mb-3">{title}</h2>
+
+  {/* ---------- MOBIL: namnet i full bredd överst, sedan bild + betyg + chips, sedan CTA ---------- */}
+  <div class="flex flex-col gap-2.5 md:hidden">
+    {products.map((product, index) => (
+    <div class={`rounded-xl border p-3 ${index === 0 ? 'border-accent-light bg-accent-light/8 ring-1 ring-accent-light/30' : 'border-border bg-white'}`}>
+      <div class="flex items-start gap-2 mb-2.5">
+        <span class={`flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold text-white flex-shrink-0 mt-0.5 ${index === 0 ? 'bg-cta' : 'bg-primary/70'}`}>{index + 1}</span>
+        <span class="font-semibold text-sm text-text leading-snug truncate min-w-0 flex-1">{product.name}</span>
+      </div>
+      <div class="flex gap-3">
+        {product.imageUrl && (
+        <img
+          src={product.imageUrl}
+          alt={`${product.brand} ${product.name}`}
+          class="w-16 h-16 object-contain rounded-lg bg-white border border-border p-1 flex-shrink-0"
+          loading="lazy"
+          width="64"
+          height="64"
+        />
+        )}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5">
+            <span class="relative inline-flex" aria-label={`Betyg ${product.rating} av 5`}>
+              <span class="flex text-gray-300">
+                {[0,1,2,3,4].map(() => (<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d={STAR} /></svg>))}
+              </span>
+              <span class="absolute inset-0 flex overflow-hidden text-star" style={`width:${(product.rating / 5) * 100}%`}>
+                {[0,1,2,3,4].map(() => (<svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d={STAR} /></svg>))}
+              </span>
+            </span>
+            <span class="text-xs font-bold text-text">{product.rating}</span>
+          </div>
+          {product.chips.length > 0 && (
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            {product.chips.map((c) => (
+            <span class="inline-flex items-center gap-0.5 rounded-md bg-accent-light/15 text-accent-dark text-[11px] font-semibold px-1.5 py-0.5 leading-none">
+              <svg class="w-2.5 h-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+              {c}
+            </span>
+            ))}
+          </div>
+          )}
+        </div>
+      </div>
+      {product.affiliateUrl ? (
+      <a
+        href={product.affiliateUrl}
+        rel="nofollow sponsored noopener noreferrer"
+        target="_blank"
+        class="block w-full text-center bg-cta hover:bg-cta-dark text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors mt-3 no-underline"
+      >
+        Bra pris hos {product.store}
+      </a>
+      ) : (
+      <span class="block w-full text-center text-[11px] text-text-light italic py-2.5 mt-3">Pris ej tillgängligt</span>
+      )}
+    </div>
+    ))}
+  </div>
+
+  {/* ---------- DESKTOP: kompakt rad ---------- */}
+  <div class="hidden md:flex md:flex-col md:gap-2">
+    {products.map((product, index) => (
+    <div class={`flex items-center gap-4 rounded-xl border px-4 py-2 ${index === 0 ? 'border-accent-light bg-accent-light/8 ring-1 ring-accent-light/30' : 'border-border bg-white'}`}>
+      <div class="relative flex-shrink-0">
+        {product.imageUrl && (
+        <img src={product.imageUrl} alt={`${product.brand} ${product.name}`} class="w-14 h-14 object-contain rounded-lg bg-white border border-border p-1" loading="lazy" width="56" height="56" />
+        )}
+        <span class={`absolute -top-1.5 -left-1.5 flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold text-white ${index === 0 ? 'bg-cta' : 'bg-primary/70'}`}>{index + 1}</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="font-semibold text-sm text-text leading-snug truncate">{product.name}</div>
+        <div class="flex items-center gap-1.5 mt-1">
+          <span class="relative inline-flex" aria-label={`Betyg ${product.rating} av 5`}>
+            <span class="flex text-gray-300">
+              {[0,1,2,3,4].map(() => (<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d={STAR} /></svg>))}
+            </span>
+            <span class="absolute inset-0 flex overflow-hidden text-star" style={`width:${(product.rating / 5) * 100}%`}>
+              {[0,1,2,3,4].map(() => (<svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d={STAR} /></svg>))}
+            </span>
+          </span>
+          <span class="text-xs font-bold text-text">{product.rating}</span>
+        </div>
+        {product.chips.length > 0 && (
+        <div class="flex flex-wrap gap-1 mt-1.5">
+          {product.chips.map((c) => (
+          <span class="inline-flex items-center gap-0.5 rounded-md bg-accent-light/15 text-accent-dark text-[11px] font-semibold px-1.5 py-0.5 leading-none">
+            <svg class="w-2.5 h-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+            {c}
+          </span>
+          ))}
+        </div>
+        )}
+      </div>
+      <div class="flex flex-col items-stretch gap-1 flex-shrink-0 w-52">
+        {product.affiliateUrl ? (
+        <a href={product.affiliateUrl} rel="nofollow sponsored noopener noreferrer" target="_blank" class="block text-center bg-cta hover:bg-cta-dark text-white text-sm font-semibold py-2 px-3 rounded-lg transition-colors no-underline">Bra pris hos {product.store}</a>
+        ) : (
+        <span class="block text-center text-xs text-text-light italic py-2.5">Pris ej tillgängligt</span>
+        )}
+      </div>
+    </div>
+    ))}
+  </div>
+</div>

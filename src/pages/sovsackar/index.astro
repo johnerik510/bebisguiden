@@ -1,337 +1,436 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Sovpåsar', href: '/sovsackar/' },
+];
+
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
+const products = [
+  {
+    name: 'Voksi Wool Wrap Sovpåse Misty Green',
+    brand: 'Voksi',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Ull reglerar temperatur', 'CE + OEKO-TEX', 'Tvättbar 40 grader'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=8989145e-30d4-4477-84ec-600094a854e5&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-misty-green-onesize',
+    imageUrl: '/images/products/voksi-wool-wrap-sovpase.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Sovpåse i ull som reglerar temperaturen naturligt åt båda håll. CE-godkänd och OEKO-TEX-certifierad. TOG 1.5, för barn 0 till 9 månader.',
+    features: { 'Material': 'Ull/bomull', 'TOG': '1.5', 'Ålder': '0 till 9 mån', 'Storlek': '70 cm', 'Certifiering': 'CE, OEKO-TEX' },
+    alsoAt: [
+      { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307533&url=https://www.jollyroom.se/barnvagnar/akpasar/miniakpasar/voksi-wool-wrap-akpase-misty-green' },
+    ],
+  },
+  {
+    name: 'Jollein Sovpåse med Avtagbar Ärm 90 cm Roarsome',
+    brand: 'Jollein',
+    rating: 4.7,
+    badge: 'Populärast',
+    usps: ['Avtagbara ärmar', 'Mjuk bomull', 'Passar 0-2 år'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome',
+    imageUrl: '/images/products/jollein-sovpase-roarsome.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Populär sovpåse med avtagbara ärmar som anpassas efter temperatur. Mjuk bomull med söta mönster. TOG 1.0, passar 0 till 24 månader (90 cm).',
+    features: { 'Material': 'Bomull', 'TOG': '1.0', 'Ålder': '0 till 24 mån', 'Storlek': '90 cm', 'Certifiering': 'OEKO-TEX' },
+    alsoAt: [],
+  },
+  {
+    name: 'LIEWOOD Flora Sovpåse TOG 1.0 Sea Blue',
+    brand: 'Liewood',
+    rating: 4.6,
+    badge: 'Bäst design',
+    usps: ['Skandinavisk design', 'GOTS-certifierad', 'Dubbla dragkedjor'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251380&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/liewood-flora-sovpase-tog-1-0-stl-68-80-sea-blue',
+    imageUrl: '/images/products/liewood-flora-sovpase.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Skandinavisk premiumsovpåse i GOTS-certifierad ekologisk bomull. Dubbla dragkedjor för enkelt blöjbyte. TOG 1.0, för barn 0 till 18 månader.',
+    features: { 'Material': 'Ekologisk bomull', 'TOG': '1.0', 'Ålder': '0 till 18 mån', 'Storlek': '68 till 80 cm', 'Certifiering': 'GOTS, OEKO-TEX' },
+    alsoAt: [],
+  },
+  {
+    name: 'Ergobaby On The Move Sovpåse TOG 1 Elephant',
+    brand: 'Ergobaby',
+    rating: 4.5,
+    badge: 'Bäst ergonomi',
+    usps: ['Ergonomisk design', 'Naturlig benhållning', 'Andningsbart material'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant',
+    imageUrl: '/images/products/ergobaby-sovpase-elephant.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Ergonomisk sovpåse från 6 månader som tillåter naturlig benhållning. Mjukt och andningsbart material från välkänt bärsele-märke. TOG 1.0.',
+    features: { 'Material': 'Polyester/bomull', 'TOG': '1.0', 'Ålder': '6 till 18 mån', 'Storlek': 'One size (6-18 mån)', 'Certifiering': 'CE-godkänd' },
+    alsoAt: [],
+  },
+  {
+    name: 'Voksi Wool Wrap Sovpåse Sand',
+    brand: 'Voksi',
+    rating: 4.7,
+    badge: 'Bäst vinterval',
+    usps: ['Ull i neutral sandfärg', 'TOG 1.5 höst/vinter', 'Temperaturreglering'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=afb21f77-4b0e-43b0-946e-94c2c0a8c2c9&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-sand-onesize',
+    imageUrl: '/images/products/voksi-wool-wrap-sovpase-sand.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Voksi Wool Wrap i neutral sandfärg med samma temperaturreglerande ull. TOG 1.5 passar det svenska höst- och vinterklimatet. För barn 0 till 9 månader.',
+    features: { 'Material': 'Ull/bomull', 'TOG': '1.5', 'Ålder': '0 till 9 mån', 'Storlek': '70 cm', 'Certifiering': 'CE, OEKO-TEX' },
+    alsoAt: [
+      { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307534&url=https://www.jollyroom.se/barnvagnar/akpasar/miniakpasar/voksi-wool-wrap-akpase-sand' },
+    ],
+  },
+];
+
+const specLabels = ['Material', 'TOG', 'Ålder', 'Storlek', 'Certifiering'];
+
+const faqItems = [
+  {
+    question: 'Vad är TOG och vilken nivå behöver mitt barn?',
+    answer: 'TOG mäter värmeisolering, högre värde betyder varmare sovpåse. Använd 0,5 till 1,0 TOG vid 22 till 25 grader rumstemperatur (sommarnätter), 1,5 till 2,0 vid 18 till 21 grader (höst och tidig vinter) och 2,5 vid temperaturer under 18 grader. Rekommenderad sovrumstemperatur enligt 1177 är 18 till 20 grader året om.',
+  },
+  {
+    question: 'Från vilken ålder fungerar sovpåse?',
+    answer: 'De flesta sovpåsar är konstruerade för 0 månader och uppåt, men kontrollera alltid längd- och viktgränsen. För nyfödda är det avgörande att halsöppningen är så liten att bebisen inte kan glida ner i säcken, mät i butik om du är osäker. Undvik sovpåsar med lös kapuschong eller med ärmar för bebisar under fyra månader, det ökar risken för instängd luft.',
+  },
+  {
+    question: 'Är sovpåse verkligen säkrare än täcke?',
+    answer: 'Ja. 1177, Socialstyrelsen och barnläkarföreningen rekommenderar sovpåse för spädbarn under 12 månader. Ett löst täcke kan glida över ansiktet och öka risken för plötslig spädbarnsdöd. En välpassande sovpåse eliminerar den risken eftersom den sitter över axlarna och inte kan flytta sig upp över huvudet.',
+  },
+  {
+    question: 'Hur tvättar jag en baby-sovpåse rätt?',
+    answer: 'De flesta polyester- och bomullsmodeller tål maskintvätt på 40 grader, vissa även 60. Ull (Voksi Wool Wrap) kräver ulltvättprogram på 30 grader med ullmedel utan enzymer. Torktumla aldrig utan att läsa etiketten, fyllningen kan klumpa sig och förlora isoleringsförmågan. Tvätta i snitt varannan vecka, oftare vid läckage eller sjukdom.',
+  },
+  {
+    question: 'Hur väljer jag rätt storlek?',
+    answer: 'Sovpåsen ska sitta tätt över axlarna utan att klämma, och halsöppningen ska vara så liten att bebisens hjässa inte kan glida ner. Armarna ligger utanför säcken, aldrig inuti. Välj efter längd snarare än ålder. Vanliga storlekar är 56 till 70 centimeter (0 till 6 månader), 70 centimeter (6 till 12 månader) och 90 centimeter (12 till 24 månader).',
+  },
+  {
+    question: 'Vad ska bebisen ha under sovpåsen?',
+    answer: 'Klädseln anpassas efter TOG och rumstemperatur. Vid TOG 2,5 och 18 grader räcker en tunn body. Vid TOG 1,0 och 20 grader behövs body plus lätt pyjamas. Vid TOG 0,5 och 24 grader räcker blöja och en kortärmad body. Kontrollera bebisens nacke (inte händerna) som termostat, ska vara varm och torr utan att svettas.',
+  },
+];
 
 export const articleMeta = {
   title: "Bästa sovpåsen bebis 2026: Voksi, Jollein och Liewood granskad",
   description: "Sovpåse baby bäst i test 2026: Voksi Wool Wrap vinner på ull och temperaturreglering. Jollein populärast, Liewood Flora trendigast. TOG-guide och jämförelsetabell.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Sovpåsar",
-  image: "/images/products/voksi-nordic-n1-wool.webp",
+  image: "/images/products/voksi-wool-wrap-sovpase.webp",
 };
-
-const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Sovpåsar', href: '/sovsackar/' },
-];
-
-const products = [
-  {
-    name: 'Voksi Wool Wrap Sovpåse Misty Green',
-    badge: 'Bäst i test',
-    rating: 4.8,
-    image: '/images/products/voksi-wool-wrap-sovpase.webp',
-    ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=8989145e-30d4-4477-84ec-600094a854e5&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-misty-green-onesize',
-    additionalCtaHrefs: [
-      { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307533&url=https://www.jollyroom.se/barnvagnar/akpasar/miniakpasar/voksi-wool-wrap-akpase-misty-green' },
-    ],
-    pros: ['Ull håller rätt temperatur hela natten', 'CE-godkänd och OEKO-TEX-certifierad', 'Naturligt andningsbart material', 'Tvättbar i maskin 40 grader'],
-    cons: ['Dyrare än polyester-alternativ', 'Kräver varsam tvätt', 'Ull krymper om feltvättad'],
-    features: {
-      'Material': 'Ull/bomull',
-      'TOG': '1.5',
-      'Ålder': '0 till 9 mån',
-      'Storlek': '70 cm',
-      'Certifiering': 'CE, OEKO-TEX',
-    },
-  },
-  {
-    name: 'Jollein Sovpåse med Avtagbar Ärm 90 cm Roarsome',
-    badge: 'Populärast',
-    rating: 4.7,
-    image: '/images/products/jollein-sovpase-roarsome.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome',
-    pros: ['Avtagbara ärmar, anpassa efter temperatur', 'Populärast av alla märken i Sverige', 'Mjuk bomull med söta mönster', 'Lång livslängd, passar 0-2 år (90 cm)'],
-    cons: ['Lite dyrare i premiumsegmentet', 'TOG 1.0 passar inte kalla vintrar', 'Ärmar kräver extra hantering'],
-    features: {
-      'Material': 'Bomull',
-      'TOG': '1.0',
-      'Ålder': '0 till 24 mån',
-      'Storlek': '90 cm',
-      'Certifiering': 'OEKO-TEX',
-    },
-  },
-  {
-    name: 'LIEWOOD Flora Sovpåse TOG 1.0 Sea Blue',
-    badge: 'Bäst design',
-    rating: 4.6,
-    image: '/images/products/liewood-flora-sovpase.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251380&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/liewood-flora-sovpase-tog-1-0-stl-68-80-sea-blue',
-    pros: ['Skandinavisk premiumdesign i vackra färger', 'GOTS-certifierad ekologisk bomull', 'Dubbla dragkedjor för enkelt blöjbyte', 'Hållbart material med lång livslängd'],
-    cons: ['Högt pris (940 kr)', 'TOG 1.0 räcker inte för kalla vintrar', 'Begränsad storleksvariation'],
-    features: {
-      'Material': 'Ekologisk bomull',
-      'TOG': '1.0',
-      'Ålder': '0 till 18 mån',
-      'Storlek': '68 till 80 cm',
-      'Certifiering': 'GOTS, OEKO-TEX',
-    },
-  },
-  {
-    name: 'Ergobaby On The Move Sovpåse TOG 1 Elephant',
-    badge: 'Bäst ergonomi',
-    rating: 4.5,
-    image: '/images/products/ergobaby-sovpase-elephant.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant',
-    pros: ['Ergonomisk design från 6 månader', 'Tillåter naturlig benhållning', 'Från välkänt bärsele-märke', 'Mjukt och andningsbart material'],
-    cons: ['Inte lämplig från nyfödd (från 6 mån)', 'Begränsad storleksvariation', 'Tunnare fyllning för kallt väder'],
-    features: {
-      'Material': 'Polyester/bomull',
-      'TOG': '1.0',
-      'Ålder': '6 till 18 mån',
-      'Storlek': 'One size (6-18 mån)',
-      'Certifiering': 'CE-godkänd',
-    },
-  },
-  {
-    name: 'Voksi Wool Wrap Sovpåse Sand',
-    badge: 'Bäst vinterval',
-    rating: 4.7,
-    image: '/images/products/voksi-wool-wrap-sovpase-sand.webp',
-    ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=afb21f77-4b0e-43b0-946e-94c2c0a8c2c9&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-sand-onesize',
-    additionalCtaHrefs: [
-      { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307534&url=https://www.jollyroom.se/barnvagnar/akpasar/miniakpasar/voksi-wool-wrap-akpase-sand' },
-    ],
-    pros: ['Ull i neutral sandfärg', 'Temperaturreglering hela natten', 'Passar det svenska klimatet', 'TOG 1.5 för höst/vinter'],
-    cons: ['Kräver varsam tvätt', 'Dyrare än polyester', 'Samma bild som Misty Green - välj din favoritfärg'],
-    features: {
-      'Material': 'Ull/bomull',
-      'TOG': '1.5',
-      'Ålder': '0 till 9 mån',
-      'Storlek': '70 cm',
-      'Certifiering': 'CE, OEKO-TEX',
-    },
-  },
-];
-
-const featureLabels = ['Material', 'TOG', 'Ålder', 'Storlek', 'Certifiering'];
-
-const faqItems = [
- {
- question: 'Vad är TOG och vilken nivå behöver mitt barn?',
- answer: 'TOG mäter värmeisolering, högre värde betyder varmare sovpåse. Använd 0,5 till 1,0 TOG vid 22 till 25 grader rumstemperatur (sommarnätter), 1,5 till 2,0 vid 18 till 21 grader (höst och tidig vinter) och 2,5 vid temperaturer under 18 grader. Rekommenderad sovrumstemperatur enligt 1177 är 18 till 20 grader året om.',
- },
- {
- question: 'Från vilken ålder fungerar sovpåse?',
- answer: 'De flesta sovpåsar är konstruerade för 0 månader och uppåt, men kontrollera alltid längd- och viktgränsen. För nyfödda är det avgörande att halsöppningen är så liten att bebisen inte kan glida ner i säcken, mät i butik om du är osäker. Undvik sovpåsar med lös kapuschong eller med ärmar för bebisar under fyra månader, det ökar risken för instängd luft.',
- },
- {
- question: 'Är sovpåse verkligen säkrare än täcke?',
- answer: 'Ja. 1177, Socialstyrelsen och barnläkarföreningen rekommenderar sovpåse för spädbarn under 12 månader. Ett löst täcke kan glida över ansiktet och öka risken för plötslig spädbarnsdöd. En välpassande sovpåse eliminerar den risken eftersom den sitter över axlarna och inte kan flytta sig upp över huvudet.',
- },
- {
- question: 'Hur tvättar jag en baby-sovpåse rätt?',
- answer: 'De flesta polyester- och bomullsmodeller tål maskintvätt på 40 grader, vissa även 60. Ull (Voksi Nordic) kräver ulltvättprogram på 30 grader med ullmedel utan enzymer. Torktumla aldrig utan att läsa etiketten, fyllningen kan klumpa sig och förlora isoleringsförmågan. Tvätta i snitt varannan vecka, oftare vid läckage eller sjukdom.',
- },
- {
- question: 'Hur väljer jag rätt storlek?',
- answer: 'Sovpåsen ska sitta tätt över axlarna utan att klämma, och halsöppningen ska vara så liten att bebisens hjässa inte kan glida ner. Armarna ligger utanför säcken, aldrig inuti. Välj efter längd snarare än ålder. Vanliga storlekar är 56 till 70 centimeter (0 till 6 månader), 70 centimeter (6 till 12 månader) och 90 centimeter (12 till 24 månader).',
- },
- {
- question: 'Vad ska bebisen ha under sovpåsen?',
- answer: 'Klädseln anpassas efter TOG och rumstemperatur. Vid TOG 2,5 och 18 grader räcker en tunn body. Vid TOG 1,0 och 20 grader behövs body plus lätt pyjamas. Vid TOG 0,5 och 24 grader räcker blöja och en kortärmad body. Kontrollera bebisens nacke (inte händerna) som termostat, ska vara varm och torr utan att svettas.',
- },
-];
 ---
 
 <ArticleLayout
- title="Bästa sovpåsen bebis 2026: bäst i test av 5"
- description="Sovpåse baby bäst i test 2026: Voksi Nordic N1 Wool vinner. Vi jämför 5 modeller på TOG, material och säkerhet. Komplett TOG-guide för svenska sovrum."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-14"
- relatedArticles={[
- { title: 'Bästa spjälsängar 2026', href: '/spjalsangar/' },
- { title: 'Babysäkerhet, komplett guide', href: '/sakerhet/' },
- { title: 'Bästa babyvakter 2026', href: '/babyvakter/' },
- { title: 'Guide: Babysovande och rutiner', href: '/guider/babysovande/' },
- ]}
+  title="Bästa sovpåsen bebis 2026: Voksi, Jollein och Liewood granskad"
+  description="Sovpåse baby bäst i test 2026: Voksi Wool Wrap vinner på ull och temperaturreglering. Jollein populärast, Liewood Flora trendigast. TOG-guide och jämförelsetabell."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-05-16"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-lg text-text-light leading-relaxed mb-4">
-	 Voksi Nordic N1 Wool vinner sovpåse baby bäst i test 2026. Den är den enda i testet som reglerar temperaturen naturligt åt båda håll: ullen håller värmen när det är svalt och leder bort fukt när det blir varmt. Det minskar risken för överhettning, en känd riskfaktor för plötslig spädbarnsdöd. TOG 1.5 passar de flesta svenska sovrum.
-	 </p>
 
- <TopPick product={products[0]} description="Voksi Nordic N1 Wool är den enda sovpåsen som reglerar temperaturen naturligt åt båda håll. Ull håller värmen när det är svalt och leder bort fukt när det blir varmt, vilket minskar risken för överhettning, en känd riskfaktor för plötslig spädbarnsdöd." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-12" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} title="Jämförelsetabell, sovpåsar baby 2026" />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken sovpåse för bebis är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Voksi Wool Wrap är bäst i test 2026. Ullen reglerar temperaturen naturligt åt båda håll: håller värmen när det är svalt och leder bort fukt när det blir varmt, vilket minskar risken för överhettning. CE-godkänd och OEKO-TEX-certifierad, TOG 1.5. Populärast: Jollein med avtagbar ärm. Bäst design: Liewood Flora.
+    </p>
+  </div>
 
- <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-6">De 5 bästa sovpåsarna för bebis 2026: bäst i test</h2>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Voksi"
+    name="Wool Wrap Sovpåse Misty Green"
+    image="/images/products/voksi-wool-wrap-sovpase.webp"
+    trackedUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=8989145e-30d4-4477-84ec-600094a854e5&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-misty-green-onesize"
+    store="BabySam"
+    description="Vinner sovpåse baby 2026 på ullens naturliga temperaturreglering åt båda håll. Håller värmen när det är svalt, leder bort fukt när det blir varmt och minskar risken för överhettning. CE-godkänd, OEKO-TEX-certifierad och tvättbar i maskin 40 grader."
+    alsoAt={[{ store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307533&url=https://www.jollyroom.se/barnvagnar/akpasar/miniakpasar/voksi-wool-wrap-akpase-misty-green' }]}
+  />
 
- <h3 class="font-heading text-xl font-bold text-text mt-6 mb-4">1. Voksi Nordic N1 Wool, Bäst i test</h3>
- <ProductCard
- name="Voksi Nordic N1 Wool"
- image="/images/products/voksi-nordic-n1-wool.webp"
- badge="Bäst i test 2026"
- rating={4.8}
- ctaText="Bra pris hos Jollyroom"
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Sovpåsar baby 2026" />
 
- image="/images/products/voksi-nordic-n1-wool.webp"
- pros={['Ull reglerar temperatur naturligt', 'CE-godkänd för nyfödda', 'Hållbar, varar i flera år', 'Andningsbar och fuktreglerande']}
- cons={['Dyraste på listan', 'Kräver varsam ulltvättning']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- Voksi Nordic N1 Wool är vår toppval tack vare ullens naturliga förmåga att reglera temperatur. Ull håller barnet varmt när det är svalt och andas bort fukt när det är varmt, vilket minskar risken för överhettning, en av riskfaktorerna för SIDS.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Sovpåsen är CE-godkänd och passar från födseln. Voksi Nordic-serien är CE-certifierad enligt leksaksstandard EN 71-3, vilket är viktigt för de allra minsta. TOG 1.5 passar för höst- och vinternätter vid rumstemperatur 18 till 20°C.
- </p>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">2. HALO SleepSack Micro-Fleece, Säkrast</h3>
- <ProductCard
- name="HALO SleepSack Micro-Fleece"
- image="/images/products/halo-sleepsack.webp"
- badge="Pediatriker-rekommenderad"
- rating={4.7}
- ctaText="Bra pris hos Jollyroom"
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Voksi Wool Wrap Misty Green, bäst i test</h2>
+    <MoneyProductCard
+      brand="Voksi"
+      name="Voksi Wool Wrap Sovpåse Misty Green"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/voksi-wool-wrap-sovpase.webp"
+      imageAlt="Voksi Wool Wrap sovpåse Misty Green"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=8989145e-30d4-4477-84ec-600094a854e5&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-misty-green-onesize"
+      alsoAt={[{ store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307533&url=https://www.jollyroom.se/barnvagnar/akpasar/miniakpasar/voksi-wool-wrap-akpase-misty-green' }]}
+      pros={['Ull håller rätt temperatur hela natten', 'CE-godkänd och OEKO-TEX-certifierad', 'Naturligt andningsbart material', 'Tvättbar i maskin 40 grader']}
+      cons={['Premiumsegment, dyrare än polyester', 'Kräver varsam tvätt', 'Ull krymper om feltvättad']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Voksi Wool Wrap vinner sovpåse baby bäst i test 2026. Ullen reglerar temperaturen naturligt åt båda håll: den håller värmen när det är svalt och leder bort fukt när det blir varmt. Det minskar risken för överhettning, en känd riskfaktor för plötslig spädbarnsdöd. Sovpåsen är CE-godkänd och OEKO-TEX-certifierad, med TOG 1.5 som passar de flesta svenska sovrum.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Materialet är naturligt andningsbart och går att maskintvätta i 40 grader. Nackdelen är att ull ligger i premiumsegmentet och kräver varsam tvätt, ullen krymper om den feltvättas. Men för temperaturreglering och säker sömn är den svår att slå.
+    </p>
+    <MoneyCTABox productName="Voksi Wool Wrap Sovpåse Misty Green" store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=8989145e-30d4-4477-84ec-600094a854e5&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-misty-green-onesize" />
 
- image="/images/products/halo-sleepsack.webp"
- pros={['Omvänd dragkedja, enkelt blöjbyte på natten', 'Kliniskt testad och rekommenderad av barnläkare', 'Hindrar barnet att sparka av täcket', 'Tillgänglig i många storlekar']}
- cons={['Import-produkt, pris varierar', 'Micro-fleece kan bli lite varmt på sommaren']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- HALO SleepSack är den sovpåse som rekommenderas av flest barnläkare i USA och har ett starkt renommé även i Sverige. Den omvända dragkedjan (öppnas underifrån) gör blöjbyten på natten dramatiskt enklare.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- Micro-fleece-materialet är mjukt och behagligt, och TOG 1.5 passar de flesta årstider inomhus. Välj storlek efter barnets vikt, inte ålder.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Jollein Sovpåse med Avtagbar Ärm, populärast</h2>
+    <MoneyProductCard
+      brand="Jollein"
+      name="Jollein Sovpåse med Avtagbar Ärm 90 cm Roarsome"
+      rating={4.7}
+      rank={2}
+      badge="Populärast"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/jollein-sovpase-roarsome.webp"
+      imageAlt="Jollein sovpåse med avtagbar ärm Roarsome"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome"
+      pros={['Avtagbara ärmar, anpassa efter temperatur', 'Populärast av alla märken i Sverige', 'Mjuk bomull med söta mönster', 'Lång livslängd, passar 0-2 år (90 cm)']}
+      cons={['Lite dyrare i premiumsegmentet', 'TOG 1.0 passar inte kalla vintrar', 'Ärmar kräver extra hantering']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Jollein med avtagbar ärm är den populäraste sovpåsen bland svenska föräldrar. De avtagbara ärmarna gör att du kan anpassa värmen efter rumstemperaturen, en praktisk lösning för sovrum som varierar mellan årstiderna. Materialet är mjuk bomull med söta mönster och storleken 90 cm gör att den passar hela vägen från 0 till 24 månader.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      TOG 1.0 räcker för normala sovrumstemperaturer men inte för riktigt kalla vinternätter, då behövs en tjockare modell. Ärmarna kräver lite extra hantering vid på- och avtagning. För familjen som vill ha en flexibel sovpåse med lång livslängd är Jollein ett tryggt val.
+    </p>
+    <MoneyCTABox productName="Jollein Sovpåse med Avtagbar Ärm 90 cm Roarsome" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307825&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/jollein-sovpase-med-avtagbar-arm-90-cm-roarsome" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">3. Leander Sleep Bag, Bäst design</h3>
- <ProductCard
- name="Leander Sleep Bag"
- image="/images/products/leander-sleep-bag.webp"
- badge="OEKO-TEX certifierad"
- rating={4.6}
- ctaText="Bra pris hos Jollyroom"
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Liewood Flora Sea Blue, bäst design</h2>
+    <MoneyProductCard
+      brand="Liewood"
+      name="LIEWOOD Flora Sovpåse TOG 1.0 Sea Blue"
+      rating={4.6}
+      rank={3}
+      badge="Bäst design"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/liewood-flora-sovpase.webp"
+      imageAlt="Liewood Flora sovpåse Sea Blue"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251380&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/liewood-flora-sovpase-tog-1-0-stl-68-80-sea-blue"
+      pros={['Skandinavisk premiumdesign i vackra färger', 'GOTS-certifierad ekologisk bomull', 'Dubbla dragkedjor för enkelt blöjbyte', 'Hållbart material med lång livslängd']}
+      cons={['Premiumpris', 'TOG 1.0 räcker inte för kalla vintrar', 'Begränsad storleksvariation']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Liewood Flora är valet för dig som vill ha skandinavisk premiumdesign. Sovpåsen är tillverkad i GOTS-certifierad ekologisk bomull, vilket garanterar att tyget är fritt från skadliga ämnen, viktigt för nyfödda med känslig hud. De dubbla dragkedjorna gör blöjbyte på natten enklare och materialet håller länge.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      TOG 1.0 passar sovrum kring 20 till 22 grader men räcker inte för riktigt kalla vinternätter. Storleksvariationen är något begränsad och priset ligger i premiumsegmentet. För familjen som värderar design och ekologiskt material högt är Liewood Flora ett självklart val.
+    </p>
+    <MoneyCTABox productName="LIEWOOD Flora Sovpåse TOG 1.0 Sea Blue" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251380&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/liewood-flora-sovpase-tog-1-0-stl-68-80-sea-blue" />
 
- image="/images/products/leander-sleep-bag.webp"
- pros={['Skandinavisk minimalistisk design', 'OEKO-TEX-certifierat material', 'Dubbla dragkedjor, flexibel av/påtagning', 'Passar länge tack vare bred storleksrange']}
- cons={['TOG 1.0, tunnare, inte för kalla nätter', 'Dyrare än enklare alternativ']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- Leander Sleep Bag kombinerar dansk design med praktisk funktion. OEKO-TEX-certifiering garanterar att tyget är fritt från skadliga ämnen, viktigt för nyfödda med känslig hud.
- </p>
- <p class="text-text-light leading-relaxed mb-4">
- TOG 1.0 passar bäst för sovrum med temperaturer kring 20 till 22°C. Välj en tjockare sovpåse (TOG 2.5) om barnrummet är svalt.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Ergobaby On The Move Elephant, bäst ergonomi</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby On The Move Sovpåse TOG 1 Elephant"
+      rating={4.5}
+      rank={4}
+      badge="Bäst ergonomi"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/ergobaby-sovpase-elephant.webp"
+      imageAlt="Ergobaby On The Move sovpåse Elephant"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant"
+      pros={['Ergonomisk design från 6 månader', 'Tillåter naturlig benhållning', 'Från välkänt bärsele-märke', 'Mjukt och andningsbart material']}
+      cons={['Inte lämplig från nyfödd (från 6 mån)', 'Begränsad storleksvariation', 'Tunnare fyllning för kallt väder']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby On The Move är byggd kring ergonomi. Designen tillåter naturlig benhållning, samma princip som gjort Ergobaby till ett välkänt namn inom bärselar. Materialet är mjukt och andningsbart, och sovpåsen passar barn som börjat röra sig mer i sömnen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den är konstruerad från 6 månader, inte från nyfödd, och har begränsad storleksvariation. Fyllningen är tunnare och passar därför inte riktigt kallt väder. För familjen som prioriterar ergonomi och naturlig rörelse är den ett bra val från ett halvår och uppåt.
+    </p>
+    <MoneyCTABox productName="Ergobaby On The Move Sovpåse TOG 1 Elephant" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228541&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18-m-tog-1-elephant" />
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">4. Nattou Gigoteuse, Bäst pris</h3>
- <ProductCard
- name="Nattou Gigoteuse"
- badge="Prisvärd"
- rating={4.3}
- ctaText="Bra pris hos Jollyroom"
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Voksi Wool Wrap Sand, bäst vinterval</h2>
+    <MoneyProductCard
+      brand="Voksi"
+      name="Voksi Wool Wrap Sovpåse Sand"
+      rating={4.7}
+      rank={5}
+      badge="Bäst vinterval"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/voksi-wool-wrap-sovpase-sand.webp"
+      imageAlt="Voksi Wool Wrap sovpåse Sand"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=afb21f77-4b0e-43b0-946e-94c2c0a8c2c9&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-sand-onesize"
+      alsoAt={[{ store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307534&url=https://www.jollyroom.se/barnvagnar/akpasar/miniakpasar/voksi-wool-wrap-akpase-sand' }]}
+      pros={['Ull i neutral sandfärg', 'Temperaturreglering hela natten', 'Passar det svenska klimatet', 'TOG 1.5 för höst/vinter']}
+      cons={['Kräver varsam tvätt', 'Premiumsegment', 'Samma modell som Misty Green, välj favoritfärg']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Voksi Wool Wrap Sand är samma temperaturreglerande ullsovpåse som vår vinnare, men i en neutral sandfärg. Ullen håller barnet lagom varmt hela natten och leder bort fukt, vilket gör den till ett tryggt val för svenska höst- och vinternätter. TOG 1.5 passar de flesta sovrum.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Liksom Misty Green ligger den i premiumsegmentet och kräver varsam tvätt. Skillnaden är enbart färgen, så valet mellan Sand och Misty Green handlar om vilken nyans du föredrar. För familjen som vill ha en neutral ton är Sand det självklara alternativet.
+    </p>
+    <MoneyCTABox productName="Voksi Wool Wrap Sovpåse Sand" store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=afb21f77-4b0e-43b0-946e-94c2c0a8c2c9&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-sand-onesize" />
 
- image="/images/products/nattou-sovsack.webp"
- pros={['Lägst pris, bra som extra sovpåse', 'Mjukt och behagligt material', 'Roliga djurmönster', 'Enkel att tvätta']}
- cons={['Tunnare fyllning, inte för kalla rum', 'Enkel dragkedja på sidan']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- Nattou är ett prisvärt alternativ som fungerar utmärkt som sovpåse nummer två, för resor, dagis eller som reserv. Till priset är kvaliteten helt acceptabel.
- </p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem sovpåsar granskade, en vinner totalt. Voksi Wool Wrap tar förstaplatsen på temperaturreglering och säker sömn, Jollein vinner på popularitet och flexibilitet, Liewood Flora på design och Ergobaby på ergonomi. Vill du anpassa efter årstid? Se vår <a href="/sovsackar/sommar/" class="text-accent hover:text-accent-dark underline">bästa sommarsovpåse bebis 2026</a> eller <a href="/sovsackar/vinter/" class="text-accent hover:text-accent-dark underline">bästa vintersovpåse bebis 2026</a>.
+    </p>
 
- <h3 class="font-heading text-xl font-bold text-text mt-8 mb-4">5. Mamas & Papas Quilted, Bäst för vinter</h3>
- <ProductCard
- name="Mamas & Papas Quilted Sleeping Bag"
- badge="TOG 2.5, Vintervarm"
- rating={4.5}
- ctaText="Bra pris hos Jollyroom"
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Sovpåsar baby 2026" />
 
- image="/images/products/mamas-papas-sovsack.webp"
- pros={['TOG 2.5, perfekt för kalla vinternätter', 'Mjukt quiltmaterial', 'Enkel av/påtagning', 'CE-godkänd']}
- cons={['Passar inte sommaren', 'Begränsad storleksrange']}
- />
- <p class="text-text-light leading-relaxed mt-4 mb-4">
- TOG 2.5 gör Mamas & Papas Quilted till det självklara valet när barnrummet är svalt. Perfekt för höst och vinter, men byt till lägre TOG på sommaren.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">TOG-guide: vilket värmevärde passar svenska sovrum?</h2>
+    <div class="mb-6 not-prose">
+      <table class="cmp-table table-fixed min-w-full border border-border rounded-lg text-sm">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-text">Rumstemperatur</th>
+            <th class="px-4 py-3 text-left font-semibold text-text">TOG</th>
+            <th class="px-4 py-3 text-left font-semibold text-text">Klädsel under sovpåse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-border"><td class="px-4 py-3">24 till 27°C</td><td class="px-4 py-3">0.5</td><td class="px-4 py-3">Blöja</td></tr>
+          <tr class="border-t border-border bg-gray-50"><td class="px-4 py-3">21 till 23°C</td><td class="px-4 py-3">1.0</td><td class="px-4 py-3">Tunn body (kortärm)</td></tr>
+          <tr class="border-t border-border"><td class="px-4 py-3">18 till 21°C</td><td class="px-4 py-3">1.5 till 2.0</td><td class="px-4 py-3">Body + tunn pyjamas</td></tr>
+          <tr class="border-t border-border bg-gray-50"><td class="px-4 py-3">Under 18°C</td><td class="px-4 py-3">2.5</td><td class="px-4 py-3">Body + stretchpyjamas</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-text-light text-sm mb-8">
+      Känn alltid på barnets nacke, ska vara varm och torr, inte svettig eller kall. Anpassa klädseln efter barnets signaler.
+    </p>
 
- <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">TOG-guide: vilket värmevärde passar svenska sovrum?</h2>
- <div class="mb-6">
- <table class="cmp-table table-fixed min-w-full border border-border rounded-lg text-sm">
- <thead class="bg-gray-50">
- <tr>
- <th class="px-4 py-3 text-left font-semibold text-text">Rumstemperatur</th>
- <th class="px-4 py-3 text-left font-semibold text-text">TOG</th>
- <th class="px-4 py-3 text-left font-semibold text-text">Klädsel under sovpåse</th>
- </tr>
- </thead>
- <tbody>
- <tr class="border-t border-border"><td class="px-4 py-3">24 till 27°C</td><td class="px-4 py-3">0.5</td><td class="px-4 py-3">Blöja</td></tr>
- <tr class="border-t border-border bg-gray-50"><td class="px-4 py-3">21 till 23°C</td><td class="px-4 py-3">1.0</td><td class="px-4 py-3">Tunn body (kortärm)</td></tr>
- <tr class="border-t border-border"><td class="px-4 py-3">18 till 21°C</td><td class="px-4 py-3">1.5 till 2.0</td><td class="px-4 py-3">Body + tunn pyjamas</td></tr>
- <tr class="border-t border-border bg-gray-50"><td class="px-4 py-3">Under 18°C</td><td class="px-4 py-3">2.5</td><td class="px-4 py-3">Body + stretchpyjamas</td></tr>
- </tbody>
- </table>
- </div>
- <p class="text-text-light text-sm mb-8">
- Känn alltid på barnets nacke, ska vara varm och torr, inte svettig eller kall. Anpassa klädseln efter barnets signaler.
- </p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt sovpåse 2026</h2>
 
- <div class="bg-primary/5 border border-primary/20 rounded-xl p-5 mb-8">
- <h3 class="font-heading font-semibold text-primary mb-2">Relaterade guider</h3>
- <ul class="space-y-2 text-sm">
- <li><a href="/sovsackar/sommar/" class="text-accent underline font-medium">Bästa sommarsovpåsen bebis 2026, tunn och sval</a></li>
- <li><a href="/sovsackar/vinter/" class="text-accent underline font-medium">Bästa vintersovpåsen bebis 2026, TOG 2.5 och varm</a></li>
- <li><a href="/sovsackar/voksi-vs-halo-sleepsack/" class="text-accent underline font-medium">Voksi vs HALO SleepSack 2026, direkt jämförelse</a></li>
- <li><a href="/spjalsangar/" class="text-accent underline font-medium">Bästa spjälsängar 2026, trygg sovplats</a></li>
- <li><a href="/sakerhet/" class="text-accent underline font-medium">Babysäkerhet, vad du behöver veta</a></li>
- <li><a href="/babyvakter/" class="text-accent underline font-medium">Bästa babyvakter 2026, video och ljud</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Rätt TOG efter sovrumstemperatur</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      TOG mäter sovpåsens värmeisolering, och valet styrs av sovrumstemperaturen. Vid 22 till 25 grader (sommarnätter) räcker TOG 0,5 till 1,0. Vid 18 till 21 grader (höst och tidig vinter) passar TOG 1,5 till 2,0, och vid temperaturer under 18 grader behövs TOG 2,5. Rekommenderad sovrumstemperatur enligt 1177 är 18 till 20 grader året om. Ullsovpåsar som Voksi Wool Wrap reglerar dessutom temperaturen naturligt, vilket ger lite större marginal.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material: ull, bomull eller polyester?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ull reglerar temperatur naturligt åt båda håll och leder bort fukt, vilket gör Voksi Wool Wrap till vår vinnare, men ull kostar mer och kräver varsam tvätt. Bomull är mjukt, andningsbart och enkelt att tvätta, ett tryggt allroundval som Jollein och Liewood använder. Polyesterblandningar är billigare och tål maskintvätt väl, men andas något sämre. Välj ekologiskt eller OEKO-TEX/GOTS-certifierat material för de minsta med känslig hud.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Rätt storlek och säker passform</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sovpåsen ska sitta tätt över axlarna utan att klämma, och halsöppningen ska vara så liten att bebisens hjässa inte kan glida ner i säcken. Armarna ligger alltid utanför, aldrig inuti. Välj efter barnets längd snarare än ålder. Vanliga storlekar är 56 till 70 centimeter (0 till 6 månader), 70 centimeter (6 till 12 månader) och 90 centimeter (12 till 24 månader). Är du osäker, mät i butik.
+    </p>
 
-<script type="application/ld+json" set:html={JSON.stringify({
- "@context": "https://schema.org",
- "@type": "ItemList",
- "name": "Bästa sovpåse baby 2026",
- "itemListOrder": "https://schema.org/ItemListOrderDescending",
- "numberOfItems": products.length,
- "itemListElement": products.map((p, i) => ({
- "@type": "ListItem",
- "position": i + 1,
- "item": {
- "@type": "Product",
- "name": p.name,
- "description": `${p.name}, ${p.features?.Material || ''} sovpåse för baby. TOG ${p.features?.TOG || ''}.`,
- "image": p.image? `https://bebisguiden.se${p.image}`: "https://bebisguiden.se/og-default.webp",
- "brand": {
- "@type": "Brand",
- "name": p.name.split(' ')[0]
- },
- "review": {
- "@type": "Review",
- "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
- "author": { "@type": "Organization", "name": "Bebisguiden" }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": p.rating,
- "bestRating": 5,
- "worstRating": 1,
- "reviewCount": 1
- }
- }
- }))
-})} />
-<div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, Socialstyrelsens råd</a></li>
- <li><a href="/guider/bebis-sovschema/" class="text-accent underline">Bebisens sovschema, så mycket sömn behövs</a></li>
- <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängarna 2026</a></li>
- <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside cribs, nära dig på natten</a></li>
- </ul>
-</div>
-<ProductSchema products={[
- { name: 'Voksi Nordic N1 Wool', description: 'Sovpåse i ull för bebis. Naturliga temperaturregulerande egenskaper, OEKO-TEX-certifierad.', image: 'https://bebisguiden.se/images/products/voksi-nordic-n1-wool.webp', brand: 'Voksi', ratingValue: 4.8, reviewCount: 1 },
- { name: 'HALO SleepSack Micro-Fleece', description: 'Populär sovpåse i mjuk fleece med omslutande design. Ersätter filt på ett säkert sätt.', image: 'https://bebisguiden.se/images/products/halo-sleepsack.webp', brand: 'HALO', ratingValue: 4.6, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Varför sovpåse istället för täcke?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      1177, Socialstyrelsen och barnläkarföreningen rekommenderar sovpåse för spädbarn under 12 månader. Ett löst täcke kan glida över ansiktet och öka risken för plötslig spädbarnsdöd. En välpassande sovpåse sitter över axlarna och kan inte flytta sig upp över huvudet, vilket eliminerar den risken samtidigt som barnet hålls lagom varmt.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad kostar en bra sovpåse?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En kvalitetssovpåse kostar mellan 300 och 1 000 kronor 2026. Ullsovpåsar som Voksi Wool Wrap och premiumdesign som Liewood Flora ligger i den övre delen av spannet, medan enklare bomulls- och polyestermodeller kostar mindre. Eftersom en sovpåse ofta används hela natten under barnets första år är det sällan rätt ställe att spara, satsa på rätt TOG, säker passform och bra material.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om säker sömn?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Sovsäcken håller barnet lagom varmt utan lösa filtar som kan hamna över ansiktet. Nedan är de viktigaste råden för säker sömn från 1177.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Lagom varm"
+        source="1177"
+        sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+        year="2026"
+      >
+        Barnet ska vara lagom varm, inte för varm. Risken för plötslig spädbarnsdöd ökar om barnet blir för varm.
+      </StatHighlight>
+      <StatHighlight
+        figure="Fritt ansikte"
+        source="1177"
+        sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+        year="2026"
+      >
+        Genom att hålla barnets ansikte fritt från täcken eller andra sängkläder när hen sover minskar risken. Risken minskar också om barnet kan röra armar och ben när hen sover.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="1177"
+      role="Sveriges nationella hälso- och sjukvårdsupplysning"
+      sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+    >
+      "Se till att barnets ansikte är fritt, att barnet är lagom varm och kan röra sig när hen sover."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem sovpåsar för bebis utifrån material (ull, bomull, polyester), TOG-värde och anpassning till svenska sovrum, säkerhet och certifieringar (CE, OEKO-TEX, GOTS), passform och storleksrange samt daglig användbarhet (dragkedjor, tvätt, avtagbara ärmar). Produkterna är valda bland de mest sålda och eftersökta sovpåsarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/sovsackar/sommar/" class="text-accent underline">Bästa sommarsovpåsen bebis 2026, tunn och sval</a></li>
+        <li><a href="/sovsackar/vinter/" class="text-accent underline">Bästa vintersovpåsen bebis 2026, TOG 2.5 och varm</a></li>
+        <li><a href="/sovsackar/voksi-vs-halo-sleepsack/" class="text-accent underline">Voksi vs HALO SleepSack 2026, direkt jämförelse</a></li>
+        <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängar 2026, trygg sovplats</a></li>
+        <li><a href="/sakerhet/" class="text-accent underline">Babysäkerhet, vad du behöver veta</a></li>
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakter 2026, video och ljud</a></li>
+        <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, Socialstyrelsens råd</a></li>
+        <li><a href="/guider/bebis-sovschema/" class="text-accent underline">Bebisens sovschema, så mycket sömn behövs</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa sovpåse baby 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=8989145e-30d4-4477-84ec-600094a854e5&url=https://www.babysam.se/voksi-wool-wrap-sovpaase-misty-green-onesize"
+    text="Bra pris hos BabySam"
+    productName="Voksi Wool Wrap Sovpåse Misty Green"
+  />
+
+</ArticleLayout>
 
 <style>
   .cmp-table th,
@@ -347,4 +446,74 @@ const faqItems = [
   }
 </style>
 
-</ArticleLayout>
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

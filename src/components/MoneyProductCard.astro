@@ -1,0 +1,192 @@
+---
+/**
+ * Detaljerat recensionskort för money pages.
+ * Trogen port av tillskottsguidens ProductCard (money page-mallen),
+ * tematiserad till bebisguiden, utan resolveMultiCTA: butik + URL + alsoAt skickas in.
+ * Layout: badge-bar, bild med rank-badge, brand-eyebrow + avdublettat namn,
+ * rating-rad under titeln, för/nackdelar i 2 kolumner, stor fullbredds-CTA + "Även hos".
+ */
+interface AlsoAt {
+  store: string;
+  url: string;
+}
+
+interface Props {
+  brand: string;
+  name: string;
+  rating: number;
+  pros: string[];
+  cons: string[];
+  price?: string;
+  buyUrl?: string;
+  store?: string;
+  badge?: string;
+  bgColor?: string;
+  accentColor?: string;
+  rank?: number;
+  imageUrl?: string;
+  imageAlt?: string;
+  alsoAt?: AlsoAt[];
+}
+
+const {
+  brand,
+  name,
+  rating,
+  pros,
+  cons,
+  price = '',
+  buyUrl,
+  store = 'butiken',
+  badge,
+  bgColor = '#4a5568',
+  accentColor = '#b34558',
+  rank,
+  imageUrl,
+  imageAlt,
+  alsoAt = [],
+} = Astro.props;
+
+const initial = brand.charAt(0).toUpperCase();
+const fullStars = Math.floor(rating);
+const halfStar = rating % 1 >= 0.5;
+const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+// Sanera id helt (parenteser, +, etc. bröt url(#id) -> svart stjärna).
+const gradientId = `half-${(brand + name).replace(/[^a-z0-9]/gi, '')}`;
+// Undvik redundant märke i titeln (t.ex. "Stokke" + "Stokke Tripp Trapp...").
+const displayName = name.startsWith(brand + ' ') ? (name.slice(brand.length).replace(/^[\s,-]+/, '') || name) : name;
+---
+
+<div class="not-prose bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-border" data-product={name}>
+  {badge && (
+  <div class="px-4 py-2 text-white text-sm font-bold text-center" style={`background: linear-gradient(135deg, ${accentColor}, ${bgColor})`}>
+    {badge}
+  </div>
+  )}
+  <div class="p-3.5 sm:p-6">
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-6">
+      <!-- Product Image -->
+      <div class="flex-shrink-0 mx-auto sm:mx-0 relative">
+        {imageUrl ? (
+        <div class="w-28 h-28 sm:w-36 sm:h-44 rounded-xl overflow-hidden bg-white border border-border flex items-center justify-center relative">
+          {rank && (
+          <div class="absolute top-2 left-2 z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shadow-md" style={`background: linear-gradient(135deg, ${accentColor}, ${bgColor})`}>
+            <span class="text-white text-xs sm:text-sm font-bold">#{rank}</span>
+          </div>
+          )}
+          {buyUrl ? (
+          <a href={buyUrl} rel="nofollow sponsored noopener noreferrer" target="_blank" aria-label={`Köp ${brand} ${name} hos ${store}`} class="block w-full h-full">
+            <img src={imageUrl} alt={imageAlt || `${brand} ${name}`} class="w-full h-full object-contain p-1.5" loading="lazy" width="96" height="112" />
+          </a>
+          ) : (
+          <img src={imageUrl} alt={imageAlt || `${brand} ${name}`} class="w-full h-full object-contain p-1.5" loading="lazy" width="96" height="112" />
+          )}
+        </div>
+        ) : (
+        <div class="w-28 h-28 sm:w-36 sm:h-44 rounded-xl flex flex-col items-center justify-center relative overflow-hidden border border-border" style={`background: linear-gradient(145deg, ${bgColor}, ${accentColor})`}>
+          {rank && (
+          <div class="absolute top-2 left-2 w-7 h-7 sm:w-8 sm:h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+            <span class="text-white text-xs sm:text-sm font-bold">#{rank}</span>
+          </div>
+          )}
+          <span class="text-white text-4xl sm:text-5xl font-heading font-bold opacity-90 mb-1" style="text-shadow: 0 2px 8px rgba(0,0,0,0.2)">{initial}</span>
+          <span class="text-white/90 text-[10px] sm:text-xs font-semibold tracking-wider uppercase px-3 text-center leading-tight">{brand}</span>
+          <div class="absolute bottom-0 left-0 right-0 h-9 sm:h-10 bg-black/15 backdrop-blur-sm flex items-center justify-center">
+            <span class="text-white/90 text-[9px] sm:text-[10px] font-medium tracking-wide uppercase px-2 text-center leading-tight line-clamp-2">{name}</span>
+          </div>
+        </div>
+        )}
+      </div>
+
+      <!-- Product Info -->
+      <div class="flex-1 min-w-0">
+        <div class="mb-2.5">
+          <p class="text-text-light text-sm font-medium">{brand}</p>
+          <h3 class="text-lg sm:text-xl font-heading font-bold text-text leading-tight">
+            {buyUrl ? (
+            <a href={buyUrl} rel="nofollow sponsored noopener noreferrer" target="_blank" class="!text-text hover:!text-accent transition-colors no-underline">{displayName}</a>
+            ) : (
+            displayName
+            )}
+          </h3>
+          <div class="flex items-center gap-0.5 mt-1.5" role="img" aria-label={`${rating} av 5 stjärnor`}>
+            <span class="text-sm font-bold text-text mr-1.5">{rating}/5</span>
+            {Array.from({ length: fullStars }).map(() => (
+            <svg class="w-[18px] h-[18px] text-star" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            ))}
+            {halfStar && (
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 20 20" aria-hidden="true">
+              <defs><linearGradient id={gradientId}><stop offset="50%" stop-color="#b45309" /><stop offset="50%" stop-color="#e2e8f0" /></linearGradient></defs>
+              <path fill={`url(#${gradientId})`} d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            )}
+            {Array.from({ length: emptyStars }).map(() => (
+            <svg class="w-[18px] h-[18px] text-gray-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+          <div>
+            <p class="text-xs font-semibold text-safe uppercase tracking-wider mb-1.5">Fördelar</p>
+            <ul class="space-y-1">
+              {pros.map((pro) => (
+              <li class="text-sm text-text flex items-start gap-1.5">
+                <svg class="w-4 h-4 text-safe flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                {pro}
+              </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-red-600 uppercase tracking-wider mb-1.5">Nackdelar</p>
+            <ul class="space-y-1">
+              {cons.map((con) => (
+              <li class="text-sm text-text flex items-start gap-1.5">
+                <svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                {con}
+              </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* CTA-fot visas BARA när det finns en verifierad affiliate-länk.
+            Showcase-produkter (utan buyUrl) renderar rent utan knapp eller meddelande. */}
+        {buyUrl && (
+        <div class="pt-3.5 mt-1 border-t border-border">
+          <div class="flex items-center justify-between gap-3 mb-1.5">
+            <span class="text-xs font-semibold text-text-light">Bra pris hos:</span>
+            {price && <span class="text-xl font-heading font-bold text-text">{price}</span>}
+          </div>
+          <a
+            href={buyUrl}
+            rel="nofollow sponsored noopener noreferrer"
+            target="_blank"
+            data-product={name}
+            class="flex items-center justify-center gap-2 w-full px-6 py-4 rounded-xl bg-cta hover:bg-cta-light text-white font-bold text-base sm:text-lg transition-colors duration-200 shadow-lg no-underline"
+          >
+            Bra pris hos {store}
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+          </a>
+          {alsoAt.length > 0 && (
+          <div class="flex flex-wrap items-center gap-2 mt-2.5">
+            <span class="text-xs font-semibold text-text-light uppercase tracking-wide">Även hos:</span>
+            {alsoAt.map((o) => (
+            <a
+              href={o.url}
+              rel="nofollow sponsored noopener noreferrer"
+              target="_blank"
+              class="inline-flex items-center px-3 py-1.5 rounded-lg border border-border text-xs font-semibold text-text-light hover:border-cta hover:text-cta transition-colors no-underline"
+            >
+              {o.store}
+            </a>
+            ))}
+          </div>
+          )}
+        </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,206 +1,407 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Sovsackar', href: '/sovsackar/' },
- { label: 'Vintersovsack bebis' },
+  { label: 'Hem', href: '/' },
+  { label: 'Sovsackar', href: '/sovsackar/' },
+  { label: 'Vintersovsack bebis' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Ergobaby On The Move Sovpåse 6-18M TOG 2.5, Sheep',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/ergobaby-sovpase-tog25.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep',
- features: {
- 'TOG': '2.5',
- 'Ålder': '6 till 18 månader',
- 'Material': 'Polyester',
- 'Öppning': 'Tvåvägsdragkedja',
- 'Tvätt': '40°C maskin',
- },
- },
- {
- name: 'Little Dutch Sage Vinter Sovpåse 70 cm, Grön',
- badge: 'Bäst för nyfödda',
- rating: 4.7,
- image: '/images/products/little-dutch-vinter-sovpase.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276035&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/little-dutch-sage-vinter-sovpase-70-cm-gron',
- features: {
- 'TOG': '2.5',
- 'Ålder': '0 till 12 månader',
- 'Material': 'Bomull',
- 'Öppning': 'Tvåvägsdragkedja',
- 'Tvätt': '40°C maskin',
- },
- },
- {
- name: 'Ergobaby On The Move Sovpåse 6-18 Mån TOG 2.5, Elephant',
- badge: 'För kalla sovrum',
- rating: 4.6,
- image: '/images/products/ergobaby-sovpase-tog25.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228539&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-elephant',
- features: {
- 'TOG': '3.5',
- 'Ålder': '6 till 18 månader',
- 'Material': 'Polyester',
- 'Öppning': 'Tvåvägsdragkedja',
- 'Tvätt': '40°C maskin',
- },
- },
+  {
+    name: 'Ergobaby On The Move Sovpåse 6-18M TOG 2.5, Sheep',
+    brand: 'Ergobaby',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['TOG 2.5 för svensk vinter', 'Tvåvägsdragkedja', 'Stor rörelsefrihet'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep',
+    imageUrl: '/images/products/ergobaby-sovpase-tog25.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Vintersovpåse för bebis 6 till 18 månader med TOG 2.5. Tvåvägsdragkedja för enkel blöjbyte. Mjukt polyestermaterial.',
+    features: { 'TOG': '2.5', 'Ålder': '6 till 18 månader', 'Material': 'Polyester', 'Öppning': 'Tvåvägsdragkedja', 'Tvätt': '40°C maskin' },
+    alsoAt: [],
+  },
+  {
+    name: 'Little Dutch Sage Vinter Sovpåse 70 cm, Grön',
+    brand: 'Little Dutch',
+    rating: 4.7,
+    badge: 'Bäst för nyfödda',
+    usps: ['Mjuk bomull nära huden', 'Passar från 0 månader', 'TOG 2.5 nordisk vinter'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276035&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/little-dutch-sage-vinter-sovpase-70-cm-gron',
+    imageUrl: '/images/products/little-dutch-vinter-sovpase.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Vintersovpåse för bebis 0 till 12 månader med TOG 2.5 i ekologisk bomull. Tvåvägsdragkedja.',
+    features: { 'TOG': '2.5', 'Ålder': '0 till 12 månader', 'Material': 'Bomull', 'Öppning': 'Tvåvägsdragkedja', 'Tvätt': '40°C maskin' },
+    alsoAt: [],
+  },
+  {
+    name: 'Ergobaby On The Move Sovpåse 6-18 Mån TOG 2.5, Elephant',
+    brand: 'Ergobaby',
+    rating: 4.6,
+    badge: 'För kalla sovrum',
+    usps: ['Extra varmt TOG 3.5', 'För sovrum under 16°C', 'Tvåvägsdragkedja'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228539&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-elephant',
+    imageUrl: '/images/products/ergobaby-sovpase-tog25.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Vintersovpåse för bebis 6 till 18 månader med TOG 3.5 för kallare sovrum. Tvåvägsdragkedja. Mjukt polyestermaterial.',
+    features: { 'TOG': '3.5', 'Ålder': '6 till 18 månader', 'Material': 'Polyester', 'Öppning': 'Tvåvägsdragkedja', 'Tvätt': '40°C maskin' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['TOG', 'Ålder', 'Material', 'Öppning', 'Tvätt'];
+const specLabels = ['TOG', 'Ålder', 'Material', 'Öppning', 'Tvätt'];
 
 const faqItems = [
- {
- question: 'Vilket TOG-värde ska man ha på vintern?',
- answer: 'TOG 2.5 rekommenderas vid rumstemperaturer 16 till 20°C och är det vanligaste valet för svenska vintrar med normalt uppvärmda sovrum. TOG 3.5 används vid rumstemperaturer under 16°C eller om barnet tenderar att frysa lätt. Lägg till eller ta bort kläder under sovpåsen vid behov istället för att byta sovpåse.',
- },
- {
- question: 'Vad ska bebisen ha på sig under vintersovpåsen?',
- answer: 'Vid 18 till 20°C och TOG 2.5: pyjamas eller långärmad body. Vid 16 till 18°C och TOG 2.5: pyjamas med fötter (sparkdräkt). Vid TOG 3.5: tunnare pyjamas räcker eftersom sovpåsen ger extra värme. Känn alltid på nacken och bröstet, bebisen ska kännas behagligt varm, aldrig svettiga. Svettiga nackar är ett tecken på överhettning, ta av ett plagg.',
- },
- {
- question: 'Kan man ha sovpåse på nyfödda på vintern?',
- answer: 'Ja, sovpåsar är säkra för nyfödda och rekommenderas framför lösa filtar i vagga och spjälsäng. Välj en sovpåse i rätt storlek för nyfödda (storlek 50 till 70 cm eller 0 till 6 månader). Kontrollera att halsöppningen inte är för stor, bebisens huvud ska inte kunna glida in i sovpåsen. Little Dutch erbjuder vintersovpåsar från 0 månaders ålder.',
- },
- {
- question: 'Varför är sovpåse säkrare än filt?',
- answer: 'En löst liggande filt kan täcka bebisens ansikte och orsaka kvävning, eller arbetas bort under natten och ge kyla. En sovpåse sitter kvar och täcker bebisens kropp utan att kunna täcka ansiktet. Socialstyrelsen och barnläkarföreningar rekommenderar sovpåse framför lösa filtar för bebisar under 12 månaders ålder.',
- },
- {
- question: 'Hur ofta ska man tvätta sovpåsen?',
- answer: 'En sovpåse bör tvättas var 1 till 2 vecka om bebisen är i den varje natt. Vid sjukdom eller läckage: tvätta direkt. De flesta sovpåsar tvättas i 40°C i maskin. Låt sovpåsen lufttorka, tumlaren kan skada stoppningen och dragkedja. Ha alltid minst två sovpåsar i rotation.',
- },
+  {
+    question: 'Vilket TOG-värde ska man ha på vintern?',
+    answer: 'TOG 2.5 rekommenderas vid rumstemperaturer 16 till 20°C och är det vanligaste valet för svenska vintrar med normalt uppvärmda sovrum. TOG 3.5 används vid rumstemperaturer under 16°C eller om barnet tenderar att frysa lätt. Lägg till eller ta bort kläder under sovpåsen vid behov istället för att byta sovpåse.',
+  },
+  {
+    question: 'Vad ska bebisen ha på sig under vintersovpåsen?',
+    answer: 'Vid 18 till 20°C och TOG 2.5: pyjamas eller långärmad body. Vid 16 till 18°C och TOG 2.5: pyjamas med fötter (sparkdräkt). Vid TOG 3.5: tunnare pyjamas räcker eftersom sovpåsen ger extra värme. Känn alltid på nacken och bröstet, bebisen ska kännas behagligt varm, aldrig svettiga. Svettiga nackar är ett tecken på överhettning, ta av ett plagg.',
+  },
+  {
+    question: 'Kan man ha sovpåse på nyfödda på vintern?',
+    answer: 'Ja, sovpåsar är säkra för nyfödda och rekommenderas framför lösa filtar i vagga och spjälsäng. Välj en sovpåse i rätt storlek för nyfödda (storlek 50 till 70 cm eller 0 till 6 månader). Kontrollera att halsöppningen inte är för stor, bebisens huvud ska inte kunna glida in i sovpåsen. Little Dutch erbjuder vintersovpåsar från 0 månaders ålder.',
+  },
+  {
+    question: 'Varför är sovpåse säkrare än filt?',
+    answer: 'En löst liggande filt kan täcka bebisens ansikte och orsaka kvävning, eller arbetas bort under natten och ge kyla. En sovpåse sitter kvar och täcker bebisens kropp utan att kunna täcka ansiktet. Socialstyrelsen och barnläkarföreningar rekommenderar sovpåse framför lösa filtar för bebisar under 12 månaders ålder.',
+  },
+  {
+    question: 'Hur ofta ska man tvätta sovpåsen?',
+    answer: 'En sovpåse bör tvättas var 1 till 2 vecka om bebisen är i den varje natt. Vid sjukdom eller läckage: tvätta direkt. De flesta sovpåsar tvättas i 40°C i maskin. Låt sovpåsen lufttorka, tumlaren kan skada stoppningen och dragkedja. Ha alltid minst två sovpåsar i rotation.',
+  },
 ];
+
 export const articleMeta = {
   title: "Sovpåse bebis vinter 2026: TOG 2.5 till 3.5 guide",
   description: "Sovpåse bebis vinter 2026: TOG 2.5 för normalt uppvärmda rum, TOG 3.5 för kallare sovmiljö. Vi jämför Ergobaby, Little Dutch och fler, rätt material för kyliga.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Sovpåsar",
   image: "/images/products/ergobaby-sovpase-tog25.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Sovpåse bebis vinter 2026: varm och säker nattsömn"
- description="Vintersovpåse med TOG 2.5 till 3.5 håller bebis varm och säker. Test av bästa vintermodellerna 2026, Ergobaby, Little Dutch och fler."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/sovsackar/vinter/"
- updatedDate="2026-04-14"
+  title="Sovpåse bebis vinter 2026: varm och säker nattsömn"
+  description="Vintersovpåse med TOG 2.5 till 3.5 håller bebis varm och säker. Test av bästa vintermodellerna 2026, Ergobaby, Little Dutch och fler."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/sovsackar/vinter/"
   datePublished="2026-04-05"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Ergobaby On The Move Sovpåse TOG 2.5 vinner vintersovpåse bäst i test 2026. TOG 2.5 är rätt värme för sovrum med 16 till 20 grader. Axelknäppningarna förhindrar att bebisen kryper ner i säcken, och den rymliga nederdelen ger plats för naturlig benrörlighet under natten.
-	 </p>
 
- <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
- <p class="text-sm font-semibold text-blue-900 mb-1">Temperaturguide, vintersovpåse</p>
- <div class="text-sm text-blue-800 space-y-1">
- <p><strong>20 till 22°C i rummet:</strong> TOG 1.0 till 2.5 + långärmad body</p>
- <p><strong>18 till 20°C:</strong> TOG 2.5 + pyjamas eller sparkdräkt</p>
- <p><strong>16 till 18°C:</strong> TOG 2.5 + varm sparkdräkt</p>
- <p><strong>Under 16°C:</strong> TOG 3.5 + tunn pyjamas</p>
- </div>
- </div>
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-04-05" dateModified="2026-06-12" />
 
- <TopPick product={products[0]} description="Ergobaby On The Move Sovpåse TOG 2.5 vinner test av vintersovpåsar 2026. TOG 2.5 är rätt värme för sovrum med 16 till 20 grader, axelknäppningarna förhindrar att bebisen kryper ner i säcken och den rymliga nederdelen ger utrymme för naturlig benrörlighet under natten." />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken vintersovpåse är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Ergobaby On The Move Sovpåse TOG 2.5 vinner vintersovpåse bäst i test 2026. TOG 2.5 är rätt värme för sovrum med 16 till 20 grader, axelknäppningarna förhindrar att bebisen kryper ner i säcken och den rymliga nederdelen ger plats för naturlig benrörlighet. Bäst för nyfödda: Little Dutch Vinter TOG 2.5. För kalla sovrum under 16°C: Ergobaby Elephant TOG 3.5.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, vintersovpåsar bebis 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* Temperaturguide (bevarad varningsruta) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+    <p class="text-sm font-semibold text-blue-900 mb-1">Temperaturguide, vintersovpåse</p>
+    <div class="text-sm text-blue-800 space-y-1">
+      <p><strong>20 till 22°C i rummet:</strong> TOG 1.0 till 2.5 + långärmad body</p>
+      <p><strong>18 till 20°C:</strong> TOG 2.5 + pyjamas eller sparkdräkt</p>
+      <p><strong>16 till 18°C:</strong> TOG 2.5 + varm sparkdräkt</p>
+      <p><strong>Under 16°C:</strong> TOG 3.5 + tunn pyjamas</p>
+    </div>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
- <p class="text-sm text-text-light"><strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> On The Move TOG 2.5</strong> är bäst för bebisar 6 till 18 månader i normalt uppvärmda sovrum. <strong>Little Dutch Vinter TOG 2.5</strong> är bäst för nyfödda och de som föredrar bomull nära huden.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Ergobaby"
+    name="On The Move Sovpåse 6-18M TOG 2.5, Sheep"
+    image="/images/products/ergobaby-sovpase-tog25.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
+    store="Jollyroom"
+    description="Vinner vintersovpåse 2026 med TOG 2.5, rätt värme för sovrum med 16 till 20 grader. Axelknäppningarna förhindrar att bebisen kryper ner i säcken och den rymliga nederdelen ger utrymme för naturlig benrörlighet under natten."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval, vintersovpåsar 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Vintersovpåsar bebis 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Ergobaby On The Move Sovpåse 6-18M TOG 2.5, Sheep"
- image="/images/products/ergobaby-sovpase-tog25.webp"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/ergobaby-sovpase-tog25.webp"
- pros={['TOG 2.5, perfekt för svenska vintrar', 'Tvåvägsdragkedja, enkel blöjbyte', 'Mjukt och hudvänligt material', 'Stor rörelsefrihet för benen']}
- cons={['Passar bara från 6 månader', 'Polyestermaterial, inte ekologiskt', 'Bara en storlek per modell']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
- />
+  {/* Redaktionens val (bevarad vinnar-callout) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> On The Move TOG 2.5</strong> är bäst för bebisar 6 till 18 månader i normalt uppvärmda sovrum. <strong>Little Dutch Vinter TOG 2.5</strong> är bäst för nyfödda och de som föredrar bomull nära huden.</p>
+  </div>
 
- <ProductCard
- name="Little Dutch Sage Vinter Sovpåse 70 cm, Grön"
- badge="Bäst för nyfödda"
- rating={4.7}
- image="/images/products/little-dutch-vinter-sovpase.webp"
- pros={['Mjuk bomull nära huden', 'Passar nyfödda från 0 månader', 'Stilren design från känt märke', 'TOG 2.5 för nordisk vinter']}
- cons={['Högre pris', 'Bomull kan krympa i tvätten', 'Bara storlek 70 cm i denna färg']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276035&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/little-dutch-sage-vinter-sovpase-70-cm-gron"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Ergobaby On The Move Sovpåse Vinter TOG 3.5"
- badge="För kalla sovrum"
- rating={4.6}
- image="/images/products/ergobaby-sovpase-tog25.webp"
- pros={['Extra varmt TOG 3.5', 'Bra för kyliga sovrum under 16°C', 'Tvåvägsdragkedja', 'Samma kvalitet som övriga Ergobaby']}
- cons={['Kan bli för varmt i normalt uppvärmda rum', 'Begränsad säsong', 'Kräver kyligare sovrum för att fungera optimalt']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Ergobaby On The Move TOG 2.5, bäst i test</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby On The Move Sovpåse 6-18M TOG 2.5, Sheep"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/ergobaby-sovpase-tog25.webp"
+      imageAlt="Ergobaby On The Move Sovpåse TOG 2.5 vintersovpåse"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
+      pros={['TOG 2.5, perfekt för svenska vintrar', 'Tvåvägsdragkedja, enkel blöjbyte', 'Mjukt och hudvänligt material', 'Stor rörelsefrihet för benen']}
+      cons={['Passar bara från 6 månader', 'Polyestermaterial, inte ekologiskt', 'Bara en storlek per modell']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby On The Move Sovpåse TOG 2.5 vinner vintersovpåse bäst i test 2026. TOG 2.5 är rätt värme för sovrum med 16 till 20 grader, vilket täcker de flesta normalt uppvärmda svenska sovrummen. Tvåvägsdragkedjan gör blöjbyten enkla utan att klä av barnet helt, och det mjuka materialet ligger skönt mot huden.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sovpåsen passar från 6 månader och uppåt och har en rymlig nederdel som ger plats för naturlig benrörlighet under natten. Nackdelarna är att polyestermaterialet inte är ekologiskt och att varje modell bara finns i en storlek, men för värme, säkerhet och daglig användbarhet är den svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Säkerhet om natten, vad du ska tänka på</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Little Dutch Sage Vinter, bäst för nyfödda</h2>
+    <MoneyProductCard
+      brand="Little Dutch"
+      name="Little Dutch Sage Vinter Sovpåse 70 cm, Grön"
+      rating={4.7}
+      rank={2}
+      badge="Bäst för nyfödda"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/little-dutch-vinter-sovpase.webp"
+      imageAlt="Little Dutch Sage Vinter Sovpåse vintersovpåse"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276035&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/little-dutch-sage-vinter-sovpase-70-cm-gron"
+      pros={['Mjuk bomull nära huden', 'Passar nyfödda från 0 månader', 'Stilren design från känt märke', 'TOG 2.5 för nordisk vinter']}
+      cons={['Högre pris', 'Bomull kan krympa i tvätten', 'Bara storlek 70 cm i denna färg']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Little Dutch Sage Vinter är valet för dig med nyfödd som vill ha bomull närmast huden. Sovpåsen passar från 0 månaders ålder och TOG 2.5 ger rätt värme för en nordisk vinter. Bomullen andas bra och den stilrena designen från det kända märket håller över tid.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Priset ligger högre än polyesteralternativen och bomull kan krympa något i tvätten, så följ tvättanvisningen. Den här färgen finns dessutom bara i storlek 70 cm. För familjen som prioriterar naturmaterial och en sovpåse som fungerar redan från nyfödd är den ändå förstavalet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276035&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/little-dutch-sage-vinter-sovpase-70-cm-gron" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Överhettning är den vanligaste faran</h3>
- <p>Överhettning är mer riskabelt än nedkylning för bebisar. Känn alltid på bebisens nacke och bröst när de sover, de ska kännas behagligt varma, aldrig svettiga eller heta. Om bebisen svettas: ta av ett plagg eller välj ett lägre TOG nästa natt.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Ergobaby On The Move TOG 3.5, för kalla sovrum</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby On The Move Sovpåse Vinter TOG 3.5"
+      rating={4.6}
+      rank={3}
+      badge="För kalla sovrum"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/ergobaby-sovpase-tog25.webp"
+      imageAlt="Ergobaby On The Move Sovpåse TOG 3.5 vintersovpåse"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
+      pros={['Extra varmt TOG 3.5', 'Bra för kyliga sovrum under 16°C', 'Tvåvägsdragkedja', 'Samma kvalitet som övriga Ergobaby']}
+      cons={['Kan bli för varmt i normalt uppvärmda rum', 'Begränsad säsong', 'Kräver kyligare sovrum för att fungera optimalt']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby On The Move TOG 3.5 är versionen för riktigt kalla sovrum. Med TOG 3.5 ger den extra värme och fungerar bäst i rum under 16 grader eller för barn som lätt fryser. Den delar tvåvägsdragkedja och samma byggkvalitet som den vinnande TOG 2.5-modellen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      I ett normalt uppvärmt sovrum kan TOG 3.5 bli för varmt, så den är ett specialval snarare än ett allroundval och har en mer begränsad säsong. För familjen med kyligt sovrum är den däremot rätt verktyg för att hålla barnet lagom varmt hela natten.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep" />
 
- <h3>Rätt storlek är avgörande</h3>
- <p>En sovpåse som är för stor kan glida upp och täcka bebisens ansikte. Välj alltid sovpåse i rätt storlek för bebisens aktuella längd och vikt. Sovpåsar finns vanligen i storlekarna 50 till 70 cm (0 till 6 mån), 70 till 90 cm (6 till 18 mån) och 90 till 110 cm (18 till 36 mån).</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre vintersovpåsar granskade, en vinner totalt. Ergobaby On The Move TOG 2.5 tar förstaplatsen på värme, säkerhet och daglig användbarhet, Little Dutch Sage Vinter är bäst för nyfödda och bomullsälskare, och Ergobaby TOG 3.5 är valet för riktigt kalla sovrum. Vill du jämföra fler modeller? Se vår kompletta <a href="/sovsackar/" class="text-accent hover:text-accent-dark underline">guide till sovpåsar för bebis 2026</a> eller läs om <a href="/sovsackar/sommar/" class="text-accent hover:text-accent-dark underline">sommarsovpåse bebis med TOG 0.5 och 1.0</a>.
+    </p>
 
- <h3>Tvättas regelbundet</h3>
- <p>Tvätta sovpåsen var 1 till 2 vecka i 40°C. Ha minst två sovpåsar i rotation. Låt lufttorka, tumlaren kan skada stoppning och dragkedjor.</p>
- </div>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Vintersovpåsar bebis 2026" />
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade sovprodukter</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/sovsackar/" class="text-accent underline">Alla sovpåsar för bebis 2026</a></li>
- <li><a href="/sovsackar/sommar/" class="text-accent underline">Sommarsovpåse bebis 2026, TOG 0.5 och 1.0</a></li>
- <li><a href="/sovsackar/voksi-vs-halo-sleepsack/" class="text-accent underline">Voksi vs Halo SleepSack, vilken sovpåse passar bäst?</a></li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt vintersovpåse 2026</h2>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Överhettning är den vanligaste faran</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Överhettning är mer riskabelt än nedkylning för bebisar. Känn alltid på bebisens nacke och bröst när de sover, de ska kännas behagligt varma, aldrig svettiga eller heta. Om bebisen svettas: ta av ett plagg eller välj ett lägre TOG nästa natt. Reglera värmen med kläderna under sovpåsen snarare än att byta sovpåse fram och tillbaka.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Ergobaby On The Move Sovpåse 6-18M TOG 2.5, Sheep',
- description: 'Vintersovpåse för bebis 6 till 18 månader med TOG 2.5. Tvåvägsdragkedja för enkel blöjbyte. Mjukt polyestermaterial.',
- image: 'https://bebisguiden.se/images/products/ergobaby-sovpase-tog25.webp',
- brand: 'Ergobaby',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Little Dutch Sage Vinter Sovpåse 70 cm, Grön',
- description: 'Vintersovpåse för bebis 0 till 12 månader med TOG 2.5 i ekologisk bomull. Tvåvägsdragkedja.',
- image: 'https://bebisguiden.se/images/products/little-dutch-vinter-sovpase.webp',
- brand: 'Little Dutch',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Rätt storlek är avgörande</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En sovpåse som är för stor kan glida upp och täcka bebisens ansikte. Välj alltid sovpåse i rätt storlek för bebisens aktuella längd och vikt. Sovpåsar finns vanligen i storlekarna 50 till 70 cm (0 till 6 mån), 70 till 90 cm (6 till 18 mån) och 90 till 110 cm (18 till 36 mån). Kontrollera att halsöppningen inte är så stor att huvudet kan glida in i påsen.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Tvättas regelbundet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Tvätta sovpåsen var 1 till 2 vecka i 40°C i maskin. Ha minst två sovpåsar i rotation så att det alltid finns en ren. Låt sovpåsen lufttorka, tumlaren kan skada stoppning och dragkedjor. Vid sjukdom eller läckage: tvätta direkt.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad kostar en bra vintersovpåse?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En kvalitetssovpåse i TOG 2.5 eller 3.5 kostar vanligen mellan 300 och 700 kronor 2026. Polyestermodeller som Ergobaby ligger i den lägre delen av spannet, medan bomullsmodeller från märken som Little Dutch ligger högre. Räkna med att köpa minst två sovpåsar i rotation, och en ny storlek när barnet växer ur den förra.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om säker sömn?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Sovsäcken håller barnet lagom varmt utan lösa filtar som kan hamna över ansiktet. Nedan är de viktigaste råden för säker sömn från 1177.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Lagom varm"
+        source="1177"
+        sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+        year="2026"
+      >
+        Barnet ska vara lagom varm, inte för varm. Risken för plötslig spädbarnsdöd ökar om barnet blir för varm.
+      </StatHighlight>
+      <StatHighlight
+        figure="Fritt ansikte"
+        source="1177"
+        sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+        year="2026"
+      >
+        Genom att hålla barnets ansikte fritt från täcken eller andra sängkläder när hen sover minskar risken. Risken minskar också om barnet kan röra armar och ben när hen sover.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="1177"
+      role="Sveriges nationella hälso- och sjukvårdsupplysning"
+      sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+    >
+      "Se till att barnets ansikte är fritt, att barnet är lagom varm och kan röra sig när hen sover."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat tre vintersovpåsar utifrån värme (TOG-värde mot rumstemperatur), material (polyester eller bomull), säkerhet (passform och halsöppning), åldersintervall och daglig användbarhet (dragkedja, tvätt och rörelsefrihet). Produkterna är valda bland de mest sålda och eftersökta vintersovpåsarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade sovprodukter</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/sovsackar/" class="text-accent underline">Alla sovpåsar för bebis 2026</a></li>
+        <li><a href="/sovsackar/sommar/" class="text-accent underline">Sommarsovpåse bebis 2026, TOG 0.5 och 1.0</a></li>
+        <li><a href="/sovsackar/voksi-vs-halo-sleepsack/" class="text-accent underline">Voksi vs Halo SleepSack, vilken sovpåse passar bäst?</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa vintersovpåsen för bebis 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228542&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/sovpasar/ergobaby-on-the-move-sovpase-6-18m-tog-2-5-sheep"
+    text="Bra pris hos Jollyroom"
+    productName="Ergobaby On The Move Sovpåse TOG 2.5"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

@@ -1,15 +1,16 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
-import ProductCard from '../components/ProductCard.astro';
-import ComparisonTable from '../components/ComparisonTable.astro';
-import TopPick from '../components/TopPick.astro';
+import MoneyByline from '../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../components/MoneySpecTable.astro';
+import MoneyProductCard from '../components/MoneyProductCard.astro';
 import FAQ from '../components/FAQ.astro';
-import ProductSchema from '../components/ProductSchema.astro';
-import CTABox from '../components/CTABox.astro';
+import StickyCTA from '../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Graviditetskudde' },
+  { label: 'Hem', href: '/' },
+  { label: 'Graviditetskudde' },
 ];
 
 // Verifierade tracker-URL:er, källa: feed-matches/ (Adtraction-feeds) + verified addrevenue-länk
@@ -21,296 +22,451 @@ const DOOMOO = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1
 const BBHUGME = 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=161313&url=https://www.babyland.se/bbhugme-gravid--och-amingskudde_46125';
 const BEEMOO = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10283306&url=https://www.jollyroom.se/mamma/gravidprodukter/gravidkuddar/beemoo-care-cozy-gravid-och-amningskudde-hearted-beige';
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Najell Gravidkudde, Powder Beige',
- image: '/images/products/najell-gravidkudde-powder-beige.webp',
- badge: 'Bäst i test',
- rating: 4.8,
- ctaHref: NAJELL,
- ctaText: 'Najell',
- additionalCtaHrefs: [{ store: 'BabySam', url: NAJELL_BABYSAM }],
- features: {
- 'Form': 'Lång 2-i-1, formbar',
- 'Längd': '145 till 175 cm',
- 'Fyllning': 'EPS-mikropärlor',
- 'Tvättbart överdrag': 'Ja, 40°C',
- },
- },
- {
- name: 'DockATot Cosset Gravidkudde, Sand Chambray',
- image: '/images/products/dockatot-cosset-gravidkudde-sand-chambray.webp',
- badge: 'Bäst lång kudde',
- rating: 4.6,
- ctaHref: DOCKATOT,
- features: {
- 'Form': 'Lång rak (I-form)',
- 'Längd': 'Ca 130 cm',
- 'Fyllning': 'Polyesterfiber',
- 'Tvättbart överdrag': 'Ja',
- },
- },
- {
- name: 'Doomoo Amnings- & Gravidkudde Buddy, Svampar',
- image: '/images/products/doomoo-gravidkudde-buddy-svampar.webp',
- badge: 'Mest mångsidig',
- rating: 4.6,
- ctaHref: DOOMOO,
- features: {
- 'Form': 'U-form',
- 'Längd': 'Ca 170 cm',
- 'Fyllning': 'EPS-mikropärlor',
- 'Tvättbart överdrag': 'Ja, 30°C',
- },
- },
- {
- name: 'bbhugme Gravid- och Amningskudde, Stone',
- image: '/images/products/bbhugme-gravidkudde-stone.webp',
- badge: 'Bäst kvalitet',
- rating: 4.7,
- ctaHref: BBHUGME,
- features: {
- 'Form': 'Justerbar med spännen',
- 'Längd': 'Anpassningsbar',
- 'Fyllning': 'Luft + mikropärlor',
- 'Tvättbart överdrag': 'Ja, 40°C',
- },
- },
- {
- name: 'Beemoo CARE Cozy Gravid- och Amningskudde, Hearted Beige',
- image: '/images/products/beemoo-care-cozy-gravid-amningskudde.webp',
- badge: 'Bäst pris',
- rating: 4.3,
- ctaHref: BEEMOO,
- features: {
- 'Form': 'U-form',
- 'Längd': '108 cm',
- 'Fyllning': 'Polyesterfiber',
- 'Tvättbart överdrag': 'Ja',
- },
- },
+  {
+    name: 'Najell Gravidkudde, Powder Beige',
+    brand: 'Najell',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Formbar 2-i-1', 'Justerbar längd', 'Delbar i två kuddar'],
+    store: 'Najell',
+    affiliateUrl: NAJELL,
+    imageUrl: '/images/products/najell-gravidkudde-powder-beige.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Svensk formbar 2-i-1 gravid- och amningskudde. Justerbar längd 145 till 175 cm via knut och delbar i två mindre kuddar á 90 cm. Överdrag i 95% bomull/5% elastan med EPS-mikropärlor som fyllning.',
+    features: { 'Form': 'Lång 2-i-1, formbar', 'Längd': '145 till 175 cm', 'Fyllning': 'EPS-mikropärlor', 'Tvättbart överdrag': 'Ja, 40°C' },
+    alsoAt: [{ store: 'BabySam', url: NAJELL_BABYSAM }],
+  },
+  {
+    name: 'DockATot Cosset Gravidkudde, Sand Chambray',
+    brand: 'DockATot',
+    rating: 4.6,
+    badge: 'Bäst lång kudde',
+    usps: ['Lång rak I-form', 'Mjukt chambray-överdrag', 'Lätt att lägga om'],
+    store: 'Jollyroom',
+    affiliateUrl: DOCKATOT,
+    imageUrl: '/images/products/dockatot-cosset-gravidkudde-sand-chambray.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Lång rak gravidkudde i mjukt chambray-överdrag. Följer hela kroppen och ger stöd under mage och mellan knäna. Avtagbart och tvättbart överdrag.',
+    features: { 'Form': 'Lång rak (I-form)', 'Längd': 'Ca 130 cm', 'Fyllning': 'Polyesterfiber', 'Tvättbart överdrag': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Doomoo Amnings- & Gravidkudde Buddy, Svampar',
+    brand: 'Doomoo',
+    rating: 4.6,
+    badge: 'Mest mångsidig',
+    usps: ['U-form, stöder rygg och mage', 'EPS-mikropärlor', 'Fungerar som amningskudde'],
+    store: 'Jollyroom',
+    affiliateUrl: DOOMOO,
+    imageUrl: '/images/products/doomoo-gravidkudde-buddy-svampar.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Lång U-formad gravid- och amningskudde med EPS-mikropärlor som formar sig efter kroppen. Ger stöd åt rygg och mage samtidigt. Avtagbart överdrag, tvättas i 30°C.',
+    features: { 'Form': 'U-form', 'Längd': 'Ca 170 cm', 'Fyllning': 'EPS-mikropärlor', 'Tvättbart överdrag': 'Ja, 30°C' },
+    alsoAt: [],
+  },
+  {
+    name: 'bbhugme Gravid- och Amningskudde, Stone',
+    brand: 'bbhugme',
+    rating: 4.7,
+    badge: 'Bäst kvalitet',
+    usps: ['Justerbar fyllning', 'Designad av kiropraktiker', 'Övergår till amningskudde'],
+    store: 'Babyland',
+    affiliateUrl: BBHUGME,
+    imageUrl: '/images/products/bbhugme-gravidkudde-stone.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Gravid- och amningskudde med justerbar fyllning av luft och mikropärlor och spännen i ändarna. Designad av kiropraktiker. Tvättbart överdrag, 40°C.',
+    features: { 'Form': 'Justerbar med spännen', 'Längd': 'Anpassningsbar', 'Fyllning': 'Luft + mikropärlor', 'Tvättbart överdrag': 'Ja, 40°C' },
+    alsoAt: [],
+  },
+  {
+    name: 'Beemoo CARE Cozy Gravid- och Amningskudde, Hearted Beige',
+    brand: 'Beemoo',
+    rating: 4.3,
+    badge: 'Bäst pris',
+    usps: ['Lägst pris', 'U-form 108 cm', 'Fungerar som amningskudde'],
+    store: 'Jollyroom',
+    affiliateUrl: BEEMOO,
+    imageUrl: '/images/products/beemoo-care-cozy-gravid-amningskudde.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Prisvärd 108 cm lång U-formad gravid- och amningskudde. Stödjer hela kroppen under graviditet och fungerar som amningskudde efter förlossningen.',
+    features: { 'Form': 'U-form', 'Längd': '108 cm', 'Fyllning': 'Polyesterfiber', 'Tvättbart överdrag': 'Ja' },
+    alsoAt: [],
+  },
 ];
 
 const featureLabels = ['Form', 'Längd', 'Fyllning', 'Tvättbart överdrag'];
 
 const faqItems = [
- {
- question: 'Vilken graviditetskudde är bäst 2026?',
- answer: 'Najell Gravidkudde är vår totalvinnare 2026. Den är formbar, justerbar i längd mellan 145 och 175 cm och kan delas i två mindre kuddar, samtidigt som den fungerar lika bra som amningskudde efter förlossningen. Vill du ha en lång kudde att svepa runt hela kroppen är DockATot Cosset ett tryggt val, och Beemoo CARE Cozy är det billigaste alternativet som ändå klarar både graviditet och amning.',
- },
- {
- question: 'När ska man börja använda en graviditetskudde?',
- answer: 'De flesta börjar använda en graviditetskudde runt vecka 20 till 24, när magen börjar bli tung och det blir svårare att hitta en bekväm sovställning. En del köper den tidigare för att vänja sig vid att sova på sidan, vilket rekommenderas från andra trimestern. Det finns ingen nackdel med att börja tidigt, kudden gör nytta så fort du upplever värk i rygg, höfter eller bäcken.',
- },
- {
- question: 'Vilken form av graviditetskudde ska jag välja?',
- answer: 'En U-form (Doomoo, Beemoo) stödjer både rygg och mage samtidigt och du slipper flytta kudden när du vänder dig. En lång rak kudde (DockATot) tar mindre plats i sängen och passar dig som mest vill ha stöd under magen och mellan knäna. En formbar kudde (Najell, bbhugme) är mest mångsidig eftersom du kan böja den till C, U eller I beroende på behov.',
- },
- {
- question: 'Kan man använda graviditetskudden som amningskudde efteråt?',
- answer: 'Ja, flera av kuddarna i jämförelsen är 2-i-1. Najell, Doomoo, bbhugme och Beemoo CARE Cozy fungerar som amningskudde efter förlossningen, vilket gör att du slipper köpa två separata kuddar. De formbara modellerna är enklast att forma om till ett bekvämt amningsstöd. En renodlat lång kudde som DockATot går också att använda men är mindre praktisk vid själva amningen.',
- },
- {
- question: 'Hur tvättar man en graviditetskudde?',
- answer: 'Alla kuddar i jämförelsen har avtagbart och tvättbart överdrag. Najell och bbhugme tvättas i 40 grader, Doomoo i 30 grader. Dra alltid igen blixtlåset innan tvätt så att fyllningen inte hamnar i maskinen. Själva innerkudden tvättas normalt inte utan vädras, följ tillverkarens anvisning. Ett extra överdrag är praktiskt så att du har ett rent att byta till.',
- },
- {
- question: 'Vad kostar en graviditetskudde?',
- answer: 'En graviditetskudde kostar oftast mellan 800 och 1 700 kronor. Beemoo CARE Cozy ligger i den lägre delen och är ett bra förstaval om du vill hålla nere kostnaden. Najell och DockATot ligger i mellanskiktet, medan bbhugme är dyrast och motiverar priset med justerbar fyllning och hög materialkvalitet. Tänk på att en 2-i-1-kudde du även ammar med ofta lönar sig jämfört med att köpa två kuddar.',
- },
+  {
+    question: 'Vilken graviditetskudde är bäst 2026?',
+    answer: 'Najell Gravidkudde är vår totalvinnare 2026. Den är formbar, justerbar i längd mellan 145 och 175 cm och kan delas i två mindre kuddar, samtidigt som den fungerar lika bra som amningskudde efter förlossningen. Vill du ha en lång kudde att svepa runt hela kroppen är DockATot Cosset ett tryggt val, och Beemoo CARE Cozy är det billigaste alternativet som ändå klarar både graviditet och amning.',
+  },
+  {
+    question: 'När ska man börja använda en graviditetskudde?',
+    answer: 'De flesta börjar använda en graviditetskudde runt vecka 20 till 24, när magen börjar bli tung och det blir svårare att hitta en bekväm sovställning. En del köper den tidigare för att vänja sig vid att sova på sidan, vilket rekommenderas från andra trimestern. Det finns ingen nackdel med att börja tidigt, kudden gör nytta så fort du upplever värk i rygg, höfter eller bäcken.',
+  },
+  {
+    question: 'Vilken form av graviditetskudde ska jag välja?',
+    answer: 'En U-form (Doomoo, Beemoo) stödjer både rygg och mage samtidigt och du slipper flytta kudden när du vänder dig. En lång rak kudde (DockATot) tar mindre plats i sängen och passar dig som mest vill ha stöd under magen och mellan knäna. En formbar kudde (Najell, bbhugme) är mest mångsidig eftersom du kan böja den till C, U eller I beroende på behov.',
+  },
+  {
+    question: 'Kan man använda graviditetskudden som amningskudde efteråt?',
+    answer: 'Ja, flera av kuddarna i jämförelsen är 2-i-1. Najell, Doomoo, bbhugme och Beemoo CARE Cozy fungerar som amningskudde efter förlossningen, vilket gör att du slipper köpa två separata kuddar. De formbara modellerna är enklast att forma om till ett bekvämt amningsstöd. En renodlat lång kudde som DockATot går också att använda men är mindre praktisk vid själva amningen.',
+  },
+  {
+    question: 'Hur tvättar man en graviditetskudde?',
+    answer: 'Alla kuddar i jämförelsen har avtagbart och tvättbart överdrag. Najell och bbhugme tvättas i 40 grader, Doomoo i 30 grader. Dra alltid igen blixtlåset innan tvätt så att fyllningen inte hamnar i maskinen. Själva innerkudden tvättas normalt inte utan vädras, följ tillverkarens anvisning. Ett extra överdrag är praktiskt så att du har ett rent att byta till.',
+  },
+  {
+    question: 'Vad kostar en graviditetskudde?',
+    answer: 'En graviditetskudde kostar oftast mellan 800 och 1 700 kronor. Beemoo CARE Cozy ligger i den lägre delen och är ett bra förstaval om du vill hålla nere kostnaden. Najell och DockATot ligger i mellanskiktet, medan bbhugme är dyrast och motiverar priset med justerbar fyllning och hög materialkvalitet. Tänk på att en 2-i-1-kudde du även ammar med ofta lönar sig jämfört med att köpa två kuddar.',
+  },
 ];
 
 export const articleMeta = {
   title: "Bästa graviditetskudden 2026: test och jämförelse",
   description: "Bästa graviditetskudden 2026: Najell vinner med formbar 2-i-1-design. Vi jämför 5 gravidkuddar på form, stöd och pris. Hitta rätt kudde för bättre sömn.",
   publishDate: "2026-06-06",
+  updatedDate: "2026-06-13",
   category: "Amning",
   image: "/images/products/najell-gravidkudde-powder-beige.webp",
 };
 ---
 
 <ArticleLayout
- title="Bästa graviditetskudden 2026: test och jämförelse"
- description="Vi jämför de bästa graviditetskuddarna 2026: Najell, DockATot, Doomoo, bbhugme och Beemoo. Testade på form, stöd och pris. Hitta rätt gravidkudde för bättre sömn."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/graviditetskudde/"
- image="/images/products/najell-gravidkudde-powder-beige.webp"
- datePublished="2026-06-06"
- updatedDate="2026-06-06"
+  title="Bästa graviditetskudden 2026: test och jämförelse"
+  description="Bästa graviditetskudden 2026: Najell vinner med formbar 2-i-1-design. Vi jämför 5 gravidkuddar på form, stöd och pris. Hitta rätt kudde för bättre sömn."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/graviditetskudde/"
+  datePublished="2026-06-06"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
- En bra graviditetskudde gör skillnaden mellan en orolig natt och en hel natts sömn när magen blir tung. Najell Gravidkudde vinner vår jämförelse 2026 tack vare att den är formbar, justerbar i längd och fungerar lika bra som amningskudde efteråt. Nedan jämför vi fem gravidkuddar med verifierade priser så att du hittar rätt direkt.
- </p>
 
- <TopPick product={products[0]} description="Najell Gravidkudde är vår totalvinnare 2026. Den justerbara längden mellan 145 och 175 cm och den formbara konstruktionen gör att du kan anpassa kudden efter mage, rygg och knän, och efter förlossningen viker du om den till en bekväm amningskudde." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-06-06" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, graviditetskuddar 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken graviditetskudde är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Najell Gravidkudde är bäst i test 2026: formbar, justerbar i längd mellan 145 och 175 cm, delbar i två kuddar och fungerar lika bra som amningskudde efter förlossningen. Bäst lång kudde: DockATot Cosset. Bäst kvalitet: bbhugme. Bäst pris: Beemoo CARE Cozy.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Snabbval 2026</p>
- <p class="text-sm text-text-light"><strong>Najell Gravidkudde</strong> är bäst totalt och vår favorit för kombinerad gravid- och amningsanvändning. <strong>DockATot Cosset</strong> är bäst om du vill ha en lång kudde att svepa runt hela kroppen. <strong>bbhugme</strong> är bäst på kvalitet och justerbar fyllning. <strong>Beemoo CARE Cozy</strong> är bäst pris.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Najell"
+    name="Gravidkudde, Powder Beige"
+    image="/images/products/najell-gravidkudde-powder-beige.webp"
+    trackedUrl={NAJELL}
+    store="Najell"
+    alsoAt={[{ store: 'BabySam', url: NAJELL_BABYSAM }]}
+    description="Vinnare graviditetskudde 2026 på mångsidighet, komfort och hållbarhet. Justerbar längd 145 till 175 cm och delbar i två kuddar á 90 cm. EPS-mikropärlor som formar sig efter kroppen, överdrag tvättas i 40°C. Övergår sömlöst till amningskudde efter förlossningen."
+  />
 
- <figure class="rounded-2xl overflow-hidden mb-6 mt-6 not-prose">
- <img
- src="/images/graviditetskudde-sovstallning.webp"
- alt="Gravid kvinna sitter på sängen och håller om magen, behöver stöd för att sova bekvämt på sidan"
- class="w-full h-56 sm:h-72 object-cover"
- width="900"
- height="600"
- loading="lazy"
- />
- <figcaption class="text-xs text-text-muted text-center mt-2">En graviditetskudde hjälper dig att sova på sidan, vilket rekommenderas från andra trimestern. Foto: Unsplash (fri licens)</figcaption>
- </figure>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Graviditetskuddar 2026" />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">De bästa graviditetskuddarna 2026</h2>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <div class="space-y-4">
- <ProductCard
- name="Najell Gravidkudde, Powder Beige"
- image="/images/products/najell-gravidkudde-powder-beige.webp"
- badge="Bäst i test"
- rating={4.8}
- pros={['Justerbar längd 145 till 175 cm via en knut', 'Delbar i två mindre kuddar á 90 cm', 'Formbar till U, C, I eller J efter behov', 'Fungerar som amningskudde efter förlossningen', 'Överdrag i 95% bomull / 5% elastan, tvättas i 40°C', 'Svensk design']}
- cons={['Dyrare än renodlade U-kuddar', 'Tar plats att förvara mellan användningar']}
- ctaText="Bra pris hos Najell"
- ctaHref={NAJELL}
- additionalCtaHrefs={[{ store: 'BabySam', url: NAJELL_BABYSAM }]}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Najell Gravidkudde, bäst i test</h2>
+    <MoneyProductCard
+      brand="Najell"
+      name="Najell Gravidkudde, Powder Beige"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/najell-gravidkudde-powder-beige.webp"
+      imageAlt="Najell Gravidkudde Powder Beige formbar 2-i-1"
+      store="Najell"
+      buyUrl={NAJELL}
+      alsoAt={[{ store: 'BabySam', url: NAJELL_BABYSAM }]}
+      pros={['Justerbar längd 145 till 175 cm via en knut', 'Delbar i två mindre kuddar á 90 cm', 'Formbar till U, C, I eller J efter behov', 'Fungerar som amningskudde efter förlossningen', 'Överdrag i 95% bomull / 5% elastan, tvättas i 40°C', 'Svensk design']}
+      cons={['Dyrare än renodlade U-kuddar', 'Tar plats att förvara mellan användningar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Najell Gravidkudde vinner bäst i test 2026. Den justerbara längden mellan 145 och 175 cm gör att kudden passar oavsett din längd, och knuten som håller kudden ihop kan lösas upp för att dela den i två kuddar á 90 cm. EPS-mikropärlor formar sig efter kroppen och behåller stödet hela natten utan att platta till sig.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Efter förlossningen viker du om kudden till en bekväm amningskudde, så du slipper köpa två separata produkter. Nackdelen är att den är dyrare än renodlade U-kuddar och tar lite plats att förvara. Men för den som vill ha en kudde som räcker från graviditetsvecka 20 till lång tid in i amningen är den svår att slå.
+    </p>
 
- <ProductCard
- name="DockATot Cosset Gravidkudde, Sand Chambray"
- image="/images/products/dockatot-cosset-gravidkudde-sand-chambray.webp"
- badge="Bäst lång kudde"
- rating={4.6}
- pros={['Lång rak form som följer hela kroppen', 'Mjuk och anpassningsbar, lätt att lägga om', 'Snyggt chambray-överdrag som passar i sovrummet', 'Avtagbart och tvättbart överdrag']}
- cons={['Mindre praktisk att amma med än U-formade kuddar', 'Stödjer en sida i taget, inte rygg och mage samtidigt']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={DOCKATOT}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. DockATot Cosset Gravidkudde, bäst lång kudde</h2>
+    <MoneyProductCard
+      brand="DockATot"
+      name="DockATot Cosset Gravidkudde, Sand Chambray"
+      rating={4.6}
+      rank={2}
+      badge="Bäst lång kudde"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/dockatot-cosset-gravidkudde-sand-chambray.webp"
+      imageAlt="DockATot Cosset Gravidkudde Sand Chambray"
+      store="Jollyroom"
+      buyUrl={DOCKATOT}
+      pros={['Lång rak form som följer hela kroppen', 'Mjuk och anpassningsbar, lätt att lägga om', 'Snyggt chambray-överdrag som passar i sovrummet', 'Avtagbart och tvättbart överdrag']}
+      cons={['Mindre praktisk att amma med än U-formade kuddar', 'Stödjer en sida i taget, inte rygg och mage samtidigt']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      DockATot Cosset är den bästa långa rak gravidkudden. Den mjuka I-formen sveper längs hela kroppen och ger stöd under magen och mellan knäna när du sover på sidan. Det snygga chambray-överdragen är avtagbart och tvättbart.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att den stödjer en sida i taget. Vänder du dig om natten behöver du flytta kudden, och den är mindre praktisk att använda som amningskudde än de U-formade modellerna. Men för den som vill ha en lång kudde att svepa runt kroppen utan att ta upp för mycket plats i sängen är DockATot ett tryggt val.
+    </p>
 
- <ProductCard
- name="Doomoo Amnings- & Gravidkudde Buddy, Svampar"
- image="/images/products/doomoo-gravidkudde-buddy-svampar.webp"
- badge="Mest mångsidig"
- rating={4.6}
- pros={['Lång U-form ger stöd åt rygg och mage samtidigt', 'EPS-mikropärlor formar sig efter kroppen', 'Fungerar som amningskudde och babystöd efteråt', 'Avtagbart överdrag, tvättas i 30°C']}
- cons={['Tar stor plats i sängen', 'U-formen kan kännas otymplig i en mindre säng']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={DOOMOO}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Doomoo Buddy, mest mångsidig</h2>
+    <MoneyProductCard
+      brand="Doomoo"
+      name="Doomoo Amnings- & Gravidkudde Buddy, Svampar"
+      rating={4.6}
+      rank={3}
+      badge="Mest mångsidig"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/doomoo-gravidkudde-buddy-svampar.webp"
+      imageAlt="Doomoo Amnings- och Gravidkudde Buddy Svampar"
+      store="Jollyroom"
+      buyUrl={DOOMOO}
+      pros={['Lång U-form ger stöd åt rygg och mage samtidigt', 'EPS-mikropärlor formar sig efter kroppen', 'Fungerar som amningskudde och babystöd efteråt', 'Avtagbart överdrag, tvättas i 30°C']}
+      cons={['Tar stor plats i sängen', 'U-formen kan kännas otymplig i en mindre säng']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Doomoo Buddy är den mest mångsidiga kudden i jämförelsen. Den långa U-formen omsluter hela kroppen och ger stöd åt rygg och mage samtidigt, vilket gör att du slipper flytta kudden när du vänder dig om natten. EPS-mikropärlorna formar sig efter din kropp och behåller stödet hela natten.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den tar stor plats i sängen och U-formen kan kännas otymplig i en mindre säng eller om du delar säng. Överdraget tvättas i 30°C. Fungerar väl som amningskudde och babystöd efter förlossningen.
+    </p>
 
- <ProductCard
- name="bbhugme Gravid- och Amningskudde, Stone"
- image="/images/products/bbhugme-gravidkudde-stone.webp"
- badge="Bäst kvalitet"
- rating={4.7}
- pros={['Justerbar fyllning, fyll på eller släpp ut luft och mikropärlor', 'Spännen i ändarna håller formen där du vill', 'Designad av kiropraktiker för rätt stöd', 'Tvättbart överdrag i hög kvalitet, 40°C', 'Övergår sömlöst till amningskudde']}
- cons={['Dyrast i jämförelsen', 'Kräver lite pyssel för att ställa in rätt fasthet']}
- ctaText="Bra pris hos Babyland"
- ctaHref={BBHUGME}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. bbhugme Gravid- och Amningskudde, bäst kvalitet</h2>
+    <MoneyProductCard
+      brand="bbhugme"
+      name="bbhugme Gravid- och Amningskudde, Stone"
+      rating={4.7}
+      rank={4}
+      badge="Bäst kvalitet"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/bbhugme-gravidkudde-stone.webp"
+      imageAlt="bbhugme Gravid- och Amningskudde Stone"
+      store="Babyland"
+      buyUrl={BBHUGME}
+      pros={['Justerbar fyllning, fyll på eller släpp ut luft och mikropärlor', 'Spännen i ändarna håller formen där du vill', 'Designad av kiropraktiker för rätt stöd', 'Tvättbart överdrag i hög kvalitet, 40°C', 'Övergår sömlöst till amningskudde']}
+      cons={['Dyrast i jämförelsen', 'Kräver lite pyssel för att ställa in rätt fasthet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      bbhugme är den högkvalitativa kudden i jämförelsen, designad av kiropraktiker för optimalt stöd. Den justerbara fyllningen av luft och mikropärlor gör att du kan ställa in precis den fasthet som passar din kropp, och spännen i ändarna håller kudden i önskad form.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det är dyrast i jämförelsen och kräver lite tid att ställa in rätt. Men för den som vill ha en kudde med premiumkänsla och planerar att använda den under flera graviditeter är bbhugme det bästa valet. Övergår sömlöst till amningskudde efter förlossningen.
+    </p>
 
- <ProductCard
- name="Beemoo CARE Cozy Gravid- och Amningskudde, Hearted Beige"
- image="/images/products/beemoo-care-cozy-gravid-amningskudde.webp"
- badge="Bäst pris"
- rating={4.3}
- pros={['Lägsta priset i jämförelsen', '108 cm U-form som stödjer hela kroppen', 'Fungerar som amningskudde och babystöd efteråt', 'Avtagbart tvättbart överdrag']}
- cons={['Kortare än de längsta kuddarna', 'Fyllningen är mjukare och håller formen sämre över tid']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={BEEMOO}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Beemoo CARE Cozy, bäst pris</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo CARE Cozy Gravid- och Amningskudde, Hearted Beige"
+      rating={4.3}
+      rank={5}
+      badge="Bäst pris"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/beemoo-care-cozy-gravid-amningskudde.webp"
+      imageAlt="Beemoo CARE Cozy Gravid- och Amningskudde Hearted Beige"
+      store="Jollyroom"
+      buyUrl={BEEMOO}
+      pros={['Lägsta priset i jämförelsen', '108 cm U-form som stödjer hela kroppen', 'Fungerar som amningskudde och babystöd efteråt', 'Avtagbart tvättbart överdrag']}
+      cons={['Kortare än de längsta kuddarna', 'Fyllningen är mjukare och håller formen sämre över tid']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo CARE Cozy är det bästa prisalternativet i jämförelsen. Den 108 cm långa U-formen stödjer hela kroppen och fungerar som amningskudde och babystöd efter förlossningen. Avtagbart tvättbart överdrag ingår.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den är kortare än de längsta kuddarna och polyesterfyllningen kan packas ihop med tiden, men till det lägre priset är det ett utmärkt val för den som vill ha en graviditetskudde som också fungerar som amningsstöd utan att lägga premiumpris.
+    </p>
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Olika typer av graviditetskuddar</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem gravidkuddar granskade, en vinner totalt. Najell Gravidkudde tar förstaplatsen på mångsidighet och hållbarhet, DockATot Cosset är bäst för dig som vill ha en lång rak kudde, bbhugme vinner på materialkvalitet och Beemoo CARE Cozy är bäst pris. Letar du specifikt efter amningsstöd efter förlossningen kan du också läsa vår guide till <a href="/amning/amningskudde/" class="text-accent hover:text-accent-dark underline">bästa amningskudde</a>.
+    </p>
 
- <div class="prose prose-sm text-text-light max-w-none">
- <p>Gravidkuddar finns i några olika grundformer, och vilken som passar dig beror på hur du sover och var du vill ha stödet.</p>
- <ul>
- <li><strong>U-form:</strong> Den största formen som omsluter hela kroppen. Du får stöd för både rygg och mage samtidigt och behöver inte flytta kudden när du vänder dig. Doomoo och Beemoo CARE Cozy är U-formade. Nackdelen är att den tar mycket plats i sängen.</li>
- <li><strong>C-form:</strong> En kompaktare variant som stödjer mage, rygg och knän men lämnar ena sidan öppen. Bra om du sover mest på en sida och vill ha en kudde som är lättare att hantera. Najell kan formas till C-form.</li>
- <li><strong>Lång rak kudde (I-form):</strong> En lång cylinder du lägger längs med kroppen och böjer mellan knäna. Tar minst plats men ger stöd åt en sida i taget. DockATot Cosset är ett exempel.</li>
- <li><strong>Kilkudde:</strong> En liten kil som du lägger under magen eller ryggen som komplement. Billig och tar ingen plats, men ger bara punktstöd och ersätter inte en hel kropps-kudde.</li>
- </ul>
- <p>Är du osäker är en formbar kudde som Najell eller bbhugme det tryggaste valet, eftersom du kan ställa om den till flera av formerna ovan beroende på hur magen växer.</p>
- </div>
+    {/* Figur med inline-bild (bevarad från prod) */}
+    <figure class="rounded-2xl overflow-hidden mb-6 mt-6 not-prose">
+      <img
+        src="/images/graviditetskudde-sovstallning.webp"
+        alt="Gravid kvinna sitter på sängen och håller om magen, behöver stöd för att sova bekvämt på sidan"
+        class="w-full h-56 sm:h-72 object-cover"
+        width="900"
+        height="600"
+        loading="lazy"
+      />
+      <figcaption class="text-xs text-text-muted text-center mt-2">En graviditetskudde hjälper dig att sova på sidan, vilket rekommenderas från andra trimestern. Foto: Unsplash (fri licens)</figcaption>
+    </figure>
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: så väljer du rätt graviditetskudde</h2>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={featureLabels} title="Specifikationer jämförda - Graviditetskuddar 2026" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>1. Fyllning, mikropärlor eller fiber?</h3>
- <p>Fyllningen avgör hur kudden känns och hur länge den håller formen. EPS-mikropärlor (Najell, Doomoo) formar sig efter kroppen och behåller stödet länge, vilket gör att kudden inte plattas till mitt i natten. Polyesterfiber (DockATot, Beemoo) är mjukare och billigare men kan packas ihop över tid. bbhugme kombinerar luft och pärlor så att du själv kan justera fastheten.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Olika typer av graviditetskuddar</h2>
+    <p class="text-text-light leading-relaxed mb-4">
+      Gravidkuddar finns i några olika grundformer, och vilken som passar dig beror på hur du sover och var du vill ha stödet.
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-text-light mb-4">
+      <li><strong>U-form:</strong> Den största formen som omsluter hela kroppen. Du får stöd för både rygg och mage samtidigt och behöver inte flytta kudden när du vänder dig. Doomoo och Beemoo CARE Cozy är U-formade. Nackdelen är att den tar mycket plats i sängen.</li>
+      <li><strong>C-form:</strong> En kompaktare variant som stödjer mage, rygg och knän men lämnar ena sidan öppen. Bra om du sover mest på en sida och vill ha en kudde som är lättare att hantera. Najell kan formas till C-form.</li>
+      <li><strong>Lång rak kudde (I-form):</strong> En lång cylinder du lägger längs med kroppen och böjer mellan knäna. Tar minst plats men ger stöd åt en sida i taget. DockATot Cosset är ett exempel.</li>
+      <li><strong>Kilkudde:</strong> En liten kil som du lägger under magen eller ryggen som komplement. Billig och tar ingen plats, men ger bara punktstöd och ersätter inte en hel kroppskudde.</li>
+    </ul>
+    <p class="text-text-light leading-relaxed mb-4">
+      Är du osäker är en formbar kudde som Najell eller bbhugme det tryggaste valet, eftersom du kan ställa om den till flera av formerna ovan beroende på hur magen växer.
+    </p>
 
- <h3>2. Tvättbart överdrag</h3>
- <p>Ett avtagbart och maskintvättbart överdrag är ett måste. Du kommer att svettas, och kudden hamnar nära ansiktet under amningen efteråt. Alla kuddar i jämförelsen har tvättbart överdrag. Vill du slippa vara utan kudden tvättdagen är ett extra överdrag en bra investering.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt graviditetskudde</h2>
 
- <h3>3. Storlek och din säng</h3>
- <p>En lång U-kudde ger mest stöd men kräver plats, och delar du säng kan den bli trång att samsas om. Sover du i en mindre säng eller vill störa partnern så lite som möjligt är en lång rak kudde eller en formbar C-kudde smartare. Mät gärna sängen innan du väljer den största modellen.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Fyllning, mikropärlor eller fiber?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Fyllningen avgör hur kudden känns och hur länge den håller formen. EPS-mikropärlor (Najell, Doomoo) formar sig efter kroppen och behåller stödet länge, vilket gör att kudden inte plattas till mitt i natten. Polyesterfiber (DockATot, Beemoo) är mjukare och billigare men kan packas ihop över tid. bbhugme kombinerar luft och pärlor så att du själv kan justera fastheten.
+    </p>
 
- <h3>4. Kan den användas som amningskudde efteråt?</h3>
- <p>De flesta gravidkuddar i jämförelsen är 2-i-1. Najell, Doomoo, bbhugme och Beemoo CARE Cozy fungerar som amningskudde efter förlossningen, så att du får ut mer av samma köp. Letar du efter en renodlad amningskudde har vi en separat jämförelse av <a href="/amning/amningskudde/" class="text-accent underline">bästa amningskudde</a>.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Tvättbart överdrag</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ett avtagbart och maskintvättbart överdrag är ett måste. Du kommer att svettas, och kudden hamnar nära ansiktet under amningen efteråt. Alla kuddar i jämförelsen har tvättbart överdrag. Vill du slippa vara utan kudden tvättdagen är ett extra överdrag en bra investering.
+    </p>
 
- <h3>5. Budget</h3>
- <p>Beemoo CARE Cozy är billigast och ett bra förstaval. Najell och DockATot ligger i mellanskiktet med bättre material och längre livslängd. bbhugme är dyrast men motiverar priset med justerbar fyllning och hög kvalitet om du planerar att använda kudden under flera graviditeter.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Storlek och din säng</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En lång U-kudde ger mest stöd men kräver plats, och delar du säng kan den bli trång att samsas om. Sover du i en mindre säng eller vill störa partnern så lite som möjligt är en lång rak kudde eller en formbar C-kudde smartare. Mät gärna sängen innan du väljer den största modellen.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/amning/amningskudde/" class="text-accent underline">Bästa amningskudde 2026, test och jämförelse</a></li>
- <li><a href="/amning/" class="text-accent underline">Amning & matning 2026, komplett guide</a></li>
- <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpumpen 2026, elektrisk och manuell</a></li>
- <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsäcken för bebis 2026</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Kan den användas som amningskudde efteråt?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      De flesta gravidkuddar i jämförelsen är 2-i-1. Najell, Doomoo, bbhugme och Beemoo CARE Cozy fungerar som amningskudde efter förlossningen, så att du får ut mer av samma köp. Letar du efter en renodlad amningskudde har vi en separat jämförelse av <a href="/amning/amningskudde/" class="text-accent hover:text-accent-dark underline">bästa amningskudde</a>.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Budget</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Beemoo CARE Cozy är billigast och ett bra förstaval. Najell och DockATot ligger i mellanskiktet med bättre material och längre livslängd. bbhugme är dyrast men motiverar priset med justerbar fyllning och hög kvalitet om du planerar att använda kudden under flera graviditeter.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Najell Gravidkudde, Powder Beige',
- description: 'Svensk formbar 2-i-1 gravid- och amningskudde. Justerbar längd 145 till 175 cm via knut och delbar i två mindre kuddar á 90 cm. Överdrag i 95% bomull/5% elastan med EPS-mikropärlor som fyllning.',
- image: 'https://bebisguiden.se/images/products/najell-gravidkudde-powder-beige.webp',
- brand: 'Najell',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'DockATot Cosset Gravidkudde, Sand Chambray',
- description: 'Lång rak gravidkudde i mjukt chambray-överdrag. Följer hela kroppen och ger stöd under mage och mellan knäna. Avtagbart och tvättbart överdrag.',
- image: 'https://bebisguiden.se/images/products/dockatot-cosset-gravidkudde-sand-chambray.webp',
- brand: 'DockATot',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Doomoo Amnings- & Gravidkudde Buddy, Svampar',
- description: 'Lång U-formad gravid- och amningskudde med EPS-mikropärlor som formar sig efter kroppen. Ger stöd åt rygg och mage samtidigt. Avtagbart överdrag, tvättas i 30°C.',
- image: 'https://bebisguiden.se/images/products/doomoo-gravidkudde-buddy-svampar.webp',
- brand: 'Doomoo',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'bbhugme Gravid- och Amningskudde, Stone',
- description: 'Gravid- och amningskudde med justerbar fyllning av luft och mikropärlor och spännen i ändarna. Designad av kiropraktiker. Tvättbart överdrag, 40°C.',
- image: 'https://bebisguiden.se/images/products/bbhugme-gravidkudde-stone.webp',
- brand: 'bbhugme',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Beemoo CARE Cozy Gravid- och Amningskudde, Hearted Beige',
- description: 'Prisvärd 108 cm lång U-formad gravid- och amningskudde. Stödjer hela kroppen under graviditet och fungerar som amningskudde efter förlossningen.',
- image: 'https://bebisguiden.se/images/products/beemoo-care-cozy-gravid-amningskudde.webp',
- brand: 'Beemoo',
- ratingValue: 4.3,
- reviewCount: 1,
- },
- ]} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem graviditetskuddar utifrån form (U, C, I, justerbar), fyllningsmaterial (EPS-mikropärlor, polyesterfiber, luft och mikropärlor), justering och flexibilitet, möjlighet att använda som amningskudde efteråt samt skötsel (tvättbart överdrag och temperatur). Produkterna är valda bland de mest sålda och eftersökta gravidkuddarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
 
- <CTABox productName="Graviditetskuddar" store="Jollyroom" affiliateUrl={DOOMOO} description="Nordens största baby- och barnbutik med fri frakt över en viss summa och 365 dagars öppet köp." />
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/amning/amningskudde/" class="text-accent underline">Bästa amningskudde 2026, test och jämförelse</a></li>
+        <li><a href="/amning/" class="text-accent underline">Amning & matning 2026, komplett guide</a></li>
+        <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpumpen 2026, elektrisk och manuell</a></li>
+        <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsäcken för bebis 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa graviditetskudden 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href={NAJELL}
+    text="Bra pris hos Najell"
+    productName="Najell Gravidkudde"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

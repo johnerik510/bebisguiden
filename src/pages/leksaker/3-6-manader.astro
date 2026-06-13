@@ -1,267 +1,394 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Leksaker', href: '/leksaker/' },
- { label: 'Leksaker 3 till 6 månader' },
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker', href: '/leksaker/' },
+  { label: 'Leksaker 3 till 6 månader' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Skip Hop Treetop Friends Classic Babygym',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/skip-hop-treetop-friends-classic-babygym.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=114386&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/skip-hop-treetop-friends-classic-babygym',
- features: {
- 'Lämplig ålder': '0 till 12 mån',
- 'Material': 'Textil + plast',
- 'Stimulerar': 'Motorik + syn + hörsel',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'Beemoo PLAY Bunny Babygym, Beige',
- badge: 'Bäst design',
- rating: 4.7,
- image: '/images/products/beemoo-play-bunny-babygym-beige.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244707&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/beemoo-play-bunny-babygym-beige',
- features: {
- 'Lämplig ålder': '0 till 12 mån',
- 'Material': 'Textil + trä',
- 'Stimulerar': 'Motorik + syn',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'Kinderkraft Smartplay Babygym',
- badge: 'Bäst budget',
- rating: 4.5,
- image: '/images/products/kinderkraft-smartplay-babygym.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10018460&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/kinderkraft-smartplay-babygym',
- features: {
- 'Lämplig ålder': '0 till 12 mån',
- 'Material': 'Plast + textil',
- 'Stimulerar': 'Motorik + hörsel',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
- {
- name: 'MAM Cooler Bitring',
- badge: 'Bäst bitring',
- rating: 4.6,
- image: '/images/products/mam-cooler-bitring.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10135908&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/mam-cooler-bitring',
- features: {
- 'Lämplig ålder': '3 mån+',
- 'Material': 'Plast BPA-fri',
- 'Stimulerar': 'Grepp + tandsprickning',
- 'Säkerhetsgodkänd': 'Ja',
- },
- },
+  {
+    name: 'Skip Hop Treetop Friends Classic Babygym',
+    brand: 'Skip Hop',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Ljud, ljus och musik', 'Hopfällbar bågkonstruktion', 'Maskintvättbar matta'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=114386&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/skip-hop-treetop-friends-classic-babygym',
+    imageUrl: '/images/products/skip-hop-treetop-friends-classic-babygym.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Bäst i test babygym för 3 till 6 månader med ljud, ljus och musik. Fem hängande figurer stimulerar syn och greppsmotorik. Hopfällbar och maskintvättbar.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Textil + plast', 'Stimulerar': 'Motorik + syn + hörsel', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Beemoo PLAY Bunny Babygym, Beige',
+    brand: 'Beemoo',
+    rating: 4.7,
+    badge: 'Bäst design',
+    usps: ['Skandinavisk minimalistisk design', 'Trä-bågkonstruktion', 'Mjuk tjock matta'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244707&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/beemoo-play-bunny-babygym-beige',
+    imageUrl: '/images/products/beemoo-play-bunny-babygym-beige.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Babygym med skandinavisk minimalistisk design och trä-bågkonstruktion. Mjuk tjock matta och avtagbara hängande leksaker. För 0 till 12 månader.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Textil + trä', 'Stimulerar': 'Motorik + syn', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Kinderkraft Smartplay Babygym',
+    brand: 'Kinderkraft',
+    rating: 4.5,
+    badge: 'Bäst budget',
+    usps: ['Lågt pris', 'Flera hängande leksaker inkluderade', 'Enkel montering'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10018460&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/kinderkraft-smartplay-babygym',
+    imageUrl: '/images/products/kinderkraft-smartplay-babygym.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Budgetvänligt babygym med flera hängande leksaker och enkel montering. Bra val för den priskänsliga familjen. För 0 till 12 månader.',
+    features: { 'Lämplig ålder': '0 till 12 mån', 'Material': 'Plast + textil', 'Stimulerar': 'Motorik + hörsel', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'MAM Cooler Bitring',
+    brand: 'MAM',
+    rating: 4.6,
+    badge: 'Bäst bitring',
+    usps: ['Kan läggas i kylen', 'BPA-fri plast', 'Ergonomisk form'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10135908&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/mam-cooler-bitring',
+    imageUrl: '/images/products/mam-cooler-bitring.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Bitring i BPA-fri plast som kan kylas för extra kylande effekt vid tandsprickning. Ergonomisk form för bebisens grepp. Lämplig från 3 månader.',
+    features: { 'Lämplig ålder': '3 mån+', 'Material': 'Plast BPA-fri', 'Stimulerar': 'Grepp + tandsprickning', 'Säkerhetsgodkänd': 'Ja' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Lämplig ålder', 'Material', 'Stimulerar', 'Säkerhetsgodkänd'];
+const specLabels = ['Lämplig ålder', 'Material', 'Stimulerar', 'Säkerhetsgodkänd'];
 
 const faqItems = [
- {
- question: 'Vad är ett babygym och varför behöver bebis ett?',
- answer: 'Ett babygym är en aktivitetsmatta med en bågkonstruktion och hängande leksaker. Bebisen ligger på rygg och når upp mot leksakerna, vilket tränar ögon-handkoordination, sträckningsförmåga och motorik. Runt 3 till 4 månader börjar bebisen aktivt slå mot och greppa de hängande föremålen, det är ett viktigt motoriskt steg. Skip Hop Treetop Friends är ett av de mest kompletta alternativen med ljud och ljus.',
- },
- {
- question: 'Från vilken ålder kan bebis använda ett babygym?',
- answer: 'De flesta babygym fungerar från födseln och upp till ca 12 månader. Under 0 till 2 månader kan bebisen ligga och titta på de hängande leksakerna. Runt 3 månader börjar det aktiva slåendet. Vid 6 månader börjar bebisen kanske sitta och babygymmet kan användas annorlunda. Skip Hop Classic och Beemoo PLAY Bunny har justerbara hängande leksaker som kan anpassas efter ålder.',
- },
- {
- question: 'Varför är bitringar viktiga för bebis 3 till 6 månader?',
- answer: 'Runt 3 till 4 månaders ålder börjar bebisen aktivt föra föremål till munnen. Det är en normal del av den orala utforskningsfasen och stimulerar finmotorik och känsel. MAM Cooler Bitring kan läggas i kylen för extra kylande effekt vid tandsprickning som börjar runt 4 till 7 månader. Välj alltid bitringar utan BPA och ftalater.',
- },
- {
- question: 'Kan bebis ligga på mage på ett babygym?',
- answer: 'Ja, magetid är viktigt för att stärka nacke, rygg och axelmusklerna. Lägg bebisen på mage på babygymsmattan under korta pass (börja med 1 till 3 minuter) och öka gradvis. Placera hängande leksaker inom synfältet. Bebisen ska ALDRIG lämnas ensam på mage och ska alltid sova på rygg. Magetid sker under uppsikt.',
- },
- {
- question: 'Hur väljer jag babygym i rätt storlek för hemmet?',
- answer: 'Mät ut platsen innan köp, ett babygym tar typiskt 90×90 cm till 100×100 cm. Skip Hop Classic är kompakt jämfört med många konkurrenter. Beemoo PLAY Bunny har en lite mjukare och tjockare matta vilket kan vara ett plus om golvet är kallt. Tänk på att babygymmet ofta hamnar i vardagsrummet, välj ett som passar hemmets stil.',
- },
+  {
+    question: 'Vad är ett babygym och varför behöver bebis ett?',
+    answer: 'Ett babygym är en aktivitetsmatta med en bågkonstruktion och hängande leksaker. Bebisen ligger på rygg och når upp mot leksakerna, vilket tränar ögon-handkoordination, sträckningsförmåga och motorik. Runt 3 till 4 månader börjar bebisen aktivt slå mot och greppa de hängande föremålen, det är ett viktigt motoriskt steg. Skip Hop Treetop Friends är ett av de mest kompletta alternativen med ljud och ljus.',
+  },
+  {
+    question: 'Från vilken ålder kan bebis använda ett babygym?',
+    answer: 'De flesta babygym fungerar från födseln och upp till ca 12 månader. Under 0 till 2 månader kan bebisen ligga och titta på de hängande leksakerna. Runt 3 månader börjar det aktiva slåendet. Vid 6 månader börjar bebisen kanske sitta och babygymmet kan användas annorlunda. Skip Hop Classic och Beemoo PLAY Bunny har justerbara hängande leksaker som kan anpassas efter ålder.',
+  },
+  {
+    question: 'Varför är bitringar viktiga för bebis 3 till 6 månader?',
+    answer: 'Runt 3 till 4 månaders ålder börjar bebisen aktivt föra föremål till munnen. Det är en normal del av den orala utforskningsfasen och stimulerar finmotorik och känsel. MAM Cooler Bitring kan läggas i kylen för extra kylande effekt vid tandsprickning som börjar runt 4 till 7 månader. Välj alltid bitringar utan BPA och ftalater.',
+  },
+  {
+    question: 'Kan bebis ligga på mage på ett babygym?',
+    answer: 'Ja, magetid är viktigt för att stärka nacke, rygg och axelmusklerna. Lägg bebisen på mage på babygymsmattan under korta pass (börja med 1 till 3 minuter) och öka gradvis. Placera hängande leksaker inom synfältet. Bebisen ska ALDRIG lämnas ensam på mage och ska alltid sova på rygg. Magetid sker under uppsikt.',
+  },
+  {
+    question: 'Hur väljer jag babygym i rätt storlek för hemmet?',
+    answer: 'Mät ut platsen innan köp, ett babygym tar typiskt 90×90 cm till 100×100 cm. Skip Hop Classic är kompakt jämfört med många konkurrenter. Beemoo PLAY Bunny har en lite mjukare och tjockare matta vilket kan vara ett plus om golvet är kallt. Tänk på att babygymmet ofta hamnar i vardagsrummet, välj ett som passar hemmets stil.',
+  },
 ];
+
 export const articleMeta = {
   title: "Leksaker bebis 3-6 månader 2026: motorik och grepp",
   description: "Leksaker bebis 3 till 6 månader 2026: babygym, bitringar och aktivitetsleksaker för motorikutveckling. Konkreta rekommendationer med priser från Jollyroom.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
   category: "Leksaker",
   image: "/images/products/skip-hop-treetop-friends-classic-babygym.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bästa leksaker bebis 3 till 6 månader 2026: motorik"
- description="Vilka leksaker passar bebis 3 till 6 månader? Vi rankar bästa babygym, bitringar och aktivitetsleksaker, med riktiga priser från Jollyroom."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/leksaker/3-6-manader/"
- updatedDate="2026-04-14"
-  datePublished="2026-05-02"
+  title="Leksaker bebis 3-6 månader 2026: motorik och grepp"
+  description="Leksaker bebis 3 till 6 månader 2026: babygym, bitringar och aktivitetsleksaker för motorikutveckling. Konkreta rekommendationer med priser från Jollyroom."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-05-16"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Skip Hop Treetop Friends Classic Babygym vinner leksak för 3 till 6 månader bäst i test 2026. De fem hängande figurerna i textil och plast stimulerar synen och greppmotoriken precis när bebisen börjar sträcka sig. Den hopfällbara bågen är lätt att packa med, och aktivitetsmattan är maskintvättbar.
-	 </p>
 
- <TopPick product={products[0]} description="Skip Hop Treetop Friends Classic Babygym vinner test av leksaker för 3 till 6 månader 2026. Fem hängande figurer i textil och plast stimulerar synen och grepp-motoriken, hopfällbar bågkonstruktion gör att gymmet är enkelt att packa och ta med och aktivitetsmattan är maskintvättbar." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, leksaker 3 till 6 månader</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilka leksaker passar bebis 3 till 6 månader 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Skip Hop Treetop Friends Classic Babygym är bäst i test 2026: ljud, ljus, musik och fem hängande figurer som tränar greppsmotorik och syn. Beemoo PLAY Bunny är det snyggaste valet med trä-bågkonstruktion. Kinderkraft Smartplay är bäst budget. MAM Cooler Bitring är ett måste som komplement när tänderna är på väg.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val</p>
- <p class="text-sm text-text-light"><strong>Skip Hop Treetop Friends</strong> är det mest kompletta babygymmet med ljud, ljus och musik. <strong>Beemoo PLAY Bunny</strong> är snyggare och mer minimalistiskt. <strong>MAM Cooler Bitring</strong> är ett måste som komplement när tänderna är på väg.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Skip Hop"
+    name="Treetop Friends Classic Babygym"
+    image="/images/products/skip-hop-treetop-friends-classic-babygym.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=114386&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/skip-hop-treetop-friends-classic-babygym"
+    store="Jollyroom"
+    description="Vinnare leksaker 3 till 6 månader 2026. Fem hängande figurer i textil och plast stimulerar synen och greppsmotoriken precis när bebisen börjar sträcka sig aktivt. Den hopfällbara bågen gör gymmet lätt att ta med, och aktivitetsmattan är maskintvättbar."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval för 3 till 6 månader</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, leksaker 3 till 6 månader 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Skip Hop Treetop Friends Classic Babygym"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/skip-hop-treetop-friends-classic-babygym.webp"
- ageRange="0 till 12 månader"
- pros={['Ljud, ljus och musik, rik stimulans', 'Kan vikas ihop och tas med', 'Hängande leksaker i flera material', 'Hög återförsäljningspotential']}
- cons={['Högt pris', 'Kräver batterier till ljud/ljusfunktion']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=114386&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/skip-hop-treetop-friends-classic-babygym"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Beemoo PLAY Bunny Babygym, Beige"
- badge="Bäst design"
- rating={4.7}
- image="/images/products/beemoo-play-bunny-babygym-beige.webp"
- ageRange="0 till 12 månader"
- pros={['Mjuk tjock matta', 'Skandinavisk minimalistisk design', 'Trä-bågkonstruktion som håller', 'Avtagbara hängande leksaker']}
- cons={['Inga ljud- eller ljusfunktioner', 'Något mindre utbud av hängande leksaker']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244707&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/beemoo-play-bunny-babygym-beige"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Skip Hop Treetop Friends Classic Babygym, bäst i test</h2>
+    <MoneyProductCard
+      brand="Skip Hop"
+      name="Skip Hop Treetop Friends Classic Babygym"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/skip-hop-treetop-friends-classic-babygym.webp"
+      imageAlt="Skip Hop Treetop Friends Classic Babygym"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=114386&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/skip-hop-treetop-friends-classic-babygym"
+      pros={['Ljud, ljus och musik, rik stimulans', 'Kan vikas ihop och tas med', 'Hängande leksaker i flera material', 'Hög återförsäljningspotential']}
+      cons={['Högt pris', 'Kräver batterier till ljud/ljusfunktion']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Skip Hop Treetop Friends Classic Babygym vinner test av leksaker för 3 till 6 månader 2026. De fem hängande figurerna i textil och plast stimulerar synen och greppsmotoriken precis när bebisen börjar sträcka sig aktivt mot omvärlden. Ljud-, ljus- och musikfunktionerna ger extra sinnesstimulering som är svårt att hitta i samma kombination hos konkurrenterna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den hopfällbara bågkonstruktionen gör att gymmet är lätt att packa med vid besök hos mor- och farföräldrar, och aktivitetsmattan tål maskintvättning. Nackdelarna är det högre priset och att ljud/ljusfunktionen kräver batterier. För familjen som vill ha det mest kompletta babygymmet är det ändå det givna valet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=114386&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/skip-hop-treetop-friends-classic-babygym" />
 
- <ProductCard
- name="Kinderkraft Smartplay Babygym"
- image="/images/products/kinderkraft-smartplay-babygym.webp"
- badge="Bäst budget"
- rating={4.5}
- image="/images/products/kinderkraft-smartplay-babygym.webp"
- ageRange="0 till 12 månader"
- pros={['Lågt pris, bra för begränsad budget', 'Flera hängande leksaker inkluderat', 'Lätt att ställa upp och ta ned']}
- cons={['Enklare material', 'Tunnare matta jämfört med dyrare alternativ']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10018460&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/kinderkraft-smartplay-babygym"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Beemoo PLAY Bunny Babygym, Beige, bäst design</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo PLAY Bunny Babygym, Beige"
+      rating={4.7}
+      rank={2}
+      badge="Bäst design"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/beemoo-play-bunny-babygym-beige.webp"
+      imageAlt="Beemoo PLAY Bunny Babygym i beige"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244707&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/beemoo-play-bunny-babygym-beige"
+      pros={['Mjuk tjock matta', 'Skandinavisk minimalistisk design', 'Trä-bågkonstruktion som håller', 'Avtagbara hängande leksaker']}
+      cons={['Inga ljud- eller ljusfunktioner', 'Något mindre utbud av hängande leksaker']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo PLAY Bunny Babygym är det estetiskt vackraste alternativet i testet. Trä-bågkonstruktionen och den beiga färgpaletten passar in i de flesta heminredningar utan att sticka ut. Den tjocka mjuka mattan är ett plus om golvet är kallt, och de avtagbara hängande leksakerna kan enkelt bytas ut allteftersom bebisen växer.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Beemoo PLAY Bunny saknar ljud- och ljusfunktioner jämfört med Skip Hop, och har något färre hängande leksaker. För familjen som prioriterar design och naturmaterial framför maximal stimulans är det ändå ett starkt val med lång livstid.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244707&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/beemoo-play-bunny-babygym-beige" />
 
- <ProductCard
- name="MAM Cooler Bitring"
- badge="Bäst bitring"
- rating={4.6}
- image="/images/products/mam-cooler-bitring.webp"
- ageRange="3 månader och uppåt"
- pros={['Kan läggas i kylen för kylande effekt', 'BPA-fri plast', 'Ergonomisk form, enkel att greppa', 'Lågt pris']}
- cons={['Enkel funktion, inte en komplett leksak', 'Lägg i kylen max 30 minuter, inte i frysen']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10135908&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/mam-cooler-bitring"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Kinderkraft Smartplay Babygym, bäst budget</h2>
+    <MoneyProductCard
+      brand="Kinderkraft"
+      name="Kinderkraft Smartplay Babygym"
+      rating={4.5}
+      rank={3}
+      badge="Bäst budget"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/kinderkraft-smartplay-babygym.webp"
+      imageAlt="Kinderkraft Smartplay Babygym"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10018460&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/kinderkraft-smartplay-babygym"
+      pros={['Lågt pris, bra för begränsad budget', 'Flera hängande leksaker inkluderat', 'Lätt att ställa upp och ta ned']}
+      cons={['Enklare material', 'Tunnare matta jämfört med dyrare alternativ']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Kinderkraft Smartplay Babygym är det prisvänliga alternativet som inte kräver kompromisser på det väsentliga. Flera hängande leksaker ingår från start, det är enkelt att montera och ta ned, och de grundläggande funktionerna för greppsmotorik och synstimulans finns på plats.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Materialkänslan är enklare och mattan tunnare än hos Skip Hop och Beemoo. Nöjer sig familjen med grundfunktionalitet utan de extra detaljerna är Kinderkraft Smartplay ett klokt och kostnadseffektivt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10018460&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/kinderkraft-smartplay-babygym" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vad händer i bebisens utveckling 3 till 6 månader?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. MAM Cooler Bitring, bäst bitring</h2>
+    <MoneyProductCard
+      brand="MAM"
+      name="MAM Cooler Bitring"
+      rating={4.6}
+      rank={4}
+      badge="Bäst bitring"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/mam-cooler-bitring.webp"
+      imageAlt="MAM Cooler Bitring"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10135908&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/mam-cooler-bitring"
+      pros={['Kan läggas i kylen för kylande effekt', 'BPA-fri plast', 'Ergonomisk form, enkel att greppa', 'Lågt pris']}
+      cons={['Enkel funktion, inte en komplett leksak', 'Lägg i kylen max 30 minuter, inte i frysen']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      MAM Cooler Bitring är inte ett babygym, men den är ett naturligt komplement under de här månaderna. Runt 3 till 4 månaders ålder börjar bebisen föra föremål till munnen aktivt, och den ergonomiska formen gör bitten enkel att hålla fast. Kyler man den i kylen ger den extra lindring när de första tänderna är på väg.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kom ihåg att bara lägga den i kylen, aldrig i frysen, och max 30 minuter. BPA-fri plast gör att den är trygg att suga på. Lågt pris gör att det är lätt att ha flera hemma.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10135908&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/mam-cooler-bitring" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Motorik, från reflex till intention</h3>
- <p>Under det här åldersspannet övergår bebisen från reflexrörelser till avsiktliga rörelser. Hon börjar medvetet nå mot och slå mot föremål. Det är starten på ögon-handkoordination, en grundsten för all framtida motorisk utveckling. Babygym med hängande leksaker är den perfekta träningsredskapen för den här fasen.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra produkter för 3 till 6 månader granskade. Skip Hop Treetop Friends vinner totalt på stimulans och funktioner, Beemoo PLAY Bunny tar designpriset, Kinderkraft Smartplay är det prisvänliga valet och MAM Cooler Bitring är ett nödvändigt komplement. Vill du se leksaker för fler åldrar? Läs vår guide om <a href="/leksaker/0-3-manader/" class="text-accent hover:text-accent-dark underline">bästa leksaker bebis 0 till 3 månader 2026</a> eller <a href="/leksaker/6-12-manader/" class="text-accent hover:text-accent-dark underline">bästa leksaker bebis 6 till 12 månader 2026</a>.
+    </p>
 
- <h3>Oral utforskning</h3>
- <p>Allt som bebisen kan greppa hamnar i munnen, det är normalt och viktigt. Det ger information om form, textur och temperatur. Se till att alla leksaker är säkra att suga på. MAM Cooler Bitring är designad exakt för det här syftet och hjälper även vid tandsprickning.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda, leksaker 3 till 6 månader 2026" />
 
- <h3>Social och emotionell utveckling</h3>
- <p>Bebisen börjar le socialt, imitera mimik och reagera tydligare på röster och musik. Prata och sjung när du leker, din röst är den bästa leksaken. Babygym med musik förstärker dessa stunder.</p>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad händer i bebisens utveckling 3 till 6 månader?</h2>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler leksaksguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/leksaker/0-3-manader/" class="text-accent underline">Bästa leksaker bebis 0 till 3 månader 2026</a></li>
- <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker bebis 6 till 12 månader 2026</a></li>
- <li><a href="/leksaker/montessori/" class="text-accent underline">Montessorileksaker bebis 2026</a></li>
- <li><a href="/leksaker/" class="text-accent underline">Alla babyleksaker, översikt</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Motorik, från reflex till intention</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Under det här åldersspannet övergår bebisen från reflexrörelser till avsiktliga rörelser. Hon börjar medvetet nå mot och slå mot föremål. Det är starten på ögon-handkoordination, en grundsten för all framtida motorisk utveckling. Babygym med hängande leksaker är den perfekta träningsredskapet för den här fasen. Skip Hop Treetop Friends ger den rikaste stimulansen med sin kombination av ljud, ljus och musik.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Oral utforskning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Allt som bebisen kan greppa hamnar i munnen, det är normalt och viktigt. Det ger information om form, textur och temperatur. Se till att alla leksaker är säkra att suga på. MAM Cooler Bitring är designad exakt för det här syftet och hjälper även vid tandsprickning. Kontrollera alltid att leksaker är CE-märkta och fria från BPA och ftalater.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Skip Hop Treetop Friends Classic Babygym',
- description: 'Babygym med ljud, ljus och musik. Hängande leksaker stimulerar motorik och sinnen. Lämplig 0 till 12 månader.',
- image: 'https://bebisguiden.se/images/products/skip-hop-treetop-babygym.webp',
- brand: 'Skip Hop',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Beemoo PLAY Bunny Babygym, Beige',
- description: 'Babygym med trä-bågkonstruktion och mjuk matta. Skandinavisk design. Lämplig 0 till 12 månader.',
- image: 'https://bebisguiden.se/images/products/beemoo-play-bunny-babygym.webp',
- brand: 'Beemoo',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Kinderkraft Smartplay Babygym',
- description: 'Budgetvänligt babygym med flera hängande leksaker. Lämplig 0 till 12 månader.',
- image: 'https://bebisguiden.se/images/products/kinderkraft-smartplay-babygym.webp',
- brand: 'Kinderkraft',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'MAM Cooler Bitring',
- description: 'Bitring i BPA-fri plast som kan kylas. Ergonomisk form för bebisens grepp. Lämplig från 3 månader.',
- image: 'https://bebisguiden.se/images/products/mam-cooler-bitring.webp',
- brand: 'MAM',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Social och emotionell utveckling</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bebisen börjar le socialt, imitera mimik och reagera tydligare på röster och musik. Prata och sjung när du leker, din röst är den bästa leksaken. Babygym med musik förstärker dessa stunder. Beemoo PLAY Bunny fungerar lika bra som en lugn plats för stillsam lek som Skip Hop Treetop Friends gör för aktiv stimulering.
+    </p>
 
- <MultiStoreCTA
- productName="Babygym och leksaker 3 till 6 månader"
- brand="ll"
- primaryStore="Jollyroom"
- primaryUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10135908&url=https://www.jollyroom.se/leksaker/babyleksaker/bitringar/mam-cooler-bitring"
- description="Stort sortiment babygym och aktivitetsleksaker för bebis."
-/>
- <MultiStoreCTA
- productName="Leksaker 3 till 6 månader"
- brand="ll"
- primaryStore="Micki"
- description="Klassiska svenska leksaker för de yngsta."
-/>
- <MultiStoreCTA
- productName="Leksaker 3 till 6 månader"
- brand="ll"
- primaryStore="Litenleker"
- description="Stort sortiment babyleksaker och pedagogiska leksaker."
-/>
-<MultiStoreCTA
- productName="Leksaker 3 till 6 månader"
- brand="ll"
- primaryStore="Toyspace"
- primaryUrl="https://id.toyspace.se/t/t?a=1984734030&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.toyspace.se%2Fbabyleksaker"
- description="Skandinaviens största leksaksbutik, babygym och aktivitetsleksaker."
-/>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Magetid under uppsikt</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Magetid stärker nacke, rygg och axelmusklerna och ska ske under uppsikt varje dag. Börja med korta pass på 1 till 3 minuter och öka gradvis. Placera hängande leksaker inom synfältet. Bebisen ska ALDRIG lämnas ensam på mage och ska alltid sova på rygg. De flesta babygym i testet har tillräckligt med fyllning i mattan för att magetid ska vara bekväm.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra leksaker för bebis 3 till 6 månader utifrån stimulansbredd (motorik, syn, hörsel), säkerhet (CE-märkning, materialval, BPA-fritt), åldersanpassning, materialkvali tet och pris. Produkterna är valda bland de mest sålda och eftersökta babyleksakerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler leksaksguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/leksaker/0-3-manader/" class="text-accent underline">Bästa leksaker bebis 0 till 3 månader 2026</a></li>
+        <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker bebis 6 till 12 månader 2026</a></li>
+        <li><a href="/leksaker/montessori/" class="text-accent underline">Montessorileksaker bebis 2026</a></li>
+        <li><a href="/leksaker/" class="text-accent underline">Alla babyleksaker, översikt</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa leksaker bebis 3 till 6 månader 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=114386&url=https://www.jollyroom.se/leksaker/babyleksaker/babygym/skip-hop-treetop-friends-classic-babygym"
+    text="Bra pris hos Jollyroom"
+    productName="Skip Hop Treetop Friends Classic Babygym"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

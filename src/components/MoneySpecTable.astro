@@ -1,0 +1,83 @@
+---
+/**
+ * Spec-jämförelsetabell för money pages (TEST på matstolar 2026-06-12).
+ * Komplement till scan-and-click-tabellen: visar det faktiska spec-rutnätet
+ * för spec-tunga fysiska produkter där köparen vill jämföra siffror sida vid sida.
+ * Transponerad (produkter = rader, specs = kolumner) så den ryms utan horisontell
+ * scroll. Mobil: stackade produktkort (mobilkort + desktoptabell-mönstret).
+ */
+interface Product {
+  name: string;
+  imageUrl?: string;
+  features: Record<string, string>;
+}
+
+interface Props {
+  products: Product[];
+  featureLabels: string[];
+  title?: string;
+}
+
+const { products, featureLabels, title = 'Specifikationer jämförda' } = Astro.props;
+---
+
+<div class="not-prose my-6">
+  <h2 class="font-heading text-xl font-bold text-primary mb-3">{title}</h2>
+
+  {/* ---------- MOBIL: ett kort per produkt med spec-lista ---------- */}
+  <div class="flex flex-col gap-2.5 md:hidden">
+    {products.map((product, index) => (
+    <div class={`rounded-xl border p-3 ${index === 0 ? 'border-accent-light bg-accent-light/8 ring-1 ring-accent-light/30' : 'border-border bg-white'}`}>
+      <div class="flex items-center gap-2.5 mb-2.5">
+        <span class={`flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold text-white flex-shrink-0 ${index === 0 ? 'bg-cta' : 'bg-primary/70'}`}>{index + 1}</span>
+        {product.imageUrl && (
+        <img src={product.imageUrl} alt={product.name} class="w-9 h-9 object-contain rounded-md bg-white border border-border p-0.5 flex-shrink-0" loading="lazy" width="36" height="36" />
+        )}
+        <span class="font-semibold text-sm text-text leading-snug min-w-0">{product.name}</span>
+      </div>
+      <dl class="divide-y divide-border">
+        {featureLabels.map((label) => (
+        <div class="flex justify-between gap-3 py-1.5 text-sm">
+          <dt class="text-text-light">{label}</dt>
+          <dd class="font-medium text-text text-right">{product.features[label] || '-'}</dd>
+        </div>
+        ))}
+      </dl>
+    </div>
+    ))}
+  </div>
+
+  {/* ---------- DESKTOP: transponerad tabell, produkter som rader ---------- */}
+  <div class="hidden md:block">
+    {/* data-mobile-simple: opt-out från ArticleLayouts globala prose-tabell-transform.
+        Komponenten sköter responsiviteten själv (mobilkort ovan + desktoptabell här). */}
+    <table data-mobile-simple class="w-full border-collapse text-sm rounded-xl overflow-hidden border border-border">
+      <thead>
+        <tr class="bg-bg-alt">
+          <th class="text-left p-3 font-semibold text-text">Produkt</th>
+          {featureLabels.map((label) => (
+          <th class="text-left p-3 font-semibold text-text">{label}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {products.map((product, index) => (
+        <tr class={`border-t border-border ${index === 0 ? 'bg-accent-light/8' : (index % 2 === 0 ? 'bg-white' : 'bg-bg-alt/40')}`}>
+          <td class="p-3">
+            <div class="flex items-center gap-2.5">
+              <span class={`flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold text-white flex-shrink-0 ${index === 0 ? 'bg-cta' : 'bg-primary/70'}`}>{index + 1}</span>
+              {product.imageUrl && (
+              <img src={product.imageUrl} alt={product.name} class="w-9 h-9 object-contain rounded-md bg-white border border-border p-0.5 flex-shrink-0" loading="lazy" width="36" height="36" />
+              )}
+              <span class="font-semibold text-text leading-snug">{product.name}</span>
+            </div>
+          </td>
+          {featureLabels.map((label) => (
+          <td class="p-3 text-text">{product.features[label] || '-'}</td>
+          ))}
+        </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

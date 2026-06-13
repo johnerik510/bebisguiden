@@ -1,216 +1,372 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Bärselar', href: '/barselen/' },
- { label: 'Bärsele för pappor' },
+  { label: 'Hem', href: '/' },
+  { label: 'Bärselar', href: '/barselen/' },
+  { label: 'Bärsele för pappor' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'BabyBjörn Move Bärsele 3D Mesh inkl. Regnskydd, Svart',
- badge: 'Bäst för pappor',
- rating: 4.8,
- image: '/images/products/babybjorn-move-barsele-3d-mesh-inkl-regnskydd-svart.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10216427&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-move-barsele-3d-mesh-svart',
- features: {
- 'Bärlägen': '4 lägen',
- 'Material': '3D Mesh',
- 'Vikt barn': '3,2 till 15 kg',
- 'Justering': 'Enkel klickspänne',
- 'Regnskydd': 'Ingår',
- },
- },
- {
- name: 'Ergobaby Omni Deluxe Bärsele Mesh, Natural Beige',
- badge: 'Ergonomisk',
- rating: 4.7,
- image: '/images/products/ergobaby-omni-deluxe.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10283173&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-deluxe-barsele-mesh-natural-beige',
- features: {
- 'Bärlägen': '4 lägen',
- 'Material': 'Mesh',
- 'Vikt barn': '3,2 till 20 kg',
- 'Justering': 'Klickspänne',
- 'Regnskydd': 'Ej inkluderat',
- },
- },
- {
- name: 'Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black',
- badge: 'Bäst budget',
- rating: 4.4,
- image: '/images/products/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=861438&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black',
- features: {
- 'Bärlägen': '4 lägen',
- 'Material': 'Bomull',
- 'Vikt barn': '3,5 till 15 kg',
- 'Justering': 'Spännen',
- 'Regnskydd': 'Ej inkluderat',
- },
- },
+  {
+    name: 'BabyBjörn Move Bärsele 3D Mesh inkl. Regnskydd, Svart',
+    brand: 'BabyBjörn',
+    rating: 4.8,
+    badge: 'Bäst för pappor',
+    usps: ['Enkel klickjustering', '3D Mesh andas', '4 bärpositioner'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10216427&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-move-barsele-3d-mesh-svart',
+    imageUrl: '/images/products/babybjorn-move-barsele-3d-mesh-inkl-regnskydd-svart.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Ergonomisk bärsele med 3D Mesh och enkel klickjustering. Passar 3,2 till 15 kg. Inkluderar regnskydd.',
+    features: { 'Bärlägen': '4 lägen', 'Material': '3D Mesh', 'Vikt barn': '3,2 till 15 kg', 'Justering': 'Enkel klickspänne', 'Regnskydd': 'Ingår' },
+    alsoAt: [],
+  },
+  {
+    name: 'Ergobaby Omni Deluxe Bärsele Mesh, Natural Beige',
+    brand: 'Ergobaby',
+    rating: 4.7,
+    badge: 'Bäst ergonomi',
+    usps: ['Bred midjerem', 'Bär upp till 20 kg', 'Framåtvänd position'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10283173&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-deluxe-barsele-mesh-natural-beige',
+    imageUrl: '/images/products/ergobaby-omni-deluxe.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Ergonomisk bärsele med 4 bärpositioner och bred midjerem. Passar 3,2 till 20 kg.',
+    features: { 'Bärlägen': '4 lägen', 'Material': 'Mesh', 'Vikt barn': '3,2 till 20 kg', 'Justering': 'Klickspänne', 'Regnskydd': 'Ej inkluderat' },
+    alsoAt: [],
+  },
+  {
+    name: 'Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black',
+    brand: 'Beemoo',
+    rating: 4.4,
+    badge: 'Bäst budget',
+    usps: ['Väldigt prisvärd', '4-i-1 med höftbärare', '4 bärpositioner'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=861438&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black',
+    imageUrl: '/images/products/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Prisvärd 4-i-1 bärsele och höftbärare med fyra bärpositioner. Passar 3,5 till 15 kg.',
+    features: { 'Bärlägen': '4 lägen', 'Material': 'Bomull', 'Vikt barn': '3,5 till 15 kg', 'Justering': 'Spännen', 'Regnskydd': 'Ej inkluderat' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Bärlägen', 'Material', 'Vikt barn', 'Justering', 'Regnskydd'];
+const specLabels = ['Bärlägen', 'Material', 'Vikt barn', 'Justering', 'Regnskydd'];
 
 const faqItems = [
- {
- question: 'Finns det bärselar speciellt designade för pappor?',
- answer: 'De flesta ergonomiska bärselar är unisex och passar lika bra för mamma och pappa, de justeras individuellt via axel- och midjeremmar. Det finns inga bärselar specifikt designade bara för pappor, men modeller med enkel justering (klickspännen snarare än ringar och band) och neutralare design uppskattas ofta mer av pappor. BabyBjörn Move och Ergobaby är populära val.',
- },
- {
- question: 'Hur enkelt är det för pappor att sätta på en bärsele?',
- answer: 'Det varierar kraftigt mellan modeller. BabyBjörn Move och liknande klickbärselar är lättast, man kan ta på och av den utan hjälp. Vävda sjalar och ringslingor kräver mer övning och är svårare att justera snabbt. Om bärselen delas i familjen, välj en modell som kan justeras snabbt mellan olika bärare utan att behöva ombinda hela systemet.',
- },
- {
- question: 'Vilken bärposition är bäst för pappor?',
- answer: 'De flesta pappor föredrar att bära bebisen framåtvänd (mot världen) när barnet blivit lite äldre och vill se sig omkring, vanligtvis från 4 till 5 månader. Ergobaby och BabyBjörn har båda framåtvända positioner. För nyfödda är inåtvänd (mot bäraren) bäst för bebisens höfter och ryggrad. Höftbärare är praktisk för korta stunder med äldre bebis.',
- },
- {
- question: 'Hur länge kan man bära bebis i bärsele?',
- answer: 'Det beror på modell och barnets vikt. De flesta ergonomiska bärselar klarar barn upp till 15 till 20 kg (3 till 4 år). Men komforten minskar i regel när barnet passerar 10 till 12 kg. Ergobaby Omni klarar upp till 20 kg. BabyBjörn Move klarar 15 kg. För dagligt bärande i länge stunder, välj en modell med bred midjerem som avlastar ryggen.',
- },
- {
- question: 'Är det säkert för pappor med bred axel/bröstkorg att använda bärsele?',
- answer: 'Ja, ergonomiska bärselar med justerbara axelremmar och midjerem passar de flesta kroppstyper. Kontrollera att axelremmarna kan ställas in tillräckligt brett för din axelbredd. BabyBjörn Move och Ergobaby har generösa justeringsintervall. Om du har ovanligt bred bröstkorg, prova gärna bärselen i butik innan köp.',
- },
+  {
+    question: 'Finns det bärselar speciellt designade för pappor?',
+    answer: 'De flesta ergonomiska bärselar är unisex och passar lika bra för mamma och pappa, de justeras individuellt via axel- och midjeremmar. Det finns inga bärselar specifikt designade bara för pappor, men modeller med enkel justering (klickspännen snarare än ringar och band) och neutralare design uppskattas ofta mer av pappor. BabyBjörn Move och Ergobaby är populära val.',
+  },
+  {
+    question: 'Hur enkelt är det för pappor att sätta på en bärsele?',
+    answer: 'Det varierar kraftigt mellan modeller. BabyBjörn Move och liknande klickbärselar är lättast, man kan ta på och av den utan hjälp. Vävda sjalar och ringslingor kräver mer övning och är svårare att justera snabbt. Om bärselen delas i familjen, välj en modell som kan justeras snabbt mellan olika bärare utan att behöva ombinda hela systemet.',
+  },
+  {
+    question: 'Vilken bärposition är bäst för pappor?',
+    answer: 'De flesta pappor föredrar att bära bebisen framåtvänd (mot världen) när barnet blivit lite äldre och vill se sig omkring, vanligtvis från 4 till 5 månader. Ergobaby och BabyBjörn har båda framåtvända positioner. För nyfödda är inåtvänd (mot bäraren) bäst för bebisens höfter och ryggrad. Höftbärare är praktisk för korta stunder med äldre bebis.',
+  },
+  {
+    question: 'Hur länge kan man bära bebis i bärsele?',
+    answer: 'Det beror på modell och barnets vikt. De flesta ergonomiska bärselar klarar barn upp till 15 till 20 kg (3 till 4 år). Men komforten minskar i regel när barnet passerar 10 till 12 kg. Ergobaby Omni klarar upp till 20 kg. BabyBjörn Move klarar 15 kg. För dagligt bärande i länge stunder, välj en modell med bred midjerem som avlastar ryggen.',
+  },
+  {
+    question: 'Är det säkert för pappor med bred axel/bröstkorg att använda bärsele?',
+    answer: 'Ja, ergonomiska bärselar med justerbara axelremmar och midjerem passar de flesta kroppstyper. Kontrollera att axelremmarna kan ställas in tillräckligt brett för din axelbredd. BabyBjörn Move och Ergobaby har generösa justeringsintervall. Om du har ovanligt bred bröstkorg, prova gärna bärselen i butik innan köp.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bärsele för pappor 2026: BabyBjörn Move bäst i test",
   description: "Bärsele för pappor 2026: BabyBjörn Move vinner med enkel klickjustering och 3D Mesh. Ergobaby Omni bäst ergonomi. 3 bärselar jämförda för enkel delning i familjen.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Bärselar",
   image: "/images/products/babybjorn-move-barsele-3d-mesh-inkl-regnskydd-svart.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bärsele för pappor 2026: BabyBjörn Move bäst i test"
- description="Bärsele för pappor 2026: BabyBjörn Move vinner med klickjustering och 3D Mesh. Ergobaby Omni bäst ergonomi. 3 modeller jämförda."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/barselen/pappa/"
- updatedDate="2026-04-14"
- relatedArticles={[
- { title: 'Bästa bärselen 2026', href: '/barselen/' },
- { title: 'Bärsele för nyfödd', href: '/barselen/nyfodd/' },
- { title: 'Ergonomisk bärsele', href: '/barselen/ergonomisk/' },
- { title: 'Bästa barnvagnen 2026', href: '/barnvagnar/' },
- ]}
+  title="Bärsele för pappor 2026: BabyBjörn Move bäst i test"
+  description="Bärsele för pappor 2026: BabyBjörn Move vinner med klickjustering och 3D Mesh. Ergobaby Omni bäst ergonomi. 3 modeller jämförda."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barselen/pappa/"
   datePublished="2026-03-18"
+  updatedDate="2026-06-12"
+  showAuthor={false}
+  relatedArticles={[
+    { title: 'Bästa bärselen 2026', href: '/barselen/' },
+    { title: 'Bärsele för nyfödd', href: '/barselen/nyfodd/' },
+    { title: 'Ergonomisk bärsele', href: '/barselen/ergonomisk/' },
+    { title: 'Bästa barnvagnen 2026', href: '/barnvagnar/' },
+  ]}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 BabyBjörn Move 3D Mesh vinner bärsele för pappor bäst i test 2026. Det luftiga mesh-materialet håller bäraren sval även vid längre bärpass. Fyra bärpositioner och ett enkelt klickspänne gör att selen snabbt anpassas mellan olika kroppsstorlekar när den delas i familjen, och regnskydd ingår.
-	 </p>
 
- <TopPick product={products[0]} description="BabyBjörn Move 3D Mesh vinner test av bärsele för pappor 2026. Luftigt mesh-material håller bäraren sval, fyra bärpositioner och enkel anpassning för olika kroppsstorlekar utan att skruva om hela selen." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-03-18" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bärselar för pappor 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken bärsele är bäst för pappor 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      BabyBjörn Move 3D Mesh vinner bärsele för pappor bäst i test 2026: luftigt mesh-material som håller bäraren sval, fyra bärpositioner och ett enkelt klickspänne som snabbt anpassas mellan olika kroppsstorlekar när selen delas i familjen, och regnskydd ingår. Bäst ergonomi: Ergobaby Omni Deluxe (bred midjerem, upp till 20 kg). Bäst budget: Beemoo CARE Carry Comfort.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst för pappor 2026</p>
- <p class="text-sm text-text-light"><strong><a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> Move</strong> är bäst för pappor, enkel klickjustering, snygg design och 3D Mesh som andas. <strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> Omni Deluxe</strong> är bäst ergonomi till lägre pris. <strong>Beemoo CARE Carry</strong> är bäst budget.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="BabyBjörn"
+    name="Move Bärsele 3D Mesh inkl. Regnskydd, Svart"
+    image="/images/products/babybjorn-move-barsele-3d-mesh-inkl-regnskydd-svart.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10216427&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-move-barsele-3d-mesh-svart"
+    store="Jollyroom"
+    badge="Bäst för pappor"
+    description="Vinner test av bärsele för pappor 2026. Luftigt 3D Mesh håller bäraren sval, fyra bärpositioner och enkel anpassning för olika kroppsstorlekar utan att skruva om hela selen. Regnskydd ingår."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Bärselar för pappor 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="BabyBjörn Move Bärsele 3D Mesh inkl. Regnskydd, Svart"
- image="/images/products/babybjorn-move-barsele-3d-mesh-inkl-regnskydd-svart.webp"
- badge="Bäst för pappor"
- rating={4.8}
- image="/images/products/babybjorn-move-barsele-3d-mesh-inkl-regnskydd-svart.webp"
- ageRange="3,2 till 15 kg"
- pros={['Enkel klickjustering, tar på/av på sekunder', 'Andas bra med 3D Mesh', 'Snygg och neutral design', 'Regnskydd ingår', '4 bärpositioner']}
- cons={['Högt pris', 'Max 15 kg, kortare användningstid']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10216427&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-move-barsele-3d-mesh-svart"
- />
+  {/* Vinnar-callout */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst för pappor 2026</p>
+    <p class="text-sm text-text-light"><strong><a href="/marken/babybjorn/" class="text-accent underline">BabyBjörn</a> Move</strong> är bäst för pappor, enkel klickjustering, snygg design och 3D Mesh som andas. <strong><a href="/marken/ergobaby/" class="text-accent underline">Ergobaby</a> Omni Deluxe</strong> är bäst ergonomi till lägre pris. <strong>Beemoo CARE Carry</strong> är bäst budget.</p>
+  </div>
 
- <ProductCard
- name="Ergobaby Omni Deluxe Bärsele Mesh, Natural Beige"
- image="/images/products/ergobaby-omni-deluxe.webp"
- badge="Bäst ergonomi"
- rating={4.7}
- image="/images/products/ergobaby-omni-deluxe.webp"
- ageRange="3,2 till 20 kg"
- pros={['Bred midjerem, avlastar ryggen', 'Bär upp till 20 kg', '4 bärpositioner inkl. framåtvänd', 'Justeras enkelt för olika bärare', 'Prisvärd']}
- cons={['Tar lite längre att justera', 'Andas inte lika bra som Move vid hetta']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10283173&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-deluxe-barsele-mesh-natural-beige"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black"
- badge="Bäst budget"
- rating={4.4}
- image="/images/products/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black.webp"
- ageRange="3,5 till 15 kg"
- pros={['Väldigt prisvärd', '4-i-1 med höftbärare', '4 bärpositioner', 'Enkel att ta på']}
- cons={['Enklare material', 'Kräver mer inläsning för korrekt bärning', 'Andas sämre']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=861438&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. BabyBjörn Move 3D Mesh, bäst för pappor</h2>
+    <MoneyProductCard
+      brand="BabyBjörn"
+      name="BabyBjörn Move Bärsele 3D Mesh inkl. Regnskydd, Svart"
+      rating={4.8}
+      rank={1}
+      badge="Bäst för pappor"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/babybjorn-move-barsele-3d-mesh-inkl-regnskydd-svart.webp"
+      imageAlt="BabyBjörn Move Bärsele 3D Mesh i svart"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10216427&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-move-barsele-3d-mesh-svart"
+      pros={['Enkel klickjustering, tar på/av på sekunder', 'Andas bra med 3D Mesh', 'Snygg och neutral design', 'Regnskydd ingår', '4 bärpositioner']}
+      cons={['Premiumsegment', 'Max 15 kg, kortare användningstid']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BabyBjörn Move 3D Mesh vinner test av bärsele för pappor 2026. Det luftiga mesh-materialet håller bäraren sval även vid längre bärpass, och det enkla klickspännet gör att selen snabbt tas på och av utan hjälp. När bärselen delas i familjen anpassas den smidigt mellan olika kroppsstorlekar utan att hela systemet behöver bindas om.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Fyra bärpositioner och ett medföljande regnskydd gör den användbar året om. Den ligger i premiumsegmentet och är godkänd för barn upp till 15 kg, vilket ger något kortare användningstid än modeller som klarar 20 kg. För daglig användning och enkel delning är den ändå svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10216427&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-move-barsele-3d-mesh-svart" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Vad ska man tänka på som pappa när man väljer bärsele?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Ergobaby Omni Deluxe, bäst ergonomi</h2>
+    <MoneyProductCard
+      brand="Ergobaby"
+      name="Ergobaby Omni Deluxe Bärsele Mesh, Natural Beige"
+      rating={4.7}
+      rank={2}
+      badge="Bäst ergonomi"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/ergobaby-omni-deluxe.webp"
+      imageAlt="Ergobaby Omni Deluxe Bärsele i natural beige"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10283173&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-deluxe-barsele-mesh-natural-beige"
+      pros={['Bred midjerem, avlastar ryggen', 'Bär upp till 20 kg', '4 bärpositioner inkl. framåtvänd', 'Justeras enkelt för olika bärare', 'Prisvärd']}
+      cons={['Tar lite längre att justera', 'Andas inte lika bra som Move vid hetta']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ergobaby Omni Deluxe är valet för dig som prioriterar ergonomi och lång användningstid. Den breda midjeremmen flyttar belastningen från axlarna till höfterna, vilket gör skillnad vid längre bärpass, och stolen klarar barn ända upp till 20 kg. Fyra bärpositioner inklusive framåtvänd täcker hela barnets bärtid.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Justeringen tar lite längre tid än BabyBjörns klickspänne, men ger samtidigt en mer exakt passform, och selen ställs enkelt om mellan olika bärare. I varmt väder andas mesh-materialet inte fullt lika bra som Moves 3D Mesh. För familjen som vill ha ergonomi och lång livslängd är den ett starkt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10283173&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/ergobaby-omni-deluxe-barsele-mesh-natural-beige" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Enkel justering är nyckeln</h3>
- <p>Om bärselen delas med partnern behöver den kunna justeras snabbt och enkelt. Klickspännen (som BabyBjörn Move) är snabbast. Sliderspännen (som Ergobaby) är lite långsammare men ger mer exakt passform. Ringar och vävda sjalar är svårast att justera och passar sällan i delningssituationer.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Beemoo CARE Carry Comfort, bäst budget</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo CARE Carry Comfort 4-in-1 Bärsele & Höftbärare, Black"
+      rating={4.4}
+      rank={3}
+      badge="Bäst budget"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black.webp"
+      imageAlt="Beemoo CARE Carry Comfort 4-in-1 Bärsele och höftbärare i svart"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=861438&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black"
+      pros={['Väldigt prisvärd', '4-i-1 med höftbärare', '4 bärpositioner', 'Enkel att ta på']}
+      cons={['Enklare material', 'Kräver mer inläsning för korrekt bärning', 'Andas sämre']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo CARE Carry Comfort ger fyra bärpositioner och en inbyggd höftbärare till en bråkdel av priset för premiumselarna. 4-i-1-lösningen gör den flexibel, och den är enkel att ta på för den som vill komma igång snabbt utan att lägga en stor summa.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Materialet är enklare än hos Move och Omni och andas sämre i värme, och den kräver lite mer inläsning för att bäras korrekt. För familjen med begränsad budget eller som vill ha en kompletterande sele är den ändå ett klokt köp.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=861438&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/beemoo-care-carry-comfort-4-in-1-barsele-hoftbarare-black" />
 
- <h3>Ryggstöd och midjerem</h3>
- <p>En bred och välputstopprad midjerem tar bort belastningen från axlarna och överfört den till höfterna, viktigt för längre bärpass. Om du ska bära bebisen i mer än 30 till 45 minuter i taget, prioritera en bärsele med ordentlig midjerem framför en enklare modell.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">Även värt att titta på: Najell Original Volume 3</h2>
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Najell Original Volume 3 Night Black är en premiumsele i svart med uppgraderat rygg- och axelstöd för långa bärstunder. Den passar pappan som vill ha extra avlastning vid dagliga, längre pass och finns hos Baby V.
+    </p>
+    <MoneyCTABox store="Baby V" productName="Najell Original Volume 3 Night Black" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1N223172&url=https://www.babyv.se/sv/articles/1.73.25508/najell-barsele-original-vol-3-night-black" description="Premium bärsele i svart, uppgraderad rygg- och axelstöd för långa bärstunder." />
 
- <h3>Säkerhet TICKS</h3>
- <p>Kom ihåg TICKS-regeln: Tight (tät mot kroppen), In view at all times (bebisens ansikte alltid synligt), Close enough to kiss (kunde kyssa bebisens huvud), Keep chin off chest (hakan fri från bröstet), Supported back (ryggen stöttad i M-position).</p>
- </div>
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre bärselar granskade plus ett premiumalternativ. BabyBjörn Move vinner på enkel delning och svalt 3D Mesh, Ergobaby Omni Deluxe på ergonomi och lång användningstid, och Beemoo CARE Carry Comfort på pris. Vill du jämföra fler modeller? Se vår kompletta <a href="/barselen/" class="text-accent hover:text-accent-dark underline">test av bästa bärselen 2026</a> eller läs guiden om <a href="/barselen/ergonomisk/" class="text-accent hover:text-accent-dark underline">ergonomisk bärsele</a>.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler bärseleguider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, alla typer jämförda</a></li>
- <li><a href="/barselen/nyfodd/" class="text-accent underline">Bärsele för nyfödd 2026</a></li>
- <li><a href="/barselen/ergonomisk/" class="text-accent underline">Ergonomisk bärsele 2026</a></li>
- <li><a href="/barselen/ringslinga/" class="text-accent underline">Ringslinga bärsele 2026</a></li>
- </ul>
- </div>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bärselar för pappor 2026" />
 
- <FAQ items={faqItems} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad ska du tänka på som pappa när du väljer bärsele?</h2>
 
- <ProductSchema products={[
- {
- name: 'BabyBjörn Move Bärsele 3D Mesh inkl. Regnskydd, Svart',
- description: 'Ergonomisk bärsele med 3D Mesh och enkel klickjustering. Passar 3,2 till 15 kg. Inkluderar regnskydd.',
- image: 'https://bebisguiden.se/images/products/babybjorn-move-barsele.webp',
- brand: 'BabyBjörn',
- ratingValue: 4.8,
- reviewCount: 1,
- },
- {
- name: 'Ergobaby Omni Deluxe Bärsele Mesh, Natural Beige',
- description: 'Ergonomisk bärsele med 4 bärpositioner och bred midjerem. Passar 3,2 till 20 kg.',
- image: 'https://bebisguiden.se/images/products/ergobaby-omni-deluxe.webp',
- brand: 'Ergobaby',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- ]} />
- <MultiStoreCTA
- productName="Najell Original Volume 3 Night Black"
- brand="najell"
- primaryStore="Baby V"
- primaryUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1N223172&url=https://www.babyv.se/sv/articles/1.73.25508/najell-barsele-original-vol-3-night-black"
- description="Premium bärsele i svart, uppgraderad rygg- och axelstöd för långa bärstunder."
-/>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Enkel justering är nyckeln</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Om bärselen delas med partnern behöver den kunna justeras snabbt och enkelt. Klickspännen (som BabyBjörn Move) är snabbast. Sliderspännen (som Ergobaby) är lite långsammare men ger mer exakt passform. Ringar och vävda sjalar är svårast att justera och passar sällan i delningssituationer.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Ryggstöd och midjerem</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En bred och välvadderad midjerem tar bort belastningen från axlarna och för över den till höfterna, viktigt för längre bärpass. Om du ska bära bebisen i mer än 30 till 45 minuter i taget, prioritera en bärsele med ordentlig midjerem framför en enklare modell.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet enligt TICKS</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kom ihåg TICKS-regeln: Tight (tät mot kroppen), In view at all times (bebisens ansikte alltid synligt), Close enough to kiss (du kan kyssa bebisens huvud), Keep chin off chest (hakan fri från bröstet), Supported back (ryggen stöttad i M-position).
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat tre bärselar utifrån enkel justering (hur snabbt selen anpassas mellan olika bärare), komfort och avlastning (midjerem och ryggstöd vid längre pass), ventilation (material och andningsförmåga), bärpositioner och användningstid (max barnvikt). Produkterna är valda bland de mest sålda och eftersökta bärselarna i Sverige, med fokus på modeller som fungerar bra när selen delas i familjen. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler bärseleguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, alla typer jämförda</a></li>
+        <li><a href="/barselen/nyfodd/" class="text-accent underline">Bärsele för nyfödd 2026</a></li>
+        <li><a href="/barselen/ergonomisk/" class="text-accent underline">Ergonomisk bärsele 2026</a></li>
+        <li><a href="/barselen/ringslinga/" class="text-accent underline">Ringslinga bärsele 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa bärselen för pappor 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10216427&url=https://www.jollyroom.se/babyprodukter/barselar-barsjalar/barselar/babybjorn-move-barsele-3d-mesh-svart"
+    text="Bra pris hos Jollyroom"
+    productName="BabyBjörn Move Bärsele 3D Mesh"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

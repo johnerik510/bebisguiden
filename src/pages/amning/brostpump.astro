@@ -1,271 +1,445 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Amning & matning', href: '/amning/' },
- { label: 'Bröstpump' },
+  { label: 'Hem', href: '/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Bröstpump' },
 ];
 
+// No-price-policy. Affiliate-länkar oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Elvie Pump Singel',
- badge: 'Bäst i test',
- rating: 4.7,
- image: '/images/products/elvie-pump-singel.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10236254&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-pump-elektrisk-brostpump-singel',
- additionalCtaHrefs: [
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b88a1128-8944-40ab-9f27-c3584faeee90&url=https://www.babysam.se/broestpump-singel-white-onesize' },
- ],
- features: {
- 'Typ': 'Elektrisk, trådlös',
- 'Antal bröst': '1 (köps parvis)',
- 'Decibelnivå': 'Under 45 dB',
- 'App-styrd': 'Ja',
- },
- },
- {
- name: 'Medela Swing Maxi',
- badge: 'Bäst dubbelpump',
- rating: 4.6,
- image: '/images/products/medela-swing-maxi.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump',
- additionalCtaHrefs: [
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=856f94a1-02a4-47b4-a08b-9c8247c2141b&url=https://www.babysam.se/swing-maxi-dubbel-broestpump-elektrisk-onesize' },
- ],
- features: {
- 'Typ': 'Elektrisk, kabelansluten',
- 'Antal bröst': '2 (dubbelpump)',
- 'Decibelnivå': 'Ca 55 dB',
- 'App-styrd': 'Nej',
- },
- },
- {
- name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
- image: '/images/products/medela-freestyle-hands-free.webp',
- badge: 'Bäst klinisk standard',
- rating: 4.6,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump',
- features: {
- 'Typ': 'Elektrisk, trådlös',
- 'Antal bröst': '2 (dubbelpump)',
- 'Decibelnivå': 'Under 45 dB',
- 'App-styrd': 'Nej',
- },
- },
- {
- name: 'Philips Avent Manual',
- image: '/images/products/philips-avent-manual.webp',
- badge: 'Bästa manuella',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell',
- features: {
- 'Typ': 'Manuell',
- 'Antal bröst': '1',
- 'Decibelnivå': 'Tyst',
- 'App-styrd': 'Nej',
- },
- },
- {
- name: 'Lansinoh Silikonbröstpump',
- image: '/images/products/lansinoh-silikonbrostpump.webp',
- badge: 'Prisvärdast',
- rating: 4.2,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10031767&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-silikonbrostpump',
- features: {
- 'Typ': 'Passiv silikonpump',
- 'Antal bröst': '1',
- 'Decibelnivå': 'Ljudlös',
- 'App-styrd': 'Nej',
- },
- },
+  {
+    name: 'Elvie Pump Singel',
+    brand: 'Elvie',
+    rating: 4.7,
+    badge: 'Bäst i test',
+    usps: ['Trådlös, sitter i behån', 'Tyst under 45 dB', 'App-styrd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10236254&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-pump-elektrisk-brostpump-singel',
+    imageUrl: '/images/products/elvie-pump-singel.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Trådlös elektrisk bröstpump som sitter inuti behån. App-styrd med logg över volym och session. Under 45 dB.',
+    features: { 'Typ': 'Elektrisk, trådlös', 'Antal bröst': '1 (köps parvis)', 'Decibelnivå': 'Under 45 dB', 'App-styrd': 'Ja' },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b88a1128-8944-40ab-9f27-c3584faeee90&url=https://www.babysam.se/broestpump-singel-white-onesize' },
+    ],
+  },
+  {
+    name: 'Medela Swing Maxi',
+    brand: 'Medela',
+    rating: 4.6,
+    badge: 'Bäst dubbelpump',
+    usps: ['Dubbelpump, båda bröst samtidigt', 'Beprövad 2-fas-expression', 'Brett tillbehörssortiment'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump',
+    imageUrl: '/images/products/medela-swing-maxi.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Elektrisk dubbelpump med beprövad 2-fas-expressionsteknik. Pumpar båda brösten samtidigt.',
+    features: { 'Typ': 'Elektrisk, kabelansluten', 'Antal bröst': '2 (dubbelpump)', 'Decibelnivå': 'Ca 55 dB', 'App-styrd': 'Nej' },
+    alsoAt: [
+      { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=856f94a1-02a4-47b4-a08b-9c8247c2141b&url=https://www.babysam.se/swing-maxi-dubbel-broestpump-elektrisk-onesize' },
+    ],
+  },
+  {
+    name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
+    brand: 'Medela',
+    rating: 4.6,
+    badge: 'Bäst klinisk standard',
+    usps: ['Trådlös hands-free', 'Klinisk standard', 'Under 45 dB'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump',
+    imageUrl: '/images/products/medela-freestyle-hands-free.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Trådlös elektrisk dubbelpump med klinisk standard. Tyst under 45 dB och hands-free pumpning.',
+    features: { 'Typ': 'Elektrisk, trådlös', 'Antal bröst': '2 (dubbelpump)', 'Decibelnivå': 'Under 45 dB', 'App-styrd': 'Nej' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent Manual',
+    brand: 'Philips Avent',
+    rating: 4.3,
+    badge: 'Bästa manuella',
+    usps: ['Tyst, kräver ingen el', 'Prisvärd backup-pump', 'Mjuk kudde mot bröstet'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell',
+    imageUrl: '/images/products/philips-avent-manual.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Manuell bröstpump för tyst och portabel pumpning. Bra som backup eller komplement till elektrisk pump.',
+    features: { 'Typ': 'Manuell', 'Antal bröst': '1', 'Decibelnivå': 'Tyst', 'App-styrd': 'Nej' },
+    alsoAt: [],
+  },
+  {
+    name: 'Lansinoh Silikonbröstpump',
+    brand: 'Lansinoh',
+    rating: 4.2,
+    badge: 'Prisvärdast',
+    usps: ['Passiv, samlar mjölk automatiskt', 'Enkel att rengöra', 'Mycket prisvärd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10031767&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-silikonbrostpump',
+    imageUrl: '/images/products/lansinoh-silikonbrostpump.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Passiv silikonpump som samlar mjölk från det andra bröstet under amning. Enkel, tyst och prisvärd.',
+    features: { 'Typ': 'Passiv silikonpump', 'Antal bröst': '1', 'Decibelnivå': 'Ljudlös', 'App-styrd': 'Nej' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Typ', 'Antal bröst', 'Decibelnivå', 'App-styrd'];
+const specLabels = ['Typ', 'Antal bröst', 'Decibelnivå', 'App-styrd'];
 
 const faqItems = [
- {
- question: 'Vilken bröstpump är bäst 2026?',
- answer: 'Elvie Pump Singel är bäst för diskret och trådlös pumpning, sitter inuti behån och under 45 dB. Medela Swing Maxi är bäst för regelbunden dubbelpumpning, halverar pumptiden med beprövad 2-fas-expressionsteknik. Spectra S1 Plus är bäst för klinisk standard med laddningsbart batteri. Philips Avent Manual är bäst som tyst backup-pump.',
- },
- {
- question: 'Vad är skillnaden mellan elektrisk och manuell bröstpump?',
- answer: 'En elektrisk pump pumpar automatiskt och är effektivare, oumbärlig om du pumpar dagligen eller vid låg mjölkproduktion. En manuell pump kräver att du använder handen för att skapa sug, men är tystare, billigare och enkel att ta med på resa. En passiv pump som Haakaa samlar mjölk som rinner ut från det andra bröstet under amning.',
- },
- {
- question: 'Är Elvie Pump värd priset jämfört med Medela?',
- answer: 'Elvie Pump är värd priset om du behöver pumpa diskret på jobbet eller röra dig fritt under pumpningen. Medela Swing Maxi som dubbelpump är snabbare per tidsenhet, ca 15 till 20 minuter för båda brösten, och kostar mindre. Elvie pumpas ett bröst åt gången om du inte köper två enheter. Välj Elvie för frihet, Medela för effektivitet.',
- },
- {
- question: 'Är Spectra S1 Plus bättre än Medela Swing Maxi?',
- answer: 'Spectra S1 Plus är laddningsbar och tystare (ca 45 dB) än Medela Swing Maxi, och rekommenderas av många laktationskonsulenter. Medela Swing Maxi är mer välbeprövad med brett tillbehörssortiment i svenska butiker. Välj Spectra för portabelt och tystare bruk, Medela för välkänd prestanda och enkel serviceåtkomst.',
- },
- {
- question: 'När ska man börja använda bröstpump?',
- answer: 'Vänta tills amningen är välestablerad, vanligtvis efter 4 till 6 veckor, innan du introducerar pumpning. Pumpa för att bygga upp ett mjölklager i frysen, upprätthålla produktionen vid arbetsåtergång, eller om bebisen har svårt att ta bröstet. Tala alltid med barnmorska eller laktationskonsulent om du är osäker.',
- },
- {
- question: 'Hur länge tar en pumpningssession med bröstpump?',
- answer: 'En genomsnittlig pumpningssession tar 15 till 20 minuter per bröst med en elektrisk enkelpump, eller 15 till 20 minuter totalt med en dubbelpump. En manuell pump tar längre tid och kräver mer ansträngning. Pumptiden varierar individuellt beroende på mjölkproduktion och hur länge det gått sedan senaste amning.',
- },
+  {
+    question: 'Vilken bröstpump är bäst 2026?',
+    answer: 'Elvie Pump Singel är bäst för diskret och trådlös pumpning, sitter inuti behån och under 45 dB. Medela Swing Maxi är bäst för regelbunden dubbelpumpning, halverar pumptiden med beprövad 2-fas-expressionsteknik. Spectra S1 Plus är bäst för klinisk standard med laddningsbart batteri. Philips Avent Manual är bäst som tyst backup-pump.',
+  },
+  {
+    question: 'Vad är skillnaden mellan elektrisk och manuell bröstpump?',
+    answer: 'En elektrisk pump pumpar automatiskt och är effektivare, oumbärlig om du pumpar dagligen eller vid låg mjölkproduktion. En manuell pump kräver att du använder handen för att skapa sug, men är tystare, billigare och enkel att ta med på resa. En passiv pump som Haakaa samlar mjölk som rinner ut från det andra bröstet under amning.',
+  },
+  {
+    question: 'Är Elvie Pump värd priset jämfört med Medela?',
+    answer: 'Elvie Pump är värd priset om du behöver pumpa diskret på jobbet eller röra dig fritt under pumpningen. Medela Swing Maxi som dubbelpump är snabbare per tidsenhet, ca 15 till 20 minuter för båda brösten, och kostar mindre. Elvie pumpas ett bröst åt gången om du inte köper två enheter. Välj Elvie för frihet, Medela för effektivitet.',
+  },
+  {
+    question: 'Är Spectra S1 Plus bättre än Medela Swing Maxi?',
+    answer: 'Spectra S1 Plus är laddningsbar och tystare (ca 45 dB) än Medela Swing Maxi, och rekommenderas av många laktationskonsulenter. Medela Swing Maxi är mer välbeprövad med brett tillbehörssortiment i svenska butiker. Välj Spectra för portabelt och tystare bruk, Medela för välkänd prestanda och enkel serviceåtkomst.',
+  },
+  {
+    question: 'När ska man börja använda bröstpump?',
+    answer: 'Vänta tills amningen är välestablerad, vanligtvis efter 4 till 6 veckor, innan du introducerar pumpning. Pumpa för att bygga upp ett mjölklager i frysen, upprätthålla produktionen vid arbetsåtergång, eller om bebisen har svårt att ta bröstet. Tala alltid med barnmorska eller laktationskonsulent om du är osäker.',
+  },
+  {
+    question: 'Hur länge tar en pumpningssession med bröstpump?',
+    answer: 'En genomsnittlig pumpningssession tar 15 till 20 minuter per bröst med en elektrisk enkelpump, eller 15 till 20 minuter totalt med en dubbelpump. En manuell pump tar längre tid och kräver mer ansträngning. Pumptiden varierar individuellt beroende på mjölkproduktion och hur länge det gått sedan senaste amning.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bästa bröstpump 2026: elektrisk och manuell jämförda",
   description: "Bästa bröstpump 2026: vi jämför elektriska dubbelpumpar, enkelpumpar och manuella alternativ. Jämförelse på sugstyrka, buller, batteritid och pris.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
   category: "Amning",
   image: "/images/products/elvie-pump-singel.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bästa bröstpump 2026: elektrisk och manuell"
- description="Bästa bröstpumpar 2026: elektrisk dubbelpump, singelpump och manuell jämförda. Sugstyrka, buller, batteritid och pris för dig som ammar."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/amning/brostpump/"
- updatedDate="2026-05-04"
+  title="Bästa bröstpump 2026: elektrisk och manuell jämförda"
+  description="Bästa bröstpump 2026: vi jämför elektriska dubbelpumpar, enkelpumpar och manuella alternativ. Jämförelse på sugstyrka, buller, batteritid och pris."
+  breadcrumbs={breadcrumbs}
   datePublished="2026-04-16"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
- Elvie Pump Singel är bästa bröstpumpen 2026. Den är helt trådlös och sitter inuti behån, så du kan pumpa diskret utan kabel. Med en ljudnivå under 45 dB och app-styrning är den en av de tystaste och mest portabla elektriska bröstpumparna vi jämfört.
- </p>
 
- <TopPick product={products[0]} description="Elvie Pump Singel vinner 2026 för den som vill pumpa diskret utan kabel. Sitter inuti behån, är app-styrd och under 45 dB, vilket gör den till en av de tystaste och mest portabla elektriska bröstpumparna vi jämfört." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-04-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, bröstpumpar 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken bröstpump är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Elvie Pump Singel är bäst i test 2026 för diskret och trådlös pumpning: sitter inuti behån, är app-styrd och håller sig under 45 dB. Medela Swing Maxi är bäst dubbelpump med beprövad 2-fas-expression. Medela Freestyle Hands-free är bäst klinisk standard trådlöst. Philips Avent Manual är tystaste manuella alternativet.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Elvie Pump</strong> är bäst för diskret trådlös pumpning. <strong><a href="/marken/medela/" class="text-accent underline">Medela</a> Swing Maxi</strong> är bäst för dubbelpumpning och effektivitet. <strong>Spectra S1 Plus</strong> är bäst för klinisk kvalitet.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Elvie"
+    name="Pump Singel"
+    image="/images/products/elvie-pump-singel.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10236254&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-pump-elektrisk-brostpump-singel"
+    store="Jollyroom"
+    description="Vinner bästa bröstpump 2026 för den som vill pumpa diskret utan kabel. Sitter inuti behån, är app-styrd och håller sig under 45 dB, vilket gör den till en av de tystaste och mest portabla elektriska bröstpumparna vi jämfört."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Bröstpumpar 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Elvie Pump Singel"
- badge="Bäst i test"
- rating={4.7}
- image="/images/products/elvie-pump-singel.webp"
- pros={['Trådlös, sitter inuti behån', 'Tyst under 45 dB', 'App-styrd med volym- och sessionslogg', 'Perfekt för diskret pumpning på jobbet']}
- cons={['Högt pris per pump (köps parvis för dubbelpumpning)', 'Laddningsbar, ladda inför varje session', 'Färre inställningsmöjligheter än kliniska pumpar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10236254&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-pump-elektrisk-brostpump-singel"
- additionalCtaHrefs={[
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b88a1128-8944-40ab-9f27-c3584faeee90&url=https://www.babysam.se/broestpump-singel-white-onesize' },
- ]}
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Medela Swing Maxi"
- image="/images/products/medela-swing-maxi.webp"
- badge="Bäst dubbelekull"
- rating={4.6}
- pros={['Dubbelpump, pumpar båda brösten samtidigt', 'Välbeprövad teknik med 2-fas-expression', 'Brett tillbehörssortiment tillgängligt', 'Effektivare per tidsenhet än enkelpumpar']}
- cons={['Kräver strömkabel, begränsad rörlighet', 'Aningen högre decibelnivå', 'Inget laddningsbart batteri']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump"
- additionalCtaHrefs={[
-   { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=856f94a1-02a4-47b4-a08b-9c8247c2141b&url=https://www.babysam.se/swing-maxi-dubbel-broestpump-elektrisk-onesize' },
- ]}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Elvie Pump Singel, bäst i test</h2>
+    <MoneyProductCard
+      brand="Elvie"
+      name="Elvie Pump Singel"
+      rating={4.7}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/elvie-pump-singel.webp"
+      imageAlt="Elvie Pump Singel elektrisk bröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10236254&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-pump-elektrisk-brostpump-singel"
+      alsoAt={[
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=b88a1128-8944-40ab-9f27-c3584faeee90&url=https://www.babysam.se/broestpump-singel-white-onesize' },
+      ]}
+      pros={['Trådlös, sitter inuti behån', 'Tyst under 45 dB', 'App-styrd med volym- och sessionslogg', 'Perfekt för diskret pumpning på jobbet']}
+      cons={['Högt pris per pump (köps parvis för dubbelpumpning)', 'Laddningsbar, ladda inför varje session', 'Färre inställningsmöjligheter än kliniska pumpar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Elvie Pump Singel vinner bästa bröstpump 2026 tack vare kombinationen av total trådlöshet och diskret design. Pumpen sitter inuti behån utan att synas utanpå kläderna, vilket gör det möjligt att pumpa på jobbet, under ett möte eller i ett offentligt rum utan att det märks. Ljudnivån under 45 dB är bland de lägsta bland elektriska pumpar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är priset per enhet: för dubbelpumpning behöver du köpa två pumpar. Batteriet behöver också laddas inför varje session. Men för den som prioriterar frihet och diskret bruk finns ingen bättre elektrisk bröstpump på marknaden 2026.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10236254&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-pump-elektrisk-brostpump-singel" />
 
- <ProductCard
- name="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump"
- image="/images/products/medela-freestyle-hands-free.webp"
- badge="Bäst klinisk standard"
- rating={4.6}
- pros={['Trådlös hands-free dubbelpump', 'Under 45 dB, tyst pumpning', 'Klinisk standard, beprövad teknik', 'Anpassningsbara sugnivåer']}
- cons={['Högre pris', 'Kräver laddning', 'Ingen app-koppling']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Medela Swing Maxi, bäst dubbelpump</h2>
+    <MoneyProductCard
+      brand="Medela"
+      name="Medela Swing Maxi"
+      rating={4.6}
+      rank={2}
+      badge="Bäst dubbelpump"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/medela-swing-maxi.webp"
+      imageAlt="Medela Swing Maxi elektrisk dubbelpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump"
+      alsoAt={[
+        { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=856f94a1-02a4-47b4-a08b-9c8247c2141b&url=https://www.babysam.se/swing-maxi-dubbel-broestpump-elektrisk-onesize' },
+      ]}
+      pros={['Dubbelpump, pumpar båda brösten samtidigt', 'Välbeprövad teknik med 2-fas-expression', 'Brett tillbehörssortiment tillgängligt', 'Effektivare per tidsenhet än enkelpumpar']}
+      cons={['Kräver strömkabel, begränsad rörlighet', 'Aningen högre decibelnivå', 'Inget laddningsbart batteri']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Medela Swing Maxi är det naturliga valet för den som pumpar dagligen och vill ha effektiv dubbelpumpning med beprövad teknik. 2-fas-expressionsteknik efterliknar barnets naturliga sugmönster med en stimuleringsfas följt av en expressionfas, vilket stimulerar mjölkproduktionen bättre än enkla pumpar. En komplett session tar 15 till 20 minuter för båda brösten.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kabeln begränsar rörelsefriheten jämfört med trådlösa alternativ, och decibelnivån är något högre. Men för regelbunden pumpning hemma är Medela Swing Maxi oslagbar på kombination av prestanda, tillförlitlighet och pris.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10155658&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-swing-maxi-elektrisk-dubbelbrostpump" />
 
- <ProductCard
- name="Philips Avent Manual"
- image="/images/products/philips-avent-manual.webp"
- badge="Bästa manuella"
- rating={4.3}
- pros={['Prisvärd och enkel att använda', 'Tyst, kräver ingen el', 'Mjuk kudde mot bröstet', 'Bra som backup-pump']}
- cons={['Kräver manuell ansträngning', 'Långsammare än elektriska pumpar', 'Tröttar ut handen vid lång användning']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Medela Freestyle Hands-free, bäst klinisk standard</h2>
+    <MoneyProductCard
+      brand="Medela"
+      name="Medela Freestyle Hands-free Elektrisk Dubbelbröstpump"
+      rating={4.6}
+      rank={3}
+      badge="Bäst klinisk standard"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/medela-freestyle-hands-free.webp"
+      imageAlt="Medela Freestyle Hands-free elektrisk dubbelbröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump"
+      pros={['Trådlös hands-free dubbelpump', 'Under 45 dB, tyst pumpning', 'Klinisk standard, beprövad teknik', 'Anpassningsbara sugnivåer']}
+      cons={['Högre pris', 'Kräver laddning', 'Ingen app-koppling']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Medela Freestyle Hands-free kombinerar Medelakvalitet med trådlös frihet och dubbelpumpning. Den är tyst, under 45 dB, och sätts fast i behån för hands-free pumpning. Klinisk standard innebär anpassningsbara sugnivåer och beprövad expressionsteknik som används på sjukhus.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Priset är högre än Swing Maxi och batteriet måste laddas. Saknar app-koppling, men för den som vill ha klinisk prestanda med rörelsefrihet är det det starkaste valet bland trådlösa dubbelpumpar från Medela.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229923&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-freestyle-hands-free-elektrisk-dubbelbrostpump" />
 
- <ProductCard
- name="Lansinoh Silikonbröstpump"
- image="/images/products/lansinoh-silikonbrostpump.webp"
- badge="Prisvärdast"
- rating={4.2}
- pros={['Mycket prisvärd', 'Passiv, samlar mjölk automatiskt', 'Enkel att rengöra', 'Bra komplement under amning']}
- cons={['Samlar bara mjölk passivt, stimulerar inte produktion', 'Kan ramla av utan fästanordning', 'Inte lämplig som primär pump']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10031767&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-silikonbrostpump"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Philips Avent Manual, bästa manuella</h2>
+    <MoneyProductCard
+      brand="Philips Avent"
+      name="Philips Avent Manual"
+      rating={4.3}
+      rank={4}
+      badge="Bästa manuella"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/philips-avent-manual.webp"
+      imageAlt="Philips Avent Manual bröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell"
+      pros={['Prisvärd och enkel att använda', 'Tyst, kräver ingen el', 'Mjuk kudde mot bröstet', 'Bra som backup-pump']}
+      cons={['Kräver manuell ansträngning', 'Långsammare än elektriska pumpar', 'Tröttar ut handen vid lång användning']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent Manual är den bästa manuella bröstpumpen för sporadisk pumpning, resa och som backup när strömmen saknas. Den är helt tyst, kräver ingen el och mjuka silikonkudden mot bröstet ger ett bekvämt grepp. Enkel att rengöra och packa ner.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att den kräver handkraft och tar längre tid än elektriska alternativ. Vid daglig användning tröttar den ut handen. Men som komplement till en elektrisk pump eller för sällananvändning är Philips Avent Manual ett genomtänkt och prisvärt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: så väljer du rätt bröstpump 2026</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Lansinoh Silikonbröstpump, prisvärdast</h2>
+    <MoneyProductCard
+      brand="Lansinoh"
+      name="Lansinoh Silikonbröstpump"
+      rating={4.2}
+      rank={5}
+      badge="Prisvärdast"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/lansinoh-silikonbrostpump.webp"
+      imageAlt="Lansinoh Silikonbröstpump passiv pump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10031767&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-silikonbrostpump"
+      pros={['Mycket prisvärd', 'Passiv, samlar mjölk automatiskt', 'Enkel att rengöra', 'Bra komplement under amning']}
+      cons={['Samlar bara mjölk passivt, stimulerar inte produktion', 'Kan ramla av utan fästanordning', 'Inte lämplig som primär pump']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Lansinoh Silikonbröstpump är inte en pump i traditionell mening utan en passiv silikonkupa som fästs mot det lediga bröstet under amning. Undertrycket samlar mjölk som annars hade läckt ut, utan att du behöver göra något aktivt. Resultatet varierar men många mödrar samlar 30 till 60 ml per amning.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den stimulerar inte mjölkproduktionen och lämpar sig inte som primär pump. Men som billigt och lättskött komplement för att bygga upp ett fryslager är det ett klokt köp. Se vår guide om <a href="/amning/" class="text-accent hover:text-accent-dark underline">amning och amningsprodukter</a> för fler tips.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10031767&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-silikonbrostpump" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>1. Hur ofta ska du pumpa?</h3>
- <p>Planerar du att pumpa dagligen eller flera gånger per dag, till exempel för att upprätthålla produktion när du arbetar, välj en elektrisk dubbelpump som Medela Swing Maxi eller Spectra S1 Plus. Pumpar du sällan eller vill ha en billig backup räcker en manuell pump.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem bröstpumpar granskade, en vinner totalt. Elvie Pump Singel tar förstaplatsen på diskret trådlös pumpning, Medela Swing Maxi vinner på effektiv dubbelpumpning och Medela Freestyle Hands-free kombinerar klinisk standard med rörelsefrihet. Vill du läsa mer? Se vår <a href="/amning/medela-vs-spectra/" class="text-accent hover:text-accent-dark underline">jämförelse Medela vs Spectra</a> eller <a href="/amning/nappflaska/" class="text-accent hover:text-accent-dark underline">guide till bästa nappflaskan 2026</a>.
+    </p>
 
- <h3>2. Frihet och diskret bruk</h3>
- <p>Trådlösa pumpar som Elvie passar utmärkt om du behöver vara aktiv under pumpning eller vill kunna pumpa diskret på jobbet eller i offentliga miljöer. De sitter inuti behån och syns knappt utanpå kläderna.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bröstpumpar 2026" />
 
- <h3>3. Enkelpump eller dubbelpump?</h3>
- <p>En dubbelpump halverar pumptiden och stimulerar produktionen mer effektivt. Om du pumpar regelbundet är en dubbelpump ett smart val. Enkelpumpar är billigare och mer portabla, men tar dubbelt så lång tid.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt bröstpump 2026</h2>
 
- <h3>4. Decibelnivå, tänk på omgivningen</h3>
- <p>Elektriska pumpar har olika ljudnivåer. Elvie Pump och Spectra S1 Plus är tystast (under 45 dB). Medela Swing Maxi är något högre men fortfarande acceptabel. Om du pumpar när bebisen sover bredvid dig är en tyst pump viktig.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">1. Hur ofta ska du pumpa?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Planerar du att pumpa dagligen eller flera gånger per dag, till exempel för att upprätthålla produktion när du arbetar, välj en elektrisk dubbelpump som Medela Swing Maxi eller Spectra S1 Plus. Pumpar du sällan eller vill ha en billig backup räcker en manuell pump.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/amning/" class="text-accent underline">Amning & matning 2026, komplett guide</a></li>
- <li><a href="/amning/medela-vs-spectra/" class="text-accent underline">Medela vs Spectra 2026, vilken bröstpump ska du välja?</a></li>
- <li><a href="/amning/nappflaska/" class="text-accent underline">Bästa nappflaskan 2026, för amning och kombinationsmatning</a></li>
- <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">2. Frihet och diskret bruk</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Trådlösa pumpar som Elvie passar utmärkt om du behöver vara aktiv under pumpning eller vill kunna pumpa diskret på jobbet eller i offentliga miljöer. De sitter inuti behån och syns knappt utanpå kläderna.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">3. Enkelpump eller dubbelpump?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En dubbelpump halverar pumptiden och stimulerar produktionen mer effektivt. Om du pumpar regelbundet är en dubbelpump ett smart val. Enkelpumpar är billigare och mer portabla, men tar dubbelt så lång tid.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Elvie Pump Singel',
- description: 'Trådlös elektrisk bröstpump som sitter inuti behån. App-styrd med logg över volym och session. Under 45 dB. per pump.',
- image: 'https://bebisguiden.se/images/products/elvie-pump-singel.webp',
- brand: 'Elvie',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Medela Swing Maxi',
- description: 'Elektrisk dubbelpump med beprövad 2-fas-expressionsteknik. Pumpar båda brösten samtidigt..',
- image: 'https://bebisguiden.se/images/products/medela-swing-maxi.webp',
- brand: 'Medela',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Medela Freestyle Hands-free Elektrisk Dubbelbröstpump',
- description: 'Trådlös elektrisk dubbelpump med klinisk standard. Tyst under 45 dB och hands-free pumpning.',
- image: 'https://bebisguiden.se/images/products/medela-freestyle-hands-free.webp',
- brand: 'Medela',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- ]} />
- <CTABox productName="Bröstpump och amningsprodukter" store="Nanobebe" description="Premium nappflaskor och amningsprodukter." />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">4. Decibelnivå, tänk på omgivningen</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Elektriska pumpar har olika ljudnivåer. Elvie Pump och Medela Freestyle Hands-free är tystast (under 45 dB). Medela Swing Maxi är något högre men fortfarande acceptabel. Om du pumpar när bebisen sover bredvid dig är en tyst pump viktig.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem bröstpumpar utifrån pumpningstyp (elektrisk, manuell, passiv), sugstyrka och justerbarhet, decibelnivå, batteritid och laddbarhet samt daglig användbarhet och rengöring. Produkterna är valda bland de mest sålda och eftersökta bröstpumparna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/amning/" class="text-accent underline">Amning och matning 2026, komplett guide</a></li>
+        <li><a href="/amning/medela-vs-spectra/" class="text-accent underline">Medela vs Spectra 2026, vilken bröstpump ska du välja?</a></li>
+        <li><a href="/amning/nappflaska/" class="text-accent underline">Bästa nappflaskan 2026, för amning och kombinationsmatning</a></li>
+        <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa bröstpump 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10236254&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-pump-elektrisk-brostpump-singel"
+    text="Bra pris hos Jollyroom"
+    productName="Elvie Pump Singel"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

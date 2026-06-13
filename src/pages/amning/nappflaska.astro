@@ -1,273 +1,436 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Amning & matning', href: '/amning/' },
- { label: 'Nappflaska' },
+  { label: 'Hem', href: '/' },
+  { label: 'Amning & matning', href: '/amning/' },
+  { label: 'Nappflaska' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Philips Avent Natural 3.0',
- image: '/images/products/philips-avent-natural-3-0.webp',
- badge: 'Bäst i test',
- rating: 4.7,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243165&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/philips-avent-natural-response-nappflaska-240-ml',
- features: {
- 'Bröstvårta': 'Bred, naturlik',
- 'Anti-kolik': 'Ja',
- 'Material': 'PP-plast / glas',
- 'Volym': '260 ml',
- },
- },
- {
- name: 'Twistshake Anti-Kolik Nappflaska 260 ml, Vit',
- image: '/images/products/twistshake-anti-kolik-nappflaska-260-vit.webp',
- badge: 'Bäst mot kolik',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=515315&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/twistshake-anti-colic-nappflaska-260-ml-vit',
- features: {
- 'Bröstvårta': 'Bred, mjuk silikon',
- 'Anti-kolik': 'Ja (filter-system)',
- 'Material': 'PP-plast',
- 'Volym': '260 ml',
- },
- },
- {
- name: 'Nanobébé Breastmilk',
- image: '/images/products/nanobebe-breastmilk.webp',
- badge: 'Snabbast värmning',
- rating: 4.4,
- ctaHref: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1FUS1020214&url=https://www.babyv.se/sv/articles/1.104.24637/nanobebe-brostmjolksflaska-anti-kolik-150-ml-2-pack-rosa',
- features: {
- 'Bröstvårta': 'Bred, naturlik',
- 'Anti-kolik': 'Ja',
- 'Material': 'PP-plast',
- 'Volym': '150 ml',
- },
- },
- {
- name: 'MAM Easy Start Nappflaska Anti-kolik 260 ml, Neutral',
- image: '/images/products/mam-easy-start-nappflaska-neutral.webp',
- badge: 'Bäst mot kolik',
- rating: 4.6,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10312240&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/1997698_mam-easy-start-nappflaska-anti-kolik-260-ml-neutral',
- features: {
- 'Bröstvårta': 'Ortodontisk silikon',
- 'Anti-kolik': 'Ja, ventilsystem',
- 'Material': 'PP-plast',
- 'Volym': '260 ml',
- },
- },
- {
- name: 'Elodie Nappflaska Glas, Mineral Green',
- image: '/images/products/elodie-nappflaska-glas-mineral-green.webp',
- badge: 'Bäst glasflaska',
- rating: 4.4,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10259137&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/elodie-nappflaska-glas-mineral-green',
- features: {
- 'Bröstvårta': 'Bred, naturlik',
- 'Anti-kolik': 'Nej',
- 'Material': 'Glas',
- 'Volym': '240 ml',
- },
- },
+  {
+    name: 'Philips Avent Natural 3.0',
+    brand: 'Philips Avent',
+    rating: 4.7,
+    badge: 'Bäst i test',
+    usps: ['Bred naturlik bröstvårta', 'Anti-kolik ventilsystem', 'Finns i glas och plast'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243165&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/philips-avent-natural-response-nappflaska-240-ml',
+    imageUrl: '/images/products/philips-avent-natural-3-0.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Nappflaska med bred naturlik bröstvårta för kombinationsmatning. Anti-kolik ventilsystem. Finns i PP-plast och glas.',
+    features: { 'Bröstvårta': 'Bred, naturlik', 'Anti-kolik': 'Ja', 'Material': 'PP-plast / glas', 'Volym': '260 ml' },
+    alsoAt: [],
+  },
+  {
+    name: 'MAM Easy Start Nappflaska Anti-kolik 260 ml, Neutral',
+    brand: 'MAM',
+    rating: 4.6,
+    badge: 'Bäst mot kolik',
+    usps: ['Ventilsystem i botten mot kolik', 'Ortodontisk silikonspens', 'Steriliseras i mikrovågsugn'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10312240&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/1997698_mam-easy-start-nappflaska-anti-kolik-260-ml-neutral',
+    imageUrl: '/images/products/mam-easy-start-nappflaska-neutral.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Nappflaska med ventilsystem i botten mot kolik. Ortodontisk silikonspens. Kan steriliseras i mikrovågsugn.',
+    features: { 'Bröstvårta': 'Ortodontisk silikon', 'Anti-kolik': 'Ja, ventilsystem', 'Material': 'PP-plast', 'Volym': '260 ml' },
+    alsoAt: [],
+  },
+  {
+    name: 'Twistshake Anti-Kolik Nappflaska 260 ml, Vit',
+    brand: 'Twistshake',
+    rating: 4.5,
+    badge: 'Prisvärd',
+    usps: ['Inbyggt anti-kolik-filter', 'Bred naturlik spens', 'Enkel att rengöra'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=515315&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/twistshake-anti-colic-nappflaska-260-ml-vit',
+    imageUrl: '/images/products/twistshake-anti-kolik-nappflaska-260-vit.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Anti-koliknappflaska med inbyggt filter-system. Bred naturlik spens, enkel övergång från bröst. Prisvärd.',
+    features: { 'Bröstvårta': 'Bred, mjuk silikon', 'Anti-kolik': 'Ja (filter-system)', 'Material': 'PP-plast', 'Volym': '260 ml' },
+    alsoAt: [],
+  },
+  {
+    name: 'Nanobébé Breastmilk',
+    brand: 'Nanobébé',
+    rating: 4.4,
+    badge: 'Snabbast värmning',
+    usps: ['Värms 2,5x snabbare', 'Bevarar bröstmjölkens näring', 'Bred naturlik bröstvårta'],
+    store: 'Baby V',
+    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1FUS1020214&url=https://www.babyv.se/sv/articles/1.104.24637/nanobebe-brostmjolksflaska-anti-kolik-150-ml-2-pack-rosa',
+    imageUrl: '/images/products/nanobebe-breastmilk.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Svansformad nappflaska som värms upp 2,5x snabbare. Bevarar bröstmjölkens näring bättre. Bred naturlik bröstvårta.',
+    features: { 'Bröstvårta': 'Bred, naturlik', 'Anti-kolik': 'Ja', 'Material': 'PP-plast', 'Volym': '150 ml' },
+    alsoAt: [],
+  },
+  {
+    name: 'Elodie Nappflaska Glas, Mineral Green',
+    brand: 'Elodie Details',
+    rating: 4.4,
+    badge: 'Bäst glasflaska',
+    usps: ['Glasflaska utan plast', 'Snygg design', 'Bred naturlik bröstvårta'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10259137&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/elodie-nappflaska-glas-mineral-green',
+    imageUrl: '/images/products/elodie-nappflaska-glas-mineral-green.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Glasnappflaska med bred naturlik bröstvårta. Hållbar och lättare att rengöra än plast.',
+    features: { 'Bröstvårta': 'Bred, naturlik', 'Anti-kolik': 'Nej', 'Material': 'Glas', 'Volym': '240 ml' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Bröstvårta', 'Anti-kolik', 'Material', 'Volym'];
+const specLabels = ['Bröstvårta', 'Anti-kolik', 'Material', 'Volym'];
 
 const faqItems = [
- {
- question: 'Vilken nappflaska är bäst för kombinationsmatning?',
- answer: 'För kombinationsmatning (amning och flaska) rekommenderar vi Philips Avent Natural 3.0 eller MAM Easy Start Anti-Colic. Båda har bred bröstvårta som efterliknar bröstets form, vilket minskar risken för nipple confusion. Välj alltid ett flöde som är långsamt (steg 1) för att bebisen ska behöva arbeta för mjölken precis som vid bröstet.',
- },
- {
- question: 'Vad är nipple confusion och hur undviker man det?',
- answer: 'Nipple confusion innebär att bebisen börjar föredra flaskan framför bröstet, eftersom flödet från flaska ofta är lättare att få ut. För att minimera risken: introducera flaskan efter 3-6 veckor när amningen är välestablerad, välj en flaska med bred bröstvårta och långsamt flöde, och ge flaskan relativt sällan till att börja med.',
- },
- {
- question: 'Vilken nappflaska är bäst mot kolik?',
- answer: 'MAM Easy Start Anti-Colic och Dr. Brown\'s Options+ är speciellt utformade för att minska luftsväljning, vilket är en vanlig orsak till kolik. Dr. Brown\'s har ett internt ventilsystem som leder bort luften från mjölken. MAM\'s ventilsystem sitter i botten av flaskan. Båda är effektiva, men Dr. Brown\'s kräver mer rengöring tack vare fler delar.',
- },
- {
- question: 'Glas- eller plastflaska, vad ska man välja?',
- answer: 'Glasflaskor håller längre, är lättare att rengöra och innehåller inga plaster som kan laka ur. Nackdelen är att de är tyngre och kan gå sönder om de tappas. Plastflaskor i PP-plast (polypropylene) är BPA-fria och lättare att hantera. För nyfödda rekommenderas glas om du är noggrann, annars är PP-plast ett tryggt val.',
- },
- {
- question: 'Hur rengör man nappflaskor?',
- answer: 'Nappflaskor bör rengöras efter varje användning. Skölj med varmt vatten direkt, diskas sedan med diskmedel eller i diskmaskin (kontrollera märkning). Sterilisera regelbundet under de första månaderna, antingen i microvågssterilisator, ångsterilisator eller genom att koka. Kontrollera spensens skick regelbundet, byt ut vid sprickor eller missfärgning.',
- },
- {
- question: 'Varför värms Nanobébé snabbare?',
- answer: 'Nanobébé Breastmilk-flaskan har en svansformad design med en central fördjupning, vilket ökar ytan som exponeras för varmt vatten. Det gör att bröstmjölken värms upp upp till 2,5 gånger snabbare jämfört med en standardflaska. Det är särskilt värdefullt om du förvarar fryst bröstmjölk och behöver tina snabbt.',
- },
+  {
+    question: 'Vilken nappflaska är bäst för kombinationsmatning?',
+    answer: 'För kombinationsmatning (amning och flaska) rekommenderar vi Philips Avent Natural 3.0 eller MAM Easy Start Anti-Colic. Båda har bred bröstvårta som efterliknar bröstets form, vilket minskar risken för nipple confusion. Välj alltid ett flöde som är långsamt (steg 1) för att bebisen ska behöva arbeta för mjölken precis som vid bröstet.',
+  },
+  {
+    question: 'Vad är nipple confusion och hur undviker man det?',
+    answer: 'Nipple confusion innebär att bebisen börjar föredra flaskan framför bröstet, eftersom flödet från flaska ofta är lättare att få ut. För att minimera risken: introducera flaskan efter 3-6 veckor när amningen är välestablerad, välj en flaska med bred bröstvårta och långsamt flöde, och ge flaskan relativt sällan till att börja med.',
+  },
+  {
+    question: 'Vilken nappflaska är bäst mot kolik?',
+    answer: 'MAM Easy Start Anti-Colic och Twistshake Anti-Kolik är speciellt utformade för att minska luftsväljning, vilket är en vanlig orsak till kolik. MAM:s ventilsystem sitter i botten av flaskan. Twistshake har ett inbyggt filter-system. Båda är effektiva och lättare att rengöra än system med fler inbyggda delar.',
+  },
+  {
+    question: 'Glas- eller plastflaska, vad ska man välja?',
+    answer: 'Glasflaskor håller längre, är lättare att rengöra och innehåller inga plaster som kan laka ur. Nackdelen är att de är tyngre och kan gå sönder om de tappas. Plastflaskor i PP-plast (polypropylene) är BPA-fria och lättare att hantera. För nyfödda rekommenderas glas om du är noggrann, annars är PP-plast ett tryggt val.',
+  },
+  {
+    question: 'Hur rengör man nappflaskor?',
+    answer: 'Nappflaskor bör rengöras efter varje användning. Skölj med varmt vatten direkt, diskas sedan med diskmedel eller i diskmaskin (kontrollera märkning). Sterilisera regelbundet under de första månaderna, antingen i mikrovågssterilisator, ångsterilisator eller genom att koka. Kontrollera spensens skick regelbundet, byt ut vid sprickor eller missfärgning.',
+  },
+  {
+    question: 'Varför värms Nanobébé snabbare?',
+    answer: 'Nanobébé Breastmilk-flaskan har en svansformad design med en central fördjupning, vilket ökar ytan som exponeras för varmt vatten. Det gör att bröstmjölken värms upp upp till 2,5 gånger snabbare jämfört med en standardflaska. Det är särskilt värdefullt om du förvarar fryst bröstmjölk och behöver tina snabbt.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bästa nappflaskan 2026: bäst i test för kombinationsmatning",
   description: "Bästa nappflaskan 2026: Philips Avent Natural 3.0 vinner. Vi jämför 5 nappflaskor för kombinationsmatning med fokus på bröstvårtedesign och anti-kolik.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
   category: "Amning",
   image: "/images/products/philips-avent-natural-3-0.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bästa nappflaskan 2026: bäst i test för kombinationsmatning"
- description="Bästa nappflaskan 2026: Philips Avent Natural 3.0 vinner. Vi jämför 5 nappflaskor för kombinationsmatning med fokus på bröstvårtedesign och anti-kolik."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/amning/nappflaska/"
- updatedDate="2026-05-15"
-  datePublished="2026-01-23"
+  title="Bästa nappflaskan 2026: bäst i test för kombinationsmatning"
+  description="Bästa nappflaskan 2026: Philips Avent Natural 3.0 vinner. Vi jämför 5 nappflaskor för kombinationsmatning med fokus på bröstvårtedesign och anti-kolik."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-05-16"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Philips Avent Natural 3.0 vinner test av nappflaskor 2026. Den breda, naturlika bröstvårtan minskar risken för nipple confusion när du varvar flaska med amning. Det flexibla anti-koliksystemet reducerar luftintaget, och flaskan finns i både PP-plast och glas.
-	 </p>
 
- <TopPick product={products[0]} description="Philips Avent Natural 3.0 vinner test av nappflaskor 2026. Bred naturlik bröstvårta minskar nipple confusion vid kombination med amning, flexibla anti-koliksystem reducerar luftintag och flaskan finns i både PP-plast och glas." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, nappflaskor 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken nappflaska är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Philips Avent Natural 3.0 är bäst i test 2026 tack vare den breda, naturlika bröstvårtan som minskar risken för nipple confusion vid kombinationsmatning. MAM Easy Start Anti-Colic är bäst mot kolik med ventilsystem i botten. Elodie Nappflaska Glas är bästa glasalternativet för dig som vill undvika plast.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Philips Avent Natural 3.0</strong> är bäst för kombinationsmatning. <strong>MAM Easy Start Anti-Colic</strong> är bäst mot kolik. <strong>Dr. Brown's Options+</strong> är bäst för minskad luftsväljning.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Philips Avent"
+    name="Natural 3.0"
+    image="/images/products/philips-avent-natural-3-0.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243165&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/philips-avent-natural-response-nappflaska-240-ml"
+    store="Jollyroom"
+    description="Vinnare nappflaskor 2026 för kombinationsmatning. Den breda, naturlika bröstvårtan efterliknar bröstets form och minskar risken för nipple confusion. Flexibelt anti-koliksystem reducerar luftintaget. Finns i PP-plast och glas."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vara toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Nappflaskor 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Philips Avent Natural 3.0"
- image="/images/products/philips-avent-natural-3-0.webp"
- badge="Bäst i test"
- rating={4.7}
- pros={['Bred bröstvårta som liknar bröstets form', 'Flexibel spens med naturlig känsla', 'Anti-kolik med ventilsystem', 'Finns i glas och plast']}
- cons={['Något högre pris än basalternativ', 'Spens kan vara mjukare än vissa bebisar föredrar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243165&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/philips-avent-natural-response-nappflaska-240-ml"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Twistshake Anti-Kolik Nappflaska 260 ml, Vit"
- image="/images/products/twistshake-anti-kolik-nappflaska-260-vit.webp"
- badge="Bäst mot kolik"
- rating={4.5}
- pros={['Inbyggt anti-kolik-filter minskar luftintag', 'Bred naturlik spens, enkel övergång från bröst', 'Enkel att rengöra', 'Prisvärd']}
- cons={['Filtret måste bytas regelbundet', 'Spensen kan bli slapp snabbare']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=515315&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/twistshake-anti-colic-nappflaska-260-ml-vit"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Philips Avent Natural 3.0, bäst i test</h2>
+    <MoneyProductCard
+      brand="Philips Avent"
+      name="Philips Avent Natural 3.0"
+      rating={4.7}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/philips-avent-natural-3-0.webp"
+      imageAlt="Philips Avent Natural 3.0 nappflaska"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243165&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/philips-avent-natural-response-nappflaska-240-ml"
+      pros={['Bred bröstvårta som liknar bröstets form', 'Flexibel spens med naturlig känsla', 'Anti-kolik med ventilsystem', 'Finns i glas och plast']}
+      cons={['Något högre pris än basalternativ', 'Spens kan vara mjukare än vissa bebisar föredrar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent Natural 3.0 vinner test av nappflaskor 2026 för kombinationsmatning. Den breda, naturlika bröstvårtan efterliknar bröstets form och minskar risken för nipple confusion när du varvar flaska med amning. Det flexibla anti-koliksystemet reducerar luftintaget, och flaskan finns i både PP-plast och glas.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att priset är något högre än basalternativ och att spensen kan upplevas mjukare än vad en del bebisar föredrar. Men för familjer som ammar och vill ha en naturlig övergång är Philips Avent Natural 3.0 svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243165&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/philips-avent-natural-response-nappflaska-240-ml" />
 
- <ProductCard
- name="MAM Easy Start Nappflaska Anti-kolik 260 ml, Neutral"
- image="/images/products/mam-easy-start-nappflaska-neutral.webp"
- badge="Bäst mot kolik"
- rating={4.6}
- pros={['Ventilsystem i botten minskar luftsväljning', 'Ortodontisk silikonspens', 'Kan steriliseras i mikrovågsugn i flaskan', 'Brett erkänd av laktationskonsulenter']}
- cons={['Fler delar kan göra rengöringen mer tidskrävande', 'Designen passar inte alla munformer']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10312240&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/1997698_mam-easy-start-nappflaska-anti-kolik-260-ml-neutral"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. MAM Easy Start Anti-Kolik 260 ml, bäst mot kolik</h2>
+    <MoneyProductCard
+      brand="MAM"
+      name="MAM Easy Start Nappflaska Anti-kolik 260 ml, Neutral"
+      rating={4.6}
+      rank={2}
+      badge="Bäst mot kolik"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/mam-easy-start-nappflaska-neutral.webp"
+      imageAlt="MAM Easy Start Nappflaska Anti-kolik 260 ml Neutral"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10312240&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/1997698_mam-easy-start-nappflaska-anti-kolik-260-ml-neutral"
+      pros={['Ventilsystem i botten minskar luftsväljning', 'Ortodontisk silikonspens', 'Kan steriliseras i mikrovågsugn i flaskan', 'Brett erkänd av laktationskonsulenter']}
+      cons={['Fler delar kan göra rengöringen mer tidskrävande', 'Designen passar inte alla munformer']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      MAM Easy Start Anti-Colic är bästa nappflaskan mot kolik 2026. Ventilsystemet sitter i botten av flaskan och leder bort luft från mjölken, vilket minskar luftsväljning som ofta orsakar kolik. Den ortodontiska silikonspensen är utformad för att passa munhålans naturliga form.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      En praktisk bonus: hela flaskan kan steriliseras i mikrovågsugn utan extra utrustning. Det gör den smidig i vardagen. Fler delar kräver lite mer noggrann rengöring, men helhetsintrycket är mycket gott för bebisar med kolikbesvär.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10312240&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/1997698_mam-easy-start-nappflaska-anti-kolik-260-ml-neutral" />
 
- <ProductCard
- name="Nanobébé Breastmilk"
- image="/images/products/nanobebe-breastmilk.webp"
- badge="Snabbast värmning"
- rating={4.4}
- pros={['Svansformad design, värms 2,5x snabbare', 'Bevarar bröstmjölkens näring bättre', 'Bred naturlik bröstvårta', 'Bra för föräldrar som fryser bröstmjölk']}
- cons={['Högre pris', 'Ovanlig form kan verka klumpig', 'Lägre volym (150 ml standard)']}
- ctaText="Bra pris hos Baby-V"
- ctaHref="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1FUS1020214&url=https://www.babyv.se/sv/articles/1.104.24637/nanobebe-brostmjolksflaska-anti-kolik-150-ml-2-pack-rosa"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Twistshake Anti-Kolik 260 ml, prisvärt val</h2>
+    <MoneyProductCard
+      brand="Twistshake"
+      name="Twistshake Anti-Kolik Nappflaska 260 ml, Vit"
+      rating={4.5}
+      rank={3}
+      badge="Prisvärd"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/twistshake-anti-kolik-nappflaska-260-vit.webp"
+      imageAlt="Twistshake Anti-Kolik Nappflaska 260 ml Vit"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=515315&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/twistshake-anti-colic-nappflaska-260-ml-vit"
+      pros={['Inbyggt anti-kolik-filter minskar luftintag', 'Bred naturlik spens, enkel övergång från bröst', 'Enkel att rengöra', 'Prisvärd']}
+      cons={['Filtret måste bytas regelbundet', 'Spensen kan bli slapp snabbare']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Twistshake Anti-Kolik ger dig bred naturlik spens och inbyggt anti-kolik-filter till ett prisvärt pris. Det inbyggda filter-systemet minskar luftintaget effektivt och den breda spensen gör övergången från bröst smidig för de flesta bebisar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Filtret behöver bytas regelbundet och spensen kan bli slapp snabbare än på dyrare alternativ. Men som prisvärt förstaval för familjer som söker anti-kolik utan att betala premiumpriser är Twistshake ett starkt alternativ.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=515315&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/twistshake-anti-colic-nappflaska-260-ml-vit" />
 
- <ProductCard
- name="Elodie Nappflaska Glas, Mineral Green"
- image="/images/products/elodie-nappflaska-glas-mineral-green.webp"
- badge="Bäst glasflaska"
- rating={4.4}
- pros={['Glasflaska, mer hållbar och lättare att rengöra', 'Snygg design, populär i Sverige', 'Bred naturlik bröstvårta', 'BPA-fri och utan plast']}
- cons={['Tyngre än plastflaska', 'Kan gå sönder om den tappas', 'Inget anti-koliksystem']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10259137&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/elodie-nappflaska-glas-mineral-green"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Nanobébé Breastmilk, snabbast värmning</h2>
+    <MoneyProductCard
+      brand="Nanobébé"
+      name="Nanobébé Breastmilk"
+      rating={4.4}
+      rank={4}
+      badge="Snabbast värmning"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/nanobebe-breastmilk.webp"
+      imageAlt="Nanobébé Breastmilk nappflaska"
+      store="Baby V"
+      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1FUS1020214&url=https://www.babyv.se/sv/articles/1.104.24637/nanobebe-brostmjolksflaska-anti-kolik-150-ml-2-pack-rosa"
+      pros={['Svansformad design, värms 2,5x snabbare', 'Bevarar bröstmjölkens näring bättre', 'Bred naturlik bröstvårta', 'Bra för föräldrar som fryser bröstmjölk']}
+      cons={['Högre pris', 'Ovanlig form kan verka klumpig', 'Lägre volym (150 ml standard)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Nanobébé Breastmilk-flaskan har en unik svansformad design med central fördjupning som ökar ytan som exponeras för varmt vatten. Det gör att bröstmjölken värms upp upp till 2,5 gånger snabbare än i en standardflaska, vilket är särskilt värdefullt om du förvarar fryst bröstmjölk.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Priset är högre och standardvolymerna är lägre (150 ml) jämfört med de övriga i testet. Den ovanliga formen kan verka klumpig till en början, men för familjer som pumpar och fryser bröstmjölk regelbundet är den svår att byta ut mot något annat.
+    </p>
+    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1FUS1020214&url=https://www.babyv.se/sv/articles/1.104.24637/nanobebe-brostmjolksflaska-anti-kolik-150-ml-2-pack-rosa" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: Så väljer du rätt nappflaska</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Elodie Nappflaska Glas Mineral Green, bästa glasflaskan</h2>
+    <MoneyProductCard
+      brand="Elodie Details"
+      name="Elodie Nappflaska Glas, Mineral Green"
+      rating={4.4}
+      rank={5}
+      badge="Bäst glasflaska"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/elodie-nappflaska-glas-mineral-green.webp"
+      imageAlt="Elodie Nappflaska Glas Mineral Green"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10259137&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/elodie-nappflaska-glas-mineral-green"
+      pros={['Glasflaska, mer hållbar och lättare att rengöra', 'Snygg design, populär i Sverige', 'Bred naturlik bröstvårta', 'BPA-fri och utan plast']}
+      cons={['Tyngre än plastflaska', 'Kan gå sönder om den tappas', 'Inget anti-koliksystem']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Elodie Nappflaska Glas är det bästa glasalternativet i testet 2026. Glas håller längre, är lättare att rengöra och innehåller inga plaster som kan laka ur. Den breda, naturlika bröstvårtan gör den lämpad för kombinationsmatning och designen i Mineral Green är populär bland svenska föräldrar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelarna med glas är de vanliga: tyngre att hantera och risk för att gå sönder om den tappas. Det finns heller inget anti-koliksystem. Men för familjer som prioriterar att undvika plast och vill ha en hållbar flaska att ta hand om är Elodie ett riktigt gott val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10259137&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/elodie-nappflaska-glas-mineral-green" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>1. Bred eller smal spens, vad passar ditt barn?</h3>
- <ul>
- <li><strong>Bred, naturlik spens (Philips Avent Natural):</strong> efterliknar bröstet bättre och rekommenderas för kombinationsmatning.</li>
- <li><strong>Smalare spens:</strong> kan passa barn som inte ammas alls.</li>
- </ul>
- <p>Om du är osäker, börja med en bred spens.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem nappflaskor granskade, en vinner totalt. Philips Avent Natural 3.0 tar förstaplatsen för kombinationsmatning, MAM Easy Start är bäst mot kolik och Elodie är bästa glasflaskan. Vill du läsa mer om amning och matning? Se vår <a href="/amning/" class="text-accent hover:text-accent-dark underline">kompletta amningsguide 2026</a> eller jämför <a href="/amning/brostpump/" class="text-accent hover:text-accent-dark underline">bästa bröstpumpen 2026</a>.
+    </p>
 
- <h3>2. Flödeshastighet, börja alltid med steg 1</h3>
- <p>Alla nappflaskor finns i olika flödesnivåer. För nyfödda och kombammare: välj alltid steg 1 (långsamt flöde). Bebisen ska behöva arbeta för mjölken, precis som vid amning. För snabbt flöde kan orsaka överhetsning och att bebisen börjar föredra flaskan.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Nappflaskor 2026" />
 
- <h3>3. Anti-kolik, vem behöver det?</h3>
- <p>Om ditt barn är kolikartat eller verkar svälja mycket luft vid matning kan en anti-kolikflaska hjälpa. Annars räcker standardskyddet som finns i de flesta moderna flaskor.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: Så väljer du rätt nappflaska</h2>
 
- <h3>4. Material, glas vs. plast</h3>
- <p>Välj material efter vad du prioriterar:</p>
- <ul>
- <li><strong>Glas (Elodie):</strong> mer hållbart och lättare att rengöra, men tyngre och kan gå sönder om det tappas.</li>
- <li><strong>PP-plast (Philips Avent, MAM, Twistshake):</strong> lättare, BPA-fri och mer praktisk i vardagen.</li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bred eller smal spens, vad passar ditt barn?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den viktigaste faktorn vid kombinationsmatning är bröstvårtans form. En bred, naturlik spens efterliknar bröstets form och minskar risken för nipple confusion, det vill säga att bebisen börjar föredra flaskan framför bröstet. Philips Avent Natural 3.0 och MAM Easy Start är båda utformade med bred spens för just det ändamålet. Smalare spens kan passa barn som inte ammas alls, men vid kombinationsmatning är bred spens alltid rätt startpunkt.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/amning/" class="text-accent underline">Amning & matning 2026, komplett guide</a></li>
- <li><a href="/amning/napp/" class="text-accent underline">Bästa nappen 2026, BIBS, Philips Avent och MAM jämförda</a></li>
- <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpumpen 2026, elektrisk och manuell</a></li>
- <li><a href="/sterilisatorer/philips-avent-vs-tommee-tippee/" class="text-accent underline">Philips Avent vs Tommee Tippee 2026, vilken sterilisator ska du välja?</a></li>
- <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Flödeshastighet, börja alltid med steg 1</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla nappflaskor finns i olika flödesnivåer. För nyfödda och kombammare: välj alltid steg 1 (långsamt flöde). Bebisen ska behöva arbeta för mjölken, precis som vid amning. För snabbt flöde kan orsaka överhetsning och att bebisen börjar föredra flaskan. Byt till högre flöde först när bebisen märkbart kämpar och verkar frustrerad, inte tidigare.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Anti-kolik, vem behöver det?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Om ditt barn är kolikartat eller verkar svälja mycket luft vid matning kan en anti-kolikflaska hjälpa. Systemlösningarna skiljer sig åt: MAM har ventil i botten, Twistshake har ett inbyggt filter. Båda är effektiva för de flesta bebisar. För barn utan kolikproblem räcker standardskyddet som finns i de flesta moderna flaskor.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Philips Avent Natural 3.0',
- description: 'Nappflaska med bred naturlik bröstvårta för kombinationsmatning. Anti-kolik ventilsystem. Finns i PP-plast och glas..',
- image: 'https://bebisguiden.se/og-default.png',
- brand: 'Philips Avent',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'MAM Easy Start Nappflaska Anti-kolik 260 ml, Neutral',
- description: 'Nappflaska med ventilsystem i botten mot kolik. Ortodontisk silikonspens. Kan steriliseras i mikrovågsugn.',
- image: 'https://bebisguiden.se/images/products/mam-easy-start-nappflaska-neutral.webp',
- brand: 'MAM',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Elodie Nappflaska Glas, Mineral Green',
- description: 'Glasnappflaska med bred naturlik bröstvårta. Hållbar och lättare att rengöra än plast.',
- image: 'https://bebisguiden.se/images/products/elodie-nappflaska-glas-mineral-green.webp',
- brand: 'Elodie Details',
- ratingValue: 4.4,
- reviewCount: 1,
- },
- ]} />
- <MultiStoreCTA
- productName="Nappflaskor Nanobebe"
- brand="nanobebe"
- primaryStore="Nanobebe"
- description="Premium nappflaskor och amningsprodukter."
-/>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Material, glas kontra plast</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Välj material efter vad du prioriterar. Glas (Elodie) är mer hållbart, lättare att rengöra och innehåller inga plastämnen, men tyngre och kan gå sönder om det tappas. PP-plast (Philips Avent, MAM, Twistshake) är lättare, BPA-fri och mer praktisk i vardagen. Båda är trygga alternativ, glasflaskan kräver bara lite mer försiktighet i hanteringen.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem nappflaskor utifrån bröstvårtans design (bredd och naturlikhet), anti-koliksystem, material (glas kontra plast), volym och lämplighet för kombinationsmatning. Produkterna är valda bland de mest sålda och eftersökta nappflaskorna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/amning/" class="text-accent underline">Amning & matning 2026, komplett guide</a></li>
+        <li><a href="/amning/napp/" class="text-accent underline">Bästa nappen 2026, BIBS, Philips Avent och MAM jämförda</a></li>
+        <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpumpen 2026, elektrisk och manuell</a></li>
+        <li><a href="/sterilisatorer/philips-avent-vs-tommee-tippee/" class="text-accent underline">Philips Avent vs Tommee Tippee 2026, vilken sterilisator ska du välja?</a></li>
+        <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa nappflaskan 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243165&url=https://www.jollyroom.se/babyprodukter/ata-dricka/nappflaskor-tillbehor/nappflaskor/philips-avent-natural-response-nappflaska-240-ml"
+    text="Bra pris hos Jollyroom"
+    productName="Philips Avent Natural 3.0"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

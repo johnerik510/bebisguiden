@@ -1,254 +1,486 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Barnvagnar', href: '/barnvagnar/' },
- { label: 'Budget' },
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Budget' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder/priser oförändrade (verifierade).
 const products = [
- {
- name: 'Hauck Rapid 3R Sittvagn',
- image: '/images/products/hauck-rapid-3r-svart.webp',
- badge: 'Billigast',
- rating: 4.2,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10252132&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/hauck-rapid-3r-sittvagn-black',
- features: {
- 'Typ': 'Sittvagn',
- 'Vikt': 'ca 8 kg',
- 'Hopfälld': 'Kompakt',
- 'Hjul': '3 hjul',
- 'Liggläge': 'Ja',
- },
- },
- {
- name: 'Kinderkraft Grande 2',
- image: '/images/products/kinderkraft-grande-2.webp',
- badge: 'Terrängvänlig',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10303817&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/kinderkraft-grande-2-sittvagn-midnight-black',
- features: {
- 'Typ': 'Sittvagn',
- 'Vikt': 'ca 9 kg',
- 'Hopfälld': 'Kompakt',
- 'Hjul': '4 hjul',
- 'Liggläge': 'Ja',
- },
- },
- {
- name: 'Joie Honour Sittvagn',
- image: '/images/products/joie-honour-sittvagn-shale.webp',
- badge: 'Bäst i test',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265464&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/joie-honour-sittvagn-shale',
- features: {
- 'Typ': 'Sittvagn (vändbar)',
- 'Vikt': 'ca 9,5 kg',
- 'Hopfälld': 'Kompakt',
- 'Hjul': '4 hjul',
- 'Liggläge': 'Ja',
- },
- },
- {
- name: 'Joie Muze LX Sulky',
- image: '/images/products/joie-muze-lx-sulky-raven.webp',
- badge: 'Kompakt sulky',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328837&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/joie-muze-lx-sulky-raven',
- features: {
- 'Typ': 'Sulky',
- 'Vikt': 'ca 7,5 kg',
- 'Hopfälld': 'Kompakt',
- 'Hjul': '4 hjul',
- 'Liggläge': 'Nej (recline)',
- },
- },
- {
- name: 'Silver Cross Clic Sulky',
- image: '/images/products/silver-cross-clic-sulky.webp',
- badge: 'Lättast',
- rating: 4.4,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285139&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/silver-cross-clic-sulky-space',
- features: {
- 'Typ': 'Sulky',
- 'Vikt': '6,5 kg',
- 'Hopfälld': 'Mycket kompakt',
- 'Hjul': '4 hjul',
- 'Liggläge': 'Nej (recline)',
- },
- },
+  {
+    name: 'Joie Honour Sittvagn',
+    desc: 'Bästa budget-barnvagnen 2026 med vändbar sittdel och plant liggläge.',
+    brand: 'Joie',
+    rating: 4.5,
+    badge: 'Bäst i test',
+    usps: ['Vändbar sittdel', 'Plant liggläge', 'Stabil konstruktion'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265464&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/joie-honour-sittvagn-shale',
+    imageUrl: '/images/products/joie-honour-sittvagn-shale.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Typ': 'Sittvagn (vändbar)', 'Vikt': 'ca 9,5 kg', 'Hopfälld': 'Kompakt', 'Hjul': '4 hjul', 'Liggläge': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Silver Cross Clic Sulky',
+    desc: 'Lättast i test på 6,5 kg. Stilren brittisk sulky för resor och stad.',
+    brand: 'Silver Cross',
+    rating: 4.4,
+    badge: 'Lättast',
+    usps: ['Bara 6,5 kg', 'Mycket kompakt', 'Enhandsfäll'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285139&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/silver-cross-clic-sulky-space',
+    imageUrl: '/images/products/silver-cross-clic-sulky.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Typ': 'Sulky', 'Vikt': '6,5 kg', 'Hopfälld': 'Mycket kompakt', 'Hjul': '4 hjul', 'Liggläge': 'Nej (recline)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Kinderkraft Grande 2',
+    desc: 'Sittvagn med stötdämpande hjul och robust konstruktion till ett prisvärt pris.',
+    brand: 'Kinderkraft',
+    rating: 4.3,
+    badge: 'Terrängvänlig',
+    usps: ['Stötdämpande hjul', 'Rymlig varukorg', 'Robust bygge'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10303817&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/kinderkraft-grande-2-sittvagn-midnight-black',
+    imageUrl: '/images/products/kinderkraft-grande-2.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Typ': 'Sittvagn', 'Vikt': 'ca 9 kg', 'Hopfälld': 'Kompakt', 'Hjul': '4 hjul', 'Liggläge': 'Ja' },
+    alsoAt: [],
+  },
+  {
+    name: 'Joie Muze LX Sulky',
+    desc: 'Kompakt och lätt sulky från Joie. Passar resor och kollektivtrafik.',
+    brand: 'Joie',
+    rating: 4.3,
+    badge: 'Kompakt sulky',
+    usps: ['Lätt ca 7,5 kg', 'Kompakt hopvikad', 'Stor solskyddskåpa'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328837&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/joie-muze-lx-sulky-raven',
+    imageUrl: '/images/products/joie-muze-lx-sulky-raven.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Typ': 'Sulky', 'Vikt': 'ca 7,5 kg', 'Hopfälld': 'Kompakt', 'Hjul': '4 hjul', 'Liggläge': 'Nej (recline)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Hauck Rapid 3R Sittvagn',
+    desc: 'Budgetvänlig 3-hjulig sittvagn med liggläge. Bra grundfunktioner till lägst pris.',
+    brand: 'Hauck',
+    rating: 4.2,
+    badge: 'Billigast',
+    usps: ['Lägst pris', 'Kompakt hopfällning', 'Liggläge ingår'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10252132&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/hauck-rapid-3r-sittvagn-black',
+    imageUrl: '/images/products/hauck-rapid-3r-svart.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    features: { 'Typ': 'Sittvagn', 'Vikt': 'ca 8 kg', 'Hopfälld': 'Kompakt', 'Hjul': '3 hjul', 'Liggläge': 'Ja' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Typ', 'Vikt', 'Hopfälld', 'Hjul', 'Liggläge'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Typ', 'Vikt', 'Hopfälld', 'Hjul', 'Liggläge'];
 
 const faqItems = [
- {
- question: 'Vad ska jag tänka på när jag köper en billig barnvagn?',
- answer: 'Tre faktorer avgör om budgetvagnen håller: säkerhetsgodkännande (EN 1888 är kravet, kontrollera att CE-märke finns), barnets ålder (under sex månader krävs liggläge, annars räcker sittvagn), och din vardag (city med kollektivtrafik = vikt under 8 kg, grus och natur = stötdämpande hjul). Joie Honour är bäst om du vill ha en komplett sittvagn med liggläge och vändbar sittdel. Silver Cross Clic på 6,5 kg är bäst om resor och kollektivtrafik är vanligt. Hauck Rapid 3R är billigast om budgeten är avgörande.',
- },
- {
- question: 'Kan ett nyfött barn åka i en budget-sittvagn?',
- answer: 'De flesta sittvagnar i budgetsegmentet passar barn från 6 månader. Nyfödda behöver ett helt plant liggläge (0 till 10 grader) för att ryggraden och luftvägarna ska vara skyddade. Hauck Rapid 3R, Kinderkraft Grande 2 och Joie Honour har liggläge och passar för yngre barn. Joie Muze LX och Silver Cross Clic har recline men inget helt plant läge och rekommenderas strikt från 6 månader. Kontrollera alltid att åldersgränsen i manualen matchar ditt barns ålder.',
- },
- {
- question: 'Vilken budget-barnvagn passar bäst för resor och flyg?',
- answer: 'Silver Cross Clic på 6,5 kg är lättast i testet och passar utmärkt för resor och flyg. Joie Muze LX är också ett kompakt alternativ. Kontrollera med flygbolaget vilken maxvikt som tillåts i handbagaget, de flesta kräver under 10 kg och att vagnen ryms i bagageutrymmet.',
- },
- {
- question: 'Hur lång livslängd har en billig barnvagn?',
- answer: 'En välvårdad budget-barnvagn håller typiskt för ett till två barn. Joie och Silver Cross har ett gott rykte för hållbarhet i sin prisklass. Kinderkraft Grande 2 är känd för robust byggkvalitet till ett lågt pris. Plastdelar och textil slits snabbare på billigare modeller än på premiumvagnar, men om vagnen används normalt och förvaras torrt är livslängden fullt tillräcklig för de flesta familjer.',
- },
- {
- question: 'Vad är skillnaden mellan sittvagn och sulky i budgetklass?',
- answer: 'En sittvagn (Hauck Rapid 3R, Kinderkraft Grande 2, Joie Honour) har ett chassi och sittdel och passar barn med liggläge. En sulky (Joie Muze LX, Silver Cross Clic) är enklare och lättare, men saknar plant liggläge och passar normalt från 6 månader. Sulkys är bättre för resor och kollektivtrafik tack vare lägre vikt. Välj sittvagn om du har ett yngre barn eller promenerar på varierande underlag.',
- },
+  {
+    question: 'Vad ska jag tänka på när jag köper en billig barnvagn?',
+    answer: 'Tre faktorer avgör om budgetvagnen håller: säkerhetsgodkännande (EN 1888 är kravet, kontrollera att CE-märke finns), barnets ålder (under sex månader krävs liggläge, annars räcker sittvagn), och din vardag (city med kollektivtrafik = vikt under 8 kg, grus och natur = stötdämpande hjul). Joie Honour är bäst om du vill ha en komplett sittvagn med liggläge och vändbar sittdel. Silver Cross Clic på 6,5 kg är bäst om resor och kollektivtrafik är vanligt. Hauck Rapid 3R är billigast om budgeten är avgörande.',
+  },
+  {
+    question: 'Kan ett nyfött barn åka i en budget-sittvagn?',
+    answer: 'De flesta sittvagnar i budgetsegmentet passar barn från 6 månader. Nyfödda behöver ett helt plant liggläge (0 till 10 grader) för att ryggraden och luftvägarna ska vara skyddade. Hauck Rapid 3R, Kinderkraft Grande 2 och Joie Honour har liggläge och passar för yngre barn. Joie Muze LX och Silver Cross Clic har recline men inget helt plant läge och rekommenderas strikt från 6 månader. Kontrollera alltid att åldersgränsen i manualen matchar ditt barns ålder.',
+  },
+  {
+    question: 'Vilken budget-barnvagn passar bäst för resor och flyg?',
+    answer: 'Silver Cross Clic på 6,5 kg är lättast i testet och passar utmärkt för resor och flyg. Joie Muze LX är också ett kompakt alternativ. Kontrollera med flygbolaget vilken maxvikt som tillåts i handbagaget, de flesta kräver under 10 kg och att vagnen ryms i bagageutrymmet.',
+  },
+  {
+    question: 'Hur lång livslängd har en billig barnvagn?',
+    answer: 'En välvårdad budget-barnvagn håller typiskt för ett till två barn. Joie och Silver Cross har ett gott rykte för hållbarhet i sin prisklass. Kinderkraft Grande 2 är känd för robust byggkvalitet till ett lågt pris. Plastdelar och textil slits snabbare på billigare modeller än på premiumvagnar, men om vagnen används normalt och förvaras torrt är livslängden fullt tillräcklig för de flesta familjer.',
+  },
+  {
+    question: 'Vad är skillnaden mellan sittvagn och sulky i budgetklass?',
+    answer: 'En sittvagn (Hauck Rapid 3R, Kinderkraft Grande 2, Joie Honour) har ett chassi och sittdel och passar barn med liggläge. En sulky (Joie Muze LX, Silver Cross Clic) är enklare och lättare, men saknar plant liggläge och passar normalt från 6 månader. Sulkys är bättre för resor och kollektivtrafik tack vare lägre vikt. Välj sittvagn om du har ett yngre barn eller promenerar på varierande underlag.',
+  },
 ];
+
 export const articleMeta = {
   title: "Billig barnvagn 2026: 5 budgetvagnar jämförda och jämförda",
   description: "Billig barnvagn 2026: Joie Honour bäst i test med vändbar sittdel och liggläge. Silver Cross Clic lättast 6,5 kg. Hauck Rapid 3R billigast. 5 modeller jämförda.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Barnvagnar",
   image: "/images/products/joie-honour-sittvagn-shale.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Billig barnvagn 2026: 5 budgetvagnar jämförda och jämförda"
- description="Billig barnvagn 2026: Joie Honour bäst i test med vändbar sittdel och liggläge. Silver Cross Clic lättast 6,5 kg. Hauck Rapid 3R billigast. 5 modeller jämförda."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-28"
- datePublished="2026-04-20"
+  title="Billig barnvagn 2026: 5 budgetvagnar jämförda och jämförda"
+  description="Billig barnvagn 2026: Joie Honour bäst i test med vändbar sittdel och liggläge. Silver Cross Clic lättast 6,5 kg. Hauck Rapid 3R billigast. 5 modeller jämförda."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/barnvagnar/budget/"
+  datePublished="2026-04-20"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Joie Honour vinner billig barnvagn bäst i test 2026. Den har vändbar sittdel och plant liggläge, vilket gör att du kan använda den från födseln. Det stabila chassit klarar både stad och lätt terräng, och allt detta till ett pris under 4 000 kr.
-	 </p>
 
- <TopPick product={products[2]} description="Joie Honour är bästa budget-barnvagnen 2026. Vändbar sittdel, plant liggläge och stabil konstruktion ger full funktion till ett pris under 4 000 kr. Passar från födseln och klarar både stad och lätt terräng." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-04-20" dateModified="2026-06-12" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken billig barnvagn är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Joie Honour är bäst i test bland budgetvagnarna 2026: vändbar sittdel och plant liggläge gör att du kan använda den från födseln, och det stabila chassit klarar både stad och lätt terräng. Lättast: Silver Cross Clic (6,5 kg). Billigast: Hauck Rapid 3R.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Joie"
+    name="Honour Sittvagn"
+    image="/images/products/joie-honour-sittvagn-shale.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265464&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/joie-honour-sittvagn-shale"
+    store="Jollyroom"
+    description="Bästa budget-barnvagnen 2026. Vändbar sittdel och plant liggläge gör att du kan använda den från födseln, och det stabila chassit klarar både stad och lätt terräng. Full funktion till budgetpris."
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Hauck Rapid 3R Sittvagn"
- image="/images/products/hauck-rapid-3r-svart.webp"
- badge="Billigast"
- rating={4.2}
- ageRange="Från födseln"
- pros={['Lägst pris i test', 'Kompakt och lätt att vika ihop', 'Liggläge inkluderat', 'CE-märkt']}
- cons={['Enklare material', 'Sämre fjädring på ojämna underlag']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10252132&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/hauck-rapid-3r-sittvagn-black"
- rel="sponsored noopener"
- />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Budgetbarnvagnar 2026" />
 
- <ProductCard
- name="Kinderkraft Grande 2"
- image="/images/products/kinderkraft-grande-2.webp"
- badge="Terrängvänlig"
- rating={4.3}
- ageRange="Från födseln"
- pros={['Stötdämpande hjul för bekväm körning', 'Rymlig varukorg undertill', 'Justerbart ryggstöd till liggläge', 'Robust byggkvalitet']}
- cons={['Tyngre än sulkys', 'Inget fullt plant liggläge för nyfödda']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10303817&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/kinderkraft-grande-2-sittvagn-midnight-black"
- rel="sponsored noopener"
- />
+  {/* Vinnaröversikt */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Joie Honour</strong> är bäst i test med vändbar sittdel och plant liggläge. <strong>Silver Cross Clic</strong> är lättast på 6,5 kg och bäst för resor. <strong>Hauck Rapid 3R</strong> är billigast med liggläge från födseln.</p>
+  </div>
 
- <ProductCard
- name="Joie Honour Sittvagn"
- image="/images/products/joie-honour-sittvagn-shale.webp"
- badge="Bäst i test"
- rating={4.5}
- ageRange="Från födseln"
- pros={['Vändbar sittdel, mot och från förälder', 'Plant liggläge passar nyfödda', 'Kompakt vikläge', 'Stabil och välbyggd']}
- cons={['Tyngre än enklare sulkys', 'Färre tillbehör än premiumvagnar']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265464&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/joie-honour-sittvagn-shale"
- rel="sponsored noopener"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Joie Muze LX Sulky"
- image="/images/products/joie-muze-lx-sulky-raven.webp"
- badge="Kompakt sulky"
- rating={4.3}
- ageRange="6 mån+"
- pros={['Lätt ca 7,5 kg', 'Kompakt hopvikad', 'Stor solskyddskåpa', 'Pålitligt Joie-märke']}
- cons={['Inget plant liggläge', 'Sämre för terräng']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328837&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/joie-muze-lx-sulky-raven"
- rel="sponsored noopener"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Joie Honour Sittvagn, bäst i test 2026</h2>
+    <MoneyProductCard
+      brand="Joie"
+      name="Joie Honour Sittvagn"
+      rating={4.5}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/joie-honour-sittvagn-shale.webp"
+      imageAlt="Joie Honour Sittvagn Shale"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265464&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/joie-honour-sittvagn-shale"
+      pros={['Vändbar sittdel, mot och från förälder', 'Plant liggläge passar nyfödda', 'Kompakt vikläge', 'Stabil och välbyggd']}
+      cons={['Tyngre än enklare sulkys', 'Färre tillbehör än premiumvagnar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Joie Honour är vår budgetvinnare 2026 och den mest kompletta vagnen i testet. Den vändbara sittdelen, som låter barnet åka mot eller från dig, finns normalt bara i betydligt dyrare vagnar. Det plana liggläget gör att du kan använda Honour från födseln, inte bara från sex månader som många budgetmodeller.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Chassit är stabilt och välbyggt och klarar både jämna trottoarer och lätt terräng. Den väger drygt 9,5 kg, vilket är tyngre än sulkyerna i jämförelsen, och tillbehörssortimentet är smalare än hos premiumvagnar. Men för familjen som vill ha full funktion utan att betala premiumpris är Joie Honour svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265464&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/joie-honour-sittvagn-shale" />
 
- <ProductCard
- name="Silver Cross Clic Sulky"
- image="/images/products/silver-cross-clic-sulky.webp"
- badge="Lättast"
- rating={4.4}
- ageRange="6 mån+"
- pros={['Lättast i test, bara 6,5 kg', 'Perfekt för resor och kollektivtrafik', 'Stilren design från brittiskt märke', 'Enkelt enhandsfall']}
- cons={['Inget plant liggläge', 'Begränsad varukorg']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285139&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/silver-cross-clic-sulky-space"
- rel="sponsored noopener"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Silver Cross Clic Sulky, lättast i test</h2>
+    <MoneyProductCard
+      brand="Silver Cross"
+      name="Silver Cross Clic Sulky"
+      rating={4.4}
+      rank={2}
+      badge="Lättast"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/silver-cross-clic-sulky.webp"
+      imageAlt="Silver Cross Clic Sulky"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285139&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/silver-cross-clic-sulky-space"
+      pros={['Lättast i test, bara 6,5 kg', 'Perfekt för resor och kollektivtrafik', 'Stilren design från brittiskt märke', 'Enkelt enhandsfall']}
+      cons={['Inget plant liggläge', 'Begränsad varukorg']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Silver Cross Clic är testets lättaste vagn med sina 6,5 kg och det självklara valet om du reser mycket eller åker kollektivt dagligen. Den fälls ihop med en hand och blir mycket kompakt, så att lyfta in den i bilen, bära den i trappor eller ta med den på bussen går smidigt.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den brittiska designen är stilren och håller god kvalitet för prisklassen. Begränsningarna är att den saknar plant liggläge, bara recline, och därför rekommenderas från sex månader, samt att varukorgen är liten. För stadsfamiljen med ett barn över sex månader är Clic ett av de smartaste budgetvalen.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285139&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/silver-cross-clic-sulky-space" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt budgetvagn</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Kinderkraft Grande 2, terrängvänlig</h2>
+    <MoneyProductCard
+      brand="Kinderkraft"
+      name="Kinderkraft Grande 2"
+      rating={4.3}
+      rank={3}
+      badge="Terrängvänlig"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/kinderkraft-grande-2.webp"
+      imageAlt="Kinderkraft Grande 2 sittvagn"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10303817&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/kinderkraft-grande-2-sittvagn-midnight-black"
+      pros={['Stötdämpande hjul för bekväm körning', 'Rymlig varukorg undertill', 'Justerbart ryggstöd till liggläge', 'Robust byggkvalitet']}
+      cons={['Tyngre än sulkys', 'Inget fullt plant liggläge för nyfödda']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Kinderkraft Grande 2 är vagnen för dig som rör dig på grus, kullersten och ojämna underlag. De stötdämpande hjulen ger en märkbart bekvämare körning än konkurrenterna i budgetklassen, och den robusta byggkvaliteten gör att den tål mer slitage. Varukorgen undertill är rymlig nog för veckohandling.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ryggstödet är justerbart till liggläge, även om det inte är ett helt plant läge för nyfödda. Med sina cirka 9 kg är den tyngre än sulkyerna. Men för familjen på landsbygden eller den som ofta promenerar på varierande underlag levererar Grande 2 mest komfort för pengarna.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10303817&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/kinderkraft-grande-2-sittvagn-midnight-black" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Vikt är avgörande</h3>
- <ul>
-  <li><strong>Silver Cross Clic (6,5 kg):</strong> Lättast i testet, utmärkt för den som rör sig mycket i trappor och kollektivtrafik.</li>
-  <li><strong>Joie Muze LX (ca 7,5 kg):</strong> Lätt och kompakt alternativ, passar resor och stadsliv.</li>
-  <li><strong>Joie Honour (ca 9,5 kg) och Kinderkraft Grande 2 (ca 9 kg):</strong> Tyngre men ger bättre körkomfort och mer funktioner för pengarna.</li>
-  <li><strong>Hauck Rapid 3R (ca 8 kg):</strong> Billigast i testet, acceptabel vikt för grundläggande dagligt bruk.</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Joie Muze LX Sulky, kompakt sulky</h2>
+    <MoneyProductCard
+      brand="Joie"
+      name="Joie Muze LX Sulky"
+      rating={4.3}
+      rank={4}
+      badge="Kompakt sulky"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/joie-muze-lx-sulky-raven.webp"
+      imageAlt="Joie Muze LX Sulky Raven"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328837&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/joie-muze-lx-sulky-raven"
+      pros={['Lätt ca 7,5 kg', 'Kompakt hopvikad', 'Stor solskyddskåpa', 'Pålitligt Joie-märke']}
+      cons={['Inget plant liggläge', 'Sämre för terräng']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Joie Muze LX är ett kompakt och prisvärt mellanting mellan den lättaste sulkyn och de tyngre sittvagnarna. Med sina cirka 7,5 kg är den lätt att lyfta och fälla ihop, och den stora solskyddskåpan ger bra skydd mot både sol och regn. Joie är ett pålitligt märke i budgetsegmentet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Som sulky saknar Muze LX plant liggläge och passar därför bäst från sex månader. Den presterar också sämre i terräng än Kinderkraft Grande 2. Men för stadsfamiljen som vill ha en lätt och smidig vagn till lågt pris är Muze LX ett tryggt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10328837&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/joie-muze-lx-sulky-raven" />
 
- <h3>Liggläge, nödvändigt under 6 månader</h3>
- <ul>
-  <li><strong>Hauck Rapid 3R, Kinderkraft Grande 2 och Joie Honour:</strong> Har liggläge och passar barn från födseln.</li>
-  <li><strong>Joie Muze LX och Silver Cross Clic:</strong> Har recline men inget plant liggläge, rekommenderas strikt från 6 månader när barnet kan sitta med stöd.</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Hauck Rapid 3R Sittvagn, billigast</h2>
+    <MoneyProductCard
+      brand="Hauck"
+      name="Hauck Rapid 3R Sittvagn"
+      rating={4.2}
+      rank={5}
+      badge="Billigast"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/hauck-rapid-3r-svart.webp"
+      imageAlt="Hauck Rapid 3R Sittvagn svart"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10252132&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/hauck-rapid-3r-sittvagn-black"
+      pros={['Lägst pris i test', 'Kompakt och lätt att vika ihop', 'Liggläge inkluderat', 'CE-märkt']}
+      cons={['Enklare material', 'Sämre fjädring på ojämna underlag']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Hauck Rapid 3R är testets billigaste vagn och valet när budgeten är den avgörande faktorn. Trots det låga priset får du en sittvagn med liggläge som passar från födseln, CE-märkning och en kompakt hopfällning som gör den enkel att förvara och ta med. Vikten på cirka 8 kg är acceptabel för dagligt bruk.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du kompromissar på materialkänsla och fjädring jämfört med de dyrare modellerna, och på ojämna underlag märks den enklare fjädringen. Men som första vagn eller andravagn till familjen med begränsad budget levererar Hauck Rapid 3R grundfunktionen du behöver till lägst pris.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10252132&url=https://www.jollyroom.se/barnvagnar/sittvagnar/framatvand-sittdel/hauck-rapid-3r-sittvagn-black" />
 
- <h3>Vändbar sittdel</h3>
- <p>Joie Honour har vändbar sittdel, vilket innebär att barnet kan åka mot eller från föräldern. Det är en funktion som normalt bara finns i dyrare vagnar och gör Joie Honour till en ovanligt komplett budgetvagn.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem budgetvagnar granskade, en vinner totalt. Joie Honour tar förstaplatsen tack vare vändbar sittdel och plant liggläge från födseln, Silver Cross Clic är lättast och bäst för resor, Kinderkraft Grande 2 vinner på terräng och körkomfort, Joie Muze LX är den kompakta sulkyn och Hauck Rapid 3R är billigast. Vill du fördjupa dig? Läs vår <a href="/guider/valja-barnvagn/" class="text-accent hover:text-accent-dark underline">kompletta köpguide för barnvagnar</a> eller jämför hela utbudet i <a href="/barnvagnar/" class="text-accent hover:text-accent-dark underline">bästa barnvagnen 2026</a>.
+    </p>
 
- <h3>Hjultyp och underlag</h3>
- <p>Kinderkraft Grande 2 har stötdämpande hjul och klarar grus och ojämna underlag bättre än konkurrenterna i klassen. Bor du i en stad med mestadels jämna trottoarer räcker standardhjulen på Silver Cross Clic och Joie Muze LX utmärkt.</p>
- </div>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Budgetbarnvagnar 2026" />
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a>
- </li>
- <li>
- <a href="/barnvagnar/latt/" class="text-accent underline">Lättaste barnvagnar 2026</a>
- </li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt budgetvagn 2026</h2>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vikt är avgörande</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Silver Cross Clic (6,5 kg) är lättast i testet och utmärkt för den som rör sig mycket i trappor och kollektivtrafik. Joie Muze LX (ca 7,5 kg) är ett lätt och kompakt alternativ som passar resor och stadsliv. Joie Honour (ca 9,5 kg) och Kinderkraft Grande 2 (ca 9 kg) är tyngre men ger bättre körkomfort och mer funktioner för pengarna. Hauck Rapid 3R (ca 8 kg) är billigast i testet, med en acceptabel vikt för grundläggande dagligt bruk.
+    </p>
 
-<ProductSchema products={[
- { name: 'Hauck Rapid 3R Sittvagn', description: 'Budgetvänlig 3-hjulig sittvagn med liggläge. Bra grundfunktioner till lägst pris.', brand: 'Hauck', ratingValue: 4.2, reviewCount: 1 },
- { name: 'Kinderkraft Grande 2', description: 'Sittvagn med stötdämpande hjul och robust konstruktion till ett prisvärt pris.', brand: 'Kinderkraft', ratingValue: 4.3, reviewCount: 1 },
- { name: 'Joie Honour Sittvagn', description: 'Bästa budget-barnvagnen 2026 med vändbar sittdel och plant liggläge.', brand: 'Joie', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Joie Muze LX Sulky', description: 'Kompakt och lätt sulky från Joie. Passar resor och kollektivtrafik.', brand: 'Joie', ratingValue: 4.3, reviewCount: 1 },
- { name: 'Silver Cross Clic Sulky', description: 'Lättast i test på 6,5 kg. Stilren brittisk sulky för resor och stad.', brand: 'Silver Cross', ratingValue: 4.4, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Liggläge, nödvändigt under 6 månader</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Hauck Rapid 3R, Kinderkraft Grande 2 och Joie Honour har liggläge och passar barn från födseln. Joie Muze LX och Silver Cross Clic har recline men inget plant liggläge, och rekommenderas strikt från 6 månader när barnet kan sitta med stöd. Nyfödda ska ligga helt plant, så har du ett spädbarn ska du välja en av de tre sittvagnarna med plant läge.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vändbar sittdel</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Joie Honour har vändbar sittdel, vilket innebär att barnet kan åka mot eller från föräldern. Det är en funktion som normalt bara finns i dyrare vagnar och gör Joie Honour till en ovanligt komplett budgetvagn.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hjultyp och underlag</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kinderkraft Grande 2 har stötdämpande hjul och klarar grus och ojämna underlag bättre än konkurrenterna i klassen. Bor du i en stad med mestadels jämna trottoarer räcker standardhjulen på Silver Cross Clic och Joie Muze LX utmärkt.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Barnvagnssäkerhet: vad myndigheterna kräver</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Alla barnvagnar på den svenska marknaden måste uppfylla en europeisk säkerhetsstandard. Nedan är de viktigaste fakta från Konsumentverket som alla föräldrar bör känna till innan köp.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="EN 1888"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2026"
+      >
+        Europeisk säkerhetsstandard som alla barnvagnar på den svenska marknaden måste uppfylla. Märkningen ställer krav på stabilitet, bromsar, säkerhetssele och material.
+      </StatHighlight>
+      <StatHighlight
+        figure="600-700 barn/år"
+        source="Konsumentverket (äldre uppgift)"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2010"
+      >
+        Uppskattad andel barn som sökte akutvård för barnvagnsrelaterade skador i Sverige. Konsumentverket uppmanar alltid att köpa från auktoriserade återförsäljare och kontrollera CE-märkning.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+    >
+      "Innan du bestämmer dig för vilken barnvagn du ska köpa, kontrollera att: vagnen är märkt enligt EN 1888, bromsar och låsningar fungerar, vagnen är stabil, olika tillbehör inte påverkar hur stabil vagnen är."
+    </ExpertQuote>
+
+    <p class="text-text-light leading-relaxed mt-5 mb-4">
+      Kontrollera alltid om din modell finns med bland <a href="/guider/aterkallade-barnprodukter/" class="text-accent hover:text-accent-dark underline">återkallade barnprodukter</a> innan köp, särskilt på begagnatmarknaden.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem budgetbarnvagnar utifrån fyra kriterier: körkomfort (fjädring, hjul, manövrering), vardagsanvändning (vikt, hopfällning, förvaring), säkerhet (EN 1888-certifiering, bromsar, sele) och funktion per krona inklusive liggläge och tillbehör. Produkterna är valda bland de mest sålda och eftersökta budgetmodellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a></li>
+        <li><a href="/barnvagnar/duovagn/" class="text-accent underline">Bästa duovagnen 2026, test och jämförelse</a></li>
+        <li><a href="/barnvagnar/latt/" class="text-accent underline">Lättaste barnvagnar 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa billiga barnvagnen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265464&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/joie-honour-sittvagn-shale"
+    text="Bra pris hos Jollyroom"
+    productName="Joie Honour Sittvagn"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

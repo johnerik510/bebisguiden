@@ -1,244 +1,490 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Barnvagnar', href: '/barnvagnar/' },
- { label: 'Duovagn' },
+  { label: 'Hem', href: '/' },
+  { label: 'Barnvagnar', href: '/barnvagnar/' },
+  { label: 'Duovagn' },
 ];
 
+
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade).
 const products = [
- {
- name: 'Bugaboo Fox 5',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/bugaboo-fox-5.webp',
- ctaHref: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize',
- features: {
- 'Vikt': '12,4 kg',
- 'Fallmatt': '90 x 46 x 36 cm',
- 'Maxvikt barn': '22 kg',
- 'Hjulstorlek': '30 cm (bak)',
- 'Fjadring': 'Fyrhjulsfjädring',
- },
- },
- {
- name: 'Cybex Priam 4',
- badge: 'Premium',
- rating: 4.7,
- image: '/images/products/cybex-priam-4.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912896&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-priam-duovagn-cozy-beige-chrome-black',
- features: {
- 'Vikt': '11,9 kg',
- 'Fallmatt': '85 x 50 x 38 cm',
- 'Maxvikt barn': '22 kg',
- 'Hjulstorlek': '28 cm (bak)',
- 'Fjadring': 'Fyrhjulsfjädring',
- },
- },
- {
- name: 'Emmaljunga SENTO ERGO+',
- badge: 'Svensk kvalitet',
- rating: 4.6,
- image: '/images/products/emmaljunga-sento.webp',
- ctaHref: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Femmaljunga%2Femmaljunga-sento%2Findex.html',
- features: {
- 'Vikt': '13,5 kg',
- 'Fallmatt': '94 x 60 x 40 cm',
- 'Maxvikt barn': '22 kg',
- 'Hjulstorlek': '30 cm (bak)',
- 'Fjadring': 'Suprem-fjädring',
- },
- },
- {
- name: 'Joolz Hub+ Sittvagn, Brilliant Black',
- image: '/images/products/joolz-hub-plus-brilliant-black.webp',
- badge: 'Prisvärt',
- rating: 4.5,
- ctaHref: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=340819&url=https://www.babyland.se/joolz-hub-sittvagn-brilliant-black',
- features: {
- 'Vikt': '10,4 kg',
- 'Fallmatt': '86 x 44 x 34 cm',
- 'Maxvikt barn': '22 kg',
- 'Hjulstorlek': '27 cm (bak)',
- 'Fjadring': 'Bakhjulsfjädring',
- },
- },
- {
- name: 'Britax Smile 5',
- image: '/images/products/britax-romer-smile-5z.webp',
- badge: 'Budget',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=915083&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-romer-smile-5z-duovagn-carbon-black',
- features: {
- 'Vikt': '11,2 kg',
- 'Fallmatt': '88 x 48 x 35 cm',
- 'Maxvikt barn': '22 kg',
- 'Hjulstorlek': '28 cm (bak)',
- 'Fjadring': 'Bakhjulsfjädring',
- },
- },
+  {
+    name: 'Bugaboo Fox 5',
+    desc: 'Premiumkombivagn med utbyggbar duo-funktion. Bäst i test för duo-körning.',
+    brand: 'Bugaboo',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Fyrhjulsfjädring', 'Enhandsfällning', 'Hållbart chassi'],
+    store: 'BabySam',
+    affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize',
+    imageUrl: '/images/products/bugaboo-fox-5.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Vikt': '12,4 kg', 'Fallmått': '90 x 46 x 36 cm', 'Maxvikt barn': '22 kg', 'Hjulstorlek': '30 cm (bak)', 'Fjädring': 'Fyrhjulsfjädring' },
+    alsoAt: [
+      { store: 'Köpbarnvagn', url: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html' },
+    ],
+  },
+  {
+    name: 'Cybex Priam 4',
+    desc: 'Elegant kombivagn med utmärkt körbarhet och lyxig finish.',
+    brand: 'Cybex',
+    rating: 4.7,
+    badge: 'Premium',
+    usps: ['Stilren design', 'Cybex-kompatibel', 'Mjuk körkomfort'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912896&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-priam-duovagn-cozy-beige-chrome-black',
+    imageUrl: '/images/products/cybex-priam-4.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Vikt': '11,9 kg', 'Fallmått': '85 x 50 x 38 cm', 'Maxvikt barn': '22 kg', 'Hjulstorlek': '28 cm (bak)', 'Fjädring': 'Fyrhjulsfjädring' },
+    alsoAt: [],
+  },
+  {
+    name: 'Emmaljunga SENTO ERGO+',
+    desc: 'Klassisk svensk kombivagn med lång tradition och pålitlig kvalitet.',
+    brand: 'Emmaljunga',
+    rating: 4.6,
+    badge: 'Svensk kvalitet',
+    usps: ['Suprem-fjädring', 'Liggdel ingår', '4 års garanti'],
+    store: 'Köpbarnvagn',
+    affiliateUrl: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Femmaljunga%2Femmaljunga-sento%2Findex.html',
+    imageUrl: '/images/products/emmaljunga-sento.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Vikt': '13,5 kg', 'Fallmått': '94 x 60 x 40 cm', 'Maxvikt barn': '22 kg', 'Hjulstorlek': '30 cm (bak)', 'Fjädring': 'Suprem-fjädring' },
+    alsoAt: [],
+  },
+  {
+    name: 'Joolz Hub+ Sittvagn, Brilliant Black',
+    desc: 'Lätt och kompakt duovagn, perfekt för stadsmiljö.',
+    brand: 'Joolz',
+    rating: 4.5,
+    badge: 'Prisvärt',
+    usps: ['Lättast i testet', 'Kompakt ihopfälld', 'Enhandsmanövrering'],
+    store: 'Babyland',
+    affiliateUrl: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=340819&url=https://www.babyland.se/joolz-hub-sittvagn-brilliant-black',
+    imageUrl: '/images/products/joolz-hub-plus-brilliant-black.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Vikt': '10,4 kg', 'Fallmått': '86 x 44 x 34 cm', 'Maxvikt barn': '22 kg', 'Hjulstorlek': '27 cm (bak)', 'Fjädring': 'Bakhjulsfjädring' },
+    alsoAt: [],
+  },
+  {
+    name: 'Britax Smile 5',
+    desc: 'Prisvärd duovagn med Britax säkerhet och smidig stadskörning.',
+    brand: 'Britax',
+    rating: 4.3,
+    badge: 'Budget',
+    usps: ['Bäst pris', 'Britax-säkerhet', 'Smidig i stan'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=915083&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-romer-smile-5z-duovagn-carbon-black',
+    imageUrl: '/images/products/britax-romer-smile-5z.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    features: { 'Vikt': '11,2 kg', 'Fallmått': '88 x 48 x 35 cm', 'Maxvikt barn': '22 kg', 'Hjulstorlek': '28 cm (bak)', 'Fjädring': 'Bakhjulsfjädring' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Vikt', 'Fallmatt', 'Maxvikt barn', 'Hjulstorlek', 'Fjadring'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Vikt', 'Fallmått', 'Maxvikt barn', 'Hjulstorlek', 'Fjädring'];
 
 const faqItems = [
- {
- question: 'Vad är skillnaden mellan en duovagn och en kombivagn?',
- answer: 'En duovagn har två separata delar: en liggdel för nyfödd och en sittdel för äldre barn. En kombivagn här en enhet som kan justeras från liggande till sittande position. Duovagnen ger oftast bättre liggkomfort för den nyföddda och bättre sittkomfort för det äldre barnet, medan kombivagnen är smidigare att hantera då du inte behöver byta del.',
- },
- {
- question: 'Hur mycket bör en duovagn väga?',
- answer: 'En duovagn väger vanligtvis mellan 10 och 14 kg (enbart chassit utan sittdel eller liggdel). Om du bor i lägenhet utan hiss eller ofta använder kollektivtrafik bör du prioritera lägre vikt. Bugaboo Fox 5 och Joolz Hub+ är bland de lättare alternativen. Tank på att totalvikten med liggdel eller sittdel monterad blir 2-4 kg högre.',
- },
- {
- question: 'Fran vilken ålder kan barnet sitta i sittdelen?',
- answer: 'De flesta tillverkare rekommenderar att barnet ska kunna sitta stadigt själv innan sittdelen används, vilket vanligtvis är runt 6 månader. Fram till dess använder du liggdelen. Vissa sittdelar har extra liggande lage och kan användas något tidigår, men folj alltid tillverkårns rekommendation för just din modell.',
- },
- {
- question: 'Vilken duovagn är bast för ojämnt underlag och grusvägar?',
- answer: 'For ojämnt underlag är stora hjul och bra fjädring avgörande. Bugaboo Fox 5 med sin fyrhjulsfjädring och 30 cm bakhjul hanterar grus och skogsvägar utmärkt. Emmaljunga NXT90 med Suprem-fjädring är också ett starkt val för nordiskt klimat och varierande underlag. Undvik vagnär med sma, harda hjul om du planerår mycket terrangangpromenader.',
- },
- {
- question: 'Hur kompakt blir en duovagn när den falls ihop?',
- answer: 'Fallmattet varierar kraftigt mellan modeller. Joolz Hub+ är en av de mest kompakta (86 x 44 x 34 cm) medan Emmaljunga NXT90 är större ihopfalld (94 x 60 x 40 cm). Mata alltid ditt bagageutrymme innan köp, en vagn som inte får plats i bilen är värdeloos oavsett hur bra den ar. Kontrollera också om vagnen kan stå ihopfalld eller om den behoover ligga ner.',
- },
+  {
+    question: 'Vad är skillnaden mellan en duovagn och en kombivagn?',
+    answer: 'En duovagn har två separata delar: en liggdel för nyfödd och en sittdel för äldre barn. En kombivagn är en enhet som kan justeras från liggande till sittande position. Duovagnen ger oftast bättre liggkomfort för den nyfödda och bättre sittkomfort för det äldre barnet, medan kombivagnen är smidigare att hantera då du inte behöver byta del.',
+  },
+  {
+    question: 'Hur mycket bör en duovagn väga?',
+    answer: 'En duovagn väger vanligtvis mellan 10 och 14 kg (enbart chassit utan sittdel eller liggdel). Om du bor i lägenhet utan hiss eller ofta använder kollektivtrafik bör du prioritera lägre vikt. Bugaboo Fox 5 och Joolz Hub+ är bland de lättare alternativen. Tänk på att totalvikten med liggdel eller sittdel monterad blir 2 till 4 kg högre.',
+  },
+  {
+    question: 'Från vilken ålder kan barnet sitta i sittdelen?',
+    answer: 'De flesta tillverkare rekommenderar att barnet ska kunna sitta stadigt själv innan sittdelen används, vilket vanligtvis är runt 6 månader. Fram till dess använder du liggdelen. Vissa sittdelar har extra liggande läge och kan användas något tidigare, men följ alltid tillverkarens rekommendation för just din modell.',
+  },
+  {
+    question: 'Vilken duovagn är bäst för ojämnt underlag och grusvägar?',
+    answer: 'För ojämnt underlag är stora hjul och bra fjädring avgörande. Bugaboo Fox 5 med sin fyrhjulsfjädring och 30 cm bakhjul hanterar grus och skogsvägar utmärkt. Emmaljunga SENTO ERGO+ med Suprem-fjädring är också ett starkt val för nordiskt klimat och varierande underlag. Undvik vagnar med små, hårda hjul om du planerar mycket terrängpromenader.',
+  },
+  {
+    question: 'Hur kompakt blir en duovagn när den fälls ihop?',
+    answer: 'Fallmåttet varierar kraftigt mellan modeller. Joolz Hub+ är en av de mest kompakta (86 x 44 x 34 cm) medan Emmaljunga SENTO ERGO+ är större ihopfälld (94 x 60 x 40 cm). Mät alltid ditt bagageutrymme innan köp, en vagn som inte får plats i bilen är värdelös oavsett hur bra den är. Kontrollera också om vagnen kan stå ihopfälld eller om den behöver ligga ner.',
+  },
 ];
-export const articleMeta = {
- title: "Bästa duovagnen 2026: 5 modeller jämförda och rankade",
- description: "Bugaboo Fox 5 vinner duovagnstestet: fyrhjulsfjädring och 30 cm bakhjul. Joolz Hub+ lättast (10,4 kg). Cybex Priam 4 premiumkänsla. Jämförelsetabell 2026.",
- publishDate: "2026-05-26",
- category: "Barnvagnar",
- image: "/images/products/joolz-hub-plus.webp",
-};
 
+export const articleMeta = {
+  title: "Bästa duovagnen 2026: 5 modeller jämförda och rankade",
+  description: "Bugaboo Fox 5 vinner duovagnstestet: fyrhjulsfjädring och 30 cm bakhjul. Joolz Hub+ lättast (10,4 kg). Cybex Priam 4 premiumkänsla. Jämförelsetabell 2026.",
+  publishDate: "2026-05-26",
+  updatedDate: "2026-06-12",
+  category: "Barnvagnar",
+  image: "/images/products/joolz-hub-plus.webp",
+};
 ---
 
 <ArticleLayout
- title="Bästa duovagnen 2026: 5 modeller jämförda och rankade"
- description="Bugaboo Fox 5 vinner duovagnstestet: fyrhjulsfjädring och 30 cm bakhjul. Joolz Hub+ lättast (10,4 kg). Cybex Priam 4 premiumkänsla. Jämförelsetabell 2026."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-26"
- datePublished="2026-04-15"
+  title="Bästa duovagnen 2026: 5 modeller jämförda och rankade"
+  description="Bugaboo Fox 5 vinner duovagnstestet: fyrhjulsfjädring och 30 cm bakhjul. Joolz Hub+ lättast (10,4 kg). Cybex Priam 4 premiumkänsla. Jämförelsetabell 2026."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-05-26"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Bugaboo Fox 5 vinner duovagn bäst i test 2026. Fyrhjulsfjädringen ger bäst körkomfort i klassen och tar både trottoarkanter och grusvägar mjukt. Sittdelen vänds mot eller från föräldern, och vagnen passar från födseln med liggdel.
-	 </p>
 
- <TopPick product={products[0]} description="Bugaboo Fox 5 vinner duovagnstestet 2026. Fyrhjulsfjädring ger bäst körkomfort i klassen, sittdelen vänds mot och från förälder och chassit klarar bild av terrängunderlag utan att kompromissa på stadssmidighet." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-05-26" dateModified="2026-06-12" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken duovagn är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Bugaboo Fox 5 är bäst i test 2026. Fyrhjulsfjädringen ger bäst körkomfort i klassen och tar både trottoarkanter och grusvägar mjukt. Sittdelen vänds mot eller från föräldern och vagnen passar från födseln med liggdel. Lättast: Joolz Hub+ (10,4 kg). Budgetval: Britax Smile 5.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Bugaboo"
+    name="Fox 5"
+    image="/images/products/bugaboo-fox-5.webp"
+    trackedUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize"
+    store="BabySam"
+    description="Bäst i test 2026. Fyrhjulsfjädringen ger bäst körkomfort i klassen och tar både trottoarkanter och grusvägar mjukt. Sittdelen vänds mot och från förälder och chassit klarar bra med terrängunderlag utan att kompromissa på stadssmidighet."
+    alsoAt={[
+      { store: 'Köpbarnvagn', url: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html' },
+    ]}
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Bugaboo Fox 5"
- image="/images/products/bugaboo-fox-5.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="0-4 år"
- pros={['Utmärkt fyrhjulsfjädring för alla underlag', 'Enhandsfall, snabb och smidig ihopfallning', 'Hallbar konstruktion som taal daglig användning']}
- cons={['Hög prisklass', 'Tung chassi (12,4 kg)']}
- ctaText="Bra pris hos Köpbarnvagn"
- ctaHref="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html"
- />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Duovagnar 2026" />
 
- <ProductCard
- name="Cybex Priam 4"
- image="/images/products/cybex-priam-4.webp"
- badge="Premium"
- rating={4.7}
- ageRange="0-4 år"
- pros={['Stilren, modern design', 'Fantastisk körkomfort', 'Kompatibel med Cybex bilbarnstolar']}
- cons={['Mycket hög prisklass', 'Begransad fargval i basmodellen']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912896&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-priam-duovagn-cozy-beige-chrome-black"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Emmaljunga SENTO ERGO+"
- image="/images/products/emmaljunga-sento.webp"
- badge="Svensk kvalitet"
- rating={4.6}
- ageRange="Från födseln till ca 22 kg"
- pros={['Fyrhjulsfjädring för nordiskt klimat', 'Liggdel ingår från start', 'Rymlig varukorg', '4 års garanti']}
- cons={['Tyngre än många konkurrenter', 'Stor ihopfälld storlek']}
- ctaText="Bra pris hos Köpbarnvagn"
- ctaHref="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Femmaljunga%2Femmaljunga-sento%2Findex.html"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Bugaboo Fox 5, bäst i test 2026</h2>
+    <MoneyProductCard
+      brand="Bugaboo"
+      name="Bugaboo Fox 5"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/bugaboo-fox-5.webp"
+      imageAlt="Bugaboo Fox 5 duovagn"
+      store="BabySam"
+      buyUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize"
+      pros={['Utmärkt fyrhjulsfjädring för alla underlag', 'Enhandsfällning, snabb och smidig ihopfällning', 'Hållbar konstruktion som tål daglig användning']}
+      cons={['Hög prisklass', 'Tungt chassi (12,4 kg)']}
+      alsoAt={[
+        { store: 'Köpbarnvagn', url: 'https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Fbugaboo%2Fbugaboo-fox-5%2Findex.html' },
+      ]}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bugaboo Fox 5 vinner duovagnstestet 2026 och är vår totala vinnare. Fyrhjulsfjädringen är det som lyfter den över konkurrenterna: körkomforten på svenska kullerstensgator och grusvägar är märkbart mjukare än hos enklare fjädersystem. Sittdelen är vändbar så barnet kan åka mot eller från dig, och vagnen passar från födseln med liggdel.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är priset och att chassit på 12,4 kg är tyngre än flera konkurrenter. Men enhandsfällningen gör vagnen snabb att vika ihop och den hållbara konstruktionen tål daglig användning. För familjen som vill ha bäst körkomfort i klassen utan att kompromissa på stadssmidighet är Fox 5 ett självklart val.
+    </p>
+    <MoneyCTABox store="BabySam" affiliateUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize" />
 
- <ProductCard
- name="Joolz Hub+ Sittvagn, Brilliant Black"
- image="/images/products/joolz-hub-plus-brilliant-black.webp"
- badge="Prisvärt"
- rating={4.5}
- ageRange="0-4 år"
- pros={['Lättaste chassit i testet (10,4 kg)', 'Kompakt ihopfalld, perfekt för stan', 'Enkel att manövrera med en hand']}
- cons={['Mindre hjul begränsar terrängförmåga', 'Enklare fjädring än premiummodeller']}
- ctaText="Bra pris hos Babyland"
- ctaHref="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=340819&url=https://www.babyland.se/joolz-hub-sittvagn-brilliant-black"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Cybex Priam 4, premium</h2>
+    <MoneyProductCard
+      brand="Cybex"
+      name="Cybex Priam 4"
+      rating={4.7}
+      rank={2}
+      badge="Premium"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/cybex-priam-4.webp"
+      imageAlt="Cybex Priam 4 duovagn"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912896&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-priam-duovagn-cozy-beige-chrome-black"
+      pros={['Stilren, modern design', 'Fantastisk körkomfort', 'Kompatibel med Cybex bilbarnstolar']}
+      cons={['Mycket hög prisklass', 'Begränsat färgval i basmodellen']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Cybex Priam 4 är premiumvalet för dig som värderar design och körkänsla. Den stilrena, moderna formgivningen sticker ut, och fyrhjulsfjädringen ger en fantastisk körkomfort på både asfalt och ojämnare underlag. Vagnen är kompatibel med Cybex egna bilbarnstolar för ett komplett travelsystem.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du betalar för premiumkänslan, prisklassen är mycket hög och färgvalet i basmodellen är begränsat. Men för familjen som vill ha en stilren vagn med utmärkt körbarhet och lyxig finish är Cybex Priam 4 svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=912896&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-priam-duovagn-cozy-beige-chrome-black" />
 
- <ProductCard
- name="Britax Smile 5"
- image="/images/products/britax-romer-smile-5z.webp"
- badge="Budget"
- rating={4.3}
- ageRange="0-4 år"
- pros={['Bäst pris i testet', 'Bra säkerhetsfunktioner från Britax', 'Kompakt och smidig i stadsmiljö']}
- cons={['Enklare material än dyrare modeller', 'Fjädringen hanterar ojämnt underlag sämre']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=915083&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-romer-smile-5z-duovagn-carbon-black"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Emmaljunga SENTO ERGO+, svensk kvalitet</h2>
+    <MoneyProductCard
+      brand="Emmaljunga"
+      name="Emmaljunga SENTO ERGO+"
+      rating={4.6}
+      rank={3}
+      badge="Svensk kvalitet"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/emmaljunga-sento.webp"
+      imageAlt="Emmaljunga SENTO ERGO+ duovagn"
+      store="Köpbarnvagn"
+      buyUrl="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Femmaljunga%2Femmaljunga-sento%2Findex.html"
+      pros={['Fyrhjulsfjädring för nordiskt klimat', 'Liggdel ingår från start', 'Rymlig varukorg', '4 års garanti']}
+      cons={['Tyngre än många konkurrenter', 'Stor ihopfälld storlek']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Emmaljunga SENTO ERGO+ är vagnen för dig som vill ha svensk kvalitet byggd för nordiskt klimat. Suprem-fjädringen hanterar snö och ojämna trottoarer väl, och liggdelen ingår från start så du är redo från födseln. Den rymliga varukorgen och fyra års garanti gör den till en trygg långtidsinvestering.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att den med 13,5 kg är tyngre än många konkurrenter och stor när den fälls ihop (94 x 60 x 40 cm), kontrollera bagageutrymmet innan köp. Men för familjen som prioriterar hållbarhet och svensk tillverkning är SENTO ERGO+ ett starkt val.
+    </p>
+    <MoneyCTABox store="Köpbarnvagn" affiliateUrl="https://to.kopbarnvagn.se/t/t?a=2056646903&as=2065068845&t=2&tk=1&url=https%3A%2F%2Fwww.kopbarnvagn.se%2Fsv%2Fartiklar%2Fbarnvagnar%2Fmarke-2%2Femmaljunga%2Femmaljunga-sento%2Findex.html" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt duovagn</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Joolz Hub+, prisvärt</h2>
+    <MoneyProductCard
+      brand="Joolz"
+      name="Joolz Hub+ Sittvagn, Brilliant Black"
+      rating={4.5}
+      rank={4}
+      badge="Prisvärt"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/joolz-hub-plus-brilliant-black.webp"
+      imageAlt="Joolz Hub+ Sittvagn Brilliant Black"
+      store="Babyland"
+      buyUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=340819&url=https://www.babyland.se/joolz-hub-sittvagn-brilliant-black"
+      pros={['Lättaste chassit i testet (10,4 kg)', 'Kompakt ihopfälld, perfekt för stan', 'Enkel att manövrera med en hand']}
+      cons={['Mindre hjul begränsar terrängförmåga', 'Enklare fjädring än premiummodeller']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Joolz Hub+ är det prisvärda valet för stadsfamiljen. Med 10,4 kg är det testets lättaste chassi, vilket gör vagnen smidig att lyfta i och ur bilen och uppför trappor. Den är kompakt ihopfälld (86 x 44 x 34 cm) och enkel att manövrera med en hand, perfekt för smala butiksdörrar och kollektivtrafik.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du kompromissar på terrängförmåga, de mindre hjulen och den enklare bakhjulsfjädringen klarar inte grus och skog lika bra som premiummodellerna. Men för den som mestadels rör sig på jämna stadsytor levererar Joolz Hub+ mycket vagn för pengarna.
+    </p>
+    <MoneyCTABox store="Babyland" affiliateUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=340819&url=https://www.babyland.se/joolz-hub-sittvagn-brilliant-black" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Vad är en duovagn?</h3>
- <p>En duovagn består av ett chassi och två separata delar: en liggdel för nyfödd och en sittdel för äldre barn. Liggdelen används från födsel till cirka 6 månader, då barnet behöver ligga plant. Sedan byter du till sittdelen som används tills barnet är runt 3 till 4 år. Duovagnen är det mest populära valet för förstagångsföräldrar i Sverige.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Britax Smile 5, budget</h2>
+    <MoneyProductCard
+      brand="Britax"
+      name="Britax Smile 5"
+      rating={4.3}
+      rank={5}
+      badge="Budget"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/britax-romer-smile-5z.webp"
+      imageAlt="Britax Smile 5 duovagn"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=915083&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-romer-smile-5z-duovagn-carbon-black"
+      pros={['Bäst pris i testet', 'Bra säkerhetsfunktioner från Britax', 'Kompakt och smidig i stadsmiljö']}
+      cons={['Enklare material än dyrare modeller', 'Fjädringen hanterar ojämnt underlag sämre']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Britax Smile 5 är budgetvalet som ger mest för pengarna. Du får bäst pris i testet kombinerat med de genomtänkta säkerhetsfunktioner som Britax är kända för. Med 11,2 kg är den kompakt och smidig i stadsmiljö och passar bra som första vagn eller andravagn.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du kompromissar på materialkänsla jämfört med dyrare modeller, och bakhjulsfjädringen hanterar ojämnt underlag sämre än vagnar med fyrhjulsfjädring. Men för familjen med begränsad budget levererar Britax Smile 5 trygg säkerhet och smidig stadskörning till lågt pris.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=915083&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/britax-romer-smile-5z-duovagn-carbon-black" />
 
- <h3>Fjädring och hjul</h3>
- <ul>
-  <li><strong>Fyrhjulsfjädring (<a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a> Fox 5, <a href="/marken/cybex/" class="text-accent underline">Cybex</a> Priam 4):</strong> Bäst komfort i alla situationer, på grus, kullersten och skogsstigar.</li>
-  <li><strong>Suprem-fjädring (Emmaljunga SENTO ERGO+):</strong> Byggd för nordiskt klimat, hanterar snö och ojämna trottoarer väl.</li>
-  <li><strong>Bakhjulsfjädring (Joolz Hub+, Britax Smile 5):</strong> Räcker för stadsliv med mestadels jämna ytor.</li>
-  <li><strong>Bakhjulsstorlek:</strong> 28 till 30 cm bakhjul rullar bättre över hinder än mindre hjul.</li>
- </ul>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem duovagnar granskade, en vinner totalt. Bugaboo Fox 5 tar förstaplatsen på körkomfort med sin fyrhjulsfjädring, Cybex Priam 4 är premiumvalet med stilren design, Emmaljunga SENTO ERGO+ vinner på svensk kvalitet och nordiskt klimat, Joolz Hub+ är det lätta och prisvärda stadsvalet och Britax Smile 5 är budgetvinnaren. Vill du jämföra fler vagntyper? Läs vår <a href="/barnvagnar/" class="text-accent hover:text-accent-dark underline">kompletta barnvagnstest 2026</a> eller jämför lätta och kompakta modeller i <a href="/barnvagnar/sittvagn/" class="text-accent hover:text-accent-dark underline">bästa sittvagnen 2026</a>.
+    </p>
 
- <h3>Vikt och fällmått</h3>
- <p>Vagnar med lägre vikt är enklare att lyfta uppför trappor och i och ur bilen. Joolz Hub+ är lättast i testet på 10,4 kg. Men lägre vikt kan innebära sämre stabilitet på ojämnt underlag. Kontrollera att den ihopfällda vagnen får plats i ditt bagageutrymme, mät innan du köper.</p>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Duovagnar 2026" />
 
- <h3>Kompatibilitet med bilbarnstol</h3>
- <p>De flesta duovagnar kan användas med en bilbarnstol via adapter, så att du får ett komplett travel system. Kontrollera vilka bilbarnstolar som är kompatibla med just den vagn du överväger. Cybex Priam fungerar sömlöst med Cybex Cloud-serien, och Bugaboo Fox 5 har adaptrar för flera märken.</p>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så väljer du rätt duovagn</h2>
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/barnvagnar/sittvagn/" class="text-accent underline">Bästa sittvagnen 2026, test och jämförelse (sulky)</a>
- </li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad är en duovagn?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En duovagn består av ett chassi och två separata delar: en liggdel för nyfödd och en sittdel för äldre barn. Liggdelen används från födsel till cirka 6 månader, då barnet behöver ligga plant. Sedan byter du till sittdelen som används tills barnet är runt 3 till 4 år. Duovagnen är det mest populära valet för förstagångsföräldrar i Sverige.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Fjädring och hjul</h3>
+    <ul class="list-disc pl-5 mb-4 text-text-light space-y-2">
+      <li><strong>Fyrhjulsfjädring (<a href="/marken/bugaboo/" class="text-accent hover:text-accent-dark underline">Bugaboo</a> Fox 5, <a href="/marken/cybex/" class="text-accent hover:text-accent-dark underline">Cybex</a> Priam 4):</strong> Bäst komfort i alla situationer, på grus, kullersten och skogsstigar.</li>
+      <li><strong>Suprem-fjädring (Emmaljunga SENTO ERGO+):</strong> Byggd för nordiskt klimat, hanterar snö och ojämna trottoarer väl.</li>
+      <li><strong>Bakhjulsfjädring (Joolz Hub+, Britax Smile 5):</strong> Räcker för stadsliv med mestadels jämna ytor.</li>
+      <li><strong>Bakhjulsstorlek:</strong> 28 till 30 cm bakhjul rullar bättre över hinder än mindre hjul.</li>
+    </ul>
 
- <CTABox productName="Duovagnar" store="Crescent Barnvagnar" description="Svenska barnvagnar med hög kvalitet och ergonomi." />
- <CTABox productName="Duovagnar" store="Babyonline" description="Stort urval barnvagnar, bärslar och babyutrustning." />
-<ProductSchema products={[
- { name: 'Bugaboo Fox 5', description: 'Premiumkombivagn med utbyggbar duo-funktion. Bäst i test för duo-körning.', brand: 'Bugaboo', ratingValue: 4.9, reviewCount: 1 },
- { name: 'Cybex Priam 4', description: 'Elegant kombivagn med utmärkt körbarhet och lyxig finish.', brand: 'Cybex', ratingValue: 4.7, reviewCount: 1 },
- { name: 'Emmaljunga NXT90', description: 'Klassisk svensk kombivagn med lång tradition och pålitlig kvalitet.', brand: 'Emmaljunga', ratingValue: 4.8, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vikt och fällmått</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Vagnar med lägre vikt är enklare att lyfta uppför trappor och i och ur bilen. Joolz Hub+ är lättast i testet på 10,4 kg. Men lägre vikt kan innebära sämre stabilitet på ojämnt underlag. Kontrollera att den ihopfällda vagnen får plats i ditt bagageutrymme, mät innan du köper.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Kompatibilitet med bilbarnstol</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      De flesta duovagnar kan användas med en <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">bilbarnstol</a> via adapter, så att du får ett komplett travelsystem. Kontrollera vilka bilbarnstolar som är kompatibla med just den vagn du överväger. Cybex Priam fungerar sömlöst med Cybex Cloud-serien, och Bugaboo Fox 5 har adaptrar för flera märken.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Duovagnssäkerhet: vad myndigheterna kräver</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Alla barnvagnar på den svenska marknaden måste uppfylla en europeisk säkerhetsstandard. Nedan är de viktigaste fakta från Konsumentverket som alla föräldrar bör känna till innan köp.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="EN 1888"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2026"
+      >
+        Europeisk säkerhetsstandard som alla barnvagnar på den svenska marknaden måste uppfylla. Märkningen ställer krav på stabilitet, bromsar, säkerhetssele och material.
+      </StatHighlight>
+      <StatHighlight
+        figure="600-700 barn/år"
+        source="Konsumentverket (äldre uppgift)"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+        year="2010"
+      >
+        Uppskattad andel barn som sökte akutvård för barnvagnsrelaterade skador i Sverige. Konsumentverket uppmanar alltid att köpa från auktoriserade återförsäljare och kontrollera CE-märkning.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/"
+    >
+      "Innan du bestämmer dig för vilken barnvagn du ska köpa, kontrollera att: vagnen är märkt enligt EN 1888, bromsar och låsningar fungerar, vagnen är stabil, olika tillbehör inte påverkar hur stabil vagnen är."
+    </ExpertQuote>
+
+    <p class="text-text-light leading-relaxed mt-5 mb-4">
+      Kontrollera alltid om din modell finns med bland <a href="/guider/aterkallade-barnprodukter/" class="text-accent hover:text-accent-dark underline">återkallade barnprodukter</a> innan köp, särskilt på begagnatmarknaden.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem duovagnar utifrån fyra kriterier: körkomfort (fjädring, hjul, manövrering), vardagsanvändning (vikt, hopfällning, förvaring), säkerhet (EN 1888-certifiering, bromsar, sele) och pris per användningsår inklusive andrahandsvärde. Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, komplett test och jämförelse</a></li>
+        <li><a href="/barnvagnar/sittvagn/" class="text-accent underline">Bästa sittvagnen 2026, test och jämförelse (sulky)</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa duovagnen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize"
+    text="Bra pris hos BabySam"
+    productName="Bugaboo Fox 5"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

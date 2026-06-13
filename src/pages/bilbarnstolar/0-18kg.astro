@@ -1,202 +1,363 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
- { label: 'Bilbarnstol 0 till 18 kg' },
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'Bilbarnstol 0 till 18 kg' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Britax Römer Dualfix 5Z i-Size',
- badge: 'Bäst i test',
- rating: 4.8,
- image: '/images/products/britax-romer-dualfix-5z-i-size-black.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue',
- features: {
- 'Viktintervall': '0 till 18 kg',
- 'Längdintervall': '40 till 105 cm',
- 'Montering': 'ISOFIX + stödben',
- 'Rotation': '360 grader',
- 'Säkerhet': 'i-Size (R129)',
- },
- },
- {
- name: 'BeSafe iZi Modular RF X1 i-Size',
- badge: 'Lång användningstid',
- rating: 4.6,
- image: '/images/products/besafe-izi-modular-rf-x1-i-size.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
- features: {
- 'Viktintervall': '0 till 18 kg',
- 'Längdintervall': '40 till 105 cm',
- 'Montering': 'ISOFIX + stödben',
- 'Rotation': 'Nej',
- 'Säkerhet': 'i-Size (R129)',
- },
- },
+  {
+    name: 'Britax Römer Dualfix 5Z i-Size',
+    brand: 'Britax Römer',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Toppbetyg ADAC + Folksam', '360° rotation', 'Räcker till 4 år'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue',
+    imageUrl: '/images/products/britax-romer-dualfix-5z-i-size-black.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Bakåtvänd bilbarnstol 0 till 18 kg med 360-rotation och ISOFIX. Toppval för nyfödda.',
+    features: { 'Viktintervall': '0 till 18 kg', 'Längdintervall': '40 till 105 cm', 'Montering': 'ISOFIX + stödben', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)' },
+    alsoAt: [],
+  },
+  {
+    name: 'BeSafe iZi Modular RF X1 i-Size',
+    brand: 'BeSafe',
+    rating: 4.6,
+    badge: 'Lång användningstid',
+    usps: ['Norsk säkerhetsmärke', 'Lätt (12,5 kg)', 'Passar trånga bilar'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
+    imageUrl: '/images/products/besafe-izi-modular-rf-x1-i-size.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Bakåtvänd bilbarnstol 0 till 18 kg med modulärt system och ISOFIX.',
+    features: { 'Viktintervall': '0 till 18 kg', 'Längdintervall': '40 till 105 cm', 'Montering': 'ISOFIX + stödben', 'Rotation': 'Nej', 'Säkerhet': 'i-Size (R129)' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Viktintervall', 'Längdintervall', 'Montering', 'Rotation', 'Säkerhet'];
+const specLabels = ['Viktintervall', 'Längdintervall', 'Montering', 'Rotation', 'Säkerhet'];
 
 const faqItems = [
- {
- question: 'Vad täcker bilbarnstol 0 till 18 kg?',
- answer: 'En bilbarnstol för 0 till 18 kg täcker hela spädbarnsperioden, från nyfödd till ungefär 4 års ålder (ca 105 cm). Det är i praktiken en kombination av babyskydds- och övergångsstols-fasen i ett och samma skal, utan att behöva köpa separat stol för de första 15 månaderna. Ekonomiskt och praktiskt men innebär att du inte har den portabilitet som ett separat babyskydd ger.',
- },
- {
- question: 'Är bilbarnstol 0 till 18 kg bättre än att köpa babyskydd + stol?',
- answer: 'Det beror på dina behov. En kombinationsstol 0 till 18 kg sparar pengar och du slipper köpa nytt tidigt. Nackdelen: tyngre och saknar portabilitet, du kan inte bära ett sovande barn in i huset som med ett separat babyskydd. Om du planerar att transportera bebisen sovande, har lång promenadväg från bilen eller ofta byter bil är ett separat babyskydd + stol mer praktiskt.',
- },
- {
- question: 'Hur länge ska barn sitta bakåtvänt i 0 till 18 kg-stol?',
- answer: 'Bakåtvänt så länge som möjligt, helst till 4 år eller tills bakåtväntgränsen nås. Stolar märkta 0 till 18 kg tillåter bakåtvänt åkande hela vägen upp till maxvikten (18 kg). Transportstyrelsen rekommenderar bakåtvänt till minst 4 år. Det finns inga fördelar med att vända stolen framåt tidigare, gör det inte förrän bakåtgränsen är nådd.',
- },
- {
- question: 'Kan man installera en 0 till 18 kg-stol utan ISOFIX?',
- answer: 'Nej, stolar i gruppen 0 (från nyfödd) kräver i-Size-standard och ISOFIX för säker montering. Det finns inga godkända bältesmonterade stolar för nyfödda i denna kategori längre. Se till att din bil har ISOFIX, det har de flesta bilar från 2012 och framåt.',
- },
- {
- question: 'Vad är 360-graders rotation och behöver man det?',
- answer: '360-graders rotation låter dig rotera stolen för att enkelt lyfta in och lyfta ur barnet, och sedan vrida tillbaka och spänna fast. Det är en komfortfunktion, inte en säkerhetsfunktion. Under körning ska stolen alltid vara låst i rätt position. Rotation gör stor skillnad vid daglig användning, speciellt i trånga bilar eller om du har ont i ryggen.',
- },
- {
- question: 'Vad väger en bilbarnstol 0 till 18 kg och är den portabel?',
- answer: 'En kombinationsstol 0 till 18 kg väger typiskt 10 till 16 kg. De är inte designade för att bäras, de sitter fast i bilen och barnet lyfts in och ur stolen. Jämfört med ett separat babyskydd (3 till 5 kg) är de mycket tyngre. Om portabilitet är viktigt: välj ett separat babyskydd för de första 12 till 15 månaderna.',
- },
+  {
+    question: 'Vad täcker bilbarnstol 0 till 18 kg?',
+    answer: 'En bilbarnstol för 0 till 18 kg täcker hela spädbarnsperioden, från nyfödd till ungefär 4 års ålder (ca 105 cm). Det är i praktiken en kombination av babyskydds- och övergångsstols-fasen i ett och samma skal, utan att behöva köpa separat stol för de första 15 månaderna. Ekonomiskt och praktiskt men innebär att du inte har den portabilitet som ett separat babyskydd ger.',
+  },
+  {
+    question: 'Är bilbarnstol 0 till 18 kg bättre än att köpa babyskydd + stol?',
+    answer: 'Det beror på dina behov. En kombinationsstol 0 till 18 kg sparar pengar och du slipper köpa nytt tidigt. Nackdelen: tyngre och saknar portabilitet, du kan inte bära ett sovande barn in i huset som med ett separat babyskydd. Om du planerar att transportera bebisen sovande, har lång promenadväg från bilen eller ofta byter bil är ett separat babyskydd + stol mer praktiskt.',
+  },
+  {
+    question: 'Hur länge ska barn sitta bakåtvänt i 0 till 18 kg-stol?',
+    answer: 'Bakåtvänt så länge som möjligt, helst till 4 år eller tills bakåtväntgränsen nås. Stolar märkta 0 till 18 kg tillåter bakåtvänt åkande hela vägen upp till maxvikten (18 kg). Transportstyrelsen rekommenderar bakåtvänt till minst 4 år. Det finns inga fördelar med att vända stolen framåt tidigare, gör det inte förrän bakåtgränsen är nådd.',
+  },
+  {
+    question: 'Kan man installera en 0 till 18 kg-stol utan ISOFIX?',
+    answer: 'Nej, stolar i gruppen 0 (från nyfödd) kräver i-Size-standard och ISOFIX för säker montering. Det finns inga godkända bältesmonterade stolar för nyfödda i denna kategori längre. Se till att din bil har ISOFIX, det har de flesta bilar från 2012 och framåt.',
+  },
+  {
+    question: 'Vad är 360-graders rotation och behöver man det?',
+    answer: '360-graders rotation låter dig rotera stolen för att enkelt lyfta in och lyfta ur barnet, och sedan vrida tillbaka och spänna fast. Det är en komfortfunktion, inte en säkerhetsfunktion. Under körning ska stolen alltid vara låst i rätt position. Rotation gör stor skillnad vid daglig användning, speciellt i trånga bilar eller om du har ont i ryggen.',
+  },
+  {
+    question: 'Vad väger en bilbarnstol 0 till 18 kg och är den portabel?',
+    answer: 'En kombinationsstol 0 till 18 kg väger typiskt 10 till 16 kg. De är inte designade för att bäras, de sitter fast i bilen och barnet lyfts in och ur stolen. Jämfört med ett separat babyskydd (3 till 5 kg) är de mycket tyngre. Om portabilitet är viktigt: välj ett separat babyskydd för de första 12 till 15 månaderna.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bilbarnstol 0-18 kg 2026: ett köp som räcker till 4 år",
   description: "En 0-18 kg bilbarnstol håller från nyfödd till cirka 4 år. Britax Römer Dualfix 5Z vinner med R129 i-Size, ISOFIX och 360-graders rotation.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Bilbarnstolar",
   image: "/images/products/britax-romer-dualfix-5z-i-size-black.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bilbarnstol 0-18 kg 2026: ett köp som räcker till 4 år"
- description="En 0-18 kg bilbarnstol håller från nyfödd till cirka 4 år. Britax Römer Dualfix 5Z vinner med R129 i-Size, ISOFIX och 360-graders rotation."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/bilbarnstolar/0-18kg/"
- updatedDate="2026-05-15"
- showDisclaimer={true}
- relatedArticles={[
- { title: 'Bästa bilbarnstol 2026', href: '/bilbarnstolar/' },
- { title: 'Bakåtvänd bilbarnstol', href: '/bilbarnstolar/bakatvand/' },
- { title: 'Bilbarnstol prematur', href: '/bilbarnstolar/prematur/' },
- { title: 'Resesäte för bil', href: '/bilbarnstolar/resesat/' },
- ]}
- faqItems={faqItems}
-  datePublished="2026-03-24"
+  title="Bilbarnstol 0-18 kg 2026: ett köp som räcker till 4 år"
+  description="En 0-18 kg bilbarnstol håller från nyfödd till cirka 4 år. Britax Römer Dualfix 5Z vinner med R129 i-Size, ISOFIX och 360-graders rotation."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/bilbarnstolar/0-18kg/"
+  datePublished="2026-05-16"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
 
-<h2 class="font-heading text-3xl md:text-4xl font-bold mb-3">Bästa bilbarnstolen 0-18 kg 2026</h2>
-<p class="text-base text-text-light mb-4 max-w-2xl">
-	 Britax Römer Dualfix 5Z i-Size vinner bilbarnstol 0-18 kg bäst i test 2026. Spannet 40 till 105 cm täcker hela spädbarnsperioden från nyfödd till cirka 4 år, så du slipper byta stol. Den monteras med ISOFIX och stödben och roterar 360 grader, vilket gör ilastningen enkel.
-	 </p>
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-12" />
 
-<TopPick product={products[0]} description="Britax Römer Dualfix 5Z är R129 i-Size-godkänd, har ISOFIX och stödben samt vrids 360 grader. Spann 40-105 cm täcker hela spädbarnsperioden. Det säkraste valet om du vill ha en stol som räcker till treårsdagen." />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken bilbarnstol 0-18 kg är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Britax Römer Dualfix 5Z i-Size vinner bilbarnstol 0-18 kg bäst i test 2026. Spannet 40 till 105 cm täcker hela spädbarnsperioden från nyfödd till cirka 4 år, så du slipper byta stol. Den monteras med ISOFIX och stödben och roterar 360 grader, vilket gör ilastningen enkel. Lång användningstid: BeSafe iZi Modular RF X1.
+    </p>
+  </div>
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Britax Römer"
+    name="Dualfix 5Z i-Size"
+    image="/images/products/britax-romer-dualfix-5z-i-size-black.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+    store="Jollyroom"
+    description="Britax Römer Dualfix 5Z är R129 i-Size-godkänd, har ISOFIX och stödben samt vrids 360 grader. Spann 40-105 cm täcker hela spädbarnsperioden. Det säkraste valet om du vill ha en stol som räcker till treårsdagen."
+  />
 
-<h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Bilbarnstolar 0-18 kg 2026" />
 
-<div class="space-y-4">
- <ProductCard
- name="Britax Römer Dualfix 5Z i-Size"
- image="/images/products/britax-romer-dualfix-5z-i-size-black.webp"
- badge="Bäst i test"
- rating={4.8}
- image="/images/products/britax-romer-dualfix-5z-i-size-black.webp"
- ageRange="0 till 4 år (40 till 105 cm / 0 till 18 kg)"
- pros={[
- 'Toppbetyg i ADAC- och Folksam-krocktester 2024',
- '360-graders rotation, enkel i- och urlastning',
- 'ISOFIX + stödben för stabil montering',
- 'Täcker hela spädbarnsperioden utan stolbyte',
- 'Justerbar nackdel och sele i ett steg'
- ]}
- cons={[
- 'Tyngre (14,8 kg), inte designad för att bäras',
- 'Tar stor plats i kompakta bilar'
- ]}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="BeSafe iZi Modular RF X1 i-Size"
- image="/images/products/besafe-izi-modular-rf-x1-i-size.webp"
- badge="Lång användningstid"
- rating={4.6}
- image="/images/products/besafe-izi-modular-rf-x1-i-size.webp"
- ageRange="0 till 4 år (40 till 105 cm / 0 till 18 kg)"
- pros={[
- 'Norsk säkerhetsmärke med starka krocktestresultat',
- 'Lätt jämfört med konkurrenter (12,5 kg)',
- 'Modulärt system, kan kombineras med BeSafe-bas',
- 'Smalt i bilens längdriktning, passar trånga bilar'
- ]}
- cons={[
- 'Ingen 360-graders rotation',
- 'Modulärsystemets bas säljs separat, extra kostnad'
- ]}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
- />
-</div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Britax Römer Dualfix 5Z i-Size, bäst i test</h2>
+    <MoneyProductCard
+      brand="Britax Römer"
+      name="Britax Römer Dualfix 5Z i-Size"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/britax-romer-dualfix-5z-i-size-black.webp"
+      imageAlt="Britax Römer Dualfix 5Z i-Size bilbarnstol 0 till 18 kg"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+      pros={['Toppbetyg i ADAC- och Folksam-krocktester 2024', '360-graders rotation, enkel i- och urlastning', 'ISOFIX + stödben för stabil montering', 'Täcker hela spädbarnsperioden utan stolbyte', 'Justerbar nackdel och sele i ett steg']}
+      cons={['Tyngre (14,8 kg), inte designad för att bäras', 'Tar stor plats i kompakta bilar']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Britax Römer Dualfix 5Z i-Size vinner bilbarnstol 0-18 kg bäst i test 2026. Spannet 40 till 105 cm täcker hela spädbarnsperioden från nyfödd till cirka 4 år, så du slipper byta stol. Den monteras med ISOFIX och stödben och roterar 360 grader, vilket gör det enkelt att lyfta i barnet utan att böja ryggen. Stolen är R129 i-Size-godkänd med toppbetyg i både ADAC och Folksams krocktester 2024.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är vikten (14,8 kg), den är inte designad för att bäras, och att den tar stor plats i kompakta bilar. Men för säkerhet, enkel montering och en stol som räcker hela vägen till treårsdagen är den svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue" />
 
-<h2 class="font-heading text-xl font-bold mt-10 mb-4">Bilbarnstol 0 till 18 kg vs separat babyskydd: vilket passar dig?</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. BeSafe iZi Modular RF X1 i-Size, lång användningstid</h2>
+    <MoneyProductCard
+      brand="BeSafe"
+      name="BeSafe iZi Modular RF X1 i-Size"
+      rating={4.6}
+      rank={2}
+      badge="Lång användningstid"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/besafe-izi-modular-rf-x1-i-size.webp"
+      imageAlt="BeSafe iZi Modular RF X1 i-Size bilbarnstol 0 till 18 kg"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
+      pros={['Norsk säkerhetsmärke med starka krocktestresultat', 'Lätt jämfört med konkurrenter (12,5 kg)', 'Modulärt system, kan kombineras med BeSafe-bas', 'Smalt i bilens längdriktning, passar trånga bilar']}
+      cons={['Ingen 360-graders rotation', 'Modulärsystemets bas säljs separat, extra kostnad']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BeSafe iZi Modular RF X1 i-Size är valet för dig som vill ha en lätt och smal stol som håller länge. Den norska tillverkaren har byggt varumärket kring stark krocksäkerhet, och stolen väger bara 12,5 kg, lätt jämfört med konkurrenterna. Det smala formatet i bilens längdriktning gör att den passar bra även i trånga bilar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Stolen saknar 360-graders rotation, vilket gör ilastningen något mindre bekväm än hos Britax. Den ingår i ett modulärt system där basen säljs separat, en extra kostnad att räkna med. Men för familjen som prioriterar låg vikt, smalt format och dokumenterad säkerhet är den ett starkt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab" />
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
- <div class="bg-accent/10 rounded-xl p-4 border border-accent/30">
- <p class="font-semibold text-dark mb-2">Välj 0 till 18 kg-stol om du:</p>
- <ul class="text-sm text-text-light space-y-1 list-disc pl-4">
- <li>Vill slippa köpa ny stol tidigt</li>
- <li>Alltid parkerar nära entrén</li>
- <li>Har en stationär bil utan behov av byte</li>
- <li>Vill spara pengar på sikt</li>
- <li>Vill ha 360-graders rotation</li>
- </ul>
- </div>
- <div class="bg-gray-50 rounded-xl p-4">
- <p class="font-semibold text-dark mb-2">Välj separat babyskydd om du:</p>
- <ul class="text-sm text-text-light space-y-1 list-disc pl-4">
- <li>Vill bära bebisen sovande in från bilen</li>
- <li>Ofta byter bil (farföräldrar, hyrbil)</li>
- <li>Har långt att gå från parkeringsplats</li>
- <li>Använder barnvagn med travel system</li>
- <li>Bebisen behöver mer rörelsefrihet</li>
- </ul>
- </div>
-</div>
+    <p class="text-text-light leading-relaxed mb-8">
+      Två bilbarnstolar 0-18 kg granskade, en vinner totalt. Britax Römer Dualfix 5Z tar förstaplatsen på krocktest, 360-rotation och daglig användbarhet, medan BeSafe iZi Modular RF X1 vinner på låg vikt och smalt format. Vill du jämföra fler modeller? Se vår kompletta <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">test av bästa bilbarnstolen 2026</a> eller läs om <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:text-accent-dark underline">bakåtvänd bilbarnstol och hur länge barn ska åka bakåtvänt</a>.
+    </p>
 
-<h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad krocktestarnas säger om bilbarnstol 0 till 18 kg</h2>
-<p class="text-text-light mb-4">
- ADAC (Europas största bilorganisation) och Folksam utför oberoende krocktester. <a href="/marken/britax/" class="text-accent underline">Britax</a> Römer Dualfix 5Z fick betyget "bra" i senaste ADAC-testet. <a href="/marken/besafe/" class="text-accent underline">BeSafe</a> iZi Modular RF X1 är högt rankad av skandinaviska testorganisationer med betyget "bra" i sidokrockstester. Båda stolarna uppfyller i-Size (R129)-standard som kräver sidokrocktestning.
-</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bilbarnstolar 0-18 kg 2026" />
 
-<div class="mt-8 bg-gray-50 rounded-xl p-5">
- <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
- <ul class="space-y-2 text-sm">
- <li><a href="/bilbarnstolar/" class="text-accent underline font-medium">Bästa bilbarnstolen 2026, alla kategorier</a></li>
- <li><a href="/bilbarnstolar/bakatvand/" class="text-accent underline font-medium">Bakåtvänd bilbarnstol, varför och hur länge</a></li>
- <li><a href="/bilbarnstolar/prematur/" class="text-accent underline font-medium">Bilbarnstol för prematura bebisar</a></li>
- </ul>
-</div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt bilbarnstol 0 till 18 kg 2026</h2>
 
-<FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bilbarnstol 0 till 18 kg vs separat babyskydd</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En kombinationsstol 0 till 18 kg sparar pengar och du slipper köpa nytt tidigt, den täcker hela spädbarnsperioden i ett och samma skal. Nackdelen är att den är tyngre och saknar portabilitet, du kan inte bära ett sovande barn in i huset som med ett separat babyskydd. Välj 0 till 18 kg-stol om du vill slippa köpa ny stol tidigt, alltid parkerar nära entrén, har en stationär bil och vill ha 360-graders rotation. Välj separat babyskydd om du vill bära bebisen sovande in från bilen, ofta byter bil (farföräldrar, hyrbil), har långt att gå från parkeringsplats eller använder barnvagn med travel system.
+    </p>
 
-<ProductSchema products={[
- { name: 'Britax Römer Dualfix 5Z i-Size', description: 'Bakåtvänd bilbarnstol 0 till 18 kg med 360-rotation och ISOFIX. Toppval för nyfödda.', image: 'https://bebisguiden.se/images/products/britax-dualfix-5z-black.webp', brand: 'Britax Römer', ratingValue: 4.9, reviewCount: 1 },
- { name: 'BeSafe iZi Modular RF X1 i-Size', description: 'Bakåtvänd bilbarnstol 0 till 18 kg med modulärt system och ISOFIX.', image: 'https://bebisguiden.se/images/products/besafe-izi-modular-rf-x1.webp', brand: 'BeSafe', ratingValue: 4.8, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hur länge ska barnet åka bakåtvänt?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bakåtvänt så länge som möjligt, helst till 4 år eller tills bakåtväntgränsen nås. Stolar märkta 0 till 18 kg tillåter bakåtvänt åkande hela vägen upp till maxvikten. Transportstyrelsen rekommenderar bakåtvänt till minst 4 år. Det finns inga säkerhetsfördelar med att vända stolen framåt tidigare, bara komfortmässiga för barn som vill se ut genom framrutan. Vänta så länge stolen klarar det.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">ISOFIX och 360-graders rotation</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Stolar i gruppen 0 (från nyfödd) kräver i-Size-standard och ISOFIX för säker montering, det finns inga godkända bältesmonterade stolar för nyfödda i denna kategori längre. ISOFIX klickas fast i två metallfästen direkt i bilens chassi och kombineras med stödben, vilket minskar felmonteringsrisken drastiskt. De flesta bilar från 2012 och framåt har ISOFIX. 360-graders rotation är en komfortfunktion, inte en säkerhetsfunktion: den låter dig vrida stolen för att enkelt lyfta in och ur barnet och sedan låsa i körläge. Rotation gör stor skillnad i trånga bilar eller om du har ont i ryggen.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad krocktestarna säger om bilbarnstol 0 till 18 kg</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      ADAC (Europas största bilorganisation) och Folksam utför oberoende krocktester. <a href="/marken/britax/" class="text-accent hover:text-accent-dark underline">Britax</a> Römer Dualfix 5Z fick betyget "bra" i senaste ADAC-testet. <a href="/marken/besafe/" class="text-accent hover:text-accent-dark underline">BeSafe</a> iZi Modular RF X1 är högt rankad av skandinaviska testorganisationer med betyget "bra" i sidokrockstester. Båda stolarna uppfyller i-Size (R129)-standard som kräver sidokrocktestning.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad kostar en bra bilbarnstol 0 till 18 kg?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En kvalitetsstol kostar mellan 4 000 och 8 000 kronor 2026. Britax Dualfix 5Z ligger i premiumsegmentet med 360-rotation, medan BeSafe iZi Modular RF X1 är ett lättare alternativ där den separata basen tillkommer som extra kostnad. Räknat per användningsår blir en 0 till 18 kg-stol billig eftersom den räcker hela vägen till fyraårsåldern utan stolbyte. Sparsamhet på bilbarnstol är aldrig rätt ställe, det är en produkt som ska skydda vid en krock.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om bakåtvänt åkande?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Den svenska bakåtvända traditionen bygger på decennier av oberoende krocktestforskning från Folksam och NTF. Nedan är de viktigaste fakta bakom rekommendationen.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Upp till 48 %"
+        source="Folksam/Chalmers"
+        sourceUrl="https://nyhetsrum.folksam.se/pressmeddelanden/folksam-varnar-for-olagliga-bilbarnstolar?id=9CC3392EA07B3B04&d=2025-09-25"
+        year="2025"
+      >
+        Av barn 0-3 år som omkom i bilkrockar hade troligen överlevt om de åkt bakåtvända, enligt Folksams analys av 99 barn under tre decennier.
+      </StatHighlight>
+      <StatHighlight
+        figure="5x lägre risk"
+        source="NTF"
+        sourceUrl="https://ntf.se/konsumentupplysning/barn-i-bil/bakatvand-bilbarnstol/"
+        year="2026"
+      >
+        Risken för dödlig skada vid frontalkrock: bakåtvänd kontra framåtvänd bilbarnstol. Kraften fördelas över hela barnets rygg bakåtvänt.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Folksam"
+      role="Oberoende trafikforskning och krocktester av bilbarnstolar"
+      sourceUrl="https://www.folksam.se/tester-och-goda-rad/vara-tester/bilbarnstolar"
+    >
+      "Vår rekommendation är att välja en bakåtvänd bilbarnstol som är godkänd till barnet är 125 centimeter eller väger 25-36 kilo."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat två bilbarnstolar 0 till 18 kg utifrån krocktestresultat (Folksam och ADAC), säkerhetsstandard (i-Size/R129), bakåtvänd kapacitet (längd och vikt), montering (ISOFIX och stödben) och daglig användbarhet (rotation, vikt, format). Produkterna är valda bland de mest sålda och eftersökta 0 till 18 kg-modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, alla kategorier</a></li>
+        <li><a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bakåtvänd bilbarnstol, varför och hur länge</a></li>
+        <li><a href="/bilbarnstolar/prematur/" class="text-accent underline">Bilbarnstol för prematura bebisar</a></li>
+        <li><a href="/bilbarnstolar/resesat/" class="text-accent underline">Resesäte för bil</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa bilbarnstolen 0-18 kg 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
+    text="Bra pris hos Jollyroom"
+    productName="Britax Römer Dualfix 5Z i-Size"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

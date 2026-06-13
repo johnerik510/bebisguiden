@@ -1,82 +1,77 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
-
-export const articleMeta = {
-  title: "Bästa lära-gå-stolen 2026: gåvagn och gåstol bäst i test",
-  description: "Lära-gå-stol bäst i test 2026: Ingenuity Step Sprout vinner totalt, Bright Starts Ford Bronco är mest underhållande. Vi jämför gåvagnar och gåstolar.",
-  publishDate: "2026-05-18",
-  category: "Lära-gå-stol",
-  image: "/images/products/ingenuity-step-sprout-first-forest-3in1-lara-ga-stol.webp",
-};
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
   { label: 'Lära-gå-stol' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
   {
     name: 'Ingenuity Step Sprout First Forest 3-in-1 Lära-gå-stol',
-    badge: 'Bäst i test',
+    brand: 'Ingenuity',
     rating: 4.6,
-    image: '/images/products/ingenuity-step-sprout-first-forest-3in1-lara-ga-stol.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10187664&url=https://www.jollyroom.se/babyprodukter/gastolar/ingenuity-step-sprout-first-forest-3-in-1-lara-ga-stol',
-    features: {
-      'Ålder': '6 mån+',
-      'Funktion': '3-in-1 (gåstol, gåvagn, aktivitetscenter)',
-      'Vikt': 'Lätt design',
-      'Material': 'Plast med textilsits',
-      'Justering': 'Höjdjusterbar',
-    },
+    badge: 'Bäst i test',
+    usps: ['Tre lägen i ett', 'Höjdjusterbar', 'CE-märkt EN 1273'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10187664&url=https://www.jollyroom.se/babyprodukter/gastolar/ingenuity-step-sprout-first-forest-3-in-1-lara-ga-stol',
+    imageUrl: '/images/products/ingenuity-step-sprout-first-forest-3in1-lara-ga-stol.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Lära-gå-stol med tre lägen: gåstol, gåvagn och stationärt aktivitetscenter. Höjdjusterbar.',
+    features: { 'Ålder': '6 mån+', 'Funktion': '3-in-1 (gåstol, gåvagn, aktivitetscenter)', 'Vikt': 'Lätt design', 'Material': 'Plast med textilsits', 'Justering': 'Höjdjusterbar' },
+    alsoAt: [],
   },
   {
     name: 'Bright Starts 4-in-1 Ways to Play Ford Bronco Gåstol',
-    badge: 'Bäst underhållning',
+    brand: 'Bright Starts',
     rating: 4.5,
-    image: '/images/products/bright-starts-4in1-ford-bronco-gastol.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243467&url=https://www.jollyroom.se/babyprodukter/gastolar/bright-starts-4-in-1-ways-to-play-ford-bronco-gastol',
-    additionalCtaHrefs: [
+    badge: 'Bäst underhållning',
+    usps: ['Fyra lägen', 'Tema med ljud och ljus', 'Mycket leksaker'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243467&url=https://www.jollyroom.se/babyprodukter/gastolar/bright-starts-4-in-1-ways-to-play-ford-bronco-gastol',
+    imageUrl: '/images/products/bright-starts-4in1-ford-bronco-gastol.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Gåstol med Ford Bronco-tema och fyra lägen. Höjdjusterbar.',
+    features: { 'Ålder': '6 mån+', 'Funktion': '4-in-1 (gåstol, gåvagn, rocker, lekstation)', 'Vikt': 'Tyngre med leksaker', 'Material': 'Plast med textilsits', 'Justering': 'Höjdjusterbar' },
+    alsoAt: [
       { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=5755f0ec-f364-4ef7-9be1-352aa177ac5b&url=https://www.babysam.se/laera-gaa-bil-4-i-1-ford-bronco-onesize' },
     ],
-    features: {
-      'Ålder': '6 mån+',
-      'Funktion': '4-in-1 (gåstol, gåvagn, rocker, lekstation)',
-      'Vikt': 'Tyngre med leksaker',
-      'Material': 'Plast med textilsits',
-      'Justering': 'Höjdjusterbar',
-    },
   },
   {
-    name: "Bright Starts 2-in-1 Ball Play Stroll'n Roll Gåstol",
-    badge: 'Bäst budget',
+    name: "Bright Starts 2-in-1 Ball Play Stroll N Roll Gåstol",
+    brand: 'Bright Starts',
     rating: 4.3,
-    image: '/images/products/brightstarts-2in1-ball-play-strolln-roll-gastol.webp',
-    ctaHref: "https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243468&url=https://www.jollyroom.se/babyprodukter/gastolar/brightstarts-2-in-1-ball-play-stroll-n-roll-gastol",
-    additionalCtaHrefs: [
+    badge: 'Bäst budget',
+    usps: ['Bollek på sittsen', 'Lätt att flytta', 'CE-märkt'],
+    store: 'Jollyroom',
+    affiliateUrl: "https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243468&url=https://www.jollyroom.se/babyprodukter/gastolar/brightstarts-2-in-1-ball-play-stroll-n-roll-gastol",
+    imageUrl: '/images/products/brightstarts-2in1-ball-play-strolln-roll-gastol.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Budget-gåstol med bollek. Höjdjusterbar.',
+    features: { 'Ålder': '6 mån+', 'Funktion': '2-in-1 (gåstol, ballek)', 'Vikt': 'Lätt', 'Material': 'Plast med textilsits', 'Justering': 'Höjdjusterbar' },
+    alsoAt: [
       { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=44b48a30-de72-465d-814e-2d65afa1d12e&url=https://www.babysam.se/aktivitetsvagn-stroll-n-roll-2-i-1-onesize' },
     ],
-    features: {
-      'Ålder': '6 mån+',
-      'Funktion': '2-in-1 (gåstol, ballek)',
-      'Vikt': 'Lätt',
-      'Material': 'Plast med textilsits',
-      'Justering': 'Höjdjusterbar',
-    },
   },
 ];
 
-const featureLabels = ['Ålder', 'Funktion', 'Vikt', 'Material', 'Justering'];
+const specLabels = ['Ålder', 'Funktion', 'Vikt', 'Material', 'Justering'];
 
 const faqItems = [
   {
     question: 'Vilken lära-gå-stol är bäst 2026?',
-    answer: 'Ingenuity Step Sprout First Forest 3-in-1 vinner totaltestet 2026. Den växlar mellan gåstol (barnet sitter och rullar runt), gåvagn (barnet håller i handtaget och puttar) och stationärt aktivitetscenter. Höjdjusteringen följer barnet från 6 månader till cirka 14 månader. Bright Starts Ford Bronco är näst bäst med mer leksaker och 4-in-1-funktion. För budget, Bright Starts Stroll N Roll under 700 kr.',
+    answer: 'Ingenuity Step Sprout First Forest 3-in-1 vinner totaltestet 2026. Den växlar mellan gåstol (barnet sitter och rullar runt), gåvagn (barnet håller i handtaget och puttar) och stationärt aktivitetscenter. Höjdjusteringen följer barnet från 6 månader till cirka 14 månader. Bright Starts Ford Bronco är näst bäst med mer leksaker och 4-in-1-funktion. För budget, Bright Starts Stroll N Roll.',
   },
   {
     question: 'Vad är skillnaden mellan gåstol och gåvagn?',
@@ -99,6 +94,15 @@ const faqItems = [
     answer: 'Barnets fötter ska nå golvet platt utan att höften lyfts. Justera höjden så att fötterna har bra kontakt med underlaget för att kunna putta sig fram. För kort höjd gör att barnet inte når, för hög gör att det hänger i sitsen. Alla våra rekommenderade modeller är höjdjusterbara med flera lägen. Justera om var 1 till 2 månader när barnet växer.',
   },
 ];
+
+export const articleMeta = {
+  title: "Bästa lära-gå-stolen 2026: gåvagn och gåstol bäst i test",
+  description: "Lära-gå-stol bäst i test 2026: Ingenuity Step Sprout vinner totalt, Bright Starts Ford Bronco är mest underhållande. Vi jämför gåvagnar och gåstolar.",
+  publishDate: "2026-05-18",
+  updatedDate: "2026-06-12",
+  category: "Lära-gå-stol",
+  image: "/images/products/ingenuity-step-sprout-first-forest-3in1-lara-ga-stol.webp",
+};
 ---
 
 <ArticleLayout
@@ -106,116 +110,306 @@ const faqItems = [
   description="Lära-gå-stol bäst i test 2026: Ingenuity Step Sprout vinner totalt, Bright Starts Ford Bronco är mest underhållande. Vi jämför gåvagnar och gåstolar."
   breadcrumbs={breadcrumbs}
   canonical="https://bebisguiden.se/lara-ga-stol/"
-  updatedDate="2026-05-18"
   datePublished="2026-05-18"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-    Ingenuity Step Sprout First Forest 3-in-1 vinner lära-gå-stol bäst i test 2026. Tre lägen i samma produkt täcker hela behovet: gåstol med hjul för rörelse, gåvagn med handtag som stöd vid uppresning och stationärt aktivitetscenter för lek. Höjdjusteringen gör att den följer bebisen från 6 till cirka 14 månader.
-  </p>
 
-  <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-18" dateModified="2026-06-12" />
+
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken lära-gå-stol är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Ingenuity Step Sprout First Forest 3-in-1 vinner lära-gå-stol bäst i test 2026: tre lägen i samma produkt, gåstol med hjul för rörelse, gåvagn med handtag som stöd vid uppresning och stationärt aktivitetscenter för lek. Höjdjusteringen följer bebisen från 6 till cirka 14 månader. Bäst underhållning: Bright Starts Ford Bronco. Bäst budget: Bright Starts Stroll N Roll.
+    </p>
+  </div>
+
+  <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4 not-prose">
     <p class="text-sm font-semibold text-amber-900 mb-1">Använd med måtta</p>
     <p class="text-sm text-amber-800">Använd lära-gå-stol max <strong>15 till 20 minuter åt gången</strong>, max 2 till 3 gånger per dag. Komplettera med fri rörelse på golvet där bebisen tränar sina egna muskler utan stöd.</p>
   </div>
 
-  <TopPick product={products[0]} description="Ingenuity Step Sprout First Forest 3-in-1 vinner test av lära-gå-stolar 2026. Tre lägen i samma produkt: gåstol med hjul för rörelse, gåvagn med handtag för stöd vid uppresning, och stationärt aktivitetscenter för lek. Följer bebisen från 6 till cirka 14 månader genom höjdjustering." />
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Ingenuity"
+    name="Step Sprout First Forest 3-in-1"
+    image="/images/products/ingenuity-step-sprout-first-forest-3in1-lara-ga-stol.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10187664&url=https://www.jollyroom.se/babyprodukter/gastolar/ingenuity-step-sprout-first-forest-3-in-1-lara-ga-stol"
+    store="Jollyroom"
+    description="Vinner test av lära-gå-stolar 2026 med tre lägen i samma produkt: gåstol med hjul för rörelse, gåvagn med handtag för stöd vid uppresning och stationärt aktivitetscenter för lek. Följer bebisen från 6 till cirka 14 månader genom höjdjustering."
+  />
 
-  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, lära-gå-stolar 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Lära-gå-stolar 2026" />
 
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
-  <div class="space-y-4">
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Ingenuity Step Sprout First Forest 3-in-1, bäst i test</h2>
+    <MoneyProductCard
+      brand="Ingenuity"
       name="Ingenuity Step Sprout First Forest 3-in-1 Lära-gå-stol"
-      image="/images/products/ingenuity-step-sprout-first-forest-3in1-lara-ga-stol.webp"
-      badge="Bäst i test"
       rating={4.6}
-      ageRange="6 mån+"
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/ingenuity-step-sprout-first-forest-3in1-lara-ga-stol.webp"
+      imageAlt="Ingenuity Step Sprout First Forest 3-in-1 lära-gå-stol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10187664&url=https://www.jollyroom.se/babyprodukter/gastolar/ingenuity-step-sprout-first-forest-3-in-1-lara-ga-stol"
       pros={['Tre lägen: gåstol, gåvagn, stationärt aktivitetscenter', 'Höjdjusterbar', 'Skogstema med leksaker', 'CE-märkt enligt EN 1273']}
       cons={['Plats krävs för förvaring', 'Inte vikbar']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10187664&url=https://www.jollyroom.se/babyprodukter/gastolar/ingenuity-step-sprout-first-forest-3-in-1-lara-ga-stol"
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Ingenuity Step Sprout First Forest 3-in-1 vinner test av lära-gå-stolar 2026. Tre lägen i samma produkt täcker hela behovet: gåstol med hjul för rörelse, gåvagn med handtag som stöd vid uppresning och ett stationärt aktivitetscenter för lek. Höjdjusteringen gör att den följer bebisen från 6 månader till cirka 14 månader, och den är CE-märkt enligt EN 1273.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att den tar plats och inte är vikbar, så räkna med att den ligger framme under hela användningsperioden. Men för en produkt som täcker både rörelse, stöd och lek under bebisens första år är den svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10187664&url=https://www.jollyroom.se/babyprodukter/gastolar/ingenuity-step-sprout-first-forest-3-in-1-lara-ga-stol" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Bright Starts 4-in-1 Ford Bronco, bäst underhållning</h2>
+    <MoneyProductCard
+      brand="Bright Starts"
       name="Bright Starts 4-in-1 Ways to Play Ford Bronco Gåstol"
-      image="/images/products/bright-starts-4in1-ford-bronco-gastol.webp"
-      badge="Bäst underhållning"
       rating={4.5}
-      ageRange="6 mån+"
-      pros={['Fyra lägen, inklusive rocker', 'Ford Bronco-tema med ljud och ljus', 'Höjdjusterbar', 'Mycket leksaker på instrumentpanelen']}
-      cons={['Tyngre att flytta', 'Större fotavtryck i hemmet']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243467&url=https://www.jollyroom.se/babyprodukter/gastolar/bright-starts-4-in-1-ways-to-play-ford-bronco-gastol"
-      additionalCtaHrefs={[
+      rank={2}
+      badge="Bäst underhållning"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/bright-starts-4in1-ford-bronco-gastol.webp"
+      imageAlt="Bright Starts 4-in-1 Ford Bronco gåstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243467&url=https://www.jollyroom.se/babyprodukter/gastolar/bright-starts-4-in-1-ways-to-play-ford-bronco-gastol"
+      alsoAt={[
         { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=5755f0ec-f364-4ef7-9be1-352aa177ac5b&url=https://www.babysam.se/laera-gaa-bil-4-i-1-ford-bronco-onesize' },
       ]}
+      pros={['Fyra lägen, inklusive rocker', 'Ford Bronco-tema med ljud och ljus', 'Höjdjusterbar', 'Mycket leksaker på instrumentpanelen']}
+      cons={['Tyngre att flytta', 'Större fotavtryck i hemmet']}
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bright Starts Ford Bronco är valet för bebisen som vill ha mycket att göra. Fyra lägen, gåstol, gåvagn, rocker och lekstation, plus ett Ford Bronco-tema med ljud och ljus och en instrumentpanel full av leksaker. Höjdjusteringen följer bebisen och stolen är ett underhållningscenter lika mycket som en lära-gå-stol.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den är tyngre att flytta än Step Sprout och tar mer plats i hemmet på grund av alla leksaker. Men för familjen som vill att bebisen ska underhållas länge i taget medan den tränar är den näst bästa modellen i testet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243467&url=https://www.jollyroom.se/babyprodukter/gastolar/bright-starts-4-in-1-ways-to-play-ford-bronco-gastol" />
 
-    <ProductCard
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Bright Starts 2-in-1 Stroll N Roll, bäst budget</h2>
+    <MoneyProductCard
+      brand="Bright Starts"
       name="Bright Starts 2-in-1 Ball Play Stroll N Roll Gåstol"
-      image="/images/products/brightstarts-2in1-ball-play-strolln-roll-gastol.webp"
-      badge="Bäst budget"
       rating={4.3}
-      ageRange="6 mån+"
-      pros={['Lägsta pris i jämförelsen', 'Bollek på sittsen', 'Lätt att flytta', 'CE-märkt']}
-      cons={['Färre lägen än Step Sprout', 'Mindre leksaker än Ford Bronco']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243468&url=https://www.jollyroom.se/babyprodukter/gastolar/brightstarts-2-in-1-ball-play-stroll-n-roll-gastol"
-      additionalCtaHrefs={[
+      rank={3}
+      badge="Bäst budget"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/brightstarts-2in1-ball-play-strolln-roll-gastol.webp"
+      imageAlt="Bright Starts 2-in-1 Ball Play Stroll N Roll gåstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243468&url=https://www.jollyroom.se/babyprodukter/gastolar/brightstarts-2-in-1-ball-play-stroll-n-roll-gastol"
+      alsoAt={[
         { store: 'BabySam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=44b48a30-de72-465d-814e-2d65afa1d12e&url=https://www.babysam.se/aktivitetsvagn-stroll-n-roll-2-i-1-onesize' },
       ]}
+      pros={['Lägsta pris i jämförelsen', 'Bollek på sittsen', 'Lätt att flytta', 'CE-märkt']}
+      cons={['Färre lägen än Step Sprout', 'Mindre leksaker än Ford Bronco']}
     />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bright Starts Stroll N Roll är budgetvalet som ändå håller måttet. Den har två lägen, gåstol och ballek, och en bollek på sitsen som håller bebisen sysselsatt. Den är lätt att flytta runt i hemmet och CE-märkt, så säkerheten är på plats trots det lägre priset.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den har färre lägen än Step Sprout och mindre leksaker än Ford Bronco, så den följer bebisen kortare tid och underhåller inte lika länge i taget. Men för familjen som vill prova en lära-gå-stol utan att lägga mycket pengar är den ett klokt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243468&url=https://www.jollyroom.se/babyprodukter/gastolar/brightstarts-2-in-1-ball-play-stroll-n-roll-gastol" />
+
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre lära-gå-stolar granskade, en vinner totalt. Ingenuity Step Sprout tar förstaplatsen på tre lägen och längst användningstid, Bright Starts Ford Bronco vinner på underhållning med fyra lägen och Stroll N Roll är budgetvalet. Vill du veta mer? Läs vår guide om <a href="/lara-ga-stol/fran-vilken-alder/" class="text-accent hover:text-accent-dark underline">lära-gå-stol från vilken ålder</a> eller jämför <a href="/leksaker/aktivitetscenter/" class="text-accent hover:text-accent-dark underline">bästa aktivitetscentret 2026</a>.
+    </p>
+
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Lära-gå-stolar 2026" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide lära-gå-stol: gåstol, gåvagn eller kombination?</h2>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Gåstol, gåvagn eller 3-in-1, vad väljer du?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Vår rekommendation är 3-in-1 eftersom den följer bebisen längst. En gåstol (sittande) används från cirka 6 månader, bebisen sitter med fötterna i golvet och rullar runt genom att putta, bra innan barnet står själv. En gåvagn (stående med handtag) används från cirka 9 till 10 månader, för bebisar som börjar resa sig och vill träna på att gå. En 3-in-1 som Ingenuity Step Sprout kombinerar båda funktionerna plus ett stationärt läge för lek.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhetsgrindar är obligatoriska om gåstol används</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Använder du en gåstol med hjul, är <a href="/sakerhet/babygrindar/" class="text-accent hover:text-accent-dark underline">säkerhetsgrindar</a> vid alla trappor obligatoriska. Hela vitsen med gåstolen är att bebisen kan röra sig fritt, vilket gör att olyckor kan ske på sekunder om bebisen rullar mot en öppen trappa. Vid trapptoppen krävs skruvgrind, vid nedre trappavsatsen fungerar spänngrind.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Höjdjustering följer bebisen</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bebisar växer snabbt mellan 6 och 12 månader. En lära-gå-stol utan höjdjustering blir snabbt oanvändbar. Alla våra rekommenderade modeller har 3 till 5 höjdlägen. Justera så att bebisens fötter står platt på golvet utan att höften lyfts. Kolla varannan månad och justera vid behov.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Underlag och miljö</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Lära-gå-stolar fungerar bäst på slätt, hårt underlag, parkett, klinker eller laminat. På heltäckande matta rör sig hjulen tungt och bebisen blir frustrerad. Utomhus på asfalt eller plattor fungerar med skor, men inte på grus eller gräs. Trösklar mellan rum kan vara hinder, lyft över bebisen om det behövs.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Förvaring</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Lära-gå-stolar tar plats och är sällan vikbara. Räkna med att de ligger framme under hela användningsperioden (6 månader till 15 månader) och planera plats i vardagsrummet eller köket där bebisen ofta är. När bebisen växer ifrån kan stolen säljas på Tradera, andrahandsvärdet är runt 30 till 50 procent av nypriset om den är ren och hel.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om gåstolssäkerhet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Konsumentverket ger tydliga säkerhetsråd för gåstolar och lära-gå-produkter. Nedan är de viktigaste.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Alltid uppsikt"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/gastol-konsument/"
+        year="2026"
+      >
+        Lämna aldrig barnet utan uppsikt i gåstolen, och låt inte barnet vara i gåstolen långa stunder. Ta undan skaderisker på höjder som barnet kan nå upp till i stolen.
+      </StatHighlight>
+      <StatHighlight
+        figure="Trappstopp"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/gastol-konsument/"
+        year="2026"
+      >
+        Använd inte en gåstol i närheten av en nedåtgående trappa, och välj en gåstol som har trappstopp för att minska risken för fallolyckor.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/gastol-konsument/"
+    >
+      "Använd inte en gåstol i närheten av en nedåtgående trappa."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat tre lära-gå-stolar utifrån antal lägen och funktion (gåstol, gåvagn, aktivitetscenter), säkerhetsstandard (CE-märkning enligt EN 1273), höjdjustering, användningstid och daglig användbarhet (vikt, förvaring, underhållning). Produkterna är valda bland de mest sålda och eftersökta lära-gå-stolarna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler guider om lära-gå-stol och utveckling</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/lara-ga-stol/fran-vilken-alder/" class="text-accent underline">Lära-gå-stol, från vilken ålder?</a></li>
+        <li><a href="/leksaker/aktivitetscenter/" class="text-accent underline">Bästa aktivitetscentret 2026</a></li>
+        <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026, för 0 till 9 månader</a></li>
+        <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker 6 till 12 månader</a></li>
+        <li><a href="/sakerhet/babygrindar/" class="text-accent underline">Babygrind bäst i test 2026, för trappor och dörrar</a></li>
+      </ul>
+    </div>
+
   </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide lära-gå-stol: gåstol, gåvagn eller kombination?</h2>
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa lära-gå-stolen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
 
-  <img src="/images/products/bright-starts-4in1-ford-bronco-gastol.webp" alt="Bright Starts Ford Bronco gåstol i Ford-tema" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" width="700" height="934" />
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10187664&url=https://www.jollyroom.se/babyprodukter/gastolar/ingenuity-step-sprout-first-forest-3-in-1-lara-ga-stol"
+    text="Bra pris hos Jollyroom"
+    productName="Ingenuity Step Sprout First Forest 3-in-1 Lära-gå-stol"
+  />
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Gåstol, gåvagn eller 3-in-1, vad väljer du?</h3>
-    <p>Vår rekommendation är 3-in-1 eftersom den följer bebisen längst. Så skiljer typerna sig:</p>
-    <ul>
-    <li><strong>Gåstol (sittande):</strong> från cirka 6 månader. Bebisen sitter med fötterna i golvet och rullar runt genom att putta. Bra innan barnet står själv.</li>
-    <li><strong>Gåvagn (stående med handtag):</strong> från cirka 9 till 10 månader, för bebisar som börjar resa sig och vill träna på att gå.</li>
-    <li><strong>3-in-1</strong> (som Ingenuity Step Sprout): kombinerar båda funktionerna plus ett stationärt läge för lek.</li>
-    </ul>
-
-    <h3>Säkerhetsgrindar är obligatoriska om gåstol används</h3>
-    <p>Använder du en gåstol med hjul, är <a href="/sakerhet/babygrindar/" class="text-accent underline">säkerhetsgrindar</a> vid alla trappor obligatoriska. Hela vitsen med gåstolen är att bebisen kan röra sig fritt, vilket gör att olyckor kan ske på sekunder om bebisen rullar mot en öppen trappa. Vid trapptoppen krävs skruvgrind, vid nedre trappavsatsen fungerar spänngrind.</p>
-
-    <h3>Höjdjustering följer bebisen</h3>
-    <p>Bebisar växer snabbt mellan 6 och 12 månader. En lära-gå-stol utan höjdjustering blir snabbt oanvändbar. Alla våra rekommenderade modeller har 3 till 5 höjdlägen. Justera så att bebisens fötter står platt på golvet utan att höften lyfts. Kolla varannan månad och justera vid behov.</p>
-
-    <h3>Vad säger forskningen om gåstolar</h3>
-    <p><a href="https://www.healthychildren.org/English/safety-prevention/at-home/Pages/Baby-Walkers-A-Dangerous-Choice.aspx" target="_blank" rel="noopener nofollow" class="text-accent underline">American Academy of Pediatrics</a> avråder från gåstolar med hjul, främst på grund av olycksrisken vid trappor. EU har strikta säkerhetskrav (EN 1273) som minskar risken för tippning. Forskning om gångutveckling är delad, vissa studier visar svag försening om gåstol används mycket, andra visar ingen effekt. Måttlig användning (15 till 20 min, 2 till 3 ggr per dag) och säker miljö (grind vid trappor, slätt golv) är vad de flesta experter rekommenderar idag.</p>
-
-    <h3>Underlag och miljö</h3>
-    <p>Lära-gå-stolar fungerar bäst på slätt, hårt underlag, parkett, klinker eller laminat. På heltäckande matta rör sig hjulen tungt och bebisen blir frustrerad. Utomhus på asfalt eller plattor fungerar med skor, men inte på grus eller gräs. Trösklar mellan rum kan vara hinder, lyft över bebisen om det behövs.</p>
-
-    <h3>Förvaring</h3>
-    <p>Lära-gå-stolar tar plats och är sällan vikbara. Räkna med att de ligger framme under hela användningsperioden (6 månader till 15 månader) och planera plats i vardagsrummet eller köket där bebisen ofta är. När bebisen växer ifrån kan stolen säljas på Tradera, andrahandsvärdet är runt 30 till 50 procent av nypriset om den är ren och hel.</p>
-  </div>
-
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om lära-gå-stol och utveckling</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/lara-ga-stol/fran-vilken-alder/" class="text-accent underline">Lära-gå-stol, från vilken ålder?</a></li>
-      <li><a href="/leksaker/aktivitetscenter/" class="text-accent underline">Bästa aktivitetscentret 2026</a></li>
-      <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026, för 0 till 9 månader</a></li>
-      <li><a href="/leksaker/6-12-manader/" class="text-accent underline">Bästa leksaker 6 till 12 månader</a></li>
-      <li><a href="/sakerhet/babygrindar/" class="text-accent underline">Babygrind bäst i test 2026, för trappor och dörrar</a></li>
-    </ul>
-  </div>
-
-  <FAQ items={faqItems} />
-
-  <ProductSchema products={[
-    { name: 'Ingenuity Step Sprout First Forest 3-in-1 Lära-gå-stol', description: 'Lära-gå-stol med tre lägen: gåstol, gåvagn och stationärt aktivitetscenter. Höjdjusterbar.', brand: 'Ingenuity', ratingValue: 4.6, reviewCount: 1 },
-    { name: 'Bright Starts 4-in-1 Ways to Play Ford Bronco Gåstol', description: 'Gåstol med Ford Bronco-tema och fyra lägen. Höjdjusterbar.', brand: 'Bright Starts', ratingValue: 4.5, reviewCount: 1 },
-    { name: 'Bright Starts 2-in-1 Ball Play Stroll N Roll Gåstol', description: 'Budget-gåstol med bollek. Höjdjusterbar.', brand: 'Bright Starts', ratingValue: 4.3, reviewCount: 1 },
-  ]} />
-
-  <CTABox productName="Lära-gå-stolar och gåstolar" store="Jollyroom" description="Ingenuity och Bright Starts gåstolar och gåvagnar." />
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

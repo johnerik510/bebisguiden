@@ -1,266 +1,432 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Spjälsängar', href: '/spjalsangar/' },
- { label: 'Bedside crib' },
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
+  { label: 'Bedside crib' },
 ];
 
 const maxiCosiUrl = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10232381&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/resesangar/maxi-cosi-iora-air-bedside-crib-beyond-graphite';
 const joieRoomieUrl = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192492&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/bedside-cribs/joie-roomie-bedside-crib-gray-flannel';
 const shnuggleUrl = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10234690&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/bedside-cribs/shnuggle-air-bedside-crib-dove-grey';
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Maxi-Cosi Iora Air Bedside Crib',
- image: '/images/products/maxi-cosi-iora-air-bedside-crib.webp',
- badge: 'Bäst totalt',
- rating: 4.7,
- ctaHref: maxiCosiUrl,
- features: {
- 'Höjdjustering': 'Ja',
- 'Sidopanel': 'Fällbar (mesh)',
- 'Mått (insida)': '83×50 cm',
- 'Åldersgrupp': '0 till 6 månader',
- },
- },
- {
- name: 'Shnuggle Air Bedside Crib',
- image: '/images/products/shnuggle-air-bedside-crib.webp',
- badge: 'Bäst ventilation',
- rating: 4.5,
- ctaHref: shnuggleUrl,
- features: {
- 'Höjdjustering': 'Ja',
- 'Sidopanel': 'Fällbar (mesh)',
- 'Mått (insida)': '83×50 cm',
- 'Åldersgrupp': '0 till 6 månader',
- },
- },
- {
- name: 'Joie Roomie Bedside Crib',
- image: '/images/products/joie-roomie-bedside-crib.webp',
- badge: 'Bäst pris',
- rating: 4.4,
- ctaHref: joieRoomieUrl,
- features: {
- 'Höjdjustering': 'Ja (5 lägen)',
- 'Sidopanel': 'Fällbar med dragkedja',
- 'Mått (insida)': '83×50 cm',
- 'Åldersgrupp': '0 till 6 månader',
- },
- },
+  {
+    name: 'Maxi-Cosi Iora Air Bedside Crib',
+    brand: 'Maxi-Cosi',
+    rating: 4.7,
+    badge: 'Bäst totalt',
+    usps: ['Meshsidor för luftcirkulation', 'Gungfunktion', 'Fällbar sidopanel'],
+    store: 'Jollyroom',
+    affiliateUrl: maxiCosiUrl,
+    imageUrl: '/images/products/maxi-cosi-iora-air-bedside-crib.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Bedside crib med meshsidor för luftcirkulation, gungfunktion, höjdjustering och fällbar sidopanel. Välkänt varumärke med stark säkerhetsprofil.',
+    features: { 'Höjdjustering': 'Ja', 'Sidopanel': 'Fällbar (mesh)', 'Mått (insida)': '83×50 cm', 'Åldersgrupp': '0 till 6 månader' },
+    alsoAt: [],
+  },
+  {
+    name: 'Shnuggle Air Bedside Crib',
+    brand: 'Shnuggle',
+    rating: 4.5,
+    badge: 'Bäst ventilation',
+    usps: ['Heltäckande mesh', 'Fällbar sidopanel', 'Höjdjusterbar'],
+    store: 'Jollyroom',
+    affiliateUrl: shnuggleUrl,
+    imageUrl: '/images/products/shnuggle-air-bedside-crib.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Bedside crib med heltäckande mesh och utmärkt luftcirkulation. Fällbar sidopanel och höjdjustering.',
+    features: { 'Höjdjustering': 'Ja', 'Sidopanel': 'Fällbar (mesh)', 'Mått (insida)': '83×50 cm', 'Åldersgrupp': '0 till 6 månader' },
+    alsoAt: [],
+  },
+  {
+    name: 'Joie Roomie Bedside Crib',
+    brand: 'Joie',
+    rating: 4.4,
+    badge: 'Bäst pris',
+    usps: ['5 höjdpositioner', 'Lutningsfunktion', 'Snabb montering'],
+    store: 'Jollyroom',
+    affiliateUrl: joieRoomieUrl,
+    imageUrl: '/images/products/joie-roomie-bedside-crib.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Prisvärd bedside crib med 5 höjdpositioner, dragkedjesida och lutningsfunktion. Snabb montering.',
+    features: { 'Höjdjustering': 'Ja (5 lägen)', 'Sidopanel': 'Fällbar med dragkedja', 'Mått (insida)': '83×50 cm', 'Åldersgrupp': '0 till 6 månader' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Höjdjustering', 'Sidopanel', 'Mått (insida)', 'Åldersgrupp'];
+const specLabels = ['Höjdjustering', 'Sidopanel', 'Mått (insida)', 'Åldersgrupp'];
 
 const faqItems = [
- {
- question: 'Vilken bedside crib är bäst i test 2026?',
- answer: 'Maxi-Cosi Iora Air Bedside Crib vinner bedside crib bäst i test 2026. Den har meshsidor för luftcirkulation, gungfunktion, fällbar sidopanel och höjdjustering till alla standard-madrasshöjder. Shnuggle Air är bäst för ventilation med heltäckande mesh, Joie Roomie är bäst pris och har lutningsfunktion vid förkylning. Alla tre passar nyfödd till cirka 6 månader.',
- },
- {
- question: 'Vad är en bedside crib?',
- answer: 'En bedside crib (även kallad sidovagga eller co-sleeper) är en liten säng som ställs intill föräldrasängen med en sida öppen eller fällbar. Bebisen sover på sin egen fasta yta med rätt madrass utan lösa sängkläder, samtidigt som föräldern enkelt når barnet utan att stiga upp. Det är den säkraste formen av närhet till bebisen under de första månaderna.',
- },
- {
- question: 'Är bedside crib säkrare än att ha bebisen i vuxensängen?',
- answer: 'Ja. Socialstyrelsen och Folkhälsomyndigheten avråder generellt från samsovning i vuxensängen under barnets första levnadsmånader på grund av kvävningsrisk. En bedside crib ger bebisen sin egen fasta och säkra sovyta med rätt madrass och utan lösa sängkläder, samtidigt som närheten bevaras för amning och trygghet.',
- },
- {
- question: 'Hur länge kan bebisen sova i en bedside crib?',
- answer: 'De flesta bedside cribs passar bebisen fram till ungefär 6 månaders ålder, när barnet börjar rulla och försöka resa sig. Kontrollera alltid tillverkarens viktgräns och åldersrekommendation för din modell, Joie Roomie och Shnuggle Air anger båda upp till 6 månader eller tills barnet kan resa sig på knäna.',
- },
- {
- question: 'Kan alla sängar använda en bedside crib?',
- answer: 'De flesta bedside cribs fungerar med standardsängar och är höjdjusterbara för att matcha olika sänghöjder. Modellerna i denna guide passar madrasshöjder mellan ca 25 och 60 cm. Mät alltid sänghöjden (topp på madrass till golv) innan köp och jämför med tillverkarens specifikationer.',
- },
- {
- question: 'Vad är skillnaden på en bedside crib och en vagga?',
- answer: 'En vagga är en fristående liten säng, ofta med gungfunktion, som inte ansluts till föräldrasängen. En bedside crib fästs mot föräldrasängen med en sida öppen så att föräldern enkelt kan nå bebisen utan att resa sig. För nattamning är bedside crib praktiskare; för rörlighet i hemmet kan en vagga vara bättre.',
- },
- {
- question: 'Behövs speciella lakan till en bedside crib?',
- answer: 'Ja, bedside cribs har vanligtvis mått som skiljer sig från vanliga spjälsängar. De flesta tillverkare säljer passande lakan separat. Köp alltid lakan som är gjorda för din specifika modell, ett lakan som inte sitter tight mot madrassen är en kvävningsrisk.',
- },
- {
- question: 'Kan jag använda bedside crib som resesäng?',
- answer: 'En bedside crib är inte en fullvärdig resesäng, de flesta modeller går att fälla men är skrymmande att transportera. Om du reser ofta kan det vara värt att komplettera med en separat resesäng. Joie har en Roomie Glide-modell som kombinerar bedside crib och resesäng om du vill ha en lösning som fungerar åt båda hållen.',
- },
- {
- question: 'Vad kostar en bedside crib?',
- answer: 'Bedside cribs kostar vanligtvis mellan 1 500 och nya i Sverige. Joie Roomie ligger på och är ett av de mest prisvärda alternativen. Shnuggle Air och Inovi Air. Begagnat hittar du ofta bedside cribs för halva priset, kontrollera alltid skick och att alla delar medföljer.',
- },
+  {
+    question: 'Vilken bedside crib är bäst i test 2026?',
+    answer: 'Maxi-Cosi Iora Air Bedside Crib vinner bedside crib bäst i test 2026. Den har meshsidor för luftcirkulation, gungfunktion, fällbar sidopanel och höjdjustering till alla standard-madrasshöjder. Shnuggle Air är bäst för ventilation med heltäckande mesh, Joie Roomie är bäst pris och har lutningsfunktion vid förkylning. Alla tre passar nyfödd till cirka 6 månader.',
+  },
+  {
+    question: 'Vad är en bedside crib?',
+    answer: 'En bedside crib (även kallad sidovagga eller co-sleeper) är en liten säng som ställs intill föräldrasängen med en sida öppen eller fällbar. Bebisen sover på sin egen fasta yta med rätt madrass utan lösa sängkläder, samtidigt som föräldern enkelt når barnet utan att stiga upp. Det är den säkraste formen av närhet till bebisen under de första månaderna.',
+  },
+  {
+    question: 'Är bedside crib säkrare än att ha bebisen i vuxensängen?',
+    answer: 'Ja. Socialstyrelsen och Folkhälsomyndigheten avråder generellt från samsovning i vuxensängen under barnets första levnadsmånader på grund av kvävningsrisk. En bedside crib ger bebisen sin egen fasta och säkra sovyta med rätt madrass och utan lösa sängkläder, samtidigt som närheten bevaras för amning och trygghet.',
+  },
+  {
+    question: 'Hur länge kan bebisen sova i en bedside crib?',
+    answer: 'De flesta bedside cribs passar bebisen fram till ungefär 6 månaders ålder, när barnet börjar rulla och försöka resa sig. Kontrollera alltid tillverkarens viktgräns och åldersrekommendation för din modell, Joie Roomie och Shnuggle Air anger båda upp till 6 månader eller tills barnet kan resa sig på knäna.',
+  },
+  {
+    question: 'Kan alla sängar använda en bedside crib?',
+    answer: 'De flesta bedside cribs fungerar med standardsängar och är höjdjusterbara för att matcha olika sänghöjder. Modellerna i denna guide passar madrasshöjder mellan ca 25 och 60 cm. Mät alltid sänghöjden (topp på madrass till golv) innan köp och jämför med tillverkarens specifikationer.',
+  },
+  {
+    question: 'Vad är skillnaden på en bedside crib och en vagga?',
+    answer: 'En vagga är en fristående liten säng, ofta med gungfunktion, som inte ansluts till föräldrasängen. En bedside crib fästs mot föräldrasängen med en sida öppen så att föräldern enkelt kan nå bebisen utan att resa sig. För nattamning är bedside crib praktiskare; för rörlighet i hemmet kan en vagga vara bättre.',
+  },
+  {
+    question: 'Behövs speciella lakan till en bedside crib?',
+    answer: 'Ja, bedside cribs har vanligtvis mått som skiljer sig från vanliga spjälsängar. De flesta tillverkare säljer passande lakan separat. Köp alltid lakan som är gjorda för din specifika modell, ett lakan som inte sitter tight mot madrassen är en kvävningsrisk.',
+  },
+  {
+    question: 'Kan jag använda bedside crib som resesäng?',
+    answer: 'En bedside crib är inte en fullvärdig resesäng, de flesta modeller går att fälla men är skrymmande att transportera. Om du reser ofta kan det vara värt att komplettera med en separat resesäng. Joie har en Roomie Glide-modell som kombinerar bedside crib och resesäng om du vill ha en lösning som fungerar åt båda hållen.',
+  },
+  {
+    question: 'Vad kostar en bedside crib?',
+    answer: 'Bedside cribs kostar vanligtvis mellan 1 500 och 4 000 kronor nya i Sverige. Joie Roomie är ett av de mest prisvärda alternativen, medan Shnuggle Air ligger högre upp i prisspannet. Begagnat hittar du ofta bedside cribs för halva priset, kontrollera alltid skick och att alla delar medföljer.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bedside Crib bäst i test 2026: Maxi-Cosi Iora Air vinner",
   description: "Bedside crib bäst i test 2026: Maxi-Cosi Iora Air vinner med mesh och gungfunktion. 3 sidovaggor jämförda på säkerhet, höjd och ventilation. Säker sömn nära dig.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-12",
   category: "Spjälsängar",
   image: "/images/products/maxi-cosi-iora-air-bedside-crib.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bedside Crib bäst i test 2026: Maxi-Cosi Iora Air vinner"
- description="Bedside crib bäst i test 2026: Maxi-Cosi Iora Air vinner med mesh och gungfunktion. 3 sidovaggor jämförda på säkerhet och höjd."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/spjalsangar/bedside-crib/"
- updatedDate="2026-06-10"
+  title="Bedside Crib bäst i test 2026: Maxi-Cosi Iora Air vinner"
+  description="Bedside crib bäst i test 2026: Maxi-Cosi Iora Air vinner med mesh och gungfunktion. 3 sidovaggor jämförda på säkerhet och höjd."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/spjalsangar/bedside-crib/"
   datePublished="2026-03-29"
+  updatedDate="2026-06-12"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Maxi-Cosi Iora Air vinner bedside crib bäst i test 2026. Meshsidorna ger utmärkt luftcirkulation, och den fällbara sidopanelen gör att bebisen sover intill dig på sin egen säkra yta. Höjdjusteringen passar de flesta svenska sängar och gungfunktionen hjälper till att söva.
-	 </p>
 
- <TopPick product={products[0]} description="Maxi-Cosi Iora Air Bedside Crib är bedside crib bäst i test 2026. Meshsidor för utmärkt luftcirkulation, gungfunktion, fällbar sidopanel och höjdjustering som passar de flesta svenska sängar. Välkänt varumärke med stark säkerhetsprofil." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-03-29" dateModified="2026-06-12" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Bedside crib jämförelse 2026: ventilation, höjd, pris</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken bedside crib är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Maxi-Cosi Iora Air vinner bedside crib bäst i test 2026: meshsidor för utmärkt luftcirkulation, gungfunktion och fällbar sidopanel som låter bebisen sova intill dig på sin egen säkra yta. Bäst ventilation: Shnuggle Air (heltäckande mesh). Bäst pris: Joie Roomie. Alla tre passar nyfödd till cirka 6 månader.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Maxi-Cosi Iora Air Bedside Crib</strong> är vårt totala val, meshsidor för bra ventilation, gungfunktion och fällbar sidopanel. <strong>Joie Roomie</strong> är bästa prisvärda alternativ för den som vill ha grunderna utan att betala premium.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Maxi-Cosi"
+    name="Iora Air Bedside Crib"
+    image="/images/products/maxi-cosi-iora-air-bedside-crib.webp"
+    trackedUrl={maxiCosiUrl}
+    store="Jollyroom"
+    description="Bedside crib bäst i test 2026. Meshsidor för utmärkt luftcirkulation, gungfunktion, fällbar sidopanel och höjdjustering som passar de flesta svenska sängar. Välkänt varumärke med stark säkerhetsprofil."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra tre val 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Bedside cribs 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Maxi-Cosi Iora Air Bedside Crib"
- image="/images/products/maxi-cosi-iora-air-bedside-crib.webp"
- badge="Bäst totalt"
- rating={4.7}
- pros={['Meshsidor för utmärkt luftcirkulation', 'Gungfunktion inbyggd', 'Fällbar sidopanel för enkel nattamning', 'Välkänt varumärke med stark säkerhetsprofil', 'Ingår mjuk madrass och förvaringspåse']}
- cons={['Något högre pris än Joie Roomie', 'Tyngre att flytta än enklare modeller']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={maxiCosiUrl}
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Shnuggle Air Bedside Crib"
- image="/images/products/shnuggle-air-bedside-crib.webp"
- badge="Bäst ventilation"
- rating={4.5}
- pros={['Heltäckande meshsidor, bästa luftcirkulation i testet', 'Fällbar sidopanel', 'Höjdjusterbar', 'Tvättbart yttertyg']}
- cons={['Något stelare montering än Joie', 'Madrassen säljs separat enligt vissa returer']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={shnuggleUrl}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Maxi-Cosi Iora Air Bedside Crib, bäst totalt</h2>
+    <MoneyProductCard
+      brand="Maxi-Cosi"
+      name="Maxi-Cosi Iora Air Bedside Crib"
+      rating={4.7}
+      rank={1}
+      badge="Bäst totalt"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/maxi-cosi-iora-air-bedside-crib.webp"
+      imageAlt="Maxi-Cosi Iora Air Bedside Crib sidovagga"
+      store="Jollyroom"
+      buyUrl={maxiCosiUrl}
+      pros={['Meshsidor för utmärkt luftcirkulation', 'Gungfunktion inbyggd', 'Fällbar sidopanel för enkel nattamning', 'Välkänt varumärke med stark säkerhetsprofil', 'Ingår mjuk madrass och förvaringspåse']}
+      cons={['Något högre pris än Joie Roomie', 'Tyngre att flytta än enklare modeller']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Maxi-Cosi Iora Air vinner bedside crib bäst i test 2026. Meshsidorna ger utmärkt luftcirkulation och den fällbara sidopanelen gör att bebisen sover intill dig på sin egen säkra yta, samtidigt som du enkelt når barnet vid nattamning. Höjdjusteringen passar de flesta svenska sängar och den inbyggda gungfunktionen hjälper till att söva.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Priset ligger något över Joie Roomie och stolen är tyngre att flytta än enklare modeller. Men för luftcirkulation, daglig användbarhet och Maxi-Cosis starka säkerhetsprofil är den svår att slå som helhetsval, och mjuk madrass samt förvaringspåse ingår.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl={maxiCosiUrl} />
 
- <ProductCard
- name="Joie Roomie Bedside Crib"
- image="/images/products/joie-roomie-bedside-crib.webp"
- badge="Bäst pris"
- rating={4.4}
- pros={['Tydligt lägst pris bland riktiga bedside cribs', '5 höjdpositioner', 'Lutningsfunktion (vid t.ex. förkylning)', 'Enkel snabbmontering']}
- cons={['Mindre robust känsla än premiummodeller', 'Sidopanelen öppnas via dragkedja, något långsammare']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={joieRoomieUrl}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Shnuggle Air Bedside Crib, bäst ventilation</h2>
+    <MoneyProductCard
+      brand="Shnuggle"
+      name="Shnuggle Air Bedside Crib"
+      rating={4.5}
+      rank={2}
+      badge="Bäst ventilation"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/shnuggle-air-bedside-crib.webp"
+      imageAlt="Shnuggle Air Bedside Crib sidovagga"
+      store="Jollyroom"
+      buyUrl={shnuggleUrl}
+      pros={['Heltäckande meshsidor, bästa luftcirkulation i testet', 'Fällbar sidopanel', 'Höjdjusterbar', 'Tvättbart yttertyg']}
+      cons={['Något stelare montering än Joie', 'Madrassen säljs separat enligt vissa returer']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Shnuggle Air är valet för dig som prioriterar ventilation. De heltäckande meshsidorna ger den bästa luftcirkulationen i testet, vilket minskar risken för överhettning under sömnen. Den fällbara sidopanelen och höjdjusteringen gör den enkel att ställa intill föräldrasängen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Monteringen är något stelare än Joie Roomie och madrassen säljs enligt vissa returer separat, så kontrollera vad som ingår. Yttertyget går att tvätta, vilket är praktiskt under de första månaderna. För familjen som vill maximera andningsbarheten är Shnuggle Air det tryggaste valet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl={shnuggleUrl} />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: vad du ska titta på när du väljer bedside crib</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Joie Roomie Bedside Crib, bäst pris</h2>
+    <MoneyProductCard
+      brand="Joie"
+      name="Joie Roomie Bedside Crib"
+      rating={4.4}
+      rank={3}
+      badge="Bäst pris"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/joie-roomie-bedside-crib.webp"
+      imageAlt="Joie Roomie Bedside Crib sidovagga"
+      store="Jollyroom"
+      buyUrl={joieRoomieUrl}
+      pros={['Tydligt lägst pris bland riktiga bedside cribs', '5 höjdpositioner', 'Lutningsfunktion (vid t.ex. förkylning)', 'Enkel snabbmontering']}
+      cons={['Mindre robust känsla än premiummodeller', 'Sidopanelen öppnas via dragkedja, något långsammare']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Joie Roomie ger dig grunderna i en riktig bedside crib till tydligt lägst pris i testet. Den har fem höjdpositioner som matchar de flesta sänghöjder och en lutningsfunktion som hjälper bebisen att andas lättare vid till exempel förkylning. Snabbmonteringen tar bara runt tio minuter.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Materialkänslan är mindre robust än premiummodellerna och sidopanelen öppnas via dragkedja, vilket är något långsammare halvsovig på natten än en fällbar sida. Men för familjen som vill ha en säker egen sovyta utan att betala premium är Joie Roomie ett klokt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl={joieRoomieUrl} />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>1. Höjdjustering, matcha din säng</h3>
- <p>Det viktigaste att kontrollera är att bedside crib:en kan justeras till exakt samma höjd som din föräldrasäng. Joie Roomie har 5 lägen, Shnuggle Air och Inovi Air är båda höjdjusterbara över ett brett intervall. Mät din madrass-höjd innan köp och jämför med modellens justeringsintervall.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre bedside cribs granskade, en vinner totalt. Maxi-Cosi Iora Air tar förstaplatsen på luftcirkulation och daglig användbarhet, Shnuggle Air vinner på ventilation och Joie Roomie är det prisvärda valet. Vill du jämföra fler alternativ? Se vår guide till <a href="/spjalsangar/" class="text-accent hover:text-accent-dark underline">bästa spjälsängen 2026</a> eller läs om <a href="/guider/saker-sovmiljo/" class="text-accent hover:text-accent-dark underline">säker sovmiljö för bebis</a>.
+    </p>
 
- <h3>2. Sidopanel, hur snabbt öppnas den?</h3>
- <p>Under nattamning halvsovig vill du kunna nå bebisen snabbt. En fällbar sida (Shnuggle, Inovi) är enklast att hantera. Dragkedja (Joie Roomie) fungerar bra men kan ta lite längre tid. Välj det system du tror du hanterar bäst halvsovig klockan tre på natten.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bedside cribs 2026" />
 
- <h3>3. Ventilation och material</h3>
- <p>Bra luftcirkulation i bedside crib:en minskar risken för överhettning och gör sovmiljön mer behaglig. Shnuggle Air har heltäckande mesh på alla sidor, Inovi Air har meshpaneler i sidorna. Joie Roomie använder tätare tyg, fortfarande andningsbart men inte lika luftigt.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad du ska titta på när du väljer bedside crib</h2>
 
- <h3>4. Hur länge används den?</h3>
- <p>De flesta bedside cribs används de 4 till 6 första månaderna. Det är en relativt kort period, vilket gör det värt att låna eller köpa begagnat om budgeten är tight. Kontrollera ändå alltid skick och säkerhetsstatus innan du använder en begagnad bedside crib.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Höjdjustering, matcha din säng</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det viktigaste att kontrollera är att bedside crib:en kan justeras till exakt samma höjd som din föräldrasäng. Joie Roomie har 5 lägen, Shnuggle Air är höjdjusterbar över ett brett intervall. Mät din madrasshöjd innan köp och jämför med modellens justeringsintervall.
+    </p>
 
- <h3>5. Madrass och sängkläder, säkerhetskrav</h3>
- <p>Madrassen som medföljer bedside crib:en ska alltid vara den som tillverkaren specificerat, byt aldrig till en tjockare eller mjukare madrass. Madrassen ska vara fast och passa exakt i sängen utan glipor. Använd aldrig kudde, duntäcke eller lös filt i en bedside crib, ett tunt lakan och eventuellt en tunn sovpåse räcker. Överhettning är en riskfaktor för SIDS, så håll rummet vid 18 till 20 grader.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Sidopanel, hur snabbt öppnas den?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Under nattamning halvsovig vill du kunna nå bebisen snabbt. En fällbar sida (Shnuggle, Maxi-Cosi) är enklast att hantera. Dragkedja (Joie Roomie) fungerar bra men kan ta lite längre tid. Välj det system du tror du hanterar bäst halvsovig klockan tre på natten.
+    </p>
 
- <h3>6. Montering och underhåll</h3>
- <p>Alla bedside cribs kräver montering. Joie Roomie tar ca 10 minuter, Shnuggle Air och Inovi Air ca 15 till 20 minuter. Kontrollera regelbundet att alla skruvar sitter fast och att inga delar är slitna. Tvätta textilier enligt tillverkarens instruktioner, vanligtvis i 40 grader.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Ventilation och material</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bra luftcirkulation i bedside crib:en minskar risken för överhettning och gör sovmiljön mer behaglig. Shnuggle Air har heltäckande mesh på alla sidor, Maxi-Cosi Iora Air har meshpaneler i sidorna. Joie Roomie använder tätare tyg, fortfarande andningsbart men inte lika luftigt.
+    </p>
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Säker sovmiljö med bedside crib, vad du måste tänka på</h2>
- <div class="prose prose-sm text-text-light max-w-none mb-6">
- <p>En bedside crib är ett av de säkraste alternativen under barnets första månader, men det finns fortfarande säkerhetsregler som alltid gäller:</p>
- <ul>
- <li><strong>Alltid på rygg:</strong> Lägg alltid bebisen att sova på rygg, även i bedside crib. Ryggläge minskar risken för SIDS dramatiskt.</li>
- <li><strong>Fast madrass:</strong> Använd alltid madrassen som tillverkaren anger, aldrig en mjukare ersättningsmadrass. Madrassen ska ligga fast utan glipor mot sidorna.</li>
- <li><strong>Inga lösa föremål:</strong> Inga kuddar, leksaker, täcken eller babynests i bedside crib:en. Ett tunt åtsittande lakan räcker.</li>
- <li><strong>Kontrollera glapp mot föräldrasängen:</strong> Fäst alltid bedside crib:en ordentligt mot din säng och kontrollera att det inte uppstår ett glapp mellan madrasserna där bebisen kan fastna.</li>
- <li><strong>18 till 20 grader i rummet:</strong> Överhettning är en riskfaktor för SIDS. Håll barnkammaren sval och välj sovpåse med rätt TOG-värde.</li>
- <li><strong>Dela sovrum, inte säng:</strong> Socialstyrelsen rekommenderar att bebisen sover i samma rum som föräldrarna, gärna i en bedside crib, de första sex månaderna.</li>
- </ul>
- <p>Läs vår kompletta guide om <a href="/guider/saker-sovmiljo/" class="text-accent underline">säker sovmiljö för bebis</a> för fullständig checklista och råd om SIDS-prevention.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Hur länge används den?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      De flesta bedside cribs används de 4 till 6 första månaderna. Det är en relativt kort period, vilket gör det värt att låna eller köpa begagnat om budgeten är tight. Kontrollera ändå alltid skick och säkerhetsstatus innan du använder en begagnad bedside crib.
+    </p>
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Bedside crib vs spjälsäng vs vagga, vad passar dig?</h2>
- <div class="prose prose-sm text-text-light max-w-none">
- <p>Valet mellan bedside crib, vanlig spjälsäng och vagga beror på din livssituation och dina prioriteringar. Kort jämförelse:</p>
- <ul>
- <li><strong>Bedside crib</strong>: bäst om du vill ha barnet nära för nattamning men i en egen säker sovyta. Används 0 till 6 månader. Tar relativt lite plats. Alla modeller i denna guide är bedside cribs.</li>
- <li><strong>Vanlig spjälsäng</strong>: bäst om du vill ha en säng som håller längre (0 till 3 år). Står fristående i barnrummet. Större och dyrare, men du slipper byta säng efter 6 månader. Se vår guide till <a href="/spjalsangar/" class="text-accent underline">bästa spjälsängen 2026</a>.</li>
- <li><strong>Vagga</strong>: bäst om du vill ha en fristående, ofta gungbar lösning. Vaggor har ingen öppen sida mot föräldrasängen, vilket gör nattamning lite mer krångligt.</li>
- </ul>
- <p>Många familjer börjar med en bedside crib de första 4 till 6 månaderna och flyttar sedan barnet till en vanlig spjälsäng i eget rum. Det är den vanligaste kombinationen i Sverige.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Madrass och sängkläder, säkerhetskrav</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Madrassen som medföljer bedside crib:en ska alltid vara den som tillverkaren specificerat, byt aldrig till en tjockare eller mjukare madrass. Madrassen ska vara fast och passa exakt i sängen utan glipor. Använd aldrig kudde, duntäcke eller lös filt i en bedside crib, ett tunt lakan och eventuellt en tunn sovpåse räcker. Överhettning är en riskfaktor för SIDS, så håll rummet vid 18 till 20 grader.
+    </p>
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler spjälsängs-guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsäng 2026, test och jämförelse av 5 modeller</a></li>
- <li><a href="/spjalsangar/resesang/" class="text-accent underline">Bästa resesäng barn 2026, vikbar och resevänlig</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Montering och underhåll</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla bedside cribs kräver montering. Joie Roomie tar ca 10 minuter, Shnuggle Air ca 15 till 20 minuter. Kontrollera regelbundet att alla skruvar sitter fast och att inga delar är slitna. Tvätta textilier enligt tillverkarens instruktioner, vanligtvis i 40 grader.
+    </p>
 
- <div class="mt-6 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, checklista och råd (SIDS)</a></li>
- <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säker sovmiljö med bedside crib</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En bedside crib är ett av de säkraste alternativen under barnets första månader, men säkerhetsreglerna gäller alltid. Lägg alltid bebisen att sova på rygg, ryggläge minskar risken för SIDS dramatiskt. Använd den fasta madrass tillverkaren anger, utan glipor mot sidorna, och håll sängen fri från kuddar, leksaker, täcken och babynests. Fäst bedside crib:en ordentligt mot din säng och kontrollera att inget glapp uppstår mellan madrasserna där bebisen kan fastna. Håll rummet vid 18 till 20 grader. Socialstyrelsen rekommenderar att bebisen sover i samma rum som föräldrarna, gärna i en bedside crib, de första sex månaderna. Läs vår kompletta guide om <a href="/guider/saker-sovmiljo/" class="text-accent hover:text-accent-dark underline">säker sovmiljö för bebis</a> för fullständig checklista.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bedside crib vs spjälsäng vs vagga</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Valet beror på din livssituation. En bedside crib är bäst om du vill ha barnet nära för nattamning men i en egen säker sovyta, den används 0 till 6 månader och tar relativt lite plats. En vanlig spjälsäng håller längre (0 till 3 år), står fristående och är större och dyrare, men du slipper byta säng efter 6 månader, se vår guide till <a href="/spjalsangar/" class="text-accent hover:text-accent-dark underline">bästa spjälsängen 2026</a>. En vagga är en fristående, ofta gungbar lösning utan öppen sida mot föräldrasängen, vilket gör nattamning lite mer krångligt. Många familjer börjar med en bedside crib de första 4 till 6 månaderna och flyttar sedan barnet till en vanlig spjälsäng i eget rum. Det är den vanligaste kombinationen i Sverige. För resor finns även <a href="/spjalsangar/resesang/" class="text-accent hover:text-accent-dark underline">bästa resesäng barn 2026</a>.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Maxi-Cosi Iora Air Bedside Crib',
- description: 'Bedside crib med meshsidor för luftcirkulation, gungfunktion, höjdjustering och fällbar sidopanel. Välkänt varumärke med stark säkerhetsprofil.',
- image: 'https://bebisguiden.se/images/products/maxi-cosi-iora-air-bedside-crib.webp',
- brand: 'Maxi-Cosi',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Shnuggle Air Bedside Crib',
- description: 'Bedside crib med heltäckande mesh och utmärkt luftcirkulation. Fällbar sidopanel och höjdjustering.',
- image: 'https://bebisguiden.se/images/products/shnuggle-air-bedside-crib.webp',
- brand: 'Shnuggle',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'Joie Roomie Bedside Crib',
- description: 'Prisvärd bedside crib med 5 höjdpositioner, dragkedjesida och lutningsfunktion. Snabb montering.',
- image: 'https://bebisguiden.se/images/products/joie-roomie-bedside-crib.webp',
- brand: 'Joie',
- ratingValue: 4.4,
- reviewCount: 1,
- },
- ]} />
- <CTABox productName="Spjälsängar" store="Jollyroom" description="Stort urval bedside cribs och spjälsängar." />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Vad säger forskningen om spjälsängssäkerhet?</h2>
+    <p class="text-text-light leading-relaxed mb-6">
+      Spjälsängssäkerhet styrs av tydliga krav från Konsumentverket. Nedan är de viktigaste fakta varje förälder bör känna till.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Max 25 mm"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsang-konsument/"
+        year="2026"
+      >
+        Sängbotten ska ha högst 25 millimeter mellan ribborna och sängsidan högst 65 millimeter mellan spjälorna, så att barnet inte fastnar. Sängen ska vara stabil och klara av att barn försöker klättra och skaka på den.
+      </StatHighlight>
+      <StatHighlight
+        figure="Fast madrass"
+        source="Konsumentverket"
+        sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsang-konsument/"
+        year="2026"
+      >
+        Madrassen ska vara fast och täcka hela sängbotten, och sängen ska ha en plan sovyta. Sängen ska inte ha lösa, saknade eller skadade spjälor och delar.
+      </StatHighlight>
+    </div>
+    <ExpertQuote
+      name="Konsumentverket"
+      role="Sveriges myndighet för konsumentskydd och produktsäkerhet"
+      sourceUrl="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnsang-konsument/"
+    >
+      "Sängen ska ha högst 65 millimeter mellan spjälorna i sängsidan och högst 25 millimeter mellan ribborna i sängbotten."
+    </ExpertQuote>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat tre bedside cribs utifrån säkerhet (fast madrass, stabilt fäste mot föräldrasängen), ventilation (mesh och andningsbart material), höjdjustering (matchning mot svenska sänghöjder), sidopanel (hur snabbt den öppnas vid nattamning) och daglig användbarhet (montering, gungfunktion, vikt). Produkterna är valda bland de mest sålda och eftersökta bedside cribs i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsäng 2026, test och jämförelse av 5 modeller</a></li>
+        <li><a href="/spjalsangar/resesang/" class="text-accent underline">Bästa resesäng barn 2026, vikbar och resevänlig</a></li>
+        <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, checklista och råd (SIDS)</a></li>
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, ljud, video och WiFi testat</a></li>
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa bedside crib 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href={maxiCosiUrl}
+    text="Bra pris hos Jollyroom"
+    productName="Maxi-Cosi Iora Air Bedside Crib"
+  />
+
 </ArticleLayout>
-</content>
-</invoke>
+
+{/* Auto-TOC "Detaljerad genomgång" , money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

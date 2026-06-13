@@ -1,0 +1,37 @@
+---
+/**
+ * Boxlös produkt-CTA för money pages (money page-mallen).
+ * Trogen port av tillskottsguidens CTABox: ingen bg/border/ruta, bara en ren
+ * fullbredds "Bra pris hos [Butik]"-knapp. Renderar INGENTING utan verifierad URL.
+ */
+interface Props {
+  productName?: string;
+  store?: string;
+  affiliateUrl?: string;
+  price?: string;
+  description?: string;
+}
+
+const { productName, store, affiliateUrl, price, description } = Astro.props;
+const hasCTA = !!affiliateUrl && !!store;
+const buttonLabel = `Bra pris hos ${store || 'butiken'}`;
+const hasLede = !!(productName || price || description);
+---
+
+{hasCTA && (
+<div class="not-prose my-6">
+  {productName && <p class="font-heading font-bold text-text text-base">{productName}</p>}
+  {price && <p class="text-sm text-text-light mt-0.5">{price}</p>}
+  {description && <p class="text-sm text-text-light mt-1.5 leading-relaxed">{description}</p>}
+  <a
+    href={affiliateUrl}
+    rel="nofollow sponsored noopener noreferrer"
+    target="_blank"
+    data-product={productName}
+    class={`no-underline flex w-full items-center justify-center gap-2 bg-cta hover:bg-cta-dark !text-white font-bold py-4 px-7 rounded-lg transition-colors text-base min-h-[56px] ${hasLede ? 'mt-3' : ''}`}
+  >
+    {buttonLabel}
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+  </a>
+</div>
+)}

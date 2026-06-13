@@ -1,214 +1,358 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 import { VERIFIED_LINKS } from '../../data/verified-links';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Leksaker', href: '/leksaker/' },
- { label: 'Barnklockor' },
+  { label: 'Hem', href: '/' },
+  { label: 'Leksaker', href: '/leksaker/' },
+  { label: 'Barnklockor' },
 ];
 
+// Verifierad affiliate-URL via verified-links.ts (Adtraction Create link, 2026-05-13)
 const xploraUrl = VERIFIED_LINKS['Xplora'];
 
+// No-price-policy. Garmin utan buyUrl = showcase (ingen CTA).
 const products = [
- {
- name: 'Xplora X6 Play',
- badge: 'Bäst i test',
- rating: 4.9,
- image: '/images/products/xplora-x6-play.webp',
- ctaHref: xploraUrl,
- features: {
- 'GPS': 'Ja',
- 'SIM-kort': 'Ja',
- 'Kamera': 'Ja',
- 'Ålder': '5 till 12 år',
- },
- },
- {
- name: 'Xplora XGO3',
- image: '/images/products/xplora-x5-play.webp',
- badge: 'Bäst mellanpris',
- rating: 4.7,
- ctaHref: xploraUrl,
- features: {
- 'GPS': 'Ja',
- 'SIM-kort': 'Ja',
- 'Kamera': 'Ja',
- 'Ålder': '5 till 12 år',
- },
- },
- {
- name: 'Garmin Bounce',
- badge: 'Bäst budget',
- rating: 4.5,
- image: '/images/products/garmin-bounce.webp',
-
- features: {
- 'GPS': 'Ja',
- 'SIM-kort': 'Ja',
- 'Kamera': 'Nej',
- 'Ålder': '6 till 12 år',
- },
- },
+  {
+    name: 'Xplora X6 Play',
+    brand: 'Xplora',
+    rating: 4.9,
+    badge: 'Bäst i test',
+    usps: ['GPS-spårning i realtid', 'Inbyggd kamera', 'Skolläge som stänger av distraktioner'],
+    store: 'Xplora',
+    affiliateUrl: xploraUrl,
+    imageUrl: '/images/products/xplora-x6-play.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'GPS-klocka för barn med kamera, samtalsfunktion och skolläge. Styrs via foräldraapp. Lämplig för 5 till 12 år.',
+    features: { 'GPS': 'Ja', 'SIM-kort': 'Ja', 'Kamera': 'Ja', 'Alder': '5 till 12 ar' },
+    alsoAt: [],
+  },
+  {
+    name: 'Xplora XGO3',
+    brand: 'Xplora',
+    rating: 4.7,
+    badge: 'Bäst mellanpris',
+    usps: ['GPS och samtal till lägre pris', 'Kamera ingår', 'Samma föräldraapp som X6 Play'],
+    store: 'Xplora',
+    affiliateUrl: xploraUrl,
+    imageUrl: '/images/products/xplora-x5-play.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'GPS-klocka för barn med kamera och samtalsfunktion. Bäst mellanpris i testet. Lämplig för 5 till 12 år.',
+    features: { 'GPS': 'Ja', 'SIM-kort': 'Ja', 'Kamera': 'Ja', 'Alder': '5 till 12 ar' },
+    alsoAt: [],
+  },
+  {
+    name: 'Garmin Bounce',
+    brand: 'Garmin',
+    rating: 4.5,
+    badge: 'Bäst budget',
+    usps: ['Pålitlig GPS från etablerat märke', 'Aktivitetsspårning för steg och sömn', 'Enkel att använda'],
+    store: '',
+    affiliateUrl: '',
+    imageUrl: '/images/products/garmin-bounce.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Enkel GPS-klocka för barn utan kamera. Aktivitetsspårning och samtalsfunktion. Lämplig för 6 till 12 år.',
+    features: { 'GPS': 'Ja', 'SIM-kort': 'Ja', 'Kamera': 'Nej', 'Alder': '6 till 12 ar' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['GPS', 'SIM-kort', 'Kamera', 'Ålder'];
+const specLabels = ['GPS', 'SIM-kort', 'Kamera', 'Ålder'];
 
 const faqItems = [
- {
- question: 'Från vilken ålder passar en barnklocka med GPS?',
- answer: 'De flesta GPS-klockor för barn är designade för åldern 5 till 12 år. Xplora X6 Play och XGO3 rekommenderas från 5 år, medan Garmin Bounce passar från ungefär 6 år. Gemensamt för alla är att de kräver att barnet kan förstå grundläggande funktioner som att svara på samtal och skicka platsen till föräldern. Yngre barn under 5 år har oftast mer nytta av en enklare GPS-tracker utan skärm.',
- },
- {
- question: 'Behövs ett SIM-kort till barnklockan?',
- answer: 'Ja, alla GPS-klockor i det här testet kräver ett eget SIM-kort med ett aktivt abonnemang för att ringa, ta emot samtal och skicka GPS-position i realtid. Utan SIM-kort fungerar GPS-spårning inte. Xplora erbjuder ett eget abonnemang kallat Stay Connected, men klockan fungerar också med de flesta vanliga SIM-kort från svenska operatörer. Garmin Bounce kräver likaså ett separat SIM-kort.',
- },
- {
- question: 'Vad ingår i abonnemanget till en Xplora-klocka?',
- answer: 'Xploras eget abonnemang Stay Connected inkluderar samtal och data för klockan. Du kan också sätta in ett befintligt SIM-kort om du hellre vill använda din nuvarande operatör. Garmin Bounce kräver ett separat SIM-kort, Garmin erbjuder inget eget abonnemang, men klockan fungerar med de flesta standard-SIM från svenska operatörer.',
- },
- {
- question: 'Xplora X6 Play eller Garmin Bounce, vilken ska man välja?',
- answer: 'Xplora X6 Play är det bättre valet om du vill ha en kamera, fler appfunktioner och ett ekosystem med app som är specifikt byggt för föräldrar och barn i Sverige. Garmin Bounce passar bättre om du söker ett enklare alternativ med fokus på GPS och aktivitetsspårning utan kamera. X6 Play kostar mer men levererar mer funktionalitet och ett mer polerat föräldragränssnitt.',
- },
- {
- question: 'Kan barnet använda sociala medier på barnklockan?',
- answer: 'Nej. GPS-klockor för barn som Xplora och Garmin Bounce är avsiktligt begränsade, de saknar webbläsare och sociala medier. Xplora-klockor kan ta emot godkända kontakter och skicka plats, men föräldern styr vilka som kan kontakta barnet via appen. Det är en av de stora fördelarna med dedikerade barnklockor jämfört med att ge barnet en smartphone.',
- },
+  {
+    question: 'Från vilken ålder passar en barnklocka med GPS?',
+    answer: 'De flesta GPS-klockor för barn är designade för åldern 5 till 12 år. Xplora X6 Play och XGO3 rekommenderas från 5 år, medan Garmin Bounce passar från ungefär 6 år. Gemensamt för alla är att de kräver att barnet kan förstå grundläggande funktioner som att svara på samtal och skicka platsen till föräldern. Yngre barn under 5 år har oftast mer nytta av en enklare GPS-tracker utan skärm.',
+  },
+  {
+    question: 'Behövs ett SIM-kort till barnklockan?',
+    answer: 'Ja, alla GPS-klockor i det här testet kräver ett eget SIM-kort med ett aktivt abonnemang för att ringa, ta emot samtal och skicka GPS-position i realtid. Utan SIM-kort fungerar GPS-spårning inte. Xplora erbjuder ett eget abonnemang kallat Stay Connected, men klockan fungerar också med de flesta vanliga SIM-kort från svenska operatörer. Garmin Bounce kräver likaså ett separat SIM-kort.',
+  },
+  {
+    question: 'Vad ingår i abonnemanget till en Xplora-klocka?',
+    answer: 'Xploras eget abonnemang Stay Connected inkluderar samtal och data för klockan. Du kan också sätta in ett befintligt SIM-kort om du hellre vill använda din nuvarande operatör. Garmin Bounce kräver ett separat SIM-kort, Garmin erbjuder inget eget abonnemang, men klockan fungerar med de flesta standard-SIM från svenska operatörer.',
+  },
+  {
+    question: 'Xplora X6 Play eller Garmin Bounce, vilken ska man välja?',
+    answer: 'Xplora X6 Play är det bättre valet om du vill ha en kamera, fler appfunktioner och ett ekosystem med app som är specifikt byggt för föräldrar och barn i Sverige. Garmin Bounce passar bättre om du söker ett enklare alternativ med fokus på GPS och aktivitetsspårning utan kamera. X6 Play levererar mer funktionalitet och ett mer polerat föräldragränssnitt.',
+  },
+  {
+    question: 'Kan barnet använda sociala medier på barnklockan?',
+    answer: 'Nej. GPS-klockor för barn som Xplora och Garmin Bounce är avsiktligt begränsade, de saknar webbläsare och sociala medier. Xplora-klockor kan ta emot godkända kontakter och skicka plats, men föräldern styr vilka som kan kontakta barnet via appen. Det är en av de stora fördelarna med dedikerade barnklockor jämfört med att ge barnet en smartphone.',
+  },
 ];
+
 export const articleMeta = {
   title: "Barnklocka med GPS 2026: Xplora X6 bäst i test",
   description: "Barnklocka med GPS bäst i test 2026: Xplora X6 vinner med SOS-knapp, GPS och samtalsfunktion. Garmin Bounce bäst batteritid. 3 klockor jämförda för barn 5 till 12 år.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
   category: "Leksaker",
   image: "/images/products/xplora-x6-play.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bästa Barnklockan 2026: GPS-klockor för barn jämförda"
- description="Bästa barnklockan med GPS 2026: Vi jämför Xplora X6, X5 och Garmin Bounce. Se vilken GPS-klocka för barn 5 till 12 år som passar bäst."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/leksaker/barnklockor/"
- updatedDate="2026-04-14"
-  datePublished="2026-05-10"
+  title="Barnklocka med GPS 2026: Xplora X6 bäst i test"
+  description="Barnklocka med GPS bäst i test 2026: Xplora X6 vinner med SOS-knapp, GPS och samtalsfunktion. Garmin Bounce bäst batteritid. 3 klockor jämförda för barn 5 till 12 år."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-05-16"
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Xplora X6 Play vinner barnklocka med GPS bäst i test 2026. GPS:en låter dig se var barnet befinner sig i realtid, och eget SIM-kort gör att barnet kan ringa och ta emot samtal. Klockan har även kamera och passar barn från 5 till 12 år.
-	 </p>
 
- <TopPick product={products[0]} description="Xplora X6 Play är vårt bäst i test bland barnklockor, främst tack vare 5 till 12 år. Bra balans mellan kvalitet, prestanda och pris." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, barnklockor med GPS 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken barnklocka med GPS är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Xplora X6 Play är bäst i test 2026: GPS i realtid, inbyggd kamera, skolläge och välbyggt föräldragränssnitt. Xplora XGO3 är det bästa mellanprisvalet med liknande funktioner. Garmin Bounce är enklast och billigast utan kamera men med pålitlig GPS. Alla tre passar barn 5 till 12 år.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Xplora X6 Play</strong> vinner för sin kombination av GPS, kamera och ett välbyggt föräldragränssnitt. <strong>Xplora XGO3</strong> är bästa mellanprisval med liknande funktioner till lägre kostnad. <strong>Garmin Bounce</strong> är enklast och billigast, utan kamera men med pålitlig GPS.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Xplora"
+    name="X6 Play"
+    image="/images/products/xplora-x6-play.webp"
+    trackedUrl={xploraUrl}
+    store="Xplora"
+    description="Vinnare barnklocka med GPS 2026 på funktion och föräldraupplevelse. GPS-spårning i realtid, inbyggd kamera, skolläge och ett välbyggt gränssnitt i föräldraappen gör X6 Play till det kompletta valet för barn 5 till 12 år."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Barnklockor med GPS 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Xplora X6 Play"
- image="/images/products/xplora-x6-play.webp"
- badge="Bäst i test"
- rating={4.9}
- image="/images/products/xplora-x6-play.webp"
- ageRange="5 till 12 år"
- pros={['GPS-spårning i realtid via föräldraapp', 'Inbyggd kamera för foton och videokommunikation', 'Skolläge som stänger av distraktioner under lektioner', 'Robust design anpassad för barn']}
- cons={['Kräver eget abonnemang', 'Högt inköpspris']}
- ctaText="Bra pris hos Xplora"
- ctaHref={xploraUrl}
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Xplora XGO3"
- badge="Bäst mellanpris"
- rating={4.7}
- image="/images/products/xplora-x5-play.webp"
- ageRange="5 till 12 år"
- pros={['GPS och samtalsfunktion till lägre pris', 'Kamera ingår', 'Samma föräldraapp som X6 Play', 'Bra batteritid']}
- cons={['Något äldre design än X6 Play', 'Kräver eget abonnemang']}
- ctaText="Bra pris hos Xplora"
- ctaHref={xploraUrl}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Xplora X6 Play, bäst i test</h2>
+    <MoneyProductCard
+      brand="Xplora"
+      name="Xplora X6 Play"
+      rating={4.9}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/xplora-x6-play.webp"
+      imageAlt="Xplora X6 Play barnklocka med GPS"
+      store="Xplora"
+      buyUrl={xploraUrl}
+      pros={['GPS-spårning i realtid via föräldraapp', 'Inbyggd kamera för foton och videokommunikation', 'Skolläge som stänger av distraktioner under lektioner']}
+      cons={['Kräver eget abonnemang', 'Högre inköpspris']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Xplora X6 Play vinner barnklocka med GPS bäst i test 2026. Klockan ger dig GPS-position i realtid via föräldraappen, och barnet kan ringa och ta emot samtal från godkända kontakter. Inbyggd kamera gör att barnet kan skicka foton direkt till föräldern, och skolläget stänger av alla distraktioner under lektionstid.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att klockan kräver ett eget SIM-kort och abonnemang, vilket ger en löpande månadskostand utöver inköpspriset. Men för familjen som vill ha full kommunikation, GPS och föräldrakontroll i ett paket är X6 Play det kompletta valet bland barnklockor 2026.
+    </p>
+    <MoneyCTABox store="Xplora" affiliateUrl={xploraUrl} />
 
- <ProductCard
- name="Garmin Bounce"
- image="/images/products/garmin-bounce.webp"
- badge="Bäst budget"
- rating={4.5}
- image="/images/products/garmin-bounce.webp"
- ageRange="6 till 12 år"
- pros={['Lägst pris i testet', 'Pålitlig GPS från ett etablerat märke', 'Aktivitetsspårning för steg och sömn', 'Enkel att använda för barnet']}
- cons={['Saknar kamera', 'Färre appfunktioner än Xplora', 'Ingen affiliate-länk, köps i butik']}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Xplora XGO3, bäst mellanpris</h2>
+    <MoneyProductCard
+      brand="Xplora"
+      name="Xplora XGO3"
+      rating={4.7}
+      rank={2}
+      badge="Bäst mellanpris"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/xplora-x5-play.webp"
+      imageAlt="Xplora XGO3 barnklocka med GPS"
+      store="Xplora"
+      buyUrl={xploraUrl}
+      pros={['GPS och samtalsfunktion till lägre pris', 'Kamera ingår', 'Samma föräldraapp som X6 Play']}
+      cons={['Något äldre design än X6 Play', 'Kräver eget abonnemang']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Xplora XGO3 är bästa mellanprisvalet bland GPS-klockor för barn 2026. Du får samma föräldraapp, GPS-spårning, samtalsfunktion och kamera som i X6 Play, men till ett lägre pris. Designen är något äldre men funktionaliteten täcker allt de flesta familjer behöver.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      För dig som inte behöver de senaste funktionerna och vill spara in på inköpspriset är XGO3 ett logiskt val. Abonnemangskostnaden är densamma som för X6 Play, så den långsiktiga skillnaden är liten.
+    </p>
+    <MoneyCTABox store="Xplora" affiliateUrl={xploraUrl} />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: vad du ska titta på när du väljer GPS-klocka för barn</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Garmin Bounce, bäst budget</h2>
+    <MoneyProductCard
+      brand="Garmin"
+      name="Garmin Bounce"
+      rating={4.5}
+      rank={3}
+      badge="Bäst budget"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/garmin-bounce.webp"
+      imageAlt="Garmin Bounce barnklocka med GPS"
+      pros={['Pålitlig GPS-spårning från etablerat märke', 'Aktivitetsspårning steg och sömn', 'Robust paket för barn 6 till 12 år']}
+      cons={['Saknar kamera', 'Färre appfunktioner än Xplora-modellerna']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Garmin Bounce är det enklaste och mest prisvärda alternativet bland GPS-klockor för barn. Du får pålitlig GPS-spårning från ett etablerat märke, aktivitetsspårning för steg och sömn samt samtalsfunktion, allt i ett robust paket för barn 6 till 12 år.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Klockan saknar kamera och har färre appfunktioner än Xplora-modellerna. Utan kamera är kommunikationen begränsad till samtal och platsdelning. För familjen som enbart behöver GPS och grundläggande samtalsfunktion, utan de extra funktionerna, är Garmin Bounce ett solitt val. Klockan säljs i butik utan affiliate-tillgång, varför vi inte har CTA här.
+    </p>
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>1. Vilken ålder passar barnklockor med GPS?</h3>
- <p>GPS-klockor för barn passar bäst för barn i åldern 5 till 12 år. Yngre barn saknar ofta motoriken och kognitionen för att hantera klockan på ett meningsfullt sätt. När barnet börjar gå till skolan eller leka utomhus utan förälder är det rätt tid att överväga en GPS-klocka. Xplora rekommenderar sina klockor från 5 år, Garmin Bounce från 6 år.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Tre GPS-klockor för barn granskade, två med affiliate-tillgång. Xplora X6 Play är det kompletta valet, XGO3 det prisvärda alternativet från Xplora och Garmin Bounce den enklaste vägen in. Vill du jämföra fler leksaker? Se vår <a href="/leksaker/" class="text-accent hover:text-accent-dark underline">guide till bästa leksaker för bebis 2026</a> eller <a href="/leksaker/babygym/" class="text-accent hover:text-accent-dark underline">test av bästa babygym 2026</a>.
+    </p>
 
- <h3>2. Kamera eller inte?</h3>
- <p>Xplora X6 Play och XGO3 har kameror som låter barnet skicka bilder till föräldern och kommunicera visuellt. Garmin Bounce saknar kamera, vilket gör den enklare och billigare. Kameran är uppskattad av barnen men inte nödvändig för grundfunktionaliteten. Om du enbart behöver GPS och samtal räcker Garmin Bounce. Vill du ha full kommunikation väljer du Xplora.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Barnklockor med GPS 2026" />
 
- <h3>3. Föräldraappen, en viktig del av valet</h3>
- <p>Alla tre klockor kräver en föräldraapp för att ställa in kontakter, se position och hantera inställningar. Xploras app är välbyggd med tydlig karta, historik och möjlighet att sätta upp säkra zoner som utlöser notiser när barnet lämnar eller kommer till ett specifikt område. Garmins app är enklare men pålitlig. Testa gärna appen innan du köper, den är den dagliga kontaktytan för föräldern.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt GPS-klocka för barn 2026</h2>
 
- <h3>4. Abonnemangskostnad</h3>
- <p>Räkna in abonnemangskostnaden i kalkylen. Stay Connected-abonnemanget till Xplora ligger på liknande nivå som ett vanligt mobilabonnemang. Bygg in den löpande månadskostnaden i din budget, det är där den långsiktiga skillnaden mellan modellerna sitter, inte i priset på själva klockan.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vilken ålder passar barnklockor med GPS?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      GPS-klockor för barn passar bäst för åldern 5 till 12 år. Yngre barn saknar ofta motoriken och kognitionen för att hantera klockan på ett meningsfullt sätt. När barnet börjar gå till skolan eller leka utomhus utan förälder är det rätt tid att överväga en GPS-klocka. Xplora rekommenderar sina modeller från 5 år, Garmin Bounce från 6 år. Klockor ersätter inte tillsyn men ger föräldern ett snabbt lägesuppdrag utan att behöva ringa.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fler guider om leksaker och säkerhet</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/leksaker/" class="text-accent underline">Bästa leksaker bebis 2026, alla åldrar</a></li>
- <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026, test och jämförelse</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Kamera eller inte?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Xplora X6 Play och XGO3 har kameror som låter barnet skicka bilder till föräldern och kommunicera visuellt. Garmin Bounce saknar kamera, vilket gör den enklare och billigare. Kameran uppskattas av barnen men är inte nödvändig för grundfunktionaliteten. Om du enbart behöver GPS och samtal räcker Garmin Bounce. Vill du ha full kommunikation väljer du Xplora.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Föräldraappen, en viktig del av valet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla tre klockor kräver en föräldraapp för att ställa in kontakter, se position och hantera inställningar. Xploras app är välbyggd med tydlig karta, historik och möjlighet att sätta upp säkra zoner som utlöser notiser när barnet lämnar eller anländer till ett specifikt område. Garmins app är enklare men pålitlig. Testa gärna appen innan köp, det är den dagliga kontaktytan för föräldern.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Xplora X6 Play',
- description: 'GPS-klocka för barn med kamera, samtalsfunktion och skolläge. Styrs via föräldraapp. Lämplig för 5 till 12 år.',
- image: 'https://bebisguiden.se/images/products/xplora-x6-play.webp',
- brand: 'Xplora',
- ratingValue: 4.9,
- reviewCount: 1,
- },
- {
- name: 'Xplora XGO3',
- description: 'GPS-klocka för barn med kamera och samtalsfunktion. Bäst mellanpris i testet. Lämplig för 5 till 12 år.',
- image: 'https://bebisguiden.se/images/products/xplora-x5-play.webp',
- brand: 'Xplora',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Garmin Bounce',
- description: 'Enkel GPS-klocka för barn utan kamera. Aktivitetsspårning och samtalsfunktion. Lämplig för 6 till 12 år.',
- image: 'https://bebisguiden.se/images/products/garmin-bounce.webp',
- brand: 'Garmin',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Abonnemangskostnad</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Räkna in abonnemangskostnaden i kalkylen. Stay Connected-abonnemanget till Xplora ligger på liknande nivå som ett vanligt mobilabonnemang. Bygg in den löpande månadskostnaden i din budget, det är där den långsiktiga skillnaden mellan modellerna sitter och inte bara i priset på själva klockan.
+    </p>
 
- <CTABox productName="Barnklocka med GPS" store="Xplora" affiliateUrl={xploraUrl} description="GPS-klockor för barn med samtalsfunktion." />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat tre GPS-klockor för barn utifrån funktionsuppsättning (GPS, kamera, samtal, skolläge), föräldraapp, åldersspann, abonnemangskrav och daglig användbarhet för barn 5 till 12 år. Produkterna är valda bland de mest eftersökta och sålda GPS-klockorna för barn i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/leksaker/" class="text-accent underline">Bästa leksaker bebis 2026, alla åldrar</a></li>
+        <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026, test och jämförelse</a></li>
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa barnklockan med GPS 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href={xploraUrl}
+    text="Bra pris hos Xplora"
+    productName="Xplora X6 Play"
+  />
 
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

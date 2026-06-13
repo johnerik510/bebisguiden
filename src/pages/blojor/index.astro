@@ -1,343 +1,456 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
-import TopPick from '../../components/TopPick.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Blojor' },
+  { label: 'Hem', href: '/' },
+  { label: 'Blöjor', href: '/blojor/' },
+  { label: 'Bästa blöjor 2026' },
 ];
 
+// No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
- {
- name: 'Pampers Premium Protection',
- badge: 'Bäst i test',
- rating: 4.9,
- price: 159,
- image: '/images/products/pampers-premium-protection.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272982&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
- features: {
- 'Material': 'Bomullskänsla med fuktspärr',
- 'Ekologisk': 'Nej',
- 'Storlek': '4 (9-14 kg)',
- 'Betyg': '4.9/5',
- },
- },
- {
- name: 'Pampers New Baby',
- badge: 'Bäst för nyfödda',
- rating: 4.7,
- price: 259,
- image: '/images/products/pampers-new-baby-stl1-real.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307494&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack',
- features: {
- 'Material': 'Mjuk inre yta, navelurringning',
- 'Ekologisk': 'Nej',
- 'Storlek': '1 (2-5 kg)',
- 'Betyg': '4.7/5',
- },
- },
- {
- name: 'Pampers Baby Dry Night Pants',
- badge: 'Bäst för natten',
- rating: 4.6,
- price: 659,
- image: '/images/products/pampers-baby-dry-night-stl6.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244032&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-4-9-15-kg-180-pack',
- features: {
- 'Material': 'Extra absorberande nattskydd',
- 'Ekologisk': 'Nej',
- 'Storlek': '4 (9-15 kg)',
- 'Betyg': '4.6/5',
- },
- },
- {
- name: 'Pampers Baby Dry Pants',
- badge: 'Bäst byxblöja dag',
- rating: 4.5,
- price: 329,
- image: '/images/products/pampers-baby-dry-pants-stl4-real.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10299965&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-pants-blojor-stl-4-9-15-kg-maxi-94-pack',
- features: {
- 'Material': 'Byxblöja för aktiva barn',
- 'Ekologisk': 'Nej',
- 'Storlek': '4 (9-15 kg)',
- 'Betyg': '4.5/5',
- },
- },
- {
- name: 'Kit & Kin Eco',
- image: '/images/products/kit-kin-eco-stl2-real.webp',
- badge: 'Bäst ekologisk',
- rating: 4.4,
- price: 189,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
- features: {
- 'Material': 'Växtbaserat, klorfritt',
- 'Ekologisk': 'Ja',
- 'Storlek': '2 (4-8 kg)',
- 'Betyg': '4.4/5',
- },
- },
+  {
+    name: 'Pampers Premium Protection',
+    brand: 'Pampers',
+    rating: 4.9,
+    badge: 'Bäst i test',
+    usps: ['Mjukast av alla jämförda blöjor', 'Bäst läckageskydd', 'Bomullskänsla med fuktspärr'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272982&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-4-9-14-kg-24-pack',
+    imageUrl: '/images/products/pampers-premium-protection.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Premiumblöja med mjukast material och bäst läckageskydd. Bomullskänsla med fuktspärr för dagsbruk.',
+    features: { 'Material': 'Bomullskänsla med fuktspärr', 'Ekologisk': 'Nej', 'Storlek': '4 (9-14 kg)', 'Betyg': '4.9/5' },
+    alsoAt: [],
+  },
+  {
+    name: 'Pampers New Baby',
+    brand: 'Pampers',
+    rating: 4.7,
+    badge: 'Bäst för nyfödda',
+    usps: ['Anpassad för nyfödda 2-5 kg', 'Navelurringning i stl 1-2', 'Mjuk inneryta'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307494&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack',
+    imageUrl: '/images/products/pampers-new-baby-stl1-real.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Anpassad för nyfödda 2-5 kg med navelurringning. Mjuk inneryta för det känsliga navelområdet.',
+    features: { 'Material': 'Mjuk inre yta, navelurringning', 'Ekologisk': 'Nej', 'Storlek': '1 (2-5 kg)', 'Betyg': '4.7/5' },
+    alsoAt: [],
+  },
+  {
+    name: 'Pampers Baby Dry Night Pants',
+    brand: 'Pampers',
+    rating: 4.6,
+    badge: 'Bäst för natten',
+    usps: ['Extra absorberande nattskydd', 'Byxmodell, lätt att ta av och på', 'Tre extra absorberande zoner'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244032&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-4-9-15-kg-180-pack',
+    imageUrl: '/images/products/pampers-baby-dry-night-stl6.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Extra absorberande nattskydd med byxmodell. Tre extra absorberande zoner för 12 timmars sömn.',
+    features: { 'Material': 'Extra absorberande nattskydd', 'Ekologisk': 'Nej', 'Storlek': '4 (9-15 kg)', 'Betyg': '4.6/5' },
+    alsoAt: [],
+  },
+  {
+    name: 'Pampers Baby Dry Pants',
+    brand: 'Pampers',
+    rating: 4.5,
+    badge: 'Bäst byxblöja dag',
+    usps: ['Smidig byxmodell', 'Bra för krypare och aktiva barn', 'Lika absorberande som vanliga blöjor'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10299965&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-pants-blojor-stl-4-9-15-kg-maxi-94-pack',
+    imageUrl: '/images/products/pampers-baby-dry-pants-stl4-real.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Smidig byxblöja för aktiva barn 9-15 kg. Tre absorberande lager med samma absorption som vanliga blöjor.',
+    features: { 'Material': 'Byxblöja för aktiva barn', 'Ekologisk': 'Nej', 'Storlek': '4 (9-15 kg)', 'Betyg': '4.5/5' },
+    alsoAt: [],
+  },
+  {
+    name: 'Kit & Kin Eco',
+    brand: 'Kit & Kin',
+    rating: 4.4,
+    badge: 'Bäst ekologisk',
+    usps: ['Växtbaserade material', 'Klorfri och parfymfri', 'Hudvänlig för känslig bebishud'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack',
+    imageUrl: '/images/products/kit-kin-eco-stl2-real.webp',
+    accentColor: '#1a365d', bgColor: '#0d9488',
+    desc: 'Ekologisk engångsblöja med växtbaserade material. Klorfri och parfymfri, hudvänlig för känslig bebishud.',
+    features: { 'Material': 'Växtbaserat, klorfritt', 'Ekologisk': 'Ja', 'Storlek': '2 (4-8 kg)', 'Betyg': '4.4/5' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Material', 'Ekologisk', 'Storlek', 'Betyg'];
+const specLabels = ['Material', 'Ekologisk', 'Storlek', 'Betyg'];
 
 const faqItems = [
- {
- question: 'Vilken blöja är bäst för nyfödda?',
- answer: 'Pampers New Baby (i storlek för nyfödda, 2 till 5 kg) är vår topprankning för nyfödda. Den har navelurringning i storlekarna 1 och 2 som skyddar det ömma navelsträngsomfånget under de första veckorna, och innerlagrets mjuka bomullskänsla minimerar risken för blöjeksem mot den känsliga huden. Pampers Premium Protection är alternativet från ca 6 kg om du prioriterar maximal mjukhet och läckageskydd i en enda blöja som räcker länge.',
- },
- {
- question: 'Hur många blöjor behöver man per dag?',
- answer: 'En nyfödd bebis byter blöja 8 till 12 gånger per dygn, vilket innebär ca 70 till 85 blöjor per vecka. Under de första månaderna minskar antalet successivt. Vid 6 månaders ålder räknar du med 6 till 8 byten per dag. Planera inköp utifrån detta, det är billigare att köpa storpack men undvik att lagerföra för många i samma storlek då barnet växer snabbt.',
- },
- {
- question: 'Är ekologiska blöjor bättre för bebisens hud?',
- answer: 'Ekologiska blöjor som Kit & Kin Eco är fria från klor, parfym och skadliga kemikalier, vilket kan vara fördelaktigt för känslig hud. Studier visar ingen statistisk skillnad i blöjeksem mellan konventionella och ekologiska märken hos friska bebisar. Har ditt barn känslig hud eller eksem kan ekologiska blöjor vara ett bra alternativ att prova.',
- },
- {
- question: 'Vad är skillnaden mellan engångs- och tygblöjor?',
- answer: 'Engångsblöjor är bekvämt och hygieniska men ger stora mängder avfall. Tygblöjor är mer miljövänliga och kostnadseffektiva på sikt: ett komplett tygblöjesystem har en högre startkostnad men räcker för hela blöjperioden och blir totalt sett billigare än engångsblöjor. Nackdelen är merarbete med tvätt. Vill du veta mer? Se vår guide till <a href="/blojor/tygblojor/" class="text-accent underline">bästa tygblöjor 2026</a>.',
- },
- {
- question: 'Hur väljer man rätt blöjstorlek?',
- answer: 'Blöjstorlek baseras på barnets vikt, inte ålder. Storlek 1 passar 2 till 5 kg (nyfödda), storlek 2 passar 3 till 6 kg, storlek 3 passar 4 till 9 kg. Tecknet på att blöjan är för liten är röda märken runt benen eller läckage. Om blöjan gäspar på magen eller runt benen är den för stor. Prova alltid ett litet paket i ny storlek innan du köper storpack.',
- },
- {
- question: 'Hur förvarar man blöjor på bästa sätt?',
- answer: 'Förvara blöjor torrt och svalt, direkt solljus och fukt försämrar absorptionsförmågan i superabsorbentpolymeren (SAP) som är kärnan i moderna blöjor. Öppnade förpackningar bör användas inom 2 till 3 månader. Oöppnade förpackningar håller 2 till 3 år vid rätt förvaring. Praktisk regel: lagerhåll max 2 storlekar framåt, nyfödda kan hoppa en storlek på tre till fyra veckor och ett storpack med fel storlek är bortkastade pengar.',
- },
- {
- question: 'Vilken blöja är bäst för känslig hud och eksem?',
- answer: 'Kit & Kin Eco är bäst för känslig och eksembenägen hud. Den är fri från klor, formaldehyd, parfym och synliga plastfilmer mot huden. Pampers Sensitive är ett annat bra alternativ med extra mjukt innerlager. Undvik starkt parfymerade blöjor om bebisen har tendens till eksem. Byt blöja ofta, torr hud mot blöjan minskar irritationsrisken oavsett märke. Om eksemen inte förbättras vid märkesbyte, kontakta BVC.',
- },
- {
- question: 'Hur fungerar blöjbyxor och när kan man börja använda dem?',
- answer: 'Blöjbyxor (pull-up) dras upp som vanliga underkläder och är praktiska när barnet börjar röra sig mer, krypa och stå. De flesta märken erbjuder byxor från storlek 4 (ca 7 till 18 kg). Pampers Baby Dry Night Pants passar bra för natten med upp till 12 timmars absorption. Byxorna har lägre absorptionskapacitet jämfört med vanliga blöjor i samma storlek och passar bäst på aktiva timmar och vid potträning.',
- },
- {
- question: 'Lönar det sig att köpa blöjor i storpack?',
- answer: 'Ja, priset per blöja är 20 till 40 procent lägre i storpack hos butiker som Jollyroom och Babyshop. Pampers, Libero och Huggies säljer storpack med 96 till 176 blöjor. Undantaget är nyfödda: köp bara ett litet provpaket i storlek 1 till 2 innan födseln. Nyfödda kan hoppa en storlek inom 3 till 4 veckor. Vänta med storpack tills storleken är bekräftad rätt och bebisen passerat de snabbast växande veckorna.',
- },
+  {
+    question: 'Vilken blöja är bäst för nyfödda?',
+    answer: 'Pampers New Baby (i storlek för nyfödda, 2 till 5 kg) är vår topprankning för nyfödda. Den har navelurringning i storlekarna 1 och 2 som skyddar det ömma navelsträngsomfånget under de första veckorna, och innerlagrets mjuka bomullskänsla minimerar risken för blöjeksem mot den känsliga huden. Pampers Premium Protection är alternativet från ca 6 kg om du prioriterar maximal mjukhet och läckageskydd i en enda blöja som räcker länge.',
+  },
+  {
+    question: 'Hur många blöjor behöver man per dag?',
+    answer: 'En nyfödd bebis byter blöja 8 till 12 gånger per dygn, vilket innebär ca 70 till 85 blöjor per vecka. Under de första månaderna minskar antalet successivt. Vid 6 månaders ålder räknar du med 6 till 8 byten per dag. Planera inköp utifrån detta, det är billigare att köpa storpack men undvik att lagerföra för många i samma storlek då barnet växer snabbt.',
+  },
+  {
+    question: 'Är ekologiska blöjor bättre för bebisens hud?',
+    answer: 'Ekologiska blöjor som Kit & Kin Eco är fria från klor, parfym och skadliga kemikalier, vilket kan vara fördelaktigt för känslig hud. Studier visar ingen statistisk skillnad i blöjeksem mellan konventionella och ekologiska märken hos friska bebisar. Har ditt barn känslig hud eller eksem kan ekologiska blöjor vara ett bra alternativ att prova.',
+  },
+  {
+    question: 'Vad är skillnaden mellan engångs- och tygblöjor?',
+    answer: 'Engångsblöjor är bekvämt och hygieniska men ger stora mängder avfall. Tygblöjor är mer miljövänliga och kostnadseffektiva på sikt: ett komplett tygblöjesystem har en högre startkostnad men räcker för hela blöjperioden och blir totalt sett billigare än engångsblöjor. Nackdelen är merarbete med tvätt. Vill du veta mer? Se vår guide till <a href="/blojor/tygblojor/" class="text-accent underline">bästa tygblöjor 2026</a>.',
+  },
+  {
+    question: 'Hur väljer man rätt blöjstorlek?',
+    answer: 'Blöjstorlek baseras på barnets vikt, inte ålder. Storlek 1 passar 2 till 5 kg (nyfödda), storlek 2 passar 3 till 6 kg, storlek 3 passar 4 till 9 kg. Tecknet på att blöjan är för liten är röda märken runt benen eller läckage. Om blöjan gäspar på magen eller runt benen är den för stor. Prova alltid ett litet paket i ny storlek innan du köper storpack.',
+  },
+  {
+    question: 'Hur förvarar man blöjor på bästa sätt?',
+    answer: 'Förvara blöjor torrt och svalt, direkt solljus och fukt försämrar absorptionsförmågan i superabsorbentpolymeren (SAP) som är kärnan i moderna blöjor. Öppnade förpackningar bör användas inom 2 till 3 månader. Oöppnade förpackningar håller 2 till 3 år vid rätt förvaring. Praktisk regel: lagerhåll max 2 storlekar framåt, nyfödda kan hoppa en storlek på tre till fyra veckor och ett storpack med fel storlek är bortkastade pengar.',
+  },
+  {
+    question: 'Vilken blöja är bäst för känslig hud och eksem?',
+    answer: 'Kit & Kin Eco är bäst för känslig och eksembenägen hud. Den är fri från klor, formaldehyd, parfym och synliga plastfilmer mot huden. Pampers Sensitive är ett annat bra alternativ med extra mjukt innerlager. Undvik starkt parfymerade blöjor om bebisen har tendens till eksem. Byt blöja ofta, torr hud mot blöjan minskar irritationsrisken oavsett märke. Om eksemen inte förbättras vid märkesbyte, kontakta BVC.',
+  },
+  {
+    question: 'Hur fungerar blöjbyxor och när kan man börja använda dem?',
+    answer: 'Blöjbyxor (pull-up) dras upp som vanliga underkläder och är praktiska när barnet börjar röra sig mer, krypa och stå. De flesta märken erbjuder byxor från storlek 4 (ca 7 till 18 kg). Pampers Baby Dry Night Pants passar bra för natten med upp till 12 timmars absorption. Byxorna har lägre absorptionskapacitet jämfört med vanliga blöjor i samma storlek och passar bäst på aktiva timmar och vid potträning.',
+  },
+  {
+    question: 'Lönar det sig att köpa blöjor i storpack?',
+    answer: 'Ja, priset per blöja är 20 till 40 procent lägre i storpack hos butiker som Jollyroom och Babyshop. Pampers, Libero och Huggies säljer storpack med 96 till 176 blöjor. Undantaget är nyfödda: köp bara ett litet provpaket i storlek 1 till 2 innan födseln. Nyfödda kan hoppa en storlek inom 3 till 4 veckor. Vänta med storpack tills storleken är bekräftad rätt och bebisen passerat de snabbast växande veckorna.',
+  },
 ];
 
 export const articleMeta = {
- title: "Bästa blöjor 2026: Pampers Premium Protection vinner",
- description: "Bästa blöjorna 2026: Pampers Premium Protection vinner på mjukhet och läckageskydd. New Baby bäst nyfödd, Kit & Kin Eco bäst ekologisk. 5 jämförda.",
- publishDate: "2026-05-16",
- category: "Blöjor",
- image: "/images/products/pampers-premium-protection.webp",
+  title: "Bästa blöjor 2026: Pampers Premium Protection vinner",
+  description: "Bästa blöjorna 2026: Pampers Premium Protection vinner på mjukhet och läckageskydd. New Baby bäst nyfödd, Kit & Kin Eco bäst ekologisk. 5 jämförda.",
+  publishDate: "2026-05-16",
+  updatedDate: "2026-06-13",
+  category: "Blöjor",
+  image: "/images/products/pampers-premium-protection.webp",
 };
 ---
 
 <ArticleLayout
- title="Bästa blöjor 2026: Pampers Premium Protection vinner"
- description="Bästa blöjorna 2026: Pampers Premium Protection vinner på mjukhet och läckageskydd. New Baby bäst nyfödd, Kit & Kin Eco bäst ekologisk. 5 jämförda."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/blojor/"
- updatedDate="2026-06-10"
+  title="Bästa blöjor 2026: Pampers Premium Protection vinner"
+  description="Bästa blöjorna 2026: Pampers Premium Protection vinner på mjukhet och läckageskydd. New Baby bäst nyfödd, Kit & Kin Eco bäst ekologisk. 5 jämförda."
+  breadcrumbs={breadcrumbs}
+  updatedDate="2026-06-13"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Pampers Premium Protection vinner blöja bäst i test 2026. Den har det starkaste läckageskyddet och den mjukaste ytan mot huden, med en passform som sitter genom hela dygnet. Det säkra valet för dagsbruk om du vill minimera missar och blöjeksem.
-	 </p>
 
- {/* TOPPICK_KEEP */}
- <TopPick product={products[0]} description="Pampers Premium Protection är bäst i test 2026. Bäst läckageskydd, mjukast yta mot huden och en passform som sitter genom hela dygnet. Det säkra valet för dagsbruk om du vill minimera missar och blöjeksem." />
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-05-16" dateModified="2026-06-13" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, blöjor 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken blöja är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Pampers Premium Protection vinner blöja bäst i test 2026 på mjukhet och läckageskydd. Pampers New Baby är bäst för nyfödda med navelurringning. Kit & Kin Eco är bästa ekologiska valet. För natten väljer du Pampers Baby Dry Night Pants. Alla fem finns hos Jollyroom.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Pampers Premium Protection</strong> vinner för mjukhet och läckageskydd. <strong>Pampers New Baby</strong> är bäst för nyfödda med navelurringning. <strong>Kit & Kin Eco</strong> är bästa ekologiska valet. För natten väljer du <strong>Pampers Baby Dry Night Pants</strong>.</p>
- </div>
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Pampers"
+    name="Premium Protection"
+    image="/images/products/pampers-premium-protection.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272982&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
+    store="Jollyroom"
+    description="Vinner bäst i test 2026 på mjukhet och läckageskydd. Bomullskänsla med fuktspärr ger det starkaste skyddet mot missar och blöjeksem under hela dygnet. Det säkra valet för dagsbruk."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell, blöjor 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Pampers Premium Protection"
- badge="Bäst i test"
- rating={4.9}
- image="/images/products/pampers-premium-protection.webp"
- pros={['Mjukast av alla jämförda blöjor', 'Bäst läckageskydd', 'Bomullskänsla med fuktspärr', 'Smal pack-storlek perfekt för testning']}
- cons={['Dyrare per blöja än storpack', 'Inte ekologisk']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272982&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Pampers New Baby"
- badge="Bäst för nyfödda"
- rating={4.7}
- image="/images/products/pampers-new-baby-stl1-real.webp"
- pros={['Anpassad för nyfödda 2-5 kg', 'Navelurringning för känsligt navelområde', 'Mjuk inneryta', 'Bra läckageskydd']}
- cons={['Inte ekologisk', 'Lite dyrare per blöja än storpack']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307494&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Pampers Premium Protection, bäst i test</h2>
+    <MoneyProductCard
+      brand="Pampers"
+      name="Pampers Premium Protection"
+      rating={4.9}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/pampers-premium-protection.webp"
+      imageAlt="Pampers Premium Protection blöja bäst i test"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272982&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
+      pros={['Mjukast av alla jämförda blöjor', 'Bäst läckageskydd', 'Bomullskänsla med fuktspärr']}
+      cons={['Dyrare per blöja än storpack', 'Inte ekologisk']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Pampers Premium Protection vinner bäst i test 2026. Den har det starkaste läckageskyddet och den mjukaste ytan mot huden, med en passform som sitter genom hela dygnet. Bomullskänslan mot huden och fuktspärren inåt gör att huden hålls torr även under längre pass, vilket minskar risken för blöjeksem.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är priset per blöja i smärre förpackningar. Köper du storpack sjunker kostnaden betydligt och den är fortfarande dyrare än Pampers New Baby i nyföddstorlek, men för dagsbruk från ca 6 kg är Premium Protection det säkraste valet om du vill minimera missar.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272982&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-4-9-14-kg-24-pack" />
 
- <ProductCard
- name="Pampers Baby Dry Night Pants"
- badge="Bäst för natten"
- rating={4.6}
- image="/images/products/pampers-baby-dry-night-stl6.webp"
- pros={['Extra absorberande för 12 timmars sömn', 'Storpack ger bästa pris per blöja', 'Byxmodell, lätt att ta av och på', 'Tre extra absorberande zoner']}
- cons={['Endast för natten, dagsbruk slösar', 'Inte ekologisk']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244032&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-4-9-15-kg-180-pack"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Pampers New Baby, bäst för nyfödda</h2>
+    <MoneyProductCard
+      brand="Pampers"
+      name="Pampers New Baby"
+      rating={4.7}
+      rank={2}
+      badge="Bäst för nyfödda"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/pampers-new-baby-stl1-real.webp"
+      imageAlt="Pampers New Baby blöja för nyfödda"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307494&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack"
+      pros={['Anpassad för nyfödda 2-5 kg', 'Navelurringning för känsligt navelområde', 'Mjuk inneryta', 'Bra läckageskydd']}
+      cons={['Inte ekologisk', 'Lite dyrare per blöja än storpack']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Pampers New Baby är det bästa valet för nyfödda. Navelurringningen i storlek 1 och 2 skyddar det ömma navelsträngsomfånget under de första veckorna, och det mjuka innerlagret minimerar risken för irritation mot den känsliga huden. Passformen är anpassad för de minsta kropparna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Köp ett litet paket i storlek 1 inför födseln. Nyfödda kan hoppa en storlek på tre till fyra veckor, så lagerhåll inte stort i nyföddstorlek. Från ca 6 kg är övergången till Premium Protection naturlig.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10307494&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-new-baby-blojor-stl-1-2-5-kg-44-pack" />
 
- <ProductCard
- name="Pampers Baby Dry Pants"
- badge="Bäst byxblöja dag"
- rating={4.5}
- image="/images/products/pampers-baby-dry-pants-stl4-real.webp"
- pros={['Smidig byxmodell, dras på och av som vanliga byxor', 'Bra för krypare och småbarn som rör sig mycket', 'Tre absorberande lager', 'Lika absorberande som vanliga blöjor']}
- cons={['Dyrare per blöja än Premium Protection', 'Inte ekologisk']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10299965&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-pants-blojor-stl-4-9-15-kg-maxi-94-pack"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Pampers Baby Dry Night Pants, bäst för natten</h2>
+    <MoneyProductCard
+      brand="Pampers"
+      name="Pampers Baby Dry Night Pants"
+      rating={4.6}
+      rank={3}
+      badge="Bäst för natten"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/pampers-baby-dry-night-stl6.webp"
+      imageAlt="Pampers Baby Dry Night Pants nattblöja"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244032&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-4-9-15-kg-180-pack"
+      pros={['Extra absorberande för 12 timmars sömn', 'Storpack ger bästa pris per blöja', 'Byxmodell, lätt att ta av och på', 'Tre extra absorberande zoner']}
+      cons={['Endast för natten, dagsbruk slösar', 'Inte ekologisk']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Pampers Baby Dry Night Pants är specialdesignad för natten med tre extra absorberande zoner och kapacitet för upp till 12 timmars sömn. Byxmodellen gör det enkelt att ta av och på, vilket underlättar nattbyten utan att barnet vaknar fullt.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Storpacket ger bästa priset per blöja. Ska du bara ha nattskydd är detta det optimala valet. Använd vanliga blöjor under dagen då byxmodellen inte är optimalt absorberade vid aktiv rörelse.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10244032&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-night-pants-blojor-stl-4-9-15-kg-180-pack" />
 
- <ProductCard
- name="Kit & Kin Eco"
- image="/images/products/kit-kin-eco-stl2-real.webp"
- badge="Bäst ekologisk"
- rating={4.4}
- pros={['Växtbaserade material', 'Klorfri och parfymfri', 'Hudvänlig för känslig bebishud', 'Skapad av Emma Bunton (Spice Girls)']}
- cons={['Något sämre läckageskydd än Pampers', 'Tunnare passform']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Pampers Baby Dry Pants, bäst byxblöja dag</h2>
+    <MoneyProductCard
+      brand="Pampers"
+      name="Pampers Baby Dry Pants"
+      rating={4.5}
+      rank={4}
+      badge="Bäst byxblöja dag"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/pampers-baby-dry-pants-stl4-real.webp"
+      imageAlt="Pampers Baby Dry Pants byxblöja"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10299965&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-pants-blojor-stl-4-9-15-kg-maxi-94-pack"
+      pros={['Smidig byxmodell, dras på och av som vanliga byxor', 'Bra för krypare och småbarn som rör sig mycket', 'Tre absorberande lager', 'Lika absorberande som vanliga blöjor']}
+      cons={['Dyrare per blöja än Premium Protection', 'Inte ekologisk']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Pampers Baby Dry Pants är den bästa byxblöjan för dagsbruk. Byxmodellen som dras på och av som vanliga underkläder passar perfekt när barnet börjar krypa och röra sig aktivt. Tre absorberande lager ger samma skydd som vanliga blöjor utan att begränsa rörelsefriheten.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Priset per blöja är något högre än Premium Protection men motiveras av smidigheten i en aktiv vardag. Storpack 94-pack ger det bästa priset per byte.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10299965&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-baby-dry-pants-blojor-stl-4-9-15-kg-maxi-94-pack" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide blöjor 2026: storlek, material och kostnad per blöja</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Kit & Kin Eco, bäst ekologisk</h2>
+    <MoneyProductCard
+      brand="Kit & Kin"
+      name="Kit & Kin Eco"
+      rating={4.4}
+      rank={5}
+      badge="Bäst ekologisk"
+      accentColor="#1a365d" bgColor="#0d9488"
+      imageUrl="/images/products/kit-kin-eco-stl2-real.webp"
+      imageAlt="Kit & Kin Eco ekologisk blöja"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack"
+      pros={['Växtbaserade material', 'Klorfri och parfymfri', 'Hudvänlig för känslig bebishud', 'Skapad av Emma Bunton (Spice Girls)']}
+      cons={['Något sämre läckageskydd än Pampers', 'Tunnare passform']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Kit & Kin Eco är det bästa ekologiska alternativet. Den är fri från klor, formaldehyd, parfym och synliga plastfilmer mot huden, tillverkad av växtbaserade material och ett bra val för barn med känslig hud eller tendens till eksem. Grundare Emma Bunton från Spice Girls skapade märket med fokus på hållbarhet och bebishud.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Läckageskyddet är något svagare än hos Pampers och passformen är tunnare. Men för den familj som prioriterar ekologiskt och kemikaliefritt är Kit & Kin Eco det tydliga valet bland de jämförda blöjorna.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10297896&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/kit-kin-eco-blojor-stl-2-4-8-kg-38-pack" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Blöjstorlek: välj efter barnets vikt, inte ålder</h3>
- <p>Blöjstorlek bestäms alltid av aktuell vikt. Storlek 1 passar 2 till 5 kg, storlek 2 passar 3 till 6 kg, storlek 3 passar 4 till 9 kg. Röda märken runt benen eller magen betyder att blöjan är för liten, medan glipor och läckage uppåt magen betyder att den är för stor. Köp alltid ett mindre paket i ny storlek innan du beställer storpack.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem blöjor jämförda, en vinner totalt. Pampers Premium Protection tar förstaplatsen på mjukhet och läckageskydd, New Baby vinner för nyfödda och Kit & Kin Eco är det bästa ekologiska valet. Vill du gå djupare? Se vår guide till <a href="/blojor/tygblojor/" class="text-accent hover:text-accent-dark underline">bästa tygblöjor 2026</a> eller jämför <a href="/blojor/libero-vs-pampers/" class="text-accent hover:text-accent-dark underline">Libero vs Pampers 2026</a>.
+    </p>
 
- <h3>Engångsblöja eller tygblöja: vad passar er familj?</h3>
- <p>Engångsblöjor är bekväma och hygieniska, perfekt när vardagen med nyfödd är intensiv. Tygblöjor är betydligt mer miljövänliga och blir över tid hundratals kronor billigare. Många familjer kombinerar, tygblöjor hemma och engångsblöjor på utflykter och resor. Se vår guide till <a href="/blojor/tygblojor/" class="text-accent underline">bästa tygblöjor 2026</a> för en djupare jämförelse.</p>
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda, blöjor 2026" />
 
- <h3>Känslig bebishud: ekologiska blöjor utan parfym och klor</h3>
- <p>Har ditt barn återkommande blöjeksem, känslig hud eller misstänkt reaktion på parfym, är ekologiska blöjor som Kit & Kin Eco värda att prova en vecka. De är klorfria, parfymfria och tillverkade av växtbaserade material. För många barn märks ingen skillnad, men för de med riktigt känslig hud kan rätt blöja vara skillnaden mellan röda stjärtar och fina dagar.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide blöjor 2026: storlek, material och kostnad per blöja</h2>
 
- <h3>Pris per blöja: räkna smart och spara hundratals kronor</h3>
- <p>Ett barn använder runt 2 500 blöjor första levnadsåret. Pris per blöja varierar kraftigt mellan småpack och storpack i samma märke. Jämför alltid styckpris före köp. Storpack hemma och små testpack vid storleksbyten är den smartaste budgetstrategin.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Blöjstorlek: välj efter barnets vikt, inte ålder</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Blöjstorlek bestäms alltid av aktuell vikt. Storlek 1 passar 2 till 5 kg, storlek 2 passar 3 till 6 kg, storlek 3 passar 4 till 9 kg. Röda märken runt benen eller magen betyder att blöjan är för liten, medan glipor och läckage uppåt magen betyder att den är för stor. Köp alltid ett mindre paket i ny storlek innan du beställer storpack.
+    </p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fördjupning, blöjor efter typ</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/blojor/tygblojor/" class="text-accent underline">Bästa tygblöjor 2026, hållbart och kostnadseffektivt</a></li>
- <li><a href="/blojor/libero-vs-pampers/" class="text-accent underline">Libero vs Pampers 2026, vilket märke passar ditt barn?</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Engångsblöja eller tygblöja: vad passar er familj?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Engångsblöjor är bekväma och hygieniska, perfekt när vardagen med nyfödd är intensiv. Tygblöjor är betydligt mer miljövänliga och blir över tid hundratals kronor billigare. Många familjer kombinerar, tygblöjor hemma och engångsblöjor på utflykter och resor. Se vår guide till <a href="/blojor/tygblojor/" class="text-accent hover:text-accent-dark underline">bästa tygblöjor 2026</a> för en djupare jämförelse.
+    </p>
 
- <div class="mt-4 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/badkar/" class="text-accent underline">Bästa badkar bebis 2026, test och jämförelse</a></li>
- <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Känslig bebishud: ekologiska blöjor utan parfym och klor</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Har ditt barn återkommande blöjeksem, känslig hud eller misstänkt reaktion på parfym, är ekologiska blöjor som Kit & Kin Eco värda att prova en vecka. De är klorfria, parfymfria och tillverkade av växtbaserade material. För många barn märks ingen skillnad, men för de med riktigt känslig hud kan rätt blöja vara skillnaden mellan röda stjärtar och fina dagar.
+    </p>
 
- <RetailerCTAs />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Pris per blöja: räkna smart och spara hundratals kronor</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ett barn använder runt 2 500 blöjor första levnadsåret. Priset per blöja varierar kraftigt mellan småpack och storpack i samma märke. Jämför alltid styckpris före köp. Storpack hemma och små testpack vid storleksbyten är den smartaste budgetstrategin.
+    </p>
 
- <FAQ items={faqItems} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fem blöjor utifrån mjukhet, läckageskydd, passform, materialval (ekologiskt vs konventionellt), byxmodell kontra vanlig blöja och lämplighet per åldersgrupp (nyfödda vs aktiva barn). Produkterna är valda bland de mest sålda och eftersökta blöjmärkena i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Pampers Premium Protection',
- description: 'Premiumblöja med mjukast material och bäst läckageskydd. Bomullskänsla med fuktspärr.',
- image: 'https://bebisguiden.se/images/products/pampers-premium-protection.webp',
- brand: 'Pampers',
- ratingValue: 4.9,
- reviewCount: 1,
- },
- {
- name: 'Pampers New Baby',
- description: 'Anpassad för nyfödda 2-5 kg med navelurringning. Mjuk inneryta för det känsliga navelområdet.',
- image: 'https://bebisguiden.se/images/products/pampers-new-baby-stl1-real.webp',
- brand: 'Pampers',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Pampers Baby Dry Night Pants',
- description: 'Extra absorberande nattskydd med byxmodell. Tre extra absorberande zoner för 12 timmars sömn.',
- image: 'https://bebisguiden.se/images/products/pampers-baby-dry-night-stl6.webp',
- brand: 'Pampers',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Pampers Baby Dry Pants',
- description: 'Smidig byxblöja för aktiva barn 9-15 kg. Tre absorberande lager med samma absorption som vanliga blöjor.',
- image: 'https://bebisguiden.se/images/products/pampers-baby-dry-pants-stl4-real.webp',
- brand: 'Pampers',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'Kit & Kin Eco',
- description: 'Ekologisk engångsblöja med växtbaserade material. Klorfri och parfymfri, hudvänlig för känslig bebishud.',
- image: 'https://bebisguiden.se/images/products/kit-kin-eco-stl2-real.webp',
- brand: 'Kit & Kin',
- ratingValue: 4.4,
- reviewCount: 1,
- },
- ]} />
+    <FAQ items={faqItems} />
 
-<div class="mt-10 bg-bg-alt rounded-xl p-5 border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/guider/bebis-utslag/" class="text-accent underline">Utslag hos bebis, orsaker och behandling</a></li>
- <li><a href="/guider/bebis-forstoppning/" class="text-accent underline">Förstoppning hos bebis, när du bör agera</a></li>
- <li><a href="/blojor/tygblojor/" class="text-accent underline">Bästa tygblöjorna 2026, miljömedvetet alternativ</a></li>
- <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, allt du behöver inför födelsen</a></li>
- </ul>
-</div>
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fördjupning, blöjor efter typ</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/blojor/tygblojor/" class="text-accent underline">Bästa tygblöjor 2026, hållbart och kostnadseffektivt</a></li>
+        <li><a href="/blojor/libero-vs-pampers/" class="text-accent underline">Libero vs Pampers 2026, vilket märke passar ditt barn?</a></li>
+      </ul>
+    </div>
+
+    <div class="mt-4 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/badkar/" class="text-accent underline">Bästa badkar bebis 2026, test och jämförelse</a></li>
+        <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, test och jämförelse</a></li>
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/guider/bebis-utslag/" class="text-accent underline">Utslag hos bebis, orsaker och behandling</a></li>
+        <li><a href="/guider/bebis-forstoppning/" class="text-accent underline">Förstoppning hos bebis, när du bör agera</a></li>
+        <li><a href="/guider/bebis-checklista/" class="text-accent underline">Bebis-checklista, allt du behöver inför födelsen</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa blöjorna 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10272982&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojor/pampers-premium-protection-blojor-stl-4-9-14-kg-24-pack"
+    text="Bra pris hos Jollyroom"
+    productName="Pampers Premium Protection"
+  />
 
 </ArticleLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Bästa blöjorna 2026",
-  "description": "Rankad lista över de bästa blöjorna jämförda och jämförda 2026",
-  "itemListOrder": "https://schema.org/ItemListOrderDescending",
-  "numberOfItems": products.length,
-  "itemListElement": products.map((p, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "item": {
-      "@type": "Product",
-      "name": p.name,
-      "image": `https://bebisguiden.se${p.image}`,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": p.rating,
-        "bestRating": 5,
-        "ratingCount": 1
-      },
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "SEK",
-        "price": p.price,
-        "availability": "https://schema.org/InStock",
-        "url": p.ctaHref,
-        "seller": { "@type": "Organization", "name": "Jollyroom" },
-        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" } },
-        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "SE", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
-      }
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     }
-  }))
-})} />
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>
