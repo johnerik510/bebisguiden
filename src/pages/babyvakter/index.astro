@@ -1,355 +1,469 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import CTABox from '../../components/CTABox.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babyvakter' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade, cupa_sku).
 const products = [
- {
- name: 'Philips Avent DECT SCD503/26',
- badge: 'Bäst i test',
- rating: 4.7,
- price: 1199,
- image: '/images/products/philips-avent-dect-scd503-26.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt',
- features: {
- 'Typ': 'Ljud (DECT)',
- 'Räckvidd': '330 m',
- 'Batteritid': '24 h (sparläge)',
- 'Säkerhet': 'DECT, ingen WiFi-risk',
- },
- },
- {
- name: 'Owlet Dream Sock Babyvakt Mint',
- badge: 'Bäst premiumövervakning',
- rating: 4.5,
- price: 2999,
- image: '/images/products/owlet-dream-sock-babyvakt.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10266672&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-dream-sock-babyvakt-mint',
- features: {
- 'Typ': 'Wearable (strumpform)',
- 'Räckvidd': 'Via app (WiFi)',
- 'Batteritid': '16 h',
- 'Säkerhet': 'Mäter puls + syresättning',
- },
- },
- {
- name: 'Philips Avent SCD735/26',
- badge: 'Bästa video',
- rating: 4.6,
- price: 2299,
- image: '/images/products/philips-avent-scd735-26.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus',
- features: {
- 'Typ': 'Video med ljusfunktion',
- 'Räckvidd': '300 m',
- 'Batteritid': '10 h (sparläge)',
- 'Säkerhet': 'DECT, ingen WiFi-risk',
- },
- },
- {
- name: 'Owlet Cam 2',
- badge: 'Bästa WiFi',
- rating: 4.4,
- price: 1399,
- image: '/images/products/owlet-cam-2.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
- features: {
- 'Typ': 'WiFi-video',
- 'Räckvidd': 'Obegränsad (via app)',
- 'Batteritid': 'Kräver strömkabel',
- 'Säkerhet': 'Krypterad WiFi',
- },
- },
- {
- name: 'Neonate BC-5800D V2',
- badge: 'Bäst budget',
- rating: 4.3,
- price: 1499,
- image: '/images/products/neonate-bc-5800d-v2.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt',
- features: {
- 'Typ': 'Ljud (DECT)',
- 'Räckvidd': '300 m',
- 'Batteritid': '6 h',
- 'Säkerhet': 'DECT, ingen WiFi-risk',
- },
- },
+  {
+    name: 'Philips Avent DECT SCD503/26',
+    desc: 'DECT-babyvakt med kristallklart ljud och 330 meters räckvidd. Upp till 24 timmars batteritid i sparläge. Ingen WiFi-risk.',
+    brand: 'Philips',
+    rating: 4.7,
+    badge: 'Bäst i test',
+    usps: ['Ingen WiFi-risk (DECT)', '330 m räckvidd', '24 h batteritid'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt',
+    imageUrl: '/images/products/philips-avent-dect-scd503-26.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Typ': 'Ljud (DECT)', 'Räckvidd': '330 m', 'Batteritid': '24 h (sparläge)', 'Säkerhet': 'DECT, ingen WiFi-risk' },
+    alsoAt: [],
+  },
+  {
+    name: 'Owlet Dream Sock Babyvakt Mint',
+    desc: 'Babyvakt i strumpform som mäter hjärtfrekvens och syresättning. Kliniskt validerade sensorer, app-notiser vid avvikande värden.',
+    brand: 'Owlet',
+    rating: 4.5,
+    badge: 'Bäst premiumövervakning',
+    usps: ['Puls + syresättning', 'App-notiser', 'Kliniskt validerad sensor'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10266672&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-dream-sock-babyvakt-mint',
+    imageUrl: '/images/products/owlet-dream-sock-babyvakt.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Typ': 'Wearable (strumpform)', 'Räckvidd': 'Via app (WiFi)', 'Batteritid': '16 h', 'Säkerhet': 'Mäter puls + syresättning' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent SCD735/26',
+    desc: 'Videobabyvakt med nattkamera och DECT-teknik. Temperaturvisning och musikfunktion. Ingen WiFi-risk.',
+    brand: 'Philips',
+    rating: 4.6,
+    badge: 'Bästa video',
+    usps: ['Video med nattkamera', 'DECT, ingen WiFi-risk', 'Temperaturvisning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus',
+    imageUrl: '/images/products/philips-avent-scd735-26.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Typ': 'Video med ljusfunktion', 'Räckvidd': '300 m', 'Batteritid': '10 h (sparläge)', 'Säkerhet': 'DECT, ingen WiFi-risk' },
+    alsoAt: [],
+  },
+  {
+    name: 'Owlet Cam 2',
+    desc: 'WiFi-babyvakt med HD-video via app. Tvåvägskommunikation och krypterad anslutning. Se barnet varifrån som helst.',
+    brand: 'Owlet',
+    rating: 4.4,
+    badge: 'Bästa WiFi',
+    usps: ['HD-video via app', 'Tvåvägskommunikation', 'Se barnet var som helst'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
+    imageUrl: '/images/products/owlet-cam-2.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Typ': 'WiFi-video', 'Räckvidd': 'Obegränsad (via app)', 'Batteritid': 'Kräver strömkabel', 'Säkerhet': 'Krypterad WiFi' },
+    alsoAt: [],
+  },
+  {
+    name: 'Neonate BC-5800D V2',
+    desc: 'Prisvärd DECT-babyvakt med 300 meters räckvidd och nattlampa. Enkel och pålitlig.',
+    brand: 'Neonate',
+    rating: 4.3,
+    badge: 'Bäst budget',
+    usps: ['Prisvärd DECT', 'Räckvidd 300 m', 'Nattlampa ingår'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt',
+    imageUrl: '/images/products/neonate-bc-5800d-v2.webp',
+    accentColor: '#c2410c', bgColor: '#7c2d12',
+    features: { 'Typ': 'Ljud (DECT)', 'Räckvidd': '300 m', 'Batteritid': '6 h', 'Säkerhet': 'DECT, ingen WiFi-risk' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Typ', 'Räckvidd', 'Batteritid', 'Säkerhet'];
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Typ', 'Räckvidd', 'Batteritid', 'Säkerhet'];
 
 const faqItems = [
- {
- question: 'Vilken babyvakt är bäst 2026?',
- answer: 'Philips Avent DECT SCD503/26 är bäst för säkert ljud med sluten DECT-signal, 330 meters räckvidd och 24 timmars batteritid. Owlet Dream Sock är bäst premiumövervakning med kliniskt validerad mätning av hjärtfrekvens och syresättning. Philips Avent SCD735/26 är bäst video med nattkamera och DECT-säkerhet utan WiFi. Owlet Cam 2 är bäst WiFi-babyvakt om du vill se barnet via mobilen varifrån som helst. Neonate BC-5800D V2 är bäst budget med pålitlig DECT-signal.',
- },
- {
- question: 'Vad är Owlet Dream Sock och hur fungerar det?',
- answer: 'Owlet Dream Sock är en babyvakt i strumpform som mäter bebisens hjärtfrekvens och syresättning med kliniskt validerade sensorer mot fotsulans hud. Appen notifierar om värdena avviker från inställda gränsvärden. Den kopplas via WiFi och är inte en medicinsk enhet men ger föräldrar extra trygghet, särskilt för föräldrar med prematurfödda barn eller barn med andningsproblem. Priset är 2 999 kronor hos Jollyroom.',
- },
- {
- question: 'Ska man välja babyvakt med video eller bara ljud?',
- answer: 'Video ger en avgörande fördel: du ser om barnet sparkat av sig täcket, byter sovposition eller sover djupt utan att behöva gå in och riskera att väcka. Många föräldrar med enbart ljud springer in i onödan och väcker barnet på fel sida. En DECT-videobabyvakt som Philips Avent SCD735/26 ger dig samma bild som att stå i dörröppningen, utan att röra dörrhandtaget. Enbart ljud räcker för äldre barn från ett år som tydligt hör om de vaknar. För nyfödda och spädbarn under sex månader är video starkt rekommenderat.',
- },
- {
- question: 'Är WiFi-babyvakter säkra att använda?',
- answer: 'WiFi-babyvakter är bekväma men har högre risk för hackning än slutna system som DECT. Välj en modell med end-to-end-kryptering och byt alltid standardlösenordet direkt. DECT-babyvakter som Philips Avent och Neonate använder ett slutet radiosystem utan internetkoppling och kan inte hackas utifrån.',
- },
- {
- question: 'Hur lång räckvidd behöver en babyvakt?',
- answer: 'I en vanlig lägenhet räcker 50 till 100 meter. I ett hus med betongbjälklag eller flera våningsplan behövs minst 250 till 300 meter angiven räckvidd, eftersom väggar och bjälklag halverar signalen. Tillverkarens räckviddssiffra avser fri sikt utomhus, räkna med ungefär hälften inomhus.',
- },
- {
- question: 'Vad är skillnaden mellan DECT och WiFi-babyvakt?',
- answer: 'DECT (Digital Enhanced Cordless Telecommunications) är ett slutet radiosystem som fungerar utan internet och utan risk för hackning. WiFi-babyvakter går via hemmanätverket och kan nås från mobilen var som helst, men kräver en säker anslutning. För babyrummet hemma är DECT generellt säkrare; för flexibilitet (t.ex. se barnet hemifrån) välj WiFi.',
- },
- {
- question: 'Vad ska man tänka på vid val av videobabyvakt?',
- answer: 'Viktiga faktorer: räckvidd (minst 300 m i ett hus), batteritid på föräldraenheten (minst 6 till 8 timmar), nattseende (infraröd kamera), tvåvägskommunikation (lugnande röst), och temperaturindikator. Luvion och Babymoov är välkända märken för videobabyvakter med sluten signal.',
- },
- {
- question: 'När behöver man en babyvakt?',
- answer: 'En babyvakt blir aktuell när barnet sover i eget rum, vilket Socialstyrelsen rekommenderar från 6 månaders ålder. Många familjer börjar använda babyvakt redan de första veckorna för att kunna laga mat, duscha eller vila i ett annat rum. Philips Avent DECT-modellerna är tystgående i sin bakgrundssignal och stör inte föräldrarnas eget sov. Sover barnet i samma rum som föräldrarna de första månaderna behövs ingen babyvakt, du hör ändå allt.',
- },
- {
- question: 'Kan babyvakter hackas?',
- answer: 'WiFi-babyvakter kan hackas om hemnätverket är dåligt skyddat eller tillverkarens server bryts. Det finns dokumenterade fall där okrypterade kameror visat liveström på öppna webbplatser. DECT-babyvakter använder ett slutet radiosystem utan internet och kan inte hackas utifrån. Vill du ha WiFi: välj en modell med end-to-end-kryptering och byt standardlösenordet direkt.',
- },
+  {
+    question: 'Vilken babyvakt är bäst 2026?',
+    answer: 'Philips Avent DECT SCD503/26 är bäst för säkert ljud med sluten DECT-signal, 330 meters räckvidd och 24 timmars batteritid. Owlet Dream Sock är bäst premiumövervakning med kliniskt validerad mätning av hjärtfrekvens och syresättning. Philips Avent SCD735/26 är bäst video med nattkamera och DECT-säkerhet utan WiFi. Owlet Cam 2 är bäst WiFi-babyvakt om du vill se barnet via mobilen varifrån som helst. Neonate BC-5800D V2 är bäst budget med pålitlig DECT-signal.',
+  },
+  {
+    question: 'Vad är Owlet Dream Sock och hur fungerar det?',
+    answer: 'Owlet Dream Sock är en babyvakt i strumpform som mäter bebisens hjärtfrekvens och syresättning med kliniskt validerade sensorer mot fotsulans hud. Appen notifierar om värdena avviker från inställda gränsvärden. Den kopplas via WiFi och är inte en medicinsk enhet men ger föräldrar extra trygghet, särskilt för föräldrar med prematurfödda barn eller barn med andningsproblem.',
+  },
+  {
+    question: 'Ska man välja babyvakt med video eller bara ljud?',
+    answer: 'Video ger en avgörande fördel: du ser om barnet sparkat av sig täcket, byter sovposition eller sover djupt utan att behöva gå in och riskera att väcka. Många föräldrar med enbart ljud springer in i onödan och väcker barnet på fel sida. En DECT-videobabyvakt som Philips Avent SCD735/26 ger dig samma bild som att stå i dörröppningen, utan att röra dörrhandtaget. Enbart ljud räcker för äldre barn från ett år som tydligt hör om de vaknar. För nyfödda och spädbarn under sex månader är video starkt rekommenderat.',
+  },
+  {
+    question: 'Är WiFi-babyvakter säkra att använda?',
+    answer: 'WiFi-babyvakter är bekväma men har högre risk för hackning än slutna system som DECT. Välj en modell med end-to-end-kryptering och byt alltid standardlösenordet direkt. DECT-babyvakter som Philips Avent och Neonate använder ett slutet radiosystem utan internetkoppling och kan inte hackas utifrån.',
+  },
+  {
+    question: 'Hur lång räckvidd behöver en babyvakt?',
+    answer: 'I en vanlig lägenhet räcker 50 till 100 meter. I ett hus med betongbjälklag eller flera våningsplan behövs minst 250 till 300 meter angiven räckvidd, eftersom väggar och bjälklag halverar signalen. Tillverkarens räckviddssiffra avser fri sikt utomhus, räkna med ungefär hälften inomhus.',
+  },
+  {
+    question: 'Vad är skillnaden mellan DECT och WiFi-babyvakt?',
+    answer: 'DECT (Digital Enhanced Cordless Telecommunications) är ett slutet radiosystem som fungerar utan internet och utan risk för hackning. WiFi-babyvakter går via hemmanätverket och kan nås från mobilen var som helst, men kräver en säker anslutning. För babyrummet hemma är DECT generellt säkrare; för flexibilitet (t.ex. se barnet hemifrån) välj WiFi.',
+  },
+  {
+    question: 'Vad ska man tänka på vid val av videobabyvakt?',
+    answer: 'Viktiga faktorer: räckvidd (minst 300 m i ett hus), batteritid på föräldraenheten (minst 6 till 8 timmar), nattseende (infraröd kamera), tvåvägskommunikation (lugnande röst), och temperaturindikator. Luvion och Babymoov är välkända märken för videobabyvakter med sluten signal.',
+  },
+  {
+    question: 'När behöver man en babyvakt?',
+    answer: 'En babyvakt blir aktuell när barnet sover i eget rum, vilket Socialstyrelsen rekommenderar från 6 månaders ålder. Många familjer börjar använda babyvakt redan de första veckorna för att kunna laga mat, duscha eller vila i ett annat rum. Philips Avent DECT-modellerna är tystgående i sin bakgrundssignal och stör inte föräldrarnas eget sov. Sover barnet i samma rum som föräldrarna de första månaderna behövs ingen babyvakt, du hör ändå allt.',
+  },
+  {
+    question: 'Kan babyvakter hackas?',
+    answer: 'WiFi-babyvakter kan hackas om hemnätverket är dåligt skyddat eller tillverkarens server bryts. Det finns dokumenterade fall där okrypterade kameror visat liveström på öppna webbplatser. DECT-babyvakter använder ett slutet radiosystem utan internet och kan inte hackas utifrån. Vill du ha WiFi: välj en modell med end-to-end-kryptering och byt standardlösenordet direkt.',
+  },
 ];
+
+export const articleMeta = {
+  title: "Bästa babyvakten 2026: Philips, Owlet Dream Sock och Neonate",
+  description: "Bästa babyvakt 2026. Philips Avent DECT, Owlet Dream Sock (puls + syresättning), video och WiFi jämförda på räckvidd, batteritid och säkerhet.",
+  publishDate: "2026-03-28",
+  updatedDate: "2026-06-16",
+  category: "Babyvakter",
+  image: "/images/products/philips-avent-dect-scd503-26.webp",
+};
 ---
 
 <ArticleLayout
- title="Bästa babyvakten 2026: Philips, Owlet Dream Sock och Neonate"
- description="Bästa babyvakt 2026. Philips Avent DECT, Owlet Dream Sock (puls + syresättning), video och WiFi jämförda på räckvidd, batteritid och säkerhet. Se vinnaren."
- breadcrumbs={breadcrumbs}
- canonical="https://bebisguiden.se/babyvakter/"
- updatedDate="2026-05-22"
+  title="Bästa babyvakten 2026: Philips, Owlet Dream Sock och Neonate"
+  description="Bästa babyvakt 2026. Philips Avent DECT, Owlet Dream Sock (puls + syresättning), video och WiFi jämförda på räckvidd, batteritid och säkerhet. Se vinnaren."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyvakter/"
+  datePublished="2026-03-28"
+  updatedDate="2026-06-16"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Philips Avent DECT SCD503/26 är bästa babyvakten 2026. Den slutna DECT-signalen går inte via internet, så det finns ingen WiFi-risk. Ljudet är kristallklart, räckvidden når 330 meter och batteritiden är upp till 24 timmar i sparläge.
-	 </p>
 
- <TopPick product={products[0]} description="Philips Avent DECT SCD503/26 är vårt bästa val 2026. Kristallklart ljud, 330 meters räckvidd, 24 timmars batteritid i sparläge och sluten DECT-signal som inte går via internet. Det säkra valet för hemmet utan WiFi-risker." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-03-28" dateModified="2026-06-16" />
 
- <h2 class="font-heading text-xl font-bold mt-2 mb-3">Jämförelsetabell, babyvakter 2026</h2>
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken babyvakt är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Philips Avent DECT SCD503/26 är bästa babyvakten 2026. Den slutna DECT-signalen går inte via internet, så det finns ingen WiFi-risk. Ljudet är kristallklart, räckvidden når 330 meter och batteritiden är upp till 24 timmar i sparläge. Vill du ha video väljer du Philips Avent SCD735/26, vill du mäta puls och syresättning väljer du Owlet Dream Sock.
+    </p>
+  </div>
 
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
- <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
- <p class="text-sm text-text-light"><strong>Philips Avent DECT SCD503/26</strong> är bäst för säkert ljud. <strong>Owlet Dream Sock</strong> är bäst premiumövervakning med puls och syresättning. <strong>Philips Avent SCD735/26</strong> är bäst för video. <strong>Owlet Cam 2</strong> är bäst för WiFi-flexibilitet. <strong>Neonate BC-5800D V2</strong> är bäst budget.</p>
- </div>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Philips"
+    name="Avent DECT SCD503/26"
+    image="/images/products/philips-avent-dect-scd503-26.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt"
+    store="Jollyroom"
+    description="Vårt bästa val 2026. Kristallklart ljud, 330 meters räckvidd, 24 timmars batteritid i sparläge och sluten DECT-signal som inte går via internet. Det säkra valet för hemmet utan WiFi-risker."
+  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Babyvakter 2026" />
 
- <div class="space-y-4">
- <ProductCard
- name="Philips Avent DECT SCD503/26"
- image="/images/products/philips-avent-dect-scd503-26.webp"
- badge="Bäst i test"
- rating={4.7}
- pros={['Kristallklart ljud', 'DECT-teknik, ingen WiFi-risk', 'Lång batteritid (24 h sparläge)', '330 m räckvidd']}
- cons={['Enbart ljud, ingen video', 'Ingen app-koppling']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt"
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
+    <p class="text-sm text-text-light"><strong>Philips Avent DECT SCD503/26</strong> är bäst för säkert ljud. <strong>Owlet Dream Sock</strong> är bäst premiumövervakning med puls och syresättning. <strong>Philips Avent SCD735/26</strong> är bäst för video. <strong>Owlet Cam 2</strong> är bäst för WiFi-flexibilitet. <strong>Neonate BC-5800D V2</strong> är bäst budget.</p>
+  </div>
 
- <ProductCard
- name="Owlet Dream Sock Babyvakt Mint"
- image="/images/products/owlet-dream-sock-babyvakt.webp"
- badge="Bäst premiumövervakning"
- rating={4.5}
- ageRange="0 till 18 månader"
- pros={['Mäter hjärtfrekvens och syresättning i realtid', 'Alert-notiser till mobilen om värden avviker', 'Kliniskt validerad sensor i strumpa', 'Fungerar med Owlet Cam 2']}
- cons={['Dyrast av rena babyvakter (2 999 kr)', 'Kräver WiFi', 'FDA-status USA men inte medicinsk utrustning', 'Strumpan kan glida av']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10266672&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-dream-sock-babyvakt-mint"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Philips Avent SCD735/26"
- image="/images/products/philips-avent-scd735-26.webp"
- badge="Bästa video"
- rating={4.6}
- pros={['Video med nattkamera', 'DECT-teknik, ingen WiFi-risk', 'Temperaturvisning', 'Musikspelning för att lugna barnet']}
- cons={['Ingen app-koppling', 'Begränsad räckvidd vid videoläge']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Philips Avent DECT SCD503/26, bäst i test</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent DECT SCD503/26"
+      rating={4.7}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/philips-avent-dect-scd503-26.webp"
+      imageAlt="Philips Avent DECT SCD503/26 babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt"
+      pros={['Kristallklart ljud', 'DECT-teknik, ingen WiFi-risk', 'Lång batteritid (24 h sparläge)', '330 m räckvidd']}
+      cons={['Enbart ljud, ingen video', 'Ingen app-koppling']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Philips Avent DECT SCD503/26 är vår totala vinnare 2026. Den slutna DECT-signalen går inte via internet, vilket eliminerar all risk för hackning, och ljudet är kristallklart utan brus. Räckvidden når 330 meter och batteritiden upp till 24 timmar i sparläge, nog för två hela nätter utan laddning. Den saknar video och app-koppling, men för föräldrar som vill ha en trygg ljudbabyvakt utan internetexponering är den svår att slå.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt" />
 
- <ProductCard
- name="Owlet Cam 2"
- image="/images/products/owlet-cam-2.webp"
- badge="Bästa WiFi"
- rating={4.4}
- pros={['HD-video via app', 'Tvåvägskommunikation', 'Se barnet varifrån som helst med internet', 'Prisvärd WiFi-lösning']}
- cons={['Beroende av WiFi-anslutning', 'Möjlig månadskostnad för molnlagring']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Owlet Dream Sock Babyvakt Mint, bäst premiumövervakning</h2>
+    <MoneyProductCard
+      brand="Owlet"
+      name="Owlet Dream Sock Babyvakt Mint"
+      rating={4.5}
+      rank={2}
+      badge="Bäst premiumövervakning"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/owlet-dream-sock-babyvakt.webp"
+      imageAlt="Owlet Dream Sock Babyvakt Mint"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10266672&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-dream-sock-babyvakt-mint"
+      pros={['Mäter hjärtfrekvens och syresättning i realtid', 'Alert-notiser till mobilen om värden avviker', 'Kliniskt validerad sensor i strumpa', 'Fungerar med Owlet Cam 2']}
+      cons={['Dyrast av rena babyvakter', 'Kräver WiFi', 'FDA-status USA men inte medicinsk utrustning', 'Strumpan kan glida av']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Owlet Dream Sock är något helt annat än en vanlig babyvakt: en strumpa med kliniskt validerade sensorer som mäter hjärtfrekvens och syresättning mot fotsulans hud, och som larmar i appen om värdena avviker. Den ger en extra trygghet många föräldrar till prematura barn eller barn med andningsproblem uppskattar. Den är dyrast av babyvakterna, kräver WiFi och är inte en medicinsk enhet, men som komplement till en ljud- eller videobabyvakt är den oslagbar på övervakning.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10266672&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-dream-sock-babyvakt-mint" />
 
- <ProductCard
- name="Neonate BC-5800D V2"
- badge="Bäst budget"
- rating={4.3}
- image="/images/products/neonate-bc-5800d-v2.webp"
- pros={['Prisvärd DECT-babyvakt', 'Enkel att använda', 'Pålitlig räckvidd upp till 300 m', 'Nattlampa ingår']}
- cons={['Kortare batteritid (ca 6 h)', 'Ingen video eller app']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Philips Avent SCD735/26, bästa video</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent SCD735/26"
+      rating={4.6}
+      rank={3}
+      badge="Bästa video"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/philips-avent-scd735-26.webp"
+      imageAlt="Philips Avent SCD735/26 videobabyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus"
+      pros={['Video med nattkamera', 'DECT-teknik, ingen WiFi-risk', 'Temperaturvisning', 'Musikspelning för att lugna barnet']}
+      cons={['Ingen app-koppling', 'Begränsad räckvidd vid videoläge']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Vill du se barnet och slippa WiFi-risk är Philips Avent SCD735/26 det bästa valet. Den ger video med nattkamera över sluten DECT-signal, plus temperaturvisning och en inbyggd musikspelare för att lugna barnet. Du får alltså samma bild som att stå i dörröppningen, utan att röra dörrhandtaget. Den saknar app-koppling och räckvidden är något kortare i videoläge, men för babyrummet hemma är det en marginell kompromiss.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide: så väljer du rätt babyvakt 2026</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Owlet Cam 2, bästa WiFi</h2>
+    <MoneyProductCard
+      brand="Owlet"
+      name="Owlet Cam 2"
+      rating={4.4}
+      rank={4}
+      badge="Bästa WiFi"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/owlet-cam-2.webp"
+      imageAlt="Owlet Cam 2 WiFi-babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
+      pros={['HD-video via app', 'Tvåvägskommunikation', 'Se barnet varifrån som helst med internet', 'Prisvärd WiFi-lösning']}
+      cons={['Beroende av WiFi-anslutning', 'Möjlig månadskostnad för molnlagring']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Owlet Cam 2 är valet för föräldrar som vill se barnet via mobilen oavsett var de befinner sig, perfekt när pappa är på resa eller mormor passar. Den ger HD-video via app och tvåvägskommunikation så du kan prata lugnande till barnet. Eftersom den går via WiFi är den beroende av en stabil och krypterad anslutning, och vissa funktioner kan kräva molnabonnemang, men som flexibel WiFi-lösning är den prisvärd.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>DECT eller WiFi, vilken teknik passar dig?</h3>
- <p>DECT är ett slutet radiosystem som inte går via internet. Ingen risk för hackning, ingen koppling till externa servrar och stabil signal även vid strömavbrott på router. WiFi-babyvakter låter dig se barnet via mobilen var som helst i världen, men säkerheten står och faller med ditt hemnätverk. Vill du vara helt borta från internetexponering, välj DECT. Behöver du flexibilitet för pappa på resa eller mormor som passar, välj WiFi med kryptering och starkt lösenord.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Neonate BC-5800D V2, bäst budget</h2>
+    <MoneyProductCard
+      brand="Neonate"
+      name="Neonate BC-5800D V2"
+      rating={4.3}
+      rank={5}
+      badge="Bäst budget"
+      accentColor="#c2410c" bgColor="#7c2d12"
+      imageUrl="/images/products/neonate-bc-5800d-v2.webp"
+      imageAlt="Neonate BC-5800D V2 babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt"
+      pros={['Prisvärd DECT-babyvakt', 'Enkel att använda', 'Pålitlig räckvidd upp till 300 m', 'Nattlampa ingår']}
+      cons={['Kortare batteritid (ca 6 h)', 'Ingen video eller app']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Neonate BC-5800D V2 är det trygga budgetvalet: en pålitlig DECT-babyvakt med slutet radiosystem, 300 meters räckvidd och inbyggd nattlampa. Den är enkel att använda och har det viktigaste på plats utan onödiga finesser. Batteritiden är kortare (cirka 6 timmar) och den saknar video och app, men för den som vill ha säkert ljud till lågt pris gör den exakt vad den ska.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt" />
 
- <h3>Räckvidd, anpassa efter bostaden</h3>
- <p>I en lägenhet räcker 100 till 150 meter. I villa med betongbjälklag eller flera våningsplan behövs minst 250 till 300 meter angiven räckvidd, eftersom väggar och våningsplan halverar signalen. Tillverkarens räckviddssiffra avser fri sikt utomhus, så räkna med ungefär hälften inomhus.</p>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Babyvakter 2026" />
 
- <h3>Video eller bara ljud?</h3>
- <p>Video ger snabb visuell bekräftelse, du ser om barnet sparkat av sig täcket eller bara byter sovposition utan att behöva gå in. Bara ljud räcker för många, men varje litet läte triggar reaktion. En videobabyvakt sparar nattsömnen genom att låta dig kolla snabbt innan du går upp. Läs vår guide om <a href="/guider/saker-sovmiljo/" class="text-accent underline">säker sovmiljö för bebis</a> om hur du kombinerar rätt babyvakt med rätt spjälsäng och sovrutiner.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt babyvakt 2026</h2>
 
- <h3>Batteritid på föräldraenheten</h3>
- <p>Du vill aldrig behöva ladda föräldraenheten mitt i natten. Välj minst 10 timmars batteritid i normalläge, helst med sparläge som ger 20 timmar eller mer. Philips Avent DECT SCD503/26 leder med 24 timmar i sparläge, vilket täcker två hela nätter utan laddning.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">DECT eller WiFi, vilken teknik passar dig?</h3>
+    <p class="text-text-light leading-relaxed mb-4">DECT är ett slutet radiosystem som inte går via internet. Ingen risk för hackning, ingen koppling till externa servrar och stabil signal även vid strömavbrott på router. WiFi-babyvakter låter dig se barnet via mobilen var som helst i världen, men säkerheten står och faller med ditt hemnätverk. Vill du vara helt borta från internetexponering, välj DECT. Behöver du flexibilitet för pappa på resa eller mormor som passar, välj WiFi med kryptering och starkt lösenord.</p>
 
- <section aria-label="Fakta om sömnsäkerhet och SIDS" class="mt-8 mb-2">
-   <h2 class="font-heading text-xl font-bold mb-4">Säker sovmiljö: fakta om SIDS och spädbarnsövervakning</h2>
-   <p class="text-sm text-text-light mb-4">Babyvakter mäter ljud och rörelser men förebygger inte plötslig spädbarnsdöd (SIDS). Nedan fakta är bakgrundskontext om sömnrisker, inte ett påstående om babyvaktens skyddseffekt.</p>
-   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-     <StatHighlight
-       figure="Ca 1 av 6 000"
-       source="1177 Vårdguiden"
-       sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
-       year="2026"
-     >
-       Andel spädbarn i Sverige som dör av plötslig spädbarnsdöd (SIDS). Vanligast under de sex första levnadsmånaderna. Ryggläge, rökfri miljö och fritt ansikte är de starkaste skyddsfaktorerna enligt 1177.
-     </StatHighlight>
-     <StatHighlight
-       figure="Ryggläge sedan 1992"
-       source="Internetmedicin"
-       sourceUrl="https://www.internetmedicin.se/neonatologi/plotslig-spadbarnsdod-sids-sudden-infant-death-syndrome"
-       year="2026"
-     >
-       Rekommendationen att lägga spädbarn på rygg, som officiellt spreds 1992, ledde till en dramatisk minskning av SIDS-fallen i Sverige. Magläge är den starkaste enskilda riskfaktorn.
-     </StatHighlight>
-   </div>
- </section>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Räckvidd, anpassa efter bostaden</h3>
+    <p class="text-text-light leading-relaxed mb-4">I en lägenhet räcker 100 till 150 meter. I villa med betongbjälklag eller flera våningsplan behövs minst 250 till 300 meter angiven räckvidd, eftersom väggar och våningsplan halverar signalen. Tillverkarens räckviddssiffra avser fri sikt utomhus, så räkna med ungefär hälften inomhus.</p>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Fördjupning, babyvakter efter typ</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/babyvakter/babybjorn-vs-philips-avent/" class="text-accent underline">BabyBjörn vs Philips Avent babyvakt 2026, DECT eller WiFi?</a></li>
- <li><a href="/babyvakter/kamera/" class="text-accent underline">Bästa babyvakt med kamera 2026, se och hör ditt barn</a></li>
- <li><a href="/babyvakter/app/" class="text-accent underline">Bästa babyvakt med app 2026, övervaka via mobilen</a></li>
- <li><a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a></li>
- <li><a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a></li>
- <li><a href="/babyvakter/budget/" class="text-accent underline">Bästa budgetbabyvakten 2026, billiga alternativ som fungerar</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Video eller bara ljud?</h3>
+    <p class="text-text-light leading-relaxed mb-4">Video ger snabb visuell bekräftelse, du ser om barnet sparkat av sig täcket eller bara byter sovposition utan att behöva gå in. Bara ljud räcker för många, men varje litet läte triggar reaktion. En videobabyvakt sparar nattsömnen genom att låta dig kolla snabbt innan du går upp. Läs vår guide om <a href="/guider/saker-sovmiljo/" class="text-accent hover:text-accent-dark underline">säker sovmiljö för bebis</a> om hur du kombinerar rätt babyvakt med rätt spjälsäng och sovrutiner.</p>
 
- <div class="mt-4 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Guider om babyvakter och babyövervakning</h2>
- <ul class="space-y-2 text-sm">
- <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
- <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
- <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Batteritid på föräldraenheten</h3>
+    <p class="text-text-light leading-relaxed mb-4">Du vill aldrig behöva ladda föräldraenheten mitt i natten. Välj minst 10 timmars batteritid i normalläge, helst med sparläge som ger 20 timmar eller mer. Philips Avent DECT SCD503/26 leder med 24 timmar i sparläge, vilket täcker två hela nätter utan laddning.</p>
 
- <RetailerCTAs />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Säker sovmiljö: fakta om SIDS och spädbarnsövervakning</h2>
+    <p class="text-text-light leading-relaxed mb-6">Babyvakter mäter ljud och rörelser men förebygger inte plötslig spädbarnsdöd (SIDS). Nedan fakta är bakgrundskontext om sömnrisker, inte ett påstående om babyvaktens skyddseffekt.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight
+        figure="Ca 1 av 6 000"
+        source="1177 Vårdguiden"
+        sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/plotslig-spadbarnsdod--forebyggande-rad/"
+        year="2026"
+      >
+        Andel spädbarn i Sverige som dör av plötslig spädbarnsdöd (SIDS). Vanligast under de sex första levnadsmånaderna. Ryggläge, rökfri miljö och fritt ansikte är de starkaste skyddsfaktorerna enligt 1177.
+      </StatHighlight>
+      <StatHighlight
+        figure="Ryggläge sedan 1992"
+        source="Internetmedicin"
+        sourceUrl="https://www.internetmedicin.se/neonatologi/plotslig-spadbarnsdod-sids-sudden-infant-death-syndrome"
+        year="2026"
+      >
+        Rekommendationen att lägga spädbarn på rygg, som officiellt spreds 1992, ledde till en dramatisk minskning av SIDS-fallen i Sverige. Magläge är den starkaste enskilda riskfaktorn.
+      </StatHighlight>
+    </div>
 
- <FAQ items={faqItems} />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat babyvakter utifrån fyra kriterier: signalsäkerhet (DECT vs WiFi och risk för hackning), räckvidd och stabilitet i svenska bostäder, batteritid på föräldraenheten samt extrafunktioner (video, puls/syresättning, temperatur, tvåvägsljud). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
 
- <ProductSchema products={[
- {
- name: 'Philips Avent DECT SCD503/26',
- description: 'DECT-babyvakt med kristallklart ljud och 330 meters räckvidd. Upp till 24 timmars batteritid i sparläge. Ingen WiFi-risk.',
- image: 'https://bebisguiden.se/images/products/philips-avent-dect-scd503-26.webp',
- brand: 'Philips',
- ratingValue: 4.7,
- reviewCount: 1,
- },
- {
- name: 'Owlet Dream Sock Babyvakt Mint',
- description: 'Babyvakt i strumpform som mäter hjärtfrekvens och syresättning. Kliniskt validerade sensorer, app-notiser vid avvikande värden.',
- image: 'https://bebisguiden.se/images/products/owlet-dream-sock-babyvakt.webp',
- brand: 'Owlet',
- ratingValue: 4.5,
- reviewCount: 1,
- },
- {
- name: 'Philips Avent SCD735/26',
- description: 'Videobabyvakt med nattkamera och DECT-teknik. Temperaturvisning och musikfunktion. Ingen WiFi-risk.',
- image: 'https://bebisguiden.se/images/products/philips-avent-scd735-26.webp',
- brand: 'Philips',
- ratingValue: 4.6,
- reviewCount: 1,
- },
- {
- name: 'Owlet Cam 2',
- description: 'WiFi-babyvakt med HD-video via app. Tvåvägskommunikation och krypterad anslutning. Se barnet varifrån som helst.',
- image: 'https://bebisguiden.se/images/products/owlet-cam-2.webp',
- brand: 'Owlet',
- ratingValue: 4.4,
- reviewCount: 1,
- },
- {
- name: 'Neonate BC-5800D V2',
- description: 'Prisvärd DECT-babyvakt med 300 meters räckvidd och nattlampa. Enkel och pålitlig.',
- image: 'https://bebisguiden.se/images/products/neonate-bc-5800d-v2.webp',
- brand: 'Neonate',
- ratingValue: 4.3,
- reviewCount: 1,
- },
- ]} />
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fördjupning, babyvakter efter typ</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/babybjorn-vs-philips-avent/" class="text-accent underline">BabyBjörn vs Philips Avent babyvakt 2026, DECT eller WiFi?</a></li>
+        <li><a href="/babyvakter/kamera/" class="text-accent underline">Bästa babyvakt med kamera 2026, se och hör ditt barn</a></li>
+        <li><a href="/babyvakter/app/" class="text-accent underline">Bästa babyvakt med app 2026, övervaka via mobilen</a></li>
+        <li><a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a></li>
+        <li><a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a></li>
+        <li><a href="/babyvakter/budget/" class="text-accent underline">Bästa budgetbabyvakten 2026, billiga alternativ som fungerar</a></li>
+      </ul>
+    </div>
+
+    <div class="mt-4 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Guider om babyvakter och babyövervakning</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/barnvagnar/" class="text-accent underline">Bästa barnvagnen 2026, test och jämförelse</a></li>
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, krocktestade och rankade</a></li>
+        <li><a href="/barselen/" class="text-accent underline">Bästa bärselen 2026, ergonomi och komfort testat</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price: no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa babyvakterna 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (Product + review + aggregateRating ger Product snippet utan priskrav). */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt"
+    text="Bra pris hos Jollyroom"
+    productName="Philips Avent DECT SCD503/26"
+  />
+
 </ArticleLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Bästa babyvakterna 2026",
-  "description": "Rankad lista över de bästa babyvakterna jämförda och jämförda 2026",
-  "itemListOrder": "https://schema.org/ItemListOrderDescending",
-  "numberOfItems": products.length,
-  "itemListElement": products.map((p, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "item": {
-      "@type": "Product",
-      "name": p.name,
-      "image": `https://bebisguiden.se${p.image}`,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": p.rating,
-        "bestRating": 5,
-        "ratingCount": 1
-      },
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "SEK",
-        "price": p.price,
-        "availability": "https://schema.org/InStock",
-        "url": p.ctaHref,
-        "seller": { "@type": "Organization", "name": "Jollyroom" },
-        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "SEK" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SE" } },
-        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "SE", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
-      }
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     }
-  }))
-})} />
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
 
-<CTABox productName="Babyvakter" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281908&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1500-connect-wifi-babyvakt" description="Stort urval babyvakter, ljud, video och WiFi." />
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>
