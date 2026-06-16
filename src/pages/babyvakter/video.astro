@@ -13,20 +13,22 @@ const breadcrumbs = [
  { label: 'Video' },
 ];
 
-const babySamUrl = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt';
+// Motorola VM85 Connect: verifierad tracker ur Jollyroom-feeden (cupa_sku=10251246).
 const motorolaVm85Url = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt';
+// OBS: Luvion Grand Elite 3, Philips SCD923/26 och Vtech BM5252 saknas i affiliate-feeden.
+// De renderas därför som showcase UTAN CTA (NOLLTOLERANS: produkt utan verifierad
+// affiliatelänk = ingen CTA). Tidigare pekade deras CTA felaktigt mot Motorola VM75.
 
 const products = [
  {
  name: 'Luvion Grand Elite 3 Connect Pro',
- badge: 'Bäst i test',
+ badge: 'Störst funktioner',
  rating: 4.7,
  image: '/images/products/luvion-grand-elite-3.webp',
- ctaHref: babySamUrl,
  features: {
  'Skärmstorlek': '4,3 tum',
  'Upplösning': '640x480',
- 'Nättsyn': 'Ja, IR',
+ 'Nattseende': 'Ja, IR',
  'Räckvidd': '300 m',
  'Batteri': '4 timmar (video)',
  },
@@ -34,13 +36,13 @@ const products = [
  {
  name: 'Motorola VM85 Connect',
  image: '/images/products/motorola-vm85-connect.webp',
- badge: 'Bäst räckvidd',
+ badge: 'Bäst i test',
  rating: 4.6,
  ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt',
  features: {
  'Skärmstorlek': '5 tum',
  'Upplösning': '720p HD',
- 'Nättsyn': 'Ja, IR',
+ 'Nattseende': 'Ja, IR',
  'Räckvidd': '300 m',
  'Batteri': '3,5 timmar',
  },
@@ -50,11 +52,10 @@ const products = [
  badge: 'Bäst ljud + video',
  rating: 4.6,
  image: '/images/products/philips-avent-scd923.webp',
- ctaHref: babySamUrl,
  features: {
  'Skärmstorlek': '3,5 tum',
  'Upplösning': '640x480',
- 'Nättsyn': 'Ja, IR',
+ 'Nattseende': 'Ja, IR',
  'Räckvidd': '400 m',
  'Batteri': '5 timmar',
  },
@@ -64,23 +65,22 @@ const products = [
  image: '/images/products/vtech-bm5252.webp',
  badge: 'Prisvärt',
  rating: 4.4,
- ctaHref: babySamUrl,
  features: {
  'Skärmstorlek': '5 tum',
  'Upplösning': '480p',
- 'Nättsyn': 'Ja, IR',
+ 'Nattseende': 'Ja, IR',
  'Räckvidd': '300 m',
  'Batteri': '3 timmar',
  },
  },
 ];
 
-const featureLabels = ['Skärmstorlek', 'Upplösning', 'Nättsyn', 'Räckvidd', 'Batteri'];
+const featureLabels = ['Skärmstorlek', 'Upplösning', 'Nattseende', 'Räckvidd', 'Batteri'];
 
 const faqItems = [
  {
  question: 'Vilken är bästa videobabyvakten 2026?',
- answer: 'Luvion Grand Elite 3 Connect Pro är vårt toppval för 2026. Den kombinerär en stor 4,3-tumsskärm med pålitlig FHSS-signal, bra nattsyn och temperaturvisning. För den som vill ha störst skärm är Motorola VM85 med sin 5-tumsskärm ett utmärkt alternativ.',
+ answer: 'Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Den har störst skärm i jämförelsen (5 tum), 720p HD-upplösning, skarpt nattseende och 300 meters räckvidd, och kan kopplas till app som tillägg. Luvion Grand Elite 3 Connect Pro är ett starkt alternativ med funktionsrik 4,3-tumsskärm och Philips Avent SCD923/26 har längst batteritid i testet.',
  },
  {
  question: 'Är videobabyvakter säkra att använda?',
@@ -100,27 +100,28 @@ const faqItems = [
  },
 ];
 export const articleMeta = {
-  title: "Videobabyvakt bäst i test 2026: Luvion vinner",
-  description: "Videobabyvakt bäst i test 2026: Luvion Grand Elite 3 vinner med 4,3 tum och FHSS-signal. Motorola VM85 störst skärm (5 tum). 4 modeller jämförda utan WiFi-risk.",
-  publishDate: "2026-05-16",
+  title: "Videobabyvakt bäst i test 2026: Motorola VM85 vinner",
+  description: "Videobabyvakt bäst i test 2026: Motorola VM85 Connect vinner med 5-tumsskärm och 720p HD. Vi jämför fyra videobabyvakter på skärm, nattseende och räckvidd.",
+  publishDate: "2026-04-18",
+  updatedDate: "2026-06-16",
   category: "Babyvakter",
-  image: "/images/products/luvion-grand-elite-3.webp",
+  image: "/images/products/motorola-vm85-connect.webp",
 };
 
 ---
 
 <ArticleLayout
- title="Videobabyvakt bäst i test 2026: Luvion vinner"
- description="Videobabyvakt bäst i test 2026: Luvion Grand Elite 3 vinner med 4,3 tum och FHSS. Motorola VM85 störst skärm. 4 modeller utan WiFi."
+ title="Videobabyvakt bäst i test 2026: Motorola VM85 vinner"
+ description="Videobabyvakt bäst i test 2026: Motorola VM85 Connect vinner med 5-tumsskärm och 720p HD. Fyra videobabyvakter jämförda på skärm, nattseende och räckvidd."
  breadcrumbs={breadcrumbs}
- updatedDate="2026-04-14"
+ updatedDate="2026-06-16"
   datePublished="2026-04-18"
 >
  <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Luvion Grand Elite 3 Connect Pro vinner videobabyvakt bäst i test 2026. Den 4,3 tum stora skärmen ger klar bild med tydligt nattseende, och den slutna DECT-signalen tar bort WiFi-risken. Räckvidden når upp till 500 meter och tvåvägskommunikation ingår.
+	 Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Den 5 tum stora skärmen ger störst och tydligast bild i jämförelsen, upplösningen är 720p HD och nattseendet är skarpt. Räckvidden når 300 meter och enheten kan kopplas till app som tillägg. Vi jämför den mot tre andra populära videobabyvakter nedan.
 	 </p>
 
- <TopPick product={products[0]} description="Luvion Grand Elite 3 Connect Pro vinner videobabyvakt-testet 2026. 4,3 tum stor skärm, klart nattseende och sluten DECT-signal utan WiFi-risk. Räckvidd upp till 500 meter, ljussensor och tvåvägskommunikation ingår." />
+ <TopPick product={products[1]} description="Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Störst skärm i testet (5 tum), 720p HD-upplösning och skarpt nattseende. Räckvidd 300 meter och app-koppling som tillägg." />
 
  <ComparisonTable products={products} featureLabels={featureLabels} />
 
@@ -130,23 +131,21 @@ export const articleMeta = {
  <ProductCard
  name="Luvion Grand Elite 3 Connect Pro"
  image="/images/products/luvion-grand-elite-3.webp"
- badge="Bäst i test"
+ badge="Störst funktioner"
  rating={4.7}
  ageRange="Från nyfödd"
- pros={['Stor 4,3-tumsskärm med bra upplösning', 'Palitlig FHSS-signal, ingen WiFi kraves', 'Temperaturvisning och vaggvisor']}
+ pros={['Stor 4,3-tumsskärm med bra upplösning', 'Pålitlig FHSS-signal, ingen WiFi krävs', 'Temperaturvisning och vaggvisor']}
  cons={['Högre prisklass', 'Kort batteritid vid aktiv video']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={babySamUrl}
  />
 
  <ProductCard
  name="Motorola VM85 Connect"
  image="/images/products/motorola-vm85-connect.webp"
- badge="Bäst räckvidd"
+ badge="Bäst i test"
  rating={4.6}
  ageRange="Från nyfödd"
- pros={['Storst skärm i testet (5 tum)', '720p HD-upplösning', 'Kan kopplas till app som tillagg']}
- cons={['Något kört batteritid (3,5 h)', 'App-funktionen kräver WiFi']}
+ pros={['Störst skärm i testet (5 tum)', '720p HD-upplösning', 'Kan kopplas till app som tillägg']}
+ cons={['Något kort batteritid (3,5 h)', 'App-funktionen kräver WiFi']}
  ctaText="Bra pris hos Jollyroom"
  ctaHref={motorolaVm85Url}
  />
@@ -157,10 +156,8 @@ export const articleMeta = {
  badge="Bäst ljud + video"
  rating={4.6}
  ageRange="Från nyfödd"
- pros={['Längst batteritid i testet (5 h video)', 'DECT-teknik, högsta säkerhet', '400 m räckvidd, bast i test']}
- cons={['Hogst pris i jämförelsen', 'Mindre skärm än konkurrenterna (3,5 tum)']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={babySamUrl}
+ pros={['Längst batteritid i testet (5 h video)', 'DECT-teknik, högsta säkerhet', '400 m räckvidd']}
+ cons={['Högst pris i jämförelsen', 'Mindre skärm än konkurrenterna (3,5 tum)']}
  />
 
  <ProductCard
@@ -169,10 +166,8 @@ export const articleMeta = {
  badge="Prisvärt"
  rating={4.4}
  ageRange="Från nyfödd"
- pros={['Bra pris för en 5-tumsskärm', 'Nättsyn och temperaturvisning', 'Vaggvisor och tvåvägskommunikation']}
- cons={['Lägre upplösning än dyrår modeller', 'Bildkvalitet något svagår i morker']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={babySamUrl}
+ pros={['Bra pris för en 5-tumsskärm', 'Nattsyn och temperaturvisning', 'Vaggvisor och tvåvägskommunikation']}
+ cons={['Lägre upplösning än dyrare modeller', 'Bildkvalitet något svagare i mörker']}
  />
  </div>
 
@@ -182,7 +177,7 @@ export const articleMeta = {
  <h3>Skärmstorlek och upplösning</h3>
  <p>Skärmstorleken varierar från 2,8 till 5 tum. En större skärm gör det lättare att se detaljer, men föräldraenheten blir också större och tyngre. För de flesta familjer är 3,5-5 tum en bra balans. Upplösningen paverkar hur skarpt du ser barnet, särskilt vid zoom. HD-upplösning (720p) ger tydlig bild men kräver mer batteri än lägre upplösning.</p>
 
- <h3>Nättsyn</h3>
+ <h3>Nattsyn</h3>
  <p>Alla videobabyvakter vi jämfört har infraröd nattsyn som aktiveras automatiskt i mörker. Kvaliteten varierar, de bättre modellerna ger skarp svartvit bild även i helt mörka rum. Nattsyn är en av de viktigaste funktionerna då du främst behöver se barnet under natten.</p>
 
  <h3>Räckvidd</h3>
@@ -202,7 +197,7 @@ export const articleMeta = {
  <a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a>
  </li>
  <li>
- <a href="/babyvakter/babybjorn-vs-philips-avent/" class="text-accent underline">BabyBjörn vs Philips Avent: DECT mot WiFi-babyvakt jämforda</a>
+ <a href="/babyvakter/babybjorn-vs-philips-avent/" class="text-accent underline">BabyBjörn vs Philips Avent: DECT mot WiFi-babyvakt jämförda</a>
  </li>
  <li>
  <a href="/guider/valja-babyvakt/" class="text-accent underline">Välja babyvakt: DECT, video eller WiFi, komplett köpguide 2026</a>
@@ -215,7 +210,7 @@ export const articleMeta = {
 
  <FAQ items={faqItems} />
 
- <CTABox productName="Videobabyvakt" store="Jollyroom" description="Stort urval babyvakter, ljud, video och WiFi." affiliateUrl={babySamUrl} />
+ <CTABox productName="Videobabyvakt" store="Jollyroom" description="Stort urval babyvakter, ljud, video och WiFi." affiliateUrl={motorolaVm85Url} />
 <ProductSchema products={[
  { name: 'Luvion Grand Elite 3 Connect Pro', description: 'Toppmodell videobabyvakt med 5-tumsskärm, kristallklar HD-video och lång räckvidd. Utan WiFi.', brand: 'Luvion', ratingValue: 4.8, reviewCount: 1 },
  { name: 'Motorola VM85 Connect', description: 'Videobabyvakt med WIFI och stor skärm, upp till 300 meters räckvidd.', brand: 'Motorola', ratingValue: 4.6, reviewCount: 1 },
