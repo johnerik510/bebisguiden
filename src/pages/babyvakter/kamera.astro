@@ -1,246 +1,435 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import CTABox from '../../components/CTABox.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babyvakter', href: '/babyvakter/' },
- { label: 'Kamera' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Kamera' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade).
 const products = [
- {
- name: 'Philips Avent SCD831 Babyvakt Med Video',
- image: '/images/products/philips-avent-scd831-video.webp',
- badge: 'Bäst i test',
- rating: 4.8,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video',
- features: {
- 'Upplösning': '1080p Full HD',
- 'Nattseende': 'Ja, IR',
- 'WiFi': 'Ja',
- 'Skärm på enhet': 'Nej (app)',
- 'Vidvinkel': '120°',
- },
- },
- {
- name: 'Owlet Cam 2',
- badge: 'Prisvärt HD',
- rating: 4.5,
- image: '/images/products/owlet-cam-2.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
- features: {
- 'Upplösning': '1080p Full HD',
- 'Nattseende': 'Ja, IR',
- 'WiFi': 'Ja',
- 'Skärm på enhet': 'Nej (app)',
- 'Vidvinkel': '130°',
- },
- },
- {
- name: 'Motorola VM75',
- image: '/images/products/motorola-vm75.webp',
- badge: 'Bäst för 2 rum',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt',
- features: {
- 'Upplösning': '480p',
- 'Nattseende': 'Ja, IR',
- 'WiFi': 'Ja (tillval)',
- 'Skärm på enhet': '4,3 tum',
- 'Vidvinkel': '75°',
- },
- },
- {
- name: 'Neonate Babyvakt BC-8000DV',
- image: '/images/products/neonate-bc-8000dv-babyvakt.webp',
- badge: 'Budgetval',
- rating: 4.1,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt',
- features: {
- 'Upplösning': '480p',
- 'Nattseende': 'Ja, IR',
- 'WiFi': 'Nej',
- 'Skärm på enhet': '3,5 tum',
- 'Vidvinkel': '65°',
- },
- },
- {
- name: 'Philips Avent SCD892/26 Babyvakt',
- badge: 'Bäst utan WiFi',
- rating: 4.6,
- image: '/images/products/philips-avent-scd892-babyvakt.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt',
- features: {
- 'Upplösning': '1080p Full HD',
- 'Nattseende': 'Ja, IR',
- 'WiFi': 'Ja (Ucare-app)',
- 'Skärm på enhet': 'Nej (app)',
- 'Vidvinkel': '120°',
- },
- },
+  {
+    name: 'Philips Avent SCD831 Babyvakt Med Video',
+    desc: 'WiFi-babykamera med 1080p HD-bild och Ucare-app. Bäst i test bland kamerababyvakter.',
+    brand: 'Philips Avent',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['1080p Full HD', 'Ucare-app', '120° vidvinkel'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video',
+    imageUrl: '/images/products/philips-avent-scd831-video.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Upplösning': '1080p Full HD', 'Nattseende': 'Ja, IR', 'WiFi': 'Ja', 'Skärm på enhet': 'Nej (app)', 'Vidvinkel': '120°' },
+    alsoAt: [],
+  },
+  {
+    name: 'Owlet Cam 2',
+    desc: 'WiFi-babykamera med tydlig HD-bild och enkel app. Bra pris och enkel setup.',
+    brand: 'Owlet',
+    rating: 4.5,
+    badge: 'Prisvärt HD',
+    usps: ['1080p Full HD', '130° vidvinkel', 'Rörelsevakt'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
+    imageUrl: '/images/products/owlet-cam-2.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Upplösning': '1080p Full HD', 'Nattseende': 'Ja, IR', 'WiFi': 'Ja', 'Skärm på enhet': 'Nej (app)', 'Vidvinkel': '130°' },
+    alsoAt: [],
+  },
+  {
+    name: 'Motorola VM75',
+    desc: 'Kamerababyvakt med stor 4,3-tumsskärm och stöd för 2 kameror. Bra för föräldrar med flera rum.',
+    brand: 'Motorola',
+    rating: 4.3,
+    badge: 'Bäst för 2 rum',
+    usps: ['Splitscreen 2 rum', '4,3-tumsskärm', 'Tvåvägsljud'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt',
+    imageUrl: '/images/products/motorola-vm75.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Upplösning': '480p', 'Nattseende': 'Ja, IR', 'WiFi': 'Ja (tillval)', 'Skärm på enhet': '4,3 tum', 'Vidvinkel': '75°' },
+    alsoAt: [],
+  },
+  {
+    name: 'Neonate Babyvakt BC-8000DV',
+    desc: 'Budgetvänlig videobabyvakt med DECT-signal och 3,5-tumsskärm.',
+    brand: 'Neonate',
+    rating: 4.1,
+    badge: 'Budgetval',
+    usps: ['Budgetval', '3,5-tumsskärm', 'IR-nattseende'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt',
+    imageUrl: '/images/products/neonate-bc-8000dv-babyvakt.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Upplösning': '480p', 'Nattseende': 'Ja, IR', 'WiFi': 'Nej', 'Skärm på enhet': '3,5 tum', 'Vidvinkel': '65°' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent SCD892/26 Babyvakt',
+    desc: 'WiFi-babykamera med 1080p, rörelsevakt och Ucare-app.',
+    brand: 'Philips Avent',
+    rating: 4.6,
+    badge: 'Bäst utan WiFi',
+    usps: ['1080p Full HD', 'Ucare-app', 'Tvåvägsljud'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt',
+    imageUrl: '/images/products/philips-avent-scd892-babyvakt.webp',
+    accentColor: '#c2410c', bgColor: '#7c2d12',
+    features: { 'Upplösning': '1080p Full HD', 'Nattseende': 'Ja, IR', 'WiFi': 'Ja (Ucare-app)', 'Skärm på enhet': 'Nej (app)', 'Vidvinkel': '120°' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Upplösning', 'Nattseende', 'WiFi', 'Skärm på enhet', 'Vidvinkel'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Upplösning', 'Nattseende', 'WiFi', 'Skärm på enhet', 'Vidvinkel'];
 
 const faqItems = [
- {
- question: 'Vilken babyvakt med kamera är bäst 2026?',
- answer: 'Nanit Pro är vårt toppval 2026. Den kombinerar 1080p Full HD-bild, inbyggd AI-sömnanalys och ett brett vidvinkelobjektiv på 130 grader. Bildkvaliteten är överlägsen i testet, både dag och natt. För den som inte vill ha WiFi är Luvion Grand Elite 3 bäst med sin stora 5-tumsskärm och slutna signal.',
- },
- {
- question: 'Vad är vidvinkel och varför är det viktigt?',
- answer: 'Vidvinkel avgör hur stor del av barnets säng kameran ser. En smalare vinkel (60 till 70°) kan missa barnets ben om kameran sitter lite åt sidan. Välj en babyvakt med minst 110 till 130° vidvinkel för att se hela sängen utan att behöva justera kamerans position. Nanit Pro och Owlet Cam 2 har 130°, bäst i testet.',
- },
- {
- question: 'Behöver en babyvakt med kamera WiFi?',
- answer: 'Nej. Luvion Grand Elite 3 och BabyPhone BC-5900 sänder direkt till en separat föräldraenhet med skärm utan att gå via WiFi eller internet. Det ger högre säkerhet och fungerar även vid strömavbrott på routern. WiFi-modeller som Nanit Pro och Owlet Cam 2 ger flexibilitet att se barnet via mobilen var du än är.',
- },
- {
- question: 'Hur bra är nattseende på babyvakter?',
- answer: 'Alla babyvakter i vår jämförelse har infraröd (IR) nattseende som aktiveras automatiskt i mörker. Bilderna är svartvita men tillräckligt skarpa för att se om barnet sover normalt. Nanit Pro och Owlet Cam 2 levererar skarpast bild i mörker tack vare 1080p-sensorerna.',
- },
- {
- question: 'Kan jag använda Motorola VM75 för två barnrum?',
- answer: 'Ja, Motorola VM75 stödjer splitscreen-visning av två kameror samtidigt på 4,3-tumsskärmen. Det gör den idealisk för familjer med tvillingar eller syskon i separata rum. En extra kamera köps separat och kopplas enkelt till föräldraenheten.',
- },
+  {
+    question: 'Vilken babyvakt med kamera är bäst 2026?',
+    answer: 'Nanit Pro är vårt toppval 2026. Den kombinerar 1080p Full HD-bild, inbyggd AI-sömnanalys och ett brett vidvinkelobjektiv på 130 grader. Bildkvaliteten är överlägsen i testet, både dag och natt. För den som inte vill ha WiFi är Luvion Grand Elite 3 bäst med sin stora 5-tumsskärm och slutna signal.',
+  },
+  {
+    question: 'Vad är vidvinkel och varför är det viktigt?',
+    answer: 'Vidvinkel avgör hur stor del av barnets säng kameran ser. En smalare vinkel (60 till 70°) kan missa barnets ben om kameran sitter lite åt sidan. Välj en babyvakt med minst 110 till 130° vidvinkel för att se hela sängen utan att behöva justera kamerans position. Nanit Pro och Owlet Cam 2 har 130°, bäst i testet.',
+  },
+  {
+    question: 'Behöver en babyvakt med kamera WiFi?',
+    answer: 'Nej. Luvion Grand Elite 3 och BabyPhone BC-5900 sänder direkt till en separat föräldraenhet med skärm utan att gå via WiFi eller internet. Det ger högre säkerhet och fungerar även vid strömavbrott på routern. WiFi-modeller som Nanit Pro och Owlet Cam 2 ger flexibilitet att se barnet via mobilen var du än är.',
+  },
+  {
+    question: 'Hur bra är nattseende på babyvakter?',
+    answer: 'Alla babyvakter i vår jämförelse har infraröd (IR) nattseende som aktiveras automatiskt i mörker. Bilderna är svartvita men tillräckligt skarpa för att se om barnet sover normalt. Nanit Pro och Owlet Cam 2 levererar skarpast bild i mörker tack vare 1080p-sensorerna.',
+  },
+  {
+    question: 'Kan jag använda Motorola VM75 för två barnrum?',
+    answer: 'Ja, Motorola VM75 stödjer splitscreen-visning av två kameror samtidigt på 4,3-tumsskärmen. Det gör den idealisk för familjer med tvillingar eller syskon i separata rum. En extra kamera köps separat och kopplas enkelt till föräldraenheten.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bästa babyvakt med kamera 2026: babyvakt kamera granskad",
   description: "Babyvakt med kamera bäst i test 2026: Vi jämför Nanit Pro, Luvion och Owlet Cam 2. Se nattseende, vidvinkel och bildkvalitet, med och utan WiFi.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-16",
   category: "Babyvakter",
   image: "/images/products/philips-avent-scd831-video.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bästa babyvakt med kamera 2026: babyvakt kamera granskad"
- description="Babyvakt med kamera bäst i test 2026: Vi jämför Nanit Pro, Luvion och Owlet Cam 2. Se nattseende, vidvinkel och bildkvalitet, med och utan WiFi."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-15"
+  title="Bästa babyvakt med kamera 2026: babyvakt kamera granskad"
+  description="Babyvakt med kamera bäst i test 2026: Vi jämför Nanit Pro, Luvion och Owlet Cam 2. Se nattseende, vidvinkel och bildkvalitet, med och utan WiFi."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyvakter/kamera/"
   datePublished="2026-02-04"
+  updatedDate="2026-06-16"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Philips Avent SCD831 vinner babyvakt med kamera bäst i test 2026. Kameran filmar i 1080p Full HD med IR-nattseende, har rörelsevakt och skickar push-notiser via Ucare-appen. En pålitlig videovakt från Philips Avent med 120 graders vidvinkel.
-	 </p>
 
- <TopPick product={products[0]} description="Philips Avent SCD831 vinner test av babyvakt med kamera 2026. 1080p Full HD med IR-nattkamera, rörelsevakt och push-notiser via Ucare-app. Pålitlig kvalitet från Philips Avent." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-02-04" dateModified="2026-06-16" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken babyvakt med kamera är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Philips Avent SCD831 vinner babyvakt med kamera bäst i test 2026. Kameran filmar i 1080p Full HD med IR-nattseende, har rörelsevakt och skickar push-notiser via Ucare-appen. En pålitlig videovakt från Philips Avent med 120 graders vidvinkel.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Philips Avent"
+    name="SCD831 Babyvakt Med Video"
+    image="/images/products/philips-avent-scd831-video.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video"
+    store="Jollyroom"
+    description="Philips Avent SCD831 vinner test av babyvakt med kamera 2026. 1080p Full HD med IR-nattkamera, rörelsevakt och push-notiser via Ucare-app. Pålitlig kvalitet från Philips Avent."
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Philips Avent SCD831 Babyvakt Med Video"
- image="/images/products/philips-avent-scd831-video.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="Från nyfödd"
- pros={['1080p Full HD, skarp bild dag och natt', 'Pålitlig Philips Avent-kvalitet', 'Rörelsevakt och push-notiser via Ucare-app', 'Enkel att installera och använda']}
- cons={['Kräver stabil WiFi', 'Premium-funktioner kan kräva abonnemang']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video"
- />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Babyvakt med kamera 2026" />
 
- <ProductCard
- name="Owlet Cam 2"
- image="/images/products/owlet-cam-2.webp"
- badge="Prisvärt HD"
- rating={4.5}
- ageRange="Från nyfödd"
- pros={['1080p Full HD till bra pris', '130° vidvinkel, lika bra som Nanit Pro', 'Rörelsevakt med notiser', 'Kan kombineras med Owlet Smart Sock']}
- cons={['Kräver stabil WiFi-anslutning', 'Utökad molnlagring kostar extra']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
- />
+  {/* Vinnaröversikt (bevarad intention) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Philips Avent SCD831</strong> är bäst i test bland kamerababyvakter, 1080p Full HD med IR-nattseende, rörelsevakt och push-notiser via Ucare-appen.</p>
+  </div>
 
- <ProductCard
- name="Motorola VM75"
- image="/images/products/motorola-vm75.webp"
- badge="Bäst för 2 rum"
- rating={4.3}
- ageRange="Från nyfödd"
- pros={['Splitscreen för 2 kameror på en skärm', '4,3-tumsskärm ingår', 'Tvåvägskommunikation', 'Rimligt pris för dubbla rum']}
- cons={['Lägre upplösning (480p)', 'Smalare vidvinkel än toppalternativen']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Neonate Babyvakt BC-8000DV"
- image="/images/products/neonate-bc-8000dv-babyvakt.webp"
- badge="Budgetval"
- rating={4.1}
- ageRange="Från nyfödd"
- pros={['Prisvärd videobabyvakt', 'Bra nattseende för priset', '3,5-tumsskärm ingår', 'Enkel installation']}
- cons={['Lägre upplösning (480p)', 'Smalare vidvinkel']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Philips Avent SCD831, bäst i test</h2>
+    <MoneyProductCard
+      brand="Philips Avent"
+      name="Philips Avent SCD831 Babyvakt Med Video"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/philips-avent-scd831-video.webp"
+      imageAlt="Philips Avent SCD831 Babyvakt Med Video"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video"
+      pros={['1080p Full HD, skarp bild dag och natt', 'Pålitlig Philips Avent-kvalitet', 'Rörelsevakt och push-notiser via Ucare-app', 'Enkel att installera och använda']}
+      cons={['Kräver stabil WiFi', 'Premium-funktioner kan kräva abonnemang']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Philips Avent SCD831 vinner test av babyvakt med kamera 2026. Kameran filmar i 1080p Full HD och har IR-nattseende som ger skarp bild både dag och natt. Rörelsevakten skickar push-notiser via Ucare-appen och vidvinkeln på 120 grader täcker hela barnsängen. Den kräver stabil WiFi och vissa premium-funktioner kan kräva abonnemang, men för pålitlighet och bildkvalitet är detta vårt totala toppval.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video" />
 
- <ProductCard
- name="Philips Avent SCD892/26 Babyvakt"
- image="/images/products/philips-avent-scd892-babyvakt.webp"
- badge="Bäst utan WiFi"
- rating={4.6}
- ageRange="Från nyfödd"
- pros={['1080p Full HD kamera', 'Ucare-app med rörelsevakt', 'Tvåvägsljud och nattseende', 'Pålitligt Philips-varumärke']}
- cons={['Kräver WiFi-anslutning', 'Ingen separat föräldraenhet']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Owlet Cam 2, prisvärt HD</h2>
+    <MoneyProductCard
+      brand="Owlet"
+      name="Owlet Cam 2"
+      rating={4.5}
+      rank={2}
+      badge="Prisvärt HD"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/owlet-cam-2.webp"
+      imageAlt="Owlet Cam 2"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
+      pros={['1080p Full HD till bra pris', '130° vidvinkel, lika bra som Nanit Pro', 'Rörelsevakt med notiser', 'Kan kombineras med Owlet Smart Sock']}
+      cons={['Kräver stabil WiFi-anslutning', 'Utökad molnlagring kostar extra']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Owlet Cam 2 ger 1080p Full HD till bra pris och har en vidvinkel på 130 grader, lika bred som Nanit Pro och bäst i testet. Rörelsevakten skickar notiser och kameran kan kombineras med Owlet Smart Sock för utökad övervakning. Den kräver stabil WiFi-anslutning och utökad molnlagring kostar extra, men för den som vill ha skarp HD-bild utan att betala toppris är detta ett starkt val.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du babyvakt med kamera</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Motorola VM75, bäst för 2 rum</h2>
+    <MoneyProductCard
+      brand="Motorola"
+      name="Motorola VM75"
+      rating={4.3}
+      rank={3}
+      badge="Bäst för 2 rum"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/motorola-vm75.webp"
+      imageAlt="Motorola VM75"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt"
+      pros={['Splitscreen för 2 kameror på en skärm', '4,3-tumsskärm ingår', 'Tvåvägskommunikation', 'Rimligt pris för dubbla rum']}
+      cons={['Lägre upplösning (480p)', 'Smalare vidvinkel än toppalternativen']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Motorola VM75 är bäst för familjer med två barnrum tack vare splitscreen-visning av två kameror samtidigt på den medföljande 4,3-tumsskärmen. Tvåvägskommunikation gör att du kan prata med barnet på avstånd. Upplösningen på 480p är lägre och vidvinkeln smalare än toppalternativen, men för tvillingar eller syskon i separata rum är detta ett prisvärt val med separat föräldraenhet.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Upplösning, hur skarp bild behöver du?</h3>
- <p>1080p Full HD är standard på moderna kamerababyvakter och ger tillräckligt skarp bild för att se barnets ansiktsuttryck och andningsrörelser tydligt. 480p-modeller som Motorola VM75 och BabyPhone BC-5900 fungerar, men detaljerna är märkbart suddigare, särskilt i mörker. Har du råd, välj 1080p.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Neonate BC-8000DV, budgetval</h2>
+    <MoneyProductCard
+      brand="Neonate"
+      name="Neonate Babyvakt BC-8000DV"
+      rating={4.1}
+      rank={4}
+      badge="Budgetval"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/neonate-bc-8000dv-babyvakt.webp"
+      imageAlt="Neonate Babyvakt BC-8000DV"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt"
+      pros={['Prisvärd videobabyvakt', 'Bra nattseende för priset', '3,5-tumsskärm ingår', 'Enkel installation']}
+      cons={['Lägre upplösning (480p)', 'Smalare vidvinkel']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Neonate BC-8000DV är budgetvalet i jämförelsen. Den är en prisvärd videobabyvakt med DECT-signal och en medföljande 3,5-tumsskärm, och installationen är enkel. Nattseendet är bra för priset. Upplösningen på 480p och en smalare vidvinkel gör att detaljskärpan inte når upp till HD-modellerna, men för den som vill ha en pålitlig och oberoende videovakt utan WiFi fyller den sitt syfte.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt" />
 
- <h3>Vidvinkel, täck hela barnets säng</h3>
- <p>Vidvinkeln avgör hur mycket av rummet kameran ser utan att du behöver panorera. En vinkel på 65 till 75° kan missa barnets ben eller sida av sängen om kameran inte är perfekt centrerad. Välj minst 110 till 130° för att alltid ha full översikt, oavsett hur barnet vrider sig.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Philips Avent SCD892/26, bäst utan WiFi</h2>
+    <MoneyProductCard
+      brand="Philips Avent"
+      name="Philips Avent SCD892/26 Babyvakt"
+      rating={4.6}
+      rank={5}
+      badge="Bäst utan WiFi"
+      accentColor="#c2410c" bgColor="#7c2d12"
+      imageUrl="/images/products/philips-avent-scd892-babyvakt.webp"
+      imageAlt="Philips Avent SCD892/26 Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt"
+      pros={['1080p Full HD kamera', 'Ucare-app med rörelsevakt', 'Tvåvägsljud och nattseende', 'Pålitligt Philips-varumärke']}
+      cons={['Kräver WiFi-anslutning', 'Ingen separat föräldraenhet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-4">
+      Philips Avent SCD892/26 är ett pålitligt alternativ med 1080p Full HD-kamera, Ucare-app med rörelsevakt samt tvåvägsljud och IR-nattseende. Varumärket Philips står för stabil kvalitet. Den kräver WiFi-anslutning och har ingen separat föräldraenhet, vilket gör att du styr allt via mobilappen. För föräldrar som föredrar app-styrning framför fristående skärm är detta ett tryggt köp.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt" />
 
- <h3>Nattseende, det viktigaste i praktiken</h3>
- <p>Du kommer använda babyvakten mest på natten. Infraröd nattseende aktiveras automatiskt när belysningen sjunker och ger svartvit bild. Kvaliteten varierar, Nanit Pro och Owlet Cam 2 levererar klarast bild i helt mörka rum. Billigare modeller kan ge lite grynigare nattbild men är ändå fullt funktionella.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vill du fördjupa dig? Läs vår <a href="/babyvakter/" class="text-accent hover:text-accent-dark underline">kompletta guide till bästa babyvakten</a>, jämför med en <a href="/babyvakter/wifi/" class="text-accent hover:text-accent-dark underline">WiFi-babyvakt</a> eller en <a href="/babyvakter/video/" class="text-accent hover:text-accent-dark underline">videobabyvakt</a>.
+    </p>
 
- <h3>WiFi eller sluten signal?</h3>
- <p>WiFi-kameror (Nanit Pro, Owlet Cam 2) låter dig se barnet via app var du än är och kräver ingen separat föräldraenhet. Sluten signal (Luvion, BabyPhone) sänder direkt till en separat skärm utan internet, säkrare och oberoende av WiFi-stabilitet. Välj WiFi för flexibilitet, sluten signal för säkerhet och enkelhet.</p>
- </div>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Babyvakt med kamera 2026" />
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Guider om babykameror och DECT-monitorer</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/app/" class="text-accent underline">Bästa babyvakt med app 2026, övervaka via mobilen</a>
- </li>
- <li>
- <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
- </li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så väljer du babyvakt med kamera</h2>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Upplösning, hur skarp bild behöver du?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      1080p Full HD är standard på moderna kamerababyvakter och ger tillräckligt skarp bild för att se barnets ansiktsuttryck och andningsrörelser tydligt. 480p-modeller som Motorola VM75 och BabyPhone BC-5900 fungerar, men detaljerna är märkbart suddigare, särskilt i mörker. Har du råd, välj 1080p.
+    </p>
 
- <CTABox productName="Babyvakt med kamera" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281905&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm75-video-babyvakt" description="Stort urval babyvakter med kamera, HD, nattseende och WiFi." />
-<ProductSchema products={[
- { name: 'Philips Avent SCD831 Babyvakt Med Video', description: 'WiFi-babykamera med 1080p HD-bild och Ucare-app. Bäst i test bland kamerababyvakter.', brand: 'Philips Avent', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Philips Avent SCD892/26 Babyvakt', description: 'WiFi-babykamera med 1080p, rörelsevakt och Ucare-app.', brand: 'Philips Avent', ratingValue: 4.6, reviewCount: 1 },
- { name: 'Owlet Cam 2', description: 'WiFi-babykamera med tydlig HD-bild och enkel app. Bra pris och enkel setup.', brand: 'Owlet', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Motorola VM75', description: 'Kamerababyvakt med stor 4,3-tumsskärm och stöd för 2 kameror. Bra för föräldrar med flera rum.', brand: 'Motorola', ratingValue: 4.3, reviewCount: 1 },
- { name: 'Neonate Babyvakt BC-8000DV', description: 'Budgetvänlig videobabyvakt med DECT-signal och 3,5-tumsskärm.', brand: 'Neonate', ratingValue: 4.1, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vidvinkel, täck hela barnets säng</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Vidvinkeln avgör hur mycket av rummet kameran ser utan att du behöver panorera. En vinkel på 65 till 75° kan missa barnets ben eller sida av sängen om kameran inte är perfekt centrerad. Välj minst 110 till 130° för att alltid ha full översikt, oavsett hur barnet vrider sig.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Nattseende, det viktigaste i praktiken</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du kommer använda babyvakten mest på natten. Infraröd nattseende aktiveras automatiskt när belysningen sjunker och ger svartvit bild. Kvaliteten varierar, Nanit Pro och Owlet Cam 2 levererar klarast bild i helt mörka rum. Billigare modeller kan ge lite grynigare nattbild men är ändå fullt funktionella.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">WiFi eller sluten signal?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      WiFi-kameror (Nanit Pro, Owlet Cam 2) låter dig se barnet via app var du än är och kräver ingen separat föräldraenhet. Sluten signal (Luvion, BabyPhone) sänder direkt till en separat skärm utan internet, säkrare och oberoende av WiFi-stabilitet. Välj WiFi för flexibilitet, sluten signal för säkerhet och enkelhet.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat babyvakter med kamera utifrån fyra kriterier: bildkvalitet (upplösning, skärpa dag och natt), vidvinkel (hur stor del av sängen kameran täcker), nattseende (IR-prestanda i mörker) och uppkoppling (WiFi-flexibilitet mot sluten signal). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Guider om babykameror och DECT-monitorer</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a></li>
+        <li><a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a></li>
+        <li><a href="/babyvakter/app/" class="text-accent underline">Bästa babyvakt med app 2026, övervaka via mobilen</a></li>
+        <li><a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa babyvakt med kamera 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199200&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd831-babyvakt-med-video"
+    text="Bra pris hos Jollyroom"
+    productName="Philips Avent SCD831"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

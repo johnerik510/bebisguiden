@@ -1,221 +1,407 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import CTABox from '../../components/CTABox.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babyvakter', href: '/babyvakter/' },
- { label: 'WiFi' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'WiFi' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade feeds).
 const products = [
- {
- name: 'Owlet Cam 2',
- badge: 'Bäst i test',
- rating: 4.6,
- image: '/images/products/owlet-cam-2.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
- features: {
- 'Upplösning': '1080p Full HD',
- 'App': 'iOS + Android',
- 'Nättsyn': 'Ja, IR',
- 'Tvåvägskommunikation': 'Ja',
- 'Molnlagring': 'Tillval (avg.)',
- },
- },
- {
- name: 'Motorola PIP1500 Connect WIFI Babyvakt',
- image: '/images/products/motorola-pip1500-connect-wifi-babyvakt.webp',
- badge: 'Premiumval',
- rating: 4.7,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281908&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1500-connect-wifi-babyvakt',
- features: {
- 'Upplösning': '1080p Full HD',
- 'App': 'iOS + Android',
- 'Nättsyn': 'Ja, IR',
- 'Tvåvägskommunikation': 'Ja',
- 'Molnlagring': 'Tillval',
- },
- },
- {
- name: 'Motorola VM85 Connect Babyvakt',
- image: '/images/products/motorola-vm85-connect-babyvakt.webp',
- badge: 'Bäst hybrid',
- rating: 4.5,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt',
- features: {
- 'Upplösning': '1080p Full HD',
- 'App': 'iOS + Android + skärm',
- 'Nättsyn': 'Ja, IR',
- 'Tvåvägskommunikation': 'Ja',
- 'Molnlagring': 'Tillval',
- },
- },
- {
- name: 'Maxi-Cosi Connected Home See Babyvakt',
- image: '/images/products/maxi-cosi-connected-home-see-babyvakt.webp',
- badge: 'Budgetval',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245767&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/maxi-cosi-connected-home-see-babyvakt',
- features: {
- 'Upplösning': '1080p Full HD',
- 'App': 'iOS + Android',
- 'Nättsyn': 'Ja, IR',
- 'Tvåvägskommunikation': 'Ja',
- 'Molnlagring': 'Tillval',
- },
- },
+  {
+    name: 'Owlet Cam 2',
+    desc: 'WiFi-babyvakt med tydlig HD-bild och enkel app. Bäst i test bland WiFi-babyvakter. 1080p Full HD, tvåvägskommunikation och krypterad anslutning. Kan kombineras med Owlet Smart Sock för andningsövervakning.',
+    brand: 'Owlet',
+    rating: 4.6,
+    badge: 'Bäst i test',
+    usps: ['1080p Full HD', 'iOS + Android-app', 'Krypterad anslutning'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
+    imageUrl: '/images/products/owlet-cam-2.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Upplösning': '1080p Full HD', 'App': 'iOS + Android', 'Nattsyn': 'Ja, IR', 'Tvåvägskommunikation': 'Ja', 'Molnlagring': 'Tillval (avg.)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Motorola PIP1500 Connect WIFI Babyvakt',
+    desc: 'WiFi-babyvakt med Hubble-app och 1080p HD-video. Push-notiser, tvåvägskommunikation och nattseende. Enkel installation via WiFi.',
+    brand: 'Motorola',
+    rating: 4.7,
+    badge: 'Premiumval',
+    usps: ['1080p Full HD', 'Hubble-app', 'Push-notiser'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281908&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1500-connect-wifi-babyvakt',
+    imageUrl: '/images/products/motorola-pip1500-connect-wifi-babyvakt.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Upplösning': '1080p Full HD', 'App': 'iOS + Android', 'Nattsyn': 'Ja, IR', 'Tvåvägskommunikation': 'Ja', 'Molnlagring': 'Tillval' },
+    alsoAt: [],
+  },
+  {
+    name: 'Motorola VM85 Connect Babyvakt',
+    desc: 'Hybrid WiFi-babyvakt med app och separat skärm. Fungerar utan internet via skärm. 1080p Full HD bildkvalitet och Hubble-app med rörelsevakt.',
+    brand: 'Motorola',
+    rating: 4.5,
+    badge: 'Bäst hybrid',
+    usps: ['WiFi + separat skärm', '1080p Full HD', 'Rörelsevakt'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt',
+    imageUrl: '/images/products/motorola-vm85-connect-babyvakt.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Upplösning': '1080p Full HD', 'App': 'iOS + Android + skärm', 'Nattsyn': 'Ja, IR', 'Tvåvägskommunikation': 'Ja', 'Molnlagring': 'Tillval' },
+    alsoAt: [],
+  },
+  {
+    name: 'Maxi-Cosi Connected Home See Babyvakt',
+    desc: 'WiFi-babyvakt med Maxi-Cosi Connected Home-app och 1080p bild. Rörelsevakt och push-notiser från ett pålitligt varumärke för babyprodukter.',
+    brand: 'Maxi-Cosi',
+    rating: 4.3,
+    badge: 'Budgetval',
+    usps: ['1080p Full HD', 'Connected Home-app', 'Push-notiser'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245767&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/maxi-cosi-connected-home-see-babyvakt',
+    imageUrl: '/images/products/maxi-cosi-connected-home-see-babyvakt.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Upplösning': '1080p Full HD', 'App': 'iOS + Android', 'Nattsyn': 'Ja, IR', 'Tvåvägskommunikation': 'Ja', 'Molnlagring': 'Tillval' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Upplösning', 'App', 'Nättsyn', 'Tvåvägskommunikation', 'Molnlagring'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Upplösning', 'App', 'Nattsyn', 'Tvåvägskommunikation', 'Molnlagring'];
 
 const faqItems = [
- {
- question: 'Är WiFi-babyvakter sakra?',
- answer: 'WiFi-babyvakter sänder via ditt hemnätverk, vilket innebär en viss säkerhetsrisk jämfört med slutna system (DECT/FHSS). För att minimera risken: välj en modell med krypterad anslutning (AES-128 eller högre), använd starka och unika lösenord, håll firmwår uppdaterad och placera kameran på ett separat gasnätverk om din router stödjer det. De modeller vi rekommenderar har alla kryptering som standard.',
- },
- {
- question: 'Vilken WiFi-babyvakt är bäst 2026?',
- answer: 'Owlet Cam 2 är vårt toppval, den erbjuder Full HD-bild, bra app, tvåvägskommunikation och rimligt pris. För den som vill ha premiumfunktioner som sömnanalys och andningsövervakning (med Owlet-strumpa som tillbehör) är Nanit Pro bäst. På tight budget är TP-Link Tapo C210 oslagbar, högupplöst bild för under.',
- },
- {
- question: 'Behöver jag betala för molnlagring?',
- answer: 'Det varierar. Nanit ger begränsad molnlagring gratis. Owlet och TP-Link erbjuder grundläggande funktioner gratis men tar betalt för utökad videologgning. eufy SpaceView Pro sparar allt lokalt utan månadskostnad. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning.',
- },
- {
- question: 'Kan jag använda WiFi-babyvakten utanför hemmet?',
- answer: 'Ja, det är WiFi-babyvaktens största fördel. Bara du har internetanslutning kan du övervaka barnet oavsett var du befinner dig, perfekt för att kolla till barnet när en barnvakt är hemma eller när du är på jobb. Fördröjningen är vanligtvis 1 till 3 sekunder beroende på uppkopplingen.',
- },
- {
- question: 'Vad händer om WiFi går ner?',
- answer: 'Om WiFi-anslutningen bryts tappar du tillgång till appen och kan inte se barnet. Därför rekommenderar vi eufy SpaceView Pro för familjer som vill ha en hybridlösning, den har både WiFi-app och en separat skärm som fungerar via sluten signal även utan internet.',
- },
+  {
+    question: 'Är WiFi-babyvakter säkra?',
+    answer: 'WiFi-babyvakter sänder via ditt hemnätverk, vilket innebär en viss säkerhetsrisk jämfört med slutna system (DECT/FHSS). För att minimera risken: välj en modell med krypterad anslutning (AES-128 eller högre), använd starka och unika lösenord, håll firmware uppdaterad och placera kameran på ett separat gästnätverk om din router stödjer det. De modeller vi rekommenderar har alla kryptering som standard.',
+  },
+  {
+    question: 'Vilken WiFi-babyvakt är bäst 2026?',
+    answer: 'Owlet Cam 2 är vårt toppval, den erbjuder Full HD-bild, bra app, tvåvägskommunikation och rimligt pris. För den som vill ha premiumfunktioner som push-notiser och Hubble-app är Motorola PIP1500 Connect bäst. Vill du ha en hybridlösning som fungerar även utan internet är Motorola VM85 Connect med separat skärm rätt val.',
+  },
+  {
+    question: 'Behöver jag betala för molnlagring?',
+    answer: 'Det varierar. De flesta WiFi-babyvakter erbjuder grundläggande realtidsvisning gratis men tar betalt för utökad videologgning i molnet. Owlet, Motorola och Maxi-Cosi erbjuder molnlagring som tillval mot en månadsavgift. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning.',
+  },
+  {
+    question: 'Kan jag använda WiFi-babyvakten utanför hemmet?',
+    answer: 'Ja, det är WiFi-babyvaktens största fördel. Bara du har internetanslutning kan du övervaka barnet oavsett var du befinner dig, perfekt för att kolla till barnet när en barnvakt är hemma eller när du är på jobb. Fördröjningen är vanligtvis 1 till 3 sekunder beroende på uppkopplingen.',
+  },
+  {
+    question: 'Vad händer om WiFi går ner?',
+    answer: 'Om WiFi-anslutningen bryts tappar du tillgång till appen och kan inte se barnet. Därför rekommenderar vi Motorola VM85 Connect för familjer som vill ha en hybridlösning, den har både WiFi-app och en separat skärm som fungerar via sluten signal även utan internet.',
+  },
 ];
+
 export const articleMeta = {
   title: "Bästa WiFi-babyvakt 2026: övervaka via app, rankade",
-  description: "Bästa WiFi-babyvakt 2026: Vi jämför Owlet Cam 2, Nanit Pro och eufy SpaceView Pro. Se bildkvalitet, appsäkerhet och pris, testa var du än är.",
+  description: "Bästa WiFi-babyvakt 2026: Vi jämför Owlet Cam 2, Motorola PIP1500 och Motorola VM85. Se bildkvalitet, appsäkerhet och funktioner, testa var du än är.",
   publishDate: "2026-05-16",
+  updatedDate: "2026-06-16",
   category: "Babyvakter",
   image: "/images/products/owlet-cam-2.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Bästa WiFi-babyvakt 2026: övervaka via app"
- description="Bästa WiFi-babyvakt 2026: Vi jämför Owlet Cam 2, Nanit Pro och eufy SpaceView Pro. Se bildkvalitet, appsäkerhet och pris, testa var du än är."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-15"
+  title="Bästa WiFi-babyvakt 2026: övervaka via app"
+  description="Bästa WiFi-babyvakt 2026: Vi jämför Owlet Cam 2, Motorola PIP1500 och Motorola VM85. Se bildkvalitet, appsäkerhet och funktioner, testa var du än är."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyvakter/wifi/"
   datePublished="2026-02-06"
+  updatedDate="2026-06-16"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Owlet Cam 2 vinner WiFi-babyvakt bäst i test 2026. Den strömmar 1080p Full HD via en enkel app på iOS och Android, med tvåvägskommunikation och krypterad anslutning. Du ser barnet varifrån du vill så länge du har internetuppkoppling.
-	 </p>
 
- <TopPick product={products[0]} description="Owlet Cam 2 vinner WiFi-babyvakt-testet 2026. 1080p Full HD-video via app på iOS och Android, tvåvägskommunikation och krypterad anslutning. Se barnet varifrån som helst med internetuppkoppling." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-02-06" dateModified="2026-06-16" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken WiFi-babyvakt är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Owlet Cam 2 vinner WiFi-babyvakt bäst i test 2026. Den strömmar 1080p Full HD via en enkel app på iOS och Android, med tvåvägskommunikation och krypterad anslutning. Du ser barnet varifrån du vill så länge du har internetuppkoppling.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Owlet"
+    name="Cam 2"
+    image="/images/products/owlet-cam-2.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
+    store="Jollyroom"
+    description="Owlet Cam 2 vinner WiFi-babyvakt-testet 2026. 1080p Full HD-video via app på iOS och Android, tvåvägskommunikation och krypterad anslutning. Se barnet varifrån som helst med internetuppkoppling."
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Owlet Cam 2"
- image="/images/products/owlet-cam-2.webp"
- badge="Bäst i test"
- rating={4.6}
- ageRange="Från nyfödd"
- pros={['Full HD 1080p, skarp bild dag och natt', 'Bra app med notiser vid ljud och rörelse', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
- cons={['Månadskostnad för utökad molnlagring', 'Beroende av stabil WiFi-anslutning']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
- />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - WiFi-babyvakter 2026" />
 
- <ProductCard
- name="Motorola PIP1500 Connect WIFI Babyvakt"
- image="/images/products/motorola-pip1500-connect-wifi-babyvakt.webp"
- badge="Premiumval"
- rating={4.7}
- ageRange="Från nyfödd"
- pros={['1080p Full HD WiFi-babyvakt', 'Hubble-app med push-notiser', 'Tvåvägskommunikation och nattseende', 'Enkel installation via WiFi']}
- cons={['Kräver stabil WiFi-anslutning', 'Saknar separat skärm']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281908&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1500-connect-wifi-babyvakt"
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Owlet Cam 2</strong> är bäst i test bland WiFi-babyvakter, skarp 1080p Full HD-bild, enkel app och krypterad anslutning så du kan se barnet var du än är.</p>
+  </div>
 
- <ProductCard
- name="Motorola VM85 Connect Babyvakt"
- image="/images/products/motorola-vm85-connect-babyvakt.webp"
- badge="Bäst hybrid"
- rating={4.5}
- ageRange="Från nyfödd"
- pros={['WiFi-app och separat skärm kombinerat', '1080p Full HD bildkvalitet', 'Fungerar via skärm vid WiFi-avbrott', 'Hubble-app med rörelsevakt']}
- cons={['Något dyrare än rena WiFi-modeller', 'Tyngre föräldraenhet']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Maxi-Cosi Connected Home See Babyvakt"
- image="/images/products/maxi-cosi-connected-home-see-babyvakt.webp"
- badge="Budgetval"
- rating={4.3}
- ageRange="Från nyfödd"
- pros={['1080p Full HD WiFi-babyvakt', 'Maxi-Cosi Connected Home-app', 'Rörelsevakt och push-notiser', 'Pålitligt varumärke för babyprodukter']}
- cons={['Kräver WiFi-anslutning', 'Ingen separat skärm']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245767&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/maxi-cosi-connected-home-see-babyvakt"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Owlet Cam 2, bäst i test</h2>
+    <MoneyProductCard
+      brand="Owlet"
+      name="Owlet Cam 2"
+      rating={4.6}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/owlet-cam-2.webp"
+      imageAlt="Owlet Cam 2 WiFi-babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
+      pros={['Full HD 1080p, skarp bild dag och natt', 'Bra app med notiser vid ljud och rörelse', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
+      cons={['Månadskostnad för utökad molnlagring', 'Beroende av stabil WiFi-anslutning']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Owlet Cam 2 är vår totala vinnare bland WiFi-babyvakter 2026. Den strömmar 1080p Full HD via en enkel app på iOS och Android, med skarp bild både dag och natt tack vare infrarött nattseende. Appen ger notiser vid ljud och rörelse, så du behöver inte stirra på skärmen för att veta när barnet vaknar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Anslutningen är krypterad som standard, och kameran kan kombineras med Owlet Smart Sock för andningsövervakning om du vill ha mer än ren videoövervakning. Begränsningarna är att utökad molnlagring kostar en månadsavgift och att hela funktionen står och faller med en stabil WiFi-anslutning.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du WiFi-babyvakt</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Motorola PIP1500 Connect, premiumval</h2>
+    <MoneyProductCard
+      brand="Motorola"
+      name="Motorola PIP1500 Connect WIFI Babyvakt"
+      rating={4.7}
+      rank={2}
+      badge="Premiumval"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/motorola-pip1500-connect-wifi-babyvakt.webp"
+      imageAlt="Motorola PIP1500 Connect WIFI Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281908&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1500-connect-wifi-babyvakt"
+      pros={['1080p Full HD WiFi-babyvakt', 'Hubble-app med push-notiser', 'Tvåvägskommunikation och nattseende', 'Enkel installation via WiFi']}
+      cons={['Kräver stabil WiFi-anslutning', 'Saknar separat skärm']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Motorola PIP1500 Connect är vårt premiumval, en ren WiFi-babyvakt som strömmar 1080p Full HD till Hubble-appen. Push-notiser når dig direkt vid ljud eller rörelse, och tvåvägskommunikationen gör att du kan lugna barnet med rösten utan att gå in i rummet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Installationen sker via WiFi och är gjord på några minuter. Nattseendet är skarpt och pålitligt. Eftersom det är en ren WiFi-modell saknar den separat skärm, och precis som alla WiFi-vakter kräver den en stabil uppkoppling för att fungera.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10281908&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1500-connect-wifi-babyvakt" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>WiFi vs sluten signal, vad är bäst?</h3>
- <p>WiFi-babyvakter sänder video via ditt hemnätverk till en app på telefonen. Det innebär att du kan övervaka barnet var som helst, hemma, på jobbet eller på semester. Nackdelen är att du är beroende av stabil WiFi-anslutning och att det finns en teoretisk hackningsrisk. Babyvakter med sluten signal (DECT/FHSS) sänder direkt till en föräldraenhet utan internet, vilket ger högre säkerhet men begränsad räckvidd.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Motorola VM85 Connect, bäst hybrid</h2>
+    <MoneyProductCard
+      brand="Motorola"
+      name="Motorola VM85 Connect Babyvakt"
+      rating={4.5}
+      rank={3}
+      badge="Bäst hybrid"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/motorola-vm85-connect-babyvakt.webp"
+      imageAlt="Motorola VM85 Connect Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt"
+      pros={['WiFi-app och separat skärm kombinerat', '1080p Full HD bildkvalitet', 'Fungerar via skärm vid WiFi-avbrott', 'Hubble-app med rörelsevakt']}
+      cons={['Något dyrare än rena WiFi-modeller', 'Tyngre föräldraenhet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Motorola VM85 Connect är bäst för dig som inte vill lita helt på WiFi. Den kombinerar Hubble-appen med en separat föräldraskärm, så om internet faller fungerar övervakningen ändå via den slutna signalen till skärmen. Bildkvaliteten är 1080p Full HD i båda lägena.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Hubble-appen har rörelsevakt och notiser precis som PIP1500. Hybridlösningen kostar något mer än en ren WiFi-modell, och föräldraenheten med skärm blir tyngre att bära runt på. För familjer som vill ha en reservplan när uppkopplingen krånglar är det dock värt det.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt" />
 
- <h3>Säkerhet och integritet</h3>
- <p>WiFi-babyvakter kräver aktiva säkerhetsåtgärder. Följ dessa fem regler:</p>
- <ul>
- <li><strong>Välj krypterad anslutning:</strong> minimum AES-128</li>
- <li><strong>Byt standardlösenord</strong> direkt vid installation</li>
- <li><strong>Håll firmware och app uppdaterade</strong></li>
- <li><strong>Placera kameran på separat gästnätverk</strong> om din router stödjer det</li>
- <li><strong>Undvik okända tillverkare</strong> utan tydlig säkerhetsinformation</li>
- </ul>
- <p>Alla modeller i vår jämförelse har testats för grundläggande säkerhet.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Maxi-Cosi Connected Home See, budgetval</h2>
+    <MoneyProductCard
+      brand="Maxi-Cosi"
+      name="Maxi-Cosi Connected Home See Babyvakt"
+      rating={4.3}
+      rank={4}
+      badge="Budgetval"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/maxi-cosi-connected-home-see-babyvakt.webp"
+      imageAlt="Maxi-Cosi Connected Home See Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245767&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/maxi-cosi-connected-home-see-babyvakt"
+      pros={['1080p Full HD WiFi-babyvakt', 'Maxi-Cosi Connected Home-app', 'Rörelsevakt och push-notiser', 'Pålitligt varumärke för babyprodukter']}
+      cons={['Kräver WiFi-anslutning', 'Ingen separat skärm']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Maxi-Cosi Connected Home See är vårt budgetval och en bra ingång för den som vill ha en pålitlig WiFi-babyvakt utan tillvalsfunktioner. Den ger 1080p Full HD-bild via Maxi-Cosi Connected Home-appen, med rörelsevakt och push-notiser så du får besked direkt när något händer i rummet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Maxi-Cosi är ett etablerat varumärke inom babyprodukter, vilket ger en trygghet i app- och säkerhetshantering. Som en ren WiFi-modell saknar den separat skärm och kräver en fungerande WiFi-anslutning, men för grundläggande övervakning räcker den gott.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245767&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/maxi-cosi-connected-home-see-babyvakt" />
 
- <h3>Bildkvalitet</h3>
- <p>Full HD (1080p) är standard på moderna WiFi-babyvakter och ger tillräckligt skarp bild för att se barnet tydligt. 2K-upplösning, som TP-Link Tapo C210 erbjuder, ger ännu skarpare bild men kräver mer bandbredd. Nättsyn via infraröd är standard och fungerar bra på alla jämförda modeller.</p>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - WiFi-babyvakter 2026" />
 
- <h3>Molnlagring vs lokal lagring</h3>
- <p>Många WiFi-babyvakter erbjuder molnlagring av videoinspelningar, ofta mot en månadskostnad. Överväg om du verkligen behöver sparade inspelningar, för de flesta föräldrar räcker realtidsvisning. eufy SpaceView Pro och TP-Link Tapo C210 sparar allt lokalt utan månadskostnad, vilket både sparar pengar och skyddar din integritet.</p>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så väljer du WiFi-babyvakt</h2>
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
- </li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">WiFi vs sluten signal, vad är bäst?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      WiFi-babyvakter sänder video via ditt hemnätverk till en app på telefonen. Det innebär att du kan övervaka barnet var som helst, hemma, på jobbet eller på semester. Nackdelen är att du är beroende av stabil WiFi-anslutning och att det finns en teoretisk hackningsrisk. Babyvakter med sluten signal (DECT/FHSS) sänder direkt till en föräldraenhet utan internet, vilket ger högre säkerhet men begränsad räckvidd.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet och integritet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      WiFi-babyvakter kräver aktiva säkerhetsåtgärder. Följ dessa fem regler: välj krypterad anslutning (minimum AES-128), byt standardlösenord direkt vid installation, håll firmware och app uppdaterade, placera kameran på separat gästnätverk om din router stödjer det och undvik okända tillverkare utan tydlig säkerhetsinformation. Alla modeller i vår jämförelse har testats för grundläggande säkerhet.
+    </p>
 
- <CTABox productName="WiFi-babyvakt" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage" description="Stort urval WiFi-babyvakter hos Jollyroom, Owlet, Nanit och eufy." />
-<ProductSchema products={[
- { name: 'Owlet Cam 2', description: 'WiFi-babyvakt med tydlig HD-bild och enkel app. Bäst i test bland WiFi-babyvakter.', brand: 'Owlet', ratingValue: 4.6, reviewCount: 1 },
- { name: 'Motorola PIP1500 Connect WIFI Babyvakt', description: 'WiFi-babyvakt med Hubble-app och 1080p HD-video.', brand: 'Motorola', ratingValue: 4.7, reviewCount: 1 },
- { name: 'Motorola VM85 Connect Babyvakt', description: 'Hybrid WiFi-babyvakt med app och separat skärm. Fungerar utan internet via skärm.', brand: 'Motorola', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Maxi-Cosi Connected Home See Babyvakt', description: 'WiFi-babyvakt med Maxi-Cosi Connected Home-app och 1080p bild.', brand: 'Maxi-Cosi', ratingValue: 4.3, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Bildkvalitet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Full HD (1080p) är standard på moderna WiFi-babyvakter och ger tillräckligt skarp bild för att se barnet tydligt. Högre upplösning ger ännu skarpare bild men kräver mer bandbredd. Nattsyn via infraröd är standard och fungerar bra på alla jämförda modeller.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Molnlagring vs lokal lagring</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Många WiFi-babyvakter erbjuder molnlagring av videoinspelningar, ofta mot en månadskostnad. Överväg om du verkligen behöver sparade inspelningar, för de flesta föräldrar räcker realtidsvisning. Modeller som sparar allt lokalt utan månadskostnad både sparar pengar och skyddar din integritet.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat WiFi-babyvakter utifrån fyra kriterier: bildkvalitet (upplösning, nattsyn), app och funktioner (notiser, tvåvägskommunikation, rörelsevakt), säkerhet (kryptering, integritet) och vardagsanvändning (installation, stabilitet, hybridlösning vid WiFi-avbrott). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a></li>
+        <li><a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa WiFi-babyvakten 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
+    text="Bra pris hos Jollyroom"
+    productName="Owlet Cam 2"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

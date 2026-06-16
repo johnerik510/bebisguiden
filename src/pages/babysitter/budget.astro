@@ -1,19 +1,13 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
-import CTABox from '../../components/CTABox.astro';
-
-export const articleMeta = {
-  title: "Babysitter budget 2026: bra vippstolar under 1000 kr",
-  description: "Babysitter budget 2026: Beemoo PLAY Simple vinner under 1000 kr. Vi jämför billiga vippstolar och säger när premium faktiskt lönar sig på sikt.",
-  publishDate: "2026-05-18",
-  category: "Babysitter",
-  image: "/images/products/beemoo-play-simple-babysitter-sand-beige.webp",
-};
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -21,38 +15,43 @@ const breadcrumbs = [
   { label: 'Budget' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade).
 const products = [
   {
     name: 'Beemoo PLAY Simple Babysitter, Sand Beige',
-    badge: 'Bäst i test budget',
+    desc: 'Budgetbabysitter med naturlig gungning som drivs av bebisens egna rörelser, helt utan batterier. Justerbar lutning, avtagbart maskintvättbart tyg och CE-märkt enligt EN 12790. Håller upp till 9 kg, cirka 9 månaders ålder.',
+    brand: 'Beemoo',
     rating: 4.4,
-    image: '/images/products/beemoo-play-simple-babysitter-sand-beige.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10257399&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-simple-babysitter-sand-beige',
-    features: {
-      'Ålder': '0 till 9 mån (max 9 kg)',
-      'Drivning': 'Naturlig gungning',
-      'Lägen': 'Justerbar lutning',
-      'Tyg': 'Avtagbart, maskintvätt',
-      'Pris': 'Under 1000 kr',
-    },
+    badge: 'Bäst i test budget',
+    usps: ['Naturlig gungning utan batterier', 'Maskintvättbart tyg', 'CE-märkt EN 12790'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10257399&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-simple-babysitter-sand-beige',
+    imageUrl: '/images/products/beemoo-play-simple-babysitter-sand-beige.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Ålder': '0 till 9 mån (max 9 kg)', 'Drivning': 'Naturlig gungning', 'Lägen': 'Justerbar lutning', 'Tyg': 'Avtagbart, maskintvätt', 'Säkerhet': 'EN 12790' },
+    alsoAt: [],
   },
   {
     name: 'Bright Starts Wild Vibes Babysitter',
-    badge: 'Bäst med musik',
+    desc: 'Babysitter med inbyggd motoriserad vibration, musik och leksaksbåge för extra stimulans. Justerbar lutning och CE-märkt enligt EN 12790. Håller upp till 9 kg och drivs av batterier för funktionerna.',
+    brand: 'Bright Starts',
     rating: 4.3,
-    image: '/images/products/bright-starts-wild-vibes-babysitter.webp',
-    ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285365&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/bright-starts-wild-vibes-babysitter',
-    features: {
-      'Ålder': '0 till 9 mån (max 9 kg)',
-      'Drivning': 'Vibration + ljud',
-      'Lägen': 'Justerbar lutning',
-      'Tyg': 'Avtagbart',
-      'Pris': 'Under 1000 kr',
-    },
+    badge: 'Bäst med musik',
+    usps: ['Inbyggd vibration och musik', 'Leksaksbåge ingår', 'CE-märkt EN 12790'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285365&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/bright-starts-wild-vibes-babysitter',
+    imageUrl: '/images/products/bright-starts-wild-vibes-babysitter.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Ålder': '0 till 9 mån (max 9 kg)', 'Drivning': 'Vibration + ljud', 'Lägen': 'Justerbar lutning', 'Tyg': 'Avtagbart', 'Säkerhet': 'EN 12790' },
+    alsoAt: [],
   },
 ];
 
-const featureLabels = ['Ålder', 'Drivning', 'Lägen', 'Tyg', 'Pris'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Ålder', 'Drivning', 'Lägen', 'Tyg', 'Säkerhet'];
 
 const faqItems = [
   {
@@ -61,7 +60,7 @@ const faqItems = [
   },
   {
     question: 'Lönar det sig att spara på babysittern?',
-    answer: 'Det beror på hur länge bebisen kommer använda den. En budgetbabysitter på 700 kr som används i 6 månader och sedan slängs kostar mer per dag än en premium på 1700 kr som används 2 år och sedan säljs för 800 kr. För familjer som planerar fler barn lönar sig premium snabbt. För engångsbruk eller om bebisen visat sig ogilla babysitter kan budget vara klokare.',
+    answer: 'Det beror på hur länge bebisen kommer använda den. En budgetbabysitter som används i 6 månader och sedan slängs kostar mer per dag än en premium som används 2 år och sedan säljs vidare. För familjer som planerar fler barn lönar sig premium snabbt. För engångsbruk eller om bebisen visat sig ogilla babysitter kan budget vara klokare.',
   },
   {
     question: 'Vad är de viktigaste skillnaderna mellan budget och premium?',
@@ -73,9 +72,18 @@ const faqItems = [
   },
   {
     question: 'Kan jag köpa begagnad babysitter för att spara mer?',
-    answer: 'Ja, men kontrollera kritiska punkter. Tyget ska vara tvätt-rent och utan starka lukter. Bältet ska vara helt och låsa stabilt. Ramen ska vara obrutet stål eller plast utan synliga sprickor. Saknas instruktionsmanual, ladda ner från tillverkarens webbplats. Köp inte begagnade modeller äldre än 5 år, då finns risk för uppdaterade säkerhetsstandarder. Hyresgäster kan dessutom sälja Balance Soft begagnad för 800 till 1000 kr, vilket gör premium tillgängligt på budget.',
+    answer: 'Ja, men kontrollera kritiska punkter. Tyget ska vara tvätt-rent och utan starka lukter. Bältet ska vara helt och låsa stabilt. Ramen ska vara obrutet stål eller plast utan synliga sprickor. Saknas instruktionsmanual, ladda ner från tillverkarens webbplats. Köp inte begagnade modeller äldre än 5 år, då finns risk för uppdaterade säkerhetsstandarder. Begagnade premiummodeller säljs ofta vidare i gott skick, vilket gör premium tillgängligt på budget.',
   },
 ];
+
+export const articleMeta = {
+  title: "Babysitter budget 2026: bra vippstolar under 1000 kr",
+  description: "Babysitter budget 2026: Beemoo PLAY Simple vinner under 1000 kr. Vi jämför billiga vippstolar och säger när premium faktiskt lönar sig på sikt.",
+  publishDate: "2026-05-18",
+  updatedDate: "2026-06-16",
+  category: "Babysitter",
+  image: "/images/products/beemoo-play-simple-babysitter-sand-beige.webp",
+};
 ---
 
 <ArticleLayout
@@ -83,100 +91,275 @@ const faqItems = [
   description="Babysitter budget 2026: Beemoo PLAY Simple vinner under 1000 kr. Vi jämför billiga vippstolar och säger när premium faktiskt lönar sig på sikt."
   breadcrumbs={breadcrumbs}
   canonical="https://bebisguiden.se/babysitter/budget/"
-  updatedDate="2026-05-18"
   datePublished="2026-05-18"
+  updatedDate="2026-06-16"
+  showAuthor={false}
 >
-  <p class="text-base text-text-light mb-3 max-w-2xl">
-	 Beemoo PLAY Simple Babysitter vinner babysitter under 1000 kr 2026. Den naturliga gungningen drivs av bebisens egna rörelser och kräver inga batterier, och lutningen är justerbar. Tyget är avtagbart och maskintvättbart, och sitsen räcker fram till 9 kg, alltså runt 9 månaders ålder.
-	 </p>
 
-  <TopPick product={products[0]} description="Beemoo PLAY Simple Babysitter vinner budgetkategorin under 1000 kr 2026. Naturlig gungning som inte kräver batterier, justerbar lutning och avtagbart maskintvättbart tyg. Räcker fram till 9 kg vilket motsvarar cirka 9 månaders ålder." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-05-18" dateModified="2026-06-16" />
 
-  <h2 class="font-heading text-xl font-bold mt-4 mb-3">Jämförelsetabell, budget-babysittrar 2026</h2>
-  <ComparisonTable products={products} featureLabels={featureLabels} />
-
-  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval under 1000 kr</h2>
-
-  <div class="space-y-4">
-    <ProductCard
-      name="Beemoo PLAY Simple Babysitter, Sand Beige"
-      image="/images/products/beemoo-play-simple-babysitter-sand-beige.webp"
-      badge="Bäst i test budget"
-      rating={4.4}
-      ageRange="0 till 9 mån (max 9 kg)"
-      pros={['Naturlig gungning utan batterier', 'Lägsta pris i jämförelsen', 'Avtagbart maskintvättbart tyg', 'CE-märkt enligt EN 12790']}
-      cons={['Maxvikt 9 kg, kortare livslängd', 'Två lägen, inte tre']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10257399&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-simple-babysitter-sand-beige"
-    />
-
-    <ProductCard
-      name="Bright Starts Wild Vibes Babysitter"
-      image="/images/products/bright-starts-wild-vibes-babysitter.webp"
-      badge="Bäst med musik"
-      rating={4.3}
-      ageRange="0 till 9 mån (max 9 kg)"
-      pros={['Inbyggd vibration och musik', 'Leksaksbåge ingår', 'Justerbar lutning', 'CE-märkt']}
-      cons={['Kräver batterier för funktionerna', 'Maxvikt 9 kg']}
-      ctaText="Bra pris hos Jollyroom"
-      ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285365&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/bright-starts-wild-vibes-babysitter"
-    />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken budget-babysitter är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Beemoo PLAY Simple Babysitter vinner under 1000 kr 2026. Den naturliga gungningen drivs av bebisens egna rörelser och kräver inga batterier, och lutningen är justerbar. Tyget är avtagbart och maskintvättbart, och sitsen räcker fram till 9 kg, alltså runt 9 månaders ålder. Bright Starts Wild Vibes är alternativet med inbyggd vibration och musik.
+    </p>
   </div>
 
-  <h2 class="font-heading text-xl font-bold mt-10 mb-4">Köpguide budget-babysitter: när det räcker och när du borde köpa premium</h2>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Beemoo"
+    name="PLAY Simple Babysitter, Sand Beige"
+    image="/images/products/beemoo-play-simple-babysitter-sand-beige.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10257399&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-simple-babysitter-sand-beige"
+    store="Jollyroom"
+    description="Bäst i test budget 2026. Naturlig gungning som inte kräver batterier, justerbar lutning och avtagbart maskintvättbart tyg. Räcker fram till 9 kg vilket motsvarar cirka 9 månaders ålder. Bästa valet för dig som vill spara utan att kompromissa på säkerheten."
+  />
 
-  <img src="/images/products/beemoo-play-simple-babysitter-sand-beige.webp" alt="Beemoo PLAY Simple babysitter i sandbeige" loading="lazy" class="w-full max-w-md rounded-xl border border-border mb-6" width="700" height="1050" />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Budget-babysittrar 2026" />
 
-  <div class="prose prose-sm text-text-light max-w-none">
-    <h3>Vad du faktiskt får för pengarna</h3>
-    <p>En budgetbabysitter under 1000 kr ger dig grundfunktionen: en lutande sits med säkerhetsbälte där bebisen kan vila eller leka medan föräldern har händerna fria. Beemoo PLAY Simple ger dig naturlig gungning som drivs av bebisens egna rörelser. Bright Starts Wild Vibes lägger till motoriserad vibration och musik mot lite tunnare tyg. Båda klarar EN 12790-säkerhetsstandard, så säkerheten kompromissas inte.</p>
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Beemoo PLAY Simple</strong> är bäst i budgetklassen under 1000 kr: naturlig gungning utan batterier, maskintvättbart tyg och fullgod EN 12790-säkerhet.</p>
+  </div>
 
-    <h3>Vad du kompromissar på</h3>
-    <p>Mot premium-modeller som BabyBjörn Balance Soft kompromissar du på fyra punkter:</p>
-    <ul>
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Beemoo PLAY Simple, bäst i test budget</h2>
+    <MoneyProductCard
+      brand="Beemoo"
+      name="Beemoo PLAY Simple Babysitter, Sand Beige"
+      rating={4.4}
+      rank={1}
+      badge="Bäst i test budget"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/beemoo-play-simple-babysitter-sand-beige.webp"
+      imageAlt="Beemoo PLAY Simple babysitter i sandbeige"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10257399&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-simple-babysitter-sand-beige"
+      pros={['Naturlig gungning utan batterier', 'Lägsta pris i jämförelsen', 'Avtagbart maskintvättbart tyg', 'CE-märkt enligt EN 12790']}
+      cons={['Maxvikt 9 kg, kortare livslängd', 'Två lägen, inte tre']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Beemoo PLAY Simple är vår vinnare i budgetklassen 2026. Den naturliga gungningen drivs av bebisens egna rörelser, så du slipper batterier helt, och bebisen tränas samtidigt i orsak och verkan. Lutningen är justerbar och tyget är avtagbart och maskintvättbart, vilket är guld värt när det blir kladdigt.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Sitsen räcker fram till 9 kg, alltså runt 9 månaders ålder, och den är CE-märkt enligt EN 12790. Begränsningarna är att maxvikten ger en kortare livslängd än premium och att den bara har två lutningslägen istället för tre. För en familj som vill spara under första året, eller som inte är säker på att bebisen kommer gilla babysitter, är det rätt avvägning.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10257399&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-simple-babysitter-sand-beige" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Bright Starts Wild Vibes, bäst med musik</h2>
+    <MoneyProductCard
+      brand="Bright Starts"
+      name="Bright Starts Wild Vibes Babysitter"
+      rating={4.3}
+      rank={2}
+      badge="Bäst med musik"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/bright-starts-wild-vibes-babysitter.webp"
+      imageAlt="Bright Starts Wild Vibes babysitter"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285365&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/bright-starts-wild-vibes-babysitter"
+      pros={['Inbyggd vibration och musik', 'Leksaksbåge ingår', 'Justerbar lutning', 'CE-märkt']}
+      cons={['Kräver batterier för funktionerna', 'Maxvikt 9 kg']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Bright Starts Wild Vibes är alternativet för dig som vill ha mer stimulans. Den har inbyggd motoriserad vibration och musik som kan vara lugnande för vissa bebisar, plus en leksaksbåge som följer med direkt i kartongen. Lutningen är justerbar och stolen är CE-märkt enligt EN 12790, precis som vinnaren.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen jämfört med Beemoo är att funktionerna kräver batterier, vilket innebär regelbundna batteribyten, och tyget är något tunnare. Maxvikten är samma 9 kg. Vi rekommenderar naturlig gungning i första hand, men om din bebis trivs med vibration och ljud är Wild Vibes ett prisvärt val under 1000 kr.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285365&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/bright-starts-wild-vibes-babysitter" />
+
+    <p class="text-text-light leading-relaxed mb-8">
+      Två starka budgetalternativ under 1000 kr. Beemoo PLAY Simple vinner på naturlig gungning och bättre tyg, medan Bright Starts Wild Vibes lockar med vibration och musik. Vill du jämföra med dyrare modeller? Läs vår huvudguide om <a href="/babysitter/" class="text-accent hover:text-accent-dark underline">bästa babysittern 2026</a> eller vår recension av <a href="/babysitter/babybjorn-balance-soft/" class="text-accent hover:text-accent-dark underline">BabyBjörn Balance Soft</a>.
+    </p>
+
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Budget-babysittrar 2026" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide budget-babysitter: när det räcker och när du borde köpa premium</h2>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad du faktiskt får för pengarna</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En budgetbabysitter under 1000 kr ger dig grundfunktionen: en lutande sits med säkerhetsbälte där bebisen kan vila eller leka medan föräldern har händerna fria. Beemoo PLAY Simple ger dig naturlig gungning som drivs av bebisens egna rörelser. Bright Starts Wild Vibes lägger till motoriserad vibration och musik mot lite tunnare tyg. Båda klarar EN 12790-säkerhetsstandard, så säkerheten kompromissas inte.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad du kompromissar på</h3>
+    <p class="text-text-light leading-relaxed mb-2">
+      Mot premium-modeller som BabyBjörn Balance Soft kompromissar du på fyra punkter:
+    </p>
+    <ul class="list-disc pl-5 text-text-light leading-relaxed mb-4 space-y-1">
       <li><strong>Maxvikt:</strong> 9 kg (ca 9 månaders ålder) mot 13 kg och upp till 2 år för premium</li>
       <li><strong>Lutningslägen:</strong> 2 lägen istället för 3, övergången från nyfödd till sittande bebis blir mindre smidig</li>
       <li><strong>Tygkvalitet:</strong> tunnare tyg som slits snabbare</li>
       <li><strong>Stabilitet:</strong> godkänd men något mer "vinglig" än premium</li>
     </ul>
 
-    <h3>När budget är rätt val</h3>
-    <p>Budget fungerar utmärkt om något av följande stämmer:</p>
-    <ul>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">När budget är rätt val</h3>
+    <p class="text-text-light leading-relaxed mb-2">
+      Budget fungerar utmärkt om något av följande stämmer:
+    </p>
+    <ul class="list-disc pl-5 text-text-light leading-relaxed mb-4 space-y-1">
       <li>ni planerar inte fler barn</li>
       <li>bebisen har visat sig gilla babysitter (vissa bebisar gör inte det)</li>
       <li>ni vill spara på utgifter under första året</li>
       <li>babysittern är en av flera vilolösningar (lekmatta, bärsele, gungstol med vuxen)</li>
     </ul>
-    <p>Beemoo PLAY Simple gör jobbet i 6 till 9 månader och kan sedan säljas på Tradera för en del av nypriset.</p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Beemoo PLAY Simple gör jobbet i 6 till 9 månader och kan sedan säljas på Tradera för en del av nypriset.
+    </p>
 
-    <h3>När premium lönar sig på sikt</h3>
-    <p>För familjer som planerar fler barn, eller som vill ha en sits som följer barnet längre, lönar sig premium ofta snabbt. <a href="/babysitter/babybjorn-balance-soft/" class="text-accent underline">BabyBjörn Balance Soft</a> säljs vanligen för 40 till 60 procent av nypriset på andrahandsmarknaden om tyget är i gott skick. Räkna på total ägandekostnad: nypris minus förväntat andrahandsvärde, dividerat med användningsmånader. Ofta blir premium billigare per månad än budget. Se vår huvudguide om <a href="/babysitter/" class="text-accent underline">bästa babysittern 2026</a> för alla alternativ.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">När premium lönar sig på sikt</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      För familjer som planerar fler barn, eller som vill ha en sits som följer barnet längre, lönar sig premium ofta snabbt. <a href="/babysitter/babybjorn-balance-soft/" class="text-accent hover:text-accent-dark underline">BabyBjörn Balance Soft</a> säljs vanligen för 40 till 60 procent av nypriset på andrahandsmarknaden om tyget är i gott skick. Räkna på total ägandekostnad: nypris minus förväntat andrahandsvärde, dividerat med användningsmånader. Ofta blir premium billigare per månad än budget. Se vår huvudguide om <a href="/babysitter/" class="text-accent hover:text-accent-dark underline">bästa babysittern 2026</a> för alla alternativ.
+    </p>
 
-    <h3>Naturlig gungning eller motoriserad</h3>
-    <p>Beemoo PLAY Simple har naturlig gungning, bebisen tränas i orsak-verkan och behöver inga batterier. Bright Starts Wild Vibes har motoriserad vibration och musik som kan vara lugnande för vissa bebisar men kräver regelbundna batteribyten. Vi rekommenderar naturlig gungning i första hand, om bebisen behöver mer stimulans kompletterar du med leksaker och ljud från andra källor.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Naturlig gungning eller motoriserad</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Beemoo PLAY Simple har naturlig gungning, bebisen tränas i orsak-verkan och behöver inga batterier. Bright Starts Wild Vibes har motoriserad vibration och musik som kan vara lugnande för vissa bebisar men kräver regelbundna batteribyten. Vi rekommenderar naturlig gungning i första hand, om bebisen behöver mer stimulans kompletterar du med leksaker och ljud från andra källor.
+    </p>
 
-    <h3>Säkerhet vid budgetval</h3>
-    <p>EN 12790-standarden uppfylls av alla seriösa modeller som säljs hos etablerade butiker. Använd alltid bältet, placera sittern på golvet (aldrig på bord eller säng), och lämna aldrig bebisen ensam med syskon eller husdjur. Komplettera med vår <a href="/sakerhet/" class="text-accent underline">babysäkerhetsguide</a> för resten av hemmet.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet vid budgetval</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      EN 12790-standarden uppfylls av alla seriösa modeller som säljs hos etablerade butiker. Använd alltid bältet, placera sittern på golvet (aldrig på bord eller säng), och lämna aldrig bebisen ensam med syskon eller husdjur. Komplettera med vår <a href="/sakerhet/" class="text-accent hover:text-accent-dark underline">babysäkerhetsguide</a> för resten av hemmet.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat budget-babysittrar utifrån fyra kriterier: säkerhet (EN 12790-certifiering, bälte, stabilitet), funktion (gungning, lutningslägen, tygkvalitet), vardagsanvändning (vikt, maskintvätt, livslängd) och värde för pengarna jämfört med premium. Produkterna är valda bland de mest sålda budgetmodellerna hos svenska återförsäljare. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babysitter</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babysitter/" class="text-accent underline">Bästa babysittern 2026, vippstol och bouncer bäst i test</a></li>
+        <li><a href="/babysitter/babybjorn-balance-soft/" class="text-accent underline">BabyBjörn Balance Soft recension 2026</a></li>
+        <li><a href="/babysitter/babybjorn-vs-beemoo/" class="text-accent underline">BabyBjörn vs Beemoo babysitter, jämförelse</a></li>
+        <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, bäst i test</a></li>
+        <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026</a></li>
+      </ul>
+    </div>
+
   </div>
 
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
-    <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babysitter</h2>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/babysitter/" class="text-accent underline">Bästa babysittern 2026, vippstol och bouncer bäst i test</a></li>
-      <li><a href="/babysitter/babybjorn-balance-soft/" class="text-accent underline">BabyBjörn Balance Soft recension 2026</a></li>
-      <li><a href="/babysitter/babybjorn-vs-beemoo/" class="text-accent underline">BabyBjörn vs Beemoo babysitter, jämförelse</a></li>
-      <li><a href="/matstolar/" class="text-accent underline">Bästa matstolen 2026, bäst i test</a></li>
-      <li><a href="/leksaker/babygym/" class="text-accent underline">Bästa babygym 2026</a></li>
-    </ul>
-  </div>
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa budget-babysittern 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
 
-  <FAQ items={faqItems} />
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10257399&url=https://www.jollyroom.se/babyprodukter/babysitters-gungor/babysitter/beemoo-play-simple-babysitter-sand-beige"
+    text="Bra pris hos Jollyroom"
+    productName="Beemoo PLAY Simple"
+  />
 
-  <ProductSchema products={[
-    { name: 'Beemoo PLAY Simple Babysitter, Sand Beige', description: 'Budgetbabysitter med naturlig gungning och justerbar lutning. Max 9 kg, maskintvättbart tyg.', brand: 'Beemoo', ratingValue: 4.4, reviewCount: 1 },
-    { name: 'Bright Starts Wild Vibes Babysitter', description: 'Babysitter med inbyggd vibration, musik och leksaksbåge. Max 9 kg.', brand: 'Bright Starts', ratingValue: 4.3, reviewCount: 1 },
-  ]} />
-
-  <CTABox productName="Budget-babysitter under 1000 kr" store="Jollyroom" description="Prisvärda vippstolar från Beemoo och Bright Starts." />
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

@@ -1,16 +1,18 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import CTABox from '../../components/CTABox.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babyvakter', href: '/babyvakter/' },
- { label: 'Video' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Video' },
 ];
 
 // Motorola VM85 Connect: verifierad tracker ur Jollyroom-feeden (cupa_sku=10251246).
@@ -19,86 +21,89 @@ const motorolaVm85Url = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845
 // De renderas därför som showcase UTAN CTA (NOLLTOLERANS: produkt utan verifierad
 // affiliatelänk = ingen CTA). Tidigare pekade deras CTA felaktigt mot Motorola VM75.
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Motorola VM85 = enda köpbara produkten (verifierad tracker).
 const products = [
- {
- name: 'Luvion Grand Elite 3 Connect Pro',
- badge: 'Störst funktioner',
- rating: 4.7,
- image: '/images/products/luvion-grand-elite-3.webp',
- features: {
- 'Skärmstorlek': '4,3 tum',
- 'Upplösning': '640x480',
- 'Nattseende': 'Ja, IR',
- 'Räckvidd': '300 m',
- 'Batteri': '4 timmar (video)',
- },
- },
- {
- name: 'Motorola VM85 Connect',
- image: '/images/products/motorola-vm85-connect.webp',
- badge: 'Bäst i test',
- rating: 4.6,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10251246&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-vm85-connect-babyvakt',
- features: {
- 'Skärmstorlek': '5 tum',
- 'Upplösning': '720p HD',
- 'Nattseende': 'Ja, IR',
- 'Räckvidd': '300 m',
- 'Batteri': '3,5 timmar',
- },
- },
- {
- name: 'Philips Avent SCD923/26',
- badge: 'Bäst ljud + video',
- rating: 4.6,
- image: '/images/products/philips-avent-scd923.webp',
- features: {
- 'Skärmstorlek': '3,5 tum',
- 'Upplösning': '640x480',
- 'Nattseende': 'Ja, IR',
- 'Räckvidd': '400 m',
- 'Batteri': '5 timmar',
- },
- },
- {
- name: 'Vtech BM5252',
- image: '/images/products/vtech-bm5252.webp',
- badge: 'Prisvärt',
- rating: 4.4,
- features: {
- 'Skärmstorlek': '5 tum',
- 'Upplösning': '480p',
- 'Nattseende': 'Ja, IR',
- 'Räckvidd': '300 m',
- 'Batteri': '3 timmar',
- },
- },
+  {
+    name: 'Motorola VM85 Connect',
+    desc: 'Vår rekommenderade videobabyvakt 2026. Störst skärm i testet (5 tum), 720p HD-upplösning och skarpt nattseende. Räckvidd 300 meter och app-koppling som tillägg.',
+    brand: 'Motorola',
+    rating: 4.6,
+    badge: 'Bäst i test',
+    usps: ['5-tumsskärm', '720p HD', 'App-koppling'],
+    store: 'Jollyroom',
+    affiliateUrl: motorolaVm85Url,
+    imageUrl: '/images/products/motorola-vm85-connect.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Skärmstorlek': '5 tum', 'Upplösning': '720p HD', 'Nattseende': 'Ja, IR', 'Räckvidd': '300 m', 'Batteri': '3,5 timmar' },
+    alsoAt: [],
+  },
+  {
+    name: 'Luvion Grand Elite 3 Connect Pro',
+    desc: 'Funktionsrik toppmodell med stor 4,3-tumsskärm, pålitlig FHSS-signal utan WiFi, temperaturvisning och vaggvisor. Fungerar från nyfödd.',
+    brand: 'Luvion',
+    rating: 4.7,
+    badge: 'Störst funktioner',
+    usps: ['4,3-tumsskärm', 'FHSS utan WiFi', 'Temperaturvisning'],
+    imageUrl: '/images/products/luvion-grand-elite-3.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Skärmstorlek': '4,3 tum', 'Upplösning': '640x480', 'Nattseende': 'Ja, IR', 'Räckvidd': '300 m', 'Batteri': '4 timmar (video)' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent SCD923/26',
+    desc: 'Videobabyvakt med DECT-teknik för högsta säkerhet, längst batteritid i testet (5 timmar video) och 400 meters räckvidd. Klart ljud och bild.',
+    brand: 'Philips',
+    rating: 4.6,
+    badge: 'Bäst ljud + video',
+    usps: ['DECT-säkerhet', '5 h batteritid', '400 m räckvidd'],
+    imageUrl: '/images/products/philips-avent-scd923.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Skärmstorlek': '3,5 tum', 'Upplösning': '640x480', 'Nattseende': 'Ja, IR', 'Räckvidd': '400 m', 'Batteri': '5 timmar' },
+    alsoAt: [],
+  },
+  {
+    name: 'Vtech BM5252',
+    desc: 'Prisvärd videobabyvakt med DECT-signal, 5-tumsskärm, nattsyn, temperaturvisning, vaggvisor och tvåvägskommunikation. Bra val för budgetmedvetna.',
+    brand: 'Vtech',
+    rating: 4.4,
+    badge: 'Prisvärt',
+    usps: ['5-tumsskärm', 'DECT-signal', 'Tvåvägskommunikation'],
+    imageUrl: '/images/products/vtech-bm5252.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Skärmstorlek': '5 tum', 'Upplösning': '480p', 'Nattseende': 'Ja, IR', 'Räckvidd': '300 m', 'Batteri': '3 timmar' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Skärmstorlek', 'Upplösning', 'Nattseende', 'Räckvidd', 'Batteri'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Skärmstorlek', 'Upplösning', 'Nattseende', 'Räckvidd', 'Batteri'];
 
 const faqItems = [
- {
- question: 'Vilken är bästa videobabyvakten 2026?',
- answer: 'Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Den har störst skärm i jämförelsen (5 tum), 720p HD-upplösning, skarpt nattseende och 300 meters räckvidd, och kan kopplas till app som tillägg. Luvion Grand Elite 3 Connect Pro är ett starkt alternativ med funktionsrik 4,3-tumsskärm och Philips Avent SCD923/26 har längst batteritid i testet.',
- },
- {
- question: 'Är videobabyvakter säkra att använda?',
- answer: 'Videobabyvakter med sluten signal (DECT eller FHSS) är säkra, de sänder inte via internet och kan inte hackas utifrån. WiFi-babyvakter som sänder via nätverk har högre risk och kräver starka lösenord och krypterad anslutning. För högsta säkerhet väljer du en modell med sluten signal.',
- },
- {
- question: 'Hur lång batteritid har en videobabyvakt?',
- answer: 'Videobabyvakter har vanligtvis 3 till 5 timmars batteritid vid aktiv videovisning. Med skärmen avstängd och enbart ljud kan batteriet räcka 8 till 12 timmar. Philips Avent SCD923/26 har längst angiven batteritid med 5 timmar video. Många modeller gör det enkelt att ladda medan du använder dem.',
- },
- {
- question: 'Behöver jag en videobabyvakt eller räcker ljud?',
- answer: 'Video är särskilt värdefullt för nyfödda. Du kan se om barnet andas normalt, har sparkat av sig täcket eller ligger i en obekväm position, utan att behöva gå in och riskera att väcka det. För äldre barn som bara behöver övervakas om de vaknar räcker ofta en ljudbabyvakt. Många föräldrar upplever att videon ger extra trygghet, särskilt de första månaderna.',
- },
- {
- question: 'Vad är skillnaden mellan DECT, FHSS och WiFi?',
- answer: 'DECT och FHSS är slutna signalsystem, de sänder direkt mellan kamera och föräldraenhet utan att gå via internet. Det ger låg latens, hög säkerhet och kräver ingen WiFi-uppkoppling. WiFi-babyvakter sänder via ditt hemnätverk och låter dig titta via app var du än befinner dig, men kräver stabil internetuppkoppling och har högre risk för säkerhetsbrister.',
- },
+  {
+    question: 'Vilken är bästa videobabyvakten 2026?',
+    answer: 'Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Den har störst skärm i jämförelsen (5 tum), 720p HD-upplösning, skarpt nattseende och 300 meters räckvidd, och kan kopplas till app som tillägg. Luvion Grand Elite 3 Connect Pro är ett starkt alternativ med funktionsrik 4,3-tumsskärm och Philips Avent SCD923/26 har längst batteritid i testet.',
+  },
+  {
+    question: 'Är videobabyvakter säkra att använda?',
+    answer: 'Videobabyvakter med sluten signal (DECT eller FHSS) är säkra, de sänder inte via internet och kan inte hackas utifrån. WiFi-babyvakter som sänder via nätverk har högre risk och kräver starka lösenord och krypterad anslutning. För högsta säkerhet väljer du en modell med sluten signal.',
+  },
+  {
+    question: 'Hur lång batteritid har en videobabyvakt?',
+    answer: 'Videobabyvakter har vanligtvis 3 till 5 timmars batteritid vid aktiv videovisning. Med skärmen avstängd och enbart ljud kan batteriet räcka 8 till 12 timmar. Philips Avent SCD923/26 har längst angiven batteritid med 5 timmar video. Många modeller gör det enkelt att ladda medan du använder dem.',
+  },
+  {
+    question: 'Behöver jag en videobabyvakt eller räcker ljud?',
+    answer: 'Video är särskilt värdefullt för nyfödda. Du kan se om barnet andas normalt, har sparkat av sig täcket eller ligger i en obekväm position, utan att behöva gå in och riskera att väcka det. För äldre barn som bara behöver övervakas om de vaknar räcker ofta en ljudbabyvakt. Många föräldrar upplever att videon ger extra trygghet, särskilt de första månaderna.',
+  },
+  {
+    question: 'Vad är skillnaden mellan DECT, FHSS och WiFi?',
+    answer: 'DECT och FHSS är slutna signalsystem, de sänder direkt mellan kamera och föräldraenhet utan att gå via internet. Det ger låg latens, hög säkerhet och kräver ingen WiFi-uppkoppling. WiFi-babyvakter sänder via ditt hemnätverk och låter dig titta via app var du än befinner dig, men kräver stabil internetuppkoppling och har högre risk för säkerhetsbrister.',
+  },
 ];
+
 export const articleMeta = {
   title: "Videobabyvakt bäst i test 2026: Motorola VM85 vinner",
   description: "Videobabyvakt bäst i test 2026: Motorola VM85 Connect vinner med 5-tumsskärm och 720p HD. Vi jämför fyra videobabyvakter på skärm, nattseende och räckvidd.",
@@ -107,114 +112,294 @@ export const articleMeta = {
   category: "Babyvakter",
   image: "/images/products/motorola-vm85-connect.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Videobabyvakt bäst i test 2026: Motorola VM85 vinner"
- description="Videobabyvakt bäst i test 2026: Motorola VM85 Connect vinner med 5-tumsskärm och 720p HD. Fyra videobabyvakter jämförda på skärm, nattseende och räckvidd."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-06-16"
+  title="Videobabyvakt bäst i test 2026: Motorola VM85 vinner"
+  description="Videobabyvakt bäst i test 2026: Motorola VM85 Connect vinner med 5-tumsskärm och 720p HD. Fyra videobabyvakter jämförda på skärm, nattseende och räckvidd."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyvakter/video/"
   datePublished="2026-04-18"
+  updatedDate="2026-06-16"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Den 5 tum stora skärmen ger störst och tydligast bild i jämförelsen, upplösningen är 720p HD och nattseendet är skarpt. Räckvidden når 300 meter och enheten kan kopplas till app som tillägg. Vi jämför den mot tre andra populära videobabyvakter nedan.
-	 </p>
 
- <TopPick product={products[1]} description="Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Störst skärm i testet (5 tum), 720p HD-upplösning och skarpt nattseende. Räckvidd 300 meter och app-koppling som tillägg." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-04-18" dateModified="2026-06-16" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken videobabyvakt är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Den 5 tum stora skärmen ger störst och tydligast bild i jämförelsen, upplösningen är 720p HD och nattseendet är skarpt. Räckvidden når 300 meter och enheten kan kopplas till app som tillägg. Vi jämför den mot tre andra populära videobabyvakter nedan.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Motorola"
+    name="VM85 Connect"
+    image="/images/products/motorola-vm85-connect.webp"
+    trackedUrl={motorolaVm85Url}
+    store="Jollyroom"
+    description="Bäst i test 2026. Störst skärm i jämförelsen (5 tum), 720p HD-upplösning och skarpt nattseende. Räckvidd 300 meter och app-koppling som tillägg. Bästa valet för dig som vill ha tydlig bild och flexibel uppkoppling."
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Luvion Grand Elite 3 Connect Pro"
- image="/images/products/luvion-grand-elite-3.webp"
- badge="Störst funktioner"
- rating={4.7}
- ageRange="Från nyfödd"
- pros={['Stor 4,3-tumsskärm med bra upplösning', 'Pålitlig FHSS-signal, ingen WiFi krävs', 'Temperaturvisning och vaggvisor']}
- cons={['Högre prisklass', 'Kort batteritid vid aktiv video']}
- />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Videobabyvakter 2026" />
 
- <ProductCard
- name="Motorola VM85 Connect"
- image="/images/products/motorola-vm85-connect.webp"
- badge="Bäst i test"
- rating={4.6}
- ageRange="Från nyfödd"
- pros={['Störst skärm i testet (5 tum)', '720p HD-upplösning', 'Kan kopplas till app som tillägg']}
- cons={['Något kort batteritid (3,5 h)', 'App-funktionen kräver WiFi']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref={motorolaVm85Url}
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Motorola VM85 Connect</strong> är bäst i test bland videobabyvakter 2026 med störst skärm (5 tum), 720p HD-upplösning, skarpt nattseende och app-koppling som tillägg.</p>
+  </div>
 
- <ProductCard
- name="Philips Avent SCD923/26"
- image="/images/products/philips-avent-scd923.webp"
- badge="Bäst ljud + video"
- rating={4.6}
- ageRange="Från nyfödd"
- pros={['Längst batteritid i testet (5 h video)', 'DECT-teknik, högsta säkerhet', '400 m räckvidd']}
- cons={['Högst pris i jämförelsen', 'Mindre skärm än konkurrenterna (3,5 tum)']}
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Vtech BM5252"
- image="/images/products/vtech-bm5252.webp"
- badge="Prisvärt"
- rating={4.4}
- ageRange="Från nyfödd"
- pros={['Bra pris för en 5-tumsskärm', 'Nattsyn och temperaturvisning', 'Vaggvisor och tvåvägskommunikation']}
- cons={['Lägre upplösning än dyrare modeller', 'Bildkvalitet något svagare i mörker']}
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Motorola VM85 Connect, bäst i test</h2>
+    <MoneyProductCard
+      brand="Motorola"
+      name="Motorola VM85 Connect"
+      rating={4.6}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/motorola-vm85-connect.webp"
+      imageAlt="Motorola VM85 Connect videobabyvakt"
+      store="Jollyroom"
+      buyUrl={motorolaVm85Url}
+      pros={['Störst skärm i testet (5 tum)', '720p HD-upplösning', 'Kan kopplas till app som tillägg']}
+      cons={['Något kort batteritid (3,5 h)', 'App-funktionen kräver WiFi']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Motorola VM85 Connect är vår rekommenderade videobabyvakt 2026. Den 5 tum stora skärmen ger störst och tydligast bild i jämförelsen, vilket gör det lätt att se detaljer även på avstånd. Upplösningen är 720p HD och nattseendet är skarpt, så du ser barnet tydligt även i ett helt mörkt rum.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Räckvidden når 300 meter och enheten kan kopplas till app som tillägg, vilket låter dig titta via mobilen när du är hemifrån. Begränsningarna är att batteritiden är något kort vid aktiv video (3,5 timmar) och att app-funktionen kräver WiFi för att fungera.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl={motorolaVm85Url} />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du videobabyvakt</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Luvion Grand Elite 3 Connect Pro, störst funktioner</h2>
+    <MoneyProductCard
+      brand="Luvion"
+      name="Luvion Grand Elite 3 Connect Pro"
+      rating={4.7}
+      rank={2}
+      badge="Störst funktioner"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/luvion-grand-elite-3.webp"
+      imageAlt="Luvion Grand Elite 3 Connect Pro videobabyvakt"
+      pros={['Stor 4,3-tumsskärm med bra upplösning', 'Pålitlig FHSS-signal, ingen WiFi krävs', 'Temperaturvisning och vaggvisor']}
+      cons={['Högre prisklass', 'Kort batteritid vid aktiv video']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Luvion Grand Elite 3 Connect Pro är den mest funktionsrika vakten i jämförelsen. Den stora 4,3-tumsskärmen ger bra upplösning och den pålitliga FHSS-signalen sänder direkt mellan kamera och föräldraenhet utan att kräva WiFi, vilket ger låg latens och hög säkerhet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Temperaturvisning och vaggvisor är praktiska extrafunktioner för nyfödda. Begränsningarna är den högre prisklassen och en kortare batteritid vid aktiv videovisning, något du bör räkna med på funktionsrika modeller med stor skärm.
+    </p>
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>Skärmstorlek och upplösning</h3>
- <p>Skärmstorleken varierar från 2,8 till 5 tum. En större skärm gör det lättare att se detaljer, men föräldraenheten blir också större och tyngre. För de flesta familjer är 3,5-5 tum en bra balans. Upplösningen paverkar hur skarpt du ser barnet, särskilt vid zoom. HD-upplösning (720p) ger tydlig bild men kräver mer batteri än lägre upplösning.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Philips Avent SCD923/26, bäst ljud + video</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent SCD923/26"
+      rating={4.6}
+      rank={3}
+      badge="Bäst ljud + video"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/philips-avent-scd923.webp"
+      imageAlt="Philips Avent SCD923/26 videobabyvakt"
+      pros={['Längst batteritid i testet (5 h video)', 'DECT-teknik, högsta säkerhet', '400 m räckvidd']}
+      cons={['Högst pris i jämförelsen', 'Mindre skärm än konkurrenterna (3,5 tum)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent SCD923/26 har längst batteritid i testet med 5 timmars videovisning och använder DECT-teknik som ger högsta säkerhet, signalen sänds direkt mellan enheterna utan internet. Räckvidden på 400 meter är den längsta i jämförelsen.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den är prismässigt högst i jämförelsen och har en mindre skärm än konkurrenterna med sina 3,5 tum. Vill du ha bästa möjliga ljudkvalitet och säker DECT-signal är det ett starkt val, även om bilden visas på en mindre yta.
+    </p>
 
- <h3>Nattsyn</h3>
- <p>Alla videobabyvakter vi jämfört har infraröd nattsyn som aktiveras automatiskt i mörker. Kvaliteten varierar, de bättre modellerna ger skarp svartvit bild även i helt mörka rum. Nattsyn är en av de viktigaste funktionerna då du främst behöver se barnet under natten.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Vtech BM5252, prisvärt</h2>
+    <MoneyProductCard
+      brand="Vtech"
+      name="Vtech BM5252"
+      rating={4.4}
+      rank={4}
+      badge="Prisvärt"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/vtech-bm5252.webp"
+      imageAlt="Vtech BM5252 videobabyvakt"
+      pros={['Bra pris för en 5-tumsskärm', 'Nattsyn och temperaturvisning', 'Vaggvisor och tvåvägskommunikation']}
+      cons={['Lägre upplösning än dyrare modeller', 'Bildkvalitet något svagare i mörker']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Vtech BM5252 är det prisvärda valet och erbjuder en 5-tumsskärm till en betydligt lägre kostnad än premiummodellerna. Den har nattsyn, temperaturvisning, vaggvisor och tvåvägskommunikation, allt du behöver för normal övervakning av barnet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kompromissen är en lägre upplösning (480p) än de dyrare modellerna och en bildkvalitet som är något svagare i mörker. För budgetmedvetna familjer som vill ha en stor skärm utan att betala premiumpris är den ändå ett gediget alternativ.
+    </p>
 
- <h3>Räckvidd</h3>
- <p>Tillverkarnas uppgivna räckvidd gäller utomhus utan hinder. Inomhus minskar räckviddden avsevärt, räkna med cirka en tredjedel av den uppgivna siffran. I en vanlig lägenhet räcker de flesta modeller. I ett större hus med flera våningar bör du välja en modell med minst 300 m uppgiven räckvidd. DECT- och FHSS-modeller har generellt bättre räckvidd än WiFi-modeller.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra videobabyvakter med olika styrkor. Motorola VM85 Connect är den enda i jämförelsen vi har testat med verifierad köplänk, medan Luvion, Philips och Vtech visas som referens för funktioner och prisläge. Vill du fördjupa dig? Läs vår <a href="/babyvakter/" class="text-accent hover:text-accent-dark underline">kompletta guide till bästa babyvakten</a> eller jämför med en <a href="/babyvakter/wifi/" class="text-accent hover:text-accent-dark underline">WiFi-babyvakt med app</a>.
+    </p>
 
- <h3>Signal och säkerhet</h3>
- <p>DECT och FHSS är slutna signaltyper som sänder direkt mellan kamera och föräldraenhet. De kan inte hackas via internet och ger lag fordrojning. WiFi-babyvakter låter dig titta via app var du än ar, men kräver stabil internetanslutning och har högre säkerhetsrisk. För högsta säkerhet, välj DECT eller FHSS.</p>
- </div>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Videobabyvakter 2026" />
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Guider om videobabyvakter och babyvaktsjämförelser 2026</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/babybjorn-vs-philips-avent/" class="text-accent underline">BabyBjörn vs Philips Avent: DECT mot WiFi-babyvakt jämförda</a>
- </li>
- <li>
- <a href="/guider/valja-babyvakt/" class="text-accent underline">Välja babyvakt: DECT, video eller WiFi, komplett köpguide 2026</a>
- </li>
- <li>
- <a href="/babyvakter/budget/" class="text-accent underline">Bästa budget-babyvakten 2026, billiga alternativ som fungerar</a>
- </li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så väljer du videobabyvakt</h2>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Skärmstorlek och upplösning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Skärmstorleken varierar från 2,8 till 5 tum. En större skärm gör det lättare att se detaljer, men föräldraenheten blir också större och tyngre. För de flesta familjer är 3,5 till 5 tum en bra balans. Upplösningen påverkar hur skarpt du ser barnet, särskilt vid zoom. HD-upplösning (720p) ger tydlig bild men kräver mer batteri än lägre upplösning.
+    </p>
 
- <CTABox productName="Videobabyvakt" store="Jollyroom" description="Stort urval babyvakter, ljud, video och WiFi." affiliateUrl={motorolaVm85Url} />
-<ProductSchema products={[
- { name: 'Luvion Grand Elite 3 Connect Pro', description: 'Toppmodell videobabyvakt med 5-tumsskärm, kristallklar HD-video och lång räckvidd. Utan WiFi.', brand: 'Luvion', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Motorola VM85 Connect', description: 'Videobabyvakt med WIFI och stor skärm, upp till 300 meters räckvidd.', brand: 'Motorola', ratingValue: 4.6, reviewCount: 1 },
- { name: 'Philips Avent SCD923/26', description: 'Videobabyvakt med DECT och WiFi-kombination, klart ljud och bild. Kan ses via app.', brand: 'Philips', ratingValue: 4.6, reviewCount: 1 },
- { name: 'Vtech BM5252', description: 'Prisvärd videobabyvakt med DECT-signal och 5-tumsskärm. Bra val för budgetmedvetna.', brand: 'Vtech', ratingValue: 4.3, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Nattsyn</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla videobabyvakter vi jämfört har infraröd nattsyn som aktiveras automatiskt i mörker. Kvaliteten varierar, de bättre modellerna ger skarp svartvit bild även i helt mörka rum. Nattsyn är en av de viktigaste funktionerna då du främst behöver se barnet under natten.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Räckvidd</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Tillverkarnas uppgivna räckvidd gäller utomhus utan hinder. Inomhus minskar räckvidden avsevärt, räkna med cirka en tredjedel av den uppgivna siffran. I en vanlig lägenhet räcker de flesta modeller. I ett större hus med flera våningar bör du välja en modell med minst 300 m uppgiven räckvidd. DECT- och FHSS-modeller har generellt bättre räckvidd än WiFi-modeller.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Signal och säkerhet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      DECT och FHSS är slutna signaltyper som sänder direkt mellan kamera och föräldraenhet. De kan inte hackas via internet och ger låg fördröjning. WiFi-babyvakter låter dig titta via app var du än är, men kräver stabil internetanslutning och har högre säkerhetsrisk. För högsta säkerhet, välj DECT eller FHSS.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat videobabyvakter utifrån fyra kriterier: bild och skärm (storlek, upplösning, nattseende), räckvidd och signal (DECT, FHSS eller WiFi), batteritid vid aktiv video samt säkerhet och extrafunktioner. Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Guider om videobabyvakter och babyvaktsjämförelser 2026</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a></li>
+        <li><a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a></li>
+        <li><a href="/babyvakter/babybjorn-vs-philips-avent/" class="text-accent underline">BabyBjörn vs Philips Avent: DECT mot WiFi-babyvakt jämförda</a></li>
+        <li><a href="/guider/valja-babyvakt/" class="text-accent underline">Välja babyvakt: DECT, video eller WiFi, komplett köpguide 2026</a></li>
+        <li><a href="/babyvakter/budget/" class="text-accent underline">Bästa budget-babyvakten 2026, billiga alternativ som fungerar</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa videobabyvakten 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href={motorolaVm85Url}
+    text="Bra pris hos Jollyroom"
+    productName="Motorola VM85 Connect"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

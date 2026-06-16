@@ -1,117 +1,127 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import CTABox from '../../components/CTABox.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babyvakter', href: '/babyvakter/' },
- { label: 'Budget' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Budget' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhall + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-lankar/bilder oforandrade (verifierade).
+// Showcase-produkter UTAN affiliate (ej i feed): SCD711 + Motorola Halo+ saknar affiliateUrl
+// och far darfor INGEN CTA. De renderar rent som showcase, precis som i prod.
 const products = [
- {
- name: 'Philips Avent DECT SCD711',
- image: '/images/products/philips-avent-dect-scd711.webp',
- badge: 'Mest räckvidd',
- rating: 4.5,
- features: {
- 'Typ': 'Ljudvakt',
- 'Standard': 'DECT',
- 'Räckvidd': '330 m',
- 'Video': 'Nej',
- 'Batteritid': 'Ca 18 h',
- },
- },
- {
- name: 'Vtech DM1111 Babyvakt, Vit',
- image: '/images/products/vtech-dm1111-babyvakt-vit.webp',
- badge: 'Billigast',
- rating: 4.2,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit',
- features: {
- 'Typ': 'Ljudvakt',
- 'Standard': 'DECT',
- 'Räckvidd': '300 m',
- 'Video': 'Nej',
- 'Batteritid': 'Ca 15 h',
- },
- },
- {
- name: 'Miniland Compact 3.5 Video Babyvakt',
- image: '/images/products/miniland-compact-3-5-video-babyvakt.webp',
- badge: 'Bäst video/pris',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt',
- features: {
- 'Typ': 'Videovakt',
- 'Standard': 'DECT',
- 'Räckvidd': '300 m',
- 'Video': 'Ja, 3,5"',
- 'Batteritid': 'Ca 8 h',
- },
- },
- {
- name: 'Motorola Halo+',
- image: '/images/products/motorola-halo.webp',
- badge: '360° kamera',
- rating: 4.2,
- features: {
- 'Typ': 'Videovakt',
- 'Standard': 'WiFi',
- 'Räckvidd': 'WiFi-nätverk',
- 'Video': 'Ja, 360°',
- 'Batteritid': 'Via app',
- },
- },
- {
- name: 'Vtech VM5254 Babyvakt',
- image: '/images/products/vtech-vm5254-babyvakt.webp',
- badge: 'Stor skärm',
- rating: 4.1,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt',
- features: {
- 'Typ': 'Videovakt',
- 'Standard': 'DECT (2,4 GHz)',
- 'Räckvidd': '300 m',
- 'Video': 'Ja, 5"',
- 'Batteritid': 'Ca 8 h',
- },
- },
+  {
+    name: 'Vtech DM1111 Babyvakt, Vit',
+    desc: 'Prisvard DECT-babyvakt for grundlaggande ljudovervakning. Sluten DECT-signal utan WiFi-risk, klart ljud och 300 meters rackvidd. Enkel att anvanda och palitlig.',
+    brand: 'VTech',
+    rating: 4.2,
+    badge: 'Billigast',
+    usps: ['Sluten DECT-signal', '300 m rackvidd', 'Enkel att anvanda'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit',
+    imageUrl: '/images/products/vtech-dm1111-babyvakt-vit.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Typ': 'Ljudvakt', 'Standard': 'DECT', 'Rackvidd': '300 m', 'Video': 'Nej', 'Batteritid': 'Ca 15 h' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent DECT SCD711',
+    desc: 'Budgetvanlig DECT-babyvakt med palitlig signal och enkel hantering. Langst rackvidd i jamforelsen (330 m) och lang batteritid pa cirka 18 timmar, tillrackligt for en hel natt.',
+    brand: 'Philips',
+    rating: 4.5,
+    badge: 'Mest rackvidd',
+    usps: ['330 m rackvidd', 'Krypterad DECT', 'Ca 18 h batteritid'],
+    store: '',
+    imageUrl: '/images/products/philips-avent-dect-scd711.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Typ': 'Ljudvakt', 'Standard': 'DECT', 'Rackvidd': '330 m', 'Video': 'Nej', 'Batteritid': 'Ca 18 h' },
+    alsoAt: [],
+  },
+  {
+    name: 'Miniland Compact 3.5 Video Babyvakt',
+    desc: 'Kompakt videobabyvakt med 3,5-tumsskarm och DECT-signal. Ger video utan WiFi-beroende och ar latt att ta med pa resor tack vare det kompakta formatet.',
+    brand: 'Miniland',
+    rating: 4.3,
+    badge: 'Bast video/pris',
+    usps: ['Video 3,5" utan WiFi', 'DECT-signal', 'Kompakt for resa'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt',
+    imageUrl: '/images/products/miniland-compact-3-5-video-babyvakt.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Typ': 'Videovakt', 'Standard': 'DECT', 'Rackvidd': '300 m', 'Video': 'Ja, 3,5"', 'Batteritid': 'Ca 8 h' },
+    alsoAt: [],
+  },
+  {
+    name: 'Vtech VM5254 Babyvakt',
+    desc: 'Budget-videobabyvakt med stor 5-tumsskarm och DECT. Tydlig bild utan WiFi eller app, kor pa krypterad DECT-frekvens (2,4 GHz).',
+    brand: 'VTech',
+    rating: 4.1,
+    badge: 'Stor skarm',
+    usps: ['5-tumsskarm', 'Inget WiFi behovs', 'DECT 2,4 GHz'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt',
+    imageUrl: '/images/products/vtech-vm5254-babyvakt.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Typ': 'Videovakt', 'Standard': 'DECT (2,4 GHz)', 'Rackvidd': '300 m', 'Video': 'Ja, 5"', 'Batteritid': 'Ca 8 h' },
+    alsoAt: [],
+  },
+  {
+    name: 'Motorola Halo+',
+    desc: 'Budget-babyvakt med 360-kamera och app for de priskansliga. WiFi-uppkopplad sa du kan se barnet via mobilapp aven utanfor hemmet.',
+    brand: 'Motorola',
+    rating: 4.2,
+    badge: '360-kamera',
+    usps: ['360-graders kamera', 'WiFi med app', 'Kompakt design'],
+    store: '',
+    imageUrl: '/images/products/motorola-halo.webp',
+    accentColor: '#c2410c', bgColor: '#7c2d12',
+    features: { 'Typ': 'Videovakt', 'Standard': 'WiFi', 'Rackvidd': 'WiFi-natverk', 'Video': 'Ja, 360', 'Batteritid': 'Via app' },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['Typ', 'Standard', 'Räckvidd', 'Video', 'Batteritid'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Typ', 'Standard', 'Rackvidd', 'Video', 'Batteritid'];
 
 const faqItems = [
- {
- question: 'Vad är skillnaden mellan en DECT-babyvakt och en WiFi-babyvakt?',
- answer: 'En DECT-babyvakt (som Philips Avent SCD711 och Chicco Talky Energy) kommunicerar direkt mellan sändar- och mottagarenheten på en krypterad frekvens. Den kräver inget internet och fungerar alltid så länge du är inom räckvidden (vanligtvis 200 till 330 m). En WiFi-babyvakt (som Summer Infant Baby Pixel Cadet och Motorola Halo+) kopplar upp via ditt hemnätverk och du kan se och höra barnet via mobilapp, även utanför hemmet. WiFi-modeller kräver fungerande internetuppkoppling.',
- },
- {
- question: 'Behöver jag en videovakt eller räcker en ljudvakt?',
- answer: 'En ljudvakt räcker för många familjer och är ofta billigare och enklare att använda. Du hör om barnet vaknar och behöver hjälp. En videovakt (som VTech VM819 eller Summer Infant Baby Pixel Cadet) ger extra trygghet, du kan se om barnet sover lugnt eller har vridit sig. För nyfödda och spädbarn föredrar många videovakt just för att kunna kontrollera andning och sovposition. Det är en smaksak och behovsfråga.',
- },
- {
- question: 'Är billiga babyvakter säkra att använda?',
- answer: 'Ja, alla babyvakter som säljs i Sverige ska uppfylla europeisk CE-märkning och radioregelverk. Philips Avent och Chicco är välkända varumärken med lång erfarenhet av babyprodukter. Det viktigaste är att babyvakten är pålitlig, att den faktiskt larmar när barnet låter. DECT-modeller är generellt mer störningsfria än äldre analoga modeller.',
- },
- {
- question: 'Hur lång räckvidd behöver jag?',
- answer: 'I ett normalt hus eller lägenhet räcker 100 till 200 m räckvidd väl. Philips Avent SCD711 med 330 m och Chicco Talky Energy med 300 m är mer än tillräckligt för de flesta hem. Tänk på att väggar, golv och el-apparater kan störa signalen och minska den effektiva räckvidden jämfört med vad tillverkaren anger.',
- },
- {
- question: 'Kan jag ta med babyvakten när vi reser?',
- answer: 'DECT-babyvakter som Philips Avent SCD711 och Chicco Talky Energy är enkla att ta med, de behöver bara ett eluttag och är kompakta. WiFi-babyvakter kräver att du har tillgång till ett nätverk och ibland app-inloggning, vilket kan krångla på hotell. För resor rekommenderas ofta en enkel DECT-modell.',
- },
- {
- question: 'Vilken babyvakt är bäst för ett litet hem eller lägenhet?',
- answer: 'I en liten lägenhet räcker en grundläggande DECT-ljudvakt som Chicco Talky Energy eller Philips Avent SCD711 fullt ut. Räckvidden är mer än tillräcklig och de är enkla att använda. Behöver du se barnet väljer du VTech VM819 med sin 4,3-tumsskärm som ger en tydlig bild utan WiFi-beroende.',
- },
+  {
+    question: 'Vad är skillnaden mellan en DECT-babyvakt och en WiFi-babyvakt?',
+    answer: 'En DECT-babyvakt (som Philips Avent SCD711 och Chicco Talky Energy) kommunicerar direkt mellan sändar- och mottagarenheten på en krypterad frekvens. Den kräver inget internet och fungerar alltid så länge du är inom räckvidden (vanligtvis 200 till 330 m). En WiFi-babyvakt (som Summer Infant Baby Pixel Cadet och Motorola Halo+) kopplar upp via ditt hemnätverk och du kan se och höra barnet via mobilapp, även utanför hemmet. WiFi-modeller kräver fungerande internetuppkoppling.',
+  },
+  {
+    question: 'Behöver jag en videovakt eller räcker en ljudvakt?',
+    answer: 'En ljudvakt räcker för många familjer och är ofta billigare och enklare att använda. Du hör om barnet vaknar och behöver hjälp. En videovakt (som VTech VM819 eller Summer Infant Baby Pixel Cadet) ger extra trygghet, du kan se om barnet sover lugnt eller har vridit sig. För nyfödda och spädbarn föredrar många videovakt just för att kunna kontrollera andning och sovposition. Det är en smaksak och behovsfråga.',
+  },
+  {
+    question: 'Är billiga babyvakter säkra att använda?',
+    answer: 'Ja, alla babyvakter som säljs i Sverige ska uppfylla europeisk CE-märkning och radioregelverk. Philips Avent och Chicco är välkända varumärken med lång erfarenhet av babyprodukter. Det viktigaste är att babyvakten är pålitlig, att den faktiskt larmar när barnet låter. DECT-modeller är generellt mer störningsfria än äldre analoga modeller.',
+  },
+  {
+    question: 'Hur lång räckvidd behöver jag?',
+    answer: 'I ett normalt hus eller lägenhet räcker 100 till 200 m räckvidd väl. Philips Avent SCD711 med 330 m och Chicco Talky Energy med 300 m är mer än tillräckligt för de flesta hem. Tänk på att väggar, golv och el-apparater kan störa signalen och minska den effektiva räckvidden jämfört med vad tillverkaren anger.',
+  },
+  {
+    question: 'Kan jag ta med babyvakten när vi reser?',
+    answer: 'DECT-babyvakter som Philips Avent SCD711 och Chicco Talky Energy är enkla att ta med, de behöver bara ett eluttag och är kompakta. WiFi-babyvakter kräver att du har tillgång till ett nätverk och ibland app-inloggning, vilket kan krångla på hotell. För resor rekommenderas ofta en enkel DECT-modell.',
+  },
+  {
+    question: 'Vilken babyvakt är bäst för ett litet hem eller lägenhet?',
+    answer: 'I en liten lägenhet räcker en grundläggande DECT-ljudvakt som Chicco Talky Energy eller Philips Avent SCD711 fullt ut. Räckvidden är mer än tillräcklig och de är enkla att använda. Behöver du se barnet väljer du VTech VM819 med sin 4,3-tumsskärm som ger en tydlig bild utan WiFi-beroende.',
+  },
 ];
+
 export const articleMeta = {
   title: "Billig babyvakt bäst i test 2026: DECT från 299 kr",
   description: "Billig babyvakt bäst i test 2026: Vtech DM1111 är vår budgetfavorit. 5 budgetvakter jämförda på räckvidd, batteritid och video, DECT och WiFi, från 299 kr.",
@@ -120,123 +130,320 @@ export const articleMeta = {
   category: "Babyvakter",
   image: "/images/products/vtech-dm1111-babyvakt-vit.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Billig babyvakt bäst i test 2026: DECT från 299 kr"
- description="Billig babyvakt bäst i test 2026: Vtech DM1111 är vår budgetfavorit. 5 budgetvakter jämförda på räckvidd, batteritid och video, DECT och WiFi, från 299 kr."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-06-16"
+  title="Billig babyvakt bäst i test 2026: DECT från 299 kr"
+  description="Billig babyvakt bäst i test 2026: Vtech DM1111 är vår budgetfavorit. 5 budgetvakter jämförda på räckvidd, batteritid och video, DECT och WiFi, från 299 kr."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyvakter/budget/"
   datePublished="2026-02-02"
+  updatedDate="2026-06-16"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Vtech DM1111 är vår budgetfavorit bland billiga babyvakter 2026. Den slutna DECT-signalen går inte via internet och är därför fri från intrångsrisk, ljudet är klart och räckvidden når 300 meter, allt till ett av de lägsta priserna i jämförelsen. Philips Avent SCD711 har längst räckvidd (330 m) om du vill ha mer marginal.
-	 </p>
 
- <TopPick product={products[1]} description="Vtech DM1111 är vår budgetfavorit 2026. Sluten DECT-signal utan WiFi-risk, klart ljud och 300 meters räckvidd till ett av de lägsta priserna i jämförelsen. Det prisvärda valet för den som bara vill höra om barnet vaknar." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-02-02" dateModified="2026-06-16" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken billig babyvakt är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Vtech DM1111 är bästa billiga babyvakten 2026. Den slutna DECT-signalen går inte via internet och är därför fri från intrångsrisk, ljudet är klart och räckvidden når 300 meter, allt till ett av de lägsta priserna i jämförelsen. Philips Avent SCD711 har längst räckvidd (330 m) om du vill ha mer marginal.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (budgetfavorit som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="VTech"
+    name="DM1111 Babyvakt, Vit"
+    image="/images/products/vtech-dm1111-babyvakt-vit.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit"
+    store="Jollyroom"
+    description="Vår budgetfavorit 2026. Sluten DECT-signal utan WiFi-risk, klart ljud och 300 meters räckvidd till ett av de lägsta priserna i jämförelsen. Det prisvärda valet för den som bara vill höra om barnet vaknar."
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Philips Avent DECT SCD711"
- image="/images/products/philips-avent-dect-scd711.webp"
- badge="Mest räckvidd"
- rating={4.5}
- ageRange="Från födseln"
- pros={['DECT, krypterad, störningsfri signal', '330 m räckvidd', 'Lång batteritid (ca 18 h)']}
- cons={['Ingen video', 'Ingen app-funktion']}
- />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Billiga babyvakter 2026" />
 
- <ProductCard
- name="Vtech DM1111 Babyvakt, Vit"
- image="/images/products/vtech-dm1111-babyvakt-vit.webp"
- badge="Billigast"
- rating={4.2}
- ageRange="Från födseln"
- pros={['Prisvärd DECT-babyvakt', 'Enkel att använda', 'Pålitlig signal']}
- cons={['Ingen video', 'Kortare batteritid än Philips Avent']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit"
- />
+  {/* Vinnaröversikt (bevarad från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Vtech DM1111</strong> är vår budgetfavorit: sluten DECT-signal utan WiFi-risk, klart ljud och 300 meters räckvidd till ett av de lägsta priserna i jämförelsen.</p>
+  </div>
 
- <ProductCard
- name="Miniland Compact 3.5 Video Babyvakt"
- image="/images/products/miniland-compact-3-5-video-babyvakt.webp"
- badge="Bäst video/pris"
- rating={4.3}
- ageRange="Från födseln"
- pros={['Video med 3,5-tumsskärm utan WiFi', 'DECT-signal, pålitlig utan internet', 'Kompakt och enkel att ta med på resor']}
- cons={['Ingen app-funktion', 'Kortare batteritid']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt"
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Motorola Halo+"
- image="/images/products/motorola-halo.webp"
- badge="360° kamera"
- rating={4.2}
- ageRange="Från födseln"
- pros={['360-graders panoramakamera', 'WiFi med app', 'Kompakt design']}
- cons={['WiFi-beroende', 'Lägre bildkvalitet i mörker']}
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Vtech DM1111, billigast</h2>
+    <MoneyProductCard
+      brand="VTech"
+      name="Vtech DM1111 Babyvakt, Vit"
+      rating={4.2}
+      rank={1}
+      badge="Billigast"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/vtech-dm1111-babyvakt-vit.webp"
+      imageAlt="Vtech DM1111 Babyvakt Vit"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit"
+      pros={['Prisvärd DECT-babyvakt', 'Enkel att använda', 'Pålitlig signal']}
+      cons={['Ingen video', 'Kortare batteritid än Philips Avent']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Vtech DM1111 är vår budgetfavorit bland billiga babyvakter 2026. Den kör på en sluten DECT-signal som inte går via internet, vilket gör den fri från intrångsrisk och driftsäker även när hemnätverket krånglar. Ljudet är klart och räckvidden når 300 meter, mer än tillräckligt för en standard lägenhet eller villa.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det här är en renodlad ljudvakt: du hör om barnet vaknar men ser det inte. Behöver du video är Miniland Compact 3.5 eller Vtech VM5254 bättre val. Batteritiden ligger på cirka 15 timmar, kortare än Philips Avent men gott och väl för en natt. För den som bara vill höra om barnet vaknar är DM1111 det mest prisvärda valet i jämförelsen.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit" />
 
- <ProductCard
- name="Vtech VM5254 Babyvakt"
- image="/images/products/vtech-vm5254-babyvakt.webp"
- badge="Stor skärm"
- rating={4.1}
- ageRange="Från födseln"
- pros={['5-tumsskärm, tydlig bild', 'Inget WiFi eller app behövs', 'DECT-frekvens']}
- cons={['Kortare batteritid (ca 8 h)', 'Bildkvalitet sämre än nyare WiFi-modeller']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Philips Avent DECT SCD711, mest räckvidd</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent DECT SCD711"
+      rating={4.5}
+      rank={2}
+      badge="Mest räckvidd"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/philips-avent-dect-scd711.webp"
+      imageAlt="Philips Avent DECT SCD711"
+      store="Philips Avent"
+      pros={['DECT, krypterad, störningsfri signal', '330 m räckvidd', 'Lång batteritid (ca 18 h)']}
+      cons={['Ingen video', 'Ingen app-funktion']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent SCD711 har längst räckvidd i jämförelsen med 330 meter, bra om du vill ha extra marginal i ett stort hus eller en villa med flera plan. Den krypterade DECT-signalen är störningsfri och pålitlig, och med en batteritid på upp till 18 timmar klarar mottagaren en hel natt utan laddning.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det är en ren ljudvakt utan video och utan app-funktion, så vill du se barnet ska du titta på en videomodell istället. För den som värdesätter lång räckvidd och lång batteritid framför video är SCD711 ett tryggt val från ett välkänt varumärke.
+    </p>
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du rätt babyvakt</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Miniland Compact 3.5, bäst video/pris</h2>
+    <MoneyProductCard
+      brand="Miniland"
+      name="Miniland Compact 3.5 Video Babyvakt"
+      rating={4.3}
+      rank={3}
+      badge="Bäst video/pris"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/miniland-compact-3-5-video-babyvakt.webp"
+      imageAlt="Miniland Compact 3.5 Video Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt"
+      pros={['Video med 3,5-tumsskärm utan WiFi', 'DECT-signal, pålitlig utan internet', 'Kompakt och enkel att ta med på resor']}
+      cons={['Ingen app-funktion', 'Kortare batteritid']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Miniland Compact 3.5 är det bästa valet om du vill ha video utan att betala för en dyr WiFi-modell. Du ser barnet på en 3,5-tumsskärm direkt på mottagaren, och eftersom den kör på DECT behöver du inget internet, bilden är pålitlig även när nätverket strular.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det kompakta formatet gör den enkel att ta med på resor: bara ett eluttag och du är igång. Den saknar app-funktion och batteritiden är kortare (cirka 8 timmar) än de rena ljudvakterna, men för budgetvideo är kombinationen av video och DECT-pålitlighet svårslagen.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt" />
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>DECT eller WiFi?</h3>
- <p>DECT är den traditionella standarden för babyvakter och kommunicerar direkt mellan sändaren i barnrummet och mottagaren hos dig. Den kräver inget internet och är generellt mer driftsäker. WiFi-modeller använder ditt hemnätverk och låter dig se barnet via mobilapp, också utanför hemmet. WiFi kräver fungerande internet och kan krångla vid nätverksproblem. För de flesta hem räcker DECT. Vill du se barnet utifrån väljer du WiFi.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Vtech VM5254, stor skärm</h2>
+    <MoneyProductCard
+      brand="VTech"
+      name="Vtech VM5254 Babyvakt"
+      rating={4.1}
+      rank={4}
+      badge="Stor skärm"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/vtech-vm5254-babyvakt.webp"
+      imageAlt="Vtech VM5254 Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt"
+      pros={['5-tumsskärm, tydlig bild', 'Inget WiFi eller app behövs', 'DECT-frekvens']}
+      cons={['Kortare batteritid (ca 8 h)', 'Bildkvalitet sämre än nyare WiFi-modeller']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Vtech VM5254 har jämförelsens största skärm, en 5-tumsmonitor som ger en tydlig och stor bild av barnrummet utan att du behöver kisa. Den kör på krypterad DECT-frekvens (2,4 GHz), så du slipper WiFi och app helt, ett plus både för driftsäkerhet och för dem som inte vill koppla upp babyvakten mot internet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Batteritiden på cirka 8 timmar är kortare än ljudvakternas och kan behöva en laddning mitt i natten, och bildkvaliteten är inte i nivå med nyare WiFi-kameror. Men för den som vill ha en stor, lättläst skärm utan internetberoende är VM5254 ett prisvärt videoval.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt" />
 
- <h3>Ljud eller video?</h3>
- <p>En enkel ljudvakt som Philips Avent SCD711 eller Chicco Talky Energy räcker bra för att höra om barnet vaknar. En videovakt ger extra trygghet, du ser om barnet sover lugnt, har vridit sig eller behöver hjälp. VTech VM819 är ett bra mellanval: video utan WiFi-beroende, med en tydlig 4,3-tumsskärm på mottagarenheten.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Motorola Halo+, 360-kamera</h2>
+    <MoneyProductCard
+      brand="Motorola"
+      name="Motorola Halo+"
+      rating={4.2}
+      rank={5}
+      badge="360-kamera"
+      accentColor="#c2410c" bgColor="#7c2d12"
+      imageUrl="/images/products/motorola-halo.webp"
+      imageAlt="Motorola Halo+"
+      store="Motorola"
+      pros={['360-graders panoramakamera', 'WiFi med app', 'Kompakt design']}
+      cons={['WiFi-beroende', 'Lägre bildkvalitet i mörker']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Motorola Halo+ är det enda WiFi-alternativet i jämförelsen och vänder sig till dig som vill kunna se barnet via mobilappen även när du inte är hemma. 360-graders panoramakameran sveper över hela barnrummet, och den kompakta designen tar liten plats på hyllan.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen är att den är beroende av ett fungerande WiFi-nätverk, krånglar internet så fungerar inte vakten. Bildkvaliteten i mörker är också lägre än på dagtid. För den priskänsliga som ändå vill ha app och fjärråtkomst är Halo+ ett budgetvänligt sätt att komma in i WiFi-segmentet.
+    </p>
 
- <h3>Räckvidd i praktiken</h3>
- <p>Alla modeller i testet har räckvidd på 300 m eller mer. I ett normalt hem är det mer än tillräckligt. Väggar och betong dämpar signalen, räkna med att den effektiva räckvidden inomhus kan vara 30 till 50 procent lägre än vad tillverkaren anger. Väljer du DECT-modell behöver du inte oroa dig för räckvidden i en standard lägenhet eller villa.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem budgetvakter, fem olika behov. Vill du bara höra om barnet vaknar räcker Vtech DM1111 eller Philips Avent SCD711. Vill du se barnet utan WiFi väljer du Miniland Compact 3.5 eller Vtech VM5254, och vill du ha app och fjärråtkomst är Motorola Halo+ vägen in. Vill du fördjupa dig? Läs vår <a href="/babyvakter/" class="text-accent hover:text-accent-dark underline">kompletta test av bästa babyvakten</a> eller jämför med en <a href="/babyvakter/video/" class="text-accent hover:text-accent-dark underline">bästa videobabyvakten 2026</a>.
+    </p>
 
- <h3>Batteritid och laddning</h3>
- <p>Philips Avent SCD711 har längst batteritid i testet på upp till 18 timmar, tillräckligt för en hel natt. VTech VM819 har kortare batteritid på ca 8 timmar och kan behöva laddas mitt i natten. WiFi-modeller som Summer Infant och Motorola Halo+ drivs via el och laddas via app-enheten.</p>
- </div>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Billiga babyvakter 2026" />
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
- </li>
- <li>
- <a href="/guider/valja-babyvakt/" class="text-accent underline">Välja babyvakt: DECT, video eller WiFi, komplett köpguide 2026</a>
- </li>
- </ul>
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så väljer du rätt babyvakt</h2>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">DECT eller WiFi?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      DECT är den traditionella standarden för babyvakter och kommunicerar direkt mellan sändaren i barnrummet och mottagaren hos dig. Den kräver inget internet och är generellt mer driftsäker. WiFi-modeller använder ditt hemnätverk och låter dig se barnet via mobilapp, också utanför hemmet. WiFi kräver fungerande internet och kan krångla vid nätverksproblem. För de flesta hem räcker DECT. Vill du se barnet utifrån väljer du WiFi.
+    </p>
 
- <CTABox productName="Budgetbabyvakt" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311927&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1212-babyvakt-vit" description="Prisvärda babyvakter hos Jollyroom, DECT, video och WiFi." />
-<ProductSchema products={[
- { name: 'Philips Avent DECT SCD711', description: 'Budgetvänlig DECT-babyvakt med pålitlig signal och enkel hantering.', brand: 'Philips', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Vtech DM1111 Babyvakt, Vit', description: 'Prisvärd DECT-babyvakt för grundläggande ljudövervakning.', brand: 'VTech', ratingValue: 4.2, reviewCount: 1 },
- { name: 'Miniland Compact 3.5 Video Babyvakt', description: 'Kompakt videobabyvakt med 3,5-tumsskärm och DECT-signal.', brand: 'Miniland', ratingValue: 4.3, reviewCount: 1 },
- { name: 'Motorola Halo+', description: 'Budget-babyvakt med 360-kamera och app för de priskänsliga.', brand: 'Motorola', ratingValue: 4.2, reviewCount: 1 },
- { name: 'Vtech VM5254 Babyvakt', description: 'Budget-videobabyvakt med stor 5-tumsskärm och DECT.', brand: 'VTech', ratingValue: 4.1, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Ljud eller video?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En enkel ljudvakt som Philips Avent SCD711 eller Chicco Talky Energy räcker bra för att höra om barnet vaknar. En videovakt ger extra trygghet, du ser om barnet sover lugnt, har vridit sig eller behöver hjälp. VTech VM819 är ett bra mellanval: video utan WiFi-beroende, med en tydlig 4,3-tumsskärm på mottagarenheten.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Räckvidd i praktiken</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla modeller i testet har räckvidd på 300 m eller mer. I ett normalt hem är det mer än tillräckligt. Väggar och betong dämpar signalen, räkna med att den effektiva räckvidden inomhus kan vara 30 till 50 procent lägre än vad tillverkaren anger. Väljer du DECT-modell behöver du inte oroa dig för räckvidden i en standard lägenhet eller villa.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Batteritid och laddning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Philips Avent SCD711 har längst batteritid i testet på upp till 18 timmar, tillräckligt för en hel natt. VTech VM819 har kortare batteritid på ca 8 timmar och kan behöva laddas mitt i natten. WiFi-modeller som Summer Infant och Motorola Halo+ drivs via el och laddas via app-enheten.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat billiga babyvakter utifrån fyra kriterier: signaltyp och driftsäkerhet (DECT mot WiFi), funktion (ljud, video, app), räckvidd och batteritid samt vardagsanvändning (enkelhet, format, resvänlighet). Produkterna är valda bland de mest sålda och eftersökta budgetmodellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a></li>
+        <li><a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a></li>
+        <li><a href="/guider/valja-babyvakt/" class="text-accent underline">Välja babyvakt: DECT, video eller WiFi, komplett köpguide 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (no-price-policy: inget Offer/price) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa billiga babyvakten 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhall av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) -> budgetfavoriten Vtech DM1111 */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit"
+    text="Bra pris hos Jollyroom"
+    productName="Vtech DM1111"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

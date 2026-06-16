@@ -1,278 +1,520 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import TopPick from '../../components/TopPick.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
-import CTABox from '../../components/CTABox.astro';
-import ProductSchema from '../../components/ProductSchema.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
 
 const breadcrumbs = [
- { label: 'Hem', href: '/' },
- { label: 'Babyvakter', href: '/babyvakter/' },
- { label: 'App' },
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'App' },
 ];
 
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Affiliate-länkar/bilder oförändrade (verifierade).
+// Motorola Halo+ är en showcase-produkt UTAN affiliate-länk (ej i feed): ingen affiliateUrl/buyUrl,
+// ingen CTA. Aldrig konstruera en länk för den.
 const products = [
- {
- name: 'Motorola PIP1710 Connect Babyvakt',
- image: '/images/products/motorola-pip1710-connect.webp',
- badge: 'Bäst i test',
- rating: 4.8,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10310341&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1710-connect-babyvakt',
- features: {
- 'App (iOS/Android)': 'Ja (Hubble)',
- 'Live-ström': 'Ja, 1080p',
- 'Rörelselarm': 'Ja',
- 'Nattseende': 'Ja, IR',
- 'Tvåvägsljud': 'Ja',
- },
- },
- {
- name: 'Owlet Cam 2',
- badge: 'Enklast setup',
- rating: 4.5,
- image: '/images/products/owlet-cam-2.webp',
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
- features: {
- 'App (iOS/Android)': 'Ja (Owlet)',
- 'Live-ström': 'Ja, 1080p',
- 'Rörelselarm': 'Ja',
- 'Nattseende': 'Ja, IR',
- 'Tvåvägsljud': 'Ja',
- },
- },
- {
- name: 'Motorola Halo+',
- image: '/images/products/motorola-halo.webp',
- badge: 'App + skärm',
- rating: 4.4,
- features: {
- 'App (iOS/Android)': 'Ja (Hubble)',
- 'Live-ström': 'Ja, 720p',
- 'Rörelselarm': 'Ja',
- 'Nattseende': 'Ja, IR',
- 'Tvåvägsljud': 'Ja',
- },
- },
- {
- name: 'Philips Avent SCD892/26 Babyvakt',
- image: '/images/products/philips-avent-scd892-babyvakt.webp',
- badge: '360° kamera',
- rating: 4.3,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt',
- features: {
- 'App (iOS/Android)': 'Ja (Ucare)',
- 'Live-ström': 'Ja, 1080p',
- 'Rörelselarm': 'Ja',
- 'Nattseende': 'Ja, IR',
- 'Tvåvägsljud': 'Ja',
- },
- },
- {
- name: 'Vtech VM5254 Babyvakt',
- image: '/images/products/vtech-vm5254-babyvakt.webp',
- badge: 'Budgetval',
- rating: 4.2,
- ctaHref: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt',
- features: {
- 'App (iOS/Android)': 'Ja (MyVTech)',
- 'Live-ström': 'Ja, 720p',
- 'Rörelselarm': 'Ja',
- 'Nattseende': 'Ja, IR',
- 'Tvåvägsljud': 'Ja',
- },
- },
+  {
+    name: 'Motorola PIP1710 Connect Babyvakt',
+    desc: 'Smart WiFi-babykamera med Hubble-app, 1080p live-ström och push-notiser. Bäst i test bland app-babyvakter.',
+    brand: 'Motorola',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Hubble-app', '1080p live', 'Push-notiser'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10310341&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1710-connect-babyvakt',
+    imageUrl: '/images/products/motorola-pip1710-connect.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: {
+      'App (iOS/Android)': 'Ja (Hubble)',
+      'Live-ström': 'Ja, 1080p',
+      'Rörelselarm': 'Ja',
+      'Nattseende': 'Ja, IR',
+      'Tvåvägsljud': 'Ja',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Owlet Cam 2',
+    desc: 'WiFi-babykamera med enkel app och tydlig HD-bild. Enklast att sätta upp.',
+    brand: 'Owlet',
+    rating: 4.5,
+    badge: 'Enklast setup',
+    usps: ['Enkel setup', '1080p', 'Stabil app'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage',
+    imageUrl: '/images/products/owlet-cam-2.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: {
+      'App (iOS/Android)': 'Ja (Owlet)',
+      'Live-ström': 'Ja, 1080p',
+      'Rörelselarm': 'Ja',
+      'Nattseende': 'Ja, IR',
+      'Tvåvägsljud': 'Ja',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Motorola Halo+',
+    desc: 'App-babyvakt med skärm och mobilapp kombinerat. 360-kamera och lång batteritid.',
+    brand: 'Motorola',
+    rating: 4.4,
+    badge: 'App + skärm',
+    usps: ['App + skärm', 'WiFi-backup', 'Hubble-app'],
+    store: '',
+    affiliateUrl: '',
+    imageUrl: '/images/products/motorola-halo.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: {
+      'App (iOS/Android)': 'Ja (Hubble)',
+      'Live-ström': 'Ja, 720p',
+      'Rörelselarm': 'Ja',
+      'Nattseende': 'Ja, IR',
+      'Tvåvägsljud': 'Ja',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent SCD892/26 Babyvakt',
+    desc: 'WiFi-babykamera med Ucare-app, 1080p live-ström och rörelsedetektering.',
+    brand: 'Philips Avent',
+    rating: 4.3,
+    badge: '360° kamera',
+    usps: ['Ucare-app', '1080p', 'Rörelselarm'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt',
+    imageUrl: '/images/products/philips-avent-scd892-babyvakt.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: {
+      'App (iOS/Android)': 'Ja (Ucare)',
+      'Live-ström': 'Ja, 1080p',
+      'Rörelselarm': 'Ja',
+      'Nattseende': 'Ja, IR',
+      'Tvåvägsljud': 'Ja',
+    },
+    alsoAt: [],
+  },
+  {
+    name: 'Vtech VM5254 Babyvakt',
+    desc: 'Budgetvänlig app-babyvakt med WiFi, föräldraenhet och tydlig bild.',
+    brand: 'VTech',
+    rating: 4.2,
+    badge: 'Budgetval',
+    usps: ['Budgetval', 'App + enhet', 'Ingen avgift'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt',
+    imageUrl: '/images/products/vtech-vm5254-babyvakt.webp',
+    accentColor: '#c2410c', bgColor: '#7c2d12',
+    features: {
+      'App (iOS/Android)': 'Ja (MyVTech)',
+      'Live-ström': 'Ja, 720p',
+      'Rörelselarm': 'Ja',
+      'Nattseende': 'Ja, IR',
+      'Tvåvägsljud': 'Ja',
+    },
+    alsoAt: [],
+  },
 ];
 
-const featureLabels = ['App (iOS/Android)', 'Live-ström', 'Rörelselarm', 'Nattseende', 'Tvåvägsljud'];
+// Spec-tabellens features = de fem grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['App (iOS/Android)', 'Live-ström', 'Rörelselarm', 'Nattseende', 'Tvåvägsljud'];
 
 const faqItems = [
- {
- question: 'Vilken babyvakt med app är bäst 2026?',
- answer: 'Nanit Pro är vårt toppval 2026. Nanit-appen är den mest genomarbetade, den erbjuder live-ström i 1080p, detaljerad sömnstatistik, sömnanalys med AI och push-notiser vid ljud och rörelse. För den som vill ha en prisvärd app-babyvakt utan att kompromissa på bildkvaliteten är Owlet Cam 2 bäst val.',
- },
- {
- question: 'Fungerar babyvakt-appar på både iPhone och Android?',
- answer: 'Ja, alla babyvakter i vår jämförelse har appar för både iOS och Android. Nanit-appen och Owlet-appen är mest polerade och uppdateras regelbundet. Hubble (Motorola) och MyVTech (VTech) fungerar bra men har något enklare gränssnitt. iBaby-appen är fullfunktionell men har fått blandade recensioner för stabilitet.',
- },
- {
- question: 'Kan jag se mitt barn via appen när jag är på jobbet?',
- answer: 'Ja, det är den stora fördelen med app-babyvakter. Så länge du har internetanslutning, via WiFi eller mobilnät, kan du se live-strömmen från kameran var du än är. Förseningen är vanligtvis 1 till 3 sekunder. Perfekt när en barnvakt är hemma eller om du är på kontoret.',
- },
- {
- question: 'Kostar babyvakt-appar pengar?',
- answer: 'Grundfunktionerna är gratis på alla modeller i testet, live-ström, notiser och nattseende ingår utan kostnad. Nanit och Owlet erbjuder premium-abonnemang för utökad videologgning, sömnanalys och historik. VTech VM819 och Motorola Halo+ har inga obligatoriska abonnemang.',
- },
- {
- question: 'Vad händer med app-babyvakten om WiFi går ner?',
- answer: 'Om WiFi-anslutningen bryts tappar du tillgången till live-strömmen och appen. Motorola Halo+ har en inbyggd separat skärm som fungerar via sluten signal även utan internet, ett bra alternativ för familjer som vill ha backup. För de andra modellerna: se till att ha en stabil router och överväg att placera routern nära barnrummet.',
- },
- {
- question: 'Är babyvakt-appar säkra? Kan någon hacka sig in?',
- answer: 'Säkerheten beror på tillverkaren. Nanit och Owlet använder end-to-end-kryptering, vilket gör det mycket svårt att avlyssna. Generella tips: byt alltid standardlösenord, aktivera tvåfaktorsautentisering om det erbjuds, använd ett starkt WiFi-lösenord och håll alltid kamerans firmware uppdaterad. Undvik billiga no-name-kameror utan kryptering, de är betydligt enklare att hacka.',
- },
- {
- question: 'Vilken babyvakt-app klarar flera kameror?',
- answer: 'Nanit-appen stödjer flera kameror i samma app, så du kan ha en kamera i barnrummet och en annan i vardagsrummet. Owlet och iBaby stödjer också multikamera. Motorola Halo+ via Hubble-appen hanterar flera kameror men kräver separat köp av extra enheter.',
- },
- {
- question: 'Kan flera familjemedlemmar använda samma babyvakt-app?',
- answer: 'Ja, de flesta babyvakt-appar stödjer att flera användare är inloggade samtidigt. Nanit låter dig bjuda in medförälder och andra (barnvakt, mor- och farföräldrar) via delningsfunktionen. Owlet och VTech har liknande funktioner. Varje person som ska ha åtkomst behöver en egen enhet med appen installerad.',
- },
- {
- question: 'Vilken babyvakt-app funkar bäst med dålig WiFi?',
- answer: 'Motorola Halo+ är bäst vid instabil WiFi eftersom den har en separat skärm som fungerar via dedikerad signal utan internet. Bland de rena app-babyvakterna anpassar Nanit Pro och Owlet Cam 2 videoströmmen automatiskt, de sänker upplösningen till 480p vid svag anslutning istället för att stanna helt. Om du har dålig WiFi-täckning i barnrummet, överväg en WiFi-repeater eller mesh-nätverk.',
- },
- {
- question: 'Hur mycket ström drar en babyvakt-app?',
- answer: 'Kameran drivs med nätström och drar 3 till 8 watt beroende på modell, försumbart på elräkningen. Appen på mobilen drar batteri när du har live-strömmen öppen, ungefär som att streama video. Nanit och Owlet har energieffektiva bakgrundsnotiser som inte drar batteri märkbart. Undvik att ha live-strömmen öppen i bakgrunden hela natten, använd istället push-notiser vid ljud eller rörelse.',
- },
+  {
+    question: 'Vilken babyvakt med app är bäst 2026?',
+    answer: 'Nanit Pro är vårt toppval 2026. Nanit-appen är den mest genomarbetade, den erbjuder live-ström i 1080p, detaljerad sömnstatistik, sömnanalys med AI och push-notiser vid ljud och rörelse. För den som vill ha en prisvärd app-babyvakt utan att kompromissa på bildkvaliteten är Owlet Cam 2 bäst val.',
+  },
+  {
+    question: 'Fungerar babyvakt-appar på både iPhone och Android?',
+    answer: 'Ja, alla babyvakter i vår jämförelse har appar för både iOS och Android. Nanit-appen och Owlet-appen är mest polerade och uppdateras regelbundet. Hubble (Motorola) och MyVTech (VTech) fungerar bra men har något enklare gränssnitt. iBaby-appen är fullfunktionell men har fått blandade recensioner för stabilitet.',
+  },
+  {
+    question: 'Kan jag se mitt barn via appen när jag är på jobbet?',
+    answer: 'Ja, det är den stora fördelen med app-babyvakter. Så länge du har internetanslutning, via WiFi eller mobilnät, kan du se live-strömmen från kameran var du än är. Förseningen är vanligtvis 1 till 3 sekunder. Perfekt när en barnvakt är hemma eller om du är på kontoret.',
+  },
+  {
+    question: 'Kostar babyvakt-appar pengar?',
+    answer: 'Grundfunktionerna är gratis på alla modeller i testet, live-ström, notiser och nattseende ingår utan kostnad. Nanit och Owlet erbjuder premium-abonnemang för utökad videologgning, sömnanalys och historik. VTech VM819 och Motorola Halo+ har inga obligatoriska abonnemang.',
+  },
+  {
+    question: 'Vad händer med app-babyvakten om WiFi går ner?',
+    answer: 'Om WiFi-anslutningen bryts tappar du tillgången till live-strömmen och appen. Motorola Halo+ har en inbyggd separat skärm som fungerar via sluten signal även utan internet, ett bra alternativ för familjer som vill ha backup. För de andra modellerna: se till att ha en stabil router och överväg att placera routern nära barnrummet.',
+  },
+  {
+    question: 'Är babyvakt-appar säkra? Kan någon hacka sig in?',
+    answer: 'Säkerheten beror på tillverkaren. Nanit och Owlet använder end-to-end-kryptering, vilket gör det mycket svårt att avlyssna. Generella tips: byt alltid standardlösenord, aktivera tvåfaktorsautentisering om det erbjuds, använd ett starkt WiFi-lösenord och håll alltid kamerans firmware uppdaterad. Undvik billiga no-name-kameror utan kryptering, de är betydligt enklare att hacka.',
+  },
+  {
+    question: 'Vilken babyvakt-app klarar flera kameror?',
+    answer: 'Nanit-appen stödjer flera kameror i samma app, så du kan ha en kamera i barnrummet och en annan i vardagsrummet. Owlet och iBaby stödjer också multikamera. Motorola Halo+ via Hubble-appen hanterar flera kameror men kräver separat köp av extra enheter.',
+  },
+  {
+    question: 'Kan flera familjemedlemmar använda samma babyvakt-app?',
+    answer: 'Ja, de flesta babyvakt-appar stödjer att flera användare är inloggade samtidigt. Nanit låter dig bjuda in medförälder och andra (barnvakt, mor- och farföräldrar) via delningsfunktionen. Owlet och VTech har liknande funktioner. Varje person som ska ha åtkomst behöver en egen enhet med appen installerad.',
+  },
+  {
+    question: 'Vilken babyvakt-app funkar bäst med dålig WiFi?',
+    answer: 'Motorola Halo+ är bäst vid instabil WiFi eftersom den har en separat skärm som fungerar via dedikerad signal utan internet. Bland de rena app-babyvakterna anpassar Nanit Pro och Owlet Cam 2 videoströmmen automatiskt, de sänker upplösningen till 480p vid svag anslutning istället för att stanna helt. Om du har dålig WiFi-täckning i barnrummet, överväg en WiFi-repeater eller mesh-nätverk.',
+  },
+  {
+    question: 'Hur mycket ström drar en babyvakt-app?',
+    answer: 'Kameran drivs med nätström och drar 3 till 8 watt beroende på modell, försumbart på elräkningen. Appen på mobilen drar batteri när du har live-strömmen öppen, ungefär som att streama video. Nanit och Owlet har energieffektiva bakgrundsnotiser som inte drar batteri märkbart. Undvik att ha live-strömmen öppen i bakgrunden hela natten, använd istället push-notiser vid ljud eller rörelse.',
+  },
 ];
+
 export const articleMeta = {
   title: "Babyvakt med app bäst i test 2026: 5 WiFi-kameror jämförda",
   description: "Nanit Pro vinner: 1080p, end-to-end-kryptering och ingen abonnemangskostnad. Owlet Cam 2 enklast setup. 5 WiFi-babyvakter med app jämförda 2026.",
   publishDate: "2026-05-26",
+  updatedDate: "2026-06-16",
   category: "Babyvakter",
   image: "/images/products/motorola-pip1710-connect.webp",
 };
-
 ---
 
 <ArticleLayout
- title="Babyvakt med app bäst i test 2026: 5 WiFi-kameror jämförda"
- description="Nanit Pro vinner: 1080p, end-to-end-kryptering och ingen abonnemangskostnad. Owlet Cam 2 enklast setup. 5 WiFi-babyvakter med app jämförda 2026."
- breadcrumbs={breadcrumbs}
- updatedDate="2026-05-15"
+  title="Babyvakt med app bäst i test 2026: 5 WiFi-kameror jämförda"
+  description="Nanit Pro vinner: 1080p, end-to-end-kryptering och ingen abonnemangskostnad. Owlet Cam 2 enklast setup. 5 WiFi-babyvakter med app jämförda 2026."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyvakter/app/"
   datePublished="2026-01-29"
+  updatedDate="2026-06-16"
+  showAuthor={false}
 >
- <p class="text-base text-text-light mb-4 max-w-2xl">
-	 Motorola PIP1710 Connect vinner babyvakt med app 2026. Via Hubble-appen ser du 1080p live-video i mobilen var du än är, med rörelsedetektering och push-notiser. Den fungerar på både iOS och Android utan abonnemang för grundfunktionerna.
-	 </p>
 
- <TopPick product={products[0]} description="Motorola PIP1710 Connect vinner test av babyvakter med app 2026. Hubble-appen ger 1080p live-video, rörelsedetektering och push-notiser. Kompatibel med iOS och Android utan abonnemangskrav för grundfunktioner." />
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-01-29" dateModified="2026-06-16" />
 
- <ComparisonTable products={products} featureLabels={featureLabels} />
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken babyvakt med app är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Motorola PIP1710 Connect vinner babyvakt med app 2026. Via Hubble-appen ser du 1080p live-video i mobilen var du än är, med rörelsedetektering och push-notiser. Den fungerar på både iOS och Android utan abonnemang för grundfunktionerna.
+    </p>
+  </div>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-4">Våra toppval 2026</h2>
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Motorola"
+    name="PIP1710 Connect Babyvakt"
+    image="/images/products/motorola-pip1710-connect.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10310341&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1710-connect-babyvakt"
+    store="Jollyroom"
+    description="Bäst i test bland app-babyvakter 2026. Hubble-appen ger 1080p live-video, rörelsedetektering och push-notiser. Kompatibel med iOS och Android utan abonnemangskrav för grundfunktioner och med stabil WiFi-uppkoppling."
+  />
 
- <div class="space-y-4">
- <ProductCard
- name="Motorola PIP1710 Connect Babyvakt"
- image="/images/products/motorola-pip1710-connect.webp"
- badge="Bäst i test"
- rating={4.8}
- ageRange="Från nyfödd"
- pros={['Hubble-appen med live-ström i 1080p Full HD', 'Push-notiser vid ljud och rörelse', 'Tvåvägsljud och nattseende med IR', 'Stabil WiFi-uppkoppling']}
- cons={['Kräver stabil WiFi-anslutning', 'Premiumfunktioner kan kräva abonnemang']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10310341&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1710-connect-babyvakt"
- />
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Babyvakter med app 2026" />
 
- <ProductCard
- name="Owlet Cam 2"
- image="/images/products/owlet-cam-2.webp"
- badge="Enklast setup"
- rating={4.5}
- ageRange="Från nyfödd"
- pros={['Enklast och snabbast installation i testet', '1080p Full HD, bästa bildkvaliteten för priset', 'Owlet-appen är intuitiv och stabil', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
- cons={['Utökad molnlagring kostar extra', 'Kräver stabil WiFi-anslutning']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
- />
+  {/* Vinnaröversikt (bevarad princip från prod) */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Motorola PIP1710 Connect</strong> är bäst i test bland app-babyvakter, 1080p live-video via Hubble-appen, rörelsedetektering och push-notiser utan abonnemangskrav för grundfunktionerna.</p>
+  </div>
 
- <ProductCard
- name="Motorola Halo+"
- image="/images/products/motorola-halo.webp"
- badge="App + skärm"
- rating={4.4}
- ageRange="Från nyfödd"
- pros={['Fungerar via app OCH separat skärm', 'Backup om WiFi går ner, skärmen fungeraar', 'Hubble-appen med bra notisfunktioner', 'Bra pris för dubbelt övervakningssätt']}
- cons={['720p, lägre upplösning än Nanit och Owlet', 'Hubble-appen något enklare än Nanit/Owlet']}
- />
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
 
- <ProductCard
- name="Philips Avent SCD892/26 Babyvakt"
- image="/images/products/philips-avent-scd892-babyvakt.webp"
- badge="360° kamera"
- rating={4.3}
- ageRange="Från nyfödd"
- pros={['1080p Full HD live-ström via Ucare-appen', 'Rörelsedetektering och push-notiser', 'Tvåvägsljud och nattseende', 'Pålitligt varumärke med stabil appupplevelse']}
- cons={['Appen något enklare än Nanit/Owlet', 'Ingen inbyggd luftkvalitetsmätare']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt"
- />
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Motorola PIP1710 Connect, bäst i test</h2>
+    <MoneyProductCard
+      brand="Motorola"
+      name="Motorola PIP1710 Connect Babyvakt"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/motorola-pip1710-connect.webp"
+      imageAlt="Motorola PIP1710 Connect Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10310341&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1710-connect-babyvakt"
+      pros={['Hubble-appen med live-ström i 1080p Full HD', 'Push-notiser vid ljud och rörelse', 'Tvåvägsljud och nattseende med IR', 'Stabil WiFi-uppkoppling']}
+      cons={['Kräver stabil WiFi-anslutning', 'Premiumfunktioner kan kräva abonnemang']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Motorola PIP1710 Connect är vår vinnare bland app-babyvakter 2026. Via Hubble-appen ser du 1080p Full HD live-video direkt i mobilen, var du än befinner dig, och får push-notiser vid både ljud och rörelse. Tvåvägsljud och IR-nattseende ingår, så du kan både lyssna, prata och se barnet i mörker.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Appen fungerar på både iOS och Android och grundfunktionerna kräver inget abonnemang. WiFi-uppkopplingen är stabil i normalt hemmabruk, men som med alla app-babyvakter står och faller upplevelsen med din WiFi-täckning i barnrummet. Vissa premiumfunktioner kan kräva ett betalabonnemang.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10310341&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1710-connect-babyvakt" />
 
- <ProductCard
- name="Vtech VM5254 Babyvakt"
- image="/images/products/vtech-vm5254-babyvakt.webp"
- badge="Budgetval"
- rating={4.2}
- ageRange="Från nyfödd"
- pros={['Bra pris med app + separat föräldraenhet', 'Ingen obligatorisk månadsavgift', 'MyVTech-appen fungerar pålitligt', 'Temperaturvisning och vaggvisor']}
- cons={['720p, lägre bildkvalitet i mörker', 'App något enklare jämfört med Nanit/Owlet']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt"
- />
- </div>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Owlet Cam 2, enklast setup</h2>
+    <MoneyProductCard
+      brand="Owlet"
+      name="Owlet Cam 2"
+      rating={4.5}
+      rank={2}
+      badge="Enklast setup"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/owlet-cam-2.webp"
+      imageAlt="Owlet Cam 2"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage"
+      pros={['Enklast och snabbast installation i testet', '1080p Full HD, bästa bildkvaliteten för priset', 'Owlet-appen är intuitiv och stabil', 'Kan kombineras med Owlet Smart Sock för andningsövervakning']}
+      cons={['Utökad molnlagring kostar extra', 'Kräver stabil WiFi-anslutning']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Owlet Cam 2 har testets enklaste och snabbaste installation, du är igång på några minuter. Bildkvaliteten i 1080p Full HD är den bästa för pengarna, och Owlet-appen är intuitiv och stabil i daglig användning. Den kan dessutom kombineras med Owlet Smart Sock för andningsövervakning, ett populärt val för oroliga nyblivna föräldrar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Utökad molnlagring för videologgning och historik kostar extra, men grundfunktionerna är gratis. Liksom övriga app-babyvakter kräver Owlet Cam 2 en stabil WiFi-anslutning för att live-strömmen ska vara pålitlig.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228654&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-sleepy-sage" />
 
- <h2 class="font-heading text-xl font-bold mt-10 mb-4">Så väljer du babyvakt med app</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Motorola Halo+, app och skärm i ett</h2>
+    <MoneyProductCard
+      brand="Motorola"
+      name="Motorola Halo+"
+      rating={4.4}
+      rank={3}
+      badge="App + skärm"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/motorola-halo.webp"
+      imageAlt="Motorola Halo+"
+      pros={['Fungerar via app OCH separat skärm', 'Backup om WiFi går ner, skärmen fungerar', 'Hubble-appen med bra notisfunktioner', 'Bra pris för dubbelt övervakningssätt']}
+      cons={['720p, lägre upplösning än Nanit och Owlet', 'Hubble-appen något enklare än Nanit/Owlet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Motorola Halo+ skiljer sig från de rena app-babyvakterna genom att fungera både via Hubble-appen och en separat föräldraskärm. Det betyder backup, om WiFi går ner fortsätter skärmen att fungera via dedikerad signal. Det gör Halo+ till ett tryggt val för familjer med instabilt nät i barnrummet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Upplösningen ligger på 720p, lägre än Owlet Cam 2 och PIP1710 Connect, och Hubble-appen är något enklare i gränssnittet än de mest polerade alternativen. Modellen finns för närvarande inte hos någon av våra affiliate-butiker, så vi listar den som referens utan köpknapp.
+    </p>
 
- <div class="prose prose-sm text-text-light max-w-none">
- <h3>App-kvalitet, inte bara kameran</h3>
- <p>Kamerans bildkvalitet är viktig, men appen är det du faktiskt använder varje dag. En dålig app med hackig live-ström eller opålitliga notiser förstör upplevelsen oavsett hur bra kameran är. Nanit-appen och Owlet-appen är marknadsstandard, snabb live-ström, stabila notiser och enkel navigering. Testa alltid appen i appbutiken för aktuella recensioner innan köp.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Philips Avent SCD892/26, 360-kamera</h2>
+    <MoneyProductCard
+      brand="Philips Avent"
+      name="Philips Avent SCD892/26 Babyvakt"
+      rating={4.3}
+      rank={4}
+      badge="360° kamera"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/philips-avent-scd892-babyvakt.webp"
+      imageAlt="Philips Avent SCD892/26 Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt"
+      pros={['1080p Full HD live-ström via Ucare-appen', 'Rörelsedetektering och push-notiser', 'Tvåvägsljud och nattseende', 'Pålitligt varumärke med stabil appupplevelse']}
+      cons={['Appen något enklare än Nanit/Owlet', 'Ingen inbyggd luftkvalitetsmätare']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent SCD892/26 levererar 1080p Full HD live-ström via Ucare-appen, med rörelsedetektering och push-notiser. Tvåvägsljud och nattseende ingår och Philips är ett pålitligt varumärke med en stabil appupplevelse. Den fungerar väl för föräldrar som vill ha ett etablerat märke med bra bildkvalitet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ucare-appen är något enklare i funktionalitet än Nanit och Owlet, och kameran saknar inbyggd luftkvalitetsmätare som vissa premiummodeller har. För de flesta familjer räcker funktionerna gott och väl.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10250873&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd892-26-babyvakt" />
 
- <h3>Live-ström och fördröjning</h3>
- <p>Alla app-babyvakter har en viss fördröjning i live-strömmen, vanligtvis 1 till 3 sekunder. Det räcker för att övervaka ett sovande barn men kan upplevas som hackigt om barnet rör sig snabbt. Nanit Pro och Owlet Cam 2 uppges ha minst fördröjning enligt specifikationer och användaromdömen, tack vare optimerad kodning.</p>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Vtech VM5254, budgetval</h2>
+    <MoneyProductCard
+      brand="VTech"
+      name="Vtech VM5254 Babyvakt"
+      rating={4.2}
+      rank={5}
+      badge="Budgetval"
+      accentColor="#c2410c" bgColor="#7c2d12"
+      imageUrl="/images/products/vtech-vm5254-babyvakt.webp"
+      imageAlt="Vtech VM5254 Babyvakt"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt"
+      pros={['Bra pris med app + separat föräldraenhet', 'Ingen obligatorisk månadsavgift', 'MyVTech-appen fungerar pålitligt', 'Temperaturvisning och vaggvisor']}
+      cons={['720p, lägre bildkvalitet i mörker', 'App något enklare jämfört med Nanit/Owlet']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Vtech VM5254 är testets budgetval och kombinerar MyVTech-appen med en separat föräldraenhet, så du får både fjärråtkomst och en fristående skärm utan obligatorisk månadsavgift. Den har dessutom temperaturvisning och inbyggda vaggvisor, praktiska extrafunktioner för läggdags.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Upplösningen ligger på 720p, vilket märks framför allt i mörker där bilden blir grovkornigare än hos 1080p-modellerna. MyVTech-appen är enklare än Nanit och Owlet men fungerar pålitligt för grundläggande övervakning.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311928&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-vm5254-babyvakt" />
 
- <h3>Notiser, välj rätt känslighet</h3>
- <p>Rörelsevakt och ljudvakt skickar push-notiser till mobilen. Sätt känsligheten rätt, för hög känslighet ger konstanta notiser vid minsta rörelse, för låg och du missar när barnet vaknar. Nanit Pro har den mest sofistikerade algoritmen och skiljer automatiskt på barnets ljud och bakgrundsljud.</p>
+    <p class="text-text-light leading-relaxed mb-8">
+      Fem app-babyvakter, från Motorola PIP1710 Connect i topp till Vtech VM5254 som budgetval. Vill du fördjupa dig? Läs vår <a href="/babyvakter/" class="text-accent hover:text-accent-dark underline">kompletta test av bästa babyvakten</a> eller jämför med en <a href="/babyvakter/wifi/" class="text-accent hover:text-accent-dark underline">WiFi-babyvakt</a>.
+    </p>
 
- <h3>Molnlagring vs utan abonnemang</h3>
- <p>Nanit och Owlet erbjuder betald molnlagring för videologgning och historik. VTech VM819 och Motorola Halo+ kräver inga abonnemang för grundfunktioner. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning och notiser utan extra kostnad.</p>
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Babyvakter med app 2026" />
 
- <h3>Säkerhet och integritet</h3>
- <p>En app-babyvakt skickar videoström via internet, vilket ställer krav på säkerhet. Grundreglerna:</p>
- <ul>
- <li><strong>Välj etablerat varumärke:</strong> Nanit Pro och Owlet Cam 2 använder end-to-end-kryptering</li>
- <li><strong>Byt standardlösenord</strong> direkt vid installation</li>
- <li><strong>Aktivera tvåfaktorsautentisering</strong> om kameran erbjuder det</li>
- <li><strong>Håll firmware uppdaterad:</strong> tillverkarna släpper regelbundet säkerhetsuppdateringar</li>
- </ul>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så väljer du babyvakt med app</h2>
 
- <h3>WiFi-krav och placering</h3>
- <p>App-babyvakter kräver stabil WiFi-anslutning. En 5 GHz-anslutning ger bättre prestanda om kameran är nära routern, men 2,4 GHz har bättre räckvidd genom väggar. De flesta babyvakt-kameror stödjer båda frekvenserna. Placera kameran minst 1 meter från spjälsängen och fäst sladden utom räckhåll för barnet. Takmonterade kameror som Nanit Pro eliminerar sladdrisken helt.</p>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">App-kvalitet, inte bara kameran</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Kamerans bildkvalitet är viktig, men appen är det du faktiskt använder varje dag. En dålig app med hackig live-ström eller opålitliga notiser förstör upplevelsen oavsett hur bra kameran är. Nanit-appen och Owlet-appen är marknadsstandard, snabb live-ström, stabila notiser och enkel navigering. Testa alltid appen i appbutiken för aktuella recensioner innan köp.
+    </p>
 
- <h3>Babyvakt-app vs traditionell babyvakt</h3>
- <p>En traditionell babyvakt med separat föräldraenhet fungerar utan WiFi och internet, pålitligt men begränsat till hemmet. En app-babyvakt ger fjärråtkomst varifrån som helst, bättre bildkvalitet och smarta funktioner som sömnanalys. Nackdelen är beroendet av WiFi. Det bästa av båda världar: Motorola Halo+ som har både app och separat skärm, eller VTech VM819 med 4,3-tumsskärm plus app-stöd.</p>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Live-ström och fördröjning</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Alla app-babyvakter har en viss fördröjning i live-strömmen, vanligtvis 1 till 3 sekunder. Det räcker för att övervaka ett sovande barn men kan upplevas som hackigt om barnet rör sig snabbt. Nanit Pro och Owlet Cam 2 uppges ha minst fördröjning enligt specifikationer och användaromdömen, tack vare optimerad kodning.
+    </p>
 
- <div class="mt-10 p-5 bg-bg-alt rounded-xl border border-border">
- <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
- <ul class="space-y-2 text-sm">
- <li>
- <a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a>
- </li>
- <li>
- <a href="/babyvakter/kamera/" class="text-accent underline">Bästa babyvakt med kamera 2026, se och hör ditt barn</a>
- </li>
- <li>
- <a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a>
- </li>
- </ul>
- </div>
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Notiser, välj rätt känslighet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Rörelsevakt och ljudvakt skickar push-notiser till mobilen. Sätt känsligheten rätt, för hög känslighet ger konstanta notiser vid minsta rörelse, för låg och du missar när barnet vaknar. Nanit Pro har den mest sofistikerade algoritmen och skiljer automatiskt på barnets ljud och bakgrundsljud.
+    </p>
 
- <FAQ items={faqItems} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Molnlagring vs utan abonnemang</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nanit och Owlet erbjuder betald molnlagring för videologgning och historik. VTech VM819 och Motorola Halo+ kräver inga abonnemang för grundfunktioner. Överväg om du verkligen behöver sparade inspelningar, för de flesta räcker realtidsvisning och notiser utan extra kostnad.
+    </p>
 
- <CTABox productName="Babyvakt med app" store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228653&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/owlet-cam-2-babyvakt-white" description="Stort urval app-babyvakter, Nanit, Owlet, Motorola och mer." />
-<ProductSchema products={[
- { name: 'Motorola PIP1710 Connect Babyvakt', description: 'Smart WiFi-babykamera med Hubble-app, 1080p live-ström och push-notiser. Bäst i test bland app-babyvakter.', brand: 'Motorola', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Owlet Cam 2', description: 'WiFi-babykamera med enkel app och tydlig HD-bild. Enklast att sätta upp.', brand: 'Owlet', ratingValue: 4.5, reviewCount: 1 },
- { name: 'Motorola Halo+', description: 'App-babyvakt med skärm och mobilapp kombinerat. 360-kamera och lång batteritid.', brand: 'Motorola', ratingValue: 4.4, reviewCount: 1 },
- { name: 'Philips Avent SCD892/26 Babyvakt', description: 'WiFi-babykamera med Ucare-app, 1080p live-ström och rörelsedetektering.', brand: 'Philips Avent', ratingValue: 4.3, reviewCount: 1 },
- { name: 'Vtech VM5254 Babyvakt', description: 'Budgetvänlig app-babyvakt med WiFi, föräldraenhet och tydlig bild.', brand: 'VTech', ratingValue: 4.2, reviewCount: 1 },
- ]} />
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Säkerhet och integritet</h3>
+    <p class="text-text-light leading-relaxed mb-3">
+      En app-babyvakt skickar videoström via internet, vilket ställer krav på säkerhet. Grundreglerna:
+    </p>
+    <ul class="list-disc pl-5 space-y-1.5 text-text-light leading-relaxed mb-4">
+      <li><strong>Välj etablerat varumärke:</strong> Nanit Pro och Owlet Cam 2 använder end-to-end-kryptering</li>
+      <li><strong>Byt standardlösenord</strong> direkt vid installation</li>
+      <li><strong>Aktivera tvåfaktorsautentisering</strong> om kameran erbjuder det</li>
+      <li><strong>Håll firmware uppdaterad:</strong> tillverkarna släpper regelbundet säkerhetsuppdateringar</li>
+    </ul>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">WiFi-krav och placering</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      App-babyvakter kräver stabil WiFi-anslutning. En 5 GHz-anslutning ger bättre prestanda om kameran är nära routern, men 2,4 GHz har bättre räckvidd genom väggar. De flesta babyvakt-kameror stödjer båda frekvenserna. Placera kameran minst 1 meter från spjälsängen och fäst sladden utom räckhåll för barnet. Takmonterade kameror som Nanit Pro eliminerar sladdrisken helt.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Babyvakt-app vs traditionell babyvakt</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En traditionell babyvakt med separat föräldraenhet fungerar utan WiFi och internet, pålitligt men begränsat till hemmet. En app-babyvakt ger fjärråtkomst varifrån som helst, bättre bildkvalitet och smarta funktioner som sömnanalys. Nackdelen är beroendet av WiFi. Det bästa av båda världar: Motorola Halo+ som har både app och separat skärm, eller VTech VM819 med 4,3-tumsskärm plus app-stöd.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat app-babyvakter utifrån fyra kriterier: appkvalitet (stabilitet, navigering, notiser), bild och video (upplösning, nattseende, fördröjning), uppkoppling (WiFi-krav, backup vid bortfall) och säkerhet (kryptering, integritet, firmware). Produkterna är valda bland de mest sålda och eftersökta app-babyvakterna i Sverige. Ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a></li>
+        <li><a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a></li>
+        <li><a href="/babyvakter/kamera/" class="text-accent underline">Bästa babyvakt med kamera 2026, se och hör ditt barn</a></li>
+        <li><a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, test och jämförelse</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD (utan Offer/price: no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa babyvakten med app 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) -> vinnaren PIP1710 Connect */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10310341&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/motorola-pip1710-connect-babyvakt"
+    text="Bra pris hos Jollyroom"
+    productName="Motorola PIP1710 Connect"
+  />
+
 </ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>
