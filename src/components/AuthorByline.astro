@@ -1,31 +1,36 @@
 ---
 /**
  * E-E-A-T-kompatibel author byline.
- * Visar foto, namn (länkad), titel, bio-snippet, publicerings- + uppdateringsdatum.
- * Schema.org Person JSON-LD inkluderad för structured data.
+ * Visar Axel Jönemyr som avsändare (foto + namn + titel), bio-snippet samt
+ * publicerings- och uppdateringsdatum. Schema.org Person JSON-LD inkluderad.
  */
 interface Props {
- author?: string;
- authorTitle?: string;
- authorImage?: string;
- authorBio?: string;
- datePublished?: string;
- dateModified?: string;
- readingTimeMinutes?: number;
+  author?: string;
+  authorTitle?: string;
+  authorBio?: string;
+  authorImage?: string;
+  authorHref?: string;
+  authorType?: 'Organization' | 'Person';
+  datePublished?: string;
+  dateModified?: string;
+  readingTimeMinutes?: number;
 }
 
 const {
- author = 'Bebisguidens redaktion',
- authorTitle = 'Oberoende granskning av barnprodukter',
- authorBio = 'Vi jämför barnprodukter utifrån oberoende krocktester, säkerhetsstandarder, specifikationer och pris. Bebisguiden är en oberoende guide, inte vårdpersonal.',
- datePublished,
- dateModified,
- readingTimeMinutes,
+  author = 'Axel Jönemyr',
+  authorTitle = 'Redaktör, Bebisguiden',
+  authorBio = 'Axel granskar barnvagnar, bilbarnstolar och babyutrustning utifrån verifierbar data, säkerhet och pris, så svenska föräldrar enklare hittar rätt.',
+  authorImage = '/images/axel-jonemyr.webp',
+  authorHref = '/om-redaktionen/',
+  authorType = 'Person',
+  datePublished,
+  dateModified,
+  readingTimeMinutes,
 } = Astro.props;
 
 const formatDate = (dateStr: string) => {
- const d = new Date(dateStr);
- return d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
 };
 
 const showPublished = !!datePublished;
@@ -33,37 +38,54 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
 ---
 
 <div class="flex items-start gap-4 py-4 mb-6 border-y border-gray-200">
- <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
- <span class="flex items-center justify-center w-14 h-14 rounded-full bg-sky-100 text-sky-700 ring-2 ring-gray-100" aria-hidden="true">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9.75h6M9 12h6m-6 2.25h3"/></svg>
- </span>
- </a>
- <div class="flex-1 min-w-0">
- <div class="leading-snug">
- <a href="/om-redaktionen/" class="font-semibold text-gray-900 hover:text-sky-700 transition-colors">{author}</a>
- <span class="text-sm text-gray-500 block">{authorTitle}</span>
- </div>
- {(showPublished || showUpdated || readingTimeMinutes) && (
- <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-gray-500 mt-1.5">
- {showPublished && (
- <span>Publicerad: <time datetime={datePublished}>{formatDate(datePublished!)}</time></span>
- )}
- {showUpdated && (
- <span>Uppdaterad: <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>
- )}
- {readingTimeMinutes && (
- <span>Lästid: {readingTimeMinutes} min</span>
- )}
- </div>
- )}
- </div>
+  <a href={authorHref} aria-label={`Om ${author}`} class="shrink-0">
+    {authorImage ? (
+      <img src={authorImage} alt={author} width="56" height="56" loading="lazy" class="w-14 h-14 rounded-full object-cover ring-2 ring-gray-100" />
+    ) : (
+      <span class="flex items-center justify-center w-14 h-14 rounded-full bg-sky-100 text-sky-700 ring-2 ring-gray-100" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9.75h6M9 12h6m-6 2.25h3"/></svg>
+      </span>
+    )}
+  </a>
+  <div class="flex-1 min-w-0">
+    <div class="leading-snug">
+      <a href={authorHref} class="font-semibold text-gray-900 hover:text-sky-700 transition-colors">{author}</a>
+      <span class="text-sm text-gray-600 block">{authorTitle}</span>
+    </div>
+    {authorBio && (
+      <p class="text-xs text-gray-600 mt-1 leading-snug">{authorBio}</p>
+    )}
+    {(showPublished || showUpdated || readingTimeMinutes) && (
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-gray-600 mt-1.5">
+        {showPublished && (
+          <span>Publicerad: <time datetime={datePublished}>{formatDate(datePublished!)}</time></span>
+        )}
+        {showUpdated && (
+          <span>Uppdaterad: <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>
+        )}
+        {readingTimeMinutes && (
+          <span>Lästid: {readingTimeMinutes} min</span>
+        )}
+      </div>
+    )}
+  </div>
 </div>
 
 <script type="application/ld+json" set:html={JSON.stringify({
- '@context': 'https://schema.org',
- '@type': 'Organization',
- name: author,
- url: 'https://bebisguiden.se/om-redaktionen/',
- description: authorBio,
- knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'amning', 'i-Size', 'ISOFIX']
+  '@context': 'https://schema.org',
+  '@type': authorType,
+  name: author,
+  url: `https://bebisguiden.se${authorHref}`,
+  description: authorBio,
+  ...(authorType === 'Person' ? {
+    jobTitle: authorTitle,
+    worksFor: { '@type': 'Organization', name: 'Bebisguiden', url: 'https://bebisguiden.se' },
+    sameAs: [
+      'https://www.instagram.com/axlpxl/',
+      'https://www.strava.com/athletes/2699302',
+      'https://www.linkedin.com/in/axel-j%C3%B6nemyr-ba1443170/',
+    ],
+  } : {}),
+  ...(authorImage ? { image: `https://bebisguiden.se${authorImage}` } : {}),
+  knowsAbout: ['barnvagnar', 'bilbarnstolar', 'blöjor', 'amning', 'spjälsängar', 'babyutrustning']
 })} />
