@@ -1,0 +1,175 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import RetailerCTAs from '../../components/RetailerCTAs.astro';
+
+const breadcrumbs = [
+ { label: 'Hem', href: '/' },
+ { label: 'Guider', href: '/guider/' },
+ { label: 'Klädstorlekar för bebis' },
+];
+
+const faqItems = [
+ {
+ question: 'Vilken storlek har en nyfödd?',
+ answer: 'De flesta nyfödda börjar i storlek 50, som motsvarar en kroppslängd på ungefär 50 cm och passar de första veckorna. Ett stort barn kan hoppa direkt till storlek 56. Har du ett väntat barn med okänd längd är storlek 50 och 56 de tryggaste första inköpen.',
+ },
+ {
+ question: 'Hur vet jag rätt storlek på bebiskläder?',
+ answer: 'Mät barnets längd i centimeter från hjässa till fotsula. Svenska och europeiska klädstorlekar bygger på just längden, inte åldern, så en bebis på 62 cm har storlek 62 oavsett om barnet är två eller fyra månader. Mät om med några veckors mellanrum eftersom tillväxten går snabbt.',
+ },
+ {
+ question: 'Ska man köpa en storlek större?',
+ answer: 'Ofta ja. En storlek större ger plats för tillväxt, blöja och lager under, och kläderna hinner användas längre innan de blir för små. Bebisar växer flera centimeter i månaden i början, så plagg i exakt rätt storlek sitter sällan bra särskilt länge.',
+ },
+ {
+ question: 'Vad betyder storlekarna på bebiskläder?',
+ answer: 'Siffran är barnets längd i centimeter. Storlek 62 betyder att plagget passar ett barn som är cirka 62 cm långt. Åldersangivelsen på lappen är bara en ungefärlig vägledning, eftersom två jämngamla bebisar kan skilja sig flera storlekar i längd.',
+ },
+ {
+ question: 'Hur många av varje storlek behöver man?',
+ answer: 'Räkna med att storlek 50 och 56 används kort, så köp bara några få plagg i varje. Från storlek 62 och uppåt håller varje storlek längre, cirka två månader, och där lönar det sig att satsa på fler bodyer och sparkdräkter. Komplettera hellre efterhand än köpa mycket på förhand.',
+ },
+];
+
+export const articleMeta = {
+ title: "Klädstorlekar för bebis: storleksguide efter ålder och längd",
+ description: "Storleksguide för bebiskläder: se vilken klädstorlek i cm som passar vid varje ålder, från 50 till 86. Storleken styrs av längd, inte ålder.",
+ publishDate: "2026-07-07",
+ category: "Guider",
+ image: "/images/guide-kladstorlekar-bebis.webp",
+};
+---
+
+<ArticleLayout
+ image={articleMeta.image}
+ title="Klädstorlekar för bebis: storleksguide efter ålder och längd"
+ description="Storleksguide för bebiskläder: se vilken klädstorlek i cm som passar vid varje ålder, från 50 till 86. Storleken styrs av längd, inte ålder."
+ breadcrumbs={breadcrumbs}
+ updatedDate="2026-07-07"
+ showDisclaimer={false}
+ datePublished="2026-07-07"
+>
+ <div class="prose prose-base max-w-none text-text">
+
+ <p class="lead text-lg text-text-light mb-6">
+ Klädstorlekar för bebis förvirrar de flesta nyblivna föräldrar, eftersom siffran på lappen inte är åldern utan barnets längd i centimeter. Den här guiden visar vilken storlek som passar vid varje ålder, varför du bör utgå från längden och när det lönar sig att köpa en storlek större.
+ </p>
+
+ <figure class="rounded-2xl overflow-hidden mb-8 not-prose">
+ <img
+ src="/images/guide-kladstorlekar-bebis.webp"
+ alt="Prydligt vikta bebiskläder i olika storlekar för nyfödd"
+ class="w-full h-56 sm:h-64 object-cover"
+ width="800"
+ height="533"
+ loading="lazy"
+ />
+ <figcaption class="text-xs text-text-muted text-center mt-2">Foto: Unsplash (fri licens)</figcaption>
+ </figure>
+
+ <div class="not-prose bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+ <p class="text-sm font-semibold text-blue-900 mb-1">Snabbt svar</p>
+ <p class="text-sm text-blue-800">Svenska och europeiska bebiskläder märks efter barnets längd i centimeter. Storlek 50 passar en nyfödd, 56 kring 1 till 2 månader, 62 vid 2 till 4 månader, 68 vid 4 till 6 månader och 74 vid 6 till 9 månader. Utgå alltid från längden, inte åldern, och köp hellre en storlek större.</p>
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-6 mb-4">Storlekstabell: klädstorlek i cm mot ålder</h2>
+ <p>
+ Tabellen nedan visar hur svenska klädstorlekar hänger ihop med barnets längd och en ungefärlig ålder. Storleken är alltid lika med längden i centimeter, medan åldern bara är en vägledning. Använd den för att välja rätt när du köper eller får kläder i present.
+ </p>
+
+ <div class="not-prose overflow-x-visible mt-4 mb-6">
+ <table class="w-full text-sm border-collapse rounded-xl overflow-hidden">
+  <thead>
+   <tr class="bg-accent/10">
+    <th class="text-left p-3 border border-border font-semibold">Storlek</th>
+    <th class="text-left p-3 border border-border font-semibold">Barnets längd</th>
+    <th class="text-left p-3 border border-border font-semibold">Ungefärlig ålder</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td class="p-3 border border-border font-medium">50</td>
+    <td class="p-3 border border-border">Upp till 50 cm</td>
+    <td class="p-3 border border-border">Nyfödd, 0 till 1 månad</td>
+   </tr>
+   <tr class="bg-bg-alt">
+    <td class="p-3 border border-border font-medium">56</td>
+    <td class="p-3 border border-border">51 till 56 cm</td>
+    <td class="p-3 border border-border">1 till 2 månader</td>
+   </tr>
+   <tr>
+    <td class="p-3 border border-border font-medium">62</td>
+    <td class="p-3 border border-border">57 till 62 cm</td>
+    <td class="p-3 border border-border">2 till 4 månader</td>
+   </tr>
+   <tr class="bg-bg-alt">
+    <td class="p-3 border border-border font-medium">68</td>
+    <td class="p-3 border border-border">63 till 68 cm</td>
+    <td class="p-3 border border-border">4 till 6 månader</td>
+   </tr>
+   <tr>
+    <td class="p-3 border border-border font-medium">74</td>
+    <td class="p-3 border border-border">69 till 74 cm</td>
+    <td class="p-3 border border-border">6 till 9 månader</td>
+   </tr>
+   <tr class="bg-bg-alt">
+    <td class="p-3 border border-border font-medium">80</td>
+    <td class="p-3 border border-border">75 till 80 cm</td>
+    <td class="p-3 border border-border">9 till 12 månader</td>
+   </tr>
+   <tr>
+    <td class="p-3 border border-border font-medium">86</td>
+    <td class="p-3 border border-border">81 till 86 cm</td>
+    <td class="p-3 border border-border">12 till 18 månader</td>
+   </tr>
+  </tbody>
+ </table>
+ </div>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Varför storleken styrs av längd och inte ålder</h2>
+ <p>
+ Klädstorlek på bebis är barnets längd i centimeter, inte en åldersgräns. Två jämngamla barn kan skilja sig med en eller två storlekar eftersom de växer i olika takt. Ett barn på 62 cm har storlek 62 oavsett om det är två eller fyra månader gammalt. Därför ska du alltid mäta längden först.
+ </p>
+ <p>
+ Åldersangivelsen som ofta står bredvid storleken, till exempel "3 till 6 månader", bygger på ett genomsnitt och stämmer sällan exakt med ditt barn. Långa spädbarn hoppar snabbt förbi de minsta storlekarna, medan kortare barn kan använda samma storlek längre. Lita på måttbandet, inte på kalendern.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Så mäter du barnets längd rätt</h2>
+ <p>
+ Lägg barnet på rygg på ett plant underlag och mät från hjässan till fotsulan med benen mjukt utsträckta. Notera längden i centimeter och matcha mot storlekstabellen. Eftersom bebisar växer flera centimeter i månaden i början bör du mäta om var tredje till fjärde vecka innan du köper nya kläder.
+ </p>
+ <p>
+ Har du inget måttband kan du lägga barnet på en filt, markera hjässa och häl med två pennstreck och mäta avståndet efteråt. Väg gärna in att barnet ofta drar upp benen, så sträck ut dem försiktigt precis när du mäter för att få ett rättvisande mått.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">När det lönar sig att köpa en storlek större</h2>
+ <p>
+ Att köpa en storlek större är oftast smart för bebiskläder. En större storlek ger plats för blöja, ett lager under och den snabba tillväxten, och plagget hinner användas i flera veckor extra innan det blir för litet. Riktigt tajta kläder sitter sällan bra särskilt länge på ett spädbarn.
+ </p>
+ <p>
+ Undantaget är sovsäckar och plagg där passform är en säkerhetsfråga, där för stort kan bli farligt. För bodyer, sparkdräkter, tröjor och byxor är däremot en storlek större nästan alltid att föredra. Läs mer i vår guide om <a href="/babyklader/body/" class="text-accent underline">bästa babybody</a> där passform och material går hand i hand.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Hur mycket du behöver av varje storlek</h2>
+ <p>
+ Storlek 50 och 56 används bara några veckor vardera, så köp få plagg i dessa. Från storlek 62 och uppåt håller varje storlek runt två månader, och där lönar det sig att satsa på fler bodyer och sparkdräkter. Komplettera hellre efterhand än att köpa stora mängder på förhand.
+ </p>
+ <p>
+ En vanlig grunduppsättning per aktiv storlek är cirka sex till åtta bodyer, fyra till sex sparkdräkter eller set och några par strumpor eller tossor. Bebisar byter ofta kläder på grund av kladd och läckage, så fler bodyer än du tror är en god investering. Se vår <a href="/guider/vad-behover-nyfodd/" class="text-accent underline">lista över vad en nyfödd behöver</a> för en komplett översikt.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Skillnader mellan märken och material</h2>
+ <p>
+ Även om storleken alltid är längden i centimeter kan passformen variera något mellan märken. Vissa märken sitter smalt medan andra är rymligare, och stickade eller ylleplagg kan kännas mindre än bomull i samma storlek. Kolla märkets egen storleksguide vid osäkerhet och läs recensioner om plagget sitter litet eller stort.
+ </p>
+ <p>
+ Material påverkar också hur länge ett plagg passar. Bomull krymper ofta lite i tvätten, medan merinoull och stretchiga blandningar behåller formen bättre. Väljer du plagg med vikbara ärmar och ben kan barnet använda samma storlek lite längre. Utforska fler val i vår översikt över <a href="/babyklader/" class="text-accent underline">bästa babykläder</a>.
+ </p>
+
+ </div>
+
+ <FAQ items={faqItems} />
+
+ <RetailerCTAs heading="Jämför pris hos våra partnerbutiker" compact />
+</ArticleLayout>
