@@ -1,0 +1,496 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Babyvakter', href: '/babyvakter/' },
+  { label: 'Utan WiFi' },
+];
+
+// Featured/vinnare: Philips Avent DECT SCD503/26. Verifierad tracker ur Jollyroom-feeden (cupa_sku=10058221).
+const scd503Url = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10058221&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-dect-scd50326-babyvakt';
+
+// No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
+
+// Money page-mallens datamodell. Alla sex är slutna DECT/FHSS-vakter UTAN WiFi.
+// Affiliate-länkar och bilder är verifierade och återanvända oförändrade från
+// systersidorna (index/kamera/budget) enligt NOLLTOLERANS. SCD831 (WiFi) och
+// Motorola VM75 (WiFi som tillval) är medvetet exkluderade, de hör inte hemma här.
+const products = [
+  {
+    name: 'Philips Avent DECT SCD503/26',
+    desc: 'Ljudbabyvakt med sluten DECT-signal, kristallklart ljud och 330 meters räckvidd. Upp till 24 timmars batteritid i sparläge och ingen WiFi-uppkoppling som kan hackas.',
+    brand: 'Philips',
+    rating: 4.7,
+    badge: 'Bäst i test',
+    usps: ['Sluten DECT, ingen WiFi', '330 m räckvidd', '24 h batteritid'],
+    store: 'Jollyroom',
+    affiliateUrl: scd503Url,
+    imageUrl: '/images/products/philips-avent-dect-scd503-26.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    features: { 'Typ': 'Ljud (DECT)', 'Räckvidd': '330 m', 'Batteritid': '24 h (sparläge)', 'Signal': 'DECT, ingen WiFi' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent SCD735/26',
+    desc: 'Videobabyvakt med nattkamera och sluten DECT-teknik, så du får bild utan att gå via internet. Temperaturvisning och lugnande ljus. 300 meters räckvidd.',
+    brand: 'Philips',
+    rating: 4.6,
+    badge: 'Bäst video utan WiFi',
+    usps: ['Video via DECT, ingen WiFi', 'Nattkamera + temperatur', '300 m räckvidd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus',
+    imageUrl: '/images/products/philips-avent-scd735-26.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    features: { 'Typ': 'Video (DECT)', 'Räckvidd': '300 m', 'Batteritid': '10 h (sparläge)', 'Signal': 'DECT, ingen WiFi' },
+    alsoAt: [],
+  },
+  {
+    name: 'Neonate BC-5800D V2',
+    desc: 'Den klassiska svenska ljudbabyvakten med sluten DECT-signal, 300 meters räckvidd och inbyggd nattlampa. Enkel, pålitlig och utan app eller uppkoppling att hålla reda på.',
+    brand: 'Neonate',
+    rating: 4.3,
+    badge: 'Populärast i Sverige',
+    usps: ['Sluten DECT-signal', '300 m räckvidd', 'Nattlampa ingår'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt',
+    imageUrl: '/images/products/neonate-bc-5800d-v2.webp',
+    accentColor: '#c2410c', bgColor: '#7c2d12',
+    features: { 'Typ': 'Ljud (DECT)', 'Räckvidd': '300 m', 'Batteritid': '6 h', 'Signal': 'DECT, ingen WiFi' },
+    alsoAt: [],
+  },
+  {
+    name: 'Miniland Compact 3.5 Video Babyvakt',
+    desc: 'Kompakt videobabyvakt med 3,5-tumsskärm och sluten DECT-signal. Ger bild utan WiFi-beroende och är lätt att ta med på resa tack vare det lilla formatet.',
+    brand: 'Miniland',
+    rating: 4.3,
+    badge: 'Bäst för resan',
+    usps: ['Video 3,5" utan WiFi', 'Sluten DECT-signal', 'Kompakt för resa'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt',
+    imageUrl: '/images/products/miniland-compact-3-5-video-babyvakt.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    features: { 'Typ': 'Video (DECT)', 'Räckvidd': '300 m', 'Batteritid': 'Ca 8 h', 'Signal': 'DECT, ingen WiFi' },
+    alsoAt: [],
+  },
+  {
+    name: 'Neonate Babyvakt BC-8000DV',
+    desc: 'Budgetvänlig videobabyvakt med sluten DECT-signal och 3,5-tumsskärm. IR-nattseende och ingen WiFi att koppla upp, ett enkelt val för dig som vill ha bild till lågt pris.',
+    brand: 'Neonate',
+    rating: 4.1,
+    badge: 'Budgetvideo',
+    usps: ['Video utan WiFi', '3,5-tumsskärm', 'IR-nattseende'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt',
+    imageUrl: '/images/products/neonate-bc-8000dv-babyvakt.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    features: { 'Typ': 'Video (DECT)', 'Räckvidd': '300 m', 'Batteritid': 'Ca 6 h', 'Signal': 'DECT, ingen WiFi' },
+    alsoAt: [],
+  },
+  {
+    name: 'Vtech DM1111 Babyvakt, Vit',
+    desc: 'Prisvärd ljudbabyvakt för grundläggande övervakning. Sluten DECT-signal utan WiFi-risk, klart ljud och 300 meters räckvidd. Enkel att använda och pålitlig.',
+    brand: 'VTech',
+    rating: 4.2,
+    badge: 'Billigast',
+    usps: ['Sluten DECT-signal', '300 m räckvidd', 'Enkel att använda'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit',
+    imageUrl: '/images/products/vtech-dm1111-babyvakt-vit.webp',
+    accentColor: '#0f766e', bgColor: '#134e4a',
+    features: { 'Typ': 'Ljud (DECT)', 'Räckvidd': '300 m', 'Batteritid': 'Ca 15 h', 'Signal': 'DECT, ingen WiFi' },
+    alsoAt: [],
+  },
+];
+
+// Spec-tabellens features = de fyra grundspeccen.
+const specProducts = products.map((p) => ({ name: p.name, imageUrl: p.imageUrl, features: p.features }));
+const specLabels = ['Typ', 'Räckvidd', 'Batteritid', 'Signal'];
+
+const faqItems = [
+  {
+    question: 'Vilken babyvakt är bäst utan WiFi 2026?',
+    answer: 'Philips Avent DECT SCD503/26 är vårt val bland babyvakter utan WiFi 2026. Den använder sluten DECT-signal som sänds direkt mellan enheterna utan internet, har 330 meters räckvidd och upp till 24 timmars batteritid i sparläge. Vill du ha bild i stället för bara ljud är Philips Avent SCD735/26 en videobabyvakt med samma DECT-teknik, och Neonate BC-5800D V2 är den mest köpta ljudvakten i Sverige.',
+  },
+  {
+    question: 'Varför välja en babyvakt utan WiFi?',
+    answer: 'En babyvakt utan WiFi sänder via en sluten radiosignal (DECT eller FHSS) i stället för via ditt hemnätverk. Det gör att den inte kan nås utifrån via internet, du slipper appar, konton och molnlagring, och signalen fungerar även om internet ligger nere. Många föräldrar väljer den för att den är enklare att använda och tryggare ur ett integritets- och säkerhetsperspektiv.',
+  },
+  {
+    question: 'Kan en babyvakt utan WiFi hackas?',
+    answer: 'En babyvakt med sluten DECT- eller FHSS-signal går inte att nå via internet, så den kan inte hackas på distans som en WiFi-kamera. Signalen är krypterad och sänds bara mellan kameran och föräldraenheten inom räckhåll. Det är just därför den slutna tekniken rekommenderas för dig som är orolig för att en uppkopplad kamera ska kunna avlyssnas.',
+  },
+  {
+    question: 'Vad är skillnaden mellan DECT och WiFi-babyvakt?',
+    answer: 'DECT är en sluten radiostandard som kopplar kameran direkt till föräldraenheten utan internet, med låg fördröjning och hög säkerhet. En WiFi-babyvakt sänder i stället via ditt hemnätverk och låter dig titta via app var du än är, men kräver stabil uppkoppling och har högre risk för säkerhetsbrister. DECT väljer du för trygghet och enkelhet, WiFi för att kunna titta hemifrån.',
+  },
+  {
+    question: 'Finns det videobabyvakt utan WiFi?',
+    answer: 'Ja. Philips Avent SCD735/26, Miniland Compact 3.5 och Neonate BC-8000DV är alla videobabyvakter med sluten DECT-signal. Du får en egen skärm på föräldraenheten och bild i realtid utan att kameran kopplas upp mot internet. Du kan alltså se barnet utan app, konto eller WiFi.',
+  },
+  {
+    question: 'Har babyvakter utan WiFi bra räckvidd?',
+    answer: 'Ja, ofta bättre än WiFi-modeller. De flesta DECT-vakter uppger 300 till 330 meters räckvidd utomhus utan hinder. Inomhus minskar räckvidden, räkna med ungefär en tredjedel, men det räcker gott och väl i en lägenhet eller ett normalstort hus. En WiFi-babyvakt är i stället beroende av att ditt nätverk når hela vägen fram.',
+  },
+];
+
+export const articleMeta = {
+  title: "Babyvakt utan WiFi bäst i test 2026: DECT-vakter utan uppkoppling",
+  description: "Babyvakt utan WiFi bäst i test 2026. Vi jämför sex slutna DECT-babyvakter, ljud och video, som inte kan hackas via internet. Philips Avent SCD503/26 vinner.",
+  publishDate: "2026-07-15",
+  category: "Babyvakter",
+  image: "/images/products/philips-avent-dect-scd503-26.webp",
+};
+---
+
+<ArticleLayout
+  title="Babyvakt utan WiFi bäst i test 2026: DECT-vakter utan uppkoppling"
+  description="Babyvakt utan WiFi bäst i test 2026. Sex slutna DECT-babyvakter jämförda, ljud och video, som inte kan hackas via internet. Philips Avent SCD503/26 vinner."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/babyvakter/utan-wifi/"
+  datePublished="2026-07-15"
+  showAuthor={false}
+>
+
+  {/* 1. Redaktions-byline överst (slim, money page-mallen) */}
+  <MoneyByline datePublished="2026-07-15" dateModified="2026-07-15" />
+
+  {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken babyvakt är bäst utan WiFi?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Philips Avent DECT SCD503/26 är vårt val bland babyvakter utan WiFi 2026. Den sänder via sluten DECT-signal direkt mellan enheterna, utan internet, så den kan inte hackas utifrån. Räckvidden är 330 meter och batteritiden upp till 24 timmar i sparläge. Vill du ha bild väljer du videobabyvakten Philips Avent SCD735/26, och Neonate BC-5800D V2 är den mest köpta ljudvakten i Sverige. Vi jämför sex slutna DECT-babyvakter nedan.
+    </p>
+  </div>
+
+  {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Philips"
+    name="Avent DECT SCD503/26"
+    image="/images/products/philips-avent-dect-scd503-26.webp"
+    trackedUrl={scd503Url}
+    store="Jollyroom"
+    description="Bäst i test bland babyvakter utan WiFi 2026. Sluten DECT-signal utan internet, kristallklart ljud, 330 meters räckvidd och upp till 24 timmars batteritid i sparläge. Bästa valet för dig som vill ha en trygg och enkel vakt utan app eller uppkoppling."
+  />
+
+  {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Babyvakter utan WiFi 2026" />
+
+  {/* Vinnaröversikt */}
+  <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
+    <p class="text-sm font-semibold text-accent-dark mb-1">Redaktionens val 2026</p>
+    <p class="text-sm text-text-light"><strong>Philips Avent DECT SCD503/26</strong> är bäst i test bland babyvakter utan WiFi 2026, med sluten DECT-signal, 330 meters räckvidd och upp till 24 timmars batteritid. För dig som vill ha bild är <strong>Philips Avent SCD735/26</strong> den bästa videobabyvakten utan WiFi.</p>
+  </div>
+
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Philips Avent DECT SCD503/26, bäst i test</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent DECT SCD503/26"
+      rating={4.7}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/philips-avent-dect-scd503-26.webp"
+      imageAlt="Philips Avent DECT SCD503/26 babyvakt utan WiFi"
+      store="Jollyroom"
+      buyUrl={scd503Url}
+      pros={['Sluten DECT-signal, kan inte hackas via internet', 'Lång räckvidd (330 m)', 'Upp till 24 timmars batteritid i sparläge']}
+      cons={['Endast ljud, ingen bild', 'Inga smarta extrafunktioner']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent DECT SCD503/26 är vårt förstaval bland babyvakter utan WiFi. Den använder DECT, en sluten radiostandard som kopplar kameran direkt till föräldraenheten utan att gå via internet. Det betyder att ingen kan nå den utifrån, du slipper app och konto, och ljudet är kristallklart utan brus.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Räckvidden på 330 meter är bland de längsta i jämförelsen och batteritiden når upp till 24 timmar i sparläge, så du kan lämna den på hela natten utan att ladda. Den visar bara ljud, inte video, och saknar smarta funktioner, men för dig som vill ha en trygg och enkel vakt är det precis rätt.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl={scd503Url} />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Philips Avent SCD735/26, bäst video utan WiFi</h2>
+    <MoneyProductCard
+      brand="Philips"
+      name="Philips Avent SCD735/26"
+      rating={4.6}
+      rank={2}
+      badge="Bäst video utan WiFi"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/philips-avent-scd735-26.webp"
+      imageAlt="Philips Avent SCD735/26 videobabyvakt utan WiFi"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus"
+      pros={['Bild via sluten DECT-signal, ingen WiFi', 'Nattkamera och temperaturvisning', 'Lugnande ljus och musikfunktion']}
+      cons={['Kortare batteritid än ren ljudvakt', 'Mindre skärm än WiFi-kameror']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Vill du se barnet men slippa en uppkopplad kamera är Philips Avent SCD735/26 det bästa valet. Den ger video via samma slutna DECT-teknik som vår testvinnare, så bilden skickas direkt till föräldraenhetens skärm utan att gå via internet. Nattkameran är skarp och temperaturvisningen hjälper dig hålla koll på rummet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Lugnande ljus och musikfunktion är praktiska extrafunktioner för de första månaderna. Batteritiden är kortare än på en ren ljudvakt eftersom skärmen drar ström, och skärmen är mindre än på de stora WiFi-kamerorna, men du får bild utan säkerhetsriskerna som en internetuppkopplad kamera innebär.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10199198&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/philips-avent-scd735-26-babyvakt-med-ljus" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Neonate BC-5800D V2, populärast i Sverige</h2>
+    <MoneyProductCard
+      brand="Neonate"
+      name="Neonate BC-5800D V2"
+      rating={4.3}
+      rank={3}
+      badge="Populärast i Sverige"
+      accentColor="#c2410c" bgColor="#7c2d12"
+      imageUrl="/images/products/neonate-bc-5800d-v2.webp"
+      imageAlt="Neonate BC-5800D V2 babyvakt utan WiFi"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt"
+      pros={['Sluten DECT-signal utan uppkoppling', 'Beprövad och mycket köpt i Sverige', 'Inbyggd nattlampa']}
+      cons={['Endast ljud, ingen bild', 'Kortare batteritid (6 h)']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Neonate BC-5800D V2 är den klassiska svenska babyvakten och den mest köpta ljudvakten på marknaden. Den använder sluten DECT-signal utan WiFi, har 300 meters räckvidd och en inbyggd nattlampa som ger ett mjukt sken utan att väcka barnet. Enkelheten är dess styrka, du slår på den och den fungerar.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den visar bara ljud och batteritiden på 6 timmar är kortare än Philips-modellernas, så den lämpar sig bäst kopplad till laddaren nattetid. För många svenska föräldrar är den ändå det självklara valet, beprövad, prisvärd och helt utan appar att hålla reda på.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=451627&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-5800d-digital-babyvakt" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Miniland Compact 3.5, bäst för resan</h2>
+    <MoneyProductCard
+      brand="Miniland"
+      name="Miniland Compact 3.5 Video Babyvakt"
+      rating={4.3}
+      rank={4}
+      badge="Bäst för resan"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/miniland-compact-3-5-video-babyvakt.webp"
+      imageAlt="Miniland Compact 3.5 videobabyvakt utan WiFi"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt"
+      pros={['Video via DECT, ingen WiFi', 'Kompakt och lätt att packa', 'Bra bild-i-förhållande-till-pris']}
+      cons={['Liten skärm (3,5 tum)', 'Kortare batteritid vid aktiv video']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Miniland Compact 3.5 är videobabyvakten för dig som reser. Den slutna DECT-signalen ger bild utan att kameran kopplas upp mot internet, och det kompakta formatet gör att den ryms i väskan utan problem. Du får en egen skärm på 3,5 tum och realtidsbild direkt till föräldraenheten.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Skärmen är mindre än på de stora modellerna och batteritiden vid aktiv video är begränsad, men förhållandet mellan bildkvalitet och pris är bra. För semestern, sommarstugan eller mormors gästrum är den ett smidigt val som inte kräver något gästnätverk att logga in på.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10305054&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/miniland-compact-3-5-video-babyvakt" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Neonate BC-8000DV, budgetvideo</h2>
+    <MoneyProductCard
+      brand="Neonate"
+      name="Neonate Babyvakt BC-8000DV"
+      rating={4.1}
+      rank={5}
+      badge="Budgetvideo"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/neonate-bc-8000dv-babyvakt.webp"
+      imageAlt="Neonate BC-8000DV videobabyvakt utan WiFi"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt"
+      pros={['Video utan WiFi till lågt pris', '3,5-tumsskärm på föräldraenheten', 'IR-nattseende']}
+      cons={['Enklare bildkvalitet (480p)', 'Färre extrafunktioner']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Neonate BC-8000DV är det billiga sättet att få bild utan WiFi. Den slutna DECT-signalen och 3,5-tumsskärmen ger dig realtidsvideo utan uppkoppling, och IR-nattseendet fungerar även i mörka rum. Allt du behöver för att se barnet, utan app eller konto.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Bildkvaliteten på 480p är enklare än på premiummodellerna och extrafunktionerna är få, men för dig som vill ha video till lågt pris och utan säkerhetsriskerna med en internetkamera är det ett rimligt val från ett svenskt varumärke.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=628410&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/neonate-bc-8000dv-babyvakt" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">6. Vtech DM1111, billigast</h2>
+    <MoneyProductCard
+      brand="VTech"
+      name="Vtech DM1111 Babyvakt, Vit"
+      rating={4.2}
+      rank={6}
+      badge="Billigast"
+      accentColor="#0f766e" bgColor="#134e4a"
+      imageUrl="/images/products/vtech-dm1111-babyvakt-vit.webp"
+      imageAlt="Vtech DM1111 ljudbabyvakt utan WiFi"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit"
+      pros={['Lägst pris i jämförelsen', 'Sluten DECT-signal utan WiFi', 'Lång batteritid (ca 15 h)']}
+      cons={['Endast ljud, ingen bild', 'Få funktioner']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Vtech DM1111 är det billigaste alternativet och gör en enda sak bra: pålitlig ljudövervakning via sluten DECT-signal. Ingen WiFi, inga konton, bara klart ljud och 300 meters räckvidd. Batteritiden på cirka 15 timmar är dessutom längre än på flera dyrare vakter.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den saknar bild och avancerade funktioner, men om du bara vill höra när barnet vaknar och inte vill betala för mer är den svår att slå på priset. Ett rakt och prisvärt förstaköp för den som vill hålla det enkelt.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10311926&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/babyvakter/vtech-dm1111-babyvakt-vit" />
+
+    <p class="text-text-light leading-relaxed mb-8">
+      Sex babyvakter helt utan WiFi, från ren ljudvakt till kompakt videomodell. Alla sänder via sluten DECT-signal som inte kan nås via internet. Vill du i stället kunna titta via mobilen hemifrån? Läs vår <a href="/babyvakter/wifi/" class="text-accent hover:text-accent-dark underline">jämförelse av WiFi-babyvakter</a>, eller se hela vår <a href="/babyvakter/" class="text-accent hover:text-accent-dark underline">guide till bästa babyvakten</a>.
+    </p>
+
+    {/* Spec-jämförelse: komplett spec-rutnät ovanför köpguiden */}
+    <MoneySpecTable products={specProducts} featureLabels={specLabels} title="Specifikationer jämförda - Babyvakter utan WiFi 2026" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Så väljer du babyvakt utan WiFi</h2>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Ljud eller video</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Första valet är om du vill ha bara ljud eller även bild. En ljudvakt som Philips Avent SCD503/26 eller Neonate BC-5800D räcker om du bor litet och främst vill höra när barnet vaknar. En videobabyvakt som SCD735/26 eller Miniland Compact 3.5 låter dig se om barnet sparkat av sig täcket eller ligger obekvämt, utan att gå in och riskera att väcka det. Alla i den här jämförelsen ger dig bilden på en egen skärm, utan WiFi.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">DECT och FHSS: den slutna signalen</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      DECT och FHSS är slutna radiostandarder som kopplar kameran direkt till föräldraenheten. Signalen går aldrig ut på internet, vilket gör att vakten inte kan hackas på distans och att den fungerar även om ditt bredband ligger nere. Det är den avgörande skillnaden mot en WiFi-babyvakt, och skälet till att många väljer bort uppkopplade kameror i barnrummet.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Räckvidd och batteritid</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Tillverkarnas uppgivna räckvidd (300 till 330 meter) gäller utomhus utan hinder. Inomhus räknar du med ungefär en tredjedel, vilket räcker väl i en lägenhet eller ett normalstort hus. Batteritiden varierar mycket: en ljudvakt i sparläge kan hålla ett helt dygn, medan en videobabyvakt med aktiv skärm drar mer. Vill du kunna ha vakten oladdad nattetid, välj en ljudmodell med lång batteritid.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Extrafunktioner</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nattlampa, temperaturvisning, vaggvisor och tvåvägskommunikation finns på flera av modellerna. De är trevliga men inte avgörande, en vakt utan WiFi handlar i grunden om trygg och enkel övervakning. Prioritera signaltyp, räckvidd och batteritid först, och se extrafunktionerna som bonus.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat babyvakter utan WiFi utifrån fyra kriterier: signaltyp och säkerhet (sluten DECT eller FHSS), räckvidd, batteritid samt ljud- respektive bildkvalitet. Produkterna är valda bland de mest sålda och eftersökta slutna babyvakterna i Sverige. Inga produktpriser visas eftersom de ändras ofta, och ingen tillverkare har betalat för placering i listan.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fler guider om babyvakter 2026</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/babyvakter/" class="text-accent underline">Bästa babyvakten 2026, komplett test och jämförelse</a></li>
+        <li><a href="/babyvakter/wifi/" class="text-accent underline">Bästa WiFi-babyvakten 2026, test och jämförelse</a></li>
+        <li><a href="/babyvakter/video/" class="text-accent underline">Bästa videobabyvakten 2026, DECT och FHSS jämförda</a></li>
+        <li><a href="/babyvakter/babybjorn-vs-philips-avent/" class="text-accent underline">BabyBjörn vs Philips Avent: DECT mot WiFi-babyvakt jämförda</a></li>
+        <li><a href="/guider/valja-babyvakt/" class="text-accent underline">Välja babyvakt: DECT, video eller WiFi, komplett köpguide 2026</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList + Product JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa babyvakten utan WiFi 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc || `${p.name} - ${p.badge}. Betyg: ${p.rating}/5.`,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+  {/* Inget Offer/price i schema: no-price-policy (slipper underhåll av priser + GSC Merchant
+      Listing-fel). Product + review + aggregateRating ger Product snippet utan priskrav. */}
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href={scd503Url}
+    text="Bra pris hos Jollyroom"
+    productName="Philips Avent DECT SCD503/26"
+  />
+
+</ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>
