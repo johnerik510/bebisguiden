@@ -1,0 +1,51 @@
+---
+/**
+ * Kompakt CTA för guider, placerad direkt efter ingressen/snabbsvaret.
+ *
+ * Medvetet EN annan visuell behandling än CTABox (som är ett fyllt, tintat kort
+ * längst ner): här hårfina linjer över/under, ingen fyllning, ingen skugga, en
+ * rad. Så läser topp- och botten-CTA:n som två olika moment i sidan i stället
+ * för samma box klonad två gånger.
+ *
+ * Renderar INGENTING utan affiliateUrl + store (samma nolltolerans som CTABox):
+ * produkt utan verifierad affiliatelänk får aldrig en CTA.
+ */
+interface Props {
+  /** Produkt/kategori som CTA:n avser. Visas som etikett, inte som rubrik. */
+  productName: string;
+  /** Butiksnamn. MÅSTE matcha länkens faktiska destination. */
+  store: string;
+  /** Verifierad, feed-härledd tracker-URL. Aldrig handskriven. */
+  affiliateUrl: string;
+  /** Liten företext till vänster. */
+  label?: string;
+}
+
+const {
+  productName,
+  store,
+  affiliateUrl,
+  label = 'Vår rekommendation',
+} = Astro.props;
+---
+
+{affiliateUrl && store && (
+<div
+  class="not-prose border-y border-border py-4 my-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+  data-product={productName}
+>
+  <div class="min-w-0">
+    <p class="text-xs font-semibold text-text-light mb-1">{label}</p>
+    <p class="font-heading font-bold text-text text-base leading-snug">{productName}</p>
+  </div>
+  <a
+    href={affiliateUrl}
+    rel="nofollow sponsored noopener"
+    target="_blank"
+    class="shrink-0 inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold py-3 px-6 rounded-lg transition-colors text-sm min-h-[48px]"
+  >
+    Bra pris hos {store}
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+  </a>
+</div>
+)}
