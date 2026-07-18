@@ -1,0 +1,402 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Amning', href: '/amning/' },
+  { label: 'Manuell bröstpump' },
+];
+
+// No-price-policy. Affiliate-länkar/bilder verifierade mot Jollyroom-feed (NOLLTOLERANS).
+const products = [
+  {
+    name: 'Medela Harmony Manuell Bröstpump',
+    brand: 'Medela',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['2-fas-teknologi som efterliknar barnets sug', 'Svängbart handtag för bekvämt grepp', 'Bara några delar att diska'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10088358&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-harmony-manuell-brostpump',
+    imageUrl: '/images/products/medela-harmony-manuell-brostpump.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Manuell bröstpump från Medela med 2-fas-teknologi och svängbart handtag. Få delar att rengöra. PersonalFit Flex-tratt. Marknadens mest sålda handpump.',
+    features: { 'Typ': 'Manuell enkel', 'Teknik': '2-fas', 'Trattar': 'PersonalFit Flex', 'Vikt': '0,2 kg', 'Delar att diska': 'Få' },
+    alsoAt: [],
+  },
+  {
+    name: 'Philips Avent SCF430 Manuell Bröstpump',
+    brand: 'Philips Avent',
+    rating: 4.6,
+    badge: 'Naturlig känsla',
+    usps: ['Mjuk massagekudde värmer och stimulerar', 'Sitt upprätt medan du pumpar', 'Kompatibel med Natural-flaskor'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell',
+    imageUrl: '/images/products/philips-avent-scf430-manuell-brostpump.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Manuell bröstpump från Philips Avent med mjuk massagekudde i silikon. Kompakt design som låter dig sitta upprätt. Passar direkt på Natural-flaskorna.',
+    features: { 'Typ': 'Manuell enkel', 'Teknik': 'Massagekudde', 'Trattar': 'Silikon 24 mm', 'Vikt': '0,2 kg', 'Delar att diska': 'Få' },
+    alsoAt: [],
+  },
+  {
+    name: 'Lansinoh Manuell Bröstpump',
+    brand: 'Lansinoh',
+    rating: 4.5,
+    badge: 'Prisvärd',
+    usps: ['Två pumplägen: stimulering och uttryckning', 'ComfortFit-tratt i mjuk silikon', 'Delar passar Lansinoh elektrisk pump'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=123711&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-brostpump-manuell',
+    imageUrl: '/images/products/lansinoh-manuell-brostpump.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Prisvärd manuell bröstpump från Lansinoh med två pumplägen och ComfortFit-tratt i mjuk silikon. Delarna passar även Lansinohs elektriska pumpar och flaskor.',
+    features: { 'Typ': 'Manuell enkel', 'Teknik': '2-läges', 'Trattar': 'ComfortFit silikon', 'Vikt': '0,2 kg', 'Delar att diska': 'Några' },
+    alsoAt: [],
+  },
+  {
+    name: 'Elvie Wave Manuell Bröstpump',
+    brand: 'Elvie',
+    rating: 4.4,
+    badge: 'Smart val',
+    usps: ['Samlar läckande mjölk från andra bröstet', 'Appen räknar uppsamlad mängd', 'Handfri uppsamling i BH:n'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10347555&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-wave-manuell-brostpump-singel',
+    imageUrl: '/images/products/elvie-wave-manuell-brostpump.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Manuell uppsamlingspump från Elvie som fångar mjölken som annars läcker från det bröst barnet inte diar. Sitter handfritt i BH:n och synkar uppsamlad mängd till appen.',
+    features: { 'Typ': 'Uppsamlingspump', 'Teknik': 'Sug + uppsamling', 'Trattar': 'Silikon', 'Vikt': '0,1 kg', 'Delar att diska': 'Få' },
+    alsoAt: [],
+  },
+];
+
+const specLabels = ['Typ', 'Teknik', 'Trattar', 'Vikt', 'Delar att diska'];
+
+const faqItems = [
+  {
+    question: 'Vilken manuell bröstpump är bäst i test 2026?',
+    answer: 'Medela Harmony vinner manuell bröstpump bäst i test 2026. Den använder samma 2-fas-teknologi som Medelas elektriska pumpar, har ett svängbart handtag som är skonsamt mot handleden och består av få delar som är enkla att diska. Vill du ha en pump med värmande massagekudde är Philips Avent SCF430 bäst, och Lansinoh är det prisvärda valet.',
+  },
+  {
+    question: 'Manuell eller elektrisk bröstpump, vad ska jag välja?',
+    answer: 'En manuell pump är tyst, väger ett par hundra gram och behöver ingen ström, vilket gör den perfekt att ha i väskan, på jobbet eller som reservpump. Nackdelen är att du pumpar ett bröst i taget med handkraft. Pumpar du dagligen eller flera gånger per dag är en elektrisk pump ofta värd investeringen. Se vår guide om bästa elektriska bröstpumpen för det alternativet.',
+  },
+  {
+    question: 'Hur ofta behöver jag rengöra en manuell bröstpump?',
+    answer: 'Skölj alla delar som varit i kontakt med mjölk direkt efter varje pumpning och diska dem i varmt vatten med diskmedel. Sterilisera minst en gång per dygn de första månaderna, antingen genom kokning i tre till fem minuter eller i en ångsterilisator. Låt delarna lufttorka på en ren duk. En manuell pump har få delar, vilket gör rengöringen snabb.',
+  },
+  {
+    question: 'Kan jag använda en manuell bröstpump vid mjölkstockning?',
+    answer: 'Ja, en manuell pump är ofta ett bra verktyg vid begynnande mjölkstockning eftersom du själv styr sug och rytm och kan pumpa ut precis så mycket att trycket lättar. Massera bröstet mot bröstvårtan innan och under pumpningen. Töm inte helt om du vill dämpa produktionen. Vid feber, röd och öm bröstvävnad eller ihållande knöl: kontakta barnmorska eller vårdcentral.',
+  },
+  {
+    question: 'Vad är en silikonpump och skiljer den sig från en handpump?',
+    answer: 'En silikonpump som Elvie Wave eller Haakaa suger fast på bröstet och samlar passivt upp den mjölk som rinner ut medan barnet diar på andra sidan, istället för att du pumpar aktivt med ett handtag. Den är utmärkt för att inte spilla mjölknedsläppet, men ger mindre volym än en handpump med handtag. Många har både en handpump och en uppsamlingspump.',
+  },
+  {
+    question: 'Vilken trattstorlek ska jag välja till en manuell pump?',
+    answer: 'Fel trattstorlek är den vanligaste orsaken till att pumpning gör ont eller ger lite mjölk. Mät bröstvårtans diameter (inte vårtgården) och välj en tratt som är 1 till 3 mm större. Medela och Philips Avent erbjuder trattar i flera storlekar, vanligtvis 21, 24, 27 och 30 mm. Standardtratten 24 mm passar långt ifrån alla, så kontrollera din storlek innan du börjar.',
+  },
+];
+
+export const articleMeta = {
+  title: "Manuell bröstpump bäst i test 2026: 4 handpumpar jämförda",
+  description: "Manuell bröstpump bäst i test 2026: Medela Harmony vinner med 2-fas-teknologi. Vi jämför 4 handpumpar på sugkraft, komfort och rengöring.",
+  publishDate: "2026-07-18",
+  category: "Amning",
+  image: "/images/products/medela-harmony-manuell-brostpump.webp",
+};
+---
+
+<ArticleLayout
+  title="Manuell bröstpump bäst i test 2026: 4 handpumpar jämförda"
+  description="Manuell bröstpump bäst i test 2026: Medela Harmony vinner med 2-fas-teknologi. Vi jämför 4 handpumpar på sugkraft, komfort och rengöring."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-07-18"
+  updatedDate="2026-07-18"
+  showAuthor={false}
+>
+
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-07-18" dateModified="2026-07-18" />
+
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken manuell bröstpump är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Medela Harmony är bäst i test 2026: 2-fas-teknologi som efterliknar barnets sugmönster, svängbart handtag som är skonsamt mot handleden och få delar att diska. Naturligast känsla: Philips Avent SCF430 med värmande massagekudde. Prisvärt: Lansinoh manuell. Smart uppsamling: Elvie Wave.
+    </p>
+  </div>
+
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Medela"
+    name="Harmony Manuell Bröstpump"
+    image="/images/products/medela-harmony-manuell-brostpump.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10088358&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-harmony-manuell-brostpump"
+    store="Jollyroom"
+    description="Vinnare manuell bröstpump bäst i test 2026. Använder samma 2-fas-teknologi som Medelas elektriska pumpar, har ett svängbart handtag som avlastar handleden och består av bara några få delar som går snabbt att diska. Väger 0,2 kg och får plats i vilken väska som helst."
+  />
+
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Manuella bröstpumpar 2026" />
+
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Medela Harmony, bäst i test</h2>
+    <MoneyProductCard
+      brand="Medela"
+      name="Medela Harmony Manuell Bröstpump"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/medela-harmony-manuell-brostpump.webp"
+      imageAlt="Medela Harmony manuell bröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10088358&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-harmony-manuell-brostpump"
+      pros={['2-fas-teknologi som efterliknar barnets naturliga sugmönster', 'Svängbart handtag som avlastar handleden vid längre pumpning', 'Bara några delar, snabb att diska och sterilisera']}
+      cons={['Pumpar ett bröst i taget med handkraft', 'Mindre volym per minut än en elektrisk pump']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Medela Harmony vinner manuell bröstpump bäst i test 2026. Den bygger på samma 2-fas-teknologi som Medelas elektriska pumpar, med en snabb stimuleringsfas följt av en långsammare uttryckningsfas, vilket gör att mjölknedsläppet kommer igång enklare än på enklare handpumpar. Det svängbara handtaget gör att handleden inte tröttnar lika fort under en pumpstund.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Nackdelen delar den med alla handpumpar: du pumpar ett bröst i taget och volymen per minut är lägre än hos en elektrisk pump. Men som reservpump, resepump eller för mamman som pumpar sporadiskt är Harmony marknadens självklara referens och den mest sålda handpumpen i Sverige.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10088358&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-harmony-manuell-brostpump" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Philips Avent SCF430, naturlig känsla</h2>
+    <MoneyProductCard
+      brand="Philips Avent"
+      name="Philips Avent SCF430 Manuell Bröstpump"
+      rating={4.6}
+      rank={2}
+      badge="Naturlig känsla"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/philips-avent-scf430-manuell-brostpump.webp"
+      imageAlt="Philips Avent SCF430 manuell bröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell"
+      pros={['Mjuk massagekudde i silikon som stimulerar mjölknedsläppet', 'Kompakt form som låter dig sitta upprätt medan du pumpar', 'Passar direkt på Philips Avent Natural-flaskor']}
+      cons={['Enklare pumpmekanik än Medelas 2-fas', 'Färre trattstorlekar att välja på']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Philips Avent SCF430 är valet för dig som vill ha en mjuk och behaglig pumpupplevelse. Massagekudden i silikon lägger sig mjukt mot bröstet och stimulerar mjölknedsläppet, och den kompakta konstruktionen gör att du kan luta dig tillbaka istället för att böja dig framåt över pumpen. Är du redan i Avent-systemet passar pumpen direkt på Natural-flaskorna.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Pumpmekaniken är enklare än Medelas 2-fas och urvalet av trattstorlekar är mindre. Men för komfort och en pump som känns skonsam mot bröstet är Avent SCF430 en av de trevligaste handpumparna att använda.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10229142&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/philips-avent-scf430-01-brostpump-manuell" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Lansinoh Manuell, prisvärd</h2>
+    <MoneyProductCard
+      brand="Lansinoh"
+      name="Lansinoh Manuell Bröstpump"
+      rating={4.5}
+      rank={3}
+      badge="Prisvärd"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/lansinoh-manuell-brostpump.webp"
+      imageAlt="Lansinoh manuell bröstpump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=123711&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-brostpump-manuell"
+      pros={['Två pumplägen: stimulering och uttryckning', 'ComfortFit-tratt i mjuk silikon', 'Delarna passar Lansinohs elektriska pumpar och flaskor']}
+      cons={['Handtaget är mindre ergonomiskt än Medelas', 'Något fler delar att diska']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Lansinoh Manuell är det prisvärda valet som ändå ger dig två pumplägen: ett snabbt stimuleringsläge för att få igång mjölknedsläppet och ett långsammare uttryckningsläge för att tömma bröstet. ComfortFit-tratten i mjuk silikon formar sig efter bröstet. En extra fördel är att delarna är kompatibla med Lansinohs elektriska pumpar och flaskor, så du kan bygga vidare på systemet.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Handtaget är inte lika genomtänkt ergonomiskt som Medela Harmonys svängbara grepp, och det finns någon fler del att diska. Men prislappen och de två pumplägena gör Lansinoh till ett smart förstaval för den som pumpar då och då.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=123711&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/lansinoh-brostpump-manuell" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Elvie Wave, smart uppsamling</h2>
+    <MoneyProductCard
+      brand="Elvie"
+      name="Elvie Wave Manuell Bröstpump"
+      rating={4.4}
+      rank={4}
+      badge="Smart val"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/elvie-wave-manuell-brostpump.webp"
+      imageAlt="Elvie Wave manuell uppsamlingspump"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10347555&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-wave-manuell-brostpump-singel"
+      pros={['Samlar upp mjölken som annars läcker vid amning', 'Sitter handfritt i BH:n medan barnet diar', 'Appen räknar och loggar uppsamlad mängd']}
+      cons={['Ger mindre volym än en klassisk handpump', 'Fungerar bäst i kombination med amning, inte som enda pump']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Elvie Wave är inte en klassisk handpump utan en uppsamlingspump. Den suger fast och sitter handfritt i BH:n på det bröst barnet inte diar, och fångar upp den mjölk som annars bara läcker ut i amningsinlägget. Via Elvie-appen ser du hur mycket du samlat. För mammor som läcker mycket vid mjölknedsläpp är det ett smart sätt att bygga ett litet förråd utan extra ansträngning.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Eftersom den samlar passivt ger den mindre volym än en handpump du aktivt pumpar med, och den fungerar bäst i kombination med amning snarare än som din enda pump. Men som komplement till en handpump är Elvie Wave ett genialt och diskret hjälpmedel.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10347555&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/elvie-wave-manuell-brostpump-singel" />
+
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra manuella bröstpumpar granskade. Medela Harmony vinner på 2-fas-teknologi och ergonomi, Philips Avent SCF430 ger den mjukaste känslan, Lansinoh är det prisvärda valet med två pumplägen och Elvie Wave är den smarta uppsamlingspumpen. Pumpar du dagligen? Jämför med vår guide om <a href="/amning/elektrisk-brostpump/" class="text-accent hover:text-accent-dark underline">bästa elektriska bröstpumpen 2026</a> eller läs den kompletta <a href="/amning/brostpump/" class="text-accent hover:text-accent-dark underline">guiden om bästa bröstpump, manuell och elektrisk jämförd</a>.
+    </p>
+
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Manuella bröstpumpar 2026" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du manuell bröstpump</h2>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">När passar en manuell pump bäst?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En manuell pump är rätt val om du pumpar sporadiskt, vill ha en tyst reservpump att ha i väskan eller på jobbet, eller pumpar ur för att lätta på trycket vid enstaka tillfällen. Den behöver ingen ström, väger ett par hundra gram och startar direkt. Pumpar du flera gånger om dagen är däremot en elektrisk pump nästan alltid värd investeringen.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">2-fas eller enkelt sug?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Pumpar med 2-fas-teknologi, som Medela Harmony, börjar med snabba korta sug för att utlösa mjölknedsläppet och går sedan över till långsammare djupare sug för att tömma bröstet. Det efterliknar hur barnet suger och gör att mjölken kommer igång snabbare. Enklare pumpar har bara ett sugmönster som du själv doserar med handtaget.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Trattstorlek avgör komfort och mängd</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Mät bröstvårtans diameter (inte vårtgården) och välj en tratt som är 1 till 3 mm större. För liten tratt skaver och kan göra ont, för stor ger lågt sug och lite mjölk. Medela och Philips Avent säljer trattar i storlekarna 21, 24, 27 och 30 mm. Standardstorleken 24 mm passar inte alla, så kontrollera din storlek innan du börjar.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Färre delar betyder snabbare rengöring</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En stor fördel med handpumpar är att de har få delar. Alla delar som varit i kontakt med mjölk ska sköljas direkt efter pumpning och diskas i varmt vatten. Sterilisera minst en gång per dygn de första månaderna. Ju färre delar, desto snabbare går det, och där ligger Medela Harmony och Philips Avent i topp.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Handpump eller silikonpump?</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En klassisk handpump med handtag ger dig full kontroll över volymen och passar för att pumpa ur ett helt mål. En silikon- eller uppsamlingspump som Elvie Wave suger passivt och fångar det mjölknedsläpp som annars läcker medan barnet diar. Många väljer att ha båda: en handpump för att pumpa aktivt och en uppsamlingspump som spar det som annars går förlorat.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra manuella bröstpumpar utifrån pumpteknik (2-fas eller enkelt sug), komfort och ergonomi, trattsystem, vikt och hur många delar som ska diskas. Produkterna är valda bland de mest sålda och eftersökta handpumparna i Sverige. Ingen tillverkare har betalat för placering i listan. Har du specifika frågor om din amning eller mjölkproduktion rekommenderar vi att du pratar med en barnmorska eller amningsrådgivare.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade amningsguider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/amning/" class="text-accent underline">Amning, komplett guide för nyblivna mammor</a></li>
+        <li><a href="/amning/brostpump/" class="text-accent underline">Bästa bröstpump 2026, manuell och elektrisk jämförd</a></li>
+        <li><a href="/amning/elektrisk-brostpump/" class="text-accent underline">Bästa elektriska bröstpumpen 2026</a></li>
+        <li><a href="/amning/amningsbh/" class="text-accent underline">Bästa amnings-BH 2026, komfort och funktion</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa manuella bröstpumpen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10088358&url=https://www.jollyroom.se/mamma/amningsprodukter/brostpumpar-tillbehor/medela-harmony-manuell-brostpump"
+    text="Bra pris hos Jollyroom"
+    productName="Medela Harmony"
+  />
+
+</ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>

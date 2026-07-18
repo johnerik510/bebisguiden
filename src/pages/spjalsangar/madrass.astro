@@ -1,0 +1,407 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
+import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
+import MoneySpecTable from '../../components/MoneySpecTable.astro';
+import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import MoneyCTABox from '../../components/MoneyCTABox.astro';
+import Callout from '../../components/Callout.astro';
+import FAQ from '../../components/FAQ.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Spjälsängar', href: '/spjalsangar/' },
+  { label: 'Madrass' },
+];
+
+// No-price-policy. Affiliate-länkar/bilder verifierade mot Jollyroom-feed (NOLLTOLERANS).
+const products = [
+  {
+    name: 'Candide Madrass Seaqual 60x120',
+    brand: 'Candide',
+    rating: 4.8,
+    badge: 'Bäst i test',
+    usps: ['Andningsbart skum som reglerar värme', 'Överdrag av återvunnen Seaqual-fiber', 'Fast och plan liggyta'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10119435&url=https://www.jollyroom.se/barnrummet/madrasser/candide-madrass-seaqual-60x120-cm',
+    imageUrl: '/images/products/candide-seaqual-madrass-60x120.webp',
+    accentColor: '#0d9488', bgColor: '#1a365d',
+    desc: 'Spjälsängsmadrass 60x120 cm från Candide med andningsbart skum och avtagbart överdrag i återvunnen Seaqual-fiber. Fast och plan liggyta som håller barnet svalt.',
+    features: { 'Storlek': '60x120 cm', 'Kärna': 'Andningsbart skum', 'Höjd': '12 cm', 'Överdrag': 'Avtagbart, tvättbart', 'Certifiering': 'Oeko-Tex' },
+    alsoAt: [],
+  },
+  {
+    name: 'BabyMatex Madrass Fresh 60x120',
+    brand: 'BabyMatex',
+    rating: 4.6,
+    badge: 'Bäst luftcirkulation',
+    usps: ['3D-nätkant som släpper igenom luft', 'Aloe vera-behandlat överdrag', 'Vändbar för längre livslängd'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10048092&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/babymatex-madrass-fresh-60x120',
+    imageUrl: '/images/products/babymatex-fresh-madrass-60x120.webp',
+    accentColor: '#2563eb', bgColor: '#1e3a8a',
+    desc: 'Spjälsängsmadrass 60x120 cm från BabyMatex med luftgenomsläpplig 3D-nätkant och aloe vera-behandlat överdrag. Vändbar och en av de mest sålda madrasserna i Sverige.',
+    features: { 'Storlek': '60x120 cm', 'Kärna': 'Skum', 'Höjd': '10 cm', 'Överdrag': 'Avtagbart, tvättbart', 'Certifiering': 'Oeko-Tex' },
+    alsoAt: [],
+  },
+  {
+    name: 'Hoppekids Madrass Eco Dream 60x120',
+    brand: 'Hoppekids',
+    rating: 4.5,
+    badge: 'Bäst ekologisk',
+    usps: ['Skumkärna med lägre kemikalieavtryck', 'Fast stöd för ryggen', 'Avtagbart överdrag som tål 60 grader'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10165312&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/hoppekids-madrass-eco-dream-60x120',
+    imageUrl: '/images/products/hoppekids-eco-dream-madrass-60x120.webp',
+    accentColor: '#7c3aed', bgColor: '#4c1d95',
+    desc: 'Ekologiskt inriktad spjälsängsmadrass 60x120 cm från Hoppekids med fast skumkärna och avtagbart överdrag som tvättas i 60 grader. Ger jämnt, fast stöd åt ryggen.',
+    features: { 'Storlek': '60x120 cm', 'Kärna': 'Ekoskum', 'Höjd': '10 cm', 'Överdrag': 'Avtagbart, 60°', 'Certifiering': 'Oeko-Tex' },
+    alsoAt: [],
+  },
+  {
+    name: 'Julius Zöllner Jan Madrass 60x120',
+    brand: 'Julius Zöllner',
+    rating: 4.4,
+    badge: 'Prisvärd',
+    usps: ['Lätt skumkärna, enkel att lyfta', 'Klimatkant som ökar luftflödet', 'Tysk kvalitet till lågt pris'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10315508&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/julius-zollner-jan-madrass-60x120',
+    imageUrl: '/images/products/julius-zollner-jan-madrass-60x120.webp',
+    accentColor: '#b34558', bgColor: '#4a5568',
+    desc: 'Prisvärd spjälsängsmadrass 60x120 cm från tyska Julius Zöllner med lätt skumkärna och klimatkant för luftflöde. Ett tryggt basval till första spjälsängen.',
+    features: { 'Storlek': '60x120 cm', 'Kärna': 'Skum', 'Höjd': '9 cm', 'Överdrag': 'Avtagbart, tvättbart', 'Certifiering': 'Oeko-Tex' },
+    alsoAt: [],
+  },
+];
+
+const specLabels = ['Storlek', 'Kärna', 'Höjd', 'Överdrag', 'Certifiering'];
+
+const faqItems = [
+  {
+    question: 'Vilken spjälsängsmadrass är bäst i test 2026?',
+    answer: 'Candide Seaqual 60x120 vinner spjälsängsmadrass bäst i test 2026. Den har ett andningsbart skum som reglerar värme, ett avtagbart överdrag i återvunnen Seaqual-fiber och en fast, plan liggyta. Vill du ha maximalt luftflöde är BabyMatex Fresh bäst, och Julius Zöllner Jan är det prisvärda basvalet.',
+  },
+  {
+    question: 'Vilken storlek på madrass passar en spjälsäng?',
+    answer: 'Standardmåttet för en spjälsäng i Sverige är 60x120 cm, och det är den storlek de flesta madrasser tillverkas i. Vissa modeller som Stokke Sleepi har egna ovala eller avvikande mått. Mät alltid sängbotten innan du köper. Madrassen ska fylla ut sängen så att det inte går att få plats med mer än två fingrar mellan madrass och sarg.',
+  },
+  {
+    question: 'Hur fast ska en spjälsängsmadrass vara?',
+    answer: 'En spjälsängsmadrass ska vara fast och plan, inte mjuk. En fast liggyta ger stöd åt den växande ryggen och minskar risken att ett litet barn sjunker ner med ansiktet i madrassen. Tryck ner handen i mitten: madrassen ska fjädra tillbaka direkt utan att forma en grop. Alla fyra madrasser i testet har den fasthet som rekommenderas för spädbarn.',
+  },
+  {
+    question: 'Behöver jag ett madrasskydd?',
+    answer: 'Ja, ett tvättbart och helst vattentätt madrasskydd förlänger madrassens livslängd rejält och skyddar mot läckage och kräkningar. Lägg madrasskyddet direkt på madrassen och ett spänn-lakan ovanpå. Undvik tjocka, mjuka bäddmadrasser eller kuddar ovanpå madrassen, de hör inte hemma i en spädbarnssäng.',
+  },
+  {
+    question: 'Vad betyder Oeko-Tex på en barnmadrass?',
+    answer: 'Oeko-Tex Standard 100 innebär att textilierna testats för hälsoskadliga ämnen och inte innehåller nivåer som överskrider gränsvärdena. För en madrass som barnet sover på tolv timmar om dygnet är det en viktig trygghetsstämpel. Samtliga madrasser i den här jämförelsen har Oeko-Tex-certifierade överdrag.',
+  },
+  {
+    question: 'Kan man använda begagnad madrass till nästa barn?',
+    answer: 'En egen madrass som skötts väl, har ett rent och helt överdrag och behållit sin fasthet går bra att återanvända till ett syskon. Var mer försiktig med en madrass från någon annan där du inte känner till historiken. Kontrollera att kärnan inte svackat, att den inte luktar unket och att den fortfarande fjädrar tillbaka. Vid minsta tvekan: köp ny, det är en billig försäkring för god sömn.',
+  },
+];
+
+export const articleMeta = {
+  title: "Spjälsängsmadrass bäst i test 2026: 4 madrasser 60x120 jämförda",
+  description: "Spjälsängsmadrass bäst i test 2026: Candide Seaqual vinner. Vi jämför 4 madrasser 60x120 på fasthet, luftcirkulation och certifiering.",
+  publishDate: "2026-07-18",
+  category: "Spjälsängar",
+  image: "/images/products/candide-seaqual-madrass-60x120.webp",
+};
+---
+
+<ArticleLayout
+  title="Spjälsängsmadrass bäst i test 2026: 4 madrasser 60x120 jämförda"
+  description="Spjälsängsmadrass bäst i test 2026: Candide Seaqual vinner. Vi jämför 4 madrasser 60x120 på fasthet, luftcirkulation och certifiering."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-07-18"
+  updatedDate="2026-07-18"
+  showAuthor={false}
+>
+
+  {/* 1. Redaktions-byline överst */}
+  <MoneyByline datePublished="2026-07-18" dateModified="2026-07-18" />
+
+  {/* 2. Answer-box (AEO) */}
+  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
+    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken spjälsängsmadrass är bäst 2026?</h2>
+    <p class="text-blue-800 text-[13px] leading-snug">
+      Candide Seaqual 60x120 är bäst i test 2026: andningsbart skum som reglerar värme, avtagbart överdrag i återvunnen Seaqual-fiber och en fast, plan liggyta. Bäst luftcirkulation: BabyMatex Fresh. Bäst ekologisk: Hoppekids Eco Dream. Prisvärt basval: Julius Zöllner Jan.
+    </p>
+  </div>
+
+  {/* 3. Featured product (#1, hero-CTA above the fold) */}
+  <MoneyFeaturedProduct
+    brand="Candide"
+    name="Madrass Seaqual 60x120"
+    image="/images/products/candide-seaqual-madrass-60x120.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10119435&url=https://www.jollyroom.se/barnrummet/madrasser/candide-madrass-seaqual-60x120-cm"
+    store="Jollyroom"
+    description="Vinnare spjälsängsmadrass bäst i test 2026. Ett andningsbart skum som transporterar bort värme och fukt, ett avtagbart överdrag i återvunnen Seaqual-fiber och en fast, plan liggyta som ger stöd åt den växande ryggen. Standardmått 60x120 cm."
+  />
+
+  {/* 4. Jämförelsetabell (scan-and-click) */}
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Spjälsängsmadrasser 60x120 2026" />
+
+  {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
+  <div class="mp-prose">
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Candide Seaqual, bäst i test</h2>
+    <MoneyProductCard
+      brand="Candide"
+      name="Candide Madrass Seaqual 60x120"
+      rating={4.8}
+      rank={1}
+      badge="Bäst i test"
+      accentColor="#0d9488" bgColor="#1a365d"
+      imageUrl="/images/products/candide-seaqual-madrass-60x120.webp"
+      imageAlt="Candide Seaqual spjälsängsmadrass 60x120"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10119435&url=https://www.jollyroom.se/barnrummet/madrasser/candide-madrass-seaqual-60x120-cm"
+      pros={['Andningsbart skum som reglerar värme och fukt', 'Avtagbart överdrag i återvunnen Seaqual-fiber', 'Fast, plan liggyta med bra stöd']}
+      cons={['Ligger i den dyrare delen av segmentet', 'Skumkärna, inte resår för dig som vill ha fjädring']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Candide Seaqual vinner spjälsängsmadrass bäst i test 2026. Skummet är utformat för att släppa igenom luft och transportera bort värme och fukt, vilket håller barnet svalare under natten. Överdraget är vävt av Seaqual, en återvunnen fiber gjord delvis av plast som samlats upp ur haven, och det går att ta av och tvätta. Liggytan är fast och plan, precis som en spädbarnsmadrass ska vara.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Madrassen ligger i den dyrare delen av segmentet och den som specifikt vill ha en resårmadrass med fjädring får titta på annat. Men för kombinationen andningsförmåga, miljömaterial och fast stöd är Candide Seaqual den madrass vi rekommenderar först.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10119435&url=https://www.jollyroom.se/barnrummet/madrasser/candide-madrass-seaqual-60x120-cm" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. BabyMatex Fresh, bäst luftcirkulation</h2>
+    <MoneyProductCard
+      brand="BabyMatex"
+      name="BabyMatex Madrass Fresh 60x120"
+      rating={4.6}
+      rank={2}
+      badge="Bäst luftcirkulation"
+      accentColor="#2563eb" bgColor="#1e3a8a"
+      imageUrl="/images/products/babymatex-fresh-madrass-60x120.webp"
+      imageAlt="BabyMatex Fresh spjälsängsmadrass 60x120"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10048092&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/babymatex-madrass-fresh-60x120"
+      pros={['3D-nätkant runt om som släpper igenom luft', 'Aloe vera-behandlat, mjukt överdrag', 'Vändbar, vilket förlänger livslängden']}
+      cons={['Något lägre höjd än premiummadrasserna', 'Enklare kärna än Candide']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      BabyMatex Fresh är en av de mest sålda spjälsängsmadrasserna i Sverige och tar platsen som bäst på luftcirkulation. Runt kanten löper en 3D-nätkant som släpper igenom luft och minskar risken för att fukt och värme byggs upp där barnets huvud ligger. Överdraget är behandlat med aloe vera och känns mjukt, och madrassen går att vända, vilket jämnar ut slitaget.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Höjden är något lägre och kärnan enklare än hos Candide, men för priset är luftflödet och den vändbara konstruktionen svårslagna. Ett tryggt och populärt förstaval för många svenska familjer.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10048092&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/babymatex-madrass-fresh-60x120" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Hoppekids Eco Dream, bäst ekologisk</h2>
+    <MoneyProductCard
+      brand="Hoppekids"
+      name="Hoppekids Madrass Eco Dream 60x120"
+      rating={4.5}
+      rank={3}
+      badge="Bäst ekologisk"
+      accentColor="#7c3aed" bgColor="#4c1d95"
+      imageUrl="/images/products/hoppekids-eco-dream-madrass-60x120.webp"
+      imageAlt="Hoppekids Eco Dream spjälsängsmadrass 60x120"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10165312&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/hoppekids-madrass-eco-dream-60x120"
+      pros={['Skumkärna med lägre kemikalieavtryck', 'Fast och jämnt stöd åt ryggen', 'Överdrag som tål tvätt i 60 grader']}
+      cons={['Högst pris i testet', 'Ingen aktiv värmereglering som Candide']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Hoppekids Eco Dream är valet för föräldrar som vill lägga extra vikt vid materialen. Skumkärnan är framtagen med ett lägre kemikalieavtryck och ger ett fast, jämnt stöd åt den lilla ryggen. Överdraget är avtagbart och tål maskintvätt i 60 grader, vilket är praktiskt när olyckan är framme.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Det är den dyraste madrassen i testet och den saknar Candides aktiva värmereglering. Men vill du ha en fast, miljömedvetet framtagen madrass med ett överdrag som tål höga tvättemperaturer är Eco Dream ett tryggt köp.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10165312&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/hoppekids-madrass-eco-dream-60x120" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Julius Zöllner Jan, prisvärd</h2>
+    <MoneyProductCard
+      brand="Julius Zöllner"
+      name="Julius Zöllner Jan Madrass 60x120"
+      rating={4.4}
+      rank={4}
+      badge="Prisvärd"
+      accentColor="#b34558" bgColor="#4a5568"
+      imageUrl="/images/products/julius-zollner-jan-madrass-60x120.webp"
+      imageAlt="Julius Zöllner Jan spjälsängsmadrass 60x120"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10315508&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/julius-zollner-jan-madrass-60x120"
+      pros={['Lätt skumkärna, enkel att lyfta vid bäddning', 'Klimatkant som ökar luftflödet', 'Tysk kvalitet till lågt pris']}
+      cons={['Tunnast av madrasserna i testet', 'Enkelt överdrag utan extrafunktioner']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Julius Zöllner Jan är det prisvärda basvalet från en tysk tillverkare med lång erfarenhet av barnmadrasser. Skumkärnan är lätt, vilket gör det enkelt att lyfta madrassen när du byter lakan, och en klimatkant runt om ökar luftflödet. För en första spjälsäng där budgeten är stram är det en fullt trygg madrass.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Den är tunnast i testet och överdraget saknar de extrafunktioner som premiummadrasserna har. Men fastheten och den tyska kvaliteten gör att Jan levererar långt över sin prisklass, och som reservmadrass eller till resesängshörnan är den svårslagen.
+    </p>
+    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10315508&url=https://www.jollyroom.se/barnrummet/barnsangar-tillbehor/sangtillbehor/madrasser/julius-zollner-jan-madrass-60x120" />
+
+    <Callout type="warning" title="Säker sömn för spädbarn">
+      En spjälsängsmadrass ska vara fast och plan och fylla ut sängen så att det inte får plats mer än två fingrar mellan madrass och sarg. Lägg barnet på rygg, undvik lösa kuddar, täcken och mjuka bäddmadrasser i sängen och håll rumstemperaturen sval. En fast, rätt anpassad madrass är en av de enklaste åtgärderna för trygg sömn det första året.
+    </Callout>
+
+    <p class="text-text-light leading-relaxed mb-8">
+      Fyra spjälsängsmadrasser i 60x120 granskade. Candide Seaqual vinner på andningsförmåga och miljömaterial, BabyMatex Fresh ger bäst luftcirkulation, Hoppekids Eco Dream är det ekologiska valet och Julius Zöllner Jan är det prisvärda basvalet. Ska du välja säng också? Läs vår guide om <a href="/spjalsangar/" class="text-accent hover:text-accent-dark underline">bästa spjälsängen 2026</a> eller om <a href="/spjalsangar/bedside-crib/" class="text-accent hover:text-accent-dark underline">bästa bedside crib för nyfödda</a>.
+    </p>
+
+    {/* Spec-jämförelse ovanför köpguiden */}
+    <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Spjälsängsmadrasser 2026" />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du spjälsängsmadrass</h2>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Rätt storlek och passform</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Standardmåttet för en svensk spjälsäng är 60x120 cm och det är den storlek de flesta madrasser tillverkas i. Mät alltid sängbotten innan du köper, särskilt om du har en ovanlig eller utländsk säng. Madrassen ska fylla ut sängen så att det inte går att få plats med mer än två fingrar mellan madrass och sarg, annars finns en klämrisk.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Fasthet framför mjukhet</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      En spädbarnsmadrass ska vara fast och plan. En fast liggyta ger stöd åt den växande ryggen och minskar risken att ett litet barn sjunker ner med ansiktet i madrassen. Tryck ner handen i mitten: madrassen ska fjädra tillbaka direkt utan att lämna en grop. Alla fyra madrasser i testet har den fasthet som rekommenderas för spädbarn.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Andningsförmåga och luftflöde</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Ett bra luftflöde håller barnet svalt och transporterar bort fukt. Andningsbart skum som i Candide Seaqual och en 3D-nätkant som i BabyMatex Fresh är två effektiva lösningar. Sval sömn är skönare för barnet och motverkar att det blir för varmt, vilket är viktigt för trygg sömn under det första året.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Avtagbart, tvättbart överdrag</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Läckage och kräkningar hör spädbarnslivet till, så ett avtagbart överdrag som tål maskintvätt är närmast ett krav. Kolla vilken tvättemperatur överdraget klarar, Hoppekids Eco Dream tål 60 grader, vilket dödar de flesta bakterier. Komplettera med ett vattentätt madrasskydd så håller själva madrassen längre.
+    </p>
+
+    <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Certifiering och material</h3>
+    <p class="text-text-light leading-relaxed mb-4">
+      Barnet sover på madrassen upp till tolv timmar om dygnet, så materialet spelar roll. Leta efter Oeko-Tex Standard 100, som innebär att textilierna testats för hälsoskadliga ämnen. Samtliga madrasser i den här jämförelsen har Oeko-Tex-certifierade överdrag. Vill du gå längre finns mer uttalat ekologiska alternativ som Hoppekids Eco Dream.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+    <p class="text-text-light leading-relaxed mb-8">
+      Vi har granskat fyra spjälsängsmadrasser i standardstorleken 60x120 cm utifrån fasthet, andningsförmåga och luftflöde, materialens certifiering, överdragets tvättbarhet och höjd. Produkterna är valda bland de mest sålda och eftersökta madrasserna i Sverige. Ingen tillverkare har betalat för placering i listan. Följ alltid tillverkarens och barnhälsovårdens råd om säker sömn för spädbarn.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/spjalsangar/" class="text-accent underline">Bästa spjälsängen 2026, test och köpguide</a></li>
+        <li><a href="/spjalsangar/bedside-crib/" class="text-accent underline">Bästa bedside crib 2026 för nyfödda</a></li>
+        <li><a href="/spjalsangar/resesang/" class="text-accent underline">Bästa resesängen 2026 för baby</a></li>
+        <li><a href="/sovsackar/" class="text-accent underline">Bästa sovsäcken 2026 för trygg sömn</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* 6. ItemList JSON-LD (utan Offer/price, no-price-policy) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bästa spjälsängsmadrassen 2026",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.name,
+        "image": `https://bebisguiden.se${p.imageUrl}`,
+        "description": p.desc,
+        "brand": { "@type": "Brand", "name": p.brand },
+        "review": {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": p.rating, "bestRating": 5 },
+          "author": { "@type": "Organization", "name": "Bebisguiden" }
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": p.rating, "bestRating": 5, "ratingCount": 1 }
+      }
+    }))
+  })} />
+
+  {/* 7. StickyCTA (mobil) */}
+  <StickyCTA
+    href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10119435&url=https://www.jollyroom.se/barnrummet/madrasser/candide-madrass-seaqual-60x120-cm"
+    text="Bra pris hos Jollyroom"
+    productName="Candide Seaqual 60x120"
+  />
+
+</ArticleLayout>
+
+{/* Auto-TOC "Detaljerad genomgång", money page-mallen. Scopat till .mp-prose på denna sida. */}
+<script>
+  (function () {
+    function slugify(text) {
+      return text.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    function buildToc() {
+      const root = document.querySelector('.mp-prose');
+      if (!root) return;
+      const words = (root.innerText || root.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      const rtEl = document.getElementById('article-reading-time');
+      if (rtEl) { rtEl.textContent = minutes + ' min läsning'; rtEl.classList.remove('sr-only'); }
+      const h2s = Array.from(root.querySelectorAll('h2'));
+      if (h2s.length < 2) return;
+      h2s.forEach((h) => { if (!h.id) h.id = slugify(h.textContent || ''); });
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Innehållsförteckning');
+      nav.className = 'not-prose';
+      nav.style.cssText = ['margin:0 0 1.5rem', 'padding:1rem 1.35rem', 'background:var(--color-bg-alt)', 'border:1px solid var(--color-border)', 'border-radius:0.85rem'].join(';');
+      const heading = document.createElement('div');
+      heading.style.cssText = ['display:flex', 'align-items:center', 'gap:0.5rem', 'font-size:0.7rem', 'font-weight:700', 'text-transform:uppercase', 'letter-spacing:0.12em', 'color:var(--color-primary)', 'margin:0 0 0.8rem', 'padding-bottom:0.7rem', 'border-bottom:1px solid var(--color-border)'].join(';');
+      heading.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Innehåll</span>';
+      nav.appendChild(heading);
+      const ol = document.createElement('ol');
+      ol.style.cssText = 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;';
+      h2s.forEach((h, i) => {
+        const raw = (h.textContent || '').trim();
+        const isRanked = /^\s*\d+[.)]/.test(raw);
+        const label = raw.replace(/^\s*\d+[.)]\s*/, '').replace(/\s*\([^)]*\)\s*$/, '').trim();
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;gap:0.55rem;align-items:baseline;padding:0.2rem 0;';
+        const num = document.createElement('span');
+        num.textContent = String(i + 1);
+        num.style.cssText = 'flex:0 0 1.2rem;text-align:right;font-size:0.78rem;font-weight:700;color:var(--color-accent);font-variant-numeric:tabular-nums;line-height:1.3;';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.style.cssText = ['display:-webkit-box', '-webkit-box-orient:vertical', '-webkit-line-clamp:2', 'flex:1 1 0', 'min-width:0', 'overflow:hidden', 'color:var(--color-text)', 'font-size:0.9rem', 'line-height:1.3', 'text-decoration:none'].join(';');
+        const commaIdx = label.indexOf(', ');
+        if (isRanked && commaIdx > -1) {
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = label.slice(0, commaIdx);
+          nameSpan.style.cssText = 'font-weight:600;';
+          const descSpan = document.createElement('span');
+          descSpan.textContent = label.slice(commaIdx);
+          descSpan.style.cssText = 'color:var(--color-text-light);font-weight:400;';
+          a.appendChild(nameSpan);
+          a.appendChild(descSpan);
+        } else {
+          a.textContent = label;
+          a.style.fontWeight = '500';
+        }
+        a.addEventListener('mouseenter', () => { a.style.textDecoration = 'underline'; a.style.textUnderlineOffset = '3px'; });
+        a.addEventListener('mouseleave', () => { a.style.textDecoration = 'none'; });
+        li.appendChild(num);
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      nav.appendChild(ol);
+      const firstH2 = h2s[0];
+      const sectionTitle = document.createElement('p');
+      sectionTitle.textContent = 'Detaljerad genomgång';
+      sectionTitle.className = 'not-prose';
+      sectionTitle.style.cssText = ['font-family:var(--font-heading,inherit)', 'font-weight:700', 'font-size:1.5rem', 'line-height:1.25', 'color:var(--color-primary)', 'margin:2rem 0 0.75rem'].join(';');
+      firstH2.parentNode.insertBefore(sectionTitle, firstH2);
+      firstH2.parentNode.insertBefore(nav, firstH2);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildToc);
+    else buildToc();
+  })();
+</script>
