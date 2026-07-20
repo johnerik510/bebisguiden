@@ -9,10 +9,16 @@ const breadcrumbs = [
 const orgSchema = {
  '@context': 'https://schema.org',
  '@type': 'Organization',
+ '@id': 'https://bebisguiden.se/#organization',
  name: 'Bebisguiden.se',
  url: 'https://bebisguiden.se',
- logo: 'https://bebisguiden.se/favicon.svg',
- description: 'Oberoende tester och jämförelser av barnprodukter. Bilbarnstolar, barnvagnar, babyvakter och mer.',
+ logo: {
+ '@type': 'ImageObject',
+ url: 'https://bebisguiden.se/images/logo.png',
+ width: 600,
+ height: 106
+ },
+ description: 'Oberoende jämförelser av barnprodukter, grundade på krocktester och säkerhetsstandarder från Folksam, ADAC och Konsumentverket. Bilbarnstolar, barnvagnar, babyvakter och mer.',
  foundingDate: '2026',
  contactPoint: {
  '@type': 'ContactPoint',
@@ -20,8 +26,8 @@ const orgSchema = {
  contactType: 'customer service',
  availableLanguage: 'Swedish'
  },
- sameAs: [],
- knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsakerhet']
+ sameAs: ['https://www.facebook.com/profile.php?id=61589077420466'],
+ knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'i-Size', 'ISOFIX']
 };
 ---
 

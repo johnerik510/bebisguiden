@@ -12,9 +12,11 @@ export const AUTHOR = {
 
 export const PUBLISHER = {
   '@type': 'Organization',
+  '@id': `${SITE_URL}/#organization`,
   name: 'Bebisguiden',
   url: SITE_URL,
-  logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.svg` }
+  // Raster-logo: Google accepterar inte SVG som publisher-logo i Article-schema.
+  logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png`, width: 600, height: 106 }
 };
 
 /**
