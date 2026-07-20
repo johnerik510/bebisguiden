@@ -2,12 +2,19 @@
 const SITE_URL = 'https://bebisguiden.se';
 
 export const AUTHOR = {
-  '@type': 'Organization',
-  name: 'Bebisguidens redaktion',
+  '@type': 'Person',
+  name: 'Axel Jönemyr',
   url: `${SITE_URL}/om-redaktionen/`,
-  description: 'Vi jämför barnprodukter utifrån oberoende krocktester, säkerhetsstandarder, tillverkarnas specifikationer och pris. Bebisguiden är en oberoende guide, inte vårdpersonal.',
+  image: `${SITE_URL}/images/axel-jonemyr.webp`,
+  jobTitle: 'Redaktör, Bebisguiden',
+  description: 'Axel granskar barnvagnar, bilbarnstolar och babyutrustning utifrån verifierbar data, säkerhet och pris, så svenska föräldrar enklare hittar rätt.',
+  worksFor: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Bebisguiden', url: SITE_URL },
+  sameAs: [
+    'https://www.instagram.com/axlpxl/',
+    'https://www.strava.com/athletes/2699302',
+    'https://www.linkedin.com/in/axel-j%C3%B6nemyr-ba1443170/',
+  ],
   knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'amning', 'spädbarnsvård', 'i-Size', 'ISOFIX'],
-  email: 'info@bebisguiden.se'
 };
 
 export const PUBLISHER = {

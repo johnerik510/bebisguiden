@@ -1,21 +1,23 @@
 ---
 /**
- * Slim enradig redaktions-byline för money pages (money page-mallen).
- * Trogen port av tillskottsguidens AuthorByline: liten ikon + redaktionsnamn ·
- * datum · uppdaterad · lästid på en rad. Lästiden fylls av sidans TOC-script
- * (#article-reading-time). Tematiserad till bebisguiden.
+ * Slim enradig byline för money pages (money page-mallen).
+ * Foto + Axel Jönemyr · datum · uppdaterad · lästid på en rad. Lästiden fylls
+ * av sidans TOC-script (#article-reading-time). Person JSON-LD inkluderad.
  */
 interface Props {
   author?: string;
   authorTitle?: string;
   authorBio?: string;
+  authorImage?: string;
   datePublished?: string;
   dateModified?: string;
 }
 
 const {
-  author = 'Bebisguidens redaktion',
-  authorBio = 'Vi jämför barnprodukter utifrån oberoende krocktester, säkerhetsstandarder, specifikationer och pris. Bebisguiden är en oberoende guide, inte vårdpersonal.',
+  author = 'Axel Jönemyr',
+  authorTitle = 'Redaktör, Bebisguiden',
+  authorBio = 'Axel granskar barnvagnar, bilbarnstolar och babyutrustning utifrån verifierbar data, säkerhet och pris, så svenska föräldrar enklare hittar rätt.',
+  authorImage = '/images/axel-jonemyr.webp',
   datePublished,
   dateModified,
 } = Astro.props;
@@ -31,9 +33,13 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
 
 <div class="flex items-center gap-2.5 py-2 mb-3 border-b border-gray-200">
   <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
-    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-700" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-[18px] h-[18px]"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9.75h6M9 12h6m-6 2.25h3"/></svg>
-    </span>
+    {authorImage ? (
+      <img src={authorImage} alt={author} width="32" height="32" loading="lazy" class="w-8 h-8 rounded-full object-cover" />
+    ) : (
+      <span class="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-700" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-[18px] h-[18px]"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9.75h6M9 12h6m-6 2.25h3"/></svg>
+      </span>
+    )}
   </a>
   <div class="flex flex-wrap items-center gap-x-1.5 gap-y-0 text-xs text-gray-500 min-w-0">
     <a href="/om-redaktionen/" class="font-semibold text-gray-800 hover:text-sky-700 transition-colors whitespace-nowrap">{author}</a>
@@ -49,9 +55,17 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
 
 <script type="application/ld+json" set:html={JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'Person',
   name: author,
   url: 'https://bebisguiden.se/om-redaktionen/',
   description: authorBio,
+  jobTitle: authorTitle,
+  worksFor: { '@type': 'Organization', '@id': 'https://bebisguiden.se/#organization', name: 'Bebisguiden', url: 'https://bebisguiden.se' },
+  sameAs: [
+    'https://www.instagram.com/axlpxl/',
+    'https://www.strava.com/athletes/2699302',
+    'https://www.linkedin.com/in/axel-j%C3%B6nemyr-ba1443170/',
+  ],
+  ...(authorImage ? { image: `https://bebisguiden.se${authorImage}` } : {}),
   knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'matstolar', 'barnsäkerhet', 'amning', 'EN 14988', 'i-Size']
 })} />

@@ -36,15 +36,22 @@ const articleSchema = article ? {
     ? (articleMeta.image.startsWith('http') ? articleMeta.image : `https://bebisguiden.se${articleMeta.image}`)
     : `https://bebisguiden.se/og-default.png`,
   author: {
-    '@type': 'Organization',
-    name: 'Bebisguidens redaktion',
+    '@type': 'Person',
+    name: 'Axel Jönemyr',
     url: 'https://bebisguiden.se/om-redaktionen/',
+    jobTitle: 'Redaktör, Bebisguiden',
+    sameAs: [
+      'https://www.instagram.com/axlpxl/',
+      'https://www.strava.com/athletes/2699302',
+      'https://www.linkedin.com/in/axel-j%C3%B6nemyr-ba1443170/',
+    ],
   },
   publisher: {
     '@type': 'Organization',
+    '@id': 'https://bebisguiden.se/#organization',
     name: 'Bebisguiden',
     url: 'https://bebisguiden.se',
-    logo: { '@type': 'ImageObject', url: 'https://bebisguiden.se/favicon.svg' },
+    logo: { '@type': 'ImageObject', url: 'https://bebisguiden.se/images/logo.png', width: 600, height: 106 },
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
   inLanguage: 'sv-SE',
