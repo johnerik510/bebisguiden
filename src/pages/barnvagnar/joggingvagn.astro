@@ -10,6 +10,7 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 import ExpertQuote from '../../components/ExpertQuote.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -362,10 +363,11 @@ export const articleMeta = {
       Kontrollera alltid om din modell finns med bland <a href="/guider/aterkallade-barnprodukter/" class="text-accent hover:text-accent-dark underline">återkallade barnprodukter</a> innan köp, särskilt på begagnatmarknaden.
     </p>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat fem joggingvagnar utifrån fyra kriterier: körkomfort vid löpning (hjul, fjädring, framhjulslås), säkerhet (handbroms, säkerhetslina, EN 1888-certifiering), vardagsanvändning (vikt, hopfällning, mångsidighet) och pris per användningsår inklusive andrahandsvärde. Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

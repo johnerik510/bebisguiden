@@ -9,6 +9,7 @@ import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import { VERIFIED_LINKS } from '../../data/verified-links';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -231,10 +232,11 @@ export const articleMeta = {
       Räkna in abonnemangskostnaden i kalkylen. Stay Connected-abonnemanget till Xplora ligger på liknande nivå som ett vanligt mobilabonnemang. Bygg in den löpande månadskostnaden i din budget, det är där den långsiktiga skillnaden mellan modellerna sitter och inte bara i priset på själva klockan.
     </p>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat tre GPS-klockor för barn utifrån funktionsuppsättning (GPS, kamera, samtal, skolläge), föräldraapp, åldersspann, abonnemangskrav och daglig användbarhet för barn 5 till 12 år. Produkterna är valda bland de mest eftersökta och sålda GPS-klockorna för barn i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

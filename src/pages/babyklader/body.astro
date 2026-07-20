@@ -8,6 +8,7 @@ import MoneyProductCard from '../../components/MoneyProductCard.astro';
 import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -232,10 +233,11 @@ export const articleMeta = {
       Tryckknappar längs skrevet gör blöjbytet enklare utan att ta av hela bodyn. Se till att knapparna sitter på insidan (inga hårda knappar mot huden). Undvik knappar som kräver stor kraft att stänga, nyfödda tolererar inte lång tid i utsatt position.
     </p>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat tre babybodys utifrån material (temperaturreglering, mjukhet, andningsbarhet), certifiering (GOTS/OEKO-TEX), stängningslösning (tryckknappar), ärmtyp och storleksintervall. Produkterna är valda bland de mest sålda och eftersökta babybodys i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

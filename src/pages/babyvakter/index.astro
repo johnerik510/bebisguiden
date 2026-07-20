@@ -9,6 +9,7 @@ import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -324,10 +325,11 @@ export const articleMeta = {
       </StatHighlight>
     </div>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat babyvakter utifrån fyra kriterier: signalsäkerhet (DECT vs WiFi och risk för hackning), räckvidd och stabilitet i svenska bostäder, batteritid på föräldraenheten samt extrafunktioner (video, puls/syresättning, temperatur, tvåvägsljud). Produkterna är valda bland de mest sålda och eftersökta modellerna i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

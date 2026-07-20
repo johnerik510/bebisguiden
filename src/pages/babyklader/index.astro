@@ -9,6 +9,7 @@ import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -346,10 +347,11 @@ export const articleMeta = {
 
     <RetailerCTAs />
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat fem babykläder utifrån material och certifieringar (GOTS, OEKO-TEX, UPF 50+), storlekar och användningstid, stängningslösning och praktisk hantering, lämplighet för svenska temperaturer och årstider samt tillgänglighet i svenska butiker. Produkterna är valda bland de mest sålda och eftersökta babykläderna i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} title="Vanliga frågor om babykläder" />
 

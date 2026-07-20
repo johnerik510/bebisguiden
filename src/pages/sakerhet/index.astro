@@ -10,6 +10,7 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 import ExpertQuote from '../../components/ExpertQuote.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -430,10 +431,11 @@ export const articleMeta = {
       "Det är viktigt att du som vuxen håller barnet under uppsikt och gör hemmet barnsäkert."
     </ExpertQuote>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat fem säkerhetsprodukter utifrån skyddsfunktion (grind, hörnskydd, skåplås), monteringssätt (tryck, skruv eller självhäftande), användbarhet i vardagen (enhandsöppning, synlighet) och hur väl de täcker de vanligaste riskerna i hemmet. Produkterna är valda bland de mest sålda och eftersökta säkerhetsprodukterna för bebis i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

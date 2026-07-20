@@ -1,0 +1,48 @@
+---
+/**
+ * Standardblock "Så har vi granskat" för money pages.
+ * Sidans kategori-specifika granskningstext läggs i slotten. Komponenten
+ * lägger till betygsmodellen (fem kriterier där säkerhet väger dubbelt),
+ * betygsskalan och länk till den fullständiga metodsidan /sa-testar-vi/.
+ */
+const criteria = [
+  { name: 'Säkerhet', weight: 2, note: 'standarder, oberoende tester, återkallelser' },
+  { name: 'Användarvänlighet', weight: 1, note: 'montering, justering, rengöring' },
+  { name: 'Komfort', weight: 1, note: 'ergonomi, material, passform' },
+  { name: 'Kvalitet och hållbarhet', weight: 1, note: 'byggkvalitet, livslängd, andrahandsvärde' },
+  { name: 'Pris och värde', weight: 1, note: 'kostnad per användningsår, inte listpris' },
+];
+const maxWeight = Math.max(...criteria.map((c) => c.weight));
+---
+
+<h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
+<slot />
+
+<div class="not-prose border border-border rounded-xl overflow-hidden mb-8 -mt-2">
+  <div class="px-5 pt-4 pb-4">
+    <p class="text-sm font-bold text-primary mb-3">Så räknas betyget fram</p>
+    <ul class="space-y-2.5" role="list">
+      {criteria.map((c) => (
+        <li class="grid grid-cols-1 sm:grid-cols-[200px_88px_minmax(0,1fr)] items-center gap-x-4 gap-y-0.5">
+          <span class="text-sm font-semibold text-text">{c.name}</span>
+          <span class="hidden sm:flex items-center gap-2" aria-hidden="true">
+            <span class="block h-1.5 rounded-full bg-accent" style={`width: ${(c.weight / maxWeight) * 72}px`}></span>
+          </span>
+          <span class="text-xs text-text-light leading-snug">{c.note}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="text-xs text-text-light mt-3 leading-relaxed">
+      Varje kriterium bedöms på en skala 1 till 5. Säkerhet väger dubbelt så tungt som varje övrigt
+      kriterium och står för en tredjedel av totalbetyget, som avrundas till en decimal.
+    </p>
+  </div>
+  <div class="px-5 py-3 bg-bg-alt border-t border-border">
+    <p class="text-xs text-text-light leading-relaxed">
+      <strong class="text-text">Betygsskalan:</strong> 4,8 till 5,0 bäst i klassen · 4,5 till 4,7 mycket bra ·
+      4,0 till 4,4 bra med tydliga kompromisser. Produkter under 4,0, med kända säkerhetsbrister eller utan
+      gällande godkännande publiceras inte som rekommendationer. Hela modellen, källorna och våra hårda spärrar
+      finns i <a href="/sa-testar-vi/" class="text-accent underline hover:text-accent-dark">metoden bakom Bebisguidens betyg och rankningar</a>.
+    </p>
+  </div>
+</div>

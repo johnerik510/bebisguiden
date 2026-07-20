@@ -10,6 +10,7 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 import ExpertQuote from '../../components/ExpertQuote.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -372,10 +373,11 @@ export const articleMeta = {
       "Var alltid intill barnet vid bad och vatten."
     </ExpertQuote>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat fem babybadkar och badstöd utifrån livslängd (lämplig ålder), hopfällbarhet och förvaring, säkerhet och stöd för bebisen, rengöringsbarhet och daglig användbarhet. Produkterna är valda bland de mest sålda och eftersökta badbaljorna, badstolarna och badstöden i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

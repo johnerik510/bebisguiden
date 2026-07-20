@@ -10,6 +10,7 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 import ExpertQuote from '../../components/ExpertQuote.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -281,10 +282,11 @@ export const articleMeta = {
       "Se till att barnets ansikte är fritt, att barnet är lagom varm och kan röra sig när hen sover."
     </ExpertQuote>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat tre vintersovpåsar utifrån värme (TOG-värde mot rumstemperatur), material (polyester eller bomull), säkerhet (passform och halsöppning), åldersintervall och daglig användbarhet (dragkedja, tvätt och rörelsefrihet). Produkterna är valda bland de mest sålda och eftersökta vintersovpåsarna i Sverige. Ingen tillverkare har betalat för placering i listan.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

@@ -10,6 +10,7 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 import ExpertQuote from '../../components/ExpertQuote.astro';
+import HowWeReviewed from '../../components/HowWeReviewed.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -229,10 +230,11 @@ export const articleMeta = {
       "Vår rekommendation är att välja en bakåtvänd bilbarnstol som är godkänd till barnet är 125 centimeter eller väger 25-36 kilo."
     </ExpertQuote>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Så har vi granskat</h2>
-    <p class="text-text-light leading-relaxed mb-8">
+    <HowWeReviewed>
+      <p class="text-text-light leading-relaxed mb-8">
       Vi har granskat babyskydd utifrån lämplighet för prematura bebisar: minimivikt och minimilängd, möjlighet till nästan horisontellt liggläge, sidokrockskydd, seleanpassning för smala bebisar och stabil ISOFIX-montering. Rekommendationen utgår från de modeller som svenska NICU-avdelningar och barnläkare oftast lyfter fram. Ingen tillverkare har betalat för placering. Innehållet är generellt, din NICU och barnläkare är den primära källan för just ditt barn.
     </p>
+    </HowWeReviewed>
 
     <FAQ items={faqItems} />
 

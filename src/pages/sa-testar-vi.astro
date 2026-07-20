@@ -5,92 +5,172 @@ const breadcrumbs = [
  { label: 'Hem', href: '/' },
  { label: 'Så jämför vi' },
 ];
+
+const criteria = [
+ {
+   nr: 1,
+   name: 'Säkerhet',
+   weight: 'Dubbel vikt, en tredjedel av betyget',
+   text: 'Det viktigaste kriteriet, och det enda med dubbel vikt. Vi kontrollerar att produkten uppfyller gällande europeisk standard för sin kategori: i-Size (R129) och ECE R44 för bilbarnstolar, EN 1888 för barnvagnar, EN 14988 för matstolar, EN 716 för spjälsängar, EN 71 för leksaker och Oeko-Tex Standard 100 för textilier nära barnets hud. Där oberoende krocktester finns, från Folksam, ADAC eller Stiftung Warentest, väger de tyngre än tillverkarens egna påståenden. Vi kontrollerar också om produkten förekommer i återkallelser eller säkerhetsvarningar. En produkt med känd säkerhetsbrist får inte ett lågt betyg, den får inget betyg alls och tas bort från sidan.',
+ },
+ {
+   nr: 2,
+   name: 'Användarvänlighet',
+   weight: 'Enkel vikt',
+   text: 'Hur produkten fungerar i en stressig vardag: montering och installation, justering när barnet växer, ihopfällning med en hand, rengöring och tvätt. Här väger vi in hanteringsbetyg från oberoende tester (ADAC betygsätter exempelvis installation och felmonteringsrisk separat) och återkommande mönster i användaromdömen. En produkt som kräver två vuxna och en manual för varje moment får lägre delbetyg oavsett hur bra den är på pappret.',
+ },
+ {
+   nr: 3,
+   name: 'Komfort',
+   weight: 'Enkel vikt',
+   text: 'Barnets komfort bedöms utifrån stoppning, ergonomi, ventilation, utrymme och hur produkten anpassar sig efter barnets växande kropp. För bärselar och bilbarnstolar väger vi in ergonomisk position, till exempel stöd för höfter och nacke, för sovprodukter TOG-värden och material. Där externa tester mäter komfort, som ADAC:s ergonomibetyg, använder vi dem som primärkälla.',
+ },
+ {
+   nr: 4,
+   name: 'Kvalitet och hållbarhet',
+   weight: 'Enkel vikt',
+   text: 'Materialval, byggkvalitet och livslängd. Konkreta signaler vi granskar: garantitid, maxvikt och åldersspann (en matstol som följer med från 6 månader till vuxen ålder slår en som växer ur på två år), reservdelsförsörjning och andrahandsvärde på begagnatmarknaden. Produkter som håller för barn två och tre får högre delbetyg.',
+ },
+ {
+   nr: 5,
+   name: 'Pris och värde',
+   weight: 'Enkel vikt',
+   text: 'Vi bedömer inte listpriset utan kostnaden per användningsår. En dyr produkt kan vara det billigaste valet om den används i åtta år och har högt andrahandsvärde, en billig kan bli dyr om den måste ersättas efter ett år. Prisnivåer kontrolleras mot ledande svenska återförsäljare när sidan skrivs eller uppdateras. Därför visar vi inte dagspriser på topplistorna: de ändras för snabbt för att vara pålitliga, aktuellt pris ser du alltid hos butiken.',
+ },
+];
 ---
 
 <ArticleLayout
- title="Så testar och jämför vi barnprodukter, Bebisguiden.se"
- description="Läs om hur Bebisguiden jämför och betygsätter barnprodukter 2026. Våra fem kriterier och externa testkällor förklaras i detalj."
+ title="Så granskar och betygsätter vi barnprodukter, Bebisguiden"
+ description="Så räknas Bebisguidens betyg fram: fem viktade kriterier, oberoende testkällor, hårda säkerhetsspärrar och en öppen process bakom varje rankning."
  breadcrumbs={breadcrumbs}
  showDisclaimer={false}
  datePublished="2026-03-28"
- dateModified="2026-06-02"
+ dateModified="2026-07-20"
 >
  <div class="prose prose-sm text-text-light max-w-none">
  <p>
- På Bebisguiden.se är vi transparenta med hur vi jämför och betygsätter produkter. Vi köper och labbtestar inte produkterna själva. Varje produkt utvärderas enligt fem tydliga kriterier, där vi väger samman oberoende tester, säkerhetsstandarder, tillverkarens specifikationer och sammanvägda användaromdömen.
+ Varje betyg på Bebisguiden är en sammanvägning av fem kriterier: säkerhet, användarvänlighet, komfort, kvalitet och hållbarhet samt pris och värde. Säkerhet väger dubbelt. Underlaget är oberoende tester, europeiska säkerhetsstandarder, tillverkarens specifikationer och sammanvägda användaromdömen. Vi köper och labbtestar inte produkterna själva, och vi skriver det öppet i stället för att låtsas något annat.
  </p>
 
- <h2>Våra fem bedömningskriterier</h2>
+ <h2>Betygsmodellen: så räknas ett betyg fram</h2>
+ <p>
+ Varje produkt får fem delbetyg på en skala 1 till 5, ett per kriterium. Delbetygen vägs samman till ett totalbetyg där säkerhet räknas dubbelt, alltså en tredjedel av totalen, medan de fyra övriga kriterierna står för en sjättedel var. Totalbetyget avrundas till en decimal och är det betyg som visas vid produkten.
+ </p>
+
+ <div class="not-prose my-6 border border-border rounded-xl overflow-hidden">
+   <table class="w-full text-sm">
+     <thead>
+       <tr class="bg-bg-alt border-b border-border text-left">
+         <th class="px-4 py-2.5 font-bold text-gray-900">Kriterium</th>
+         <th class="px-4 py-2.5 font-bold text-gray-900">Vikt</th>
+       </tr>
+     </thead>
+     <tbody>
+       {criteria.map((c) => (
+         <tr class="border-b border-border last:border-b-0">
+           <td class="px-4 py-2.5 font-semibold text-gray-800">{c.name}</td>
+           <td class="px-4 py-2.5 text-gray-700">{c.weight}</td>
+         </tr>
+       ))}
+     </tbody>
+   </table>
+ </div>
+
+ <p>
+ Delbetygen är redaktionella bedömningar, men de är inte fria: varje delbetyg ska kunna motiveras med en källa. Ett säkerhetsbetyg pekar på en standard, ett krocktestresultat eller en certifiering. Ett hållbarhetsbetyg pekar på garantivillkor, maxvikt eller åldersspann. Kan vi inte belägga en bedömning sätter vi inget betyg.
+ </p>
+
+ <h2>Betygsskalan: vad siffrorna betyder</h2>
+ <ul>
+ <li><strong>4,8 till 5,0.</strong> Bäst i klassen. Utmärker sig i oberoende tester eller saknar reella svagheter i sin kategori.</li>
+ <li><strong>4,5 till 4,7.</strong> Mycket bra. Rekommenderas utan tvekan, med någon mindre kompromiss som vi redovisar under nackdelar.</li>
+ <li><strong>4,0 till 4,4.</strong> Bra, med tydliga kompromisser. Ofta rätt val för ett specifikt behov eller en stramare budget.</li>
+ <li><strong>Under 4,0.</strong> Publiceras inte som rekommendation.</li>
+ </ul>
+ <p>
+ Därför ligger betygen på våra topplistor högt: en topplista är slutet på en gallring, inte ett tvärsnitt av marknaden. Produkter som inte når 4,0, som har kända brister eller som inte går att köpa hos svenska butiker sållas bort innan listan publiceras. Det vi rankar är de modeller som redan klarat urvalet, och nackdelarna hos varje produkt redovisas alltid, även hos vinnaren.
+ </p>
+
+ <h2>Hårda spärrar som slår ut allt annat</h2>
+ <p>Vissa brister går inte att kompensera med bra delbetyg. Följande utesluter en produkt helt, oavsett totalbetyg:</p>
+ <ul>
+ <li><strong>Återkallelse eller känd säkerhetsbrist.</strong> Produkten tas bort från sidan, den flyttas inte ner.</li>
+ <li><strong>Saknar gällande godkännande.</strong> En bilbarnstol utan R129- eller R44-godkännande, en matstol utan EN 14988, en leksak utan CE-märkning enligt EN 71 betygsätts inte.</li>
+ <li><strong>Data som inte går att verifiera.</strong> Kan vi inte belägga en specifikation mot tillverkarens dokumentation eller en oberoende källa utgår den ur bedömningen, och i förlängningen produkten.</li>
+ <li><strong>Utgått ur sortimentet.</strong> En produkt som inte längre säljs av svenska återförsäljare tas bort ur listan vid nästa uppdatering.</li>
+ </ul>
+
+ <h2>Så väljer vi ut produkterna</h2>
+ <p>
+ Urvalet till en topplista utgår från vad svenska föräldrar faktiskt köper och söker efter: de mest sålda och mest eftersökta modellerna i Sverige, tillgängliga hos etablerade svenska återförsäljare. Vi listar inte obskyra produkter för att fylla ut en lista, och tillverkare kan inte betala för att komma med. Varje topplista har dessutom ett eget avsnitt, Så har vi granskat, som redovisar vilka kriterier som vägde tyngst i just den kategorin, till exempel läckageskydd för blöjor eller kostnad per användningsår för matstolar.
+ </p>
+
+ <h2>Så rankas listan</h2>
+ <p>
+ Ordningen i en topplista följer totalbetyget inom kategorin. Vid jämna betyg avgör lämpligheten för sidans användningsfall: på en sida om resevagnar rankas låg vikt och kompakt ihopfällning före maximal komfort, på en sida om nattblöjor väger läckageskyddet tyngre än priset. Därför kan samma produkt rankas olika på olika sidor, och därför delar vi ut Bäst för-utnämningar i stället för att låtsas att en enda produkt passar alla familjer.
+ </p>
+
+ <h2>De fem kriterierna i detalj</h2>
 
  <div class="not-prose grid gap-4 my-6">
+ {criteria.map((c) => (
  <div class="bg-bg-alt border border-border rounded-xl p-5">
- <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">1. Säkerhet</h3>
- <p class="text-gray-700 text-sm leading-relaxed">
- Det viktigaste kriteriet. Vi granskar krocktestresultat från Folksam, ADAC och Euro NCAP. Vi kontrollerar att produkten uppfyller gällande europeiska standarder som i-Size (R129), ECE R44 och relevanta EN-standarder. Produkter med kända säkerhetsbrister rekommenderas aldrig.
- </p>
+ <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+ <h3 class="font-heading text-lg font-bold text-gray-900">{c.nr}. {c.name}</h3>
+ <span class="text-xs font-semibold text-accent">{c.weight}</span>
  </div>
-
- <div class="bg-bg-alt border border-border rounded-xl p-5">
- <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">2. Användarvänlighet</h3>
- <p class="text-gray-700 text-sm leading-relaxed">
- Hur lätt är produkten att använda i vardagen? Vi bedömer installation, justering, ihopfällning, rengöring och allmän hantering. En produkt som är svårmonterad eller klumpig att använda får lägre betyg, oavsett hur bra den är i andra avseenden.
- </p>
+ <p class="text-gray-700 text-sm leading-relaxed">{c.text}</p>
  </div>
-
- <div class="bg-bg-alt border border-border rounded-xl p-5">
- <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">3. Komfort</h3>
- <p class="text-gray-700 text-sm leading-relaxed">
- Barnets komfort är centralt. Vi bedömer stoppning, ergonomi, ventilation, utrymme och hur väl produkten anpassar sig efter barnets växande kropp. För bilbarnstolar utvärderar vi även åkkomfort på längre resor.
- </p>
- </div>
-
- <div class="bg-bg-alt border border-border rounded-xl p-5">
- <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">4. Kvalitet och hållbarhet</h3>
- <p class="text-gray-700 text-sm leading-relaxed">
- Vi bedömer materialval, byggkvalitet och hur väl produkten håller över tid. Kan den användas för flera barn? Tål materialet tvätt och dagligt slitage? Produkter med hög kvalitet får högre betyg, det är en investering som lönar sig.
- </p>
- </div>
-
- <div class="bg-bg-alt border border-border rounded-xl p-5">
- <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">5. Pris och värde</h3>
- <p class="text-gray-700 text-sm leading-relaxed">
- Vi jämför priset med vad produkten faktiskt levererar. En dyr produkt kan vara prisvärd om den håller länge och erbjuder hög säkerhet. Omvänt kan en billig produkt vara överprissatt om kvaliteten är låg. Vi kollar aktuella priser från ledande svenska återförsäljare.
- </p>
- </div>
+ ))}
  </div>
 
  <h2>Externa testkällor vi använder</h2>
- <p>Våra rekommendationer bygger på dokumenterade fakta, inte egna intryck. Dessa oberoende testkällor är centrala i vår bedömning:</p>
+ <p>Våra bedömningar bygger på dokumenterade fakta, inte egna intryck. Dessa oberoende källor är centrala:</p>
  <ul>
- <li><strong>Folksam krocktester:</strong> Sveriges största oberoende krocktester av bilbarnstolar. Folksam testar både frontal- och sidokrock under realistiska förhållanden.</li>
- <li><strong>ADAC:</strong> Europas största bilistorganisation genomför årliga tester av bilbarnstolar med fokus på säkerhet, hantering, ergonomi och skadliga ämnen.</li>
- <li><strong>Euro NCAP / NCAP:</strong> Internationella krocktestvärdena som vi refererar till för fordonssäkerhet och kompatibilitet med bilbarnstolar.</li>
+ <li><strong>Folksam krocktester:</strong> Sveriges största oberoende krocktester av bilbarnstolar. Folksam testar både frontal- och sidokollision under realistiska förhållanden.</li>
+ <li><strong>ADAC:</strong> Europas största bilistorganisation testar bilbarnstolar med fokus på säkerhet, hantering, ergonomi och skadliga ämnen, med nya testomgångar varje år.</li>
  <li><strong>Stiftung Warentest:</strong> Tysk konsumentorganisation med rigorösa produkttester, deras barnproduktresultat är bland de mest trovärdiga i Europa.</li>
- <li><strong>i-Size (R129):</strong> Den nyaste europeiska säkerhetsstandarden för bilbarnstolar. Vi kontrollerar alltid om en stol uppfyller i-Size-kraven.</li>
+ <li><strong>Euro NCAP:</strong> Internationella krocktestvärden som vi refererar till för fordonssäkerhet och kompatibilitet med bilbarnstolar.</li>
+ <li><strong>Konsumentverket:</strong> Svensk myndighet vars vägledningar om barnsäkerhet, till exempel kring matstolar och spjälsängar, citeras med källänk där vi använder dem.</li>
+ <li><strong>Europeiska standarder:</strong> i-Size (R129), ECE R44, EN 1888, EN 14988, EN 716, EN 71 och Oeko-Tex Standard 100. Vi kontrollerar alltid vilken standard produkten uppfyller, inte bara att tillverkaren skriver ordet säkerhet.</li>
  </ul>
 
- <h2>Vår metod</h2>
- <p>
- Vi köper och labbtestar inte produkterna själva. Vår styrka ligger i att samla, granska och väga samman den information som faktiskt går att verifiera, så att en stressad förälder kan fatta ett tryggt beslut på några minuter.
- </p>
- <p>Vår process ser ut så här:</p>
+ <h2>Processen steg för steg</h2>
  <ol>
- <li><strong>Research:</strong> Vi studerar tillverkarens specifikationer, externa testresultat (Folksam, ADAC, Stiftung Warentest) och sammanvägda användaromdömen.</li>
- <li><strong>Granskning av specifikationer:</strong> Vi jämför mått, vikt, material, säkerhetsstandarder och funktioner punkt för punkt.</li>
- <li><strong>Bedömning:</strong> Produkten betygsätts enligt våra fem kriterier, med säkerhet som viktigast.</li>
- <li><strong>Jämförelse:</strong> Vi jämför med konkurrerande produkter i samma kategori och prisklass.</li>
- <li><strong>Publicering:</strong> Resultatet publiceras med full transparens, för- och nackdelar redovisas alltid.</li>
+ <li><strong>Urval:</strong> Vi identifierar de mest sålda och eftersökta modellerna i kategorin som säljs av svenska återförsäljare.</li>
+ <li><strong>Research:</strong> Vi samlar tillverkarens specifikationer och dokumentation, externa testresultat och sammanvägda användaromdömen.</li>
+ <li><strong>Granskning:</strong> Mått, vikt, material, standarder och funktioner jämförs punkt för punkt mellan produkterna, och varje påstående kontrolleras mot källan när det skrivs.</li>
+ <li><strong>Betygssättning:</strong> Fem delbetyg sätts enligt modellen ovan och vägs samman till totalbetyget, med säkerhet som dubbel vikt.</li>
+ <li><strong>Publicering:</strong> Resultatet publiceras med för- och nackdelar för varje produkt, källhänvisningar och ett granskningsavsnitt som visar vilka kriterier som avgjorde.</li>
+ <li><strong>Omprövning:</strong> Betyg och rankningar ses över när nya oberoende testresultat publiceras, när en modell uppdateras eller utgår och när prisbilden förändras väsentligt.</li>
  </ol>
+
+ <h2>Uppdateringar och datum</h2>
+ <p>
+ Varje sida visar när den senast uppdaterades, och det datumet bumpas bara när vi faktiskt ändrat något: verifierat priser mot butik, bytt ut en produkt, uppdaterat efter ett nytt testresultat eller rättat ett fel. Vi sätter aldrig ett nytt datum på en orörd sida.
+ </p>
+
+ <h2>Vad vi inte gör</h2>
+ <ul>
+ <li>Vi köper inte in produkterna för egna labbtester, och vi påstår aldrig att vi gjort det.</li>
+ <li>Vi tar inte emot betalda recensioner, och tillverkare kan inte betala för placering på en topplista.</li>
+ <li>Vi betygsätter inte produkter vars data vi inte kan verifiera.</li>
+ <li>Vi visar inte dagspriser vi inte kan hålla uppdaterade, aktuellt pris ser du alltid hos butiken.</li>
+ <li>Vi hittar aldrig på citat eller testresultat. Expertcitat återges ordagrant med länk till källan.</li>
+ </ul>
+
+ <h2>Hittat ett fel?</h2>
+ <p>
+ Har en produkt utgått, en specifikation ändrats eller ett betyg blivit fel? Hör av dig via <a href="/kontakt/" class="text-accent hover:text-accent-dark underline">kontaktsidan</a> så granskar vi uppgiften och rättar sidan. Rättelser av sakfel görs så snart de verifierats.
+ </p>
 
  <h2>Oberoende och transparens</h2>
  <p>
- Bebisguiden.se finansieras genom affiliatelänkar. Vi får provision när du handlar via våra länkar, men detta påverkar aldrig våra betyg eller rankingar. Våra rekommendationer baseras uteslutande på oberoende tester, dokumenterade specifikationer och våra fem bedömningskriterier.
+ Bebisguiden.se finansieras genom affiliatelänkar. Vi får provision när du handlar via våra länkar, men detta påverkar aldrig våra betyg. Betygen sätts enligt modellen ovan innan länkarna läggs in, och en produkt utan affiliatesamarbete kan stå överst i en lista, då utan köpknapp.
  </p>
  <p>
- Vi tackar aldrig ja till betalda recensioner, och tillverkare kan inte betala för högre placering på våra topplistor.
- </p>
- <p>
- Läs vår fullständiga <a href="/redaktionell-policy/" class="text-accent hover:text-accent-dark underline">redaktionella policy</a> för mer information om vår process och våra principer.
+ Läs vår fullständiga <a href="/redaktionell-policy/" class="text-accent hover:text-accent-dark underline">redaktionella policy</a> för mer information om vår process och våra principer, eller mer om <a href="/om-redaktionen/" class="text-accent hover:text-accent-dark underline">redaktören bakom Bebisguiden</a>.
  </p>
  </div>
 </ArticleLayout>
