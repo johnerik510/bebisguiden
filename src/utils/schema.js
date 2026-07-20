@@ -1,8 +1,14 @@
 // Shared schema helpers for Bebisguiden
 const SITE_URL = 'https://bebisguiden.se';
 
+// Gemensam entitets-ID för redaktören. Alla Person-noder (Article-author,
+// bylines, Review-author, ProfilePage) ska referera samma @id så Google
+// slår ihop dem till en och samma författarentitet.
+export const PERSON_ID = `${SITE_URL}/om-redaktionen/#person`;
+
 export const AUTHOR = {
   '@type': 'Person',
+  '@id': PERSON_ID,
   name: 'Axel Jönemyr',
   url: `${SITE_URL}/om-redaktionen/`,
   image: `${SITE_URL}/images/axel-jonemyr.webp`,

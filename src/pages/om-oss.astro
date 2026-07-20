@@ -6,11 +6,18 @@ const breadcrumbs = [
  { label: 'Om oss' },
 ];
 
-const orgSchema = {
+const aboutPageSchema = {
  '@context': 'https://schema.org',
+ '@type': 'AboutPage',
+ '@id': 'https://bebisguiden.se/om-oss/',
+ url: 'https://bebisguiden.se/om-oss/',
+ name: 'Om Bebisguiden, oberoende granskning av barnprodukter',
+ inLanguage: 'sv-SE',
+ isPartOf: { '@type': 'WebSite', '@id': 'https://bebisguiden.se/#website' },
+ mainEntity: {
  '@type': 'Organization',
  '@id': 'https://bebisguiden.se/#organization',
- name: 'Bebisguiden.se',
+ name: 'Bebisguiden',
  url: 'https://bebisguiden.se',
  logo: {
  '@type': 'ImageObject',
@@ -20,14 +27,22 @@ const orgSchema = {
  },
  description: 'Oberoende jämförelser av barnprodukter, grundade på krocktester och säkerhetsstandarder från Folksam, ADAC och Konsumentverket. Bilbarnstolar, barnvagnar, babyvakter och mer.',
  foundingDate: '2026',
+ founder: { '@type': 'Person', name: 'John Erik Johansson' },
  contactPoint: {
  '@type': 'ContactPoint',
  email: 'info@bebisguiden.se',
  contactType: 'customer service',
  availableLanguage: 'Swedish'
  },
+ employee: {
+ '@type': 'Person',
+ '@id': 'https://bebisguiden.se/om-redaktionen/#person',
+ name: 'Axel Jönemyr',
+ url: 'https://bebisguiden.se/om-redaktionen/'
+ },
  sameAs: ['https://www.facebook.com/profile.php?id=61589077420466'],
  knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'i-Size', 'ISOFIX']
+ }
 };
 ---
 
@@ -66,5 +81,5 @@ const orgSchema = {
  <p>E-post: <span class="js-email" data-u="info" data-d="bebisguiden.se"></span></p>
  </div>
 
- <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+ <script type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
 </ArticleLayout>

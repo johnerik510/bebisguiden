@@ -33,6 +33,28 @@ const faqItems = [
  answer: 'Normalt inom 1-3 arbetsdagar. Faktakorrigeringar och GDPR-relaterade förfrågningar prioriteras och besvaras oftast samma dag eller nästa arbetsdag. Under sommar- och julledighet kan svarstiden vara längre, vi informerar då i ett autosvar.',
  },
 ];
+
+const contactPageSchema = {
+ '@context': 'https://schema.org',
+ '@type': 'ContactPage',
+ '@id': 'https://bebisguiden.se/kontakt/',
+ url: 'https://bebisguiden.se/kontakt/',
+ name: 'Kontakta Bebisguiden',
+ inLanguage: 'sv-SE',
+ isPartOf: { '@type': 'WebSite', '@id': 'https://bebisguiden.se/#website' },
+ mainEntity: {
+ '@type': 'Organization',
+ '@id': 'https://bebisguiden.se/#organization',
+ name: 'Bebisguiden',
+ url: 'https://bebisguiden.se',
+ contactPoint: {
+ '@type': 'ContactPoint',
+ email: 'info@bebisguiden.se',
+ contactType: 'customer service',
+ availableLanguage: 'Swedish'
+ }
+ }
+};
 ---
 
 <ArticleLayout
@@ -69,4 +91,6 @@ const faqItems = [
  </div>
 
  <FAQ items={faqItems} />
+
+ <script type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />
 </ArticleLayout>

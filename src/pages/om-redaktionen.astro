@@ -7,15 +7,24 @@ const breadcrumbs = [
  { label: 'Om redaktören' },
 ];
 
-const personSchema = {
+const profilePageSchema = {
  '@context': 'https://schema.org',
+ '@type': 'ProfilePage',
+ '@id': 'https://bebisguiden.se/om-redaktionen/',
+ url: 'https://bebisguiden.se/om-redaktionen/',
+ name: 'Axel Jönemyr, redaktören bakom Bebisguiden',
+ inLanguage: 'sv-SE',
+ dateModified: '2026-07-20',
+ isPartOf: { '@type': 'WebSite', '@id': 'https://bebisguiden.se/#website' },
+ mainEntity: {
  '@type': 'Person',
+ '@id': 'https://bebisguiden.se/om-redaktionen/#person',
  name: 'Axel Jönemyr',
  url: 'https://bebisguiden.se/om-redaktionen/',
  image: 'https://bebisguiden.se/images/axel-jonemyr.webp',
  jobTitle: 'Redaktör, Bebisguiden',
  description: 'Axel Jönemyr är redaktör för Bebisguiden och granskar barnvagnar, bilbarnstolar och babyutrustning utifrån verifierbar data, säkerhet och pris för svenska föräldrar.',
- worksFor: { '@type': 'Organization', name: 'Bebisguiden', url: 'https://bebisguiden.se' },
+ worksFor: { '@type': 'Organization', '@id': 'https://bebisguiden.se/#organization', name: 'Bebisguiden', url: 'https://bebisguiden.se' },
  knowsAbout: ['barnvagnar', 'bilbarnstolar', 'blöjor', 'amning', 'spjälsängar', 'babyutrustning'],
  sameAs: [
  'https://www.instagram.com/axlpxl/',
@@ -23,6 +32,7 @@ const personSchema = {
  'https://www.linkedin.com/in/axel-j%C3%B6nemyr-ba1443170/',
  'https://www.facebook.com/axel.jonemyr/',
  ],
+ },
 };
 ---
 
@@ -93,7 +103,7 @@ const personSchema = {
  </div>
  </article>
 
- <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+ <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
  <script type="application/ld+json" set:html={JSON.stringify({
  '@context': 'https://schema.org',
  '@type': 'BreadcrumbList',

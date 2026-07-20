@@ -37,6 +37,7 @@ const articleSchema = article ? {
     : `https://bebisguiden.se/og-default.png`,
   author: {
     '@type': 'Person',
+    '@id': 'https://bebisguiden.se/om-redaktionen/#person',
     name: 'Axel Jönemyr',
     url: 'https://bebisguiden.se/om-redaktionen/',
     jobTitle: 'Redaktör, Bebisguiden',
@@ -99,18 +100,12 @@ const articleSchema = article ? {
  <script type="application/ld+json" set:html={JSON.stringify({
  "@context": "https://schema.org",
  "@type": "WebSite",
+ "@id": "https://bebisguiden.se/#website",
  "name": "Bebisguiden",
  "url": "https://bebisguiden.se",
  "description": "Oberoende tester och jämförelser av barnprodukter. Bilbarnstolar, barnvagnar, babyvakter och mer, så du väljer rätt för ditt barn.",
  "inLanguage": "sv-SE",
- "potentialAction": {
- "@type": "SearchAction",
- "target": {
- "@type": "EntryPoint",
- "urlTemplate": "https://www.google.se/search?q=site%3Abebisguiden.se+{search_term_string}"
- },
- "query-input": "required name=search_term_string"
- }
+ "publisher": { "@id": "https://bebisguiden.se/#organization" }
  })} />
 
  <script type="application/ld+json" set:html={JSON.stringify({
@@ -121,11 +116,24 @@ const articleSchema = article ? {
  "url": "https://bebisguiden.se",
  "description": "Oberoende jämförelser av barnprodukter, grundade på krocktester och säkerhetsstandarder från Folksam, ADAC och Konsumentverket",
  "foundingDate": "2026",
+ "founder": { "@type": "Person", "name": "John Erik Johansson" },
  "logo": {
  "@type": "ImageObject",
  "url": "https://bebisguiden.se/images/logo.png",
  "width": 600,
  "height": 106
+ },
+ "contactPoint": {
+ "@type": "ContactPoint",
+ "email": "info@bebisguiden.se",
+ "contactType": "customer service",
+ "availableLanguage": "Swedish"
+ },
+ "employee": {
+ "@type": "Person",
+ "@id": "https://bebisguiden.se/om-redaktionen/#person",
+ "name": "Axel Jönemyr",
+ "url": "https://bebisguiden.se/om-redaktionen/"
  },
  "sameAs": ["https://www.facebook.com/profile.php?id=61589077420466"]
  })} />

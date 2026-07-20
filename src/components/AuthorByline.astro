@@ -78,8 +78,9 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
   url: `https://bebisguiden.se${authorHref}`,
   description: authorBio,
   ...(authorType === 'Person' ? {
+    '@id': `https://bebisguiden.se${authorHref}#person`,
     jobTitle: authorTitle,
-    worksFor: { '@type': 'Organization', name: 'Bebisguiden', url: 'https://bebisguiden.se' },
+    worksFor: { '@type': 'Organization', '@id': 'https://bebisguiden.se/#organization', name: 'Bebisguiden', url: 'https://bebisguiden.se' },
     sameAs: [
       'https://www.instagram.com/axlpxl/',
       'https://www.strava.com/athletes/2699302',
