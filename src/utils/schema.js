@@ -13,6 +13,7 @@ export const AUTHOR = {
     'https://www.instagram.com/axlpxl/',
     'https://www.strava.com/athletes/2699302',
     'https://www.linkedin.com/in/axel-j%C3%B6nemyr-ba1443170/',
+    'https://www.facebook.com/axel.jonemyr/',
   ],
   knowsAbout: ['barnprodukter', 'bilbarnstolar', 'barnvagnar', 'babyvakter', 'barnsäkerhet', 'amning', 'spädbarnsvård', 'i-Size', 'ISOFIX'],
 };
