@@ -12,7 +12,7 @@ export const AUTHOR = {
   name: 'Axel Jönemyr',
   url: `${SITE_URL}/om-redaktionen/`,
   image: `${SITE_URL}/images/axel-jonemyr.webp`,
-  jobTitle: 'Redaktör, Bebisguiden',
+  jobTitle: 'Grundare och redaktör, Bebisguiden',
   description: 'Axel granskar barnvagnar, bilbarnstolar och babyutrustning utifrån verifierbar data, säkerhet och pris, så svenska föräldrar enklare hittar rätt.',
   worksFor: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Bebisguiden', url: SITE_URL },
   sameAs: [
