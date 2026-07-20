@@ -50,6 +50,9 @@ if (Astro.slots.has('default')) {
 const resolvedPublished = datePublished;
 const resolvedModified = updatedDate || dateModified || datePublished;
 
+const formatDate = (dateStr: string) =>
+ new Date(dateStr).toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
+
 const articleSchema = buildArticleSchema({
  title,
  description,
@@ -91,6 +94,25 @@ if (section) {
  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
  <Breadcrumbs items={breadcrumbs} />
  <h1 class="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold text-text mt-3 mb-2">{title}</h1>
+ {showAuthor && (
+ <div class="flex items-center gap-2.5 mt-3 mb-1">
+ <a href="/om-redaktionen/" aria-label="Om Axel Jönemyr" class="shrink-0">
+ <img src="/images/axel-jonemyr.webp" alt="" width="28" height="28" loading="eager" class="w-7 h-7 rounded-full object-cover" />
+ </a>
+ <p class="flex flex-wrap items-center gap-x-1.5 gap-y-0 text-xs text-text-light">
+ <a href="/om-redaktionen/" class="font-semibold text-text hover:text-accent transition-colors">Axel Jönemyr</a>
+ {resolvedPublished && (
+ <Fragment><span class="text-border-dark" aria-hidden="true">·</span><time datetime={resolvedPublished}>{formatDate(resolvedPublished)}</time></Fragment>
+ )}
+ {resolvedModified && resolvedModified !== resolvedPublished && (
+ <Fragment><span class="text-border-dark" aria-hidden="true">·</span><span>Uppdaterad <time datetime={resolvedModified}>{formatDate(resolvedModified)}</time></span></Fragment>
+ )}
+ {readingTimeMinutes && (
+ <Fragment><span class="text-border-dark" aria-hidden="true">·</span><span>Lästid: {readingTimeMinutes} min</span></Fragment>
+ )}
+ </p>
+ </div>
+ )}
  {image && (
  <div class="mt-4 mb-6 rounded-xl overflow-hidden aspect-[16/9] bg-sand">
  <img src={image} alt={title} class="w-full h-full object-cover" loading="lazy" width="1200" height="675" />
