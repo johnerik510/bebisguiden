@@ -4,6 +4,7 @@ import FAQ from '../components/FAQ.astro';
 import SnabbsvarBox from '../components/SnabbsvarBox.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import { currentMonthYear } from '../utils/currentDate';
+import { kriterier } from '../data/metodik';
 
 /**
  * Toppval. Länk och bild verifierade mot BabySam-feeden
@@ -229,7 +230,7 @@ const bastITestKolumner = [
 ];
 
 /** Bedömningskriterierna speglar /sa-testar-vi/. Ingen viktning påstås. */
-const kriterier = ['Säkerhet', 'Användarvänlighet', 'Komfort', 'Kvalitet', 'Pris och värde'];
+// Kriterierna bor i src/data/metodik.ts så headern och den här sidan aldrig kan säga olika.
 
 const kallor = ['Folksam', 'ADAC', 'Stiftung Warentest', 'i-Size R129'];
 
@@ -333,10 +334,6 @@ const homeFaqItems = [
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative w-full">
    <div class="max-w-2xl">
-    <p class="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.2em] text-white mb-4">
-     Oberoende jämförelser · {antalKategorier} kategorier · uppdaterad {monthYear}
-    </p>
-
     <h1 class="font-heading text-[2rem] leading-[1.1] sm:text-[2.75rem] lg:text-[3.25rem] font-semibold mb-4">
      Barnvagn, bilbarnstol och blöjor bäst i test <span class="text-white/60">2026</span>
     </h1>

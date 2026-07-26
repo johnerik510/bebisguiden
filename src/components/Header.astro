@@ -28,6 +28,7 @@
  * ingen butiksnamn, ingen "beställ"-badge. Affiliate-disclosure bor i footern.
  */
 import SearchModal from './SearchModal.astro';
+import { antalKriterier } from '../data/metodik';
 
 const manader = ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
 const nu = new Date();
@@ -343,7 +344,7 @@ const uspItems = [
  '100+ produkter jämförda',
  'Oberoende recensioner',
  'Uppdaterat 2026',
- 'Alltid gratis',
+ `${antalKriterier} kriterier per produkt`,
 ];
 ---
 
