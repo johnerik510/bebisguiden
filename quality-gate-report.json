@@ -1,16 +1,30 @@
 {
   "site": "bebisguiden",
   "siteRoot": "/Users/axeljonemyr/Documents/bebisguiden",
-  "timestamp": "2026-07-24T15:05:55.404Z",
-  "durationMs": 7246,
+  "timestamp": "2026-07-26T20:35:13.380Z",
+  "durationMs": 6262,
   "summary": {
-    "checks": 21,
-    "errors": 0,
+    "checks": 22,
+    "errors": 2,
     "warnings": 18,
-    "newErrors": 0,
+    "newErrors": 2,
     "baselinedErrors": 0
   },
   "results": [
+    {
+      "check": "01-dashes",
+      "severity": "error",
+      "file": "src/components/Header.astro",
+      "line": 3,
+      "message": "em-dash hittad: \"* Header — redaktionell mega-meny (2026-07-26).\""
+    },
+    {
+      "check": "19-number-format",
+      "severity": "error",
+      "file": "src/components/SnabbsvarBox.astro",
+      "line": 99,
+      "message": "toFixed() ger engelskt decimaltecken. Använd helpern i src/lib/format.ts (betyg/tal/heltal): \"<span class=\"text-[15px] font-semibold text-text tabular\">{featured.rating.toFix\""
+    },
     {
       "check": "04-articlemeta",
       "severity": "warning",
@@ -64,7 +78,7 @@
     {
       "check": "04-articlemeta",
       "severity": "warning",
-      "message": "Bild \"/images/cat-bloja.webp\" används av 4 artiklar: Libero vs Pampers 2026: vilken blöja är bäst? | Blöjstorlek guide 2026: vilken storlek passar din bebis? | Tygblöjor bäst i test 2026: 5 system jämförda | Bebis diarré 2026: orsaker och tecken på uttorkning"
+      "message": "Bild \"/images/cat-bloja.webp\" används av 4 artiklar: Libero vs Pampers 2026: vilken blöja är bäst? | Blöjstorlek 2026: tabell efter vikt och när du byter upp | Tygblöjor bäst i test 2026: 5 system jämförda | Bebis diarré 2026: orsaker och tecken på uttorkning"
     },
     {
       "check": "04-articlemeta",
@@ -99,16 +113,23 @@
     {
       "check": "04-articlemeta",
       "severity": "warning",
-      "message": "Bild \"/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp\" används av 2 artiklar: Medela bröstpumpar 2026: Freestyle vs Swing Maxi | Bröstpump bäst i test 2026: 4 elektriska jämförda"
+      "message": "Bild \"/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp\" används av 2 artiklar: Medela bröstpumpar 2026: Freestyle vs Swing Maxi | Elektrisk bröstpump bäst i test 2026: 4 modeller jämförda"
     }
   ],
   "baseline": {
     "status": "compared",
     "baselineCount": 0,
     "baselinedCount": 0,
-    "newErrorCount": 0
+    "newErrorCount": 2
   },
   "allResults": [
+    {
+      "check": "01-dashes",
+      "severity": "error",
+      "file": "src/components/Header.astro",
+      "line": 3,
+      "message": "em-dash hittad: \"* Header — redaktionell mega-meny (2026-07-26).\""
+    },
     {
       "check": "04-articlemeta",
       "severity": "warning",
@@ -162,7 +183,7 @@
     {
       "check": "04-articlemeta",
       "severity": "warning",
-      "message": "Bild \"/images/cat-bloja.webp\" används av 4 artiklar: Libero vs Pampers 2026: vilken blöja är bäst? | Blöjstorlek guide 2026: vilken storlek passar din bebis? | Tygblöjor bäst i test 2026: 5 system jämförda | Bebis diarré 2026: orsaker och tecken på uttorkning"
+      "message": "Bild \"/images/cat-bloja.webp\" används av 4 artiklar: Libero vs Pampers 2026: vilken blöja är bäst? | Blöjstorlek 2026: tabell efter vikt och när du byter upp | Tygblöjor bäst i test 2026: 5 system jämförda | Bebis diarré 2026: orsaker och tecken på uttorkning"
     },
     {
       "check": "04-articlemeta",
@@ -197,7 +218,14 @@
     {
       "check": "04-articlemeta",
       "severity": "warning",
-      "message": "Bild \"/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp\" används av 2 artiklar: Medela bröstpumpar 2026: Freestyle vs Swing Maxi | Bröstpump bäst i test 2026: 4 elektriska jämförda"
+      "message": "Bild \"/images/products/medela-freestyle-hands-free-elektrisk-dubbelbrostpump.webp\" används av 2 artiklar: Medela bröstpumpar 2026: Freestyle vs Swing Maxi | Elektrisk bröstpump bäst i test 2026: 4 modeller jämförda"
+    },
+    {
+      "check": "19-number-format",
+      "severity": "error",
+      "file": "src/components/SnabbsvarBox.astro",
+      "line": 99,
+      "message": "toFixed() ger engelskt decimaltecken. Använd helpern i src/lib/format.ts (betyg/tal/heltal): \"<span class=\"text-[15px] font-semibold text-text tabular\">{featured.rating.toFix\""
     }
   ]
 }

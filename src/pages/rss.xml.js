@@ -20,7 +20,7 @@ export async function GET(context) {
 
     items.push({
       title,
-      description: `Guide: ${title} — Bebisguiden`,
+      description: `Guide: ${title}, Bebisguiden`,
       link: slug,
       pubDate: new Date('2026-01-01'),
     });
@@ -29,7 +29,7 @@ export async function GET(context) {
   items.sort((a, b) => a.link.localeCompare(b.link));
 
   return rss({
-    title: 'Bebisguiden — Guider',
+    title: 'Bebisguiden, Guider',
     description: 'Oberoende tester och jämförelser av barnprodukter samt guider för nyblivna föräldrar.',
     site: context.site || 'https://bebisguiden.se',
     items,

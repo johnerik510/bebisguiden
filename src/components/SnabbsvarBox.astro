@@ -1,5 +1,6 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
+import { betyg } from '../lib/format';
 /**
  * Snabbsvar (answer-first) med inbäddat toppval.
  *
@@ -96,7 +97,7 @@ const { question, headingId = 'snabbsvar', featured } = Astro.props;
                     </svg>
                     ))}
                   </span>
-                  <span class="text-[15px] font-semibold text-text tabular">{featured.rating.toFixed(1).replace('.', ',')} av 5</span>
+                  <span class="text-[15px] font-semibold text-text tabular">{betyg(featured.rating)} av 5</span>
                 </div>
               )}
 
