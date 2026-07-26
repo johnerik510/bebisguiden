@@ -52,10 +52,9 @@ const fallbackDescription = product.badge
 
 const finalDescription = description || fallbackDescription;
 const fullStars = product.rating ? Math.round(product.rating) : 0;
-const stars = '★'.repeat(fullStars) + '☆'.repeat(Math.max(0, 5 - fullStars));
 ---
 
-<aside class="not-prose mb-6 rounded-2xl border-2 border-cta/30 bg-gradient-to-br from-sand/40 to-white shadow-md overflow-hidden">
+<aside class="not-prose mb-6 rounded-lg border border-border border-l-4 border-l-accent bg-white overflow-hidden">
   <div class="bg-cta text-white text-xs font-bold uppercase tracking-wider px-4 py-2 flex items-center gap-2">
     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.957c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.175 0l-3.37 2.448c-.784.57-1.838-.197-1.539-1.118l1.286-3.957a1 1 0 00-.364-1.118L2.05 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.957z"/></svg>
     Vår topprekommendation
@@ -64,9 +63,16 @@ const stars = '★'.repeat(fullStars) + '☆'.repeat(Math.max(0, 5 - fullStars))
     <img src={product.image} alt={product.name} class="w-20 h-20 sm:w-24 sm:h-24 object-contain shrink-0" loading="eager" width="96" height="96" />
     <div class="flex-1 w-full min-w-0">
       <div class="flex flex-wrap items-center gap-2 mb-0.5">
-        <h2 class="font-heading text-base sm:text-lg font-bold text-dark">{product.name}</h2>
+        <h2 class="font-heading text-base sm:text-lg font-bold text-primary">{product.name}</h2>
         {product.rating && (
-        <span class="text-accent font-bold text-sm">{product.rating}/5 <span class="text-accent">{stars}</span></span>
+        <span class="flex items-center gap-1.5">
+          <span class="flex items-center gap-0.5" aria-hidden="true">
+            {[1, 2, 3, 4, 5].map((i) => (
+            <svg class={`w-4 h-4 ${i <= fullStars ? 'text-star' : 'text-border-dark'}`} viewBox="0 0 20 20" fill="currentColor"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 00.95.7h4.16c.97 0 1.37 1.24.59 1.8l-3.37 2.45a1 1 0 00-.36 1.12l1.28 3.96c.3.92-.75 1.68-1.53 1.11l-3.37-2.44a1 1 0 00-1.18 0l-3.37 2.44c-.78.57-1.83-.19-1.53-1.11l1.28-3.96a1 1 0 00-.36-1.12L2.05 9.38c-.78-.57-.38-1.81.59-1.81h4.16a1 1 0 00.95-.7l1.29-3.94z"/></svg>
+            ))}
+          </span>
+          <span class="text-[15px] font-semibold text-text tabular">{product.rating}/5</span>
+        </span>
         )}
       </div>
       <p class="text-xs sm:text-sm text-text-light mb-2 leading-snug line-clamp-2">{finalDescription}</p>

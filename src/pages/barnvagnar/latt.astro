@@ -18,7 +18,6 @@ const breadcrumbs = [
   { label: 'Lätt barnvagn' },
 ];
 
-
 // No-price-policy: inga produktpriser visas (slipper prisunderhåll + GSC-fel).
 
 // Money page-mallens datamodell. Affiliate-länkar/bilder/priser oförändrade (verifierade).
@@ -33,7 +32,6 @@ const products = [
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914586&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/silver-cross-reef-duovagn-orbit',
     imageUrl: '/images/products/silver-cross-clic-sulky.webp',
-    accentColor: '#b34558', bgColor: '#4a5568',
     features: { 'Vikt (kg)': '6,0 kg', 'Hopfällt mått': '53 x 45 x 25 cm', 'Sits-riktning': 'Framåt', 'Lämplig ålder': '6 mån, 4 år' },
     alsoAt: [
       { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285139&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/silver-cross-clic-sulky-space' },
@@ -49,7 +47,6 @@ const products = [
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10269283&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/cybex-eezy-s-twist-2-sittvagn-fog-grey',
     imageUrl: '/images/products/cybex-eezy-s-twist-2.webp',
-    accentColor: '#0d9488', bgColor: '#1a365d',
     features: { 'Vikt (kg)': '7,5 kg', 'Hopfällt mått': '55 x 46 x 22 cm', 'Sits-riktning': 'Fram- och bakåt', 'Lämplig ålder': '6 mån, 4 år' },
     alsoAt: [],
   },
@@ -63,7 +60,6 @@ const products = [
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=914880&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/stokke-yoyo-3-sittvagn-6-leopard-black',
     imageUrl: '/images/products/stokke-yoyo3-sittvagn-leopard-black.webp',
-    accentColor: '#7c3aed', bgColor: '#4c1d95',
     features: { 'Vikt (kg)': '6,2 kg', 'Hopfällt mått': '52 x 44 x 20 cm', 'Sits-riktning': 'Framåt', 'Lämplig ålder': '6 mån, 4 år' },
     alsoAt: [],
   },
@@ -77,7 +73,6 @@ const products = [
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10255465&url=https://www.jollyroom.se/barnvagnar/sittvagnar/vandbar-sittdel/uppababy-minu-v2-sittvagn-noa-navy',
     imageUrl: '/images/products/uppababy-minu-v2.webp',
-    accentColor: '#2563eb', bgColor: '#1e3a8a',
     features: { 'Vikt (kg)': '6,4 kg', 'Hopfällt mått': '56 x 43 x 24 cm', 'Sits-riktning': 'Framåt', 'Lämplig ålder': '6 mån, 4 år' },
     alsoAt: [
       { store: 'Jollyroom', url: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10230566&url=https://www.jollyroom.se/barnvagnar/barnvagnstillbehor/adaptrar/bilstolsadaptrar/uppababy-minu-bilstolsadapter-maxi-cosi-nuna-besafe-cybex' },
@@ -93,7 +88,6 @@ const products = [
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10265469&url=https://www.jollyroom.se/barnvagnar/sulkys/sulkys/joie-pact-pro-sulky-pebble',
     imageUrl: '/images/products/joie-pact-pro.webp',
-    accentColor: '#1a365d', bgColor: '#0d9488',
     features: { 'Vikt (kg)': '6,2 kg', 'Hopfällt mått': '54 x 49 x 26 cm', 'Sits-riktning': 'Framåt', 'Lämplig ålder': '6 mån, 4 år' },
     alsoAt: [],
   },
@@ -107,7 +101,6 @@ const products = [
     store: 'Babyland',
     affiliateUrl: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=581548&url=https://www.babyland.se/crescent-smart-sulky-sand',
     imageUrl: '/images/products/crescent-smart-sulky-sand.webp',
-    accentColor: '#4c1d95', bgColor: '#7c3aed',
     features: { 'Vikt (kg)': '6,5 kg', 'Hopfällt mått': 'Kompakt', 'Sits-riktning': 'Framåt', 'Lämplig ålder': '6 mån, 3 år' },
     alsoAt: [],
   },
@@ -164,9 +157,9 @@ export const articleMeta = {
   <MoneyByline datePublished="2026-02-22" dateModified="2026-06-12" />
 
   {/* 2. Answer-box (AEO: snabbt svar, answer-first i DOM) */}
-  <div class="not-prose bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-4">
-    <h2 class="text-sm font-bold text-blue-900 mb-0.5">Snabbt svar: Vilken lätt barnvagn är bäst 2026?</h2>
-    <p class="text-blue-800 text-[13px] leading-snug">
+  <div class="not-prose bg-white border border-border border-l-4 border-l-accent rounded-lg px-4 py-3 mb-4">
+    <h2 class="text-base font-semibold text-primary mb-1">Snabbt svar: Vilken lätt barnvagn är bäst 2026?</h2>
+    <p class="text-text-light text-[15px] leading-relaxed">
       Silver Cross Zest är bäst i test 2026: den väger bara 6,0 kg och fälls med en hand till kompakta 53 x 45 x 25 cm, vilket gör den till det smidigaste valet för stadsfamiljer utan flygresor. Bäst för flygresor: Stokke YOYO 3, godkänd som kabinbagage. Budgetval: Joie Pact Pro.
     </p>
   </div>
@@ -203,7 +196,6 @@ export const articleMeta = {
       rating={4.7}
       rank={1}
       badge="Bäst i test"
-      accentColor="#b34558" bgColor="#4a5568"
       imageUrl="/images/products/silver-cross-clic-sulky.webp"
       imageAlt="Silver Cross Zest lätt barnvagn"
       store="Jollyroom"
@@ -229,7 +221,6 @@ export const articleMeta = {
       rating={4.6}
       rank={2}
       badge="Roterande sits"
-      accentColor="#0d9488" bgColor="#1a365d"
       imageUrl="/images/products/cybex-eezy-s-twist-2.webp"
       imageAlt="Cybex Eezy S Twist+2 lätt barnvagn"
       store="Jollyroom"
@@ -252,7 +243,6 @@ export const articleMeta = {
       rating={4.8}
       rank={3}
       badge="Flyg-godkänd"
-      accentColor="#7c3aed" bgColor="#4c1d95"
       imageUrl="/images/products/stokke-yoyo3-sittvagn-leopard-black.webp"
       imageAlt="Stokke YOYO 3 Sittvagn Leopard Black"
       store="Jollyroom"
@@ -275,7 +265,6 @@ export const articleMeta = {
       rating={4.6}
       rank={4}
       badge="Premium kompakt"
-      accentColor="#2563eb" bgColor="#1e3a8a"
       imageUrl="/images/products/uppababy-minu-v2.webp"
       imageAlt="UPPAbaby Minu V2 lätt barnvagn"
       store="Jollyroom"
@@ -301,7 +290,6 @@ export const articleMeta = {
       rating={4.3}
       rank={5}
       badge="Budgetval"
-      accentColor="#1a365d" bgColor="#0d9488"
       imageUrl="/images/products/joie-pact-pro.webp"
       imageAlt="Joie Pact Pro lätt barnvagn"
       store="Jollyroom"
@@ -324,7 +312,6 @@ export const articleMeta = {
       rating={4.4}
       rank={6}
       badge="Svensk klassiker"
-      accentColor="#4c1d95" bgColor="#7c3aed"
       imageUrl="/images/products/crescent-smart-sulky-sand.webp"
       imageAlt="Crescent Smart Sulky Sand"
       store="Babyland"

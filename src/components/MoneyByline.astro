@@ -36,13 +36,13 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
     {authorImage ? (
       <img src={authorImage} alt={author} width="32" height="32" loading="lazy" class="w-8 h-8 rounded-full object-cover" />
     ) : (
-      <span class="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-700" aria-hidden="true">
+      <span class="flex items-center justify-center w-8 h-8 rounded-full bg-bg-alt text-accent-dark" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-[18px] h-[18px]"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9.75h6M9 12h6m-6 2.25h3"/></svg>
       </span>
     )}
   </a>
   <div class="flex flex-wrap items-center gap-x-1.5 gap-y-0 text-xs text-gray-500 min-w-0">
-    <a href="/om-redaktionen/" class="font-semibold text-gray-800 hover:text-sky-700 transition-colors whitespace-nowrap">{author}</a>
+    <a href="/om-redaktionen/" class="font-semibold text-text hover:text-accent transition-colors whitespace-nowrap">{author}</a>
     {showPublished && (<><span class="text-gray-300">·</span><time datetime={datePublished}>{formatDate(datePublished!)}</time></>)}
     {showUpdated && (<><span class="text-gray-300">·</span><span>Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span></>)}
     <span class="text-gray-300">·</span>

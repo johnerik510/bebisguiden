@@ -21,37 +21,37 @@ const RETAILER_DISPLAY: Record<Retailer, { storeName: string; domain: string; co
   jollyroom: {
     storeName: 'Jollyroom',
     domain: 'jollyroom.se',
-    color: 'bg-pink-600 hover:bg-pink-700',
+    color: 'bg-cta hover:bg-cta-dark',
     verifiedKey: 'Jollyroom',
   },
   babyv: {
     storeName: 'Baby V',
     domain: 'babyv.se',
-    color: 'bg-emerald-700 hover:bg-emerald-800',
+    color: 'bg-cta hover:bg-cta-dark',
     verifiedKey: 'Baby V',
   },
   babysam: {
     storeName: 'Babysam',
     domain: 'babysam.se',
-    color: 'bg-blue-900 hover:bg-blue-950',
+    color: 'bg-cta hover:bg-cta-dark',
     verifiedKey: 'Babysam',
   },
   kopbarnvagn: {
     storeName: 'Köpbarnvagn',
     domain: 'kopbarnvagn.se',
-    color: 'bg-violet-600 hover:bg-violet-700',
+    color: 'bg-cta hover:bg-cta-dark',
     verifiedKey: 'Köpbarnvagn',
   },
   babyland: {
     storeName: 'Babyland',
     domain: 'babyland.se',
-    color: 'bg-sky-700 hover:bg-sky-800',
+    color: 'bg-cta hover:bg-cta-dark',
     verifiedKey: 'Babyland',
   },
   storochliten: {
     storeName: 'Stor och Liten',
     domain: 'storochliten.se',
-    color: 'bg-amber-700 hover:bg-amber-800',
+    color: 'bg-cta hover:bg-cta-dark',
     verifiedKey: 'Stor och Liten',
   },
 };

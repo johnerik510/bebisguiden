@@ -161,12 +161,12 @@ export const articleMeta = {
  <tr class="border-t border-gray-200">
  <td class="p-3 font-medium">Solrosolja (oparfymerad)</td>
  <td class="p-3">Linoleinsyrerikt, mjuk på huden, lätt att skölja</td>
- <td class="p-3 text-green-700">Ja, förstaval</td>
+ <td class="p-3 text-safe">Ja, förstaval</td>
  </tr>
  <tr class="border-t border-gray-200 bg-gray-50">
  <td class="p-3 font-medium">Kokosolja (extra virgin)</td>
  <td class="p-3">Antimikrobiell, mjuk, glider bra</td>
- <td class="p-3 text-green-700">Ja, bra val</td>
+ <td class="p-3 text-safe">Ja, bra val</td>
  </tr>
  <tr class="border-t border-gray-200">
  <td class="p-3 font-medium">Mandelolja (söt)</td>
@@ -203,7 +203,7 @@ export const articleMeta = {
  <div class="border border-gray-200 rounded-lg p-3">
  <div class="flex justify-between items-start">
  <span class="font-medium text-sm">{item.name}</span>
- <span class={`text-xs font-semibold ${item.ok? 'text-green-700': 'text-red-700'}`}>{item.note}</span>
+ <span class={`text-xs font-semibold ${item.ok? 'text-safe': 'text-red-700'}`}>{item.note}</span>
  </div>
  <p class="text-xs text-text-light mt-1">{item.desc}</p>
  </div>
@@ -217,7 +217,6 @@ export const articleMeta = {
 </p>
 
 <FAQ items={faqItems} />
-
 
 <style>
   .cmp-table th,

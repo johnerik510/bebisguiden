@@ -37,13 +37,13 @@ const {
 } = Astro.props;
 ---
 
-<div class="not-prose my-6 bg-gradient-to-br from-accent-light/10 via-white to-accent-light/5 border-2 border-accent rounded-2xl p-5 sm:p-6 shadow-md relative overflow-hidden">
-  <div class="absolute top-0 right-0 bg-accent text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-bl-xl">
+<div class="not-prose my-6 bg-white border border-border border-l-4 border-l-accent rounded-lg p-5 sm:p-6">
+  <span class="inline-flex items-center rounded-full bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 mb-4">
     {badge}
-  </div>
+  </span>
   <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
     <div class="flex-shrink-0 mx-auto sm:mx-0">
-      <a href={trackedUrl} rel="nofollow sponsored noopener" target="_blank" class="block w-32 h-32 sm:w-36 sm:h-36 rounded-xl bg-white shadow-sm overflow-hidden">
+      <a href={trackedUrl} rel="nofollow sponsored noopener" target="_blank" class="block w-32 h-32 sm:w-36 sm:h-36 rounded-lg bg-white border border-border overflow-hidden">
         <img
           src={image}
           alt={imageAlt || `${brand} ${name}`}
@@ -59,7 +59,7 @@ const {
       <h2 class="font-heading text-lg sm:text-xl font-bold text-text leading-tight mb-2">
         <a href={trackedUrl} rel="nofollow sponsored noopener" target="_blank" class="!text-text hover:!text-accent-dark transition-colors no-underline">{name}</a>
       </h2>
-      <p class="text-sm text-text-light leading-relaxed mb-3">{description}</p>
+      <p class="text-[15px] text-text-light leading-relaxed mb-3">{description}</p>
       <div class="flex flex-wrap items-center gap-3">
         {price && <span class="text-xl font-heading font-bold text-text">{price}</span>}
         <div class="w-full">
@@ -69,7 +69,7 @@ const {
             rel="nofollow sponsored noopener"
             target="_blank"
             data-product={name}
-            class="inline-flex w-full items-center justify-center gap-2 px-5 py-3 bg-cta hover:bg-cta-dark text-white font-bold text-base rounded-lg transition-colors shadow-sm no-underline"
+            class="inline-flex w-full items-center justify-center gap-2 px-5 py-3 bg-cta hover:bg-cta-dark text-white font-bold text-base rounded-md transition-colors no-underline"
           >
             Bra pris hos {store}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
