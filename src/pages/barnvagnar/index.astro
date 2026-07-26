@@ -21,11 +21,24 @@ const breadcrumbs = [
 // Money page-mallens datamodell. Affiliate-länkar/bilder/priser oförändrade (verifierade).
 const products = [
   {
+    name: 'Cybex EOS Lux Duovagn',
+    desc: 'Lättviktig duovagn med vändbar sittdel och stor sufflett. Chassivikt 10,1 kg. Kompatibel med Cybex Cloud bilbarnstolar. För barn 0-4 år.',
+    brand: 'Cybex',
+    rating: 4.5,
+    badge: 'Bäst för de flesta',
+    usps: ['Vändbar sittdel', 'Tyskt hantverk', 'Cybex-kompatibel'],
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10247470&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-eos-lux-duovagn-black-moon-black',
+    imageUrl: '/images/products/cybex-eos-lux-duovagn.webp',
+    features: { 'Typ': 'Duovagn', 'Vikt chassi': '10,1 kg', 'Tillverkning': 'Tyskland', 'Fjädring': 'Fjäderfjädring' },
+    alsoAt: [],
+  },
+  {
     name: 'Bugaboo Fox 5 Renew Heritage Black/Black',
     desc: 'Premiumduovagn med multilink-fjädring och vändbar sittdel. Chassivikt 10 kg. Kompatibel med Maxi-Cosi och Cybex bilbarnstolar via adapter. För barn 0-4 år.',
     brand: 'Bugaboo',
     rating: 4.8,
-    badge: 'Bäst i test',
+    badge: 'Högst betyg',
     usps: ['Multilink-fjädring', 'Vändbar sittdel', 'Ikonisk design'],
     store: 'BabySam',
     affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize',
@@ -57,19 +70,6 @@ const products = [
     affiliateUrl: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=01b69eb7-334b-41b2-95f4-37e03d05d216&url=https://www.babysam.se/joolz-day5-barnvagn-forest-green-onesize',
     imageUrl: '/images/products/joolz-day5-barnvagn.webp',
     features: { 'Typ': 'Duovagn', 'Vikt chassi': '9,8 kg', 'Tillverkning': 'Kina/Design NL', 'Fjädring': 'Fjäderfjädring' },
-    alsoAt: [],
-  },
-  {
-    name: 'Cybex EOS Lux Duovagn',
-    desc: 'Lättviktig duovagn med vändbar sittdel och stor sufflett. Chassivikt 10,1 kg. Kompatibel med Cybex Cloud bilbarnstolar. För barn 0-4 år.',
-    brand: 'Cybex',
-    rating: 4.5,
-    badge: 'Bäst pris/kvalitet',
-    usps: ['Vändbar sittdel', 'Tyskt hantverk', 'Cybex-kompatibel'],
-    store: 'Jollyroom',
-    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10247470&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-eos-lux-duovagn-black-moon-black',
-    imageUrl: '/images/products/cybex-eos-lux-duovagn.webp',
-    features: { 'Typ': 'Duovagn', 'Vikt chassi': '10,1 kg', 'Tillverkning': 'Tyskland', 'Fjädring': 'Fjäderfjädring' },
     alsoAt: [],
   },
   {
@@ -179,33 +179,63 @@ export const articleMeta = {
 
   {/* 3. Featured product (#1 som redaktionens val, hero-CTA above the fold) */}
   <MoneyFeaturedProduct
-    brand="Bugaboo"
-    name="Fox 5 Renew Heritage Black/Black"
-    image="/images/products/bugaboo-fox-5-renew-barnvagn.webp"
-    trackedUrl="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=0d8c0970-c98e-4186-8416-4b6609446e5d&url=https://www.babysam.se/bugaboo-fox-5-renew-barnvagn-moon-grey-graphite-onesize"
-    store="BabySam"
-    description="Bäst i test 2026. Multilink-fjädringen ger överlägsen körkomfort på svenska gator och terräng. Vändbar sittdel, stor sufflett och kompatibel med Maxi-Cosi och Cybex bilbarnstolar via adapter."
+    brand="Cybex"
+    name="EOS Lux Duovagn"
+    image="/images/products/cybex-eos-lux-duovagn.webp"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10247470&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-eos-lux-duovagn-black-moon-black"
+    store="Jollyroom"
+    badge="Bäst för de flesta"
+    description="Tyskt hantverk, vändbar sittdel och komplett duovagn till en bråkdel av premiumpriset. Kompatibel med Cybex bilbarnstolar för ett hopkopplat travelsystem."
   />
 
   {/* 4. Jämförelsetabell (scan-and-click) ovanför detaljerad genomgång */}
   <MoneyComparisonTable products={products} title="Jämförelsetabell - Barnvagnar 2026" />
 
+  {/* Rangordningsnot: placering och betyg mäter olika saker. Utan den här noten
+      ser en 4,5:a på plats 1 ovanför en 4,8:a ut som ett fel. */}
+  <p class="not-prose text-sm text-text-light border-l-2 border-border pl-4 mt-4 mb-6">
+    Betyget mäter vagnens kvalitet i sin egen klass. Placeringen väger dessutom in hur väl vagnen passar den
+    typiska svenska familjen, där pris och praktisk vardagsnytta väger tungt. Därför kan en vagn med högre
+    betyg ligga längre ner i listan. <a href="/sa-testar-vi/" class="text-accent-dark underline underline-offset-2">Så jämför vi</a>.
+  </p>
+
   {/* Vinnaröversikt (bevarad från prod) */}
   <div class="not-prose bg-accent/10 border border-accent/30 rounded-xl p-4 mt-4 mb-4">
-    <p class="text-sm font-semibold text-accent-dark mb-1">Bäst i test 2026</p>
-    <p class="text-sm text-text-light"><strong>Bugaboo Fox 5 Renew</strong> är bäst i test med multilink-fjädring och vändbar sittdel. <strong>Nuna Mixx Next</strong> är bäst allround med stabil stötdämpning. <strong>Joolz Day5</strong> vinner på skandinavisk design och körkomfort.</p>
+    <p class="text-sm font-semibold text-accent-dark mb-1">Så här rangordnar vi 2026</p>
+    <p class="text-sm text-text-light"><strong>Cybex EOS Lux</strong> ligger först för att den passar flest familjer: den ger vändbar sittdel, duovagnsfunktion och tyskt hantverk för ungefär en tredjedel av premiumpriset. <strong>Bugaboo Fox 5 Renew</strong> har testets högsta betyg, 4,8, och är den bästa vagnen rent tekniskt om budgeten tillåter. <strong>Nuna Mixx Next</strong> är bäst allround och <strong>Joolz Day5</strong> vinner på design.</p>
   </div>
 
   {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
   <div class="mp-prose">
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Bugaboo Fox 5 Renew, bäst i test 2026</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Cybex EOS Lux, bäst för de flesta</h2>
+    <MoneyProductCard
+      brand="Cybex"
+      name="Cybex EOS Lux Duovagn"
+      rating={4.5}
+      rank={1}
+      badge="Bäst för de flesta"
+      imageUrl="/images/products/cybex-eos-lux-duovagn.webp"
+      imageAlt="Cybex EOS Lux Duovagn"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10247470&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-eos-lux-duovagn-black-moon-black"
+      pros={['Cybex-kvalitet till halva premiumpriset', 'Vändbar sittdel', 'Kompatibel med Cybex bilbarnstolar', 'Tyskt hantverk']}
+      cons={['Enklare fjädring än Fox 5', 'Sittdelens benläge ej justerbart', 'Sämre i djup snö']}
+    />
+    <p class="text-text-light leading-relaxed mt-4 mb-2">
+      Cybex EOS Lux är vagnen vi rekommenderar till flest familjer. Den har inte testets högsta betyg, men den ger mest barnvagn per krona. Till en bråkdel av premiumvagnarnas pris får du tyskt hantverk, vändbar sittdel och en duovagn som klarar vardagen i stad lika bra som de dyrare modellerna. Den är dessutom kompatibel med Cybex egna bilbarnstolar (Cloud T, Z2) för ett komplett travelsystem.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Du märker prisskillnaden i fjädringen, som är enklare än Fox 5:s multilink, och sittdelens benläge går inte att justera. I djup snö presterar den sämre än vagnar med större hjul. Men för familjen som vill ha mest barnvagn för pengarna är Cybex EOS Lux ett självklart val.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Bugaboo Fox 5 Renew, högst betyg i testet</h2>
     <MoneyProductCard
       brand="Bugaboo"
       name="Bugaboo Fox 5 Renew Heritage Black/Black"
       rating={4.8}
-      rank={1}
-      badge="Bäst i test"
+      rank={2}
+      badge="Högst betyg"
       imageUrl="/images/products/bugaboo-fox-5-renew-barnvagn.webp"
       imageAlt="Bugaboo Fox 5 Renew barnvagn"
       store="BabySam"
@@ -214,18 +244,18 @@ export const articleMeta = {
       cons={['Högt pris i premiumsegmentet', 'Tung liggdel tillkommer (4-5 kg)', 'Premium-prislapp på tillbehör']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Bugaboo Fox 5 Renew är märkets mest populära barnvagn 2026 och vår totala vinnare. Multilink-fjädringen är det som lyfter den över konkurrenterna: körkomforten på svenska kullerstensgator och grusvägar är märkbart mjukare än hos enklare fjädersystem. Sittdelen är vändbar så barnet kan åka mot eller från dig, och suffletten är stor nog för svenskt sol- och regnväder.
+      Bugaboo Fox 5 Renew har testets högsta betyg, 4,8 av 5, och är den tekniskt bästa vagnen i jämförelsen. Den ligger på andra plats bara för att prislappen gör den fel vagn för de flesta familjer. Multilink-fjädringen är det som lyfter den över konkurrenterna: körkomforten på svenska kullerstensgator och grusvägar är märkbart mjukare än hos enklare fjädersystem. Sittdelen är vändbar så barnet kan åka mot eller från dig, och suffletten är stor nog för svenskt sol- och regnväder.
     </p>
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen är priset och att liggdelen (4-5 kg) tillkommer. Tillbehören ligger också på premiumnivå. Men det modulära systemet och det höga andrahandsvärdet gör att totalkostnaden över flera år, eller flera barn, blir rimligare än prislappen antyder. Kompatibel med Maxi-Cosi och Cybex bilbarnstolar via adapter.
     </p>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Nuna Mixx Next, bäst allround</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Nuna Mixx Next, bäst allround</h2>
     <MoneyProductCard
       brand="Nuna"
       name="Nuna Mixx Next Barnvagn Caviar"
       rating={4.6}
-      rank={2}
+      rank={3}
       badge="Bäst allround"
       imageUrl="/images/products/nuna-mixx-next-barnvagn-caviar.webp"
       imageAlt="Nuna Mixx Next Barnvagn Caviar"
@@ -241,12 +271,12 @@ export const articleMeta = {
       Den ligger i samma prisklass som Bugaboo men har ett mindre tillbehörssortiment och är inte självstående när den är hopfälld. För familjen som vill ha en vagn som gör allt bra utan att specialisera sig är Nuna Mixx Next ett tryggt val.
     </p>
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Joolz Day5, bäst design</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Joolz Day5, bäst design</h2>
     <MoneyProductCard
       brand="Joolz"
       name="Joolz Day5 Barnvagn Forest Green"
       rating={4.5}
-      rank={3}
+      rank={4}
       badge="Bäst design"
       imageUrl="/images/products/joolz-day5-barnvagn.webp"
       imageAlt="Joolz Day5 Barnvagn Forest Green"
@@ -260,27 +290,6 @@ export const articleMeta = {
     </p>
     <p class="text-text-light leading-relaxed mb-4">
       Fjäderfjädringen ger en mjuk körning, om än inte riktigt på Bugaboos multilink-nivå. Tillbehörsutbudet är smalare och priset ligger högt för specifikationerna. Men om utseende och miljöprofil väger tungt är Joolz Day5 svår att slå.
-    </p>
-
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Cybex EOS Lux, bäst pris/kvalitet</h2>
-    <MoneyProductCard
-      brand="Cybex"
-      name="Cybex EOS Lux Duovagn"
-      rating={4.5}
-      rank={4}
-      badge="Bäst pris/kvalitet"
-      imageUrl="/images/products/cybex-eos-lux-duovagn.webp"
-      imageAlt="Cybex EOS Lux Duovagn"
-      store="Jollyroom"
-      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10247470&url=https://www.jollyroom.se/barnvagnar/duovagnar-kombivagnar/duovagnar/cybex-eos-lux-duovagn-black-moon-black"
-      pros={['Cybex-kvalitet till halva premiumpriset', 'Vändbar sittdel', 'Kompatibel med Cybex bilbarnstolar', 'Tyskt hantverk']}
-      cons={['Enklare fjädring än Fox 5', 'Sittdelens benläge ej justerbart', 'Sämre i djup snö']}
-    />
-    <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Cybex EOS Lux är testets prisvärdaste val och en stark mellansegmentsvagn. Till en bråkdel av premiumvagnarnas pris får du tyskt hantverk, vändbar sittdel och en duovagn som klarar vardagen i stad lika bra som de dyrare modellerna. Den är dessutom kompatibel med Cybex egna bilbarnstolar (Cloud T, Z2) för ett komplett travelsystem.
-    </p>
-    <p class="text-text-light leading-relaxed mb-4">
-      Du märker prisskillnaden i fjädringen, som är enklare än Fox 5:s multilink, och sittdelens benläge går inte att justera. I djup snö presterar den sämre än vagnar med större hjul. Men för familjen som vill ha mest barnvagn för pengarna är Cybex EOS Lux ett självklart val.
     </p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Kinderkraft MOOV 2 3-in-1, bäst budget</h2>
