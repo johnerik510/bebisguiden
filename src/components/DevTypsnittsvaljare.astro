@@ -1,0 +1,151 @@
+---
+/**
+ * Typsnittsväljare för utvärdering, ENDAST i dev.
+ *
+ * Renderas bara när `import.meta.env.DEV` är sant, så den kan aldrig följa med
+ * till produktion. Den byter `--font-heading` och `--font-sans` på :root, vilket
+ * kaskaderar genom hela Tailwind-temat, och sparar valet i localStorage så det
+ * överlever sidbyten. Ta bort komponenten (och dess rad i BaseLayout) när ett
+ * typsnittspar är valt och inlagt i global.css.
+ */
+const alternativ = [
+  {
+    id: 'nuvarande',
+    namn: 'Nuvarande',
+    par: 'Newsreader + Source Sans 3',
+    beskrivning: 'Läsdesignad serif med optisk storlek. Lugn och boklik, men lite blek i rubrikvikt.',
+    heading: "'Newsreader', Georgia, serif",
+    sans: "'Source Sans 3', system-ui, sans-serif",
+  },
+  {
+    id: 'nordisk',
+    namn: 'Nordisk grotesk',
+    par: 'Familjen Grotesk + Public Sans',
+    beskrivning: 'Svenskritad grotesk i rubrikerna, ingen serif alls. Modern konsumentupplysning, mer Vårdguiden än bokförlag.',
+    heading: "'Familjen Grotesk', system-ui, sans-serif",
+    sans: "'Public Sans', system-ui, sans-serif",
+  },
+  {
+    id: 'lasvanlig',
+    namn: 'Läsvänlig serif',
+    par: 'Literata + Figtree',
+    beskrivning: 'Serif ritad för skärmläsning, varmare och tyngre än Newsreader. Brödtexten är rund utan att bli gullig.',
+    heading: "'Literata', Georgia, serif",
+    sans: "'Figtree', system-ui, sans-serif",
+  },
+  {
+    id: 'tidningen',
+    namn: 'Tidningen',
+    par: 'Source Serif 4 + IBM Plex Sans',
+    beskrivning: 'Klassisk redaktionell serif mot en teknisk, saklig brödtext. Mest auktoritet av alternativen.',
+    heading: "'Source Serif 4', Georgia, serif",
+    sans: "'IBM Plex Sans', system-ui, sans-serif",
+  },
+  {
+    id: 'redaktion',
+    namn: 'Modern redaktion',
+    par: 'Epilogue + Source Sans 3',
+    beskrivning: 'Skarp display-sans med hög viktkontrast. Rubrikerna blir mer påstående, mindre bokhylla.',
+    heading: "'Epilogue', system-ui, sans-serif",
+    sans: "'Source Sans 3', system-ui, sans-serif",
+  },
+];
+---
+
+{import.meta.env.DEV && (
+  <>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Public+Sans:wght@400;600;700&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Figtree:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;600;700&family=Epilogue:wght@400;600;700&display=swap"
+    />
+
+    <div id="typsnittsvaljare" class="fixed left-4 bottom-4 z-[9999] print:hidden" data-fontpicker>
+      <button
+        id="tv-toggle"
+        type="button"
+        class="flex items-center gap-2 rounded-lg bg-[#2B1D24] px-4 py-2.5 text-[13px] font-semibold text-white shadow-lg"
+        aria-expanded="false"
+        aria-controls="tv-panel"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg>
+        Typsnitt
+        <span id="tv-aktuell" class="font-normal text-white/60"></span>
+      </button>
+
+      <div
+        id="tv-panel"
+        class="hidden mt-2 w-[330px] max-w-[calc(100vw-2rem)] max-h-[70vh] overflow-y-auto rounded-lg border border-black/10 bg-white p-3 shadow-2xl"
+        role="group"
+        aria-label="Välj typsnittspar"
+      >
+        <p class="mb-2 px-1 text-[12px] text-black/50">
+          Bara i dev. Valet sparas lokalt tills du byter.
+        </p>
+        {alternativ.map((alt) => (
+          <button
+            type="button"
+            class="tv-val block w-full rounded-md border border-transparent p-2.5 text-left transition-colors hover:bg-black/[0.04]"
+            data-id={alt.id}
+            data-heading={alt.heading}
+            data-sans={alt.sans}
+          >
+            <span class="block text-[15px] font-semibold text-[#2B1D24]" style={`font-family: ${alt.heading}`}>
+              {alt.namn}
+            </span>
+            <span class="block text-[12px] font-medium text-black/45">{alt.par}</span>
+            <span class="mt-1 block text-[13px] leading-snug text-black/60" style={`font-family: ${alt.sans}`}>
+              {alt.beskrivning}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        var NYCKEL = 'bebis-typsnitt';
+        var rot = document.documentElement;
+        var toggle = document.getElementById('tv-toggle');
+        var panel = document.getElementById('tv-panel');
+        var etikett = document.getElementById('tv-aktuell');
+        var knappar = Array.prototype.slice.call(document.querySelectorAll('.tv-val'));
+
+        function markera(id) {
+          knappar.forEach(function (k) {
+            var vald = k.getAttribute('data-id') === id;
+            k.style.borderColor = vald ? '#B34558' : 'transparent';
+            k.style.background = vald ? 'rgba(179,69,88,0.06)' : '';
+          });
+          var aktiv = knappar.filter(function (k) { return k.getAttribute('data-id') === id; })[0];
+          if (aktiv && etikett) etikett.textContent = aktiv.querySelector('span').textContent.trim();
+        }
+
+        function anvand(id, spara) {
+          var k = knappar.filter(function (x) { return x.getAttribute('data-id') === id; })[0];
+          if (!k) return;
+          if (id === 'nuvarande') {
+            rot.style.removeProperty('--font-heading');
+            rot.style.removeProperty('--font-sans');
+          } else {
+            rot.style.setProperty('--font-heading', k.getAttribute('data-heading'));
+            rot.style.setProperty('--font-sans', k.getAttribute('data-sans'));
+          }
+          markera(id);
+          if (spara) localStorage.setItem(NYCKEL, id);
+        }
+
+        toggle && toggle.addEventListener('click', function () {
+          var oppen = !panel.classList.contains('hidden');
+          panel.classList.toggle('hidden', oppen);
+          toggle.setAttribute('aria-expanded', String(!oppen));
+        });
+
+        knappar.forEach(function (k) {
+          k.addEventListener('click', function () { anvand(k.getAttribute('data-id'), true); });
+        });
+
+        anvand(localStorage.getItem(NYCKEL) || 'nuvarande', false);
+      })();
+    </script>
+  </>
+)}

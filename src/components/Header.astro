@@ -348,7 +348,7 @@ const uspItems = [
 ---
 
 <!-- E-E-A-T-rad: icke-sticky, scrollar bort och äter inte above the fold -->
-<div class="hidden md:block bg-primary text-white/85 text-[13px]">
+<div class="hidden md:block bg-primary text-white/85 text-sm">
  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
   <p class="flex items-center gap-5">
    {uspItems.map((item, i) => (
@@ -395,11 +395,11 @@ const uspItems = [
            <div class={`grid gap-x-8 gap-y-6 ${item.columns.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
             {item.columns.map((col) => (
              <div>
-              <p class="text-[11px] font-semibold uppercase tracking-wider text-text-light mb-3 pb-2 border-b border-border">{col.title}</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-text-light mb-3 pb-2 border-b border-border">{col.title}</p>
               <ul class="space-y-0.5">
                {col.links.map((link) => (
                 <li>
-                 <a href={link.href} class="block py-1.5 text-[14px] text-text hover:text-accent transition-colors">{link.label}</a>
+                 <a href={link.href} class="block py-1.5 text-[15px] text-text hover:text-accent transition-colors">{link.label}</a>
                 </li>
                ))}
               </ul>
@@ -410,20 +410,20 @@ const uspItems = [
 
           {item.featured && (
            <div class="hidden lg:block lg:col-span-3 bg-bg p-6 border-l border-border">
-            <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-accent-dark mb-3">{item.featured.eyebrow}</span>
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-accent-dark mb-3">{item.featured.eyebrow}</span>
             <a href={item.featured.href} class="block group/feat">
              <img src={item.featured.img} alt="" width="240" height="128" loading="lazy" class="w-full h-32 rounded-lg bg-white border border-border mb-3 object-contain p-3" />
-             <p class="font-heading font-semibold text-primary text-[15px] leading-snug group-hover/feat:text-accent transition-colors">{item.featured.title}</p>
+             <p class="font-heading font-semibold text-primary text-base leading-snug group-hover/feat:text-accent transition-colors">{item.featured.title}</p>
             </a>
-            <p class="text-[13px] text-text-light leading-relaxed mt-1.5 mb-4">{item.featured.blurb}</p>
-            <a href={item.featured.href} class="inline-flex items-center justify-center w-full border border-border bg-white hover:border-accent hover:text-accent text-primary font-semibold py-2.5 px-4 rounded-md transition-colors text-[13px]">
+            <p class="text-sm text-text-light leading-relaxed mt-1.5 mb-4">{item.featured.blurb}</p>
+            <a href={item.featured.href} class="inline-flex items-center justify-center w-full border border-border bg-white hover:border-accent hover:text-accent text-primary font-semibold py-2.5 px-4 rounded-md transition-colors text-sm">
              {item.featured.ctaLabel}
             </a>
            </div>
           )}
          </div>
 
-         <div class="flex items-center justify-between gap-4 px-7 py-3 bg-bg-alt border-t border-border text-[12px] text-text-light">
+         <div class="flex items-center justify-between gap-4 px-7 py-3 bg-bg-alt border-t border-border text-[13px] text-text-light">
           <span class="flex items-center gap-2">
            <svg class="w-3.5 h-3.5 text-accent-dark flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
            {item.trust}
@@ -501,9 +501,9 @@ const uspItems = [
      <div class="mobile-dropdown hidden pb-3">
       {item.columns.map((col) => (
        <div class="mt-2">
-        <p class="text-[11px] font-semibold uppercase tracking-wider text-text-light mt-3 mb-1">{col.title}</p>
+        <p class="text-xs font-semibold uppercase tracking-wider text-text-light mt-3 mb-1">{col.title}</p>
         {col.links.map((link) => (
-         <a href={link.href} class="block pl-3 py-2 text-[14px] text-text hover:text-accent border-l-2 border-border hover:border-accent transition-colors">{link.label}</a>
+         <a href={link.href} class="block pl-3 py-2 text-[15px] text-text hover:text-accent border-l-2 border-border hover:border-accent transition-colors">{link.label}</a>
         ))}
        </div>
       ))}

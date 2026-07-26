@@ -42,7 +42,7 @@ const { question, headingId = 'snabbsvar', featured } = Astro.props;
         <h2 id={headingId} class="font-heading text-xl sm:text-2xl font-semibold text-primary leading-snug mb-2">
           Snabbsvar: {question}
         </h2>
-        <div class="text-[15px] sm:text-base text-text leading-relaxed max-w-3xl">
+        <div class="text-base sm:text-[17px] text-text leading-relaxed max-w-3xl">
           <slot />
         </div>
       </div>
@@ -63,12 +63,12 @@ const { question, headingId = 'snabbsvar', featured } = Astro.props;
 
             <div class="flex-1 min-w-0">
               {featured.badge && (
-                <span class="inline-flex items-center rounded-full bg-accent text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 mb-2">
+                <span class="inline-flex items-center rounded-full bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 mb-2">
                   {featured.badge}
                 </span>
               )}
               {featured.brand && (
-                <div class="text-[11px] font-semibold uppercase tracking-wider text-text-light mb-0.5">{featured.brand}</div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-text-light mb-0.5">{featured.brand}</div>
               )}
               <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary leading-snug">
                 {featured.reviewHref
@@ -85,12 +85,12 @@ const { question, headingId = 'snabbsvar', featured } = Astro.props;
                     </svg>
                     ))}
                   </span>
-                  <span class="text-sm font-semibold text-text tabular">{featured.rating.toFixed(1).replace('.', ',')} av 5</span>
+                  <span class="text-[15px] font-semibold text-text tabular">{featured.rating.toFixed(1).replace('.', ',')} av 5</span>
                 </div>
               )}
 
               {featured.bestFor && (
-                <p class="text-sm text-text-light leading-relaxed mt-2">
+                <p class="text-[15px] text-text-light leading-relaxed mt-2">
                   <span class="font-semibold text-text">Bäst för:</span> {featured.bestFor}
                 </p>
               )}
@@ -108,7 +108,7 @@ const { question, headingId = 'snabbsvar', featured } = Astro.props;
                   </a>
                 )}
                 {featured.reviewHref && (
-                  <a href={featured.reviewHref} class="text-sm font-semibold text-accent-dark underline underline-offset-2 hover:text-accent transition-colors">
+                  <a href={featured.reviewHref} class="text-[15px] font-semibold text-accent-dark underline underline-offset-2 hover:text-accent transition-colors">
                     {featured.reviewLabel ?? 'Se hela jämförelsen'}
                   </a>
                 )}

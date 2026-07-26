@@ -69,7 +69,7 @@ const ar = new Date().getFullYear();
 
    <div class="col-span-2 md:col-span-3 lg:col-span-1">
     <p class="font-heading text-white text-lg font-semibold mb-3">Bebisguiden</p>
-    <p class="text-sm leading-relaxed text-white/70">
+    <p class="text-[15px] leading-relaxed text-white/70">
      Oberoende svensk redaktion som granskar och rangordnar barnprodukter. Vi säljer inga egna produkter och låter aldrig tillverkare påverka omdömena.
     </p>
     <div class="flex gap-3 mt-5">
@@ -84,11 +84,11 @@ const ar = new Date().getFullYear();
 
    {kolumner.map((kol) => (
     <div>
-     <p class="text-[11px] font-semibold uppercase tracking-wider text-white/50 mb-4">{kol.rubrik}</p>
+     <p class="text-xs font-semibold uppercase tracking-wider text-white/50 mb-4">{kol.rubrik}</p>
      <ul class="space-y-2.5">
       {kol.lankar.map((item) => (
        <li>
-        <a href={item.href} class="text-sm text-white/75 hover:text-white transition-colors">{item.label}</a>
+        <a href={item.href} class="text-[15px] text-white/75 hover:text-white transition-colors">{item.label}</a>
        </li>
       ))}
      </ul>
@@ -97,7 +97,7 @@ const ar = new Date().getFullYear();
 
   </div>
 
-  <div class="mt-12 pt-6 border-t border-white/15 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between text-xs text-white/55">
+  <div class="mt-12 pt-6 border-t border-white/15 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between text-[13px] text-white/55">
    <p>
     &copy; {ar} Bebisguiden.se &middot; ELS Catalyst AB &middot; Org.nr 559583-6163 &middot;
     <span class="js-email" data-u="info" data-d="bebisguiden.se" data-class="underline underline-offset-2 hover:text-white transition-colors"></span>
