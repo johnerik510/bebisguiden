@@ -326,11 +326,14 @@ const homeFaqItems = [
    loading="eager"
    fetchpriority="high"
   />
-  <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/92 via-primary-dark/72 to-primary-dark/25 -z-10" aria-hidden="true"></div>
+  <!-- Overlayen är responsiv: på smala skärmar ligger texten över hela fotot och
+       behöver mer täckning, på breda sitter den i den naturligt mörka vänsterdelen
+       och kan därför släppa fram bilden. Mätt kontrast: se designsystemet. -->
+  <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/84 to-primary-dark/66 md:from-primary-dark/88 md:via-primary-dark/82 md:to-primary-dark/62 lg:from-primary-dark/80 lg:via-primary-dark/58 lg:to-primary-dark/18 -z-10" aria-hidden="true"></div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative w-full">
    <div class="max-w-2xl">
-    <p class="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.2em] text-white/70 mb-4">
+    <p class="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.2em] text-white mb-4">
      Oberoende jämförelser · {antalKategorier} kategorier · uppdaterad {monthYear}
     </p>
 
@@ -565,20 +568,9 @@ const homeFaqItems = [
      <p class="text-base sm:text-lg leading-relaxed text-white/85">
       Bebisguiden är en oberoende svensk redaktion som granskar och rangordnar babyprodukter. Vi säljer inga egna produkter och låter aldrig tillverkare påverka våra omdömen. Varje topplista bygger på oberoende krocktester (Folksam och <a href="https://www.adac.de/rund-ums-fahrzeug/tests/kindersicherheit/kindersitztest/" target="_blank" rel="noopener nofollow" class="underline underline-offset-2 hover:text-white transition-colors">ADAC</a>), europeiska säkerhetsstandarder, tillverkarnas specifikationer och sammanvägda användaromdömen, inte tillverkarens marknadsföring.
      </p>
-     <dl class="flex flex-wrap gap-x-10 gap-y-4 mt-7 pt-6 border-t border-white/15">
-      <div>
-       <dt class="text-xs font-semibold uppercase tracking-wider text-white/55">Kategorier granskade</dt>
-       <dd class="font-heading text-3xl font-semibold tabular mt-0.5">{antalKategorier}</dd>
-      </div>
-      <div>
-       <dt class="text-xs font-semibold uppercase tracking-wider text-white/55">Sponsrade omdömen</dt>
-       <dd class="font-heading text-3xl font-semibold tabular mt-0.5">0</dd>
-      </div>
-      <div>
-       <dt class="text-xs font-semibold uppercase tracking-wider text-white/55">Kriterier per produkt</dt>
-       <dd class="font-heading text-3xl font-semibold tabular mt-0.5">{kriterier.length}</dd>
-      </div>
-     </dl>
+     <p class="text-base sm:text-lg leading-relaxed text-white/85 mt-4">
+      Bakom sidan står Axel Jönemyr, trebarnsfar och grundare av Bebisguiden. Det mesta som testas här har passerat ett eget hem först.
+     </p>
      <div class="flex flex-wrap gap-x-6 gap-y-2 mt-6 text-sm font-semibold">
       <a href="/sa-testar-vi/" class="underline underline-offset-2 text-white/85 hover:text-white transition-colors">Så jämför vi</a>
       <a href="/om-redaktionen/" class="underline underline-offset-2 text-white/85 hover:text-white transition-colors">Om redaktionen</a>
