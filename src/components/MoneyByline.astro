@@ -44,11 +44,19 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
      mellan dem på enheten trots att avståndet mätte 2 px i varje bredd jag kunde
      testa. Orsaken gick inte att återskapa, så jag slutade jaga den.
 
-  Nu: EN rad igen, men helt utan separatorpunkter. Avståndet gör jobbet. Det tar
-  bort båda felkällorna på samma gång, eftersom det varken finns block-avstånd
-  som kan blåsas upp eller lösa tecken som kan hamna ensamma. Bryts raden flödar
-  posterna till nästa rad med 4 px radavstånd, vilket ser likadant ut oavsett var
-  brytningen sker. Varje post är nowrap så ett datum aldrig delas mitt itu.
+  3. Andra fixen tog bort punkterna men behöll flexbox. Fortfarande fel på enheten.
+
+  Nu portad från hudbarriärens AuthorByline (compact-läget), som användaren
+  bekräftat fungerar rakt av på samma telefon. Det som gör skillnaden är att
+  metadatan INTE är flexbox utan en vanlig <p> där texten flödar och bryts som
+  text. Så länge posterna är flex-items kan layouten skapa både lösa tecken i
+  radkanten och block-avstånd som beter sig olika mellan renderare.
+
+  Två detaljer följer med från förlagan och ska inte "förenklas" bort:
+  separatorn ligger INUTI samma nowrap-span som sitt datum, så den reser med
+  datumet vid en radbrytning i stället för att bli kvar ensam i kanten. Och bara
+  ETT datum visas, uppdaterat när det finns, annars publicerat. Två datum plus
+  lästid var det som gjorde raden lång nog att bryta överhuvudtaget.
 -->
 <div class="flex items-center gap-2.5 py-2 mb-3 border-b border-border">
   <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
@@ -60,15 +68,21 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
       </span>
     )}
   </a>
-  <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-text-light min-w-0">
-    <a href="/om-redaktionen/" class="font-semibold text-text hover:text-accent transition-colors whitespace-nowrap">{author}</a>
-    {showPublished && (<time datetime={datePublished} class="whitespace-nowrap">{formatDate(datePublished!)}</time>)}
-    {showUpdated && (<span class="whitespace-nowrap">Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>)}
-    <span class="inline-flex items-center gap-1 whitespace-nowrap">
-      <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>
-    </span>
-  </div>
+  <p class="min-w-0 text-xs text-text-light leading-snug">
+    <a href="/om-redaktionen/" class="font-semibold text-text hover:text-accent transition-colors">{author}</a>
+    {(showUpdated || showPublished) && (
+      <span class="whitespace-nowrap">
+        <span class="mx-1.5" aria-hidden="true">·</span>
+        {showUpdated ? 'Uppdaterad ' : 'Publicerad '}
+        <time datetime={showUpdated ? dateModified : datePublished}>{formatDate((showUpdated ? dateModified : datePublished)!)}</time>
+      </span>
+    )}
+    {/* Lästidens separator ligger som ::before på elementet självt (global.css),
+        inte som ett eget syskon. Skälet: sr-only tas bort av TOC-scriptet först
+        när lästiden räknats ut. En fristående punkt hade synts som en lös prick
+        innan dess, och för alltid om scriptet inte kör. */}
+    <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>
+  </p>
 </div>
 
 <script type="application/ld+json" set:html={JSON.stringify({

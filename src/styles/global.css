@@ -209,6 +209,16 @@ table, .tabular {
   font-weight: 600;
 }
 
+/* Bylinens lästid. Separatorn hör till elementet, inte till ett syskon, så den
+   är dold så länge lästiden är sr-only och kan aldrig stå kvar som en lös punkt
+   om TOC-scriptet inte hinner köra. whitespace: nowrap håller ihop punkt, siffra
+   och ord vid radbrytning. */
+#article-reading-time { white-space: nowrap; }
+#article-reading-time:not(.sr-only)::before {
+  content: '·';
+  margin: 0 0.375rem;
+}
+
 /* ---------------------------------------------------------------------------
    Datatabeller utanför <article>: desktop = tabell, mobil = staplade kort.
 
