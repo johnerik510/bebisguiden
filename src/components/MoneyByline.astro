@@ -31,7 +31,21 @@ const showPublished = !!datePublished;
 const showUpdated = !!dateModified && dateModified !== datePublished;
 ---
 
-<div class="flex items-center gap-2.5 py-2 mb-3 border-b border-border">
+<!--
+  Omgjord 2026-07-26 efter test på riktig iPhone 14.
+
+  Tidigare låg namn, datum och lästid som syskon i EN flex-wrap-rad, med
+  fristående "·" som egna flex-items mellan sig. När raden bröts hamnade en
+  separator först eller sist på raden, alltså en punkt utan något att separera.
+  På 390 px bröts den på två ställen och gav både en inledande och en avslutande
+  lös punkt.
+
+  Nu: namnet på egen rad som radens rubrik, metadata i en egen rad under. Inga
+  separatorpunkter alls, avståndet gör jobbet. En metadatarad som bryts ser då
+  likadan ut som en som inte gör det, oavsett bredd. Varje post är nowrap så att
+  brytningen alltid sker mellan poster och aldrig inuti ett datum.
+-->
+<div class="flex items-start gap-2.5 py-2 mb-3 border-b border-border">
   <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
     {authorImage ? (
       <img src={authorImage} alt={author} width="32" height="32" loading="lazy" class="w-8 h-8 rounded-full object-cover" />
@@ -41,15 +55,16 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
       </span>
     )}
   </a>
-  <div class="flex flex-wrap items-center gap-x-1.5 gap-y-0 text-xs text-text-light min-w-0">
-    <a href="/om-redaktionen/" class="font-semibold text-text hover:text-accent transition-colors whitespace-nowrap">{author}</a>
-    {showPublished && (<><span class="text-text-light">·</span><time datetime={datePublished}>{formatDate(datePublished!)}</time></>)}
-    {showUpdated && (<><span class="text-text-light">·</span><span>Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span></>)}
-    <span class="text-text-light">·</span>
-    <span class="inline-flex items-center gap-1 whitespace-nowrap">
-      <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>
-    </span>
+  <div class="min-w-0">
+    <a href="/om-redaktionen/" class="block text-[13px] font-semibold text-text hover:text-accent transition-colors leading-tight">{author}</a>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-text-light mt-0.5">
+      {showPublished && (<time datetime={datePublished} class="whitespace-nowrap">{formatDate(datePublished!)}</time>)}
+      {showUpdated && (<span class="whitespace-nowrap">Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>)}
+      <span class="inline-flex items-center gap-1 whitespace-nowrap">
+        <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>
+      </span>
+    </div>
   </div>
 </div>
 

@@ -30,9 +30,14 @@ const { name, role, sourceUrl } = Astro.props;
   <p class="font-heading text-[17px] sm:text-lg text-primary leading-[1.6]">
     <slot />
   </p>
-  <footer class="mt-2.5 text-[13px] text-text-light">
+  <!--
+    Namn och roll staplade, inte separerade med "·". En roll som
+    "Trafiksäkerhetsforskare, Folksam" bryter raden på mobil, och då står punkten
+    kvar ensam i kanten. Samma fel som byline hade. Staplad attribuering ser
+    dessutom ut som den gör i tryck.
+  -->
+  <footer class="mt-2.5 text-[13px] leading-snug">
     <a href={sourceUrl} rel="noopener noreferrer" class="font-semibold text-accent-dark underline underline-offset-2 hover:text-accent transition-colors" target="_blank">{name}</a>
-    <span class="mx-1.5" aria-hidden="true">·</span>
-    <span>{role}</span>
+    <span class="block text-text-light">{role}</span>
   </footer>
 </blockquote>
