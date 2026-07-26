@@ -23,21 +23,20 @@ const { productName, primaryStore, primaryUrl, verified = [], description } = As
 
 <div class="not-prose bg-accent/5 border border-accent/20 rounded-xl p-5 my-6" data-product={productName}>
   <div class="mb-3">
-    <p class="font-heading font-bold text-dark text-base">{productName}</p>
+    <p class="font-heading font-bold text-primary text-base">{productName}</p>
     {description && <p class="text-sm text-text-light mt-1.5 leading-relaxed">{description}</p>}
   </div>
 
-  <span class="block text-xs font-semibold text-text-light mb-1.5">Bra pris hos:</span>
   <a
     href={primaryUrl}
     rel="nofollow sponsored noopener"
     target="_blank"
     class="no-underline relative flex w-full items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-bold py-4 px-7 rounded-lg transition-colors text-base min-h-[56px]"
   >
-    <span class="absolute -top-2 right-3 inline-block bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full shadow-sm">
+    <span class="absolute -top-2 right-3 inline-block bg-primary text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
       Redaktionens val
     </span>
-    {primaryStore}
+    Bra pris hos {primaryStore}
     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
   </a>
 

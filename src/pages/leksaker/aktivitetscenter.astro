@@ -5,7 +5,6 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
-import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import HowWeReviewed from '../../components/HowWeReviewed.astro';
@@ -59,12 +58,14 @@ const products = [
     rating: 4.6,
     badge: 'Bäst klassiker',
     usps: ['Klassisk Skip Hop-kvalitet', 'Många utbytbara leksaker', 'Höjdjusterbar'],
-    store: 'Babyland',
-    affiliateUrl: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=163032&url=https://www.babyland.se/skip-hop-aktivitetscenter',
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=687232&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-aktivitetscenter-explore-more',
     imageUrl: '/images/products/skip-hop-aktivitetscenter-explore-more.webp',
     desc: 'Klassiskt aktivitetscenter med många utbytbara leksaker och lekbordsläge. Skip Hop-kvalitet.',
     features: { 'Ålder': '4 mån+', 'Funktion': 'Stationärt + lekbord', 'Höjdjustering': 'Ja', 'Leksaker': 'Många, utbytbara', 'Material': 'Plast och textil' },
-    alsoAt: [],
+    alsoAt: [
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=163032&url=https://www.babyland.se/skip-hop-aktivitetscenter' },
+    ],
   },
   {
     name: 'Beemoo PLAY Explore 3-in-1 Aktivitetscenter, Sage Green',
@@ -180,7 +181,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen är priset, som ligger i det övre segmentet, och att det tar plats i hemmet. Men för familjen som vill ha ett aktivitetscenter som verkligen räcker länge och håller bebisen stimulerad är Discoverosity det starkaste valet på marknaden 2026.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273346&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-discoverosity-aktivitetscenter-3-in-1" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Tiny Love Here I Grow, bäst flexibilitet</h2>
     <MoneyProductCard
@@ -202,7 +202,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Det tar mer plats än övriga modeller och har många smådelar som behöver rengöras regelbundet. Men för familjen som vill ha ett aktivitetscenter som följer barnet riktigt länge utan att behöva köpa nytt är Here I Grow svårt att slå.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10279491&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/tiny-love-5-in-1-here-i-grow-meadow-days-aktivitetscenter" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Skip Hop Explore &amp; More, bäst klassiker</h2>
     <MoneyProductCard
@@ -213,8 +212,8 @@ const faqItems = [
       badge="Bäst klassiker"
       imageUrl="/images/products/skip-hop-aktivitetscenter-explore-more.webp"
       imageAlt="Skip Hop Explore & More Aktivitetscenter"
-      store="Babyland"
-      buyUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=163032&url=https://www.babyland.se/skip-hop-aktivitetscenter"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=687232&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/skip-hop-aktivitetscenter-explore-more"
       pros={['Klassisk Skip Hop-kvalitet', 'Många utbytbara leksaker', 'Höjdjusterbar med lekbordsläge']}
       cons={['Inte 3-in-1 som Discoverosity', 'Mindre modulär än nyare modellen']}
     />
@@ -224,7 +223,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Det är inte ett renodlat 3-in-1 som Discoverosity och är något mindre modulärt, men för familjen som uppskattar den beprövade Skip Hop-kvaliteten och vill ha ett pålitligt aktivitetscenter utan de nyaste funktionerna är Explore &amp; More ett tryggt val.
     </p>
-    <MoneyCTABox store="Babyland" affiliateUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=163032&url=https://www.babyland.se/skip-hop-aktivitetscenter" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Beemoo PLAY Explore 3-in-1, bäst budget</h2>
     <MoneyProductCard
@@ -246,7 +244,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Leksaksutbudet är enklare och materialet känns inte lika genomarbetat som hos Skip Hop eller Tiny Love. Men för familjen som vill ha ett aktivitetscenter med flera lägen utan att betala premiumpriser är Beemoo PLAY Explore ett hederligt alternativ.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10276473&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/beemoo-play-explore-3-in-1-aktivitetscenter-sage-green" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Cloudberry Castle 3-i-1, bäst nordisk design</h2>
     <MoneyProductCard
@@ -268,7 +265,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Leksaksutbudet är mer begränsat än hos Skip Hop och textilen i sitsen är tunnare, men tre lägen och höjdjustering finns på plats. För familjen som sätter designen högt och inte vill kompromissa med heminredningen är Cloudberry Castle det självklara valet.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10295135&url=https://www.jollyroom.se/leksaker/babyleksaker/aktivitetsleksaker/cloudberry-castle-aktivitetscenter-3-i-1-green-grey" />
 
     <p class="text-text-light leading-relaxed mb-8">
       Fem aktivitetscentra granskade, ett vinner totalt. Skip Hop Discoverosity tar förstaplatsen på flexibilitet och leksaksutbud, Tiny Love Here I Grow vinner på längst livslängd och Beemoo PLAY Explore är det prisvärda valet. Vill du jämföra fler babyleksaker? Se vår guide om <a href="/leksaker/babygym/" class="text-accent hover:text-accent-dark underline">bästa babygym 2026</a> eller <a href="/leksaker/6-12-manader/" class="text-accent hover:text-accent-dark underline">bästa leksaker 6 till 12 månader</a>.

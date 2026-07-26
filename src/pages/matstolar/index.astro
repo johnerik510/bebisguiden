@@ -5,7 +5,6 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
-import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -35,11 +34,13 @@ const products = [
     rating: 4.9,
     badge: 'Bäst i test',
     usps: ['Följer barnet till vuxen', '136 kg maxvikt', 'Högt andrahandsvärde'],
-    store: 'Baby V',
-    affiliateUrl: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=11001010&url=https://www.babyv.se/sv/articles/1.107.176/stokke-tripp-trapp-matstol',
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10065330&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-oak-natural',
     imageUrl: '/images/products/stokke-tripp-trapp-oak-natural.webp',
     features: { 'Ålder': 'Från 6 mån (med tillbehör)', 'Maxvikt': '136 kg (vuxen)', 'Material': 'Bok/ek, massivt trä', 'Anpassningsbar': 'Ja, följer barnet', 'Bältessystem': '5-punkts (köps separat)' },
-    alsoAt: [],
+    alsoAt: [
+      { store: 'Baby V', url: 'https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=11001010&url=https://www.babyv.se/sv/articles/1.107.176/stokke-tripp-trapp-matstol' },
+    ],
   },
   {
     name: 'Cybex Lemo Matstol Suede Grey',
@@ -168,8 +169,8 @@ const faqItems = [
     brand="Stokke"
     name="Tripp Trapp Oak Natural"
     image="/images/products/stokke-tripp-trapp-oak-natural.webp"
-    trackedUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=11001010&url=https://www.babyv.se/sv/articles/1.107.176/stokke-tripp-trapp-matstol"
-    store="Baby V"
+    trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10065330&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-oak-natural"
+    store="Jollyroom"
     description="Bäst i test 2026. Massiv bok/ek som följer barnet från 6 månader (med Baby Set) till vuxen och klarar 136 kg. Räknat per användningsår ofta billigare än enklare stolar."
   />
 
@@ -194,8 +195,8 @@ const faqItems = [
       badge="Bäst i test"
       imageUrl="/images/products/stokke-tripp-trapp-oak-natural.webp"
       imageAlt="Stokke Tripp Trapp Oak Natural matstol"
-      store="Baby V"
-      buyUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=11001010&url=https://www.babyv.se/sv/articles/1.107.176/stokke-tripp-trapp-matstol"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10065330&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-oak-natural"
       pros={['Följer barnet livet ut, 136 kg maxvikt', 'Extremt hållbar massiv bok/ek-konstruktion', 'Högt andrahandsvärde på Tradera', 'Anpassas i höjd och djup utan verktyg']}
       cons={['Baby Set-tillbehör kostar extra (ca 700 kr)', 'Justeringar kräver medföljande skruvnyckel']}
     />
@@ -205,7 +206,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen: Baby Set-tillbehöret för de minsta barnen kostar extra och kräver separat köp. Justeringar görs med skruvnyckel, inte one-hand-spak som på Cybex Lemo. Planerar ni flera barn eller vill köpa en gång och vara klara är investeringen lätt motiverad räknat per användningsår.
     </p>
-    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=11001010&url=https://www.babyv.se/sv/articles/1.107.176/stokke-tripp-trapp-matstol" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Cybex Lemo Matstol Suede Grey, bäst design och ergonomi</h2>
     <MoneyProductCard
@@ -228,7 +228,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen är att grundmodellen saknar bricka, och att de nödvändiga tillbehören driver upp totalkostnaden avsevärt. Stolen är dessutom tyngre än Tripp Trapp (ca 12 kg) och är inte lika enkel att flytta runt. För familjer där estetiken väger tungt och vill ha ett komplett modulärt system är Cybex Lemo ett starkt alternativ i premiumsegmentet.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10194466&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/cybex-lemo-matstol-suede-grey" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Nuna Bryn Matstol Heritage, bäst premium</h2>
     <MoneyProductCard
@@ -250,7 +249,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Priset är högt, ca 4 995 kronor, och åldersspannet kortare än Tripp Trapp (upp till 5 år, 18 kg). Väljer du Nuna Bryn köper du en komplett premiumstol med hög komfort och inkluderat tillbehör, men du byter ut den tidigare. Passar familjer som värderar maximal komfort och inkluderad utrustning framför livstidslängd.
     </p>
-    <MoneyCTABox store="Baby V" affiliateUrl="https://go.adt231.net/t/t?a=1487384745&as=2065068845&t=2&tk=1&cupa_sku=1HC17101HRIGL&url=https://www.babyv.se/sv/articles/1.107.24387/nuna-bryn-matstol-heritage" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Beemoo CARE Eat Matstol, bäst komfort</h2>
     <MoneyProductCard
@@ -272,7 +270,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Stolen är inte avsedd att växa med barnet på samma sätt som Tripp Trapp, och plastmaterialet ger en enklare känsla än ek och bokträ. Men för familjer som vill ha en säker och enkel stol i mellansegmentet utan att investera i premium levererar Beemoo CARE Eat det den lovar.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10280962&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-eat-matstol-basil-green" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Beemoo Selection Life Barnmatstol, bäst mångsidig</h2>
     <MoneyProductCard
@@ -294,7 +291,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Skillnaden mot Tripp Trapp är att Beemoo Selection Life inte klarar vuxenvikt (90 vs 136 kg), och att andrahandsvärdet är märkbart lägre. Som budgetkompromiss för familjer som vill ha en växande stol men inte vill betala fullt Tripp Trapp-pris är den värd att titta på.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274407&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-selection-life-barnmatstol-walnut" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">6. IKEA Antilop, bäst budget</h2>
     <MoneyProductCard

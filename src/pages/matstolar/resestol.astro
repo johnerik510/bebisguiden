@@ -5,7 +5,6 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
-import MoneyCTABox from '../../components/MoneyCTABox.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -62,11 +61,13 @@ const products = [
     rating: 4.5,
     badge: 'Bäst design',
     usps: ['Hopfällbar', '5-punkts bälte', 'Elegant design'],
-    store: 'Babyland',
-    affiliateUrl: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=617753&url=https://www.babyland.se/cybex-clickfold-matstol-all-white',
+    store: 'Jollyroom',
+    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10270245&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/hopfallbara-barnstolar/cybex-click-fold-matstol-all-white',
     imageUrl: '/images/products/cybex-clickfold-matstol-all-white.webp',
     features: { 'Typ': 'Hopfällbar matstol', 'Ålder': '6 mån, 3 år', 'Maxvikt': '15 kg', 'Bälte': '5-punkts (ingår)' },
-    alsoAt: [],
+    alsoAt: [
+      { store: 'Babyland', url: 'https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=617753&url=https://www.babyland.se/cybex-clickfold-matstol-all-white' },
+    ],
   },
   {
     name: 'Joie MimzySnacker',
@@ -189,7 +190,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen: Clikk ligger i premiumsegmentet och är dyrast i testet. Vikten på 2,8 kg gör den hopfälld för stor för kabinbagage, den blir incheckningsgods på flyget. För familjer som reser till boenden utan egen matstol, hotell, sommarstuga eller släktingar, är den ändå det tryggaste och mest hållbara valet.
     </p>
-    <MoneyCTABox store="Babyland" affiliateUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=266449&url=https://www.babyland.se/stokke-clikk-barnmatstol-vit" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Skrållan Bordsstol, bäst budgetval</h2>
     <MoneyProductCard
@@ -211,7 +211,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen är att bordsklämmaren kräver ett stabilt och solitt bord, glasskivor och lösa skivbord fungerar inte, och att bältet är ett enklare 3-punkts. För barn som redan sitter stabilt och för familjer som prioriterar låg vikt och låg kostnad är det en mycket bra kompromiss.
     </p>
-    <MoneyCTABox store="Babyland" affiliateUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=256596&url=https://www.babyland.se/skrallan-bordsstol-1" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">3. Cybex CLICK&FOLD Matstol, All White, bäst design</h2>
     <MoneyProductCard
@@ -222,8 +221,8 @@ const faqItems = [
       badge="Bäst design"
       imageUrl="/images/products/cybex-clickfold-matstol-all-white.webp"
       imageAlt="Cybex CLICK&FOLD Matstol All White"
-      store="Babyland"
-      buyUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=617753&url=https://www.babyland.se/cybex-clickfold-matstol-all-white"
+      store="Jollyroom"
+      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10270245&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/hopfallbara-barnstolar/cybex-click-fold-matstol-all-white"
       pros={['Elegant Cybex-design', 'Enkel hopfällningsmekanism', '5-punkts bälte ingår', 'Stabil konstruktion']}
       cons={['Dyrare än bordsstolar', 'Tar mer plats i bagaget']}
     />
@@ -233,7 +232,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen är att den kostar mer än de rena bordsstolarna och tar mer plats i bagaget eftersom det är en hel golvstol och inte bara en klämmare. För familjer som vill ha en fristående hopfällbar stol med snygg design och 5-punkts säkerhet är den ett starkt val.
     </p>
-    <MoneyCTABox store="Babyland" affiliateUrl="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=617753&url=https://www.babyland.se/cybex-clickfold-matstol-all-white" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">4. Joie MimzySnacker, liten fotavtryck</h2>
     <MoneyProductCard
@@ -255,7 +253,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Skillnaden mot de övriga är att MimzySnacker inte är hopfällbar på samma sätt och tar mer utrymme än en ren bordsklämmare i bagaget. Som en kompakt vardagsstol som även tål en resa är den ändå ett bra val, särskilt för familjer som vill ha en fristående stol utan att betala premiumpris.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10192468&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/joie-snacker-matstol-portrait" />
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">5. Beemoo CARE Eat Matstol, Basil Green, lättast att packa</h2>
     <MoneyProductCard
@@ -277,7 +274,6 @@ const faqItems = [
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen är att stolen inte är hopfällbar och därför kräver lite golvutrymme, den packas inte lika litet som en bordsklämmare. Men som en kompakt och lättstädad stol med fullt 5-punktsbälte levererar Beemoo CARE Eat bra värde för pengarna.
     </p>
-    <MoneyCTABox store="Jollyroom" affiliateUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10280962&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/beemoo-care-eat-matstol-basil-green" />
 
     <p class="text-text-light leading-relaxed mb-8">
       Fem resematstolar granskade, en vinner totalt. Stokke Clikk tar förstaplatsen som fristående golvstol för semesterresor med logi. Skrållan Bordsstol och Cybex CLICK&FOLD täcker restaurang- och designbehoven, medan Joie MimzySnacker och Beemoo CARE Eat är kompakta vardagsstolar som även klarar en resa. Vill du fördjupa dig? Läs vår <a href="/matstolar/" class="text-accent hover:text-accent-dark underline">matstol bäst i test 2026</a>, <a href="/matstolar/tripp-trapp/" class="text-accent hover:text-accent-dark underline">Stokke Tripp Trapp recension</a> eller <a href="/matstolar/hopfallbar/" class="text-accent hover:text-accent-dark underline">guiden om hopfällbar matstol</a>.
