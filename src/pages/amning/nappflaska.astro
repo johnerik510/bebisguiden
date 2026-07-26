@@ -8,6 +8,8 @@ import MoneyProductCard from '../../components/MoneyProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import HowWeReviewed from '../../components/HowWeReviewed.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -292,6 +294,24 @@ export const articleMeta = {
     <p class="text-text-light leading-relaxed mb-4">
       Välj material efter vad du prioriterar. Glas (Elodie) är mer hållbart, lättare att rengöra och innehåller inga plastämnen, men tyngre och kan gå sönder om det tappas. PP-plast (Philips Avent, MAM, Twistshake) är lättare, BPA-fri och mer praktisk i vardagen. Båda är trygga alternativ, glasflaskan kräver bara lite mer försiktighet i hanteringen.
     </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Nappflaskan i siffror: så ser den svenska amningsbilden ut</h2>
+    <p class="text-text-light leading-relaxed mb-6">Nappflaskan är för de flesta familjer ett komplement till amningen, inte en ersättning. Statistiken nedan visar hur många som ammar och när behovet av flaska brukar uppstå.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+      <StatHighlight figure="93 %" source="Socialstyrelsen" sourceUrl="https://www.socialstyrelsen.se/statistik-och-data/statistik/alla-statistikamnen/amning/" year="2021">
+        Av barnen ammades vid en veckas ålder. Amning är alltså normen i Sverige, inte undantaget.
+      </StatHighlight>
+      <StatHighlight figure="65 %" source="Socialstyrelsen" sourceUrl="https://www.socialstyrelsen.se/statistik-och-data/statistik/alla-statistikamnen/amning/" year="2021">
+        Ammades fortfarande vid sex månaders ålder. Kurvan viker tydligt mellan fyra och sex månader.
+      </StatHighlight>
+      <StatHighlight figure="Från 1 vecka" source="1177 Vårdguiden" sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/amning-och-flaskmatning/amning/">
+        Barn behöver D-vitamindroppar från en veckas ålder upp till två år, även vid full amning.
+      </StatHighlight>
+    </div>
+    <ExpertQuote name="1177 Vårdguiden" role="Sveriges nationella hälso- och sjukvårdsupplysning" sourceUrl="https://www.1177.se/barn--gravid/att-skota-ett-nyfott-barn/amning-och-flaskmatning/amning/">
+      "Livsmedelsverket rekommenderar att alla barn ska få enbart bröstmjölk eller bröstmjölksersättning under sitt första halvår."
+    </ExpertQuote>
 
     <HowWeReviewed>
       <p class="text-text-light leading-relaxed mb-8">

@@ -8,6 +8,8 @@ import MoneyProductCard from '../../components/MoneyProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import HowWeReviewed from '../../components/HowWeReviewed.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -259,6 +261,21 @@ export const articleMeta = {
     <p class="text-text-light leading-relaxed mb-4">
       Alla leksaker i vår test är CE-godkända och testade för säkerhet från 6 månader. Kontrollera alltid att inga lösa delar kan lossna och sväljas. Bebisen stoppar allt i munnen i den här fasen, så ytor och material måste tåla tuggning utan att ge ifrån sig skadliga ämnen.
     </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Leksakssäkerhet i siffror: 6 till 12 månader</h2>
+    <p class="text-text-light leading-relaxed mb-6">När barnet börjar krypa ökar både antalet leksaker och exponeringen. Här är vad Kemikalieinspektionen hittade i sin senaste tillsyn.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight figure="44 av 297" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/arkiv/nyhetsarkiv/nyheter/2023-10-18-farliga-amnen-funna-i-leksaker-och-halloweenartiklar" year="2023">
+        Undersökta leksaker och barnprodukter innehöll farliga ämnen i högre halter än vad lagen tillåter.
+      </StatHighlight>
+      <StatHighlight figure="Ftalater" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/arkiv/nyhetsarkiv/nyheter/2023-10-18-farliga-amnen-funna-i-leksaker-och-halloweenartiklar" year="2023">
+        Det ämne som hittades i flest varor. Det återfanns i mjuk PVC-plast, till exempel i dockor och badleksaker.
+      </StatHighlight>
+    </div>
+    <ExpertQuote name="Frida Ramström" role="Inspektör, Kemikalieinspektionen" sourceUrl="https://www.kemi.se/arkiv/nyhetsarkiv/nyheter/2023-10-18-farliga-amnen-funna-i-leksaker-och-halloweenartiklar">
+      "Mitt råd till konsumenter är att köpa leksaker av bra kvalité och från väletablerade företag."
+    </ExpertQuote>
 
     <HowWeReviewed>
       <p class="text-text-light leading-relaxed mb-8">
