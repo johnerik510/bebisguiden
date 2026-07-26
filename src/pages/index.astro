@@ -327,10 +327,11 @@ const homeFaqItems = [
    loading="eager"
    fetchpriority="high"
   />
-  <!-- Overlayen är responsiv: på smala skärmar ligger texten över hela fotot och
-       behöver mer täckning, på breda sitter den i den naturligt mörka vänsterdelen
-       och kan därför släppa fram bilden. Mätt kontrast: se designsystemet. -->
-  <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/84 to-primary-dark/66 md:from-primary-dark/88 md:via-primary-dark/82 md:to-primary-dark/62 lg:from-primary-dark/80 lg:via-primary-dark/58 lg:to-primary-dark/18 -z-10" aria-hidden="true"></div>
+  <!-- Overlayen är en "tält"-gradient, inte mörk-till-ljus. Fotots vänsterdel är
+       redan mörk; det ljusa partiet är lampan vid cirka 60 procent av bredden, och
+       det är där täckningen behövs. Värdena är uträknade, inte gissade: minsta
+       alfa per pixelkolumn som klarar WCAG AA, plus marginal. Se designsystemet. -->
+  <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/15 via-primary-dark/60 to-primary-dark/68 md:from-primary-dark/15 md:via-primary-dark/60 md:to-primary-dark/48 lg:from-primary-dark/15 lg:via-primary-dark/66 lg:to-primary-dark/15 -z-10" aria-hidden="true"></div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative w-full">
    <div class="max-w-2xl">

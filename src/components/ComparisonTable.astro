@@ -1,4 +1,5 @@
 ---
+import { ctaRel } from '../lib/cta-rel';
 interface Product {
   name: string;
   image?: string;
@@ -75,7 +76,7 @@ function storeFromUrl(url: string | undefined): string | undefined {
       </dl>
       {p.ctaHref && (
       <div>
-        <a href={p.ctaHref} target="_blank" rel="nofollow sponsored noopener"
+        <a href={p.ctaHref} target="_blank" rel={ctaRel(p.ctaHref)}
           class="flex items-center justify-center gap-1.5 w-full bg-cta text-white font-bold text-base py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
           Bra pris hos {storeFromUrl(p.ctaHref) ?? p.ctaText ?? 'butiken'}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -84,7 +85,7 @@ function storeFromUrl(url: string | undefined): string | undefined {
         <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-text-light">
           <span class="font-semibold uppercase tracking-wide">Även hos:</span>
           {p.additionalCtaHrefs.map((o) => (
-          <a href={o.url} rel="nofollow sponsored noopener" target="_blank"
+          <a href={o.url} rel={ctaRel(o.url)} target="_blank"
             class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-white font-semibold text-text hover:border-primary hover:text-primary transition-colors no-underline">
             {o.store}
           </a>
@@ -134,7 +135,7 @@ function storeFromUrl(url: string | undefined): string | undefined {
         <td class="p-3 text-center align-top">
           {p.ctaHref && (
           <div>
-            <a href={p.ctaHref} target="_blank" rel="nofollow sponsored noopener"
+            <a href={p.ctaHref} target="_blank" rel={ctaRel(p.ctaHref)}
               class="flex w-full items-center justify-center gap-1 bg-cta text-white font-bold text-base px-5 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
               Bra pris hos {storeFromUrl(p.ctaHref) ?? p.ctaText ?? 'butiken'}
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -143,7 +144,7 @@ function storeFromUrl(url: string | undefined): string | undefined {
             <div class="mt-2 flex flex-wrap items-center justify-center gap-2 text-xs text-text-light">
               <span class="font-semibold uppercase tracking-wide">Även hos:</span>
               {p.additionalCtaHrefs.map((o) => (
-              <a href={o.url} rel="nofollow sponsored noopener" target="_blank"
+              <a href={o.url} rel={ctaRel(o.url)} target="_blank"
                 class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-white font-semibold text-text hover:border-primary hover:text-primary transition-colors no-underline">
                 {o.store}
               </a>

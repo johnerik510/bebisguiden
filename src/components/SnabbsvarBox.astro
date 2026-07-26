@@ -1,4 +1,5 @@
 ---
+import { ctaRel } from '../lib/cta-rel';
 /**
  * Snabbsvar (answer-first) med inbäddat toppval.
  *
@@ -100,7 +101,7 @@ const { question, headingId = 'snabbsvar', featured } = Astro.props;
                   <a
                     href={featured.buyUrl}
                     target="_blank"
-                    rel="nofollow sponsored noopener"
+                    rel={ctaRel(featured.buyUrl)}
                     data-product={featured.name}
                     class="inline-flex items-center justify-center w-full sm:w-auto bg-cta hover:bg-cta-dark text-white font-semibold text-base px-6 py-3.5 rounded-md transition-colors"
                   >

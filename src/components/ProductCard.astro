@@ -1,4 +1,5 @@
 ---
+import { ctaRel } from '../lib/cta-rel';
 interface Props {
  name: string;
  image?: string;
@@ -65,7 +66,7 @@ const primaryLabel = `Bra pris hos ${primaryStore}`;
  {image && (
  <div class="w-full sm:w-48 md:w-56 flex-shrink-0 bg-gray-50 rounded-xl p-3 flex items-center justify-center">
  {primaryHref ? (
- <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener" aria-label={`Bra pris hos ${name}`} class="block w-full h-full">
+ <a href={primaryHref} target="_blank" rel={ctaRel(primaryHref)} aria-label={`Bra pris hos ${name}`} class="block w-full h-full">
  <img src={image} alt={name} class="w-full h-auto max-h-52 rounded-lg object-contain" loading="lazy" width="208" height="208" />
  </a>
  ) : (
@@ -77,7 +78,7 @@ const primaryLabel = `Bra pris hos ${primaryStore}`;
  <div class="flex items-start gap-2">
  <h3 class="font-heading text-lg font-bold text-text">
  {primaryHref ? (
- <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener" class="!text-text hover:!text-accent-dark transition-colors no-underline">{name}</a>
+ <a href={primaryHref} target="_blank" rel={ctaRel(primaryHref)} class="!text-text hover:!text-accent-dark transition-colors no-underline">{name}</a>
  ) : (
  name
  )}
@@ -115,7 +116,7 @@ const primaryLabel = `Bra pris hos ${primaryStore}`;
  )}
  {primaryHref && (
  <div class="mt-4">
- <a href={primaryHref} target="_blank" rel="nofollow sponsored noopener" data-product={name} class="relative flex w-full items-center justify-center bg-cta text-white font-bold text-base px-7 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
+ <a href={primaryHref} target="_blank" rel={ctaRel(primaryHref)} data-product={name} class="relative flex w-full items-center justify-center bg-cta text-white font-bold text-base px-7 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
  <span class="absolute -top-2 right-3 inline-block bg-primary text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">Redaktionens val</span>
  {primaryLabel}
  <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -126,7 +127,7 @@ const primaryLabel = `Bra pris hos ${primaryStore}`;
  <div class="flex flex-wrap items-center gap-2 mt-1">
  <span class="text-xs font-semibold text-text-light uppercase tracking-wide">Även hos:</span>
  {additionalCtaHrefs.map((o) => (
- <a href={o.url} rel="nofollow sponsored noopener" target="_blank"
+ <a href={o.url} rel={ctaRel(o.url)} target="_blank"
  class="inline-flex items-center px-3 py-1.5 rounded-lg border border-border text-xs font-semibold text-text-light hover:border-primary hover:text-primary transition-colors">
  {o.store}
  </a>
