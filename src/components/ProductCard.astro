@@ -32,11 +32,11 @@ const {
 
 const TRACKER_TO_STORE: Record<string, string> = {
  'dot.jollyroom.se': 'Jollyroom',
- 'to.babyworld.se': 'BabySam',
+ 'to.babyworld.se': 'Babysam',
  'go.adt231.net': 'Baby V',
  'pin.babyland.se': 'Babyland',
  'go.adt284.net': 'Proshop',
- 'ion.babysam.se': 'BabySam',
+ 'ion.babysam.se': 'Babysam',
  'to.xplora.se': 'Xplora',
  'id.toyspace.se': 'Toyspace',
  'to.kopbarnvagn.se': 'Köpbarnvagn',
@@ -66,8 +66,8 @@ const primaryLabel = `Bra pris hos ${primaryStore}`;
  {image && (
  <div class="w-full sm:w-48 md:w-56 flex-shrink-0 bg-gray-50 rounded-xl p-3 flex items-center justify-center">
  {primaryHref ? (
- <a href={primaryHref} target="_blank" rel={ctaRel(primaryHref)} aria-label={`Bra pris hos ${name}`} class="block w-full h-full">
- <img src={image} alt={name} class="w-full h-auto max-h-52 rounded-lg object-contain" loading="lazy" width="208" height="208" />
+ <a href={primaryHref} target="_blank" rel={ctaRel(primaryHref)} tabindex="-1" aria-hidden="true" class="block w-full h-full">
+ <img src={image} alt="" class="w-full h-auto max-h-52 rounded-lg object-contain" loading="lazy" width="208" height="208" />
  </a>
  ) : (
  <img src={image} alt={name} class="w-full h-auto max-h-52 rounded-lg object-contain" loading="lazy" width="208" height="208" />

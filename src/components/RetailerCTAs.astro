@@ -1,62 +1,76 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
-// Multi-retailer prisjämförelse-CTA.
-// Visas på money pages för att sprida klick över flera affiliate-butiker
-// och ge användaren val, maximerar både konvertering och täckning.
-import { retailerMeta, defaultRetailers, track, type Retailer } from '../data/affiliates';
+// Multi-retailer kategori-CTA.
+// Sprider klick over flera affiliate-butiker och later lasaren valja butik.
+//
+// Butikslistan byggs av kategorin, INTE av en enda path som appliceras pa alla
+// butiker: butikerna har helt olika URL-struktur, sa en delad path ger 404 hos
+// alla utom en. Varje path kommer fran retailer-categories.ts (feed-harledd
+// eller hamtad ur butikens egen sitemap, HTTP-verifierad).
+//
+// Butiker utan verifierad path for kategorin utelamnas. Renderar ingenting alls
+// om ingen butik har en verifierad path.
+import { retailerMeta, track, sortByCommission, type Retailer } from '../data/affiliates';
+import { categoryPath, retailersForCategory, type CategoryKey } from '../data/retailer-categories';
 
 interface Props {
- heading?: string;
- subheading?: string;
- retailers?: Retailer[];
- /** Valfri deeplink-path som skickas vidare till butiken (t.ex. "/barnvagnar/") */
- path?: string;
- compact?: boolean;
+  /** Kategorin sidan handlar om. Styr vilka butiker som visas och vart de gar. */
+  category?: CategoryKey;
+  heading?: string;
+  subheading?: string;
+  /** Begransa till dessa butiker (annars alla med verifierad path). */
+  retailers?: Retailer[];
+  compact?: boolean;
+  /** Legacy: rå path applicerad pa alla butiker. Anvands inte langre. */
+  path?: string;
 }
 
 const {
- heading = 'Jämför pris hos våra partnerbutiker',
- subheading = 'Klicka dig direkt till butikens aktuella pris.',
- retailers = defaultRetailers,
- path,
- compact = false,
+  category,
+  heading = 'Jämför pris hos våra partnerbutiker',
+  subheading = 'Klicka dig direkt till butikens aktuella sortiment.',
+  retailers,
+  compact = false,
 } = Astro.props;
 
-// Bara bygg CTA om vi har en target (path), annars är det homepage-länk = bruten djuplänk
-const items = path
-? retailers.map((r) => {
- const meta = retailerMeta[r];
- const target = `https://www.${meta.domain}${path.startsWith('/')? '': '/'}${path}`;
- return {
- key: r,
- name: meta.name,
- color: meta.color,
- href: track(r, target),
- };
- })
-: [];
+// Jollyroom forst (hogst EPC pa bebisguiden), darefter provisionsordning.
+function order(list: Retailer[]): Retailer[] {
+  const rest = sortByCommission(list.filter((r) => r !== 'jollyroom'));
+  return list.includes('jollyroom') ? ['jollyroom' as Retailer, ...rest] : rest;
+}
+
+const available = category ? retailersForCategory(category) : [];
+const chosen = order(retailers ? available.filter((r) => retailers.includes(r)) : available);
+
+const items = chosen
+  .map((r) => {
+    const path = category ? categoryPath(category, r) : null;
+    if (!path) return null;
+    const meta = retailerMeta[r];
+    return { key: r, name: meta.name, href: track(r, `https://www.${meta.domain}${path}`) };
+  })
+  .filter((x): x is { key: Retailer; name: string; href: string } => x !== null);
 ---
 
 {items.length > 0 && (
-<section class={`my-8 ${compact? 'py-4': 'py-6'} px-4 sm:px-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200`}>
- {!compact && (
- <div class="mb-4">
- <h2 class="text-lg sm:text-xl font-bold text-gray-900">{heading}</h2>
- <p class="text-sm text-gray-600 mt-1">{subheading}</p>
- </div>
- )}
- <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
- {items.map((item) => (
- <a
- href={item.href}
- target="_blank"
- rel={ctaRel(item.href)}
- class={`${item.color} text-white font-bold text-center py-4 px-4 rounded-xl transition-colors text-base sm:text-lg shadow-sm hover:shadow-md`}
- aria-label={`Bra pris hos ${item.name}`}
- >
- {item.name}
- </a>
- ))}
- </div>
+<section class={`not-prose my-8 ${compact ? 'py-4' : 'py-5'} px-4 sm:px-5 rounded-lg bg-bg-alt border border-border`}>
+  {!compact && (
+    <div class="mb-4">
+      <h2 class="font-heading text-lg sm:text-xl font-bold text-primary">{heading}</h2>
+      <p class="text-sm text-text-light mt-1">{subheading}</p>
+    </div>
+  )}
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
+    {items.map((item) => (
+      <a
+        href={item.href}
+        target="_blank"
+        rel={ctaRel(item.href)}
+        class="bg-cta hover:bg-cta-dark text-white font-bold text-center py-3.5 px-3 rounded-lg transition-colors text-sm sm:text-base no-underline min-h-[52px] flex items-center justify-center"
+      >
+        {item.name}
+      </a>
+    ))}
+  </div>
 </section>
 )}
