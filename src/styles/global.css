@@ -1,29 +1,58 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Bebisguidens designsystem (STEG 0, låst 2026-07-26)
+
+   Scen: en väntande eller nybliven förälder, ofta trött, ofta på mobilen på
+   kvällen, som ska lägga 3 000-12 000 kr på en barnvagn eller välja bilbarnstol
+   där säkerheten känns skrämmande viktig. Tonen är saklig omsorg: ett
+   konsumentupplysande faktablad skrivet av en människa som själv varit vaken
+   klockan tre. Aldrig gullig pastell, aldrig babyrosa/babyblå.
+
+   Låst riktning:
+   - Plommon-ink som primär, rosenrött som ENDA handlingsfärg, mossgrön som
+     positiv semantik, varmt papper som grund. Inget blått, lila eller indigo.
+   - Newsreader (serif) som röst i rubriker, Source Sans 3 som arbetshäst.
+   - Kort med kant, aldrig vilande skugga. Tre radier (8 / 6 / full).
+     Solida ytor, aldrig dekorativa gradienter eller orbs.
+   - Motion: enbart transition-colors. Ingen scale/rotate/translate på hover.
+--------------------------------------------------------------------------- */
 @theme {
-  --color-primary: #4a5568;
-  --color-primary-light: #5a6a80;
-  --color-primary-dark: #2d3748;
+  /* Primär: plommon-ink. Rubriker, brödtextens ink, mörka fullbreddsband. */
+  --color-primary: #2b1d24;
+  --color-primary-light: #4a3540;
+  --color-primary-dark: #1b1116;
+
+  /* Accent = ENDA handlingsfärg. Reserverad för CTA, aktiv state, utmärkelse. */
   --color-accent: #b34558;
   --color-accent-light: #c4566a;
-  --color-accent-dark: #9a3a4b;
+  --color-accent-dark: #8e3244;
   --color-cta: #b34558;
   --color-cta-light: #c4566a;
-  --color-cta-dark: #9a3a4b;
-  --color-bg: #fafafa;
-  --color-bg-alt: #f5f5f5;
-  --color-text: #1a202c;
-  --color-text-light: #4a5568;
-  --color-text-lighter: #4a5568;
-  --color-border: #e2e8f0;
-  --color-border-dark: #cbd5e1;
+  --color-cta-dark: #8e3244;
+
+  /* Ytor: varmt papper, inte kall grå. */
+  --color-bg: #fbf8f5;
+  --color-bg-alt: #f4efe9;
   --color-white: #ffffff;
-  --color-warning: #f59e0b;
+
+  /* Text: varm ink-skala. text-light klarar 7:1 mot papper. */
+  --color-text: #241820;
+  --color-text-light: #5f4e57;
+  --color-text-lighter: #5f4e57;
+
+  /* Kanter: varma hårlinjer, aldrig kall slate. */
+  --color-border: #e8dfd8;
+  --color-border-dark: #d5c9bf;
+
+  /* Semantik */
+  --color-warning: #b45309;
   --color-star: #b45309;
-  --color-safe: #38a169;
-  --color-safe-light: #48bb78;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --color-safe: #35604a;
+  --color-safe-light: #3f6b52;
+
+  --font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Newsreader', Georgia, 'Times New Roman', serif;
 }
 
 /* Focus styles for WCAG 2.1 AA keyboard navigation */
@@ -35,6 +64,57 @@
 
 *:focus:not(:focus-visible) {
   outline: none;
+}
+
+/* --- UX-grunder ---------------------------------------------------------- */
+
+/* Ankarlänkar hamnar aldrig under den sticky headern. */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Formulärkontroller ärver brandfärgen i stället för webbläsarblått. */
+html {
+  accent-color: var(--color-accent);
+}
+
+/* Svenska sammansatta ord spräcker aldrig en smal kolumn. */
+h1, h2, h3, h4, p, li, dd, dt, figcaption {
+  overflow-wrap: break-word;
+}
+
+/* Rubriker bryter på ett balanserat sätt, brödtext undviker horungar. */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* Serif-rösten: optisk storlek följer faktisk grad, tight tracking i display. */
+.font-heading,
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.011em;
+  font-variation-settings: 'opsz' 32;
+}
+
+/* Siffror i tabeller och betyg ligger i kolumn. */
+table, .tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sidor med mobil sticky-CTA får bottenluft så baren aldrig täcker footern. */
+@media (max-width: 1023px) {
+  body:has(#sticky-cta) {
+    padding-bottom: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Minimum touch target size (44x44px) */

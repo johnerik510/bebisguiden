@@ -1,9 +1,11 @@
 ---
 interface Props {
  items: { question: string; answer: string }[];
+ /** Sätt false när sidan redan har en egen H2 över FAQ-blocket (undviker dubbel H2). */
+ showHeading?: boolean;
 }
 
-const { items } = Astro.props;
+const { items, showHeading = true } = Astro.props;
 
 const jsonLd = {
  "@context": "https://schema.org",
@@ -20,7 +22,7 @@ const jsonLd = {
 ---
 
 <section class="mt-10 mb-6">
- <h2 class="font-heading text-xl font-bold mb-4">Vanliga frågor</h2>
+ {showHeading && <h2 class="font-heading text-xl font-bold mb-4">Vanliga frågor</h2>}
  <div class="space-y-3">
  {items.map((item) => (
  <details class="group bg-white border border-border rounded-lg">

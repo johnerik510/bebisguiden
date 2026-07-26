@@ -1,0 +1,122 @@
+---
+/**
+ * Snabbsvar (answer-first) med inbäddat toppval.
+ *
+ * ETT block, aldrig två rutor: det självbärande svaret OCH sidans
+ * huvudrekommendation ligger i samma yta. Detta är den enda "förtjänta" boxen
+ * på sidan (av-boxningsprincipen) och den enda platsen där accentfärgen får
+ * ramma in en yta.
+ *
+ * NOLLTOLERANS: `featured.buyUrl`, `featured.image` och `featured.reviewHref`
+ * MÅSTE komma från verifierad produktdata (feed-matches eller verified-links).
+ * Saknas verifierad affiliatelänk: utelämna `buyUrl` helt, komponenten renderar
+ * då kortet utan CTA. Konstruera aldrig en länk.
+ */
+interface Featured {
+  name: string;
+  brand?: string;
+  image: string;
+  imageAlt?: string;
+  badge?: string;
+  bestFor?: string;
+  rating?: number;
+  buyUrl?: string;
+  merchant?: string;
+  reviewHref?: string;
+  reviewLabel?: string;
+}
+
+interface Props {
+  question: string;
+  headingId?: string;
+  featured?: Featured;
+}
+
+const { question, headingId = 'snabbsvar', featured } = Astro.props;
+---
+
+<section class="bg-bg" aria-labelledby={headingId}>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+    <div class="bg-white border border-border rounded-lg border-l-4 border-l-accent">
+      <div class="p-5 sm:p-7">
+        <h2 id={headingId} class="font-heading text-xl sm:text-2xl font-semibold text-primary leading-snug mb-2">
+          Snabbsvar: {question}
+        </h2>
+        <div class="text-[15px] sm:text-base text-text leading-relaxed max-w-3xl">
+          <slot />
+        </div>
+      </div>
+
+      {featured && (
+        <div class="border-t border-border p-5 sm:p-7">
+          <div class="flex flex-col sm:flex-row gap-5 sm:gap-7">
+            <div class="shrink-0 self-start w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-lg border border-border flex items-center justify-center p-3">
+              <img
+                src={featured.image}
+                alt={featured.imageAlt ?? featured.name}
+                width="160"
+                height="160"
+                loading="eager"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+
+            <div class="flex-1 min-w-0">
+              {featured.badge && (
+                <span class="inline-flex items-center rounded-full bg-accent text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 mb-2">
+                  {featured.badge}
+                </span>
+              )}
+              {featured.brand && (
+                <div class="text-[11px] font-semibold uppercase tracking-wider text-text-light mb-0.5">{featured.brand}</div>
+              )}
+              <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary leading-snug">
+                {featured.reviewHref
+                  ? <a href={featured.reviewHref} class="hover:text-accent transition-colors">{featured.name}</a>
+                  : featured.name}
+              </h3>
+
+              {featured.rating && (
+                <div class="flex items-center gap-2 mt-1.5">
+                  <span class="flex items-center gap-0.5" aria-hidden="true">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <svg class={`w-4 h-4 ${i <= Math.round(featured.rating!) ? 'text-star' : 'text-border-dark'}`} viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 00.95.7h4.16c.97 0 1.37 1.24.59 1.8l-3.37 2.45a1 1 0 00-.36 1.12l1.28 3.96c.3.92-.75 1.68-1.53 1.11l-3.37-2.44a1 1 0 00-1.18 0l-3.37 2.44c-.78.57-1.83-.19-1.53-1.11l1.28-3.96a1 1 0 00-.36-1.12L2.05 9.38c-.78-.57-.38-1.81.59-1.81h4.16a1 1 0 00.95-.7l1.29-3.94z"/>
+                    </svg>
+                    ))}
+                  </span>
+                  <span class="text-sm font-semibold text-text tabular">{featured.rating.toFixed(1).replace('.', ',')} av 5</span>
+                </div>
+              )}
+
+              {featured.bestFor && (
+                <p class="text-sm text-text-light leading-relaxed mt-2">
+                  <span class="font-semibold text-text">Bäst för:</span> {featured.bestFor}
+                </p>
+              )}
+
+              <div class="flex flex-wrap items-center gap-x-5 gap-y-3 mt-4">
+                {featured.buyUrl && featured.merchant && (
+                  <a
+                    href={featured.buyUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener"
+                    data-product={featured.name}
+                    class="inline-flex items-center justify-center w-full sm:w-auto bg-cta hover:bg-cta-dark text-white font-semibold text-base px-6 py-3.5 rounded-md transition-colors"
+                  >
+                    Bra pris hos {featured.merchant}
+                  </a>
+                )}
+                {featured.reviewHref && (
+                  <a href={featured.reviewHref} class="text-sm font-semibold text-accent-dark underline underline-offset-2 hover:text-accent transition-colors">
+                    {featured.reviewLabel ?? 'Se hela jämförelsen'}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
