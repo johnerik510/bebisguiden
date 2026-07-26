@@ -8,6 +8,8 @@ import MoneyProductCard from '../../components/MoneyProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import HowWeReviewed from '../../components/HowWeReviewed.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -222,6 +224,21 @@ export const articleMeta = {
     <p class="text-text-light leading-relaxed mb-4">
       Tryckknappar längs skrevet gör blöjbytet enklare utan att ta av hela bodyn. Se till att knapparna sitter på insidan (inga hårda knappar mot huden). Undvik knappar som kräver stor kraft att stänga, nyfödda tolererar inte lång tid i utsatt position.
     </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Bodys i siffror: därför spelar materialet roll</h2>
+    <p class="text-text-light leading-relaxed mb-6">En body ligger direkt mot huden hela dygnet och tvättas oftare än något annat plagg. Siffrorna nedan förklarar varför certifierad bomull är värd merpriset.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight figure="1,5-6,9 kg" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+        Kemikalier går åt per kilo ny textil, beroende på fiberslag och produktionsmetod.
+      </StatHighlight>
+      <StatHighlight figure="8 ämnesgrupper" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+        Växtskyddsmedel, azofärgämnen, lösningsmedel, PFAS, ftalater, flamskyddsmedel, ytaktiva ämnen och biocider.
+      </StatHighlight>
+    </div>
+    <ExpertQuote name="Kemikalieinspektionen" role="Sveriges myndighet för kemikaliekontroll" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+      "En del av de kemikalier som används i textiltillverkningen och som kan finnas kvar i den färdiga varan kan innebära risker för hälsa- och miljö."
+    </ExpertQuote>
 
     <HowWeReviewed>
       <p class="text-text-light leading-relaxed mb-8">

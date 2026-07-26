@@ -8,6 +8,8 @@ import MoneyProductCard from '../../components/MoneyProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import HowWeReviewed from '../../components/HowWeReviewed.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -288,6 +290,24 @@ export const articleMeta = {
     <p class="text-text-light leading-relaxed mb-4">
       Nyfödda ska alltid bäras i M-position (frosk-position): höfterna böjda och knäna högre än rumpan, som en groda. Ryggen ska vara stöttad i sin naturliga runda form. Benen ska hänga fritt utanför tyget, aldrig hängande rakt ned. En position där benen hänger rakt ned ger sämre viktfördelning och en mindre bekväm passform.
     </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Ringsjal i siffror: positionen är svårare att träffa</h2>
+    <p class="text-text-light leading-relaxed mb-6">En ringsjal knyts manuellt, vilket gör att positionen blir vad du gör den till. Det är därför gradtalen nedan är värda att kunna.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+      <StatHighlight figure="40-55°" source="International Hip Dysplasia Institute" sourceUrl="https://hipdysplasia.org/baby-wearing/">
+        Höftabduktion i den position institutet beskriver som gynnsam, kombinerad med 90 till 110 graders flexion.
+      </StatHighlight>
+      <StatHighlight figure="Första 6 mån" source="International Hip Dysplasia Institute" sourceUrl="https://hipdysplasia.org/baby-wearing/">
+        Perioden då höftlederna växer snabbast. Institutet rekommenderar inåtvänd bärning under den tiden.
+      </StatHighlight>
+      <StatHighlight figure="Alla nyfödda" source="1177 Vårdguiden" sourceUrl="https://www.1177.se/sjukdomar--besvar/skelett-leder-och-muskler/hofter/hoftledsluxation-hos-nyfodda/">
+        Undersöks av barnläkare inom de två första dygnen, bland annat för att kontrollera höftledernas stabilitet.
+      </StatHighlight>
+    </div>
+    <ExpertQuote name="International Hip Dysplasia Institute" role="Amerikanskt forskningsinstitut för höftledsdysplasi" sourceUrl="https://hipdysplasia.org/baby-wearing/">
+      "Inward-Facing Carrying may be healthier for hip development, especially during the first six months of infancy."
+    </ExpertQuote>
 
     <HowWeReviewed>
       <p class="text-text-light leading-relaxed mb-8">

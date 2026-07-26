@@ -9,6 +9,8 @@ import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import RetailerCTAs from '../../components/RetailerCTAs.astro';
 import HowWeReviewed from '../../components/HowWeReviewed.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -330,6 +332,21 @@ export const articleMeta = {
     </p>
 
     <RetailerCTAs />
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Babykläder i siffror: vad som används i textilproduktion</h2>
+    <p class="text-text-light leading-relaxed mb-6">Babyns hud har större yta i förhållande till kroppsvikt än en vuxens, och kläderna ligger mot huden dygnet runt. Här är vad Kemikalieinspektionen säger om kemikalier i textil.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight figure="1,5-6,9 kg" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+        Kemikalier går åt per kilo ny textil, beroende på fiberslag och produktionsmetod.
+      </StatHighlight>
+      <StatHighlight figure="8 ämnesgrupper" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+        Växtskyddsmedel, azofärgämnen, lösningsmedel, PFAS, ftalater, flamskyddsmedel, ytaktiva ämnen och biocider.
+      </StatHighlight>
+    </div>
+    <ExpertQuote name="Kemikalieinspektionen" role="Sveriges myndighet för kemikaliekontroll" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+      "En del av de kemikalier som används i textiltillverkningen och som kan finnas kvar i den färdiga varan kan innebära risker för hälsa- och miljö."
+    </ExpertQuote>
 
     <HowWeReviewed>
       <p class="text-text-light leading-relaxed mb-8">

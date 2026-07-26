@@ -8,6 +8,8 @@ import MoneyProductCard from '../../components/MoneyProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import HowWeReviewed from '../../components/HowWeReviewed.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ExpertQuote from '../../components/ExpertQuote.astro';
 
 // Addrevenue URL utan cupa_sku (Namnlappskungen via Addrevenue)
 const affiliateUrl = 'https://addrevenue.io/t?a=984852&c=3467325&url=https%3A%2F%2Fwww.namnlappskungen.se%2F';
@@ -244,6 +246,21 @@ export const articleMeta = {
     <p class="text-text-light leading-relaxed mb-4">
       En förpackning stryk-på (60 st) plus en förpackning klistermärken (90 st) räcker för de flesta. Lägg till silikon-lappar för flaskor och du är klar.
     </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Textil i siffror: vad som finns i tyget</h2>
+    <p class="text-text-light leading-relaxed mb-6">Namnlappar sys eller stryks fast i plagg som ligger mot barnets hud. Här är bakgrunden till varför materialet i både plagg och lapp är värt en tanke.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <StatHighlight figure="1,5-6,9 kg" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+        Kemikalier går åt per kilo ny textil, beroende på fiberslag och produktionsmetod.
+      </StatHighlight>
+      <StatHighlight figure="8 ämnesgrupper" source="Kemikalieinspektionen" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+        Växtskyddsmedel, azofärgämnen, lösningsmedel, PFAS, ftalater, flamskyddsmedel, ytaktiva ämnen och biocider.
+      </StatHighlight>
+    </div>
+    <ExpertQuote name="Kemikalieinspektionen" role="Sveriges myndighet för kemikaliekontroll" sourceUrl="https://www.kemi.se/hallbarhet/amnen-och-material/textilier">
+      "En del av de kemikalier som används i textiltillverkningen och som kan finnas kvar i den färdiga varan kan innebära risker för hälsa- och miljö."
+    </ExpertQuote>
 
     <HowWeReviewed>
       <p class="text-text-light leading-relaxed mb-8">
