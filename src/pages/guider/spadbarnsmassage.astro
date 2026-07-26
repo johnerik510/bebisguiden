@@ -65,7 +65,7 @@ export const articleMeta = {
  Spädbarnsmassage är ett av de enklaste sätten att stärka banden med ditt barn, och forskning visar att regelbunden beröring gynnar allt från viktuppgång till sömnkvalitet. Den här guiden ger dig konkret teknik, rätt oljeVal och svarar på de vanligaste frågorna.
 </p>
 
-<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-8">
  <p class="text-sm font-semibold text-accent-dark mb-1">Det viktigaste att veta</p>
  <p class="text-sm text-text-light">Massera alltid på bebisens villkor. Positiva signaler: avslappnade händer, ögonkontakt, lugnt ansiktsuttryck. Stanna om bebisen gråter eller spänner kroppen, tvinga aldrig beröring.</p>
 </div>
@@ -93,7 +93,7 @@ export const articleMeta = {
  <li><strong>Timing:</strong> Minst 30 minuter efter matning. Helst när bebisen är vaken men lugn, inte hungrig, inte övertrött.</li>
 </ul>
 
-<figure class="rounded-2xl overflow-hidden mb-8 not-prose">
+<figure class="rounded-lg overflow-hidden mb-8 not-prose">
  <img
  src="/images/guide-spadbarnsmassage.webp"
  alt="Förälder masserar bebis på mjuk underlag"
@@ -158,35 +158,35 @@ export const articleMeta = {
  </tr>
  </thead>
  <tbody>
- <tr class="border-t border-gray-200">
+ <tr class="border-t border-border">
  <td class="p-3 font-medium">Solrosolja (oparfymerad)</td>
  <td class="p-3">Linoleinsyrerikt, mjuk på huden, lätt att skölja</td>
  <td class="p-3 text-safe">Ja, förstaval</td>
  </tr>
- <tr class="border-t border-gray-200 bg-gray-50">
+ <tr class="border-t border-border bg-bg-alt">
  <td class="p-3 font-medium">Kokosolja (extra virgin)</td>
  <td class="p-3">Antimikrobiell, mjuk, glider bra</td>
  <td class="p-3 text-safe">Ja, bra val</td>
  </tr>
- <tr class="border-t border-gray-200">
+ <tr class="border-t border-border">
  <td class="p-3 font-medium">Mandelolja (söt)</td>
  <td class="p-3">Rik, bra för torr hud</td>
  <td class="p-3 text-yellow-700">Ja, undvik vid nötallergi</td>
  </tr>
- <tr class="border-t border-gray-200 bg-gray-50">
+ <tr class="border-t border-border bg-bg-alt">
  <td class="p-3 font-medium">Olivolja</td>
  <td class="p-3">Kan störa hudbarriären</td>
- <td class="p-3 text-red-700">Nej, undvik</td>
+ <td class="p-3 text-danger">Nej, undvik</td>
  </tr>
- <tr class="border-t border-gray-200">
+ <tr class="border-t border-border">
  <td class="p-3 font-medium">Mineraloljor / paraffinolja</td>
  <td class="p-3">Billiga men andas inte</td>
- <td class="p-3 text-red-700">Nej, undvik</td>
+ <td class="p-3 text-danger">Nej, undvik</td>
  </tr>
- <tr class="border-t border-gray-200 bg-gray-50">
+ <tr class="border-t border-border bg-bg-alt">
  <td class="p-3 font-medium">Parfymerade babyprodukter</td>
  <td class="p-3">Risk för sensibilisering</td>
- <td class="p-3 text-red-700">Nej, undvik</td>
+ <td class="p-3 text-danger">Nej, undvik</td>
  </tr>
  </tbody>
  </table>
@@ -200,10 +200,10 @@ export const articleMeta = {
  { name: 'Olivolja', desc: 'Kan störa hudbarriären', ok: false, note: 'Undvik' },
  { name: 'Mineraloljor', desc: 'Andas inte, blockerar porer', ok: false, note: 'Undvik' },
  ].map(item => (
- <div class="border border-gray-200 rounded-lg p-3">
+ <div class="border border-border rounded-lg p-3">
  <div class="flex justify-between items-start">
  <span class="font-medium text-sm">{item.name}</span>
- <span class={`text-xs font-semibold ${item.ok? 'text-safe': 'text-red-700'}`}>{item.note}</span>
+ <span class={`text-xs font-semibold ${item.ok? 'text-safe': 'text-danger'}`}>{item.note}</span>
  </div>
  <p class="text-xs text-text-light mt-1">{item.desc}</p>
  </div>

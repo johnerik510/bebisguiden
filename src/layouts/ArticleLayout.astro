@@ -102,7 +102,7 @@ if (section) {
  />
  )}
  {image && (
- <div class="mt-4 mb-6 rounded-xl overflow-hidden aspect-[16/9] bg-sand">
+ <div class="mt-4 mb-6 rounded-lg overflow-hidden aspect-[16/9] bg-sand">
  <img src={image} alt={title} class="w-full h-full object-cover" loading="lazy" width="1200" height="675" />
  </div>
  )}
@@ -127,7 +127,14 @@ if (section) {
  <script>
   function transformProseTablesForMobile() {
    if (window.innerWidth >= 768) return;
-   document.querySelectorAll('article table:not([data-mobile]):not([data-mobile-simple])').forEach((table) => {
+   // data-stack undantas: de tabellerna stackas av CSS i stället (se global.css).
+   // Skälet är att den här transformen antar att varje tabell är en
+   // produktjämförelse, "Egenskap + produkt + produkt". På en symptomtabell som
+   // "Mätmetod / Febergräns / Precision" blir första kolumnen produktnamn och
+   // resten värden, alltså fel innehåll i fel roll. CSS-varianten etiketterar
+   // varje cell med sin egen kolumnrubrik och funkar för alla tabelltyper,
+   // dessutom utan JS och utan att bygga om DOM:en.
+   document.querySelectorAll('article table:not([data-mobile]):not([data-mobile-simple]):not([data-stack])').forEach((table) => {
     const ths = Array.from(table.querySelectorAll('thead th'));
     // Jämförelsetabell: 3+ kolumner (Egenskap + 2+ produkter)
     if (ths.length >= 3) {

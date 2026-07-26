@@ -63,16 +63,16 @@ export const articleMeta = {
  Hosta hos en liten bebis kan vara skrämmande. De flesta hostfall hos bebisar är ofarliga, men det finns situationer som kräver snabb vård. Den här guiden hjälper dig att förstå vad bebisens hosta beror på och när du måste agera.
 </p>
 
-<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
- <p class="text-sm font-semibold text-red-900 mb-2">Ring 112 omedelbart om:</p>
- <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+<div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-8">
+ <p class="text-sm font-semibold text-danger mb-2">Ring 112 omedelbart om:</p>
+ <ul class="text-sm text-danger space-y-1 list-disc pl-4">
  <li>Bebisen har allvarliga andningssvårigheter, blåfärgade läppar eller andas mycket snabbt</li>
  <li>Bebisen är slapp, reagerar inte normalt eller är svår att väcka</li>
  <li>Bebisen är under 3 månader med hosta kombinerad med feber 38°C+</li>
  <li>Kramper</li>
  </ul>
- <p class="text-sm font-semibold text-red-900 mt-3 mb-2">Ring <a href="https://www.1177.se/barn--gravid/vanliga-besvar-och-sjukdomar-hos-barn/vanliga-sjukdomar-och-besvar-hos-barn-0-1-ar/rs-virus-hos-barn/" rel="noopener noreferrer" target="_blank" class="text-accent underline">1177</a> om:</p>
- <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+ <p class="text-sm font-semibold text-danger mt-3 mb-2">Ring <a href="https://www.1177.se/barn--gravid/vanliga-besvar-och-sjukdomar-hos-barn/vanliga-sjukdomar-och-besvar-hos-barn-0-1-ar/rs-virus-hos-barn/" rel="noopener noreferrer" target="_blank" class="text-accent underline">1177</a> om:</p>
+ <ul class="text-sm text-danger space-y-1 list-disc pl-4">
  <li>Bebisen under 3 månader hostar</li>
  <li>Du hör ett skällande hostljud (krupp) eller pipljud vid inandning</li>
  <li>Hostan hindrar bebisen från att äta eller sova</li>
@@ -83,8 +83,8 @@ export const articleMeta = {
 
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Typer av hosta, vad hörs?</h2>
 
-<div class="overflow-x-auto mb-6">
- <table class="w-full text-sm border-collapse">
+<div class="mb-6">
+ <table class="w-full text-sm border-collapse" data-stack>
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left px-4 py-3 font-semibold text-dark">Typ av hosta</th>
@@ -93,11 +93,11 @@ export const articleMeta = {
  <th class="text-left px-4 py-3 font-semibold text-dark">Åtgärd</th>
  </tr>
  </thead>
- <tbody class="divide-y divide-gray-100">
- <tr><td class="px-4 py-3 font-medium">Torrhosta</td><td class="px-4 py-3 text-text-light">Torr, hackig, irriterande</td><td class="px-4 py-3 text-text-light">Tidig förkylning, allergi, torr luft</td><td class="px-4 py-3 text-text-light">Luftfuktare, saltvattendroppar</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Slemhosta</td><td class="px-4 py-3 text-text-light">Blöt, rosslig</td><td class="px-4 py-3 text-text-light">Förkylning, RSV</td><td class="px-4 py-3 text-text-light">Nässugare, saltvattendroppar</td></tr>
- <tr><td class="px-4 py-3 font-medium">Skällande hosta</td><td class="px-4 py-3 text-text-light">Som ett säls skall, skrovlig</td><td class="px-4 py-3 text-text-light">Krupp (strupkatarr)</td><td class="px-4 py-3 text-text-light">Kall luft, ring 1177</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Hosta med pipljud</td><td class="px-4 py-3 text-text-light">Pip vid inandning (stridor)</td><td class="px-4 py-3 text-text-light">Krupp, objekt i luftvägarna</td><td class="px-4 py-3 text-text-light">Sök akut</td></tr>
+ <tbody class="divide-y divide-border">
+ <tr><td data-label="Typ av hosta" class="px-4 py-3 font-medium">Torrhosta</td><td data-label="Hur den låter" class="px-4 py-3 text-text-light">Torr, hackig, irriterande</td><td data-label="Vanlig orsak" class="px-4 py-3 text-text-light">Tidig förkylning, allergi, torr luft</td><td data-label="Åtgärd" class="px-4 py-3 text-text-light">Luftfuktare, saltvattendroppar</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Typ av hosta" class="px-4 py-3 font-medium">Slemhosta</td><td data-label="Hur den låter" class="px-4 py-3 text-text-light">Blöt, rosslig</td><td data-label="Vanlig orsak" class="px-4 py-3 text-text-light">Förkylning, RSV</td><td data-label="Åtgärd" class="px-4 py-3 text-text-light">Nässugare, saltvattendroppar</td></tr>
+ <tr><td data-label="Typ av hosta" class="px-4 py-3 font-medium">Skällande hosta</td><td data-label="Hur den låter" class="px-4 py-3 text-text-light">Som ett säls skall, skrovlig</td><td data-label="Vanlig orsak" class="px-4 py-3 text-text-light">Krupp (strupkatarr)</td><td data-label="Åtgärd" class="px-4 py-3 text-text-light">Kall luft, ring 1177</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Typ av hosta" class="px-4 py-3 font-medium">Hosta med pipljud</td><td data-label="Hur den låter" class="px-4 py-3 text-text-light">Pip vid inandning (stridor)</td><td data-label="Vanlig orsak" class="px-4 py-3 text-text-light">Krupp, objekt i luftvägarna</td><td data-label="Åtgärd" class="px-4 py-3 text-text-light">Sök akut</td></tr>
  </tbody>
  </table>
 </div>
@@ -125,7 +125,7 @@ export const articleMeta = {
  <li><strong>Amning</strong>, bröstmjölk innehåller antikroppar och ger vätska och näring. Amma oftare om bebisen är sjuk.</li>
 </ol>
 
-<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-8">
  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigt att veta</p>
  <p class="text-sm text-text-light">Hostmedicin och hostsirap är inte godkänt för bebisar och kan vara farligt. Ge aldrig hostmedicin till barn under 2 år utan läkares ordination.</p>
 </div>
@@ -133,8 +133,8 @@ export const articleMeta = {
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Åldersguide, extra viktigt för yngre bebisar</h2>
 
 <h3 class="font-heading text-lg font-semibold mt-6 mb-2">0 till 3 månader, extra allvarligt</h3>
-<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-4">
- <p class="text-sm text-red-800">Nyfödda och unga bebisar har omogna luftvägar och immunsystem. Hosta kombinerat med feber 38°C+ = akut vård omedelbart. Kikhosta och RSV kan vara livshotande i den här åldern. Ring alltid 1177 vid hosta hos bebis under 3 månader.</p>
+<div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-4">
+ <p class="text-sm text-danger">Nyfödda och unga bebisar har omogna luftvägar och immunsystem. Hosta kombinerat med feber 38°C+ = akut vård omedelbart. Kikhosta och RSV kan vara livshotande i den här åldern. Ring alltid 1177 vid hosta hos bebis under 3 månader.</p>
 </div>
 
 <h3 class="font-heading text-lg font-semibold mt-6 mb-2">3 till 6 månader</h3>
@@ -143,7 +143,7 @@ export const articleMeta = {
 <h3 class="font-heading text-lg font-semibold mt-6 mb-2">6 till 12 månader</h3>
 <p class="text-text-light mb-4">Bebisen klarar en enkel förkylningshosta bättre nu. Hemmaråd kan fungera. Ring 1177 om hostan är kraftig, kombineras med andningssvårigheter, varar mer än 2 veckor eller om du är orolig.</p>
 
-<div class="bg-cta/5 border border-cta/20 rounded-xl p-5 my-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="bg-cta/5 border border-cta/20 rounded-lg p-5 my-6 flex flex-col sm:flex-row items-center justify-between gap-4">
  <div>
  <p class="font-heading font-bold text-dark text-base">Babyvakt, håll koll på bebisen</p>
  <p class="text-sm text-text-light mt-1">En bra babyvakt gör det enklare att höra bebisen sova och andas när hon är sjuk.</p>
@@ -154,7 +154,7 @@ export const articleMeta = {
  </a>
 </div>
 
-<div class="mt-8 bg-gray-50 rounded-xl p-5">
+<div class="mt-8 bg-bg-alt rounded-lg p-5">
  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
  <ul class="space-y-2 text-sm">
  <li><a href="/guider/bebis-forkyld/" class="text-accent underline font-medium">Bebis förkyld, symtom och råd</a></li>

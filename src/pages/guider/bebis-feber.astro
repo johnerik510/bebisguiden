@@ -69,9 +69,9 @@ export const articleMeta = {
  Feber hos en liten bebis kan vara skrämmande. Det är viktigt att veta när du ska agera snabbt och när du kan hantera situationen hemma. Den här guiden sammanfattar Socialstyrelsens och <a href="https://www.1177.se/sjukdomar--besvar/infektioner/feber/" rel="noopener noreferrer" target="_blank" class="text-accent underline">1177</a>.se:s riktlinjer och ger konkreta svar.
 </p>
 
-<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
- <p class="text-sm font-semibold text-red-900 mb-1">Ring 112 omedelbart om:</p>
- <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+<div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-8">
+ <p class="text-sm font-semibold text-danger mb-1">Ring 112 omedelbart om:</p>
+ <ul class="text-sm text-danger space-y-1 list-disc pl-4">
  <li>Bebisen är under 3 månader och har 38,0°C eller högre</li>
  <li>Bebisen är slapp, reagerar inte normalt eller är svår att väcka</li>
  <li>Bebisen har svårt att andas, blåfärgade läppar eller andfåddhet</li>
@@ -84,8 +84,8 @@ export const articleMeta = {
 <p class="text-text-light mb-4">
  Feber definieras som kroppstemperatur 38,0°C eller högre. Men mätmetoden spelar roll:
 </p>
-<div class="overflow-x-auto mb-6">
- <table class="w-full text-sm border-collapse">
+<div class="mb-6">
+ <table class="w-full text-sm border-collapse" data-stack>
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left px-4 py-3 font-semibold text-dark">Mätmetod</th>
@@ -94,11 +94,11 @@ export const articleMeta = {
  <th class="text-left px-4 py-3 font-semibold text-dark">Rekommenderas</th>
  </tr>
  </thead>
- <tbody class="divide-y divide-gray-100">
- <tr><td class="px-4 py-3 font-medium">Rektal (ändtarmen)</td><td class="px-4 py-3 text-text-light">38,0°C</td><td class="px-4 py-3 text-safe font-medium">Bäst</td><td class="px-4 py-3 text-text-light">Alla åldrar, guld standard</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Öron (tympanisk)</td><td class="px-4 py-3 text-text-light">38,0°C</td><td class="px-4 py-3 text-gray-600">God (från 6 mån)</td><td class="px-4 py-3 text-text-light">Från 6 månaders ålder</td></tr>
- <tr><td class="px-4 py-3 font-medium">Panna (infraröd)</td><td class="px-4 py-3 text-text-light">38,0°C</td><td class="px-4 py-3 text-orange-600">Variabel</td><td class="px-4 py-3 text-text-light">Kan ge falskt lågt</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Axillärt (armhålan)</td><td class="px-4 py-3 text-text-light">37,5°C</td><td class="px-4 py-3 text-orange-600">Lägst</td><td class="px-4 py-3 text-text-light">Lägg till 0,5°C</td></tr>
+ <tbody class="divide-y divide-border">
+ <tr><td data-label="Mätmetod" class="px-4 py-3 font-medium">Rektal (ändtarmen)</td><td data-label="Feber-gräns" class="px-4 py-3 text-text-light">38,0°C</td><td data-label="Precision" class="px-4 py-3 text-safe font-medium">Bäst</td><td data-label="Rekommenderas" class="px-4 py-3 text-text-light">Alla åldrar, guld standard</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Mätmetod" class="px-4 py-3 font-medium">Öron (tympanisk)</td><td data-label="Feber-gräns" class="px-4 py-3 text-text-light">38,0°C</td><td data-label="Precision" class="px-4 py-3 text-text">God (från 6 mån)</td><td data-label="Rekommenderas" class="px-4 py-3 text-text-light">Från 6 månaders ålder</td></tr>
+ <tr><td data-label="Mätmetod" class="px-4 py-3 font-medium">Panna (infraröd)</td><td data-label="Feber-gräns" class="px-4 py-3 text-text-light">38,0°C</td><td data-label="Precision" class="px-4 py-3 text-warning">Variabel</td><td data-label="Rekommenderas" class="px-4 py-3 text-text-light">Kan ge falskt lågt</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Mätmetod" class="px-4 py-3 font-medium">Axillärt (armhålan)</td><td data-label="Feber-gräns" class="px-4 py-3 text-text-light">37,5°C</td><td data-label="Precision" class="px-4 py-3 text-warning">Lägst</td><td data-label="Rekommenderas" class="px-4 py-3 text-text-light">Lägg till 0,5°C</td></tr>
  </tbody>
  </table>
 </div>
@@ -106,8 +106,8 @@ export const articleMeta = {
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Åldersanpassad guide, när söker du vård?</h2>
 
 <h3 class="font-heading text-lg font-semibold mt-6 mb-2">0 till 3 månader</h3>
-<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-4">
- <p class="text-sm text-red-800"><strong>Feber 38°C+ = akut vård alltid.</strong> Nyfödda och yngre bebisar kan bli allvarligt sjuka mycket snabbt. Deras immunsystem är omoget och tidiga tecken på allvarlig infektion kan vara subtila. Vänta inte, åk till barnakuten eller ring 1177.</p>
+<div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-4">
+ <p class="text-sm text-danger"><strong>Feber 38°C+ = akut vård alltid.</strong> Nyfödda och yngre bebisar kan bli allvarligt sjuka mycket snabbt. Deras immunsystem är omoget och tidiga tecken på allvarlig infektion kan vara subtila. Vänta inte, åk till barnakuten eller ring 1177.</p>
 </div>
 
 <h3 class="font-heading text-lg font-semibold mt-6 mb-2">3 till 6 månader</h3>
@@ -135,7 +135,7 @@ export const articleMeta = {
  </li>
 </ol>
 
-<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-8">
  <p class="text-sm font-semibold text-accent-dark mb-1">Kom ihåg</p>
  <p class="text-sm text-text-light">Feber är ett symptom, inte en sjukdom. Kroppen höjer temperaturen som försvar mot infektioner. Febernedsättande behandlar inte infektionen, de minskar bebisens obehag. Målet är inte att normalisera temperaturen till varje pris, utan att bebisen ska ha det bra nog att äta, dricka och sova.</p>
 </div>
@@ -159,7 +159,7 @@ export const articleMeta = {
  primaryUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=750927&url=https://www.jollyroom.se/babyprodukter/barnsakerhet/barngrindar-trappgrindar/spanngrindar/babydan-premier-spanngrind-1-forlangning-vit"
  description="Febertermometrar, koksaltdroppar och kylande gelpatch för febriga bebisar."
 />
-<div class="mt-10 bg-gray-50 rounded-xl p-5">
+<div class="mt-10 bg-bg-alt rounded-lg p-5">
  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade produktguider</h3>
  <ul class="space-y-2 text-sm">
  <li><a href="/babyvakter/" class="text-primary underline font-medium">Bästa babyvakterna 2026, håll koll på bebisen</a></li>

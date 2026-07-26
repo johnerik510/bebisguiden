@@ -31,7 +31,7 @@ const showPublished = !!datePublished;
 const showUpdated = !!dateModified && dateModified !== datePublished;
 ---
 
-<div class="flex items-center gap-2.5 py-2 mb-3 border-b border-gray-200">
+<div class="flex items-center gap-2.5 py-2 mb-3 border-b border-border">
   <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
     {authorImage ? (
       <img src={authorImage} alt={author} width="32" height="32" loading="lazy" class="w-8 h-8 rounded-full object-cover" />
@@ -41,11 +41,11 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
       </span>
     )}
   </a>
-  <div class="flex flex-wrap items-center gap-x-1.5 gap-y-0 text-xs text-gray-500 min-w-0">
+  <div class="flex flex-wrap items-center gap-x-1.5 gap-y-0 text-xs text-text-light min-w-0">
     <a href="/om-redaktionen/" class="font-semibold text-text hover:text-accent transition-colors whitespace-nowrap">{author}</a>
-    {showPublished && (<><span class="text-gray-300">·</span><time datetime={datePublished}>{formatDate(datePublished!)}</time></>)}
-    {showUpdated && (<><span class="text-gray-300">·</span><span>Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span></>)}
-    <span class="text-gray-300">·</span>
+    {showPublished && (<><span class="text-text-light">·</span><time datetime={datePublished}>{formatDate(datePublished!)}</time></>)}
+    {showUpdated && (<><span class="text-text-light">·</span><span>Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span></>)}
+    <span class="text-text-light">·</span>
     <span class="inline-flex items-center gap-1 whitespace-nowrap">
       <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>

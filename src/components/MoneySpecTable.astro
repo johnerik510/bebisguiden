@@ -27,7 +27,7 @@ const { products, featureLabels, title = 'Specifikationer jämförda' } = Astro.
   {/* ---------- MOBIL: ett kort per produkt med spec-lista ---------- */}
   <div class="flex flex-col gap-2.5 md:hidden">
     {products.map((product, index) => (
-    <div class={`rounded-xl border p-3 ${index === 0 ? 'border-accent-light bg-accent-light/8 ring-1 ring-accent-light/30' : 'border-border bg-white'}`}>
+    <div class={`rounded-lg border p-3 ${index === 0 ? 'border-accent-light bg-accent-light/8 ring-1 ring-accent-light/30' : 'border-border bg-white'}`}>
       <div class="flex items-center gap-2.5 mb-2.5">
         <span class={`flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold text-white flex-shrink-0 ${index === 0 ? 'bg-cta' : 'bg-primary/70'}`}>{index + 1}</span>
         {product.imageUrl && (
@@ -51,7 +51,7 @@ const { products, featureLabels, title = 'Specifikationer jämförda' } = Astro.
   <div class="hidden md:block">
     {/* data-mobile-simple: opt-out från ArticleLayouts globala prose-tabell-transform.
         Komponenten sköter responsiviteten själv (mobilkort ovan + desktoptabell här). */}
-    <table data-mobile-simple class="w-full border-collapse text-sm rounded-xl overflow-hidden border border-border">
+    <table data-mobile-simple class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-border">
       <thead>
         <tr class="bg-bg-alt">
           <th class="text-left p-3 font-semibold text-text">Produkt</th>

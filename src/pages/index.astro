@@ -335,11 +335,15 @@ const homeFaqItems = [
 
        Omräknat 2026-07-26. Fotot bar tidigare hela mörkret självt och overlayen låg
        på 66 i mitten, vilket gav 11:1 när kravet är 4.5:1, alltså mörkt helt i onödan.
-       Nu är fotot självt lyft med en potenskurva (gamma 2.4, filen -ljus) och mitten
-       sänkt till 45. Mätt i textytan mot 98:e luminanspercentilen: brödtext 5.3:1,
-       rubrik 5.8:1. Heron är cirka 7 gånger ljusare och klarar fortfarande AA.
-       Brödtexten är ren vit i stället för white/85, det är den ändringen som köper
-       utrymmet att sänka overlayen så mycket. -->
+       Nu är fotot självt lyft med en potenskurva (gamma 2.05, filen -ljus) och mitten
+       sänkt till 45. Mätt i textytan mot 98:e luminanspercentilen: brödtext 5.8:1.
+       Heron är cirka 6 gånger ljusare än före och klarar AA med god marginal.
+
+       Mörkningen sitter avsiktligt i FOTOT, inte i overlayen. Att i stället höja
+       overlayen till 55 ger ungefär samma luminans men lägger en grå slöja över hela
+       bilden; att sänka lyftet ger skuggorna djup tillbaka så vagnen och bokhyllan
+       behåller form. Brödtexten är ren vit i stället för white/85, vilket ger
+       marginalen som gör att overlayen kan ligga så lågt. -->
   <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/15 via-primary-dark/45 to-primary-dark/52 md:from-primary-dark/15 md:via-primary-dark/45 md:to-primary-dark/35 lg:from-primary-dark/15 lg:via-primary-dark/45 lg:to-primary-dark/15 -z-10" aria-hidden="true"></div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative w-full">
@@ -462,7 +466,7 @@ const homeFaqItems = [
 
     <div class="lg:col-span-7">
      <ol class="border-t border-white/15">
-      <li class="border-b border-white/15 py-6 pl-5 border-l-2 border-l-accent">
+      <li class="border-b border-white/15 py-6 pl-5 border-l-2 border-white/25">
        <h3 class="font-heading text-xl font-semibold mb-2">Säkerhet kommer alltid först</h3>
        <p class="text-white/75 leading-relaxed text-base">
         Oberoende krocktester och europeiska standarder är utgångspunkten, inte tillverkarens marknadsföring. En produkt som inte klarar säkerhetskraven hamnar aldrig på vår topplista.
@@ -471,7 +475,7 @@ const homeFaqItems = [
         {kallor.map((k) => <span>{k}</span>)}
        </div>
       </li>
-      <li class="border-b border-white/15 py-6 pl-5 border-l-2 border-l-accent">
+      <li class="border-b border-white/15 py-6 pl-5 border-l-2 border-white/25">
        <h3 class="font-heading text-xl font-semibold mb-2">Samma måttstock varje gång</h3>
        <p class="text-white/75 leading-relaxed text-base">
         Fem kriterier poängsätts enligt en öppen mall, så du kan jämföra äpplen med äpplen. Metodiken är publicerad, aldrig hemlig, och uppdateras när standarderna gör det.
@@ -482,7 +486,7 @@ const homeFaqItems = [
         ))}
        </ol>
       </li>
-      <li class="py-6 pl-5 border-l-2 border-l-accent">
+      <li class="py-6 pl-5 border-l-2 border-white/25">
        <h3 class="font-heading text-xl font-semibold mb-2">Helt redaktionellt oberoende</h3>
        <p class="text-white/75 leading-relaxed text-base">
         Ingen tillverkare får läsa våra recensioner i förväg. Våra rankingar styrs av data och erfarenhet, inget annat. När en produkt inte håller måttet skriver vi det rakt ut.

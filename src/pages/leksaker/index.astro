@@ -57,7 +57,7 @@ const faqItems = [
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
    {guider.map((g) => (
     <article class="flex flex-col rounded-lg border border-border hover:border-accent transition-colors bg-white overflow-hidden">
-     <a href={g.href} tabindex="-1" aria-hidden="true" class="block relative aspect-[16/9] overflow-hidden bg-gray-50">
+     <a href={g.href} tabindex="-1" aria-hidden="true" class="block relative aspect-[16/9] overflow-hidden bg-bg-alt">
       <img src={g.img} alt={`Leksaksguide: ${g.name}`} class="absolute inset-0 w-full h-full object-contain p-3 hover:scale-105 transition-transform duration-500" loading="lazy" width="800" height="450" />
      </a>
      <div class="flex flex-col flex-1 p-3 sm:p-4">
@@ -65,7 +65,7 @@ const faqItems = [
        <a href={g.href} class="hover:text-accent transition-colors">{g.name}</a>
       </h2>
       <p class="text-xs text-text-light leading-relaxed line-clamp-2 mb-3 flex-1 hidden sm:block">{g.lede}</p>
-      <a href={g.href} class="group inline-flex items-center justify-center gap-1.5 w-full bg-cta hover:bg-cta-dark text-white font-semibold text-xs sm:text-sm px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-colors shadow-sm mt-auto">
+      <a href={g.href} class="group inline-flex items-center justify-center gap-1.5 w-full bg-cta hover:bg-cta-dark text-white font-semibold text-xs sm:text-sm px-2 sm:px-4 py-2 sm:py-2.5 rounded-lg transition-colors shadow-sm mt-auto">
        <span class="sm:hidden">Se bäst i test</span>
        <span class="hidden sm:inline">Se {g.name.toLowerCase()}</span>
        <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -86,7 +86,7 @@ const faqItems = [
    <p>Tänk kvalitet före kvantitet. Några få leksaker som passar åldern ger mer fokuserad lek än en stor hög, och du kan rotera dem för att hålla intresset uppe. <a href="/leksaker/montessori/" class="text-accent underline">Montessori-inspirerade leksaker</a> i naturmaterial bygger på just den principen.</p>
   </div>
 
-  <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+  <div class="mt-8 p-5 bg-bg-alt rounded-lg border border-border">
    <h2 class="font-heading text-lg font-bold mb-3">Fler guider för bebis och småbarn</h2>
    <ul class="space-y-2 text-sm">
     <li><a href="/babysitter/" class="text-accent underline">Bästa babysittern 2026, vippstolar jämförda</a></li>

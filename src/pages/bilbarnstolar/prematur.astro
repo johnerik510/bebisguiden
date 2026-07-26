@@ -87,16 +87,16 @@ export const articleMeta = {
   <MoneyByline datePublished="2026-04-16" dateModified="2026-06-12" />
 
   {/* 2. Answer-box (AEO) */}
-  <div class="not-prose bg-white border border-border border-l-4 border-l-accent rounded-lg px-4 py-3 mb-4">
+  <div class="not-prose bg-bg-alt border border-border rounded-lg px-4 py-3 mb-4">
     <h2 class="text-base font-semibold text-primary mb-1">Snabbt svar: Vilken bilbarnstol passar en prematur bebis?</h2>
     <p class="text-text-light text-[15px] leading-relaxed">
       Cybex Cloud T i-Size är ett av de mest rekommenderade babyskydden för prematura bebisar: godkänd från 45 cm och ca 1,8 kg med ett uttöjbart, nästan horisontellt läge som avlastar prematurens svaga rygg och nacke. Innan hemgång gör NICU oftast en car seat challenge. Konsultera alltid din NICU och barnläkare för just ditt barn.
     </p>
   </div>
 
-  <div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
-    <p class="text-sm font-semibold text-red-900 mb-1">Konsultera alltid NICU och barnläkare</p>
-    <p class="text-sm text-red-800">Information i den här guiden är generell. Prematura bebisar har individuella behov som kan kräva avvikande lösningar. Din NICU-avdelning och barnläkare är den primära källan för rekommendationer om just ditt barn.</p>
+  <div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-8">
+    <p class="text-sm font-semibold text-danger mb-1">Konsultera alltid NICU och barnläkare</p>
+    <p class="text-sm text-danger">Information i den här guiden är generell. Prematura bebisar har individuella behov som kan kräva avvikande lösningar. Din NICU-avdelning och barnläkare är den primära källan för rekommendationer om just ditt barn.</p>
   </div>
 
   {/* 3. Featured product (#1, hero-CTA above the fold) */}
@@ -165,20 +165,20 @@ export const articleMeta = {
       Prematura bebisar är extra smala och kan ha svårt att passa i standard selebredder. Kontrollera att stolen har smala selealternativ och mjuka krockkuddar som håller bebisen stadigt på plats utan att skapa tryckpunkter.
     </p>
 
-    <div class="overflow-x-auto mb-6">
-      <table class="w-full text-sm border-collapse">
+    <div class="mb-6">
+      <table class="w-full text-sm border-collapse" data-stack>
         <thead>
           <tr class="bg-accent/10">
             <th class="text-left px-4 py-3 font-semibold text-dark">Kriterium</th>
             <th class="text-left px-4 py-3 font-semibold text-dark">Vad du letar efter</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100">
-          <tr><td class="px-4 py-3 font-medium">Minimivikt</td><td class="px-4 py-3 text-text-light">Under 2,5 kg, helst 1,8 till 2,0 kg</td></tr>
-          <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ryggvinkel</td><td class="px-4 py-3 text-text-light">Möjlighet till nästan horisontalt läge</td></tr>
-          <tr><td class="px-4 py-3 font-medium">Seleanpassning</td><td class="px-4 py-3 text-text-light">Smala axelinlägg / selekuddar inkluderade</td></tr>
-          <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Montering</td><td class="px-4 py-3 text-text-light">ISOFIX för stabil, felaktig-säker montering</td></tr>
-          <tr><td class="px-4 py-3 font-medium">Sidoskydd</td><td class="px-4 py-3 text-text-light">Sidokrockskydd (LSP), krav i i-Size</td></tr>
+        <tbody class="divide-y divide-border">
+          <tr><td data-label="Kriterium" class="px-4 py-3 font-medium">Minimivikt</td><td data-label="Vad du letar efter" class="px-4 py-3 text-text-light">Under 2,5 kg, helst 1,8 till 2,0 kg</td></tr>
+          <tr class="bg-bg-alt"><td data-label="Kriterium" class="px-4 py-3 font-medium">Ryggvinkel</td><td data-label="Vad du letar efter" class="px-4 py-3 text-text-light">Möjlighet till nästan horisontalt läge</td></tr>
+          <tr><td data-label="Kriterium" class="px-4 py-3 font-medium">Seleanpassning</td><td data-label="Vad du letar efter" class="px-4 py-3 text-text-light">Smala axelinlägg / selekuddar inkluderade</td></tr>
+          <tr class="bg-bg-alt"><td data-label="Kriterium" class="px-4 py-3 font-medium">Montering</td><td data-label="Vad du letar efter" class="px-4 py-3 text-text-light">ISOFIX för stabil, felaktig-säker montering</td></tr>
+          <tr><td data-label="Kriterium" class="px-4 py-3 font-medium">Sidoskydd</td><td data-label="Vad du letar efter" class="px-4 py-3 text-text-light">Sidokrockskydd (LSP), krav i i-Size</td></tr>
         </tbody>
       </table>
     </div>
@@ -234,7 +234,7 @@ export const articleMeta = {
 
     <FAQ items={faqItems} />
 
-    <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border not-prose">
+    <div class="mt-8 p-5 bg-bg-alt rounded-lg border border-border not-prose">
       <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
       <ul class="space-y-2 text-sm">
         <li><a href="/bilbarnstolar/" class="text-accent underline">Bästa bilbarnstolen 2026, komplett test och jämförelse</a></li>

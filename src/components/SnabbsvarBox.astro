@@ -4,9 +4,19 @@ import { ctaRel } from '../lib/cta-rel';
  * Snabbsvar (answer-first) med inbäddat toppval.
  *
  * ETT block, aldrig två rutor: det självbärande svaret OCH sidans
- * huvudrekommendation ligger i samma yta. Detta är den enda "förtjänta" boxen
- * på sidan (av-boxningsprincipen) och den enda platsen där accentfärgen får
- * ramma in en yta.
+ * huvudrekommendation ligger i samma yta.
+ *
+ * INGEN RUTA, INGEN ACCENTSTRIMMA (omgjord 2026-07-26). Tidigare var det ett vitt
+ * kort med hårlinjeram plus en fyra pixlar bred accentkant till vänster. Den
+ * kombinationen (ghost-kort + side-stripe som callout-markör) är uttryckligen
+ * bannad i designdoktrinen: den är det generiska sättet att säga "viktigt" och
+ * läser som mall, inte som redaktion.
+ *
+ * I stället separeras blocket med YTA i stället för kontur: ett fullbrett varmt
+ * band i bg-alt med hårlinjer i över- och underkant, samma grepp som sitens mörka
+ * löftesband längre ner. Emfasen bärs av typografin (serif-rubrik, svaret satt
+ * större än brödtext) i stället för av dekor. Det är hela poängen: hierarki genom
+ * text och yta, aldrig genom pålagd grafik.
  *
  * NOLLTOLERANS: `featured.buyUrl`, `featured.image` och `featured.reviewHref`
  * MÅSTE komma från verifierad produktdata (feed-matches eller verified-links).
@@ -36,20 +46,20 @@ interface Props {
 const { question, headingId = 'snabbsvar', featured } = Astro.props;
 ---
 
-<section class="bg-bg" aria-labelledby={headingId}>
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-    <div class="bg-white border border-border rounded-lg border-l-4 border-l-accent">
-      <div class="p-5 sm:p-7">
-        <h2 id={headingId} class="font-heading text-xl sm:text-2xl font-semibold text-primary leading-snug mb-2">
+<section class="bg-bg-alt border-y border-border" aria-labelledby={headingId}>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-9 sm:py-12">
+    <div>
+      <div>
+        <h2 id={headingId} class="font-heading text-2xl sm:text-[1.75rem] font-semibold text-primary leading-snug mb-3">
           Snabbsvar: {question}
         </h2>
-        <div class="text-base sm:text-[17px] text-text leading-relaxed max-w-3xl">
+        <div class="text-[17px] sm:text-[19px] text-text leading-[1.65] max-w-3xl">
           <slot />
         </div>
       </div>
 
       {featured && (
-        <div class="border-t border-border p-5 sm:p-7">
+        <div class="border-t border-border-dark/60 mt-7 sm:mt-9 pt-7 sm:pt-9">
           <div class="flex flex-col sm:flex-row gap-5 sm:gap-7">
             <div class="shrink-0 self-start w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-lg border border-border flex items-center justify-center p-3">
               <img

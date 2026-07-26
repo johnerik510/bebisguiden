@@ -15,24 +15,37 @@ interface Props {
 
 const { type = 'info', title } = Astro.props;
 
+/**
+ * Omgjord 2026-07-26: bort med accentstrimman.
+ *
+ * Tidigare bar varje typ en fyra pixlar bred färgad kant till vänster plus en
+ * egen bakgrund ur Tailwinds standardpalett (amber-50, rose-50, green-600).
+ * Två problem. Strimman som "viktigt"-markör är ett bannat AI-mönster, och
+ * standardfärgerna ligger utanför sitens tokens, så rutorna drog iväg från
+ * plommon/rosen/papper-paletten så fort de dök upp i brödtexten.
+ *
+ * Nu: alla fyra typerna delar samma varma yta och samma hela hårlinjeram.
+ * Typen signaleras av ETIKETTEN, i sitens egna semantiska tokens. Det är den
+ * enda skillnaden som behövs, och den ligger i text i stället för i dekor.
+ */
 const styles: Record<string, { container: string; label: string; defaultTitle: string }> = {
  tip: {
- container: 'bg-bg-alt border-l-4 border-green-600 text-text',
+ container: 'bg-bg-alt border-safe/35',
  label: 'text-safe',
  defaultTitle: 'Tips',
  },
  warning: {
- container: 'bg-amber-50 border-l-4 border-amber-500 text-amber-900',
- label: 'text-amber-700',
+ container: 'bg-bg-alt border-warning/40',
+ label: 'text-warning',
  defaultTitle: 'Varning',
  },
  key: {
- container: 'bg-rose-50 border-l-4 border-accent text-text',
- label: 'text-accent',
+ container: 'bg-bg-alt border-accent/35',
+ label: 'text-accent-dark',
  defaultTitle: 'Viktigt',
  },
  info: {
- container: 'bg-bg-alt border-l-4 border-border-dark text-text',
+ container: 'bg-bg-alt border-border-dark',
  label: 'text-text-light',
  defaultTitle: 'Info',
  },
@@ -42,7 +55,7 @@ const s = styles[type];
 const finalTitle = title?? s.defaultTitle;
 ---
 
-<aside class={`my-6 p-4 rounded-r-lg ${s.container}`} role="note">
+<aside class={`my-6 p-4 rounded-lg border text-text ${s.container}`} role="note">
  {finalTitle && (
  <p class={`font-heading text-xs font-bold uppercase tracking-wide mb-2 ${s.label}`}>{finalTitle}</p>
  )}

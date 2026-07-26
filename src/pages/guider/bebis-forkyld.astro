@@ -63,9 +63,9 @@ export const articleMeta = {
  En förkyld bebis är jobbig att se, och som förälder är det svårt att veta när man ska agera. Den här guiden sammanfattar vad <a href="https://www.1177.se/barn--gravid/vanliga-besvar-och-sjukdomar-hos-barn/vanliga-sjukdomar-och-besvar-hos-barn-0-1-ar/forkylning-hos-barn/" rel="noopener noreferrer" target="_blank" class="text-accent underline">1177</a>.se och Socialstyrelsen säger om förkylning hos spädbarn.
 </p>
 
-<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
- <p class="text-sm font-semibold text-red-900 mb-2">Sök akutvård om:</p>
- <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+<div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-8">
+ <p class="text-sm font-semibold text-danger mb-2">Sök akutvård om:</p>
+ <ul class="text-sm text-danger space-y-1 list-disc pl-4">
  <li>Bebisen är under 3 månader med feber 38°C+</li>
  <li>Bebisen andas snabbt (mer än 60 andetag/minut) eller har synliga indragningar vid revbenen</li>
  <li>Bebisen är slapp och svår att väcka</li>
@@ -85,8 +85,8 @@ export const articleMeta = {
 </ul>
 
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Speciellt viktigt under 3 månaders ålder</h2>
-<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
- <p class="text-sm text-red-800"><strong>Bebis under 3 månader med feber 38°C+ = akut vård alltid.</strong> Det gäller även vid förkylning. Nyfödda har omoget immunsystem och kan inte visa tidiga tecken på allvarlig infektion lika tydligt som äldre barn. Vänta inte, ring 1177 eller åk till barnakuten.</p>
+<div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-6">
+ <p class="text-sm text-danger"><strong>Bebis under 3 månader med feber 38°C+ = akut vård alltid.</strong> Det gäller även vid förkylning. Nyfödda har omoget immunsystem och kan inte visa tidiga tecken på allvarlig infektion lika tydligt som äldre barn. Vänta inte, ring 1177 eller åk till barnakuten.</p>
 </div>
 
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Hemmaråd, vad hjälper?</h2>
@@ -104,8 +104,8 @@ export const articleMeta = {
 <p class="text-text-light mb-4">Fuktig luft med en luftfuktare inställd på 50 till 55% relativ luftfuktighet kan lindra torrhosta och irriterade slemhinnor. Kylningsluftuktare rekommenderas framför ångbaserade för bebisrum. Höj madrassen 10 till 15 grader (lägg en vikt handduk under madrassen, aldrig under bebisen direkt) för att underlätta andning under sömn. Bebisen ska aldrig sova med löst material i sängen.</p>
 
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Skillnad förkylning, influensa och RSV</h2>
-<div class="overflow-x-auto mb-6">
- <table class="w-full text-sm border-collapse">
+<div class="mb-6">
+ <table class="w-full text-sm border-collapse" data-stack>
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left px-4 py-3 font-semibold text-dark">Diagnos</th>
@@ -114,15 +114,15 @@ export const articleMeta = {
  <th class="text-left px-4 py-3 font-semibold text-dark">Allvarlighetsgrad hos spädbarn</th>
  </tr>
  </thead>
- <tbody class="divide-y divide-gray-100">
- <tr><td class="px-4 py-3 font-medium">Förkylning</td><td class="px-4 py-3 text-text-light">Gradvis</td><td class="px-4 py-3 text-text-light">Mild eller ingen</td><td class="px-4 py-3 text-text-light">Vanligtvis mild</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Influensa</td><td class="px-4 py-3 text-text-light">Snabb</td><td class="px-4 py-3 text-text-light">Hög (39 till 40°C)</td><td class="px-4 py-3 text-text-light">Kan vara allvarlig</td></tr>
- <tr><td class="px-4 py-3 font-medium">RSV</td><td class="px-4 py-3 text-text-light">Gradvis</td><td class="px-4 py-3 text-text-light">Variabel</td><td class="px-4 py-3 text-text-light">Kan ge bronkiolit, allvarlig hos spädbarn</td></tr>
+ <tbody class="divide-y divide-border">
+ <tr><td data-label="Diagnos" class="px-4 py-3 font-medium">Förkylning</td><td data-label="Debut" class="px-4 py-3 text-text-light">Gradvis</td><td data-label="Feber" class="px-4 py-3 text-text-light">Mild eller ingen</td><td data-label="Allvarlighetsgrad hos spädbarn" class="px-4 py-3 text-text-light">Vanligtvis mild</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Diagnos" class="px-4 py-3 font-medium">Influensa</td><td data-label="Debut" class="px-4 py-3 text-text-light">Snabb</td><td data-label="Feber" class="px-4 py-3 text-text-light">Hög (39 till 40°C)</td><td data-label="Allvarlighetsgrad hos spädbarn" class="px-4 py-3 text-text-light">Kan vara allvarlig</td></tr>
+ <tr><td data-label="Diagnos" class="px-4 py-3 font-medium">RSV</td><td data-label="Debut" class="px-4 py-3 text-text-light">Gradvis</td><td data-label="Feber" class="px-4 py-3 text-text-light">Variabel</td><td data-label="Allvarlighetsgrad hos spädbarn" class="px-4 py-3 text-text-light">Kan ge bronkiolit, allvarlig hos spädbarn</td></tr>
  </tbody>
  </table>
 </div>
 
-<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-8">
  <p class="text-sm font-semibold text-accent-dark mb-1">Kom ihåg</p>
  <p class="text-sm text-text-light">En vanlig förkylning varar 7 till 10 dagar. Bebisar under 2 år kan ha 6 till 10 förkylningar per år, det är normalt och bygger upp immunförsvaret. Ring alltid 1177 om du är osäker.</p>
 </div>
@@ -135,7 +135,7 @@ export const articleMeta = {
  description="Elektrisk nässugare och koksaltdroppar, de viktigaste verktygen vid bebis förkylning."
 />
 
-<div class="mt-8 bg-gray-50 rounded-xl p-5">
+<div class="mt-8 bg-bg-alt rounded-lg p-5">
  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
  <ul class="space-y-2 text-sm">
  <li><a href="/guider/bebis-hostad/" class="text-accent underline font-medium">Bebis hostar, orsaker och råd</a></li>

@@ -60,22 +60,22 @@ export const articleMeta = {
 
  <!-- Nyckeltal -->
  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 text-center">
+ <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
  <div class="text-2xl font-bold text-accent-dark">10 till 15</div>
  <div class="text-xs text-text-light mt-1">SIDS-fall per år i Sverige</div>
  <div class="text-xs text-text-light/60">Socialstyrelsen 2022 till 2023</div>
  </div>
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 text-center">
+ <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
  <div class="text-2xl font-bold text-accent-dark">-85%</div>
  <div class="text-xs text-text-light mt-1">Minskning sedan 1991</div>
  <div class="text-xs text-text-light/60">Ryggläge-kampanjen</div>
  </div>
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 text-center">
+ <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
  <div class="text-2xl font-bold text-accent-dark">2 till 4 mån</div>
  <div class="text-xs text-text-light mt-1">Vanligaste åldern</div>
  <div class="text-xs text-text-light/60">Topp vid 2 till 4 månader</div>
  </div>
- <div class="bg-accent/10 border border-accent/30 rounded-xl p-4 text-center">
+ <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
  <div class="text-2xl font-bold text-accent-dark">0,03 ‰</div>
  <div class="text-xs text-text-light mt-1">Incidens i Sverige</div>
  <div class="text-xs text-text-light/60">Per levande födslar 2023</div>
@@ -87,8 +87,8 @@ export const articleMeta = {
  Sverige hade kring 1990 ungefär 100 till 120 SIDS-fall per år. Den dramatiska vändningen kom 1991 till 1994 när Socialstyrelsen lanserade kampanjen "Lägg bebisen på rygg", en direkt översättning av internationell forskning som visade att mageläge under sömn ökade SIDS-risken kraftigt.
  </p>
 
- <div class="overflow-x-auto mb-6">
- <table class="w-full text-sm border-collapse">
+ <div class="mb-6">
+ <table class="w-full text-sm border-collapse" data-stack>
  <thead>
  <tr class="bg-bg-alt">
  <th class="text-left p-3 border border-border font-semibold">Period</th>
@@ -108,9 +108,9 @@ export const articleMeta = {
  { period: '2021 till 2023', antal: '~10 till 15', anm: 'Lägsta historiska nivå' },
  ].map(row => (
  <tr class="hover:bg-bg-alt">
- <td class="p-3 border border-border font-medium">{row.period}</td>
- <td class="p-3 border border-border text-right font-semibold text-accent-dark">{row.antal}</td>
- <td class="p-3 border border-border text-text-light">{row.anm}</td>
+ <td data-label="Period" class="p-3 border border-border font-medium">{row.period}</td>
+ <td data-label="Ungefär antal SIDS/år" class="p-3 border border-border text-right font-semibold text-accent-dark">{row.antal}</td>
+ <td data-label="Anmärkning" class="p-3 border border-border text-text-light">{row.anm}</td>
  </tr>
  ))}
  </tbody>
@@ -123,8 +123,8 @@ export const articleMeta = {
  Sverige hör till de länder i världen med lägst SIDS-incidens. De nordiska länderna utmärker sig generellt med låga tal, vilket sannolikt hänger samman med hög följsamhet till ryggläges-rekommendationen och rökfria hemiljöer.
  </p>
 
- <div class="overflow-x-auto mb-6">
- <table class="w-full text-sm border-collapse">
+ <div class="mb-6">
+ <table class="w-full text-sm border-collapse" data-stack>
  <thead>
  <tr class="bg-bg-alt">
  <th class="text-left p-3 border border-border font-semibold">Land</th>
@@ -145,9 +145,9 @@ export const articleMeta = {
  { land: 'Världsgenomsnitt', incidens: '~0,40 ‰', period: 'WHO 2020' },
  ].map(row => (
  <tr class={row.highlight? 'bg-accent/5': 'hover:bg-bg-alt'}>
- <td class={`p-3 border border-border font-medium ${row.highlight? 'text-accent-dark': ''}`}>{row.land}</td>
- <td class={`p-3 border border-border text-right font-semibold ${row.highlight? 'text-accent-dark': ''}`}>{row.incidens}</td>
- <td class="p-3 border border-border text-text-light">{row.period}</td>
+ <td data-label="Land" class={`p-3 border border-border font-medium ${row.highlight? 'text-accent-dark': ''}`}>{row.land}</td>
+ <td data-label="Incidens (per 1 000 levande födslar)" class={`p-3 border border-border text-right font-semibold ${row.highlight? 'text-accent-dark': ''}`}>{row.incidens}</td>
+ <td data-label="Period" class="p-3 border border-border text-text-light">{row.period}</td>
  </tr>
  ))}
  </tbody>
@@ -161,18 +161,18 @@ export const articleMeta = {
  </p>
 
  <div class="grid sm:grid-cols-2 gap-4 mb-6">
- <div class="border border-border rounded-xl p-4">
+ <div class="border border-border rounded-lg p-4">
  <h3 class="font-semibold text-text mb-3 text-sm">Starkast dokumenterade riskfaktorer</h3>
  <ul class="space-y-2 text-sm text-text-light">
- <li class="flex gap-2"><span class="text-red-500 font-bold mt-0.5">!</span><span><strong>Mageläge under sömn:</strong> 2 till 5 gånger högre risk än ryggläge</span></li>
- <li class="flex gap-2"><span class="text-red-500 font-bold mt-0.5">!</span><span><strong>Rökning i hemmet:</strong> Upp till 3 till 4 gånger högre risk</span></li>
- <li class="flex gap-2"><span class="text-red-500 font-bold mt-0.5">!</span><span><strong>Rökning under graviditet:</strong> Kraftigt förhöjd risk</span></li>
- <li class="flex gap-2"><span class="text-red-500 font-bold mt-0.5">!</span><span><strong>Samsovning i vuxensäng:</strong> Ökad risk, särskilt med riskfaktorer</span></li>
- <li class="flex gap-2"><span class="text-red-500 font-bold mt-0.5">!</span><span><strong>Överhettning:</strong> Varm miljö ökar risken</span></li>
- <li class="flex gap-2"><span class="text-red-500 font-bold mt-0.5">!</span><span><strong>Mjuk sovyta:</strong> Kuddar, lösfiltar, babynests</span></li>
+ <li class="flex gap-2"><span class="text-danger font-bold mt-0.5">!</span><span><strong>Mageläge under sömn:</strong> 2 till 5 gånger högre risk än ryggläge</span></li>
+ <li class="flex gap-2"><span class="text-danger font-bold mt-0.5">!</span><span><strong>Rökning i hemmet:</strong> Upp till 3 till 4 gånger högre risk</span></li>
+ <li class="flex gap-2"><span class="text-danger font-bold mt-0.5">!</span><span><strong>Rökning under graviditet:</strong> Kraftigt förhöjd risk</span></li>
+ <li class="flex gap-2"><span class="text-danger font-bold mt-0.5">!</span><span><strong>Samsovning i vuxensäng:</strong> Ökad risk, särskilt med riskfaktorer</span></li>
+ <li class="flex gap-2"><span class="text-danger font-bold mt-0.5">!</span><span><strong>Överhettning:</strong> Varm miljö ökar risken</span></li>
+ <li class="flex gap-2"><span class="text-danger font-bold mt-0.5">!</span><span><strong>Mjuk sovyta:</strong> Kuddar, lösfiltar, babynests</span></li>
  </ul>
  </div>
- <div class="border border-border rounded-xl p-4">
+ <div class="border border-border rounded-lg p-4">
  <h3 class="font-semibold text-text mb-3 text-sm">Skyddande faktorer</h3>
  <ul class="space-y-2 text-sm text-text-light">
  <li class="flex gap-2"><span class="text-safe font-bold mt-0.5">+</span><span><strong>Ryggläge:</strong> Halverar risken jämfört med mageläge</span></li>
@@ -190,7 +190,7 @@ export const articleMeta = {
  SIDS drabbar nästan uteslutande barn under 12 månaders ålder. Risken är som störst vid 2 till 4 månaders ålder. Pojkar drabbas något oftare än flickor (ungefär 60/40 fördelning i internationella studier). Prematura barn och barn med låg födelsevikt har generellt högre risk.
  </p>
 
- <div class="bg-bg-alt border border-border rounded-xl p-5 mb-8">
+ <div class="bg-bg-alt border border-border rounded-lg p-5 mb-8">
  <h3 class="font-semibold text-text mb-3">Åldersfördelning vid SIDS-dödsfall</h3>
  <div class="space-y-2">
  {[
@@ -212,7 +212,7 @@ export const articleMeta = {
  <p class="text-xs text-text-light/60 mt-3">Källa: sammanvägd data från internationella studier (AAP, Lancet, BMJ). Fördelningen är konsistent i alla studerade länder.</p>
  </div>
 
- <div class="mt-8 p-5 bg-bg-alt rounded-xl border border-border">
+ <div class="mt-8 p-5 bg-bg-alt rounded-lg border border-border">
  <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
  <ul class="space-y-2 text-sm">
  <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, checklista och råd (SIDS-prevention)</a></li>

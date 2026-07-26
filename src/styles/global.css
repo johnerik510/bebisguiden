@@ -45,11 +45,24 @@
   --color-border: #e8dfd8;
   --color-border-dark: #d5c9bf;
 
-  /* Semantik */
+  /* Semantik.
+     Ytorna (-bg) tillkom 2026-07-26. Utan dem hade sidorna inget systemenligt sätt
+     att tona en varningsruta, så Tailwinds standardpalett kröp in: amber-50, red-50,
+     gray-50. Kall grå och bootstrap-rött mot varmt papper syns direkt och drog isär
+     paletten på just de sidor som ska kännas mest trovärdiga, hälsosidorna.
+
+     --color-danger är ny av samma skäl. Hälsoinnehåll behöver en akutfärg ("sök
+     vård nu") och den får inte vara accenten, som är reserverad för handling.
+     Tegelröd i stället för signalröd, så den bor hos plommon och rosen.
+     Klarar 7:1 mot papperet. */
   --color-warning: #b45309;
+  --color-warning-bg: #f9f0e3;
   --color-star: #b45309;
   --color-safe: #35604a;
   --color-safe-light: #3f6b52;
+  --color-safe-bg: #eaf0ec;
+  --color-danger: #9e2a2b;
+  --color-danger-bg: #f7ebe9;
 
   --font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
   --font-heading: 'Newsreader', Georgia, 'Times New Roman', serif;
@@ -194,6 +207,58 @@ table, .tabular {
 .prose :where(strong):not(:where(.not-prose, .not-prose *)) {
   color: var(--color-text);
   font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   Datatabeller utanför <article>: desktop = tabell, mobil = staplade kort.
+
+   Guide- och jämförelsesidorna ligger inte i <article>, så prose-reglerna längre
+   ner träffar dem aldrig. De löste mobilen med overflow-x-auto, alltså sidled-
+   scroll, vilket är bannat i nätverket: läsaren ser halva tabellen och vet inte
+   att resten finns. Här stackas raderna i stället till kort, och kolumnrubriken
+   följer med varje cell via data-label så att värdet aldrig tappar sin etikett.
+
+   Attributselektorn ger högre specificitet än Tailwinds utilities, som ligger i
+   ett @layer, så px/py och bakgrunder på cellerna skrivs över utan !important.
+--------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  table[data-stack] { display: block; width: 100%; }
+  table[data-stack] thead { display: none; }
+  table[data-stack] tbody { display: block; }
+  table[data-stack] tr {
+    display: block;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  table[data-stack] tr:last-child { margin-bottom: 0; }
+  table[data-stack] td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 0.5rem 0.875rem;
+    border: none;
+    text-align: right;
+  }
+  table[data-stack] td + td { border-top: 1px solid var(--color-border); }
+  table[data-stack] td[data-label]::before {
+    content: attr(data-label);
+    flex: 0 0 42%;
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-text-light);
+  }
+  /* Första cellen är radens identitet, den får bära hela bredden som rubrik. */
+  table[data-stack] td:first-child {
+    display: block;
+    text-align: left;
+    background: var(--color-bg-alt);
+    font-weight: 600;
+  }
+  table[data-stack] td:first-child::before { content: none; }
 }
 
 /* Prose tables – desktop */

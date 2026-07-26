@@ -63,9 +63,9 @@ export const articleMeta = {
  Diarré hos en liten bebis är oroväckande, och kan bli allvarligt om bebisen tappar för mycket vätska. Lär dig skilja normal lös avföring från diarré, och vet vilka tecken på uttorkning du ska hålla ögonen på.
 </p>
 
-<div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
- <p class="text-sm font-semibold text-red-900 mb-2">Ring <a href="https://www.1177.se/barn--gravid/vanliga-besvar-och-sjukdomar-hos-barn/vanliga-sjukdomar-och-besvar-hos-barn-0-1-ar/diarre-hos-barn/" rel="noopener noreferrer" target="_blank" class="text-accent underline">1177</a> om:</p>
- <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+<div class="bg-danger-bg border border-danger/30 rounded-lg p-4 mb-8">
+ <p class="text-sm font-semibold text-danger mb-2">Ring <a href="https://www.1177.se/barn--gravid/vanliga-besvar-och-sjukdomar-hos-barn/vanliga-sjukdomar-och-besvar-hos-barn-0-1-ar/diarre-hos-barn/" rel="noopener noreferrer" target="_blank" class="text-accent underline">1177</a> om:</p>
+ <ul class="text-sm text-danger space-y-1 list-disc pl-4">
  <li>Bebisen är under 3 månader och har diarré</li>
  <li>Diarrén är blodig eller svart</li>
  <li>Du ser tecken på uttorkning (se nedan)</li>
@@ -73,8 +73,8 @@ export const articleMeta = {
  <li>Diarrén kombineras med feber och kräkningar</li>
  <li>Diarrén varar mer än 7 dagar</li>
  </ul>
- <p class="text-sm font-semibold text-red-900 mt-3 mb-1">Ring 112 om:</p>
- <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+ <p class="text-sm font-semibold text-danger mt-3 mb-1">Ring 112 om:</p>
+ <ul class="text-sm text-danger space-y-1 list-disc pl-4">
  <li>Bebisen är slapp, reagerar inte eller är svår att väcka</li>
  <li>Bebisens fontanell (mjuk punkt på huvudet) sjunker tydligt inåt</li>
  </ul>
@@ -83,8 +83,8 @@ export const articleMeta = {
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vad är normalt? Ammad bebis vs. ersättningsmatad</h2>
 <p class="text-text-light mb-4">Avföringens konsistens varierar kraftigt beroende på hur bebisen matas:</p>
 
-<div class="overflow-x-auto mb-6">
- <table class="w-full text-sm border-collapse">
+<div class="mb-6">
+ <table class="w-full text-sm border-collapse" data-stack>
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left px-4 py-3 font-semibold text-dark">Matning</th>
@@ -93,10 +93,10 @@ export const articleMeta = {
  <th class="text-left px-4 py-3 font-semibold text-dark">Frekvens</th>
  </tr>
  </thead>
- <tbody class="divide-y divide-gray-100">
- <tr><td class="px-4 py-3 font-medium">Amning</td><td class="px-4 py-3 text-text-light">Gul, grönaktig</td><td class="px-4 py-3 text-text-light">Lös, kornig, nästan flytande</td><td class="px-4 py-3 text-text-light">Upp till 8+ gånger/dag eller var 3 till 4 dag</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ersättning</td><td class="px-4 py-3 text-text-light">Gul-brun</td><td class="px-4 py-3 text-text-light">Fastare, mer formad</td><td class="px-4 py-3 text-text-light">1 till 4 gånger/dag</td></tr>
- <tr><td class="px-4 py-3 font-medium">Smörgåsmat (6 mån+)</td><td class="px-4 py-3 text-text-light">Varierar med maten</td><td class="px-4 py-3 text-text-light">Fastare</td><td class="px-4 py-3 text-text-light">1 till 3 gånger/dag</td></tr>
+ <tbody class="divide-y divide-border">
+ <tr><td data-label="Matning" class="px-4 py-3 font-medium">Amning</td><td data-label="Normal färg" class="px-4 py-3 text-text-light">Gul, grönaktig</td><td data-label="Normal konsistens" class="px-4 py-3 text-text-light">Lös, kornig, nästan flytande</td><td data-label="Frekvens" class="px-4 py-3 text-text-light">Upp till 8+ gånger/dag eller var 3 till 4 dag</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Matning" class="px-4 py-3 font-medium">Ersättning</td><td data-label="Normal färg" class="px-4 py-3 text-text-light">Gul-brun</td><td data-label="Normal konsistens" class="px-4 py-3 text-text-light">Fastare, mer formad</td><td data-label="Frekvens" class="px-4 py-3 text-text-light">1 till 4 gånger/dag</td></tr>
+ <tr><td data-label="Matning" class="px-4 py-3 font-medium">Smörgåsmat (6 mån+)</td><td data-label="Normal färg" class="px-4 py-3 text-text-light">Varierar med maten</td><td data-label="Normal konsistens" class="px-4 py-3 text-text-light">Fastare</td><td data-label="Frekvens" class="px-4 py-3 text-text-light">1 till 3 gånger/dag</td></tr>
  </tbody>
  </table>
 </div>
@@ -117,7 +117,7 @@ export const articleMeta = {
 
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Tecken på uttorkning, håll extra koll</h2>
 
-<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6">
+<div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
  <p class="text-sm font-semibold text-yellow-900 mb-2">Varningstecken på uttorkning:</p>
  <ul class="text-sm text-yellow-800 space-y-1 list-disc pl-4">
  <li>Torr mun och torra läppar</li>
@@ -139,12 +139,12 @@ export const articleMeta = {
  <li><strong>Håll ögonen på blöjorna</strong>, räkna antal blöta blöjor per dygn. Normalt för ammad bebis är 6 till 8 blöta blöjor. Under 4 blöta blöjor på 24 timmar kan tyda på dehydrering och kräver kontakt med 1177.</li>
 </ol>
 
-<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-8">
  <p class="text-sm font-semibold text-accent-dark mb-1">Viktigt att veta</p>
  <p class="text-sm text-text-light">Ge aldrig stoppmedicin (Imodium, loperamid) till bebisar, det är farligt. Diarré är kroppens sätt att bli av med infektionen.</p>
 </div>
 
-<div class="bg-cta/5 border border-cta/20 rounded-xl p-5 my-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="bg-cta/5 border border-cta/20 rounded-lg p-5 my-6 flex flex-col sm:flex-row items-center justify-between gap-4">
  <div>
  <p class="font-heading font-bold text-dark text-base">Babyvakt, håll koll på bebisen</p>
  <p class="text-sm text-text-light mt-1">En babyvakt gör det lättare att hålla koll på bebisen när hon sover och är sjuk.</p>
@@ -155,7 +155,7 @@ export const articleMeta = {
  </a>
 </div>
 
-<div class="mt-8 bg-gray-50 rounded-xl p-5">
+<div class="mt-8 bg-bg-alt rounded-lg p-5">
  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade guider</h3>
  <ul class="space-y-2 text-sm">
  <li><a href="/guider/bebis-kolik/" class="text-accent underline font-medium">Bebis kolik, orsaker och råd</a></li>

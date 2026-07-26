@@ -88,7 +88,7 @@ export const articleMeta = {
  cons={['Ersätter inte riktiga BLW-bitar', 'Kräver noggrann rengöring']}
 />
 
-<div class="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-8">
+<div class="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-8">
  <p class="text-sm font-semibold text-accent-dark mb-1">Kortversion för nybörjare</p>
  <p class="text-sm text-text-light">Starta vid 6 månader. Erbjud mjuka grönsaksstavar, mogen frukt och ångkokad mat. Sitta vid bordet med familjen. Bröstmjölk/ersättning är fortfarande primär näring, mat är komplement. Förvänta mesighet och minimal matätning de första veckorna, det är normalt.</p>
 </div>
@@ -107,16 +107,16 @@ export const articleMeta = {
  Rädslan för kvävning är den vanligaste anledningen att föräldrar tvekar inför BLW. Forskning visar att rätt implementerat BLW inte ökar kvävningsrisken jämfört med purékost. Det är viktigt att lära sig skillnaden:
 </p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
- <div class="bg-red-50 border border-red-200 rounded-xl p-4">
- <p class="font-semibold text-red-900 mb-2">Kvävning (allvarligt)</p>
- <ul class="text-sm text-red-800 space-y-1 list-disc pl-4">
+ <div class="bg-danger-bg border border-danger/30 rounded-lg p-4">
+ <p class="font-semibold text-danger mb-2">Kvävning (allvarligt)</p>
+ <ul class="text-sm text-danger space-y-1 list-disc pl-4">
  <li>Tyst, bebisen gråter/hostar inte</li>
  <li>Blå/lila läppar</li>
  <li>Oförmåga att hosta, andas eller gråta</li>
  <li>Kräver omedelbar åtgärd (Heimlich)</li>
  </ul>
  </div>
- <div class="bg-bg-alt border border-green-200 rounded-xl p-4">
+ <div class="bg-bg-alt border border-safe/35 rounded-lg p-4">
  <p class="font-semibold text-safe mb-2">Gagglar (normalt)</p>
  <ul class="text-sm text-safe space-y-1 list-disc pl-4">
  <li>Hostar, kräks, rödnar</li>
@@ -147,8 +147,8 @@ export const articleMeta = {
 <p class="text-text-light mb-4">En stabil <a href="/matstolar/" class="text-accent underline">matstol med bra fotstöd</a> är extra viktig vid BLW, bebisen behöver sitta stabilt för att kunna fokusera på maten. Läs vår guide om <a href="/guider/valja-matstol/" class="text-accent underline">att välja rätt matstol</a> för vad du ska titta på.</p>
 
 <h2 class="font-heading text-xl font-bold mt-8 mb-3">Mat att erbjuda, första 4 veckorna</h2>
-<div class="overflow-x-auto mb-6">
- <table class="w-full text-sm border-collapse">
+<div class="mb-6">
+ <table class="w-full text-sm border-collapse" data-stack>
  <thead>
  <tr class="bg-accent/10">
  <th class="text-left px-4 py-3 font-semibold text-dark">Livsmedel</th>
@@ -156,14 +156,14 @@ export const articleMeta = {
  <th class="text-left px-4 py-3 font-semibold text-dark">Tips</th>
  </tr>
  </thead>
- <tbody class="divide-y divide-gray-100">
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Avokado</td><td class="px-4 py-3 text-text-light">Långa klyftor</td><td class="px-4 py-3 text-text-light">Mogen = mjuk och gripvänlig. Hög fetthalt = bra näring</td></tr>
- <tr><td class="px-4 py-3 font-medium">Banan</td><td class="px-4 py-3 text-text-light">Halvskala kvar som grepp</td><td class="px-4 py-3 text-text-light">Lämna det nedre skalsegmentet kvar, enkelt grepp</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ångkokt broccoli</td><td class="px-4 py-3 text-text-light">Buketter med stjälk</td><td class="px-4 py-3 text-text-light">Kokt mjukt, stålktar som ett naturligt handtag</td></tr>
- <tr><td class="px-4 py-3 font-medium">Sötpotatis</td><td class="px-4 py-3 text-text-light">Stavar, ugnsbakade</td><td class="px-4 py-3 text-text-light">Lätt att mosa mot tandlösa tandköttet</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Ägg</td><td class="px-4 py-3 text-text-light">Hårdkokt, halverat</td><td class="px-4 py-3 text-text-light">Viktigt allergen, introducera tidigt. Välkokat!</td></tr>
- <tr><td class="px-4 py-3 font-medium">Pasta (rigatoni)</td><td class="px-4 py-3 text-text-light">Rörformad, al dente</td><td class="px-4 py-3 text-text-light">Stor pasta lätt att hålla. Servera utan salt</td></tr>
- <tr class="bg-gray-50"><td class="px-4 py-3 font-medium">Kycklinglår</td><td class="px-4 py-3 text-text-light">Ben kvar, handtag</td><td class="px-4 py-3 text-text-light">Ben är naturliga handtag. Köttet gnags av lätt</td></tr>
+ <tbody class="divide-y divide-border">
+ <tr class="bg-bg-alt"><td data-label="Livsmedel" class="px-4 py-3 font-medium">Avokado</td><td data-label="Format" class="px-4 py-3 text-text-light">Långa klyftor</td><td data-label="Tips" class="px-4 py-3 text-text-light">Mogen = mjuk och gripvänlig. Hög fetthalt = bra näring</td></tr>
+ <tr><td data-label="Livsmedel" class="px-4 py-3 font-medium">Banan</td><td data-label="Format" class="px-4 py-3 text-text-light">Halvskala kvar som grepp</td><td data-label="Tips" class="px-4 py-3 text-text-light">Lämna det nedre skalsegmentet kvar, enkelt grepp</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Livsmedel" class="px-4 py-3 font-medium">Ångkokt broccoli</td><td data-label="Format" class="px-4 py-3 text-text-light">Buketter med stjälk</td><td data-label="Tips" class="px-4 py-3 text-text-light">Kokt mjukt, stålktar som ett naturligt handtag</td></tr>
+ <tr><td data-label="Livsmedel" class="px-4 py-3 font-medium">Sötpotatis</td><td data-label="Format" class="px-4 py-3 text-text-light">Stavar, ugnsbakade</td><td data-label="Tips" class="px-4 py-3 text-text-light">Lätt att mosa mot tandlösa tandköttet</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Livsmedel" class="px-4 py-3 font-medium">Ägg</td><td data-label="Format" class="px-4 py-3 text-text-light">Hårdkokt, halverat</td><td data-label="Tips" class="px-4 py-3 text-text-light">Viktigt allergen, introducera tidigt. Välkokat!</td></tr>
+ <tr><td data-label="Livsmedel" class="px-4 py-3 font-medium">Pasta (rigatoni)</td><td data-label="Format" class="px-4 py-3 text-text-light">Rörformad, al dente</td><td data-label="Tips" class="px-4 py-3 text-text-light">Stor pasta lätt att hålla. Servera utan salt</td></tr>
+ <tr class="bg-bg-alt"><td data-label="Livsmedel" class="px-4 py-3 font-medium">Kycklinglår</td><td data-label="Format" class="px-4 py-3 text-text-light">Ben kvar, handtag</td><td data-label="Tips" class="px-4 py-3 text-text-light">Ben är naturliga handtag. Köttet gnags av lätt</td></tr>
  </tbody>
  </table>
 </div>
@@ -183,7 +183,7 @@ export const articleMeta = {
 
 <FAQ items={faqItems} />
 
-<div class="mt-10 bg-gray-50 rounded-xl p-5">
+<div class="mt-10 bg-bg-alt rounded-lg p-5">
  <h3 class="font-heading font-semibold text-lg mb-3">Relaterade produktguider</h3>
  <ul class="space-y-2 text-sm">
  <li><a href="/matstolar/" class="text-primary underline font-medium">Bästa matstolarna 2026, för säkra måltider</a></li>

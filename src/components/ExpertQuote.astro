@@ -16,13 +16,23 @@ interface Props {
 }
 const { name, role, sourceUrl } = Astro.props;
 ---
-<blockquote class="border-l-4 border-accent bg-rose-50 rounded-r-xl px-5 py-4 my-2">
-  <p class="text-sm text-text italic leading-relaxed">
+<!--
+  Omgjord 2026-07-26. En vänsterlinje vid blockcitat är äkta typografi och får vara
+  kvar, till skillnad från callout-strimman. Det sloppiga var resten: rosa fyllning
+  och rounded-r-xl, en asymmetrisk radie som bara fanns för att rymma den tjocka
+  kanten. Dessutom bröt den mot sitens egen tokenregel, accent är reserverad för
+  handling (CTA, aktivt läge, utmärkelse) och ska inte dekorera ett citat.
+
+  Nu: hårlinje i neutral kantfärg, ingen fyllning, ingen radie, och citatet satt i
+  Newsreader i stället för kursiv sans. Ett citat i en publikation ser ut så här.
+-->
+<blockquote class="border-l-2 border-border-dark pl-5 py-1 my-5">
+  <p class="font-heading text-[17px] sm:text-lg text-primary leading-[1.6]">
     <slot />
   </p>
-  <footer class="mt-2 text-xs text-text-light not-italic">
-    <a href={sourceUrl} rel="noopener noreferrer" class="font-semibold text-accent hover:underline" target="_blank">{name}</a>
-    <span class="mx-1">-</span>
+  <footer class="mt-2.5 text-[13px] text-text-light">
+    <a href={sourceUrl} rel="noopener noreferrer" class="font-semibold text-accent-dark underline underline-offset-2 hover:text-accent transition-colors" target="_blank">{name}</a>
+    <span class="mx-1.5" aria-hidden="true">·</span>
     <span>{role}</span>
   </footer>
 </blockquote>

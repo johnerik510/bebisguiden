@@ -26,9 +26,9 @@ const collectionSchema = {
 >
  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
  <Breadcrumbs items={[{ label: 'Hem', href: '/' }, { label: 'Guider', href: '/guider/' }, { label: 'Förberedelser' }]} />
- <div class="max-w-4xl mx-auto py-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+ <div class="max-w-4xl mx-auto py-2 flex flex-wrap items-center gap-2 text-xs text-text-light">
    <a href="/om-redaktionen/" class="flex items-center gap-1.5 hover:text-pink-600 transition-colors">
-     <span class="font-medium text-slate-700">Axel Jönemyr, redaktör</span>
+     <span class="font-medium text-text">Axel Jönemyr, redaktör</span>
    </a>
    <span>·</span>
    <span>Uppdaterad 27 maj 2026</span>
@@ -52,7 +52,7 @@ const collectionSchema = {
 
  <div class="space-y-4">
  {guides.map((g) => (
- <a href={g.href} class="block bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-accent transition-all group">
+ <a href={g.href} class="block bg-white border border-border rounded-lg p-5 hover:shadow-md hover:border-accent transition-all group">
  <h2 class="font-heading text-lg font-bold text-text group-hover:text-accent transition-colors">{g.title}</h2>
  <p class="text-sm text-text-light mt-1">{g.desc}</p>
  </a>
