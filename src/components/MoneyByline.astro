@@ -32,20 +32,25 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
 ---
 
 <!--
-  Omgjord 2026-07-26 efter test på riktig iPhone 14.
+  Två iterationer 2026-07-26, båda efter test på riktig iPhone 14. Notera att
+  ingen av buggarna gick att se i Chrome DevTools, bara på enheten.
 
-  Tidigare låg namn, datum och lästid som syskon i EN flex-wrap-rad, med
-  fristående "·" som egna flex-items mellan sig. När raden bröts hamnade en
-  separator först eller sist på raden, alltså en punkt utan något att separera.
-  På 390 px bröts den på två ställen och gav både en inledande och en avslutande
-  lös punkt.
+  1. Ursprunget: namn, datum och lästid i EN flex-wrap-rad med fristående "·" som
+     egna flex-items mellan sig. När raden bröts hamnade en separator först eller
+     sist på raden, alltså en punkt utan något att separera. De var gray-300 och
+     nästan osynliga, så felet doldes tills färgerna fick rätt kontrast.
 
-  Nu: namnet på egen rad som radens rubrik, metadata i en egen rad under. Inga
-  separatorpunkter alls, avståndet gör jobbet. En metadatarad som bryts ser då
-  likadan ut som en som inte gör det, oavsett bredd. Varje post är nowrap så att
-  brytningen alltid sker mellan poster och aldrig inuti ett datum.
+  2. Första fixen delade upp i två block, namn över metadata. Det gav en tom rad
+     mellan dem på enheten trots att avståndet mätte 2 px i varje bredd jag kunde
+     testa. Orsaken gick inte att återskapa, så jag slutade jaga den.
+
+  Nu: EN rad igen, men helt utan separatorpunkter. Avståndet gör jobbet. Det tar
+  bort båda felkällorna på samma gång, eftersom det varken finns block-avstånd
+  som kan blåsas upp eller lösa tecken som kan hamna ensamma. Bryts raden flödar
+  posterna till nästa rad med 4 px radavstånd, vilket ser likadant ut oavsett var
+  brytningen sker. Varje post är nowrap så ett datum aldrig delas mitt itu.
 -->
-<div class="flex items-start gap-2.5 py-2 mb-3 border-b border-border">
+<div class="flex items-center gap-2.5 py-2 mb-3 border-b border-border">
   <a href="/om-redaktionen/" aria-label={`Om ${author}`} class="shrink-0">
     {authorImage ? (
       <img src={authorImage} alt={author} width="32" height="32" loading="lazy" class="w-8 h-8 rounded-full object-cover" />
@@ -55,16 +60,14 @@ const showUpdated = !!dateModified && dateModified !== datePublished;
       </span>
     )}
   </a>
-  <div class="min-w-0">
-    <a href="/om-redaktionen/" class="block text-[13px] font-semibold text-text hover:text-accent transition-colors leading-tight">{author}</a>
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-text-light mt-0.5">
-      {showPublished && (<time datetime={datePublished} class="whitespace-nowrap">{formatDate(datePublished!)}</time>)}
-      {showUpdated && (<span class="whitespace-nowrap">Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>)}
-      <span class="inline-flex items-center gap-1 whitespace-nowrap">
-        <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>
-      </span>
-    </div>
+  <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-text-light min-w-0">
+    <a href="/om-redaktionen/" class="font-semibold text-text hover:text-accent transition-colors whitespace-nowrap">{author}</a>
+    {showPublished && (<time datetime={datePublished} class="whitespace-nowrap">{formatDate(datePublished!)}</time>)}
+    {showUpdated && (<span class="whitespace-nowrap">Uppdaterad <time datetime={dateModified}>{formatDate(dateModified!)}</time></span>)}
+    <span class="inline-flex items-center gap-1 whitespace-nowrap">
+      <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="article-reading-time" class="sr-only">Beräknar lästid...</span>
+    </span>
   </div>
 </div>
 

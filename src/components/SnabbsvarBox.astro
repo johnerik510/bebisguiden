@@ -45,6 +45,18 @@ interface Props {
 }
 
 const { question, headingId = 'snabbsvar', featured } = Astro.props;
+
+/**
+ * Märket hör hemma i rubriken, inte som en egen versaletikett ovanför.
+ * Men många produktnamn bär redan märket ("Cybex EOS Lux Duovagn"), så en rak
+ * hopslagning ger "Cybex Cybex EOS Lux Duovagn". Lägg bara till märket när namnet
+ * inte redan börjar med det.
+ */
+function medMarke(namn: string, marke?: string): string {
+  if (!marke) return namn;
+  return namn.toLowerCase().startsWith(marke.toLowerCase()) ? namn : `${marke} ${namn}`;
+}
+const featuredRubrik = featured ? medMarke(featured.name, featured.brand) : '';
 ---
 
 <section class="bg-bg-alt border-y border-border" aria-labelledby={headingId}>
@@ -79,13 +91,12 @@ const { question, headingId = 'snabbsvar', featured } = Astro.props;
                   {featured.badge}
                 </span>
               )}
-              {featured.brand && (
-                <div class="text-xs font-semibold uppercase tracking-wider text-text-light mb-0.5">{featured.brand}</div>
-              )}
+              {/* Märket ligger i rubriken, inte som en egen versaletikett ovanför.
+                  Badgen är den enda etiketten kortet behöver. */}
               <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary leading-snug">
                 {featured.reviewHref
-                  ? <a href={featured.reviewHref} class="hover:text-accent transition-colors">{featured.name}</a>
-                  : featured.name}
+                  ? <a href={featured.reviewHref} class="hover:text-accent transition-colors">{featuredRubrik}</a>
+                  : featuredRubrik}
               </h3>
 
               {featured.rating && (

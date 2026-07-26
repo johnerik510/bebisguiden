@@ -36,6 +36,15 @@ const {
   badge = 'Redaktionens val',
   alsoAt = [],
 } = Astro.props;
+
+/**
+ * Märket i rubriken i stället för som egen versaletikett ovanför. Många
+ * produktnamn bär redan märket ("Cybex EOS Lux Duovagn"), så lägg bara till det
+ * när namnet inte redan börjar med det, annars blir det "Cybex Cybex EOS Lux".
+ */
+const rubrik = brand && !name.toLowerCase().startsWith(brand.toLowerCase())
+  ? `${brand} ${name}`
+  : name;
 ---
 
 <!--
@@ -62,9 +71,13 @@ const {
       </a>
     </div>
     <div class="flex-1 min-w-0">
-      <p class="text-xs font-semibold text-accent-dark uppercase tracking-wide mb-1">{brand}</p>
+      <!--
+        Märket satt tidigare som en egen versaletikett ovanför rubriken. Med badgen
+        ovanför blev det två versalrader innan läsaren nådde produktnamnet. Märket
+        hör hemma i namnet, det är en del av vad produkten heter, inte en kategori.
+      -->
       <h2 class="font-heading text-lg sm:text-xl font-bold text-text leading-tight mb-2">
-        <a href={trackedUrl} rel={ctaRel(trackedUrl)} target="_blank" class="!text-text hover:!text-accent-dark transition-colors no-underline">{name}</a>
+        <a href={trackedUrl} rel={ctaRel(trackedUrl)} target="_blank" class="!text-text hover:!text-accent-dark transition-colors no-underline">{rubrik}</a>
       </h2>
       <p class="text-[15px] text-text-light leading-relaxed mb-3">{description}</p>
       <div class="flex flex-wrap items-center gap-3">
