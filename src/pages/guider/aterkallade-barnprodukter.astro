@@ -1,0 +1,254 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import RetailerCTAs from '../../components/RetailerCTAs.astro';
+import Callout from '../../components/Callout.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Guider', href: '/guider/' },
+  { label: 'Återkallade barnprodukter' },
+];
+
+const faqItems = [
+  {
+    question: 'Var ser jag om en barnprodukt har återkallats?',
+    answer: 'EU:s gemensamma varningssystem Safety Gate publicerar alla återkallade och farliga produkter varje vecka på ec.europa.eu/safety-gate-alerts. Du kan söka på produktnamn, märke och kategori helt gratis. I Sverige är Konsumentverket kontaktpunkt för systemet och listar även återkallelser som rör svenska konsumenter. Många butiker och tillverkare publicerar dessutom återkallelser på sina egna webbplatser.',
+  },
+  {
+    question: 'Vilka barnprodukter återkallas oftast?',
+    answer: 'Leksaker är den näst mest anmälda produktkategorin i hela EU och stod för 16 procent av alla larm under 2025. Vanligaste larmorsaken överlag är kemikalier, och för barnprodukter är skaderisk och kvävningsrisk särskilt relevanta (till exempel smådelar som lossnar). I Sverige är barnvagnar den enskilda produkt som Konsumentverket får in flest säkerhetsanmälningar om.',
+  },
+  {
+    question: 'Vad gör jag om jag äger en återkallad produkt?',
+    answer: 'Sluta använda produkten direkt. Återkallelsen anger alltid vad du ska göra, oftast att du får pengarna tillbaka eller en reparation av butiken eller tillverkaren. Spara kvitto och förpackning om du har dem, men du har rätt till åtgärd även utan kvitto vid en formell återkallelse. Kontakta butiken där du köpte produkten.',
+  },
+  {
+    question: 'Är begagnade barnprodukter farligare?',
+    answer: 'Begagnade produkter kan ha återkallats utan att den nya ägaren känner till det, och de följer inte alltid dagens säkerhetsstandarder. Var särskilt försiktig med begagnade bilbarnstolar (du vet inte om de varit med i en krock) och äldre barnvagnar och spjälsängar som kan sakna dagens säkerhetsmärkning. Kontrollera alltid produkten mot Safety Gate och leta efter aktuell CE-märkning och europeisk standard.',
+  },
+  {
+    question: 'Vad betyder CE-märkning och EN-standard på en barnprodukt?',
+    answer: 'CE-märket är tillverkarens försäkran om att produkten uppfyller EU:s säkerhetskrav. Många barnprodukter har dessutom en egen europeisk standard, till exempel EN 1888 för barnvagnar och EN 1466 för babyliftar. Märkningen är ett grundkrav, men den garanterar inte att en enskild vara är felfri, därför kompletteras systemet med marknadskontroll och återkallelser.',
+  },
+  {
+    question: 'Hur många farliga produkter larmades i EU under 2025?',
+    answer: 'EU:s Safety Gate validerade 4 671 larm under 2025, vilket motsvarar nästan 100 larm i veckan. Det är en ökning med cirka 13 procent jämfört med 2024 och mer än en fördubbling sedan 2022. Sverige låg bakom 384 av larmen, vilket gjorde landet till det fjärde mest aktiva i hela EU.',
+  },
+];
+
+export const articleMeta = {
+  title: "Farliga barnprodukter: rekordmånga EU-larm, Sverige högt upp",
+  description: "Rekordmånga farliga produkter larmades i EU 2025, Sverige hör till dem som larmar mest. Barnvagnen toppar listan. Så kollar du om barnets prylar är återkallade.",
+  publishDate: "2026-05-25",
+  category: "Guider",
+  image: "/images/heroes/aterkallade-barnprodukter.webp",
+};
+---
+<ArticleLayout
+  image={articleMeta.image}
+  title="Farliga barnprodukter 2026: EU-rekordlarm, Sverige högt upp"
+  description="EU-rekordlarm för farliga barnprodukter 2025. Barnvagnen toppar listan. Så kollar du om barnets prylar är återkallade."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/guider/aterkallade-barnprodukter/"
+  datePublished="2026-05-25"
+  updatedDate="2026-05-25"
+  showDisclaimer={false}
+>
+  <p class="text-base text-text-light mb-8 max-w-2xl">
+    Aldrig har så många farliga produkter stoppats i EU som under 2025, nästan 100 i veckan. Det visar EU:s färska <a href="https://ec.europa.eu/safety-gate-alerts/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate</a>-rapport som publicerades i mars 2026, och svenska myndigheter hör till dem som slår larm allra mest. Barnprodukter står för en stor del av varningarna. Här går vi igenom siffrorna och visar en gratis tvåminuterskoll för att se om något du har hemma har återkallats.
+  </p>
+
+  <!-- Nyckeltal -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
+    <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
+      <div class="text-2xl font-bold text-accent-dark">4 671</div>
+      <div class="text-xs text-text-light mt-1">larm i EU 2025</div>
+      <div class="text-xs text-text-light/60">Cirka 100 per vecka</div>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
+      <div class="text-2xl font-bold text-accent-dark">16 %</div>
+      <div class="text-xs text-text-light mt-1">av larmen gäller leksaker</div>
+      <div class="text-xs text-text-light/60">Näst mest anmälda kategorin</div>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
+      <div class="text-2xl font-bold text-accent-dark">384</div>
+      <div class="text-xs text-text-light mt-1">larm från Sverige</div>
+      <div class="text-xs text-text-light/60">Fjärde mest aktiva i EU</div>
+    </div>
+    <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
+      <div class="text-2xl font-bold text-accent-dark">Barnvagn</div>
+      <div class="text-xs text-text-light mt-1">flest anmälningar i Sverige</div>
+      <div class="text-xs text-text-light/60">Källa: Konsumentverket</div>
+    </div>
+  </div>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Rekordmånga farliga produkter larmas i EU</h2>
+  <p class="text-text-light mb-4">
+    <a href="https://ec.europa.eu/safety-gate-alerts/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate</a> är EU:s gemensamma system för att varna om farliga produkter som inte är livsmedel. När en myndighet i ett medlemsland hittar en farlig vara läggs ett larm in, och informationen sprids till alla länder så att produkten kan dras tillbaka i hela unionen. Antalet larm 2025 är det högsta sedan systemet startade 2003, och har mer än fördubblats på tre år. Nästan tre fjärdedelar av produkterna kom från länder utanför EU, och Kina ensamt stod för 2 006 av de 4 671 larmen. EU-kommissionen pekar särskilt ut billiga varor som säljs via nätmarknadsplatser.
+  </p>
+
+  <div class="mb-6">
+    <table class="w-full text-sm border-collapse" data-stack>
+      <thead>
+        <tr class="bg-bg-alt">
+          <th class="text-left p-3 border border-border font-semibold">År</th>
+          <th class="text-right p-3 border border-border font-semibold">Antal larm i EU</th>
+          <th class="text-left p-3 border border-border font-semibold">Anmärkning</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          { ar: '2022', antal: '2 117', anm: 'Utgångsläge' },
+          { ar: '2023', antal: '3 412', anm: 'Kraftig ökning' },
+          { ar: '2024', antal: '4 137', anm: 'Rekord vid tillfället' },
+          { ar: '2025', antal: '4 671', anm: 'Nytt rekord, cirka 100 larm i veckan', highlight: true },
+        ].map(row => (
+          <tr class={row.highlight ? 'bg-accent/5' : 'hover:bg-bg-alt'}>
+            <td data-label="År" class={`p-3 border border-border font-medium ${row.highlight ? 'text-accent-dark' : ''}`}>{row.ar}</td>
+            <td data-label="Antal larm i EU" class="p-3 border border-border text-right font-semibold text-accent-dark">{row.antal}</td>
+            <td data-label="Anmärkning" class="p-3 border border-border text-text-light">{row.anm}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-xs text-text-light/60 mb-6">Källa: EU-kommissionen, <a href="https://op.europa.eu/webpub/just/safety-gate-2025-report/en/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate årsrapport 2025</a> samt årsrapport 2024 (DG Justice and Consumers).</p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Leksaker är näst mest anmälda kategorin</h2>
+  <p class="text-text-light mb-4">
+    Kosmetika toppar listan tack vare en stor mängd larm om förbjudna kemikalier, men direkt därefter kommer leksaker. Under 2025 gällde 16 procent av alla larm leksaker, motsvarande omkring 750 larm. Leksaker var näst mest anmälda kategori även 2024, då andelen var 15 procent.
+  </p>
+
+  <div class="mb-6">
+    <table class="w-full text-sm border-collapse" data-stack>
+      <thead>
+        <tr class="bg-bg-alt">
+          <th class="text-left p-3 border border-border font-semibold">Produktkategori</th>
+          <th class="text-right p-3 border border-border font-semibold">Andel av alla larm 2025</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          { kat: 'Kosmetika', andel: '36 %' },
+          { kat: 'Leksaker', andel: '16 %', highlight: true },
+          { kat: 'Elektriska apparater och utrustning', andel: '11 %' },
+          { kat: 'Övriga kategorier', andel: '37 %' },
+        ].map(row => (
+          <tr class={row.highlight ? 'bg-accent/5' : 'hover:bg-bg-alt'}>
+            <td data-label="Produktkategori" class={`p-3 border border-border font-medium ${row.highlight ? 'text-accent-dark' : ''}`}>{row.kat}</td>
+            <td data-label="Andel av alla larm 2025" class={`p-3 border border-border text-right font-semibold ${row.highlight ? 'text-accent-dark' : 'text-text-light'}`}>{row.andel}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-xs text-text-light/60 mb-6">Källa: EU-kommissionen, <a href="https://op.europa.eu/webpub/just/safety-gate-2025-report/en/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate årsrapport 2025</a>. Andelar avrundade.</p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Vilka risker handlar det om?</h2>
+  <p class="text-text-light mb-4">
+    Den vanligaste anledningen till att en produkt larmas är kemiska risker, alltså att varan innehåller ämnen som inte är tillåtna. För just barnprodukter är skaderisk och kvävningsrisk extra relevanta, eftersom små barn ofta stoppar saker i munnen.
+  </p>
+  <p class="text-text-light mb-4">
+    Konkret handlar det till exempel om leksaker med smådelar eller små magneter som kan sväljas, babyselar och liggdelar där barnet kan glida ur, och produkter med för höga halter av förbjudna kemikalier. Magneter är särskilt farliga: om ett barn sväljer flera kan de dra ihop sig i tarmen och orsaka allvarliga skador.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+    <div class="bg-bg-alt border border-border rounded-lg p-4 text-center">
+      <div class="text-2xl font-bold text-accent-dark">53 %</div>
+      <div class="text-xs text-text-light mt-1">Kemiska risker</div>
+    </div>
+    <div class="bg-bg-alt border border-border rounded-lg p-4 text-center">
+      <div class="text-2xl font-bold text-accent-dark">14 %</div>
+      <div class="text-xs text-text-light mt-1">Skaderisk</div>
+    </div>
+    <div class="bg-bg-alt border border-border rounded-lg p-4 text-center">
+      <div class="text-2xl font-bold text-accent-dark">9 %</div>
+      <div class="text-xs text-text-light mt-1">Kvävningsrisk</div>
+    </div>
+  </div>
+  <p class="text-xs text-text-light/60 mb-6">Källa: EU-kommissionen, <a href="https://op.europa.eu/webpub/just/safety-gate-2025-report/en/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate årsrapport 2025</a> (fördelning av riskkategorier).</p>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Barnvagnen, produkten svenska föräldrar anmäler mest</h2>
+  <p class="text-text-light mb-4">
+    Sverige är ett av de mest aktiva länderna i EU när det gäller att rapportera farliga produkter, med 384 larm under 2025. Det är fjärde flest i hela unionen, efter Italien, Tyskland och Frankrike. Att Sverige ligger högt på listan betyder inte att det är farligare här, utan att svenska myndigheter är duktiga på att fånga upp produkter. Men det säger också något om hur mycket som faktiskt är i omlopp.
+  </p>
+
+  <div class="mb-6">
+    <table class="w-full text-sm border-collapse" data-stack>
+      <thead>
+        <tr class="bg-bg-alt">
+          <th class="text-left p-3 border border-border font-semibold">Land</th>
+          <th class="text-right p-3 border border-border font-semibold">Antal larm 2025</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          { land: 'Italien', antal: '1 193' },
+          { land: 'Tyskland', antal: '465' },
+          { land: 'Frankrike', antal: '455' },
+          { land: 'Sverige', antal: '384', highlight: true },
+          { land: 'Tjeckien', antal: '359' },
+        ].map(row => (
+          <tr class={row.highlight ? 'bg-accent/5' : 'hover:bg-bg-alt'}>
+            <td data-label="Land" class={`p-3 border border-border font-medium ${row.highlight ? 'text-accent-dark' : ''}`}>{row.land}</td>
+            <td data-label="Antal larm 2025" class={`p-3 border border-border text-right font-semibold ${row.highlight ? 'text-accent-dark' : 'text-text-light'}`}>{row.antal}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-xs text-text-light/60 mb-6">Källa: EU-kommissionen, <a href="https://op.europa.eu/webpub/just/safety-gate-2025-report/en/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate årsrapport 2025</a>, mest anmälande länder.</p>
+
+  <p class="text-text-light mb-4">
+    Bland barnprodukterna är barnvagnar den vara som <a href="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Konsumentverket</a> får in allra flest säkerhetsanmälningar om. En barnvagn ska vara märkt med den europeiska standarden EN 1888, men märkningen ensam räcker inte, det är därför marknadskontrollen och återkallelser finns.
+  </p>
+
+  <blockquote class="border-l-2 border-border-dark pl-5 py-1 my-6">
+    <p class="text-text italic mb-3">"Du behöver inte gå runt och vara rädd, men ta för vana att kolla upp dyra och begagnade barnprylar. Det tar två minuter och kan i värsta fall rädda ditt barn från en kvävningsolycka. Var extra vaksam på billiga leksaker från nätet, det är där många av problemen finns."</p>
+    <footer class="text-sm text-text-light font-semibold not-italic">Axel Jönemyr, redaktör</footer>
+  </blockquote>
+
+  <Callout type="key" title="Det här är viktigt att veta">
+    En CE-märkning betyder att tillverkaren intygar att produkten klarar EU:s krav. Den är ett grundkrav men ingen garanti för att en enskild vara är felfri. Därför är det klokt att kontrollera dyra och säkerhetskritiska produkter som barnvagnar och bilbarnstolar mot Safety Gate innan du köper, särskilt begagnat.
+  </Callout>
+
+  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Så kontrollerar du om din barnprodukt är återkallad</h2>
+  <p class="text-text-light mb-4">
+    Det tar några minuter och kostar ingenting. Gör så här:
+  </p>
+  <ol class="list-decimal pl-5 space-y-2 text-text-light mb-6">
+    <li>Gå till <a href="https://ec.europa.eu/safety-gate-alerts/" rel="noopener noreferrer" target="_blank" class="text-accent underline">EU:s Safety Gate</a> och sök på produktnamn eller märke. Du kan filtrera på kategori, till exempel leksaker eller barnartiklar.</li>
+    <li>Kontrollera tillverkarens och butikens egna webbsidor, där publiceras återkallelser ofta först.</li>
+    <li>Titta efter CE-märkning och rätt europeisk standard på produkten och förpackningen (till exempel EN 1888 för barnvagnar).</li>
+    <li>Hittar du din produkt i en återkallelse: sluta använda den och följ instruktionen i larmet, oftast pengarna tillbaka eller reparation via butiken.</li>
+    <li>Var extra noggrann med begagnade bilbarnstolar, barnvagnar och spjälsängar, där du inte känner till produktens historia.</li>
+  </ol>
+
+  <Callout type="tip" title="Tips inför köpet">
+    Skriv ner märke och modell på de dyraste barnprodukterna du köper. Då kan du snabbt söka upp dem i Safety Gate om en återkallelse skulle dyka upp senare, och du har uppgifterna nära till hands om du behöver kontakta butiken.
+  </Callout>
+
+  <div class="mt-8 p-5 bg-bg-alt rounded-lg border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Relaterade guider</h2>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/guider/valja-barnvagn/" class="text-accent underline">Välja barnvagn 2026, komplett köpguide</a></li>
+      <li><a href="/guider/valja-bilbarnstol/" class="text-accent underline">Välja bilbarnstol 2026, säkerhet och passform</a></li>
+      <li><a href="/guider/saker-sovmiljo/" class="text-accent underline">Säker sovmiljö för bebis, komplett guide</a></li>
+      <li><a href="/sakerhet/barnsakring/" class="text-accent underline">Barnsäkring i hemmet, checklista rum för rum</a></li>
+      <li><a href="/guider/sids-statistik/" class="text-accent underline">SIDS-statistik och riskfaktorer i Sverige</a></li>
+    </ul>
+  </div>
+
+  <FAQ items={faqItems} />
+
+  <div class="mt-8 p-5 bg-white rounded-lg border border-border">
+    <h2 class="font-heading text-lg font-bold mb-3">Källor</h2>
+    <ul class="space-y-2 text-sm text-text-light">
+      <li>EU-kommissionen, <a href="https://op.europa.eu/webpub/just/safety-gate-2025-report/en/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate Report 2025</a> (DG Justice and Consumers), publicerad mars 2026.</li>
+      <li>EU-kommissionen, <a href="https://ec.europa.eu/safety-gate-alerts/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Safety Gate, sök bland farliga produkter och återkallelser</a>.</li>
+      <li>Konsumentverket, <a href="https://www.konsumentverket.se/sakerhet-varor-tjanster/barnvagn-konsument/" rel="noopener noreferrer" target="_blank" class="text-accent underline">Barnvagnar, tips till dig som ska köpa barnvagn</a>.</li>
+    </ul>
+  </div>
+
+</ArticleLayout>
