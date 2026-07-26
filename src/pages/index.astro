@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQ from '../components/FAQ.astro';
 import SnabbsvarBox from '../components/SnabbsvarBox.astro';
-import AuthorByline from '../components/AuthorByline.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import { currentMonthYear } from '../utils/currentDate';
 
@@ -159,6 +158,19 @@ const granskningsomraden = [
 
 /** Antalet granskade kategorier räknas alltid ur listan, aldrig hårdkodat. */
 const antalKategorier = granskningsomraden.length;
+
+/**
+ * Kortordningen är GSC-data, inte magkänsla. Klick per silo senaste 90 dagarna
+ * (hämtat 2026-07-26, `gsc.py --site bebisguiden.se --report performance`):
+ * blöjor 850, bilbarnstolar 721, barnvagnar 712, amning 384, spjälsängar 309,
+ * bärselen 250, babyvakter 176, matstolar 167, leksaker 153, sovsäckar 78.
+ * Blöjor var nätets mest klickade silo men saknades helt bland korten.
+ */
+const toppKategoriHrefs = ['/blojor/', '/bilbarnstolar/', '/barnvagnar/', '/amning/', '/spjalsangar/', '/barselen/'];
+const toppKategorier = toppKategoriHrefs
+  .map((h) => granskningsomraden.find((o) => o.href === h)!)
+  .filter(Boolean);
+const ovrigaKategorier = granskningsomraden.filter((o) => !toppKategoriHrefs.includes(o.href));
 
 const guidehubbar = [
  { name: 'Hälsa & symptom', href: '/guider/halsa-och-symptom/', desc: 'Feber, kolik, magont, utslag, när du ska vara orolig och när det är normalt.', anchor: 'Bebishälsa och symptom' },
@@ -342,13 +354,6 @@ const homeFaqItems = [
   </div>
  </section>
 
- <!-- Avsändare: E-E-A-T above the fold, en rad -->
- <div class="bg-bg">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-   <AuthorByline compact dateModified={senastUppdaterad} />
-  </div>
- </div>
-
  <!-- Snabbsvar + toppval: ETT block, answer-first (GEO/AEO) -->
  <SnabbsvarBox
   question="vad behöver man till bebis?"
@@ -374,29 +379,32 @@ const homeFaqItems = [
   </p>
  </SnabbsvarBox>
 
- <!-- Granskningsområden -->
+ <!-- Kategorier: de mest lästa som kort, resten som chips i SAMMA sektion -->
  <section class="bg-white border-t border-border py-10 sm:py-14">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-   <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-7">
+   <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3">
     <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-primary leading-tight max-w-2xl">
-     Bästa bebisprodukter, våra 8 populäraste kategorier
+     Hitta din testvinnare per kategori
     </h2>
     <a href="/kategorier/" class="text-sm font-semibold text-accent-dark underline underline-offset-2 hover:text-accent transition-colors whitespace-nowrap">
      Se alla {antalKategorier} kategorier
     </a>
    </div>
+   <p class="text-text-light leading-relaxed max-w-2xl mb-7">
+    Testvinnarna per kategori är de produkter som tagit högst poäng enligt vår metodik. Klicka in på den kategori du behöver först.
+   </p>
 
-   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-    {granskningsomraden.slice(0, 8).map((omr) => (
+   <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+    {toppKategorier.map((omr) => (
     <article class="flex flex-col rounded-lg border border-border hover:border-accent transition-colors bg-white overflow-hidden">
-     <a href={omr.href} tabindex="-1" aria-hidden="true" class="block relative aspect-[4/3] overflow-hidden bg-bg-alt">
+     <a href={omr.href} tabindex="-1" aria-hidden="true" class="block relative aspect-[16/10] overflow-hidden bg-bg-alt">
       <img
        src={omr.img}
        alt=""
        class="absolute inset-0 w-full h-full object-cover"
        loading="lazy"
        width="800"
-       height="600"
+       height="500"
       />
      </a>
      <div class="flex flex-col flex-1 p-4">
@@ -408,6 +416,19 @@ const homeFaqItems = [
      </div>
     </article>
     ))}
+   </div>
+
+   <div class="mt-8 pt-6 border-t border-border">
+    <h3 class="text-[11px] font-semibold uppercase tracking-wider text-text-light mb-3">Fler kategorier</h3>
+    <ul class="flex flex-wrap gap-2">
+     {ovrigaKategorier.map((c) => (
+     <li>
+      <a href={c.href} class="inline-flex items-center bg-white border border-border rounded-md px-3.5 py-2 text-sm font-semibold text-primary hover:border-accent hover:text-accent transition-colors">
+       {c.name}
+      </a>
+     </li>
+     ))}
+    </ul>
    </div>
   </div>
  </section>
@@ -464,37 +485,6 @@ const homeFaqItems = [
       </li>
      </ol>
     </div>
-   </div>
-  </div>
- </section>
-
- <!-- Bäst i test 2026: chips-index i stället för en kortvägg -->
- <section class="bg-bg py-12 sm:py-16 border-b border-border">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-   <div class="max-w-2xl mb-8">
-    <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-primary mb-3 leading-tight">
-     Bäst i test 2026: barnvagn, bilbarnstol, blöja och mer
-    </h2>
-    <p class="text-text-light leading-relaxed">
-     Direktlänkar till de bäst-i-test-listor svenska föräldrar söker mest på inför köpet. Uppdaterade med aktuella priser och säkerhetstester.
-    </p>
-   </div>
-
-   <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-8">
-    {bastITestKolumner.map((kol) => (
-    <div>
-     <h3 class="font-heading text-base font-semibold text-primary pb-2 mb-3 border-b-2 border-primary">{kol.rubrik}</h3>
-     <ul class="space-y-2">
-      {kol.lankar.map((l) => (
-      <li>
-       <a href={l.href} class="block bg-white border border-border rounded-md px-3 py-2.5 text-[13px] font-semibold text-primary hover:border-accent hover:text-accent transition-colors">
-        {l.name}
-       </a>
-      </li>
-      ))}
-     </ul>
-    </div>
-    ))}
    </div>
   </div>
  </section>
@@ -559,26 +549,6 @@ const homeFaqItems = [
   </div>
  </section>
 
- <!-- Köpguide -->
- <section class="bg-white py-12 sm:py-16 border-b border-border">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-   <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-primary mb-6 leading-tight">Vad behöver man till bebis? Det viktigaste inför födseln 2026</h2>
-   <div class="grid lg:grid-cols-2 gap-8 text-[15px] text-text-light leading-relaxed">
-    <div class="space-y-4">
-     <p>Det finns tusentals babyprodukter på marknaden, men de flesta är onödiga. Vad du faktiskt behöver beror på hur du lever, vilken budget du har och om du bor i lägenhet eller hus. Vi har delat upp inköpen i tre kategorier: det absolut nödvändiga, det praktiska och det du kan vänta med.</p>
-     <p><strong class="text-text">Absolut nödvändigt från dag ett:</strong> En godkänd bilbarnstol (i-Size R129) är ett lagkrav för att åka hem från sjukhuset. Välj en modell som är certifierad bakåtvänd till minst 105 cm, exempelvis <a href="/bilbarnstolar/" class="text-accent-dark underline underline-offset-2">Britax Römer Dualfix 5Z eller Cybex Sirona T</a>. En trygg sovplats, <a href="/spjalsangar/" class="text-accent-dark underline underline-offset-2">spjälsäng</a> eller <a href="/spjalsangar/bedside-crib/" class="text-accent-dark underline underline-offset-2">bedside crib</a>, är nästa prioritet. En <a href="/barnvagnar/" class="text-accent-dark underline underline-offset-2">barnvagn</a> behöver du senast när du vill ut på promenad.</p>
-     <p><strong class="text-text">Praktiskt men inte akut:</strong> Bröstpump eller nappflaskor behövs om amningen inte fungerar som planerat. Ha dem hemma i förväg. En <a href="/babyvakter/" class="text-accent-dark underline underline-offset-2">babyvakt</a> är inte ett lagkrav, men de flesta föräldrar vill ha koll när bebisen sover i annat rum. En <a href="/matstolar/" class="text-accent-dark underline underline-offset-2">matstol</a> köper du när barnet är redo för fast föda, runt 4 till 6 månader.</p>
-    </div>
-    <div class="space-y-4">
-     <p><strong class="text-text">Vänta med att köpa:</strong> Leksaker, aktivitetscenter och det mesta babysafarierna säljer kan du köpa begagnat eller vänta tills du ser vad barnet faktiskt gillar. Bebisens smak och motoriska utveckling styr vad som är meningsfullt, inte butikshyllans sortiment.</p>
-     <p><strong class="text-text">Budget och begagnat:</strong> En <a href="/barnvagnar/" class="text-accent-dark underline underline-offset-2">barnvagn i bra skick</a> kostar halva nypriset på Blocket eller Tradera. Spjälsängar och matstolar håller länge och byts sällan ut. Bilbarnstolen köper du alltid ny, du vet aldrig om en begagnad stol har varit med i en krock.</p>
-     <p><strong class="text-text">Säkerhet framför allt:</strong> Oavsett budget: kompromissa aldrig med <a href="/bilbarnstolar/" class="text-accent-dark underline underline-offset-2">bilbarnstolen</a>, sovmiljön (madrass och spjälavstånd) och <a href="/sovsackar/" class="text-accent-dark underline underline-offset-2">sovpåsen</a>. Dessa tre påverkar bebisens säkerhet direkt. Allt annat är bekvämlighet och kan köpas till senare.</p>
-     <p>Vill du ha en komplett lista? Se våra <a href="/guider/utrustning/" class="text-accent-dark underline underline-offset-2">guider om babyutrustning</a> med checklista inför födseln.</p>
-    </div>
-   </div>
-  </div>
- </section>
-
  <!-- Mörkt band: redaktionen -->
  <section class="bg-primary text-white py-12 sm:py-16">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -626,22 +596,54 @@ const homeFaqItems = [
   </div>
  </section>
 
- <!-- Avslut -->
- <section class="bg-white py-12 sm:py-16">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-   <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-primary mb-3">Hitta din testvinnare per kategori</h2>
-   <p class="text-text-light max-w-2xl mb-7">
-    Testvinnarna per kategori är de produkter som tagit högst poäng enligt vår metodik. Klicka in på den kategori du behöver först.
-   </p>
-   <ul class="flex flex-wrap gap-2">
-    {granskningsomraden.map((c) => (
-    <li>
-     <a href={c.href} class="inline-flex items-center bg-white border border-border rounded-md px-4 py-2.5 text-sm font-semibold text-primary hover:border-accent hover:text-accent transition-colors">
-      {c.name}
-     </a>
-    </li>
+ <!-- Bäst i test 2026: chips-index i stället för en kortvägg -->
+ <section class="bg-bg py-12 sm:py-16 border-b border-border">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+   <div class="max-w-2xl mb-8">
+    <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-primary mb-3 leading-tight">
+     Bäst i test 2026: barnvagn, bilbarnstol, blöja och mer
+    </h2>
+    <p class="text-text-light leading-relaxed">
+     Direktlänkar till de bäst-i-test-listor svenska föräldrar söker mest på inför köpet. Uppdaterade med aktuella priser och säkerhetstester.
+    </p>
+   </div>
+
+   <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-8">
+    {bastITestKolumner.map((kol) => (
+    <div>
+     <h3 class="font-heading text-base font-semibold text-primary pb-2 mb-3 border-b-2 border-primary">{kol.rubrik}</h3>
+     <ul class="space-y-2">
+      {kol.lankar.map((l) => (
+      <li>
+       <a href={l.href} class="block bg-white border border-border rounded-md px-3 py-2.5 text-[13px] font-semibold text-primary hover:border-accent hover:text-accent transition-colors">
+        {l.name}
+       </a>
+      </li>
+      ))}
+     </ul>
+    </div>
     ))}
-   </ul>
+   </div>
+  </div>
+ </section>
+
+ <!-- Köpguide -->
+ <section class="bg-white py-12 sm:py-16 border-b border-border">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+   <h2 class="font-heading text-2xl sm:text-3xl font-semibold text-primary mb-6 leading-tight">Vad behöver man till bebis? Det viktigaste inför födseln 2026</h2>
+   <div class="grid lg:grid-cols-2 gap-8 text-[15px] text-text-light leading-relaxed">
+    <div class="space-y-4">
+     <p>Det finns tusentals babyprodukter på marknaden, men de flesta är onödiga. Vad du faktiskt behöver beror på hur du lever, vilken budget du har och om du bor i lägenhet eller hus. Vi har delat upp inköpen i tre kategorier: det absolut nödvändiga, det praktiska och det du kan vänta med.</p>
+     <p><strong class="text-text">Absolut nödvändigt från dag ett:</strong> En godkänd bilbarnstol (i-Size R129) är ett lagkrav för att åka hem från sjukhuset. Välj en modell som är certifierad bakåtvänd till minst 105 cm, exempelvis <a href="/bilbarnstolar/" class="text-accent-dark underline underline-offset-2">Britax Römer Dualfix 5Z eller Cybex Sirona T</a>. En trygg sovplats, <a href="/spjalsangar/" class="text-accent-dark underline underline-offset-2">spjälsäng</a> eller <a href="/spjalsangar/bedside-crib/" class="text-accent-dark underline underline-offset-2">bedside crib</a>, är nästa prioritet. En <a href="/barnvagnar/" class="text-accent-dark underline underline-offset-2">barnvagn</a> behöver du senast när du vill ut på promenad.</p>
+     <p><strong class="text-text">Praktiskt men inte akut:</strong> Bröstpump eller nappflaskor behövs om amningen inte fungerar som planerat. Ha dem hemma i förväg. En <a href="/babyvakter/" class="text-accent-dark underline underline-offset-2">babyvakt</a> är inte ett lagkrav, men de flesta föräldrar vill ha koll när bebisen sover i annat rum. En <a href="/matstolar/" class="text-accent-dark underline underline-offset-2">matstol</a> köper du när barnet är redo för fast föda, runt 4 till 6 månader.</p>
+    </div>
+    <div class="space-y-4">
+     <p><strong class="text-text">Vänta med att köpa:</strong> Leksaker, aktivitetscenter och det mesta babysafarierna säljer kan du köpa begagnat eller vänta tills du ser vad barnet faktiskt gillar. Bebisens smak och motoriska utveckling styr vad som är meningsfullt, inte butikshyllans sortiment.</p>
+     <p><strong class="text-text">Budget och begagnat:</strong> En <a href="/barnvagnar/" class="text-accent-dark underline underline-offset-2">barnvagn i bra skick</a> kostar halva nypriset på Blocket eller Tradera. Spjälsängar och matstolar håller länge och byts sällan ut. Bilbarnstolen köper du alltid ny, du vet aldrig om en begagnad stol har varit med i en krock.</p>
+     <p><strong class="text-text">Säkerhet framför allt:</strong> Oavsett budget: kompromissa aldrig med <a href="/bilbarnstolar/" class="text-accent-dark underline underline-offset-2">bilbarnstolen</a>, sovmiljön (madrass och spjälavstånd) och <a href="/sovsackar/" class="text-accent-dark underline underline-offset-2">sovpåsen</a>. Dessa tre påverkar bebisens säkerhet direkt. Allt annat är bekvämlighet och kan köpas till senare.</p>
+     <p>Vill du ha en komplett lista? Se våra <a href="/guider/utrustning/" class="text-accent-dark underline underline-offset-2">guider om babyutrustning</a> med checklista inför födseln.</p>
+    </div>
+   </div>
   </div>
  </section>
 

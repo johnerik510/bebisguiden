@@ -181,7 +181,7 @@ const articleSchema = article ? {
  document.querySelectorAll('.js-email').forEach(function(el){
  var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),e=u+'@'+d;
  var a=document.createElement('a');a.href='mai'+'lto:'+e;a.textContent=e;
- a.className='text-accent hover:underline';el.replaceWith(a);
+ a.className=el.getAttribute('data-class')||'text-accent hover:underline';el.replaceWith(a);
  });
  </script>
  <!-- AFFI_TRACKING_V1_START -->

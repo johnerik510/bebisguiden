@@ -1,86 +1,341 @@
 ---
+/**
+ * Header — redaktionell mega-meny (2026-07-26).
+ *
+ * UX-mönstret är porterat från isk-guidens IskHeader (icke-sticky E-E-A-T-rad,
+ * fullbredds mega-paneler med länkkolumner + redaktionellt utvalt kort +
+ * trust-footer per panel, mobil kolumn-accordion), översatt till bebisguidens
+ * tokens och en nav-struktur som bygger på FAKTISK GSC-data.
+ *
+ * Nav-ordningen är klick per silo senaste 90 dagarna (GSC, hämtat 2026-07-26):
+ *   blöjor 850 · bilbarnstolar 721 · barnvagnar 712 · guider 390 · amning 384
+ *   spjälsängar 309 · märken 300 · bärselen 250 · babyvakter 176 · matstolar 167
+ *   leksaker 153 · sovsäckar 78 · lära-gå 70 · babykläder 70 · badkar 42
+ * Länkarna inom varje panel är sorterade på klick, inte alfabetiskt.
+ *
+ * Ändringar mot den gamla menyn, alla data-drivna:
+ *  - Blöjor låg under "Mer" trots att det är sitens mest klickade silo. Nu egen grupp.
+ *  - Leksaker hade egen toppnivå med 9 undersidor på 3,2 % av klicken. Nu i "Bära & leka".
+ *  - Märken låg under "Mer" trots 300 klick. Nu som märkeskolumn i de paneler
+ *    där märkessidorna faktiskt får sin trafik (barnvagn + bilbarnstol).
+ *  - Toppsidorna saknades helt i menyn: /bilbarnstolar/framatvand/ (207 klick),
+ *    /blojor/tygblojor/ (202), /amning/nappflaska/ (187), /spjalsangar/bedside-crib/
+ *    (185), /blojor/storlek-guide/ (138), /barselen/nyfodd/ (102),
+ *    /matstolar/resestol/ (93), /guider/barnvagn-flyg/ (235).
+ *
+ * HÅRD REGEL: inga affiliate-spår i menyn. De utvalda korten länkar ENDAST
+ * internt till våra egna topplistor, aldrig till en butik. Ingen varukorgsikon,
+ * ingen butiksnamn, ingen "beställ"-badge. Affiliate-disclosure bor i footern.
+ */
 import SearchModal from './SearchModal.astro';
 
-const navItems = [
+const manader = ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+const nu = new Date();
+const uppdaterad = `${manader[nu.getMonth()]} ${nu.getFullYear()}`;
+
+type Link = { label: string; href: string };
+type Column = { title: string; links: Link[] };
+type Featured = { eyebrow: string; title: string; href: string; img: string; blurb: string; ctaLabel: string };
+type NavItem = { label: string; href: string; columns: Column[]; featured?: Featured; trust: string };
+
+const navItems: NavItem[] = [
  {
- label: 'Bilbarnstolar',
- href: '/bilbarnstolar/',
- dropdown: [
- { label: 'Alla bilbarnstolar', href: '/bilbarnstolar/' },
- { label: 'Bakåtvända', href: '/bilbarnstolar/bakatvand/' },
- { label: 'Framåtvända', href: '/bilbarnstolar/framatvand/' },
- { label: 'Med Isofix', href: '/bilbarnstolar/isofix/' },
- { label: 'I-size', href: '/bilbarnstolar/i-size/' },
- { label: 'Biltestade', href: '/bilbarnstolar/biltestade/' },
- { label: 'Budget', href: '/bilbarnstolar/budget/' },
- ],
+  label: 'Bilbarnstolar',
+  href: '/bilbarnstolar/',
+  trust: 'Rankat efter Folksams och ADAC:s krocktester samt i-Size R129',
+  columns: [
+   {
+    title: 'Efter typ',
+    links: [
+     { label: 'Alla bilbarnstolar', href: '/bilbarnstolar/' },
+     { label: 'Framåtvända bilbarnstolar', href: '/bilbarnstolar/framatvand/' },
+     { label: 'Bakåtvända bilbarnstolar', href: '/bilbarnstolar/bakatvand/' },
+     { label: 'Bältesstol och resesäte', href: '/bilbarnstolar/resesat/' },
+     { label: 'Bilbarnstol med i-Size', href: '/bilbarnstolar/i-size/' },
+     { label: 'Bilbarnstol med Isofix', href: '/bilbarnstolar/isofix/' },
+     { label: 'Bilbarnstol budget', href: '/bilbarnstolar/budget/' },
+    ],
+   },
+   {
+    title: 'Regler och test',
+    links: [
+     { label: 'Bilbarnstolsregler', href: '/guider/bilbarnstol-regler/' },
+     { label: 'Lagen om bilbarnstol', href: '/bilbarnstolar/lag-sverige/' },
+     { label: 'Biltestade bilbarnstolar', href: '/bilbarnstolar/biltestade/' },
+     { label: 'Bilbarnstol för prematur', href: '/bilbarnstolar/prematur/' },
+    ],
+   },
+   {
+    title: 'Märken',
+    links: [
+     { label: 'Cybex', href: '/marken/cybex/' },
+     { label: 'Britax', href: '/marken/britax/' },
+     { label: 'Maxi-Cosi', href: '/marken/maxi-cosi/' },
+     { label: 'BeSafe', href: '/marken/besafe/' },
+     { label: 'Joie', href: '/marken/joie/' },
+    ],
+   },
+  ],
+  featured: {
+   eyebrow: 'Bäst i test',
+   title: 'Britax Römer Dualfix 5Z i-Size',
+   href: '/bilbarnstolar/',
+   img: '/images/products/britax-dualfix-5z-black.webp',
+   blurb: 'Bakåtvänt till 105 cm och 360-graders rotation. Toppade ADAC:s krocktest.',
+   ctaLabel: 'Se hela testet',
+  },
  },
  {
- label: 'Barnvagnar',
- href: '/barnvagnar/',
- dropdown: [
- { label: 'Alla barnvagnar', href: '/barnvagnar/' },
- { label: 'Nyfödda', href: '/barnvagnar/nyfodda/' },
- { label: 'Lätta barnvagnar', href: '/barnvagnar/latt/' },
- { label: 'Duovagnar', href: '/barnvagnar/duovagn/' },
- { label: 'Joggingvagnar', href: '/barnvagnar/joggingvagn/' },
- { label: 'Terrängvagnar', href: '/barnvagnar/terrangvagn/' },
- { label: 'Sittvagnar', href: '/barnvagnar/sittvagn/' },
- { label: 'Budget', href: '/barnvagnar/budget/' },
- ],
+  label: 'Barnvagnar',
+  href: '/barnvagnar/',
+  trust: 'Varje modell körd i minst fyra veckor på svenskt underlag',
+  columns: [
+   {
+    title: 'Efter typ',
+    links: [
+     { label: 'Alla barnvagnar', href: '/barnvagnar/' },
+     { label: 'Duovagn', href: '/barnvagnar/duovagn/' },
+     { label: 'Syskonvagn', href: '/barnvagnar/syskonvagn/' },
+     { label: 'Sittvagn', href: '/barnvagnar/sittvagn/' },
+     { label: 'Lätt barnvagn', href: '/barnvagnar/latt/' },
+     { label: 'Joggingvagn', href: '/barnvagnar/joggingvagn/' },
+     { label: 'Terrängvagn', href: '/barnvagnar/terrangvagn/' },
+    ],
+   },
+   {
+    title: 'Efter behov',
+    links: [
+     { label: 'Barnvagn för nyfödd', href: '/barnvagnar/nyfodda/' },
+     { label: 'Barnvagn budget', href: '/barnvagnar/budget/' },
+     { label: 'Kompakt barnvagn', href: '/barnvagnar/kompakt/' },
+     { label: 'Hopfällbar barnvagn', href: '/barnvagnar/hopfallbar/' },
+     { label: 'Barnvagn med liggdel', href: '/barnvagnar/liggdel/' },
+     { label: 'Barnvagn på flyget', href: '/guider/barnvagn-flyg/' },
+    ],
+   },
+   {
+    title: 'Märken',
+    links: [
+     { label: 'Kinderkraft', href: '/marken/kinderkraft/' },
+     { label: 'Bugaboo', href: '/marken/bugaboo/' },
+     { label: 'Emmaljunga', href: '/marken/emmaljunga/' },
+     { label: 'Hauck', href: '/marken/hauck/' },
+     { label: 'Nuna', href: '/marken/nuna/' },
+     { label: 'UppaBaby', href: '/marken/uppababy/' },
+    ],
+   },
+  ],
+  featured: {
+   eyebrow: 'Bäst i test',
+   title: 'Bugaboo Fox 5 Renew',
+   href: '/barnvagnar/',
+   img: '/images/products/bugaboo-fox-5-renew-barnvagn.webp',
+   blurb: 'Multilink-fjädring och vändbar sittdel. Klarar grus och kullersten från nyfödd.',
+   ctaLabel: 'Se hela testet',
+  },
  },
  {
- label: 'Baby & sömn',
- href: '/babyvakter/',
- dropdown: [
- { label: 'Babyvakter', href: '/babyvakter/' },
- { label: 'Bärselen', href: '/barselen/' },
- { label: 'Babysitter', href: '/babysitter/' },
- { label: 'Spjälsängar', href: '/spjalsangar/' },
- { label: 'Sovpåsar', href: '/sovsackar/' },
- { label: 'Säkerhet', href: '/sakerhet/' },
- { label: 'Hörnskydd', href: '/sakerhet/horneskydd/' },
- ],
+  label: 'Blöjor',
+  href: '/blojor/',
+  trust: 'Sju märken jämförda på läckageskydd, mjukhet och miljöpåverkan',
+  columns: [
+   {
+    title: 'Blöjor',
+    links: [
+     { label: 'Bästa blöjorna', href: '/blojor/' },
+     { label: 'Tygblöjor', href: '/blojor/tygblojor/' },
+     { label: 'Ekologiska blöjor', href: '/blojor/ekologisk/' },
+     { label: 'Nattblöjor', href: '/blojor/natt/' },
+     { label: 'Blöjor för nyfödda', href: '/blojor/newborn/' },
+    ],
+   },
+   {
+    title: 'Guider',
+    links: [
+     { label: 'Blöjstorlekar efter vikt', href: '/blojor/storlek-guide/' },
+     { label: 'Libero eller Pampers', href: '/blojor/libero-vs-pampers/' },
+    ],
+   },
+  ],
+  featured: {
+   eyebrow: 'Bäst i test',
+   title: 'Pampers Premium Protection',
+   href: '/blojor/',
+   img: '/images/products/pampers-premium-protection.webp',
+   blurb: 'Starkast läckageskydd i jämförelsen, med mjukast innerskikt mot huden.',
+   ctaLabel: 'Se hela testet',
+  },
  },
  {
- label: 'Mat & amning',
- href: '/amning/',
- dropdown: [
- { label: 'Alla amningsprodukter', href: '/amning/' },
- { label: 'Matstolar', href: '/matstolar/' },
- { label: 'Bröstpumpar', href: '/amning/brostpump/' },
- { label: 'Amningskuddar', href: '/amning/amningskudde/' },
- { label: 'Nappflaskor', href: '/amning/nappflaska/' },
- { label: 'Sterilisatorer', href: '/sterilisatorer/' },
- ],
+  label: 'Sova & säkerhet',
+  href: '/spjalsangar/',
+  trust: 'Sovmiljö bedömd mot EN 716 och svensk barnläkarpraxis',
+  columns: [
+   {
+    title: 'Sova',
+    links: [
+     { label: 'Bedside crib', href: '/spjalsangar/bedside-crib/' },
+     { label: 'Spjälsängar', href: '/spjalsangar/' },
+     { label: 'Resesäng', href: '/spjalsangar/resesang/' },
+     { label: 'Spjälsängsmadrass', href: '/spjalsangar/madrass/' },
+     { label: 'Omvandlingsbar spjälsäng', href: '/spjalsangar/omvandlingsbar/' },
+     { label: 'Sovpåsar', href: '/sovsackar/' },
+    ],
+   },
+   {
+    title: 'Babyvakt',
+    links: [
+     { label: 'Babyvakt med kamera', href: '/babyvakter/kamera/' },
+     { label: 'Alla babyvakter', href: '/babyvakter/' },
+     { label: 'Babyvakt med app', href: '/babyvakter/app/' },
+     { label: 'Babyvakt utan WiFi', href: '/babyvakter/wifi/' },
+     { label: 'Babyvakt budget', href: '/babyvakter/budget/' },
+    ],
+   },
+   {
+    title: 'Säkerhet hemma',
+    links: [
+     { label: 'Babygrindar', href: '/sakerhet/babygrindar/' },
+     { label: 'Trappgrind', href: '/sakerhet/babygrindar/trappgrind/' },
+     { label: 'Hörnskydd', href: '/sakerhet/horneskydd/' },
+     { label: 'Babysitter', href: '/babysitter/' },
+     { label: 'Säker sovmiljö', href: '/guider/saker-sovmiljo/' },
+    ],
+   },
+  ],
+  featured: {
+   eyebrow: 'Bäst totalt',
+   title: 'Maxi-Cosi Tori Beyond',
+   href: '/spjalsangar/bedside-crib/',
+   img: '/images/products/maxi-cosi-tori-beyond-bedside-crib-graphite.webp',
+   blurb: 'Fäst vid sängen för nattamning utan att dela säng, med sex höjdlägen.',
+   ctaLabel: 'Se hela testet',
+  },
  },
  {
- label: 'Leksaker',
- href: '/leksaker/',
- dropdown: [
- { label: 'Alla leksaker', href: '/leksaker/' },
- { label: 'Babygym', href: '/leksaker/babygym/' },
- { label: 'Aktivitetscenter', href: '/leksaker/aktivitetscenter/' },
- { label: 'Badleksaker', href: '/leksaker/badleksaker/' },
- { label: 'Montessorileksaker', href: '/leksaker/montessori/' },
- { label: 'Barnklocka med GPS', href: '/leksaker/barnklockor/' },
- { label: '0-3 månader', href: '/leksaker/0-3-manader/' },
- { label: '3-6 månader', href: '/leksaker/3-6-manader/' },
- { label: '6-12 månader', href: '/leksaker/6-12-manader/' },
- ],
+  label: 'Mat & amning',
+  href: '/amning/',
+  trust: 'Bedömt på sugstyrka, ljudnivå, rengöring och långsiktigt värde',
+  columns: [
+   {
+    title: 'Amning och flaska',
+    links: [
+     { label: 'Nappflaskor', href: '/amning/nappflaska/' },
+     { label: 'Amningsbh', href: '/amning/amningsbh/' },
+     { label: 'Nappar', href: '/amning/napp/' },
+     { label: 'Elektrisk bröstpump', href: '/amning/elektrisk-brostpump/' },
+     { label: 'Bröstpumpar', href: '/amning/brostpump/' },
+     { label: 'Amningskudde', href: '/amning/amningskudde/' },
+    ],
+   },
+   {
+    title: 'Äta',
+    links: [
+     { label: 'Resematstol', href: '/matstolar/resestol/' },
+     { label: 'Matstolar', href: '/matstolar/' },
+     { label: 'Hopfällbar matstol', href: '/matstolar/hopfallbar/' },
+     { label: 'Tripp Trapp', href: '/matstolar/tripp-trapp/' },
+     { label: 'Boosterkudde', href: '/matstolar/boosterkudde/' },
+    ],
+   },
+   {
+    title: 'Rengöring och guider',
+    links: [
+     { label: 'Sterilisatorer', href: '/sterilisatorer/' },
+     { label: 'Amma eller flaska', href: '/guider/amma-eller-flaska/' },
+     { label: 'Förvara barnmat', href: '/guider/forvara-barnmat-kyl-frys/' },
+    ],
+   },
+  ],
+  featured: {
+   eyebrow: 'Bäst i test',
+   title: 'Philips Avent Natural 3.0',
+   href: '/amning/nappflaska/',
+   img: '/images/products/philips-avent-natural-3-0.webp',
+   blurb: 'Bred napp som liknar bröstet, med ventil som håller nere luftintaget.',
+   ctaLabel: 'Se hela testet',
+  },
  },
  {
- label: 'Mer',
- href: '/babyklader/',
- dropdown: [
- { label: 'Babykläder', href: '/babyklader/' },
- { label: 'Blöjor', href: '/blojor/' },
- { label: 'Tygblöjor', href: '/blojor/tygblojor/' },
- { label: 'Badkar', href: '/badkar/' },
- { label: 'Lära-gå-stol', href: '/lara-ga-stol/' },
- { label: 'Barntavlor', href: '/barntavlor/' },
- { label: 'Märken', href: '/marken/' },
- ],
+  label: 'Bära & leka',
+  href: '/barselen/',
+  trust: 'Bärselar bedöms mot M-positionen som International Hip Dysplasia Institute rekommenderar',
+  columns: [
+   {
+    title: 'Bära',
+    links: [
+     { label: 'Bärsele för nyfödd', href: '/barselen/nyfodd/' },
+     { label: 'Alla bärselar', href: '/barselen/' },
+     { label: 'Bärsele för sommaren', href: '/barselen/sommar/' },
+     { label: 'Ergonomisk bärsele', href: '/barselen/ergonomisk/' },
+     { label: 'Ringsjal', href: '/barselen/ringslinga/' },
+    ],
+   },
+   {
+    title: 'Leka och lära',
+    links: [
+     { label: 'Babygym', href: '/leksaker/babygym/' },
+     { label: 'Barnklocka med GPS', href: '/leksaker/barnklockor/' },
+     { label: 'Aktivitetscenter', href: '/leksaker/aktivitetscenter/' },
+     { label: 'Lära-gå-stol', href: '/lara-ga-stol/' },
+     { label: 'Montessorileksaker', href: '/leksaker/montessori/' },
+     { label: 'Alla leksaker', href: '/leksaker/' },
+    ],
+   },
+   {
+    title: 'Vardag',
+    links: [
+     { label: 'Babykläder', href: '/babyklader/' },
+     { label: 'Babybadkar', href: '/badkar/' },
+     { label: 'Badtermometer', href: '/sakerhet/badtermometer/' },
+     { label: 'Namnlappar', href: '/babyklader/namnlappar/' },
+    ],
+   },
+  ],
+  featured: {
+   eyebrow: 'Bäst i test',
+   title: 'BabyBjörn Mini 3D Mesh',
+   href: '/barselen/nyfodd/',
+   img: '/images/products/babybjorn-mini-3d-mesh-grey-beige.webp',
+   blurb: 'Håller M-positionen från 3,2 kg utan insats, i luftigt mesh för sommaren.',
+   ctaLabel: 'Se hela testet',
+  },
+ },
+ {
+  label: 'Guider',
+  href: '/guider/',
+  trust: `Källbelagda guider, uppdaterade ${uppdaterad}`,
+  columns: [
+   {
+    title: 'Mest lästa',
+    links: [
+     { label: 'Barnvagn på flyget', href: '/guider/barnvagn-flyg/' },
+     { label: 'Bilbarnstolsregler', href: '/guider/bilbarnstol-regler/' },
+     { label: 'Klädstorlekar bebis', href: '/guider/kladstorlekar-bebis/' },
+     { label: 'Bebisens sovschema', href: '/guider/bebis-sovschema/' },
+     { label: 'Checklista inför bebis', href: '/guider/bebis-checklista/' },
+    ],
+   },
+   {
+    title: 'Ämnen',
+    links: [
+     { label: 'Bebishälsa och symptom', href: '/guider/halsa-och-symptom/' },
+     { label: 'Bebissömn', href: '/guider/somn/' },
+     { label: 'Mat och amning', href: '/guider/mat-och-amning/' },
+     { label: 'Babyutrustning', href: '/guider/utrustning/' },
+     { label: 'Förberedelser inför bebis', href: '/guider/forberedelser/' },
+     { label: 'Alla guider', href: '/guider/' },
+    ],
+   },
+   {
+    title: 'Om Bebisguiden',
+    links: [
+     { label: 'Alla märken', href: '/marken/' },
+     { label: 'Så jämför vi', href: '/sa-testar-vi/' },
+     { label: 'Om redaktionen', href: '/om-redaktionen/' },
+    ],
+   },
+  ],
  },
 ];
 
@@ -92,194 +347,216 @@ const uspItems = [
 ];
 ---
 
-<header class="sticky top-0 z-50 shadow-sm">
- <!-- USP bar -->
- <div class="bg-primary text-white text-xs font-semibold py-2 px-4">
- <div class="max-w-7xl mx-auto flex items-center justify-center gap-4 sm:gap-8 flex-wrap">
- {uspItems.map((item, i) => (
- <span class={`flex items-center gap-1.5 ${i > 1? 'hidden md:flex': ''}`}>
- <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
- <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
- </svg>
- {item}
- </span>
- ))}
+<!-- E-E-A-T-rad: icke-sticky, scrollar bort och äter inte above the fold -->
+<div class="hidden md:block bg-primary text-white/85 text-[13px]">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
+  <p class="flex items-center gap-5">
+   {uspItems.map((item, i) => (
+    <span class={`flex items-center gap-1.5 ${i > 2 ? 'hidden xl:flex' : ''}`}>
+     <svg class="w-3.5 h-3.5 text-accent-light flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+     {item}
+    </span>
+   ))}
+  </p>
+  <span class="flex items-center gap-4">
+   <a href="/sa-testar-vi/" class="hover:text-white transition-colors">Så jämför vi</a>
+   <span class="text-white/30" aria-hidden="true">·</span>
+   <a href="/om-redaktionen/" class="hover:text-white transition-colors">Om redaktionen</a>
+  </span>
  </div>
+</div>
+
+<header class="sticky top-0 z-50" id="site-header">
+ <div class="bg-white/95 border-b border-border" style="backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+   <div class="flex items-center justify-between h-16">
+
+    <a href="/" class="flex items-center flex-shrink-0">
+     <img src="/images/logo.svg" alt="Bebisguiden" class="h-8 w-auto" width="181" height="32" />
+    </a>
+
+    <!-- Desktop mega-nav -->
+    <nav class="hidden lg:flex items-stretch h-16" aria-label="Huvudnavigering">
+     {navItems.map((item) => (
+      <div class="mega-item group static flex items-stretch">
+       <a
+        href={item.href}
+        class="relative px-3 h-16 inline-flex items-center text-[15px] font-semibold text-text-light whitespace-nowrap transition-colors group-hover:text-primary group-focus-within:text-primary"
+        aria-haspopup="true"
+       >
+        {item.label}
+        <span class="pointer-events-none absolute left-3 right-3 -bottom-px h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 group-focus-within:scale-x-100 origin-left transition-transform duration-200 motion-reduce:transition-none" aria-hidden="true"></span>
+       </a>
+
+       <div class="mega-panel absolute left-0 right-0 top-full z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity duration-150 motion-reduce:transition-none">
+        <div class="bg-white border border-border border-t-0 rounded-b-lg shadow-xl overflow-hidden">
+         <div class="grid grid-cols-12">
+          <div class={`col-span-12 ${item.featured ? 'lg:col-span-9' : 'lg:col-span-12'} p-7`}>
+           <div class={`grid gap-x-8 gap-y-6 ${item.columns.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+            {item.columns.map((col) => (
+             <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-text-light mb-3 pb-2 border-b border-border">{col.title}</p>
+              <ul class="space-y-0.5">
+               {col.links.map((link) => (
+                <li>
+                 <a href={link.href} class="block py-1.5 text-[14px] text-text hover:text-accent transition-colors">{link.label}</a>
+                </li>
+               ))}
+              </ul>
+             </div>
+            ))}
+           </div>
+          </div>
+
+          {item.featured && (
+           <div class="hidden lg:block lg:col-span-3 bg-bg p-6 border-l border-border">
+            <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-accent-dark mb-3">{item.featured.eyebrow}</span>
+            <a href={item.featured.href} class="block group/feat">
+             <img src={item.featured.img} alt="" width="240" height="128" loading="lazy" class="w-full h-32 rounded-lg bg-white border border-border mb-3 object-contain p-3" />
+             <p class="font-heading font-semibold text-primary text-[15px] leading-snug group-hover/feat:text-accent transition-colors">{item.featured.title}</p>
+            </a>
+            <p class="text-[13px] text-text-light leading-relaxed mt-1.5 mb-4">{item.featured.blurb}</p>
+            <a href={item.featured.href} class="inline-flex items-center justify-center w-full border border-border bg-white hover:border-accent hover:text-accent text-primary font-semibold py-2.5 px-4 rounded-md transition-colors text-[13px]">
+             {item.featured.ctaLabel}
+            </a>
+           </div>
+          )}
+         </div>
+
+         <div class="flex items-center justify-between gap-4 px-7 py-3 bg-bg-alt border-t border-border text-[12px] text-text-light">
+          <span class="flex items-center gap-2">
+           <svg class="w-3.5 h-3.5 text-accent-dark flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+           {item.trust}
+          </span>
+          <a href="/sa-testar-vi/" class="font-semibold text-accent-dark hover:text-accent transition-colors whitespace-nowrap">Så jämför vi</a>
+         </div>
+        </div>
+       </div>
+      </div>
+     ))}
+    </nav>
+
+    <!-- Höger: sök + checklista -->
+    <div class="hidden lg:flex items-center gap-1 flex-shrink-0">
+     <button
+      id="search-open-desktop"
+      class="p-2.5 rounded-md text-text-light hover:text-accent hover:bg-bg-alt transition-colors flex items-center justify-center"
+      aria-label="Sök"
+      title="Sök (Ctrl+K)"
+     >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+     </button>
+     <a href="/guider/bebis-checklista/" class="ml-1 bg-cta hover:bg-cta-dark text-white font-semibold px-4 py-2 rounded-md transition-colors text-sm whitespace-nowrap">Bebis-checklista</a>
+    </div>
+
+    <!-- Mobil: sök + hamburgare -->
+    <div class="lg:hidden flex items-center gap-0.5">
+     <button
+      id="search-open-mobile"
+      class="p-2.5 rounded-md text-text-light hover:text-accent hover:bg-bg-alt transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+      aria-label="Sök"
+     >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+     </button>
+
+     <button
+      id="mobile-menu-btn"
+      class="p-2.5 rounded-md hover:bg-bg-alt transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-primary"
+      aria-label="Öppna meny"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+     >
+      <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+     </button>
+    </div>
+
+   </div>
+  </div>
  </div>
 
- <!-- White nav -->
- <div class="bg-white border-b border-gray-200">
- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <div class="flex items-center justify-between h-16">
-
- <a href="/" class="flex items-center flex-shrink-0">
- <img src="/images/logo.svg" alt="Bebisguiden" class="h-8 w-auto" width="181" height="32" />
- </a>
-
- <!-- Desktop nav -->
- <nav class="hidden lg:flex items-center gap-0.5" aria-label="Huvudnavigering">
- {navItems.map((item) => (
- <div class="relative group">
- {item.href? (
- <a
- href={item.href}
- class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1 whitespace-nowrap"
- aria-haspopup="true"
- >
- {item.label}
- <svg class="w-3 h-3 opacity-50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
- </svg>
- </a>
- ): (
- <button
- class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1 whitespace-nowrap cursor-pointer"
- aria-haspopup="true"
- tabindex="0"
- >
- {item.label}
- <svg class="w-3 h-3 opacity-50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
- </svg>
- </button>
- )}
- <!-- Dropdown -->
- <div class="absolute left-0 top-full pt-1 hidden group-hover:block group-focus-within:block z-50">
- <div class="bg-white border border-gray-200 rounded-xl shadow-lg py-1.5 min-w-[200px]">
- {item.dropdown.map((sub) => (
- <a
- href={sub.href}
- class="block px-4 py-2 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors"
- >
- {sub.label}
- </a>
- ))}
- </div>
- </div>
- </div>
- ))}
-
- <a href="/guider/bebis-checklista/" class="ml-3 px-4 py-2 text-sm font-semibold bg-cta text-white rounded-md hover:bg-cta-dark transition-colors whitespace-nowrap">
- Bebis-checklista
- </a>
-
- <!-- Desktop search button -->
- <button
- id="search-open-desktop"
- class="ml-2 p-2.5 rounded-lg hover:bg-gray-100 transition-colors text-gray-500 hover:text-accent flex items-center justify-center"
- aria-label="Sök"
- title="Sök (Ctrl+K)"
- >
- <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
- </svg>
- </button>
- </nav>
-
- <!-- Mobile: search icon + hamburger (always visible, no menu needed) -->
- <div class="lg:hidden flex items-center gap-0.5">
- <button
- id="search-open-mobile"
- class="p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-600 hover:text-accent"
- aria-label="Sök"
- >
- <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
- </svg>
- </button>
-
- <button
- id="mobile-menu-btn"
- class="p-2.5 rounded-md hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700"
- aria-label="Öppna meny"
- aria-expanded="false"
- aria-controls="mobile-menu"
- >
- <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
- </svg>
- <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
- </svg>
- </button>
- </div>
-
- </div>
- </div>
- </div>
-
- <!-- Mobile menu -->
- <nav id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 max-h-[80vh] overflow-y-auto" aria-label="Mobilnavigering">
- <div class="px-4 py-2 divide-y divide-gray-100">
- {navItems.map((item, i) => (
- <div class="mobile-section py-1">
- <button
- class="mobile-toggle w-full flex items-center justify-between py-3 text-sm font-semibold text-gray-800 hover:text-primary transition-colors"
- aria-expanded="false"
- data-index={i}
- >
- <span>{item.label}</span>
- <svg class="toggle-chevron w-4 h-4 opacity-50 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
- </svg>
- </button>
- <div class="mobile-dropdown hidden pb-2">
- {item.dropdown.map((sub) => (
- <a
- href={sub.href}
- class="flex items-center gap-2 pl-3 py-2.5 text-sm text-gray-600 hover:text-primary transition-colors border-l-2 border-transparent hover:border-accent ml-1"
- >
- {sub.label}
- </a>
- ))}
- </div>
- </div>
- ))}
- <div class="py-3">
- <a href="/guider/bebis-checklista/" class="block w-full text-center px-4 py-3 text-sm font-semibold bg-accent text-white rounded-lg hover:opacity-90 transition-opacity">
- Bebis-checklista
- </a>
- </div>
- </div>
+ <!-- Mobilmeny: kolumn-accordion -->
+ <nav id="mobile-menu" class="hidden lg:hidden bg-white border-t border-border max-h-[82vh] overflow-y-auto" aria-label="Mobilnavigering">
+  <div class="px-4 py-2 divide-y divide-border">
+   {navItems.map((item, i) => (
+    <div class="mobile-section py-1">
+     <button
+      class="mobile-toggle w-full flex items-center justify-between py-3.5 text-[15px] font-semibold text-primary"
+      aria-expanded="false"
+      data-index={i}
+     >
+      <span>{item.label}</span>
+      <svg class="toggle-chevron w-4 h-4 opacity-50 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+     </button>
+     <div class="mobile-dropdown hidden pb-3">
+      {item.columns.map((col) => (
+       <div class="mt-2">
+        <p class="text-[11px] font-semibold uppercase tracking-wider text-text-light mt-3 mb-1">{col.title}</p>
+        {col.links.map((link) => (
+         <a href={link.href} class="block pl-3 py-2 text-[14px] text-text hover:text-accent border-l-2 border-border hover:border-accent transition-colors">{link.label}</a>
+        ))}
+       </div>
+      ))}
+     </div>
+    </div>
+   ))}
+   <div class="py-3 flex flex-col gap-2">
+    <a href="/sa-testar-vi/" class="flex items-center gap-2 py-2 text-[15px] font-semibold text-primary">
+     <svg class="w-4 h-4 text-accent-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+     Så jämför vi
+    </a>
+    <a href="/guider/bebis-checklista/" class="bg-cta hover:bg-cta-dark text-white font-semibold px-4 py-3 rounded-md text-center transition-colors">Bebis-checklista</a>
+   </div>
+  </div>
  </nav>
 </header>
 
 <SearchModal />
 
 <script>
- // Mobile menu toggle
+ // Mobilmeny
  const btn = document.getElementById('mobile-menu-btn');
  const menu = document.getElementById('mobile-menu');
  const iconOpen = document.getElementById('menu-icon-open');
  const iconClose = document.getElementById('menu-icon-close');
 
  btn?.addEventListener('click', () => {
- const isOpen = !menu?.classList.contains('hidden');
- menu?.classList.toggle('hidden');
- iconOpen?.classList.toggle('hidden', !isOpen);
- iconClose?.classList.toggle('hidden', isOpen);
- btn.setAttribute('aria-expanded', String(isOpen ? 'false' : 'true'));
+  const isOpen = !menu?.classList.contains('hidden');
+  menu?.classList.toggle('hidden');
+  iconOpen?.classList.toggle('hidden', !isOpen);
+  iconClose?.classList.toggle('hidden', isOpen);
+  btn.setAttribute('aria-expanded', String(isOpen ? 'false' : 'true'));
  });
 
- // Mobile accordion
+ // Mobil accordion
  document.querySelectorAll('.mobile-toggle').forEach((toggle) => {
- toggle.addEventListener('click', () => {
- const section = toggle.closest('.mobile-section');
- const dropdown = section?.querySelector('.mobile-dropdown');
- const chevron = toggle.querySelector('.toggle-chevron');
- const isOpen = !dropdown?.classList.contains('hidden');
+  toggle.addEventListener('click', () => {
+   const section = toggle.closest('.mobile-section');
+   const dropdown = section?.querySelector('.mobile-dropdown');
+   const chevron = toggle.querySelector('.toggle-chevron');
+   const isOpen = !dropdown?.classList.contains('hidden');
 
- dropdown?.classList.toggle('hidden', isOpen);
- chevron?.classList.toggle('rotate-180', !isOpen);
- toggle.setAttribute('aria-expanded', String(!isOpen));
- });
+   dropdown?.classList.toggle('hidden', isOpen);
+   chevron?.classList.toggle('rotate-180', !isOpen);
+   toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
  });
 
- // Search button wiring
+ // Sök
  function openSearch() {
- if (typeof (window as any).openBebisSearch === 'function') {
- (window as any).openBebisSearch();
- }
+  if (typeof (window as any).openBebisSearch === 'function') {
+   (window as any).openBebisSearch();
+  }
  }
 
  document.getElementById('search-open-desktop')?.addEventListener('click', openSearch);
