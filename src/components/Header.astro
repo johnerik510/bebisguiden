@@ -482,8 +482,8 @@ const uspItems = [
  </div>
 
  <!-- Mobilmeny: kolumn-accordion -->
- <nav id="mobile-menu" class="hidden lg:hidden bg-white border-t border-border max-h-[82vh] overflow-y-auto" aria-label="Mobilnavigering">
-  <div class="px-4 py-2 divide-y divide-border">
+ <nav id="mobile-menu" class="hidden lg:hidden fixed inset-x-0 bottom-0 z-[60] bg-white border-t border-border overflow-y-auto overscroll-contain" aria-label="Mobilnavigering">
+  <div class="px-4 py-2 pb-[max(1.5rem,env(safe-area-inset-bottom))] divide-y divide-border">
    {navItems.map((item, i) => (
     <div class="mobile-section py-1">
      <button
@@ -526,13 +526,35 @@ const uspItems = [
  const menu = document.getElementById('mobile-menu');
  const iconOpen = document.getElementById('menu-icon-open');
  const iconClose = document.getElementById('menu-icon-close');
+ const siteHeader = document.getElementById('site-header');
+
+ // Menyn ligger fixed och ska fylla ytan under headerraden hela vägen ner
+ const positionMenu = () => {
+  if (menu && siteHeader) menu.style.top = `${siteHeader.getBoundingClientRect().bottom}px`;
+ };
+
+ const setMenu = (open: boolean) => {
+  if (!menu || !btn) return;
+  if (open) positionMenu();
+  menu.classList.toggle('hidden', !open);
+  iconOpen?.classList.toggle('hidden', open);
+  iconClose?.classList.toggle('hidden', !open);
+  btn.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+ };
 
  btn?.addEventListener('click', () => {
-  const isOpen = !menu?.classList.contains('hidden');
-  menu?.classList.toggle('hidden');
-  iconOpen?.classList.toggle('hidden', !isOpen);
-  iconClose?.classList.toggle('hidden', isOpen);
-  btn.setAttribute('aria-expanded', String(isOpen ? 'false' : 'true'));
+  setMenu(menu?.classList.contains('hidden') ?? false);
+ });
+
+ document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) setMenu(false);
+ });
+
+ window.addEventListener('resize', () => {
+  if (!menu || menu.classList.contains('hidden')) return;
+  if (window.innerWidth >= 1024) setMenu(false);
+  else positionMenu();
  });
 
  // Mobil accordion
