@@ -5,6 +5,11 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacDualfix = adacFor('britax-dualfix-5z');
+const adacBesafe = adacFor('besafe-izi-modular-rf-x1');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -24,12 +29,12 @@ const products = [
     brand: 'Britax Römer',
     rating: 4.8,
     badge: 'Bäst i test',
-    usps: ['Toppbetyg ADAC + Folksam', '360° rotation', 'Räcker till 4 år'],
+    usps: ['Bra i ADAC-krocktest', '360° rotation', 'Räcker till 4 år'],
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue',
     imageUrl: '/images/products/britax-romer-dualfix-5z-i-size-black.webp',
     desc: 'Bakåtvänd bilbarnstol 0 till 18 kg med 360-rotation och ISOFIX. Toppval för nyfödda.',
-    features: { 'Viktintervall': '0 till 18 kg', 'Längdintervall': '40 till 105 cm', 'Montering': 'ISOFIX + stödben', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)' },
+    features: { 'Viktintervall': '0 till 18 kg', 'Längdintervall': '40 till 105 cm', 'Montering': 'ISOFIX + stödben', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,4) · 2023' },
     alsoAt: [],
   },
   {
@@ -42,12 +47,12 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
     imageUrl: '/images/products/besafe-izi-modular-rf-x1-i-size.webp',
     desc: 'Bakåtvänd bilbarnstol 0 till 18 kg med modulärt system och ISOFIX.',
-    features: { 'Viktintervall': '0 till 18 kg', 'Längdintervall': '40 till 105 cm', 'Montering': 'ISOFIX + stödben', 'Rotation': 'Nej', 'Säkerhet': 'i-Size (R129)' },
+    features: { 'Viktintervall': '0 till 18 kg', 'Längdintervall': '40 till 105 cm', 'Montering': 'ISOFIX + stödben', 'Rotation': 'Nej', 'Säkerhet': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (1,7) · 2022' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Viktintervall', 'Längdintervall', 'Montering', 'Rotation', 'Säkerhet'];
+const specLabels = ['Viktintervall', 'Längdintervall', 'Montering', 'Rotation', 'Säkerhet', 'ADAC-krocktest'];
 
 const faqItems = [
   {
@@ -134,7 +139,8 @@ export const articleMeta = {
       imageAlt="Britax Römer Dualfix 5Z i-Size bilbarnstol 0 till 18 kg"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
-      pros={['Toppbetyg i ADAC- och Folksam-krocktester 2024', '360-graders rotation, enkel i- och urlastning', 'ISOFIX + stödben för stabil montering', 'Täcker hela spädbarnsperioden utan stolbyte', 'Justerbar nackdel och sele i ett steg']}
+      adacScore={adacDualfix?.overall}
+      pros={['Bra (2,4) i ADAC-krocktest 2023', '360-graders rotation, enkel i- och urlastning', 'ISOFIX + stödben för stabil montering', 'Täcker hela spädbarnsperioden utan stolbyte', 'Justerbar nackdel och sele i ett steg']}
       cons={['Tyngre (14,8 kg), inte designad för att bäras', 'Tar stor plats i kompakta bilar']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -155,7 +161,8 @@ export const articleMeta = {
       imageAlt="BeSafe iZi Modular RF X1 i-Size bilbarnstol 0 till 18 kg"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
-      pros={['Norsk säkerhetsmärke med starka krocktestresultat', 'Lätt jämfört med konkurrenter (12,5 kg)', 'Modulärt system, kan kombineras med BeSafe-bas', 'Smalt i bilens längdriktning, passar trånga bilar']}
+      adacScore={adacBesafe?.overall}
+      pros={['Bra (1,7) i ADAC-krocktest 2022, testad med bas', 'Lätt jämfört med konkurrenter (12,5 kg)', 'Modulärt system, kan kombineras med BeSafe-bas', 'Smalt i bilens längdriktning, passar trånga bilar']}
       cons={['Ingen 360-graders rotation', 'Modulärsystemets bas säljs separat, extra kostnad']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -171,6 +178,7 @@ export const articleMeta = {
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Bilbarnstolar 0-18 kg 2026" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: så väljer du rätt bilbarnstol 0 till 18 kg 2026</h2>
 
@@ -191,7 +199,7 @@ export const articleMeta = {
 
     <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad krocktestarna säger om bilbarnstol 0 till 18 kg</h3>
     <p class="text-text-light leading-relaxed mb-4">
-      ADAC (Europas största bilorganisation) och Folksam utför oberoende krocktester. <a href="/marken/britax/" class="text-accent hover:text-accent-dark underline">Britax</a> Römer Dualfix 5Z fick betyget "bra" i senaste ADAC-testet. <a href="/marken/besafe/" class="text-accent hover:text-accent-dark underline">BeSafe</a> iZi Modular RF X1 är högt rankad av skandinaviska testorganisationer med betyget "bra" i sidokrockstester. Båda stolarna uppfyller i-Size (R129)-standard som kräver sidokrocktestning.
+      ADAC (Europas största bilorganisation) och Folksam utför oberoende krocktester. <a href="/marken/britax/" class="text-accent hover:text-accent-dark underline">Britax</a> Römer Dualfix 5Z fick betyget Bra (2,4) i ADAC-testet 2023, testad med Flex Base 5Z. <a href="/marken/besafe/" class="text-accent hover:text-accent-dark underline">BeSafe</a> iZi Modular RF X1 fick Bra (1,7) i ADAC-testet 2022, testad med iZi Modular i-Size-basen, med säkerhetsdelbetyget 1,2. Båda stolarna uppfyller i-Size (R129)-standard som kräver sidokrocktestning.
     </p>
 
     <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Vad kostar en bra bilbarnstol 0 till 18 kg?</h3>

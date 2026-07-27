@@ -5,6 +5,11 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacTrillo = adacFor('joie-i-trillo-fx');
+const adacKidfixM = adacFor('britax-kidfix-m');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -29,7 +34,7 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285124&url=https://www.jollyroom.se/bilstolar/baltesstolar/isofix/joie-i-trillo-fx-baltesstol',
     imageUrl: '/images/products/joie-i-trillo-fx.webp',
     desc: 'Prisvärd bältesstol (grupp 2/3) med ISOFIX och i-Size-godkännande. Bäst pris i test.',
-    features: { 'Grupp': '2/3', 'Montering': 'ISOFIX', 'Bakåtvänd till': 'Ej tillämpligt', 'Vikt stol': 'ca 7 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '2/3', 'Montering': 'ISOFIX', 'Bakåtvänd till': 'Ej tillämpligt', 'Vikt stol': 'ca 7 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,3) · 2025' },
     alsoAt: [],
   },
   {
@@ -42,7 +47,7 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10243969&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/i-size/joie-every-stage-bilbarnstol-moss',
     imageUrl: '/images/products/joie-every-stage-moss.webp',
     desc: 'Flexibel bilbarnstol (grupp 0+/1/2/3) med ISOFIX och i-Size-godkännande. Bakåtvänd till 18 kg.',
-    features: { 'Grupp': '0+/1/2/3', 'Montering': 'ISOFIX', 'Bakåtvänd till': '18 kg', 'Vikt stol': 'ca 7 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '0+/1/2/3', 'Montering': 'ISOFIX', 'Bakåtvänd till': '18 kg', 'Vikt stol': 'ca 7 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Ej testad av ADAC' },
     alsoAt: [],
   },
   {
@@ -50,12 +55,12 @@ const products = [
     brand: 'Britax Römer',
     rating: 4.5,
     badge: 'Bra krocktester',
-    usps: ['Bra resultat i oberoende krocktester', 'i-Size-godkänd (R129)', 'Lätt att justera höjden'],
+    usps: ['Bra (2,0) i ADAC 2022', 'i-Size-godkänd (R129)', 'Lätt att justera höjden'],
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10302722&url=https://www.jollyroom.se/bilstolar/baltesstolar/baltesstolar/britax-romer-kidfix-m-i-size-classic-baltesstol-space-black',
     imageUrl: '/images/products/britax-romer-kidfix-m-i-size.webp',
     desc: 'Prisvärd bältad bilbarnstol (grupp 2/3) med i-Size-godkännande och god säkerhetsrating från Britax Römer.',
-    features: { 'Grupp': '2/3', 'Montering': 'Bilbälte', 'Bakåtvänd till': 'Ej tillämpligt', 'Vikt stol': 'ca 5,5 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '2/3', 'Montering': 'Bilbälte', 'Bakåtvänd till': 'Ej tillämpligt', 'Vikt stol': 'ca 5,5 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,0) · 2022' },
     alsoAt: [],
   },
   {
@@ -63,12 +68,12 @@ const products = [
     brand: 'Cybex',
     rating: 4.7,
     badge: 'Folksam-godkänd',
-    usps: ['Folksam-godkänd i-Size-stol', 'ISOFIX med stödben', 'Bäst säkerhetsprofil i testet'],
+    usps: ['i-Size-godkänd (R129)', 'ISOFIX med stödben', 'Rotation för enkel ilastning'],
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
     imageUrl: '/images/products/cybex-pallas-b2-i-size.webp',
     desc: 'Folksam-godkänd i-Size-bilbarnstol (grupp 1/2/3) med ISOFIX och stödben. Bäst säkerhetsprofil i testet.',
-    features: { 'Grupp': '1/2/3', 'Montering': 'ISOFIX', 'Bakåtvänd till': '18 kg', 'Vikt stol': 'ca 8,5 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '1/2/3', 'Montering': 'ISOFIX', 'Bakåtvänd till': '18 kg', 'Vikt stol': 'ca 8,5 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Ej testad av ADAC' },
     alsoAt: [],
   },
   {
@@ -81,12 +86,12 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910750&url=https://www.jollyroom.se/bilstolar/bilstolspaket/besafe-izi-modular-rf-x1-black-cab',
     imageUrl: '/images/products/besafe-izi-turn-b-i-size.webp',
     desc: 'Bakåtvänd i-Size-bilbarnstol (grupp 0+/1) med ISOFIX till 18 kg från norska säkerhetsspecialisten BeSafe.',
-    features: { 'Grupp': '0+/1', 'Montering': 'ISOFIX', 'Bakåtvänd till': '18 kg', 'Vikt stol': 'ca 9 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '0+/1', 'Montering': 'ISOFIX', 'Bakåtvänd till': '18 kg', 'Vikt stol': 'ca 9 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Ej testad av ADAC' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Grupp', 'Montering', 'Bakåtvänd till', 'Vikt stol', 'Standard'];
+const specLabels = ['Grupp', 'Montering', 'Bakåtvänd till', 'Vikt stol', 'Standard', 'ADAC-krocktest'];
 
 const faqItems = [
   {
@@ -172,7 +177,8 @@ export const articleMeta = {
       imageAlt="Joie i-Trillo FX billig bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10285124&url=https://www.jollyroom.se/bilstolar/baltesstolar/isofix/joie-i-trillo-fx-baltesstol"
-      pros={['Lägst pris med ISOFIX i testet', 'i-Size-godkänd (R129)', 'Lång användningstid grupp 2/3']}
+      adacScore={adacTrillo?.overall}
+      pros={['Bra (2,3) i ADAC-krocktest 2025', 'Lägst pris med ISOFIX i testet', 'Lång användningstid grupp 2/3']}
       cons={['Enklare material än dyrare modeller', 'Begränsat justerbart nackskydd']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -214,7 +220,8 @@ export const articleMeta = {
       imageAlt="Britax Römer Kidfix M i-Size billig bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10302722&url=https://www.jollyroom.se/bilstolar/baltesstolar/baltesstolar/britax-romer-kidfix-m-i-size-classic-baltesstol-space-black"
-      pros={['Bra resultat i oberoende krocktester', 'i-Size-godkänd (R129)', 'Lätt att justera höjden']}
+      adacScore={adacKidfixM?.overall}
+      pros={['Bra (2,0) i ADAC-krocktest 2022', 'i-Size-godkänd (R129)', 'Lätt att justera höjden']}
       cons={['Passar bara grupp 2/3, inte för spädbarn', 'Bältesmonterad utan ISOFIX']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -235,7 +242,7 @@ export const articleMeta = {
       imageAlt="Cybex Pallas B2 i-Size billig bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
-      pros={['Folksam-godkänd i-Size-stol', 'ISOFIX med stödben', 'Bäst säkerhetsprofil i testet']}
+      pros={['i-Size-godkänd (R129)', 'ISOFIX med stödben', 'Rotation för enkel ilastning']}
       cons={['Nästan dyrast i testet', 'Tyngre än övriga (ca 8,5 kg)']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -272,6 +279,7 @@ export const articleMeta = {
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Billiga bilbarnstolar 2026" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad du ska titta på när du väljer billig bilbarnstol</h2>
 

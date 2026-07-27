@@ -5,6 +5,11 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacAton = adacFor('cybex-aton-b2');
+const adacILevel = adacFor('joie-i-level-pro');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -29,7 +34,7 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228477&url=https://www.jollyroom.se/bilstolar/babyskydd/baser/cybex-aton-b2-i-size-babyskydd-inkl-base-one-volcano-black',
     imageUrl: '/images/products/cybex-aton-b2-i-size.webp',
     desc: 'Babyskydd med bärhandtag och ISOFIX-bas-kompatibilitet. Bäst för resor. Lätt (ca 2,9 kg) och kan monteras med bilbälte i hyrbil utan ISOFIX. För barn 0 till 18 månader (40 till 83 cm).',
-    features: { 'Montering': 'Bilbälte eller ISOFIX-bas', 'Vikt': 'ca 2,9 kg', 'Åldersintervall': '0 till 18 mån (40 till 83 cm)', 'Säkerhet': 'i-Size (R129)', 'Barnvagnskompatibel': 'CYBEX-chassier' },
+    features: { 'Montering': 'Bilbälte eller ISOFIX-bas', 'Vikt': 'ca 2,9 kg', 'Åldersintervall': '0 till 18 mån (40 till 83 cm)', 'Säkerhet': 'i-Size (R129)', 'Barnvagnskompatibel': 'CYBEX-chassier', 'ADAC-krocktest': 'Bra (1,9) · 2022' },
     alsoAt: [],
   },
   {
@@ -42,12 +47,12 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291101&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/joie-i-level-pro-babyskydd-ebony',
     imageUrl: '/images/products/joie-i-level-pro-babyskydd-ebony.webp',
     desc: 'Prisvärt babyskydd med plant liggläge, bra för längre resor. Bältesmonterad eller med i-Base, fungerar i alla bilar. För barn 0 till 12 månader (40 till 75 cm).',
-    features: { 'Montering': 'Bilbälte eller i-Base', 'Vikt': 'Lätt babyskydd', 'Åldersintervall': '0 till 12 mån (40 till 75 cm)', 'Säkerhet': 'i-Size (R129)', 'Barnvagnskompatibel': 'Joie- och Aviva-chassier' },
+    features: { 'Montering': 'Bilbälte eller i-Base', 'Vikt': 'Lätt babyskydd', 'Åldersintervall': '0 till 12 mån (40 till 75 cm)', 'Säkerhet': 'i-Size (R129)', 'Barnvagnskompatibel': 'Joie- och Aviva-chassier', 'ADAC-krocktest': 'Bra (2,3) · 2025' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Montering', 'Vikt', 'Åldersintervall', 'Säkerhet', 'Barnvagnskompatibel'];
+const specLabels = ['Montering', 'Vikt', 'Åldersintervall', 'Säkerhet', 'Barnvagnskompatibel', 'ADAC-krocktest'];
 
 const faqItems = [
   {
@@ -139,7 +144,8 @@ export const articleMeta = {
       imageAlt="Cybex Aton B2 i-Size babyskydd för resor"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10228477&url=https://www.jollyroom.se/bilstolar/babyskydd/baser/cybex-aton-b2-i-size-babyskydd-inkl-base-one-volcano-black"
-      pros={['Lätt (ca 2,9 kg) och enkel att bära utan bas', 'Kan monteras med bilbälte i hyrbil utan adapter', 'i-Size godkänd med sidokrocksskydd', 'Lägre pris, mer skonsamt om stolen skadas vid bagagehantering', 'Kompatibel med de flesta CYBEX-chassier för barnvagn']}
+      adacScore={adacAton?.overall}
+      pros={['Bra (1,9) i ADAC-krocktest 2022', 'Lätt (ca 2,9 kg) och enkel att bära utan bas', 'i-Size godkänd med sidokrocksskydd', 'Lägre pris, mer skonsamt om stolen skadas vid bagagehantering', 'Kompatibel med de flesta CYBEX-chassier för barnvagn']}
       cons={['Kräver mer noggrannhet vid bältesinstallation', 'Utan ISOFIX-bas är installationen mer tidskrävande', 'Kortare användningstid (till 83 cm) än bredare stolar']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -160,7 +166,8 @@ export const articleMeta = {
       imageAlt="Joie i-Level Pro babyskydd"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10291101&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/joie-i-level-pro-babyskydd-ebony"
-      pros={['Plant liggläge, bra för längre resor', 'Lätt babyskydd som är enkelt att bära', 'Kompatibel med Joie- och Aviva-chassier för barnvagn', 'Bältesmonterad eller med i-Base, fungerar i alla bilar']}
+      adacScore={adacILevel?.overall}
+      pros={['Bra (2,3) i ADAC-krocktest 2025', 'Plant liggläge, bra för längre resor', 'Kompatibel med Joie- och Aviva-chassier för barnvagn', 'Bältesmonterad eller med i-Base, fungerar i alla bilar']}
       cons={['Kortare användningstid (till 85 cm)', 'Enklare sidoskydd jämfört med premiumalternativ', 'Basen säljs separat för ISOFIX-montering']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -176,6 +183,7 @@ export const articleMeta = {
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Resesäten för bil 2026" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Resesäte bilbarnstol: vad du ska tänka på vid hyrbil och flyg</h2>
 

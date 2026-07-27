@@ -5,6 +5,12 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacSirona = adacFor('cybex-sirona-t');
+const adacDualfix = adacFor('britax-dualfix-5z');
+const adacPearl = adacFor('maxi-cosi-pearl-360');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -29,7 +35,7 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
     imageUrl: '/images/products/cybex-sirona-t-i-size.webp',
     desc: 'ISOFIX-bilbarnstol med 360-rotation och bäst säkerhet i klassen.',
-    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '15,2 kg', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)' },
+    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '15,2 kg', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,3) · 2023' },
     alsoAt: [],
   },
   {
@@ -37,12 +43,12 @@ const products = [
     brand: 'Britax Römer',
     rating: 4.7,
     badge: 'Bäst värde',
-    usps: ['Toppbetyg ADAC + Folksam', '360° rotation', 'ISOFIX + stödben'],
+    usps: ['Bra i ADAC-krocktest', '360° rotation', 'ISOFIX + stödben'],
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue',
     imageUrl: '/images/products/britax-romer-dualfix-5z-i-size-black.webp',
     desc: 'ISOFIX-bilbarnstol med 360-rotation och premium krocksäkerhet.',
-    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '14,8 kg', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)' },
+    features: { 'Montering': 'ISOFIX + stödben', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '14,8 kg', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,4) · 2023' },
     alsoAt: [],
   },
   {
@@ -55,12 +61,12 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10259371&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/isofix/maxi-cosi-pearl-360-bilbarnstol-authentic-graphite',
     imageUrl: '/images/products/maxi-cosi-pearl-360.webp',
     desc: 'ISOFIX-bilbarnstol med 360-rotation och FamilyFix-baskompatibilitet.',
-    features: { 'Montering': 'ISOFIX + bas (FamilyFix 360)', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '11,5 kg (exkl. bas)', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)' },
+    features: { 'Montering': 'ISOFIX + bas (FamilyFix 360)', 'Riktning': 'Bakåtvänd/framåtvänd', 'Vikt': '11,5 kg (exkl. bas)', 'Rotation': '360 grader', 'Säkerhet': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,1) · 2022' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Montering', 'Riktning', 'Vikt', 'Rotation', 'Säkerhet'];
+const specLabels = ['Montering', 'Riktning', 'Vikt', 'Rotation', 'Säkerhet', 'ADAC-krocktest'];
 
 const faqItems = [
   {
@@ -142,7 +148,8 @@ export const articleMeta = {
       imageAlt="Cybex Sirona T i-Size ISOFIX bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
-      pros={['Utmärkt sidoskydd och krockskydd', 'Magnetiskt bälteslås, smidig montering', 'Premium material och lång livslängd']}
+      adacScore={adacSirona?.overall}
+      pros={['Bra (2,3) i ADAC-krocktest 2023', 'Magnetiskt bälteslås, smidig montering', 'Premium material och lång livslängd']}
       cons={['Högsta prisklassen', 'Något tyngre än konkurrenterna (15,2 kg)']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -163,11 +170,12 @@ export const articleMeta = {
       imageAlt="Britax Römer Dualfix 5Z i-Size ISOFIX bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273032&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-5z-bilbarnstol-harbor-blue"
-      pros={['Toppbetyg i ADAC- och Folksam-krocktester', '360-graders rotation', 'Bra balans mellan pris och prestanda']}
+      adacScore={adacDualfix?.overall}
+      pros={['Bra (2,4) i ADAC-krocktest 2023', '360-graders rotation', 'Bra balans mellan pris och prestanda']}
       cons={['Högre vikt (14,8 kg)', 'Tar stor plats i mindre bilar']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Britax Römer Dualfix 5Z i-Size är valet för dig som vill ha topprestanda utan att betala för det allra dyraste. Den monteras med ISOFIX och stödben och roterar 360 grader, och har toppbetyg i både ADAC och Folksams krocktester. För åldrarna 0 till 4 år (40 till 105 cm) ger den bra balans mellan pris och prestanda.
+      Britax Römer Dualfix 5Z i-Size är valet för dig som vill ha topprestanda utan att betala för det allra dyraste. Den monteras med ISOFIX och stödben och roterar 360 grader, med betyget Bra (2,4) i ADAC:s krocktest 2023. För åldrarna 0 till 4 år (40 till 105 cm) ger den bra balans mellan pris och prestanda.
     </p>
     <p class="text-text-light leading-relaxed mb-4">
       Nackdelen är vikten (14,8 kg) och att den tar stor plats i mindre bilar. Men för familjen som vill ha en beprövad i-Size-stol med rotation och dokumenterad krocksäkerhet är den ett av de tryggaste köpen.
@@ -184,7 +192,8 @@ export const articleMeta = {
       imageAlt="Maxi-Cosi Pearl 360 ISOFIX bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10259371&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/isofix/maxi-cosi-pearl-360-bilbarnstol-authentic-graphite"
-      pros={['ISOFIX-bas som delas mellan flera stolar', 'Enklaste monteringen i testet', 'Kompakt storlek, passar i mindre bilar']}
+      adacScore={adacPearl?.overall}
+      pros={['Bra (2,1) i ADAC-krocktest 2022, med FamilyFix 360-basen', 'ISOFIX-bas som delas mellan flera stolar', 'Kompakt storlek, passar i mindre bilar']}
       cons={['Kräver separat FamilyFix 360-bas (medföljande)', 'Kortare användningstid än vissa konkurrenter']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -200,6 +209,7 @@ export const articleMeta = {
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - ISOFIX bilbarnstolar 2026" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">ISOFIX bilbarnstol: komplett guide till fästsystemet</h2>
 

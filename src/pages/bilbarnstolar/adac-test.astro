@@ -1,0 +1,230 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import MoneyByline from '../../components/MoneyByline.astro';
+import AdacBetyg from '../../components/AdacBetyg.astro';
+import FAQ from '../../components/FAQ.astro';
+import { adacFor, adacWord, adacColor, adacFmt } from '../../data/adac-scores';
+import type { AdacScore } from '../../data/adac-scores';
+
+const breadcrumbs = [
+  { label: 'Hem', href: '/' },
+  { label: 'Bilbarnstolar', href: '/bilbarnstolar/' },
+  { label: 'ADAC-test' },
+];
+
+// Alla betyg kommer från src/data/adac-scores.ts - manuellt verifierade mot adac.de
+// (NOLLTOLERANS). Sidan visar inga priser och har inga CTA:er - den länkar vidare
+// till våra tester där köplänkarna finns.
+interface HubItem {
+  data: AdacScore;
+  href: string;
+  linkText: string;
+}
+const resolve = (rows: { key: string; href: string; linkText: string }[]): HubItem[] =>
+  rows
+    .map((r) => ({ data: adacFor(r.key), href: r.href, linkText: r.linkText }))
+    .filter((r): r is HubItem => Boolean(r.data))
+    .sort((a, b) => a.data.overall - b.data.overall || a.data.sicherheit - b.data.sicherheit);
+
+const babyskydd = resolve([
+  { key: 'cybex-cloud-t', href: '/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/', linkText: 'vår jämförelse av Cybex Cloud T och Britax Baby-Safe' },
+  { key: 'cybex-aton-b2', href: '/bilbarnstolar/resesat/', linkText: 'vårt test av resesäten för bil' },
+  { key: 'maxi-cosi-pebble-360-pro-2', href: '/bilbarnstolar/', linkText: 'vår topplista över bilbarnstolar 2026' },
+  { key: 'joie-i-level-pro', href: '/bilbarnstolar/resesat/', linkText: 'vårt test av resesäten för bil' },
+  { key: 'doona-i', href: '/bilbarnstolar/', linkText: 'vår topplista över bilbarnstolar 2026' },
+]);
+
+const bakatvanda = resolve([
+  { key: 'besafe-izi-modular-rf-x1', href: '/bilbarnstolar/', linkText: 'vår topplista över bilbarnstolar 2026' },
+  { key: 'joie-i-spin-360', href: '/bilbarnstolar/bakatvand/', linkText: 'vårt test av bakåtvända bilbarnstolar' },
+  { key: 'maxi-cosi-pearl-360', href: '/bilbarnstolar/isofix/', linkText: 'vårt test av ISOFIX-bilbarnstolar' },
+  { key: 'cybex-sirona-t', href: '/bilbarnstolar/britax-dualfix-5z-vs-cybex-sirona-t/', linkText: 'vår jämförelse av Dualfix 5Z och Sirona T' },
+  { key: 'britax-dualfix-m-plus', href: '/bilbarnstolar/i-size/', linkText: 'vårt test av i-Size-bilbarnstolar' },
+  { key: 'recaro-kio', href: '/bilbarnstolar/i-size/', linkText: 'vårt test av i-Size-bilbarnstolar' },
+  { key: 'britax-dualfix-5z', href: '/bilbarnstolar/', linkText: 'vår topplista över bilbarnstolar 2026' },
+  { key: 'joie-i-spin-xl', href: '/bilbarnstolar/joie-i-spin-xl-vs-britax-dualfix-5z/', linkText: 'vår jämförelse av i-Spin XL och Dualfix 5Z' },
+  { key: 'axkid-minikid-4-pro', href: '/bilbarnstolar/biltestade/', linkText: 'vårt test av biltestade bilbarnstolar' },
+]);
+
+const framatvanda = resolve([
+  { key: 'britax-kidfix-m', href: '/bilbarnstolar/budget/', linkText: 'vårt test av budgetbilbarnstolar' },
+  { key: 'joie-i-trillo-fx', href: '/bilbarnstolar/framatvand/', linkText: 'vårt test av framåtvända bilbarnstolar' },
+  { key: 'britax-kidfix-pro-m', href: '/bilbarnstolar/framatvand/', linkText: 'vårt test av framåtvända bilbarnstolar' },
+  { key: 'cybex-anoris-t2', href: '/bilbarnstolar/framatvand/', linkText: 'vårt test av framåtvända bilbarnstolar' },
+]);
+
+const utgangna = resolve([
+  { key: 'cybex-anoris-t', href: '/bilbarnstolar/framatvand/', linkText: 'vårt test av framåtvända bilbarnstolar' },
+  { key: 'britax-baby-safe-isense', href: '/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/', linkText: 'vår jämförelse av Cloud T och Baby-Safe' },
+  { key: 'britax-baby-safe-5z2', href: '/bilbarnstolar/cybex-cloud-t-vs-britax-baby-safe-isense/', linkText: 'vår jämförelse av Cloud T och Baby-Safe' },
+  { key: 'maxi-cosi-pebble-360-pro', href: '/bilbarnstolar/maxi-cosi-pebble-360-vs-cybex-cloud-t/', linkText: 'vår jämförelse av Pebble 360 och Cloud T' },
+]);
+
+const aktuella = [...babyskydd, ...bakatvanda, ...framatvanda].sort(
+  (a, b) => a.data.overall - b.data.overall || a.data.sicherheit - b.data.sicherheit
+);
+
+const slugify = (t: string) => t.toLowerCase().replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const faqItems = [
+  {
+    question: 'Vad är ADAC:s bilbarnstolstest?',
+    answer: 'ADAC är Tysklands motsvarighet till svenska M och genomför Europas mest citerade oberoende krocktester av bilbarnstolar, två gånger per år. Varje stol betygsätts i fyra kategorier: säkerhet (frontal- och sidokrock), hantering, ergonomi och skadliga ämnen i klädseln. Testerna är hårdare än det lagstadgade R129-godkännandet, vilket är anledningen till att även godkända stolar kan få svaga ADAC-betyg.',
+  },
+  {
+    question: 'Hur läser man ADAC-betygen?',
+    answer: 'ADAC använder tyska skolbetyg där lägre siffra är bättre: 0,6 till 1,5 är Mycket bra, 1,6 till 2,5 är Bra, 2,6 till 3,5 är Tillfredsställande, 3,6 till 4,5 är Tillräcklig och 4,6 till 5,5 är Otillräcklig. Allt under 2,5 räknas som ett tryggt köp. Ett dåligt delbetyg kan sänka totalbetyget rejält - Maxi-Cosi Pebble 360 Pro underkändes 2023 enbart på skadliga ämnen i klädseln trots mycket bra krocksäkerhet.',
+  },
+  {
+    question: 'Vilken bilbarnstol har bäst ADAC-betyg 2026?',
+    answer: 'Av stolarna vi bevakar som fortfarande säljs har BeSafe iZi Modular RF X1 (1,7, testad med bas 2022) och Cybex Cloud T (1,7 med Base T, delat bäst i testomgången 2023) de bästa totalbetygen. Bland babyskydd är Cloud T bäst, bland bakåtvända stolar BeSafe RF X1. ADAC testar löpande, så kontrollera alltid senaste testår.',
+  },
+  {
+    question: 'Varför får svenska favoriter som Axkid lågt betyg i ADAC?',
+    answer: 'ADAC väger in hur enkel stolen är att montera rätt. Svenska bältesmonterade stolar som Axkid Minikid 4 Pro (Tillräcklig, 3,6, år 2026) straffas hårt på hanteringsbetyget eftersom bältesmontering är mer komplicerad än ISOFIX - inte för att krockskyddet är dåligt. Samma stolar presterar ofta väl i det frivilliga svenska Plus Test, som fokuserar på krockkrafter. Testerna mäter olika saker och kompletterar varandra.',
+  },
+  {
+    question: 'Är ADAC-testet bättre än Folksams test och Plus Test?',
+    answer: 'De kompletterar varandra. ADAC testar flest modeller och väger in hantering, ergonomi och skadliga ämnen utöver krocksäkerhet. Folksam och det svenska Plus Test fokuserar på krockskydd, och Plus Test är utformat kring den svenska traditionen med långvarigt bakåtvänt åkande. Vi redovisar ADAC-betygen på våra produktsidor och hänvisar till Plus Test där stolen är godkänd där.',
+  },
+  {
+    question: 'Testar ADAC varje färg- och tygvariant?',
+    answer: 'Nej, ADAC testar en konfiguration per stol, ibland med och utan bas som separata resultat. Betyget för skadliga ämnen gäller den testade klädseln - Cybex Anoris T2 fick till exempel sitt totalbetyg sänkt till 2,8 år 2025 på grund av PFAS i Comfort-klädseln, en variant som enligt Cybex utgick i början av 2025, trots krocksäkerhetsbetyget 1,3.',
+  },
+];
+
+export const articleMeta = {
+  title: 'ADAC-test bilbarnstolar 2026: alla betyg förklarade',
+  description: 'Alla ADAC-betyg för bilbarnstolarna vi bevakar, förklarade på svenska: skalan där lägre är bäst, delbetygen och varför svenska favoriter kan halka i testet.',
+  publishDate: '2026-07-27',
+  category: 'Bilbarnstolar',
+  image: '/images/products/besafe-izi-modular-rf-x1.webp',
+};
+---
+
+<ArticleLayout
+  title="ADAC-test bilbarnstolar 2026: alla betyg förklarade"
+  description="Alla ADAC-betyg för bilbarnstolarna vi bevakar, förklarade på svenska: skalan där lägre är bäst, delbetygen och varför svenska favoriter kan halka i testet."
+  breadcrumbs={breadcrumbs}
+  canonical="https://bebisguiden.se/bilbarnstolar/adac-test/"
+  datePublished="2026-07-27"
+  updatedDate="2026-07-27"
+  showAuthor={false}
+>
+
+  <MoneyByline datePublished="2026-07-27" dateModified="2026-07-27" />
+
+  {/* Answer-box (AEO) */}
+  <div class="not-prose bg-bg-alt border border-border rounded-lg px-4 py-3 mb-4">
+    <h2 class="text-base font-semibold text-primary mb-1">Snabbt svar: Vad är ADAC-testet och vilken stol är bäst?</h2>
+    <p class="text-text-light text-[15px] leading-relaxed">
+      ADAC är Tysklands motsvarighet till svenska M och kör Europas mest citerade oberoende krocktester av bilbarnstolar. Betygen följer tyska skolbetyg: 0,6 är bäst, 5,5 är sämst, och allt under 2,5 är ett tryggt köp. Bäst totalbetyg bland stolarna vi bevakar har BeSafe iZi Modular RF X1 (1,7) och Cybex Cloud T (1,7, delat bäst i testomgången 2023).
+    </p>
+  </div>
+
+  <div class="mp-prose">
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-4">Snabbranking: alla ADAC-testade stolar vi bevakar</h2>
+    <p class="text-text-light leading-relaxed mb-4">
+      {aktuella.length} stolar i vårt sortiment har ett verifierat ADAC-resultat. Här är hela listan sorterad på totalbetyg, klicka på en stol för att hoppa till detaljerna.
+    </p>
+    <ol class="not-prose divide-y divide-border border border-border rounded-lg bg-white mb-8">
+      {aktuella.map((item, i) => (
+        <li>
+          <a href={`#${slugify(item.data.testedConfiguration)}`} class="flex items-center justify-between gap-3 px-4 py-2 hover:bg-bg no-underline">
+            <span class="flex items-baseline gap-2 min-w-0">
+              <span class="text-[13px] font-bold text-accent tabular-nums w-5 text-right flex-shrink-0">{i + 1}</span>
+              <span class="text-[15px] font-semibold text-text leading-snug">{item.data.testedConfiguration}</span>
+            </span>
+            <span class="flex items-center gap-2 flex-shrink-0">
+              <span class="hidden sm:inline text-[13px] text-text-light">{adacWord(item.data.overall)} · {item.data.testYear}</span>
+              <span class="w-2.5 h-2.5 rounded-full" style={`background:${adacColor(item.data.overall)}`}></span>
+              <span class="font-bold tabular-nums text-[15px]">{adacFmt(item.data.overall)}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-4">Så läser du ADAC-betygen</h2>
+    <p class="text-text-light leading-relaxed mb-4">
+      ADAC betygsätter enligt tyska skolbetyg, alltså tvärtom mot svenska betyg: <strong class="text-text">lägre siffra är bättre</strong>. Skalan går från 0,6 (bäst) till 5,5 (sämst) i fem steg: Mycket bra (0,6-1,5), Bra (1,6-2,5), Tillfredsställande (2,6-3,5), Tillräcklig (3,6-4,5) och Otillräcklig (4,6-5,5). Varje stol får fyra delbetyg: säkerhet (frontal- och sidokrock), hantering (risk för felmontering, hur enkelt barnet spänns fast), ergonomi (utrymme och komfort) och skadliga ämnen i klädseln.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Viktigt att veta: ett dåligt delbetyg kan sänka hela totalbetyget. Maxi-Cosi Pebble 360 Pro underkändes 2023 enbart på skadliga ämnen (4,6) trots krocksäkerhet i toppklass (1,5), och Cybex Anoris T2 fick totalbetyget sänkt till 2,8 på grund av PFAS i en klädselvariant som sedan utgick. Läs därför alltid delbetygen, inte bara totalsiffran. Stolar testas ibland både med och utan bas, med olika resultat - vi anger alltid vilken konfiguration betyget avser.
+    </p>
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-4">Babyskydd (0 till ca 15 månader)</h2>
+    {babyskydd.map((item) => (
+      <div id={slugify(item.data.testedConfiguration)} class="scroll-mt-24">
+        <AdacBetyg data={item.data} />
+        <p class="not-prose text-sm text-text-light -mt-2 mb-5">Läs mer i <a href={item.href} class="text-accent font-semibold underline">{item.linkText}</a></p>
+      </div>
+    ))}
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-4">Bakåtvända bilbarnstolar (0 till ca 7 år)</h2>
+    {bakatvanda.map((item) => (
+      <div id={slugify(item.data.testedConfiguration)} class="scroll-mt-24">
+        <AdacBetyg data={item.data} />
+        <p class="not-prose text-sm text-text-light -mt-2 mb-5">Läs mer i <a href={item.href} class="text-accent font-semibold underline">{item.linkText}</a></p>
+      </div>
+    ))}
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-4">Framåtvända stolar och bältesstolar</h2>
+    {framatvanda.map((item) => (
+      <div id={slugify(item.data.testedConfiguration)} class="scroll-mt-24">
+        <AdacBetyg data={item.data} />
+        <p class="not-prose text-sm text-text-light -mt-2 mb-5">Läs mer i <a href={item.href} class="text-accent font-semibold underline">{item.linkText}</a></p>
+      </div>
+    ))}
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-4">Utgångna modeller som fortfarande dyker upp</h2>
+    <p class="text-text-light leading-relaxed mb-4">
+      De här modellerna har ersatts i butikerna men cirkulerar på andrahandsmarknaden och hos enstaka återförsäljare. Betygen är fortfarande relevanta om du överväger ett köp.
+    </p>
+    {utgangna.map((item) => (
+      <div id={slugify(item.data.testedConfiguration)} class="scroll-mt-24">
+        <AdacBetyg data={item.data} />
+        <p class="not-prose text-sm text-text-light -mt-2 mb-5">Läs mer i <a href={item.href} class="text-accent font-semibold underline">{item.linkText}</a></p>
+      </div>
+    ))}
+
+    <h2 class="font-heading text-2xl font-bold text-primary mt-10 mb-4">ADAC, Folksam och Plus Test: vad är skillnaden?</h2>
+    <p class="text-text-light leading-relaxed mb-4">
+      ADAC testar flest modeller i Europa och väger in fyra dimensioner, inte bara krockskydd. Svenska Plus Test är ett frivilligt krocktest byggt kring den nordiska traditionen med långvarigt bakåtvänt åkande, och Folksam publicerar egna oberoende tester. En stol kan toppa det ena testet och halka i det andra: Axkid Minikid 4 Pro är godkänd i Plus Test men fick Tillräcklig (3,6) i ADAC 2026, där betyget dras ned av den komplicerade bältesmonteringen snarare än krockresultatet. Läs alltid vilket delbetyg som drar ned totalsiffran innan du dömer ut en stol.
+    </p>
+    <p class="text-text-light leading-relaxed mb-4">
+      Vår rekommendation: använd ADAC-betyget som en bred kvalitetssignal, Plus Test som kvitto på bakåtvänd krocksäkerhet, och välj i första hand en stol som barnet kan åka bakåtvänt i till minst 4 år. Hela vår metodik finns i <a href="/sa-testar-vi/" class="text-accent hover:text-accent-dark underline">så testar vi på Bebisguiden</a>, och topplistan i <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">bilbarnstol bäst i test 2026</a>.
+    </p>
+
+    <FAQ items={faqItems} />
+
+    <div class="mt-8 p-5 bg-bg-alt rounded-lg border border-border not-prose">
+      <h2 class="font-heading text-lg font-bold mb-3">Fördjupande guider, bilbarnstolar</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/bilbarnstolar/" class="text-accent underline">Bilbarnstol bäst i test 2026, komplett topplista</a></li>
+        <li><a href="/bilbarnstolar/biltestade/" class="text-accent underline">Biltestade bilbarnstolar 2026, Folksam och Plus Test</a></li>
+        <li><a href="/bilbarnstolar/bakatvand/" class="text-accent underline">Bästa bakåtvända bilbarnstolen 2026</a></li>
+        <li><a href="/bilbarnstolar/i-size/" class="text-accent underline">Bästa i-Size bilbarnstol 2026</a></li>
+        <li><a href="/guider/valja-bilbarnstol/" class="text-accent underline">Så väljer du rätt bilbarnstol, komplett köpguide</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {/* ItemList-schema: rankingen med interna länkar (inga Product/Offer - inga priser på sidan) */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': 'ADAC-testade bilbarnstolar 2026 rankade efter totalbetyg',
+    'itemListOrder': 'https://schema.org/ItemListOrderAscending',
+    'numberOfItems': aktuella.length,
+    'itemListElement': aktuella.map((item, i) => ({
+      '@type': 'ListItem',
+      'position': i + 1,
+      'name': `${item.data.testedConfiguration} - ADAC ${adacFmt(item.data.overall)} (${item.data.testYear})`,
+      'url': `https://bebisguiden.se${item.href}`,
+    })),
+  })} />
+
+</ArticleLayout>

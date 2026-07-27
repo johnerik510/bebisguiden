@@ -5,6 +5,10 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacCloudT = adacFor('cybex-cloud-t');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -29,12 +33,12 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246553&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-mirage-grey',
     imageUrl: '/images/products/cybex-cloud-t-i-size.webp',
     desc: 'Babyskydd för prematura med uttöjbart, nästan horisontellt läge som avlastar prematurens svaga rygg och nacke. Godkänd från 45 cm och ca 1,8 kg, i-Size (R129) med sidokrockskydd och ISOFIX-montering.',
-    features: { 'Montering': 'ISOFIX + stödben', 'Godkänd från': '45 cm / ca 1,8 kg', 'Vikt': 'ca 4,5 kg (utan bas)', 'Liggläge': 'Nästan horisontellt', 'Säkerhet': 'i-Size (R129)' },
+    features: { 'Montering': 'ISOFIX + stödben', 'Godkänd från': '45 cm / ca 1,8 kg', 'Vikt': 'ca 4,5 kg (utan bas)', 'Liggläge': 'Nästan horisontellt', 'Säkerhet': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (1,7) · 2023' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Montering', 'Godkänd från', 'Vikt', 'Liggläge', 'Säkerhet'];
+const specLabels = ['Montering', 'Godkänd från', 'Vikt', 'Liggläge', 'Säkerhet', 'ADAC-krocktest'];
 
 const faqItems = [
   {
@@ -126,7 +130,8 @@ export const articleMeta = {
       imageAlt="Cybex Cloud T i-Size babyskydd för prematur bebis"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246553&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/cybex-cloud-t-i-size-babyskydd-mirage-grey"
-      pros={['Uttöjbart läge, nästan horisontalt för prematura', 'Godkänd från 45 cm och lägst startgewicht på marknaden', 'i-Size (R129) med sidokrockskydd', 'ISOFIX + stödben för stabil montering', 'Enkel en-hands-anpassning av ryggvinkel']}
+      adacScore={adacCloudT?.overall}
+      pros={['Bra (1,7) i ADAC 2023 med Base T, delat bäst i omgången', 'Uttöjbart läge, nästan horisontalt för prematura', 'i-Size (R129) med sidokrockskydd', 'ISOFIX + stödben för stabil montering', 'Enkel en-hands-anpassning av ryggvinkel']}
       cons={['Premiumpriser jämfört med standardbabyskydd', 'Tyngre att bära (ca 4,5 kg utan bas)']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -142,6 +147,7 @@ export const articleMeta = {
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer - Cybex Cloud T i-Size" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Bilbarnstol prematur: speciella krav och car seat challenge</h2>
 

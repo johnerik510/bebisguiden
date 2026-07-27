@@ -5,6 +5,14 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacMinikid = adacFor('axkid-minikid-4-pro');
+const adacSirona = adacFor('cybex-sirona-t');
+const adacBesafe = adacFor('besafe-izi-modular-rf-x1');
+const adacISense = adacFor('britax-baby-safe-isense');
+const adacISpin360 = adacFor('joie-i-spin-360');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -20,16 +28,16 @@ const breadcrumbs = [
 // No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
   {
-    name: 'Axkid Minikid 4',
+    name: 'Axkid Minikid 4 Pro',
     brand: 'Axkid',
     rating: 4.9,
     badge: 'Folksams bästa val',
     usps: ['Folksams bästa val', 'Bakåtvänt till 36 kg', 'Passar utan ISOFIX'],
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black',
-    imageUrl: '/images/products/axkid-minikid-4.webp',
+    imageUrl: '/images/products/axkid-minikid-4-pro.webp',
     desc: 'Bäst i test bakåtvänd bilbarnstol med topp krocksäkerhet och lång användningstid.',
-    features: { 'Folksam-betyg': 'Bra val', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja (eller bälte)', 'Standard': 'R44/04' },
+    features: { 'Folksam-betyg': 'Bra val', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja (eller bälte)', 'Standard': 'R44/04', 'ADAC-krocktest': 'Tillräcklig (3,6) · 2026' },
     alsoAt: [],
   },
   {
@@ -42,7 +50,7 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
     imageUrl: '/images/products/cybex-sirona-t-i-size.webp',
     desc: 'Biltestestbäst komfort med 360-rotation och LinearSideSleep. ISOFIX-monterad.',
-    features: { 'Folksam-betyg': 'Bra val', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja + stödben', 'Standard': 'i-Size (R129)' },
+    features: { 'Folksam-betyg': 'Bra val', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja + stödben', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,3) · 2023' },
     alsoAt: [],
   },
   {
@@ -55,7 +63,7 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910750&url=https://www.jollyroom.se/bilstolar/bilstolspaket/besafe-izi-modular-rf-x1-black-cab',
     imageUrl: '/images/products/besafe-izi-modular-rf-x1-fresh-black-cab.webp',
     desc: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.',
-    features: { 'Folksam-betyg': 'Bra val', 'Plus Test': 'Topplacering', 'ISOFIX': 'Ja + stödben', 'Standard': 'i-Size (R129)' },
+    features: { 'Folksam-betyg': 'Bra val', 'Plus Test': 'Topplacering', 'ISOFIX': 'Ja + stödben', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (1,7) · 2022' },
     alsoAt: [],
   },
   {
@@ -65,10 +73,10 @@ const products = [
     badge: 'Plus Test-godkänd',
     usps: ['Plus Test-godkänt', 'Flex Base', 'Bra sidoskydd'],
     store: 'Jollyroom',
-    affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245042&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/britax-romer-baby-safe-core-babyskydd-space-black',
+    affiliateUrl: '',
     imageUrl: '/images/products/britax-romer-baby-safe-isense.webp',
     desc: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.',
-    features: { 'Folksam-betyg': 'Godkänd', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja (med Flex Base)', 'Standard': 'i-Size (R129)' },
+    features: { 'Folksam-betyg': 'Godkänd', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja (med Flex Base)', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,1) · 2021' },
     alsoAt: [],
   },
   {
@@ -81,12 +89,12 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal',
     imageUrl: '/images/products/joie-i-spin-360.webp',
     desc: 'Bakåtvänd bilbarnstol med bra krocksäkerhet i biltest och ISOFIX.',
-    features: { 'Folksam-betyg': 'Godkänd', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja + stödben', 'Standard': 'i-Size (R129)' },
+    features: { 'Folksam-betyg': 'Godkänd', 'Plus Test': 'Godkänd', 'ISOFIX': 'Ja + stödben', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (1,8) · 2019' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Folksam-betyg', 'Plus Test', 'ISOFIX', 'Standard'];
+const specLabels = ['Folksam-betyg', 'Plus Test', 'ISOFIX', 'Standard', 'ADAC-krocktest'];
 
 const faqItems = [
   {
@@ -112,8 +120,8 @@ const faqItems = [
 ];
 
 export const articleMeta = {
-  title: "Biltestade bilbarnstolar 2026: Axkid Minikid 4 vinner",
-  description: "Vilka bilbarnstolar toppar Folksams krocktester 2026? Axkid Minikid 4 och BeSafe iZi Turn i topp. Se hela listan med betyg, pris och köplänk.",
+  title: "Biltestade bilbarnstolar 2026: Axkid Minikid 4 Pro vinner",
+  description: "Vilka bilbarnstolar toppar Folksams krocktester 2026? Axkid Minikid 4 Pro och BeSafe iZi Turn i topp. Se hela listan med betyg och köplänk.",
   publishDate: "2026-05-16",
   updatedDate: "2026-06-12",
   category: "Bilbarnstolar",
@@ -122,8 +130,8 @@ export const articleMeta = {
 ---
 
 <ArticleLayout
-  title="Biltestade bilbarnstolar 2026: Axkid Minikid 4 vinner"
-  description="Vilka bilbarnstolar toppar Folksams krocktester 2026? Axkid Minikid 4 och BeSafe iZi Turn i topp. Se hela listan med betyg, pris och köplänk."
+  title="Biltestade bilbarnstolar 2026: Axkid Minikid 4 Pro vinner"
+  description="Vilka bilbarnstolar toppar Folksams krocktester 2026? Axkid Minikid 4 Pro och BeSafe iZi Turn i topp. Se hela listan med betyg och köplänk."
   breadcrumbs={breadcrumbs}
   datePublished="2026-05-16"
   updatedDate="2026-06-12"
@@ -137,18 +145,18 @@ export const articleMeta = {
   <div class="not-prose bg-bg-alt border border-border rounded-lg px-4 py-3 mb-4">
     <h2 class="text-base font-semibold text-primary mb-1">Snabbt svar: Vilken biltestad bilbarnstol är bäst 2026?</h2>
     <p class="text-text-light text-[15px] leading-relaxed">
-      Axkid Minikid 4 vinner biltestad bilbarnstol bäst i test 2026. Den bär Folksams bästa-val-certifiering, som bekräftar säkerheten i oberoende krocktest. Bakåtvänd funktion upp till 25 kg ger marknadens längsta skyddstid, och Q-connectors gör monteringen snabb.
+      Axkid Minikid 4 Pro vinner biltestad bilbarnstol bäst i test 2026. Den bär Folksams bästa-val-certifiering, som bekräftar säkerheten i oberoende krocktest. Bakåtvänd funktion upp till 36 kg ger marknadens längsta skyddstid, och Q-connectors gör monteringen snabb. I ADAC:s test 2026 fick stolen bara Tillräcklig (3,6) - betyget dras ned av den komplicerade bältesmonteringen, inte av krockresultatet.
     </p>
   </div>
 
   {/* 3. Featured product (#1, hero-CTA above the fold) */}
   <MoneyFeaturedProduct
     brand="Axkid"
-    name="Minikid 4"
+    name="Minikid 4 Pro"
     image="/images/products/axkid-minikid-4.webp"
     trackedUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black"
     store="Jollyroom"
-    description="Axkid Minikid 4 vinner test av biltestade bilbarnstolar 2026. Folksams bästa-val-certifiering bekräftar säkerheten i oberoende krocktest, bakåtvänd funktion upp till 25 kg ger marknadens längsta skyddstid och Q-connectors gör montering och demontering snabb."
+    description="Axkid Minikid 4 Pro vinner test av biltestade bilbarnstolar 2026. Folksams bästa-val-certifiering bekräftar säkerheten i oberoende krocktest, bakåtvänd funktion upp till 25 kg ger marknadens längsta skyddstid och Q-connectors gör montering och demontering snabb."
   />
 
   {/* 4. Jämförelsetabell (scan-and-click) */}
@@ -157,18 +165,19 @@ export const articleMeta = {
   {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
   <div class="mp-prose">
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Axkid Minikid 4, Folksams bästa val</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Axkid Minikid 4 Pro, Folksams bästa val</h2>
     <MoneyProductCard
       brand="Axkid"
-      name="Axkid Minikid 4"
+      name="Axkid Minikid 4 Pro"
       rating={4.9}
       rank={1}
       badge="Folksams bästa val"
       imageUrl="/images/products/axkid-minikid-4.webp"
-      imageAlt="Axkid Minikid 4 biltestad bilbarnstol"
+      imageAlt="Axkid Minikid 4 Pro biltestad bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10274334&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/axkid-minikid-4-pro-bilbarnstol-coastal-storm-black"
-      pros={['Folksams bästa val 2024, topprestad i krocktest', 'Bakåtvänt till 36 kg, längst på marknaden', 'Kan monteras med bilbälte, passar alla bilar', 'Svensk tillverkare med decennier av säkerhetsfokus']}
+      adacScore={adacMinikid?.overall}
+      pros={['Folksams bästa val 2024', 'Bakåtvänt till 36 kg, längst på marknaden', 'Kan monteras med bilbälte, passar alla bilar', 'Svensk tillverkare med decennier av säkerhetsfokus']}
       cons={['Ingen rotation, fast bakåtvänd', 'Bältesmontering kräver noggrannhet', 'Tyngre än stolar med rotation']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -189,7 +198,8 @@ export const articleMeta = {
       imageAlt="Cybex Sirona T i-Size biltestad bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
-      pros={['Folksam-godkänd med toppbetyg', '360-graders rotation för enkel i- och urlastning', 'Utmärkt sidoskydd (Linear Side-impact Protection)', 'Magnetiskt bälteslås']}
+      adacScore={adacSirona?.overall}
+      pros={['Bra (2,3) i ADAC-krocktest 2023', '360-graders rotation för enkel i- och urlastning', 'Utmärkt sidoskydd (Linear Side-impact Protection)', 'Magnetiskt bälteslås']}
       cons={['Hög prisklass', 'Tung (15,2 kg)', 'Kortare användningstid bakåtvänt']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -210,7 +220,8 @@ export const articleMeta = {
       imageAlt="BeSafe iZi Modular RF X1 i-Size biltestad bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910750&url=https://www.jollyroom.se/bilstolar/bilstolspaket/besafe-izi-modular-rf-x1-black-cab"
-      pros={['Konsekvent topplacering i Plus Test', 'Norsk säkerhetstänkande', 'Bakåtvänd upp till 18 kg', 'Solid ISOFIX-montering']}
+      adacScore={adacBesafe?.overall}
+      pros={['Bra (1,7) i ADAC 2022, bäst i vår ADAC-lista', 'Konsekvent topplacering i Plus Test', 'Bakåtvänd upp till 18 kg', 'Solid ISOFIX-montering']}
       cons={['Ingen 360-graders rotation', 'Begränsad bakåtvänd användningstid']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -230,12 +241,12 @@ export const articleMeta = {
       imageUrl="/images/products/britax-romer-baby-safe-isense.webp"
       imageAlt="Britax Römer Baby-Safe iSense biltestat babyskydd"
       store="Jollyroom"
-      buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245042&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/britax-romer-baby-safe-core-babyskydd-space-black"
-      pros={['Plus Test-godkänt babyskydd', 'Enkel på- och avmontering med Flex Base', 'Bra sidoskydd för nyfödda', 'Kompatibelt med barnvagnschassi']}
+      adacScore={adacISense?.overall}
+      pros={['Bra (2,1) i ADAC-krocktest 2021', 'Enkel på- och avmontering med Flex Base', 'Bra sidoskydd för nyfödda', 'Kompatibelt med barnvagnschassi']}
       cons={['Kortare användningstid (babyskydd)', 'Kräver separat Flex Base för bästa funktion', 'Inte för äldre barn']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Britax Römer Baby-Safe iSense är ett Plus Test-godkänt babyskydd för de allra minsta. Med Flex Base går på- och avmonteringen snabbt, och stolen är kompatibel med barnvagnschassi vilket gör den smidig att flytta mellan bil och vagn. Sidoskyddet är anpassat för nyfödda.
+      Britax Römer Baby-Safe iSense är ett Plus Test-godkänt babyskydd för de allra minsta, med betyget Bra (2,1) i ADAC:s krocktest 2021. Modellen har utgått ur butikernas sortiment och ersatts av Baby-Safe Core och Baby-Safe Pro, men finns kvar på andrahandsmarknaden och hos enstaka återförsäljare. Med Flex Base går på- och avmonteringen snabbt, och stolen är kompatibel med barnvagnschassi vilket gör den smidig att flytta mellan bil och vagn. Sidoskyddet är anpassat för nyfödda.
     </p>
     <p class="text-text-light leading-relaxed mb-4">
       Som babyskydd har den en kortare användningstid och passar inte äldre barn, och Flex Base krävs för bästa funktion. Men för nyföddhetsperioden är det ett av de tryggaste och mest praktiska valen i jämförelsen.
@@ -252,7 +263,8 @@ export const articleMeta = {
       imageAlt="Joie i-Spin 360 biltestad bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal"
-      pros={['Godkänd i Folksams och Plus Test', 'Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design']}
+      adacScore={adacISpin360?.overall}
+      pros={['Bra (1,8) i ADAC-krocktest 2019', 'Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design']}
       cons={['Något enklare material än premiumstolar', 'Kortare bakåtvänd användningstid']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -268,6 +280,7 @@ export const articleMeta = {
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Biltestade bilbarnstolar 2026" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. Svenska Plus Test och ADAC mäter olika saker - en stol kan toppa det ena och halka i det andra. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Folksam och Plus Test, så fungerar testerna</h2>
 

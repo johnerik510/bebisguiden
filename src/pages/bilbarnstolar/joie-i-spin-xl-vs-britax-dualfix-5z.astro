@@ -5,6 +5,11 @@ import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import AdacBetyg from '../../components/AdacBetyg.astro';
+import { adacFor } from '../../data/adac-scores';
+
+const adacDualfix = adacFor('britax-dualfix-5z');
+const adacISpinXL = adacFor('joie-i-spin-xl');
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -15,7 +20,7 @@ const breadcrumbs = [
 const faqItems = [
  {
  question: 'Vilken är bäst, Joie i-Spin XL eller Britax Römer DualFix 5Z?',
- answer: 'Det beror på budget och hur länge du vill använda stolen. Joie i-Spin XL och kan användas upp till 150 cm (ca 12 år), ett extremt prisvärt val om du vill ha en stol som räcker länge. Britax DualFix 5Z, har ADAC-betyget "Bäst" (1,5) och är den säkrare stolen sett till oberoende testresultat. Har du budget och prioriterar det bästa tesade resultatet: Britax. Är du priskänslig och vill ha en stol som räcker till skolålder: Joie.',
+ answer: 'Det beror på budget och hur länge du vill använda stolen. Joie i-Spin XL kan användas upp till 150 cm (ca 12 år), ett prisvärt val om du vill ha en stol som räcker länge - men den fick bara Tillfredsställande (3,0) i ADAC:s krocktest 2024. Britax DualFix 5Z fick Bra (2,4) i ADAC 2023 och är den starkare stolen sett till oberoende testresultat. Prioriterar du testresultatet: Britax. Är du priskänslig och vill ha en stol som räcker till skolålder: Joie.',
  },
  {
  question: 'Hur länge kan barnet sitta i Joie i-Spin XL och Britax DualFix 5Z?',
@@ -23,7 +28,7 @@ const faqItems = [
  },
  {
  question: 'Är Joie i-Spin XL säker?',
- answer: 'Ja, Joie i-Spin XL är R129 (i-Size) certifierad, vilket är det strängaste europeiska säkerhetskravet. Alla R129-certifierade stolar uppfyller EU:s säkerhetskrav. Britax DualFix 5Z har ett starkare oberoende testresultat (ADAC "Bäst"), men Joie i-Spin XL är en säker och vältestad stol för sin prisgrupp.',
+ answer: 'Joie i-Spin XL är R129 (i-Size) certifierad och uppfyller EU:s säkerhetskrav. I ADAC:s krocktest 2024 fick den dock bara Tillfredsställande (3,0) med säkerhetsdelbetyget 2,4 - godkänd men inte i toppskiktet. Britax DualFix 5Z har ett starkare oberoende testresultat (Bra, 2,4, ADAC 2023). ADAC använder tysk skala där lägre är bättre.',
  },
  {
  question: 'Vad är skillnaden i rotation, Joie i-Spin XL vs Britax DualFix 5Z?',
@@ -40,7 +45,7 @@ const faqItems = [
 ];
 export const articleMeta = {
   title: "Joie i-Spin XL vs Britax DualFix 5Z 2026: budget?",
-  description: "Joie i-Spin XL vs Britax DualFix 5Z 2026: Joie kostar hälften, Britax vinner ADAC-testet. Rotation, R129 och säkerhet jämförda. Vilket babyskydd ger bäst.",
+  description: "Joie i-Spin XL vs Britax DualFix 5Z 2026: Joie kostar hälften men fick Tillfredsställande i ADAC, Britax vinner testet med Bra (2,4). Rotation, R129 och säkerhet jämförda.",
   publishDate: "2026-05-16",
   category: "Bilbarnstolar",
   image: "/images/cat-bilbarnstol-v2.webp",
@@ -57,7 +62,7 @@ export const articleMeta = {
   datePublished="2026-04-10"
 >
  <p class="text-text-light mb-4 text-base">
- <a href="/marken/joie/" class="text-accent underline">Joie</a> i-Spin XL och <a href="/marken/britax/" class="text-accent underline">Britax</a> Römer DualFix 5Z är båda populära roterande bakåtvända bilbarnstolar, men på helt olika prisnivåer. mot. Är premiumet värt det, eller ger Joie lika bra skydd för halva priset?
+ <a href="/marken/joie/" class="text-accent underline">Joie</a> i-Spin XL och <a href="/marken/britax/" class="text-accent underline">Britax</a> Römer DualFix 5Z är båda populära roterande bakåtvända bilbarnstolar, men på helt olika prisnivåer. Är premiumet värt det, eller ger Joie lika bra skydd för halva priset?
  </p>
  <p class="text-text-light mb-6 text-base">
  Joie i-Spin XL kostar ca 3 000 kr och klarar upp till 105 cm (ca 4 år bakåtvänd). Britax Römer DualFix 5Z kostar ca 6 000 kr med patenterad Safe-Fix-installation och 360 graders rotation. Vi jämför krocktest, rotationsmekanik, användbarhet och totalvärde.
@@ -80,9 +85,9 @@ export const articleMeta = {
  <td class="p-3 text-text-light">R129 (i-Size)</td>
  </tr>
  <tr class="border-b border-border">
- <td class="p-3 font-medium text-text">Oberoende test</td>
- <td class="p-3 text-text-light">R129-godkänd</td>
- <td class="p-3 text-safe font-semibold">ADAC "Bäst" (1,5)</td>
+ <td class="p-3 font-medium text-text">ADAC-krocktest</td>
+ <td class="p-3 text-text-light">Tillfredsställande (3,0) 2024</td>
+ <td class="p-3 text-safe font-semibold">Bra (2,4) 2023</td>
  </tr>
  <tr class="bg-bg-alt/50 border-b border-border">
  <td class="p-3 font-medium text-text">Användningstid</td>
@@ -107,7 +112,7 @@ export const articleMeta = {
  <tr class="bg-bg-alt/50">
  <td class="p-3 font-medium text-text">Bäst för</td>
  <td class="p-3 text-safe font-semibold">Pris, lång användningstid</td>
- <td class="p-3 text-text-light">Bästa testresultat, ADAC</td>
+ <td class="p-3 text-text-light">Bäst ADAC-resultat i duon</td>
  </tr>
  </tbody>
  </table>
@@ -134,30 +139,36 @@ export const articleMeta = {
  '360° rotation med enkel knapp',
  ]}
  cons={[
- 'Svagare oberoende testresultat jämfört med Britax ADAC-betyg',
+ 'Tillfredsställande (3,0) i ADAC 2024, svagare än Britax',
  'Något sämre stoppning och material',
  'Bas ingår inte alltid vid köp',
  ]}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal"
  />
 
  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Säkerhet: Britax DualFix 5Z vinner i oberoende test</h2>
  <p class="text-text-light mb-4 text-base">
- Britax Römer DualFix 5Z fick betyget "Bäst" (1,5) i ADAC:s bilbarnstolstest 2023, ett av de starkaste resultaten för en roterande bakåtvänd stol. ADAC är det ledande oberoende bilsäkerhetstestet i Europa och ett högt ADAC-betyg är ett viktigt kvitto på säkerheten utöver EU-minimikraven.
+ Britax Römer DualFix 5Z (testad med Flex Base 5Z) fick betyget Bra (2,4) i ADAC:s bilbarnstolstest 2023. ADAC är det ledande oberoende bilsäkerhetstestet i Europa och betygen är ett viktigt kvitto på säkerheten utöver EU-minimikraven.
  </p>
- <p class="text-text-light mb-6 text-base">
- Joie i-Spin XL är R129 (i-Size) certifierad, det strängaste EU-standarden för bilbarnstolar. Det innebär att stolen uppfyller alla lagkrav. Skillnaden är att Britax har ett mer detaljerat oberoende test som visar hur väl stolen presterar utöver minimikraven.
+ <p class="text-text-light mb-4 text-base">
+ Joie i-Spin XL fick Tillfredsställande (3,0) i ADAC:s test 2024, med säkerhetsdelbetyget 2,4 mot Britax 2,0. Stolen är R129-certifierad och uppfyller alla lagkrav, men i det oberoende testet är Britax tydligt starkare, både totalt och på säkerhetsdelen.
  </p>
+
+ <div class="bg-safe-bg border border-border border-l-4 border-l-safe rounded-lg px-4 py-3 mb-4">
+  <p class="text-[14.5px] leading-relaxed text-text">
+   <strong class="text-primary">Så läser du betygen:</strong> ADAC använder tyska skolbetyg där 0,6 är bäst och 5,5 är sämst. Allt under 2,5 räknas som ett tryggt köp. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a>
+  </p>
+ </div>
+ {adacDualfix && <AdacBetyg data={adacDualfix} />}
+ {adacISpinXL && <AdacBetyg data={adacISpinXL} />}
 
  <ProductCard
  name="Britax Römer DualFix 5Z"
  image="/images/products/britax-dualfix-5z-black.webp"
- badge="ADAC Bäst, starkast säkerhetstest"
+ badge="Bäst ADAC-resultat i duon"
  rating={9.1}
  ageRange="0 till 105 cm (ca 0 till 4 år)"
  pros={[
- 'ADAC-betyg 1,5, Bäst i klassen',
+ 'Bra (2,4) i ADAC 2023, klart starkare än Joie',
  '360° rotation med 6 stabila incheckningspunkter',
  'R129 i-Size certifierad',
  'Integrerad installationsindikator',
@@ -235,7 +246,7 @@ export const articleMeta = {
   }
 </style>
 
-<StickyCTA text="Bra pris hos Jollyroom" href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal" productName="Joie i-Spin XL" />
+<StickyCTA text="Bra pris hos Jollyroom" href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273029&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/1792555_britax-romer-dualfix-5z-bilbarnstol-night-blue" productName="Britax Römer Dualfix 5Z" />
 
 
 </ArticleLayout>

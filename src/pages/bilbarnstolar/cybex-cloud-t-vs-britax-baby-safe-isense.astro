@@ -5,6 +5,12 @@ import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import AdacBetyg from '../../components/AdacBetyg.astro';
+import { adacFor } from '../../data/adac-scores';
+
+const adacCloudT = adacFor('cybex-cloud-t');
+const adacISense = adacFor('britax-baby-safe-isense');
+const adac5Z2 = adacFor('britax-baby-safe-5z2');
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -23,7 +29,7 @@ const faqItems = [
  },
  {
  question: 'Klarar Cybex Cloud T i-Size kraschtest?',
- answer: 'Ja, Cybex Cloud T i-Size är certifierad enligt R129 (i-Size) och har bästa betyg i ADAC-kraschtest 2023. Britax Baby-Safe iSense är också R129-certifierad och fick toppbetyg i ADAC 2022. Båda är bland de säkraste i sina klasser, ingen av dem är ett dåligt val ur säkerhetsperspektiv.',
+ answer: 'Ja, Cybex Cloud T med Base T fick totalbetyget Bra (1,7) i ADAC:s krocktest 2023, delat bäst i hela testomgången. Britax Baby-Safe iSense fick Bra (2,1) i ADAC 2021 och efterträdaren Baby-Safe 5Z2 fick Bra (2,5) år 2023. ADAC använder tysk skala där lägre är bättre, så Cybex har ett tydligt försprång - men samtliga ligger i betygsbandet Bra.',
  },
  {
  question: 'Är Britax Baby-Safe iSense kompatibel med Bugaboo barnvagnar?',
@@ -100,9 +106,9 @@ export const articleMeta = {
  <td class="p-3 text-danger font-semibold">Nej, bara babysits</td>
  </tr>
  <tr class="border-b border-border">
- <td class="p-3 font-medium text-text">ADAC-betyg</td>
- <td class="p-3 text-safe font-semibold">Bäst (2023)</td>
- <td class="p-3 text-safe font-semibold">Bäst (2022)</td>
+ <td class="p-3 font-medium text-text">ADAC-krocktest</td>
+ <td class="p-3 text-safe font-semibold">Bra (1,7) 2023, delat bäst i omgången</td>
+ <td class="p-3 text-text-light">Bra (2,1) 2021 · 5Z2: Bra (2,5) 2023</td>
  </tr>
  <tr class="bg-bg-alt/50 border-b border-border">
  <td class="p-3 font-medium text-text">Vagnkompatibel</td>
@@ -131,13 +137,22 @@ export const articleMeta = {
  Britax Baby-Safe iSense är rätt val om du <strong class="text-text">redan har en Bugaboo-vagn</strong> och vill ha en babysits som kopplas direkt till vagnchassin utan adapter, eller om du föredrar ett mer spedikalt skydd för spädbarnsskedet.
  </p>
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">Säkerhet: båda toppar krashtester</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Säkerhet: Cybex vinner ADAC-testet</h2>
  <p class="text-text-light mb-4">
- Cybex Cloud T i-Size fick bästa betyg i ADAC-kraschtestet 2023. Britax Baby-Safe 5Z2 (nyaste i-Size versionen av Baby-Safe serien) fick toppbetyg 2022. Båda har R129-certifiering som kräver sidokrockstestning.
+ Cybex Cloud T med Base T fick totalbetyget Bra (1,7) i ADAC:s krocktest 2023, delat bäst i hela testomgången, med säkerhetsdelbetyget 1,3. Britax Baby-Safe iSense fick Bra (2,1) år 2021, och den nyare Baby-Safe 5Z2 fick Bra (2,5) år 2023. Samtliga har R129-certifiering som kräver sidokrockstestning.
  </p>
- <p class="text-text-light mb-6">
- Britax profilerar sig starkt med sitt VitalShield-sidokrocksskydd och SensorSafe-teknologi (valfri: varnar om barnet lämnas kvar i bilen för länge). Cybex har Linear Side-Impact Protection (L.S.I.P.) som är lika effektivt. Ur säkerhetssynpunkt är de likvärdiga i tester.
+ <p class="text-text-light mb-4">
+ Britax profilerar sig med sitt VitalShield-sidokrocksskydd och SensorSafe-teknologi (valfri: varnar om barnet lämnas kvar i bilen). Cybex har Linear Side-Impact Protection (L.S.I.P.). Alla tre ligger i ADAC:s betygsband Bra, men Cloud T-systemets försprång i totalbetyg är tydligt.
  </p>
+
+ <div class="bg-safe-bg border border-border border-l-4 border-l-safe rounded-lg px-4 py-3 mb-4">
+  <p class="text-[14.5px] leading-relaxed text-text">
+   <strong class="text-primary">Så läser du betygen:</strong> ADAC använder tyska skolbetyg där 0,6 är bäst och 5,5 är sämst. Allt under 2,5 räknas som ett tryggt köp. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a>
+  </p>
+ </div>
+ {adacCloudT && <AdacBetyg data={adacCloudT} />}
+ {adacISense && <AdacBetyg data={adacISense} />}
+ {adac5Z2 && <AdacBetyg data={adac5Z2} />}
 
  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Praktisk användning: rotation är avgörande</h2>
  <p class="text-text-light mb-6">
@@ -164,10 +179,8 @@ export const articleMeta = {
  badge="Bäst för Bugaboo-ägare"
  rating={4.6}
  ageRange="Nyfödda, 83 cm (ca 15 månader)"
- pros={['Direkt Bugaboo-kompatibel', 'VitalShield sidoskydd', 'SensorSafe valfri', 'ADAC-toppetyg']}
+ pros={['Direkt Bugaboo-kompatibel', 'VitalShield sidoskydd', 'SensorSafe valfri', 'Bra (2,5) i ADAC 2023, med Flex Base 5Z: 2,4']}
  cons={['Ingen rotation', 'Kortare användningstid', 'Bara bakåtvänd']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245042&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/britax-romer-baby-safe-core-babyskydd-space-black"
  />
 
  <div class="mt-8 p-5 bg-bg-alt rounded-lg border border-border">

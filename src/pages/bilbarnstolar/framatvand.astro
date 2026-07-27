@@ -5,6 +5,12 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacAnorisT2 = adacFor('cybex-anoris-t2');
+const adacKidfixProM = adacFor('britax-kidfix-pro-m');
+const adacTrillo = adacFor('joie-i-trillo-fx');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -24,16 +30,16 @@ const breadcrumbs = [
 // No-price-policy. Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
   {
-    name: 'Cybex Anoris T i-Size',
+    name: 'Cybex Anoris T2 i-Size',
     brand: 'Cybex',
     rating: 4.9,
     badge: 'Säkrast framåtvänd',
-    usps: ['Unik anti-submarine-kudde', 'Toppbetyg ADAC', 'ISOFIX + top tether'],
+    usps: ['Unik anti-submarine-kudde', 'Krocksäkerhet 1,3 i ADAC', 'ISOFIX + top tether'],
     store: 'Jollyroom',
     affiliateUrl: cybexAnorisUrl,
     imageUrl: '/images/products/cybex-anoris-t.webp',
     desc: 'Framåtvänd bilbarnstol med unik sidokrocksskydd och airbag-integration. Den enda modellen med anti-submarine-kudde. För barn 76 till 150 cm (ca 1 till 12 år).',
-    features: { 'Grupp': '76 till 150 cm (ca 1 till 12 år)', 'Anti-submarine': 'Ja, unik kudde', 'Montering': 'ISOFIX + top tether', 'Vikt': '12,5 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '76 till 125 cm (ca 1,5 till 6 år)', 'Anti-submarine': 'Ja, unik kudde', 'Montering': 'ISOFIX + top tether', 'Vikt': '12,5 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Tillfr. (2,8)* · 2025' },
     alsoAt: [],
   },
   {
@@ -41,12 +47,12 @@ const products = [
     brand: 'Britax Römer',
     rating: 4.7,
     badge: 'Bäst för äldre barn',
-    usps: ['Toppbetyg Folksam', 'HUGS-sidoskydd', 'Kompakt och lätt'],
+    usps: ['HUGS-sidoskydd', 'Kompakt och lätt', 'Stort tygurval'],
     store: 'Jollyroom',
     affiliateUrl: britaxKidfixUrl,
     imageUrl: '/images/products/britax-romer-kidfix-pro-m.webp',
     desc: 'Framåtvänd bältad bilbarnstol med ISOfix och XP-PAD-teknik för extra säkerhet. För barn 100 till 150 cm (ca 3 till 12 år).',
-    features: { 'Grupp': '100 till 150 cm (ca 3 till 12 år)', 'Anti-submarine': 'Nej', 'Montering': 'Bilbälte + ISOFIX optional', 'Vikt': '7,5 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '100 till 150 cm (ca 3 till 12 år)', 'Anti-submarine': 'Nej', 'Montering': 'Bilbälte + ISOFIX optional', 'Vikt': '7,5 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Tillfr. (2,7) · 2025' },
     alsoAt: [],
   },
   {
@@ -59,17 +65,17 @@ const products = [
     affiliateUrl: joieTrilloUrl,
     imageUrl: '/images/products/joie-i-trillo-fx.webp',
     desc: 'Prisvärd framåtvänd bilbarnstol med ISOfix. Bäst pris/prestanda. För barn 100 till 150 cm (ca 3 till 12 år).',
-    features: { 'Grupp': '100 till 150 cm (ca 3 till 12 år)', 'Anti-submarine': 'Nej', 'Montering': 'ISOFIX + bilbälte', 'Vikt': '8,5 kg', 'Standard': 'i-Size (R129)' },
+    features: { 'Grupp': '100 till 150 cm (ca 3 till 12 år)', 'Anti-submarine': 'Nej', 'Montering': 'ISOFIX + bilbälte', 'Vikt': '8,5 kg', 'Standard': 'i-Size (R129)', 'ADAC-krocktest': 'Bra (2,3) · 2025' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Grupp', 'Anti-submarine', 'Montering', 'Vikt', 'Standard'];
+const specLabels = ['Grupp', 'Anti-submarine', 'Montering', 'Vikt', 'Standard', 'ADAC-krocktest'];
 
 const faqItems = [
   {
     question: 'Vilken framåtvänd bilbarnstol är bäst i test 2026?',
-    answer: 'Cybex Anoris T i-Size vinner framåtvänd bilbarnstol bäst i test 2026, främst tack vare sin unika anti-submarine-kudde som är den enda i sitt slag på marknaden. Britax Römer Kidfix Pro M är bäst för skolbarn (100 till 150 cm) och Joie i-Trillo FX är bäst pris och prestanda. Alla tre är godkända enligt UN R129 (i-Size).',
+    answer: 'Cybex Anoris T2 i-Size vinner framåtvänd bilbarnstol bäst i test 2026, främst tack vare sin unika anti-submarine-kudde som är den enda i sitt slag på marknaden. Britax Römer Kidfix Pro M är bäst för skolbarn (100 till 150 cm) och Joie i-Trillo FX är bäst pris och prestanda. Alla tre är godkända enligt UN R129 (i-Size).',
   },
   {
     question: 'När ska man byta till framåtvänd bilbarnstol?',
@@ -129,18 +135,18 @@ export const articleMeta = {
   <div class="not-prose bg-bg-alt border border-border rounded-lg px-4 py-3 mb-4">
     <h2 class="text-base font-semibold text-primary mb-1">Snabbt svar: Vilken framåtvänd bilbarnstol är bäst 2026?</h2>
     <p class="text-text-light text-[15px] leading-relaxed">
-      Cybex Anoris T i-Size är bäst i test 2026: den enda modellen med anti-submarine-kudde som hindrar barnet från att glida under bältet vid en krock, plus toppbetyg i ADAC:s krocktester. Den monteras med ISOFIX och top tether och täcker 76 till 150 cm (ca 1 till 12 år). Bäst för äldre barn: Britax Römer Kidfix Pro M. Bäst pris och prestanda: Joie i-Trillo FX.
+      Cybex Anoris T2 i-Size är bäst i test 2026: den enda modellen med anti-submarine-kudde som hindrar barnet från att glida under bältet vid en krock, med krocksäkerhetsbetyget Mycket bra (1,3) i ADAC 2025. Den monteras med ISOFIX och top tether och täcker 76 till 125 cm (ca 1,5 till 6 år). Bäst för äldre barn: Britax Römer Kidfix Pro M. Bäst pris och prestanda: Joie i-Trillo FX.
     </p>
   </div>
 
   {/* 3. Featured product (#1, hero-CTA above the fold) */}
   <MoneyFeaturedProduct
     brand="Cybex"
-    name="Anoris T i-Size"
+    name="Anoris T2 i-Size"
     image="/images/products/cybex-anoris-t.webp"
     trackedUrl={cybexAnorisUrl}
     store="Jollyroom"
-    description="Säkrast framåtvänd bilbarnstol i vår test. Den enda modellen med anti-submarine-kudde som förhindrar att barnet glider under bältet vid krock, plus toppbetyg i ADAC:s oberoende krocktester. ISOFIX och top tether, täcker 76 till 150 cm."
+    description="Säkrast framåtvänd bilbarnstol i vår test. Den enda modellen med anti-submarine-kudde som förhindrar att barnet glider under bältet vid krock, med krocksäkerhetsbetyget Mycket bra (1,3) i ADAC 2025. ISOFIX och top tether, täcker 76 till 125 cm."
   />
 
   {/* 4. Jämförelsetabell (scan-and-click) */}
@@ -149,25 +155,26 @@ export const articleMeta = {
   {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
   <div class="mp-prose">
 
-    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Cybex Anoris T i-Size, säkrast framåtvänd</h2>
+    <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">1. Cybex Anoris T2 i-Size, säkrast framåtvänd</h2>
     <MoneyProductCard
       brand="Cybex"
-      name="Cybex Anoris T i-Size"
+      name="Cybex Anoris T2 i-Size"
       rating={4.9}
       rank={1}
       badge="Säkrast framåtvänd"
       imageUrl="/images/products/cybex-anoris-t.webp"
-      imageAlt="Cybex Anoris T i-Size framåtvänd bilbarnstol"
+      imageAlt="Cybex Anoris T2 i-Size framåtvänd bilbarnstol"
       store="Jollyroom"
       buyUrl={cybexAnorisUrl}
-      pros={['Unik anti-submarine-kudde, förhindrar farligt submarining vid krock', 'Toppbetyg i ADAC-krocktester, säkrast i sin klass', 'Bred åldersgrupp 76 till 150 cm, behöver inte bytas länge', 'ISOFIX + top tether, säkraste monteringstypen', 'Rymligt och bekvämt sittläge']}
-      cons={['Hög prisklass', 'Stor och tung, passar bäst i medelstora till stora bilar', 'Anti-submarine-kudden begränsar lite hur barnet sitter']}
+      adacScore={adacAnorisT2?.overall}
+      pros={['Unik anti-submarine-kudde, förhindrar farligt submarining vid krock', 'Krocksäkerhet Mycket bra (1,3) i ADAC 2025', 'Åldersspann 76 till 125 cm (ca 1,5 till 6 år)', 'ISOFIX + top tether, säkraste monteringstypen', 'Rymligt och bekvämt sittläge']}
+      cons={['Hög prisklass', 'Totalbetyget i ADAC (2,8) sänktes av PFAS i en klädselvariant som utgått 2025', 'Stor och tung, passar bäst i medelstora till stora bilar']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Cybex Anoris T i-Size vinner framåtvänd bilbarnstol bäst i test 2026. Den är den enda modellen med anti-submarine-kudde, som hindrar barnet från att glida under bältet vid en krock. Stolen monteras med ISOFIX och top tether och täcker 76 till 150 cm, alltså cirka 1 till 12 år, med toppbetyg i ADAC:s oberoende krocktester.
+      Cybex Anoris T2 i-Size vinner framåtvänd bilbarnstol bäst i test 2026. Den är den enda modellen med anti-submarine-kudde, som hindrar barnet från att glida under bältet vid en krock. Stolen monteras med ISOFIX och top tether och täcker 76 till 125 cm, alltså cirka 1,5 till 6 år. Krocksäkerheten fick Mycket bra (1,3) i ADAC:s test 2025.
     </p>
     <p class="text-text-light leading-relaxed mb-4">
-      Nackdelen är den höga prisklassen och att stolen är stor och tung, den passar bäst i medelstora till stora bilar. Men för dig som sätter säkerheten främst är den unika anti-submarine-kudden ett skäl i sig att välja Anoris T.
+      Nackdelen är den höga prisklassen och att stolen är stor och tung, den passar bäst i medelstora till stora bilar. Men för dig som sätter säkerheten främst är den unika anti-submarine-kudden ett skäl i sig att välja Anoris T2.
     </p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-8 mb-6">2. Britax Römer Kidfix Pro M, bäst för äldre barn</h2>
@@ -181,11 +188,12 @@ export const articleMeta = {
       imageAlt="Britax Römer Kidfix Pro M framåtvänd bilbarnstol"
       store="Jollyroom"
       buyUrl={britaxKidfixUrl}
-      pros={['HUGS-sidoskydd, avancerat sidokrockskydd', 'Toppbetyg i Folksams krocktester', 'Kompakt och lätt, enkel att flytta mellan bilar', 'ISOFIX-kompatibel (optional)', 'Stort färg- och tygurval']}
-      cons={['Startar vid 100 cm, passar inte de minsta barnen', 'Inget anti-submarine-skydd', 'Kräver barnets eget bilbälte (ingen fem-punktssele)']}
+      adacScore={adacKidfixProM?.overall}
+      pros={['HUGS-sidoskydd, avancerat sidokrockskydd', 'Bra hanteringsbetyg (1,9) i ADAC 2025', 'Kompakt och lätt, enkel att flytta mellan bilar', 'ISOFIX-kompatibel (optional)', 'Stort färg- och tygurval']}
+      cons={['Säkerhetsdelbetyg 3,1 i ADAC 2025, svagare än vinnaren', 'Startar vid 100 cm, passar inte de minsta barnen', 'Kräver barnets eget bilbälte (ingen fem-punktssele)']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Britax Römer Kidfix Pro M är valet för skolbarn från 100 cm och uppåt. Den har HUGS-sidoskydd som ger avancerat sidokrockskydd och toppbetyg i Folksams krocktester. Stolen är kompakt och lätt, vilket gör den enkel att flytta mellan bilar, och finns i ett stort färg- och tygurval.
+      Britax Römer Kidfix Pro M är valet för skolbarn från 100 cm och uppåt. Den har HUGS-sidoskydd som ger avancerat sidokrockskydd. I ADAC:s test 2025 fick stolen totalbetyget Tillfredsställande (2,7), med starkt hanteringsbetyg (1,9) men svagare säkerhetsdelbetyg (3,1). Stolen är kompakt och lätt, vilket gör den enkel att flytta mellan bilar, och finns i ett stort färg- och tygurval.
     </p>
     <p class="text-text-light leading-relaxed mb-4">
       Den startar vid 100 cm och passar därför inte de minsta barnen, saknar anti-submarine-skydd och kräver barnets eget bilbälte. För familjen vars barn redan är minst 100 cm är den ett välbeprövat och pålitligt mellanklassval.
@@ -202,22 +210,24 @@ export const articleMeta = {
       imageAlt="Joie i-Trillo FX framåtvänd bilbarnstol"
       store="Jollyroom"
       buyUrl={joieTrilloUrl}
-      pros={['Bra pris för i-Size-certifierad stol', 'ISOFIX med tillägg (köps separat)', 'Justerbart ryggstöd i höjd och vinkel', 'Godkänd i oberoende säkerhetstester', 'Lätt (8,5 kg), smidig att flytta']}
+      adacScore={adacTrillo?.overall}
+      pros={['Bra pris för i-Size-certifierad stol', 'ISOFIX med tillägg (köps separat)', 'Justerbart ryggstöd i höjd och vinkel', 'Bra (2,3) i ADAC-krocktest 2025', 'Lätt (8,5 kg), smidig att flytta']}
       cons={['Enklare material och finish än premium-stolar', 'ISOFIX-adapter ingår inte alltid, kolla paket', 'Startar vid 100 cm, inte för de minsta']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Joie i-Trillo FX ger dig i-Size-säkerhet till ett märkbart lägre pris än premiumstolarna. Ryggstödet är justerbart i höjd och vinkel, stolen är lätt (8,5 kg) och smidig att flytta, och den är godkänd i oberoende säkerhetstester. ISOFIX finns som tillägg och köps separat.
+      Joie i-Trillo FX ger dig i-Size-säkerhet till ett märkbart lägre pris än premiumstolarna. Ryggstödet är justerbart i höjd och vinkel, stolen är lätt (8,5 kg) och smidig att flytta, och den fick betyget Bra (2,3) i ADAC:s krocktest 2025. ISOFIX finns som tillägg och köps separat.
     </p>
     <p class="text-text-light leading-relaxed mb-4">
       Materialet och finishen är enklare än hos premiumstolarna, ISOFIX-adaptern ingår inte alltid (kolla paketet) och den startar vid 100 cm. Men för familjen som vill ha hög säkerhet till rimligare pris är Joie i-Trillo FX ett klokt val.
     </p>
 
     <p class="text-text-light leading-relaxed mb-8">
-      Tre framåtvända bilbarnstolar granskade, en vinner totalt. Cybex Anoris T i-Size tar förstaplatsen på säkerhet med sin unika anti-submarine-kudde, Britax Römer Kidfix Pro M är bäst för skolbarn och Joie i-Trillo FX är det prisvärda valet. Vill du jämföra fler modeller? Se vår kompletta <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">test av bästa bilbarnstolen 2026</a> eller läs om <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:text-accent-dark underline">bästa bakåtvända bilbarnstolen 2026</a>.
+      Tre framåtvända bilbarnstolar granskade, en vinner totalt. Cybex Anoris T2 i-Size tar förstaplatsen på säkerhet med sin unika anti-submarine-kudde, Britax Römer Kidfix Pro M är bäst för skolbarn och Joie i-Trillo FX är det prisvärda valet. Vill du jämföra fler modeller? Se vår kompletta <a href="/bilbarnstolar/" class="text-accent hover:text-accent-dark underline">test av bästa bilbarnstolen 2026</a> eller läs om <a href="/bilbarnstolar/bakatvand/" class="text-accent hover:text-accent-dark underline">bästa bakåtvända bilbarnstolen 2026</a>.
     </p>
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - Framåtvända bilbarnstolar 2026" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. *Anoris T2:s totalbetyg sänktes enbart av PFAS i en klädselvariant som utgått 2025 - krocksäkerheten fick 1,3. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">Köpguide: vad du ska titta på när du väljer framåtvänd bilbarnstol</h2>
 
@@ -233,7 +243,7 @@ export const articleMeta = {
 
     <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">Anti-submarine: varför är det viktigt?</h3>
     <p class="text-text-light leading-relaxed mb-4">
-      Submarining innebär att barnet glider under höftbältet vid en frontalkrock och får allvarliga skador i mage och bukhåla. Cybex Anoris T är den enda framåtvända stolen med en integrerad anti-submarine-kudde som blockerar denna rörelse. Tekniken är testad och godkänd av ADAC (Tysklands motsvarighet till NTF). Om säkerhet väger tyngst i ditt val är det skälet att välja Anoris T.
+      Submarining innebär att barnet glider under höftbältet vid en frontalkrock och får allvarliga skador i mage och bukhåla. Cybex Anoris T2 är den enda framåtvända stolen med en integrerad anti-submarine-kudde som blockerar denna rörelse. Tekniken är testad och godkänd av ADAC (Tysklands motsvarighet till NTF). Om säkerhet väger tyngst i ditt val är det skälet att välja Anoris T2.
     </p>
 
     <h3 class="font-heading text-xl font-bold text-text mt-8 mb-3">i-Size (UN R129) vs gamla R44</h3>
@@ -328,7 +338,7 @@ export const articleMeta = {
   <StickyCTA
     href={cybexAnorisUrl}
     text="Bra pris hos Jollyroom"
-    productName="Cybex Anoris T i-Size"
+    productName="Cybex Anoris T2 i-Size"
   />
 
 </ArticleLayout>

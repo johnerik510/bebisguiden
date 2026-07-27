@@ -5,6 +5,14 @@ import MoneyFeaturedProduct from '../../components/MoneyFeaturedProduct.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
 import MoneySpecTable from '../../components/MoneySpecTable.astro';
 import MoneyProductCard from '../../components/MoneyProductCard.astro';
+import { adacFor } from '../../data/adac-scores';
+
+// Verifierade ADAC-betyg (NOLLTOLERANS, se src/data/adac-scores.ts)
+const adacSirona = adacFor('cybex-sirona-t');
+const adacISpin360 = adacFor('joie-i-spin-360');
+const adacBesafe = adacFor('besafe-izi-modular-rf-x1');
+const adacDualfixM = adacFor('britax-dualfix-m-plus');
+const adacKio = adacFor('recaro-kio');
 import FAQ from '../../components/FAQ.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -24,12 +32,12 @@ const products = [
     brand: 'Cybex',
     rating: 4.8,
     badge: 'Bäst i test',
-    usps: ['Toppbetyg i säkerhetstester', '360 grader rotation', 'ISOFIX + stödben'],
+    usps: ['Bra (2,3) i ADAC-krocktest', '360 grader rotation', 'ISOFIX + stödben'],
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black',
     imageUrl: '/images/products/cybex-sirona-t-i-size.webp',
     desc: 'i-Size bakåtvänd bilbarnstol med 360-rotation och sidokrocksskydd. ISOFIX.',
-    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': '360 grader', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år' },
+    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': '360 grader', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år', 'ADAC-krocktest': 'Bra (2,3) · 2023' },
     alsoAt: [],
   },
   {
@@ -42,11 +50,11 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal',
     imageUrl: '/images/products/joie-i-spin-360.webp',
     desc: 'i-Size bakåtvänd bilbarnstol med 360-rotation och bra pris.',
-    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': '360 grader', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år' },
+    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': '360 grader', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år', 'ADAC-krocktest': 'Bra (1,8) · 2019' },
     alsoAt: [],
   },
   {
-    name: 'BeSafe iZi Modular i-Size',
+    name: 'BeSafe iZi Modular RF X1 i-Size',
     brand: 'BeSafe',
     rating: 4.7,
     badge: 'Norsk säkerhetstänk',
@@ -55,7 +63,7 @@ const products = [
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab',
     imageUrl: '/images/products/besafe-izi-modular-i-size.webp',
     desc: 'Modulär i-Size bilbarnstol med hög säkerhetsrating. Bakåtvänd länge.',
-    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': 'Nej', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år' },
+    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': 'Nej', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år', 'ADAC-krocktest': 'Bra (1,7) · 2022' },
     alsoAt: [],
   },
   {
@@ -63,12 +71,12 @@ const products = [
     brand: 'Britax Römer',
     rating: 4.7,
     badge: 'Bäst för säkerhet',
-    usps: ['Toppbetyg ADAC + Folksam', '360 grader rotation', 'ISOFIX + stödben'],
+    usps: ['Bra (2,3) i ADAC 2023', '360 grader rotation', 'ISOFIX + stödben'],
     store: 'Jollyroom',
     affiliateUrl: 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10225040&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-m-plus-bilbarnstol-space-black',
     imageUrl: '/images/products/britax-romer-dualfix-m-plus-i-size.webp',
-    desc: 'i-Size bakåtvänd bilbarnstol med 360-rotation och toppbetyg i ADAC- och Folksam-krocktester. ISOFIX med stödben.',
-    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': '360 grader', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år' },
+    desc: 'i-Size bakåtvänd bilbarnstol med 360-rotation och betyget Bra (2,3) i ADAC-krocktestet 2023. ISOFIX med stödben.',
+    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja + stödben', 'Rotation': '360 grader', 'Bakåtvänd max vikt': '18 kg', 'Åldersgrupp': '0 till 4 år', 'ADAC-krocktest': 'Bra (2,3) · 2023' },
     alsoAt: [],
   },
   {
@@ -81,12 +89,12 @@ const products = [
     affiliateUrl: '',
     imageUrl: '/images/products/recaro-kio-i-size.webp',
     desc: 'Budgetvänlig i-Size bilbarnstol med ISOFIX-montering och bra testresultat för priset.',
-    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja', 'Rotation': 'Nej', 'Bakåtvänd max vikt': '13 kg', 'Åldersgrupp': '0 till 4 år' },
+    features: { 'Standard': 'i-Size (R129)', 'ISOFIX': 'Ja', 'Rotation': 'Nej', 'Bakåtvänd max vikt': '13 kg', 'Åldersgrupp': '0 till 4 år', 'ADAC-krocktest': 'Bra (2,3) · 2022' },
     alsoAt: [],
   },
 ];
 
-const specLabels = ['Standard', 'ISOFIX', 'Rotation', 'Bakåtvänd max vikt', 'Åldersgrupp'];
+const specLabels = ['Standard', 'ISOFIX', 'Rotation', 'Bakåtvänd max vikt', 'Åldersgrupp', 'ADAC-krocktest'];
 
 const faqItems = [
   {
@@ -103,7 +111,7 @@ const faqItems = [
   },
   {
     question: 'Vilken i-Size-stol är bäst 2026?',
-    answer: 'Cybex Sirona T i-Size är vårt toppval för 2026, med toppbetyg i säkerhetstester och 360-graders rotation som förenklar i- och urlastning. För den med en stramare budget erbjuder Recaro Kio i-Size solida testresultat till lägre pris. BeSafe iZi Modular i-Size är bäst för den som prioriterar bakåtvänt åkande länge.',
+    answer: 'Cybex Sirona T i-Size är vårt toppval för 2026, med betyget Bra (2,3) i ADAC:s krocktest 2023 och 360-graders rotation som förenklar i- och urlastning. För den med en stramare budget erbjuder Recaro Kio i-Size solida testresultat till lägre pris. BeSafe iZi Modular i-Size är bäst för den som prioriterar bakåtvänt åkande länge.',
   },
   {
     question: 'Kan jag använda en i-Size-stol utan ISOFIX?',
@@ -168,7 +176,8 @@ export const articleMeta = {
       imageAlt="Cybex Sirona T i-Size bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10246559&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/cybex-sirona-t-i-size-bilbarnstol-sepia-black"
-      pros={['Toppbetyg i säkerhetstester', '360-graders rotation för enkel i- och urlastning', 'Utmärkt sidoskydd (Linear Side-impact Protection)', 'Magnetiskt bälteslås']}
+      adacScore={adacSirona?.overall}
+      pros={['Bra (2,3) i ADAC-krocktest 2023', '360-graders rotation för enkel i- och urlastning', 'Utmärkt sidoskydd (Linear Side-impact Protection)', 'Magnetiskt bälteslås']}
       cons={['Hög prisklass', 'Tung (15,2 kg)', 'Kortare användningstid bakåtvänt']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -189,7 +198,8 @@ export const articleMeta = {
       imageAlt="Joie i-Spin 360 i-Size bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10141034&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/joie-i-spin-360-bilbarnstol-coal"
-      pros={['Bra pris för en i-Size-stol med rotation', 'Enkel ISOFIX-montering', 'Kompakt design som passar i mindre bilar']}
+      adacScore={adacISpin360?.overall}
+      pros={['Bra (1,8) i ADAC-krocktest 2019', 'Bra pris för en i-Size-stol med rotation', 'Kompakt design som passar i mindre bilar']}
       cons={['Något enklare material än premiumstolar', 'Kortare användningstid bakåtvänt än Axkid']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -210,7 +220,8 @@ export const articleMeta = {
       imageAlt="BeSafe iZi Modular i-Size bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10079852&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/besafe-izi-modular-rf-x1-i-size-bilbarnstol-fresh-black-cab"
-      pros={['Norsk säkerhetstänkande med extra fokus på sidoskydd', 'Bakåtvänt åkande länge', 'Modulärt system, kan kombineras med resesystem', 'Beprövat av BeSafe sedan 1960-talet']}
+      adacScore={adacBesafe?.overall}
+      pros={['Bra (1,7) i ADAC-krocktest 2022, testad med bas', 'Bakåtvänt åkande länge', 'Modulärt system, kan kombineras med resesystem', 'Beprövat av BeSafe sedan 1960-talet']}
       cons={['Ingen rotation, fast bakåtvänd', 'Hög prisklass', 'Kräver separat bas för full funktion']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -231,11 +242,12 @@ export const articleMeta = {
       imageAlt="Britax Römer Dualfix M Plus i-Size bilbarnstol"
       store="Jollyroom"
       buyUrl="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10225040&url=https://www.jollyroom.se/bilstolar/bilbarnstolar/bakatvanda/britax-romer-dualfix-m-plus-bilbarnstol-space-black"
-      pros={['Toppbetyg i ADAC- och Folksam-krocktester', '360-graders rotation', 'ISOFIX med stödben för stabil montering']}
+      adacScore={adacDualfixM?.overall}
+      pros={['Bra (2,3) i ADAC-krocktest 2023', '360-graders rotation', 'ISOFIX med stödben för stabil montering']}
       cons={['Tung (ca 14 kg)', 'Tar stor plats i bilen']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
-      Britax Römer Dualfix M Plus i-Size kombinerar toppbetyg i både ADAC- och Folksams krocktester med 360-graders rotation och ISOFIX med stödben. Det är valet för dig som sätter krocktestresultat och stabil montering högst.
+      Britax Römer Dualfix M Plus i-Size kombinerar betyget Bra (2,3) i ADAC:s krocktest 2023 med 360-graders rotation och ISOFIX med stödben. Det är valet för dig som sätter krocktestresultat och stabil montering högst.
     </p>
     <p class="text-text-light leading-relaxed mb-4">
       Rotationen gör det enkelt att lyfta i och ur barnet utan att böja ryggen, och stödbenet ger en stabil montering direkt i bilens chassi. Nackdelen är vikten (ca 14 kg) och att den tar stor plats i bilen, men för säkerhet och daglig användbarhet hör den till toppskiktet bland i-Size-stolarna.
@@ -250,7 +262,8 @@ export const articleMeta = {
       badge="Budget-i-Size"
       imageUrl="/images/products/recaro-kio-i-size.webp"
       imageAlt="Recaro Kio i-Size bilbarnstol"
-      pros={['Lägst pris i i-Size-segmentet', 'Bra testresultat för priset', 'ISOFIX-montering inkluderad']}
+      adacScore={adacKio?.overall}
+      pros={['Lägst pris i i-Size-segmentet', 'Bra (2,3) i ADAC-krocktest 2022 med Avan/Kio-basen', 'ISOFIX-montering inkluderad']}
       cons={['Kortare användningstid (upp till 87 cm)', 'Ingen rotation', 'Färre komfortfunktioner']}
     />
     <p class="text-text-light leading-relaxed mt-4 mb-2">
@@ -266,6 +279,7 @@ export const articleMeta = {
 
     {/* Spec-jämförelse ovanför köpguiden */}
     <MoneySpecTable products={products} featureLabels={specLabels} title="Specifikationer jämförda - i-Size bilbarnstolar 2026" />
+    <p class="not-prose text-[12.5px] text-text-light -mt-3 mb-6">ADAC betygsätter enligt tysk skala där lägre är bättre: 0,6 är bäst, 5,5 är sämst. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a></p>
 
     <h2 class="font-heading text-2xl font-bold text-primary mt-12 mb-6">i-Size (R129) vs ECE R44: vad är skillnaden för bilbarnstolar?</h2>
 

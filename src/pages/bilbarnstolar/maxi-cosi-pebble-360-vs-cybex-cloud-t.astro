@@ -4,6 +4,12 @@ import ProductCard from '../../components/ProductCard.astro';
 import FAQ from '../../components/FAQ.astro';
 import ProductSchema from '../../components/ProductSchema.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+import AdacBetyg from '../../components/AdacBetyg.astro';
+import { adacFor } from '../../data/adac-scores';
+
+const adacCloudT = adacFor('cybex-cloud-t');
+const adacPebblePro = adacFor('maxi-cosi-pebble-360-pro');
+const adacPebblePro2 = adacFor('maxi-cosi-pebble-360-pro-2');
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -14,7 +20,7 @@ const breadcrumbs = [
 const faqItems = [
  {
  question: 'Vilken är bäst, Maxi-Cosi Pebble 360 eller Cybex Cloud T?',
- answer: 'Cybex Cloud T vinner totalt eftersom stolen kan användas både bakåtvänd och framåtvänd till 3,5 år, längre användningstid till samma pris. Maxi-Cosi Pebble 360 Pro vinner för Bugaboo-ägare tack vare sömlös vagnsintegration. Båda är ADAC-toppklass och R129-certifierade.',
+ answer: 'Cybex Cloud T vinner totalt: den kan användas både bakåtvänd och framåtvänd till 3,5 år och fick delat bästa totalbetyg i ADAC:s krocktest 2023 (1,7 med Base T). Maxi-Cosi Pebble 360 Pro vinner för Bugaboo-ägare tack vare sömlös vagnsintegration - men välj efterträdaren Pebble 360 Pro 2, eftersom originalversionen underkändes i ADAC 2023 på skadliga ämnen i klädseln.',
  },
  {
  question: 'Kan Maxi-Cosi Pebble 360 Pro användas i barnvagn?',
@@ -26,7 +32,7 @@ const faqItems = [
  },
  {
  question: 'Vilken är säkrast enligt ADAC?',
- answer: 'Maxi-Cosi Pebble 360 Pro fick "Bra" i ADAC 2023. Cybex Cloud T i-Size fick "Bra" med ett av de bästa resultaten 2023. Båda är R129 (i-Size) certifierade och uppfyller höga säkerhetskrav. Från ett rent säkerhetsperspektiv är de likvärdiga, Cybex har marginellt fördel i ADAC.',
+ answer: 'Cybex Cloud T med Base T fick totalbetyget Bra (1,7) i ADAC 2023, delat bäst i hela testomgången. Maxi-Cosi Pebble 360 Pro underkändes (4,6) i samma testomgång på grund av skadliga ämnen i klädseln, trots mycket bra krocksäkerhet (1,5). Efterträdaren Pebble 360 Pro 2 åtgärdade problemet och fick Bra (2,2) år 2024. ADAC använder tysk skala där lägre är bättre.',
  },
  {
  question: 'Vad kostar systemet med bas inkluderad?',
@@ -56,7 +62,7 @@ export const articleMeta = {
   datePublished="2026-04-14"
 >
  <p class="text-text-light mb-4 text-base">
- Cybex Cloud T i-Size vinner totalt eftersom den även kan användas framåtvänd till 3,5 år, längre användningstid och lägre kostnad per månad. Maxi-Cosi Pebble 360 Pro vinner för <a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a>-ägare tack vare sömlös vagnsintegration. Båda är roterande babyskydd i toppklass.
+ Cybex Cloud T i-Size vinner totalt: den kan även användas framåtvänd till 3,5 år och fick delat bästa totalbetyg i ADAC:s krocktest 2023. Maxi-Cosi Pebble 360 Pro vinner för <a href="/marken/bugaboo/" class="text-accent underline">Bugaboo</a>-ägare tack vare sömlös vagnsintegration - men köp den uppdaterade Pebble 360 Pro 2, som åtgärdade klädselproblemet som fällde originalet i ADAC.
  </p>
  <p class="text-text-light mb-6 text-base">
  Maxi-Cosi Pebble 360 Pro kostar ca 5 500 kr och passar alla barnvagnar via Maxi-Cosi familjeadapter. Cybex Cloud T i-Size kostar ca 4 800 kr, klarar 0 till 3,5 år (framåtvänd från 15 månader) och ger längre användningstid och lägre månadskostnad. Vi reder ut vilken som passar din vagn och ditt budget.
@@ -104,9 +110,9 @@ export const articleMeta = {
  <td class="p-3 text-danger font-semibold">Nej</td>
  </tr>
  <tr class="bg-bg-alt/50 border-b border-border">
- <td class="p-3 font-medium text-text">ADAC-betyg 2023</td>
- <td class="p-3 text-text-light">Bra</td>
- <td class="p-3 text-safe font-semibold">Bra (topp)</td>
+ <td class="p-3 font-medium text-text">ADAC-krocktest</td>
+ <td class="p-3 text-danger font-semibold">Underkänd (4,6) 2023, skadliga ämnen. Pro 2: Bra (2,2) 2024</td>
+ <td class="p-3 text-safe font-semibold">Bra (1,7) 2023, delat bäst</td>
  </tr>
  <tr class="border-b border-border">
  <td class="p-3 font-medium text-text">Luftventilation</td>
@@ -127,8 +133,17 @@ export const articleMeta = {
  Cybex Cloud T i-Size är det mest kostnadseffektiva alternativet. Stolen används bakåtvänd 0 till 87 cm (ca 15 månader) och framåtvänd 75 till 105 cm (ca 9 månader till 3,5 år). Du behöver alltså inte köpa en ny stol för småbarnsåldern, Cloud T håller hela vägen till ca 3,5 år.
  </p>
  <p class="text-text-light mb-3 text-base">
- Liggläget är 170°, nästan plant, vilket är ett av de bästa på marknaden för nyfödda. ADAC 2023 gav Cloud T bästa möjliga betyg. Base T säljs separat och möjliggör rotation utan att brottas med bilbältet.
+ Liggläget är 170°, nästan plant, vilket är ett av de bästa på marknaden för nyfödda. I ADAC:s krocktest 2023 fick Cloud T med Base T totalbetyget Bra (1,7), delat bäst i hela testomgången. Base T säljs separat och möjliggör rotation utan att brottas med bilbältet.
  </p>
+
+ <div class="bg-safe-bg border border-border border-l-4 border-l-safe rounded-lg px-4 py-3 mb-4">
+  <p class="text-[14.5px] leading-relaxed text-text">
+   <strong class="text-primary">Så läser du betygen:</strong> ADAC använder tyska skolbetyg där 0,6 är bäst och 5,5 är sämst. Allt under 2,5 räknas som ett tryggt köp. <a href="/bilbarnstolar/adac-test/" class="text-accent font-semibold underline">Så fungerar ADAC-testet</a>
+  </p>
+ </div>
+ {adacCloudT && <AdacBetyg data={adacCloudT} />}
+ {adacPebblePro && <AdacBetyg data={adacPebblePro} />}
+ {adacPebblePro2 && <AdacBetyg data={adacPebblePro2} />}
  <p class="text-text-light mb-6 text-base">
  Nackdel: Cloud T är inte kompatibel med Bugaboo-vagnar. Har du en Bugaboo Fox 5 eller Butterfly är Maxi-Cosi Pebble 360 Pro den naturligare paret.
  </p>
@@ -145,27 +160,27 @@ export const articleMeta = {
  ctaHref="https://pin.babyland.se/t/t?a=1487384617&as=2065068845&t=2&tk=1&cupa_sku=526440&url=https://www.babyland.se/cybex-cloud-t-i-size-babyskydd-sepia-black"
  />
 
- <h2 class="font-heading text-xl font-bold mt-8 mb-3">Maxi-Cosi Pebble 360 Pro, bäst för Bugaboo-ägare</h2>
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Maxi-Cosi Pebble 360 Pro 2, bäst för Bugaboo-ägare</h2>
  <p class="text-text-light mb-3 text-base">
- Maxi-Cosi Pebble 360 Pro är det självklara valet om du redan har eller planerar en Bugaboo-vagn. Kombinationen Pebble 360 med FamilyFix 360-bas och Bugaboo-adapter är ett av de smidigaste systemen på marknaden, du lyfter stolen direkt från bilbas till vagn med ett klick utan att väcka barnet.
+ Maxi-Cosi Pebble 360 Pro-serien är det självklara valet om du redan har eller planerar en Bugaboo-vagn. Kombinationen med FamilyFix 360 Pro-bas och Bugaboo-adapter är ett av de smidigaste systemen på marknaden, du lyfter stolen direkt från bilbas till vagn med ett klick utan att väcka barnet.
  </p>
  <p class="text-text-light mb-3 text-base">
- AirProtect-teknologin ger kuddar med luftcirkulation runt barnets huvud, vilket minskar risken för överhettning och ger extra sidokrocksskydd. Maxi-Cosi-varumärket är välkänt på BB och i barnavård.
+ Viktigt: köp den uppdaterade <strong class="text-text">Pebble 360 Pro 2</strong>. Originalversionen Pebble 360 Pro underkändes i ADAC:s krocktest 2023 (4,6) på grund av skadliga ämnen i klädseln, trots mycket bra krocksäkerhet (1,5). Pro 2 åtgärdade klädseln och fick Bra (2,2) i ADAC 2024.
  </p>
  <p class="text-text-light mb-6 text-base">
- Nackdel: Pebble 360 Pro används bara bakåtvänd 0 till 87 cm och är sedan utväxt. Du behöver köpa en ny bilbarnstol när barnet är ca 15 månader. Totalt blir Cloud T-systemet ofta billigare räknat över hela barnaperioden.
+ Nackdel: Pebble 360-serien används bara bakåtvänd 0 till 87 cm och är sedan utväxt. Du behöver köpa en ny bilbarnstol när barnet är ca 15 månader. Totalt blir Cloud T-systemet ofta billigare räknat över hela barnaperioden.
  </p>
 
  <ProductCard
- name="Maxi-Cosi Pebble 360 Pro i-Size"
- image="/images/products/maxi-cosi-pebble-360-pro-i-size.webp"
+ name="Maxi-Cosi Pebble 360 Pro 2"
+ image="/images/products/maxi-cosi-pebble-360-pro-2.webp"
  badge="Bäst för Bugaboo"
  rating={4.7}
  ageRange="0 till 87 cm (0 till ca 15 månader)"
- pros={['Bugaboo-kompatibel (Fox 5, Butterfly)', 'AirProtect sidoskyddskuddar', '360° rotation', 'Elegant Maxi-Cosi-design']}
- cons={['Enbart babysits 0 till 87 cm', 'FamilyFix 360-bas extra kostnad', 'Kortare användningstid än Cloud T']}
- ctaText="Bra pris hos Jollyroom"
- ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=910222&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/maxi-cosi-pebble-360-babyskydd-inkl-familyfix-360-bas-essential-graphite"
+ pros={['Bugaboo-kompatibel (Fox 5, Butterfly)', 'Bra (2,2) i ADAC 2024, säkerhet 1,5', '360° rotation', 'Åtgärdad klädsel efter Pro-versionens ADAC-underkännande']}
+ cons={['Enbart babysits 0 till 87 cm', 'FamilyFix 360 Pro-bas extra kostnad', 'Kortare användningstid än Cloud T']}
+ ctaText="Bra pris hos Babysam"
+ ctaHref="https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=a8640b22-66ce-4004-9996-21f7c39bb0ef&url=https://www.babysam.se/maxi-cosi-pebble-360-pro-2-babyskydd-twillic-black-onesize"
  />
 
  <h2 class="font-heading text-xl font-bold mt-8 mb-4">Vem passar vad?</h2>
@@ -181,7 +196,7 @@ export const articleMeta = {
  </ul>
  </div>
  <div class="bg-bg-alt rounded-lg border border-border p-5">
- <h3 class="font-heading font-bold text-text mb-3">Välj Maxi-Cosi Pebble 360 Pro om du...</h3>
+ <h3 class="font-heading font-bold text-text mb-3">Välj Maxi-Cosi Pebble 360 Pro 2 om du...</h3>
  <ul class="space-y-2 text-sm text-text-light">
  <li>+ Har eller planerar en Bugaboo-vagn</li>
  <li>+ Vill ha sömlös vagnsintegration via klick</li>
@@ -207,7 +222,7 @@ export const articleMeta = {
 
  <ProductSchema products={[
  { name: 'Cybex Cloud T i-Size', description: 'Babyskydd med 360-rotation och premium sidokrocksskydd. Passar från prematura.', brand: 'Cybex', ratingValue: 4.8, reviewCount: 1 },
- { name: 'Maxi-Cosi Pebble 360 Pro i-Size', description: 'Babyskydd med 360-rotation och FamilyFix-baskompatibilitet. Klassiker från Maxi-Cosi.', brand: 'Maxi-Cosi', ratingValue: 4.7, reviewCount: 1 },
+ { name: 'Maxi-Cosi Pebble 360 Pro 2', description: 'Babyskydd med 360-rotation och FamilyFix-baskompatibilitet. Uppdaterad version med åtgärdad klädsel.', brand: 'Maxi-Cosi', ratingValue: 4.7, reviewCount: 1 },
  ]} />
 
 <style>
