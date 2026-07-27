@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import AffiliateDisclaimer from '../components/AffiliateDisclaimer.astro';
 import AuthorByline from '../components/AuthorByline.astro';
 import { buildArticleSchema } from '../utils/schema.js';
 
@@ -121,7 +120,6 @@ if (section) {
  </div>
  </aside>
  )}
- {showDisclaimer && <AffiliateDisclaimer />}
  </article>
  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
  <script>
