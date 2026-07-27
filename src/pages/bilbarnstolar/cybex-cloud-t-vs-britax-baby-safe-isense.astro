@@ -11,6 +11,7 @@ import { adacFor } from '../../data/adac-scores';
 const adacCloudT = adacFor('cybex-cloud-t');
 const adacISense = adacFor('britax-baby-safe-isense');
 const adac5Z2 = adacFor('britax-baby-safe-5z2');
+const adacCore = adacFor('britax-baby-safe-core');
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -41,7 +42,7 @@ const faqItems = [
  },
  {
  question: 'Vilket kostar mest, Cybex Cloud T eller Britax Baby-Safe iSense?',
- answer: 'Cybex Cloud T i-Size och Britax Baby-Safe 5Z2 (senaste i-Size). Cybex Cloud T inkluderar rotation-funktion och längre användningstid. Räknat per månad är Cybex Cloud T billigare tack vare den längre livslängden.',
+ answer: 'Båda ligger i premiumsegmentet för babyskydd och kräver bas för sina smartaste funktioner. Cybex Cloud T inkluderar rotationsfunktion och längre användningstid (bakåtvänd plus framåtvänd till ca 3,5 år). Räknat per användningsmånad blir Cloud T därför oftast det billigare systemet, trots likvärdigt inköpspris.',
  },
 ];
 export const articleMeta = {
@@ -181,6 +182,38 @@ export const articleMeta = {
  ageRange="Nyfödda, 83 cm (ca 15 månader)"
  pros={['Direkt Bugaboo-kompatibel', 'VitalShield sidoskydd', 'SensorSafe valfri', 'Bra (2,5) i ADAC 2023, med Flex Base 5Z: 2,4']}
  cons={['Ingen rotation', 'Kortare användningstid', 'Bara bakåtvänd']}
+ />
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Efterträdarna: Baby-Safe Pro och Baby-Safe Core</h2>
+ <p class="text-text-light mb-4">
+ Baby-Safe iSense och 5Z2 har utgått ur butikernas sortiment. Britax nuvarande babyskydd heter <strong class="text-text">Baby-Safe Pro</strong> (premiumefterträdaren, säljs i Classic-, Style- och Lux-utförande, med Vario Bas 5Z som paket) och <strong class="text-text">Baby-Safe Core</strong>. ADAC har ännu inte testat någon stol under namnet Baby-Safe Pro (kontrollerat juli 2026), så vi visar inga ADAC-siffror för den.
+ </p>
+ <p class="text-text-light mb-4">
+ Baby-Safe Core är däremot testad: bältesmonterad fick den betyget Bra (1,8) i ADAC 2024 med säkerhetsdelbetyget 1,5 - i nivå med Cloud T-systemet. Värt att veta: kombon med Baby-Safe Core-basen fick betydligt sämre totalbetyg (Tillfredsställande, 2,6, säkerhet 2,9), så för Core är bältesmontering det testmässigt starkaste valet.
+ </p>
+ {adacCore && <AdacBetyg data={adacCore} />}
+
+ <ProductCard
+ name="Britax Römer Baby-Safe Core"
+ image="/images/products/britax-baby-safe-core.webp"
+ badge="Testad efterträdare"
+ ageRange="Nyfödda till 83 cm (ca 15 månader)"
+ pros={['Bra (1,8) i ADAC 2024 bältesmonterad, säkerhet 1,5', 'Nuvarande Britax-modell, finns i butik', 'Fungerar utan bas med 3-punktsbälte']}
+ cons={['Med Core-basen: bara Tillfredsställande (2,6) i ADAC', 'Ingen rotation', 'Bara bakåtvänd babysits']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10245042&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/britax-romer-baby-safe-core-babyskydd-space-black"
+ />
+
+ <ProductCard
+ name="Britax Römer Baby-Safe Pro"
+ image="/images/products/britax-baby-safe-pro.webp"
+ badge="Premiumefterträdare"
+ ageRange="Nyfödda till ca 15 månader"
+ pros={['Ersätter Baby-Safe iSense och 5Z2 i butikerna', 'Säljs i Classic-, Style- och Lux-utförande', 'Finns som paket med Vario Bas 5Z']}
+ cons={['Ännu inte testad av ADAC under namnet Baby-Safe Pro (juli 2026)', 'Ingen rotation']}
+ ctaText="Bra pris hos Jollyroom"
+ ctaHref="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10273006&url=https://www.jollyroom.se/bilstolar/babyskydd/babyskydd/britax-romer-baby-safe-pro-babyskydd-deep-black"
+ additionalCtaHrefs={[{ store: 'Babysam', url: 'https://to.babyworld.se/t/t?a=1945556825&as=2065068845&t=2&tk=1&cupa_sku=f590fdc6-07d7-48ae-8c83-9478c82c24e8&url=https://www.babysam.se/britax-roemer-baby-safe-pro-classic-babyskydd-deep-black-onesize' }]}
  />
 
  <div class="mt-8 p-5 bg-bg-alt rounded-lg border border-border">
