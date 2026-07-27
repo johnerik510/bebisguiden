@@ -11,6 +11,7 @@
  *   2,6-3,5 tillfredsställande (befriedigend) · 3,6-4,5 tillräcklig (ausreichend) ·
  *   4,6-5,5 otillräcklig (mangelhaft)
  */
+import { betyg } from '../lib/format';
 
 export interface AdacSubScore {
   /** Delkriterium på svenska, t.ex. "Frontalkrock" */
@@ -62,9 +63,9 @@ export function adacColor(score: number): string {
   return '#9e2a2b';               // tegelröd (= --color-danger)
 }
 
-/** Svensk sifferformatering: 1.6 -> "1,6" */
+/** Svensk sifferformatering: 1.6 -> "1,6". Använder sitens gemensamma helper. */
 export function adacFmt(score: number): string {
-  return score.toFixed(1).replace('.', ',');
+  return betyg(score);
 }
 
 export const adacScores: AdacScore[] = [
