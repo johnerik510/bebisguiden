@@ -1,5 +1,7 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
+import { getPrice, ctaVerb } from '../lib/price';
+import PriceTag from './PriceTag.astro';
 /**
  * Kompakt CTA för guider, placerad direkt efter ingressen/snabbsvaret.
  *
@@ -28,6 +30,10 @@ const {
   affiliateUrl,
   label = 'Vår rekommendation',
 } = Astro.props;
+
+/* Knapptexten följer priset: står beloppet intill knappen är "Bra pris" ett
+ * omdöme vi inte kan belägga (CLAUDE.md, CTA-standarder). */
+const ctaText = `${ctaVerb(Astro.url.pathname)} hos ${store}`;
 ---
 
 {affiliateUrl && store && (
@@ -39,13 +45,14 @@ const {
     <p class="text-xs font-semibold text-text-light mb-1">{label}</p>
     <p class="font-heading font-bold text-text text-base leading-snug">{productName}</p>
   </div>
+  <PriceTag affiliateUrl={affiliateUrl} merchant={store} variant="inline" class="mb-2" />
   <a
     href={affiliateUrl}
     rel={ctaRel(affiliateUrl)}
     target="_blank"
     class="shrink-0 inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-cta hover:bg-cta-dark text-white font-bold py-3 px-6 rounded-lg transition-colors text-sm min-h-[48px]"
   >
-    Bra pris hos {store}
+    {ctaText}
     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
   </a>
 </div>

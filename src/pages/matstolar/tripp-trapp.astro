@@ -1,9 +1,15 @@
 ---
+import { getPrice, ctaVerb } from '../../lib/price';
+import PriceTag from '../../components/PriceTag.astro';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTABox from '../../components/CTABox.astro';
 import MultiStoreCTA from '../../components/MultiStoreCTA.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+
+/* Knapptexten följer priset, se CLAUDE.md CTA-standarder. */
+const trippTrappUrl = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10065330&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-oak-natural';
+const trippTrappCta = `${ctaVerb(Astro.url.pathname)} hos Jollyroom`;
 
 const breadcrumbs = [
  { label: 'Hem', href: '/' },
@@ -35,7 +41,7 @@ const faqItems = [
 ];
 export const articleMeta = {
   title: "Stokke Tripp Trapp recension 2026: värd priset?",
-  description: "Stokke Tripp Trapp recension 2026: byggkvalitet, ergonomi, rengöring och livslängd jämförda. Är matstolen till 3 000 kr värd priset? Vi svarar med för- och nackdelar.",
+  description: "Stokke Tripp Trapp recension 2026: byggkvalitet, ergonomi, rengöring och livslängd jämförda. Är premiumstolen värd priset? Vi svarar med för- och nackdelar.",
   publishDate: "2026-05-16",
   category: "Matstolar",
   image: "/images/cat-matstol-v2.webp",
@@ -45,7 +51,7 @@ export const articleMeta = {
 
 <ArticleLayout
  title="Stokke Tripp Trapp recension 2026: test och betyg"
- description="Stokke Tripp Trapp 2026 granskad: är matstolen till 3 000 kr värd priset? Vi jämför byggkvalitet, ergonomi, rengöring och livslängd med för- och nackdelar."
+ description="Stokke Tripp Trapp 2026 granskad: är premiumstolen värd priset? Vi jämför byggkvalitet, ergonomi, rengöring och livslängd med för- och nackdelar."
  breadcrumbs={breadcrumbs}
  updatedDate="2026-04-14"
   datePublished="2026-03-29"
@@ -66,8 +72,9 @@ export const articleMeta = {
  </div>
  </div>
  </div>
- <a href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10065330&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-oak-natural" rel="nofollow sponsored noopener" target="_blank" class="inline-flex items-center justify-center bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
- Bra pris hos Jollyroom
+ <PriceTag affiliateUrl={trippTrappUrl} merchant="Jollyroom" variant="inline" class="mb-2" />
+ <a href={trippTrappUrl} rel="nofollow sponsored noopener" target="_blank" class="inline-flex items-center justify-center bg-cta text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+ {trippTrappCta}
  <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  </div>
@@ -177,8 +184,9 @@ export const articleMeta = {
  </div>
 
  <div class="mt-4 mb-8">
- <a href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10065330&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-oak-natural" rel="nofollow sponsored noopener" target="_blank" class="inline-flex items-center justify-center bg-cta text-white font-bold text-base px-8 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
- Bra pris hos Jollyroom
+ <PriceTag affiliateUrl={trippTrappUrl} merchant="Jollyroom" variant="card" class="mb-2" />
+ <a href={trippTrappUrl} rel="nofollow sponsored noopener" target="_blank" class="inline-flex items-center justify-center bg-cta text-white font-bold text-base px-8 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
+ {trippTrappCta}
  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  </div>
@@ -218,7 +226,7 @@ export const articleMeta = {
   }
 </style>
 
-<StickyCTA text="Bra pris hos Jollyroom" href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326093&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-cashmere-grey" productName="Stokke Tripp Trapp Matstol" />
+<StickyCTA store="Jollyroom" href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10326093&url=https://www.jollyroom.se/babyprodukter/barnstolar-tillbehor/barnmatstolar/stokke-tripp-trapp-matstol-cashmere-grey" productName="Stokke Tripp Trapp Matstol" />
 
 
 </ArticleLayout>

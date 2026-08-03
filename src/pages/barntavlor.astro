@@ -1,5 +1,7 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
+import { getPrice, ctaVerb } from '../lib/price';
+import PriceTag from '../components/PriceTag.astro';
 import ArticleLayout from '../layouts/ArticleLayout.astro';
 import MoneyByline from '../components/MoneyByline.astro';
 import StickyCTA from '../components/StickyCTA.astro';
@@ -13,19 +15,19 @@ const breadcrumbs = [
 // Affiliatelänkar: Addrevenue-feed a=988100 (Lillestudio), godkänd 2026-06-11.
 // Tracker-URL:er hämtade direkt ur produktfeedens <link>-fält, aldrig handbyggda.
 const posters = [
- { name: 'Sol, moln och regnbåge', theme: 'Regnbåge & moln', img: '/images/products/lillestudio-sol-moln-regnbage.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsol-moln-regnbage-barnposter-sot-poster-for-barnrum%3Fvariant%3D54026520166729' },
- { name: 'Elefant i djungeln', theme: 'Djur & djungel', img: '/images/products/lillestudio-elefant-djungel.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-elefant-for-barn-djungelposter-i-skandinavisk-stil%3Fvariant%3D54147908337993' },
- { name: 'Enhörning', theme: 'Enhörning & fantasi', img: '/images/products/lillestudio-enhorning.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fenhorning-poster-barn-magisk-unicorn-i-lugn-skandinavisk-stil%3Fvariant%3D54181666521417' },
- { name: 'Grön traktor', theme: 'Fordon', img: '/images/products/lillestudio-gron-traktor.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgron-traktor-for-barn-lantlig-poster-i-skandinavisk-stil%3Fvariant%3D54195848610121' },
- { name: 'Grävskopa', theme: 'Fordon', img: '/images/products/lillestudio-gravskopa.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgravskopa-poster%3Fvariant%3D54414902264137' },
- { name: 'Enhörning på månen', theme: 'Enhörning & fantasi', img: '/images/products/lillestudio-enhorning-mane.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fenhorning-pa-mane-barnposter-sot-poster-for-barnrum%3Fvariant%3D54027908546889' },
- { name: 'Björn som astronaut', theme: 'Rymd', img: '/images/products/lillestudio-bjorn-astronaut.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-rymdbjorn-poster-barnposter-i-dromsk-rymd-stil%3Fvariant%3D54153231925577' },
- { name: 'Brontosaurus', theme: 'Dinosaurier', img: '/images/products/lillestudio-brontosaurus.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fdinosaurieposter-for-barn-sot-brontosaurus-i-skandinavisk-stil%3Fvariant%3D54110805033289' },
- { name: 'Söt kanin', theme: 'Djur & natur', img: '/images/products/lillestudio-kanin.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-kanin-for-barn-natur-poster-i-mjuk-boho-stil%3Fvariant%3D54148938039625' },
- { name: 'Personlig namntavla (Här bor)', theme: 'Namntavlor', img: '/images/products/lillestudio-namnposter-har-bor.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fcopy-of-personlig-namnposter-for-barnrum-har-bor%3Fvariant%3D54581047755081' },
- { name: 'Bokstavsposter med djur', theme: 'Lär & alfabet', img: '/images/products/lillestudio-bokstavsposter-djur.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fbokstavsposter-for-barn-alfabet-med-djur-i-mjuk-skandinavisk-stil%3Fvariant%3D54251786830153' },
- { name: 'Apa i lian', theme: 'Djur & djungel', img: '/images/products/lillestudio-apa-i-lian.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-apa-for-barn-djungelposter-i-skandinavisk-stil%3Fvariant%3D54147866034505' },
- { name: 'Giraff', theme: 'Djur & djungel', img: '/images/products/lillestudio-giraff.webp', from: 199, link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgiraffposter-for-barn-sot-giraff-i-skandinavisk-stil%3Fvariant%3D54112624050505' },
+ { name: 'Sol, moln och regnbåge', theme: 'Regnbåge & moln', img: '/images/products/lillestudio-sol-moln-regnbage.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsol-moln-regnbage-barnposter-sot-poster-for-barnrum%3Fvariant%3D54026520166729' },
+ { name: 'Elefant i djungeln', theme: 'Djur & djungel', img: '/images/products/lillestudio-elefant-djungel.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-elefant-for-barn-djungelposter-i-skandinavisk-stil%3Fvariant%3D54147908337993' },
+ { name: 'Enhörning', theme: 'Enhörning & fantasi', img: '/images/products/lillestudio-enhorning.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fenhorning-poster-barn-magisk-unicorn-i-lugn-skandinavisk-stil%3Fvariant%3D54181666521417' },
+ { name: 'Grön traktor', theme: 'Fordon', img: '/images/products/lillestudio-gron-traktor.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgron-traktor-for-barn-lantlig-poster-i-skandinavisk-stil%3Fvariant%3D54195848610121' },
+ { name: 'Grävskopa', theme: 'Fordon', img: '/images/products/lillestudio-gravskopa.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgravskopa-poster%3Fvariant%3D54414902264137' },
+ { name: 'Enhörning på månen', theme: 'Enhörning & fantasi', img: '/images/products/lillestudio-enhorning-mane.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fenhorning-pa-mane-barnposter-sot-poster-for-barnrum%3Fvariant%3D54027908546889' },
+ { name: 'Björn som astronaut', theme: 'Rymd', img: '/images/products/lillestudio-bjorn-astronaut.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-rymdbjorn-poster-barnposter-i-dromsk-rymd-stil%3Fvariant%3D54153231925577' },
+ { name: 'Brontosaurus', theme: 'Dinosaurier', img: '/images/products/lillestudio-brontosaurus.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fdinosaurieposter-for-barn-sot-brontosaurus-i-skandinavisk-stil%3Fvariant%3D54110805033289' },
+ { name: 'Söt kanin', theme: 'Djur & natur', img: '/images/products/lillestudio-kanin.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-kanin-for-barn-natur-poster-i-mjuk-boho-stil%3Fvariant%3D54148938039625' },
+ { name: 'Personlig namntavla (Här bor)', theme: 'Namntavlor', img: '/images/products/lillestudio-namnposter-har-bor.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fcopy-of-personlig-namnposter-for-barnrum-har-bor%3Fvariant%3D54581047755081' },
+ { name: 'Bokstavsposter med djur', theme: 'Lär & alfabet', img: '/images/products/lillestudio-bokstavsposter-djur.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fbokstavsposter-for-barn-alfabet-med-djur-i-mjuk-skandinavisk-stil%3Fvariant%3D54251786830153' },
+ { name: 'Apa i lian', theme: 'Djur & djungel', img: '/images/products/lillestudio-apa-i-lian.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsot-apa-for-barn-djungelposter-i-skandinavisk-stil%3Fvariant%3D54147866034505' },
+ { name: 'Giraff', theme: 'Djur & djungel', img: '/images/products/lillestudio-giraff.webp', link: 'https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fgiraffposter-for-barn-sot-giraff-i-skandinavisk-stil%3Fvariant%3D54112624050505' },
 ];
 
 const faqItems = [
@@ -43,7 +45,7 @@ const faqItems = [
  },
  {
  question: 'Funkar en barntavla som doppresent eller present till nyfödd?',
- answer: 'Ja, en poster är en uppskattad och prisvärd present till nyfödd och dop. En personlig namntavla med barnets namn och födelsedata blir ett minne som sitter kvar långt efter babytiden. Oramade posters från 199 kr gör det enkelt att ge en snygg present utan att lägga en förmögenhet.',
+ answer: 'Ja, en poster är en uppskattad och prisvärd present till nyfödd och dop. En personlig namntavla med barnets namn och födelsedata blir ett minne som sitter kvar långt efter babytiden. Oramade posters i fyra storlekar gör det enkelt att ge en snygg present utan att lägga en förmögenhet.',
  },
  {
  question: 'Vilka motiv passar bäst i ett könsneutralt barnrum?',
@@ -73,10 +75,10 @@ export const articleMeta = {
 
   <MoneyByline datePublished="2026-06-11" dateModified="2026-06-13" />
 
-  <div slot="answer" class="bg-bg-alt border border-border rounded-lg p-4 mb-4 max-w-2xl not-prose"><p class="text-sm font-semibold text-primary mb-1">Snabbt svar</p><p class="text-sm text-text leading-relaxed">30x40 cm är den rätta storleken för de flesta barnrum. Vi har plockat 13 favoritmotiv från svenska Lillestudio, från regnbågar och djungeldjur till traktorer och personliga namntavlor. Alla motiv från 199 kr i fyra storlekar.</p></div>
+  <div slot="answer" class="bg-bg-alt border border-border rounded-lg p-4 mb-4 max-w-2xl not-prose"><p class="text-sm font-semibold text-primary mb-1">Snabbt svar</p><p class="text-sm text-text leading-relaxed">30x40 cm är den rätta storleken för de flesta barnrum. Vi har plockat 13 favoritmotiv från svenska Lillestudio, från regnbågar och djungeldjur till traktorer och personliga namntavlor. Alla motiv i fyra storlekar i fyra storlekar.</p></div>
 
  <p class="text-base text-text-light mb-4 max-w-2xl">
- Rätt tavla gör barnrummet personligt utan att kosta mycket. Vi har plockat 13 favoritmotiv från svenska Lillestudio, från regnbågar och djungeldjur till traktorer och personliga namntavlor, och samlat en köpguide för storlek, ram och placering längre ner. Alla motiv finns i fyra storlekar och börjar på 199 kr.
+ Rätt tavla gör barnrummet personligt utan att kosta mycket. Vi har plockat 13 favoritmotiv från svenska Lillestudio, från regnbågar och djungeldjur till traktorer och personliga namntavlor, och samlat en köpguide för storlek, ram och placering längre ner. Alla motiv finns i fyra storlekar.
  </p>
 
  <div class="bg-primary/5 border border-primary/20 rounded-lg p-4 mb-6 max-w-2xl">
@@ -95,11 +97,11 @@ export const articleMeta = {
  <div class="p-3 sm:p-4 flex flex-col flex-1">
  <span class="text-[11px] font-semibold text-accent-dark bg-accent/10 px-2 py-0.5 rounded-full self-start mb-1.5">{p.theme}</span>
  <h3 class="font-heading text-sm sm:text-base font-bold text-text leading-snug">{p.name}</h3>
- <p class="text-xs text-text-light mt-1">Från {p.from} kr, fyra storlekar</p>
+ <p class="text-xs text-text-light mt-1">Fyra storlekar</p>
  <div class="mt-auto pt-3">
- <span class="block text-[11px] font-semibold text-text-light mb-1">Bra pris hos:</span>
+ <PriceTag affiliateUrl={p.link} merchant="Lillestudio" variant="inline" class="mb-1.5" />
  <a href={p.link} target="_blank" rel={ctaRel(p.link)} data-product={p.name} class="flex w-full items-center justify-center bg-cta text-white font-bold text-sm px-4 py-3 rounded-lg hover:bg-cta-dark transition-colors min-h-[44px]">
- Lillestudio
+ {ctaVerb(Astro.url.pathname)} hos Lillestudio
  <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
  </a>
  </div>
@@ -135,7 +137,7 @@ export const articleMeta = {
 
  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Barntavla som doppresent och present till nyfödd</h2>
  <p class="text-base text-text-light mb-4 max-w-2xl">
- En poster är en av de mest prisvärda presenterna du kan ge till en nyfödd, och en personlig namntavla med barnets namn och födelsedata blir ett minne som sitter kvar långt efter babytiden. Från 199 kr får du en snygg present utan att lägga en förmögenhet. Letar du efter fler presenttips, titta också på vår guide till <a href="/babyklader/" class="text-accent underline">babykläder</a> och våra <a href="/leksaker/0-3-manader/" class="text-accent underline">leksaker för 0 till 3 månader</a>.
+ En poster är en av de mest prisvärda presenterna du kan ge till en nyfödd, och en personlig namntavla med barnets namn och födelsedata blir ett minne som sitter kvar långt efter babytiden. Fyra storlekar får du en snygg present utan att lägga en förmögenhet. Letar du efter fler presenttips, titta också på vår guide till <a href="/babyklader/" class="text-accent underline">babykläder</a> och våra <a href="/leksaker/0-3-manader/" class="text-accent underline">leksaker för 0 till 3 månader</a>.
  </p>
 
  <div class="mt-10 p-5 bg-bg-alt rounded-lg border border-border">
@@ -152,7 +154,7 @@ export const articleMeta = {
 
  </div>
 
-  <StickyCTA text="Bra pris hos Lillestudio" href="https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsol-moln-regnbage-barnposter-sot-poster-for-barnrum%3Fvariant%3D54026520166729" />
+  <StickyCTA store="Lillestudio" href="https://addrevenue.io/t?c=3467325&a=988100&m=SE&u=https%3A%2F%2Flillestudio.se%2Fproducts%2Fsol-moln-regnbage-barnposter-sot-poster-for-barnrum%3Fvariant%3D54026520166729" />
 
   <script type="application/ld+json" is:raw>
 {

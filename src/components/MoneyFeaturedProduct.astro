@@ -6,7 +6,7 @@ import { ctaRel } from '../lib/cta-rel';
  * tematiserad till bebisguiden och utan resolveMultiCTA-beroende: sidan
  * skickar in primary-URL + ev. alsoAt-butiker direkt (verifierade feeds).
  */
-import { getPrice } from '../lib/price';
+import { getPrice, ctaVerb } from '../lib/price';
 import PriceTag from './PriceTag.astro';
 
 interface AlsoAt {
@@ -31,7 +31,7 @@ interface Props {
 const {
   brand,
   name,
-  visaPris = false,
+  visaPris = true,
   image,
   imageAlt,
   trackedUrl,
@@ -43,8 +43,7 @@ const {
 
 /* Priset avgör knappens text: står beloppet intill knappen är "Bra pris" ett
  * omdöme vi inte kan belägga (CLAUDE.md, CTA-standarder). */
-const pris = visaPris ? getPrice(trackedUrl) : null;
-const ctaText = `${pris ? 'Handla' : 'Bra pris'} hos ${store}`;
+const ctaText = `${ctaVerb(Astro.url.pathname)} hos ${store}`;
 
 /**
  * Märket i rubriken i stället för som egen versaletikett ovanför. Många

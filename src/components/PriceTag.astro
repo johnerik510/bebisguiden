@@ -4,7 +4,8 @@
  * så att en ändring i utseende eller formulering sker på ett ställe.
  *
  * Priset slås upp på produktens affiliate-URL via lib/price.ts. Saknas produkten
- * i butikens feed renderas ingenting alls: ingen platshållare, inget "N/A", ingen
+ * i butikens feed, eller ligger sidan under täckningströskeln, renderas
+ * ingenting alls: ingen platshållare, inget "N/A", ingen
  * tom lucka. CTA-knappens "Handla hos [Butik]" bär då hela affordansen.
  *
  * Butiken skrivs ut intill beloppet eftersom priset gäller just den butiken, och
@@ -12,7 +13,7 @@
  *
  * `data-pris` är signalen som får prisnoten att visa sig, se PriceNote.astro.
  */
-import { getPrice, prisText } from '../lib/price';
+import { getPrice, prisText, sidanVisarPris } from '../lib/price';
 
 interface Props {
   affiliateUrl?: string;
@@ -27,7 +28,10 @@ interface Props {
 }
 
 const { affiliateUrl, merchant, variant = 'card', class: cls = '' } = Astro.props;
-const pris = getPrice(affiliateUrl);
+// Sidan avgor forst, produkten sedan. En sida under tackningstroskeln visar
+// inga priser alls: en ensam prislapp bland fem produkter ser godtycklig ut.
+// Samma karta styr knappens verb, sa text och pris kan inte glida isar.
+const pris = sidanVisarPris(Astro.url.pathname) ? getPrice(affiliateUrl) : null;
 
 const amount = {
   card: 'font-heading text-xl font-bold text-text tabular-nums',

@@ -1,5 +1,7 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
+import { getPrice, ctaVerb } from '../lib/price';
+import PriceTag from './PriceTag.astro';
 interface Props {
  name: string;
  image?: string;
@@ -49,11 +51,12 @@ function storeFromUrl(url: string | undefined): string | undefined {
 }
 
 const primaryHref = ctaHref;
-// Knappen bär hela frasen (nätverksstandard "Bra pris hos [Butik]"), ingen label ovanför.
-// Strippar ev. "Bra pris hos "-prefix från ctaText så det inte dubbleras.
-const cleanedCtaText = ctaText?.replace(/^Bra pris hos\s+/i, '').trim();
+// Knappen bär hela frasen, ingen label ovanför. Strippar ev. prefix från
+// ctaText så det inte dubbleras. Verbet följer priset: står beloppet intill
+// knappen är "Bra pris" ett omdöme vi inte kan belägga (CLAUDE.md).
+const cleanedCtaText = ctaText?.replace(/^(?:Bra pris|Handla) hos\s+/i, '').trim();
 const primaryStore = storeFromUrl(ctaHref) ?? cleanedCtaText ?? 'butiken';
-const primaryLabel = `Bra pris hos ${primaryStore}`;
+const primaryLabel = `${ctaVerb(Astro.url.pathname)} hos ${primaryStore}`;
 ---
 
 <div class="bg-white rounded-lg border border-border overflow-hidden">
@@ -116,6 +119,7 @@ const primaryLabel = `Bra pris hos ${primaryStore}`;
  )}
  {primaryHref && (
  <div class="mt-4">
+ <PriceTag affiliateUrl={primaryHref} merchant={primaryStore} variant="inline" class="mb-2" />
  <a href={primaryHref} target="_blank" rel={ctaRel(primaryHref)} data-product={name} class="relative flex w-full items-center justify-center bg-cta text-white font-bold text-base px-7 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
  <span class="absolute -top-2 right-3 inline-block bg-primary text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">Redaktionens val</span>
  {primaryLabel}

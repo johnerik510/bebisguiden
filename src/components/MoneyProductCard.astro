@@ -1,6 +1,6 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
-import { getPrice } from '../lib/price';
+import { getPrice, ctaVerb } from '../lib/price';
 import PriceTag from './PriceTag.astro';
 import { adacWord, adacColor, adacFmt } from '../data/adac-scores';
 /**
@@ -29,8 +29,8 @@ interface Props {
    * för hand blir fel så fort butiken ändrar sig. Saknas produkten i feeden
    * renderas ingen siffra och kortet ser ut precis som förut.
    *
-   * Opt-in per kort medan prisvisningen pilottestas. Ska den gälla hela siten
-   * byts defaulten här, inte anropen.
+   * På som standard sedan 2026-08-03. Sätt visaPris={false} för att stänga av
+   * priset på ett enskilt kort; sidorna behöver inte skicka in något.
    */
   visaPris?: boolean;
   buyUrl?: string;
@@ -57,7 +57,7 @@ const {
   rating,
   pros,
   cons,
-  visaPris = false,
+  visaPris = true,
   buyUrl,
   store = 'butiken',
   badge,
@@ -75,8 +75,7 @@ const {
  * CTA-standarder, samma regel som ladcykelguiden följer). Kortet byter alltså
  * text exakt när det faktiskt visar ett pris, i stället för att texten och
  * prisvisningen kan glida isär. */
-const pris = visaPris ? getPrice(buyUrl) : null;
-const ctaText = `${pris ? 'Handla' : 'Bra pris'} hos ${store}`;
+const ctaText = `${ctaVerb(Astro.url.pathname)} hos ${store}`;
 
 const initial = brand.charAt(0).toUpperCase();
 const fullStars = Math.floor(rating);

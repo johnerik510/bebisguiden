@@ -27,9 +27,7 @@ const breadcrumbs = [
   { label: 'Framåtvänd bilbarnstol' },
 ];
 
-// Pilotsida för prisvisning (2026-08-03). Produktkorten visar butikens pris ur
-// Jollyrooms produktfeed via lib/price.ts; inget belopp skrivs in för hand här.
-// Jämförelsetabellen och featured-blocket är fortfarande prisfria med flit.
+// Priser kommer ur produktfeeden via lib/price.ts, aldrig ur en prop här.
 // Affiliate-länkar/bilder oförändrade (verifierade, NOLLTOLERANS).
 const products = [
   {
@@ -153,12 +151,11 @@ export const articleMeta = {
     image="/images/products/cybex-anoris-t.webp"
     trackedUrl={cybexAnorisUrl}
     store="Jollyroom"
-    visaPris
     description="Säkrast framåtvänd bilbarnstol i vår test. Den enda modellen med anti-submarine-kudde som förhindrar att barnet glider under bältet vid krock, med krocksäkerhetsbetyget Mycket bra (1,3) i ADAC 2025. ISOFIX och top tether, täcker 76 till 125 cm."
   />
 
   {/* 4. Jämförelsetabell (scan-and-click) */}
-  <MoneyComparisonTable products={products} visaPris title="Jämförelsetabell - Framåtvända bilbarnstolar 2026" />
+  <MoneyComparisonTable products={products} title="Jämförelsetabell - Framåtvända bilbarnstolar 2026" />
 
   {/* 5. Detaljerad genomgång (auto-TOC byggs in i .mp-prose) */}
   <div class="mp-prose">
@@ -174,7 +171,6 @@ export const articleMeta = {
       imageAlt="Cybex Anoris T2 i-Size framåtvänd bilbarnstol"
       store="Jollyroom"
       buyUrl={cybexAnorisUrl}
-      visaPris
       adacScore={adacAnorisT2?.overall}
       pros={['Unik anti-submarine-kudde, förhindrar farligt submarining vid krock', 'Krocksäkerhet Mycket bra (1,3) i ADAC 2025', 'Åldersspann 76 till 125 cm (ca 1,5 till 6 år)', 'ISOFIX + top tether, säkraste monteringstypen', 'Rymligt och bekvämt sittläge']}
       cons={['Hög prisklass', 'Totalbetyget i ADAC (2,8) sänktes av PFAS i en klädselvariant som utgått 2025', 'Stor och tung, passar bäst i medelstora till stora bilar']}
@@ -197,7 +193,6 @@ export const articleMeta = {
       imageAlt="Britax Römer Kidfix Pro M framåtvänd bilbarnstol"
       store="Jollyroom"
       buyUrl={britaxKidfixUrl}
-      visaPris
       adacScore={adacKidfixProM?.overall}
       pros={['HUGS-sidoskydd, avancerat sidokrockskydd', 'Bra hanteringsbetyg (1,9) i ADAC 2025', 'Kompakt och lätt, enkel att flytta mellan bilar', 'ISOFIX-kompatibel (optional)', 'Stort färg- och tygurval']}
       cons={['Säkerhetsdelbetyg 3,1 i ADAC 2025, svagare än vinnaren', 'Startar vid 100 cm, passar inte de minsta barnen', 'Kräver barnets eget bilbälte (ingen fem-punktssele)']}
@@ -220,7 +215,6 @@ export const articleMeta = {
       imageAlt="Joie i-Trillo FX framåtvänd bilbarnstol"
       store="Jollyroom"
       buyUrl={joieTrilloUrl}
-      visaPris
       adacScore={adacTrillo?.overall}
       pros={['Bra pris för i-Size-certifierad stol', 'ISOFIX med tillägg (köps separat)', 'Justerbart ryggstöd i höjd och vinkel', 'Bra (2,3) i ADAC-krocktest 2025', 'Lätt (8,5 kg), smidig att flytta']}
       cons={['Enklare material och finish än premium-stolar', 'ISOFIX-adapter ingår inte alltid, kolla paket', 'Startar vid 100 cm, inte för de minsta']}
@@ -349,7 +343,6 @@ export const articleMeta = {
   <StickyCTA
     href={cybexAnorisUrl}
     store="Jollyroom"
-    visaPris
     productName="Cybex Anoris T2 i-Size"
   />
 

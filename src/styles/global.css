@@ -117,7 +117,11 @@ table, .tabular {
 /* Sidor med mobil sticky-CTA får bottenluft så baren aldrig täcker footern. */
 @media (max-width: 1023px) {
   body:has(#sticky-cta) {
-    padding-bottom: 5rem;
+    /* Baren är 115 px uppmätt på 390 px bredd sedan prisraden lades till
+       (var ca 84 px innan). 5rem = 80 px lämnade 35 px innehåll bakom baren.
+       env() speglar barens egen safe-area-padding så att de följs åt på
+       telefoner med hak i stället för att gissa ett påslag. */
+    padding-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
   }
 }
 

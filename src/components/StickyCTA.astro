@@ -1,6 +1,6 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
-import { getPrice } from '../lib/price';
+import { getPrice, ctaVerb } from '../lib/price';
 import PriceTag from './PriceTag.astro';
 interface Props {
   text?: string;
@@ -19,14 +19,13 @@ interface Props {
   brand?: string;
 }
 
-const { text, href, productName, store, visaPris = false } = Astro.props;
+const { text, href, productName, store, visaPris = true } = Astro.props;
 
 /* Knapptexten härleds ur priset i stället för att skickas in som sträng. Står
  * beloppet intill knappen är "Bra pris" ett omdöme vi inte kan belägga
  * (CLAUDE.md, CTA-standarder), och texten och prisvisningen kan aldrig glida
  * isär eftersom båda kommer ur samma uppslag. */
-const pris = visaPris ? getPrice(href) : null;
-const ctaText = text || (store ? `${pris ? 'Handla' : 'Bra pris'} hos ${store}` : 'Se erbjudande');
+const ctaText = text || (store ? `${ctaVerb(Astro.url.pathname)} hos ${store}` : 'Se erbjudande');
 ---
 
 <div

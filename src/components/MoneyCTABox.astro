@@ -1,9 +1,11 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
+import { getPrice, ctaVerb } from '../lib/price';
+import PriceTag from './PriceTag.astro';
 /**
  * Boxlös produkt-CTA för money pages (money page-mallen).
  * Trogen port av tillskottsguidens CTABox: ingen bg/border/ruta, bara en ren
- * fullbredds "Bra pris hos [Butik]"-knapp. Renderar INGENTING utan verifierad URL.
+ * fullbredds CTA-knapp. Renderar INGENTING utan verifierad URL.
  */
 interface Props {
   productName?: string;
@@ -15,7 +17,9 @@ interface Props {
 
 const { productName, store, affiliateUrl, price, description } = Astro.props;
 const hasCTA = !!affiliateUrl && !!store;
-const buttonLabel = `Bra pris hos ${store || 'butiken'}`;
+/* Knapptexten följer priset: står beloppet intill knappen är "Bra pris" ett
+ * omdöme vi inte kan belägga (CLAUDE.md, CTA-standarder). */
+const buttonLabel = `${ctaVerb(Astro.url.pathname)} hos ${store || 'butiken'}`;
 const hasLede = !!(productName || price || description);
 ---
 
@@ -24,6 +28,7 @@ const hasLede = !!(productName || price || description);
   {productName && <p class="font-heading font-bold text-text text-base">{productName}</p>}
   {price && <p class="text-sm text-text-light mt-0.5">{price}</p>}
   {description && <p class="text-sm text-text-light mt-1.5 leading-relaxed">{description}</p>}
+  <PriceTag affiliateUrl={affiliateUrl} merchant={store} variant="card" class="mb-2" />
   <a
     href={affiliateUrl}
     rel={ctaRel(affiliateUrl)}

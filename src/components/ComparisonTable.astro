@@ -1,5 +1,7 @@
 ---
 import { ctaRel } from '../lib/cta-rel';
+import { getPrice, allaHarPris, ctaVerb } from '../lib/price';
+import PriceTag from './PriceTag.astro';
 interface Product {
   name: string;
   image?: string;
@@ -23,6 +25,13 @@ interface Props {
 }
 
 const { products, featureLabels } = Astro.props;
+
+/* Allt-eller-inget, se allaHarPris i lib/price.ts: en enda rad utan pris
+ * släcker priskolumnen för hela tabellen. En tom prisruta i ett rutnät läses
+ * som att just den produkten är dyr eller trasig. Knapptexten följer samma
+ * uppslag, så text och pris kan inte glida isär. */
+const visaPriser = allaHarPris(products.map((p) => p.ctaHref));
+const verb = ctaVerb(Astro.url.pathname);
 
 const TRACKER_TO_STORE: Record<string, string> = {
   'dot.jollyroom.se': 'Jollyroom',
@@ -74,11 +83,12 @@ function storeFromUrl(url: string | undefined): string | undefined {
         </div>
         ))}
       </dl>
+      {visaPriser && <PriceTag affiliateUrl={p.ctaHref} merchant={storeFromUrl(p.ctaHref) ?? undefined} variant="inline" class="mb-1.5" />}
       {p.ctaHref && (
       <div>
         <a href={p.ctaHref} target="_blank" rel={ctaRel(p.ctaHref)}
           class="flex items-center justify-center gap-1.5 w-full bg-cta text-white font-bold text-base py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
-          Bra pris hos {storeFromUrl(p.ctaHref) ?? p.ctaText ?? 'butiken'}
+          {verb} hos {storeFromUrl(p.ctaHref) ?? p.ctaText ?? 'butiken'}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
         {p.additionalCtaHrefs && p.additionalCtaHrefs.length > 0 && (
@@ -133,11 +143,12 @@ function storeFromUrl(url: string | undefined): string | undefined {
         <td class="p-3"></td>
         {products.map(p => (
         <td class="p-3 text-center align-top">
+          {visaPriser && <PriceTag affiliateUrl={p.ctaHref} merchant={storeFromUrl(p.ctaHref) ?? undefined} variant="inline" class="mb-1.5" />}
           {p.ctaHref && (
           <div>
             <a href={p.ctaHref} target="_blank" rel={ctaRel(p.ctaHref)}
               class="flex w-full items-center justify-center gap-1 bg-cta text-white font-bold text-base px-5 py-4 rounded-lg hover:bg-cta-dark transition-colors min-h-[56px]">
-              Bra pris hos {storeFromUrl(p.ctaHref) ?? p.ctaText ?? 'butiken'}
+              {verb} hos {storeFromUrl(p.ctaHref) ?? p.ctaText ?? 'butiken'}
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             </a>
             {p.additionalCtaHrefs && p.additionalCtaHrefs.length > 0 && (

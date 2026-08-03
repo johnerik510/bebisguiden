@@ -14,6 +14,7 @@ const table = prices as {
   byUrl: Record<string, number>;
   bySkuFrom: Record<string, number>;
   byUrlFrom: Record<string, number>;
+  sidorMedPris: Record<string, true>;
 };
 
 /**
@@ -107,6 +108,53 @@ export function getPrice(affiliateUrl?: string): Pris | null {
 /** Formaterat pris redo att skrivas ut, t.ex. "36 999 kr" eller "Från 26 999 kr". */
 export function prisText(p: Pris): string {
   return p.fran ? `Från ${formatSek(p.sek)}` : formatSek(p.sek);
+}
+
+/**
+ * Visar den här sidan minst ett pris?
+ *
+ * Avgör CTA-knappens verb, och beslutet hör hemma på sidan i stället för på
+ * produkten. Härleds det per produkt får en sida där tre av fyra har pris tre
+ * knappar med "Handla hos" och en med "Bra pris hos", vilket läses som ett fel.
+ *
+ * "Handla hos" är alltid sant: det är en uppmaning, inte ett omdöme. "Bra pris
+ * hos" är ett värdeomdöme och får inte stå på en sida där beloppet syns
+ * (CLAUDE.md, CTA-standarder). Därför vinner "Handla" så fort sidan visar
+ * något pris alls.
+ *
+ * Kartan byggs av scripts/fetch-prices.mjs ur samma uppslag som priserna, så
+ * den kan inte glida isär från det sidan faktiskt renderar.
+ */
+export function sidanVisarPris(pathname?: string): boolean {
+  if (!pathname) return false;
+  const rutt = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  return table.sidorMedPris?.[rutt] === true;
+}
+
+/** Verbet i CTA-knappen för en sida: "Handla" när sidan visar pris, annars "Bra pris". */
+export function ctaVerb(pathname?: string): string {
+  return sidanVisarPris(pathname) ? 'Handla' : 'Bra pris';
+}
+
+/**
+ * Har varje produkt i listan ett pris?
+ *
+ * Används av jämförelsetabellen, som är den enda ytan där en lucka faktiskt
+ * syns: raderna står under varandra i ett rutnät och en tom prisruta läses som
+ * att produkten är dyr eller trasig. Saknas priset på en enda rad visar tabellen
+ * inga priser alls.
+ *
+ * Fristående produktkort omfattas inte. De står långt ifrån varandra med
+ * brödtext emellan, och ett kort utan prisrad ser ut precis som ett kort gjorde
+ * innan prisvisningen fanns. Att släcka en hel sidas priser för ett saknat kort
+ * skulle kosta 56 av 463 priser utan att lösa något läsaren märker.
+ *
+ * Produkter utan köplänk räknas inte: de har medvetet ingen CTA och därmed
+ * ingen prisruta att lämna tom.
+ */
+export function allaHarPris(affiliateUrls: (string | undefined)[]): boolean {
+  const medLank = affiliateUrls.filter((u): u is string => typeof u === 'string' && u.length > 0);
+  return medLank.length > 0 && medLank.every((u) => getPrice(u) !== null);
 }
 
 /** Prisspann för en lista produkter. null om färre än två har pris. */

@@ -1,4 +1,6 @@
 ---
+import { getPrice, ctaVerb } from '../../lib/price';
+import PriceTag from '../../components/PriceTag.astro';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import MoneyByline from '../../components/MoneyByline.astro';
 import MoneyComparisonTable from '../../components/MoneyComparisonTable.astro';
@@ -9,6 +11,10 @@ import HowWeReviewed from '../../components/HowWeReviewed.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
 import ExpertQuote from '../../components/ExpertQuote.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
+
+/* Knapptexten följer priset, se CLAUDE.md CTA-standarder. */
+const blojhinkUrl = 'https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10195078&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojhinkar-tillbehor/blojhinkar-refiller/tommee-tippee-blojhink-sangenic-xl-vit';
+const blojhinkCta = `${ctaVerb(Astro.url.pathname)} hos Jollyroom`;
 
 const breadcrumbs = [
   { label: 'Hem', href: '/' },
@@ -361,15 +367,15 @@ export const articleMeta = {
             <div class="flex flex-wrap gap-2 text-xs text-text-light mb-3">
               <span>Passar alla blöjtyper</span>
               <span>Effektiv luktspärr</span>
-              <span>Bra pris hos Jollyroom</span>
             </div>
+            <PriceTag affiliateUrl={blojhinkUrl} merchant="Jollyroom" variant="inline" class="mb-2" />
             <a
-              href="https://dot.jollyroom.se/t/t?a=1487384677&as=2065068845&t=2&tk=1&cupa_sku=10195078&url=https://www.jollyroom.se/babyprodukter/halsa-hygien/blojhinkar-tillbehor/blojhinkar-refiller/tommee-tippee-blojhink-sangenic-xl-vit"
+              href={blojhinkUrl}
               class="inline-flex items-center bg-accent text-white font-semibold text-sm px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
               rel="nofollow sponsored"
               target="_blank"
             >
-              Bra pris hos Jollyroom
+              {blojhinkCta}
             </a>
           </div>
         </div>
@@ -496,7 +502,7 @@ export const articleMeta = {
 
   {/* Ingen StickyCTA, alla produkter är showcase utan affiliate-URL */}
 
-<StickyCTA text="Bra pris hos Reirei" href="https://addrevenue.io/t?c=3467325&a=987575&m=SE&u=https%3A%2F%2Freirei.se%2Fproducts%2Fkit-kin-tygblojor-3-pack" productName="Kit & Kin Tygblöjor, 3-pack" />
+<StickyCTA store="Reirei" href="https://addrevenue.io/t?c=3467325&a=987575&m=SE&u=https%3A%2F%2Freirei.se%2Fproducts%2Fkit-kin-tygblojor-3-pack" productName="Kit & Kin Tygblöjor, 3-pack" />
 
 
 </ArticleLayout>
