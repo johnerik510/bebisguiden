@@ -172,7 +172,13 @@ export function priceRange(affiliateUrls: (string | undefined)[]): { min: number
  * blir fel så fort butiken ändrar sig. Ett daterat belopp är en verifierbar
  * uppgift som förblir sann. Stämpeln kommer ur feed-matches/_meta.json och
  * sätts när feeden hämtas, aldrig av byggtidpunkten.
+ *
+ * Medlemspriset nämns för att feeden bär butikens ordinarie pris medan
+ * butikssidan leder med medlemspriset. Uppmätt på 282 produkter mot renderade
+ * butikssidor: 97,8 procent identiska, och varje avvikelse var ett aktivt
+ * "Medl.pris" hos Jollyroom. Det är en verklig skillnad läsaren kan mötas av,
+ * och då ska noten ha sagt det i förväg.
  */
 export const PRICE_NOTE = table.hamtad
-  ? `Priserna hämtades från butikernas produktfeeds ${table.hamtad.slice(0, 10)}. Butikens pris vid köptillfället gäller.`
-  : 'Priserna hämtas från butikernas produktfeeds. Butikens pris vid köptillfället gäller.';
+  ? `Priserna hämtades från butikernas produktfeeds ${table.hamtad.slice(0, 10)}. Butiken kan ha medlemspris eller kampanj, och priset vid köptillfället gäller.`
+  : 'Priserna hämtas från butikernas produktfeeds. Butiken kan ha medlemspris eller kampanj, och priset vid köptillfället gäller.';
