@@ -399,3 +399,15 @@ article table tr:nth-child(even) td {
     background: transparent;
   }
 }
+
+/*
+  Prisnoten ligger i BaseLayout på varje sida och döljs på de sidor som inte
+  visar något pris. `[data-pris]` sätts av PriceTag, som är enda stället ett
+  belopp skrivs ut, så en ny sida med produktkort får noten utan att någon
+  behöver komma ihåg det.
+
+  Regeln är inverterad med flit. En webbläsare utan :has() ignorerar hela
+  selektorn och visar noten. Att noten står på en sida utan priser är oskyldigt,
+  att den saknas där priser står är det inte.
+*/
+body:not(:has([data-pris])) [data-prisnot] { display: none; }

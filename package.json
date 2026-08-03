@@ -6,16 +6,17 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "node scripts/fetch-prices.mjs && astro dev",
     "prebuild": "rm -rf dist",
-    "build": "astro build",
+    "build": "node scripts/fetch-prices.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "seo-audit": "node /Users/axeljonemyr/Documents/scripts/seo-audit.mjs",
     "quality-audit": "node /Users/axeljonemyr/Documents/scripts/quality-audit.mjs",
     "data-audit": "node /Users/axeljonemyr/Documents/scripts/data-audit.mjs",
     "quality-gate": "/Users/axeljonemyr/Documents/scripts/quality-gate.sh bebisguiden",
-    "cta-audit": "node /Users/axeljonemyr/Documents/scripts/cta-audit.mjs"
+    "cta-audit": "node /Users/axeljonemyr/Documents/scripts/cta-audit.mjs",
+    "prices": "node scripts/fetch-prices.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",

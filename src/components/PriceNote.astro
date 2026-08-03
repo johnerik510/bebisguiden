@@ -1,0 +1,25 @@
+---
+/**
+ * Prisreservationen. Renderas en gång per sida av BaseLayout, under innehållet
+ * och ovanför footern, och bara på sidor som faktiskt visar minst ett pris.
+ *
+ * Villkoret är CSS i stället för en prop: komponenten vet inte vilka produkter
+ * sidan råkar rendera, och en lista som skickas in för hand blir fel så fort
+ * någon lägger till ett produktkort någon annanstans på sidan. `[data-pris]`
+ * sätts av PriceTag, som är enda stället ett pris skrivs ut, så noten följer
+ * med automatiskt även på sidor som byggs långt senare.
+ *
+ * Selektorn i global.css är inverterad med flit (`body:not(:has(...))`): en
+ * webbläsare utan :has() ignorerar hela regeln och visar noten. Att noten står
+ * på en sida utan priser är oskyldigt, att den saknas där priser står är det inte.
+ *
+ * Låg emfas med flit: den är en upplysning, inte en varning, och ska inte
+ * konkurrera med produkterna. Affiliateupplysningen hör inte hemma här utan
+ * bara i footern.
+ */
+import { PRICE_NOTE } from '../lib/price';
+---
+
+<div data-prisnot class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-8">
+  <p class="text-xs text-text-light leading-relaxed">{PRICE_NOTE}</p>
+</div>

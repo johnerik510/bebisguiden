@@ -6,6 +6,9 @@ import { ctaRel } from '../lib/cta-rel';
  * tematiserad till bebisguiden och utan resolveMultiCTA-beroende: sidan
  * skickar in primary-URL + ev. alsoAt-butiker direkt (verifierade feeds).
  */
+import { getPrice } from '../lib/price';
+import PriceTag from './PriceTag.astro';
+
 interface AlsoAt {
   store: string;
   url: string;
@@ -14,7 +17,8 @@ interface AlsoAt {
 interface Props {
   brand: string;
   name: string;
-  price?: string;
+  /** Se MoneyProductCard.visaPris. Priset kommer ur feeden, aldrig ur en prop. */
+  visaPris?: boolean;
   image: string;
   imageAlt?: string;
   trackedUrl: string;
@@ -27,7 +31,7 @@ interface Props {
 const {
   brand,
   name,
-  price = '',
+  visaPris = false,
   image,
   imageAlt,
   trackedUrl,
@@ -36,6 +40,11 @@ const {
   badge = 'Redaktionens val',
   alsoAt = [],
 } = Astro.props;
+
+/* Priset avgör knappens text: står beloppet intill knappen är "Bra pris" ett
+ * omdöme vi inte kan belägga (CLAUDE.md, CTA-standarder). */
+const pris = visaPris ? getPrice(trackedUrl) : null;
+const ctaText = `${pris ? 'Handla' : 'Bra pris'} hos ${store}`;
 
 /**
  * Märket i rubriken i stället för som egen versaletikett ovanför. Många
@@ -81,7 +90,7 @@ const rubrik = brand && !name.toLowerCase().startsWith(brand.toLowerCase())
       </h2>
       <p class="text-[15px] text-text-light leading-relaxed mb-3">{description}</p>
       <div class="flex flex-wrap items-center gap-3">
-        {price && <span class="text-xl font-heading font-bold text-text">{price}</span>}
+        {visaPris && <PriceTag affiliateUrl={trackedUrl} merchant={store} variant="card" />}
         <div class="w-full">
           <a
             href={trackedUrl}
@@ -90,7 +99,7 @@ const rubrik = brand && !name.toLowerCase().startsWith(brand.toLowerCase())
             data-product={name}
             class="inline-flex w-full items-center justify-center gap-2 px-5 py-3 bg-cta hover:bg-cta-dark text-white font-bold text-base rounded-md transition-colors no-underline"
           >
-            Bra pris hos {store}
+            {ctaText}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </a>
         </div>

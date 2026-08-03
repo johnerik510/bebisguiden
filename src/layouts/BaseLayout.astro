@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PriceNote from '../components/PriceNote.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 import DevTypsnittsvaljare from '../components/DevTypsnittsvaljare.astro';
 import '../styles/global.css';
@@ -177,6 +178,12 @@ const articleSchema = article ? {
  <slot />
  <RelatedGuides />
  </main>
+ {/*
+   Prisreservationen ligger i layouten, inte i varje sidmall, sa att varje sida
+   som rakar visa ett pris far den utan att nagon minns att lagga dit den.
+   Den doljer sig sjalv pa sidor utan priser, se PriceNote.astro.
+ */}
+ <PriceNote />
  <Footer />
  <DevTypsnittsvaljare />
  <script is:inline>

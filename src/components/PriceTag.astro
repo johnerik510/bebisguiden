@@ -1,0 +1,50 @@
+---
+/**
+ * Enda stället prisformatet definieras. Alla priser på siten renderas härifrån,
+ * så att en ändring i utseende eller formulering sker på ett ställe.
+ *
+ * Priset slås upp på produktens affiliate-URL via lib/price.ts. Saknas produkten
+ * i butikens feed renderas ingenting alls: ingen platshållare, inget "N/A", ingen
+ * tom lucka. CTA-knappens "Handla hos [Butik]" bär då hela affordansen.
+ *
+ * Butiken skrivs ut intill beloppet eftersom priset gäller just den butiken, och
+ * för att det sätter rätt förväntan på var klicket landar.
+ *
+ * `data-pris` är signalen som får prisnoten att visa sig, se PriceNote.astro.
+ */
+import { getPrice, prisText } from '../lib/price';
+
+interface Props {
+  affiliateUrl?: string;
+  merchant?: string;
+  /**
+   * card    stor rad ovanför CTA i produktkort
+   * inline  mindre rad i kompakta kort och listrader
+   * table   bara beloppet, butiken framgår av kolumnen
+   */
+  variant?: 'card' | 'inline' | 'table';
+  class?: string;
+}
+
+const { affiliateUrl, merchant, variant = 'card', class: cls = '' } = Astro.props;
+const pris = getPrice(affiliateUrl);
+
+const amount = {
+  card: 'font-heading text-xl font-bold text-text tabular-nums',
+  inline: 'font-heading text-base font-bold text-text tabular-nums',
+  table: 'font-heading text-base font-bold text-text tabular-nums',
+}[variant];
+
+const store = {
+  card: 'font-sans text-sm font-medium text-text-light',
+  inline: 'font-sans text-xs font-medium text-text-light',
+  table: '',
+}[variant];
+---
+
+{pris && (
+  <p data-pris class={`leading-none ${cls}`}>
+    <span class={amount}>{prisText(pris)}</span>
+    {variant !== 'table' && merchant && <span class={store}> hos {merchant}</span>}
+  </p>
+)}
