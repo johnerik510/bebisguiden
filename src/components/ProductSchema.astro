@@ -1,11 +1,5 @@
 ---
-interface Offer {
- price: number;
- currency?: string;
- url: string;
- availability?: string;
- seller?: string;
-}
+import { offerSchema } from '../lib/offer';
 
 interface ProductItem {
  name: string;
@@ -17,7 +11,10 @@ interface ProductItem {
  reviewBody?: string;
  pros?: string[];
  cons?: string[];
- offers?: Offer[];
+ /** Produktens affiliate-URL. Ger Offer när butikens pris syns på sidan. */
+ affiliateUrl?: string;
+ /** Butiken priset gäller hos. */
+ store?: string;
 }
 
 interface Props {
@@ -26,59 +23,15 @@ interface Props {
 
 const { products } = Astro.props;
 
-const shippingDetails = {
- "@type": "OfferShippingDetails",
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": "0",
- "currency": "SEK",
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "SE",
- },
- "deliveryTime": {
- "@type": "ShippingDeliveryTime",
- "handlingTime": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 3,
- "unitCode": "DAY",
- },
- "transitTime": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 5,
- "unitCode": "DAY",
- },
- },
-};
-
-const merchantReturnPolicy = {
- "@type": "MerchantReturnPolicy",
- "applicableCountry": "SE",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 30,
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/FreeReturn",
-};
-
-const buildOffer = (offer: Offer) => ({
- "@type": "Offer",
- "priceCurrency": offer.currency || "SEK",
- "price": offer.price,
- "url": offer.url,
- "availability": offer.availability || "https://schema.org/InStock",
- "shippingDetails": shippingDetails,
- "hasMerchantReturnPolicy": merchantReturnPolicy,
-...(offer.seller? {
- "seller": {
- "@type": "Organization",
- "name": offer.seller,
- },
- }: {}),
-});
-
+/*
+ * Offer byggs av lib/offer.ts ur samma feed-uppslag som PriceTag, och bara när
+ * sidan faktiskt visar beloppet. Komponenten byggde tidigare ett eget
+ * Offer-block med fri frakt och 30 dagars fri retur inskrivet som konstanter.
+ * De villkoren är butikens, inte våra, och gick inte att belägga för någon av
+ * butikerna: att utfästa dem i schemat är ett faktapåstående vi inte äger.
+ * Utan dem är noden ett Product snippet med pris, vilket är rätt form för en
+ * jämförelsesida som inte är säljare.
+ */
 const schemas = products.map((product) => ({
  "@context": "https://schema.org",
  "@type": "Product",
@@ -98,6 +51,7 @@ const schemas = products.map((product) => ({
  "reviewCount": product.reviewCount || 1,
  },
  }: {}),
+ ...offerSchema(product.affiliateUrl, product.store, Astro.url.pathname),
  "review": {
  "@type": "Review",
  "reviewRating": {
@@ -125,11 +79,6 @@ const schemas = products.map((product) => ({
  },
  }: {}),
  },
-...(product.offers && product.offers.length > 0? {
- "offers": product.offers.length === 1
-? buildOffer(product.offers[0])
-: product.offers.map(buildOffer),
- }: {}),
 }));
 ---
 
