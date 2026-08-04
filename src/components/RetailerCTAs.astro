@@ -33,10 +33,33 @@ const {
   compact = false,
 } = Astro.props;
 
+/**
+ * Butiker utan en enda konvertering stangs av i griden.
+ *
+ * Matt i Adtraction 2026-08-04 (`adtraction.mjs advertiser-epc`, kanal Bebisguiden):
+ *
+ *   Butik          klick 180d  provision 180d  EPC 180d   klick 30d
+ *   Jollyroom            4 988         4 562 kr    0,91        1 062
+ *   Baby V               3 098           253 kr    0,08           30
+ *   Babyland             3 332            79 kr    0,02           58
+ *   Stor och Liten       3 193             0 kr    0,00            4
+ *   Babysam                394             0 kr    0,00          115
+ *
+ * Babysam och Stor och Liten har noll konverteringar over bada fonstren. Varje
+ * knapp de far i griden ar en delad kategoriklick som annars hade gatt till en
+ * butik som faktiskt saljer. Provisionssats styr inte urvalet (Babysam har hogst
+ * sats, 8 %, och lagst utfall) utan uppmatt EPC.
+ *
+ * Baby V och Babyland har konverterat, om an svagt, och far vara kvar.
+ * Ompröva listan nar advertiser-epc visar en annan bild.
+ */
+const NON_CONVERTING: readonly Retailer[] = ['babysam', 'storochliten'];
+
 // Jollyroom forst (hogst EPC pa bebisguiden), darefter provisionsordning.
 function order(list: Retailer[]): Retailer[] {
-  const rest = sortByCommission(list.filter((r) => r !== 'jollyroom'));
-  return list.includes('jollyroom') ? ['jollyroom' as Retailer, ...rest] : rest;
+  const live = list.filter((r) => !NON_CONVERTING.includes(r));
+  const rest = sortByCommission(live.filter((r) => r !== 'jollyroom'));
+  return live.includes('jollyroom') ? ['jollyroom' as Retailer, ...rest] : rest;
 }
 
 const available = category ? retailersForCategory(category) : [];
@@ -50,6 +73,15 @@ const items = chosen
     return { key: r, name: meta.name, href: track(r, `https://www.${meta.domain}${path}`) };
   })
   .filter((x): x is { key: Retailer; name: string; href: string } => x !== null);
+
+/* Kolumnantalet foljer antalet knappar. Med en fast 5-kolumnsgrid blev tre
+ * knappar utdragna over halva bredden med tva tomma celler bredvid. */
+const gridCols =
+  items.length === 1 ? 'grid-cols-1'
+  : items.length === 2 ? 'grid-cols-2'
+  : items.length === 3 ? 'grid-cols-2 sm:grid-cols-3'
+  : items.length === 4 ? 'grid-cols-2 sm:grid-cols-4'
+  : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5';
 ---
 
 {items.length > 0 && (
@@ -60,7 +92,7 @@ const items = chosen
       <p class="text-sm text-text-light mt-1">{subheading}</p>
     </div>
   )}
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
+  <div class={`grid ${gridCols} gap-2 sm:gap-3`}>
     {items.map((item) => (
       <a
         href={item.href}
