@@ -27,14 +27,22 @@ const faqItems = [
  answer: 'Siffran är barnets längd i centimeter. Storlek 62 betyder att plagget passar ett barn som är cirka 62 cm långt. Åldersangivelsen på lappen är bara en ungefärlig vägledning, eftersom två jämngamla bebisar kan skilja sig flera storlekar i längd.',
  },
  {
+ question: 'Vilken ålder motsvarar storlek 62?',
+ answer: 'Storlek 62 är sydd för ett barn som är 57 till 62 cm långt, vilket i snitt inträffar mellan 2 och 4 månaders ålder. Samma logik gäller uppåt: storlek 74 motsvarar 6 till 9 månader och storlek 86 motsvarar 12 till 18 månader. Mät alltid längden, åldern är bara ett genomsnitt.',
+ },
+ {
+ question: 'Vilken storlek har prematurkläder?',
+ answer: 'Storlek 44 är prematurstorleken och passar barn upp till 44 cm. Den ligger ett steg under storlek 50, som är sydd för 45 till 50 cm. Är barnet kortare än 45 cm sitter storlek 50 löst kring axlar och ben, och då är 44 det som faktiskt passar.',
+ },
+ {
  question: 'Hur många av varje storlek behöver man?',
  answer: 'Räkna med att storlek 50 och 56 används kort, så köp bara några få plagg i varje. Från storlek 62 och uppåt håller varje storlek längre, cirka två månader, och där lönar det sig att satsa på fler bodyer och sparkdräkter. Komplettera hellre efterhand än köpa mycket på förhand.',
  },
 ];
 
 export const articleMeta = {
- title: "Klädstorlekar bebis: storlek 50 till 86 med ålder i tabell",
- description: "Storleken är barnets längd i cm, inte åldern. Storlek 50 passar nyfödd, 62 vid 2 till 4 månader och 74 vid 6 till 9 månader. Se hela tabellen 50 till 86.",
+ title: "Bebis storlekar: klädstorlek, ålder och längd i tabell",
+ description: "Storleken är barnets längd i cm, inte åldern. Storlek 56 passar 1 till 2 månader, 62 vid 2 till 4 månader och 74 vid 6 till 9 månader. Tabell 44 till 104.",
  publishDate: "2026-07-07",
  category: "Guider",
  image: "/images/guide-kladstorlekar-bebis.webp",
@@ -43,10 +51,10 @@ export const articleMeta = {
 
 <ArticleLayout
  image={articleMeta.image}
- title="Klädstorlekar bebis: storlek 50 till 86 med ålder i tabell"
- description="Storleken är barnets längd i cm, inte åldern. Storlek 50 passar nyfödd, 62 vid 2 till 4 månader och 74 vid 6 till 9 månader. Se hela tabellen 50 till 86."
+ title="Bebis storlekar: klädstorlek, ålder och längd i tabell"
+ description="Storleken är barnets längd i cm, inte åldern. Storlek 56 passar 1 till 2 månader, 62 vid 2 till 4 månader och 74 vid 6 till 9 månader. Tabell 44 till 104."
  breadcrumbs={breadcrumbs}
- updatedDate="2026-07-07"
+ updatedDate="2026-08-04"
  showDisclaimer={false}
  datePublished="2026-07-07"
 >
@@ -66,7 +74,7 @@ export const articleMeta = {
  Tabellen nedan visar hur svenska klädstorlekar hänger ihop med barnets längd och en ungefärlig ålder. Storleken är alltid lika med längden i centimeter, medan åldern bara är en vägledning. Använd den för att välja rätt när du köper eller får kläder i present.
  </p>
 
- <div class="not-prose overflow-x-visible mt-4 mb-6">
+ <div class="not-prose overflow-x-auto mt-4 mb-3">
  <table class="w-full text-sm border-collapse rounded-lg overflow-hidden">
   <thead>
    <tr class="bg-accent/10">
@@ -77,43 +85,84 @@ export const articleMeta = {
   </thead>
   <tbody>
    <tr>
-    <td class="p-3 border border-border font-medium">50</td>
-    <td class="p-3 border border-border">Upp till 50 cm</td>
-    <td class="p-3 border border-border">Nyfödd, 0 till 1 månad</td>
+    <td class="p-3 border border-border font-medium">44</td>
+    <td class="p-3 border border-border">Upp till 44 cm</td>
+    <td class="p-3 border border-border">Prematur</td>
    </tr>
    <tr class="bg-bg-alt">
+    <td class="p-3 border border-border font-medium">50</td>
+    <td class="p-3 border border-border">45 till 50 cm</td>
+    <td class="p-3 border border-border">Nyfödd, 0 till 1 månad</td>
+   </tr>
+   <tr>
     <td class="p-3 border border-border font-medium">56</td>
     <td class="p-3 border border-border">51 till 56 cm</td>
     <td class="p-3 border border-border">1 till 2 månader</td>
    </tr>
-   <tr>
+   <tr class="bg-bg-alt">
     <td class="p-3 border border-border font-medium">62</td>
     <td class="p-3 border border-border">57 till 62 cm</td>
     <td class="p-3 border border-border">2 till 4 månader</td>
    </tr>
-   <tr class="bg-bg-alt">
+   <tr>
     <td class="p-3 border border-border font-medium">68</td>
     <td class="p-3 border border-border">63 till 68 cm</td>
     <td class="p-3 border border-border">4 till 6 månader</td>
    </tr>
-   <tr>
+   <tr class="bg-bg-alt">
     <td class="p-3 border border-border font-medium">74</td>
     <td class="p-3 border border-border">69 till 74 cm</td>
     <td class="p-3 border border-border">6 till 9 månader</td>
    </tr>
-   <tr class="bg-bg-alt">
+   <tr>
     <td class="p-3 border border-border font-medium">80</td>
     <td class="p-3 border border-border">75 till 80 cm</td>
     <td class="p-3 border border-border">9 till 12 månader</td>
    </tr>
-   <tr>
+   <tr class="bg-bg-alt">
     <td class="p-3 border border-border font-medium">86</td>
     <td class="p-3 border border-border">81 till 86 cm</td>
     <td class="p-3 border border-border">12 till 18 månader</td>
    </tr>
+   <tr>
+    <td class="p-3 border border-border font-medium">92</td>
+    <td class="p-3 border border-border">87 till 92 cm</td>
+    <td class="p-3 border border-border">18 till 24 månader</td>
+   </tr>
+   <tr class="bg-bg-alt">
+    <td class="p-3 border border-border font-medium">98</td>
+    <td class="p-3 border border-border">93 till 98 cm</td>
+    <td class="p-3 border border-border">2 till 3 år</td>
+   </tr>
+   <tr>
+    <td class="p-3 border border-border font-medium">104</td>
+    <td class="p-3 border border-border">99 till 104 cm</td>
+    <td class="p-3 border border-border">3 till 4 år</td>
+   </tr>
   </tbody>
  </table>
  </div>
+ <p class="text-sm text-text-light mb-6">
+ Åldersintervallen är avstämda mot storleksguiderna hos Polarn O. Pyret och Kappahl (hämtade 4 augusti 2026). Butikerna anger samma intervall, vilket gör tabellen jämförbar oavsett var du handlar.
+ </p>
+
+ <h2 class="font-heading text-xl font-bold mt-8 mb-3">Storlekar över 104: så fortsätter skalan</h2>
+ <p>
+ Samma princip gäller hela vägen upp genom barnstorlekarna, siffran är längden i centimeter. Stegen är 6 cm ända till storlek 152, och åldern följer med ungefär ett år per steg. Söker du storlek 110 eller 122 är det alltså längden du ska mäta, precis som för en bebis.
+ </p>
+ <ul class="list-disc pl-5 space-y-1 mb-4">
+  <li><strong>110:</strong> 4 till 5 år</li>
+  <li><strong>116:</strong> 5 till 6 år</li>
+  <li><strong>122:</strong> 6 till 7 år</li>
+  <li><strong>128:</strong> 7 till 8 år</li>
+  <li><strong>134:</strong> 8 till 9 år</li>
+  <li><strong>140:</strong> 9 till 10 år</li>
+  <li><strong>146:</strong> 10 till 11 år</li>
+  <li><strong>152:</strong> 11 till 12 år</li>
+ </ul>
+ <p>
+ Kombinationer som 98/104 eller 122/128 betyder att plagget är sytt för att täcka två steg. Ett sådant plagg sitter rymligt i den lägre storleken och blir tajt i den övre, så välj den lägre siffran om barnet precis passerat den.
+ </p>
 
  <h2 class="font-heading text-xl font-bold mt-8 mb-3">Varför storleken styrs av längd och inte ålder</h2>
  <p>
