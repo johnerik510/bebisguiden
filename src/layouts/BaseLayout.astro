@@ -147,20 +147,10 @@ const articleSchema = article ? {
  window.gtag = gtag;
  </script>
 
- {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
-
- <!-- Pages can inject additional head content (e.g. preload hints) -->
- <slot name="head" />
-
- <!-- Addrevenue Easylinks, deferred to reduce render-blocking -->
- <script is:inline>
- window.addEventListener('load', function {
- var s = document.createElement('script');
- s.src = 'https://addrevenue.io/easylinks.min.js?c=3467325';
- s.async = true;
- document.head.appendChild(s);
- });
- </script>
+ {articleSchema && <!-- Addrevenue EasyLinks borttaget 2026-08-06: natverket anvander inga
+ runtime-lankomskrivare. Varje affiliatelank ska komma fran feed,
+ verified-links.ts eller en lank hamtad via natverkets dashboard.
+ Saknar en produkt lank ar det ett innehallsproblem, inte ett skript. -->
  <script src="https://analytics.ahrefs.com/analytics.js" data-key="lR83mfNKMbk0sxGHF8iwdQ" async></script>
 <!-- Microsoft Clarity -->
 <script is:inline>
@@ -195,7 +185,7 @@ const articleSchema = article ? {
  </script>
  <!-- AFFI_TRACKING_V1_START -->
  <script is:inline>
- (function {
+ (function () {
  var SITE = 'bebisguiden';
  function ancestorAttr(link, attr) {
  var el = link.closest('[' + attr + ']');
